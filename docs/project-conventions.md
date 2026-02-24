@@ -48,6 +48,8 @@ For pipeline Python files specifically: run `uv run dtd validate` after any exte
 
 When dispatching subagents, always specify the exact branch name and explicitly state "Do NOT create a new branch." Without this, subagents create their own branches, causing merge conflicts and orphaned work. Also tell subagents to commit directly — don't rely on them to follow the parent's workflow.
 
+**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of *input* source. Larger files (character-sheet at 2,538 LOC, character-builder at 1,672 LOC) exhaust context and produce incomplete output. For large ports, work directly in the main agent session or split the file into phases.
+
 ---
 
 ## D:TD Conventions
@@ -232,6 +234,12 @@ Set-Content file.md -Encoding utf8
 ### CSS `display` Overrides `hidden`
 
 Never set an explicit `display` value (e.g., `display: flex`) on an element that uses the HTML `hidden` attribute for visibility toggling. The CSS `display` wins over `hidden`'s implicit `display: none`, making the element permanently visible. Instead, use `display: none` as default and toggle visibility with a class (e.g., `.open { display: flex }`).
+
+### Astro `<style>` Scoping Eats `@import`
+
+A bare `<style>@import "../styles/foo.css";</style>` in an Astro layout is **scoped by default**. Astro appends a scope hash (e.g., `:where(.astro-mqzpnqfb)`) to every selector in the imported file. Slotted content from child pages gets a *different* hash, so imported rules never match child elements — the CSS is silently dead.
+
+**Fix:** Use `<style is:global>` for any `@import` whose selectors must reach into slotted/child content. Alternatively, make each page fully self-contained and skip the shared import entirely.
 
 ### `var` vs `const`/`let` for DTD Namespace
 

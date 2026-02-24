@@ -41,6 +41,22 @@ These have each caused real bugs. Memorize them:
 
 4. **Test the load chain** — scripts must load in order: `core.js` → `dice.js` → tool-specific `.js`. Missing or misordered scripts fail silently.
 
+5. **Astro `<style>` scoping eats `@import`** — a bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports, or make each tool page self-contained.
+
+## Astro Port Recipe
+
+When porting a vanilla tool (`tools/<name>/`) to an Astro page (`src/pages/tools/<name>.astro`):
+
+1. **Replace `DTD.*` globals** → ES named imports from `@/lib/dtd/core.js` and `@/lib/dtd/dice.js`
+2. **CDN scripts** (e.g., Chart.js) → `await import('chart.js/auto')` (npm dynamic import, Vite-bundled)
+3. **External Workers** → put in `public/workers/` (or use inline Blob Worker for small ones)
+4. **HTML body** → Astro component template inside `<ToolLayout title="..." description="...">`
+5. **CSS** → self-contained `<style>` block per tool (don't rely on `tool-components.css` — see pitfall #5)
+6. **`localStorage` keys** → keep unchanged for backward-compatibility with vanilla versions
+7. **Update dashboard** → change badge in `src/pages/tools/index.astro` from "Porting" to "Ready"
+
+**Size guidance:** Subagents handle ports up to ~1,500 LOC input reliably. Larger tools (character-sheet, character-builder) need direct agent work or phased porting.
+
 ## Data Sync Rule
 
 JSON data in `tools/shared/data/` must stay in sync with `cleaned-references/`. Before editing any JSON data file:
