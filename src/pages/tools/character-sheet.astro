@@ -1,0 +1,26 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+---
+
+<ToolLayout title="Character Sheet" description="Interactive digital character sheet with auto-calculations">
+  <div class="dtd-tool stub-page">
+    <div class="stub-content">
+      <div class="stub-icon">📋</div>
+      <h1>Character Sheet</h1>
+      <p class="stub-desc">Interactive digital character sheet with auto-calculations</p>
+      <div class="stub-badge">Porting in Progress</div>
+      <p class="stub-hint">This tool is being migrated from the standalone version. Check back soon!</p>
+      <a href="/tools/" class="btn btn-accent">← Back to Tools</a>
+    </div>
+  </div>
+
+  <style>
+    .stub-page { display: flex; justify-content: center; align-items: center; min-height: 60vh; padding: 2rem; }
+    .stub-content { text-align: center; max-width: 500px; }
+    .stub-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .stub-content h1 { color: var(--accent); font-size: 2rem; margin: 0 0 0.5rem; }
+    .stub-desc { color: var(--text-muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
+    .stub-badge { display: inline-block; background: rgba(251, 191, 36, 0.15); color: #fbbf24; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
+    .stub-hint { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  </style>
+</ToolLayout>

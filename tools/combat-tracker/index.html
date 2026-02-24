@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Combat Tracker - DTD 40k Tools</title>
+        <link rel="stylesheet" href="../shared/css/dtd-theme.css?v=2" />
+        <link rel="stylesheet" href="combat-tracker.css?v=2" />
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <a href="../index.html" class="back-link">← Tools</a>
+            <h1 class="top-bar-title">Combat Tracker</h1>
+            <div class="round-counter">
+                <span class="round-label">Round</span>
+                <span id="round-number" class="round-number">0</span>
+            </div>
+            <button class="btn btn-primary" data-action="end-round">End Round</button>
+        </header>
+
+        <!-- End-of-round alerts -->
+        <div id="round-alerts" class="round-alerts" hidden></div>
+
+        <!-- Main Layout -->
+        <div class="tracker-layout">
+            <!-- Main Tracker Area -->
+            <main class="tracker-main">
+                <!-- Add Combatant Form (collapsible) -->
+                <div class="add-form-wrapper">
+                    <button class="add-form-toggle" data-action="toggle-add-form">
+                        <span class="toggle-icon">▸</span> Add Combatant
+                    </button>
+                    <div class="add-form" id="add-form" hidden>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="add-name">Name</label>
+                                <input type="text" id="add-name" placeholder="Combatant name" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-dex">Dexterity</label>
+                                <input type="number" id="add-dex" min="1" max="10" value="2" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-composure">Composure</label>
+                                <input type="number" id="add-composure" min="1" max="10" value="2" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-modifier">Modifier</label>
+                                <input type="number" id="add-modifier" value="0" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-group-sm">
+                                <label for="add-hp">HP Max</label>
+                                <input type="number" id="add-hp" min="1" value="8" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-willpower">Willpower</label>
+                                <input type="number" id="add-willpower" min="1" max="10" value="2" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-sd">Static Defense</label>
+                                <input type="number" id="add-sd" min="0" value="20" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-resilience">Resilience</label>
+                                <input type="number" id="add-resilience" min="1" value="3" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-group-sm">
+                                <label for="add-resource-max">Resource Max</label>
+                                <input type="number" id="add-resource-max" min="0" value="0" />
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label for="add-resource-label">Resource Label</label>
+                                <input type="text" id="add-resource-label" placeholder="Mana" />
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="add-hero-point" /> Hero Point (count as 10)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="add-surprised" /> Surprised
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="add-is-npc" /> NPC
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" data-action="add-combatant">Add Combatant</button>
+                    </div>
+                </div>
+
+                <!-- Quick Add Row -->
+                <div class="quick-add-row">
+                    <input type="text" id="quick-name" placeholder="Name" class="quick-input" />
+                    <input type="number" id="quick-init" placeholder="Init total" class="quick-input quick-input-sm" />
+                    <button class="btn btn-secondary btn-sm" data-action="quick-add">+ Quick Add</button>
+                    <button class="btn btn-secondary btn-sm" data-action="import-sheet">Import from Sheet</button>
+                    <button class="btn btn-primary btn-sm" data-action="roll-all">Roll All Initiative</button>
+                </div>
+
+                <!-- Combatant List -->
+                <div id="combatant-list" class="combatant-list"></div>
+
+                <!-- Turn Navigation -->
+                <div class="turn-nav">
+                    <button class="btn btn-secondary" data-action="prev-turn">← Previous Turn</button>
+                    <button class="btn btn-primary" data-action="next-turn">Next Turn →</button>
+                </div>
+            </main>
+
+            <!-- Reference Sidebar -->
+            <aside class="reference-sidebar" id="reference-sidebar">
+                <button class="sidebar-close btn btn-ghost" data-action="toggle-sidebar">✕</button>
+                <div class="accordion" id="sidebar-accordion">
+                    <!-- Actions -->
+                    <div class="accordion-item open">
+                        <button class="accordion-header">Actions</button>
+                        <div class="accordion-content">
+                            <input type="text" id="action-filter" placeholder="Filter actions…" class="filter-input" />
+                            <div id="action-list" class="action-list"></div>
+                        </div>
+                    </div>
+                    <!-- Conditions -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">Conditions</button>
+                        <div class="accordion-content">
+                            <div id="conditions-ref" class="conditions-ref"></div>
+                        </div>
+                    </div>
+                    <!-- Situational Modifiers -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">Situational Modifiers</button>
+                        <div class="accordion-content">
+                            <div id="modifiers-ref" class="modifiers-ref"></div>
+                        </div>
+                    </div>
+                    <!-- Hit Locations -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">Hit Locations</button>
+                        <div class="accordion-content">
+                            <div id="hit-location-ref"></div>
+                            <button class="btn btn-secondary mt-md" data-action="roll-location">Roll Location</button>
+                            <div id="hit-location-result" class="hit-location-result"></div>
+                        </div>
+                    </div>
+                    <!-- Damage Calculator -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">Damage Calculator</button>
+                        <div class="accordion-content">
+                            <div class="damage-calc">
+                                <div class="form-row">
+                                    <div class="form-group form-group-sm">
+                                        <label for="calc-raw">Raw Damage</label>
+                                        <input type="number" id="calc-raw" min="0" value="0" />
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <label for="calc-ap">Armor/AP</label>
+                                        <input type="number" id="calc-ap" min="0" value="0" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group form-group-sm">
+                                        <label for="calc-pen">Penetration</label>
+                                        <input type="number" id="calc-pen" min="0" value="0" />
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <label for="calc-resilience">Resilience</label>
+                                        <input type="number" id="calc-resilience" min="1" value="3" />
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm" data-action="calc-damage">Calculate</button>
+                                <div id="calc-result" class="calc-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Sidebar Toggle (visible on small screens) -->
+        <button class="sidebar-toggle-btn btn btn-secondary" data-action="toggle-sidebar">☰ Reference</button>
+
+        <!-- Encounter Management Bar -->
+        <footer class="encounter-bar">
+            <button class="btn btn-secondary btn-sm" data-action="save-encounter">Save</button>
+            <select id="encounter-load-select" class="encounter-select">
+                <option value="">Load encounter…</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" data-action="load-encounter">Load</button>
+            <button class="btn btn-secondary btn-sm" data-action="export-encounter">Export JSON</button>
+            <button class="btn btn-ghost btn-sm" data-action="clear-encounter">Clear</button>
+        </footer>
+
+        <!-- Import Modal -->
+        <div id="import-modal" class="modal-overlay">
+            <div class="modal-content">
+                <h2>Import Character</h2>
+                <p class="text-muted">Select a character to import as a combatant.</p>
+                <div id="import-char-list" class="import-char-list"></div>
+                <div class="modal-actions">
+                    <button class="btn btn-ghost" data-action="close-modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="../shared/js/core.js?v=2"></script>
+        <script src="../shared/js/dice.js?v=2"></script>
+        <script src="combat-tracker.js?v=2"></script>
+    </body>
+</html>

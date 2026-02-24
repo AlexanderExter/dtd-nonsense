@@ -1,0 +1,32 @@
+---
+title: Dungeons the Dragoning 40,000
+description: Rulebook reference and play tools for D:TD 7th Edition
+template: splash
+hero:
+    tagline: "In the grim darkness of the great wheel, there is only war."
+    actions:
+        - text: Read the Rules
+          link: /rules/01-core-rules/
+          icon: right-arrow
+        - text: Play Tools
+          link: /tools/
+          variant: minimal
+          icon: external
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+<CardGrid stagger>
+    <Card title="Complete Rulebook" icon="open-book">
+        All rules from both source books — character creation, combat, magic, ships, and more — cleaned and cross-referenced for easy reading.
+    </Card>
+    <Card title="Character Builder" icon="pencil">
+        Step-by-step wizard to create characters with races, exaltations, classes, feats, and equipment.
+    </Card>
+    <Card title="Dice Roller" icon="random">
+        Roll XkY with exploding d10s, overflow compression, and target number evaluation.
+    </Card>
+    <Card title="Combat Tracker" icon="list-format">
+        Initiative tracking, HP management, and condition tracking for encounters.
+    </Card>
+</CardGrid>

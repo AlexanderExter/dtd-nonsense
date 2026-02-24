@@ -1,0 +1,2966 @@
+---
+description: 50+ classes with progression tracks and feat tables
+sidebar:
+  label: Classes
+  order: 6
+title: Classes
+---
+
+# Classes
+
+Classes define what a character can spend XP on. When spending XP, a character may only improve characteristics and skills allowed by their class. Each class has a list of feats available for purchase, and many include Sword or Magic Schools.
+
+## Class Rules
+
+**Prerequisites:** Each class has prerequisites (skills, characteristics, or other classes) that must be met before entering.
+
+**Single Class:** A character may only be in one class at a time. To finish a class, purchase every non-optional feat. Once complete, choose a new class. After moving on, you cannot purchase Characteristics, Skills, Sword Schools, Magic Schools, or optional feats from the old class.
+
+**Level:** Each class has a Level. This determines:
+
+- The highest rank your Power Stat, Sword Schools, and Magic Schools can reach (capped at character level)
+- Effects of many spells and feats
+
+A character's level equals the level of their highest level class. Example: Fighter 4, Bard 2 = Level 4 character.
+
+**Optional Feats:** Marked "Optional" in feat tables. Not required to complete class.
+
+**Choice Feats:** Marked "Mandatory (Choice)" with OR between options. Choose one; cannot get the other from this class.
+
+> **Clarification Note:** If you already have a mandatory feat from another source (racial ability, previous class, etc.), choose a replacement feat from the same class's optional feats or another mandatory feat you don't yet have.
+
+## Free Study
+
+After finishing a class, you may:
+
+- Buy optional feats from completed classes
+- Improve skills, characteristics, spell schools, sword schools, or gun kata from completed class lists
+- Improve other skills/characteristics at double cost
+
+## Leveling Procedure
+
+1. Choose a class (must meet prerequisites, cannot be more than one level higher than current)
+2. Spend XP on class advances:
+    - Characteristics from class list only
+    - Skills from class list only
+    - Mandatory and optional feats
+    - Magic and Sword Schools (capped at character level)
+    - Power Stat (capped at character level)
+3. Complete all mandatory feats before changing classes
+
+---
+
+## Class Tracks
+
+### Assassin Track
+
+- Sell-Steel (Level 1)
+    - Nighthawk (Level 2)
+        - Assassin (Level 3)
+            - Freeblade (Level 4)
+                - Nihilator (Level 5)
+
+### Barbarian Track
+
+- Feral (Level 1)
+    - Savage (Level 2)
+        - Rager (Level 3)
+            - Barbarian (Level 4)
+                - Berserker (Level 5)
+
+### Bard Track
+
+- Minstrel (Level 1)
+    - Bard (Level 2)
+        - Skald (Level 3)
+            - Swashbuckler (Level 4)
+                - Master Bard (Level 5)
+
+### Cleric Track
+
+- Priest (Level 1)
+    - Preacher (Level 2)
+        - Cleric (Level 3)
+            - Zealot (Level 4)
+                - Bishop (Level 5)
+
+### Fighter Track
+
+- Swordsman (Level 1)
+    - Myrmidon (Level 2)
+        - Fight Guy (Level 3)
+            - Fighter (Level 4)
+                - Master Fight Guy (Level 5)
+
+### Guardsman Track
+
+- Conscript (Level 1)
+    - Guardsman (Level 2)
+        - Sergeant (Level 3)
+            - Grenadier (Level 4)
+                - Stormtrooper (Level 5)
+
+### Magic User Track
+
+- Apprentice (Level 1)
+    - Aspirant (Level 2)
+        - Magic User (Level 3)
+            - Sorcerer (Level 4)
+                - Master Sorcerer (Level 5)
+
+### Paladin Track
+
+- Gallant (Level 1)
+    - Protector (Level 2)
+        - Defender (Level 3)
+            - Paladin (Level 4)
+                - Chevalier (Level 5)
+
+### Thief Track
+
+- Outcast (Level 1)
+    - Outlaw (Level 2)
+        - Renegade (Level 3)
+            - Rogue (Level 4)
+                - Stubjack (Level 5)
+
+### Courtier Track
+
+- Negotiator (Level 1)
+    - Courtier (Level 2)
+        - Diplomat (Level 3)
+            - Legate (Level 4)
+                - Emissary (Level 5)
+
+### Monk Track
+
+- Brother (Level 1)
+    - Disciple (Level 2)
+        - Monk (Level 3)
+            - Immaculate Master (Level 4)
+                - Grand Master of Flowers (Level 5)
+
+### Druid Track
+
+- Ovate (Level 1)
+    - Oak-Knower (Level 2)
+        - Druid (Level 3)
+            - Archdruid (Level 4)
+                - Grand Hierophant (Level 5)
+
+### Arcane Knight Track
+
+- Spellsword (Level 1)
+    - Swordmage (Level 2)
+        - Runeblade (Level 3)
+            - Arcane Knight (Level 4)
+                - Sorcerer-Swordsman (Level 5)
+
+### Magitek Gunman Track
+
+- Spellshooter (Level 1)
+    - Riflemancer (Level 2)
+        - Gunmage (Level 3)
+            - Bullet Wizard (Level 4)
+                - Witch-Sniper (Level 5)
+
+### Sheriff Track
+
+- Deputy (Level 1)
+    - Sheriff (Level 2)
+        - Constable (Level 3)
+            - Marshal (Level 4)
+                - Judge (Level 5)
+
+### Operator Track
+
+- Hunter (Level 1)
+    - Marksman (Level 2)
+        - Sniper (Level 3)
+            - Quickscope (Level 4)
+                - Targetmaster (Level 5)
+
+### Heavy Track
+
+- Big Shot (Level 1)
+    - Krazy Ivan (Level 2)
+        - Heavy Weapons Guy (Level 3)
+            - Walking Gunshow (Level 4)
+                - Living Fortress (Level 5)
+
+### Techpriest Track
+
+- Mech-Wright (Level 1)
+    - Enginseer (Level 2)
+        - Tech-Priest (Level 3)
+            - Technomancer (Level 4)
+                - Magos (Level 5)
+
+---
+
+## Standalone Classes
+
+These classes don't appear on class tracks but are useful for meeting prerequisites:
+
+- Peasant (Level 1)
+- Mercenary (Level 1)
+- Rat Catcher (Level 1)
+- Scholar (Level 1)
+- Initiate (Level 1)
+
+---
+
+# Level 1 Classes
+
+## Rat Catcher
+
+**Level:** 1
+
+**Prerequisites:** None
+
+**Characteristics:** Dexterity, Composure, Wisdom
+
+**Skills:** Acrobatics, Common Lore, Crafts, Perception, Larceny, Stealth, Weaponry, Animal Ken, Deceive, Performer, Disguise
+
+| Feat                | Type      |
+| ------------------- | --------- |
+| Common Sense        | Mandatory |
+| Weapon Prof (Basic) | Mandatory |
+| Blind Fighting      | Mandatory |
+| Obtain Familiar     | Mandatory |
+| Light Sleeper       | Optional  |
+| Fast Reflexes       | Optional  |
+
+**Bonus for Completion:** +2 to maximum Hit Points
+
+**Suggested Exits:** Outcast, Minstrel, Outlaw, Sell-Steel, Swordsman
+
+---
+
+## Scholar
+
+**Level:** 1
+
+**Prerequisites:** None
+
+**Characteristics:** Intelligence, Willpower, Wisdom
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Politics, Tech-Use
+
+| Feat                   | Type      |
+| ---------------------- | --------- |
+| Eidetic Memory         | Mandatory |
+| Speak Language         | Mandatory |
+| Skill Focus (Any Lore) | Mandatory |
+| Expanded Knowledge     | Mandatory |
+| Peer (Academic)        | Optional  |
+| Foresight              | Optional  |
+
+**Bonus for Completion:** Gain one specialty in any skill
+
+**Suggested Exits:** Apprentice, Priest, Gallant (if Weaponry 2), Minstrel (if Performer 1)
+
+---
+
+## Initiate
+
+**Level:** 1
+
+**Prerequisites:** None
+
+**Characteristics:** Wisdom, Fellowship, Intelligence
+
+**Skills:** Academic Lore, Forbidden Lore, Medicae, Crafts, Politics, Performer
+
+| Feat                          | Type      |
+| ----------------------------- | --------- |
+| Divine Ministration           | Mandatory |
+| Hatred (Heretics)             | Mandatory |
+| Minor Magic                   | Mandatory |
+| Peer (Religious Organization) | Mandatory |
+| Weapon Prof (Basic)           | Optional  |
+
+**Bonus for Completion:** Gain one specialty in any skill
+
+**Suggested Exits:** Priest, Preacher, Bard (if Linguist), Protector (if Weaponry 3)
+
+---
+
+## Mercenary
+
+**Level:** 1
+
+**Prerequisites:** None
+
+**Characteristics:** Strength, Constitution, Wisdom
+
+**Skills:** Command, Scrutiny, Common Lore, Athletics, Ballistics, Weaponry, Perception, Brawl, Drive
+
+| Feat                          | Type      |
+| ----------------------------- | --------- |
+| Armor Prof (Light)            | Mandatory |
+| Weapon Prof (Basic)           | Mandatory |
+| Speak Language                | Mandatory |
+| Sound Constitution            | Mandatory |
+| Peer (Mercenary Organization) | Optional  |
+| Armor Prof (Medium)           | Optional  |
+
+**Bonus for Completion:** +2 to maximum HP
+
+**Suggested Exits:** Feral, Swordsman, Conscript, Guardsman, Minstrel (if Performer 1)
+
+---
+
+## Peasant
+
+**Level:** 1
+
+**Prerequisites:** None
+
+**Characteristics:** All
+
+**Skills:** Crafts, Common Lore, Athletics, Animal Ken, Scrutiny, Performer
+
+| Feat               | Type      |
+| ------------------ | --------- |
+| Luck               | Mandatory |
+| Common Sense       | Mandatory |
+| Unremarkable       | Mandatory |
+| Sound Constitution | Mandatory |
+| Skill Focus (Any)  | Optional  |
+
+**Bonus for Completion:** Hardy
+
+**Suggested Exits:** Minstrel, Guardsman (if Ballistics 3)
+
+---
+
+## Sell-Steel
+
+**Level:** 1
+
+**Prerequisites:** (Weaponry or Ballistics) 2, Stealth 2
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+
+| Feat                            | Type               |
+| ------------------------------- | ------------------ |
+| Fast Reflexes                   | Mandatory          |
+| Sneak Attack                    | Mandatory          |
+| Improved Feint                  | Mandatory          |
+| Two Weapon Fighting OR Far Shot | Mandatory (Choice) |
+| Weapon Prof (Basic)             | Mandatory          |
+| Weapon Prof (Any)               | Optional           |
+| Skill Focus (Any)               | Optional           |
+
+**Sword Schools:** Shadow Hand, Setting Sun
+
+**Bonus for Completion:** +1 to all initiative rolls
+
+**Suggested Exits:** Nighthawk, Outlaw
+
+---
+
+## Feral
+
+**Level:** 1
+
+**Prerequisites:** Weaponry 2, Athletics 1
+
+**Characteristics:** Strength, Charisma, Constitution
+
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Frenzy                    | Mandatory |
+| Danger Sense              | Mandatory |
+| Armor Proficiency (Light) | Mandatory |
+| Power Attack              | Mandatory |
+| Weapon Proficiency (Any)  | Mandatory |
+| Weapon Proficiency (Any)  | Optional  |
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+
+**Bonus for Completion:** +1 to all melee and primitive weapon damage
+
+**Suggested Exits:** Savage, Outlaw, Myrmidon
+
+---
+
+## Minstrel
+
+**Level:** 1
+
+**Prerequisites:** Charisma 3, Common Lore 3, Performer 1
+
+**Characteristics:** Charisma, Fellowship, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+
+| Feat                                        | Type              |
+| ------------------------------------------- | ----------------- |
+| Speak Language                              | Mandatory         |
+| Luck                                        | Mandatory         |
+| Jack of All Trades                          | Mandatory         |
+| Peer (Any)                                  | Mandatory         |
+| Weapon Prof (Melee 2)                       | Mandatory         |
+| Danger Sense OR Foresight OR Speak Language | Optional (Choice) |
+
+**Sword Schools:** White Raven, Diamond Mind
+
+**Magic Schools:** Enchantment, Illusion
+
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level
+
+**Suggested Exits:** Bard, Outlaw, Aspirant
+
+---
+
+## Priest
+
+**Level:** 1
+
+**Prerequisites:** Academic Lore 2, Forbidden Lore 2
+
+**Characteristics:** Willpower, Wisdom, Composure
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+
+| Feat                  | Type      |
+| --------------------- | --------- |
+| Pure Faith            | Mandatory |
+| Hatred (Heretics)     | Mandatory |
+| Armor Prof (Light)    | Mandatory |
+| Tested                | Mandatory |
+| Weapon Prof (Basic)   | Mandatory |
+| Weapon Prof (Melee 1) | Optional  |
+| Powerful Charge       | Optional  |
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+
+**Bonus for Completion:** +1 to maximum HP
+
+**Suggested Exits:** Preacher, Aspirant, Protector
+
+---
+
+## Swordsman
+
+**Level:** 1
+
+**Prerequisites:** Weaponry 2, Athletics 1
+
+**Characteristics:** Strength, Constitution, Intelligence
+
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+
+| Feat                                  | Type              |
+| ------------------------------------- | ----------------- |
+| Hardy                                 | Mandatory         |
+| Power Attack                          | Mandatory         |
+| Powerful Charge                       | Mandatory         |
+| Weapon Proficiency (Any)              | Mandatory         |
+| Armor Proficiency (Light)             | Mandatory         |
+| Armor Proficiency (Medium)            | Optional          |
+| Improved Feint OR Two Weapon Fighting | Optional (Choice) |
+
+**Sword Schools:** Iron Heart, White Raven
+
+**Bonus for Completion:** +1 to all Melee attack tests
+
+**Suggested Exits:** Myrmidon, Nighthawk, Guardsman
+
+---
+
+## Conscript
+
+**Level:** 1
+
+**Prerequisites:** Ballistics 2, Athletics 1
+
+**Characteristics:** Strength, Dexterity, Willpower
+
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Sound Constitution         | Mandatory |
+| Far Shot                   | Mandatory |
+| Armor Proficiency (Light)  | Mandatory |
+| Quick Draw                 | Mandatory |
+| Weapon Proficiency (Any)   | Mandatory |
+| Hardy                      | Optional  |
+| Armor Proficiency (Medium) | Optional  |
+
+**Sword Schools:** Iron Heart
+
+**Bonus for Completion:** +1 to all Ranged attack tests
+
+**Suggested Exits:** Guardsman, Nighthawk
+
+---
+
+## Apprentice
+
+**Level:** 1
+
+**Prerequisites:** Academic Lore 2, Arcana 3
+
+**Characteristics:** Intelligence, Charisma, Willpower
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+
+| Feat                               | Type               |
+| ---------------------------------- | ------------------ |
+| Obtain Familiar OR Implement Focus | Mandatory (Choice) |
+| Eidetic Memory                     | Mandatory          |
+| Foresight                          | Mandatory          |
+| Spell Might                        | Mandatory          |
+| Tested                             | Optional           |
+| Weapon Prof (Ordinary)             | Optional           |
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+
+**Bonus for Completion:** +1 to all Focus Power tests
+
+**Suggested Exits:** Aspirant, Priest, Bard (if Performer 2)
+
+---
+
+## Outcast
+
+**Level:** 1
+
+**Prerequisites:** Larceny 2, Stealth 2
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+
+| Feat                          | Type      |
+| ----------------------------- | --------- |
+| Danger Sense                  | Mandatory |
+| Fast Reflexes                 | Mandatory |
+| Blind Fighting                | Mandatory |
+| Improved Feint                | Mandatory |
+| Weapon Proficiency (Melee 2)  | Mandatory |
+| Weapon Proficiency (Basic)    | Optional  |
+| Weapon Proficiency (Throwing) | Optional  |
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** +1 to Static Defense
+
+**Suggested Exits:** Outlaw, Nighthawk
+
+---
+
+## Gallant
+
+**Level:** 1
+
+**Prerequisites:** Weaponry 2, Forbidden Lore 2
+
+**Characteristics:** Willpower, Wisdom, Constitution
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+
+| Feat                         | Type      |
+| ---------------------------- | --------- |
+| Pure Faith                   | Mandatory |
+| Sound Constitution           | Mandatory |
+| Weapon Proficiency (Melee 1) | Mandatory |
+| Hatred (Heretics)            | Mandatory |
+| Armor Proficiency (Light)    | Mandatory |
+| Power Attack                 | Optional  |
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+
+**Bonus for Completion:** +1 AP while wearing armor
+
+**Suggested Exits:** Protector, Priest, Myrmidon
+
+---
+
+## Negotiator
+
+**Level:** 1
+
+**Prerequisites:** Persuasion 2, Scrutiny 2
+
+**Characteristics:** Charisma, Fellowship, Composure
+
+**Skills:** Academic Lore, Animal Ken, Charm, Command, Common Lore, Crafts, Deceive, Disguise, Forbidden Lore, Intimidation, Larceny, Perception, Performer, Persuasion, Politics, Scrutiny, Stealth
+
+| Feat                                               | Type               |
+| -------------------------------------------------- | ------------------ |
+| Courtier's Privilege                               | Mandatory          |
+| Peer (Any)                                         | Mandatory          |
+| Research OR Eidetic Memory                         | Mandatory (Choice) |
+| Speak Language                                     | Mandatory          |
+| Skill Focus (Charm or Deception) OR Speak Language | Optional (Choice)  |
+| Weapon Proficiency (Melee 2 or Pistols)            | Optional           |
+
+**Bonus for Completion:** +1 Resolve
+
+**Suggested Exits:** Courtier, Sheriff, Bard
+
+---
+
+## Mech-Wright
+
+**Level:** 1
+
+**Prerequisites:** Tech-Use 3, Academic Lore 2, Craft 2
+
+**Characteristics:** Intelligence, Wisdom, Constitution
+
+**Skills:** Academic Lore, Common Lore, Craft, Forbidden Lore, Medicae, Tech-Use, Ballistics, Drive, Pilot, Weaponry
+
+| Feat                                  | Type      |
+| ------------------------------------- | --------- |
+| Mechanicus Implants                   | Mandatory |
+| Weapon Proficiency (Basic or Syrneth) | Mandatory |
+| Armor Proficiency (Light or Medium)   | Mandatory |
+| Sound Constitution                    | Mandatory |
+| Luminen Charge                        | Mandatory |
+| Jaded                                 | Optional  |
+| Skill Focus (Craft or Tech-Use)       | Optional  |
+
+**Bonus for Completion:** Gain the feat Upgraded (Uncommon)
+
+**Suggested Exits:** Enginseer, Guardsman
+
+---
+
+## Spellsword
+
+**Level:** 1
+
+**Prerequisites:** Arcana 2, Weaponry 2
+
+**Characteristics:** Charisma, Strength, Dexterity
+
+**Skills:** Arcana, Academic Lore, Acrobatics, Athletics, Command, Deceive, Performer, Weaponry
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Minor Magic                | Mandatory |
+| Arcane Blade               | Mandatory |
+| Arcane Mark                | Mandatory |
+| Armor Proficiency (Light)  | Mandatory |
+| Weapon Proficiency (Basic) | Mandatory |
+| Tested                     | Optional  |
+| Extracurricular Study      | Optional  |
+
+**Bonus for Completion:** When using an Implement, reduce Focus Power TNs by 1
+
+**Suggested Exits:** Swordmage, Bard, Preacher, Aspirant
+
+---
+
+## Brother
+
+**Level:** 1
+
+**Prerequisites:** Brawl 2, Acrobatics 1, Athletics 1
+
+**Characteristics:** Wisdom, Willpower, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Athletics, Animal Ken, Brawl, Common Lore, Medicae, Scrutiny, Stealth, Weaponry
+
+| Feat                               | Type               |
+| ---------------------------------- | ------------------ |
+| Unarmed Warrior                    | Mandatory          |
+| Catfall OR Improvisational Warrior | Mandatory (Choice) |
+| Fleet of Foot                      | Mandatory          |
+| Wholeness of Body                  | Mandatory          |
+| Pure Faith OR Discipline           | Mandatory (Choice) |
+| Skill Focus (Any)                  | Optional           |
+| Weapon Proficiency (Basic)         | Optional           |
+
+**Sword Schools:** Setting Sun, Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** Wholeness of Body provides an additional +1 Armor
+
+**Suggested Exits:** Disciple, Preacher, Protector
+
+---
+
+## Ovate
+
+**Level:** 1
+
+**Prerequisites:** Animal Ken 2, Brawl 1
+
+**Characteristics:** Wisdom, Willpower, Composure
+
+**Skills:** Animal Ken, Athletics, Brawl, Common Lore, Crafts, Disguise, Forbidden Lore, Medicae, Perception, Scrutiny
+
+| Feat                              | Type               |
+| --------------------------------- | ------------------ |
+| Weapon Prof (Basic)               | Mandatory          |
+| Druid's Oath                      | Mandatory          |
+| Animal Companion                  | Mandatory          |
+| Heightened Senses (Any) OR Frenzy | Mandatory (Choice) |
+| Armor Proficiency (Light)         | Optional           |
+| Foresight                         | Optional           |
+
+**Magic Schools:** Healing, Transmutation, Divination
+
+**Bonus for Completion:** Gain the feat Improved Animal Companion
+
+**Suggested Exits:** Oak-Knower, Preacher, Aspirant, Savage
+
+---
+
+## Spellshooter
+
+**Level:** 1
+
+**Prerequisites:** Arcana 2, Ballistics 2
+
+**Characteristics:** Charisma, Dexterity, Wisdom
+
+**Skills:** Acrobatics, Arcana, Athletics, Ballistics, Charm, Academic Lore, Forbidden Lore, Larceny, Perception, Pilot
+
+| Feat                                        | Type              |
+| ------------------------------------------- | ----------------- |
+| Armor Proficiency (Light)                   | Mandatory         |
+| Far Shot                                    | Mandatory         |
+| Weapon Proficiency (Any Ranged or Throwing) | Mandatory         |
+| Gun Blessing                                | Mandatory         |
+| Elemental Shot I                            | Mandatory         |
+| Tested OR Lead Fingers                      | Optional (Choice) |
+| Weapon Proficiency (Basic)                  | Optional          |
+
+**Gun Kata:** Elemental Gearbolt, Point Blank
+
+**Magic Schools:** Evocation, Conjuration
+
+**Bonus for Completion:** You may use Elemental Shot I one additional time per day
+
+**Suggested Exits:** Riflemancer, Nighthawk, Aspirant, Marksman
+
+---
+
+## Deputy
+
+**Level:** 1
+
+**Prerequisites:** Ballistics 2, Command 1, Intimidation 1
+
+**Characteristics:** Constitution, Dexterity, Charisma
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Drive, Intimidation, Perception, Performer, Persuasion, Politics, Scrutiny
+
+| Feat                                  | Type              |
+| ------------------------------------- | ----------------- |
+| Armor Proficiency (Light)             | Mandatory         |
+| Weapon Proficiency (Basic)            | Mandatory         |
+| Peer (Law Enforcement)                | Mandatory         |
+| Common Sense                          | Mandatory         |
+| Improvisational Warrior               | Mandatory         |
+| Weapon Proficiency (Any) OR Quickdraw | Optional (Choice) |
+| Sound Constitution                    | Optional          |
+
+**Gun Kata:** Clay Pigeon, Tin Star, Point Blank
+
+**Bonus for Completion:** +1 to Backing (Law Enforcement), to a maximum of 5
+
+**Suggested Exits:** Sheriff, Disciple, Guardsman
+
+---
+
+## Hunter
+
+**Level:** 1
+
+**Prerequisites:** Ballistics 3, Stealth 1
+
+**Characteristics:** Intelligence, Wisdom, Dexterity
+
+**Skills:** Ballistics, Deceive, Disguise, Larceny, Performer, Perception, Scrutiny, Stealth, Tech-Use
+
+| Feat                            | Type              |
+| ------------------------------- | ----------------- |
+| Far Shot                        | Mandatory         |
+| Lead Fingers                    | Mandatory         |
+| Weapon Proficiency (Any Ranged) | Mandatory         |
+| Weapon Proficiency (Basic)      | Mandatory         |
+| Skill Focus (Any)               | Mandatory         |
+| Trance OR Fast Reflexes         | Optional (Choice) |
+| Armor Proficiency (Light)       | Optional          |
+
+**Gun Kata:** Clay Pigeon, Silent Scope
+
+**Bonus for Completion:** +2 to Stealth tests to remain hidden while staying still
+
+**Suggested Exits:** Marksman, Nighthawk, Outlaw, Krazy Ivan
+
+---
+
+## Big Shot
+
+**Level:** 1
+
+**Prerequisites:** Ballistics 2, Brawl 2
+
+**Characteristics:** Charisma, Constitution, Strength
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Drive, Intimidation, Perception, Pilot, Tech-Use
+
+| Feat                       | Type              |
+| -------------------------- | ----------------- |
+| Armor Proficiency (Light)  | Mandatory         |
+| Sound Constitution         | Mandatory         |
+| Weapon Proficiency (Basic) | Mandatory         |
+| Unarmed Warrior            | Mandatory         |
+| Storm of Iron              | Mandatory         |
+| Weapon Proficiency (Any)   | Optional          |
+| Quickdraw OR Lead Fingers  | Optional (Choice) |
+
+**Gun Kata:** Crisis Zone, Point Blank
+
+**Bonus for Completion:** +1 HP
+
+**Suggested Exits:** Krazy Ivan, Disciple, Guardsman, Marksman
+
+---
+
+# Level 2 Classes
+
+## Nighthawk
+
+**Level:** 2
+
+**Prerequisites:** (Weaponry or Ballistics) 2, Stealth 3, Improved Feint or Far Shot
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+
+| Feat                                   | Type               |
+| -------------------------------------- | ------------------ |
+| Blind Fighting                         | Mandatory          |
+| Armor Prof (Light)                     | Mandatory          |
+| Catfall                                | Mandatory          |
+| Two Weapon Fighting OR Furious Assault | Mandatory (Choice) |
+| Weapon Prof (Any)                      | Mandatory          |
+| Skill Focus (Any)                      | Optional           |
+| Speak Language                         | Optional           |
+
+**Sword Schools:** Shadow Hand, Setting Sun
+
+**Bonus for Completion:** +1 to all initiative rolls
+
+**Suggested Exits:** Assassin, Renegade, Fight Guy
+
+---
+
+## Savage
+
+**Level:** 2
+
+**Prerequisites:** Weaponry 3, Athletics 2, Frenzy
+
+**Characteristics:** Strength, Charisma, Constitution
+
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+
+| Feat                     | Type      |
+| ------------------------ | --------- |
+| Jaded                    | Mandatory |
+| Quick Draw               | Mandatory |
+| Light Sleeper            | Mandatory |
+| Powerful Charge          | Mandatory |
+| Weapon Focus (Any)       | Mandatory |
+| Weapon Proficiency (Any) | Optional  |
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+
+**Bonus for Completion:** +1 to all melee and primitive weapon damage
+
+**Suggested Exits:** Rager, Fight Guy
+
+---
+
+## Bard
+
+**Level:** 2
+
+**Prerequisites:** Charisma 3, Common Lore 4, Performer 2, (Peer (Any) and speak 4+ languages) OR (any two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind)
+
+**Characteristics:** Charisma, Fellowship, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+
+| Feat                                                       | Type               |
+| ---------------------------------------------------------- | ------------------ |
+| Speak Language                                             | Mandatory          |
+| Peer (Any)                                                 | Mandatory          |
+| Skill Focus (Any) OR Spell Focus (Enchantment or Illusion) | Mandatory (Choice) |
+| Armor Prof (Light)                                         | Mandatory          |
+| Catfall                                                    | Optional           |
+
+**Sword Schools:** White Raven, Diamond Mind
+
+**Magic Schools:** Enchantment, Illusion
+
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level
+
+**Suggested Exits:** Skald, Renegade, Magic User
+
+---
+
+## Preacher
+
+**Level:** 2
+
+**Prerequisites:** Academic Lore 2, Forbidden Lore 3, Healing or Abjuration at rank 1 OR Pure Faith
+
+**Characteristics:** Willpower, Wisdom, Composure
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+
+| Feat                   | Type      |
+| ---------------------- | --------- |
+| Peer (Religious Order) | Mandatory |
+| Spell Focus (Any)      | Mandatory |
+| Sound Constitution     | Mandatory |
+| Armor Prof (Medium)    | Mandatory |
+| Virgil's Guidance      | Mandatory |
+| Weapon Prof (Any)      | Optional  |
+| Divine Grace           | Optional  |
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+
+**Bonus for Completion:** +1 to maximum HP
+
+**Suggested Exits:** Cleric, Magic User, Defender
+
+---
+
+## Myrmidon
+
+**Level:** 2
+
+**Prerequisites:** Weaponry 3, Athletics 2, Power Attack
+
+**Characteristics:** Strength, Constitution, Intelligence
+
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Quick Draw                 | Mandatory |
+| Jaded                      | Mandatory |
+| Weapon Proficiency (Any)   | Mandatory |
+| Weapon Focus (Any)         | Mandatory |
+| Armor Proficiency (Medium) | Mandatory |
+| Armor Proficiency (Heavy)  | Optional  |
+| Blind Fighting             | Optional  |
+
+**Sword Schools:** Iron Heart, White Raven
+
+**Bonus for Completion:** +1 to all Melee attack tests
+
+**Suggested Exits:** Fight Guy, Sergeant
+
+---
+
+## Guardsman
+
+**Level:** 2
+
+**Prerequisites:** Ballistics 3, Athletics 2, Sound Constitution, Quick Draw or Armor Proficiency (Medium) or Hardy
+
+**Characteristics:** Strength, Dexterity, Willpower
+
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+
+| Feat                                 | Type              |
+| ------------------------------------ | ----------------- |
+| Sound Constitution                   | Mandatory         |
+| Double Tap                           | Mandatory         |
+| Crack Shot                           | Mandatory         |
+| Weapon Proficiency (Any)             | Mandatory         |
+| Armor Proficiency (Medium)           | Mandatory         |
+| Sound Constitution OR Blind Fighting | Optional (Choice) |
+| Jaded                                | Optional          |
+
+**Sword Schools:** Iron Heart
+
+**Bonus for Completion:** +1 to all Ranged attack tests
+
+**Suggested Exits:** Sergeant, Fight Guy
+
+---
+
+## Aspirant
+
+**Level:** 2
+
+**Prerequisites:** Academic Lore 3, Arcana 3, Foresight or Tested, any two Magics at rank 1
+
+**Characteristics:** Intelligence, Charisma, Willpower
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+
+| Feat                                | Type              |
+| ----------------------------------- | ----------------- |
+| Spell Book                          | Mandatory         |
+| Spell Focus (Any)                   | Mandatory         |
+| Improvisational Magic               | Mandatory         |
+| Strong Minded                       | Mandatory         |
+| Wizard Tradition                    | Mandatory         |
+| Tested OR Peer (Renegade Sorcerers) | Optional (Choice) |
+| Skill Focus (Any Lore)              | Optional          |
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+
+**Bonus for Completion:** +1 to all Focus Power tests
+
+**Suggested Exits:** Magic User, Cleric, Skald
+
+---
+
+## Outlaw
+
+**Level:** 2
+
+**Prerequisites:** Larceny 2, Stealth 3, Danger Sense or Fast Reflexes
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Sneak Attack              | Mandatory |
+| Armor Proficiency (Light) | Mandatory |
+| Catfall                   | Mandatory |
+| Evasion                   | Mandatory |
+| Skill Focus (Any)         | Mandatory |
+| Two Weapon Fighting       | Optional  |
+| Skill Focus (Any)         | Optional  |
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** +1 to Static Defense
+
+**Suggested Exits:** Renegade, Assassin, Fight Guy
+
+---
+
+## Protector
+
+**Level:** 2
+
+**Prerequisites:** Weaponry 2, Forbidden Lore 3, Pure Faith or Hatred (Heretics)
+
+**Characteristics:** Willpower, Wisdom, Constitution
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Peer (Religious Order)     | Mandatory |
+| Guardian                   | Mandatory |
+| Sound Constitution         | Mandatory |
+| Armor Proficiency (Medium) | Mandatory |
+| Divine Grace               | Mandatory |
+| Divine Bond                | Optional  |
+| Weapon Proficiency (Any)   | Optional  |
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+
+**Bonus for Completion:** +1 AP while wearing armor
+
+**Suggested Exits:** Defender, Cleric
+
+---
+
+## Courtier
+
+**Level:** 2
+
+**Prerequisites:** Persuasion 3, Scrutiny 2, Peer (Any)
+
+**Characteristics:** Charisma, Fellowship, Composure
+
+**Skills:** Academic Lore, Animal Ken, Charm, Command, Common Lore, Crafts, Deceive, Disguise, Forbidden Lore, Intimidation, Larceny, Perception, Performer, Persuasion, Politics, Scrutiny, Stealth
+
+| Feat                            | Type               |
+| ------------------------------- | ------------------ |
+| Protocol                        | Mandatory          |
+| Decadence OR Discipline         | Mandatory (Choice) |
+| Courtier's Privilege            | Mandatory          |
+| Good Reputation (Any)           | Mandatory          |
+| Skill Focus (Any)               | Optional           |
+| Speak Language OR Catfall       | Optional (Choice)  |
+| Chem Geld OR Weapon Focus (Any) | Optional (Choice)  |
+
+**Bonus for Completion:** +1 Resolve
+
+**Suggested Exits:** Diplomat, Renegade
+
+---
+
+## Operations Officer
+
+**Level:** 2
+
+**Prerequisites:** Tech-Use 2, Crafts 1
+
+**Characteristics:** Intelligence, Wisdom, Willpower
+
+**Skills:** Academic Lore, Ballistics, Command, Common Lore, Crafts, Pilot, Tech-Use
+
+| Feat               | Type      |
+| ------------------ | --------- |
+| Jerry Rig          | Mandatory |
+| Bodge Together     | Mandatory |
+| Hardy              | Mandatory |
+| Jack of All Trades | Mandatory |
+| Skill Focus (Any)  | Optional  |
+| Mechanus Implants  | Optional  |
+
+**Bonus for Completion:** +`1k0` to Engineering Actions for any ship on which they serve as Chief of Engineering
+
+**Suggested Exits:** Chief of Engineering, Enginseer, Tech-Priest
+
+---
+
+## Science Officer
+
+**Level:** 2
+
+**Prerequisites:** Arcana 2, Forbidden Lore 1, Academic Lore 2
+
+**Characteristics:** Intelligence, Willpower, Composure
+
+**Skills:** Academic Lore, Arcana, Animal Ken, Command, Common Lore, Medicae, Politics, Persuasion, Weaponry
+
+| Feat                                   | Type              |
+| -------------------------------------- | ----------------- |
+| Detailed Analysis                      | Mandatory         |
+| Gain Access                            | Mandatory         |
+| Eidetic Memory                         | Mandatory         |
+| Minor Magic (Divination)               | Mandatory         |
+| Speak Language OR Skill Focus (Arcana) | Optional (Choice) |
+| Mana Generator OR Elemental Shot 1     | Optional (Choice) |
+
+**Bonus for Completion:** +1 to the Sensor rating of the ship on which they serve as Arcana Officer
+
+**Suggested Exits:** Chief Arcana Officer, Gunmage, Runeblade
+
+---
+
+## Tactical Officer
+
+**Level:** 2
+
+**Prerequisites:** Weaponry 1 or Brawling 1, Ballistics 2
+
+**Characteristics:** Strength, Constitution, Composure
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Intimidate, Pilot, Weaponry
+
+| Feat                                                                 | Type               |
+| -------------------------------------------------------------------- | ------------------ |
+| Master of Bombardment                                                | Mandatory          |
+| Worf Barrage                                                         | Mandatory          |
+| Armor Proficiency (Light)                                            | Mandatory          |
+| Weapon Proficiency (Basic)                                           | Mandatory          |
+| Unremarkable OR Extracurricular Study (any Sword School or Gun Kata) | Mandatory (Choice) |
+| Blind Fighting                                                       | Optional           |
+| Steel Rain OR Two Weapon Fighting                                    | Optional (Choice)  |
+
+**Bonus for Completion:** +1 to Crew Quality for resisting Boarding Actions for any ship on which you serve as Tactical Officer
+
+**Suggested Exits:** Chief of Security, Heavy Weapons Guy, Fight Guy
+
+---
+
+## Enginseer
+
+**Level:** 2
+
+**Prerequisites:** Tech-Use 4, Academic Lore 2, Craft 3, Mechanicus Implants
+
+**Characteristics:** Intelligence, Wisdom, Constitution
+
+**Skills:** Academic Lore, Common Lore, Craft, Forbidden Lore, Medicae, Tech-Use, Ballistics, Drive, Pilot, Weaponry
+
+| Feat                                 | Type      |
+| ------------------------------------ | --------- |
+| Mechadendrite Use                    | Mandatory |
+| Ferric Lure                          | Mandatory |
+| Weapon Proficiency (Any)             | Mandatory |
+| Armor Proficiency (Heavy or Extreme) | Mandatory |
+| Chem Geld                            | Mandatory |
+| Jerry Rig                            | Optional  |
+| Skill Focus (Craft or Tech-Use)      | Optional  |
+
+**Bonus for Completion:** Gain the feat Upgraded (Rare)
+
+**Suggested Exits:** Tech-Priest, Chief Engineer
+
+---
+
+## Swordmage
+
+**Level:** 2
+
+**Prerequisites:** Arcana 3, Weaponry 3, Arcane Blade
+
+**Characteristics:** Charisma, Strength, Dexterity
+
+**Skills:** Arcana, Academic Lore, Acrobatics, Athletics, Command, Deceive, Performer, Weaponry
+
+| Feat                                      | Type               |
+| ----------------------------------------- | ------------------ |
+| Blind Fighting                            | Mandatory          |
+| Iron Tower                                | Mandatory          |
+| Mana Generator                            | Mandatory          |
+| Danger Sense                              | Mandatory          |
+| Weapon Focus (Any) OR Quickdraw           | Mandatory (Choice) |
+| Extracurricular Study                     | Optional           |
+| Weapon Proficiency (Melee 2) OR Ki Strike | Optional (Choice)  |
+
+**Bonus for Completion:** When using an Implement, reduce Focus Power TNs by 1
+
+**Suggested Exits:** Runeblade, Fight Guy, Monk
+
+---
+
+## Disciple
+
+**Level:** 2
+
+**Prerequisites:** Brawl 3, Acrobatics 2, Athletics 2, Unarmed Warrior or Improvisational Warrior
+
+**Characteristics:** Wisdom, Willpower, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Athletics, Animal Ken, Brawl, Common Lore, Medicae, Scrutiny, Stealth, Weaponry
+
+| Feat                               | Type               |
+| ---------------------------------- | ------------------ |
+| Blind Fighting                     | Mandatory          |
+| Ki Strike                          | Mandatory          |
+| Evasion                            | Mandatory          |
+| Combat Sense                       | Mandatory          |
+| Meditation OR Discipline           | Mandatory (Choice) |
+| Strong Mind OR Two Weapon Fighting | Optional (Choice)  |
+
+**Sword Schools:** Setting Sun, Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** Wholeness of Body provides an additional +1 Armor
+
+**Suggested Exits:** Monk, Renegade, Fight Guy
+
+---
+
+## Oak-Knower
+
+**Level:** 2
+
+**Prerequisites:** Animal Ken 3, Brawl 2, Druid's Oath
+
+**Characteristics:** Wisdom, Willpower, Composure
+
+**Skills:** Animal Ken, Athletics, Brawl, Common Lore, Crafts, Disguise, Forbidden Lore, Medicae, Perception, Scrutiny
+
+| Feat                                         | Type               |
+| -------------------------------------------- | ------------------ |
+| Heightened Senses (Any) OR Spell Focus (Any) | Mandatory (Choice) |
+| Mana Generator                               | Mandatory          |
+| Wild Empathy                                 | Mandatory          |
+| Wild Shape                                   | Mandatory          |
+| Unarmed Warrior OR Peer (Druids)             | Optional (Choice)  |
+| Light Sleeper                                | Optional           |
+
+**Magic Schools:** Healing, Transmutation, Divination
+
+**Bonus for Completion:** Gain the feat Improved Animal Companion
+
+**Suggested Exits:** Druid, Magic User, Cleric
+
+---
+
+## Riflemancer
+
+**Level:** 2
+
+**Prerequisites:** Arcana 2, Ballistics 3, Elemental Shot I
+
+**Characteristics:** Charisma, Dexterity, Wisdom
+
+**Skills:** Acrobatics, Arcana, Athletics, Ballistics, Charm, Academic Lore, Forbidden Lore, Larceny, Perception, Pilot
+
+| Feat                          | Type      |
+| ----------------------------- | --------- |
+| Minor Magic                   | Mandatory |
+| Weapon Proficiency (Ranged 2) | Mandatory |
+| Crack Shot                    | Mandatory |
+| Evasion                       | Mandatory |
+| Elemental Shot I              | Mandatory |
+| Weapon Proficiency (Any)      | Optional  |
+| Spell Focus (Any)             | Optional  |
+
+**Gun Kata:** Elemental Gearbolt, Point Blank
+
+**Magic Schools:** Evocation, Conjuration
+
+**Bonus for Completion:** You may use Elemental Shot I one additional time per day
+
+**Suggested Exits:** Gunmage, Renegade, Magic User, Sergeant
+
+---
+
+## Sheriff
+
+**Level:** 2
+
+**Prerequisites:** Ballistics 3, Command 1, Intimidation 2, Peer (Law Enforcement)
+
+**Characteristics:** Constitution, Dexterity, Charisma
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Drive, Intimidation, Perception, Performer, Persuasion, Politics, Scrutiny
+
+| Feat                                   | Type               |
+| -------------------------------------- | ------------------ |
+| Far Shot OR Armor Proficiency (Medium) | Mandatory (Choice) |
+| Weapon Proficiency (Ranged 2)          | Mandatory          |
+| Paranoia OR Discipline                 | Mandatory (Choice) |
+| Jaded                                  | Mandatory          |
+| Hardy                                  | Mandatory          |
+| Blind Fighting                         | Optional           |
+| Sound Constitution                     | Optional           |
+
+**Gun Kata:** Clay Pigeon, Tin Star, Point Blank
+
+**Bonus for Completion:** +1 to Backing (Law Enforcement), to a maximum of 5
+
+**Suggested Exits:** Constable, Fight Guy, Guardsman
+
+---
+
+## Marksman
+
+**Level:** 2
+
+**Prerequisites:** Ballistics 3, Stealth 2, Lead Fingers or (Far Shot and Fast Reflexes)
+
+**Characteristics:** Intelligence, Wisdom, Dexterity
+
+**Skills:** Ballistics, Deceive, Disguise, Larceny, Performer, Perception, Scrutiny, Stealth, Tech-Use
+
+| Feat                            | Type               |
+| ------------------------------- | ------------------ |
+| Catfall OR Jaded                | Mandatory (Choice) |
+| Weapon Proficiency (Any Ranged) | Mandatory          |
+| Weapon Focus (Any Ranged)       | Mandatory          |
+| Zen Shooting                    | Mandatory          |
+| Paranoia OR Evasion             | Mandatory (Choice) |
+| Skill Focus (Any)               | Optional           |
+
+**Gun Kata:** Clay Pigeon, Silent Scope
+
+**Bonus for Completion:** +2 to Stealth tests to remain hidden while staying still
+
+**Suggested Exits:** Sniper, Renegade, Constable
+
+---
+
+## Krazy Ivan
+
+**Level:** 2
+
+**Prerequisites:** Ballistics 3, Brawl 2, Storm of Iron or Lead Fingers
+
+**Characteristics:** Charisma, Constitution, Strength
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Drive, Intimidation, Perception, Pilot, Tech-Use
+
+| Feat                                                   | Type               |
+| ------------------------------------------------------ | ------------------ |
+| Armor Proficiency (Medium)                             | Mandatory          |
+| Sound Constitution OR Crack Shot                       | Mandatory (Choice) |
+| Weapon Proficiency (Any Ranged)                        | Mandatory          |
+| Steel Rain OR Far Shot                                 | Mandatory (Choice) |
+| Hardy                                                  | Mandatory          |
+| Weapon Proficiency (Any) OR Skill Focus (Any Physical) | Optional (Choice)  |
+
+**Gun Kata:** Crisis Zone, Point Blank
+
+**Bonus for Completion:** +1 HP
+
+**Suggested Exits:** Heavy Weapons Guy, Sergeant, Sniper
+
+---
+
+# Level 3 Classes
+
+## Assassin
+
+**Level:** 3
+
+**Prerequisites:** (Weaponry or Ballistics) 3, Stealth 3, Sneak Attack, Blind Fighting
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+
+| Feat                             | Type               |
+| -------------------------------- | ------------------ |
+| Quick Draw                       | Mandatory          |
+| Swift Attack OR Deadeye Shot     | Mandatory (Choice) |
+| Back Stab                        | Mandatory          |
+| Weapon Focus (Any)               | Mandatory          |
+| Skill Focus (Any)                | Mandatory          |
+| Peer (Any Criminal or Mercenary) | Optional           |
+| Weapon Prof (Any)                | Optional           |
+
+**Sword Schools:** Shadow Hand, Setting Sun
+
+**Bonus for Completion:** +1 to all initiative rolls
+
+**Suggested Exits:** Freeblade, Grenadier
+
+---
+
+## Rager
+
+**Level:** 3
+
+**Prerequisites:** Weaponry 4, Athletics 3, Powerful Charge, Frenzy
+
+**Characteristics:** Strength, Charisma, Constitution
+
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Crushing Blow              | Mandatory |
+| Furious Assault            | Mandatory |
+| Swift Attack               | Mandatory |
+| Armor Proficiency (Medium) | Mandatory |
+| Weapon Proficiency (Any)   | Optional  |
+| Fleet of Foot              | Optional  |
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+
+**Bonus for Completion:** +1 to all melee and primitive weapon damage
+
+**Suggested Exits:** Barbarian, Rogue
+
+---
+
+## Skald
+
+**Level:** 3
+
+**Prerequisites:** Charisma 4, Common Lore 4, Performer 3, Peer (Any), any one at rank 2 and two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind
+
+**Characteristics:** Charisma, Fellowship, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+
+| Feat                   | Type      |
+| ---------------------- | --------- |
+| Speak Language         | Mandatory |
+| Peer (Any)             | Mandatory |
+| Weapon Focus (Fencing) | Mandatory |
+| Decadence              | Mandatory |
+| Skill Focus (Any)      | Optional  |
+
+**Sword Schools:** White Raven, Diamond Mind
+
+**Magic Schools:** Enchantment, Illusion
+
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level
+
+**Suggested Exits:** Swashbuckler
+
+---
+
+## Cleric
+
+**Level:** 3
+
+**Prerequisites:** Academic Lore 3, Forbidden Lore 4, (Healing or Abjuration at rank 2) OR (Peer (Religious Order) and Divine Grace)
+
+**Characteristics:** Willpower, Wisdom, Composure
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+
+| Feat                | Type      |
+| ------------------- | --------- |
+| Divine Ministration | Mandatory |
+| True Grit           | Mandatory |
+| Spell Focus (Any)   | Mandatory |
+| Channel Energy      | Mandatory |
+| Weapon Focus (Any)  | Optional  |
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+
+**Bonus for Completion:** +1 to maximum HP
+
+**Suggested Exits:** Zealot, Sorcerer, Paladin
+
+---
+
+## Fight Guy
+
+**Level:** 3
+
+**Prerequisites:** Weaponry 4, Athletics 3, Blind Fighting or Powerful Charge, Quick Draw or Two Weapon Fighting
+
+**Characteristics:** Strength, Constitution, Intelligence
+
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+
+| Feat                               | Type               |
+| ---------------------------------- | ------------------ |
+| Crushing Blow OR Crack Shot        | Mandatory (Choice) |
+| Combat Insight OR Deadeye Shot     | Mandatory (Choice) |
+| Swift Attack                       | Mandatory          |
+| Weapon Specialization (Any)        | Mandatory          |
+| Weapon Proficiency (Any) OR Frenzy | Mandatory (Choice) |
+| Armor Proficiency (Heavy)          | Optional           |
+| Armor Proficiency (Extreme)        | Optional           |
+
+**Sword Schools:** Iron Heart, White Raven
+
+**Bonus for Completion:** +1 to all Melee attack tests
+
+**Suggested Exits:** Fighter, Grenadier, Barbarian
+
+---
+
+## Sergeant
+
+**Level:** 3
+
+**Prerequisites:** Ballistics 4, Athletics 3, Crack Shot or Quick Draw, Far Shot or Armor Proficiency (Medium)
+
+**Characteristics:** Strength, Dexterity, Willpower
+
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Sound Constitution        | Mandatory |
+| Weapon Focus (Any)        | Mandatory |
+| Hip Shooting              | Mandatory |
+| Fast Reflexes             | Mandatory |
+| Deadeye Shot              | Mandatory |
+| Armor Proficiency (Heavy) | Optional  |
+| Weapon Proficiency (Any)  | Optional  |
+
+**Sword Schools:** Iron Heart
+
+**Bonus for Completion:** +1 to all Ranged attack tests
+
+**Suggested Exits:** Grenadier, Fighter
+
+---
+
+## Magic User
+
+**Level:** 3
+
+**Prerequisites:** Academic Lore 3, Arcana 4, any two Magics at rank 2, Spell Focus
+
+**Characteristics:** Intelligence, Charisma, Willpower
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+
+| Feat                       | Type              |
+| -------------------------- | ----------------- |
+| Spell Book                 | Mandatory         |
+| Spell Penetration          | Mandatory         |
+| Skill Focus (Any Lore)     | Mandatory         |
+| Wizard Tradition           | Mandatory         |
+| Touch Spell Specialization | Optional          |
+| Tested OR Luck             | Optional (Choice) |
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+
+**Bonus for Completion:** +1 to all Focus Power tests
+
+**Suggested Exits:** Sorcerer, Cleric
+
+---
+
+## Renegade
+
+**Level:** 3
+
+**Prerequisites:** Larceny 3, Stealth 3, Evasion or (Skill Focus (Larceny) and Catfall)
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+
+| Feat                     | Type      |
+| ------------------------ | --------- |
+| Fleet of Foot            | Mandatory |
+| Quick Draw               | Mandatory |
+| Back Stab                | Mandatory |
+| Weapon Focus (Fencing)   | Mandatory |
+| Skill Focus (Any)        | Mandatory |
+| Weapon Proficiency (Any) | Optional  |
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** +1 to Static Defense
+
+**Suggested Exits:** Rogue, Freeblade
+
+---
+
+## Defender
+
+**Level:** 3
+
+**Prerequisites:** Weaponry 3, Forbidden Lore 4, Divine Grace, Guardian or Peer (Religious Order)
+
+**Characteristics:** Willpower, Wisdom, Constitution
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Sound Constitution        | Mandatory |
+| Divine Ministration       | Mandatory |
+| True Grit                 | Mandatory |
+| Swift Attack              | Mandatory |
+| Divine Bond               | Mandatory |
+| Armor Proficiency (Heavy) | Optional  |
+| Weapon Focus (Any)        | Optional  |
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+
+**Bonus for Completion:** +1 AP while wearing armor
+
+**Suggested Exits:** Paladin, Zealot
+
+---
+
+## Diplomat
+
+**Level:** 3
+
+**Prerequisites:** Persuasion 3, Scrutiny 3, Protocol
+
+**Characteristics:** Charisma, Fellowship, Composure
+
+**Skills:** Academic Lore, Animal Ken, Charm, Command, Common Lore, Crafts, Deceive, Disguise, Forbidden Lore, Intimidation, Larceny, Perception, Performer, Persuasion, Politics, Scrutiny, Stealth
+
+| Feat                                        | Type               |
+| ------------------------------------------- | ------------------ |
+| Courtier's Privilege                        | Mandatory          |
+| Master of Disguise OR Good Reputation (Any) | Mandatory (Choice) |
+| Strong Mind                                 | Mandatory          |
+| Peer (Any)                                  | Mandatory          |
+| Meditation OR Combat Insight                | Optional (Choice)  |
+| Speak Language                              | Optional           |
+| Lend Expertise                              | Optional           |
+
+**Bonus for Completion:** +1 Resolve
+
+**Suggested Exits:** Legate, Marshal, Captain
+
+---
+
+## Chief of Engineering
+
+**Level:** 3
+
+**Prerequisites:** Tech-Use 3, Crafts 3, Jerry Rig
+
+**Characteristics:** Intelligence, Wisdom, Willpower
+
+**Skills:** Academic Lore, Ballistics, Command, Crafts, Persuasion, Politics, Tech-Use
+
+| Feat                    | Type      |
+| ----------------------- | --------- |
+| Miracle Worker          | Mandatory |
+| Engineering Team Leader | Mandatory |
+| Lend Expertise          | Mandatory |
+| Skill Focus (Any)       | Mandatory |
+| Mechadendrite Use       | Optional  |
+| Binary Chatter          | Optional  |
+
+**Bonus for Completion:** +`0k1` to Engineering Actions for any ship on which they serve as Chief of Engineering
+
+**Suggested Exits:** Technomancer, Tech-Priest, Captain
+
+---
+
+## Chief Arcana Officer
+
+**Level:** 3
+
+**Prerequisites:** Arcana 3, Forbidden Lore 3, Academic Lore 3, Detailed Analysis
+
+**Characteristics:** Intelligence, Willpower, Composure
+
+**Skills:** Academic Lore, Arcana, Animal Ken, Command, Common Lore, Medicae, Politics, Persuasion, Weaponry
+
+| Feat                                | Type              |
+| ----------------------------------- | ----------------- |
+| Tachyon Beam                        | Mandatory         |
+| Rotate Shield Frequency             | Mandatory         |
+| Protocol                            | Mandatory         |
+| Lend Expertise                      | Mandatory         |
+| Speak Language OR Skill Focus (Any) | Optional (Choice) |
+| Foresight OR Minor Magic            | Optional (Choice) |
+
+**Bonus for Completion:** +1 to the Sensor rating of the ship on which you serve as Arcana Officer
+
+**Suggested Exits:** Diplomat, Captain
+
+---
+
+## Chief of Security
+
+**Level:** 3
+
+**Prerequisites:** Weaponry 3 or Brawling 3, Ballistics 3, Worf Barrage
+
+**Characteristics:** Strength, Constitution, Composure
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Intimidate, Persuasion, Politics, Weaponry
+
+| Feat                     | Type               |
+| ------------------------ | ------------------ |
+| Worf Effect              | Mandatory          |
+| Match Frequency          | Mandatory          |
+| Guardian OR Paranoia     | Mandatory (Choice) |
+| Lend Expertise           | Mandatory          |
+| Armor Proficiency (Any)  | Optional           |
+| Weapon Proficiency (Any) | Optional           |
+| Jaded OR Nerves of Steel | Optional (Choice)  |
+
+**Bonus for Completion:** +1 to Crew Quality for leading or resisting Boarding Actions for any ship on which you serve as Tactical Officer
+
+**Suggested Exits:** Walking Gunshow, Constable, Captain
+
+---
+
+## Captain
+
+**Level:** 3
+
+**Prerequisites:** Command 3, Politics 2, Persuasion 2, Lend Expertise or ownership/command of a spelljammer larger than an Escort
+
+**Characteristics:** Fellowship, Charisma, Composure
+
+**Skills:** Brawling, Charm, Command, Intimidation, Persuasion, Politics, Pilot, Scrutiny
+
+| Feat                 | Type              |
+| -------------------- | ----------------- |
+| Acceptable Losses    | Mandatory         |
+| Lend Expertise       | Mandatory         |
+| Discipline           | Mandatory         |
+| Strong Minded        | Mandatory         |
+| Common Sense OR Luck | Optional (Choice) |
+| Protocol             | Optional          |
+
+**Bonus for Completion:** +1 Backing and +1 Holdings (A Spelljammer), to maximums of 5
+
+**Suggested Exits:** Commodore, Diplomat
+
+---
+
+## Tech-Priest
+
+**Level:** 3
+
+**Prerequisites:** Tech-Use 4, Academic Lore 3, Craft 3, Mechadendrite Use or Jerry Rig
+
+**Characteristics:** Intelligence, Wisdom, Constitution
+
+**Skills:** Academic Lore, Common Lore, Craft, Forbidden Lore, Medicae, Tech-Use, Ballistics, Drive, Pilot, Weaponry
+
+| Feat                            | Type              |
+| ------------------------------- | ----------------- |
+| Sound Constitution              | Mandatory         |
+| Binary Chatter                  | Mandatory         |
+| Weapon Proficiency (Any)        | Mandatory         |
+| Armor Proficiency (Any)         | Mandatory         |
+| Eidetic Memory                  | Mandatory         |
+| Nerves of Steel OR Deadeye Shot | Optional (Choice) |
+
+**Bonus for Completion:** Gain the feat Upgraded (Very Rare)
+
+**Suggested Exits:** Technomancer, Grenadier, Walking Gunshow
+
+---
+
+## Runeblade
+
+**Level:** 3
+
+**Prerequisites:** Arcana 3, Weaponry 4, Mana Generator
+
+**Characteristics:** Charisma, Strength, Dexterity
+
+**Skills:** Arcana, Academic Lore, Acrobatics, Athletics, Command, Deceive, Performer, Weaponry
+
+| Feat                                     | Type              |
+| ---------------------------------------- | ----------------- |
+| Combat Insight                           | Mandatory         |
+| Spell Parry                              | Mandatory         |
+| Armor Proficiency (Medium)               | Mandatory         |
+| Extracurricular Study                    | Mandatory         |
+| Weapon Specialization (Any)              | Mandatory         |
+| Extracurricular Study OR Swift Attack    | Optional (Choice) |
+| Weapon Proficiency (Melee 3) OR Backstab | Optional (Choice) |
+
+**Bonus for Completion:** When using an Implement, reduce Focus Power TNs by 1
+
+**Suggested Exits:** Arcane Knight, Fighter, Freeblade
+
+---
+
+## Monk
+
+**Level:** 3
+
+**Prerequisites:** Brawl 3, Acrobatics 3, Athletics 3, Ki Strike or Evasion, Catfall or Blind Fighting
+
+**Characteristics:** Wisdom, Willpower, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Athletics, Animal Ken, Brawl, Common Lore, Medicae, Scrutiny, Stealth, Weaponry
+
+| Feat                                          | Type               |
+| --------------------------------------------- | ------------------ |
+| Stunning Fist                                 | Mandatory          |
+| Diamond Body                                  | Mandatory          |
+| Improvisational Master OR Divine Ministration | Mandatory (Choice) |
+| True Grit                                     | Mandatory          |
+| Defensive Mobility                            | Mandatory          |
+| Quick Draw OR Weapon Focus (Unarmed)          | Optional (Choice)  |
+
+**Sword Schools:** Setting Sun, Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** Wholeness of Body provides an additional +1 Armor
+
+**Suggested Exits:** Immaculate Master, Rogue, Paladin, Zealot
+
+---
+
+## Druid
+
+**Level:** 3
+
+**Prerequisites:** Animal Ken 4, Brawl 3, Wild Empathy or (Light Sleeper and Frenzy) or (Peer (Druids) and one dot in two of: Healing, Transmutation, Divination)
+
+**Characteristics:** Wisdom, Willpower, Composure
+
+**Skills:** Animal Ken, Athletics, Brawl, Common Lore, Crafts, Disguise, Forbidden Lore, Medicae, Perception, Scrutiny
+
+| Feat                                    | Type               |
+| --------------------------------------- | ------------------ |
+| Heightened Senses (Any) OR Combat Sense | Mandatory (Choice) |
+| Nature Sense                            | Mandatory          |
+| Nekomimi Mode OR Frenzy                 | Mandatory (Choice) |
+| Spell Focus (Any) OR Bear Hug           | Mandatory (Choice) |
+| Unremarkable OR Crushing Blow           | Optional (Choice)  |
+
+**Magic Schools:** Healing, Transmutation, Divination
+
+**Bonus for Completion:** Gain the feat Improved Animal Companion
+
+**Suggested Exits:** Archdruid, Sorcerer, Zealot, Barbarian
+
+---
+
+## Gunmage
+
+**Level:** 3
+
+**Prerequisites:** Arcana 3, Ballistics 3, Elemental Shot I, Minor Magic
+
+**Characteristics:** Charisma, Dexterity, Wisdom
+
+**Skills:** Acrobatics, Arcana, Athletics, Ballistics, Charm, Academic Lore, Forbidden Lore, Larceny, Perception, Pilot
+
+| Feat                                    | Type               |
+| --------------------------------------- | ------------------ |
+| Elemental Shot II                       | Mandatory          |
+| Weapon Proficiency (Ranged 1)           | Mandatory          |
+| Decadence                               | Mandatory          |
+| Meditation                              | Mandatory          |
+| Weapon Focus (Any) OR Spell Focus (Any) | Mandatory (Choice) |
+| Obtain Familiar                         | Optional           |
+| Raven's Eye OR Nerves of Steel          | Optional (Choice)  |
+
+**Gun Kata:** Elemental Gearbolt, Point Blank
+
+**Magic Schools:** Evocation, Conjuration
+
+**Bonus for Completion:** You may use Elemental Shot II one additional time per day
+
+**Suggested Exits:** Bullet Wizard, Quickscope, Walking Gunshow
+
+---
+
+## Constable
+
+**Level:** 3
+
+**Prerequisites:** Ballistics 3, Command 2, Intimidation 3, Jaded, Paranoia or Discipline
+
+**Characteristics:** Constitution, Dexterity, Charisma
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Drive, Intimidation, Perception, Performer, Persuasion, Politics, Scrutiny
+
+| Feat                                | Type               |
+| ----------------------------------- | ------------------ |
+| Weapon Focus (Any Ranged)           | Mandatory          |
+| Good Reputation (Law Enforcement)   | Mandatory          |
+| Double Tap                          | Mandatory          |
+| Two Weapon Fighting OR Deadeye Shot | Mandatory (Choice) |
+| Improvisational Master              | Mandatory          |
+| Weapon Proficiency (Ranged 1)       | Optional           |
+| Strong Minded                       | Optional           |
+
+**Gun Kata:** Clay Pigeon, Tin Star, Point Blank
+
+**Bonus for Completion:** +1 to Backing (Law Enforcement), to a maximum of 5
+
+**Suggested Exits:** Marshal, Legate, Grenadier, Walking Gunshow
+
+---
+
+## Sniper
+
+**Level:** 3
+
+**Prerequisites:** Ballistics 4, Stealth 3, Zen Shooting or (Far Shot, any ranged Weapon Proficiency, and Skill Focus (Stealth))
+
+**Characteristics:** Intelligence, Wisdom, Dexterity
+
+**Skills:** Ballistics, Deceive, Disguise, Larceny, Performer, Perception, Scrutiny, Stealth, Tech-Use
+
+| Feat                               | Type      |
+| ---------------------------------- | --------- |
+| Deadeye Shot                       | Mandatory |
+| Crack Shot                         | Mandatory |
+| Raven's Eye                        | Mandatory |
+| Weapon Proficiency (Any)           | Mandatory |
+| Weapon Specialization (Any Ranged) | Mandatory |
+| Skill Focus (Any)                  | Optional  |
+
+**Gun Kata:** Clay Pigeon, Silent Scope
+
+**Bonus for Completion:** +2 to Stealth tests to remain hidden while staying still
+
+**Suggested Exits:** Quickscope, Grenadier, Fighter
+
+---
+
+## Heavy Weapons Guy
+
+**Level:** 3
+
+**Prerequisites:** Ballistics 3, Brawl 3, Steel Rain or (Crack Shot and Hardy)
+
+**Characteristics:** Charisma, Constitution, Strength
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Drive, Intimidation, Perception, Pilot, Tech-Use
+
+| Feat                                           | Type               |
+| ---------------------------------------------- | ------------------ |
+| Deadeye Shot                                   | Mandatory          |
+| Sound Constitution OR Weapon Proficiency (Any) | Mandatory (Choice) |
+| Weapon Focus (Any Ranged)                      | Mandatory          |
+| Nerves of Steel                                | Mandatory          |
+| Bear Hug OR Crushing Blow                      | Mandatory (Choice) |
+| Armor Proficiency (Heavy) OR Frenzy            | Optional (Choice)  |
+
+**Gun Kata:** Crisis Zone, Point Blank
+
+**Bonus for Completion:** +1 HP
+
+**Suggested Exits:** Walking Gunshow, Barbarian, Fighter, Grenadier
+
+---
+
+# Level 4 Classes
+
+## Freeblade
+
+**Level:** 4
+
+**Prerequisites:** (Weaponry or Ballistics) 4, Stealth 4, Back Stab, Quick Draw
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+
+| Feat                        | Type               |
+| --------------------------- | ------------------ |
+| Crack Shot OR Crushing Blow | Mandatory (Choice) |
+| Improved Back Stab          | Mandatory          |
+| Luck                        | Mandatory          |
+| Decadence                   | Mandatory          |
+| Skill Focus (Any)           | Mandatory          |
+| Improved Weapon Focus (Any) | Optional           |
+| Weapon Prof (Any)           | Optional           |
+
+**Sword Schools:** Shadow Hand, Setting Sun
+
+**Bonus for Completion:** +1 to all initiative rolls
+
+**Suggested Exit:** Nihilator
+
+---
+
+## Barbarian
+
+**Level:** 4
+
+**Prerequisites:** Weaponry 5, Athletics 4, Crushing Blow, Frenzy
+
+**Characteristics:** Strength, Charisma, Constitution
+
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+
+| Feat                     | Type      |
+| ------------------------ | --------- |
+| Battle Rage              | Mandatory |
+| Fearless (Angry)         | Mandatory |
+| Iron Jaw                 | Mandatory |
+| Cleave                   | Mandatory |
+| Weapon Proficiency (Any) | Optional  |
+| Weapon Focus (Any)       | Optional  |
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+
+**Bonus for Completion:** +1 to all melee and primitive weapon damage
+
+**Suggested Exits:** Berserker
+
+---
+
+## Swashbuckler
+
+**Level:** 4
+
+**Prerequisites:** Charisma 4, Common Lore 4, Performer 4, (Decadence or Weapon Focus), any one at rank 3 and two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind
+
+**Characteristics:** Charisma, Fellowship, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+
+| Feat                                  | Type      |
+| ------------------------------------- | --------- |
+| Fearless (Cool)                       | Mandatory |
+| Good Reputation (Any)                 | Mandatory |
+| Spell Focus (Enchantment or Illusion) | Mandatory |
+| Skill Focus (Any)                     | Mandatory |
+| Speak Language                        | Optional  |
+| Evasion                               | Optional  |
+
+**Sword Schools:** White Raven, Diamond Mind
+
+**Magic Schools:** Enchantment, Illusion
+
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level
+
+**Suggested Exit:** Master Bard
+
+---
+
+## Zealot
+
+**Level:** 4
+
+**Prerequisites:** Academic Lore 4, Forbidden Lore 4, (Healing or Abjuration at rank 3) OR (Divine Ministration and True Grit)
+
+**Characteristics:** Willpower, Wisdom, Composure
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+
+| Feat                              | Type      |
+| --------------------------------- | --------- |
+| Armor Prof (Heavy)                | Mandatory |
+| Absolution                        | Mandatory |
+| Good Reputation (Religious Order) | Mandatory |
+| Sound Constitution                | Mandatory |
+| Greater Spell Focus (Any)         | Mandatory |
+| Skill Focus (Any)                 | Optional  |
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+
+**Bonus for Completion:** +1 to maximum HP
+
+**Suggested Exit:** Bishop
+
+---
+
+## Fighter
+
+**Level:** 4
+
+**Prerequisites:** Weaponry 5, Athletics 4, Swift Attack or Crack Shot, Combat Insight or Deadeye Shot
+
+**Characteristics:** Strength, Constitution, Intelligence
+
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Fearless (Any)              | Mandatory |
+| Iron Jaw                    | Mandatory |
+| Wall of Steel               | Mandatory |
+| Improved Weapon Focus (Any) | Mandatory |
+| Combat Master               | Mandatory |
+| Armor Specialization (Any)  | Optional  |
+| Armor Proficiency (Power)   | Optional  |
+| Weapon Focus (Any)          | Optional  |
+
+**Sword Schools:** Iron Heart, White Raven
+
+**Bonus for Completion:** +1 to all Melee attack tests
+
+**Suggested Exit:** Master Fight Guy
+
+---
+
+## Grenadier
+
+**Level:** 4
+
+**Prerequisites:** Ballistics 5, Athletics 4, Deadeye Shot
+
+**Characteristics:** Strength, Dexterity, Willpower
+
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Sound Constitution          | Mandatory |
+| Weapon Proficiency (Any)    | Mandatory |
+| Fearless (Angry)            | Mandatory |
+| Iron Jaw                    | Mandatory |
+| Armor Specialization (Any)  | Mandatory |
+| Armor Proficiency (Extreme) | Optional  |
+| Sound Constitution          | Optional  |
+| Weapon Focus (Any)          | Optional  |
+
+**Sword Schools:** Iron Heart
+
+**Bonus for Completion:** +1 to all Ranged attack tests
+
+**Suggested Exit:** Stormtrooper
+
+---
+
+## Sorcerer
+
+**Level:** 4
+
+**Prerequisites:** Academic Lore 4, Arcana 4, any Magic at rank 3, any two Magics at rank 2, Spell Focus
+
+**Characteristics:** Intelligence, Charisma, Willpower
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Spell Book                | Mandatory |
+| Greater Spell Focus (Any) | Mandatory |
+| Mental Fortress           | Mandatory |
+| Wizard Tradition          | Mandatory |
+| Skill Focus (Any Lore)    | Optional  |
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+
+**Bonus for Completion:** +1 to all Focus Power tests
+
+**Suggested Exit:** Master Sorcerer
+
+---
+
+## Rogue
+
+**Level:** 4
+
+**Prerequisites:** Larceny 4, Stealth 4, Fleet of Foot, Quick Draw
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+
+| Feat                  | Type      |
+| --------------------- | --------- |
+| Improved Sneak Attack | Mandatory |
+| Hard Target           | Mandatory |
+| Luck                  | Mandatory |
+| Jaded                 | Mandatory |
+| Skill Focus (Any)     | Mandatory |
+| Weapon Focus (Any)    | Optional  |
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** +1 to Static Defense
+
+**Suggested Exit:** Stubjack
+
+---
+
+## Paladin
+
+**Level:** 4
+
+**Prerequisites:** Weaponry 4, Forbidden Lore 4, Divine Ministration, True Grit or Crushing Blow
+
+**Characteristics:** Willpower, Wisdom, Constitution
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+
+| Feat                                           | Type               |
+| ---------------------------------------------- | ------------------ |
+| Blademaster                                    | Mandatory          |
+| Sound Constitution                             | Mandatory          |
+| Good Reputation (Religious Order)              | Mandatory          |
+| Weapon Proficiency (Any) OR Weapon Focus (Any) | Mandatory (Choice) |
+| Wall of Steel                                  | Mandatory          |
+| Armor Proficiency (Extreme)                    | Optional           |
+| Skill Focus (Any)                              | Optional           |
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+
+**Bonus for Completion:** +1 AP while wearing armor
+
+**Suggested Exit:** Chevalier
+
+---
+
+## Legate
+
+**Level:** 4
+
+**Prerequisites:** Persuasion 4, Scrutiny 4, Strong Mind, Good Reputation or Courtier's Privilege
+
+**Characteristics:** Charisma, Fellowship, Composure
+
+**Skills:** Academic Lore, Animal Ken, Charm, Command, Common Lore, Crafts, Deceive, Disguise, Forbidden Lore, Intimidation, Larceny, Perception, Performer, Persuasion, Politics, Scrutiny, Stealth
+
+| Feat                                           | Type               |
+| ---------------------------------------------- | ------------------ |
+| Courtier's Privilege                           | Mandatory          |
+| Just As Planned                                | Mandatory          |
+| Jaded OR Paranoia                              | Mandatory (Choice) |
+| Foresight                                      | Mandatory          |
+| Peer (Any) OR Speak Language                   | Optional (Choice)  |
+| Good Reputation (Any) OR Extracurricular Study | Optional (Choice)  |
+
+**Bonus for Completion:** +1 Resolve
+
+**Suggested Exits:** Emissary
+
+---
+
+## Commodore
+
+**Level:** 4
+
+**Prerequisites:** Command 4, Politics 3, Persuasion 3, Lend Expertise, ownership and command of a spelljammer larger than an Escort
+
+**Characteristics:** Fellowship, Charisma, Composure
+
+**Skills:** Brawling, Charm, Command, Intimidation, Persuasion, Politics, Pilot, Scrutiny
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Hailing Frequencies         | Mandatory |
+| Redshirt Shield             | Mandatory |
+| Peer (Spelljammer Captains) | Mandatory |
+| Courtier's Privilege        | Mandatory |
+| Good Reputation (Any)       | Optional  |
+| Just as Planned             | Optional  |
+
+**Bonus for Completion:** +1 Backing and +1 Holdings (A Spelljammer), to maximums of 5
+
+**Suggested Exits:** Emissary, Legate, Marshal
+
+---
+
+## Technomancer
+
+**Level:** 4
+
+**Prerequisites:** Tech-Use 5, Academic Lore 4, Craft 3, Binary Chatter or Miracle Worker
+
+**Characteristics:** Intelligence, Wisdom, Constitution
+
+**Skills:** Academic Lore, Common Lore, Craft, Forbidden Lore, Medicae, Tech-Use, Ballistics, Drive, Pilot, Weaponry
+
+| Feat                     | Type      |
+| ------------------------ | --------- |
+| Ferric Summons           | Mandatory |
+| Iron Jaw                 | Mandatory |
+| Miracle Worker           | Mandatory |
+| Expanded Knowledge       | Mandatory |
+| Heightened Senses (Any)  | Mandatory |
+| Weapon Proficiency (Any) | Optional  |
+| Armor Proficiency (Any)  | Optional  |
+
+**Bonus for Completion:** Gain the feat Upgraded (Mythic Rare)
+
+**Suggested Exits:** Magos
+
+---
+
+## Arcane Knight
+
+**Level:** 4
+
+**Prerequisites:** Arcana 4, Weaponry 4, Spell Parry or Combat Insight, Extracurricular Study
+
+**Characteristics:** Charisma, Strength, Dexterity
+
+**Skills:** Arcana, Academic Lore, Acrobatics, Athletics, Command, Deceive, Performer, Weaponry
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Improved Weapon Focus (Any) | Mandatory |
+| Swift Attack                | Mandatory |
+| Sword Beam                  | Mandatory |
+| Daggerspell Stance          | Mandatory |
+| Skill Focus (Any)           | Mandatory |
+| Extracurricular Study       | Optional  |
+| Weapon Proficiency (Any)    | Optional  |
+
+**Bonus for Completion:** When using an Implement, reduce Focus Power TNs by 1
+
+**Suggested Exits:** Sorcerer-Swordsman
+
+---
+
+## Immaculate Master
+
+**Level:** 4
+
+**Prerequisites:** Brawl 4, Acrobatics 4, Athletics 4, Stunning Fist
+
+**Characteristics:** Wisdom, Willpower, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Athletics, Animal Ken, Brawl, Common Lore, Medicae, Scrutiny, Stealth, Weaponry
+
+| Feat                                                     | Type               |
+| -------------------------------------------------------- | ------------------ |
+| Unarmed Master                                           | Mandatory          |
+| Perfect Self                                             | Mandatory          |
+| Improvisational Savant OR Discipline                     | Mandatory (Choice) |
+| Wall of Steel                                            | Mandatory          |
+| Fearless (Cool)                                          | Mandatory          |
+| Swift Attack                                             | Optional           |
+| Weapon Specialization (Unarmed) OR Extracurricular Study | Optional (Choice)  |
+
+**Sword Schools:** Setting Sun, Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** Wholeness of Body provides an additional +1 Armor
+
+**Suggested Exits:** Grand Master of Flowers
+
+---
+
+## Archdruid
+
+**Level:** 4
+
+**Prerequisites:** Animal Ken 5, Brawl 4, Nekomimi Mode
+
+**Characteristics:** Wisdom, Willpower, Composure
+
+**Skills:** Animal Ken, Athletics, Brawl, Common Lore, Crafts, Disguise, Forbidden Lore, Medicae, Perception, Scrutiny
+
+| Feat                                          | Type               |
+| --------------------------------------------- | ------------------ |
+| Danger Sense                                  | Mandatory          |
+| Heightened Senses (Any) OR Common Sense       | Mandatory (Choice) |
+| Spell Specialization OR Discipline            | Mandatory (Choice) |
+| Expert Tracker                                | Mandatory          |
+| Wholeness of Body                             | Optional           |
+| Virgil's Guidance OR Good Reputation (Druids) | Optional (Choice)  |
+
+**Magic Schools:** Healing, Transmutation, Divination
+
+**Bonus for Completion:** Gain the feat Improved Animal Companion
+
+**Suggested Exits:** Grand Hierophant
+
+---
+
+## Bullet Wizard
+
+**Level:** 4
+
+**Prerequisites:** Arcana 4, Ballistics 4, Elemental Shot II
+
+**Characteristics:** Charisma, Dexterity, Wisdom
+
+**Skills:** Acrobatics, Arcana, Athletics, Ballistics, Charm, Academic Lore, Forbidden Lore, Larceny, Perception, Pilot
+
+| Feat                                          | Type               |
+| --------------------------------------------- | ------------------ |
+| Strong Minded                                 | Mandatory          |
+| Weapon Proficiency (Any)                      | Mandatory          |
+| Combat Insight                                | Mandatory          |
+| Elemental Shot II                             | Mandatory          |
+| Weapon Specialization OR Spell Specialization | Mandatory (Choice) |
+| Armor Proficiency (Medium)                    | Optional           |
+
+**Gun Kata:** Elemental Gearbolt, Point Blank
+
+**Magic Schools:** Evocation, Conjuration
+
+**Bonus for Completion:** You may use Elemental Shot II one additional time per day
+
+**Suggested Exits:** Witch-Sniper
+
+---
+
+## Marshal
+
+**Level:** 4
+
+**Prerequisites:** Ballistics 4, Command 3, Intimidation 4, Good Reputation (Law Enforcement)
+
+**Characteristics:** Constitution, Dexterity, Charisma
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Drive, Intimidation, Perception, Performer, Persuasion, Politics, Scrutiny
+
+| Feat                                                     | Type               |
+| -------------------------------------------------------- | ------------------ |
+| Crack Shot                                               | Mandatory          |
+| Combat Master                                            | Mandatory          |
+| Death Before Defeat                                      | Mandatory          |
+| Discipline                                               | Mandatory          |
+| Weapon Specialization (Any) OR Armor Proficiency (Heavy) | Mandatory (Choice) |
+| Weapon Proficiency (Any)                                 | Optional           |
+
+**Gun Kata:** Clay Pigeon, Tin Star, Point Blank
+
+**Bonus for Completion:** +1 to Backing (Law Enforcement), to a maximum of 5
+
+**Suggested Exits:** Judge
+
+---
+
+## Quickscope
+
+**Level:** 4
+
+**Prerequisites:** Ballistics 4, Stealth 4, Raven's Eye
+
+**Characteristics:** Intelligence, Wisdom, Dexterity
+
+**Skills:** Ballistics, Deceive, Disguise, Larceny, Performer, Perception, Scrutiny, Stealth, Tech-Use
+
+| Feat                               | Type               |
+| ---------------------------------- | ------------------ |
+| Sharpshooter                       | Mandatory          |
+| Foresight OR Expert Tracker        | Mandatory (Choice) |
+| Combat Sense                       | Mandatory          |
+| Skill Focus (Stealth)              | Mandatory          |
+| Improved Weapon Focus (Any Ranged) | Mandatory          |
+| Weapon Specialization (Any)        | Optional           |
+| Armor Proficiency (Medium)         | Optional           |
+
+**Gun Kata:** Clay Pigeon, Silent Scope
+
+**Bonus for Completion:** +2 to Stealth tests to remain hidden while staying still
+
+**Suggested Exits:** Targetmaster
+
+---
+
+## Walking Gunshow
+
+**Level:** 4
+
+**Prerequisites:** Ballistics 4, Brawl 4, Nerves of Steel or (Weapon Focus and Deadeye Shot)
+
+**Characteristics:** Charisma, Constitution, Strength
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Drive, Intimidation, Perception, Pilot, Tech-Use
+
+| Feat                                              | Type               |
+| ------------------------------------------------- | ------------------ |
+| Rock and Roll                                     | Mandatory          |
+| Sound Constitution OR Improved Weapon Focus (Any) | Mandatory (Choice) |
+| Crushing Bear                                     | Mandatory          |
+| Death Before Defeat                               | Mandatory          |
+| Armor Proficiency (Extreme)                       | Optional           |
+| Weapon Proficiency (Any)                          | Optional           |
+
+**Gun Kata:** Crisis Zone, Point Blank
+
+**Bonus for Completion:** +1 HP
+
+**Suggested Exits:** Living Fortress
+
+---
+
+# Level 5 Classes
+
+## Nihilator
+
+**Level:** 5
+
+**Prerequisites:** (Weaponry or Ballistics) 5, Stealth 5, Improved Back Stab
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Step Aside                  | Mandatory |
+| Assassin Strike             | Mandatory |
+| Counter Attack              | Mandatory |
+| Hard Target                 | Mandatory |
+| Devastating Critical        | Mandatory |
+| Skill Focus (Any)           | Optional  |
+| Weapon Specialization (Any) | Optional  |
+
+**Sword Schools:** Shadow Hand, Setting Sun
+
+**Bonus for Completion:** +1 to all initiative rolls
+
+---
+
+## Berserker
+
+**Level:** 5
+
+**Prerequisites:** Weaponry 5, Athletics 5, Battle Rage, Frenzy
+
+**Characteristics:** Strength, Charisma, Constitution
+
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Devastating Critical        | Mandatory |
+| True Grit                   | Mandatory |
+| Lightning Attack            | Mandatory |
+| Armor Proficiency (Heavy)   | Mandatory |
+| Improved Weapon Focus (Any) | Optional  |
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+
+**Bonus for Completion:** +1 to all melee damage and primitive weapon damage
+
+---
+
+## Master Bard
+
+**Level:** 5
+
+**Prerequisites:** Charisma 5, Common Lore 5, Performer 5, Fearless, Good Reputation, any one at rank 3 and two at rank 2 from: Enchantment, Illusion, White Raven, Diamond Mind
+
+**Characteristics:** Charisma, Fellowship, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+
+| Feat                                        | Type               |
+| ------------------------------------------- | ------------------ |
+| Expanded Knowledge OR Improvisational Magic | Mandatory (Choice) |
+| Mental Fortress                             | Mandatory          |
+| Armor of Contempt                           | Mandatory          |
+| Skill Focus (Any) OR Counter Attack         | Optional (Choice)  |
+| Heightened Senses (Any) OR Speak Language   | Optional (Choice)  |
+
+**Sword Schools:** White Raven, Diamond Mind
+
+**Magic Schools:** Enchantment, Illusion
+
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level
+
+---
+
+## Bishop
+
+**Level:** 5
+
+**Prerequisites:** Academic Lore 5, Forbidden Lore 5, Healing or Abjuration at rank 4, Good Reputation (Religious Order)
+
+**Characteristics:** Willpower, Wisdom, Composure
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Fearless (Any)            | Mandatory |
+| Armor of Contempt         | Mandatory |
+| Purge the Unclean         | Mandatory |
+| Greater Spell Focus (Any) | Mandatory |
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+
+**Bonus for Completion:** +1 to maximum HP
+
+---
+
+## Master Fight Guy
+
+**Level:** 5
+
+**Prerequisites:** Weaponry 5, Athletics 5, Swift Attack, Combat Master
+
+**Characteristics:** Strength, Constitution, Intelligence
+
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+
+| Feat                                 | Type      |
+| ------------------------------------ | --------- |
+| Counter Attack                       | Mandatory |
+| True Grit                            | Mandatory |
+| Blademaster                          | Mandatory |
+| Lightning Attack                     | Mandatory |
+| Improved Weapon Specialization (Any) | Mandatory |
+| Weapon Specialization (Any)          | Optional  |
+| Weapon Proficiency (Any)             | Optional  |
+
+**Sword Schools:** Iron Heart, White Raven
+
+**Bonus for Completion:** +1 to all Melee attack tests
+
+---
+
+## Stormtrooper
+
+**Level:** 5
+
+**Prerequisites:** Ballistics 5, Athletics 5, Iron Jaw, Deadeye Shot
+
+**Characteristics:** Strength, Dexterity, Willpower
+
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Sound Constitution        | Mandatory |
+| Hard Target               | Mandatory |
+| True Grit                 | Mandatory |
+| Sharpshooter              | Mandatory |
+| Fan the Hammer            | Mandatory |
+| Armor Proficiency (Power) | Optional  |
+| Weapon Proficiency (Any)  | Optional  |
+
+**Sword Schools:** Iron Heart
+
+**Bonus for Completion:** +1 to all Ranged attack tests
+
+---
+
+## Master Sorcerer
+
+**Level:** 5
+
+**Prerequisites:** Academic Lore 5, Arcana 5, Greater Spell Focus, any Magic at rank 4, any two Magics at rank 3
+
+**Characteristics:** Intelligence, Charisma, Willpower
+
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+
+| Feat                      | Type      |
+| ------------------------- | --------- |
+| Spell Book                | Mandatory |
+| Archmage Tradition        | Mandatory |
+| Greater Spell Penetration | Mandatory |
+| Spell Mastery             | Mandatory |
+| Spell Focus (Any)         | Optional  |
+| Skill Focus (Any Lore)    | Optional  |
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+
+**Bonus for Completion:** +1 to all Focus Power tests
+
+---
+
+## Stubjack
+
+**Level:** 5
+
+**Prerequisites:** Larceny 5, Stealth 5, Improved Sneak Attack
+
+**Characteristics:** Dexterity, Intelligence, Fellowship
+
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+
+| Feat                        | Type      |
+| --------------------------- | --------- |
+| Step Aside                  | Mandatory |
+| Fearless (Cool)             | Mandatory |
+| Improved Back Stab          | Mandatory |
+| Devastating Critical        | Mandatory |
+| Skill Focus (Any)           | Mandatory |
+| Improved Weapon Focus (Any) | Optional  |
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** +1 to Static Defense
+
+---
+
+## Chevalier
+
+**Level:** 5
+
+**Prerequisites:** Weaponry 5, Forbidden Lore 5, Wall of Steel, Good Reputation (Religious Order)
+
+**Characteristics:** Willpower, Wisdom, Constitution
+
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+
+| Feat                       | Type      |
+| -------------------------- | --------- |
+| Armor Specialization (Any) | Mandatory |
+| Sound Constitution         | Mandatory |
+| Fearless (Angry)           | Mandatory |
+| Death Before Defeat        | Mandatory |
+| Armor of Contempt          | Mandatory |
+| Armor Proficiency (Power)  | Optional  |
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+
+**Bonus for Completion:** +1 AP while wearing armor
+
+---
+
+## Emissary
+
+**Level:** 5
+
+**Prerequisites:** Persuasion 5, Scrutiny 5, Just As Planned, Courtier's Privilege, Good Reputation
+
+**Characteristics:** Charisma, Fellowship, Composure
+
+**Skills:** Academic Lore, Animal Ken, Charm, Command, Common Lore, Crafts, Deceive, Disguise, Forbidden Lore, Intimidation, Larceny, Perception, Performer, Persuasion, Politics, Scrutiny, Stealth
+
+| Feat                                | Type               |
+| ----------------------------------- | ------------------ |
+| Courtier's Privilege                | Mandatory          |
+| Air of Authority                    | Mandatory          |
+| Armor of Contempt                   | Mandatory          |
+| Danger Sense OR Fearless (Cool)     | Mandatory (Choice) |
+| Peer (Any) OR Extracurricular Study | Optional (Choice)  |
+| Speak Language                      | Optional           |
+
+**Bonus for Completion:** +1 Resolve
+
+---
+
+## Magos
+
+**Level:** 5
+
+**Prerequisites:** Tech-Use 5, Academic Lore 5, Craft 4, Ferric Summons, Upgraded (Mythic Rare), Mechanicus Implants
+
+**Characteristics:** Intelligence, Wisdom, Constitution
+
+**Skills:** Academic Lore, Common Lore, Craft, Forbidden Lore, Medicae, Tech-Use, Ballistics, Drive, Pilot, Weaponry
+
+| Feat                     | Type      |
+| ------------------------ | --------- |
+| Sound Constitution       | Mandatory |
+| Luminen Blast            | Mandatory |
+| True Grit                | Mandatory |
+| Furious Assault          | Mandatory |
+| Strong Minded            | Mandatory |
+| Weapon Proficiency (Any) | Optional  |
+
+**Bonus for Completion:** Gain the feat Upgraded (Artifact)
+
+---
+
+## Sorcerer-Swordsman
+
+**Level:** 5
+
+**Prerequisites:** Arcana 5, Weaponry 5, Sword Beam, Daggerspell Stance
+
+**Characteristics:** Charisma, Strength, Dexterity
+
+**Skills:** Arcana, Academic Lore, Acrobatics, Athletics, Command, Performer, Weaponry
+
+| Feat                                 | Type      |
+| ------------------------------------ | --------- |
+| Extracurricular Study                | Mandatory |
+| Blademaster                          | Mandatory |
+| Spell Shield                         | Mandatory |
+| Improved Weapon Specialization (Any) | Mandatory |
+| Combat Master                        | Mandatory |
+| Extracurricular Study                | Optional  |
+| Armor Proficiency (Heavy)            | Optional  |
+
+**Bonus for Completion:** When using an Implement, reduce Focus Power TNs by 1
+
+---
+
+## Grand Master of Flowers
+
+**Level:** 5
+
+**Prerequisites:** Brawl 5, Acrobatics 5, Athletics 5, Unarmed Master, Perfect Self
+
+**Characteristics:** Wisdom, Willpower, Dexterity
+
+**Skills:** Academic Lore, Acrobatics, Athletics, Animal Ken, Brawl, Common Lore, Medicae, Scrutiny, Stealth, Weaponry
+
+| Feat                                      | Type               |
+| ----------------------------------------- | ------------------ |
+| Iron Fist                                 | Mandatory          |
+| Feather Step OR Discipline                | Mandatory (Choice) |
+| Counter Attack                            | Mandatory          |
+| Step Aside                                | Mandatory          |
+| Lightning Attack OR Extracurricular Study | Mandatory (Choice) |
+| Improved Weapon Focus (Unarmed)           | Optional           |
+| Improved Weapon Specialization (Unarmed)  | Optional           |
+
+**Sword Schools:** Setting Sun, Shadow Hand, Diamond Mind
+
+**Bonus for Completion:** Wholeness of Body provides an additional +1 Armor
+
+---
+
+## Grand Hierophant
+
+**Level:** 5
+
+**Prerequisites:** Animal Ken 5, Brawl 5, Expert Tracker, Nekomimi Mode
+
+**Characteristics:** Wisdom, Willpower, Composure
+
+**Skills:** Animal Ken, Athletics, Brawl, Common Lore, Crafts, Disguise, Forbidden Lore, Medicae, Perception, Scrutiny
+
+| Feat                | Type      |
+| ------------------- | --------- |
+| Improved Wild Shape | Mandatory |
+| Wholeness of Body   | Mandatory |
+| Beastmaster         | Mandatory |
+| Meditation          | Mandatory |
+| Crushing Bear       | Optional  |
+| Naturalize          | Optional  |
+
+**Magic Schools:** Healing, Transmutation, Divination
+
+**Bonus for Completion:** Gain the feat Improved Animal Companion
+
+---
+
+## Witch-Sniper
+
+**Level:** 5
+
+**Prerequisites:** Arcana 5, Ballistics 5, Elemental Shot II (Twice)
+
+**Characteristics:** Charisma, Dexterity, Wisdom
+
+**Skills:** Acrobatics, Arcana, Athletics, Ballistics, Charm, Academic Lore, Forbidden Lore, Larceny, Perception, Pilot
+
+| Feat                                                | Type               |
+| --------------------------------------------------- | ------------------ |
+| Double Tap                                          | Mandatory          |
+| Spell Bullet                                        | Mandatory          |
+| Sharpshooter                                        | Mandatory          |
+| Elemental Shot III                                  | Mandatory          |
+| Improved Weapon Focus OR Touch Spell Specialization | Mandatory (Choice) |
+| Spell Focus (Any)                                   | Optional           |
+
+**Gun Kata:** Elemental Gearbolt, Point Blank
+
+**Magic Schools:** Evocation, Conjuration
+
+**Bonus for Completion:** You may use Elemental Shot III one additional time per day
+
+---
+
+## Judge
+
+**Level:** 5
+
+**Prerequisites:** Ballistics 5, Command 4, Intimidation 5, Crack Shot, Good Reputation (Law Enforcement), Death Before Defeat
+
+**Characteristics:** Constitution, Dexterity, Charisma
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Common Lore, Drive, Intimidation, Perception, Performer, Persuasion, Politics, Scrutiny
+
+| Feat                               | Type      |
+| ---------------------------------- | --------- |
+| Fan the Hammer                     | Mandatory |
+| Hip Shooting                       | Mandatory |
+| Air of Authority                   | Mandatory |
+| True Grit                          | Mandatory |
+| Improved Weapon Focus (Any Ranged) | Mandatory |
+| Sound Constitution                 | Optional  |
+
+**Gun Kata:** Clay Pigeon, Tin Star, Point Blank
+
+**Bonus for Completion:** +1 to Backing (Law Enforcement), to a maximum of 5
+
+---
+
+## Targetmaster
+
+**Level:** 5
+
+**Prerequisites:** Ballistics 5, Stealth 5, Sharpshooter, Raven's Eye
+
+**Characteristics:** Intelligence, Wisdom, Dexterity
+
+**Skills:** Ballistics, Deceive, Disguise, Larceny, Performer, Perception, Scrutiny, Stealth, Tech-Use
+
+| Feat                                        | Type      |
+| ------------------------------------------- | --------- |
+| Pinball Wizard                              | Mandatory |
+| Devastating Critical                        | Mandatory |
+| Sneak Attack                                | Mandatory |
+| Defensive Mobility                          | Mandatory |
+| Improved Weapon Specialization (Any Ranged) | Mandatory |
+| Weapon Proficiency (Any)                    | Optional  |
+
+**Gun Kata:** Clay Pigeon, Silent Scope
+
+**Bonus for Completion:** +2 to Stealth tests to remain hidden while staying still
+
+---
+
+## Living Fortress
+
+**Level:** 5
+
+**Prerequisites:** Ballistics 5, Brawl 5, Rock and Roll, Death Before Defeat
+
+**Characteristics:** Charisma, Constitution, Strength
+
+**Skills:** Athletics, Ballistics, Brawl, Command, Drive, Intimidation, Perception, Pilot, Tech-Use
+
+| Feat                                 | Type      |
+| ------------------------------------ | --------- |
+| Iron Curtain                         | Mandatory |
+| Weapon Specialization (Any)          | Mandatory |
+| Iron Jaw                             | Mandatory |
+| Fearless (Any)                       | Mandatory |
+| Improved Weapon Specialization (Any) | Optional  |
+| Armor Proficiency (Power)            | Optional  |
+
+**Gun Kata:** Crisis Zone, Point Blank
+
+**Bonus for Completion:** +1 HP

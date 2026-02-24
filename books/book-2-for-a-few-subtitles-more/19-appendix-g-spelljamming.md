@@ -1,0 +1,238 @@
+---
+title: "Appendix G: Spelljamming"
+book: 2
+order: 19
+type: "appendix"
+---
+# Appendix G: Spelljamming
+
+## General Advice
+
+So the way the space combat rules read sounds to us like it was developed for playing
+with miniatures, on a battle-mat, a grid, or with a ruler and an open spot on the floor. That's fine,
+but what about just running it without the little toys? Well we have a few suggestions.
+
+1. Don't fight in empty space. No, really,
+   it's boring. Empty space is boring, fights there are boring, chases through it are boring. Boring,
+   boring, boring. Put the action at the edge of a
+   Crystal Sphere near an opening or a portal. Put it in a Star Wars asteroid field. Around a gas giant
+   with shield & sensor disrupting magnetic fields and fast orbiting moons. Near the edge of a fast
+   moving warp rift. Up the nose of the star-beast turtle bigger than a planet. Anywhere not empty.
+2. Go easy on the torpedoes. You can
+   stick four tubes, an Armory, and Extended
+   Supply Vaults packed with 60 High Accuracy and 60 Rift Torpedoes. That makes each fight
+   "who can get the most 40+ damage hits in first" with everybody throwing all their crew into
+   shooting and nothing else. Don't. Shields top out at 200, hulls at 100 (on the standard hulls).
+   That's about two rounds of combat with just torpedoes and even the survivors will be wrecked.
+   Even 3 tubes of Quath torpedoes are bad at 20
+   Hull Points a pop. If all three hit, any Escort and most Destroyers are gone, even Battleships are
+   now having a bad day and there's still the three rolls on the critical chart to go.
+3. Ten crew per roll, maximum. Stat up
+   a 40 crew borg/modron super-death-sphere ship?
+   10k5 to shoot and 30k5 = 10k10+25 to dodge.
+   Hope the PC's ship can hit a 85 Static Defense moon-sized dodge-tank. As an option you could
+   do 1/2 the crew as the maximum, but that really screws up smaller ships. Stat up an extra small
+   fast clipper ship with 8 crew? That max 4 rolled dice makes it the worst ship for just about anything
+   (and the super-death-sphere is still dropping
+   10k10 on piloting rolls).
+4. That 90 degree turn on maneuvering?
+   It does not have to be exactly 90 degrees. Let them do 27 degrees and barely miss the asteroid
+   if that's what they want. Nothing breaks, the
+   RPG police won't kick in your door and taunt you, and it's more believable than starships
+   making perfect angles all the time like they were stuck to some giant space-grid.
+   **Player Character Wacky High Jinks**
+
+Did the PCs just all teleport on board a ship that's going all "self destruct at the start of
+the next round"? Grab the blueprints for the
+U.S.S. Iowa, or another WWII battleship (they're online, go look a things like, maritime.org/doc/
+plans/index.htm), pick one of the turret buckets to be the reactor core, let the PCs fight their way
+there and disarm the scuttling charges. The vague duration of the space combat turns works in your
+favor here. Give them a 10 or 15 minute time limit to stop the explosion, maybe let them try to
+teleport out or put some escape pods somewhere just in case. We've done this. It works.
+Did they nuke a city from orbit? Or were they were in the city when they ticked someone
+off. Appendix K has you covered. Check that to see if your precious NPC villain is OK or
+down a Hero Point and rocking a bunch or replacement cyber-limbs.
+
+> Dr. McNinja's brother. Now why are you reading our crap when you could be reading a web-comic this awesome?
+> Want to lead a boarding party to destroy a specific piece of the enemy ship during
+> combat? Go back to the top paragraph or try this optional rule:
+> You can attempt to destroy weapons and ship consoles instead of attacking the crew.
+> You must have previously identified the console with an active augury and it must be something
+> that can be damaged or disabled from a single location within the ship (so not things like
+> ablative armor or reinforced bulkheads). When you successfully beat the defenders they still lose
+> 2 crew. If you beat them by a number of Raises
+
+---
+
+equal to the cost of the console divided by 5 (i.e.
+get 3 Raises over the defenders for a targeting computer console that costs 15 points) then the
+console is damaged to such an extent that it cannot be repaired during combat. If you beat
+the defenders but not by the required number of Raises the console is only disabled until an
+Engineering Action against TN 15 is made.
+**Crashing Examples**
+
+1. A Sultana class escort (S) doesn't bother to put any crew towards piloting and clips
+   a Belle class battleship (B). S travels 6 VU and ends up in the same spot as B which traveled 4
+   VU last turn, and it is a head-on collision. 6+4=10 so S takes 10k5 (average ~42), and B takes 10k2
+   (~22). Both ships roll on the critical damage chart once at +0. If B Hasn't gone yet in this turn then
+   they will ram S unless they perform an Adjust
+   Heading maneuver. 2) A Belle class battleship does not have planetary landing capability and has seriously
+   flubbed an orbital bombardment piloting roll. The pilot heroically attempts to miss the planet. A
+   standard 1g planet has 10m/s2 gravity and thus a
+   "speed" of 10 for crashing purposes. 10-4=6 so the ship takes 6k10 ? 6k6 damage (average ~35).
+   Roll three times on the critical damage chart. The
+   'landing' area technically takes 6k5 damage and normal planets don't care about critical hits. 3) A Sultana class escort is being crashed
+   into a pirate base on a moon with 1.7 m/s2 gravity.
+   12+2=14 so 14k10 ? 10k10+10 damage (average
+   ~70) and three rolls on the critical damage chart.
+   If the base is built as an immobile ship it takes
+   14k2 ? 10k4 damage (average ~37) and three rolls on the critical damage chart.
+   Optional Rules for Fighters in Map Based
+   Combats:
+   Change the range to 5x Crew Quality and the squads have a Speed equal to Crew
+   Quality. Fighter squads must be adjacent to the ship or to enemy squadron(s) to be used in
+   support mode. Command Actions only apply to fighter squads that are adjacent to the ship OR if
+   the Captain directs a Command Action only to the fighters of a single squad (jamming blocks this
+   unless an Arcana Action is used to punch through the jamming).
+   Instead of attacking or supporting for the turn fighter groups that are in the same spot, or
+   perhaps adjacent to each other, may re-organize their formations to merge, split, or change squads.
+
+### Divert Power to the Plumbing!
+
+This is a general template for diverting power to other systems than those listed in the
+space combat section.
+For on the next round you may only make a 1/2 speed basic move, weapons (except
+fighters) attack at -1k0 and (except for torpedoes
+& fighters) do -1k0 damage, shields do not regenerate, and sensor tests are at -1k1.
+On the next round:
+
+1. Shields regenerate at 150% and +1d10/2 raises
+2. Engines move at 150% and +1 VU/2 raises
+3. Weapon damage (except torpedoes & fighters)
+   is at +1k0 and +1k0/2 raises
+4. Sensors and Arcana Tests are at +1k1 and
+   +1k0/2 raises
+5. Other systems with active effects like cloaking
+   or teleportariums generally ought to get increased
+   (usually around +50%) range or by +1k1 dice, with another smaller boost per 2 raises (around
+   +10% or +1k0). Things that wouldn't believably get a boost from more energy don't work ( the
+   advanced bridge design, fighter bays, and ablative armor consoles for example), and things that
+   modify other rolls don't work (EPS conduits, advanced med-bay, murder-servitors) because its
+   just too much nasty fuss.
+
+---
+
+## Fighters and Shuttles in Ground Combat
+
+Those ship's shuttles and assault shuttles?
+Players will want to use them. Obviously in space combat they're effectively Threat and
+Quality zero minions. The space fighters may also get used in personal or vehicular
+combat. Here are some stats for them.
+**Space Fighter**
+
+Size: 20, Price: Very Rare, Length: 15m,
+HP: 15, Resilience: 20, Static Defense: 0/15/30/45,
+Maneuver: +0, Accel: 0, Speed:15; 450m/mom,
+162 kph/mom.
+Drive: ScramJet (x30) If it's Momentum is less than 5 it goes Out of Control and begins
+Falling; requires a Push It action to turn, cannot turn as part of the standard Maintain Control
+action; requires a runway of at least base Speed x
+250m; begins Falling if it takes 2 or more damage or if it goes Out of Control.
+Gear: Ejector Seat, Environmental Seals,
+Overcharged Reactor: On activation accelerates to momentum 10 and damages the vehicle, Pilot
+Seat & Basic Equipment, Void Shield 10, Light
+Standard Armor (5 ap), Standard Sensors.
+Flaws: Controls Feedback & Fragile &
+Hanger Queen & Inefficient Controls & Junker &
+Unstable: When damaged the vehicle may inflict fatigue on the pilot & Vehicle HP reduced by
+25% & Requires extra repair and reload time &
+Requires an extra action/reaction to maintain control & Roll two crits instead of one & Double
+the maneuver penalty for momentum.
+Weapons: Long Range Missiles, 3k2+15
+X p5 s - 500m Homing & No-Short-Range.
+\- 500m Homing & No-Short-Range.
+Wave Motion Cannon, 7k4+35 E p20 s - 500m
+\- 500m Homing & No-Short-Range.
+Recharge & Accurate & Blast(5).
+**Air/Space Fighter**
+
+Size: 25, Price: Mythic Rare, Length:
+25m, HP: 17, Resilience: 25, Static Defense:
+0/18/36/54, Maneuver: +1, Accel: 1, Speed: 20,
+Speed: 600m/mom, 216 kph/mom
+Drive: ScramJet (x30), Second Drive:
+Aerospace (x15) The vehicle has wings; if it's
+Momentum is less than 3 it goes Out of Control and begins Falling; requires a runway of at least
+base Speed x 100m; begins Falling if it takes 2 or more damage or if it goes Out of Control.
+Gear: Standard Sensors, Ejector Seat,
+Environmental Seals, 2x Afterburners, XL Engine mk 2, Pilot Seat & Basic Equipment, Composite
+Frame.
+Flaws: Controls Feedback & Fragile &
+Hanger Queen & Inefficient Controls & Junker &
+Unstable: When damaged the vehicle may inflict fatigue on the pilots & Vehicle HP reduced by
+25% & Requires extra repair and reload time &
+Requires an extra action to maintain control &
+Roll two crits instead of one & Double the maneuver penalty for momentum.
+Weapons\*: 2x Omni Mounts (6 slots).
+Load 1; one Arrow-4 Cruise Missiles, 7k4+25 X p20 s - 500m Homing & No-Short-Range, plus
+\- 500m Homing & No-Short-Range.
+one AC-10 H-V, 3k2+20 R p10 s - 350m.
+\- 500m Homing & No-Short-Range.
+Load 2; two LRM-Swarm Launchers, 4k3+15 X p0 s - 500m Blast(15) & No-Short-Range, plus
+\- 500m Homing & No-Short-Range.
+one Las Cannon, 5k5 E p10 s - 300m Recharge.
+\- 500m Homing & No-Short-Range.
+
+- Weapons not included. Post office will not deliver without
+  postage. Text may contain material some readers may find objectionable. Parental guidance is advised. Provided "as is"
+  without any warranties expressed or implied. No returns. Safety goggles may be required during use. Not responsible for direct,
+  indirect, incidental or consequential damages resulting from any
+  defect, error or failure to perform. Keep away from open flames.
+
+---
+
+## Landing Shuttle
+
+**Size:** 29, **Price:** Mythic Rare, **Length:**
+33m, HP: 22, Resilience: 29, Static Defense:
+0/20/40/60, Maneuver: -10, Accel: 1, Speed: 20.
+Speed: 600m/mom, 216 kph/mom.
+Drive: ScramJet (x30) If it's Momentum is less than 5 it goes Out of Control and begins
+Falling; requires a Push It action to turn, cannot turn as part of the standard Maintain Control
+action; requires a runway of at least base Speed x
+250m; begins Falling if it takes 2 or more damage or if it goes Out of Control. Other Drive: VTOL
+(x6) May hover and turn in place; begins Falling if it takes 2+ damage or goes Out of Control.
+Gear: Pilot Seat & Co-Pilot Seat &
+Basic Equipment, Environmental Seals, Standard
+Sensors, 2x Afterburners, Passenger Space: 32 bodies, Cargo Space: 20 m3, XL Engine mk 2,
+Re-entry shielding (2 Armor Points).
+Flaws: Controls Feedback & Fragile &
+Hanger Queen & Inefficient Controls & Junker
+& Unstable: When damaged the vehicle may inflict fatigue on the pilots & Vehicle HP -25% &
+Requires extra repair and reload time & Requires an extra action to maintain control & Roll two
+crits instead of one & Double the maneuver penalty for momentum.
+**Assault Shuttle**
+
+Size: 30, Price: Holdings 2, Length:
+35m, HP: 23, Resilience: 29, Static Defense:
+0/20/40/60, Maneuver: -10, Accel: 1, Speed: 20.
+Speed: 600m/mom, 216 kph/mom.
+Drive: ScramJet (x30). Other Drive:
+VTOL (x6) May hover and turn in place; begins
+Falling if it takes 2+ damage or goes Out of
+Control.
+Gear: Pilot Seat & Co-Pilot Seat & Basic
+Equipment, Light Armor (5 AP), Environmental
+Seals, Standard Sensors, 2x Afterburners, Cargo
+Space: 10 m3, Passenger Space: 16 bodies, XL
+Engine mk 2.
+Flaws: Controls Feedback & Fragile &
+Hanger Queen & Inefficient Controls & Unstable:
+When damaged the vehicle may inflict fatigue on the pilots & Vehicle HP -25% & Requires extra
+repair and reload time & Double the maneuver penalty for momentum & Requires an extra action
+to maintain control.
+Weapons: One forward facing Omnimount (2 slots), two side-facing Personnel Weapon
+mounts. Weapons not included.
+Typical Weapons: Two Heavy Bolters on the sides, one forward firing SRM
+
+---

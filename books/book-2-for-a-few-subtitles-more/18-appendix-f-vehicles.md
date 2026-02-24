@@ -1,0 +1,380 @@
+---
+title: "Appendix F: Vehicles"
+book: 2
+order: 18
+type: "appendix"
+---
+# Appendix F: Vehicles
+
+## Quick & Dirty Vehicle Building Rules
+
+These are "sort of good enough most of the time" rules that are faster then dealing with
+the real vehicle rules.
+Size = 1/5 people (minimum 1) + 1/5 m3 cargo +
+1/5th armor + 1 per light weapon (3k2+5 p5
+50m) + 3 per heavy weapon (5k3+10 p10 150m)
+
+- 6 per huge weapon (7k4+20 p20 500m) + 1
+  per special electronics/feature + 3 per equipment module + 1/4 speed.
+  Momentum = none(0), minimum(1), slow(3), fast(5), maximum(10), this applies as a penalty to
+  drive/pilot rolls.
+  Maneuver = -10 to +10, this applies to drive & piloting rolls, and it requires a drive test to turn if
+  it is less than zero.
+  Speed = 0 to 20 (a zero speed vehicle has to make regular drive tests for all momentum changes no
+  matter what the circumstances are).
+  Drive: Treads & Naval = x3, Wheels & Walker = x5, Hover & VTOL = x7, Jets & Wings = x15,
+  Rockets = x30.
+  Hover, VTOL & winged craft make a pilot roll or go out of control each time they take
+  damage.
+  VTOL, wings, & rockets start falling if they go out of control.
+  Treads have +4 HP & ignore difficult terrain slow-downs, walkers can stand up and
+  treat impassible terrain as difficult.
+  Hover can go over water, ice, mud, and snow without any problems.
+  Rockets have to roll piloting to change directions.
+  Wings, jets, & rockets have to stay at momentum 5+ or fall and crash unless they are
+  taking off or landing on a good, safe runway.
+  Having a second drive is an equipment module.
+  AIs: Autopilot (for non-combat 2k1 driving) & helper AI (1/round Aid Another) = special
+  features (each purchased separately).
+  Berserker system (6k3 kill-bot if no pilot or KOed pilot) = special feature & +5 cost.
+  A full skill move & shoot non-berserker
+  AI (still 6k3) = equipment module & +15 Cost.
+  A fully functional & highly skilled AI
+  (rolls 8k4 & can non-combat + socialize + self repair) = 2 modules & +40 Cost.
+
+### Quick & Dirty Vehicle Stats
+
+HP = Resilience = Size.
+Move/turn (meters) = Speed x Drive x Momentum
+KPH = 1/3 Move (3/7 is accurate, but yuck)
+Defense = 0 momentum 0, and Maneuver
+@ momentum 0, and Maneuver
+
+- Speed + Momentum - Size
+
+**Cost** = 5 + Maneuver + Size + Speed + 5 per electronics/feature + 10 module/weapon, and
+check the chart. Then -1 chart step per 2 flaws.
+Vehicles with no drive at all or only a naval drive are 1/2 the size & speed for cost
+calculation.
+Admit it, you want one.
+
+| Rarity      | Cost    |
+| ----------- | ------- |
+| Common      | 1-10    |
+| Uncommon    | 11-20   |
+| Rare        | 21-30   |
+| Very Rare   | 31-40   |
+| Mythic Rare | 41-50   |
+| Holdings 1  | 51-70   |
+| Holdings 2  | 71-90   |
+| Holdings 3  | 91-110  |
+| Holdings 4  | 111-130 |
+| Holdings 5  | 131-150 |
+
+---
+
+## Quick & Dirty Vehicle Rolls
+
+**Rolling:** Drive/Pilot + Int/Dex, add Maneuver modifier and subtract Momentum modifier
+
+**No tests:** Change momentum by 1 step, make a regular 90 degree turn, non-threatened (no combat, no hurricanes, no earthquakes, not on fire) regular activity (landing, take-off, parking).
+
+**TN 15:** Change Momentum by 2 steps, make a 180 degree turn, don't go out of control.
+
+**TN 25:** Change Momentum by 3 steps, bootlegger reverse or Immelmann turn, recover from being out of control.
+
+**Opposed Test:** Racing, chasing, gaining advantage over an opponent (move into a blind
+spot, out of weapon arcs, ECM vs. Sensors).
+Actions:
+Half Actions: Regular driving, firing a single shot from a single weapon, aiming, use a
+feature/module/electronics.
+Full Actions: Stunt driving, shoot fullauto or multiple weapons, careful aiming, recover
+from going out of control.
+Reactions: Dodge, parry, stay in control.
+Oops:
+Damage: When a vehicle takes 2+ damage roll on the vehicle critical chart.
+Ram/Crash: Driving roll vs Dodging roll or else it's an automatic hit. Size 10+ vehicles
+have a blast radius or cone blast equal to their
+Size or width in meters.
+Damage is rolled dice = Size, kept dice
+= Momentum, adding Speed + the drive rating as a flat damage bonus. Excess Momentum dice
+over the Size are a +5 flat damage bonus per die.
+Then make a driving roll against half the damage or go out of control.
+When vehicles are hitting vehicles add their Momentums for head-on collisions, subtract
+them for same-direction hits, and take the other vehicles' Size for the rolled damage dice.
+Vehicles hitting immovable objects
+(concrete buildings, flying into the ground, etc.) take the same damage that they do. Vehicles
+hitting people take 1/4th the damage they do, or
+1/2 if the person is wearing power armor.
+
+### A Note on Ramming
+
+In the original version of the ramming rules ramming was a free action that automatically succeeded when you rolled over or into
+something's space. It did (size/2, max 10) keep
+(momentum/3, round up) to the vehicle and the target. A Size 30, Speed 46 (XL engine & active
+S2 engine & afterburners), Scramjet x20, SSTO going 9.2km/turn (~5520 kph) did 10k4. A
+passenger car going 150 kph only did 4k4 or about 23 damage, a civilian nobody with 4 HP
+and 4 Resilience would get into critical 1 or 2 and might break a hand or foot.
+Mr. Normal takes 16 damage to run out of HP and 20 more damage to reach crit-5, 36
+damage just kills him. The new rules are [Size] keep [Momentum]+(Speed+Drive) with excess
+momentum becoming +5 damage per point. So our SSTO is now 30k10+20+30 = 10k10+100 =
+~160 damage. A normal car going 90 kph (56 mph) is 8k5+15 = ~55 damage. Oh, and the car
+takes ~14 damage and loses 1 HP to a nasty dent.
+We'd like a power armored, Size 5,
+Strength 4, power-fist-wielding hero to be able to stop a speeding car with brute strength or by
+punching to a stop about 2/3 of the time or so. If you can beat the ramming damage with a
+Strength+Size test you can bring the vehicle to a stop without damage to either of you, but it
+pushes you back half it's remaining movement distance (and hitting something else is also ramming but at least you'll be going slower now).
+For punching, if you do more HP damage than it's Momentum through blunt force
+trauma you can stop a vehicle of a Size equal to your Size+Strength before it hits you. If you
+punch something bigger than that it loses half the HP damage in Momentum. Punch a Size 12
+vehicle, do 2-3 HP, slow it by 1 Momentum, then it loses 2 more from ramming you. If a
+Strength 4 human punches a Size 8 car for 4 wounds, it stops for up to Momentum 4. Up to
+momentum 6 it still hits them, but for much less damage and it still stops after that. Of course if it
+runs out of HP it crashes and stops. And 2+ HP of damage still causes a critical roll that could
+slow it down more or make it roll on the out of control chart which could also deflect or stop it.
+
+### Vehicle Critical Hit Chart
+
+| Roll | Effect                                                              |
+| ---- | ------------------------------------------------------------------- |
+| 0-2  | Scratched the paint.                                                |
+| 3-4  | Lose 2 momentum and make a normal drive roll or go out of control.  |
+| 5-6  | One random module, feature, or weapon is damaged and stops working. |
+| 7-8  | A random person on board takes 1d5 wounds.                          |
+| 9    | Make a hard driving roll or crash immediately.                      |
+| 10+  | Roll twice on this chart at 1d10-1.                                 |
+
+---
+
+## Vehicle Called Shots
+
+You can throw down a head shot on a character who isn't wearing a helmet or try to cut
+their arms off, and since vehicles are just sort of like big characters you should be able to do that
+to them. This is an optional rule that tries to to make things a bit easier on the SM.
+When you make a called shot on a vehicle state the effect that you wish for it to have.
+Tag the pilot, shred a wing, disable a weapon, crack the engine, fry the radio, that sort of stuff.
+Once you've hit determine the damage normally.
+If you only did damage due to the
+Tearing property of the weapon you didn't make a big enough dent to have the effect you wanted.
+If you dealt 1 HP of damage to the vehicle and wouldn't normally get to roll on the
+Vehicle Critical Damage Chart roll a d10, on a 10 you get to roll on the chart.
+If you did 2 or more HP of damage (or used a Tandem-Charge SRM missile) you get to
+roll on the chart anyways. When you roll on the
+Vehicle Critical Damage Chart you may modify your roll by up to the number of HP the vehicle
+lost. If you can move the result to an appropriate critical damage result, or you roll a 10, you get
+the intended effect of the called shot. If you can't get to an appropriate result the vehicle take the
+rolled critical effect.
+For example: Want to shoot an arm off a mecha? That matches the "system hit" result on
+the chart. Make your called shot and do enough damage to make the vehicle lose 3 HP. Roll on
+the critical chart, say it's a 5, and you can move the result up to three places. Since the "system
+hit" result is a 7 it's only two places away from 5 and you can move the result up to three places.
+You've succeeded in 'disarming' the mecha.
+Appropriate result mapping examples:
+
+1. "Ruined paint job" result: Any sort of
+   generally cosmetic damage. Shredding the unit emblem painted on the vehicle, blowing out the
+   headlights, shooting an external camera, making the fender drop off, etc.
+2. "Staggering blow" result: Attempts to
+   make the vehicle speed up, slow down, or change direction in a semi-controlled manner by blowing
+   up part of it. This includes flattening a tire, tearing off an aileron, forcing the driver to swerve
+   (but not crash), or jumping the vehicle up onto a building by exploding the ground under it.
+3. Pilot shaken"
+   "Pilot shaken" result: Anything that tries to inconvenience or reduce the pilot's actions.
+   Slicing control cables, causing hydraulic leaks, spraying oil on the windshield.
+4. "Out of Control" result: This is the
+   holes in the wing, wobbly gyroscopes, blown out brakes, and power fluctuations in the anti-grav
+   unit. The vehicle will have it's maneuverability seriously screwed over but it won't immediately
+   crash and the pilot can keep it moving.
+5. "Motive system hit" result: These are
+   for causing the engine to flame-out, an axle to snap, kneecap a mecha, or treads to fall off. The
+   vehicle should try to safely stop moving before it stops unsafely. Sometimes a pilot can keep moving
+   slowly, restart an engine, or just he stops caring about moving and starts shooting back.
+6. "Pilot hit" result: This covers trying to
+   harm the pilot or copilot. Unless the vehicle is open topped or the pilot is hanging on the outside
+   they should take the same number of wounds as the vehicle. If the pilot is terribly exposed at least
+   try to justify subtracting the vehicle's armor from the damage before applying to to them.
+7. "System hit" result: This is for when
+   you want to take out a vehicle weapon, module, or other system. Radios, AI, arms, afterburners,
+   cargo, passengers, sensors, void shields, additional drive trains. Anything but the actual main controls,
+   structural parts (living vehicle/composite frame) and the armor & wards is fair game.
+8. "Crash" result: This blows off a whole
+   wing, cuts the mecha off at the knees, or just frags the repulsor-lift engine. It's a crash result. The
+   vehicle will crash.
+9. "Cockpit breach" result: This one is
+   when you try to damage the cockpit and controls.
+   Taking out the driver-side door, shorting out the controls, wrecking a mobile trace system, blasting
+   out a windscreen. You can add the "open topped" feature to the vehicle after this hit.
+10. "Roll twice" result: This doesn't map
+    to anything. You're already using a called shot to add a specific extra effect to your damage.
+
+---
+
+## Pilot Swapping
+
+For people/vehicle action it's usually OK for the vehicle to move on the pilot's turn. If there
+is the possibility that you could swap pilots or share piloting (copilot, remote control, etc.) then
+give the vehicle its own initiative score, set to the original pilot's initiative. The vehicle initiative will
+change only when the vehicle is at Momentum 0 at the end of a round. At that point the vehicle
+will take as it's new initiative the initiative of whomever takes the controls first. The vehicle
+moves on it's initiative (or with the pilot if they're equal), using the pilot's most recent Maintain
+Control or Maneuver Action.
+If the pilot and vehicle are not sharing the same initiative and something happens due to
+the vehicle's movement that warrants a control test the pilot (or copilot, or someone, ANYONE,
+within reach of the controls) needs to spend their
+Reaction to make the test. Failure to do so has the same effect as rolling zero for the control test,
+that is, it fails by the largest margin possible.
+
+### When to Move Vehicles/Miniatures
+
+If you're mixing people scale movement and vehicle scale movement it might be important
+when, precisely, during a round a vehicle changes it's position. If the vehicle is slow enough it can
+play just like the people do, move on the pilot's turn. This works out OK for up to about 100m150m of movement.
+You can have all vehicles move half their movement at the start or end of the round and
+complete the other half of their movement (if any) during the pilot's turn. Another possibility is
+to have the vehicle move 1/3 it's movement at the start/end of the round, then 1/3 at the start of the
+pilot's turn, then 1/3 at the end of the pilot's turn.
+You could have it split into 1/3 at the start of the round, 1/3 during the pilot's turn, and 1/3 at the
+end of the round.
+You can also have the pilot decide at the beginning of the scene (or whenever they start the
+vehicle moving up from momentum 0) if they are going to take their control action as their first or
+last action on their turn. That decision will then be locked in and that is when the vehicle will move.
+
+### The Gun Cart Issue
+
+We can't solve this one for you.
+Look, the vehicle building rules let you do stuff like cram a Hyper-Velocity AC/15 into a
+Size 3 backpack as an Uncommon rarity item.
+It's technically possible, but not desirable. You'll start an arms race that can wreck your game.
+Don't be a jerk. Use the vehicle rules as intended, for actual vehicles and gun emplacements, not as a way to cheese out big guns that
+tell people you have compensation issues.
+
+### Used Car Salesmen
+
+Vehicle upgrades & trade-ins. You know they'll ask. The formula for buying new parts is
+15+(VP/10), a 100vp part is a 25 Wealth test. That's quite doable with a character that intends to follow this path. They have to
+keep their vehicle building spreadsheet handy. It represents the user manuals and blueprints that
+you need to modify customized vehicles. Once the vehicle makes it into Holdings territory (250 vp or
+more) they need to have the appropriate background resources to take care of it.
+If they don't have the backgrounds to maintain a Holdings priced vehicle they'll need to
+make both Tech-Use & Craft Tests of TN
+(VP/10)+(5 per previous successful Test) to keep it running. Every time they fail add another flaw to
+the vehicle. If there are no more flaws to add, one of them gets worse. Each of these 'wear and tear'
+flaws can only be removed by gaining the appropriate backgrounds or making a pair of Tech-Use
+and Craft Tests at double the maintenance TN.
+
+---
+
+Ok, so they can handle the maintenance issues. What about trade-ins? Any vehicle or part
+is only worth 1/10th of it's VP (used, funky smell, blood stains, could have been stolen, etc.), maybe
+1/5th if they work hard at finding the perfect deal.
+Subtract that from the VP of the thing they're buying before calculating the TN of the Wealth
+test to buy the new part or vehicle. Of course that only works for trading in one item, if they want to
+trade in more stuff start (and keep) cutting the
+VP their stuff is worth in half for each additional item.
+Mind, if they're something like major generals of an imperial military force with 10
+million troops they should just requisition a warship or whatever they need. These rules are mostly for
+penniless murder-hobos trying to buy a tank from a shady arms dealer. And, frankly, if they're trying
+to get 20+ passenger cars to offset the cost of a double miniaturized wave motion cannon...
+Just sit them down, have a talk about their life goals, and blow up the city or something.
+They're supposed to be heroes, not smarmy used car hucksters. There's nothing better than a good
+world-wide daemon invasion to get those sorts of people up and moving in the right direction.
+
+### Reaching Orbit
+
+Afterburner Optional Rule: On a vehicle with speed 20+, using a scram-jet drive, and
+going Momentum 10+ at high altitudes, you can use multiple charges of the afterburners at once to
+achieve escape velocity from a planetary body.
+Standard, 10m/s2, Earth-type gravity requires two afterburner charges. Every additional 10 10m/s2
+of gravity beyond that requires an additional afterburner charge. You only care about this rule
+if you really want to model a surface to orbit shuttle as a vehicle rather than as a small
+spaceship. It's because a 20 Speed x 30 scram-jet x 10 Momentum x 2 for an afterburner is around
+1/2 real life escape velocity.
+
+### Limited Ammo
+
+Optional & Experimental Ammo Rules:
+Personal weapons in personal weapon mounts use their regular ammo counts. They can either be
+reloaded from inside the vehicle, or they can have
+3x the normal clip size and be reloaded through an external access port of some sort. Reloading
+involves down-time or just hauling in more ammo by hand.
+Ballistic weapons can fire a number of times equal to the HP of the vehicle minus the
+size of the weapon, times three. For weapons with both burst fire and single shots multiply that by
+the rate of fire to determine the actual number of individual rounds [(HP-Slots) x 3].
+Reloading requires actual down-time for any weapon with more than a +10 to it's damage
+rating, the smaller calibers can be reloaded in the field if sufficient supplies are available.
+Missile weapons can fire a number of times equal to the HP of the vehicle plus one
+minus the size of the launcher, and divide that number by two [(HP+1-Slots) / 2].
+Arrow-IV systems can hold a number of missiles equal to the HP of the vehicle minus the
+size of the launcher, and divide that number by five [(HP - Slots) / 5].
+For individual missile sizes SRMs are about size 2, LRMs are about size 3, and A-4s are
+about size 6. Only SRM missiles can be reloaded in the field, all others require restocking at a base.
+The SRMs can, assuming there are stray missiles laying around, be reloaded by hand at a rate of
+about one a minute (or slower if you have to lug them across a field).
+Energy weapons can fire a number of times equal to the Size of the vehicle plus it's
+Speed minus the size of the weapon, then take that number and multiply it by two [(Size+Speed
+-Slots) / 2] (don't bother fooling around with burst vs. single shot, it's too much trouble, each
+burst is a "shot"). Once this store of energy is used up the vehicle requires either refueling or some
+down-time to re-energize. Refueling normally takes about the Size of the vehicle in minutes.
+
+---
+
+**"I Shoot the Starship with the Catapult!"**
+
+## Vehicle Weapons vs Spaceships
+
+Because we're sure you'll be shooting at them with your light machine guns, and one of
+you is going to throw a spear or something.
+Spelljammers can be assumed to have rating 20 void shields, armor equal to their Size,
+and a Size based on their class and value. They are immune to the Tearing property, anything
+that would automatically cause hit point loss, and special effects that bypass or reduce Resilience or
+Armor (the regular armor penetration of weapons works fine). They cannot take more than 1 point
+of hull damage from a vehicle scale or personal scale weapon and never take critical damage
+unless you're inside the ship or something (at that point it's on you to determine what happens).
+This does mean that there is the ability for extremely experienced characters to regularly
+inflict damage on spelljammers with hand-held weapons. If you use the spelljammer building
+web-page attached to this document it calculates a size of the ship that ranges from 45 for the
+smallest and cheapest Escort class ships, to about
+75 for the largest battleships. This is, obviously, completely optional.
+
+### The Ultra-Bigness Scale
+
+Some people just want to assign number to everything. Plus maybe you'll need to blow up
+an asteroid with some Arrow IV missile launchers.
+
+The pattern is simple, for every 10 points of size it goes up; 1 5. Then after the 5 you go back
+
+to 1 but multiply by 10; x10 x100 etc. Once
+
+you're in the 40+ size range 10m is a rounding error, at 70 size 100m is a rounding error, etc.
+**Optional Rules for A.I.s**
+
+There is, technically, no limit to the number of A.I.s acting at once. But each A.I. has
+to use a different vehicle system and only one of them can be making control tests during the
+vehicle's turn. You could chain AIs if you want to have more actions available in a scene, get a
+Feature of "A.I. linking" and each A.I.
+has to act after the previous one has used up it's actions. The secondary AIs are half cost and take
+half the slots, but none of their abilities can be better than the primary A.I.'s abilities. Bundle the
+secondary A.I.s into one "item" to apply the halved size or cost. Linked A.I.s have to be micronized or
+macronized at their combined values. With linked
+A.I.s only the currently active one can aid rolls, the others are inactive.
+If you have two sets of identical linked identical A.I.s with at least 10 rounds of actions
+that, with all the A.I.s added up, combine to take up more than half of the size and cost of the
+vehicle... Just run it as a robot vehicle with the normal set of actions available. But keep the
+spreadsheet handy for when upgrade time comes around. If it falls below half the size and cost of
+the vehicle then it can't maintain the smooth operational flow and defaults back to being just a
+set of helpers.
+| Size | Meters per point | Maximum-ish |
+| ------ | ---------------- | ----------- |
+| 1-10 | 0.5 | 5 m |
+| 11-20 | 1 | 15 m |
+| 21-30 | 2 | 35 m |
+| 31-40 | 5 | 90 m |
+| 41-50 | 10 | 200 m |
+| 51-60 | 20 | 400 m |
+| 61-70 | 50 | 1000 m |
+| 71-80 | 100 | 2 km |
+| 81-90 | 200 | 4 km |
+| 91-100 | 500 | 10 km |
+
+---

@@ -1,0 +1,742 @@
+---
+title: "Chapter X: Alignment"
+book: 2
+chapter: 10
+order: 10
+type: "chapter"
+---
+# Chapter X: Alignment
+
+## Chaos Undivided
+
+Some worship Chaos as a whole instead of any single god. Those who do so are natural leaders among the forces of Chaos, as they aren't enemies to anyone - except Malal, but the same can be said of all religions - and tend to have a more spiritual and level view of things. The demands on them are somewhat less than other worshippers of Chaos, though they do have to be careful not to offend anyone.
+
+### The Black Legion
+
+The Black Legion is devoted to bringing the forces of Chaos together. Which is a goal only slightly more difficult than herding cats. Angry cats. And a dragon. Look, the point that I'm trying to make is that it's really hard work and no one really appreciates how hard it is to get Khorne's followers to work alongside Tzneetch's sorcerers, while Nurgle is fifteen minutes late to every meeting and Slaanesh is just trying to sleep with everyone.
+
+But they'll make it work! Somehow! And then they'll crush the Blessed Pantheon! The Black Legion prides itself on its ability to work with almost anyone, and they operate almost more as a group of consultants or a worker's union than a religion. People who want to be part of the Black Legion have to find a sponsor that is already on the inside and prove themselves through hard work and guts.
+
+### The Word Bearers
+
+While the Black Legion is run more as a business, the Word Bearers could never be mistaken as anything but a cult, and a dangerous one at that. They're extremely devoted to the cause of Chaos. The Word Bearers are fanatics who spread the word of Chaos by force.
+
+Word Bearers are kidnappers and invaders who find tempting targets and simply take them over for Chaos. People either convert or die. Given those two options, most end up converting. Then the Word Bearers maintain an iron grip on the community through political and military force, ensuring that the people don't have any opportunities to turn away from Chaos.
+
+### Morality: Chaos Undivided
+
+| Rating | Sin                                                                            |
+| ------ | ------------------------------------------------------------------------------ |
+| 10     | Failing to spend at least two hours meditating on the nature of Chaos per day. |
+| 9      | Refusing to aid another follower of Chaos.                                     |
+| 8      | Refusing to offer a non-Chaos worshipper a chance to convert                   |
+| 7      | Failing to observe the rituals of Chaos.                                       |
+| 6      | Failing to undermine the existing order in favor of Chaos.                     |
+| 5      | Not making the effort to learn more about the nature of Chaos.                 |
+| 4      | Placing one Chaos God above any other.                                         |
+| 3      | Showing cowardice.                                                             |
+| 2      | Showing overt disrespect for the forces of Chaos.                              |
+| 1      | Accepting someone less capable than yourself as your superior.                 |
+
+---
+
+## Khorne
+
+Khorne is a god of battle, blood, and honor. He asks his followers to kill in his name and to offer up the blood and skulls of their enemies to him. Many of his followers are indiscriminate killers and murderers, but Khorne doesn't care for the blood of the innocent or weak. He wants the blood of the strong, for warriors to fight other warriors in the greatest of all battles. There's no glory or honor unless there is a challenge.
+
+### The Dethkvlt
+
+Members of the Dethkvlt show their devotion to Khorne through the art of ritual murder. As part of their initiation, they must kill an armed opponent with their bare hands. On the whole, they function as something of a big game hunting club, going after only the most dangerous and exciting prey.
+
+Most members of the Dethkvlt try to make every fight fair, giving the victims every chance to fight back, evening the odds, and tilting them in their opponent's favor when in doubt. There is no honor or glory in an easy hunt. The more skilled and dangerous the opponent the more exciting the battle at the climax.
+
+Many in the Dethkvlt have their own personal preferences for prey. Some limit themselves to removing criminals and other dangerous elements, making the Wheel a better place and satisfying their blood lust at the same time. Others might only prey on police officers, women, other killers, or animals.
+
+### Outer Heaven
+
+Outer Heaven was created as a place for warriors to be free from politics and agendas. It was funded by the deep pockets of an elite group of mercenaries who had been abused and treated as mere tools by governments and people alike. Building a space station outside of the reach of the most important crystal spheres, they ruled over a society where soldiers would be honored.
+
+Khorne's worship quickly became the primary religion on the station. The majority of soldiers already spilt blood in his name, and others converted. They took on missions and operations of their own accord, and the only rule was that everyone involved in a mission had to fight - no one could use them to further their goals unless they were willing to fight for them too.
+
+Outer Heaven was destroyed by political forces after only a decade. The people who had been living there scattered to the stars, but they brought the dream of Outer Heaven with them. On many worlds, there are enclaves and outposts that follow the rules set down before - to honor and respect those who fight.
+
+### Morality: Khorne
+
+| Rating | Sin                                         |
+| ------ | ------------------------------------------- |
+| 10     | Giving mercy to a fellow warrior.           |
+| 9      | Allowing another to kill an innocent.       |
+| 8      | Travelling with a spellcaster.              |
+| 7      | Showing disrespect for another warrior.     |
+| 6      | Using stealth or trickery to avoid a fight. |
+| 5      | Breaking your word of honor.                |
+| 4      | Killing an innocent.                        |
+| 3      | Allowing a spell to be cast on you.         |
+| 2      | Refusing a challenge of combat.             |
+| 1      | Casting a Spell.                            |
+
+### Khorne's Champions
+
+Khorne hates magic. If you have Khorne as your alignment there's a good chance that one or more of your Exalt or racial powers will just be impossible to use. Thankfully, there is another option. If you have an alignment to Khorne and you would gain a rank in a spellcasting school from your Exalt or racial powers, you may instead gain a rank in a sword school.
+
+---
+
+## Nurgle
+
+There's life and there's death. They're really two sides of the same coin. A child is born, grows up to be a man, and dies. A building is built, wears out, and is eventually abandoned. The man's body rots and worms and bacteria thrive. The shell of the building becomes a home for stray animals and people. Everything rots, but rot is just another expression of life. It is inevitable and the ultimate fate of all things. But life is beautiful in all its forms, and one should never hesitate to be kind in the brief blossoming that life has.
+
+### Vectors
+
+One of Nurgle's most obvious realms of influence is that of disease. The cult of Vectors is arranged around that belief. Their founder had been infected with a terrible disease and went on to spread it to countless others on many worlds. She created death and despair on a huge scale with almost no effort at all.
+
+After her eventual death, she left behind a number of others who followed in her footsteps. Nurgle protected them from the worst ravages of the disease they carried in exchange for their prayers. They're mostly a ruthless bunch, not caring for the countless people that suffer or die in their wake. Those most in favor with Nurgle take a personal approach to it, guiding people to the other side - though those who die at their hands almost never know the person caring for them caused their sickness.
+
+### Hospitallers
+
+While it may seem odd at first glance for those who worship a god of disease and death to run a Hospice, there are in fact many clinics and hospices that ultimately have Nurgle as their patron. The Great Lord of Decay protects his followers against most of the symptoms of terrible diseases, caring for them as his own grandchildren.
+
+For those who are beyond medical help, one of these Hospices is a welcome way to spend the short remainder of their lives. They aren't grim or terrible places, as Nurgle is not a morbid god, and his followers are gregarious and sentimental, making sure to comfort those who are suffering and allow them to enjoy what they have.
+
+Though outright cures in Nurgle's hospices are extremely rare, it's not uncommon at all for those who have shown great faith or are simply blessed by the kindly hand of Nurgle to have their disease go into remission or to become asymptomatic carriers.
+
+### Morality: Nurgle
+
+| Rating | Sin                                                  |
+| ------ | ---------------------------------------------------- |
+| 10     | Refusing to comfort the sick or the dying.           |
+| 9      | Preserving anything - food, the environment, etc.    |
+| 8      | Doing unnecessary work.                              |
+| 7      | Making great shows of emotion, positive or negative. |
+| 6      | Attempting to change your own fate.                  |
+| 5      | Being unkind to those in need.                       |
+| 4      | Curing someone of a disease.                         |
+| 3      | Preserving a corpse.                                 |
+| 2      | Bringing another back from the dead.                 |
+| 1      | Attempting to change the fate of the Wheel.          |
+
+---
+
+## Slaanesh
+
+The basic tenets of the worship of Slaanesh are simple and easy for the majority of people to follow - enjoy yourself and don't let anything get in the way. That means not listening to advice, not restricting yourself with social mores. Those who worship Slaanesh have a tendency to fall to gluttony and decadence, and those who are spiritually weak stagnate or destroy themselves in trying to achieve perfection of self and experience. While most equate Slaanesh with lowly pursuits like drugs or sex, anything taken to an excess can be worship to her.
+
+### Noise Marines
+
+One of the most common ways to worship Slaanesh is with music. The cult of Noise Marines exemplifies this. They're all musicians (of a sort), who have transcended the normal limits of music. Most have had surgery to increase the sensitivity of their hearing far beyond the norm, and then listen to music loud enough to make normal eardrums bleed.
+That's the sort of thing that just happens when normal music stops being enough, when the very experience of music starts becoming dull. The Noise Marines hold massive concerts across the Wheel, almost always with free admission, showcasing the greatest acts they can sign. Because the gatherings tend to plunge entire Crystal Spheres into chaos (that is, breaking laws, not literally converting everyone to Chaos - though that's always a risk as well) the concerts are banned on many worlds. That doesn't stop them, of course. Illegal concerts are more exciting anyway.
+
+### The S Academy
+
+Everyone wants to be good at something. But being good sometimes isn't enough. You have to be the best. The S Academy caters to those who seek to perfect themselves. It is an elite school. Some would say The elite school. Even getting into the school is a challenge, as they accept less than one hundred students per year, out of literally millions of applications.
+
+The application process itself is by invitation alone. Agents and former students of the Academy search for talent among the Crystal Spheres, occasionally giving someone the contact information they need to begin the process. Those that actually manage to get into the S Academy and graduate find that every door lies open to them, and their only limit is their ambition.
+
+The S Academy is ultimately a temple to Slaanesh, and they don't hide that fact. But it isn't a place of orgies and drug abuse, it is, in fact, almost completely devoid of distractions. It's a place to pursue perfection in music, martial arts, writing, whatever caught the eye of the agent who recommended the student to the academy. In the end, most students are left with an almost monomaniacal devotion to their single chosen talent, and it grows to consume their lives.
+
+### Morality: Slaanesh
+
+| Rating | Sin                                             |
+| ------ | ----------------------------------------------- |
+| 10     | Refusing a new, but dangerous, experience.      |
+| 9      | Accepting a flawed experience.                  |
+| 8      | Doing something you don't enjoy.                |
+| 7      | Doing less than your best at any task.          |
+| 6      | Refusing to do something you enjoy.             |
+| 5      | Denying another a new experience.               |
+| 4      | Showing humility.                               |
+| 3      | Not attempting to fix or overcome a flaw.       |
+| 2      | Doing less than your best at an important task. |
+| 1      | Refusing a new, safe, experience.               |
+
+---
+
+## Tzeentch
+
+A god of trickery, magic, and plotting and planning, Tzeentch is a chessmaster who treats his followers as pawns in his great game. His followers like to think themselves as more important pieces, queens and kings on their own little chessboards, or even players in their own right. Even those who know they're only being used hope to grow more important and gain control over their lives and the lives of others. Truth be told, with Tzeentch as a backer and guide, they do often achieve status and power they otherwise wouldn't, though the god never does it for their own benefit.
+
+### The Player's Club
+
+Some men just want to see what happens when you pull some strings. The Player's Club is an elite group where elaborate events are set up and then the members bet on the outcome. Sometimes they bet on races or fights. Or the outcome of wars that they've started. There's no limit to what they'll wager on or with. Some will offer arcane secrets, gold, or entire worlds.
+
+The most important thing about the Player's Club is that they always carefully set up their little games in advance. They don't find random events, they cause them. They create unrest and wager which country will be the first to strike, then wager which will win the ensuing war. They'll unleash a plague on a city and bet on the number of deaths. Fund a terrorist group and make wagers on their targets.
+
+That's not to say that the Player's Club is evil. Or that their motives are evil. They're just agents of change, and change is as often good as it is evil. Ultimately their plotting and planning seems to be about alleviating boredom, but there are hints of a grand design to their plans.
+
+### Illuminati
+
+There's always a conspiracy behind things, and the ones running that conspiracy probably pray to Tzeentch. The Illuminati is an ancient organization of people who like to run the game of politics from behind the scenes. They have their hands in almost everything, meeting in secret temples and speaking only in code that even they only half-understand.
+
+Now, when they say 'ancient', it's more appropriate to say 'revival'. Most Illuminati cults are in fact less than a century old, often less than a decade, and the members are more playing at being important than anything else. Or so they think. The cults are layers of secrets on secrets. Some actual members of important conspiracies use them as a way to manipulate the little fish in the pond, as they're comparatively easy to herd. Some cults have, somehow, actually managed to become important enough to deserve their trappings of secretly and mysticism.
+
+### Morality: Tzeentch
+
+| Rating | Sin                                                                |
+| ------ | ------------------------------------------------------------------ |
+| 10     | Failing to spend at least two hours per day planning and plotting. |
+| 9      | Failing to kill for the sake of knowledge.                         |
+| 8      | Putting another's needs before your plans.                         |
+| 7      | Clinging to the old and refusing to change.                        |
+| 6      | Refusing to take advantage of a situation.                         |
+| 5      | Sharing knowledge with another except as part of a broader plan.   |
+| 4      | Improvising when there's a chance to make a plan.                  |
+| 3      | Turning down a chance for increased power.                         |
+| 2      | Failing to respect those who possess greater wisdom.               |
+| 1      | Failing to pursue arcane knowledge.                                |
+
+---
+
+## Malal
+
+Malal is, simply put, a god for teamkilling fucktards. Malal represents destruction without limits. All the aspects of Chaos are destructive to some extent, but will usually band together for a common interest. Not so for Malal. He is the opposition and self-destruction inherent to Chaos, and feeds off the power of the other gods. The stronger his opponents, the stronger he becomes. Malal has few champions and little organized worship, as in the end he betrays them as well.
+
+### Street Gangs
+
+The disaffected youths of the world are one of the major sources of recruitment for Malal. They typically have no real attachments to the world and only hate the things that are there. The way they destroy establishments and, eventually, themselves, pleases Malal, especially since they don't have ulterior motives or plans, just a base desire to tear things down.
+
+Gang members that survive long enough, which is rare if they're followers of Malal, will often graduate to becoming more dangerous agents of chaos and destruction. Terrorists, warlords, liberals, all of the sorts of people who work to destroy civilization.
+
+### Singular Champions
+
+A large portion of Malal's followers are champions of destruction working alone to bring down something or someone they hate. They become consumed by their desire to destroy, and end up destroying everything they care about. They almost all work alone, not always by choice. Malal manipulates their fate, making sure that anyone they get close to ends up dead, ensuring that they're never without someone to avenge.
+
+### Morality: Malal
+
+| Rating | Sin                                              |
+| ------ | ------------------------------------------------ |
+| 10     | Falling in love.                                 |
+| 9      | Acting in the interests of another.              |
+| 8      | Keeping your word when it would help another.    |
+| 7      | Asking aid of another.                           |
+| 6      | Needlessly preventing a death.                   |
+| 5      | Exhibiting compassion for others.                |
+| 4      | Aiding another.                                  |
+| 3      | Accepting the superiority of another.            |
+| 2      | Failing to take advantage of another's weakness. |
+| 1      | Repenting one's behavior.                        |
+
+---
+
+## Tiamat
+
+Tiamat is the diametric opposite to Bahamut. In life she formed a great alliance to overthrow him, and even death couldn't stop her forever. There have always been rumors that one person or another is trying to revive her, that her power lives on after death, that having some portion of her corpse will empower a person. There are all kinds of stories, but there is one common thread - Tiamat isn't finished yet, and it's only a matter of time before she rises again.
+
+### The Cult of the Dragon Reborn
+
+The largest group of Tiamat's followers are an ancient cult that reaches back to when she was still alive and terrorizing the stars. They, like all other Tiamat followers, believe that she will soon return to carve out her empire. The Cult of the Dragon Reborn could be considered the public and acceptable face of Tiamat worship.
+
+The Cult of the Dragon Reborn opens up community centers and churches across the Wheel, not being pushy (in public) with their religion but using more subtle forms of manipulation and persuasion to get people. Their followers bring family and friends to 'vacation retreats' where they're surrounded by Tiamat worship and worshippers, 'invited' to participate in rituals, and 'educated' in the history of the Wheel from a very skewed perspective.
+
+### The Council of Wyrms
+
+A lot of dragons followed Tiamat when she tried to take power. Even though it was long ago, dragons don't really die of old age. A handful of those dragons are still alive to this day, having avoided the followers of Bahamut and anyone else looking to put an end to them. From some hidden place, either a space station or (it's rumored) within the Abyss, these ancient dragon lords hold council and decide how to deploy their minions.
+
+One of the primary activities of the Council of Wyrms is to find every part of Tiamat's corpse and bring them together again. It's thought they have almost half of the complete corpse, as everyone who wants to be admitted to its upper levels (and eventually meet the dragon overlords in charge) must bring the Council at least some portion of Tiamat.
+
+### Morality: Tiamat
+
+| Rating | Sin                                                                     |
+| ------ | ----------------------------------------------------------------------- |
+| 10     | Failing to pursue evidence of Tiamat, even at risk of death.            |
+| 9      | Failing to use whatever means are necessary to achieve greater power.   |
+| 8      | Accepting defeat.                                                       |
+| 7      | Helping others when it is not to your advantage.                        |
+| 6      | Failing to respect those who possess greater power.                     |
+| 5      | Failing to pursue evidence of Tiamat when there is little risk.         |
+| 4      | Backing down when you know you are right.                               |
+| 3      | Turning down a chance for increased wealth or power.                    |
+| 2      | Losing face in front of a crowd.                                        |
+| 1      | Accepting someone equal or less capable than yourself as your superior. |
+
+---
+
+## Blessed Order
+
+The general worship of the Blessed Pantheon, those who worship Blessed Order are generally intensely spiritual people who are more concerned with finding patterns and meaning in the universe than any single expression of Law or Order. The core belief is that everything happens for a reason, and that only the gods know all the reasons - but those reasons, and thus everything that happens, are for the betterment of all in the end. Once everyone is converted away from the faulty worship of Chaos, the Wheel will be one step closer to achieving that grand purpose and pattern that it was created for.
+
+### Conspiracy Theorists
+
+When you believe that there is order to the universe, you can start to think that all events must be connected, that nothing happens without a reason, and that ultimately there is a grand scheme to things. Some people take this to extremes, believing that even every act of men is controlled from afar by greater unseen forces. They try to find connections between events and see patterns where none exist. Even if the Blessed Pantheon were a dozen times more powerful than they are, it seems unlikely that the conspiracy theorists are correct and that boy bands are ultimately a tool used to cause global warming and thwart terraforming efforts. But if you ask, they can provide reams of data showing that exact correlations - even if much of the data is obviously hearsay or otherwise less than reliable.
+
+Most conspiracy theorists toil away at putting data together as a kind of obsessive hobby. They discard nothing, fitting every datum and fact into their overarching mythology that they build up around random events. It would be pathetic, if not for the fact that they seem to uncover a lot of data that seems impossible for them to have found. It is almost as through some invisible hand guides them to certain truths, allowing them to uncover just some small part of the bigger picture.
+
+### Voidheart
+
+It can be difficult to make people work together when they are concerned more about their own interests than about doing things to benefit all. To the cult of Voidheart, the best way to bring people together is to first give up all desires of your own, so there is nothing holding you back, no ulterior motives driving you. They meditate and fast, finding inner peace within, and from there, wisdom.
+
+The cult of Voidheart is well-respected in many places, and their lack of political or material ties means that they are often agreed upon as fair and impartial mediators between people. It is simply impossible to bribe or cajole them into doing what you want. The cult polices its own, and any member who tries to achieve too much real power or becomes corrupted by outside influences finds themselves going back to secluded monasteries and temples to meditate more on the nature of the universe. This isn't seen as a failure on their part, but simply an indication that they are not ready yet to test their beliefs against the temptations of the world.
+
+### Morality: Blessed Order
+
+| Rating | Sin                                                                        |
+| ------ | -------------------------------------------------------------------------- |
+| 10     | Failing to meditate on the nature of Order for at least two hours per day. |
+| 9      | Failing to make an attempt to convert someone to Order.                    |
+| 8      | Allowing emotions to override logic.                                       |
+| 7      | Refusing to mediate in conflicts.                                          |
+| 6      | Breaking the law except to help someone in great need.                     |
+| 5      | Unknowingly aiding the forces of Chaos.                                    |
+| 4      | Holding any god of Order above another.                                    |
+| 3      | Harming another for personal gain.                                         |
+| 2      | Breaking your word of Honor.                                               |
+| 1      | Knowingly aiding the forces of Chaos.                                      |
+
+---
+
+## Cuthbert
+
+Cuthbert is a god that upholds the law above all else. Law is more than just a collection of rules, but represents Order itself. Without laws, society can't function. And so the most important duty of a good man is to uphold the law. Cuthbert doesn't care if a law is right or fair or even just. It must be followed. If people ignore the laws of the land that's just the first step, according to Cuthbert's followers, before they turn to the ruinous powers or worse.
+
+### Judges
+
+Some of Cuthbert's most important followers are the judges and lawmen who spend their lives in the pursuit of justice. In many Crystal Spheres, it's long tradition for followers of Cuthbert to hold almost all important legal posts. Though he encourages his followers to be harsh and impartial, they are ultimately also fair. Even Chaos Cultists will find their cases judged on evidence and truth.
+
+Many judges have begun forming an almost Wheel-wide association of courts that share case information, precedent, and making sure that no one can escape justice by hopping from one Crystal Sphere to another. Their ultimate goal is to create a set of laws and guidelines that can be applied anywhere, at any time. A perfect, universal code of law. So far, their attempts have resulted in some grand legal triumphs and even more terrible failures. But they press on, knowing that they will eventually codify the inherent laws of the universe into a form that can be used by every judge.
+
+### Lynchmen
+
+There are some places in the Wheel where it seems like there is no justice. Where the streets cry blood and crimes go unavenged. There are no police to go to, no one you can trust. Those who attempt to bring law find themselves quickly put down by the powerful criminal elements that run such dark places.
+
+That is where the cult of Lynchmen come in. They are an organization of vigilantes who enforce the law where it cannot be enforced by any other means. They are considered dangerous, rogue, and unstable. But they can do things that no other arm of the law can do. They go into the most dangerous places of the world, wearing uniforms to intimidate their prey, and try to make a difference with their own two hands.
+
+They come singly or in small groups, working from the shadows, using fear to break criminals. The first sign that Lynchmen have come to town is when career criminals and murderers are found hanging in public places, the cult having already acted as judge, jury, and executioner.
+
+### Morality: Cuthbert
+
+| Rating | Sin                                                              |
+| ------ | ---------------------------------------------------------------- |
+| 10     | Breaking the law for any reason.                                 |
+| 9      | Travelling with a criminal except to see him brought to justice. |
+| 8      | Refusing to punish someone guilty of a major crime.              |
+| 7      | Not assisting an officer of the law when asked.                  |
+| 6      | Breaking the law to help another.                                |
+| 5      | Failing to pursue evidence of a major crime.                     |
+| 4      | Not showing respect for a legitimate officer of the law.         |
+| 3      | Refusing to punish someone guilty of a major crime.              |
+| 2      | Breaking the law for personal gain.                              |
+| 1      | Breaking your word of honor.                                     |
+
+---
+
+## Sigmar
+
+Full of wroth and fury, Sigmar is a god that seeks to conquer the stars in the name of civilization. He commands his followers to take the Wheel into their own hands. To conquer everything. He won't abide wildness or Chaos to exist. The greatest achievement of sentience is its ability to create order from the wilderness, to carve out something that matters. Spending time with other people, preserving civilization against the ravages of barbarians and the wild, fighting Chaos in all of its forms - that's what Sigmar wants of you.
+
+### The Inquisition
+
+The Inquisition is, in the end, Sigmar's attempt to completely end the worship of Chaos across the wheel. It is a powerful organization, with authority that comes directly from the god himself to do whatever it takes in order to stomp out his enemies. Inquisitors can come from all walks of life, spending long years at the bottom ranks of the organization before becoming a full member with all the power and responsibility thereof.
+
+The Inquisition has no limits. That is one of the most important things to know about it. An Inquisitor can be killed. A fortress can be destroyed. A ship can crash. But the Inquisition cannot be stopped, will not allow themselves to be stopped, until they root out and destroy Chaos.
+
+It's said that there is no organization or world that hasn't been infiltrated by at least one agent of the Inquisition. They seem to have unlimited funds and resources, and their authority, while not absolute everywhere, is at least recognized and marked as dangerous on nearly every Crystal Sphere.
+
+### The City Watch
+
+Sigmar is a god of civilization. And the thing that best represents the spread of civilization, the order and inherent goodness that exists when the Wheel is tamed, is the city. A city is an environment entirely created by people, where nature is paved over and only allowed to exist where it is convenient or useful. Every city is ultimately a blow made in the war to turn the Wheel from danger and the unknown to safety and purpose.
+
+Cults of Sigmar exist in almost every major city as a kind of concerned citizen's group, working to keep the city safe and secure. They organize public works, alert authorities to dangerous elements that might threaten the city, and try to bring the community together based on their shared experiences and home.
+
+### Morality: Sigmar
+
+| Rating | Sin                                                 |
+| ------ | --------------------------------------------------- |
+| 10     | Allowing something to remain wild or untamed.       |
+| 9      | Travelling with a known worshipper of Chaos.        |
+| 8      | Refusing to advance a primitive society.            |
+| 7      | Eating raw food.                                    |
+| 6      | Unnecessarily destroying infrastructure or order.   |
+| 5      | Unknowingly aiding the forces of Chaos.             |
+| 4      | Showing mercy towards a Chaos-worshipper.           |
+| 3      | Not spending at least an hour per day among others. |
+| 2      | Attempting to destroy a civilization.               |
+| 1      | Aiding the forces of Chaos, knowingly.              |
+
+---
+
+## Bahamut
+
+One of the few mortals (well, as mortal as a dragon gets) to ascend to true godhood, Bahamut is a god of power. More than just physical might - political power, and the ability to wisely use it. Bahamut wants his followers to uphold his ideals of honor and justice. And the most important part of justice is to protect the weak from the strong.
+
+### The Final Word of Kings
+
+In the end, there are very few rulers who are fit to rule. Almost every dictator or tyrant rose to power because no one was there to stop them before they became a problem. But there is one group that works to make sure that tyrants don't get a chance to be a terror to their people for long. They do their dirty job at all scales, from petty gang leaders and oppressive gated community leaders to true kings and emperors.
+
+The Final Word of Kings are assassins, to put it simply, killing those rulers who they think are unfit for their duty to their people. They usually work alone, with only minimal contact with others in their cult, trusting in their own justice and the guidance of Bahamut to tell them when they need to make a move to stop someone who is abusing their power.
+
+### Platinum Knights
+
+The largest group of Bahamut worshippers, the Platinum Knights are an interstellar organization that is dedicated to righting wrongs and triumphing over evil. They operate from various fortress monasteries that float in remote, highly-secure places away from civilization. The most common locations are the darkest depths of the astral sea and around gas giants at the edges of Crystal Spheres. They are an almost legendary force of some of the greatest warriors to ever live.
+
+Each member of the Platinum Knights undergoes a gruelling and torturous selection process, and even once inducted, their harsh training regime is without equal. In battle, they move as an army of silver ghosts, surrounded by awe and equipped to the teeth to deal with the worst foes the Wheel has to offer. Their greatest foes, who they are trained to prioritize in combat above all else, are the minions of Tiamat.
+
+Much of the history of the Platinum Knights remains in mystery and secrecy or has been purposefully removed from archives. However, according to legend, they were founded during the final days of Tiamat's betrayal. Bahamut foresaw that Tiamat's minions would scatter through the Crystal Spheres, through all time and space, and that it would take more work than he could personally see finished. The Platinum Knights were founded to protect the Wheel against the machinations of Bahamut's greatest foe.
+
+### Morality: Bahamut
+
+| Rating | Sin                                                    |
+| ------ | ------------------------------------------------------ |
+| 10     | Not treating your subordinates appropriately.          |
+| 9      | Not treating your superior with respect.               |
+| 8      | Refusing to depose an unfit or corrupt ruler.          |
+| 7      | Assisting unknowingly with the resurrection of Tiamat. |
+| 6      | Taking orders from an inferior.                        |
+| 5      | Abusing power for personal gain.                       |
+| 4      | Refusing to take charge when offered the opportunity.  |
+| 3      | Taking orders from an agent of Chaos.                  |
+| 2      | Breaking your word of honor.                           |
+| 1      | Assisting willingly in the resurrection of Tiamat.     |
+
+---
+
+## Moradin
+
+Mostly worshipped by Squats, Moradin is a god who ultimately only wants to make sure his followers leave an indelible mark on the Wheel. His followers have created grand works of all kinds, from opera to business to huge fortresses or works of art. The thought of destroying someone else's legacy fills him with disgust and rage, and he won't accept a follower who doesn't respect their family and ancestors.
+
+### Ancestor Cults
+
+One of Moradin's most important teachings is to respect and honor one's ancestors. Many, especially squats, interpret this as a directive to engage in ancestor worship. They set up household shrines to their honored dead, every family holding their own traditions and holidays as sacred. With most Ancestor Cults, Moradin is considered the greatest and oldest ancestor, a member of the family in practice if not fact.
+
+These cults are extremely common in squat societies, but are somewhat rare outside of them. Most of the short-lived races simply don't have enough respect for the past or for tradition to engage in this kind of worship. And the longer lived ones, especially elves and eldarin, have known their ancestors too well to think about worshipping them.
+
+There is occasionally infighting between these cults, especially when an old feud between two ancestors resurfaces in their modern descendants. The desire to respect elders and ancestors sometimes turns to hating the same things they hated, making the same enemies they made. It becomes a kind of self-perpetuating cycle of violence in some cases.
+
+### The Stonecutters
+
+Among the most lasting things that a person can leave behind is architecture. Stonework does more than just outlive people, it outlives entire civilizations. A well-built structure can last thousands of years even without upkeep, leaving behind a record that clearly states that someone was there, that they lived and died, that they were creators and could shape the world with their hands.
+
+The oldest and greatest of these architects pay homage to Moradin. He is a god that appreciates the beauty that exists in a world that has been made, who blesses those who create things that will outlast them. Somewhere between a guild and a true cult, the Stonecutters are an ancient brotherhood of workers. They've been the ones to create most of the truly great buildings found among the stars. The mark of their cult, a compass and stonecutting tools crossed in the shape of a triangle, can be found on the cornerstone of dozens of buildings, many of them so old that the only record of their creation lies within the records of the Stonecutters themselves.
+
+### Morality: Moradin
+
+| Rating | Sin                                                        |
+| ------ | ---------------------------------------------------------- |
+| 10     | Fail to spend at least an hour per day creating something. |
+| 9      | Showing great emotions.                                    |
+| 8      | Shaving.                                                   |
+| 7      | Forgiving a slight against you without retribution.        |
+| 6      | Not drinking at least one tankard of ale per day.          |
+| 5      | Doing harm to any member of your family.                   |
+| 4      | Allowing feelings to affect your work.                     |
+| 3      | Telling a deliberate lie.                                  |
+| 2      | Failing to show respect for your elders and ancestors.     |
+| 1      | Desecrating the legacy of your ancestors.                  |
+
+---
+
+## Pelor
+
+If there is any god that anyone can admit is a nice guy, it's Pelor. Being a nice guy is more than just his thing, he might as well define it. Pelor wants everyone in the Wheel to be kind to each other, to show mercy to everyone, and to generally not be dicks. He's extremely popular as far as gods go, especially with the common folk. There are almost no places where his worship is forbidden, and his followers are some of the kindest people in the Wheel. Generally.
+
+### The Children of the Sun
+
+One of the largest groups to worship Pelor is the scattered and varied group that calls themselves the Children of the Sun. They're probably one of the single largest and least powerful religious groups that exists. Despite the sheer number of followers - every spaceport seems infested with them - they hold essentially no political power and their doctorine of strict pacifism means that they are almost defenseless in the face of danger as well.
+
+The Children of the Sun preach a brotherhood between all living beings, a universal peace that exists beyond the petty wars, violence, and greed. They are almost all vegetarians, with few material possessions except those absolutely necessary to survive. Members of the cult donate their money to worthy causes, and especially towards sending other cult members on missionary trips to the far corners of the Wheel.
+
+Oddly, despite the fact that they are almost universally derided as insane or foolish, the cult continues to grow. They attract people who have become disillusioned with the current state of the Wheel and are seeking some kind of release or change from the seemingly endless cycles of pain and death. Most cult members are genuinely nice people, and anyone who can't stand being around happy people all the time typically won't last long as a member.
+
+### The Solar Skimmers
+
+In stark contrast to the Children of the Sun, the Solar Skimmers are a group with a lot of money and power. They have the same ideals of nonviolence and peace as the Children of the Sun, but from there the comparisons fall away.
+
+The Solar Skimmers are people, typically very rich people, who live at the very edge of life and death. The average member is a part of a very elite group - one of the rich few who can afford to undertake the dangerous sport of solar skimming.
+
+The sport itself is quite simple - to pilot a ship as close as possible to a sun for the greatest amount of time. Almost every star in the Wheel has been skimmed at least once, and Solar Skimmers gain fame by beating old records or using primitive equipment as a boast. Their proximity and devotion to the suns they skim make them naturally attracted to the devotion of Pelor in his aspect as a god of the Sun. Given the severe burns most members eventually suffer (assuming they don't die), Pelor's aspect of healing is a secondary, but useful, thing to pray for.
+
+### Morality: Pelor
+
+| Rating | Sin                                                                      |
+| ------ | ------------------------------------------------------------------------ |
+| 10     | Failing to treat an enemy with kindness and respect.                     |
+| 9      | Failing to spend at least an hour per day in sunlight when possible.     |
+| 8      | Refusing to help someone who genuinely needs it, even if there's danger. |
+| 7      | Allowing an innocent to become corrupted.                                |
+| 6      | Failing to treat a stranger with kindness and respect.                   |
+| 5      | Failing to do at least one good deed per day.                            |
+| 4      | Refusing to help someone who genuinely needs it, when there's no danger. |
+| 3      | Failing to treat a friend with kindness and respect.                     |
+| 2      | Allowing the forces of darkness to harm innocents.                       |
+| 1      | Torture, of anyone, for any reason.                                      |
+
+---
+
+## Omnissiah
+
+A god that is almost exclusively worshipped by tech-priests and others who work with technology, the Omnissiah is the god of technology and the animistic machine spirits that exist within every machine, no matter how simple or complicated. The Omnissiah is seen as a huge Wheel-spanning machine, with every worshipper and machine a cog in its grand design. The worshippers of the Omnissiah treat mechanisms like people (better than people in most cases) and seek to find purpose and efficiency in their own lives.
+
+### Tech-Priests
+
+There is a group that almost exclusively worships the Omnissiah - tech-priests. As the god of machines and industry, there are few others who tech-priests would decide to devote themselves to. The tech-priests worship technology as a whole, with every machine more complicated than a screwdriver having its own animating spirit.
+
+Elaborate rituals have been developed by the tech-priests to appease these spirits. Every use of a machine must be preceeded with the correct prayers and chants or else they are doomed to fail because of the displeasure of the machine spirit. Blessed oil and incense must be used to quell angered or insulted machine spirits. Truly, their tech support is dubious at best, but their rituals and incantations seem to work, even when more advanced or scientific methods would fail. Many suspect that they're not nearly as in awe or ignorant as they seem, and that they are simply preserving a sort of mystery around their actions to cow common folk.
+
+### Transhumanists
+
+Another cult devoted to the Omnissiah, transhumanists seek the perfect melding between man and machine. They, almost fetishistically, replace their bodies with machine piece by piece. Just to get into the cult, one must have at least one prosthetic limb. Many members cut off their own arms or legs to replace them with machines.
+
+The transhumanists horde advanced research and machines, much like the tech-priests do, but with one key difference. Where the tech-priests look on these dangerous machines as objects of worship, transhumanists see them simply as tools, to be used or taken apart or reproposed as needed. They've caused an almost endless amount of trouble with their meddling with technology they don't fully understand, but they've also advanced knowledge and gotten some almost-impossible things done.
+
+Transhumanists seek to improve themselves by any means necessary. They'll use bionics, drugs, magic. They believe that ultimately, the body is just another machine. One that is still poorly understood, but no less capable of being upgraded than anything else.
+
+### Morality: Omnissiah
+
+| Rating | Sin                                                    |
+| ------ | ------------------------------------------------------ |
+| 10     | Speaking in a language other than Binary.              |
+| 9      | Destroying any technology.                             |
+| 8      | Showing any emotions.                                  |
+| 7      | Failing to try to understand a new technology.         |
+| 6      | Accidentally damaging ancient or advanced technology.  |
+| 5      | Failing to show respect to a machine when using it.    |
+| 4      | Allowing emotions to override logic.                   |
+| 3      | Having bionics replaced with flesh.                    |
+| 2      | Choosing the flesh over the perfection of the machine. |
+| 1      | Willfully destroying ancient or advanced technology.   |
+
+---
+
+## Unaligned
+
+There are some people that just refuse to pick sides. They might not believe the gods are worthy of worship, they might have been abandoned at their hour of need, or they might even think the gods don't exist at all and are just smoke and mirrors. The unaligned don't enjoy the protections and power that can come from worship of the gods, but at the same time they are largely able to escape their wrath through the simple method of not being noticed.
+
+### The Uninterested
+
+It's rare to find people who are fanatically devoted to the ideals of the unaligned. The name itself says quite a bit - the unaligned are almost all people who simply don't care about the whims of distant gods. The majority of people in the Wheel don't have strong enough devotion to any particular cause or god to really hold an alignment, and so they end up as one of the unaligned not because they hate the gods, but just because they don't care.
+
+Because it's a bunch of people who don't care and have no real relationship with each other, those who fall into this group are often forgotten entirely when thinking about religion or the gods, despite the fact that they outnumber the faithful. The uninterested are used as a tool by those who know how to use them, especially at playing numbers games with statistics or the press.
+
+The uninterested have a surprising amount of power, if only because great efforts are made to try to convert them to the worship of one god or another. Huge amounts of effort and manpower are used to try to change the minds of a few, and while they might only be seen as prizes to be won, they're a prize that gods themselves fight over.
+
+### Militant Atheists
+
+In great contrast to the uninterested masses of the unaligned are the few extremely devoted atheists. Some don't believe in the gods at all and call the religions and faiths of the Wheel merely charlatans and sorcerers wielding the well-documented powers of the Warp rather than any godly or divine source. At best they call the faithful deluded and foolish, tricked by daemons and spirits of the warp. At worst, they firebomb churches and try to remove the faithful from the Wheel through force.
+
+Militant Atheists hate the gods. Some were formerly among the members of one church or another, others have always been apart from the gods, but all of them want to see the existing religious orders to fall. Some seek to drive them out of business by converting their existing flock over to the banner of pure reason. Others are taking the quick and easy path, made ever quicker and easier as military hardware improves.
+
+There are a number of prominent groups devoted to Militant Atheism, which arrange debates between their members and church leaders, publish books on the evils that have been done in the name of the gods, and organizing protests against abusive churches.
+
+### Morality: Unaligned
+
+| Rating | Sin                                                            |
+| ------ | -------------------------------------------------------------- |
+| 10     | Showing respect for the worship of any god.                    |
+| 9      | Failing to help someone who is in genuine need.                |
+| 8      | Not making an attempt to convert someone to atheism.           |
+| 7      | Taking orders from a religious authority.                      |
+| 6      | Hurting someone for no reason.                                 |
+| 5      | Discriminating for or against someone based on their religion. |
+| 4      | Pretending to be a religious person.                           |
+| 3      | Killing for no reason.                                         |
+| 2      | Participating in a religious ceremony.                         |
+| 1      | Prayer.                                                        |
+
+---
+
+## Raven Queen
+
+The Raven Queen is the goddess of death. Not of decay or slaughter or war, but the grim reaper herself, implacable and precise. She is a rather humorless goddess. She doesn't revel in death. She doesn't even seem to enjoy it. Death isn't something to fetishize or seek out, it's just part of life. The last part. It must come at exactly the right time, and those who try to delay their deaths forever or deny them entirely are sinners in her eyes, blights on the natural cycle.
+
+### Cannibals
+
+The symbol of the Raven Queen is a Raven (naturally), and if there's anything Ravens are known for it's being carrion creatures. So some try to emulate them rather directly. That is, they believe that the best way to respect the dead is to ritually consume them, or at least some part of them. They're a morbid people, and most consider them at least a little unstable. There are very few races where eating the corpse of a sentient being is considered acceptable behavior, so most in the Raven Queen's cannibal cults keep this aspect of their devotion very private.
+
+While most picture some sort of terrible slaughterhouse, human sacrifice, and worse when thinking about the cannibal cults, the truth is that there is very little actual cannibalism. To most it is simply a different form of burial. Instead of being put in the ground, burned into ashes, shot into space, or whatever else is commonly done in the area, the cults eat their dead. Commonly, at least a portion of the body is eaten raw.
+
+### Undead Hunters
+
+The Raven Queen, as the goddess of death, is often associated with the undead. Vampires. Skeletons. Zombies. She hates that shit. Even if they aren't sentient creatures trying to cheat death, they are at the very least a corpse that is being abused and misused by some damn necromancer. The Raven Queen really hates Necromancers. At least the kind that go around animating corpses.
+
+Hunting down and destroying the undead is a sacred hunt for the devoted of the Raven Queen. They equip themselves with ritual hunting gear and go out to fight against the forces of undeath. They're obviously uncommon in areas that have few or no undead, and they rarely stay long in places like that. There are always darker parts of the Wheel to find, and they naturally find themselves drawn to those haunted places to find and eliminate the enemies of the Raven Queen.
+
+When there's a zombie plague, a coven of vampires, or an evil necromancer on the loose, the Undead Hunters are heroes to the people, selflessly going out to do a dirty job. Unfortunately, when there isn't a pressing threat looming over people, they're often seen as survivalist nutjobs, psychopaths, or worse, preparing for a disaster that seems impossibly far away. Most of the truly devoted found their faith in the midst of a crisis, devoting themselves to the Raven Queen for her protection.
+
+### Morality: Raven Queen
+
+| Rating | Sin                                                  |
+| ------ | ---------------------------------------------------- |
+| 10     | Trying to avoid your own death when it is your time. |
+| 9      | Healing anyone's wounds.                             |
+| 8      | Not attempting to destroy an undead creature.        |
+| 7      | Bringing someone back from the dead.                 |
+| 6      | Killing a carrion-eating animal.                     |
+| 5      | Unnecessary desecration of a corpse.                 |
+| 4      | Killing someone before their time.                   |
+| 3      | Saving someone when it is their time.                |
+| 2      | Not treating the dead with respect.                  |
+| 1      | Creating an undead creature.                         |
+
+---
+
+## Vectron
+
+Undoubtably the greatest of all gods, with all of the powers. He is just so big and awesome and strong, it's really hard to say anything too specific or exact about him. That's the story and I'm sticking to it. If you really must keep asking more questions, well... Vectron isn't the god of anything in particular. In fact, he'll accept worship from anyone for any reason in any way, just as long as it's directed towards him. There are all sorts of crazy rumors that Vectron isn't real at all, but that's clearly insane. Vectron must be real. Nine out of ten doctors agree that Vectron is more likely real than fake!
+
+### The Third Reformation of the United Vectron Church
+
+One of the most successful churches of Vectron, the United Vectron Church has still been wracked with schisms ever since it was founded as people disagreed on the best ways to worship Vectron and split off. Over time, though, as part of Vectron's teachings, the worshippers gathered back together as the faithful of Vectron are meant to do. They've gone from one church to a dozen and back to one, and it shows.
+
+The United Vectron Church has little in the way of truly formal traditions. They have frequent services - almost every day - and the only real structure to it is that people sign up to speak from the pulpit. There's a waiting list almost a month long at all times, as everyone seeks to spread the word of Vectron in their own way or just rant a bit about things they like or hate. It's as much a source of entertainment as it as a ceremony, and the almost-continuous litanies are broadcasted from the main chapel across much of the wheel, and even for those who don't worship Vectron it's a fairly popular channel.
+
+### Vectron's Witnesses
+
+Less popular than the United Vectron church are Vectron's Witnesses. They probably have a large following, in truth, but the exact numbers are hard to find. You see, if there's anyone who really puts the cult in cults, it's Vectron's Witnesses. They're said to engage in brainwashing, extortion, and worse. And that's just what the public knows about.
+
+Members of Vectron's Witnesses are expected to tithe a large portion of their earnings to the church. To go on missionary trips across the stars that last so long many never see their families again. To only associate with those that are in the church. To convert people at every opportunity. The more extreme sects will lock people away on 'retreats' that are little more than prison planets where the new recruits are forced to labor while constantly reminded that Vectron is really big and great and should be worshipped all the time!
+
+In many places, Vectron's Witnesses are not welcome, even if other branches of Vectron's church are. Even among the faithful, they have a bad reputation, though in according with Vectron's teachings, they are at least tolerated. That they poach from other churches with false promises is something that occasionally brings them to blows with other faiths, and when one group of Vectron's worshippers are embroiled in a war, the rest are forced to soon follow.
+
+### Morality: Vectron
+
+| Rating | Sin                                                                   |
+| ------ | --------------------------------------------------------------------- |
+| 10     | Failing to praise Vectron by name in every conversation.              |
+| 9      | Not carrying a book of Vectron's teachings.                           |
+| 8      | Denying the credibility of any miracle attributed to Vectron.         |
+| 7      | Attempting to discredit anyone who is acting as a prophet of Vectron. |
+| 6      | Failing to praise Vectron by name once an hour, except when sleeping. |
+| 5      | Failing to prominently display one of Vectron's holy symbols.         |
+| 4      | Making war on other followers of Vectron.                             |
+| 3      | Failing to praise Vectron by name once a day.                         |
+| 2      | Not adding to the scriptures of Vectron with your deeds.              |
+| 1      | Not accepting Vectron as your ultimate lord and savior.               |
+
+---
+
+## Corellon
+
+More than anything else, Corellon is the god of the Elves and Eldarin. That his teachings clearly state that they are the most perfect beings in the Wheel makes him less than popular outside of that particular niche. He's a snob, and nothing is good enough for him unless he's done it himself, in which case it is, of course, perfect. His followers are the type of people to rewrite history to favor him, turning defeats into victories in their texts. The universe frequently disagrees with Corellon's views on his own place in the grand scheme of things, but, simply put, the Elves and the Eldarin still support him. He does, after all, teach that they're also great and amazing, and that's the sort of thing you need to preach to get those people to pray to you.
+
+### Elvpax
+
+The cult of Elvpax is something closer to a bunch of terrorist thugs than a religion. They've killed a lot of people in the name of Corellon, for 'crimes against elves and nature'. Their main point of worship is, simply put, Elves First. And everyone else comes last. Wherever there is a conflict of interest between Corellon's chosen people and the rest of the wheel, Elvpax is there to make sure that molehills are made into mountains.
+
+A member of Elvpax is almost certainly going to be either an Eldarin or, more commonly, an Elf. They only very rarely include other races, usually only so that they can have a 'minority' member who can try and convince his benighted and foolish people about how Elvpax is right and they are wrong and so they need to give in to Elvpax's increasingly large demands. And it's no exaggeration to say that Elvpax's demands only grow. They do not sit down to a negotiation table except to accept unconditional surrender from their foes. Anything less than that is simply impossible, and even if they're allowed to win small fights, they'll push for reforms and laws that clearly favor their interests and discriminate against others. If they were any more dangerous, someone would have taken them out by now. For now, though, they're merely extremely annoying fascists.
+
+### Elfaboos
+
+There are some people who are simply not satisfied with being a human or an ork or a gnome or whatever they are. They want to be an Elf, or think that Eldarin culture is so much better than their own, or otherwise idolize the pointy-eared bastards. Most are little more than fanboys, buying 'real authentic Elven blades' from corner stores, watching Eldarin shows, and occasionally showing enough self-motivation to learn the language themselves.
+
+Occasionally, one of these Elfaboos actually makes good, and manages to make their home on an Eldarin Craftworld or an Elven world. They tend to be shunned by the natives (as all outsiders are), but, well, Corellon's chosen people are not known for their lack of vanity. As a constant source of worship, these Elfaboos actually do sometimes find themselves accepted, if a bit mockingly and grudgingly, by the Elves and Eldarin around them as someone who 'means well' and 'shows the proper amount of respect'. Anyone who thinks they can get an Eldarin wife by acting like that is, of course, totally delusional.
+
+### Morality: Corellon
+
+| Rating | Sin                                                                |
+| ------ | ------------------------------------------------------------------ |
+| 10     | Not showing off with every action when people are watching.        |
+| 9      | Not making a challenge to someone boasting of their skill.         |
+| 8      | Eating meat from an animal you didn't personally kill.             |
+| 7      | Refusing a challenge of any kind.                                  |
+| 6      | Showing humility except to a superior.                             |
+| 5      | Destroying trees or wilderness for no reason.                      |
+| 4      | Not shaving.                                                       |
+| 3      | Refusing a challenge in something you're skilled at.               |
+| 2      | Not respecting Elven culture.                                      |
+| 1      | Failing at any task when you have put your reputation on the line. |
+
+---
+
+## Luna
+
+The Goddess of being a fickle bitch. Or at least that's what some people seem to think.
+
+Luna is definitely fickle, yes, and it can be very hard to tell exactly what she wants. She can be as savage as any wild animal, as loving as the kindest flower, and is the true face that people have behind the masks and restraints they have to wear to live in civilization. She is a goddess of change and of independence, who wants her followers to be able to look after themselves. She can seem uncaring at times simply because she doesn't want to interfere, to give someone the chance to take their destiny into their own hands.
+
+Luna loves her children, though. She's like a mother - a mother who wants her children to grow up to be the best they can be, and sometimes that means letting them get hurt.
+
+### Therians
+
+While werewolves are Luna's chosen people, able to change forms, survive, and adapt, they aren't the only ones who have a beast inside them. One of Luna's largest cults is a group of people who believe they have animal souls or spirits. These people are typically more in touch with the instincts that go along with being part of the natural world - or are at least more open to trying that sort of thing out. Werewolves aren't typically included as part of this cult, or if they are, only as leaders. Most werewolves are reluctant to get involved with members of this cult, simply because it's impossible for them to know if they're really respected or if they're just the object of someone's fetish.
+
+The Therians are a strange group of people, if only because they come from all walks of life. Some are big, tough mountain men, others are prissy halflings living lives of luxury. They're bound together by their shared experience of identifying more with animals than people. Luna, who asks people to tear down the bindings of civilization and to act like animals, is a natural subject of worship for them. They can use Luna and rituals devoted to her to explore their own feelings, meet other people who feel the same way, and otherwise try to improve their lot in life and feel like they belong somewhere.
+
+### Anarchists
+
+Civilization is like a disease, spreading over the stars, subjugating people, not letting them choose their own paths in life. Even the strongest-willed person can't get ahead in some places no matter how they try - that's simply how things are. There are only two options. You can run away from the terrible influence of the civilized world and wait for it to catch up to you, or you can act like a real hero and fight against it. It might not be a fight that people can win, but even making the attempt you can at least live like yourself for a little while.
+
+That's what the Anarchists believe. They seek to bring down civilization instead of denying it or running from it. They fight like cornered animals instead of trying to flee. They think that once the structures that trap people in the dregs and ruts of society are torn down, everyone will be equal, able to do what makes them happy. That a lot of people might be happier with that civilization in place isn't important. Those people simply don't know what's best for them, and they'll thank the Anarchists later after they blow it all up.
+
+### Morality: Luna
+
+| Rating | Sin                                                                      |
+| ------ | ------------------------------------------------------------------------ |
+| 10     | Eating anything you didn't personally kill.                              |
+| 9      | Shaving.                                                                 |
+| 8      | Destroying trees or wilderness for no reason.                            |
+| 7      | Killing a wild animal for no reason.                                     |
+| 6      | Going a full month without attending a ceremony devoted to Luna.         |
+| 5      | Refusing to change when it is needed.                                    |
+| 4      | Killing a werewolf except in self defense or as part of a hunt.          |
+| 3      | Trying to break a wild animal.                                           |
+| 2      | Failing to respect nature.                                               |
+| 1      | Spending a full month without going into the wild, except if restrained. |
+
+---
+
+## Acererak
+
+<!-- EDITOR: Book 2 original spelling was "Acerath" throughout this section. Standardized to "Acererak" per Book 1 (Tier 1 source priority). See open-questions.md Entry 45. -->
+
+A mortal made good, Acererak was once little more than a mortal wizard - a frail one at that, if rumors are to be trusted. He lived a long and difficult life, sacrificing everything piece by piece to become a god. He lost his body, his face, even his name. All that was left of him, in the end, was a skull that knew all of the darkest secrets of the Wheel. Including the true secrets to immortality and godhood. People worshipped him as the being that knew the answer to every question, even if he rarely revealed anything. Acererak has never been a particularly popular god, as his most devoted followers are some of the most secretive people in the Wheel.
+
+### Confessionals
+
+The Confessionals are one of the few services that a cult of Acererak provides to the public. They're one of the few public faces of his worship, in fact, because they deal almost exclusively with people from outside Acererak's faithful. Confessionals are not a place to confess sins, like in some churches. Well, that's not exactly accurate. Sins are perfectly fine to confess. But what they're really after is secrets. One of the central tenets of Acererak's faith is to get your hands on knowledge. Some might seek it from books or histories, but there is also the very obvious source of secrets in the people of the Wheel.
+
+Confessionals are a place for people to turn their secrets into cash. They simply go to the temple, are taken to a private room, and tell their story. The amount they get depends on just how valuable the secret they have is. Sometimes they walk out with little more than a cookie and a cup of juice, other times they get enough to pay off their debts and retire. And the best part is, the secret is almost certainly safe. The only person who keeps a secret better than a worshipper of Acererak is a dead man, and dead men don't pay as well. Just don't ask what happens to liars. It's best not to think about where they disappeared to.
+
+### Librarians
+
+In a universe full of war and strife, knowledge is a fragile thing, easily lost or destroyed. An entire history can be erased in the blink of an eye as libraries are burned or shelled from afar. Worse, it's true that the victor writes the histories. The truth can easily be buried beneath lies. Atrocities can be erased from the records. Heroes can be cast as the vilest villains and vice-versa. And both sides in a war do this. With propaganda and conflicting reports coming from both sides, there's only one group that tries to protect the real history.
+
+Acererak's Librarians protect the truth from anyone attempting to change it. They make backups of important data, scan and copy tomes, and send it all to a secret library hidden somewhere no one will ever look for it. Even the Librarians themselves don't know its location. Only the most elite of the elite have seen it, and it's said that Acererak himself looks over it to protect it from even the other gods themselves. Outsiders have never been allowed into the Library, and they've managed to infiltrate it on only a handful of occasions in the last thousand years.
+
+### Morality: Acererak
+
+| Rating | Sin                                                          |
+| ------ | ------------------------------------------------------------ |
+| 10     | Revealing your face to anyone.                               |
+| 9      | Failing to pursue new knowledge for at least one hour a day. |
+| 8      | Telling another a secret that would harm them.               |
+| 7      | Telling anyone your true name.                               |
+| 6      | Telling anyone a secret that would not harm you.             |
+| 5      | Refusing to gain new knowledge when it is offered.           |
+| 4      | Revealing your alignment.                                    |
+| 3      | Not trying to learn someone's secrets.                       |
+| 2      | Telling another a secret that could harm you.                |
+| 1      | Destroying unique knowledge.                                 |
+
+---
+
+## Lolth
+
+Lolth is the god of the Dark Eldarin. She was merely a daemon. Granted, one of extraordinary power, but still just a daemon. She achieved godhood by protecting the Dark Eldarin and creating a new home for them in the Warp. The sheer gall Lolth showed, and the devotion she demanded from those she saved, so increased her standing in the warp that no one could deny she was anything less than a god. She certainly isn't going to restrain herself and ally with the forces of order, and after what she did to save the Dark Eldarin, she isn't going to find a welcome in the Ruinous Powers either. Lolth stands alone, at least for now.
+
+### Rabid Feminists
+
+One thing Lolth really likes is when women are put in charge. Of everything. She personally has a distaste for men, and is definitely petty enough to enforce this on all her followers. Some really come to embrace this ideal, and not only Dark Eldarin. There are countless groups across the Wheel that fight for female superiority, with Lolth as their patron.
+
+Something that really sets Lolth-backed group apart from other feminist groups is that it's impossible to call them anything other than feminazis. They are not there for equality or anything like that. They're there to stop down men and put women in charge of everything. Some would get rid of every male in the Wheel if they could. It should go without saying that the vast majority of people who fall into these cults are female. There are very few men who are submissive and masochistic enough to stick with a cult where men are treated as dirt.
+
+The female-superiority cults of Lolth tend to keep their faith secret, something that is only ever discussed among themselves. Having it known that they worship Lolth could compromise their political power in the many places that look down on her worship. That is, the places that have been raided by Dark Eldarin. That is, pretty much everywhere.
+
+### Black Widows
+
+If there's anything Lolth's story teaches, it's that what you really need to achieve your goals is to take massive risks, never be afraid to be sheer bloody-mindedly evil about things, and that people only exist to be used. The Black Widows are not exactly a widespread cult, if only because they never gather in large groups. Black Widows always work alone... at least for a while. They are infiltrators and assassins, working only for themselves. There are always stories going around about Black Widows, but few think they actually exist.
+
+The targets of the Black Widows depend on exactly what they want to achieve. Most are only after power or money. The most common tactic for them is to marry a rich or powerful target, then eliminate them once they've achieved what they desire from them. They might change their names and do this a dozen times on a dozen worlds, killing their way to the top. Lolth likes that kind of ambition. Black Widows who are particularly successful might find themselves invited to Lolth's inner court to meet the Goddess herself. An invitation that is impossible to refuse.
+
+### Morality: Lolth
+
+| Rating | Sin                                                           |
+| ------ | ------------------------------------------------------------- |
+| 10     | Refusing to cause harm to a friend when it would benefit you. |
+| 9      | Showing mercy to an enemy.                                    |
+| 8      | Failing to make a sacrifice to Lolth at least once a month.   |
+| 7      | Refusing to kill when it would benefit you.                   |
+| 6      | Showing respect to a male.                                    |
+| 5      | Showing fear in front of an inferior.                         |
+| 4      | Refusing an opportunity to harm an enemy.                     |
+| 3      | Wearing concealing clothing except in extreme weather.        |
+| 2      | Not showing respect to a female.                              |
+| 1      | Killing a spider of any kind.                                 |
+
+---

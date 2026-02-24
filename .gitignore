@@ -1,0 +1,41 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+*.egg
+.pytest_cache/
+.ruff_cache/
+
+# Node / Astro
+node_modules/
+.astro/
+.vercel/
+
+# Astro build output
+dist/
+
+# Generated content (prebuild copies these from source directories)
+src/content/docs/rules/
+src/content/docs/books/
+public/data/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Source PDFs (copyrighted, not redistributable)
+source-pdfs/

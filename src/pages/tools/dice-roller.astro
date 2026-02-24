@@ -1,0 +1,620 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+---
+
+<ToolLayout title="Dice Roller" description="Roll XkY dice pools with exploding d10s, overflow compression, and automatic Raise/Check calculation.">
+  <main class="roller-layout">
+    <!-- Main Roller -->
+    <section class="roller-main">
+      <div class="panel roller-panel">
+        <h2>Roll Dice</h2>
+
+        <div class="dice-controls">
+          <div class="dice-input-group">
+            <label>Roll</label>
+            <div class="dice-notation">
+              <input type="number" id="dice-rolled" min="1" max="10" value="5" class="dice-input" />
+              <span class="dice-k">k</span>
+              <input type="number" id="dice-kept" min="1" max="10" value="3" class="dice-input" />
+              <span class="dice-k">+</span>
+              <input type="number" id="dice-modifier" min="-20" max="20" value="0" class="dice-input mod-input" />
+            </div>
+          </div>
+
+          <div class="dice-input-group">
+            <label>Target Number</label>
+            <input type="number" id="dice-tn" min="5" max="50" value="15" class="dice-input tn-input" />
+          </div>
+
+          <button id="btn-roll" class="btn btn-accent btn-roll">🎲 Roll!</button>
+        </div>
+
+        <!-- Quick Presets -->
+        <div class="presets">
+          <h4>Quick Rolls</h4>
+          <div class="preset-grid">
+            <button class="preset-btn" data-rolled="3" data-kept="2">3k2</button>
+            <button class="preset-btn" data-rolled="4" data-kept="3">4k3</button>
+            <button class="preset-btn" data-rolled="5" data-kept="3">5k3</button>
+            <button class="preset-btn" data-rolled="6" data-kept="3">6k3</button>
+            <button class="preset-btn" data-rolled="7" data-kept="4">7k4</button>
+            <button class="preset-btn" data-rolled="8" data-kept="4">8k4</button>
+            <button class="preset-btn" data-rolled="9" data-kept="5">9k5</button>
+            <button class="preset-btn" data-rolled="10" data-kept="5">10k5</button>
+          </div>
+        </div>
+
+        <!-- Result Display -->
+        <div class="result-area" id="result-area" style="display: none">
+          <div class="result-dice" id="result-dice"></div>
+          <div class="result-summary">
+            <div class="result-total-wrapper">
+              <span class="result-label">Total</span>
+              <span class="result-total" id="result-total">0</span>
+              <span class="result-modifier" id="result-modifier" style="display: none"></span>
+            </div>
+            <div class="result-vs">
+              <span>vs TN</span>
+              <span id="result-tn">15</span>
+            </div>
+            <div class="result-outcome" id="result-outcome">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TN Reference -->
+      <div class="panel reference-panel">
+        <h3>Target Number Reference</h3>
+        <div class="tn-table">
+          <div class="tn-row"><span class="tn-diff">Trivial</span><span class="tn-value">5</span></div>
+          <div class="tn-row"><span class="tn-diff">Easy</span><span class="tn-value">10</span></div>
+          <div class="tn-row"><span class="tn-diff">Average</span><span class="tn-value">15</span></div>
+          <div class="tn-row"><span class="tn-diff">Challenging</span><span class="tn-value">20</span></div>
+          <div class="tn-row"><span class="tn-diff">Hard</span><span class="tn-value">25</span></div>
+          <div class="tn-row"><span class="tn-diff">Very Hard</span><span class="tn-value">30</span></div>
+          <div class="tn-row"><span class="tn-diff">Legendary</span><span class="tn-value">35+</span></div>
+        </div>
+        <p class="tn-note">
+          <strong>Raises:</strong> Every 5 above TN = 1 Raise<br />
+          <strong>Checks:</strong> Every 5 below TN = 1 Check
+        </p>
+      </div>
+    </section>
+
+    <!-- History Sidebar -->
+    <aside class="history-sidebar">
+      <div class="panel history-panel">
+        <div class="history-header">
+          <h3>Roll History</h3>
+          <button id="btn-clear" class="btn btn-sm btn-secondary">Clear</button>
+        </div>
+        <div class="roll-history" id="roll-history">
+          <p class="empty-state">No rolls yet. Press Enter or click Roll!</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    import { roll, calculateOutcome } from "@/lib/dtd/dice.js";
+
+    // ========================================================================
+    // State
+    // ========================================================================
+
+    const state = { history: [], maxHistory: 50 };
+    let elements = {};
+
+    // ========================================================================
+    // Init
+    // ========================================================================
+
+    function init() {
+      elements = {
+        diceRolled: document.getElementById("dice-rolled"),
+        diceKept: document.getElementById("dice-kept"),
+        diceModifier: document.getElementById("dice-modifier"),
+        diceTN: document.getElementById("dice-tn"),
+        btnRoll: document.getElementById("btn-roll"),
+        btnClear: document.getElementById("btn-clear"),
+        resultArea: document.getElementById("result-area"),
+        resultDice: document.getElementById("result-dice"),
+        resultTotal: document.getElementById("result-total"),
+        resultModifier: document.getElementById("result-modifier"),
+        resultTN: document.getElementById("result-tn"),
+        resultOutcome: document.getElementById("result-outcome"),
+        rollHistory: document.getElementById("roll-history"),
+      };
+
+      elements.btnRoll.addEventListener("click", executeRoll);
+      elements.btnClear.addEventListener("click", clearHistory);
+      document.addEventListener("keydown", handleKeydown);
+
+      document.querySelectorAll(".preset-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          elements.diceRolled.value = btn.dataset.rolled;
+          elements.diceKept.value = btn.dataset.kept;
+          executeRoll();
+        });
+      });
+
+      elements.diceRolled.addEventListener("change", () => {
+        const rolled = parseInt(elements.diceRolled.value) || 1;
+        const kept = parseInt(elements.diceKept.value) || 1;
+        if (kept > rolled) elements.diceKept.value = rolled;
+      });
+
+      loadHistory();
+      elements.diceRolled.focus();
+    }
+
+    function handleKeydown(e) {
+      if (e.key === "Enter" && e.target.tagName !== "BUTTON") {
+        e.preventDefault();
+        executeRoll();
+      }
+      if (e.key === "Escape") {
+        elements.diceRolled.value = 5;
+        elements.diceKept.value = 3;
+        if (elements.diceModifier) elements.diceModifier.value = 0;
+        elements.diceTN.value = 15;
+        elements.diceRolled.focus();
+      }
+    }
+
+    // ========================================================================
+    // Rolling
+    // ========================================================================
+
+    function executeRoll() {
+      const numDice = Math.max(1, parseInt(elements.diceRolled.value) || 5);
+      const keepDice = Math.max(1, Math.min(numDice, parseInt(elements.diceKept.value) || 3));
+      const modifier = parseInt(elements.diceModifier?.value) || 0;
+      const tn = parseInt(elements.diceTN.value) || 15;
+
+      elements.diceRolled.value = numDice;
+      elements.diceKept.value = keepDice;
+
+      const result = roll(numDice, keepDice, modifier);
+      const outcome = calculateOutcome(result.total, tn);
+
+      displayResult(result, tn, outcome);
+      addToHistory(numDice, keepDice, modifier, tn, result, outcome);
+    }
+
+    // ========================================================================
+    // Display
+    // ========================================================================
+
+    function displayResult(result, tn, outcome) {
+      elements.resultArea.style.display = "block";
+      renderDice(result.allRolls, result.keptRolls);
+
+      if (result.modifier && result.modifier !== 0) {
+        elements.resultTotal.textContent = result.total;
+        if (elements.resultModifier) {
+          elements.resultModifier.textContent = `(${result.diceTotal}${result.modifier >= 0 ? "+" : ""}${result.modifier})`;
+          elements.resultModifier.style.display = "inline";
+        }
+      } else {
+        elements.resultTotal.textContent = result.total;
+        if (elements.resultModifier) elements.resultModifier.style.display = "none";
+      }
+      elements.resultTN.textContent = tn;
+      renderOutcome(outcome);
+
+      elements.resultArea.style.animation = "none";
+      elements.resultArea.offsetHeight;
+      elements.resultArea.style.animation = "slideIn 0.3s ease-out";
+    }
+
+    function renderDice(allRolls, keptRolls) {
+      const keptSet = new Set();
+      const keptCopy = [...keptRolls.map((d) => d.value)];
+      for (const keptVal of keptCopy) {
+        for (let i = 0; i < allRolls.length; i++) {
+          if (allRolls[i].value === keptVal && !keptSet.has(i)) {
+            keptSet.add(i);
+            break;
+          }
+        }
+      }
+
+      elements.resultDice.innerHTML = allRolls
+        .map((die, i) => {
+          const isKept = keptSet.has(i);
+          const classes = ["die"];
+          if (isKept) classes.push("kept");
+          if (die.exploded && isKept) classes.push("exploded");
+          if (!isKept) classes.push("dropped");
+          return `<div class="${classes.join(" ")}">${die.value}</div>`;
+        })
+        .join("");
+    }
+
+    function renderOutcome(outcome) {
+      let text = "";
+      let className = "";
+      if (outcome.success) {
+        if (outcome.raises > 0) {
+          text = `Success +${outcome.raises} Raise${outcome.raises > 1 ? "s" : ""}`;
+          className = "raises";
+        } else {
+          text = "Success";
+          className = "success";
+        }
+      } else {
+        text = outcome.checks > 0
+          ? `Failure (${outcome.checks} Check${outcome.checks > 1 ? "s" : ""})`
+          : "Failure";
+        className = "failure";
+      }
+      elements.resultOutcome.textContent = text;
+      elements.resultOutcome.className = "result-outcome " + className;
+    }
+
+    // ========================================================================
+    // History
+    // ========================================================================
+
+    function addToHistory(numDice, keepDice, modifier, tn, result, outcome) {
+      const modStr = modifier !== 0 ? (modifier > 0 ? `+${modifier}` : `${modifier}`) : "";
+      state.history.unshift({
+        notation: `${numDice}k${keepDice}${modStr}`,
+        num: numDice,
+        keep: keepDice,
+        modifier,
+        tn,
+        total: result.total,
+        success: outcome.success,
+        raises: outcome.raises,
+        checks: outcome.checks,
+        timestamp: Date.now(),
+      });
+      if (state.history.length > state.maxHistory) state.history.pop();
+      saveHistory();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      if (state.history.length === 0) {
+        elements.rollHistory.innerHTML = '<p class="empty-state">No rolls yet. Press Enter or click Roll!</p>';
+        return;
+      }
+
+      elements.rollHistory.innerHTML = state.history
+        .map((entry, i) => {
+          const outcomeClass = entry.success ? "success" : "failure";
+          const outcomeText = entry.success
+            ? entry.raises > 0 ? `+${entry.raises}R` : "Pass"
+            : entry.checks > 0 ? `${entry.checks}C` : "Fail";
+          const time = formatTime(entry.timestamp);
+          return `
+            <div class="history-entry ${outcomeClass}" data-index="${i}">
+              <div class="history-roll">${entry.notation} vs TN ${entry.tn}</div>
+              <div class="history-result">
+                <span class="history-total">${entry.total}</span>
+                <span class="history-outcome ${outcomeClass}">${outcomeText}</span>
+              </div>
+              <div class="history-time">${time}</div>
+            </div>`;
+        })
+        .join("");
+
+      // Event delegation for replay
+      elements.rollHistory.querySelectorAll(".history-entry").forEach((el) => {
+        el.addEventListener("click", () => replayRoll(parseInt(el.dataset.index)));
+      });
+    }
+
+    function formatTime(timestamp) {
+      const diff = Date.now() - timestamp;
+      if (diff < 60000) return "Just now";
+      if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+      if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+      return new Date(timestamp).toLocaleDateString();
+    }
+
+    function replayRoll(index) {
+      const entry = state.history[index];
+      if (!entry) return;
+      elements.diceRolled.value = entry.num;
+      elements.diceKept.value = entry.keep;
+      if (elements.diceModifier) elements.diceModifier.value = entry.modifier || 0;
+      elements.diceTN.value = entry.tn;
+      executeRoll();
+    }
+
+    function clearHistory() {
+      state.history = [];
+      saveHistory();
+      renderHistory();
+      elements.resultArea.style.display = "none";
+    }
+
+    function saveHistory() {
+      try {
+        localStorage.setItem("dtd-roll-history", JSON.stringify(state.history));
+      } catch (e) {
+        console.warn("Failed to save history:", e);
+      }
+    }
+
+    function loadHistory() {
+      try {
+        const saved = localStorage.getItem("dtd-roll-history");
+        if (saved) {
+          state.history = JSON.parse(saved);
+          renderHistory();
+        }
+      } catch (e) {
+        console.warn("Failed to load history:", e);
+      }
+    }
+
+    // Init on DOM ready
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+
+  <style>
+    /* Dice Roller Layout */
+    .roller-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+    }
+    @media (max-width: 900px) {
+      .roller-layout { grid-template-columns: 1fr; }
+      .history-sidebar { order: -1; }
+    }
+
+    .roller-panel { padding: var(--space-xl); }
+    .roller-panel h2 {
+      text-align: center;
+      margin: 0 0 var(--space-lg);
+      color: var(--accent);
+    }
+
+    /* Dice Controls */
+    .dice-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: var(--space-lg);
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+    }
+    .dice-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .dice-input-group label {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .dice-notation {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--bg);
+      padding: var(--space-sm);
+      border-radius: var(--radius);
+      border: 1px solid var(--surface-alt);
+    }
+    .dice-input {
+      width: 60px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: var(--surface);
+      border: 1px solid var(--surface-alt);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      padding: var(--space-sm);
+    }
+    .dice-input:focus { outline: none; border-color: var(--accent); }
+    .dice-k {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .tn-input { width: 80px; }
+    .mod-input { width: 60px; }
+    .result-modifier {
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-left: var(--space-xs);
+    }
+    .btn-roll {
+      padding: var(--space-md) var(--space-xl);
+      font-size: 1.25rem;
+      height: fit-content;
+    }
+
+    /* Presets */
+    .presets { margin-bottom: var(--space-lg); text-align: center; }
+    .presets h4 {
+      color: var(--text-dim);
+      margin: 0 0 var(--space-sm);
+      font-weight: normal;
+    }
+    .preset-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      justify-content: center;
+    }
+    .preset-btn {
+      background: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: var(--space-xs) var(--space-md);
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .preset-btn:hover { background: var(--accent); color: var(--bg); }
+    .preset-btn:active { transform: scale(0.95); }
+
+    /* Result Area */
+    .result-area {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-dice {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      justify-content: center;
+      margin-bottom: var(--space-md);
+    }
+    .die {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: 2px solid var(--surface-alt);
+      position: relative;
+    }
+    .die.kept { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .die.exploded { border-color: var(--gold); animation: pulse 0.5s ease; }
+    .die.exploded::after {
+      content: "💥"; position: absolute; top: -8px; right: -8px; font-size: 0.8rem;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .die.dropped { opacity: 0.4; text-decoration: line-through; }
+
+    .result-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .result-total-wrapper { text-align: center; }
+    .result-label {
+      display: block;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .result-total { font-size: 3rem; font-weight: bold; color: var(--text); }
+    .result-vs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    .result-vs span:last-child { font-size: 1.5rem; color: var(--text); }
+    .result-outcome {
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .result-outcome.success { background: rgba(0, 200, 100, 0.2); color: #00c864; }
+    .result-outcome.failure { background: rgba(220, 50, 50, 0.2); color: #dc3232; }
+    .result-outcome.raises { background: rgba(255, 200, 0, 0.2); color: var(--gold); }
+
+    /* Reference Panel */
+    .reference-panel { margin-top: var(--space-lg); }
+    .reference-panel h3 {
+      text-align: center;
+      margin: 0 0 var(--space-md);
+      color: var(--text-dim);
+    }
+    .tn-table { display: grid; gap: var(--space-xs); }
+    .tn-row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+    }
+    .tn-diff { color: var(--text-dim); }
+    .tn-value { font-weight: bold; font-family: var(--font-mono); color: var(--accent); }
+    .tn-note {
+      margin-top: var(--space-md);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* History Sidebar */
+    .history-sidebar { align-self: start; position: sticky; top: var(--space-lg); }
+    .history-panel {
+      max-height: calc(100vh - 150px);
+      display: flex;
+      flex-direction: column;
+    }
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+    .history-header h3 { margin: 0; }
+    .roll-history {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .roll-history .empty-state {
+      text-align: center;
+      color: var(--text-dim);
+      padding: var(--space-lg);
+    }
+    .history-entry {
+      background: var(--bg);
+      padding: var(--space-sm);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--surface-alt);
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+    .history-entry:hover { border-left-color: var(--accent); }
+    .history-entry.success { border-left-color: #00c864; }
+    .history-entry.failure { border-left-color: #dc3232; }
+    .history-roll { font-family: var(--font-mono); color: var(--accent); font-weight: bold; }
+    .history-result {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--space-xs);
+    }
+    .history-total { font-size: 1.25rem; font-weight: bold; }
+    .history-outcome {
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .history-outcome.success { background: rgba(0, 200, 100, 0.2); color: #00c864; }
+    .history-outcome.failure { background: rgba(220, 50, 50, 0.2); color: #dc3232; }
+    .history-time { font-size: 0.7rem; color: var(--text-dim); margin-top: var(--space-xs); }
+  </style>
+</ToolLayout>

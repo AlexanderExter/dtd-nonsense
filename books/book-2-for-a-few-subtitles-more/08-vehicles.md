@@ -1,0 +1,1295 @@
+---
+title: "Chapter VIII: Vehicles"
+book: 2
+chapter: 8
+order: 8
+type: "chapter"
+---
+# Chapter VIII: Vehicles
+
+Dog-fighting with combat jets, racing customized cars in the most dangerous races in the Wheel, piloting giant metal titans into combat against entire armies. These are no less fantastic or heroic than any other part of the epic adventure that is life in the Great Wheel. This chapter presents detailed rules for stating out and controlling vehicles.
+
+## Vehicle Stats
+
+### Acceleration
+
+A vehicle's Acceleration (Acc) tells you how quickly it can accelerate and decelerate. A vehicle may, as part of a normal Maintain Control action, change its Momentum by up to its Acceleration stat.
+
+### Momentum
+
+While Acc tells you how quickly a vehicle can change its speed, Momentum (Mom) tells you how close to its top speed it's going. A vehicle's Momentum can range from 0 to 10. Rather than being a static stat, Momentum is a dynamic number that changes as a vehicle accelerates and decelerates. A vehicle's momentum also affects its Maneuver and its Static Defense.
+
+While a vehicle is completely still (Mom 0), it has a Static Defense of zero. Between Mom 1-5, it applies its Speed as a bonus on its Static Defense. At Mom 6-9, it applies twice its Speed. At Mom 10+, it can apply three times its Speed to its Static Defense.
+
+### Hit Points
+
+How much damage the vehicle can take before being destroyed. When a vehicle loses two or more Hit Points, it must also roll on the critical chart. If a vehicle loses more than two Hit Points in a single hit, the roll is made at +1 for every Hit Point lost beyond the second one.
+
+### Maneuver
+
+A vehicle's Maneuver (Man) is its modifier to Pilot or Drive Tests, and applies to its Static Defense. A vehicle's Maneuver is penalized by its current Momentum. In addition, vehicles with a base Maneuver of less than zero require Punch It tests in order to turn.
+
+### Size
+
+A Vehicle's size is its most important stat. A vehicle's base Hit Points, Equipment Slots, and Resilience are equal to its size. With Vehicles comes a slight revision to the Size rules — not changing how size works at all, but just how much size you need to represent a given item. Size can be broken down into six categories:
+
+- **Normal Size: 1–10** — Each point of size is about 0.5 meters.
+- **Large Vehicle Size: 11–20** — Each point of size is about 1 meter.
+- **Enormous Size: 21–30** — Each point of size is about 2 meters.
+- **Colossus Size: 31–40** — Each point here is 5 meters.
+- **"We need a bigger gun": 41–50** — Each point is about 10 meters.
+- **Spelljammer Size: 51+** — This is now as large as a ship and maybe should use the rules for a spaceship.
+
+What this means is that if something is, say, size 33, you could calculate the thing's size along its largest axis as being about 50 meters — half a meter for each Size from 1–10 (5m), then 1 meter for each point between 11 and 20 (+10m), then 2 meters for each point from 21 to 30 (+20m), and 5 meters each for points 31 to 33 (+15m).
+
+### Speed
+
+A vehicle's Speed is its base speed. It, along with the vehicle's Drive Rating, Momentum, and any extra speed modules, is used to determine how many meters it moves on any given turn.
+
+---
+
+### Static Defense
+
+A vehicle's Static Defense is calculated in a way similarly to that of any other entity. Use the following formula to find a vehicle's Static Defense:
+
+`Base Vehicle SD = 10 + Maneuver − 2 × Size`
+
+| Momentum | Speed Bonus    |
+| -------- | -------------- |
+| 0        | None (SD is 0) |
+| 1–5      | + Speed        |
+| 6–9      | + 2 × Speed    |
+| 10+      | + 3 × Speed    |
+
+In combat, a Vehicle automatically moves during its controller's turn. A vehicle moves a number of meters equal to its Speed, times its Drive Rating, times its current Momentum. As an example, take a normal car (Ground Vehicle, Speed 10). If it's moving all-out at its maximum Momentum, it's going 500 meters per combat round (Speed 10, x5 for the Wheeled Drive's Drive Rating, x10 for the Momentum). That's close to 150 KPH, which is about right for an average car.
+
+A pilot or driver of a vehicle has a number of special actions he can take. In order to use any of these actions, he must first use the core and most basic vehicle action, Maintain Control. A driver does not have to take the Maintain Control action - he may instead end up, say, being unconscious, trying to put out a fire, or eating a delicious Hostess Fruit Pie. But if he does those things he's probably going to crash into something.
+
+### Control Tests
+
+Control tests are made whenever a vehicle's pilot has to act to keep his vehicle from going out of control. A Control Test is made using the vehicle's Control Skill and the pilot's choice of Dexterity or Intelligence. Most vehicles that move in two dimensions use Drive as their Control Skill, and most vehicles that move in three dimensions use Pilot, but alternate forms of vehicle control can be set up to use nearly any skill. The standard roll is Skill + Attribute plus Maneuver and minus Momentum.
+
+## Vehicles in Combat
+
+### Maintain Control
+
+_Half Action -- Keywords: Movement, Vehicle_
+
+With the Maintain Control action you maintain control of a vehicle you're driving or piloting. This does not normally require a roll unless something special is going on like driving an obstacle course or flying through a hurricane. You may keep your current speed and heading or choose one of the following options:
+
+- **Accelerate** - Increase or decrease your vehicles Momentum by up to the vehicle's Acceleration stat, to a maximum of Momentum 10. Wheeled, tracked, and walker vehicles may go in reverse at up to half speed.
+- **Turn** - Make up to a 90 degree turn as long as your vehicle's Maneuver modifier is at least +0. If it is less than that, you'll need to take a Punch It action in order to attempt to turn.
+
+If nobody takes a Maintain Control action and the vehicle is not at a dead stop (Momentum 0) your vehicle goes out of control. Roll on the Out Of Control chart to see what happens.
+
+### Punch It
+
+_Half Action -- Keywords: Movement, Vehicle_
+
+With the Punch It action, you attempt to push a vehicle past its maximum safe limits. This allows you to exceed the safe limits of the Maintain Control action. To make a Punch It action, make a Control Test.
+
+### Out of Control (d10)
+
+| d10 | Result                                                                                                                                                                                                                     |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1-4 | **Straight Edge** - The vehicle continues in a straight line for this turn.                                                                                                                                                |
+| 5-7 | **Swerve** - The vehicle turns at random. Roll randomly to determine the direction and amount.                                                                                                                             |
+| 8-9 | **Wild Stallion** - The vehicle turns as above, and also changes its Momentum by its Acceleration. Determine randomly if the Momentum increases or decreases.                                                              |
+| 10  | **Turn Over** - The vehicle flips, capsizes, or otherwise finds a way to submit to the harsh mistress of gravity. The vehicle loses Hit Points equal to its Momentum, turns onto its back, and its Momentum drops to zero. |
+
+### Crashing
+
+If a vehicle is said to 'crash', treat this as a roll on the Out of Control chart that is automatically a 10, regardless of any modifiers to a vehicle's Out of Control rolls.
+
+### Static Defense Formula
+
+**10 + Man - (2 x Size) + [Speed Bonus]**
+
+- At Mom 0: 0
+- At Mom 1-5: 1x Speed
+- At Mom 6-9: 2x Speed
+- At Mom 10+: 3x Speed
+
+---
+
+### Punch It Options
+
+- **Speed** - By pushing your engine just a little harder, you can get a few more KPH out of it. The TN for the Punch It test is equal to three times the vehicle's current Momentum. If the test passes, the vehicle's Momentum or Acceleration is increased by 1. If this would put your Momentum over 10, this bonus is lost at the start of your next turn.
+- **Turning** - Normally, you must choose between changing your speed and turning with a Maintain Control action. By turning with a Punch It action, you can have your cake and eat it too. Make a Punch It test with a TN equal to three times your current Momentum. If the test passes, your vehicle may change its speed before or after making up to a 90 degree turn.
+- **Hard Turn** - Sometimes you just need to keep turning. Make a Punch It test with a TN of 10 plus twice the vehicle's current Momentum to make a big, wide, 180 degree turn without losing Momentum or taking two turns.
+
+### Fire Mounted Weapon
+
+_Half Action -- Keywords: Attack, Vehicle_
+
+With this action, the pilot of a vehicle may fire one of its mounted weapons. This works just like firing any other weapon - ranged weapons use Ballistics, melee weapons use Weaponry. However, feats and miscellaneous bonuses to normal attacks do not apply when making attacks with a vehicle's mounted weapons.
+
+Mounted Weapons may be fired by the pilot on full auto as a Half Action. However, if a vehicle fires a weapon on full auto, it may not make the Evasive Maneuvers action until its next turn.
+
+### Evasive Maneuvers
+
+_Reaction Action -- Keywords: Movement, Vehicle_
+
+With this action, the pilot of a vehicle attempts to get out of the way of an incoming attack, sacrificing some speed in the process. A vehicle must have a current Momentum 1 or more to use Evasive Maneuvers. The pilot of the vehicle makes Control Test. Half of the result of this test is added to the vehicle's Static Defense and the vehicle's Momentum is reduced by 1.
+
+### Ramming
+
+_Half Action or Oops! Action -- Keywords: Movement, Vehicle_
+
+Sometimes done intentionally, and often not. When it's intentional the driver makes a Control Test that adds the vehicle's Momentum instead of subtracting it, in an attempt to hit the target's Static Defense (they may attempt to dodge as usual). Unintentional ramming just hits, but the target wants to make a Dexterity + Acrobatics dodge/save against a TN of the vehicle's Speed + Momentum + Drive Rating.
+
+When the vehicle hits it deals XkY+Z damage to both what it hit, and to the vehicle itself. X is equal to the vehicle's Size, Y is equal to the vehicle's Momentum, and Z is the vehicle's Speed + Drive Rating. If the Momentum is higher than the Size then each excess die of Momentum adds +5 to the final damage.
+
+After determining damage, the pilot makes a Ramming Test with the vehicle's Control skill and the pilot's choice of Composure or Constitution. The TN of this Test is equal to the damage the vehicle dealt. If the Test passes, the pilot remains in control of his vehicle and the vehicle's Momentum is reduced by 2. On a failure, the vehicle goes out of control and the vehicle's Momentum is reduced by 3. If the pilot cannot make a Test (because he's dead, unconscious, or whatever), the vehicle goes Out Of Control and rolls on the Out Of Control chart.
+
+### Vehicles and Difficult Terrain
+
+Vehicles treat difficult terrain much the same as any character would - their speed is reduced by half. However, a vehicle is inherently more unstable than a character simply by virtue of what it is. A vehicle can go Out Of Control if it attempts to move too quickly across areas of difficult terrain.
+
+If a vehicle's current Momentum is 6 or more, a vehicle moving through an area of difficult terrain requires a Control Test with a TN of 5 plus double the vehicle's current Momentum, or else it goes Out of Control. Especially difficult terrain, like ice, might have a much lower threshold, a higher TN for the Control Test, or both!
+
+### Impassible Terrain
+
+Some types of terrain - boulder fields, cliffs, deep trenches, and so forth - are all but impossible for any normal vehicle to cross. Unless a vehicle has an accessory or Drive that allows it to move through or bypass the Impassible Terrain it is, as noted, impassible. Someone who somehow gets into impassible terrain with a vehicle automatically crashes it, treating it as an automatic 10 result on the Out Of Control chart.
+
+---
+
+### Flying Vehicles
+
+Any vehicle with a Drive-train that allows for flight (VTOL, Aerospace, or Scramjet) or that uses Jump Jets might just be found in the air, assuming the pilot is any good. Flying vehicles are treated mostly as normal vehicles.
+
+A vehicle with Flying may move in all three dimensions normally (following the same rules as movement with other vehicles, just with another dimension added in). If a flying vehicle goes Out of Control or loses multiple Hit Points at one time due to damage, it begins to fall.
+
+A falling vehicle falls (assuming our standard gravity and atmosphere) 400m at the end of its first turn of falling, another 1200m at the end of its second turn, a further 2000m at the end of its third turn, and 2700m after the next turn. If a vehicle is moving at high speed it may only fall half that distance for a couple of turns, as it begins to arc towards the ground. Conveniently, stuff tends to hit its terminal velocity (maximum falling speed) at Size times 100m a turn. If a falling vehicle hits something (usually the ground), it is treated as a Ramming attack made at Momentum 10.
+
+A pilot of a falling vehicle may attempt to break out of the fall after making a normal Maintain Control action, making a Control Test against a TN of 10 plus the vehicle's size.
+
+### Chases and Dogfights
+
+If it's on the ground, it's a chase. If it's in the air, it's dog-fighting. Sometimes it seems like people just can't avoid having one vehicle try to gently caress another while the other does everything it can to get out of the way.
+
+While it's certainly possible to resolve any chase, race, or other vehicle action with the above rules, here are some special chase rules that can add some extra strategy to the process. These rules are optional, and more appropriate for a game where the vehicles are a focus of the action instead of just something that's also there.
+
+During a chase scene where two or more roughly equally-matched vehicles are fighting for control and to get ahead or things are otherwise dramatically appropriate, the pilots may use the following special action:
+
+### Chase
+
+_Half Action -- Keywords: Movement, Vehicle_
+
+Used in racing and dog-fighting, the Chase action is used to try and get an advantage over the opponent. Chase is used in place of a normal Maintain Control action and has all the same effects. However, in addition to Maintain Control's normal effects, the pilot may attempt a Trick, choosing his own TN and making a Control Test.
+
+Opponents may spend a Reaction Action to respond to the Trick. If they are able to exceed the TN of the Trick, they have successfully negated the pilot's attempt to gain an edge. Anyone who attempts a Trick or tries to respond to it goes Out Of Control if they fail the TN set by the pilot.
+
+If the pilot succeeds at the Trick, and none of his opponents successfully counter it, he may choose one of the following options:
+
+- **Drift** - This turn, you may move in any direction without changing your vehicle's facing.
+- **Handbrake Turn** - At the end of your turn, change the vehicle's facing to any direction.
+- **Vault the Curb** - Ignore difficult or impassible terrain for one turn.
+- **Slip By** - You may move through occupied spaces and narrow gaps without hitting anything for the rest of this turn.
+
+" and narrow gaps without hitting anything for the rest of this turn.
+
+- **Barrel Roll** - Add +5 to your vehicle's Static Defense until the start of your next turn.
+- **Puchilev's Cobra** - You immediately decrease your vehicle's Momentum by up to 5 points. Aerospace vehicles do not stall if their Momentum drops too low from using this.
+
+### Vehicles on Their Backs
+
+Like the noble and mighty turtle, vehicles lying on the ground on their backs are all but immobile and useless. Unless the vehicle has a drive or accessory that allows it to self-right, it is stuck there until someone gets out and gives it a good push.
+
+Righting a vehicle is a straight-up Strength test against a TN of twice the vehicle's size. With all but the smallest vehicle, it's best if multiple people combine their efforts.
+
+A flying vehicle that flips over starts falling, but it may attempt to right itself before it crashes into the ground. This requires a Control Test made as a Half Action by the pilot, with a TN equal to the vehicle's Size. If it succeeds, the pilot rights the vehicle and might even manage to miss the ground.
+
+---
+
+### Untrained Piloting
+
+While certainly not recommended, it's possible for a character who is totally untrained in a vehicle's Control Skill to end up behind the wheel. Even in this situation, the character can make a valiant effort to try to avoid crashing.
+
+For a pilot who does not have any ranks in the vehicle's Control Skill, using the Maintain Control action becomes a Full Action that is made as a base characteristic test using the worse of the pilot's Dexterity or Intelligence.
+
+## Vehicles and Damage
+
+Vehicles treat damage like everything else does - when an attack's damage exceeds its size, it loses one or more hit points. The main difference for a vehicle is that they don't take critical damage like living beings - when a vehicle goes to 0 hit points, it is destroyed. Anyone inside the vehicle at the time might want to get out.
+
+People attempting to flee an exploding vehicle make an Acrobatics + Dexterity test against a TN equal to the damage the vehicle suffered in the fatal blow. On a success, the people get out safely. On a failure, they get caught in the wreckage and take damage equal to that of the vehicle's death blow (armor and other sources that reduce damage from physical attacks reduce this damage normally).
+
+Vehicles do, though, suffer from their own form of critical damage. An attack that makes a vehicle lose only a single Hit Point is called a Glancing Blow - the attack might have shredded some armor or scratched the paint pretty badly, but it didn't destroy any vehicle systems. On the other hand, when an attack makes a vehicle lose two or more Hit Points, that means it's a Penetrating Blow and the vehicle suffers critical damage. Roll 1d10 on the VEHICLE CRIT DAMAGE chart.
+
+### Repairing Vehicles
+
+Vehicles don't (normally) heal on their own. The size of a vehicle directly correlates to how long it takes to repair it - it takes the vehicle's Size in hours to repair one Hit Point worth of damage. Multiple people working at once can reduce this. For every doubling of manpower, the effective Size of the vehicle for determining repair time is reduced by 1 (to a minimum of half the vehicle's actual Size). Large vehicles often have a hundred crew members or more on standby to repair or refit them.
+
+If one or more of a vehicle's systems becomes disabled, the time to repair it is based on the number of unmodified slots it occupies (miniaturization doesn't help repairs, just look at laptop computers), counting as one Hit Point per slot.
+
+### Vehicle Crit Damage (d10)
+
+| d10 | Result                                                                                                                                        |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | The vehicle's paint job is ruined. It suffers no adverse effects.                                                                             |
+| 2   | The vehicle takes a staggering blow. Its Momentum is reduced by 1 (to a minimum of 0).                                                        |
+| 3   | The pilot gets shaken up. They may only take a half action on their next turn.                                                                |
+| 4   | The vehicle goes Out of Control.                                                                                                              |
+| 5   | The vehicle's motive system takes a direct hit. Its Momentum is reduced by 3 and its maximum Momentum is reduced by 1 until repairs are made. |
+| 6   | The pilot takes a hit, from power surges, direct fire through the cockpit, or whatever else is appropriate. The pilot loses 1k1 Hit Points.   |
+| 7   | One of the vehicle's systems, determined randomly, cannot be used until repairs are made. Control Systems cannot be disabled in this way.     |
+| 8   | The vehicle Crashes.                                                                                                                          |
+| 9   | The cockpit breaches. The vehicle loses environmental seals, and the pilot loses 3k1 Hit Points.                                              |
+| 10  | Roll twice and apply both results, ignoring further results of 10.                                                                            |
+
+---
+
+## Building a Vehicle
+
+1. Determine Base Stats
+2. Choose required components
+3. Choose other components
+
+### Step 0: Determine Your Budget
+
+The budget for a vehicle determines how many VP you have to spend on creating your vehicle. There are generally two categories of vehicles; those you can buy with cash and those that are available only through Holdings. While it's entirely possible to buy a light tank or even a fighter jet with cash, the very top end of vehicles, super-heavy units and titans, require serious Backing or personal Wealth to keep up.
+
+### Normal VP Costs
+
+| VP Budget | Rarity      |
+| --------- | ----------- |
+| 50        | Common      |
+| 100       | Uncommon    |
+| 150       | Rare        |
+| 200       | Very Rare   |
+| 250       | Mythic Rare |
+
+### High VP Costs
+
+| VP Budget | Requirement |
+| --------- | ----------- |
+| 250       | Holdings 1  |
+| 300       | Holdings 2  |
+| 375       | Holdings 3  |
+| 450       | Holdings 4  |
+| 550       | Holdings 5  |
+
+<!-- NOTE: Table updated from cleaned-references/17-Vehicles.md. Original extraction had an extra "250* Holdings" row before Holdings 1, creating an off-by-one numbering issue. Processed source has Holdings 1-5 only. -->
+
+\* Not a typo, 250 really does appear twice.
+
+### Improving a Vehicle
+
+It's entirely possible to improve a vehicle or buy additional components for it after it is constructed. However, it is a somewhat difficult and lengthy process. The TN to acquire a vehicle component with a Wealth test is determined by its VP cost and can be found using the formula below:
+
+**TN = 5 + (VP COST / 2) + (# of SLOTS)**
+
+After getting a component, it takes about a day of work per slot for it to be installed.
+
+### Step 1: Determine Base Stats
+
+The first step in designing a vehicle is to determine its base stats. The base stats of a vehicle determine its performance. A vehicle's base Speed, Size, Man, and Acc tell you a lot about a vehicle. It's easy to spend a lot of points simply improving a vehicle's turning or top speed. The cost of improving a vehicle's base attributes is outlined below, along with the minimums and maximums in each one.
+
+### Acceleration
+
+Acceleration is priced as a flat cost depending on the amount desired.
+
+| Rating | Cost |
+| ------ | ---- |
+| 0\*    | 0    |
+| 1      | 5    |
+| 2      | 10   |
+| 3      | 25   |
+| 4      | 50   |
+| 5      | 100  |
+
+\*A vehicle with an Acc of 0 is very difficult to start or stop. Without Push It tests, it cannot accelerate or decelerate at all!
+
+### Size
+
+A vehicle's Size rating determines many things about it -- hit points, resilience, number of equipment slots -- and can be quite expensive.
+
+| Size Range | Cost      |
+| ---------- | --------- |
+| 1-10       | 1× Rating |
+| 11-20      | 2× Rating |
+| 21-30      | 4× Rating |
+| 31-40      | 6× Rating |
+| 41-50      | 8× Rating |
+
+### Speed
+
+A vehicle's Speed is priced depending on the vehicle's Acc -- the two are intricately intertwined. Vehicles with high Speed ratings require extra space for their engines. The minimum Acc for this purpose is 1, even if the vehicle has Acc 0 treat as 1 for these costs. Use the chart below to determine the cost for a given Speed:
+
+| Speed | Slots | Cost    |
+| ----- | ----- | ------- |
+| 1     | 0     | 1×Acc   |
+| 2     | 0     | 2×Acc   |
+| 3     | 0     | 3×Acc   |
+| 4     | 0     | 4×Acc   |
+| 5     | 0     | 5×Acc   |
+| 6     | 1     | 6×Acc   |
+| 7     | 1     | 7×Acc   |
+| 8     | 1     | 8×Acc   |
+| 9     | 1     | 9×Acc   |
+| 10    | 2     | 10×Acc  |
+| 11    | 2     | 12×Acc  |
+| 12    | 2     | 15×Acc  |
+| 13    | 3     | 20×Acc  |
+| 14    | 3     | 25×Acc  |
+| 15    | 4     | 30×Acc  |
+| 16    | 5     | 40×Acc  |
+| 17    | 7     | 50×Acc  |
+| 18    | 9     | 60×Acc  |
+| 19    | 12    | 80×Acc  |
+| 20    | 15    | 100×Acc |
+
+### Maneuver
+
+A vehicle's Maneuverability depends on its size. The larger a vehicle is, the more expensive it becomes to improve. Man can range from -10 to +10.
+
+| Size Range | Maneuver Cost (per point) |
+| ---------- | ------------------------- |
+| 1-10       | 10 + Rating               |
+| 11-20      | 2× (10 + Rating)          |
+| 21-30      | 4× (10 + Rating)          |
+| 31-40      | 6× (10 + Rating)          |
+| 41-50      | 8× (10 + Rating)          |
+
+> **Design Note:** The vehicle rules are a good-faith effort. See the discussion of potential problems. These rules work best if you have a concept of the vehicle and try to build as close as possible to it with the rules. Using the rules to build the most extreme vehicle possible in order to "win" at something is not recommended.
+
+Under some of the optional rules the smallest, weakest, and cheapest spelljammers can come in at the 45–50 Size range (see Appendix F).
+
+> **Clarification:** Static Defense does not go below zero.
+
+> **Design Note:** Speed values are predicated on a 10 to 15 second combat round, averaging about 12 seconds. The original rules had a standard civilian car with a Speed of 4 topping out at 160m per round and 120 kph (about 75 mph).
+
+> **Open Question:** The SM should determine if a Punch It action can stand in for the normal Maintain Control action.
+
+Optional rules for punching a ramming vehicle to a stop before it can hit you are.
+
+Optional rules for vehicle called shots are.
+
+> **Design Note:** These are "best effort" rules that are not intended to be a complete and perfect system. The SM always has final say in costs and availability.
+
+### Step 2: Install the Required Components
+
+### Drive Train
+
+A vehicle's Drive-train tells you a huge amount about it. It's the difference between a motorcycle and a jet-ski, a sports car and a fighter jet, a tank and a battlemech. A vehicle's Drive-train sets the vehicle's Drive Rating and may give it one or more abilities.
+
+**Naval Drive, Rating: 3**
+
+Naval Drives are, well, boats. They're just as old as Wheeled Drives, but it's a bit easier to float a lot of metal than it is to make it roll along the ground.
+
+- **Island Home:** A vehicle with this drive may not leave the water without crashing.
+- **Metal Giant:** A vehicle with this drive may reduce the cost of its Size by half. A vehicle with multiple drives loses this ability.
+
+**Tracked Drive, Rating: 3**
+
+Something most cultures come up with at some point, tracked vehicles are significantly better than normal Wheeled vehicles on difficult terrain but with a much lower top speed.
+
+- **Caterpillar:** A vehicle with this drive may ignore movement penalties for difficult terrain, and may turn in place.
+- **Tough:** A Tracked unit has an additional 4 hit points. A vehicle with multiple drives loses this ability.
+
+**Walker Drive, Rating: 4**
+
+A drive using legs instead of wheels, wings, or treads, the walker drive is best known as a necessary technology for the creation of giant robots, which are much like giant tanks only with a very high center of balance.
+
+- **Leggy:** A vehicle with this drive may move through impassible terrain as though it were merely difficult terrain.
+- **AMBAC:** Walker drives may wobble, but when they fall down they can get back up again. Anyone piloting a walker drive may spend a half action to right it from a prone position.
+
+**Wheeled Drive, Rating: 5**
+
+The standard drive for ground vehicles, the wheeled drive has been around for as long as civilization has existed. There are no special rules for this one.
+
+---
+
+> **Optional Rule:** For immobile vehicles: Without a drive train you pay 1/5th cost for the vehicle's Size and nothing for Speed & Acceleration. Maneuver is, by default, -10 and doesn't matter since there's probably no controls anyways. This is a good way to model tram cars, towed artillery, gliders, and horse-drawn wagons. The ability of the "vehicle" to move is dependent on whatever is making it move.
+
+### Hover Drive
+
+**Rating:** 6
+
+A drive that is slowly replacing the Wheeled Drive on many worlds, the Hover Drive is just a bit as faster, requires less in the way of roads, but handles a bit like a man walking on ice.
+
+- **Rise Above:** A vehicle with this drive is not slowed by difficult terrain, and may drive normally on water.
+- **Slide About:** A hover drive is notoriously hard to control. Whenever it takes damage, make a Control Test with a TN equal to the damage taken or else it goes Out Of Control
+
+### VTOL Drive
+
+**Rating:** 7 (flying)
+
+One of the more versatile and useful drives available, a VTOL drive is able to move in all three dimensions, unlike most drive trains, and can move slowly or even hover, unlike the faster Aerospace or Scram-jet drives.
+
+### Aerospace Drive
+
+**Rating:** 15 (flying)
+
+An Aerospace vehicle is one with a very distinctive profile - wings and a need to keep moving lest it fall from the sky. It's one of the fastest drive trains, and doesn't compromise in maneuverability like a Scram-jet.
+
+- **Stalin:** A vehicle with this drive is restricted as to how fast it may go. If the vehicle's Momentum drops below 3 while using this drive, it cannot stay in the air and goes Out of Control.
+- **Fragile:** Halve an Aerospace unit's HP (rounding up). If the vehicle has multiple drives, this effect remains constant - its maximum HP value remains halved in all forms.
+- **Winged:** The minimum Size of a vehicle with an Aerospace Drive is 7.
+
+### Scram-jet Drive
+
+**Rating:** 30 (flying)
+
+A scram-jet is the fastest way to fly from one spot to another. However, those two spots had better be in a straight line, because a Scram-jet turns as badly as an American car with the power steering lines cut.
+
+- **Super Stalin:** A vehicle with this drive is restricted as to how fast it may go. If the vehicle's momentum drops below 5 while using this drive, it cannot stay in the air and goes Out of Control.
+- **Flying Crowbar:** A vehicle with this drive may not make turns as part of the standard Maintain Control action.
+- **Big Engines:** The minimum size of a vehicle with a Scram-Jet Drive is 15.
+
+### Flying Vehicles and Runways
+
+Aerospace and Scram-jet vehicles require a certain Momentum to get into the air. Most of the time, these vehicles rely on runways to get them the necessary speed for takeoff.
+
+An Aerospace vehicle requires at least Size x 50m of flat, level ground to take off or land. Most commonly, this is tarmac designed for such use, though a long grassy field or the like can also do. If it attempts to land on difficult or impossible terrain, it Crashes.
+
+A Scram-jet vehicle requires an even longer runway, at least Size x 150m. Trying to land somewhere inappropriate is the same as for Aerospace vehicles, it Crashes.
+
+### Multiple Drives
+
+Certain accessories can allow a vehicle to have multiple Drive-trains installed at the same time, taking advantage of the various qualities they have. When switching between different drives, a vehicle uses the Drive Rating and properties of its current Drive until its next turn, at which point it begins using the Drive Rating and properties of its new Drive-train. Certain drive-train effects will remain active in both modes if a vehicle has Multiple Drives.
+
+### Control System
+
+A control system is an obvious and necessary part of a vehicle. Without a control system, a vehicle is just a screaming death-trap that goes in wobbly lines and crashes into things - and that should only be true when the person behind the wheel is having sex, extremely drunk, or both.
+
+Control options are internal, external, remote, or autonomous. All internal controls use a cockpit or the COFFIN system. External controls can be dang near anything and are a big savings on space, there's just the little fact that the driver is hanging on to the outside of the vehicle. Remote controls are just like regular controls but located somewhere else and subject to jamming and hacking. Autonomous controls let an A.I. do all the driving and reduce the people to mere passengers.
+
+---
+
+### Berserker System
+
+A berserker system gives full control over a vehicle to an onboard AI or otherwise cuts the pilot out of the loop. These systems are almost always illegal, because as a necessity of their design they are only designed to kill, without mercy or questions.
+
+**Effect:** As a Half Action or whenever the pilot becomes disabled, the Berserker system can be activated. While active, the Berserker System attempts to approach and attack any enemy it can detect. It has three ranks in any skill or attribute required to pilot the vehicle or make attacks. On each of its turns it will attempt to move closer to and/or fire upon any enemy it can detect. The Berserker System remains active until all enemies are destroyed or the vehicle it is controlling is destroyed.
+
+### Cockpit
+
+It's usually a good idea to have a control system of some kind installed on your vehicle, and this is the way to get one. A standard cockpit has enough space for one person. In larger vehicles this might be more a bridge or a command deck, if space is allocated towards copilots.
+
+**Effect:** A cockpit gives a person somewhere to control a vehicle from. A normal cockpit allows the vehicle's designer to choose between Drive and Pilot as the vehicle's Control Skill. Typically, Drive is used for vehicles that travel on the ground or water, with Pilot being used for flying vehicles.
+
+**Alternate Control Input** - Maybe it's just a keyboard, perhaps it's a bunch of wires and levers, maybe the controls are a bunch of trained hamsters wired into the read-outs, it could be mystic runes you have to hum to. Whatever it is it's a distinctly non-standard control set-up.
+
+**Effect:** By installing an Alternate Control Input, you can change a vehicle's control skill to one of the following: Acrobatics, Arcana, Animal Ken, Athletics, Performer, or Tech-Use.
+
+**Basic Equipment** - The basic equipment package includes the sundry features and equipment one would expect in a cockpit. Headlights, a radio, air conditioning, seat-belts, and cup holders.
+
+**Effect:** Without this you've got all the cockpit amenities of a WW I biplane. The windows don't roll down, there's no radio, and you'll be backing up without rear-view mirrors.
+
+**Copilot Seat** - Adding a Copilot Seat lets additional people help you control the vehicle. Copilot Seats are assigned vehicle systems, such as weapons, sensors, afterburners, and so forth.
+
+**Effect:** The Copilot may spend Half Actions and Full Actions every turn to activate any vehicle systems assigned to them. While they're controlling a system nobody else can use that system.
+
+**Mobile Trace** - This system allows a vehicle to follow the exact movements of its pilot. It is usually installed on vehicles with manipulator arms, a Walker drive-train, or both. When used by an experienced warrior, it can improve the combat ability of a vehicle more than almost any other system.
+
+**Effect:** The pilot may use Trick Shots and Special Attacks with the weapons installed on the vehicle.
+
+### Control System
+
+| Name                  | Slots | Cost |
+| --------------------- | ----- | ---- |
+| Berserker System      | 1     | 10   |
+| Cockpit               | 4     | 5    |
+| Alt. Control          | 1     | 10   |
+| Basic Equip.          | 0     | 3    |
+| Copilot Seat          | 2     | 15   |
+| COFFIN                | 1     | 15   |
+| Improved (COFFIN)     | 2     | 20   |
+| Mobile Trace          | 2     | 20   |
+| Onboard AI            | 2     | 10   |
+| _Co-processor_        |       |      |
+| Co-processor/2        | 0     | 5    |
+| Co-processor/3        | 0     | 10   |
+| Co-processor/4        | 1     | 20   |
+| Co-processor/5        | 2     | 30   |
+| _TAPS Chip_           |       |      |
+| TAPS/1                | 0     | 1    |
+| TAPS/2                | 0     | 3    |
+| TAPS/3                | 1     | 5    |
+| TAPS/4                | 1     | 10   |
+| TAPS/5                | 2     | 20   |
+| _RAM Array_           |       |      |
+| RAM/2                 | 0     | 5    |
+| RAM/3                 | 1     | 10   |
+| RAM/4                 | 2     | 15   |
+| RAM/5                 | 3     | 20   |
+| RAM/6                 | 4     | 25   |
+| RAM/7                 | 5     | 35   |
+| RAM/8                 | 7     | 50   |
+| RAM/9                 | 9     | 70   |
+| Remote Up-link System | 0     | 5    |
+
+---
+
+### COFFIN
+
+A control system that works by direct input from the pilot's brain, the COFFIN system completely isolates the pilot from the world. A COFFIN control system eliminates the normal cockpit, and the pilot instead views the world from screens around them or a direct neural interface with the machine itself. A pilot must have a Mind Impulse Unit to use a COFFIN system.
+
+**Effect:** With a MIU interface, the pilot has an instinctive, subconscious level of control over his vehicle. The pilot gains one additional Reaction per turn to use with his vehicle.
+
+**Improved COFFIN** - The Improved COFFIN interface grants the pilot one additional reroll to use with any vehicle action.
+
+### Onboard AI
+
+An expensive option that nonetheless greatly improves a vehicle, an Onboard AI gives an advanced computer system partial control over a vehicle. There are many varieties and styles of AI. Some appear as animated avatars and provide commentary, others are simply built into the systems and silently assist people as a ghost in the machine.
+
+**Effect:** The AI has three effects. First, it may use the Aid Another action to assist someone onboard with any test once per round. It also has a number of stored Half Actions which it may use, one per turn, to operate any vehicle systems that nobody else is or has used on that turn. These Half Actions are replenished at the beginning of the next scene. If the pilot is disabled, the Onboard AI may make a basic Half Action Maintain Control test every round (this represents the AI's basic ability to drive the vehicle from point A to point B, anything else requires the AI to use its stored Half Actions), though its capabilities are significantly less than a dedicated Berserker system and most AIs will attempt to flee combat if their pilots are disabled. The cost of an Onboard AI depends on its capabilities. By default, an Onboard AI has one dot in the vehicle's control skill, Ballistics or Weaponry, and one dot in each Mental and Social characteristic. They can be upgraded with the following modules:
+
+**Coprocessor** - Coprocessors increase an AI's base characteristics. There are six different Coprocessors, each relating to one of the AI's Mental and Social characteristics. They are purchased and increased separately.
+
+**TAPS Integrated Chip** - TAPS chips are used to give an AI access to an archive of skills. Each TAPS chip relates to any one skill. The AI's skills are set to that of the TAPS chips installed.
+
+**RAM Array** - The RAM array sets the number of Half Actions the AI has to spend per scene. The basic Onboard AI has a RAM Array of 1. You can improve the AI's RAM Array for the listed costs.
+
+### Remote Up-link System
+
+A remote up-link system allows a vehicle's systems to be controlled from a remote location. Most vehicles that have this system have a dedicated console in a secure place, though some have portable controls that allow a pilot to control it like a giant RC vehicle.
+
+**Effect:** The vehicle's systems can be activated remotely. A Remote Up-link System can be attached to the Pilot's controls or any Copilot's controls (if any exist). Anyone at the remote controls may use a Full Action to take a Half Action for the vehicle. If the controls are used for a Copilot's station, that copilot cannot activate the copilot station's systems. If used on the Pilot's station, the Pilot may only use a single Half Action for vehicle actions this turn.
+
+### Standard Armor
+
+An Armored vehicle has, well, armor. Standard vehicle armor is steel, armorplas, or the like. It's the least expensive vehicle armor option, offering the best protection for the cost.
+
+**Effect:** Choose an armor grade.
+
+- **Thick Paint** - The vehicle gains Armor 2
+- **Light Armor** - The vehicle gains Armor 5
+- **Heavy Armor** - The vehicle gains Armor 10
+
+### Hardened Armor
+
+While normal armor is good for civilian vehicles, it isn't nearly as tough as what a military can roll out. Hardened armor is heavier and somewhat more bulky than the standard armor, but offers much better protection without taking up as much space as Ferro-Fibrous armor.
+
+**Effect:** Choose an armor grade.
+
+- **Light Armor** - The vehicle gains Armor 5
+- **Medium Armor** - The vehicle gains Armor 10
+- **Heavy Armor** - The vehicle gains Armor 20
+
+### Ferro-Fibrous Armor
+
+Ferro-Fibrous Armor is manufactured in zero-gravity. Designed to be strong, lightweight, and durable, it uses titanium and trace amounts of mithril woven into layered blankets and set into plates of armor. This makes Ferro-Fibrous Armor bulky, but very protective.
+
+**Effect:** Choose an armor grade.
+
+- **Light Armor** - The vehicle gains Armor 5
+- **Medium Armor** - The vehicle gains Armor 10
+- **Heavy Armor** - The vehicle gains Armor 20
+
+### Hexagrammatic Wards
+
+Hexagrammatic wards are commonly used to control or impede flows of magic. While individually they are too weak to protect an entire vehicle, an array of them can be carved into a vehicle to provide passive magical shielding. The runes are often quite obvious even from a distance, pulsing and flowing as ambient magical energies cause the wards to glow.
+
+**Effect:** Choose a grade of wards.
+
+- **Light Wards** - The vehicle gains Aura 5
+- **Medium Wards** - The vehicle gains Aura 10
+- **Heavy Wards** - The vehicle gains Aura 20
+
+### Cargo Space
+
+One of the easiest things to add to a vehicle, cargo space is simply an empty space to store things in. Most cargo spaces are enclosed and have points to attach cables to tie down larger objects. Because of the scale differences between vehicles at different size ratings, how much cargo space you get per point depends on the size of the vehicle.
+
+**Effect:** You gain the listed amount of cargo space for every point you spend on Cargo space, depending on the vehicle's size.
+
+- Normal Size - 2 cubic meter.
+- Large Size - 5 cubic meters.
+- Enormous Size - 10 cubic meters.
+- Colossus Size - 25 cubic meters.
+- Titanic Size - 50 cubic meters.
+
+### Passenger Space
+
+Many vehicles are designed to carry more than one person. Cars, buses, commercial aircraft, and so forth. Passenger Space represents basic built-in seating capacity, the ability to really just sit people down and move them from place to place. This basic passenger space is typically a single large cabin or, in larger vehicles, layers of seating.
+
+**Effect:** The vehicle can comfortably and safely carry a passenger. Every time you buy this component, double the number of passengers your vehicle may carry (1, 2, 4, 8, etc). You should not allocate more than half of the vehicles slots to passengers.
+
+### Modular Cargo/Passenger Space
+
+Someone noticed that fold-up seats and cargo tie-downs could be used together. Thus modular spaces that could be quickly changed between cargo and passengers were created.
+
+**Effect:** Determine how much cargo and how many people can be carried as though you were using regular cargo and passenger space. You can split that capacity 50/50 or by any other ratio you like. It takes about one hour to change the configuration.
+
+### Luxury Accommodations
+
+Where the normal Passenger Space is simply sitting people down inside a cabin and strapping them in, Luxury Accommodations are considerably more comfortable. Luxury Accommodations often include separate compartments or sleeping spaces.
+
+**Effect:** This works just like the regular passenger spaces but it's nice and, you know, luxurious.
+
+### Armor
+
+| Name                  | Slots | Cost |
+| --------------------- | ----- | ---- |
+| _Standard Armor_      |       |      |
+| Thick Paint           | 1     | 2    |
+| Light                 | 2     | 8    |
+| Heavy                 | 4     | 12   |
+| _Hardened Armor_      |       |      |
+| Light                 | 1     | 16   |
+| Medium                | 2     | 24   |
+| Heavy                 | 4     | 50   |
+| _Ferro-Fibrous Armor_ |       |      |
+| Light                 | 3     | 4    |
+| Medium                | 6     | 6    |
+| Heavy                 | 8     | 25   |
+| _Hexagrammatic Wards_ |       |      |
+| Light                 | 1     | 10   |
+| Medium                | 2     | 20   |
+| Heavy                 | 4     | \*   |
+
+\*If a vehicle has multiple armor systems installed, they overlap, not stack - use only the best rating available.
+
+### Accommodations
+
+### Hidden Compartment
+
+Occasionally, you don't want people to know what you're hauling. Maybe it's a hidden weapon on the ship, an illegal cloaking system, or cargo space reserved for items that the authorities wouldn't be happy to see. Regardless, putting the component in a hidden compartment is an easy way to make sure that it's at least a little harder to find it.
+
+**Effect:** Hidden Compartment is added to another component of the vehicle. That component cannot be scanned from outside the vehicle. It appears as power couplings, empty space, or whatever seems most plausible for the item. With especially large items, it may become difficult to explain to authorities why most of your ship seems to be invisible to scans.
+
+### Accessories
+
+### Afterburners
+
+One of the more common additions to racers and high-performance aerospace craft, Afterburners provide a short burst of extra speed. Afterburners have their own supply of fuel, and can be used a limited number of times before that fuel is used up.
+
+**Effect:** You may spend a Half Action to activate the afterburners before making your Maintain Control test. Your ship's Speed is doubled until the end of your next turn. You may use this boost once for every time you purchase Afterburners.
+
+### Composite Frame
+
+Using a base frame made of advanced composites of ceramics, plastics, and metal fibers means that a vehicle is made lighter and easier to maneuver. However, this comes at the price of fragility - a composite frame is more likely to snap under stress than merely deform.
+
+**Effect:** The vehicle gains +3 Man, but its maximum HP is reduced by 3.
+
+### ECM
+
+An ECM is an active defense measure that is designed to protect a vehicle against the sensors of enemies by blinding and confusing them. An ECM is not stealth - it's obvious to everyone when ECM is used because it is supposed to be deafening and blinding to sensors.
+
+**Effect:** The pilot may turn the ECM on or off as a Half Action. While ECM is active, the vehicle cannot be tracked by long range sensors like radar or lidar, but the disruption is obvious to those sensors, even if they cannot find the source of the disturbance.
+
+### Ejector Seat
+
+Bailing out of a vehicle as it's being destroyed is typically not an easy thing, given the fire and explosions involved. With an Ejector Seat, getting away is a certainty.
+
+**Effect:** The pilot and any copilots are automatically ejected from a destroyed vehicle. The Ejector Seat will send the pilot 100m away from the vehicle and not in it's direction of travel. If the pilot hits something strong enough to stop it like a wall, another vehicle, etc., while ejecting, the ejector seat stops and the pilot takes damage as if they had fallen the remaining distance.
+
+### Environmental Seals
+
+By default, vehicles are not airtight. They're vulnerable to alien atmospheres, they let water in if they're submerged, and will otherwise leak air and liquids. With Environmental Seals, the vehicle doesn't need to worry about such things, all it's compartments are neatly sealed.
+
+**Effect:** The vehicle is pressurized, sealed, and carries its own atmosphere. It ignores difficulties from alien atmosphere and it doesn't fill up with water when submerged. The pilot and any passengers are immune to gas attacks from outside the vehicle.
+
+### Features
+
+Any number of things can be a feature. They're miscellaneous advantages that grant useful, but minor, abilities. This might be an anti-theft alarm, cameras, emergency lights, a place to recharge power packs, radar detector, search lights, tow cables, and anything else that seems useful but has few, if any, mechanical effects.
+
+**Effect:** The vehicle gains a feature. This feature may be almost anything, but should only be able to give a small bonus (+1k0) in certain circumstances. The SM has final say on when a Feature might apply, but should be careful not to make it too important. Features should never be more important than dedicated equipment.
+
+### Accommodations
+
+| Name                    | Slots | Cost |
+| ----------------------- | ----- | ---- |
+| Cargo Space             | 1     | 1    |
+| Passenger Space         | 2     | 2    |
+| Luxury Accommodations   | 5     | 10   |
+| Hidden Compartment      | 1     | 5    |
+| Modular Cargo/Passenger | 2     | 5    |
+
+### Jump Jets
+
+Putting jump jets on a vehicle is one easy way to get it in the air, at least for a little while. Jump jets can be found on nearly every vehicle save those that already fly - putting them on a plane would be rather redundant.
+
+**Effect:** If you spend a half action activating the Jump Jets, the Vehicle gains Flying until your next turn. Jump Jets require two rounds to reset and cool off between uses. Improved Jump Jets require only one round between jumps.
+
+### Manipulator Arms
+
+Arms! Big, beefy arms! While vehicles with legs are the ones most commonly seen with Manipulator Arms, any vehicle can mount arms. These limbs serve a great variety of purposes, moving cargo, carrying weapons, or constructing buildings. It should be no problem to imagine the possibilities of just what arms can do for you.
+
+**Effect:** Your vehicle gains manipulator arms. These arms can be used to do just about anything a normal set of arms can, and allow the vehicle to wield vehicle-scale Melee weapons. Manipulator arms are generally not designed to interact with anything small or delicate (what constitutes small and delicate largely determined by the size of the vehicle) and might be unable to use items designed for normal character use, at the SM's discretion. By default, these arms have Strength 6. This strength may be increased, at the cost listed above, up to a maximum of 10.
+
+### Orgone Antennae
+
+Magic has a strong place on any modern battlefield. Unfortunately, while that works for squads of infantry, having a wizard in your mecha-tank doesn't really do much for anyone. Or at least it didn't, until now! Yes, with this amazing device, onboard wizards can maximize the power of their spells beyond anything they could manage on their own.
+
+**Effect:** The pilot (actually this is usually assigned to a copilot) may cast spells through the vehicle. If the spell would affect the caster, it instead provides its bonuses to the vehicle (if appropriate). The improved versions give damaging spells cast through the Orgone Antennae a bonus to their damage rolls.
+
+### Accessories
+
+| Name                | Slots | Cost |
+| ------------------- | ----- | ---- |
+| Afterburners        | 2     | 15   |
+| Composite Frame     | 0     | 5    |
+| ECM                 | 2     | 15   |
+| Ejector Seat        | 1     | 10   |
+| Environmental Seals | 0     | 5    |
+| Features            | 0     | 5    |
+| _Jump Jets_         |       |      |
+| Standard            | 2     | 10   |
+| Improved            | 4     | 25   |
+| Manipulator Arms    | 3     | 15   |
+| Improve Str +1      | 1     | 5    |
+| _Orgone Antennae_   |       |      |
+| Basic               | 2     | 15   |
+| Damage +1k1         | 4     | 25   |
+| Damage +2k2         | 6     | 40   |
+| _Partial Wing_      |       |      |
+| Partial Wing (2)    | 1     | 5    |
+| Partial Wing (4)    | 3     | 15   |
+| Partial Wing (6)    | 5     | 25   |
+| Reinforced Frame    | 0     | 5    |
+| _Sensor System_     |       |      |
+| Standard            | 1     | 10   |
+| Advanced            | 2     | 20   |
+| Thermoptic Camo     | 2     | 25   |
+| _Void Shield_       |       |      |
+| Rating 10           | 4     | 15   |
+| Rating 15           | 7     | 30   |
+| Rating 20           | 10    | 60   |
+| _Weapon Mount_      |       |      |
+| Personal            | 1     | 5    |
+| Vehicle             | X     | X    |
+| Turret              | -     | -    |
+| Omni                | 1     | -    |
+| Arm                 | 0     | -    |
+
+### Partial Wing
+
+Canards, a spoiler, whatever. Extra aerodynamic surfaces rarely hurt a vehicle. A partial wing improves maneuverability, especially at high speeds. Because of its simple yet effective performance enhancement, it can be found on most high-performance vehicles.
+
+**Effect:** The Momentum penalty to Man is reduced by 2, 4, or 6, depending on the wing purchased, to a minimum of 0.
+
+### Reinforced Frame
+
+Where a composite frame is lighter and faster, it can be equally valuable to have a frame that can roll with the punches and survive a hefty beating. A Reinforced frame bulks up and cross-braces things, often using a honeycomb structure and heavier materials.
+
+**Effect:** The vehicle gains +3 to its maximum Hit Points, but takes -3 to Maneuver.
+
+### Sensor System
+
+Without a sensor system of some kind, a vehicle's pilot must rely on windows and his own eyes. With a sensor system pilots can see and hear things beyond their limited senses. These sensors might be radar, lidar, some kind of magic divination arrangement, or a few grots with binoculars. The results are roughly the same.
+
+**Effect:** Choose between Standard and Advanced sensors.
+
+- **Standard** - The pilot gets +1k0 to all Perception tests and automatically detects any vehicle or ship not using ECM within 10km.
+- **Advanced** - The pilot gets +1k1 to all Perception tests and automatically detects any vehicle or ship not using ECM within 20km.
+
+### Thermoptic Camo
+
+Active Camouflage is hard to produce on a small scale, and it becomes easier the more flat, rigid surfaces something has. Thermoptic camo doesn't do anything to protect against radar or other sensors, but it does make the vehicle all but invisible to casual inspection.
+
+**Effect:** You may make Stealth rolls for the vehicle using Stealth + your choice of Dexterity or Intelligence, sort of as if someone had cast the Invisibility spell on it. This uses all the normal rules for Stealth.
+
+### Void Shield
+
+A Void Shield system is one of the most expensive and powerful things you can install on a vehicle. Normally, energy shields can only be installed on ships and similarly large structures, so miniaturizing the systems to fit into a vehicle is expensive.
+
+**Effect:** A vehicle with a void shield is all but invulnerable to conventional attack. While the void shield can be bypassed with melee attacks, ranged attacks that have a Penetration less than the vehicle's Void Shield rating are totally negated, unless the ranged attack is made by a unit with a Void Shield of its own.
+
+### Weapon Mount
+
+Most military vehicles, and quite a few civilian ones, have mounts for weapons. These mounts can hold normal weapons or special vehicle-only weapons that must be mounted onto vehicles to use.
+
+**Effect:** The pilot can use the mounted weapon to attack. The weapon can fire into one general arc from the vehicle (forward, behind, above, to the left, etc., about 120 degrees). A weapon mounted in this way cannot be removed. Changing these parts takes the same amount of time as adding or removing other vehicle components. Note that the cost for the weapon mount does not include the cost for the weapon. The mounted weapon must be purchased separately.
+
+- **Personal Mount** - A Personal Mount can hold any man-portable weapon. Usually, they are used to mount heavy weapons to a vehicle for anti-personnel use.
+- **Vehicle Mount** - This heavier type of mount can hold a vehicle-only weapon such as a cannon or other super-heavy weapon. The number of slots, and the cost of a vehicle mount, depend on the weapon mounted.
+- **Omni Mount** - An add-on for a Personal or Vehicle mount, an Omni mounting allows the attached weapon to be swapped out easily. It takes only an hour of work for a weapon in an Omni Mount to be changed.
+- **Turreted Mount** - It's a turret. This is another add-on for a weapon or a group of weapons. It allows the vehicle to fire everywhere except in one specific arc. Choose a general direction (forward, behind, above, to the left, etc., about 180 degrees), the weapon or weapon group cannot fire in that one arc.
+- **Arm Mount** - For a trivial price you can weld, bolt, or otherwise attach a weapon to one of the vehicle's arms, if it has any. You can ignore all that arc stuff and shoot any direction, but the vehicle has to have Manipulator Arms.
+
+---
+
+### Reactor
+
+### Overcharged Reactor
+
+An overcharged reactor is almost more of a liability than anything else. It's simply an engine with almost all of the safeties ripped out. This allows a pilot to blast a vehicle all the way to top speed in an instant, as long as they don't mind breaking some very important things.
+
+**Effect:** The Pilot may spend a half action to activate the Overcharged Reactor. The vehicle's hit points are reduced by a quarter of it's full amount (rounded up). Its Mom becomes 10.
+
+### Super Solenoid Engine
+
+A Super Solenoid Engine is a theoretical engine design that utilizes ambient magical energy and a deep understanding of the theoretical underpinning of the physics of the Warp in order to create a permanently self-sustaining reaction. The S2 engine can create an infinite amount of energy, though its output at any one point is limited by the size of the engine.
+
+**Effect:** The pilot of a vehicle with an S2 engine may activate or deactivate it as a half action. While the S2 Engine is active, the vehicle gains a bonus equal to the Engine's rating to it's Speed, Man, and Acc. The pilot rolls a Warp Phenomenon test at the end of any round where the S2 Engine was active, with +10 on the roll per the engine's rating.
+
+### XL Engine
+
+From time to time, engineers have experimented with larger engines than the standard models. These Extra-Large engines trade bulk for speed - they can even allow a vehicle to go beyond the normal limits a vehicle has.
+
+**Effect:** A vehicle's XL engine may be rated from 1-5. The vehicle's speed is increased by its XL engine rating, even if it would put the vehicle's rating above the normal limit of 15.
+
+### Reactor
+
+| Name                    | Slots | Cost |
+| ----------------------- | ----- | ---- |
+| Overcharged Reactor     | 1     | 10   |
+| _Super Solenoid Engine_ |       |      |
+| Rating 1                | 0     | 15   |
+| Rating 2                | 1     | 25   |
+| Rating 3                | 2     | 35   |
+| _XL Engine_             |       |      |
+| Rating 1                | 2     | 10   |
+| Rating 2                | 4     | 20   |
+| Rating 3                | 6     | 30   |
+| Rating 4                | 8     | 40   |
+| Rating 5                | 10    | 50   |
+
+---
+
+### Modifications
+
+### Diver Down
+
+The Diver Down upgrade allows a ground vehicle to burrow underground, or a naval vehicle to act as a submarine. This is somewhat of a slow method of travel, but it is extremely useful for stealth, infiltration, and generally just getting where people don't expect you to get.
+
+**Effect:** Choose between Subterranean and Submarine. A vehicle must be Environmentally Sealed in order to take the Diver Down mod.
+
+- **Subterranean** - A subterranean vehicle can burrow through the earth. While using Subterranean movement, a vehicle's maximum momentum is reduced to 5. It can burrow through earth and stone equally well, though some material, like buried armor plating, deposits of extremely hard stone, and so forth might slow or stop it entirely, at the SM's discretion.
+- **Submarine** - A submarine vehicle can travel underwater. This does not impede its top speed - water is easier to move through than earth.
+
+### Flawed
+
+A Flawed vehicle has one or more problems with its design. Some require a line to provide power, are more vulnerable to damage, or are just otherwise less than they should be. Flawed vehicles are, though, significantly less expensive than a vehicle without such problems, and might represent cutting corners in the design process, using substandard materials, and whatever else might be used as a cost-cutting measure.
+
+**Effect:** Choose one of the following flaws. This may be taken multiple times, choosing a different flaw each time.
+
+- **External Power** - The vehicle relies on an external source of power. It might be beamed in or wire fed. If the power is beamed in, it must remain within line of sight to its power supply. If it is wire-fed, the pilot must make a TN 15 Control Test every round to avoid snagging the cable. If the cable becomes snagged, the vehicle leaves line of sight of its power supply, or things are otherwise cut off, roll a d10. The pilot may take this many half actions before the vehicle loses power and Crashes. If the vehicle can regain external power, the timer stops and is rerolled if it loses power again.
+- **Feedback** - The pilot is prone to suffering feedback from his vehicle. This might be because of exploding consoles, a direct nerve uplink, or just bad engineering. Whenever the vehicle takes damage, the pilot must make an Athletics + Constitution test against TN 15 or else gain a level of fatigue.
+- **Fragile** - The vehicle's maximum hit points are reduced by 25%, rounded up.
+- **Hangar Queen** - The vehicle requires maintenance after every sortie. This takes as long as the vehicle was deployed, plus an additional eight hours.
+- **Inefficient Controls** - Whenever the pilot makes a Maintain Control test, he must spend an additional Half Action or Reaction Action to keep the trouble-prone vehicle doing what he wants.
+- **Junker** - The vehicle's systems are ready to fall apart. Whenever the vehicle suffers damage, roll twice on the critical chart and take the worse result.
+- **Overheating** - The vehicle is prone to overheating. It loses 1 HP every round in which its Momentum is above 6 or the driver uses the Push It action.
+- **Unstable** - Double this vehicle's Man penalty due to Momentum.
+
+### Living Vehicle
+
+A living vehicle is, well, alive. They're living things instead of just machinery. This has both benefits and drawbacks. The most obvious benefit is that a living vehicle can heal itself given time and rest. Of course, this also means that a vehicle has less space for equipment because of its biology.
+
+**Effect:** The vehicle heals 1 HP per day, benefits from Healing magic if it has an Orgone Antenna attachment, and it can self-right from a prone position.
+
+### Macronized
+
+A Macronized component uses larger and less expensive parts. Apply the modification to a component in the vehicle. The component's cost is cut in half (rounding up) and its size is doubled. Applying this to the same component multiple times doubles its size every time.
+
+### Miniaturized
+
+A Miniaturized component uses smaller and more expensive parts. Apply the modification to a component in the vehicle. The component's size is cut in half (rounding up) and its cost is doubled. You may apply this to the same component multiple times, doubling its new cost every time. Passenger and cargo space can only be miniaturized once.
+
+### Open Topped
+
+Vehicles with firing ports, lacking a roof, or otherwise open to the elements. Open Top vehicles have some benefits over a normal vehicle. And some obvious defects.
+
+**Effect:** The vehicle does not block line of sight to and from its crew and passengers, allowing them to use their personal weapons to make attacks, and to be targeted and attacked in turn. It cannot be environmentally sealed.
+
+### Variable
+
+A Variable vehicle has more than one drive-train. One of the more popular variable drive-trains is to switch between a flying movement type and one that goes on the ground, especially a Walker drive.
+
+**Effect:** The vehicle gains an additional drive-train type. This modification may be taken multiple times, choosing a new drive-train each time. The pilot must spend a Half Action to switch between drives. The Magnetic Coupler add-on that can be purchased to speed this up.
+
+- **Magnetic Couplers** - With magnetic couplers, it takes only a Reaction Action to switch between drive-trains.
+
+### Modifications
+
+| Name              | Slots | Cost |
+| ----------------- | ----- | ---- |
+| Diver Down        | 3     | 20   |
+| Flawed            | 0     | -10  |
+| Living Vehicle    | 4     | 5    |
+| Macronized        | -     | -    |
+| Miniaturized      | -     | -    |
+| Open Topped       | 0     | 0    |
+| Variable          | 2     | 10   |
+| Magnetic Coupling | 1     | 10   |
+
+<!-- Duplicate raw extraction of Modifications text removed -- already formatted above -->
+
+### Weapons
+
+### Autocannon
+
+An Autocannon is one of the simplest and most common vehicle weapons, simply a cannon firing large shells from an automatically loaded internal magazine. They're used on tanks, mecha, even some aerospace units. The Autocannon comes in a variety of sizes and loadouts:
+
+- **AC/5** - The smallest standard caliber of autocannon, the AC/5 is notable mostly because of its great range.
+- **AC/10** - A medium caliber of autocannon, the 10 is able to fit on most vehicles and is useful as an anti-vehicle weapon.
+- **AC/15** - A larger autocannon, commonly seen on larger units as a cheap, effective weapon.
+- **AC/20** - The largest standard size of autocannon, only the largest and most deadly units can afford to mount such a deadly weapon.
+
+**Autocannon Modifications:**
+
+- **HV ACs** - HV Autocannons have longer barrels and fire APDS ammo at much higher velocity, allowing an Autocannon to shoot out to incredible range with improved armor penetration.
+- **Ultra ACs** - Ultra Autocannons are among the most devastating conventional weapons a vehicle can mount, with multiple rotating barrels able to rapid-fire shells of surprising size.
+
+### Punisher Gatling Cannon
+
+Essentially a set of six, small, short-barreled autocannons that use a rotating frame for full-auto fire, the Punisher Gatling Cannons are extremely effective against vehicles with light armor and large biological targets. They sacrifice range and armor penetration for a higher rate of fire.
+
+### Railgun
+
+A Railgun is a projectile weapon that uses magnets to accelerate a slug of metal to supersonic speeds. They have excellent range and power, making them ideal sniper weapons. A variant of the standard railgun is the HAG (Hyper-Assault Gauss) that fires a number of explosive sub-munitions instead of a single slug.
+
+---
+
+### Ranged Vehicle Weapons
+
+<!-- NOTE: Costs and some stats filled in from cleaned-references/17-Vehicles.md. Ultra AC Pen values updated from 0 to match regular AC variants per processed source. Multilas RoF S/9, Lascannon damage 5k5, Dimensional Rift Cannon range 20m, and Arrow IV Homing Size 11 all match processed source. -->
+
+| Name                                  | Damage  | Type | Pen | RoF  | Range | Size | Cost | Special                      |
+| ------------------------------------- | ------- | ---- | --- | ---- | ----- | ---- | ---- | ---------------------------- |
+| **Ordinary (Basic or Ranged 1)**      |         |      |     |      |       |      |      |                              |
+| _Autocannon_                          |         |      |     |      |       |      |      |                              |
+| AC/5                                  | 4k2+10  | I    | 0   | S/-  | 250m  | 2    | 15   |                              |
+| AC/10                                 | 5k2+15  | I    | 5   | S/-  | 200m  | 3    | 20   |                              |
+| AC/15                                 | 6k3+15  | I    | 10  | S/-  | 150m  | 4    | 25   |                              |
+| AC/20                                 | 7k4+20  | I    | 15  | S/-  | 100m  | 5    | 30   |                              |
+| _Hyper Velocity Autocannon_           |         |      |     |      |       |      |      |                              |
+| Hyper Velocity AC/5                   | 2k2+15  | R    | 5   | S/-  | 450m  | 2    | 20   |                              |
+| Hyper Velocity AC/10                  | 3k2+20  | R    | 10  | S/-  | 350m  | 3    | 25   |                              |
+| Hyper Velocity AC/15                  | 4k3+25  | R    | 15  | S/-  | 250m  | 4    | 30   |                              |
+| Hyper Velocity AC/20                  | 5k4+30  | R    | 20  | S/-  | 150m  | 5    | 35   |                              |
+| _Ultra Autocannon_                    |         |      |     |      |       |      |      |                              |
+| Ultra AC/5                            | 4k2+10  | I    | 0   | -/3  | 250m  | 2    | 20   |                              |
+| Ultra AC/10                           | 5k2+15  | I    | 5   | -/3  | 200m  | 3    | 25   |                              |
+| Ultra AC/15                           | 6k3+15  | I    | 10  | -/3  | 150m  | 4    | 30   |                              |
+| Ultra AC/20                           | 7k4+20  | I    | 15  | -/3  | 100m  | 5    | 35   |                              |
+| _Punisher Gatling Cannon_             |         |      |     |      |       |      |      |                              |
+| Light Punisher                        | 3k2+5   | I    | 0   | -/10 | 100m  | 2    | 15   |                              |
+| Heavy Punisher                        | 4k3+10  | I    | 5   | -/8  | 80m   | 3    | 20   |                              |
+| _Railgun_                             |         |      |     |      |       |      |      |                              |
+| Railgun                               | 4k3+15  | R    | 10  | S/-  | 500m  | 4    | 25   | Accurate, Reliable           |
+| Heavy Railgun                         | 6k4+15  | R    | 10  | S/-  | 300m  | 5    | 30   | Accurate                     |
+| Hyper Assault Gauss                   | 4k3+15  | X    | 10  | S/8  | 100m  | 4    | 25   |                              |
+| **Las (Basic or Ranged 2)**           |         |      |     |      |       |      |      |                              |
+| Multilas                              | 3k2+5   | E    | 0   | S/9  | 60m   | 2    | 10   | Reliable                     |
+| Blazer                                | 4k3+10  | E    | 5   | S/-  | 100m  | 3    | 15   | Twin-Linked, Reliable        |
+| Bombast Laser                         | 4k3+10  | E    | 5   | S/-  | 100m  | 4    | 15   | Bi-Modal, Reliable           |
+| _(Bi-modal)_                          | 6k4+10  | E    | 10  | S/-  | 150m  | -    | -    | Bi-Modal, Recharge           |
+| Lascannon                             | 5k5     | E    | 10  | S/-  | 300m  | 3    | 15   | Recharge                     |
+| **Plasma, Melta, & Flame (Ranged 2)** |         |      |     |      |       |      |      |                              |
+| Plasma Destroyer                      | 4k3+20  | E    | 15  | S/-  | 100m  | 4    | 15   | Recharge                     |
+| Mega-Melta                            | 5k3+20  | E    | 15  | S/-  | 50m   | 4    | 25   | Twin-Linked                  |
+| Inferno Cannon                        | 4k2+10  | E    | 5   | S/-  | 40m   | 2    | 10   | Flame                        |
+| **Bolter (Ranged 1)**                 |         |      |     |      |       |      |      |                              |
+| Vulcan Mega-Bolter                    | 6k2+15  | X    | 10  | S/6  | 120m  | 4    | 25   | Tearing                      |
+| Hurricane Bolter                      | 4k2+5   | X    | 8   | -/10 | 120m  | 3    | 20   | Tearing, Storm               |
+| **Syrenth (Ranged 2)**                |         |      |     |      |       |      |      |                              |
+| M-Wave Cannon                         | 7k4+35  | E    | 20  | S/-  | 500m  | 10   | 30   | Accurate, Blast(5), Recharge |
+| Dimensional Rift Cannon               | 4k2+10  | E    | 20  | S/3  | 20m   | 2    | 20   | Storm                        |
+| **Exotic (Ranged 1)**                 |         |      |     |      |       |      |      |                              |
+| Particle Projection Cannon            | 5k2+15  | E    | 5   | S/-  | 350m  | 3    | 20   |                              |
+| Mega Particle Cannon                  | 7k4+25  | E    | 15  | S/-  | 250m  | 7    | 25   | Recharge                     |
+| **Primitive (Basic or Ranged 1)**     |         |      |     |      |       |      |      |                              |
+| Catapult                              | 4k1+15  | I    | 0   | S/-  | 150m  | 4    | 5    | Indirect, Minimum Range      |
+| Ballista                              | 3k1+10  | R    | 2   | S/-  | 100m  | 3    | 5    | Reliable                     |
+| **Missile Launchers (Ranged 1)**      |         |      |     |      |       |      |      |                              |
+| LRM                                   | 3k2+15  | X    | 5   | S/-  | 500m  | 3    | 15   | Homing, Minimum Range        |
+| LRM-Swarm                             | 4k3+15  | X    | 5   | S/-  | 500m  | 4    | 20   | Blast(10), Minimum Range     |
+| SRM                                   | 4k2+15  | X    | 5   | S/-  | 100m  | 2    | 15   |                              |
+| Tandem Charge SRM                     | 3k3+15  | X    | 10  | S/-  | 100m  | 3    | 20   | Tandem Charge                |
+| Arrow IV Artillery                    | 7k4+35  | X    | 20  | S/-  | 500m  | 10   | 35   | Indirect, Minimum Range      |
+| Arrow IV MIRV                         | 10k5+20 | X    | 10  | S/-  | 500m  | 10   | 35   | Blast(30), Minimum Range     |
+| Arrow IV Homing                       | 7k4+35  | X    | 20  | S/-  | 1000m | 11   | 35   | Homing, Minimum Range        |
+
+---
+
+### Multilas
+
+The mighty multilas, a laser weapon that uses rapid-fire pulses instead of a single shot. It's a powerful weapon usually used for anti-infantry operations.
+
+### Blazer
+
+In an attempt to increase laser power beyond the standard limits, the Blazer, or Binary Laser was made. It is essentially two heavy lasers fused into one weapon. While not as common as a simple Lascannon, the Blazer is still seen fairly often in heavy tanks and vehicles.
+
+### Bombast Laser
+
+This weapon was designed to be the end-all and be-all of laser weapons, but the developers ran into limits in the basic technology that forced them to make compromises. In this case, they compromised in the firing speed, requiring a heavy capacitor that recharges slowly after every shot. A Bombast laser may be fired in two modes, minimal and maximal. In minimal mode, it uses the standard stats on the first line. When firing in Maximal mode, it uses the stats on the Bi-Modal line. The pilot may change its firing mode at any time it would be ready to fire as a free action.
+
+### Lascannon
+
+The powerful Lascannon is a formidable Laser Weapon whose energetic beam of coherent light is capable of penetrating most armored vehicles. It is the favorite anti-tank weapon of the Astra Militarum and is also commonly used by Space Marines.
+
+### Plasma Destroyer
+
+Much like the smaller man-portable plasma weapons, the Plasma Destroyer throws out hot globs of plasma at a target, typically to devastating and armor-melting effect. The Plasma Destroyer is a rare weapon, but those that use them swear to their effectiveness.
+
+### Multi-Melta
+
+The Melta is one of the least expensive weapons for the sheer power it provides, at the small drawback of an extremely short range. The Multi-Melta is a series of melta weapons firing in parallel to create what is essentially a melta cannon. Targets are just melted away - turning creatures into piles of ash and vehicles into pools of molten metal. No personal armor offers even scant protection from a Multi-Melta.
+
+### Inferno Cannon
+
+Take a Flamer, scale it up to be worthy of mounting on a tank, and you have an Inferno Cannon. It's a fearsome weapon that is mostly used for terror rather than real military actions.
+
+### Vulcan Mega-Bolter
+
+One of the most powerful variations of a Bolter weapon, the Vulcan Mega-Bolter is a heavy caliber rotating bolt gun capable of firing shells at a high rate. It is designed to fight mid-range armored vehicles, but can also be used to eviscerate buildings.
+
+### Hurricane Bolter
+
+A premier anti-infantry weapon, the Hurricane Bolter is simply a number of Boltguns mounted co-axially into a single weapon turret. This weapon is fairly recent, developed to fill a need for a powerful anti-infantry weapon when only parts for basic weapons were available.
+
+### Wave Motion Cannon
+
+The Wave Motion Cannon is among the most powerful weapons that can be mounted on a vehicle. It is a miniaturized lance battery that can be installed on a ground vehicle or aerospace unit. One of the few vehicle weapons that can actually damage a starship, even a near miss can seriously damage armored vehicles.
+
+### Dimensional Rift Cannon
+
+An ancient Syrneth weapon, the D-Cannon is one of their technologies that hasn't been rediscovered, only copied. It is a Warp weapon in the truest sense, opening micro-portals in the Warp in its target zone and allowing the chaotic matter and energy within to seep through for a moment. The D-Cannon will just ignore armor of almost any sort, striking directly within to attack in a vehicle's most vulnerable spots.
+
+### PPC
+
+The Particle Projection Cannon is a powerful particle beam weapon that is common on a large number of high-performance military units. It's powerful and penetrating enough to cut through most armor like butter, but requires a fairly powerful reactor or limited supply of stored exotic particles in order to function, throwing a beam of neutrally-charged massive particles at a target at near-C.
+
+### Mega Particle Cannon
+
+A Mega Particle Cannon is an older, less miniaturized, and more powerful version of a PPC. It takes up more space in a vehicle, but its effects are quite devastating. This weapon fires a focused beam of massive, high-velocity exotic particles, which cannot be deflected by conventional armor material. Its power output on target is nearly twice that of a similar laser unit.
+
+### Catapult
+
+A primitive weapon, a catapult simply slings large rocks at the enemy. It's a clumsy weapon to use, and cannot strike targets at Short range. It is no match for modern devices. Even so, on more desperate or feudal worlds, it's entirely possible to find them.
+
+### Bastilla
+
+Most vehicle weapons are scaled-up versions of infantry weapons, and this is no exception. A Bastilla is essentially a crossbow or other spring made large, firing huge arrows that may as well be spears.
+
+### LRM
+
+A venerable weapon that is found in arsenals across the Wheel, the Long Range Missile system fires a missile out to extreme range. Because vehicle missiles have internal homing devices they are one of the most accurate weapons for inexperienced pilots. LRMs have a minimum range and cannot be fired at Short range or less.
+
+- **Swarm** - An LRM Swarm pod launches several unguided LRMs in a spread-out pattern to inflict their damage over a large area. It is less accurate against individual targets but more damaging against groups of enemies.
+
+### SRM
+
+Short Range Missiles are direct-fire missiles that sacrifice range for hitting power. Adapted to the electronic jamming on modern battlefields and the effectiveness of current armor designs, these missiles have slightly larger warheads than LRMs.
+
+- **Tandem-Charge SRM** - TC SRMs are a little bulkier than regular SRMs because they have two warheads. Designed to penetrate armor, all of their Glancing Blows are upgraded to Penetrating Hits. Essentially, as long as their damage causes the target to lose at least one Hit Point, the target rolls on the Critical Damage Table.
+
+### Arrow IV
+
+The Arrow IV is a stand-alone, missile-based, artillery system, designed to augment conventional systems. It is one of the few vehicular weapons with a damage rating high enough to threaten starships. Arrow IV launchers can be equipped with standard armor penetration missiles or area saturation missiles. Arrow IV missiles have a minimum range and cannot be fired at Short range or less.
+
+- **MIRV Missile** - The area saturation option for the Arrow IV launchers, this missile type releases sub-munitions over a target zone. The weapon's overall damage is reduced and it loses the ability to be fired over obstacles, but it gains Blast(30).
+- **Homing Missile** - Homing missiles have an advanced target acquisition system that allows the huge cruise missiles to accurately close in on a target.
+
+### Vehicle CQC Weapon
+
+Rarely seen on anything that isn't a mecha, vehicle-scale melee weapons are all essentially the same, with only minor differences. To effectively equip a vehicle with a CQC weapon it should have arms. Note that like all melee weapons, a Vehicle's Melee attacks add the vehicle's Strength to their damage. If the vehicle lacks arms it can only use a CQC weapon to add extra damage during a ramming maneuver -- roll the weapon's base damage separately and add it to the total damage that the rammed vehicle or object takes.
+
+### Melee Vehicle Weapons
+
+| Name       | Damage | Type | Pen | Size | Cost | Special             |
+| ---------- | ------ | ---- | --- | ---- | ---- | ------------------- |
+| Ordinary   | 1k2+20 | I/R  | 5   | -    | -    | -                   |
+| Parrying   | 1k1+15 | R    | -   | 10   | -    | Balanced            |
+| Cavalry    | 1k3+20 | R    | -   | 10   | -    | Reach, Unbalanced   |
+| Flail      | 0k2+25 | I    | -   | 10   | -    | Flexible            |
+| Fencing    | 1k2+20 | R    | -   | 10   | -    | Balanced            |
+| Two Handed | 1k4+20 | I/R  | 5   | 2    | 10   | Unwieldy            |
+| Syrneth    | 3k2+20 | E/R  | 20  | 2    | -    | -                   |
+| Chain      | 1k2+25 | R    | -   | 10   | -    | Tearing             |
+| Shield     | 0k2+25 | I    | -   | 10   | -    | Balanced, Defensive |
+| Unarmed    | 0k1+15 | I    | -   | -    | -    | -                   |
+
+\* Vehicle melee weapon damage adds the vehicle's Strength (Size) as rolled dice.
+
+### Sample Vehicles
+
+### Jet Pack
+
+A small civilian model jet-pack. You know you want one.
+
+- **Size:** 2 (about 1m high)
+- **Price:** Rare
+- **HP:** 2, **Resilience:** 2
+- **Static Defense\*:** 0, 22, 28, 34
+- **Maneuver:** +10, **Acceleration:** 3, **Speed:** 6
+- **Speed:** 36m/momentum, 13 kph/momentum
+- **Drive:** VTOL (x6) -- May hover and turn in place; begins Falling if it takes 2 or more damage or if it goes Out of Control.
+- **Control System:** Pilot Seat & Alternate Controls (Acrobatics).
+- **Open Top:** People can shoot in to & out of the vehicle.
+
+### Atlas Mecha
+
+Yes! You can be the proud owner of a big stompy mecha with heat-seeking missiles, full-auto lasers, and a really big gun. Just make sure you can pay for the fuel or you'll have the world's largest paperweight.
+
+- **Size:** 30 (about 35m tall)
+- **Price:** Holdings 3
+- **HP:** 30, **Resilience:** 30
+- **Static Defense\*:** 0, 6, 12, 18
+- **Maneuver:** +0, **Acceleration:** 1, **Speed:** 6
+- **Speed:** 24m/momentum, 8.6 kph/momentum
+- **Drive:** Walker (x4) -- Treats impassible terrain as if it were merely difficult; if flipped over or knocked down it may stand back up as a Half Action.
+- **Standard Sensors:** +5 perception tests and 10km automatic vehicle detection range.
+- **Control System:** Pilot Seat & Co-Pilot Seat & Basic Equipment & Mobile Trace System. Spot for a pilot & co-pilot. Has seat belts, cup holders, AC, heater, radios, etc. Enables gun kata trick shots and sword school special attacks.
+- **Flaws:** Controls Feedback & Inefficient Controls -- When damaged the vehicle may inflict Fatigue on the pilots. Requires an extra Half or Reaction action to maintain control.
+- **Environmental Seals:** Airtight & safe.
+- **Heavy Hardened Armor:** 20 AP
+- **Manipulator Arms:** Strength 8
+- **Weapons:**
+    - Long Range Missile Launcher: `3k2+15` X, Pen 5, Range 500m, Homing & Minimum Range
+    - Short Range Missile Launcher: `4k2+15` X, Pen 5, Range 100m
+    - Arm Mount: Multi-Las, `3k2+5` E, Pen 0, RoF S/9, Range 60m, Reliable
+    - Arm Mount: AC-20, `7k4+20` I, Pen 15, Range 100m
+    - Ordinary CQC (Extra Big Fists): `9k2+20` I, Pen 5
+
+### Van
+
+Just a regular van capable of carrying some people or boxes of stuff around town. It does not handle corners well at high speeds.
+
+- **Size:** 9 (about 4.5m long)
+- **Price:** Uncommon
+- **HP:** 9, **Resilience:** 9
+- **Static Defense\*:** 0, 12, 24, 36
+- **Maneuver:** +0, **Acceleration:** 1, **Speed:** 10
+- **Speed:** 50m/momentum, 18 kph/momentum
+- **Drive:** Wheeled (x5) -- No special modifications.
+- **Control System:** Pilot Seat & Basic Equipment. Spot for a pilot. Has seat belts, cup holders, AC, heater, radios, etc.
+- **Flaws:** Inefficient Controls & Unstable -- Requires an extra Half or Reaction action to maintain control. Double the maneuver penalty for momentum.
+- **Passenger Space:** 1 person.
+- **Modular Cargo/Passenger Space:** 12 m3 or 8 passengers or any reasonable split.
+
+\* The Static Defense numbers are for the vehicles at Momentum: 0, 1 to 5, 6 to 9, and 10+.
+
+---
+
+### Fighter
+
+Your basic fighter jet that turns into a giant robot with a gun.
+
+- **Size:** 20 (about 15m long/tall)
+- **Price:** Holdings 2
+- **HP:** 10, **Resilience:** 20
+- **Static Defense\*:** 0, 12, 24, 36
+- **Maneuver:** +2, **Acceleration:** 2, **Speed:** 12
+- **Speed:** 180m/momentum, 65 kph/momentum
+- **Drive:** Aerospace (x15) -- The vehicle has wings; if its Momentum is less than 3 it goes Out of Control and begins Falling; requires a runway of at least base Speed x 100m; begins Falling if it takes 2 or more damage or if it goes Out of Control.
+- **Other Drive:** Walker (x4) -- Treats impassible terrain as if it were merely difficult; if flipped over or knocked down it may stand back up as a half action.
+- **Control System:** Pilot Seat & Basic Equipment & Mobile Trace System. Space for a pilot. Has seat-belts, cup holders, AC, heater, radios, etc. Enables gun kata trick shots and sword school special attacks.
+- **Flaws:** Controls Feedback & Hangar Queen -- When damaged the vehicle may inflict Fatigue on the pilots. Requires extra repair and reload time.
+- **Sensors:** +5 to Perception tests and a 10km automatic vehicle detection range.
+- **Ejector Seat:** Could save your life.
+- **Environmental Seals:** Airtight & safe.
+- **Manipulator Arms:** Strength 6.
+- **Afterburners (1):** Double speed while activated.
+- **Light Hardened Armor:** 5 AP.
+- **Weapons:**
+    - Omni Weapon Mount: Long Range Missile, `3k2+15` X, Pen 5, Range 500m, Homing, No-Short-Range
+    - Arm Mount: Vulcan Mega Bolter, `6k2+15` X, Pen 10, RoF S/6, Range 120m, Tearing
+    - Unarmed CQC (Reinforced Fists): `6k2+15` I, Pen 5
+
+\* The Static Defense numbers are for the vehicles at Momentum: 0, 1 to 5, 6 to 9, and 10+.
+
+### Cyborg-Ninja Tyrannosaurus Rex Cocaine-Wizard Pet
+
+Yup. Damn cocaine-wizards being all awesome up in your face. What are you gonna do about it punk?
+
+- **Size:** 19 (about 14m long)
+- **Price:** Holdings 4
+- **HP:** 19, **Resilience:** 19
+- **Static Defense\*:** 0, 8(9), 16(18), 24(26)
+- **Maneuver:** +10, **Acceleration:** 3, **Speed:** 8
+- **Speed:** 32(36)m/mom, 11.5(13) kph/mom
+- **Drive:** Walker (x4) -- Treats impassible terrain as if it were merely difficult; if flipped over or knocked down it may stand back up as a half action.
+- **Control System:** Berserker AI System. Rolls `6k3` for everything & goes on a killing rampage when the primary AI runs out of actions.
+- **AI Systems:** TAPS (3 dots Ballistics), TAPS (3 dots Stealth), RAM-3 (the AI has 3 Half Actions per scene), Co-processor (3 dots Wis), Co-processor (2 dots Int). The AI will obey orders until it is out of Half Actions, then it will use the Aid Another action on the Berserker AI.
+- **Super Solenoid Engine:** Activate for +1 to speed, maneuver, acceleration, roll for warp at +10.
+- **Hexagrammatic Wards:** 5 Aura.
+- **Medium Hardened Armor:** 10 AP.
+- **Thermoptic Camo:** Can be almost invisible.
+- **Manipulator Arms (Jaws):** Strength 9.
+- **Living Vehicle:** It's ALIVE!
+- **Weapons:**
+    - Two Handed Big Teeth: `10k4+20` R, Pen 5, Unwieldy (cannot parry)
+    - 2x Short Range Missile: `4k2+15` X, Pen 5, Range 100m
+    - 2x Personnel Weapon Mounts: 2x Heavy Bolters, `4k2` X, Pen 8, RoF -/10, Range 120m, Tearing, 60 ammo each
+
+---
+
+## VIDEO
+
+"I hate using this thing," Jurgen said. Cain had assembled a party at the ship's Teleportarium.
+"I know," Cain said.
+"What if this doesn't work?"
+"Then this will be your big chance to get away from it all." He nodded to the techpriest manning the console. Huge plasma chambers fed from the ship's auxiliary power, and a portal to the warp sent them through time and space to arrive in a flash of light somewhere else.
+Rivendell 1 was a rough colony cut into an asteroid by the Eldarin long ago and left abandoned. Now it was used almost exclusively by humans as a research laboratory, the area empty and free of interference from passing ships.
+Cain, Jurgen, and Sulla appeared in one of the larger rooms. Jurgen walked over to one of the cabinets, looking for somewhere to be sick, while Cain and Sulla got their bearings. Jurgen pulled open a big, important-looking door and-
+"Admiral?" He asked, calling back. Cain walked over to look. Something like a torpedo sat in the cabinet, filling it up.
+"Bjork, I presume," Sulla said. There was a crashing sound as someone jumped Cain. He easily fought off the young man, shoving him aside.
+"Where's Inquisitor Vail?" Cain demanded. The man looked at him, angry and confused.
+"I'm Inquitor Vail!" Cain frowned, not understanding.
+"Ciaphas!" Someone said. Cain looked up. Inquisitor Amberly Vail. He looked down at the man he had punched. The man had very distinct features. Cain swallowed, stepping around him,
+and walked over to Amberly.
+"Is that David?" Cain asked. Amberly nodded.
+"He killed everyone we left behind! He's with them!" David shouted.
+"Of course he didn't," Amberly said, sighing. "You're just making this harder."
+"I'm afraid it's even harder than you think, Doctor," someone said, stepping out of the shadows, gun at the ready. Two men were there, both of them people Cain recognized. Captain Marcel and Commander Chuck. "Please, don't move." It was hard to recognize them at first, with those big purple starfish on their faces. Marcel raised a commbead. "Excellency, have you been listening?"
+"I have indeed," Czarro said, his voice clear through the bead. "You have done well."
+"Don't move!" Marcel shouted.
+"What is the delay?" Czarro asked.
+"All is well, sir. You have the coordinates to beam up Bjork."
+"First things first. Kill Ciaphas Cain." Marcel hesitated, sweat and slime from the starfish on his face pouring down.
+"Sir, it is difficult. I- I try to obey, but-"
+"Kill him!" Marcel screamed and fell to his knees, the Starfish squeezing his skull, screaming with its own voice. Marcel shakily pointed his weapon at Cain, then, trembling, turned it on himself,
+vaporizing his own skull. Chuck fell to his knees as well, the starfish peeling from his face, blood dripping as it left open wounds.
+"What in Sigmar's name is that?" Sulla asked. Cain shot the thing with his laspistol as it fell to the ground, the terrible thing screaming and dying. He grabbed the dropped commbead.
+"Czarro, can you hear me? You're going to have to do your own dirty work from now on!"
+"Cain! You're still alive, my old friend!" Czarro sounded amazed, mesmerized.
+"Still! Old friend! You've managed to kill just about everyone else, but you keep missing the target!"
+"Perhaps I no longer need to try, Admiral." Bjork vanished in a flash of light. Cain held Inquitor Vail back as she tried to jump towards it.
+"You have Bjork, but you don't have me. You're going to have to come down here, Czarro!
+You're going to have to come down here!"
+"I've done far worse than kill you. I've hurt you. And I wish to go on hurting you. I shall leave you as you left me, Cain. Marooned for all eternity in the center of a dead planet. Buried alive.
+Buried... alive."
+"CZARRO!"
+
+---
+
+> **Clarification:** Aerospace and Scram-jet vehicles can taxi and use the runway just fine without an additional wheeled drive. If you're installing an additional drive you'll typically put a VTOL drive in and bypass runway requirements.
+
+Control system cost and size values are.
+
+> **Clarification:** External controls are effectively the same thing as the Open Topped option — think about them like a walk-behind fork-lift.
+
+> **Play Tip:** Install a remote control system on a Berserker vehicle so you can turn it on and off without having to get near it and get shot.
+
+> **Open Question:** Whether basic equipment needs to be included in the cost of micronizing or macronizing the cockpit is debatable. The SM has final say.
+
+> **Clarification:** How locked-in the copilot systems are is up to the vehicle designer and the SM. It could be a Feature for the pilot & copilot to swap control of different systems on the fly.
+
+> **Optional Rule:** As a Feature you can add a perception filter to the Berserker system, which removes things from the system's ability to sense them. Normally this is a biometric full body scan combined with a clothing/uniform overlay option, preventing the system from sensing normal people (who have been scanned and loaded into memory) in a particular uniform. You can replace the uniform with any sort of widely visible/sensible badge or marker. The system will need to match both the body scan and the badge — if you only have a visible badge on the front, the Berserker will shoot you from behind. Other options include IFF transponders, specific badges, uniforms, or even things like colors and temperature ranges. Note that the Berserker system will literally not perceive these things and may try to shoot through/past them. They don't even register as terrain — they're totally invisible and undetectable to the Berserker program.
+
+> **Clarification:** While the COFFIN system replaces the cockpit, you can still add the basic equipment, alternate controls, and mobile trace systems to it.
+
+> **Clarification:** While the base A.I. can technically fight, it's rolling `2k1` for anything in combat. If you want it to do anything more than basic non-combat driving around and parking, you need to upgrade it.
+
+> **Optional Rule:** If you pay for the AI to have 2s, 3s, and better in all mental and social attributes, and give it the RAM/9 upgrade, it could serve as a non-Berserker A.I. combat robot.
+
+> **Optional Rule:** The Size of the controls for a remote control system is 1/5th that of the vehicle being controlled, rounded down. This means that Size 10+ vehicles need to have another "vehicle" as the remote location. If the controls are just a set of free-standing control consoles then it's basically like a bunch of arcade game machines and about as easily transported — there's no paying extra VP for any of that. You can also build them into another vehicle without paying any increased costs; they just use up slots in that other vehicle. Jamming will be a problem.
+
+> **Design Note:** There is no "best" armor when micronizing and macronizing. This is intentional and a change from the previous version of the rules.
+
+> **Clarification:** Cargo and passenger space should not be micronized or macronized more than once. Things get unreasonable quickly if you do otherwise.
+
+There is an optional rule about using multiple afterburners at once to reach orbit.
+
+> **Clarification:** Adding the ability for passengers to use a personal weapon mount probably counts as a Feature.
+
+> **Optional Rule:** Vehicle arms should stop using personal scale equipment at about vehicle Size 7 or 8. It would not be inappropriate to house-rule that a vehicle cannot have arms with a Strength higher than half of its Size rating.
+
+> **Clarification:** 120 degrees is about the normal human field of view. Hold your arms out as far left & right as you can see them out of the corners of your eyes without moving your head — that's roughly 120 degrees.
+
+> **Clarification:** The "X" on the weapon mount chart means that the cost and size are included in the price and size of the weapon. You only have to pay extra for turrets, arm mounts, omni mounts, and personal weapons.
+
+> **Clarification:** The Overcharged Reactor effect in plain terms: take damage equal to half the vehicle's total hit points and increase Momentum to 10 as a Half Action.
+
+> **Design Note:** The weapons went through a full rebalance with a spreadsheet to figure out relative values. Each weapon got a score derived from its stats. The calculation is as follows: For damage, each rolled damage die is +1, each kept damage die is +2, each +5 of added damage is +2 (generally equal to a kept die), 5 penetration is +0 with each 5 over that being +1 and zero penetration being -1, if burst fire then +1/2 the RoF rounding down. A range modifier of 0.8 + (the lesser of range/500 or 0.45), rounded to two decimal places: 40m range is 0.88, 100m range is 1, 150m range is 1.1, 200m range is 1.2, everything over that is 1.25 (there's an upper limit to how useful range is). Cost is calculated as the lesser of size + (vehicle point cost/5) OR 1/2 size (round up) + (2× vehicle point cost/5), rounded to the nearest whole number — effectively the cheaper of regular size & cost or one level of miniaturization. Specials: Flame, blast radius 5 & 10, twin-linked, accurate/homing, indirect, and full auto burst are +1 each. Blast radius 25 is +2. No short range shots are -1. Recharge is -3. Reliable is ignored. Shocking, scatter, and overheating have been removed. The overall value is calculated as (damage × range modifier) + specials, divided by the cost and rounded to one decimal place. This ends up ranging from 1.7 to 2.6, mostly clustered around 2.1 to 2.3 values. The 1.7 is the bombast laser in weak fire mode (its blast mode kicks up to 2.4), the primitive ballista gets 1.9, then everything else is 2.1 to 2.5 (except the flamer at 2.6, because it's cheap). The original values ranged from 0.8 to 5.5. An average damage value was also calculated assuming: accurate weapons got `+2k2` damage, twin-linked laser got its two raises, burst weapons hit with up to 5 rounds, and the target had 10 armor. Recharge weapons got their damage halved. A final 'awesome' value was calculated as (overall value × average damage value / 20), ranging from 0.9 (ballista) to 8.5 (Arrow IV homing missile).
+
+> **Clarification:** The intended interplay of the Accurate and Blast properties is: the target being aimed at gets the bonus damage from the Accurate property, everyone nearby gets hit by the Blast. You may wish to roll the Accurate and the Blast damage separately.
+
+> **Optional Rule:** Missile blast sizes are relative to vehicle scale combat. If used in personal scale combat (shot at normal-sized people & creatures) and they don't have a blast, apply the following special blast to people/creatures only: radius as SRM=2 LRM=4 A4=6, damage as rolled but with 0 penetration and half the bonus damage; direct hits are resolved as normal.
+
+> **Open Question:** Vehicle melee weapons are normally used by vehicles with arms. Without arms, the vehicle's Acceleration rating could possibly be used for Strength, but this is uncertain.

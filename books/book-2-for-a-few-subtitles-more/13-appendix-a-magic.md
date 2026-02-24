@@ -1,0 +1,191 @@
+---
+title: "Appendix A: Magic"
+book: 2
+order: 13
+type: "appendix"
+---
+# Appendix A: Magic
+
+> **Integrated:** Spell revisions from this appendix have been incorporated into Book 1, Chapter VIII: Magic. See Book 1 for the authoritative consolidated spell list.
+
+## The Magic Revisions
+
+The reason behind rewriting the spells in this revised edition is simple, some of them were complete trash, some were way too good, and others were hard to figure out. Our methodology for rewriting spells is fairly simple, to make choosing one spell over another into a difficult decision and to better describe the spell's effects.
+
+We took the 5th level Evocation spell Meteor Storm and the 5th level Healing spell Resurrection as a baselines for 5th level spells and all other 5th level spells were compared to them. We asked would we consider taking the other spell over Meteor Storm or Resurrection? This also gave us a non-spell metric to compare 5th level spell effects to; burning a Hero Point. Surviving Meteor Storm for many characters would require
+a Hero Point. So a 5th level spell should make someone spend a Hero Point or to not need to a
+Hero Point. Naturally, some effects don't lend themselves well to that sort of comparison, most
+illusions and divinations being a good example.
+So we went with the question "if you had to choose one magic school based on these spells
+would you choose this school over those schools?"
+Our magic guidelines were as follows:
+Non-combat spells are dangerous to cast during combat: They make you helpless until
+your next turn and the casting action is a Full
+Action.
+Enable different saving throws (Enchantment was all Arcana + Will saves): We added: Int,
+Dex, Com, Fel, Wis, Size, Str, Devotion, etc.
+Enable different attack rolls (optional rules presented in the notes): Level + skill,
+Dexterity + skill, Arcana + skill, Level + Dexterity,
+Arcana + Dexterity. Choose one for everything, choose several and let the caster choose, or allow
+free choice among them all. It's up to you.
+Reduce argument and frustration for when using illusions and mind control spells:
+That's on the next page.
+Attack touch spells last through the caster's next turn so they don't have to provoke
+and opportunity attack: Several Evocation touch attack spells had this issue.
+Non-attack touch spells should provoke an opportunity attack when used offensively: This
+is for the spells that can be 'buffs' but may also have negative consequences for the target if used
+correctly, like the Transformation spell which stops the target from casting most spells and
+using weapons or armor.
+Spells that don't work right when someone knows you cast a spell on them have to be Subtle
+(a serious issue in other games): Consider the effect of Charm Person if a PC
+had to stand up, wave their arms around, say "Iay ast-cay arm-chay erson-pay!", and the target
+knew they rolled a Will save against a mind control spell at that same moment. It doesn't matter if
+they'd fail the save, because they know you tried mind control magic on them and therefore you're
+a terrible person who has to be shot and killed.
+All spells are useful and choosing only one is difficult: The original Permanent Image
+spell was the original Image spell but without the concentration requirement. It was
+weak-ass crap.
+The effects should be reasonably easy to use or rule on because of what they're supposed to
+do: We added missing ranges, durations, and saves to some spells. Notes on others. We tried to
+spell out some of the occasional alternate uses and occasional corner cases. You're really just going to
+have to use your best judgment in some cases. We tried to help by there isn't room for everything
+without making each spell take it's own page.
+The effects should be worth the price.
+Keep in mind that the character has paid for these effects, in XP, not taking other abilities, and
+risking the Warp or casting failure. They shouldn't be denied without an excellent reason. Of course
+there's other casters out there with Dispel Magic who know the old ShadowRun saying "Magical
+superiority through superior firepower: Geek the mage first." But that's intelligent opposing NPCs,
+those are fair.
+
+---
+
+## General Mind Control & Illusion Rules
+
+See Book 1, Chapter XV: Playing the Game for the complete General Mind Control Rules and General Illusion Rules. The rules are identical between both books.
+
+---
+
+## The Original Spells Presented here in their original text are
+
+the are the spells that got whacked. This is for comparison and just in case you wanted to use
+any of them. Also noted may be the reason for the changes.
+Knock: Abjuration 2.
+You unlock a touched door, disabling all non- magical locks on it.
+
+- No way to magically lock anything.
+  Mage Armor: Abjuration 3.
+- Changed to level 2.
+  Dispel: Abjuration 2.
+  You may use this spell as a reaction to counter a spell being cast, with the target number of this
+  spell equal to the Magic roll of the caster of the target spell.
+- Changed to level 3, added a range and changed 'Magic roll' to 'Focus Power test'.
+  Disjunction: Abjuration 4.
+  This spell functions as Dispel, but if you succeed on the counter attempt, the target cannot cast
+  spells until the end of your next turn.
+- Changed to level 5, added a range and improved the effect for additional raises on the
+  Focus Power test.
+  Wall of Force: Abjuration 5.
+  This spell creates a powerful magic force-field. A stationary plane of force up to 20m long is
+  created within 50m. This plane is effectively indestructible for as long as it lasts. This spell
+  cannot cause damage, and if the wall's area of effect would intersect something (like trying to
+  cast it through a person or tree) it instead stops before intersecting them, creating a shortened
+  version of the wall.
+- Changed level to 4, added a height, added usage details, added improvements for
+  raises on the Focus Power test.
+  Voidskin: Abjuration 2.
+  You become immune to the ravages of space.
+  While Voidskin is active it provides you with all the air you need to breathe and protects you
+  against pressure and radiation.
+- Changed to level 1 (its a TN 15
+  Wealth buy) and improved the effect.
+  Endure Elements: Abjuration 1.
+  You may comfortably exist in most natural environments. You don't suffer penalties to your
+  actions from weather conditions, and you're comfortable even in very hot or cold weather.
+- Changed to level 2 and added made the effect more than 'you wear climate appropriate clothing'.
+  Invisible Servant: Conjuration 1.
+- Increased duration and made it possible to have more than one.
+  Call Item: Conjuration 2.
+  You cast this spell on an item you can hold in one hand. You may teleport that item into your
+  hand at any time, from any distance, as a free action. You may have only one item prepared in
+  this way at a time.
+- Effectively had no casting roll, worked across Crystal Spheres, two people can cast it on
+  the same item, and what does 'hold in one hand' mean with a werewolf wearing power armor and
+  buffed to Size 10 & Str 9?
+  Blink: Conjuration 1.
+- Changed to level 2. It was an automatic best-pick spell as a level 1 spell.
+  Gate: Conjuration 5.
+  Keywords: Social [non-combat], Somatic Duration: One day per Caster Level.
+  As Porte, save you don't need to have line of effect to the target for the portal opening. This
+  portal counts as one of the two open portals you may have and otherwise follows all the rules of
+  Porte. (Porte: 100m range, has to be cast twice, portals cannot move relative to each other or
+  their surroundings)
+- Frikkin useless damn shit-spell.
+
+---
+
+When you cast Web, choose a point within
+25m. All targets within 5m of the point are
+Immobilized for a number of rounds equal to your Caster Level.
+
+- Added save, escape, what happens if someone enters the area after it's cast, etc.
+  Cloudkill: Conjuration 3.
+  All breathing creatures that start their turn within the gas or move through it during their turn are
+  affected as if they had been hit with a weapon with the Toxic property.
+- The spell had no effect if people held their breath and TN 15 Toxic is a very weak effect.
+  Black Blade of Disaster: Conjuration 5.
+- Changed to level 4 and added extra damage & effects. As written it was just a
+  standard power sword with Pen 20.
+  Incendiary Cloud: Conjuration 4.
+  All breathing creatures that start their turn within the gas or move through it during their turn are
+  set on Fire.
+- While On Fire is better than Toxic it still didn't affect people who held their breath. It
+  was changed to level 5 and brought in-line with
+  Meteor Storm levels of damage.
+  Augury: Divination 1.
+  A failure on this spell still appears to function, but gives a false result.
+- Except there's no reason not to cast it
+  50 times and the caster knows if they made the
+  Focus power test anyways.
+  Mind Net: Divination 4.
+  You create a telepathic network between your allies. Until the end of the scene, you and any
+  allies you name on casting this spell can speak through this network silently and instantly.
+- No range or target limits, anyone you've ever met can be an ally, even if they're in
+  a different Crystal Sphere or in the Warp. Other than that it's just a hands-free encrypted cellphone. We accept that our changes may not
+  have been the best, but its an iffy spell anyways.
+  Legend Lore: Divination 3.
+- Another pretty much trash spell. We folded in the Hindsight spell effects.
+  Foresee: Divination 4.
+- Dude
+  Two spells named 'Foresee'.
+  ... Two spells named 'Foresee'.
+  Hindsight: Divination 5.
+- Another WTF this isn't a level 5 spell
+  "WTF this isn't a level 5 spell effect! . We folded it's effect into Legend Lore
+
+and replaced it with a super-buff.
+You know what? This is taking too long. You get the idea of what we tried to do: improve or
+replace trash spells and fix undefined or weak crap. Here's the rest of the list and a highlight.
+You can check out the differences yourself if you really care.
+Enchantment: Stun, Blindness, Geas, Shock &
+Awe, Suggestion, Demand, Amnesia.
+Evocation: Magic Missile, Energy Grasp, Energy
+Aura, Energy Wall, Prismatic Ray, Lightning
+Ring, Reality Maelstrom.
+Healing: Cure spells, Boon, Rebuke, Heal,
+Divine Power, Resurrection.
+Illusion: Programmed Image, Permanent Image,
+Illusionary Script, Dream, Mislead, Screen.
+Necromancy: Speak With Dead, Corrupt Earth,
+Consume Soul, Burning Blood.
+Transmutation: Enlarge, Polymorph, Dragon
+Form, Stone Tell, Control Weather, Iron Body.
+Iron Body: Transmutation 5.
+You gain 10 armor to all body locations which does not stack with other sources of armor, don't
+need to breathe for the duration of the spell, and get +2 to your Strength and -2 to your Dexterity
+(to a minimum of 1).
+
+- Yay, its variant light power armor, but worse. This is not a 5th level spell effect. We
+  replaced it with Have a dozen buffed elementals
+  "WTF this isn't a level 5 spell to beat people up for you.
+
+---

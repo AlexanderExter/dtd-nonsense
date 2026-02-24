@@ -1,0 +1,316 @@
+{
+    "races": [
+        {
+            "id": "aasimar",
+            "name": "Aasimar",
+            "size": 5,
+            "languages": ["Trade", "Celestial"],
+            "charBonus": {
+                "options": ["wisdom", "constitution"],
+                "description": "+1 to Wisdom or Constitution"
+            },
+            "skillBonus": [
+                { "skill": "command", "value": 1 },
+                { "skill": "ballistics", "value": 1 }
+            ],
+            "power": {
+                "name": "And They Shall Know No Fear",
+                "description": "Begin play with the feats Jaded and Fearless (Angry)."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "darkEldarin",
+            "name": "Dark Eldarin",
+            "size": 3,
+            "languages": ["Trade", "Dark Eldarin"],
+            "charBonus": {
+                "options": ["charisma", "dexterity"],
+                "description": "+1 to Charisma or Dexterity"
+            },
+            "skillBonus": [
+                { "skill": "deceive", "value": 1 },
+                { "skill": "forbiddenLore", "value": 1 }
+            ],
+            "power": {
+                "name": "Warp Miasma",
+                "description": "As a half action, create a 4m radius sphere of darkness. Blocks line of effect; anyone within is blind. Lasts one round per level. Uses: 1/scene at L1, 2/scene at L3, 3/scene at L5."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "dragonborn",
+            "name": "Dragonborn",
+            "size": 5,
+            "languages": ["Trade", "Draconic"],
+            "charBonus": {
+                "options": ["strength", "charisma"],
+                "description": "+1 to Strength or Charisma"
+            },
+            "skillBonus": [
+                { "skill": "command", "value": 1 },
+                { "skill": "intimidation", "value": 1 }
+            ],
+            "power": {
+                "name": "Dragon Breath",
+                "description": "Once per scene, make an attack with your breath weapon using the same weapon profile as a Flamer. At Level 3 and 5 you gain an additional use per scene."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "eldarin",
+            "name": "Eldarin",
+            "size": 3,
+            "languages": ["Trade", "Eldarin"],
+            "charBonus": {
+                "options": ["wisdom", "intelligence"],
+                "description": "+1 to Wisdom or Intelligence"
+            },
+            "skillBonus": [
+                { "skill": "academicLore", "value": 1 },
+                { "skill": "arcana", "value": 1 }
+            ],
+            "power": {
+                "name": "Warp Step",
+                "description": "Once per scene, teleport up to twice your speed as a half action. You must be able to see your destination. At Level 3 and 5 you gain an additional use per scene."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "elf",
+            "name": "Elf",
+            "size": 3,
+            "languages": ["Trade", "Elven"],
+            "charBonus": {
+                "options": ["wisdom", "dexterity"],
+                "description": "+1 to Wisdom or Dexterity"
+            },
+            "skillBonus": [
+                { "skill": "perception", "value": 1 },
+                { "skill": "charm", "value": 1 }
+            ],
+            "power": {
+                "name": "Elven Accuracy",
+                "description": "Once per scene, reroll a failed Weaponry or Ballistic skill Test. At Level 3 and 5 you gain an additional use per scene."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "gnome",
+            "name": "Gnome",
+            "size": 3,
+            "languages": ["Trade", "Gnomish"],
+            "charBonus": {
+                "options": ["intelligence", "fellowship"],
+                "description": "+1 to Intelligence or Fellowship"
+            },
+            "skillBonus": [
+                { "skill": "crafts", "value": 1 },
+                { "skill": "academicLore", "value": 1 }
+            ],
+            "power": {
+                "name": "Improvise",
+                "description": "Begin play with one free Weapon proficiency of any type and one free Armor proficiency of any type."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "halfling",
+            "name": "Halfling",
+            "size": 2,
+            "languages": ["Trade", "Halfling"],
+            "charBonus": {
+                "options": ["intelligence", "fellowship"],
+                "description": "+1 to Intelligence or Fellowship"
+            },
+            "skillBonus": [
+                { "skill": "larceny", "value": 1 },
+                { "skill": "deceive", "value": 1 }
+            ],
+            "power": {
+                "name": "Shifty",
+                "description": "Static Defense = 10 + (6 × Dexterity) - (2 × Size). Uses only Dexterity instead of Wisdom + Dexterity."
+            },
+            "source": "book1",
+            "notes": "Modified Static Defense formula."
+        },
+        {
+            "id": "human",
+            "name": "Human",
+            "size": 4,
+            "languages": ["Trade", "Human"],
+            "charBonus": {
+                "options": ["any"],
+                "description": "+1 to any one Characteristic"
+            },
+            "skillBonus": [{ "skill": "any", "value": 1, "count": 2, "description": "+1 to any two skills" }],
+            "power": {
+                "name": "Heroic Heritage",
+                "description": "Begin play with one additional Hero Point."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "ork",
+            "name": "Ork",
+            "size": 5,
+            "languages": ["Trade", "Orkish"],
+            "charBonus": {
+                "options": ["strength", "willpower"],
+                "description": "+1 to Strength or Willpower"
+            },
+            "skillBonus": [
+                { "skill": "intimidation", "value": 1 },
+                { "skill": "scrutiny", "value": 1 }
+            ],
+            "power": {
+                "name": "WAAAAAGH!",
+                "description": "At the beginning of each combat, heal hit points equal to your level."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "squat",
+            "name": "Squat",
+            "size": 3,
+            "languages": ["Squat", "Trade"],
+            "charBonus": {
+                "options": ["constitution", "willpower"],
+                "description": "+1 to Constitution or Willpower"
+            },
+            "skillBonus": [
+                { "skill": "crafts", "value": 1 },
+                { "skill": "commonLore", "value": 1 }
+            ],
+            "power": {
+                "name": "Squat Toughness",
+                "description": "Resilience is treated as one higher for determining hit points lost due to damage."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "tau",
+            "name": "Tau",
+            "size": 4,
+            "languages": ["Tau", "Trade"],
+            "charBonus": {
+                "options": ["intelligence", "composure"],
+                "description": "+1 to Intelligence or Composure"
+            },
+            "skillBonus": [
+                { "skill": "commonLore", "value": 1 },
+                { "skill": "persuasion", "value": 1 }
+            ],
+            "power": {
+                "name": "Fall Back",
+                "description": "Whenever you successfully dodge a melee attack, you may make a free withdraw action (half normal distance)."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "tiefling",
+            "name": "Tiefling",
+            "size": 5,
+            "languages": ["Abyssal", "Trade"],
+            "charBonus": {
+                "options": ["dexterity", "constitution"],
+                "description": "+1 to Dexterity or Constitution"
+            },
+            "skillBonus": [
+                { "skill": "intimidation", "value": 1 },
+                { "skill": "weaponry", "value": 1 }
+            ],
+            "power": {
+                "name": "Bloody Minded",
+                "description": "You may reroll damage dice that land on a 1."
+            },
+            "source": "book1"
+        },
+        {
+            "id": "thriKreen",
+            "name": "Thri-Kreen",
+            "size": 4,
+            "languages": ["Trade", "Thri-Kreen"],
+            "charBonus": {
+                "options": ["dexterity", "wisdom"],
+                "description": "+1 to Dexterity or Wisdom"
+            },
+            "skillBonus": [
+                { "skill": "acrobatics", "value": 1 },
+                { "skill": "perception", "value": 1 }
+            ],
+            "power": {
+                "name": "Multi-Armed",
+                "description": "Smaller pair of arms allow taking a Ready action as a free action once per round and reload weapons in half the listed time."
+            },
+            "source": "book2"
+        },
+        {
+            "id": "kenku",
+            "name": "Kenku",
+            "size": 3,
+            "languages": ["Trade", "Kenku", "Any one extra"],
+            "charBonus": {
+                "options": ["intelligence", "wisdom"],
+                "description": "+1 to Intelligence or Wisdom"
+            },
+            "skillBonus": [
+                { "skill": "performer", "value": 1 },
+                { "skill": "pilot", "value": 1 }
+            ],
+            "power": {
+                "name": "Wing-Aided Movement",
+                "description": "Do not suffer from falling damage as long as they can unfurl wings. Fall only 2m per round and can glide horizontally at normal speed. +2k0 to all Acrobatics tests."
+            },
+            "source": "book2"
+        },
+        {
+            "id": "kobold",
+            "name": "Kobold",
+            "size": 2,
+            "languages": ["Trade", "Kobold"],
+            "charBonus": {
+                "options": ["willpower", "dexterity"],
+                "description": "+1 to Willpower or Dexterity"
+            },
+            "skillBonus": [
+                { "skill": "larceny", "value": 1 },
+                { "skill": "crafts", "value": 1 }
+            ],
+            "power": {
+                "name": "The Blood",
+                "description": "Once per round as a Free Action, spend two Hit Points to gain a Resource Point which must be immediately spent. This does not count against Resource Points per round limit."
+            },
+            "source": "book2"
+        },
+        {
+            "id": "dryad",
+            "name": "Dryad",
+            "size": 4,
+            "languages": ["Trade", "Elven", "Spirit-tongue"],
+            "charBonus": {
+                "options": ["fellowship", "willpower"],
+                "description": "+1 to Fellowship or Willpower"
+            },
+            "skillBonus": [
+                { "skill": "animalKen", "value": 1 },
+                { "skill": "scrutiny", "value": 1 }
+            ],
+            "power": {
+                "name": "Dryad Power (choose one)",
+                "description": "Choose either Pheromone Pollen or Not An Animal.",
+                "options": [
+                    {
+                        "name": "Pheromone Pollen",
+                        "description": "Produce pollen that subtly affects minds. Duplicate effects of the Attraction spell using Level + Fellowship in place of a Focus Power test."
+                    },
+                    {
+                        "name": "Not An Animal",
+                        "description": "Immune to Toxic, Shocking weapon attributes, and drug effects/addictions. Take an extra wound from fire and must make Fear(1) test when someone tries to set you on fire. Gain one less insanity point than normal (minimum zero)."
+                    }
+                ]
+            },
+            "source": "book2"
+        }
+    ]
+}

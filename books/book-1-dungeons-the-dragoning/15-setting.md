@@ -1,0 +1,1119 @@
+---
+title: "Chapter XV: Setting"
+book: 1
+chapter: 15
+order: 15
+type: "chapter"
+---
+# Chapter XV: Setting
+
+The history of the Great Wheel is a great sprawling tapestry, embroidered in blood and steel and gold, stretching from the furthest reaches of the distant past to the current hour. Near-immortal wizard kings once shaped the Wheel to their will and made it a place of miraculous splendor. Today, men fight with sword and bolter in the ruins of ancient glory. The implacable Lady of Pain rules over Sigil and the Factions that founded themselves there constantly work to stab each other in the back. The forces of Law and Chaos make war on each other, the Warp presses against the fabric of reality, and newly reborn Heroes from the ancient past return to save the world--or doom it.
+
+## History of the Wheel
+
+### The War in Heaven -- 40,000 Years Ago
+
+Long ago, a great race known as the Syrne emerged, the first race to progress in magic and technology enough to become part of the larger universe. They were almost immortal, patient and wise. They are thought to be directly responsible for the uplifting of most of the currently active intelligent species in the Astral Sea, including the Eldarin, the Orks, the Gnomes, and the Dragons. The Syrne were potent mages who routinely used the powers of the warp for a large variety of applications, constructing the Portal Relays.
+
+Eventually, a great conflict later known to the Eldarin as the War in Heaven arose between the C'tan, immensely powerful, incorporeal beings composed of pure energy who existed solely in the material universe, and the Syrne. The Syrne, physically weak and few in number, uplifted the Eldarin to serve as their soldiers. In response, the C'tan enslaved the Modrons, almost elemental creatures of pure order, bonding them within geometrical armored shells of a living metal called necrodermis. The C'tan directed the Modrons into Great Marches of all intelligent life. In response to this threat, the Syrne created the Orks and, finally, the Dragons to act as their greatest weapons.
+
+How the war ended isn't known. The Modrons were forced into stasis in Mechanus and other forgotten clockwork worlds. The C'tan were put into hibernation. The Syrne were rendered completely extinct, the Portal Network shut down. The only clues left to the Syrneth mystery are among the most ancient records of the Eldarin, as much myth as history, speaking of Great Devourers that came to destroy and consume all life. No evidence of these so-called "Reapers" actually exists beyond this near-mythological record.
+
+> **Design Note:** Some of the setting material in this chapter is intentionally contradictory. Some SMs may prefer this, as it lets them choose what is true. Others may find it harder to start playing without a definitive setting. Book 2, Appendix E (Astropaths & Navigators) has discussion on how Astropaths and Navigators could affect the setting.
+
+<!-- EDITOR: Original said "Appendix G" — corrected to "Appendix E" per Book 2 table of contents. Appendix G is Spelljamming. -->
+
+### The Draconic Ascendency -- 10,000 Years Ago
+
+When the Syrne were lost, their creations were left to their own devices. The Orks immediately turned on themselves, the joy of combat all they desired in life. Some of the Eldarin escaped their Crystal Spheres and constructed giant worldships, Craftworlds, to sail through the astral sea. They repaired and opened many Portal Relays, and found the city of Sigil. The Lady of Pain was, even then, the ruler of the city, already sitting on the throne of blades before the Eldarin arrived.
+
+But the Dragons were not content to war among themselves, or to play at being mere caretakers of the Syrneth ruins. The Dragons spread out into the Astral Sea, their personal power and their own uplifted soldiers, the Dragonborn, allowing them to conquer many worlds. They forged an empire, seeking to unite all worlds under the guidance of their ruler, the god Bahamut.
+
+But nothing lasts forever, and the egos of the Dragons meant that it wasn't long before someone rose to challenge Bahamut's power. In a war known as the Tiamat Heresy, a warlord named Tiamat waged war on Bahamut, nearly half of the living dragons siding with her. The two armies clashed, and on the slopes of Mount Celestia itself, Tiamat was struck down. But the Draconic empire was shattered. The only legacy it managed to leave was spreading Dragons to nearly every Crystal Sphere.
+
+### The War of the Monster's Fall -- 7,000 Years Ago
+
+Few details survive from this era, but it marked the beginning of the end for the Eldarin. The Dragon Empire was fragmented and lost, the Eldarin the dominant force in the universe. They continued their work of reopening Portal Relays until one day they discovered something horrible, something that had been locked away so long that even the Syrne had nearly forgotten about them.
+
+At some point in their history, before the Eldarin had been uplifted, the Syrne had encountered a race so hostile and dangerous that they felt the need to seal it off from the rest of the universe. This crystal sphere that they sealed off is today known as Pandemonium, a place forbidden entrance by all. The Portal Relay was not merely shut down, but completely disabled. It was nearly beyond the knowledge of the Eldarin to repair it. When it opened, the Eldarin were not prepared for what came out, a terrible enslaving race of abominations known as the Aboleth.
+
+The War of the Monster's Fall was ended by the creation of the first Aasimar and Tieflings, supersoldiers moulded like clay by the Gods and forged in the fires of war. They were clad in great armor and armed with the mightiest blades. They were divinely inspired with tactics, strategies, and artifacts such that no foe could best them in battle. They were the bulwark against the terror, the defenders of all. Knowing no fear, they pushed back the Aboleth and sealed them back into Pandemonium, deactivating the Portal Relay once again. It became law that no Portal Relay should be opened without careful study of the Crystal Sphere it accessed. The Eldarin were left with no purpose.
+
+### The Fall of the Eldarin -- 5,000 Years Ago
+
+The Eldarin were left the dominant race in the universe after the fall of the Dragons. With little to challenge them, they descended into decadence. Their extreme hedonism destroys what little government is left on their homeworlds. The craftworlds cut off contact with the homeworlds.
+
+The corruption of the Eldarin became a religion of its own. After centuries of feeding the fledgling god with prayers made from extreme experiences and twisted rituals of self-indulgence, the Chaos God Slaanesh was born. The violence of Slaanesh's birth turned the Eldarin Homeworlds and their Crystal Sphere into the terrible rip in reality today known as the Abyss. Most of the Elven gods died save Corellon, who either fought off Slaanesh or hid himself, depending on the story and who is telling it. Kaela Mensha Caine was the last of the gods to fall, in a battle so violent it sent his blood spilling throughout the cosmos.
+
+The Eldarin were destroyed as a people. Now they are split into three groups. The 'true' Eldarin, who remained in their Craftworlds safe from the corruption and now travel in great migrant fleets. The Elves, now so distinct from the Eldarin that the Eldarin consider them lost, their souls weighed down by gravity and their powers lost. Finally, there are the Dark Eldarin, protected by oaths to the demon spider queen Lolth, striking as raiders and pirates from their hidden enclaves.
+
+### The Council Era -- 1,000 Years Ago
+
+After the Fall of the Eldarin, much space was left open for other races to flex their muscles. The Elves, Squats, Dragonborn, and Eldarin formed a Council, ruling from Sigil, under the watchful eye of the Lady of Pain. The Aasimar and Tieflings became enforcers for the Council, though the disputes of their gods meant that they were often at each other's throats more than any potential enemy.
+
+The city of Sigil prospered, and four representatives became a dozen as Factions organized along philosophical lines became the ruling forces of Sigil and, thus, the entire universe. Of course, divided as they were, the Factions accomplished little more than just countering each other's moves.
+
+### The Age of the Imperium -- Current Day
+
+The emergence of Humanity into the Great Wheel is considered the beginning of the modern era. Humanity escaped their Crystal Sphere on their own. Syrneth ruins on their home world of Théah gave them the clues to build their own spelljamming ships. They emerged from their world into the Great Wheel. At first, the travels were slow and dangerous, requiring years and often ending in disaster. Eventually, they learned to activate the Portal Relays and use the Warp for fast travel, establishing a small empire for themselves.
+
+The Eldarin encounter humans for the first time by finding them opening up an unknown Portal Relay. This led to a short, but violent war between a splinter fleet of the Eldarin and the humans. The Eldarin splinter fleet is wiped out by a human counterattack after occupying only a single Crystal Sphere. Before the weight of the Eldarin can be brought to bear on the humans, the Council learned of the events and humanity was introduced to the wider universe, the true expanse of the Astral Sea. War was cancelled on account of massive culture shock.
+
+Today, Humans are still finding their way in the Astral Sea. They are explorers and risk takers, and the engine of much change in the universe. Several of the Factions in Sigil have had humans elected as their leaders, and the young race holds a very important place in the Council, something that other races occasionally look on with jealousy.
+
+Many threats to the relative stability of the Council loom. Ork warbands, Eldarin pirates, and Dragon attacks have become minor issues. The Modrons are reported to be awakening again, perhaps preparing another Great March against all life. Crystal Spheres have been lost, all the worlds within stripped bare. Whispers speak that the planets were so stripped by the Reapers who destroyed the Syrne. And as always, the forces of Law and Chaos wage their eternal Blood War.
+
+_In the grim darkness of the Great Wheel, there is only war._
+
+## The Great Wheel
+
+The Great Wheel is the galaxy, full of thousands of Crystal Spheres floating in the vastness of the Astral Sea. They're arranged in a spiralling wheel, with Sigil at its hub. The Great Wheel is the ultimate frontier, a vast sea of darkness studded with outposts of civilization. There are an almost infinite variety of stories and peoples to be found, and most of the Great Wheel lies unexplored, entire Crystal Spheres like vaults--potentially full of treasure, death, or, in most cases, plenty of both.
+
+### The Astral Sea
+
+The Astral Sea is an empty place, as still empty and cold as death itself. But it is studded with bright lights, bubbles of safety large enough to contain worlds. Some contain only one or two worlds, others with dozens or more. These bubbles are known as Crystal Spheres. They present a formidable barrier to travel, spelljamming ships crashing into them if they don't know the safe routes.
+
+Ships crossing the Astral Sea face massive, often impenetrable barriers of time. There are no shortcuts to be had, no quick route or tailwind to speed your way. There is only distance, an endless road. The distance between Crystal Spheres is almost incalculable, taking years in even the fastest ship. But aside from the sheer emptiness, the Astral Sea is safe, simply because there is nothing in it to be deadly.
+
+### The Portal Network
+
+Thankfully, most are not reliant on the Astral Sea for their travel. The Portal Network connects many crystal spheres, made of Portal Relays, giant constructs built by the Syrne before the dawn of man's civilization allowing fast travel through The Warp. The Warp is a roiling sea of chaos, a limbo between states, shaped by stray thoughts and desires, a swirling storm of earth, air, fire, and water. Unprotected people and matter quickly dissolve in this storm, torn to pieces.
+
+But despite the danger, Warp travel reduces travel time between crystal spheres from years to mere weeks. Sigil serves as a beacon for ships in the Warp, a fixed point even there that allows navigation. For this reason, Sigil is considered the hub of the Portal Network.
+
+## Spelljamming Ships
+
+It would be very difficult to get around the Great Wheel without Spelljamming ships. Very few beings can simply leave a gravity well under their own power, much less crack a crystal sphere or travel through the warp (true dragons, naturally, being the exception to those rules). A spelljamming ship is a mix of technology and sorcery, the exact mix depending on the skills of its builders and the culture it comes from.
+
+A Spelljammer ship can travel through the vastness of space under its own power, but without using a Portal Relay to enter the Warp, their effective range is extremely low--even travel between two very closely-spaced Crystal Spheres might take decades.
+
+Each race and culture has its own style and construction methods for ships. From the thickly-prowed human vessels of the warlike human Imperium, to the graceful skeletal shapes of Eldarin wraithbone ships, to the bashed-together mess that defines an Ork ship.
+
+## The Warp
+
+The Warp, Limbo, the Immaterium. It is a co-existing universe that underlines the physical universe, an endlessly broad and infinitely deep sea of energy and churning elemental matter. It carries within it the random thoughts, unfettered emotions, memories, and unshakable beliefs of those who live in the material universe.
+
+The Warp is the source of magic in the universe, providing power to spells and magic. Some think that sorcerers, straining the fabric of reality by casting spells and dragging the power of the warp into the real world, are a danger to the universe itself, and that the power of sorcery was what led to the fall of the Syrneth.
+
+The most important thing about the Warp, to the Wheel, is that it allows ships to travel from one Crystal Sphere to another in the span of weeks instead of generations. To travel through the Warp, a ship uses one of the Portal Relays to breach a hole into the Immaterium and travel into it. With the help of a Navigator, a ship in the warp can be directed nearly anywhere in the Great Wheel. Sigil provides a point of reference, a shining beacon that can be seen from anywhere in the Warp.
+
+Warp travel is not without its dangers. It could be considered the most dangerous thing in the universe, in fact, which is hardly a title given to something that is safe. The most obvious danger in the warp is the roiling energy of the Warp itself, which can tear at ships. More pressingly, anyone looking into the Warp without protection can be driven insane, possessed, or worse. If the protective fields of the ship fail, warp creatures can invade the ship and corrupt or kill everyone on board.
+
+Without a navigator, Warp travel can only be attempted in short jumps of five light years or so--any more than that and the unpredictable currents of the Warp make it impossible to tell where or when a ship will appear.
+
+During a Warp jump, something like two weeks will pass for the ship and its crew, but how long this travel takes in the real universe is quite another matter. Most warp jumps take months, and a year or so is average for widely-placed points. With the unpredictable currents of time and space in the Warp, it is impossible to really predict the time taken, and travellers have no idea how long their journey has taken until their ship has finished its jump. Travel through the stars is not something to be undertaken lightly.
+
+## The Umbra
+
+The Umbra is a kind of shallow end of the warp, an intermediary between the full chaos of the warp and the real universe. It is something like a shadow, not really a true place or thing, just an image of the real universe that exists alongside it, separated by a thin barrier. The geography of the Umbra is a dark mirror of the real universe, warped by the emotions and history of the place, empty of people and changing to reflect the real world when no one is looking.
+
+Many supernatural beings and spirits can cross between the Umbra and the real world. Ghosts and weaker daemons can use this shadowland to cause havoc. Damage done to things in the Umbra does not cause immediate harm to anything in the real world, though there are some odd parallels--something being destroyed in the warp tends to give it bad luck in the real world, as an example.
+
+### The Umbra — Full Rules
+
+> **Integrated:** Content from Book 2, Appendix N.
+
+There's no information on how to deal with the Umbra. It's just missing from the books. If you're unfamiliar with the games that the Umbra and Warp come from this can be really confusing. Even if you are familiar with those games the mash-up of the two concepts can be pretty iffy. Presented here is some random crap we came up with to use in our game, feel free to ignore it.
+
+The Umbra is sort of the space between the material world and the Warp. People (and things) get in and out of it through various means, powerful werewolves can step through a mirror, wraiths can just blip over, ghosts and daemons can sometimes slide through, some sorcerers have spells or rituals that may let them open a portal. The barrier or 'Veil' between the Umbra and material worlds can be 'thinner' or 'thicker', making passage back and forth easier or harder. This 'thickness' matches how close the warp is to the material world and how easy it is to use magic. This is the usual 'where Modrons are active it's harder to...' sorts of stuff.
+
+People experience the Umbra differently. To some it's like a slightly out of focus photographic negative of the world, yet creatures and things that exist in the Umbra look normal. Others refer to it as washed out and gray or sepia toned. Others liken it to the material world being behind a thick fog where it takes active effort to perceive it, yet the things actually in the Umbra are clear and colorful. Certain people perceive it as a dim and shadowy place only partly reminiscent of the material world, where the native horrors lurk in the darkness. People in the Umbra together may not agree on the exact visual effects, but they do agree on things that are there.
+
+While the topography of the Umbra roughly parallels the material world, anything that isn't effectively permanently in place doesn't really exist except as a sort of almost-translucent/transparent version of itself. This means that the ground, large plants (mostly trees), and permanent buildings are still pretty sturdy. But things like people, doors, shrubs, and water isn't solid and may not even be visible at all. Pro-tip: Don't pop out of the Umbra at the bottom of the ocean unless you're prepared for it. Places of great natural forces tend to be more present and real in the Umbra. Volcanoes, vortexes, and waterfalls often seem nearly normal except for some larger than normal elementals hanging around.
+
+No I don't know what you're doing here. Go back.
+
+Magic is visible to normal vision as neon glowing geometric forms, flashing twisting ribbons, and strings or clouds of sparkles. Generally any of the various special effects that you see in movies to tell you that magic is happening. It's also tangible and magical wards created in the material world can function as doors and walls. You can check advanced rules of Book 1 for some optional rules about wards.
+
+<!-- EDITOR: Book 1 has no advanced rules (only A, B, C). Book 2 advanced rules is Tracking. No appendix covers ward rules — content was planned but never published. The ward mechanics described in the following sentences are the only published guidance. --> If someone tries to mess with a spell or ward in the Umbra it has a barrier rating equal to it's Focus Power test and they just need to damage it enough to break it down below the point where the spell would have been successfully cast. Of course it can't be quite that simple, no. Pretty much any ranged attack or weapon will just pass through the spell or ward without doing anything. You need to go up and rip it apart with your bare hands, an artifact melee weapon, or another spell. You'll also want to watch out for when it destructively fails. Once the spell or ward is reduced past where it would have been successfully cast it sort of magically explodes. The radius is 1/5th the original Focus Power test in meters and it does magic damage equal to whatever Focus Power result it would have after you broke it. That's magic damage too, which means that you need Aura because Armor won't help. In the material world there will generally be a popping fizzing sound and a sudden glow that fades away when it happens, in addition to the normal stuff like your magic flying house crashing to the ground. Example: Someone cast a TN 15 Invisible Servant spell with a Focus Power result of 17 that you, in the Umbra, want to wreck. Walk up, punch it for more than 17 damage, it's Focus Power result is now at 16. Do it twice more and the Focus Power result drops to 14, causing the spell to fail. In the material worlds the Invisible Servant pops and drops whatever it was holding. In the Umbra there's a 17/5 = 3.4 = 3m magic blast that does 14 damage.
+
+The Umbra also has an additional dimension, leading deeper towards the Warp. It's generally described as any of: glowing paths, extra solid clumps of shadow, creepy stationary patches of fog, holes in reality, and several other phenomena. Moving in this direction is harder than just your normal walking around. You'll make several (say 1d5+5) Level or Power stat Tests (or perhaps whatever Tests were called for by the means used to enter the Umbra in the first place) to keep moving, with each Test taking you further away from the material world. The TNs are usually 10 plus 2 for each step away from the material world. As you make the Tests the material worlds will fade out (generally it's completely gone after the third Test), to be replaced by a more alien landscape that shifts and changes every Test and scene. The closer you get to the Warp the faster and more severe the shifts are. At two checks away from the Warp the scenery is affected by a Psychic Phenomena roll every few rounds (just the harmless visual effects mostly) that affects the entire scene. At one check away from the Warp make a Perils of the Warp roll (if you use the included Warp roller put it up to +25, roll twice, and pick the weirder one) every 1d5 rounds and apply it to everything in the area. The next check will put you in the Warp proper. That's generally accepted to be a bad thing for most people. Getting back out to the material world requires the same Tests to move in the other direction.
+
+If you don't want to go all the way 'down' to the Warp there are other places you can sometimes get to. In theory the Webways can be accessed through the Umbra and thus the city of Commoragh. There's rumored to be a door to Sigil somewhere. Several places in the Abyss are absolutely reachable from the Umbra, particularly the realms of the Ruinous Powers. In theory that also means that some places in Celestia could possibly be reachable. There are some "realms" where powerful groups or entities have shaped a bit of the Umbra to fit them, these are a bit easier to reach if you know about them. You can assume that it's a TN 20 Forbidden Lore test (and probably another few 'wander around' tests) to find places like the Cocaine Wizard Guild enclave, a path to the Abyss, a dragon realm that you've been invited to, or a werewolf cairn. The Webways and other places are all at least TN 25 or 30. Raises on the Forbidden Lore test should reduce the travel time or difficulty and simple failure just makes you a bit lost and adds +1d5 to the TN. Failing the test with checks indicates ending up at the wrong place before you realize it, finding a Warp storm, or encountering something that's hungry (or just in a really bad mood). If you have something that is connected to the place you get a free Raise on all the tests to get there.
+
+---
+
+Building or shaping your own place in the Umbra involves getting into the middle area and doing lots of difficult rituals, often for a long time. People who participate in a ritual to form or maintain an Umbral realm get a free Raise on tests to find that place again. Doing a few minimal rituals (they're still those hard TNs of 35 or so) and then bringing in your own building materials is doable, but it tends to attract wandering creatures for some reason. Electronics and small-scale simple chemical reactions work just fine, lasguns and revolvers and flamers are all happy things. However stuff like internal combustion engines, rocket thrusters, anti-grav, large motors, and nuclear power plants aren't happy customers in the Umbra. Only the smaller and simpler vehicles or machines can be relied on, except Syrneth magitech junk of course. Interestingly any vehicle with a Super Solenoid Engine works just fine though, as long as the SSE is turned on.
+
+Umbral critters (Book 1, Antagonists) include spirits, elementals, ghosts, wraiths, daemons, powerful spellcasters and werewolves, and the occasional dragon or aboleth. Plus more daemons, of course. Those suckers keep trying to muscle through from the Warp and some of them inevitably succeed. There are no Modrons in the Umbra, their mere existence is antithetical to it. Places where Modrons are active look more monochrome, geometric, and are harder to move around in. The severity of the effect increases as more Modrons are present until all that exists is blank gray emptiness where all movement is impossible. Generic creatures native to the Umbra tend to be a bit nasty, having DarkSight and one or more of: Constitution + Willpower additional Armor and Aura, attacks that are toxic and tearing, acting like they have spells (Blink, Jaunt, Blur, Invisibility, Unluck, Stun, Awe, Energy Aura, Silence, Mirror Image, Draining Touch, Web, Shock & Awe, Confusion, Horrid Wilting, Avasculate, Blood Wind, Primal Power) using Level + Wisdom for the faux casting, Amorphous (creature trait), Stuff of Nightmares, Regeneration, or Phasing. They're also completely immune to toxins and drugs of the material world except for Null and Spook. Elementals and spirits often come in clumps of 2-20 and may be larger and stronger than normal. The elementals may even be spontaneously generating in an area. Daemons are mostly encountered one or two steps from the Warp, with only the rare greater daemon appearing further out. Here's some possible tables we pulled out of our ass.
+
+Modify Umbral Critters (1d10):
+
+| 1d10 | Modification                         |
+| ---- | ------------------------------------ |
+| 1    | Amorphous                            |
+| 2    | Regeneration (Con)                   |
+| 3    | Bonus AP & Aura (Con+Will)           |
+| 4    | Attacks gain Toxic & Tearing         |
+| 5    | Uses abilities like spells           |
+| 6    | Stuff of Nightmares                  |
+| 7    | Phasing                              |
+| 8    | Roll 1d5 twice, rerolling doubles    |
+| 9    | Roll 1d5 three times                 |
+| 10   | Roll twice, rerolling doubles and 8+ |
+
+Random Critter Powers (TN, roll):
+
+| Roll | Power (TN, dice pool)      |
+| ---- | -------------------------- |
+| 2    | Avasculate (30, `6k5`)     |
+| 3    | Horrid Wilting (25, `5k5`) |
+| 4    | Mirror Image (25, `5k5`)   |
+| 5    | Jaunt (25, `5k5`)          |
+| 6    | Silence (25, `5k5`)        |
+| 7    | Draining Touch (20, `5k4`) |
+| 8    | Invisibility (5, `4k4`)    |
+| 9    | Confusion (20, `5k4`)      |
+| 10   | Blood Wind (15, `4k4`)     |
+| 11   | Blur (15, `4k4`)           |
+| 12   | Web (15, `4k4`)            |
+| 13   | Shock & Awe (15, `4k4`)    |
+| 14   | Blink (15, `4k4`)          |
+| 15   | Stun (20, `5k4`)           |
+| 16   | Energy Aura (25, `5k5`)    |
+| 17   | Primal Power (30, `6k5`)   |
+| 18   | Awe (25, `5k5`)            |
+| 19   | Lightning Ring (25, `5k5`) |
+| 20   | Unluck (30, `6k5`)         |
+
+## Sigil
+
+The City of Doors. The Greatest Metropolis. The Hub. Sigil is the center point of the cosmos. The city itself is a beacon in the Warp, a bright light that remains as fixed as a north star, allowing travel through the infinities. Some say the light comes from the Lady of Pain, the city's silent eternal ruler. The Lady, naturally, has been mum on the matter. She does not pass many decrees down through her servants, the dabus, but when she does her word is absolute and disobedience is met with swift death. Even the gods themselves are not immune--no God may manifest in Sigil. It is said by the Eldarin that only one has tried in their living memory, a god of travel whose name is lost and whose worshippers were all found flayed with even their souls lost one day.
+
+Sigil is a free-floating space platform, shaped something like a gigantic floating torus with tightly-packed structures lining its inner surface. It is located outside the Crystal Spheres, just like the portal relays, and shares a lot of technology with them. It is considered the greatest creation of the Syrne and acts as the political, cultural and financial capital of the Great Wheel. It is, in theory, completely neutral ground--no wars are waged there and no armies pass through. However, it's hardly peaceful. Violence is common, usually befalling the foolhardy, the incautious, or the poor.
+
+Anything can be found in Sigil. Anything. And peace is kept, strictly and absolutely, by the Harmonium, an army dedicated to law and order. Declared neutral ground by all, even direst enemies like Aasimar and Tiefling can be found sitting side by side in taverns and sharing tales. Far from a bright and shining city, though, Sigil is a study of barely controlled anarchy, too many different ideologies and peoples coming through for the city to be anything but a melting pot, confusing and disorienting to outsiders.
+
+## Sigil's Factions
+
+The Factions of Sigil are something like political parties or philosophies, people organized along the lines of their beliefs and allegiances. While the Factions are, in many ways, the rulers of the Wheel, it's important to note that they do not represent specific races or governments on their own. Most governments are officially unaligned, donating military men and equipment to the Council forces to use as a whole rather than to any one faction. The recent appearance of Humans into the general population of the Wheel has had a somewhat destabilizing effect on things as faction ranks swell and power bases change.
+
+What most find out, very quickly, though, is that the Council and the Factions do not hold true power here. The Lady of Pain ultimately has control. She would take action against any real threats to the security of Sigil, but allows the Factions to handle the day-to-day running of the place. However, there are things she just won't tolerate--someone trying to summon powerful Warp entities, slaughtering the dabus, attempting to tear down the station, or inciting general rebellion against her rule. People who try those things end up dead, and quickly. Even the Factions aren't safe--if they go too far or overstep their bounds, she'd crush them like ants. And she has, in the past. There were fifteen factions at one point. Some of them got a bit too uppity. They're gone now, each one vanishing overnight with all its members when it became a threat.
+
+Most of the factions run a particular part of the station, as it keeps them in the Lady's good graces. Some are better at it than others. No faction fully trusts another, no matter how noble or trustworthy their goals might seem, which makes the station's offices rather divided.
+
+### Within the Ranks
+
+The Namers of a Faction are the lowest level of the Faction that's really part of the group, with a grasp of the philosophy and ideals that they've been able to embrace as their own. They serve the faction in an auxiliary function most of the time: they usually have other jobs outside of the faction that conflict with their loyalty to that group. However, they quite often are hired to do simple, mundane tasks: delivering parcels, asking a few questions, passing along a message, that sort of thing. None of these are really mandatory, but shying away from aiding the faction is a sure sign that they aren't going to get to the higher ranks.
+
+Higher up on the ladder are the Factotums. They work full-time for a faction, getting their salary from them and their very way of life. They deliver the more important messages, contact people of interest to the faction, serve as guards, and do almost anything that their faction asks of them. At this rank, their loyalty is noted and they can easily rise within the ranks to gain wealth, fame, and other rewards. The life of a Factotum is never dull.
+
+Those that gain enough influence and prestige throughout their faction rise to the rank of Factor. These are the highest up of the high-ups, right next to only the factol themselves. They have great sway in Sigil and often represent their faction in a public and official matter.
+
+At the very top of the line is the Factol. Leader and guider of the entire faction, they set the tone for their members. Factols are the representatives of their groups: to get a basic idea about the current nature of a faction, one only has to look at their factol. When it comes time for factols to be replaced, whether it is through natural death or some foul play, a factol is chosen from among the available factors by a group decision.
+
+### Believers of the Source
+
+To these people, all things are godly. All things can ascend to greater glory--if not in this life, then in the next. Patience, that's all it takes. They see the universe as a giant test, where those who pass ascend and those who fail get reincarnated to try again. It's a simple philosophy, and very straightforward. They haven't figured out exactly what the tests are or how to beat them (should a person be good, evil, or what?), but they keep trying. Eventually, they believe everyone will ascend, and the Wheel will empty out and crumble as it stops being needed. The leader of the Godsmen is Factol Ambar. Anyone is welcome to join the Believers of the Source, though the fact that they ultimately lack utmost faith means their Devotion typically never gets very high. The Godsmen are headquartered in the Great Foundry, and serve to settle disputes between people, keeping peace between warring faiths.
+
+### Bleak Cabal
+
+The Bleakers believe that there's no greater meaning to the universe. It doesn't make sense, and it isn't supposed to, and the people running around looking for meaning are just wasting their lives doing it. Things just are, and whatever meaning there is in the Wheel is what each being imagines into the void. Bleakers believe in the hard truth, that they live in a universe with no 'truth' and that they're the only ones able to face it. Factol Lhar keeps them moving, working through the deep melancholy that most of the members suffer through. He believes that since there is no meaning in the universe, no plan, that people have only each other to count on. Under his leadership, everyone is welcome to join the Bleak Cabal and the Cabal makes itself useful running orphanages, charities, soup kitchens, and sanitariums.
+
+### Doomguard
+
+Everything dies. People, places, and things. Entropy is a one-way street, and the ultimate fate of everything. They believe the purpose of the universe is to simply run to its end. And when it's all over, it will finally be the end of toil and pain. People who try to fix things, stop the decay and put things back together, they've got it all wrong. They're fighting the natural goal of the multiverse. It's important to note they don't just tear down everything that's built up. Building a house means quarrying stone, cutting down trees, and eventually termites get into the beams and the place comes down on its own. There's a long view to things. It'll all happen in time. Factol Pentar runs the faction from Sigil's armory, and she makes sure weapons get where they can do their work best.
+
+### Dustmen
+
+The Dustmen don't believe in life. Everyone is already dead, even if they don't know it yet. There wouldn't be such terrible pain and misery in the universe if it was a place for living creatures. Some people--the ones who have gone all stiff and cold--are more dead than others, but everyone is just as dead. The thing everyone should strive for is to appreciate Death, to explore one's so-called 'life' and understand it and all its trials before moving on. Factol Skall is said to be a Vampire, as close to true Death as anyone can come and still talk about it. They care for the dead of Sigil, taking their bodies to their headquarters in the Mortuary until they're claimed, and disposing of the bodies that aren't.
+
+### Fated
+
+The universe belongs to those who can take it. Everyone makes their own fate and there's no one else to blame for it. People who whine about their luck are just weaklings--if they were meant to succeed, they could have. Everyone has the potential to be great but that doesn't mean it's going to happen.
+
+It takes sweat and blood for things to come true, not just a lot of hoping. Those that work hard get what they deserve. Nothing's free in this life or any other. The Takers handle the most hated and needed task in the city--they control the Hall of Records. It's a vital piece of city administration that records all the deeds, births, and deaths in the station. What makes them hated, though, is that they're the tax collectors. Duke Rowan Darkwood is the Factol of the Fated, and he's had the kind of hard life that shows he knows how to rebound from being reduced to nothing.
+
+### Fraternity of Order
+
+The universe has laws. Mankind has laws. Sigil's got laws. Even the Abyss has laws. Once someone learns the laws, he can use them to his advantage, and learn how to use loopholes in the laws, how to bend them to get an edge. If someone could learn all the laws of the universe, the power he had would make sorcery look like mere parlour tricks. Of course, that's not easy. The universe keeps its laws dark, and finding all of the laws isn't an easy task. It doesn't matter what it all means, just how it all works. Knowledge is power. It takes study, searching, and looking for the right answer. Factol Haskar is a man who has held onto his office for a very long time, after the last Factol apparently found exactly the loophole he was looking for and vanished without a trace. The Guvners run the city courts, from the small courts of the station's wards to the High Court of the Council. They also have all the best lawyers.
+
+### Harmonium
+
+The Harmonium have a simple philosophy: The Harmonium is always right. The goal of every enlightened being in the multiverse is to live in perfect harmony with all others. Sharing the same views means that people don't have anything to fight over, and that's the secret to peace. And the only way to have peace is to get rid of opposing views. They'd rather people just followed orders, but they'll happily crack a few skulls to make things peaceful. It's all for their own good anyway. The Harmonium runs Sigil's city watch under Factol Sarin. They're always happy to crush crime, but because the Doomguard has control of the Armory, the tools to run the station the Hardhead way are kept out of the Harmonium's hands. That suits everybody but them just fine.
+
+### Mercykillers
+
+Justice is everything, and there is no one beyond its reach. The reason laws and societies exist is to see that justice is carried out, to purge the evil in folks and make them better, fit to belong in the multiverse. And once everything has been made just, once everyone has been cleansed, the Wheel will be a perfect place. The only tricky part of justice is making sure it's correctly applied. A body's got to know the criminals from the innocent so he doesn't make a mistake. Mercy's an excuse created by the weak and criminal, and every crime must be punished. The Factol, Alisohn Nilesia, is barely more than a child, and is one of the cruelest and most bloodthirsty factols the Mercykillers have ever had. If not for some of the more level-headed people serving under her, things could go very badly.
+
+### Sign of One
+
+Every person is a unique and special individual. This is the greatest glory of the Wheel, that each creature living and dead is different from all others. It's obvious, then, that the universe centers around the self. Each person is the most important person in the universe, because the world only exists because the mind imagines it. Each Signer believes they are the one dreaming the universe, but of course it's impossible to tell. The Signers' confidence that each person is the center of their own universe makes them probably the only folks who can internally govern Sigil, at least as much as the place can be governed. They run the Hall of Speakers, where the high-ups meet to make the laws of the city, and they settle feuds, handle treaties, and do all the other little things that keep Sigil running. Factol Darius is well-respected by other factions for her ability to keep city business on the table and avoid personal interests.
+
+### Society of Sensation
+
+The Sensates are one of the most important and influential Factions, with a massive membership. According to them, the universe is known only by the senses. Without experience, without sensation, a thing isn't. A poem about a rose isn't a rose. Picking a rose, feeling its thorns, smelling its fragrance, seeing its color, that's real, and the only way to know it is to experience it. Until you've experienced everything, you can never know the secret of the universe. Factol Erin leads the Society of Sensation, a recent arrival in Sigil who has experienced a meteoric rise to power. The Sensates don't really have an official role, but the city would go mad without them. They run the Civic Festhall, a place where an incredible variety of experiences can be had, from Tiefling Ballet to debates between dragons and dragonslayers. The Sensates ensure that entertainment and diversion flow into the city.
+
+### Transcendent Order
+
+To become one with the universe, one must stop thinking and act. Action without thought is the purest form of thought. When a cutter can know what to do without even thinking about it, then he has become one with the universe. It is not enough to act without thinking--anyone can do that, especially when they're drunk. One must work hard to learn himself, learn his own mind and instincts until the right action comes automatically, training the body and mind to be one--the hand moves before the thought reaches it. Factol Rhys is a tiefling who epitomizes action without thought. No one knows much about her, and her motivations can only be described as following the flow of the universe. The Ciphers are the truest diplomats of Sigil, advisors accepted almost universally, even if not everyone takes their advice.
+
+### The Verdant Guild
+
+The wilderness is the foundation of all life. The wild places have existed for eons, and should continue to flourish for untold ages. Without the resources of the wilderness, civilization itself is doomed. Therefore, the wilderness must be preserved from the forces of civilization, evil, and destruction. All members of the sect wear some type of animal mask as a badge of office and sign of their reverence for nature. The Verdant Guild takes charge of Sigil's marketplace and customs, making sure people aren't trading in rare or illegal animals and plants. The Factol, an elf named Strongbow, feels trapped and rumors say he'd be happy to leave the leadership to someone else if there was anyone he trusted to do a good job. Their headquarters, the Sorting House, is typically the first place anyone sees of Sigil, as their luggage and possessions are scanned by auspexes for contraband.
+
+## Crystal Spheres
+
+A Crystal Sphere is a kind of natural barrier existing between planetary systems and the void of the Astral Sea. They are thought to represent barriers between different sets of physical laws, perhaps arising from some sort of energy or friction between those different sets of physics. Others think the Astral Sea itself is somehow alive, and the Crystal Spheres grew like pearls in an oyster as it protected itself from irritants.
+
+Within a Crystal Sphere, the laws and physics of the universe itself can change. In most Crystal Spheres, the changes are too small and unimportant for all but the most scientifically inclined to notice, but some have wildly differing physical laws--there have been Crystal Spheres containing light years of fluidic space that somehow resisted gravitational collapse, Crystal Spheres where the flow of time was different or reversed, and even a Crystal Sphere where matter cannot exist, quickly breaking down into absolute nothingness.
+
+Most Crystal Spheres contain only a single planetary system, centered on the star and with a diameter double that of the largest orbiting planetary body. The barrier of the Crystal Sphere is dangerous to even attempt to cross without a proper navigator and spelljamming ship.
+
+## Notable Crystal Spheres
+
+While there are countless crystal spheres in the sky, there are a few that truly stand out from the rest.
+
+### Abyss
+
+Of all the Crystal Spheres, none is more recognized than the Abyss. It looms bright in the sky, a huge blight like a diseased eye visible in every corner of the Astral Sea. The Abyss is by far the largest Crystal Sphere, uncounted, perhaps uncountable, worlds within the roiling storms of glowing gas and vapor within. Every world is mutable, horrible, and different. The natives are the servants of the Ruinous Powers of Chaos, barely restrained from overrunning the Astral Sea because of a fortress-world known as Cadia built around the only Portal Relay out of The Abyss. Some ships still manage to escape from the Abyss' crystal sphere, but the chaotic currents around it make a journey near-suicidal for those not blessed by the gods of Chaos.
+
+#### Physical Conditions
+
+The Abyss is an extraordinarily hostile environment. A person would have to be insane to want to go there, but there's always someone who's just dumb enough to think it can't be all that bad. Truthfully, it isn't all that bad. It's worse. The Abyss is much larger inside than outside, as vast as imagination and as timeless as infinity. Where the Warp overlaps and bridges the real world, the Abyss is like a vast knot that twists in on itself, a space that may truly be infinite in size and cruelty.
+
+Unfortunately, it's almost impossible to predict what any part of the Abyss will be like. Some parts have been mapped (to some extent or another), but there is always infinitely more in every direction. The laws of physics and magic change from place to place, sometimes over distances so short that a person can walk from one set of physical laws to another. Still, there's bad and worse. Most places in the Abyss are desolate and dangerous, but not unlivable to someone with the power of an Exalt and a bit of magic, no worse than some normal planets. Trouble is, eventually a person's bound to wander off and find themselves somewhere they can't survive.
+
+Not every place is hostile in an obvious way; some places steal memories, others rot bodies from within, and some places (especially near the realms of the Ruinous Powers, but also near some of the more powerful Daemons) slowly corrupt a person's mind and turn him towards worship of the residing darkness. Rumors on Cadia and in Sigil tell stories about planets that are just swarms of hungry insects, where a person's soul comes on display for all to see in its beauty or twisted horror, or where the cold doesn't just steal heat but freezes your thoughts.
+
+Most of the Abyss could best be described as a thick nebula in riotous colors that makes it difficult to see just what trouble you'll get into next. Small stars provide illumination from all directions, with flows of the often-poisonous nebula vapors making the light inconstant and difficult to navigate by. Most of the planets in the Abyss orbit these stars, though a fair number are rogue wanderers that float through the aether.
+
+Because the Abyss is a giant puddle of warp energy, there is no real Umbra to speak of. Any effect that would allow travel to or from the Umbra doesn't work here. Or more properly, it does work but simply doesn't seem to do anything. Incorporeal creatures are therefore quite solid here, with nowhere to hide.
+
+In the Abyss, the best thing to do is to act quickly. There's no way to predict what might happen, and being ready for anything just leads to being caught unaware by the one thing you forgot. Anyone in the Abyss has to be ready to make life-or-death snap decisions and to trust their gut instinct.
+
+#### Abyssal Inhabitants
+
+While the mix of creatures that inhabits the abyss is vast beyond understanding, there are some things that are the same on most planets. As the Abyss is a twisted realm that has the very warp itself hemorrhaging into it, it is effectively entirely within the Umbra. Ghosts, Elementals, and Daemons are all quite common, far more easily found than in any wholesome place. There are no native mortal sentients. While there are some Tieflings, they're typically recently born, changed in a pilgrimage to bathe in the raw power of the Warp. Most newborn Tieflings don't survive to escape the Abyss.
+
+#### Abyssal Locations
+
+There are countless worlds floating in the Abyss, so trying to name them all would be foolish. Here are a few of the more important worlds and systems in the Abyss:
+
+**Cadia**
+
+Cadia isn't a world, though it's as large as one. Layer upon layer upon layer of fortification and armor built right on top of the only known safe route out of the Abyss' Crystal Sphere. Some of the deeper parts of Cadia are tens of thousands of years old. It has been over a decade since the last major attempt by warp creatures to escape the Abyss, the fourteenth such attempt since the latest ruler, Gerrard Inkheart, took power. The place is a last resting point before the chaos of the Abyss. Enforcers are on hand at all times to give last rites to those going into the abyss and to carefully inspect those coming out. Despite being a military outpost, the place has a surprising amount of civilian life, an industry and culture that formed around selling supplies and comfort to the garrison. Things there are generally clean, but confusing to outsiders as the millennia of construction have made the place a maze in three dimensions.
+**The Fortress of Khorne**
+
+Khorne's realm within the Abyss is a monument to fury and bloodshed built on foundations of murder and conflict. The blood-soaked realm echoes constantly with Khorne's bellows and the clash of weapons. At the center of this mighty fortress lies the Brass Citadel, where Khorne's mighty throne resides. There, on a mountain of skulls in his castle of pain sits the God of Blood. Around the citadel flows a moat, and it is filled not with water but with the boiling blood of those who have lost their lives to war. Beyond this moat lies league upon league of cracked land, littered with the ravaged bones of those who have fallen in battle. Many champions and aspiring lesser gods of war have journeyed there to test themselves against Khorne's prowess, and just as many now lie dead, for he has never known defeat.
+**The Battlefield of Malal**
+
+Malal's realm is one of stark opposition and paradox, just like the betraying god himself. What one finds within the battlefield of Malal is no less than what one brings with them. The Daemons that reside there take on the aspects and powers that the intruders most prize, and even the very worlds shift and change to become familiar and deceptive. Everything in Malal's realm exists to destroy and betray, and the more an intruder cares for something the more dangerous it becomes. Worse of all, the more that seek to intrude in Malal's realm, the stronger each of his servants becomes. Only by going alone does anyone have a chance of reaching The Tumor, a place of broken doomsday devices and world-ending weapons where the God of Destruction waits for his chance to strike out at anyone and everyone.
+**The Garden of Nurgle**
+
+Nurgle's realm within the Abyss is an unwholesome realm home to every pox and affliction imaginable and alive with the stench of rot. It is not a barren wasteland, but rather a macabre paradise of death and pestilence. A thick sheet of buzzing swarms of black, furry flies litter the sky, and twisted, rotten boughs entangled with grasping vines cover the mouldering ground beneath an insect-ravaged canopy of leaves. Defiled fungi both plain and extraordinary break through the leaf-strewn mulch of the forest floor, puffing out vile clouds of spores. Muddy rivers slither across the bloated landscape. Nurgle's Mansion of rotted timbers and broken walls resides at the heart of the garden, decrepit and ancient, yet eternally strong at its foundations. It is within these tumbling walls that Nurgle toils at his cauldron, a receptacle vast enough to contain oceans.
+**The Palace of Slaanesh**
+
+Slaanesh's realm takes the form of a number of worlds which must be visited in a certain order to proceed, each stop on the journey posing a greater and greater risk of leaving the traveller trapped forever. Each of the six worlds tempts the traveller, first with greed, then gluttony and carnality. The fourth world tempts with roars of adulation and the promise of ultimate power over others. The penultimate planet is that of vainglory, tempting with an ideal self-image--and even an instant of pride leaves one trapped there for all eternity. The last circle is the most perilous, a heavenly place seemingly perfect in every way. Every second fills the intruder with bliss, but a moment of rest or enjoyment results in falling into a coma and eventually dying in idle bliss. If one is able to successfully pass through the circles, he comes before the palace and Slaanesh himself. It is impossible for mortals to look upon the god without instantly losing their soul, for all who see her become willing slaves to the Dark Prince.
+**The Maze of Tzeentch**
+
+The realm of Tzeentch is a maze woven of portals, magic, space and time. Of all the realms of the Ruinous Powers, this domain is the most bizarre and incomprehensible. The Maze's presence is felt throughout all of the infinite space of the Abyss. Hidden pathways built from lies and schemes lead out from the maze and weave themselves everywhere in the Abyss, gateways that bend space connecting them. There are no daemonic defenders in the maze, the realm's own illusory passages enough of a barrier to any intruder not possessed of the strongest mind imaginable. Its glittering, ever-changing corridors reflect not only light but also hope, misery, dreams, and nightmares. At the center of the maze, hidden from those who have not the insane insight to find it, stands the Impossible Fortress, a constantly changing fortress which constantly replaces its own architecture with new and ever more maddening spires, gates, and walls. Mortals find the fortress impenetrable. Only Tzeentch's most powerful servants can tread the secret paths that lead to the inner sanctum of the fortress, the Hidden Library, where Tzeentch, the puppet master himself resides, eternally plotting.
+
+#### Adventure Seeds
+
+- There are things, artifacts, coming out of the Abyss that break every law of physics and magic, and no one can explain how they work except with a guess that they're some form of solidified warp energy. Smugglers have been going into the Abyss to gather these artifacts and sell them for vast sums. But is this get-rich-quick scheme merely as dangerous as it sounds or do these artifacts represent something even worse just starting to rear its ugly head?
+
+- Cultists to one of the major Chaos gods have kidnapped one of their god's enemies alive and are dragging him through the abyss to sacrifice directly to their god. If the heroes can't stop them in time, the poor man (and probably the cultists as well) will suffer a fate infinitely worse than death and, worse, the magical significance of the act will allow the Warp-entities to launch another attack on Cadia, one that the fortress is ill-prepared for.
+
+- A second Portal Relay has been discovered near the Abyss. While it is currently inactive, it is also totally undefended, and it would be short work for some misguided soul to bring it online and give the Abyss a back door hanging wide open.
+
+- One of Cadia's most impressive features are the gigantic black pylons that jut through it. They are some of the oldest parts of Cadia, and no two are alike. No one has ever managed to discover just what they are or how they work, but they suppress Warp energy around themselves, making it difficult for magic to work anywhere near them.
+
+### Arborea
+
+Arborea is a Crystal Sphere that pulls in an incredible tourist trade. Ossa, once a dismal, rain-soaked and unstable planet, was terraformed with a sophisticated weather control network that provided nearly constantly desirable weather and seismic regulators to eliminate the geological instability. Today, Arborea is known for its beautiful tropical resorts, the abundance of pristine beaches, and the hospitality of its natives.
+
+#### Physical Conditions
+
+Arborea is a system that clearly has a long history of interesting events. The Sphere contains a planetary system that maintains a stable, but complicated, orbit between two stars. The natives name the two stars as Rah and Risa. Rah is the larger of the two stars, a pure-white sphere of flame. Risa is much smaller, burning orange like a hot coal. Spectral analysis has shown beyond a shadow of a doubt that Risa is billions of years younger than Rah--impossibly young, in fact. Syrne ruins and some legends from the Elves and Eldarin bear out the theory that Rah was a gas giant not too long ago (in cosmological time) and was ignited into a star by the Syrne.
+
+Many think that the Syrne ignited Risa to make terraforming three of the planets in the system an easier task. It's certainly true that three planets in-system are habitable, but only the middle planet of the three, Ossa, is visited by tourists. Its tropical beaches and islands make it a beautiful place with extremely friendly natives who live to serve the tourists that come here. The sea over the planet is rarely more than a meter deep, though remnants of its geologically active past have left it with many rifts in the sea, most of which are dead rock but some of which have molten magma sizzling in their depths.
+
+The other two planets are not so friendly. The first planet, Arvandor, is off limits even to Elves from other systems. It's a very private planet that the natives are not willing to share with anyone. Now that's not to say that people don't go there anyway, but they're typically sorry once the Elves catch up with them, and they tend to find out very quickly. Only those who are specifically invited to Arvandor are really welcome here, and the number of people who get invited are small. The place is a forest grown to impossible scale, everything twice the size or more that it should be. Even animals grow to surprising size, with trout the size of a man and wolves standing two meters tall at the shoulder.
+
+The third planet is one that doesn't really get mentioned much by anyone. It's not the kind of place that even the curious would go--the entire planet is swirling dust storms and thin air. A body can breathe it, but it's dry as a bone and the dust will leave him choking for days afterwards and spitting up thin mud. There's a quarantine around the place, one that is surprisingly well-enforced. The Elves have some kind of large settlement here, but what they do is kept a secret from everyone. Rumors say it's connected to the reason the planet's terraforming failed, that they're protecting something of terrible power.
+
+The rest of the system is a place of beauty. The night sky is dominated by a nebula of multicolored gas that makes the darkness shine like a rainbow of diamonds. The first planet has a single, large moon that hangs like an eye above the planet, whereas the other two inhabited worlds have a multitude of small moons that only serve to provide something to look at. The remaining gas giant in the system has a ring system considered a wonder of nature all on its own.
+
+#### Arborean Inhabitants
+
+The Elves are the true natives of Arborea, Eldarin who long ago decided to settle here. Few can blame them for not wanting to leave again. The worlds are amazingly beautiful, after all. What most don't notice, at least not at first, is that they're alive with nature spirits. Faeries and elementals can be found all over the place in the system. The native elves make small sacrifices to the nature spirits to appease the elementals, and many of the ceremonies and parties that take place on the second world exist to keep visitors on the good side of these creatures--when the natives say you simply must give the Limbo a go, they really mean it.
+
+#### Arborean Locations
+
+**Realm of Corellon**
+
+Hidden away on Arvandor, and one of the reasons the Elves don't allow others on the planet, is the Realm of Corellon. There's no proper boundaries or even buildings to show the extent of his domain. Corellon is a wandering god, appearing and vanishing like the faeries. It's considered very bad luck to praise anyone's skill too highly on Arvandor because there's always a chance it'll draw Corellon's attention and he'll appear just to show off that he's better than everyone else. While that sort of thing is really impressive the first few times, natives have gotten tired of being outdone all the time. It's rumored that Corellon is restless, which is why he badgers the natives from time to time, but some force or perhaps simply fear keeps him from leaving.
+**Aumaan**
+
+Aumaan is the most heavily defended point in Arborea, hidden away on Pelion among the swirling dust and broken mesas. It is a military facility, created by the Elves around a massive Syrne ruin that contained technology, weapons, and materials that other races would dearly love to have. The most important thing they've got is raw Metatron ore, a radical isotope that has psychoactive properties and is used in Portal Relays. The Custodian of Aumaan, Nephythys, is an Elven woman with a brilliant mind that has been reportedly using the Metatron ore to construct massive humanoid war machines with capabilities unmatched by anything built since the fall of the Syrne. The Elves have been keeping these machines secret, and it's unknown for what purpose Nephythys' creations will eventually be put.
+**Gilded Hall**
+
+The Gilded Hall is a structure of supernatural beauty on Ossa, a golden palace of achingly beautiful spires and gracefully curving halls. Describing the beauty of the place is a thankless task, an overwhelming, thundering glory that stops viewers in their tracks and strikes each heart in a different light, as if it were magically tailored to appeal to each eye differently. The Gilded Hall's beauty seems to bring out the best in everyone, and all are welcome as long as they follow the same rules as on the rest of Ossa--no compulsions, only persuasion. Some have trouble leaving the Gilded Hall, and it's said that some visitors find themselves unable to leave, like flies caught in a spider's web spun of beauty and vice.
+**Tribe of Tribes**
+
+On Arvandor, there is a secret society. Well, secret from outsiders. Everyone on the planet seems to know about it. Arvandor has the single largest society of werewolves anywhere in the Wheel, and it's here that they induct new werewolves into the tribes and meet to resolve situations. The ruler of all werewolves, the Marrok, lives here and spends almost all his time keeping people from tearing each other's throats out. Pretty much every werewolf comes to Arvandor to spend time here learning how to use their power and control their instincts.
+**Master Weather Control**
+
+The Master Weather Control system is the most important place on Ossa. It is constantly manned by a team of thousands. Nautilla Colchea heads the department of weather, maintaining constant pleasant conditions all over the planet, a demanding task that requires constant small adjustments. Even a few minutes without attention could cause a massive storm to form, and given that the planet has no real solid structures aside from a few emergency shelters, this would cause massive destruction. Nautilla has apparently been growing bored with her position, though--not surprising considering her mastery of magic. Rumors say she's considering abdicating her post and setting out into the wider universe.
+
+#### Adventure Seeds
+
+- Ossa isn't quite as innocent and nice as it seems. One of the major species of plant life, a type of strange flower with an almost choking scent, is said to have a psychoactive effect on some, making emotions and passions run wild. The Elves encourage these plants for their own reasons, apparently to get blackmail material or just to have their own kind of fun. A major meeting of Faction heads is scheduled on Ossa, and with the influence of the elves, things might go poorly, or better than expected.
+
+- Somewhere on Arvandor is said to be a pool of pure glowing gold, a magical fountain of youth that restores health and life to all those who drink from it. It is said to reverse the aging process, which makes it worth a fortune to mortals. The fountain is said to move around the planet, and finding it is more than just a matter of knowing the location--rumors say it only appears to the worthy after they've quested enough for it.
+
+- The Elves have experimented with various ways to make Ossa more appealing to boost the tourist trade. One of the most promising methods was to give the visitors exactly what they wanted, a perfect paradise tailored to each person. Using holofields and nerve interlinks, they managed to do just that. And for a while, it seemed like it was working. But something has gone wrong, and thousands are trapped in a pleasant hell that kills them upon awakening. Unless someone can go inside and resist the temptations therein, they may never awaken.
+
+- Some reports from nearby systems have mentioned attacks from pirates that don't meet any known criminal organization, using flying humanoid war machines with weapons and equipment that are impossibly advanced. Some fingers are beginning to point to the Elves, though the government of Arborea is denying any involvement. Has Nephythys gone rogue, or have some of her prototypes been stolen?
+
+### Arcadia
+
+Arcadia is one of the most important breadbasket Crystal Spheres. The two habitable worlds within Arcadia's Crystal Sphere have both been terraformed to the point that any original features have been completely erased and the worlds leveled so that only gentle hills and plains exist where once there were mountain ranges. Even the seas have been carefully regulated. The entire land mass of both worlds have been turned into endless farms, shipping out grain and produce across the Great Wheel.
+
+#### Physical Conditions
+
+Arcadia is one of the most predictable and stable crystal spheres. The planets move in nice predictable orbits, there aren't any huge changes to normal physics, and even the sun is a nice happy yellow color. Even better, the natives are welcoming and the wildlife is tame. Of course, there are some small, minor caveats. They're really no big deal.
+
+The main one is that if you step out of line, you're going to be in more trouble than you can handle. The planetary militias are extraordinarily strict, with no tolerance for anyone who doesn't fit in. And fitting in isn't just a matter of getting along with people, it's following every rule, even the ones that don't seem significant. A native of Arcadia would never think to disobey a posted sign, leave marked roads, or overstep their authority.
+
+Well, that last one isn't quite true. Lately the militia has decided they need to keep a firmer grasp on things. They've chosen to go with the firm grasp of an iron fist rather than a velvet glove. Sorcery, for example, is frowned upon. And it's very unwise to do anything that is frowned upon on Arcadia.
+
+Physically speaking, the system has three planets. Had three planets. Of course, ask a native and they'll tell you there have always only been two planets. The fact that the third orbit around the star has a debris field that hasn't even managed to spread out entirely, and is still glowing with residual heat, is just a strange but perfectly natural event.
+
+Rumors that the third planet was destroyed by some mismanaged working of sorcery designed to make sure no one could even think out of order... those rumors are of course simply wrong. The militia ships around the debris field are merely keeping others safe from dangerous, but perfectly natural, radioisotopes and micrometors. So no ships may approach within several light-seconds under penalty of death.
+
+Besides, the other planets are much more interesting. They're all flat land with only a few gentle slopes, shallow seas full of fish, and happy natives. All so very happy. And anyone is welcome to stay, as long as they can follow the rules. Why, the people here are so happy they never want to leave! Can't blame them--the Wheel is a dangerous place.
+
+#### Arcadian Inhabitants
+
+There are all sorts on Arcadia. Humans, Elves, Squats, even Halflings and Aasimar. The people all work together to support the greater good. Even the animals seem to do their part for the benefit of all--the livestock of the farms is always cooperative, with animals actually lining up on their own to be slaughtered. To an outsider seeing it, it's a horrifying sight, but to the natives it makes perfect sense--that's what the animals are for, so of course they're happy to do it.
+
+#### Arcadian Locations
+
+**Abellio**
+
+Abellio is a vast, flat grassland. Long ago, it was terraformed to be almost as flat as a cue ball. It's easily one of the smoothest planetary masses in the Wheel, the difference between the highest and lowest points on the planet a matter of only a hundred meters or so. Every tree is part of an orchard. Every field has grazing livestock. Every centimeter of Abellio's surface is made purposeful. Even the oceans hold great stocks of fish, with reefs keeping schools neatly separate from each other. The place runs like clockwork, and from the way the animals act, one gets the impression it would continue to do so for some time even without the people there.
+**Buxenus**
+
+The second planet in the system, Buxenus, is more tightly controlled than Abellio. While the first planet is open to visitors (as long as they follow the rules), to get access to Buxenus requires all sorts of passes and permissions, which makes it a really trying experience for anyone attempting to get there. Frankly, unless a person is sent an invitation along with clearance, they'll just be given the runaround and thrown at so much red tape that they drown in it until they lose interest and find something else to do. The militia keeps its headquarters here, and there are supposedly reeducation camps for troublemakers that are more like dog kennels, but proving the stories has been impossible and natives simply don't care.
+**Great Mirror**
+
+A massive construction with a diameter measured in thousands of kilometers, the Great Mirror is a framework supporting huge sheets of a reflective material designed to provide additional sunlight to Abellio. Thanks to the Great Mirror, there is no real night, just a second sunrise following a short dusk. Workers are constantly replacing panels in the Great Mirror as they tear or lose their reflective coating, but the increased crop yields have been incredible.
+
+**Nemausus**
+
+Nemausus was the name of the third planet in the system. Now it's a slowly expanding cloud of debris tainted with sorcery that creates dancing shows of violet energy through the rubble. A militia fleet keeps a full-time cordon around the area and gives people exactly one chance to turn away before firing on them.
+All official records within Arcadia say that the planet has been like that for billions of years. Official records outside Arcadia have records showing Nemausus as a trading post only two centuries ago.
+
+#### Adventure Seeds
+
+- The planets of Arcadia are just a little too regular. Too well-defined and orderly on every level. When people can actually make detailed observations--and the militia usually kicks them out for disrupting things--the actions of the people and animals of Arcadia seem to approximate logic gates. It can't be proven, but some think the planets of Arcadia are some kind of massive computer. What they're computing is anyone's guess.
+
+- The destruction of Nemausus wasn't an accident. It was done very deliberately, and as a last resort after everything else had failed. Something terrible happened there--and reports say that something terrible was modrons awakening and deciding to clean the place up a bit. It's entirely possible that modrons are sleeping in other places as well, and unless a better way can be found to deal with them, there might be more asteroid fields in the future.
+
+- Buxenus is so well protected because the crops they grow there are extraordinarily valuable. There are medicinal herbs and, well, the other sort of medicinal herbs. The drug trade may seem like an odd thing to see in such a law-abiding place, but it seems that most of the drugs go to the native populations. New settlers sometimes have trouble adjusting, you see, and they're given certain medications to calm them and... erase those emotions and feelings that don't fit well with the way things are normally done here.
+
+- Maybe the mortal mind can only take so much law and order before it snaps. Maybe there's something dreadfully wrong about Arcadia. Rumors say that once every season, the farmers of Arcadia get together for big festivals. Festivals that involve sacrifices burned to the gods. Farmers offer some of their crop, an animal, or best of all, someone who isn't fitting into their perfect order.
+
+### Acheron
+
+A Crystal Sphere that holds an immense Ork empire, Acheron is a place of eternal warfare, Ork tribes fighting each other in an endless brawl between worlds so close together they occasionally collide and scrape against one another. While it's incredibly dangerous to visit, many smugglers bring endless caches of weapons that give one Ork tribe or another a momentary advantage in the war that consumes their lives. That said, the natives are content with their lot, Orks enjoying fighting more than anything except fighting and winning.
+
+#### Physical Conditions
+
+It would be wrong to say Acheron is unlivable. The place is a huge crystal sphere, not as large as the Abyss--not that anything could be--but still larger by an order of magnitude than the average Crystal Sphere. Inside, it isn't filled with vacuum but instead an airy void that grows colder and colder the deeper you get towards Acheron's center. The entire sphere is lit by a dim grey light like twilight, not enough to read by but not so dark a man can't see his hand in front of his face. The source of this illumination has never been found.
+
+The most striking and obvious feature of Acheron are its many, many worlds, huge cubes of iron dozens of kilometers across. Gravity here doesn't draw towards the center of the cubes, but just perpendicular to their surfaces. And on almost every cube can be found Orks. Now, there's only one thing that can happen when you have a bunch of Orks in one place, and that's fighting. The Orks spend almost all of their time forming into warbands and fighting each other in an endless self-consuming war. Despite the sheer number of soldiers, there are surprisingly few leaders. Any Ork who really has what it takes to lead typically leaves to find someone more interesting to fight.
+
+Deeper into Acheron, and the cubes change, becoming pockmarked blocks like cubic meteors, the pits in their surfaces leading kilometers down inside, where they are filled with the broken scraps of thousands of devices like some giant's toy box. Great ships that have been lost to the Warp, toppled buildings, and weapons of every kind find their way here. Everything is inoperative, turning to the same iron-like stone as the rest of the cubes here over time. There are few orks here except for scavengers looking for a bit of extra dakka or choppy to take back with them. Deeper yet, and things get more and more hostile. Even the Orks don't go all the way down into Acheron's depths.
+
+The most obvious danger in Acheron, aside from the natives, is the threat of collisions between the cubes. While the cubes are rarely damaged beyond a few dents and scrapes, those dents and scrapes are in kilometers of solid iron--anyone caught between two colliding cubes is as good as dead.
+
+Of course, the cubes aren't always entirely solid. Some cubes are riddled with tunnels, which make them favorites for permanent habitation since cities or structures built on the surface of a cube will eventually be crushed. The tunnels are also crucial sources of food and water, for they support humid, fertile mushroom beds and a strange form of woody, black, earthy fruit called provender stones. Provender stones are edible, barely, and resemble square black blocks that sit on the iron plains and grow constantly, some reaching the size of a house or larger. Ice and sleet from blizzards fall into the tunnels and pool in caverns, providing a source of foul-tasting but life-giving water.
+
+The most terrible danger of Acheron is one that only the most learned scholars know of--time on the cubes of Acheron simply stops if they sail through the void without colliding with another cube. While this does keep someone stranded on a cube from starving to death, anyone who can will get away before this happens before centuries pass back home.
+
+#### Acheronian Inhabitants
+
+Acheron is the home of battalions and armies constantly at war. To most, this would be a place of oppressive death and encroaching horror, but to the native Orks it is nearly a paradise. They care not for glory or honor, just the sheer excitement of a battle well-fought, victory or death. Even the sides and comrades constantly change--an Ork might fight for one warband one day and against it the next. When a battle isn't on, the orks can be surprisingly cheerful and even good company. There are a surprising number of soldiers from other races as well, most of them dispossessed soldiers with nothing left to fight for. They don't typically last long, but most of them are just seeking a place to die anyway. There's no real native wildlife to speak of.
+
+#### Locations
+
+**Istvarhan, the Moving Fortress**
+
+Istvarhan is the kind of fortress that only an Ork would think to build. It's a huge place made of the only two resources that can be found in Acheron in vast quantity--iron and manpower. The walls of Istvarhan are literally made of armor and slaves, and the entire fortress can be set into motion on their backs. The jerky, bouncing motion of the fortress makes anything besides sitting still a difficult task. The Warboss commanding the fortress is Grazdeff the Wise, an Ork with a surprising grasp of tactics and an ability to put people where they can do the most good. Which is quite unfortunate for those who can do the most good bolted into the walls of the fortress. He allows anyone who wishes to join to become part of his warband, and has assembled a grand fighting force of blood brothers. It's said that he'll be the next to escape Acheron and head out in a WAAAAAGH to fight the greater foes of the Wheel, and his skill at diplomacy and technology will make him a dangerous foe when he does. For now, his main goal is to assemble a ship to effect such an escape.
+
+**Hammergrim**
+
+An inward-turned realm of Squats and ironlike stone, Hammergrim is a dour realm of grey light, grey stone, and somber clothing. Even the squat festivals are grim, with much sonorous chanting and invocations of protection against the threat of the Orks. Hammergrim was founded long ago as a refuge and striking point against the Ork hordes of Acheron--the Squat's ancient hatred for the greenskins demanded they have a foothold against them. It is one of the best places in the Wheel to have a blade forged, and the squats there will do so (not happily, though--they're never happy) for a price. The ruler of Hammergrim is currently the Living Ancestor Branka, though no ruler of Hammergrim has ever ruled alone--the Court of Memory, where the ruler resides, is haunted by the spirits of rulers past. Every ruler of Hammergrim goes insane over time, losing themselves to the possession of these spirits and becoming little more than a limp doll when not being used by them. Branka has only ruled for a short time, so the ill-tempered squat has not yet lost herself to the whispering voices.
+**The Mines of Marsellin**
+
+The mines are a treasure-trove of artifacts, magic, and strange jeweled machines.
+Heaps of spacefaring ships, enormous weapons, and steam-driven carriages are scattered everywhere. Unfortunately, most of them have been fused into lumps of solid black iron. The mines seem to generate new material daily, though no one has ever learned why.
+The mines include hundreds, even thousands of strip mines and bottomless well-like shafts.
+The best kept secrets are which mineshafts lead to the interior caverns, those echoing hollow spaces filled with the cast-offs of the universe. Most are dead ends, sunk into the black iron cubes by hopeful prospectors who soon turned to iron themselves. The area is overseen by an ancient dragon with rust-colored scales who calls herself Coirosis who hates thieves and claimjumpers and punishes them with swift death. Even the threat of the dragon, though, can't keep people away from the untold riches of the mine. Wise men do well to buy a deed from the dragon before attempting to do any mining themselves - there are enough threats from scavengers and jealous miners, and no one needs an angry dragon added to that list.
+**Tintibulus**
+
+Deep, deep within Acheron, things start to change. In the area known as Tintibulus, cubes give way to other geometric shapes, pyramids and prisms and octahedrons and shapes that have no name. The shapes here are much smaller than the iron cubes before, most scarcely larger than a house. The material of the bodies here is also different, not the iron of the first layer of cubes or the ironlike stone of the second, but dull volcanic rock that fractures when collisions occur, cracking along natural fault lines. The place is empty, even sounds hardly carrying at all. It mostly resembles a very thick asteroid belt, with little to recommend it except as a place to hide.
+**Ocanthus**
+
+There are very few reports from this part of Acheron. There are no cubes or shapes to find here. Instead, there are razor-thin shards of black ice, some barely a centimeter across, others kilometers in width. Their collisions break them into progressively smaller shards, eventually into needles and then dust.
+The shards must all come from some single source, though the night-black space filled with flying razors doesn't lend itself well to exploration. Rumors speak of some bottom to Acheron, a central sea of black ice as large as a sun. The only ones who have claimed to have gone there and come back are insane and otherwise untrustworthy - but you'd have to be insane to want to make the trip in the first place. Tales of creatures made entirely out of blades are similarly almost certainly false, and even if they were true, who would want to go to Ocanthus to find out?
+
+## Adventure Seeds
+
+- The most powerful ship ever constructed, The Emperor's Wrath, has been found floating in Acheron after thousands of years lost in the warp. There may be survivors,
+  but more importantly the ship included ancient Syrneth technology that made it invincible in combat. The ship must be recovered before it can fall into the wrong hands or turn into stone, and it's quickly turning into a race between the Orks and everyone else in the Wheel.
+
+- Orks just seem to be everywhere in Acheron. The rumors say that they aren't born, but simply seem to come up out of the tunnels in some of the cubes. Are the cubes of Acheron some kind of massive farm of the Syrneth designed to produce warriors for their ancient war? And if so, what would happen if someone managed to get them up to full production - or stopped them in their tracks?
+- The Living Ancestor Braska will pay a high price to anyone who can find a way to keep her sane despite the spirits haunting her palace. While it is forbidden in her society to actually destroy the ghosts, she is more than willing to look the other way if it will mean she isn't doomed to insanity. However, the ruthless ruler isn't beyond selling out the PCs to her people if they're caught in the act.
+- The ocean at the very center of Acheron isn't just a rumor - it's a real thing and it isn't just a puddle of water. It's holding back some horror from ancient times. It is the reason for the cubes existing in their current state of disrepair, its power flinging them out of perfect geometric alignments.
+  The shards of ice in Ocanthus are symptomsof its awakening, and it might take more than all the Orks working together to put it down.
+
+### Baator
+
+Nine worlds, each different and each one sinister yet far from lawless. The chain of command here is absolute, and discipline is enforced as much to crush the spirits of those who don't conform as to maintain order. The natives here plot and scheme against one another, vying for power. It is a place of great opportunities to the ruthless, but the price of failure is absolute.
+
+#### Physical Conditions
+
+Baator is a fairly normal-looking place by most standards. One star, a red giant that looks like a diseased and dying thing, and nine planets. It's a dangerous place by anyone's standards, but compared to some of the really awful places in the universe, Baator's creeping evil and sinister tones can seem downright homey.
+Baator is safe for ships to travel through, following the normal laws and physics of the Wheel at large. Of course, those ships had best pay very careful attention to the orders of the local traffic controllers - Baatorattracts a surprising number of visitors from all parts of the Wheel and so traffic can be quite thick. Naturally, Baator being what it is, anyone breaking those orders has more to
+
+worry about than just some minor fender-bender. The might of Baator's armies come down on those that dare break the law here, though for the right price it's possible to get them to look the other way.
+
+#### Inhabitants
+
+Baator attracts all the wrong sort of people. The natives here have a long history of sorcery, the dangerous kind. Pacts with daemons are the only way to ascend in society,
+testing not only a person's ability to call on the daemons but also their cunning and ability to cut deals that leave them ahead (and alive).
+The more politically influential people in Baator are effectively immortal, with overlapping contracts and deals that have left them with little humanity in body or soul. Mutation and corruption are common among Baator's inhabitants. Most worlds of Baator have little in the way of wildlife - almost everything has been subjugated and planned, used up in quests for power. What there is was probably once human but fallen to mutation to become something less than a man.
+
+#### Locations
+
+**Avernus**
+
+Avernus is the world closest to Baator's sun, a parched world of blasted, rock-strewn fields. The atmosphere is a thick haze that turns the sky into a smear of glaring red.
+There is no real water here, just dried up riverbeds and dust. The greatest danger to anyone coming here is the ever-present threat of fireballs--seeping gasses from below waiting for the slightest spark to erupt into an explosion that can burn a man to ash. One of the few things to recommend on this world are the quality of its gemstones, mined in a city of depraved halflings called Draukari. The stones are all of the highest quality, often in shades and colors that seem totally unreal. The ruler of Avernus is a Tiefling named Bel. It's rumored that Bel runs training camps for the armies of Chaos beneath the haze of Avernus'
+sky, though anyone who has learned the truth of it has ended up dead.
+
+**Dis**
+
+Dis is the second world of Baator, and the destination that most travellers to Baator end up. The entire world is more or less a gigantic city, spires of blackened iron thrusting their way into the ashen skies in the few open areas surrounding the core of civilization on this world, the city of Dis, a place so nice they named it twice. The city is like a hive, crowded and dirty, made of darkened iron that turns red hot in the glare of the sun. The city of Dis is a tightly controlled place, with passes needed for almost everything and the activities of visitors being strictly recorded and their movements controlled. Most never leave the Port Quarter of the city, though that's where almost all the services for visitors are located anyway. At the center of Dis, looking over every part of the city from a tower so high it reaches nearly into orbit, is the Iron Tower.
+Edicts from the city's ruler, Dispater, come down from on high like iron slabs hitting concrete.
+
+**Minauros**
+
+Minauros is best described as a stinking bog. Polluted acid rain washes down from a leaden sky like the burning tears of a god.
+The atmosphere is so thick and hot that lead runs like water, and the surface is a bog of acid muck and misery. Some very, very tough vegetation hangs on to life here, but nothing that would really resemble life can survive outside of Minauros' few cities. The most major city is, perhaps unsurprisingly, both simply called Minauros and also sinking into the swamp.
+Rumors persist that the swamp of Minauros has no bottom, and that you can sink forever without ever hitting bedrock. Minauros' ruler, Mammon, is terribly warped from the bargains he has made. His greed is said to be almost infinite, and he is willing to give up almost anything to sate his avarice. The fact that he has already given up his humanity (or whatever race he was - being that he's thirty meters tall with the lower body of a snake means that it's anyone's guess at this point)
+speaks volumes.
+
+**Phlegethos**
+
+Phlegethos is, like most of Baator, a quite unpleasant place to live. Some quirk of planetary formation left it with a volcanic cycle that causes massive upheaval of the entire surface every few thousand years. The place is currently in the beginning of another of these cycles, and the entire surface is cracked and flooded with rivers of magma and seas of flame. It may seem like this would be the last sort of place a person would want to be, but the same quirk of planetary formation that created this cycle of volcanic activity also left the planet with an incredible mineral wealth that replenishes itself every cycle. The ruler of Phlegethos is technically Lady Fierna, though most in the know are aware that her father,
+Lord Belial, runs most of the planet from behind the scenes. Both have little to do with the mining operations directly, just managing the managers, and spend their lives in incredible hedonism.
+
+**Stygia**
+
+A place that seems like a refreshing change from the heat-blasted first few worlds of Baator, Stygia is a water world, a great frozen sea, a place of crushing ice floes and mammoth icebergs. Floating plants of several types form floating swamps and forests on the water, places that are fairly hospitable. Constant storms and lightning make the sky a dangerous place to be, though strong currents create clear paths through the ice for those willing to risk them. Ice floes are the dominant surface here, upon which castles and cities are built. The ruler of this layer is rumored to have been imprisoned deep in the ice of a massive iceberg, trapped and unable to die by some badly-made contract with a daemon. The planet has reverted to a sort of controlled anarchy, with private armies enforcing the laws of their masters with an iron fist in the now fractious city states.
+
+**Malebolge**
+
+Malebolge is a gas giant, standing out among the other planets like a festering sore and looking like a diseased boil. While the planet itself is uninhabited, there are a number of small moonlets and stations around it that draw off valuable gasses from the planet. The most interesting feature of Malebolge are the massive corpses that orbit it, remnants of a species that is likely long dead, space whales hundreds of kilometers long. Their bone and ivory are a fair bit of the trade from Malebolge, the sheer size of the corpses meaning that the supply is almost inexhaustible. The ruler of Malebolge, Glasya, has only very recently been installed, and is said to be the daughter of the sovereign of Baator itself.
+
+**Maladomini**
+
+Maladomini is a planet of ruins, a world of hard labor under a blood-black sky.
+Granite and wasted cities scatter the surface of the planet, polluted canals clogging up and spilling waste across the scarred surface of the planet. Everything natural has been defaced or destroyed. Strip mines, slag heaps, landfills, and crumbled ruins are the terrain of this planet. The ruler, Triel, is an Aasimar who has apparently been driven insane (or worse) by the pressures of Baator. No one has seen him in person in decades, and his orders have grown more and more insane - he demands perfection from all endeavors, and this is most
+
+evident in the construction of his Capitol city.
+He has demanded that workers restart the effort again and again, always displeased. The entire planet has been torn apart and half-reassembled under his orders.
+
+**Cania**
+
+Where Stygia is a frozen sea, Cania is a place of ice and land even harsher than that planet. Here the ice isn't just water, but the air itself freezing in the almost-perfect cold. The world has a unique industry, producing some of the finest plasma weaponry there is. The ruler of the planet, Mephistopheles, is a man who displays a facade of charm, civility, and wit. In reality, he has a terrible temper with endless ambition. He is a powerful sorcerer, and has recently developed a way to create a type of warp plasma with his spells. He has openly stated he intends to rule the entire system, and no doubt he intends to use this new power to fuel that ambition.
+
+**Nessus**
+
+The final planet of the system, and one of the best-protected places in the entire Wheel. An armada of ships prevents anyone from getting close. It is from here that Baator is ruled. Nessus is a black planet crisscrossed by rifts and trenches, some little more than a few meters deep and others extending hundreds or even thousands of kilometers into the depths. In the deepest pit, of incalculable and impossible depth, broods Asmodeus, the ruler of Baator. He is, from reports, soft-spoken, articulate, chillingly reasonable, and so powerful as to defy comprehension.
+
+## Adventure Seeds
+
+- The ruler of Stygia, Prince Levistus, is only allowed one day of freedom every year from his prison of ice. He is willing to give the heroes almost anything if they can find a way to free him, a task that may require the slaying of a Daemon before the more mundane task of cutting him free can even begin.
+- An assassination attempt has recently been aimed at Glasya, and failed. Now the entire crystal sphere is on lockdown and martial law is getting worse and worse. Unless someone can find the assassin soon, the paranoia and twistings of betrayal of the system will erupt into a real war. Fortunately, the heroes are beyond suspicion and have been hired - apparently by Asmodeus himself - to take care of the problem. Or else.
+- A warp storm has been building around Baator for some time now, and ships are finding it more and more difficult to get into the crystal sphere and out again. While this has driven the prices of Baatoran goods up, it appears that this may not be a natural warp storm, but an attack from one of Baator's enemies.
+- A man approaches the heroes begging for help - his child has been seduced and lured to Baator by the promise of wealth, wine, and women.
+  The rumors suggest that this is a plot by a high-ranking Baatorian to gather a huge number of unwitting people to serve as a sacrifice to ascend to some
+
+higher power. Other rumors say that the offeris just what it seems, an attempt to boost the tourism trade.
+
+### Beastlands
+
+The Beastlands are a mysterious Crystal Sphere. There are a number of planets circling the star that are habitable, each one covered in wilderness and with astoundingly deadly wildlife. There are some ruins on the planets and mysterious power signatures, but attempts to investigate the ruins or establish a colony have all met with failure as the fauna - and even flora - turned actively hostile, demonstrating abilities impossible for normal plant and animal life that only increased in response to resistance.
+
+#### Physical Conditions
+
+To a casual observer, the Beastlands seem like a fairly normal system, if one completely untouched by industry and the trappings of civilization. Someone more observant might note that the worlds in the Sphere are unusually flush and full of life, with every single solid surface - and even the system's sole gas giant - supporting an advanced ecology. The system has seven planets, and there's little point in describing each of them in detail - they are all nearly the same.
+The sameness of the worlds is actually quite startling. Very nearly the same ecosystems exist in every world, just adapting to survive in the conditions present on each of the planets. From what few samples scholars have been able to gather, the native organisms developed an astounding ability to survive in nearly any environment, possibly thanks to a massive planetary disaster. There's little evidence to support that theory, though. With the active ecosystem on each system, finding craters and other signs of disaster are difficult. Any kind of active scan is almost inevitably met with a response from the planet.
+Naturally, it's this response that is of greatest interest to people. Mostly because it's what ends up killing just about everyone. The ecosystems are astoundingly deadly to outsiders, functioning almost like a massive defense system at every scale from microscopic to even defending from orbital threats. The things that the life forms on these planets can do border on the supernatural in scope, yet there doesn't seem to be much actual magic to it at all, merely biology so incredibly advanced that it seems impossible, from trees that grow as armored shells around high-energy hydrocarbons - firing upward as ballistic missiles that can even achieve orbit - to plants with leaves with almost perfectly reflective surfaces that they use to focus ambient light into deadly beams of heat.
+The fauna is even worse than the flora. Dragons can't even compete with them, mostly because they all seem to work together when intruders are around. When observed from a great distance, the ecology seems to settle and act like a fairly normal world, the life forms preying on one another and so forth. It's only when someone from the outside comes in and disturbs things that they seem to spontaneously form an army. There doesn't seem to be any central planning or hivemind effect - all of the behavior seems to be emergent, developing from their normal behaviors.
+Because of the sheer danger of the
+
+ecologies, settlements are more-or-less impossible. One attempt was made to terraform the most temperate of the planets. The attempt ended badly, and the tales the few survivors told were enough to make sure a second mission was never launched. To date, the Beastlands lie relatively untouched, left to the dangerous animals within.
+
+#### Inhabitants
+
+The only real inhabitants are the strange, extremely advanced life forms. Nothing else can really survive for long, either ending up becoming food or being torn apart and then food. A few (very well armed) scientists still study the local life forms, but their expeditions have to be very fast and unobtrusive--even a slight disturbance can start the wildlife on a killing spree.
+
+#### Locations
+
+**The Mothership**
+
+The remains of the first terraforming attempt are still floating in-system. The massive ship is several kilometers long, and had a crew numbering in the tens of thousands.
+Had. Only a tiny fraction of the crew managed to escape, and the rest became food and biomass for a growing infection that started after life forms from the planet got onboard. The Mothership has since become a crumpled wreck overgrown with tough fungus and massive vines that have developed thick skins that use metal drawn from the ship to form radiation-resisting hulls.
+Animals, most of them smaller and stranger than in the rest of the system, prowl the warped hallways which have become more like caves or the bowels of some massive beast.
+The Sargasso Asteroids
+
+Supporting the idea that the life forms here spread through space via some kind of impact event, asteroids have become collected in most of the stable Lagrange points and, over time, life has grown there. Weedy strings of plant matter and bacteria have joined the asteroids that fall here into loose nests and webs. They're one of the few places that are relatively safe to collect samples from, as there isn't enough biomass to create anything really dangerous, though occasionally asteroids will break free on suspiciously precise trajectories to hit ships that approach too closely.
+**The Great Circle**
+
+The Great Circle is the name given to the only ruins that have ever been discovered on any of the planets of the Beastlands. They're the only structures that aren't overgrown or destroyed quickly by invading plants and animals. The ruins are in the form of a ring, twenty kilometers around and a kilometer and a half thick. Several expeditions have tried to explore the ruins, but there doesn't seem to be a way inside the structure. For now, it remains one of the greatest mysteries in the Sphere.
+**Variable Gravity Well**
+
+On one of the moons of the system's sole gas giant (which itself harbors floating plants and animals like gliding wings and balloons) is a spot that's unique in the system.
+
+Something buried deep within the moon is emitting a high amount of warp energy that's warping space around the moon, the effect most strongly felt as a, well, variable gravity well that changes in shape and power over time. The corpses of many thousands of the largest variety of predatory native are in a massive pile over the site of the gravity well, their hardened shells forming a tough barrier that would take battleship-level weapons to break through. Even approaching this moon is dangerous - it seems to represent a sore spot or sensitive zone for the wildlife, always drawing fire.
+
+## Adventure Seeds
+
+- Recently, humanoid creatures have been spotted on one of the planets in-system.
+  They didn't quite match the description of any known race, but seem to combine features from all of them. Are they intelligent life forms that have somehow escaped detection until now, a new development that has only recently evolved, or are they part of a rumored cult of survivalists that is said to have come to the Beastlands to escape the sprawl of civilization?
+- Some of the scientists returning from studies of the Beastlands have been vanishing after returning home. At the same time,
+  there are reports of creatures that resemble the native life of the Beastlands appearing on their homeworlds. Is there some new disease or infection that is lying dormant in researchers and waiting to spread the taint of the bizarre life here across the Wheel?
+- Increasingly, as research efforts become more uncommon and unmanned probes become the norm, strange malfunctions and glitches have been occurring. Probes are recording passages of time that don't match the time that passes outside the Sphere. It appears as though the longer that the Sphere goes without being opened, the faster time passes inside it. Some have suggested that this time warp might be the cause for why the life here is so evolved - it's had many more billions of years without extinction-level events or outsiders becoming involved to become interconnected.
+- Reports speak of strange ships being seen around the Beastlands, both inside and outside of the Spheres. The ships don't match any known class or even general design philosophy of the known races. At least one of the ships was destroyed after firing strange plasma weapons on a human ship. The debris recovered - and there wasn't much - was almost entirely non-metallic, made of strange polymers and plastics that seem organic in nature. Are these ships connected to the reports of space monsters attacking nearby Crystal Spheres?
+
+### Bytopia
+
+Bytopia is a place of intense industry,
+a pair of worlds that are covered in forges and factories, industrial complexes soaring into the sky and mine workings burrowing deep into the crust. Bytopia boasts the most impressive factories in known space, its massive production able to supply armies throughout the Wheel. Entire fleets are devoted to bringing raw materials to Bytopia and bringing consumer goods away. The very void within the Crystal Sphere of Bytopia is contaminated with enough industrial pollution and smoke to give it a thin atmospheric haze.
+
+#### Physical Conditions
+
+Bytopia is an old and used-up system. There are only two planets left, encrusted with factories and landing facilities for ships. Space elevators hang down from artificial, solid, rings around each planet that serve both as docking ports for massive freight ships and mass accelerators for launching cargo loads to waiting nets and waste loads into the sun. The planets are only barely habitable, wastelands of industrial waste and mining debris. The vast majority of the large population spends their lives inside, many never seeing the light of day.
+Bytopia's system is thankfully free of magical hazards. The place operates much as you'd expect a space to, with few surprises in terms of the actual physical laws. The composition of the plane might surprise a person, though. As noted above, there's so much pollution and industrial waste floating around in the sphere that it's actually somewhat pressurized, thicker than a nebula and made entirely
+
+out of pollution.
+There's plenty of evidence that there were a number of other worlds in the system. The mined-out remnants of no less than three gas giants and two other rocky planets float in lazy orbits. There's little left now except ancient scaffolding from when they literally took the planets apart, too old and in much disrepair, everything of value already taken away. The only thing left are frameworks of metal too difficult to work or scrap.
+The first planet of Bytopia, Dothion, is all rust-colored landscapes and tarnished metal. Most of the natives live in massive arcologies that supply all their needs. Monorails and moving walkways are the norm - there are almost no personal transports except for the very rich. Most live within walking distance of their jobs, only know their neighbors and workmates, and never even think about travel or the outside world. Vacations are spent in purpose-built recreation zones which offer some modest simulation of nature, albeit one crowded shoulder-to-shoulder with other people.
+The second planet, Shurrock, is far less forgiving. It produces many items that are restricted or illegal on other worlds - lockpicks, weapons, military armor, and spelljammer components. The natives don't have the same sort of freedoms enjoyed on the first world - because of the dangerous nature of many of the items and the value of them all, they're constantly watched, searched, and screened for dangerous ideas.
+Outsiders are viewed with suspicion and kept away from the general population, distracted by areas set aside for just that purpose. Going outside these areas carries the threat of immediate and often deadly police action.
+Ships are constantly moving in and out of the system, making the traffic a hazard in its own right. Thankfully, the traffic control agents of Bytopia are excellent - the combination of Virtual Intelligence and extreme skill they use combines the best aspects of logic and instinct. The trade in raw materials and ore has priority over almost all other traffic, fuel for the furnaces of creation.
+
+#### Inhabitants
+
+The major inhabitants of Bytopia are Squats and Humans. Halflings are found in great numbers as well, though they typically live in the underbelly of the factory-cities, surviving on scraps and cunning. Gnomes can be found as well, working on the more arcane and ancient machinery and keeping it running from day to day. There is no wildlife to speak of, though there are some working animals used in a few factories, and pets kept by the affluent.
+
+#### Locations
+
+**Ring 0**
+
+One of the oldest parts of the system, Ring 0 is the scaffolding remnant of one of the inner rocky planets. It was one of the first planets completely strip mined, an overbuilt prototype that was refined as the Bytopians tore the rest of the system apart. The scaffolding surrounds a useless core of slag rock that no one has (yet) found a use for. What remains of Ring 0 is what they couldn't easy
+
+recycle - the mass driver and damaged parts that just weren't worth saving. It has become something of a tradition for the smaller independent traders to stop at Ring 0 at the end of a successful run. A bar has been built there, and the ancient Ring 0 docks are more than sufficient to handle the light traffic. The bar, Absolute Zero, is an inflatable structure that looks out into the void with transparent walls.
+It has been destroyed and rebuilt several times now, but the bartender, an Eldarin exile who goes by Moondog, refuses to make the structure more sturdy or quit. He says he enjoys the danger and excitement.
+**The Last Ruby Rays of Dawn**
+
+A wrecked ship, the Last Ruby Rays of Dawn was carrying extremely hazardous cargo that broke containment and left everyone onboard ship dead. For over a century, the Dawn has floated in an extremely elliptical orbit that keeps it away from all other traffic lanes. No one has tried to salvage the ship - the filed reports say that it'll be another hundred centuries before anyone can go aboard without melting into a puddle of radioactive ooze. Or that's what the reports say. No one is willing to chance it. The ship floats with a hundred thousand kilometer no fly zone around it, though rumors say that transmissions and even running lights have been seen coming from the wreck.
+**GWOTT Headquarters**
+
+A government building as large as a city, the Great Wheel Order of Trade and Tariffs is the organization that polices economic activity and acts as a kind of police force to protect the stability of the Wheel's economy and to curtail trade in illegal goods and services. GWOTT keeps its headquarters separate from Sigil to keep a distance both politically and literally from the interests of the Factions. The chief of GWOTT is a strict and collected woman named Eclipse who makes few public appearances. Rumors say that the GWOTT employs teams of Exalts to take on the most difficult and sensitive missions, often breaking or ignoring local laws for a greater good.
+**Solar Observatory #14**
+
+A very plain title for one of the best kept secrets in the system. For thousands of years now it has been watching a very strange object - a station orbiting the sun at extremely close range. Impossibly close. The station has been seen passing through arcs of solar plasma with no change to the structure. Ships haven't been able to get close enough to actually dock with it. The assumption among most scholars is that it's Syrneth in nature, a relic of their golden age. Of course, it hasn't been proven, and some of the latest scans have presented somewhat worrying evidence of growing activity lately. The truth may never be known at all, as the orbit is slowly decaying and within a generation or so it is expected to simply drop into the sun and never be seen again.
+
+## Adventure Seeds
+
+- In one of the best protected factories of Shurrock is a legion of massive war machines, titanic walking tanks called Warstriders. Whoever gets their hands on them can conquer entire Crystal Spheres, carve out empires among the stars. Next week, the bidding is due to start. Now, though, they're vulnerable (relatively) and an extremely tempting target. A surprising amount of information on their location and the security forces has been leaked to the wrong people, almost as if they're tempting someone to try taking them...
+
+- The inhabitants of Dothion are used to excavating geofronts, huge caverns underground, to house people and industry. However, in one of the latest excavations, the miners discovered a cave complex that was certainly not natural. Before contact was lost, they reported strange power sources, halls of black metal staring into them, stasis banks with sleeping things the refused to describe, and, towards the end, the sense that something was awakening, that the entire place was alive and full of hate for them, endless ancient hate.
+- The GWOTT would like outsiders to think that it is a perfect organization without any internal troubles and unparalleled authority throughout the Wheel. However, recently two very important high-ranking operatives went rogue, claiming that the GWOTT is being controlled by a cabal of merchants and aristocracy that have some nefarious plan. While the rogues might be right, unconfirmed internal reports suggest that they might be high-level exalts, and perfectly capable of doing a lot of damage on their own.
+- Shurrock has been experimenting with something extremely dangerous - a kind of mind control agent of extreme and subtle power delivered over multiple means. The food, water, and entertainment of the planet are all tainted with this system, and it has been very effective in keeping worker unrest down and happiness high. However, it appears long term use of the drugs and psychological programming has a determental effect. An effect that drives people to murder everyone around them.
+
+### Carceri
+
+Carceri is an unusual formation, a matryoshka doll of Crystal Spheres nested one inside the other. Each layer contains equipment of incredible age - most assume that it's Syrneth, but some scholars claim that it seems even older, though that is of course impossible. The center has never been reached, each Crystal Sphere proving to be more and more difficult to breach. But each new Crystal Sphere opened has also had prizes, technology that even the most clever looters had been unable to claim. Despite the signs that Carceri was constructed to contain something terribly dangerous, the lure of Syrneth technology has funded countless expeditions.
+
+#### Physical Conditions
+
+Carceri is located in the scenic middle of nowhere. It's not only out of the way, but the crystal sphere is shrouded in a dark nebula that makes it invisible until a spelljammer gets close to it, when it suddenly looms up out of the gloom. The portal relay that services Carceri is well outside the nebula, making the journey to the crystal sphere a trying task. The outermost crystal sphere is easy to breach from the outside. From the inside, though, the once-easy navigation becomes a trying task, the structure of the crystal sphere serving to funnel ships inside.
+As already mentioned, Carceri is a unique structure, as far as is known. Inside are nested crystal spheres - the exact number of which aren't known. The first open area is the most well-known, especially by treasure hunters, as it's their first stop (and often the last place they're seen alive). The space between the spheres on the first layer is quite small, only a few kilometers like a shallow sea of space with crystal spheres above and below.
+Even on the first layer of Carceri, the Sphere's various hazards appear. The two most obvious are the massive storms and clouds of floating debris. Because of a kind of strange extradimensional friction, massive
+
+electrical storms roil across space, strange lighting striking out in all directions in unpredictable patterns. These bolts have been known to wreck smaller ships and slag electrical systems on larger ships. The debris is even worse, everything from ships wrecked by the storms to clouds of razor-sharp hull fragments that can cut through void suits (and the people wearing them) like a sword through butter.
+There are other dangers as well, some of them less obvious. The first few layers have been relatively well-explored, and it has become quite clear that space is warped here,
+compressed so that impossible gulfs of space span the layers between the spheres. It seems to grow at an exponential rate, so where only a few kilometers are in the first layer, there are hundreds in the next, then tens of thousands.
+Always at the center, though, is the next layer of Carceri's crystal sphere. Exacting measurements have shown only a tiny decrease in the central sphere's diameter with each layer down. There might be hundreds of layers.
+Syrne ruins are the main attraction for visitors. And the only visitors are foolish treasure hunters. There's a long history of treasure hunting here, thousands of years of people throwing their lives away for Syrne artifacts.
+All of the ruins that are easy to get to have been picked clean, driving the hunters deeper and deeper in to find anything worth selling.
+Still, it's said that even one good find can set a man up for life, so those looking to get rich quick typically can't resist.
+There are other, less obvious dangers to Carceri. While there's no atmosphere, there are occasional rains and snows of a black acid that can eat through unprotected starship hulls. Some kind of Warp turbulence makes it so that no one can manage to get sleep without having horrible nightmares that stay with them for the rest of their lives. Worst of all, the compression of space in the lower layers of Carceri carry with them a compression of time. Not just time flowing at a different rate, but cause and effect jumbling together, events being forced closer together even as perception of time stays the same and struggles to catch up.
+
+#### Inhabitants
+
+No one sane would call Carceri home, which means that humans have naturally tried to colonize the place. The attempts have been universally met with failure. No one wants to stay here. The creatures that seem truly native to the place are among the worst,
+and toughest, known to exist. Aside from crawling things like giant bugs that scavenge
+
+wrecked ships for anything they can eat, there are predators like large flying jellyfish that have proven resistant to even concentrated attacks and seem to drain the very life from their victims.
+
+#### Locations
+
+**The Vault**
+
+Carceri is a place that's hard to get out of, with no helpful natives and nowhere to really run. It's a great place to build a prison, or at least so thought some of the Factions. When someone really, really needs to disappear, this is where they're sent. It's a structure that resembles nothing so much as a blank sphere of iron, with just one dock for a ship, no windows, and no lights, guide beacons, or anything else to draw attention. The warden, named Staccato Thaman, is a man with a hard head and an iron fist. No one has ever escaped from the vault. As long as he's in charge, he's going to make sure no one ever does.
+
+**Rostok**
+
+Rostok is one of the very few places in Carceri that offers travellers any services. It's a space station bodged together with scrapped hulls of ships and garbage, giving it a ramshackle and overall dirty appearance. For the gatecrashers who attempt to penetrate deep into Carceri's layers, though, it's the place they come for supplies and the latest information.
+While no one is really in charge here, Sidorovich is an old gatecrasher who has retired here, and has ended up keeping the place running with repairs and patches. Anyone who comes here can find things to buy, people willing to buy almost anything even a little useful,
+and the occasional artifact brought back by a lucky adventurer who managed to find a scrap of Syrneth technology that hadn't been scavenged yet.
+
+**Shipyard X-18**
+
+Another highly defended point, X-18 is located three layers deep in Carceri, far from prying eyes. The place is extremely difficult to approach, as any unauthorized attempts to close with it end in being fired on. Rumors say that the shipyard isn't government work, and that pirates run the place, but that seems unlikely given some of the ships seen there unless the pirates and government are working together - a theory only a conspiracy theorist would believe. What is certainly true is that the shipyard is building prototype ships designed to penetrate the extremely dangerous Crystal Spheres of the lowest Carceri layers, complete with a new and unique type of navigation system.
+
+**Agathys**
+
+Agathys is the name scholars have given to the sixth layer of Carceri, the deepest one that has been reliably penetrated and partly mapped. While some gatecrashers tell stories of navigating through the crystal sphere at its center and reaching another layer full of ruins, but this is almost certainly nothing more than just stories or dumb luck. Current thinking is that no human can actually penetrate the Crystal Sphere here - the course changes needed are too much for anything but a computer, but actually building the program that can manage it and the ship that can fly the course have proven difficult.
+
+## Adventure Seeds
+
+- The unique properties of the plane have inspired a group of mages to create a unique form of magic that affects time itself.
+  They're not willing to just teach these secrets to anyone, but if someone was persuasive enough or managed to do some pretty impressive things for them, they might just be willing to give him a hint or two.
+- Beyond Agathys, in the deepest part of Carceri, is a thing, a monolith or obelisk that can grant wishes to anyone with what it takes to get to it. Many have tried to reach it,
+  and almost all of them have failed. Their ambitions were mountains of artifacts and gold,
+  and anything else their greedy minds could think of. Of course, it extracted from them a price, and some people tell horror stories of people who got exactly what they wanted.
+- In the void between the spheres, impossible music sometimes finds its way to people, carrying promises and power in exchange for terrible sacrifices, always involving the betrayal or murder of someone close to the listener. There aren't many that can resist these calls, not because of any mind-controlling effects, but just because what they offer is tailored to the person that hears it.
+
+- Some very wild and unconfirmed rumors say that what the Syrne were protecting deep inside Carceri wasn't some amazing artifact or powerful weapon but the future of their race. Some of the more barmy and untrustworthy types have claimed to meet with real, living Syrne. But that is, of course, totally impossible. And you'd have to be even barmier than they are to go looking.
+
+### Commorragh
+
+Not a real Crystal Sphere, the city of Commorragh is a dark parallel to Sigil, a hidden place lying in the Warp itself, a place of anarchy and terror ruled by the Dark Eldarin and their dark god, Lolth, a demon spider queen who protects them from the ravages of the warp. Their depravity knows no bounds,
+and what happens to the slaves and captives they take is... unspeakable.
+
+#### Physical Conditions
+
+Commorragh is a difficult city to find,
+existing in the Warp itself. It is built in and on a massive series of constructs called the Webway, secret invisible passageways that create a space not unlike the Umbra - not quite the real world, but not quite the Warp either. It is a place of shadows, the color drained out of everything and leaving it black and white.
+The Webway itself is akin to a giant spider's web woven out of a strange material that is rumored to be the lost souls of those who have been captured by the Dark Eldarin and sacrificed to the daemon Lolth. Lolth is the weaver of the Webway, either having developed the technique herself or learned it in some ancient time. Some parts of the Webway seem quite different from the chaotic tangle that Lolth has created, surprisingly orderly and structured, hinting at another weaver.
+Within the city of Commorragh, it is much like being inside an immense cavern.
+The temperature is mild at all times but never quite comfortable, ranging from just a little too hot to just a little too cold. The air is damp and dank, gray fog rolling through the city daily. The light is inconstant and dim, though the bright neon lights of the city provide garish illumination at street level.
+It is difficult to comprehend the sheer scale of Commorragh. When someone pictures a city, they typically think of some mere metropolis. Perhaps if they're well-travelled, they may think of a world entirely covered in construction like Dis. Commorragh is so much larger than that. The city is a megastructure that reaches for literally billions of kilometers. In the real universe, such a structure would collapse in on itself, but in the warp it hangs like a tumor in the endless expanse, growing and changing at the behest of Lolth.
+The megastructure of Commorragh is connected and built around the webway like a particularly tasty morsel trapped in a spider's web. Because it is located in the Warp, ships can travel directly to it without ever exiting the Warp, making it almost impossible to track those ships or find the city. It's said that only the Dark Eldarin can truly find the city, their pact with Lolth giving them an internal compass centered on the Dark City.
+The half-reality of Commorragh has strange effects on people. While the shadowy reality of the webway is fairly safe, certainly moreso than the Abyss that it shields from, it isn't quite the same as normal reality. Light does not travel as far, liquids seem thicker and ichorous. Even emotions are affected - within
+
+the webway not only are lights and flame dimmed, but also anger, joy, and sadness.
+This is something of a boon for the Dark Eldarin, as outside of the webway they are controlled by their powerful emotions - though some say that their powerful emotional displays are a reaction to the webway itself, overcompensating for the normally muted feelings.
+
+#### Inhabitants
+
+The most common inhabitants of Commorragh are, of course, the Dark Eldarin.
+They are the masters of the city, decadent and full of terrible lusts. Slaves of all shapes and sizes can be found everywhere, outnumbering the Dark Eldarin but broken by the tortures and horrors they've experienced. Lolth's daemonic minions wander the streets, toying with the Dark Eldarin as they toy with others. Almost any kind of person or creature could be found here, especially if one of the cruel mistresses of the Dark Eldarin would find it amusing.
+
+#### Locations
+
+**Daemonweb Pits**
+
+The domain of Lolth herself, the Daemonweb pits are said to exist near the very heart of Commorragh, a tangle of webs in a space tens of thousands of kilometers wide.
+There, Lolth and her most trusted servants
+(who rarely last long before they're suspected of betrayal and replaced with new trusted servants) plot from a massive moving palace of darksteel and mithril shaped like a vast spider crawling across the webstrands. Lolth herself is rumored to be a rogue or fallen pattern spider, one of the weavers of destiny. Lolth, of course, has anyone killed if they speak of her as less than a god, so the wise would take care to keep these rumors to themselves.
+
+**Erelhei-Cinlu**
+
+Erelhei-Cinlu is one of the largest Kabals in Commorragh, a self-governing socio-economic paramilitary organization.
+Commorragh is simply too large for any single government to control it, and so the Kabals formed out of the old noble families and pleasure cults. Erelhei-Cinlu is... calling it safe would be improper, but it is slightly less dangerous than some of the other Dark Eldarin Kabals. The Dark Eldarin here have recently recovered from one of the civil wars common to their kind, and have become increasingly aware that they don't exist in a vacuum, and that the Great Wheel can offer them more than just slaves and toys. Outsiders are becoming increasingly common in Erelhei-Cinlu,
+merchants and mercenaries who have sworn blood oaths to obey the Kabal. The survival rate for outsiders is surprisingly high, and people have actually been known to come back from Erelhei-Cinlu. Few desire to return to the Dark City, but the lure of wealth and untold pleasures tempts many.
+
+**Menzoberranzan**
+
+One of the oldest Dark Eldarin Kabals, Menzoberranzan is an archetypical Dark Eldarin city-state, with huge numbers of slaves
+
+existing only to serve the needs of their mistresses. The city is a matriarchy where the most powerful rise to the top through assassination and torture. They say that visitors are welcome here, and that's certainly true. What most visitors learn quickly is that they're welcome as tools and playthings. Anyone visiting Menzoberranzan will quickly become part of the endless game of politics and death that underlies everything in the city. Because the city is so old, it is deeper within the megastructure of Commorragh than other Dark Eldarin Kabals, often finding itself under siege from the terrors of the Underdark. Menzoberranzan's ruler is Triel Baenre, a priestess of Lolth who commands great respect and fear for her pacts with the Spider Queen. She doesn't rule with an iron fist but a cloaked blade, her enemies simply vanishing.
+
+**Underdark**
+
+Vast spans of Commorragh are labyrinths of steel and mist, entire worlds worth of artificial caverns and illogical constructions that seem almost random in form and completely without function. They are often pitch-black, and in the vastness of these spaces, strange forms of life encouraged by the underlying taint of the warp and the radiation of its mutating energies grow into strange ecologies. There are nameless seas as wide and deep as entire worlds that no mortal eye has ever seen, endless twisting passageways through the dark, forests of fungus and vines,
+half-starved cannibalistic monsters descended from escaped pets and experiments of the Dark Eldarin, and roaming undead. There are rumors of grand treasures in the Underdark,
+of hordes of gold, weapons, and data that lie for the taking, abandoned or hidden in some lost scheme by one of the Dark Eldarin. Lifetimes could be spent wandering the Underdark, meeting no one, seeing nothing, just alone in the utter darkness and silence.
+
+## Adventure Seeds
+
+- The population of an entire Crystal Sphere has vanished in a single day. Evidence suggests that the Dark Eldarin have taken them for some terrible purpose. But what could the Dark Eldarin need with such a vast number of slaves, and how were they taken so easily? To find the answers, the heroes will need to find a guide who can lead them to the Dark City - and unless they hurry, there's no telling just what will happen to the captives.
+- A powerful merchant has made contacts in Commorragh. He's accepted their invitation to meet and discuss a trade agreement to use him as a front to sell their goods and buy what they want from the outside world.
+  He is no fool, though, and requires powerful bodyguards in case this is just an elaborate plan to betray him. Anyone he hires will have to be careful not to anger or offend the Dark Eldarin, lest they decide to turn on the offender and make an example of him.
+- A recent slave revolt in Erelhei Cinlu has made it clear that there is someone organizing the slaves to rise up and fight the Dark Eldarin. The Dark Eldarin have put an
+
+extraordinary price on the head of the instigator. It has become a deadly race to find him,
+and the heroes might find themselves on either side of the conflict.
+
+### Elysium
+
+A small group of worlds, Elysium is a Crystal Sphere that almost seems an untouched paradise. Each world is blessed with fertile richness and unsurpassed natural beauty. However, these worlds are claimed by the Eldarin, and those who seek to settle there must take care not to disrupt the land or break any of the Eldarin's mysterious laws.
+
+#### Physical Conditions
+
+There are a half dozen worlds in the Elysium system, each one beautiful in its own way. The system is somewhere between a garden and a wild paradise, the ancient Eldarin allowing it to grow and trimming away undesirable growths. Speaking purely in terms of natural hazards, Elysium is one of the safest places in the Wheel. There are no deadly predators here (at least none that will attack people, anyway), no poisonous plants, and no massive rivers of fire or atmospheres of poison gas. The void between the planets is clean, free of all debris both natural and artificial. There aren't even micrometeorites here to scar a ship's paint.
+However, there is one extremely real threat here. The Eldarin. While most Eldarin live their lives aboard world-ships and rarely even set foot on a planet, they still find planets useful for some things,
+and the world-shipsof the Eldarin occasionally need repair. They jealouslyguard
+Elysiumagainst all who would dare
+to enter. There are no permanent settlements on any of the planets. The Eldarin do not want to live on the surface, even here, and space stations and remaining onboard ship are the norm.
+The six worlds of Elysium are each suited to a different climate, though all are easily habitable. The first world is a desert, but with surprisingly abundant plant and animal life that makes survival easy for those who know how to look. It is a place of harsh beauty,
+perfect for those seeking a quiet place to meditate. The second world is a lush jungle bursting with life, hot and steaming and filled with color. Thousands of years of breeding have turned the animal life here tame - they prey upon each other as in a normal ecosystem, but they would never harm the Eldarin (or most sentients, who don't look terribly different in their eyes).
+The third world is a hilly grassland with fields of boulders and creeping vines. There are small trees that dot the landscape, each one twisted and stunted and shaped into a pleasing form. Small songbirds and flying insects with glowing wings flitter through the sky. The fourth world is a broadleaf forest, a place of flowing rivers, streams, and wide oceans, with the sound of flowing water cascading everywhere.
+The fifth world is much like the fourth, but where the fourth world is temperate, the fifth is chilled, with light snowfalls and needle-bearing trees. The temperature varies just enough to get a freeze and a thaw, allowing for beautiful ice formations and then a warming spring. The last of the worlds of Elysium is a frozen tundra, windswept fields of glaciers and pillars of ice like some natural city carved by erosion. Just like the first world, this is a place of quiet meditation, with all the tools of survival easily
+at hand.
+
+#### Inhabitants
+
+Elysium has a large amount of wildlife, the Eldarin having chosen only the most beautiful and interesting animals to place on their Maiden Worlds. Of course, there are also the working animals that keep the ecosystem working - earthworms and ants, for example. There are always Eldarin in the system,
+and it's one of the few places that Eldarin from different craftworlds are likely to meet. Visitors from other races are rare, as the Eldarin discourage other races. Violently. With lasers.
+Still, if one is a true ally of the Eldarin, being allowed to see Elysium is the greatest privilege they can offer, and so even if it is rare, other races can be found here (typically being watched at all times from a polite distance).
+
+#### Locations
+
+The names of most of these locations have been shortened from their extremely long and poetic Eldarin names to shorter terms that have roughly the same meaning.
+
+**The World Harbour**
+
+The only docking platform large enough to accommodate a world-ship, this massive, skeletal space station floats beyond the sixth planet. While skiffs and smaller vessels are typically used to resupply world-ships, occasionally one will need refitting or massive repair work due to some accident or attack. The Eldarin preform all of their repair work here, away from prying eyes. The world-ships are their homes, and so they treat them with great care. This is also the birthplace of new world-ships, built here by sorcery and careful work, growing like a living thing of wraithbone. The process is said to take centuries,
+and none have been built in living memory.
+**The Array**
+
+A massive solar array like a net around the sun, The Array provides power throughout the system. The main target for this power grid is to power weather-control devices buried beneath the crust of the six maiden worlds, keeping them at the same biome from pole to pole all year long. The Array is maintained by a special sect of Eldarin that never leave the system. They are the youngest and the oldest of their race, those with much to learn and those who can teach and have left adventures behind them. Almost all Eldarin serve here, at least for a short time.
+**The Axis**
+
+A massive space station built out of a massive asteroid, Axis is the closest thing to a real government capital of the Eldarin. It is a meeting place where Eldarin from different craftworlds come to meet and discuss events, trade agreements, and plans for the future.
+The tone of these meetings is always extremely formal, something like a ball crossed with a political debate. These formal meetings are where many young couples and political alliances are formed. The current commander of Axis is a young Eldarin named Haman Karn. She has distinguished herself as a fighter and a charismatic leader, and rumors say that she Exalted shortly before assuming leadership. She is a dangerous woman, who has a very dim view of the other races and would as soon have them exterminated.
+**The Cradle**
+
+The Eldarin reproduce only slowly and require time and great care to bear young.
+The Cradle is a place they built specifically for the purpose. It is a large space station that is extraordinarily well defended. Outsiders are not allowed in under and circumstances, and automated systems ensure that even if every
+
+defender should fall, the developing Eldarin will be taken care of. Rumors say that inside,
+The Cradle is just row after row of artificial wombs, countless millions of them. And despite this, the Eldarin are still slowly declining,
+losses from wars too much for them to bear.
+
+## Adventure Seeds
+
+- Elysium isn't just where the Eldarin come to have children, but also where they come to die. Under the surface of the worlds are massive catacombs where the bodies and belongings of the most powerful Eldarin lie. A graverobber could make a fortune in a day if he could find his way into these catacombs, if he could somehow get in and out without getting killed in seconds.
+- The Eldarin have been keeping it a secret even from most of their race, but their ability to control the six Maiden Worlds has been slipping. Most recently, a terrible predator spawned on the second world, and has slain dozens of brave Eldarin warriors and only grown stronger from the experience. The Eldarin will reward anyone who can destroy this creature extremely well, though anyone taking the job had better make sure to get a promise of safe passage in and out of Elysium.
+- The Eldarin desperately need to bring some fresh blood into the fold. Elves and Dark Eldarin, though both are distasteful, are perhaps the only answer. The heroes are going to have to escort an Elven Prince and a Dark Eldarin Archon to Elysium and get them both there alive and happy - while defusing whatever plots they have.
+
+### Gehenna
+
+Gehenna is a Crystal Sphere of massive volcanic activity - some obscure change to the laws of reality have made every planetary body turn into geothermal furnaces, with four main planets like twin volcanoes hundreds of thousands of kilometers tall and joined at the base. Countless mountain-sized burning rocks orbit and float with these 'earthbergs'. The closer the 'earthbergs' are to their central star, the more intense their geological activity, with the innermost constantly erupting and the outermost a cold, almost dead place aside from geothermal vents and cracks.
+
+#### Physical Conditions
+
+There's nowhere flat on Gehenna.
+That's inevitably the first thing anyone notices on entering the sphere, because it isn't just the planets that are affected, even artifical gravity systems can't compensate. Something about the place makes it utterly impossible for anything to stay stable and perpendicular to gravity. Most ships seem to 'list' at somewhere between ten and forty-five degrees, though some go nearly vertical. This makes getting around the system annoying, since most ships are forced to turn off their gravity - and the ones that can't are stuck with a hill climb just to get around.
+There are four main earthbergs, hundreds of thousands of kilometers tall, far larger than a normal planet. Each is a hotbed of volcanic turmoil. Each has mostly cleared the space in its orbit, though it's not uncommon for smaller rocks to tumble out and smash into the earthbergs. The dark void between the orbits of these primary earthbergs is dark and almost impenetrable, a minefield of hot rocks and, away from the central sun, ice. It's impossible to see from one berg to the next, and even trying to get a glimpse of the central sun is difficult - not that anyone would want to.
+Gehenna's sun is a sickly, half-dead thing that produces dim red light and smoulders with dark shadows like a coal.
+The first berg is called Chamada, and is pretty much the most hostile place in Gehenna. In addition to the heat it gets from the sun - the only berg to get much heat from it at all - it also steams with heat from the internal volcanic activity. Though really, little enough of the geological activity here is internal. Most of it seems ready to escape at any moment, and very good at it. At any given time, about half of the surface area of the berg is molten rock.
+The second berg is considered to be the most gentle of the four. And it surprises some to think that Khalas would ever be considered gentle, considering the ground is hot enough to burn unprotected feet. Even so, it's one of the few places with running water. Of course the water runs in great rivers that cut canyons and ravines into the rock. The third berg is a place of ice and fire, occasional rivers of burning rock streaming through glaciers tainted foul and black with ash. It's always too hot or too cold on Mungoth, with nothing in between.
+
+The berg farthest from the sun is Soltheim, a rough place of ice. The volcanic activity here is long dead, and any warmth it had is once gone. It's a brutal, dark place, totally inhospitable to life. Even the tough native life doesn't extend to this location. It's just an empty, dead rock.
+
+#### Inhabitants
+
+The main inhabitants of Gehenna are,
+surprisingly, Dark Eldarin. Just as the Eldarin need somewhere in a gravity well to do their thing, the Dark Eldarin do as well - and Commorragh is in the middle of the warp, making it less than ideal for quite a few things.
+Gehenna isn't well-traveled otherwise, making it useful for them. The native plant and animal life here is limited to fungus and insects of surprising size, some of which are dangerously aggressive. There isn't much here that isn't trying to kill someone.
+
+#### Locations
+
+**Vivec**
+
+Vivec is the largest Dark Eldarin settlement, a sprawling complex of small arcologies over roaring rivers, connected with bridges deliberately unsafe bridges. The Dark Eldarin decided long ago that safety railings were a lot less entertaining than making the edges of the bridges slippery and razor-sharp.
+Elite warriors called Mandrakes patrol the arcologies and dispense their own brand of swift and typically instantly-deadly justice. Of course, as to what crimes the people actually were guilty of, well... typically it's merely catching the interest of the Mandrakes. A massive temple to Lolth dominates Vivec, and it's said that one of her most powerful servants, half Eldarin and half Daemon, lives there and dispenses orders directly from her dark master.
+
+**Rura Penthe**
+
+Rura Penthe is a prison built on Soltheim by the human Imperium. The place has some of the harshest prison conditions in the Wheel. There are no walls, few guards,
+and a lot of cold, ice, and cliffs. Unlike most prisons, plenty of people have tried to escape Rura Penthe. The guards don't even give chase when people leave the perimeter - the cold is more than enough to take care of all but the hardiest escapees, and the fact that there's nothing to eat usually takes care of the rest. A few prisoners are wise enough to return.
+They're beaten, though it's more of a formality than anything else, and put back in their cells with no other mention made of the attempt.
+
+No one is sure why the Dark Eldarin permit this, though the common belief is that they're given a suitable number of prisoners themselves to use as toys.
+
+**Tower of the General**
+
+One of the few services that can be had here is mercenaries. There's never a shortage of people willing to hurt other people for a bit of money. The mercenaries here work for a mysterious figure known as the General of Gehenna, and they're some of the best that can be found anywhere, willing to take any job if you can meet their price. Of course, the trouble with mercenaries is that they're, well, mercenary. They'll turn against their employer for the right amount of coin, and they're far too well informed. For a mercenary band, they seem to have their eyes and fingers in everything. Some suggest they've been drumming up their own business and playing both sides.
+
+**Nimicri**
+
+Nimicri is an extraordinarily strange place. At some distant time in the past, some race (possibly the Syrne, though it doesn't resemble any other examples of their technology) developed self-replicating machines about a centimeter across. What they were made for has never been proven, but Nimicri is a planetoid made entirely of them. They've formed into roads, terrain, buildings and even crude replications of people made out of small blocks of metal. The place is safe enough, and the micromachines have surprisingly adept skill at making goods.
+While the rumors say that the replicators consume people, enough have returned from Nimicri speaking of its wonders and with goods that they got merely for information that occasionally merchants make the trip. And really - considering the number of Dark Eldarin in the system, it would be foolish to think that the place is much more dangerous than anywhere else in Gehenna.
+
+**Acererak's Tomb**
+
+Acererak makes his realm here on Gehenna. It is not a place where people are welcome. Magic - powerful magic - is required to get around. The place is a dusty tomb, with many sections sealed off and filled with deadly guardians. There is no air, water, or food. Just dry bones and dust, stone and silence. Those who come seeking knowledge find themselves faced with test after test, with deadly consequences for those who fail and knowledge -
+gained in the passing of the test - for those who succeed. Acererak does not meet with people.
+He merely tests them, and lets them learn for themselves.
+
+## Adventure Seeds
+
+- On Mungoth, there is supposedly a secret temple, a massive structure designed to entrap a Daemon named Hircine. It's full of traps, mazes, and lesser daemons - either Hircine's servants or spawned from his power.
+  It's said that every hundred years, Hircine has a chance to escape, but that someone called by destiny always appears to gain entrance to his prison and defeat him, sealing him away again for another century.
+- Though it seems impossible, rumors say that there is someone living on Soltheim -
+  a tribe of werewolves that have gone totally feral, preying on the prisoners of Rura Penthe like cattle in a pen. The guards either don't know, don't care, or they have some connection to the wolves that runs even deeper. Prisoners say that the guards _are_ the wolves, and stalk the corridors of the prison every night looking for food.
+
+- There's something actually worth having on Chamada, huge veins of raw darksteel ore. Of course, they're extremely difficult to get to, since the molten surface sometimes manages to smelt it into its pure form and leave misshapen, unchangeable messes of metal. Anyone who could manage to set up a mine to get at the ore would become rich, but the Dark Eldarin native to the area don't care to have people intruding on them, and have already destroyed one expedition sent by the humans.
+- Under the Arcologies of Vivec, there are caverns driven into the rock that provide direct access to Commorragh, passages through the webway that a person can simply walk down them. They're a tempting target to invaders, especially the Eldarin, since they would provide an easy way to get to the dark city. However, the defenses around the webway passages are said to be some of the cruelest and most terrible known to exist, just deathtrap after deathtrap, designed so there's always the sense the person can escape, but it's just an illusion to make their torturous deaths more painful.
+
+### The Grey Waste
+
+The Grey Waste is a large and easily navigated Crystal Sphere helpfully located right between Mount Celestia and the Abyss.
+It consequently is almost constantly turned into a battleground between the forces of Order and Chaos.
+There might have been life here once, but all of the planets within the
+Crystal Sphere have
+been blasted into grey rocks over time, and floating bands of asteroids provide even more pointless strategic points to take and retake in the endless Blood War, as well as serving as a grim reminder of the forces at work.
+
+#### Physical Conditions
+
+The Grey Waste contains three starsystems, though there isn't really much left of them. Endless war has reduced what planets there are to shattered husks, gravel and rocks floating around the three pale white stars of Oinos, Niflheim, and Pluton. There isn't a hint of color here - everything is a shade of grey ranging from charcoal to off-white.
+What people learn, very quickly, is that this isn't a trick of the light or the material of the system. The physical laws of the Grey Waste simply don't allow for color. Even the most vibrant colors are reduced to shades of Grey. The effect is draining, emotionally and mentally. Worse, losing the ability to see colors is very bad on many ships that use colors to display things like, oh, warnings, damage, engine condition, and so forth. A ship that goes in unprepared can find itself with a number of meters and displays that are simply useless.
+Worse, the lack of color does something to a person, emotionally. People just start losing hope, forgetting dreams and goals,
+like the Waste is just training them of everything that they ever wished to be. For the most part, the symptoms of this 'Waste Syndrome'
+resemble post-traumatic stress. Which is certainly something else common enough here.
+The Grey waste is a battleground, one that has been fought over again and again.
+
+It's because of this constant warfare that almost nothing is left of worth here. The planets have been blasted to rubble, fortresses built and taken and lost and destroyed. Ships come fresh off of the assembly lines to meet their end here. The place is just an meatgrinder, turning men and machines into dust. And yet neither side will stop fighting, or can stop fighting. The Blessed Pantheon and the Ruinous Powers both want this place because the other also wants it.
+Most of the fighting here takes place on massive floating rocks, some still bearing the marks of once having been life-supporting planets. The largest are a few thousand kilometers across, but most are only a dozen or so. Armies meet in the colorless dust, in the silent void, and fight battles that mean nothing. Untold billions have wasted their lives here.
+
+#### Inhabitants
+
+There are only two permanent inhabitants of the Grey Waste. The dead, and larvae, and it's hard to know which of the two is more numerous. Larvae are a type of parasite that somehow survived the destruction of their planet and survived on the only kind of food that was in great supply - the corpses (mostly Aasimar and Tiefling) of the fools and soldiers who come here. They're relatively harmless things.
+
+#### Locations
+
+**The Port at the Center** at the Center There's a point right at the middle of the Waste, where the gravitational forces are mostly stable and the orbits of the outermost rocks overlap. A massive spaceport was built there, and the owner and operator, Dandy Will, has worked hard to keep it as neutral ground. Mostly he does this by making the place useful to both sides at once - especially with medical technology. He's managed to extract treaties from both sides of the Blood War to make fighting here illegal, and he doesn't hold to any particular god worship, though Vectron seems to have a major following here,
+making this sort of an unofficial pilgrimage stop for Vectron's flock to come and see that Vectron is the only sane and stable god, or so they say.
+
+**Khin-Oin**
+
+This place is a massive tower, going right through the middle of an asteroid and out the other side. It looks like nothing more than a spine almost eighty kilometers tall. It's the most important fortress in the entire Crystal Sphere, and has traded hands over and over again in massive battles. The only ones that have held the tower for any significant length of time are mercenaries, though who they were accepting pay from changes fairly often.
+
+**Death of Innocence**
+
+The Death of Innocence is is a small town, made of scavenged supplies and emergency shelters joined up together on a middling sized rock (a kilometer or so across)
+that's well out of the way of the fighting or anything interesting. Death of Innocence is a haven for deserters and war criminals. People who have grown disillusioned of war or simply so shell-shocked they can't take any more. The ruler of the town, Viliki Cainor, is a human who signed up to help one side (she doesn't say which, and here it doesn't matter much)
+and found that it wasn't at all the glorious battle she had been expecting. She keeps the
+
+place holding together, with a kind and gentle optimism that comforts and makes things work.
+
+**Aeaea**
+
+Aeaea is the one remaining intact planetoid. In most other systems, the former moon would be an uninteresting lifeless rock,
+but here it's one of the most dominating features of the system. Aeaea is never held by anyone for long. There's always some fighting here, and more of the craters come from orbital bombardments than asteroid impacts - an impressive feat considering the Waste is filled with chaotic orbits.
+
+## Adventure Seeds
+
+- There is a strange group that shows up to the largest and most important battles of the Blood War and bets on the outcome of the fighting. And when they fighting isn't interesting enough, the meddle to make things more exciting. No one is sure just who they are, but they must be extremely rich and extremely powerful. And very interested in the ebb and flow of the war.
+- The native Larvae are more dangerous than they look. If they're left alone long enough, they metamorphize into strange and unique creatures, beautiful and utterly deadly.
+  They're hateful things, and rumors say they're partly made of the anger and wasted lives of the corpses they feed on, their faces twisted parodies of the fallen and with wings reflecting the moments of their lives they regret most.
+- The Grey Waste is a place of constant decay and death. Because of the Blood War, so much death occurs here that it would have been impossible for there not to have been some sort of major plague. There's a wasting sickness going around that completely destroys a person, body and mind (and, if the rumors are correct, it even eats the soul). People would pay a lot of money for the man who can cure the wasting sickness. Even more if,
+  as the rumors say, it's a weapon that got out of control and someone could find the one who made the thing.
+- There are some exceptionally creative people in the Wheel, and some of them are just a little too creative. With all the corpses in the Grey Waste, it was only a matter of time before a necromancer showed up to have some fun. But no one expected him to build a city out of the undead. Literally, out of the undead - walls, floors, furnishings, all of it made from corpses returned to a horrible half-life and melded together. Corpus is a fairly safe place, but it's said that the mysterious man who made it has an artifact of extraordinary power that's letting him do all of this.
+
+### Mechanus
+
+The Dead Worlds.. Mechanus is ordered and set like clockwork, entire worlds merely gears within a great machine. It is a lifeless place of constant machine motion and cold law. This is not a place for living creatures, all traces of life quickly eradicated by the Modrons, horrible immortal things of living metal, nearly mindless, just cogs in the machine themselves. Where once they were just rumor, the Modrons are awakening from their great slumber. Some scholars warn of a great March that will see them eradicating all life from the Astral Sea, leaving it barren and pristine again.
+
+#### Physical Conditions
+
+Almost none have returned to speak of it, but the inside of the sphere of Mechanus is one great machine, a Dyson Sphere that presses against the confines of the Crystal Sphere. Gears the size of worlds turn in space,
+pistons pump, and everything is bathed in terrible green light. The Modrons are not yet fully awake, and so Mechanus is merely as dangerous as being inside of an engine while it's running, rather than actively attempting to destroy everything that infests it.
+Mechanus is a hellish place, beyond the imaginings of most. It is like a vast clockwork tomb, lifeless and yet full of movement.
+Necrodermis forms the bulk of the structures of the realm, that nightmare metal that somehow lives. Warp energy simply does not function in Mechanus. Spells fail, enchanted weapons dull, and magical protections vanish.
+The deeper one tries to go into Mechanus, the more powerful this effect. On the outskirts,
+only those effects needing the most magical energy fail, but eventually even the simple spell becomes too much.
+Should someone be foolish enough to go deep into Mechanus, they will find seas of black oil, forests of pipes and chimneys, and arcs of terrible green energy like impossible lightning. It is an utterly hostile place, where nothing natural is wanted or permitted to exist for long. Merely being here can quickly draw the notice of whatever foul systems run this Sphere, defense systems coming online with enough power to destroy anything that stands against them.
+The whirling gears and moving machinery of Mechanus pose their own threat to anyone hoping to explore the place. The sheer size and hostility of Mechanus means that no one has really been able to sit and map out safe routes through the gears. The smallest, most maneuverable ships can get quite a long ways in, though the ones that dare to almost never return.
+
+#### Inhabitants
+
+Modrons,, and nothing else. And the gods themselves can't help you if you run into a significant force of Modrons. Turn tail and run and hope that you're very quiet or you're with someone you don't care much for and can easily outrun.
+Fighting the Modrons here is a fool's task - not only will they just come back almost instantly, but every second a berk fights, more and more of the damned things will wake up to kill him.
+
+#### Locations
+
+**Black Oil Sea**
+
+One of the most obvious features in Mechanus are the seas of glistening black oil. The stuff seems to be as alive as the rest of the realm, horrible in its own way, pouring and pooling in ways that just don't seem natural, waves breaking in ways that are terribly wrong, and currents and flows like countless worms slithering around and over each other. The oil is dangerous on its own, carrying a terrible disease that destroys living tissue. Rumors say that it can even convert machines into Modron technology, the metal itself festering and turning to necrodermis, but no proof has ever been found to the wild stories.
+
+**The Pylon Forest**
+
+A perfectly regular forest of identical and bizarre machines, all standing perfectly still. The Pylon forest seems like it should be just a note on a map, but the pylons themselves seem to somehow distort magic around them, like lightning rods or mirrors. No one has discovered just what they are for, or how they are able to achieve this effect, though some suggest that the pylon's branches might extend not just through three dimensions but into the warp or some other higher dimension,
+and serve as some kind of beacon for the Modron's unexplained ability to teleport without using spellcraft.
+
+**The Afterlife**
+
+It's where you end up if you spend too bloody long here.
+
+## Adventure Seeds
+
+- A worried scholar thinks that the Modrons are awakening, very soon. He needs hard data to back up his theories, though, and there's only one place he knows to get it. He needs the heroes to capture a modron alive (or whatever you call one that's still kicking) and extract the data from its clockwork shell.
+- The black oil of Mechanus is a powerful poison, one that can even fell one of the Exalted, and this fact is not lost on those who deal in death. An alchemist is willing to pay through the nose for raw Mechanus Oil, especially if the heroes can find a large supply for him. Getting in and out is only half the danger, though. Who knows what it might do, just sitting around. Or worse, if even a drop got into the workings of the ship...
+- It's a dangerous job, but someone needs to destroy the Mechanus Portal Relay.
+  While it could serve as a way to mount an offense against Mechanus, the risk of the machines escaping is simply too great to ignore.
+  The heroes must find a way to take the Portal Relay offline forever - no easy task whenthey've been running for tens of thousands of years with no sign of wear.
+
+### Mount Celestia
+
+An impossibly giant mountain, larger than worlds, rising from an ocean that fills half of a Crystal Sphere, Mount Celestia is the home turf of the Blessed Pantheon in the same way The Abyss is to the Ruinous Powers. No mortal has ascended to the top of the mountain and returned to tell what he found at itsglittering peak. Aasimar call this place home.
+
+#### Physical Conditions
+
+Mount Celestia is one of the more impossible places in the Wheel.
+While some other impossible places are roiling chaos or great machines, Mount Celestia looks fairly normal at first. It's simply a mountain rising up out of the ocean. The problem is that the mountain is the size of a solar system, and the ocean fills half of a Crystal Sphere. Gravity here, as you might expect, isn't quite normal.
+Gravity, in fact, is the most interesting thing about Mount Celestia. It seems to vary not with time or place but with each person,
+as if they're weighed down by their guilt.
+Scholars have named the phenomenon 'Intelligent Falling'. It seems to be some form of Warp phenomenon, as anyone with sufficient magical resistance reduces the effect or even becomes next to weightless. Objects are all affected as though they were in a normal gravity well of average strength. The notable exception is that nothing can fly up the mountain.
+The only way to ascend Mount Celestia is by walking the paths or climbing the sheer clifffaces. Ships can only hover slightly above 'sealevel'.
+Natives divide the mountain into seven Traverses, starting at the seashore of white sand that marks the sea's end. The layers are like huge terraces the size of planets, yet the next highest is always just barely visible and shining brightly. Climbing from one Traverse to another is difficult, and dangerous for those who are feeling the effects of the Sphere's gravity. The next Traverse always looks beautiful and inviting, but the higher a body goes up the mountain, the farther off and more difficult they are to reach. Thin mist and haze prevents anyone from getting a good look at what lies ahead, though the glimpses and imagined sights are impressive indeed.
+
+Mount Celestia contains the domains of the Blessed Pantheon. They make their homes at the very top of the mount, making them almost completely inaccessible to mortals. No one has ever conquered the mount and returned to speak of it. Whatever is up there is either so beautiful that no one wishes to return or else so deadly that anyone who breaks into it is put down before they can escape with the secrets. Those who worship the Blessed Pantheon will assure you it's the former, but the dark of it is that the latter is more likely - no matter how much they might present themselves as benevolent, Mount Celestia is the center of the Pantheon's war effort, and it's likely they're doing something there that they don't want anyone to know about. The wise don't ask questions.
+Justice and law here are meted out by the Aasimar. As servants of the Pantheon, they rule by divine will and make sure everyone knows it. Justice tends to be fair but immediate - the Aasimar here are ready for action and take it where they can find it.
+Death isn't the only punishment, though it comes pretty quickly if the criminal isn't willing to pay their fine or get thrown in jail or exile.
+It's a nice place, really, despite the Aasimar occasionally taking a bolter to someone's skull. The weather is always pleasant and warm,
+with light rains that are more refreshing than annoying.
+
+#### Inhabitants
+
+Almost any sentient race can be found on Mount Celestia. Almost any. Tieflings are not welcome, and any Tiefling that does happen to find their way here are kindly asked to leave. Asked once and then exiled. Animals here are universally tame and small, with nothing larger or more dangerous than the sheep some of the farmers here raise on the lower Traverses. Aasimar are born here, and form a kind of upper class (though they'll deny that and say everyone is equal).
+
+#### Locations
+
+**The Fortress of Sigmar**
+
+Sigmar's realm on Celestia is a massive palace the size of a continent, centered on a golden throne that wouldn't fit in many nations. Sigmar's most trusted servants, the Custodes, are all Aasimar Chosen with thousands of years of experience. Sigmar has a large personal army,
+though they're almost always out among the Spheres, on one crusade or another. He isn't the type to have an army and not actively use it.
+Anyone approaching
+Sigmar's fortress finds that every stream and hill,
+every tree and rock, everything is purposeful and planned. There is nothing here that is untouched and made useful, and that includes the people. Any heroes entering his realm find that they're directed where they need to go rather than his fortress, and can only approach if Sigmar allows.
+
+**Bahamut's Palace**
+
+Bahamut's Palace is a glittering wonder built entirely out of treasure, with windows of gemstones in settings of gold and silver,
+walls of inlaid copper and ivory, and floors of
+
+jade and beaten electrum. It moves from place to place, and is one of the few realms of the Blessed Pantheon that mortals have much of a chance of really seeing, though approaching it would be foolish. Bahamut has the smallest personal army of any of the Blessed Pantheon,
+but the quality of that army is exceptional, as he leads a force of dragons, each one worth dozens of the best soldiers. This is also an exceptional way to discourage thieves. No one would be so foolish as to steal from Bahamut's Palace with guards like that. Well, no one who wasn't sure they could get away with it.
+
+**The Soulforge**
+
+Moradin's realm is a gigantic forge,
+with an anvil forty meters high and a river of pure divine energy. Moradin creates great wonders here. The Squats say that the souls of their race are forged here, each one personally made by Moradin. It's also said that this is the place where the Aasimar are born, reforged from what they were before into their new forms, like tempering a sword. No one is sure just what the process entails - the Aasimar lose almost all their memories of their former lives and all memory of whatever is done to them.
+General concensus is that it's probably better that they don't remember. The process is likely a long and painful one, given the massive changes made to their bodies.
+
+**The Unconquered Sun**
+
+Pelor's palace sits at the very highest point of Mount Celestia, providing the light that shines down over the rest of the Sphere.
+The palace shines like the Sun itself, blinding anyone who looks at it for too long. Most have to wear blindfolds here, as even a glimpse of the inside of Pelor's realm will render a man sightless forever. His servants are so familiar with the palace that they can guide visitors around without having to see their path, but to those who seek to invade the palace becomes a terrible maze that the unworthy cannot navigate. Thieves and spies find that every step twists and turns, and they soon find the ground under them changed to soft loam as they turn a corner and are abruptly outside of his realm. The entire structure is shaped like a sphere of orichalcum, glowing with heat and yet never hot, just comfortably warm. Pelor's sanctum is said to be at the very center of the palace, a place of pure light, beauty, and hope,
+where he bathes in the light of all the stars of all the Crystal Spheres.
+
+**The Halls of Justice**
+
+Cuthbert's Realm is not located on the seventh Traverse, but on the very first. He prefers to keep his distance from the other gods. His realm is a gigantic prison, where he seeks to 'reform' captives to the worship of more proper gods and ways of life. There's a kind of aura about this place that makes it difficult to resist following the orders of the guards, and most of the countless prisoners just kind of mill about, confused and lost,
+when they're not being told what to do. It's a peaceful place in its own way, just horribly oppressive and not a very nice place. No one gets to see Cuthbert. He deals with everyone through underlings, locked away reading through his giant book said to contain every transgression and broken promise.
+
+## Adventure Seeds
+
+- There's a man willing to pay a small fortune to anyone who can get one of his friends out of Cuthbert's prison. The chap seems to know the location of some hidden trove of relics from a massive theft before getting locked up on Mount Celestia for some minor crime. Getting him out is only going to be half of the problem - the heroes are going to have to find some way to deprogram him,
+  and he doesn't want to return to his old ways.
+- One of the Traverses of Mount Celestia has taken to worship of the Grey Council. The Blessed Pantheon is having the entire Traverse purged, and evidence suggests that this isn't the first time it has happened. The heroes are caught in the middle, and must find a way to escape or somehow stop this purge.
+- On the first Traverse, an underground trade in a strange new drug has surfaced. Apparently someone has managed to get their hands on some of the divine energy that Moradin uses to forge his wonders, and is using it as an ingredient in this new, highly addictive drug. If they can find the alchemist mixing it, the heroes could become rich. Or they could stop him from getting thousands addicted to his vile poison. Whatever floats their boat.
+
+- There are countless minor holy sites scattered throughout Celestia. The stewardship of one of these sites belongs to followers of Pelor, a small group of female paladins who are willing to lay down their lives to protect the shrine. A group of knights from another holy order has come to challenge their right to the shrine, as it is an important site to their god as well. Unless someone intervenes, and quickly,
+  it will erupt into a holy war.
+
+### Pandemonium
+
+We don't go to Pandemonium anymore. Not since the reports came out. Endless screaming tunnels in the blackness. Madness and death are all that await here. Don't go to Pandemonium.
+
+#### Physical Conditions
+
+So for some reason you're stupid enough not to follow my good advice and stay away. More's the pity. The three things a person has to get used to in Pandemonium are deafness, madness, and blindness. The very first thing more people notice about the Sphere of Pandemonium is the noise. Of course that's like saying the most noticeable thing about fire is that it's hot. In most places,
+the winds of Pandemonium blast with hurricane force, a deafening roar through the endless black caverns. There are some places where the wind is just a nerve-wracking moaning, but they're few and far between.
+At this point one might wonder how winds can howl that strongly in space. Pandemonium is one of the stranger Crystal Spheres in structure. There's no planetary system, no giant megastructures. Just massive caves, starting as kilometers wide and enough for ships to find somewhere to dock and eventually narrowing to cracks in the endless black rock,
+wind moaning and pouring through them.
+And that wind is the most dangerous thing in the sphere. It doesn't just blow air about and make noise, there's something about it that will drive a person completely insane. The constant howling is enough to drive a person barmy, sure, but everyone who hangs around the place long enough eventually goes crazy. Some are lucky and manage to go only a little insane, but spending any time here is call for a long session of therapy later.
+The next thing most people will notice about the place is that it's dark. Pandemonium is utterly and completely without light sources. The only light anywhere in the sphere is that maintained by those visiting or living here. Most would think that the lack of light would be the first thing most people notice, given that most folks rely on sight as their number one sense.
+But that just goes to show you how thoroughly noisy Pandemonium is.
+Carrying around a light source in Pandemonium has its own dangers - it makes the person carrying it an obvious target, and in a place full of crazy people, whatever monsters are lurking in the dark, and the nameless horrors of the endless caverns, well, being a target might not be a wise idea. Luckily,
+actually traveling the tunnels of Pandemonium bears some resemblances to actual spelunking.
+Gravity here points towards some unseen center of the sphere. No one has found their way to the center (or at least no one has returned sane enough to talk about it).
+Travel through Pandemonium's endless caverns is further complicated by the foul water flowing here. Most passages have a stream of one size or another, whether it's a bare trickle or a raging torrent. If they're moving very fast, these streams can throw up a spray that fills the air with an oily mist and makes footing horribly slippery.
+The last effect that Pandemonium has is one that people don't typically notice at first
+
+- lights just won't go as far. They're as bright as ever, illuminate just as well, but at less than half the distance they should go... they just stop, like they're hitting a wall of shadow. The darkness here is almost a physical force. And speaking of that, anyone going into the Umbra here will quickly learn that that's a bad idea.
+  The Umbra's psychic landscape is not a friendly place in a sphere that is all darkness and madness. The number of predators there is very high, and they are so very hungry.
+
+#### Inhabitants
+
+Pandemonium isn't some summer resort where people go to spend holiday. There are not a lot of people who want to come here and spend any amount of time. It's one of the least populated Crystal Spheres, especially after some of the recent events. See, not too long ago one of the few permanent cities in Pandemonium was destroyed by something -
+no one knows what - and what was left behind was so unspeakable that almost all of those who were sent in on the rescue operation were lost to the horror as well. Something lurks in Pandemonium's depths. Something horrible.
+
+#### Locations
+
+**The Black Flag**
+
+The one thing Pandemonium is really good for now is as a place to hide from the rest of the Wheel. There aren't many groups that'd pursue someone here - a thief would have to have something damned important for a government to consider the risk worthwhile. The Black Flag is the name of a huge pirate base,
+where pirates and crooked merchants meet to trade goods, stories, and to hide from the law.
+The exact location is a closely kept secret - the Black Flag is careful about just who is allowed to dock at their station. The place is built like an armored space station, airtight and with baffles and insulation to keep the worst of the noise out. The owner of the Black Flag is a pirate king named Atomsk, said to have such amazing skill as to steal entire planets.
+
+**Ravenholm**
+
+Ravenholm used to be the largest city in Pandemonium. Used to be. It was established to act as a mining camp, with some degree of success. The most attractive part of the city, for most, was that absolutely anyone was welcome. They would take people in, find them work, and let them forget about their
+
+past as long as they behaved themselves in the present. It was the kind of place where a person could redefine themselves and escape the horrors of their past. But a few years ago,
+something terrible happened. No one knows if it's the result of some daemon infestation or an artifact that was supposed to be sealed away or some kind of contagious psychosis, but every single person living in Ravenholm was killed in a single night, just a few hours of terrible violence. Or at least it's assumed that everyone died. The rescue effort turned up mostly fragmentary bodies, people torn limb from limb, before the rescue team succumbed to the same psychosis and contact was lost.
+
+**Phlegethon**
+
+Phlegethon is a region of rare beauty in Pandemonium. This part of the Sphere is surprisingly cold, like the composition of the walls leeches heat away, but the walls are beautiful, dripping water giving rise to great columns, stupendous stalactites and stalagmites, and incredible curtains of rock in magnificent variations of color. The colors of this place make it great for sightseeing, but there are stories that there's something terrifying here, spirits of earth and air and cold, phantoms and faeries that lure people deeper into the tunnels where they're never seen again.
+
+**Agathion**
+
+Somewhere close to the core of Pandemonium is an area that explorers call Agathion, where the passages stop, and caverns are sealed away, bubbles in the endless rock.
+Where breaches exist, the wind howls into miniature tornadoes. Bubbles without a breach are utterly still. Only about half have air, the rest merely vacuum. They're obviously incredibly hard to find, and it's rumored that the gods themselves use them as vaults to hide away things they don't want stolen, things they don't want running loose. It's certainly true that things are found in the bubbles, things that couldn't possibly be there.
+
+## Adventure Seeds
+
+- The eldest daughter of a royal line,
+  next in line for their throne, left her home Crystal Sphere and became a pirate. Unfortunately, her father has just found his way into the next world thanks to an assassin, and even if she isn't a fan of the idea she's needed back at home. Someone is going to have to go to the Black Flag and find her - before the assassin can.
+- Whatever happened to Ravenholm,
+  it's spreading. Several other small outposts have stopped responding after transmitting messages of such horror and fear that it's been hard to find anyone to even fly over the sites.
+  Unless the cause of these disasters can be stopped, the entire place might become a charnel house. The last thing Pandemonium needs is to be an even worse place than it is.
+
+- Rumors say that Aboleth and Mind Flayers have a massive city here, hidden somewhere in some massive underground sea. If there's truth to these rumors, then this hidden city represents a grave threat to the Great Wheel.
+
+---
+
+> Marina Pheonix waited, perfectly still, behind the chest-high wall of reinforced concrete. She had only noticed the trouble moments after she had entered the room and her sensors picked up the fresh exhaust fumes. She had only just barely managed to get her light-bending implants active before the walking tank locked onto her. The thing was just waiting for her to leave cover now.
+> And she didn't have much choice. Her target was down there, the tank standing over it like a mountain of steel. She checked her rifle. She wasn't sure why she was checking her lasgun. It'd be as effective as shining a flashlight at the hulk of metal. She was really starting to wish she'd brought a bigger gun.
+> "Marina, can you read me?" came the whisper on her comm implant. It was Chief Anya. Marina touched her chin, a reflex from when she had been merely human and wore a radio instead of being one.
+> "Yeah," Marina subvocalized.
+> "We have your transponder location again. What's the situation?" Marina quickly glanced over the wall. She was able to look for half a second before a hail of fire from the tank's heavy machinegun blasted into the concrete of the wall. She ducked down as the bullets tracked up and nearly hit her.
+> "He's in the back of a ground transport. There's a spider-tank covering him. It's going to be hard to get to him like this."
+> "The ship will be directly overhead in thirty seconds. If you can get it out in the open and give us a firing solution, we can give you fire support." The sound was nearly drowned out by the thundering impact of the shells against the concrete. Marina wondered how long it would hold out. She felt it crack. Not long enough.
+> Marina activated her Veil system, and light bent around her as she channeled warp energy through her artificial body. She got up and ran for it just as the barrier shattered. The tank must have had one hell of a sensor suite - the bullets started tracking her motions after just a moment. She'd have only one chance.
+> The arcane pyros flowing through her mechanical heart flared, and power surged into her legs.
+> The promethean jumped down to the lower level of the room, level with the tank, and ran serpentine for it. A lucky shell bounced into her left arm, shredding her artifical flesh and exposing orichalcum bones to the air. Marina ignored the warning alerts flashing in her vision and jumped again, cooling vanes on her body springing out and flaring with discharge as the Pyros surged through her again.
+> She landed on top of the car, and with another quick motion as the tank scrambled to get a firing solution that didn't include the thing it was trying to protect, she got on top of it. The tank stumbled off to the side, confused, and got right under the shattered skylight.
+> Marina grabbed the hatch with both hands, pulling with all her might. The hatch popped, and her damaged left arm went with it. She swore, then drove her right hand into her chest, tearing her transponder free.
+> "I want you to fire directly on my transponder signal!" Marina shouted, forgetting to subvocalize. She threw the transponder into the tank's hatch, then jumped away, rolling as she hit the ground. The tank spun to face her. The gun started tracking her. She had landed wrong. She had no speed. She couldn't run.
+> "Understood. Firing lance battery." Just as Marina was looking into the black void of a gun barrel, a blinding red light struck down from the heavens, and a hole was burned right through the tank. There was a crack as the superheated air expanded. The tank shook like a leaf for a moment as the VI systems inside it crashed. The beam drifted slightly, cutting the tank in two. Molten steel dripped to the floor.
+> "I think you got it."
+> "Is the target still in one piece?" Marina walked over to the transport, a mixture of machine oil and blood dribbling from her severed arm. She opened up the back door and unzipped the black bag there. A blank face stared up at her. She smiled.

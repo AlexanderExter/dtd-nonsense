@@ -1,0 +1,171 @@
+---
+title: "Appendix N: The Umbra"
+book: 2
+order: 26
+type: "appendix"
+---
+# Appendix N: The Umbra
+
+> **Integrated:** This content has been incorporated into Book 1, Chapter XV: Setting. See that section for the authoritative version.
+
+## Dat Umbra
+
+There's no information on how to deal with the Umbra. It's just missing from the books.
+If you're unfamiliar with the games that the
+Umbra and Warp come from this can be really confusing. Even if you are familiar with those
+games the mash-up of the two concepts can be pretty iffy. Presented here is some random crap
+we came up with to use in our game, feel free to ignore it.
+
+The Umbra is sort of the space between the material world and the Warp. People (and
+things) get in and out of it through various means, powerful werewolves can step through a
+mirror, wraiths can just blip over, ghosts and daemons can sometimes slide through, some
+sorcerers have spells or rituals that may let them open a portal. The barrier or 'Veil' between the
+Umbra and material worlds can be 'thinner' or
+'thicker', making passage back and forth easier or harder. This 'thickness' matches how close the
+warp is to the material world and how easy it is to use magic. This is the usual 'where Modrons
+are active it's harder to...' sorts of stuff.
+
+People experience the Umbra differently.
+To some it's like a slightly out of focus photographic negative of the world, yet creatures
+and things that exist in the Umbra look normal.
+Others refer to it as washed out and gray or sepia toned. Others liken it to the material world being
+behind a thick fog where it takes active effort to perceive it, yet the things actually in the Umbra
+are clear and colorful. Certain people perceive it as a dim and shadowy place only partly reminiscent of the material world, where the native
+horrors lurk in the darkness. People in the
+Umbra together may not agree on the exact visual effects, but they do agree on things that
+are there.
+
+While the topography of the Umbra roughly parallels the material world, anything
+that isn't effectively permanently in place doesn't really exist except as a sort of almost-translucent/
+transparent version of itself. This means that the ground, large plants (mostly trees), and permanent buildings are still pretty sturdy. But things
+like people, doors, shrubs, and water isn't solid and may not even be visible at all. Pro-tip: Don't
+pop out of the Umbra at the bottom of the ocean unless you're prepared for it. Places of great
+natural forces tend to be more present and real in the Umbra. Volcanoes, vortexes, and waterfalls often seem nearly normal except for some
+larger than normal elementals hanging around.
+No I don't know what you're doing here. Go back.
+Magic is visible to normal vision as neon glowing geometric forms, flashing twisting
+ribbons, and strings or clouds of sparkles.
+Generally any of the various special effects that you see in movies to tell you that magic is
+happening. It's also tangible and magical wards created in the material world can function as
+doors and walls. You can check advanced rules of Book 1 for some optional rules
+about wards. If someone tries to mess with a spell or ward in the Umbra it has a barrier rating
+equal to it's Focus Power test and they just need to damage it enough to break it down below the
+point where the spell would have been successfully cast. Of course it can't be quite that
+simple, no. Pretty much any ranged attack or weapon will just pass through the spell or ward
+without doing anything. You need to go up and rip it apart with your bare hands, an artifact
+melee weapon, or another spell. You'll also want to watch out for when it destructively fails. Once
+the spell or ward is reduced past where it would have been successfully cast it sort of magically
+explodes. The radius is 1/5th the original Focus
+Power test in meters and it does magic damage equal to whatever Focus Power result it would
+have after you broke it. That's magic damage too, which means that you need Aura because
+Armor won't help. In the material world there will generally be a popping fizzing sound and a
+sudden glow that fades away when it happens, in addition to the normal stuff like your magic flying
+house crashing to the ground. Example: Someone cast a TN 15 Invisible Servant spell with a Focus
+Power result of 17 that you, in the Umbra, want to wreck. Walk up, punch it for more than 17
+damage, it's Focus Power result is now at 16. Do it twice more and the Focus Power result drops
+to 14, causing the spell to fail. In the material worlds the Invisible Servant pops and drops
+whatever it was holding. In the Umbra there's a
+17/5 = 3.4 = 3m magic blast that does 14 damage.
+The Umbra also has an additional dimension, leading deeper towards the Warp. It's
+generally described as any of: glowing paths, extra solid clumps of shadow, creepy stationary patches
+of fog, holes in reality, and several other phenomena. Moving in this direction is harder than just
+your normal walking around. You'll make several
+(say 1d5+5) Level or Power stat Tests (or perhaps whatever Tests were called for by the
+means used to enter the Umbra in the first place) to keep moving, with each Test taking you
+further away from the material world. The TNs are usually 10 plus the 2 for each step away from
+the material world. As you make the Tests the material worlds will fade out (generally it's
+completely gone after the third check), to be replaced be a more alien landscape that shifts and
+changes every check and scene. The closer you get to the Warp the faster and more severe the
+shifts are. At two checks away from the Warp the scenery is affected by a Psychic Phenomena roll
+every few rounds (just the harmless visual effects mostly) that affects the entire scene. A one check
+away from the Warp make a Perils of the Warp Test (if you use the included Warp roller put it
+up to +25, roll twice, and pick the weirder one) every 1d5 rounds and apply it to everything in the
+area. The next check will put you in the Warp proper. That's generally accepted to be a bad
+thing for most people. Getting back out to the material world requires the same Tests to move
+in the other direction.
+If you don't want to go all the way
+'down' to the Warp there are other places you can sometimes get to. In theory the Webways (Book
+
+1. can be accessed through the Umbra and thus the city of Commoragh. There's rumored
+   to be a door to Sigil somewhere.
+   Several places in the Abyss are absolutely reachable from the Umbra, particularly the realms of the Ruinous Powers. In theory
+   that also means that some places in Celestia could possibly be reachable. There
+   are some "realms" where powerful groups or entities have shaped a bit of the Umbra to fit
+   them, these are a bit easier to reach if you know about them. You can assume that it's a TN 20
+   Forbidden Lore test (and probably another few
+   'wander around' tests) to find places like the
+   Cocaine Wizard Guild enclave, a path to the
+   Abyss, a dragon realm that you've been invited to, or a werewolf cairn. The Webways and other
+   places are all at least TN 25 or 30. Raises on the
+   Forbidden Lore test should reduce the travel time or difficulty and simple failure just makes you a
+   bit lost and adds +1d5 to the TN. Failing the test with checks indicates ending up at the wrong
+   place before you realize it, finding a Warp storm, or encountering something that's hungry (or just
+   in a really bad mood). If you have something that is connected to the place you get a free Raise on
+   all the tests to get there.
+
+---
+
+Building or shaping your own place in the Umbra involves getting into the middle area
+and doing lots of difficult rituals, often for a long time. People who participate in a ritual to form or
+maintain and Umbral realm get a free Raise on tests to find that place again. Doing a few minimal
+rituals (they're still those hard TNs of 35 or so) and then bringing in your own building materials
+is doable, but it tends to attract wandering creatures for some reason. Electronics and small-scale
+simple chemical reactions work just fine, lasguns and revolvers and flamers are all happy things.
+However stuff like internal combustion engines, rocket thrusters, anti-grav, large motors, and
+nuclear power plants aren't happy customers in the Umbra. Only the smaller and simpler vehicles
+or machines can be relied on, except Syrnth magitech junk of course. Interestingly any vehicle with
+a Super Solenoid Engine works just fine though, as long as the SSE is turned on.
+Umbral critters (Book 1, Antagonists) include spirits, elementals, ghosts, wraiths,
+daemons, powerful spellcasters and werewolves, and the occasional dragon or aboleth. Plus more
+daemons, of course. Those suckers keep trying to muscle through from the Warp and some of them
+inevitably succeed. There are no Modrons in the
+Umbra, their mere existence is antithetical to it.
+Places where Modrons are active look more monochrome, geometric, and are harder to move
+around in. The severity of the effect increases as more Modrons are present until all that exists is
+blank gray emptiness where all movement is impossible. Generic creatures
+native to the Umbra tend to be a bit nasty, having
+DarkSight and one of or more of: Constitution +
+Willpower additional Armor and Aura, attacks that are toxic and tearing, acting like they have
+spells (Blink, Jaunt, Blur, Invisibility, Unluck,
+Stun, Awe, Energy Aura, Silence, Mirror Image,
+Draining Touch, Web, Shock & Awe, Confusion,
+Horrid Wilting, Avasculate, Blood Wind, Primal
+Power) using Level + Wisdom for the faux casting,
+Amorphous (creature traits), Stuff of Nightmares., Regeneration, or Phasing. They're
+also completely immune to toxins and drugs of the material world except for Null and Spook
+. Elementals and spirits often come in clumps of 2-20 and may be larger and stronger
+than normal. The elementals may even be spontaneously generating in an area. Daemons are mostly
+encountered one or two steps from the Warp, with only the rare greater daemon appearing
+further out. Here's some possible tables we pulled out of our ass.
+Modify Umbral Critters (!d10)
+Amorphous2
+Regeneration (Con)
+3Bonus AP & Aura (Con+Will)
+4Attacks gain Toxic & Tearing5
+Uses abilities like spells6
+Stuff of Nightmares7
+Phasing8
+Roll 1d5 twice, rerolling doubles9
+Roll 1d5 three times10Roll twice, rerolling doubles and 8+
+Random Critter Powers (TN, roll)
+2Avasculate (30, 6k5)
+3Horrid Wilting (25, 5k5)
+4Mirror Image (25, 5k5)
+5Jaunt (25, 5k5)
+6Silence (25, 5k5)
+7Draining Touch (20, 5k4)
+8Invisibility (5, 4k4)
+9Confusion (20, 5k4)
+10Blood Wind (15, 4k4)
+11Blur (15, 4k4)
+12Web (15, 4k4)
+13Shock & Awe (15, 4k4)
+14Blink (15, 4k4)
+15Stun (20, 5k4)
+16Energy Aura (25, 5k5)
+17Primal Power (30, 6k5)
+18Awe (25, 5k5)
+19Lightning Ring (25, 5k5)
+20Unluck (30, 6k5)
+
+---

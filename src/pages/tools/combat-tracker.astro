@@ -1,0 +1,2048 @@
+---
+import ToolLayout from "@/layouts/ToolLayout.astro";
+---
+
+<ToolLayout title="Combat Tracker" description="Initiative and condition tracking for encounters">
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <h1 class="top-bar-title">Combat Tracker</h1>
+    <div class="round-counter">
+      <span class="round-label">Round</span>
+      <span id="round-number" class="round-number">0</span>
+    </div>
+    <button class="btn btn-primary" data-action="end-round">End Round</button>
+  </header>
+
+  <!-- End-of-round alerts -->
+  <div id="round-alerts" class="round-alerts" hidden></div>
+
+  <!-- Main Layout -->
+  <div class="tracker-layout">
+    <!-- Main Tracker Area -->
+    <main class="tracker-main">
+      <!-- Add Combatant Form (collapsible) -->
+      <div class="add-form-wrapper">
+        <button class="add-form-toggle" data-action="toggle-add-form">
+          <span class="toggle-icon">&#9656;</span> Add Combatant
+        </button>
+        <div class="add-form" id="add-form" hidden>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="add-name">Name</label>
+              <input type="text" id="add-name" placeholder="Combatant name" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-dex">Dexterity</label>
+              <input type="number" id="add-dex" min="1" max="10" value="2" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-composure">Composure</label>
+              <input type="number" id="add-composure" min="1" max="10" value="2" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-modifier">Modifier</label>
+              <input type="number" id="add-modifier" value="0" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group form-group-sm">
+              <label for="add-hp">HP Max</label>
+              <input type="number" id="add-hp" min="1" value="8" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-willpower">Willpower</label>
+              <input type="number" id="add-willpower" min="1" max="10" value="2" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-sd">Static Defense</label>
+              <input type="number" id="add-sd" min="0" value="20" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-resilience">Resilience</label>
+              <input type="number" id="add-resilience" min="1" value="3" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group form-group-sm">
+              <label for="add-resource-max">Resource Max</label>
+              <input type="number" id="add-resource-max" min="0" value="0" />
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="add-resource-label">Resource Label</label>
+              <input type="text" id="add-resource-label" placeholder="Mana" />
+            </div>
+            <label class="checkbox-label">
+              <input type="checkbox" id="add-hero-point" /> Hero Point (count as 10)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="add-surprised" /> Surprised
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="add-is-npc" /> NPC
+            </label>
+          </div>
+          <button class="btn btn-primary" data-action="add-combatant">Add Combatant</button>
+        </div>
+      </div>
+
+      <!-- Quick Add Row -->
+      <div class="quick-add-row">
+        <input type="text" id="quick-name" placeholder="Name" class="quick-input" />
+        <input type="number" id="quick-init" placeholder="Init total" class="quick-input quick-input-sm" />
+        <button class="btn btn-secondary btn-sm" data-action="quick-add">+ Quick Add</button>
+        <button class="btn btn-secondary btn-sm" data-action="import-sheet">Import from Sheet</button>
+        <button class="btn btn-primary btn-sm" data-action="roll-all">Roll All Initiative</button>
+      </div>
+
+      <!-- Combatant List -->
+      <div id="combatant-list" class="combatant-list"></div>
+
+      <!-- Turn Navigation -->
+      <div class="turn-nav">
+        <button class="btn btn-secondary" data-action="prev-turn">&larr; Previous Turn</button>
+        <button class="btn btn-primary" data-action="next-turn">Next Turn &rarr;</button>
+      </div>
+    </main>
+
+    <!-- Reference Sidebar -->
+    <aside class="reference-sidebar" id="reference-sidebar">
+      <button class="sidebar-close btn btn-ghost" data-action="toggle-sidebar">&times;</button>
+      <div class="accordion" id="sidebar-accordion">
+        <!-- Actions -->
+        <div class="accordion-item open">
+          <button class="accordion-header">Actions</button>
+          <div class="accordion-content">
+            <input type="text" id="action-filter" placeholder="Filter actions…" class="filter-input" />
+            <div id="action-list" class="action-list"></div>
+          </div>
+        </div>
+        <!-- Conditions -->
+        <div class="accordion-item">
+          <button class="accordion-header">Conditions</button>
+          <div class="accordion-content">
+            <div id="conditions-ref" class="conditions-ref"></div>
+          </div>
+        </div>
+        <!-- Situational Modifiers -->
+        <div class="accordion-item">
+          <button class="accordion-header">Situational Modifiers</button>
+          <div class="accordion-content">
+            <div id="modifiers-ref" class="modifiers-ref"></div>
+          </div>
+        </div>
+        <!-- Hit Locations -->
+        <div class="accordion-item">
+          <button class="accordion-header">Hit Locations</button>
+          <div class="accordion-content">
+            <div id="hit-location-ref"></div>
+            <button class="btn btn-secondary mt-md" data-action="roll-location">Roll Location</button>
+            <div id="hit-location-result" class="hit-location-result"></div>
+          </div>
+        </div>
+        <!-- Damage Calculator -->
+        <div class="accordion-item">
+          <button class="accordion-header">Damage Calculator</button>
+          <div class="accordion-content">
+            <div class="damage-calc">
+              <div class="form-row">
+                <div class="form-group form-group-sm">
+                  <label for="calc-raw">Raw Damage</label>
+                  <input type="number" id="calc-raw" min="0" value="0" />
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="calc-ap">Armor/AP</label>
+                  <input type="number" id="calc-ap" min="0" value="0" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group form-group-sm">
+                  <label for="calc-pen">Penetration</label>
+                  <input type="number" id="calc-pen" min="0" value="0" />
+                </div>
+                <div class="form-group form-group-sm">
+                  <label for="calc-resilience">Resilience</label>
+                  <input type="number" id="calc-resilience" min="1" value="3" />
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm" data-action="calc-damage">Calculate</button>
+              <div id="calc-result" class="calc-result"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Sidebar Toggle (visible on small screens) -->
+  <button class="sidebar-toggle-btn btn btn-secondary" data-action="toggle-sidebar">&#9776; Reference</button>
+
+  <!-- Encounter Management Bar -->
+  <footer class="encounter-bar">
+    <button class="btn btn-secondary btn-sm" data-action="save-encounter">Save</button>
+    <select id="encounter-load-select" class="encounter-select">
+      <option value="">Load encounter&hellip;</option>
+    </select>
+    <button class="btn btn-secondary btn-sm" data-action="load-encounter">Load</button>
+    <button class="btn btn-secondary btn-sm" data-action="export-encounter">Export JSON</button>
+    <button class="btn btn-ghost btn-sm" data-action="clear-encounter">Clear</button>
+  </footer>
+
+  <!-- Import Modal -->
+  <div id="import-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Import Character</h2>
+      <p class="text-muted">Select a character to import as a combatant.</p>
+      <div id="import-char-list" class="import-char-list"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" data-action="close-modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Script — Combat Tracker logic (ES module)
+       ========================================================================= -->
+  <script>
+    import { derived, character, initAccordion, debounce, escapeHtml } from '@/lib/dtd/core.js';
+    import { roll } from '@/lib/dtd/dice.js';
+
+    const Tracker = {
+
+      // =====================================================================
+      // Constants
+      // =====================================================================
+
+      CONDITIONS: [
+        { id: 'amputation', name: 'Amputation', effect: 'Lose a limb permanently', leveled: false },
+        { id: 'blinded', name: 'Blinded', effect: '-4k0 to physical Tests requiring sight', leveled: false },
+        { id: 'bloodLoss', name: 'Blood Loss', effect: 'Con Test each round or take damage equal to level', leveled: true },
+        { id: 'burning', name: 'Burning', effect: '1d10 Energy damage per round', leveled: false },
+        { id: 'crippledArm', name: 'Crippled (Arm)', effect: 'Cannot use that arm', leveled: false },
+        { id: 'crippledLeg', name: 'Crippled (Leg)', effect: 'Move at half speed, -2k0 to movement Tests', leveled: false },
+        { id: 'dazzled', name: 'Dazzled', effect: '-1k0 sight Tests, -2k0 if directly looking at source', leveled: false },
+        { id: 'deafened', name: 'Deafened', effect: '-2k0 to hearing-based Tests', leveled: false },
+        { id: 'fatigue', name: 'Fatigue', effect: '-1k0 per level to all Tests', leveled: true },
+        { id: 'frightened', name: 'Frightened', effect: 'Must flee or suffer -2k0 to all Tests', leveled: false },
+        { id: 'helpless', name: 'Helpless', effect: 'Auto-hit in melee, double damage from melee', leveled: false },
+        { id: 'pinned', name: 'Pinned', effect: 'Cannot move or take actions except to break free', leveled: false },
+        { id: 'prone', name: 'Prone', effect: '+2k0 melee attacks against, -2k0 ranged against, -2k0 own attacks', leveled: false },
+        { id: 'stunned', name: 'Stunned', effect: 'No Reactions, half move only', leveled: false },
+        { id: 'toxic', name: 'Toxic', effect: 'Take damage equal to level each round', leveled: true }
+      ],
+
+      ACTIONS: [
+        // Half Actions
+        { name: 'Aim', type: 'H', desc: '+1k0 to next attack (cumulative to +3k0 for Full Aim)' },
+        { name: 'Brace', type: 'H', desc: 'Brace a heavy weapon for firing' },
+        { name: 'Called Shot', type: 'H', desc: 'Attack a specific location at -2k0', note: 'Must follow Aim or replace Attack' },
+        { name: 'Cast Spell', type: 'H', desc: 'Cast a spell with casting time of Half Action' },
+        { name: 'Delay', type: 'H', desc: 'Hold your turn to act later in initiative' },
+        { name: 'Disengage', type: 'H', desc: 'Move safely out of melee without provoking' },
+        { name: 'Draw/Holster', type: 'H', desc: 'Ready or put away a weapon' },
+        { name: 'Feint', type: 'H', desc: 'Opposed Deceive vs Scrutiny to deny SD' },
+        { name: 'Focus Power', type: 'H', desc: 'Activate a psychic/exaltation power' },
+        { name: 'Grapple', type: 'H', desc: 'Attempt to grab opponent (opposed Weaponry Test)' },
+        { name: 'Guarded Attack', type: 'H', desc: 'Attack at -1k0, gain +2 SD until next turn' },
+        { name: 'Knock Down', type: 'H', desc: 'Opposed Strength Test to knock Prone' },
+        { name: 'Maneuver', type: 'H', desc: 'Move up to your Speed in meters' },
+        { name: 'Overwatch', type: 'H', desc: 'Wait to shoot anyone entering a kill zone' },
+        { name: 'Ready', type: 'H', desc: 'Prepare an action triggered by a condition' },
+        { name: 'Reload', type: 'H', desc: 'Reload a ranged weapon' },
+        { name: 'Stand/Mount', type: 'H', desc: 'Stand from Prone or mount/dismount a vehicle' },
+        { name: 'Standard Attack', type: 'H', desc: 'Make one melee or ranged attack' },
+        { name: 'Tactical Advance', type: 'H', desc: 'Move from cover to cover without losing cover bonus' },
+        { name: 'Use Skill', type: 'H', desc: 'Perform a Skill Test as a Half Action' },
+        // Full Actions
+        { name: 'All-Out Attack', type: 'F', desc: '+2k0 to attack, cannot Dodge/Parry until next turn' },
+        { name: 'Charge', type: 'F', desc: 'Move up to 2\u00d7 Speed and attack at +1k0' },
+        { name: 'Coup de Grace', type: 'F', desc: 'Instantly kill a Helpless target' },
+        { name: 'Full Auto', type: 'F', desc: 'Fire in full auto, hit once +1 per 2 Raises' },
+        { name: 'Full Aim', type: 'F', desc: '+2k0 (+3k0 with scope) to next attack' },
+        { name: 'Lightning Attack', type: 'F', desc: 'Make multiple melee attacks (requires feat)' },
+        { name: 'Run', type: 'F', desc: 'Move up to 3\u00d7 Speed, -2k0 to attacks against you' },
+        { name: 'Semi-Auto Burst', type: 'F', desc: 'Fire semi-auto, hit +1 per 2 Raises' },
+        { name: 'Stunt', type: 'F', desc: 'Perform a dramatic combat maneuver (SM adjudicated)' },
+        { name: 'Swift Attack', type: 'F', desc: 'Make two melee attacks (requires feat)' },
+        { name: 'Total Defense', type: 'F', desc: '+4k0 to all Parry/Dodge until next turn, cannot attack' },
+        // Reactions
+        { name: 'Dodge', type: 'R', desc: 'Roll Dexterity + Acrobatics vs attacker\'s roll to avoid' },
+        { name: 'Parry', type: 'R', desc: 'Roll Weaponry Test vs attacker\'s roll to deflect' },
+        // Free Actions
+        { name: 'Drop Prone', type: 'Fr', desc: 'Fall Prone immediately' },
+        { name: 'Speak', type: 'Fr', desc: 'Say a few words' }
+      ],
+
+      HIT_LOCATIONS: [
+        { roll: 1, location: 'Head' },
+        { roll: 2, location: 'Left Arm' },
+        { roll: 3, location: 'Right Arm' },
+        { roll: 4, location: 'Left Arm' },
+        { roll: 5, location: 'Body' },
+        { roll: 6, location: 'Body' },
+        { roll: 7, location: 'Body' },
+        { roll: 8, location: 'Right Leg' },
+        { roll: 9, location: 'Left Leg' },
+        { roll: 10, location: 'Right Leg' }
+      ],
+
+      SITUATIONAL_MODIFIERS: [
+        { name: 'Combat Advantage', effect: '+1k0 to attack' },
+        { name: 'Higher Ground', effect: '+1k0 to melee attacks' },
+        { name: 'Ganging Up', effect: '+1k0 per ally in melee (max +3k0)' },
+        { name: 'Off-Hand Attack', effect: '-2k0 to attack with off hand' },
+        { name: 'Two-Weapon Fighting', effect: '-2k0 to both attacks (negate with Ambidextrous or feat)' },
+        { name: 'Cover (Light)', effect: 'AP 4 against ranged attacks' },
+        { name: 'Cover (Heavy)', effect: 'AP 8 against ranged attacks' },
+        { name: 'Concealment', effect: 'Attacker suffers -1k0' },
+        { name: 'Darkness', effect: '-2k0 to sight-based Tests' },
+        { name: 'Point Blank (\u22642m)', effect: '+2k0 to ranged attacks' },
+        { name: 'Short Range', effect: 'Normal (no modifier)' },
+        { name: 'Long Range', effect: '-2k0 to ranged attacks' },
+        { name: 'Extreme Range', effect: '-4k0 to ranged attacks' }
+      ],
+
+      ENCOUNTER_PREFIX: 'dtd_encounter_',
+      ENCOUNTER_LIST_KEY: 'dtd_encounter_list',
+      AUTOSAVE_DELAY: 500,
+
+      // =====================================================================
+      // State
+      // =====================================================================
+
+      state: {
+        combatants: [],
+        round: 0,
+        activeTurnIndex: -1,
+        encounterStarted: false,
+        encounterId: null
+      },
+
+      _autoSave: null,
+      _conditionPickerTarget: null,
+
+      // =====================================================================
+      // Initialization
+      // =====================================================================
+
+      init() {
+        this._autoSave = debounce(() => this.saveEncounter(), this.AUTOSAVE_DELAY);
+        this.bindEvents();
+        this.renderSidebar();
+        this.loadEncounterList();
+        this.renderCombatants();
+      },
+
+      // =====================================================================
+      // Event Binding
+      // =====================================================================
+
+      bindEvents() {
+        document.body.addEventListener('click', e => {
+          if (this._conditionPickerTarget && !e.target.closest('.condition-picker') && !e.target.closest('[data-action="add-condition"]')) {
+            this.closeConditionPicker();
+          }
+
+          const btn = e.target.closest('[data-action]');
+          if (!btn) return;
+          const action = btn.dataset.action;
+          const cardEl = btn.closest('[data-combatant-id]');
+          const id = cardEl?.dataset.combatantId;
+
+          switch (action) {
+            case 'add-combatant': this.handleAddCombatant(); break;
+            case 'quick-add': this.handleQuickAdd(); break;
+            case 'roll-all': this.rollAllInitiative(); break;
+            case 'next-turn': this.nextTurn(); break;
+            case 'prev-turn': this.previousTurn(); break;
+            case 'end-round': this.endRound(); break;
+            case 'hp-plus': this.modifyHP(id, 1); break;
+            case 'hp-minus': this.modifyHP(id, -1); break;
+            case 'hp-plus5': this.modifyHP(id, 5); break;
+            case 'hp-minus5': this.modifyHP(id, -5); break;
+            case 'res-plus': this.modifyResource(id, 1); break;
+            case 'res-minus': this.modifyResource(id, -1); break;
+            case 'remove-combatant':
+              if (confirm('Remove this combatant?')) this.removeCombatant(id);
+              break;
+            case 'remove-condition': {
+              const condId = btn.dataset.conditionId;
+              this.removeCondition(id, condId);
+              break;
+            }
+            case 'add-condition': {
+              this.openConditionPicker(id, btn);
+              break;
+            }
+            case 'pick-condition': {
+              const condId = btn.dataset.conditionId;
+              this.addCondition(this._conditionPickerTarget, condId);
+              this.closeConditionPicker();
+              break;
+            }
+            case 'toggle-expand': {
+              const details = cardEl?.querySelector('.card-details');
+              if (details) details.classList.toggle('open');
+              break;
+            }
+            case 'toggle-action': {
+              const tokenType = btn.dataset.tokenType;
+              this.toggleActionToken(id, tokenType);
+              break;
+            }
+            case 'roll-single-init': this.rollSingleInitiative(id); break;
+            case 'import-sheet': this.importFromSheet(); break;
+            case 'close-modal': this.closeModal(); break;
+            case 'import-char': {
+              const charId = btn.dataset.charId;
+              this.handleImportChar(charId);
+              break;
+            }
+            case 'roll-location': this.rollHitLocation(); break;
+            case 'calc-damage': this.handleCalcDamage(); break;
+            case 'save-encounter': this.saveEncounter(); break;
+            case 'load-encounter': this.handleLoadEncounter(); break;
+            case 'export-encounter': this.exportEncounter(); break;
+            case 'clear-encounter': this.clearEncounter(); break;
+            case 'toggle-sidebar': this.toggleSidebar(); break;
+            case 'toggle-add-form': this.toggleAddForm(); break;
+          }
+        });
+
+        const filterInput = document.getElementById('action-filter');
+        if (filterInput) {
+          filterInput.addEventListener('input', debounce(e => {
+            this.renderActionList(e.target.value);
+          }, 150));
+        }
+
+        document.body.addEventListener('change', e => {
+          if (e.target.matches('.combatant-notes')) {
+            const cardEl = e.target.closest('[data-combatant-id]');
+            if (cardEl) {
+              const c = this.getCombatant(cardEl.dataset.combatantId);
+              if (c) {
+                c.notes = e.target.value;
+                this._autoSave();
+              }
+            }
+          }
+        });
+      },
+
+      // =====================================================================
+      // Combatant Management
+      // =====================================================================
+
+      _genId() {
+        return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      },
+
+      createCombatant(data) {
+        return {
+          id: this._genId(),
+          name: data.name || 'Unknown',
+          dexterity: Number(data.dexterity) || 2,
+          composure: Number(data.composure) || 2,
+          modifier: Number(data.modifier) || 0,
+          heroPoint: !!data.heroPoint,
+          surprised: !!data.surprised,
+          initiativeRoll: null,
+          initiativeTotal: null,
+          hpMax: Number(data.hpMax) || 8,
+          hpCurrent: Number(data.hpMax) || 8,
+          willpower: Number(data.willpower) || 2,
+          sd: Number(data.sd) || 20,
+          resilience: Number(data.resilience) || 3,
+          resourceMax: Number(data.resourceMax) || 0,
+          resourceCurrent: Number(data.resourceMax) || 0,
+          resourceLabel: data.resourceLabel || '',
+          conditions: [],
+          actionBudget: { half1: false, half2: false, fullAction: false, reaction: false },
+          notes: data.notes || '',
+          imported: !!data.imported,
+          importedData: data.importedData || null,
+          isNpc: !!data.isNpc
+        };
+      },
+
+      addCombatant(data) {
+        const c = this.createCombatant(data);
+        this.state.combatants.push(c);
+        this.renderCombatants();
+        this._autoSave();
+        return c;
+      },
+
+      removeCombatant(id) {
+        const idx = this.state.combatants.findIndex(c => c.id === id);
+        if (idx === -1) return;
+        this.state.combatants.splice(idx, 1);
+        if (this.state.activeTurnIndex >= this.state.combatants.length) {
+          this.state.activeTurnIndex = Math.max(0, this.state.combatants.length - 1);
+        }
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      getCombatant(id) {
+        return this.state.combatants.find(c => c.id === id) || null;
+      },
+
+      // =====================================================================
+      // Initiative
+      // =====================================================================
+
+      rollAllInitiative() {
+        for (const c of this.state.combatants) {
+          this._rollInitiativeFor(c);
+        }
+        this.sortByInitiative();
+        this.state.round = 1;
+        this.state.activeTurnIndex = 0;
+        this.state.encounterStarted = true;
+        this.updateRoundDisplay();
+        this.renderCombatants();
+        this._autoSave();
+        this._skipSurprisedIfNeeded();
+      },
+
+      rollSingleInitiative(id) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        this._rollInitiativeFor(c);
+        this.sortByInitiative();
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      _rollInitiativeFor(c) {
+        if (c.heroPoint) {
+          c.initiativeRoll = 10;
+        } else {
+          const result = roll(1, 1, 0);
+          c.initiativeRoll = result.total;
+        }
+        c.initiativeTotal = c.initiativeRoll + c.dexterity + c.composure + c.modifier;
+      },
+
+      sortByInitiative() {
+        this.state.combatants.sort((a, b) => {
+          if (a.initiativeTotal === null && b.initiativeTotal === null) return 0;
+          if (a.initiativeTotal === null) return 1;
+          if (b.initiativeTotal === null) return -1;
+          if (b.initiativeTotal !== a.initiativeTotal) return b.initiativeTotal - a.initiativeTotal;
+          if (b.dexterity !== a.dexterity) return b.dexterity - a.dexterity;
+          return b.composure - a.composure;
+        });
+      },
+
+      // =====================================================================
+      // Turn Management
+      // =====================================================================
+
+      nextTurn() {
+        if (this.state.combatants.length === 0) return;
+        if (!this.state.encounterStarted) return;
+        if (this.state.activeTurnIndex < this.state.combatants.length - 1) {
+          this.state.activeTurnIndex++;
+          this._skipSurprisedIfNeeded();
+        }
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      previousTurn() {
+        if (this.state.combatants.length === 0) return;
+        if (!this.state.encounterStarted) return;
+        if (this.state.activeTurnIndex > 0) {
+          this.state.activeTurnIndex--;
+        }
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      endRound() {
+        if (!this.state.encounterStarted && this.state.combatants.length > 0) {
+          this.rollAllInitiative();
+          return;
+        }
+        if (this.state.combatants.length === 0) return;
+
+        this._processEndOfRound();
+
+        this.state.round++;
+        this.state.activeTurnIndex = 0;
+
+        for (const c of this.state.combatants) {
+          c.actionBudget = { half1: false, half2: false, fullAction: false, reaction: false };
+          if (c.surprised && this.state.round > 1) {
+            c.surprised = false;
+          }
+        }
+
+        this.updateRoundDisplay();
+        this.renderCombatants();
+        this._autoSave();
+
+        if (this.state.round === 1) {
+          this._skipSurprisedIfNeeded();
+        }
+      },
+
+      _skipSurprisedIfNeeded() {
+        if (this.state.round !== 1) return;
+        const c = this.state.combatants[this.state.activeTurnIndex];
+        if (c && c.surprised && this.state.activeTurnIndex < this.state.combatants.length - 1) {
+          this.state.activeTurnIndex++;
+          this.renderCombatants();
+          this._skipSurprisedIfNeeded();
+        }
+      },
+
+      _processEndOfRound() {
+        const alerts = [];
+        const esc = s => escapeHtml(s);
+
+        for (const c of this.state.combatants) {
+          if (c.hpCurrent <= 0) continue;
+          for (const cond of c.conditions) {
+            const def = this.CONDITIONS.find(d => d.id === cond.conditionId);
+            if (!def) continue;
+            switch (cond.conditionId) {
+              case 'burning':
+                alerts.push(`<strong>${esc(c.name)}</strong>: Burning \u2014 takes 1d10 Energy damage`);
+                break;
+              case 'bloodLoss':
+                alerts.push(`<strong>${esc(c.name)}</strong>: Blood Loss (${cond.level || 1}) \u2014 Constitution Test or take ${cond.level || 1} damage`);
+                break;
+              case 'toxic':
+                alerts.push(`<strong>${esc(c.name)}</strong>: Toxic (${cond.level || 1}) \u2014 takes ${cond.level || 1} damage`);
+                break;
+              case 'fatigue':
+                alerts.push(`<strong>${esc(c.name)}</strong>: Fatigue (${cond.level || 1}) \u2014 -${cond.level || 1}k0 to all Tests`);
+                break;
+            }
+          }
+        }
+
+        const alertsEl = document.getElementById('round-alerts');
+        if (alerts.length > 0) {
+          alertsEl.innerHTML = '<strong>End-of-Round Effects:</strong><ul>' +
+            alerts.map(a => `<li>${a}</li>`).join('') + '</ul>';
+          alertsEl.hidden = false;
+        } else {
+          alertsEl.hidden = true;
+        }
+      },
+
+      updateRoundDisplay() {
+        const el = document.getElementById('round-number');
+        if (el) el.textContent = this.state.round;
+      },
+
+      // =====================================================================
+      // HP & Resources
+      // =====================================================================
+
+      modifyHP(id, delta) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        c.hpCurrent = Math.max(0, Math.min(c.hpMax, c.hpCurrent + delta));
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      modifyResource(id, delta) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        c.resourceCurrent = Math.max(0, Math.min(c.resourceMax, c.resourceCurrent + delta));
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      getWoundStatus(c) {
+        if (c.hpCurrent <= 0) return 'down';
+        const lost = c.hpMax - c.hpCurrent;
+        if (lost === 0) return 'healthy';
+        if (lost <= c.willpower) return 'light';
+        if (lost <= c.hpMax) return 'heavy';
+        return 'critical';
+      },
+
+      // =====================================================================
+      // Conditions
+      // =====================================================================
+
+      addCondition(id, conditionId, level) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        const def = this.CONDITIONS.find(d => d.id === conditionId);
+        if (!def) return;
+        const existing = c.conditions.find(x => x.conditionId === conditionId);
+        if (existing) {
+          if (def.leveled) {
+            existing.level = (existing.level || 1) + 1;
+          }
+        } else {
+          c.conditions.push({ conditionId, level: def.leveled ? (level || 1) : undefined });
+        }
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      removeCondition(id, conditionId) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        c.conditions = c.conditions.filter(x => x.conditionId !== conditionId);
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      openConditionPicker(combatantId, anchorEl) {
+        this.closeConditionPicker();
+        this._conditionPickerTarget = combatantId;
+
+        const picker = document.createElement('div');
+        picker.className = 'condition-picker';
+
+        const c = this.getCombatant(combatantId);
+        const existingIds = c ? c.conditions.map(x => x.conditionId) : [];
+
+        for (const cond of this.CONDITIONS) {
+          const btn = document.createElement('button');
+          btn.className = 'condition-picker-item';
+          btn.dataset.action = 'pick-condition';
+          btn.dataset.conditionId = cond.id;
+          btn.textContent = cond.name;
+          if (existingIds.includes(cond.id)) {
+            const def = this.CONDITIONS.find(d => d.id === cond.id);
+            if (def && def.leveled) {
+              btn.textContent += ' (+1 level)';
+            } else {
+              btn.style.opacity = '0.4';
+            }
+          }
+          picker.appendChild(btn);
+        }
+
+        const rect = anchorEl.getBoundingClientRect();
+        picker.style.position = 'fixed';
+        picker.style.left = rect.left + 'px';
+        picker.style.top = (rect.bottom + 4) + 'px';
+        document.body.appendChild(picker);
+      },
+
+      closeConditionPicker() {
+        this._conditionPickerTarget = null;
+        const existing = document.querySelector('.condition-picker');
+        if (existing) existing.remove();
+      },
+
+      // =====================================================================
+      // Action Budget
+      // =====================================================================
+
+      toggleActionToken(id, tokenType) {
+        const c = this.getCombatant(id);
+        if (!c) return;
+        const budget = c.actionBudget;
+
+        if (tokenType === 'fullAction') {
+          budget.fullAction = !budget.fullAction;
+          if (budget.fullAction) { budget.half1 = false; budget.half2 = false; }
+        } else if (tokenType === 'half1' || tokenType === 'half2') {
+          budget[tokenType] = !budget[tokenType];
+          if (budget[tokenType]) { budget.fullAction = false; }
+        } else if (tokenType === 'reaction') {
+          budget.reaction = !budget.reaction;
+        }
+
+        this.renderCombatants();
+        this._autoSave();
+      },
+
+      // =====================================================================
+      // Character Import
+      // =====================================================================
+
+      importFromSheet() {
+        const chars = character.list();
+
+        if (chars.length === 0) {
+          this._showToast('No saved characters. Create one in the Character Sheet first.');
+          return;
+        }
+
+        const listEl = document.getElementById('import-char-list');
+        const esc = s => escapeHtml(s);
+
+        listEl.innerHTML = chars.map(ch =>
+          `<div class="import-char-item" data-action="import-char" data-char-id="${esc(ch.id)}">` +
+            `<span class="import-char-name">${esc(ch.name || 'Unnamed')}</span>` +
+            `<span class="btn btn-secondary btn-sm">Import</span>` +
+          `</div>`
+        ).join('');
+
+        document.getElementById('import-modal').classList.add('open');
+      },
+
+      _showToast(message) {
+        const existing = document.querySelector('.toast-msg');
+        if (existing) existing.remove();
+        const el = document.createElement('div');
+        el.className = 'toast-msg';
+        el.textContent = message;
+        document.body.appendChild(el);
+        requestAnimationFrame(() => el.classList.add('visible'));
+        setTimeout(() => {
+          el.classList.remove('visible');
+          setTimeout(() => el.remove(), 300);
+        }, 3000);
+      },
+
+      handleImportChar(charId) {
+        const charData = character.load(charId);
+        if (!charData) return;
+
+        const chars = charData.characteristics || {};
+        const dex = chars.dexterity || 2;
+        const com = chars.composure || 2;
+        const wil = chars.willpower || 2;
+        const con = chars.constitution || 2;
+
+        const hpMax = derived.calculateHP(con, wil);
+        const sd = derived.calculateSD(dex, chars.wisdom || 2, 4);
+
+        this.addCombatant({
+          name: charData.name || 'Imported Character',
+          dexterity: dex,
+          composure: com,
+          modifier: charData.modifiers?.initiative || 0,
+          heroPoint: false,
+          surprised: false,
+          hpMax: hpMax,
+          willpower: wil,
+          sd: sd,
+          resilience: derived.calculateResilience(4, charData.level || 1),
+          resourceMax: charData.resourceCurrent || 0,
+          resourceLabel: '',
+          imported: true,
+          importedData: charData,
+          isNpc: false
+        });
+
+        this.closeModal();
+      },
+
+      closeModal() {
+        document.getElementById('import-modal').classList.remove('open');
+      },
+
+      // =====================================================================
+      // Form Handlers
+      // =====================================================================
+
+      handleAddCombatant() {
+        const name = document.getElementById('add-name').value.trim();
+        if (!name) { alert('Enter a name.'); return; }
+
+        this.addCombatant({
+          name,
+          dexterity: document.getElementById('add-dex').value,
+          composure: document.getElementById('add-composure').value,
+          modifier: document.getElementById('add-modifier').value,
+          heroPoint: document.getElementById('add-hero-point').checked,
+          surprised: document.getElementById('add-surprised').checked,
+          hpMax: document.getElementById('add-hp').value,
+          willpower: document.getElementById('add-willpower').value,
+          sd: document.getElementById('add-sd').value,
+          resilience: document.getElementById('add-resilience').value,
+          resourceMax: document.getElementById('add-resource-max').value,
+          resourceLabel: document.getElementById('add-resource-label').value.trim(),
+          isNpc: document.getElementById('add-is-npc').checked
+        });
+
+        document.getElementById('add-name').value = '';
+      },
+
+      handleQuickAdd() {
+        const name = document.getElementById('quick-name').value.trim();
+        const init = Number(document.getElementById('quick-init').value);
+        if (!name) { alert('Enter a name.'); return; }
+
+        const c = this.createCombatant({ name });
+        c.initiativeTotal = init || 0;
+        c.initiativeRoll = init || 0;
+        this.state.combatants.push(c);
+        this.sortByInitiative();
+        this.renderCombatants();
+        this._autoSave();
+
+        document.getElementById('quick-name').value = '';
+        document.getElementById('quick-init').value = '';
+      },
+
+      toggleAddForm() {
+        const form = document.getElementById('add-form');
+        const toggle = document.querySelector('.add-form-toggle');
+        if (form.hidden) {
+          form.hidden = false;
+          toggle.classList.add('open');
+        } else {
+          form.hidden = true;
+          toggle.classList.remove('open');
+        }
+      },
+
+      toggleSidebar() {
+        const sidebar = document.getElementById('reference-sidebar');
+        sidebar.classList.toggle('open');
+      },
+
+      // =====================================================================
+      // Damage Calculator
+      // =====================================================================
+
+      handleCalcDamage() {
+        const raw = Number(document.getElementById('calc-raw').value) || 0;
+        const ap = Number(document.getElementById('calc-ap').value) || 0;
+        const pen = Number(document.getElementById('calc-pen').value) || 0;
+        const resilience = Number(document.getElementById('calc-resilience').value) || 1;
+
+        const result = this.calculateDamage(raw, ap, pen, resilience);
+        const el = document.getElementById('calc-result');
+        const effectiveAP = Math.max(0, ap - pen);
+        const afterArmor = Math.max(0, raw - effectiveAP);
+
+        el.innerHTML =
+          `<div class="damage-label">Effective AP: ${effectiveAP} | After Armor: ${afterArmor}</div>` +
+          `<div class="damage-value">${result} HP lost</div>`;
+      },
+
+      calculateDamage(raw, ap, pen, resilience) {
+        const effectiveAP = Math.max(0, ap - pen);
+        const afterArmor = Math.max(0, raw - effectiveAP);
+        return Math.ceil(afterArmor / Math.max(1, resilience));
+      },
+
+      // =====================================================================
+      // Hit Location
+      // =====================================================================
+
+      rollHitLocation() {
+        const result = roll(1, 1, 0);
+        const rollVal = ((result.total - 1) % 10) + 1;
+        const loc = this.HIT_LOCATIONS.find(l => l.roll === rollVal);
+        const el = document.getElementById('hit-location-result');
+        el.innerHTML = `<span class="roll-value">${rollVal}</span> \u2014 <span class="location-name">${loc ? loc.location : '???'}</span>`;
+      },
+
+      // =====================================================================
+      // Encounter Persistence
+      // =====================================================================
+
+      saveEncounter() {
+        if (!this.state.encounterId) {
+          this.state.encounterId = this._genId();
+        }
+        const key = this.ENCOUNTER_PREFIX + this.state.encounterId;
+        const payload = {
+          id: this.state.encounterId,
+          name: this._getEncounterName(),
+          savedAt: new Date().toISOString(),
+          state: JSON.parse(JSON.stringify(this.state))
+        };
+        try {
+          localStorage.setItem(key, JSON.stringify(payload));
+          this._updateEncounterList(payload.id, payload.name);
+          this.loadEncounterList();
+        } catch (e) {
+          console.error('Failed to save encounter:', e);
+        }
+      },
+
+      _getEncounterName() {
+        const names = this.state.combatants.slice(0, 3).map(c => c.name);
+        if (this.state.combatants.length > 3) names.push('...');
+        return names.join(', ') || 'Empty Encounter';
+      },
+
+      _updateEncounterList(id, name) {
+        let list = [];
+        try {
+          const raw = localStorage.getItem(this.ENCOUNTER_LIST_KEY);
+          list = raw ? JSON.parse(raw) : [];
+        } catch (_) { /* ignore */ }
+        const existing = list.find(e => e.id === id);
+        if (existing) {
+          existing.name = name;
+        } else {
+          list.push({ id, name });
+        }
+        localStorage.setItem(this.ENCOUNTER_LIST_KEY, JSON.stringify(list));
+      },
+
+      loadEncounterList() {
+        const select = document.getElementById('encounter-load-select');
+        if (!select) return;
+        let list = [];
+        try {
+          const raw = localStorage.getItem(this.ENCOUNTER_LIST_KEY);
+          list = raw ? JSON.parse(raw) : [];
+        } catch (_) { /* ignore */ }
+        select.innerHTML = '<option value="">Load encounter\u2026</option>';
+        for (const item of list) {
+          const opt = document.createElement('option');
+          opt.value = item.id;
+          opt.textContent = item.name;
+          select.appendChild(opt);
+        }
+      },
+
+      handleLoadEncounter() {
+        const select = document.getElementById('encounter-load-select');
+        const id = select?.value;
+        if (!id) return;
+        this.loadEncounter(id);
+      },
+
+      loadEncounter(id) {
+        const key = this.ENCOUNTER_PREFIX + id;
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) return;
+          const payload = JSON.parse(raw);
+          this.state = payload.state;
+          this.updateRoundDisplay();
+          this.renderCombatants();
+        } catch (e) {
+          console.error('Failed to load encounter:', e);
+        }
+      },
+
+      exportEncounter() {
+        const payload = {
+          id: this.state.encounterId || this._genId(),
+          name: this._getEncounterName(),
+          exportedAt: new Date().toISOString(),
+          state: JSON.parse(JSON.stringify(this.state))
+        };
+        const json = JSON.stringify(payload, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'encounter_' + (payload.name || 'export').replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.json';
+        a.click();
+        URL.revokeObjectURL(url);
+      },
+
+      clearEncounter() {
+        if (!confirm('Clear all combatants and reset the encounter?')) return;
+        this.state = {
+          combatants: [],
+          round: 0,
+          activeTurnIndex: -1,
+          encounterStarted: false,
+          encounterId: null
+        };
+        document.getElementById('round-alerts').hidden = true;
+        this.updateRoundDisplay();
+        this.renderCombatants();
+      },
+
+      // =====================================================================
+      // Rendering — Combatant List
+      // =====================================================================
+
+      renderCombatants() {
+        const container = document.getElementById('combatant-list');
+        if (!container) return;
+
+        if (this.state.combatants.length === 0) {
+          container.innerHTML =
+            '<div class="empty-state">' +
+              '<div class="empty-state-icon">\u2694\uFE0F</div>' +
+              '<p>No combatants yet. Add some above to begin.</p>' +
+            '</div>';
+          return;
+        }
+
+        const tieSet = new Set();
+        for (let i = 0; i < this.state.combatants.length; i++) {
+          for (let j = i + 1; j < this.state.combatants.length; j++) {
+            const a = this.state.combatants[i];
+            const b = this.state.combatants[j];
+            if (a.initiativeTotal !== null && a.initiativeTotal === b.initiativeTotal) {
+              tieSet.add(a.id);
+              tieSet.add(b.id);
+            }
+          }
+        }
+
+        container.innerHTML = this.state.combatants.map((c, i) =>
+          this.renderCard(c, i, tieSet.has(c.id))
+        ).join('');
+
+        const sidebarAcc = document.getElementById('sidebar-accordion');
+        if (sidebarAcc && !sidebarAcc._bound) {
+          initAccordion(sidebarAcc);
+          sidebarAcc._bound = true;
+        }
+      },
+
+      renderCard(c, index, hasTie) {
+        const esc = s => escapeHtml(String(s));
+        const isActive = this.state.encounterStarted && index === this.state.activeTurnIndex;
+        const isDown = c.hpCurrent <= 0;
+        const woundStatus = this.getWoundStatus(c);
+
+        let classes = 'combatant-card';
+        if (isActive) classes += ' active';
+        if (isDown) classes += ' defeated';
+
+        const initDisplay = c.initiativeTotal !== null ? c.initiativeTotal : '\u2014';
+
+        const budget = c.actionBudget;
+        const halfDisabled = budget.fullAction ? ' disabled' : '';
+        const fullDisabled = (budget.half1 || budget.half2) ? ' disabled' : '';
+
+        const conditionChips = c.conditions.map(cond => {
+          const def = this.CONDITIONS.find(d => d.id === cond.conditionId);
+          const label = def ? def.name : cond.conditionId;
+          const levelText = cond.level ? ` (${cond.level})` : '';
+          return `<span class="condition-chip" title="${esc(def?.effect || '')}">` +
+            `${esc(label)}${levelText} ` +
+            `<button class="remove-condition" data-action="remove-condition" data-condition-id="${esc(cond.conditionId)}">\u00d7</button>` +
+          `</span>`;
+        }).join('');
+
+        const hpPct = c.hpMax > 0 ? Math.round((c.hpCurrent / c.hpMax) * 100) : 0;
+
+        const resPct = c.resourceMax > 0 ? Math.round((c.resourceCurrent / c.resourceMax) * 100) : 0;
+        const resourceHtml = c.resourceMax > 0 ? `
+          <div class="resource-bar-wrapper">
+            <div class="resource-bar-header">
+              <span class="resource-bar-label">${esc(c.resourceLabel || 'Resource')}</span>
+              <div class="resource-controls">
+                <button class="hp-btn" data-action="res-minus">\u2212</button>
+                <span class="resource-bar-value">${c.resourceCurrent}/${c.resourceMax}</span>
+                <button class="hp-btn" data-action="res-plus">+</button>
+              </div>
+            </div>
+            <div class="resource-bar"><div class="resource-bar-fill" style="width:${resPct}%"></div></div>
+          </div>` : '';
+
+        let badges = '';
+        if (c.surprised && this.state.round <= 1) badges += '<span class="surprised-badge">Surprised</span>';
+        if (hasTie) badges += '<span class="tie-badge">TIE</span>';
+        if (c.isNpc) badges += '<span class="npc-badge">NPC</span>';
+
+        return `
+        <div class="${classes}" data-combatant-id="${esc(c.id)}">
+          <div class="card-top">
+            <span class="drag-handle">\u2261</span>
+            <div class="initiative-display">${initDisplay}</div>
+            <span class="combatant-name">${esc(c.name)}${badges}</span>
+            <span class="wound-badge ${woundStatus}">${woundStatus}</span>
+            <div class="card-top-actions">
+              <button data-action="roll-single-init" title="Re-roll initiative">\uD83C\uDFB2</button>
+              <button data-action="toggle-expand" title="Details">\u2026</button>
+              <button data-action="remove-combatant" title="Remove">\u00d7</button>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-item"><span class="stat-label">SD</span> <span class="stat-value">${c.sd}</span></div>
+            <div class="stat-item"><span class="stat-label">Dex</span> <span class="stat-value">${c.dexterity}</span></div>
+            <div class="stat-item"><span class="stat-label">Com</span> <span class="stat-value">${c.composure}</span></div>
+            <div class="stat-item"><span class="stat-label">Wil</span> <span class="stat-value">${c.willpower}</span></div>
+            <div class="stat-item"><span class="stat-label">Res</span> <span class="stat-value">${c.resilience}</span></div>
+          </div>
+
+          <div class="hp-bar-wrapper">
+            <div class="hp-bar-header">
+              <span class="hp-bar-label">Hit Points</span>
+              <div class="hp-bar-controls">
+                <button class="hp-btn" data-action="hp-minus5">-5</button>
+                <button class="hp-btn" data-action="hp-minus">\u22121</button>
+                <span class="hp-bar-value">${c.hpCurrent} / ${c.hpMax}</span>
+                <button class="hp-btn" data-action="hp-plus">+1</button>
+                <button class="hp-btn" data-action="hp-plus5">+5</button>
+              </div>
+            </div>
+            <div class="hp-bar"><div class="hp-bar-fill ${woundStatus}" style="width:${hpPct}%"></div></div>
+          </div>
+
+          ${resourceHtml}
+
+          <div class="action-budget">
+            <span class="stat-label">Actions:</span>
+            <button class="action-token${budget.half1 ? ' used' : ''}${halfDisabled}" data-action="toggle-action" data-token-type="half1">
+              <span class="action-token-check"></span> Half 1
+            </button>
+            <button class="action-token${budget.half2 ? ' used' : ''}${halfDisabled}" data-action="toggle-action" data-token-type="half2">
+              <span class="action-token-check"></span> Half 2
+            </button>
+            <button class="action-token${budget.fullAction ? ' used' : ''}${fullDisabled}" data-action="toggle-action" data-token-type="fullAction">
+              <span class="action-token-check"></span> Full
+            </button>
+            <button class="action-token${budget.reaction ? ' used' : ''}" data-action="toggle-action" data-token-type="reaction">
+              <span class="action-token-check"></span> Reaction
+            </button>
+          </div>
+
+          <div class="conditions-area">
+            ${conditionChips}
+            <button class="add-condition-btn" data-action="add-condition" title="Add condition">+</button>
+          </div>
+
+          <div class="card-details">
+            <label class="stat-label">Notes</label>
+            <textarea class="combatant-notes" placeholder="Notes\u2026">${esc(c.notes)}</textarea>
+          </div>
+        </div>`;
+      },
+
+      // =====================================================================
+      // Rendering — Sidebar
+      // =====================================================================
+
+      renderSidebar() {
+        this.renderActionList('');
+        this.renderConditionsRef();
+        this.renderModifiersRef();
+        this.renderHitLocationTable();
+      },
+
+      renderActionList(filter) {
+        const container = document.getElementById('action-list');
+        if (!container) return;
+        const esc = s => escapeHtml(s);
+
+        const lowerFilter = (filter || '').toLowerCase();
+        const filtered = lowerFilter
+          ? this.ACTIONS.filter(a =>
+              a.name.toLowerCase().includes(lowerFilter) ||
+              a.desc.toLowerCase().includes(lowerFilter) ||
+              a.type.toLowerCase().includes(lowerFilter))
+          : this.ACTIONS;
+
+        container.innerHTML = filtered.map(a =>
+          `<div class="action-item">` +
+            `<span class="action-type-badge type-${a.type}">${a.type}</span>` +
+            `<span class="action-name">${esc(a.name)}</span>` +
+            `<span class="action-desc">${esc(a.desc)}</span>` +
+          `</div>`
+        ).join('');
+      },
+
+      renderConditionsRef() {
+        const container = document.getElementById('conditions-ref');
+        if (!container) return;
+        const esc = s => escapeHtml(s);
+
+        container.innerHTML = this.CONDITIONS.map(c => {
+          const leveled = c.leveled ? '<span class="condition-ref-leveled"> (leveled)</span>' : '';
+          return `<div class="condition-ref-item">` +
+            `<span class="condition-ref-name">${esc(c.name)}</span>${leveled}<br>` +
+            `<span class="condition-ref-effect">${esc(c.effect)}</span>` +
+          `</div>`;
+        }).join('');
+      },
+
+      renderModifiersRef() {
+        const container = document.getElementById('modifiers-ref');
+        if (!container) return;
+        const esc = s => escapeHtml(s);
+
+        container.innerHTML = this.SITUATIONAL_MODIFIERS.map(m =>
+          `<div class="modifier-item">` +
+            `<span class="modifier-name">${esc(m.name)}</span>` +
+            `<span class="modifier-effect">${esc(m.effect)}</span>` +
+          `</div>`
+        ).join('');
+      },
+
+      renderHitLocationTable() {
+        const container = document.getElementById('hit-location-ref');
+        if (!container) return;
+        container.innerHTML =
+          '<table class="hit-location-table">' +
+          '<thead><tr><th>d10</th><th>Location</th></tr></thead>' +
+          '<tbody>' +
+          this.HIT_LOCATIONS.map(l =>
+            `<tr><td>${l.roll}</td><td>${escapeHtml(l.location)}</td></tr>`
+          ).join('') +
+          '</tbody></table>';
+      }
+    };
+
+    // Bootstrap
+    Tracker.init();
+  </script>
+
+  <!-- =========================================================================
+       Styles — Combat Tracker
+       ========================================================================= -->
+  <style>
+    /* Top Bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .top-bar-title {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .round-counter {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-left: auto;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .round-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .round-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+    }
+
+    /* Round Alerts */
+    .round-alerts {
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--warning-bg);
+      border-bottom: 1px solid var(--warning);
+      color: var(--warning);
+      font-size: 0.85rem;
+    }
+    .round-alerts ul { margin: 0; padding-left: var(--space-lg); }
+    .round-alerts li { padding: 2px 0; }
+
+    /* Two-Column Layout */
+    .tracker-layout {
+      display: flex;
+      gap: 0;
+      min-height: calc(100vh - 60px - 48px);
+    }
+    .tracker-main {
+      flex: 1;
+      min-width: 0;
+      padding: var(--space-lg);
+    }
+    .reference-sidebar {
+      width: 340px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: var(--space-md);
+      overflow-y: auto;
+      max-height: calc(100vh - 60px - 48px);
+      position: sticky;
+      top: 60px;
+    }
+    .sidebar-close { display: none; }
+    .sidebar-toggle-btn {
+      display: none;
+      position: fixed;
+      bottom: 60px;
+      right: var(--space-md);
+      z-index: 90;
+    }
+
+    /* Add Combatant Form */
+    .add-form-wrapper {
+      margin-bottom: var(--space-lg);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .add-form-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      width: 100%;
+      padding: var(--space-md) var(--space-lg);
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .add-form-toggle:hover { background: var(--surface-raised); }
+    .add-form-toggle .toggle-icon {
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+    .add-form-toggle.open .toggle-icon { transform: rotate(90deg); }
+    .add-form {
+      padding: 0 var(--space-lg) var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: flex-end;
+      margin-top: var(--space-md);
+    }
+    .form-group { flex: 1; min-width: 140px; }
+    .form-group-sm { flex: 0 0 auto; min-width: 90px; max-width: 120px; }
+    .form-group-sm input { width: 100%; }
+    .checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding-bottom: var(--space-sm);
+    }
+    .checkbox-label input[type="checkbox"] { accent-color: var(--accent); }
+
+    /* Quick Add Row */
+    .quick-add-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      padding: var(--space-sm);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .quick-input { flex: 1; min-width: 100px; }
+    .quick-input-sm { flex: 0 0 100px; }
+
+    /* Combatant Cards */
+    .combatant-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .combatant-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md) var(--space-lg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .combatant-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(212, 168, 75, 0.25);
+    }
+    .combatant-card.defeated {
+      opacity: 0.45;
+      border-color: var(--border);
+    }
+    .combatant-card.defeated .combatant-name { text-decoration: line-through; }
+    .combatant-card .surprised-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--warning-bg);
+      color: var(--warning);
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-left: var(--space-sm);
+    }
+    .combatant-card .tie-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--info-bg);
+      color: var(--info);
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-left: var(--space-sm);
+    }
+    .combatant-card .npc-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--surface-raised);
+      color: var(--text-dim);
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-left: var(--space-sm);
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    .drag-handle {
+      cursor: grab;
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .initiative-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg);
+      border: 2px solid var(--accent-dim);
+      border-radius: 50%;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .combatant-card.active .initiative-display {
+      border-color: var(--accent);
+      background: rgba(212, 168, 75, 0.1);
+    }
+    .combatant-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+    .card-top-actions {
+      display: flex;
+      gap: var(--space-xs);
+      flex-shrink: 0;
+    }
+    .card-top-actions button {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+    .card-top-actions button:hover {
+      background: var(--surface-raised);
+      color: var(--text);
+    }
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      align-items: center;
+      margin-bottom: var(--space-sm);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .stat-item { display: flex; align-items: center; gap: var(--space-xs); }
+    .stat-label {
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+    }
+    .stat-value { color: var(--text); font-weight: 500; }
+
+    /* HP Bar */
+    .hp-bar-wrapper { margin: var(--space-sm) 0; }
+    .hp-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .hp-bar-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+    .hp-bar-value { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+    .hp-bar-controls { display: flex; align-items: center; gap: 2px; }
+    .hp-btn {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 1px 6px;
+      font-size: 0.75rem;
+      border-radius: var(--radius-sm);
+      line-height: 1.4;
+    }
+    .hp-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hp-bar {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .hp-bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.3s, background 0.3s;
+    }
+    .hp-bar-fill.healthy { background: var(--success); }
+    .hp-bar-fill.light { background: #8bcc50; }
+    .hp-bar-fill.heavy { background: var(--warning); }
+    .hp-bar-fill.critical { background: var(--error); }
+    .hp-bar-fill.down { background: #4a0000; }
+
+    /* Wound Badge */
+    .wound-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .wound-badge.healthy { background: var(--success-bg); color: var(--success); }
+    .wound-badge.light { background: rgba(139, 204, 80, 0.15); color: #8bcc50; }
+    .wound-badge.heavy { background: var(--warning-bg); color: var(--warning); }
+    .wound-badge.critical { background: var(--error-bg); color: var(--error); }
+    .wound-badge.down { background: rgba(74, 0, 0, 0.4); color: #ff4444; }
+
+    /* Resource Bar */
+    .resource-bar-wrapper { margin: var(--space-xs) 0; }
+    .resource-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .resource-bar-label { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); }
+    .resource-bar-value { font-size: 0.75rem; font-weight: 700; color: var(--info); }
+    .resource-controls { display: flex; align-items: center; gap: 2px; }
+    .resource-bar {
+      height: 6px;
+      background: var(--bg);
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .resource-bar-fill {
+      height: 100%;
+      background: var(--info);
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    /* Action Budget Tokens */
+    .action-budget {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      margin: var(--space-sm) 0;
+      flex-wrap: wrap;
+    }
+    .action-token {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .action-token:hover { border-color: var(--accent-dim); }
+    .action-token.used {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .action-token.disabled { opacity: 0.35; pointer-events: none; }
+    .action-token-check {
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--text-dim);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .action-token.used .action-token-check {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Condition Chips */
+    .conditions-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: var(--space-sm) 0;
+      align-items: center;
+    }
+    .condition-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: var(--error-bg);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+      border-radius: 12px;
+      font-size: 0.72rem;
+      color: var(--error);
+      white-space: nowrap;
+    }
+    .condition-chip .remove-condition {
+      background: none;
+      border: none;
+      color: var(--error);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 0;
+      line-height: 1;
+      opacity: 0.6;
+    }
+    .condition-chip .remove-condition:hover { opacity: 1; }
+    .add-condition-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: var(--surface-raised);
+      border: 1px dashed var(--border);
+      border-radius: 50%;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+    .add-condition-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Condition picker dropdown */
+    .condition-picker {
+      position: absolute;
+      z-index: 50;
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+    .condition-picker-item {
+      display: block;
+      width: 100%;
+      padding: 4px 8px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+    }
+    .condition-picker-item:hover { background: var(--surface); color: var(--accent); }
+
+    /* Expandable details */
+    .card-details {
+      display: none;
+      margin-top: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--border);
+    }
+    .card-details.open { display: block; }
+    .card-details textarea {
+      width: 100%;
+      min-height: 60px;
+      resize: vertical;
+    }
+    .expand-btn {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 2px 4px;
+    }
+    .expand-btn:hover { color: var(--accent); }
+
+    /* Turn Navigation */
+    .turn-nav {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+    }
+
+    /* Reference Sidebar Content */
+    .filter-input {
+      width: 100%;
+      margin-bottom: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.85rem;
+    }
+    .action-list { display: flex; flex-direction: column; gap: 4px; }
+    .action-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: 4px var(--space-sm);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .action-item:hover { background: var(--surface-raised); }
+    .action-type-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 20px;
+      padding: 0 4px;
+      border-radius: var(--radius-sm);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .action-type-badge.type-H { background: rgba(74, 222, 128, 0.15); color: var(--success); }
+    .action-type-badge.type-F { background: rgba(251, 191, 36, 0.15); color: var(--warning); }
+    .action-type-badge.type-R { background: rgba(96, 165, 250, 0.15); color: var(--info); }
+    .action-type-badge.type-Fr { background: rgba(148, 146, 157, 0.15); color: var(--text-muted); }
+    .action-name { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .action-desc { color: var(--text-muted); }
+    .conditions-ref { display: flex; flex-direction: column; gap: 4px; }
+    .condition-ref-item {
+      padding: 4px var(--space-sm);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+    .condition-ref-item:hover { background: var(--surface-raised); }
+    .condition-ref-name { font-weight: 600; color: var(--text); }
+    .condition-ref-effect { color: var(--text-muted); font-size: 0.78rem; }
+    .condition-ref-leveled { font-style: italic; color: var(--accent-dim); font-size: 0.72rem; }
+    .modifiers-ref { display: flex; flex-direction: column; gap: 4px; }
+    .modifier-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px var(--space-sm);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+    .modifier-item:hover { background: var(--surface-raised); }
+    .modifier-name { font-weight: 600; color: var(--text); }
+    .modifier-effect { color: var(--text-muted); text-align: right; }
+    .hit-location-table { width: 100%; font-size: 0.8rem; }
+    .hit-location-table th { font-size: 0.7rem; }
+    .hit-location-result {
+      margin-top: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      text-align: center;
+      min-height: 2rem;
+    }
+    .hit-location-result .roll-value { font-weight: 700; color: var(--accent); }
+    .hit-location-result .location-name { font-weight: 600; color: var(--text); }
+    .damage-calc .form-row { margin-top: var(--space-sm); }
+    .calc-result {
+      margin-top: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      text-align: center;
+      min-height: 2rem;
+    }
+    .calc-result .damage-value { font-weight: 700; font-size: 1.2rem; color: var(--error); }
+    .calc-result .damage-label { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Encounter Management Bar */
+    .encounter-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .encounter-select {
+      flex: 0 0 auto;
+      min-width: 160px;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.8rem;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-content h2 { margin: 0 0 var(--space-sm); color: var(--accent); }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+    .import-char-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .import-char-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .import-char-item:hover { border-color: var(--accent); }
+    .import-char-name { font-weight: 600; color: var(--text); }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: var(--space-xl) var(--space-lg);
+      color: var(--text-dim);
+    }
+    .empty-state-icon { font-size: 3rem; margin-bottom: var(--space-md); }
+    .empty-state p { margin: 0; font-size: 0.9rem; }
+
+    /* Accordion */
+    .accordion-item { border-bottom: 1px solid var(--border); }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: var(--space-sm) var(--space-sm);
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .accordion-header:hover { color: var(--accent); }
+    .accordion-content {
+      display: none;
+      padding: 0 var(--space-sm) var(--space-md);
+    }
+    .accordion-item.open > .accordion-content { display: block; }
+
+    .mt-md { margin-top: var(--space-md); }
+    .text-muted { color: var(--text-muted); }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--surface-raised);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-size: 0.85rem;
+      z-index: 250;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    .toast-msg.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1099px) {
+      .reference-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 340px;
+        z-index: 150;
+        transform: translateX(100%);
+        transition: transform 0.25s ease;
+        max-height: 100vh;
+      }
+      .reference-sidebar.open { transform: translateX(0); }
+      .sidebar-close {
+        display: block;
+        position: absolute;
+        top: var(--space-sm);
+        right: var(--space-sm);
+      }
+      .sidebar-toggle-btn { display: flex; }
+    }
+    @media (max-width: 768px) {
+      .top-bar { flex-wrap: wrap; padding: var(--space-sm); }
+      .top-bar-title { font-size: 1rem; }
+      .round-counter { margin-left: 0; }
+      .tracker-main { padding: var(--space-md); }
+      .form-row { flex-direction: column; }
+      .form-group, .form-group-sm { min-width: 100%; max-width: 100%; }
+      .quick-add-row { flex-direction: column; align-items: stretch; }
+      .quick-input, .quick-input-sm { flex: none; width: 100%; }
+      .card-top { flex-wrap: wrap; }
+      .stat-row { gap: var(--space-sm); }
+      .action-budget { gap: 4px; }
+      .reference-sidebar { width: 100%; }
+      .encounter-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: var(--space-sm);
+      }
+      .encounter-select { min-width: 120px; }
+      .turn-nav { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</ToolLayout>

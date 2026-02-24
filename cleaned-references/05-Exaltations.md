@@ -1,0 +1,414 @@
+---
+description: Supernatural types — Vampire, Werewolf, and more
+sidebar:
+  label: Exaltations
+  order: 5
+title: Exaltations
+---
+
+# Exaltations
+
+Every Hero is more than just a man with training. A real Hero is more than that, with abilities beyond even the greatest normal man. A Hero might have a great blessing, or a great curse.
+
+What a Hero finds, her source of power, is her Exaltation. It's more than just another tool or some training. It's an intrinsic part of who she is. Exaltations are rare, literally more rare than one in a million.
+
+How a person becomes Exalted depends greatly on what type they become. Some types of exalted—Werewolves, the Chosen—depend on the blessings of the fickle gods. Others, like Atlanteans and Paragons, must be born into. Daemonhosts are more of a curse than anything else, taking over the dying in some of the darkest corners of the world. In theory, anyone can become a Promethean, but it requires an expenditure of capital and resources that take a nation to support. Vampires are the only type of exalted that anyone could become, and they're blood-sucking monsters that feed on mortals.
+
+It's impossible to sever the Exaltation from someone. An Exalt can be killed—though that's not easy—but it's beyond even the abilities of the gods to make them merely mortal again.
+
+Exalts are functionally immortal. Until someone goes out of their way to kill them, they won't die. Disease doesn't touch them, and all but the most powerful poisons fail to affect their bodies.
+
+## Exalted Powers
+
+The Exalted have a great variety of powers, divided into three parts:
+
+**Static Powers:** The abilities shared by all of their kind. These include both strengths and weaknesses that they share.
+
+**Power Stat:** The measure of just how powerful a given Exalt is in the powers of their kind. Like Magic and Sword Schools, its maximum in dots is equal to the character's levels. A character begins with one dot in their Power Stat.
+
+**Resource Stat:** Each of the Exalted has a different resource stat, being able to hold different amounts and recover them in different ways. They can be expended for the same effects for all Exalts. By spending one Resource Point, an exalt may:
+
+- Heal 1 Hit Point
+- Gain +`1k0` to a skill Test
+- Gain a reaction action
+- Recover from being Stunned
+- Recover from being Dazzled
+
+An Exalt can only spend a number of Resource Points per round equal to their Power Stat. Healing Hit Points with your Resource Points can only be used out of combat during a period of relative rest and relaxation.
+
+## The Tell
+
+All of the Exalted have a Tell, something that marks them as more than merely members of their respective races. A Tell is blatantly strange and supernatural.
+
+| Exaltation     | Tell Description                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------ |
+| Vampire        | Grows more pale, fangs become more prominent                                               |
+| Werewolf       | Develops patches of fur, grows wolflike ears and tail. Tattoos glow with silver light      |
+| Atlantean      | Begins glowing golden with Syrneth magic; an avatar of their past life appears around them |
+| Paragon        | No visible effect, but a noticeable charisma that draws the eye                            |
+| Chosen         | The symbol of their god appears, and an aura forms in the favored colors of their deity    |
+| Promethean     | More gadgets appear, obvious mechanisms and crackling power appear from their bodies       |
+| Daemonhost     | Vile marks appear on their skin and their forms twist with mutation                        |
+| Wraith         | Ectoplasmic aura, ghostly features become more pronounced                                  |
+| Dragon Blooded | Scales become more prominent, elemental aura manifests                                     |
+
+Tells are not present all the time. It's only when an Exalt uses their power and spends Resource Points that the Tell appears:
+
+- **1 point:** Tell becomes faintly visible (Perception + Wisdom TN 20 to notice)
+- **2-3 points:** Tell becomes impossible to miss
+- **4-5 points:** Character radiates an aura of power, light bright enough to read by or darkness enough to smother campfires
+- **6+ points:** The Exalt's display of power becomes truly epic
+
+---
+
+## Wraith
+
+A Wraith is a ghost that can still affect the living world. They build bodies of ectoplasm that seem nearly alive, forms that almost look like they did while alive.
+
+The time a Wraith can stay manifested is somewhat limited. They can only regain their ectoplasmic energy while in the Umbra. Every Wraith must return to the Umbra from time to time, and can be forced there by the destruction of their shell.
+
+Wraiths are effectively immortal (since they're already dead) until someone goes and kills them—a difficult prospect for anyone who can't enter the Umbra.
+
+### Static Powers
+
+**Dematerialize:** A wraith may spend one Plasm as a Half Action to become incorporeal (as per the Phasing trait) for a number of rounds up to their Resolve. A wraith may choose to enter the Umbra instead of becoming incorporeal, though they must then spend one Plasm and a Half Action to return to their physical form (and thus cannot return if they have only one Plasm remaining). They may not become incorporeal while in the Umbra. A Wraith's personal equipment becomes incorporeal and enters the Umbra with her while she uses this power.
+
+**Second Death:** A Wraith's physical form is only an ectoplasmic shell. They have the Undead trait. If they would take critical damage, ignore its effects. They instead lose that much Plasm. If their Plasm reaches zero in this or any other way, the shell is destroyed and the Wraith is forced into the Umbra until they can create a new shell, which takes one day. Their personal equipment is left behind. During this time, they recover Plasm at half their normal rate. If they would take critical damage while they are in the Umbra and have no Plasm then they finally die (again).
+
+**Deathsight:** A Wraith always sees into the Umbra like a pale shroud overlaid over the vitality of the real world. This allows them to see lingering magical auras, get a general idea about the 'feel' of a place. They can also see through the eyes of the dead. If they touch a corpse and spend a Plasm, they view the deceased's final moments from their point of view.
+
+**Ghost Dice:** When a Wraith spends Plasm for extra dice, keep those dice separate. Whenever a Wraith rolls a 1 on these Ghost Dice, something bad happens regardless of success/failure. Conversely, a 10 means something good happened.
+
+_Alternate Ghost Dice:_ When a Wraith spends Plasm for extra dice they roll on the Perils of the Warp table, once per extra die. Ignore any results over 74.
+
+### Power Stat: Synergy
+
+Synergy is a measure of how far the Wraith has come in acceptance of their own death. The more they accept their fate and are able to exist in undeath instead of miming life, the more power they can call on from the Umbra. However, as a Wraith's body is formed from their memories of life, it slowly degrades as their Synergy increases.
+
+**Resource Stat: Plasm** — Maximum Plasm equals Synergy + Resolve (Willpower + Composure). A Wraith may not recover Plasm in the world of the living and loses one per day unless surrounded by the ritual and symbolic trappings of death. While in the Umbra, a Wraith recovers two Plasm per hour.
+
+| Synergy | Power Gained                                                                                                                                                                                                                                                                                                                                                   |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •       | **Whispers** — The Wraith can always hear the faint murmurs of the unquiet dead. They may cast the Divination spell Augury at will, rolling Synergy + Wisdom instead of the normal Focus Power test.                                                                                                                                                           |
+| ••      | **Poltergeist** — By spending a Plasm, you can manipulate objects at a distance for one scene. Effective reach of three meters per dot of Synergy. Effective Strength equals your Willpower. At Synergy 4, your control is fine enough to make attacks (though you cannot make opportunity attacks).                                                           |
+| •••     | **Curse** — As a Full Action, choose someone within range of your Poltergeist ability. That person must immediately roll on the Psychic Phenomena chart. If this would result in Perils of the Warp, reroll it unless the Wraith spends 3 Plasm. The Wraith is immune to any immediate effects caused by the result.                                           |
+| ••••    | **Shroud** — Gain Armor equal to your Resolve. This doesn't stack with worn armor. If you become incorporeal, this provides Aura instead of Armor. In the Umbra this provides both Armor and Aura.                                                                                                                                                             |
+| •••••   | **Ectoplasmic Form** — Once per day, they may loose their ectoplasm's bonds, turning it back into liquid. They gain Amorphous but instead of doubling Hit Points, they gain temporary Hit Points equal to their maximum Plasm. They lose these temporary Hit Points first. At the end of the scene they lose Amorphous and any remaining temporary Hit Points. |
+
+---
+
+## Dragon Blooded
+
+Created by the Syrneth, Dragons are among the most powerful living creatures. Each one is immortal, with powers and abilities that only grow with time.
+
+Draconic ancestry doesn't simply fade away from a bloodline. It resurfaces, returning in full strength from time to time. Children are born of normal parents with scales and monstrous features and a tiny fraction of the power of a true dragon. Even this fraction is enough to make them an Exalt.
+
+### Static Powers
+
+**Draconic Aura:** When a Dragon Blooded's Tell is at the 2-3 point level, it inspires awe and intimidates the weak. Opponents in melee with the Dragon Blooded take a penalty to attacks and parries against the Exalt equal to their Aspect. At the 4-5 point level the Exalt gains Fear(1). Once the Tell is at 6 points or higher the Fear rating becomes equal to the Dragon Blooded's Aspect.
+
+**Hot-Blooded:** Whenever they would lose Hit Points from E-type damage, they may spend Breath as a Free Action to reduce Hit Points lost by one, to a minimum of zero. At Aspect 3, each point of Breath reduces Hit Points lost by two.
+
+**Claws:** A Dragon Blooded gains a natural claw attack. Stats: (`1k1` R; Melee; Brawling).
+
+**Blood Quickening:** All Dragon Blooded have deep ties to one of the five mystic elements. Choose one when creating your character (effects for spending Breath may be used only once per round):
+
+| Element   | Passive Bonuses                                                        | Breath Ability                                                                                                        |
+| --------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Air**   | Claws gain Balanced; +1 Intelligence                                   | Spend Breath as a Reaction to add twice Aspect to Static Defense until start of next turn                             |
+| **Earth** | Claws gain Penetration equal to Aspect; +1 Constitution, +2 Hit Points | Spend Breath as a Half Action to gain +1 Resilience until end of next turn (feet must be planted)                     |
+| **Fire**  | Claws deal +`2k0` damage; +1 Charisma                                    | Spend Breath as a Half Action to deal +`2k0` damage on next attack (lost if no attack before end of next turn)          |
+| **Water** | Claws gain Toxic; +1 Strength                                          | Spend Breath as a Reaction to ignore environmental effects (breathe water, ignore temperature extremes) for one scene |
+| **Wood**  | Claws gain Tearing; +1 Wisdom; ignore plant-caused rough terrain       | May use Healing Surge action as a Free Action once per round                                                          |
+
+### Power Stat: Aspect
+
+Aspect is how strongly the blood of Dragon-kind runs in your veins.
+
+**Resource Stat: Breath** — Maximum Breath equals Level + Aspect + Constitution. Breath recharges when the Dragon Blooded gets a good, restful night's sleep, or they consume a very large meal including several kilograms of rare meat.
+
+| Aspect | Power Gained                                                                                                                            |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| •      | **Dragon Mind** — Gain DarkSight ability, and all Focus Power tests are at +`1k0`                                                         |
+| ••     | **Dragon Wings** — Gain appropriately-sized wings and fly with speed equal to normal ground speed. At Aspect 4, flight speed doubles    |
+| •••    | **Dragon Heart** — Gain a breath weapon. For one point of Breath use the template of a Hand Flamer, for two points use that of a Flamer |
+| ••••   | **Dragon Skin** — Gain Aura equal to Aspect and twice that much Armor. Doesn't stack with anything                                      |
+| •••••  | **Maximum Dragoning** — Once per day, turn into a dragon as though you had successfully cast the spell Dragon Form                      |
+
+---
+
+## Atlantean
+
+When the Syrne vanished from this world, they didn't even leave corpses behind. Ever since then, some have been born with the same kind of amazing, universal magic that the Syrne practiced. They're being reborn with the souls of the lost Syrne race.
+
+While Atlanteans are indeed being reborn with the souls of the Syrne, they do not typically come into realization of this until later in their lives. There is typically some triggering event that brings old memories surging back to them.
+
+Atlanteans do not have all the memories from their former lives. Most only have flashes and vague memories like a long, detailed dream. All that they can remember for sure is that something terrible happened, a curse that still rests on their power to this day in the form of Paradox.
+
+### Static Powers
+
+**Magical Aptitude:** Begin play with one free rank in any Magical School. You may purchase ranks in that Magical School as if it appeared in any class progression you possess. Whenever you roll for Psychic Phenomena, you may roll twice and choose to have either or both effects occur.
+
+**Prestidigitation:** As a half action, perform minor magical tricks:
+
+- Move up to 1 pound of material
+- Create a harmless sensory effect (shower of sparks, faint music, an odor)
+- Color, clean, or soil small items
+- Instantly light small fires (torch, candle, small campfire)
+- Chill, warm, or flavor up to 1 pound of nonliving material
+
+**Past Lives:** Treat all skills as Basic. Begin play with Speak Language (Syrneth).
+
+**Paradox:** Whenever an Atlantean spends a Mote, they gain 1 Paradox. The only way to regain spent motes is to eliminate the paradox caused by their use. There are two ways to Unravel a point of paradox:
+
+- **Safe way:** Spend an hour in meditation to bleed out the excess warp taint (ghostly images, shower of sparks, heatless flame)
+- **Fast way:** Spend a free action once per round and roll for Psychic Phenomena
+
+While the Hero has paradox, keeping a 9 on any die when making a magic Test forces the character to unravel one paradox immediately (multiple 9s stack).
+
+### Power Stat: Gnosis
+
+The Gnosis of an Atlantean is a combination of the awakening memories within them and the soul within them growing in power.
+
+**Resource Stat: Motes** — Maximum Motes equals Charisma + Intelligence + (2 × Gnosis).
+
+| Gnosis | Power Gained                                                                                                                                                            |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •      | **Ancient Style** — Choose any three skills. You may go to six dots in those skills and gain a bonus specialty (Syrneth) in each                                        |
+| ••     | **Empower Spell** — By spending 1 Mote, treat your level and rank of Magic Schools as being 3 higher for the next spell cast                                            |
+| •••    | **Excellence** — Spend two motes instead of a Hero Point to reroll any skill in which you have a specialization                                                         |
+| ••••   | **Maximize Spell** — Before casting any spell, spend any number of motes. For each mote spent, one die in the Magic test is counted as a 10 (these dice do not explode) |
+| •••••  | **Quicken Spell** — By spending one mote, cast a spell as a free action once per turn                                                                                   |
+
+---
+
+## Chosen
+
+There are those who worship the gods, and there are those who are chosen by them. The Chosen gain power from their connection to the divine, becoming less human and more a devil or god themselves. Many are devoted worshipers of their chosen deity, and while all of the Chosen have great power, only those that embrace their calling can really ascend to the higher ranks of might.
+
+A Chosen is not simply someone deeply involved with a god. They've been chosen as a champion, among the greatest and most important of a god's servants.
+
+### Static Powers
+
+**Conviction:** Your power attribute (Faith) is capped at 1/2 of your Devotion (rounded up) as well as your level. If you lose points in devotion sufficient to bring the cap on your power stat down below the level you have actually purchased it at, you lose access to the powers granted by higher ranks in the power stat until you have increased your devotion sufficiently.
+
+**Redeemed:** As long as you have at least 2 Faith, you are never in danger of death. Whenever you would burn a Hero Point to survive, you may instead permanently lose 1 Faith. You may buy it again as normal.
+
+**Divine Power:** Spend a Favor to replace any one rolled d10 with your Devotion (if your Devotion is 10, the die does not explode). You may not use this power on Alignment Tests.
+
+**Leeway:** As long as the Chosen is doing something to advance the plans of their God, or is on a mission directly from them, they gain a bonus on Alignment tests equal to their Faith. At all times the Chosen pays only half the normal XP cost for raising their Devotion score. This cost reduction stacks with the feat Virgil's Guidance.
+
+### Power Stat: Faith
+
+The Faith that a Chosen has is different from that of the average person. They enjoy a level of power that few can match.
+
+**Resource Stat: Favor** — Perform a special ritual once per day which restores all Favor. Maximum Favor equals Devotion + Faith.
+
+| Faith | Power Gained                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •     | **Overbeing** — Gain Aura equal to double their Faith                                                                                                                                                                                                                                                                                                                                                             |
+| ••    | **Divine Protection** — The first time each round that you would receive critical damage, roll 1d10. If you roll under your Devotion, do not take that critical damage                                                                                                                                                                                                                                            |
+| •••   | **Prayer Strip** — When performing the ritual to restore Favor, you may create a Prayer Strip. You may only create one per day, and may have a number equal to Faith in existence at any time. A Prayer Strip may be used at any time as though it was a point of Favor (including all special modifiers such as from Demigod), and may be used by anyone holding it as long as the Chosen considers them an ally |
+| ••••  | **Trial of Faith** — Whenever you keep a 1 on a normal test made that can have dangerous consequences (most combat tests, climbing tests when the fall could really hurt, tense diplomatic negotiations, etc.), or when you roll for Perils of the Warp, recover 1 Favor. You may only regain 1 Favor per test this way                                                                                           |
+| ••••• | **Demigod** — Rather than adding +`1k0` to a roll when spending a Favor, simply add 10 to the result                                                                                                                                                                                                                                                                                                                |
+
+---
+
+## Daemonhost
+
+A Daemonhost is what most people are really afraid of when they're thinking about the Exalted. Most are people who, at the verge of death, were willing to give up anything to live, even if it meant allowing a monster to dominate and warp their body.
+
+When a Daemonhost is created, a warp entity escapes from that chaotic dimension and uses the body of one of the dying as a host. It doesn't just take over the body—it fuses with the soul of the host and they become an entirely new being. The most important factor in determining how the host acts after the change is the strength of their willpower and personality.
+
+### Static Powers
+
+**Demonic Tutor:** Begin play with one free rank in any Magical School. You may purchase ranks in this magical school as if it appeared in your class progression.
+
+**Unholy Might:** By spending one Essence, add your Arcanoi rank to the rank of your Magical School for a single Magic Test.
+
+**Rejected by Creation:** Whenever a Daemonhost spends Essence, they gain Resonance. The only way to regain spent Essence is to eliminate the Resonance. Resonance Eruptions are made by Testing Willpower against TN equal to 10 + (2 × Resonance), as a free action once per round. If the test fails, the Hero loses one Hit Point, converts one Resonance back into Essence, and repeats this action if they have any remaining Resonance. If the test succeeds, convert one Resonance into Essence with no side effects. While the Hero has Resonance, a 9 on any die when making a Magic Test forces a Resonance Eruption immediately (multiple 9s stack).
+
+**Feeding:** A Daemonhost may feed on the living to fuel their power. Daemonhosts gain a Bite weapon (`1k1` R; Melee; Brawling). For every Hit Point of damage they inflict with these bite attacks, they convert one Resonance back into Essence. If feeding on a helpless or willing target, they may choose to feed only on a small amount of blood, leaving almost no mark.
+
+### Power Stat: Arcanoi
+
+As the Daemonhost increases in power, the Daemon draws more power out of the Warp and into the real world. As Arcanoi grows, they begin to warp away from their previous forms, often taking on unnatural coloration, growing horns or claws, having their eyes become flat black or begin glowing.
+
+**Resource Stat: Essence** — Maximum Essence equals Willpower + Charisma + (2 × Arcanoi).
+
+| Arcanoi | Power Gained                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •       | **Daemonic** — Reduce damage from every source by an amount equal to Constitution + Arcanoi, except for damage inflicted by magical effects or silver weapons                                                                                                                                                                                                                                                   |
+| ••      | **Unnatural Ability** — May go to six dots in any Characteristics                                                                                                                                                                                                                                                                                                                                               |
+| •••     | **Scorn Earth** — May hover at will, allowing movement at normal speed in all three dimensions                                                                                                                                                                                                                                                                                                                  |
+| ••••    | **Not Of This World** — Do not suffer the effects of results from the Critical Damage charts unless they would cause death                                                                                                                                                                                                                                                                                      |
+| •••••   | **Black Miracle** — Killing a Daemonhost merely forces the Daemon back into the warp for a short time. Unless a ritual is performed to prevent it (and a Daemonhost can burn Hero Points to foil this ritual) the Daemonhost reforms later, spending one week in the warp for every point of Resonance before finding a new vessel. The new vessel's characteristics and abilities are identical to the old one |
+
+---
+
+## Paragon
+
+A Paragon is, simply put, the best of their race. The kind of person born with a supernatural level of talent and raw ability. Perhaps only one in a million is born with this power, and fewer still come to recognize it.
+
+Paragons don't have blatant supernatural abilities. They are simply at the top end of the normal bell curve of talent, so far away from the norm that they're an entirely different type of creature. Paragons almost inevitably rise to the top in their society.
+
+A Paragon isn't just someone who is good at what they do. They are a person born with literally unlimited potential. For the average person, competing with a Paragon is simply impossible.
+
+### Static Powers
+
+**Destiny:** Begin play with two additional Hero Points.
+
+**Statuesque:** Each race gives a choice of +1 to two Characteristics. You gain +1 to the Characteristic that you did not choose.
+
+**Flash:** You are never surprised and are aware of every attack directed at you. Gain the Danger Sense feat.
+
+**Perfection:** Gain one feat that has your race as a prerequisite.
+
+### Power Stat: Excellence
+
+When a Paragon sets their mind to something, it can be very difficult to oppose them. Each one has a dominating presence, a pressure that gives them an edge against everyone else.
+
+At the beginning of each scene, gain a number of Pressure Points equal to 3 × Excellence. You may use these points to modify any skill roll directly—spending one point improves the final total of the roll by 1. You may spend any number of these points per round. Whenever an opponent spends a Resource Point, a Pressure Point, a Hero Point, or you lose one or more Hit Points, you recover a Pressure Point. If you would have more than 3 × Excellence in Pressure Points, the 'extra' points are lost.
+
+**Resource Stat: Action Points** — Number of Action Points equals Level + Excellence. They are regained at the beginning of every session.
+
+| Excellence | Power Gained                                                                                                                                                                                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •          | (Pressure Points mechanic above)                                                                                                                                                                                                                                           |
+| ••         | **Swift as the Coursing River** — When you attempt and succeed a 2-die Stunt or higher, recover one Action Point                                                                                                                                                           |
+| •••        | **All the Force of a Great Typhoon** — At the start of your turn, recover Pressure Points equal to your Excellence                                                                                                                                                         |
+| ••••       | **Strength of a Raging Fire** — While stunting, dice explode on a roll of 9 or 10 instead of just 10                                                                                                                                                                       |
+| •••••      | **Mysterious as the Dark Side of the Moon** — Whenever you use a stunt on a test and succeed, all allies attempting the same test (using the same action) before your next turn gain a bonus on their result equal to the number of Pressure Points you spent on your test |
+
+---
+
+## Promethean
+
+A Promethean is made by the hands of mortals. They are created by the tireless work of mortals, the fortunes of entire crystal spheres sunk into their creation to forge them out of the most perfect materials and magics. Each one is a device created to bring about change, machines built to bring freedom.
+
+The body of a Promethean is an undying form of metal and magic. Each one is unique. The one constant among Prometheans is that they have a heart, a core that is the center of their magical life. This Promethean Core pulses with energy called Pyros, and also hosts the soul of the Promethean, which must come from a willing subject with an exceptionally strong willpower and drive to live.
+
+### Static Powers
+
+**Living Construct:** Immune to Fatigue, Poison, and Disease. No need to Eat, Drink, Sleep, or Breathe (though they can if they want). Cannot benefit from a Bionic Heart or any artifact versions.
+
+**Refitting:** A Promethean doesn't heal naturally over time. They must be repaired. Repairing a Promethean takes a Craft + Int Test:
+
+- TN 15 if lightly wounded
+- TN 20 if heavily wounded
+- TN 25 if the Promethean has taken critical damage
+
+A successful Test recovers 1 Hit Point and takes one hour. A Promethean cannot spend Pyros to heal Hit Points.
+
+If a Promethean loses limbs or their body is destroyed, they can be repaired. This requires making Craft + Int tests against TN 25, each taking one day. After five successful tests, the limb is rebuilt.
+
+**Disquiet:** A Promethean generates an aura of subtle wrongness. They take −`2k1` to all social rolls against non-exalts.
+
+**Superlative Constitution:** A Promethean doesn't suffer Critical Damage like others. Each of their limbs tracks critical damage separately. They do not use the Critical charts for damage, but at 5 critical damage the limb is destroyed. If the damage is to the gizzards (where the Pyros Reactor is located), the Promethean is killed. Other limbs being destroyed merely results in the loss of said limb. If the Body or Head is destroyed, the Promethean is knocked unconscious until repaired.
+
+### Power Stat: Generation
+
+As a Promethean's Generation increases, they swap out older equipment with newer gear. Most Prometheans must return to their place of birth in order to increase their Generation, despite spending XP.
+
+**Resource Stat: Pyros** — Prometheans regain one Pyros per hour as their internal reservoirs generate power. They can hold Pyros equal to 3 × Generation.
+
+| Generation | Power Gained                                                                                                                                                                                       |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •          | **Integrated Armor** — Integrated armor equal to Generation + 3. Does not stack with worn armor, only the better armor is used. May treat any armor proficiencies on class lists as optional feats |
+| ••         | **Integrated Weapons** — Integrate a number of weapons into body equal to Generation. These weapons are effectively concealed and can't be found by normal search. Draw them as a free action      |
+| •••        | **Transhuman Potential** — Spend Pyros to boost characteristics, spending 1 Pyros for every +1 bonus. This bonus lasts only for one test or one round, whichever is longer                         |
+| ••••       | **Recharge** — Whenever you suffer damage from E-type damage, recover 1 spent Pyros for every Hit Point lost from that attack                                                                      |
+| •••••      | **Warstrider** — For one scene per day, double your size and gain +3 dots to all physical characteristics. Integrated weapons deal an additional +`1k1` damage due to increased size                 |
+
+---
+
+## Vampire
+
+Vampires are undead creatures, horrors that drink the blood of the living. They are cursed to a half-life by a plague stemming from people who drank the blood of the dying Elven god of war, Khaine.
+
+Vampires are generally feared and are often considered among the weakest of the Exaltations. However, any mortal can become a vampire—you have to be born a Paragon, attract the notice of a god to become one of the Chosen, but all that is required to become a vampire is to make yourself useful enough to another vampire that they are willing to turn you.
+
+Most vampires spend decades or centuries paying off this initial blood debt. However, during this time the elder vampire shields the younger one, teaching them how to control and use their powers.
+
+### Static Powers
+
+**Old Money:** Vampires begin play with four additional dots to place into Backgrounds.
+
+**Undead Resilience:** A Vampire is a type of undead and no longer has any biological functions. They do not eat or breathe, are immune to Bleeding and nearly all Toxins and poisons. They are not killed by critical damage to the limbs. Only critical damage to the head, body, and gizzards from silver, Power, and artifact weapons or ammo, from magical or sunlight damage, or from E or X damage to the gizzards, can finish them off. Critical damage to the limbs, and Impact or Rending damage that should kill a vampire merely leaves them unconscious. The vampire will remain unconscious until they spend enough Vitae to heal their critical damage.
+
+**Sunlight Weakness:** A vampire automatically loses 1 Hit Point per round they're exposed to sunlight. Critical damage uses the E chart and automatically goes to the body. A vampire killed by sunlight damage is reduced to dust and cannot be returned from the dead. A thick cloak and wide hat, a parasol, or similar careful preparation is enough to protect a vampire.
+
+**Blood Dependency:** A vampire must spend 1 Vitae every day in order to remain active. If they choose not to, or can't, they lapse into a coma. Vampires gain a Bite weapon (`1k1` R; Melee; Brawling). The vampire may choose to drain one Resource Point of blood from a bitten victim, which gives the victim a level of fatigue. A vampire may also feed from a willing target. If a vampire attempts to feed from someone who has already been knocked unconscious by fatigue, they may only safely drain 1 Vitae, with the next feeding killing the victim.
+
+### Power Stat: Blood Potency
+
+Blood Potency measures how strongly the blood of Khaine resonates within the vampire. It gives a vampire most of their iconic powers. While a vampire with low blood potency can easily pass for a mortal, one with high blood potency will find it more difficult as they become more corpse-like.
+
+**Resource Stat: Vitae** — Maximum Vitae equals 5 × Blood Potency.
+
+| Blood Potency | Power Gained                                                                                                  |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| •             | **Auspex** — Can see in the dark and +`1k0` to all perception tests                                             |
+| ••            | **Dread** — Spend 1 Vitae to gain Fear 1 until the end of the scene                                           |
+| •••           | **Celerity** — Spend 1 Vitae to gain an extra half action                                                     |
+| ••••          | **Potence** — Spend 1 Vitae to gain +3 to Strength until the end of the scene                                 |
+| •••••         | **Dominate** — May use Dominate as the spell, using Blood Potency + Charisma instead of the normal Magic Test |
+
+### The Embrace
+
+Vampire players may want to create more of their kind. Restrictions:
+
+- Only sentient creatures can be Embraced. Animals cannot be turned into vampires
+- Exalts are immune to the Curse of Khaine and cannot become Double Exalts. This includes Paragons
+- The Vitae must flow directly from the sire to the childe. It can't be packaged and sold
+- Pregnant females always miscarry
+- The sire permanently loses a point of Blood Potency to create a Childe. Vampires of Blood Potency 1 are too thin-blooded to transfer the curse
+- The Childe becomes a vampire at Blood Potency 1. The Sire gains them as an Ally (if unwilling, may have created an enemy instead)
+
+---
+
+## Werewolf
+
+Werewolves are blessed by Luna with the ability to change shape. The way werewolves are seen varies greatly from culture to culture. They are typically outsiders, rebels fighting for the rights of the average person. Most of Luna's chosen are interested in saving people from tyranny and oppression.
+
+Werewolves don't have a large overarching society, but they do form small packs and tribes. One of the primary responsibilities of these tribes is finding new werewolves soon after their first change and bringing them into the fold. It is traditional for most werewolves to receive tattoos in magical silver to mark their deeds.
+
+### Static Powers
+
+**Shifting:** As a half action, spend 1 Rage to change into one of two forms. Changing back takes another half action. Armor and equipment does not change with the werewolf; these items will fall to the ground or break.
+
+**Wolf-Form:** Cannot speak or manipulate complex objects. Gain +`1k1` to all perception tests involving scent and hearing, +2 to Dexterity, −1 to Size (do not recalculate Resilience), a Bite weapon (`1k1` R; Melee; Brawling), DarkSight and Quadruped.
+
+**War-Form:** Gain the Fearless(Angry) feat except the TN increases to 25. May only maintain War-Form for a number of rounds equal to Constitution + (2 × Feral Heart). While in War-Form, gain Stuff Of Nightmares, DarkSight, Strength +2, Size +2, Constitution +2, and Claw and Bite natural weapons (`2k1` R; Melee; Brawling) that count as magical weapons. Must remove any armor before changing shape or else it breaks, dealing damage to the Werewolf equal to the armor's AP. When War-Form ends, involuntarily shift into either Wolf form or humanoid form.
+
+**Lycan Resilience:** Natural armor rating that does not stack with worn armor:
+
+- Humanoid form: AP equal to Feral Heart
+- Wolf-Form: Constitution + Feral Heart
+- War-Form: Willpower + Constitution + Feral Heart
+
+Damage from spells, artifacts, and silver weapons or ammunition bypasses this armor.
+
+**Fast Healing:** May always spend Rage as a free action to heal, even if unconscious or paralyzed. In Wolf-Form or War-Form, gain Regeneration (1: not vs. silver & magic). Critical damage regenerates at 1 per hour, and all critical damage must be healed before regaining Hit Points by spending Rage or regenerating. This power does not work on damage from spells, magic, or silver weapons or ammo.
+
+**Silver Bane:** Lycan Resilience and Fast Healing don't work on damage caused by silver. In addition, Werewolves take an additional wound when they take any damage from silver weapons or ammunition (even if damage was insufficient to cause a wound).
+
+### Power Stat: Feral Heart
+
+Feral Heart is the measure of how close the character is to the ancient and wild power within them. As Feral Heart increases, their connection to the spirit world grows more solid.
+
+**Resource Stat: Rage** — Regain Rage equal to Feral Heart + Level at the beginning of each combat and once each night when the moon rises. Maximum Rage equals Willpower + Level + (2 × Feral Heart).
+
+| Feral Heart | Power Gained                                                                                                                                                                                                                                                                                                                                                |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| •           | **Spirit Sight** — May see into the spirit world, viewing the local Umbra. Make a Feral Heart + Wisdom Test to activate; can see the spirit world until deactivated or end of scene. Gain Speak Language (Spirits)                                                                                                                                          |
+| ••          | **Temper Tantrum** — Gain 1 Rage when first wounded in a combat round, when taking a critical wound that cannot be ignored, and any time Resolve is lost. If gaining more than maximum Rage, test Composure against TN 15 or begin to fight                                                                                                                 |
+| •••         | **Spirit Speech** — Can call up and talk to spirits. Test Feral Heart + Fellowship against TN 15 for a neutral spirit to talk, TN 30 for it to fight alongside you. Hostile spirits require additional raises. A quick chat takes a Full Action; an hour-long séance allows up to two other Werewolves, Necromancers, or Arcana experts to assist           |
+| ••••        | **Sacred Hunt** — Perform a 6-hour ritual to hunt and kill a superlative animal. Once begun, cannot rest or pursue another goal until complete. After completing the hunt, taste the heart blood and make Feral Heart + Charisma Test against TN of 5 × the animal's Level. May then assume that animal's form by spending an additional Rage when Shifting |
+| •••••       | **Spirit Walk** — By making a Feral Heart + Composure Test (often TN 20), attempt to enter or exit the Umbra through a reflective surface. Anyone holding your hand may come along                                                                                                                                                                          |
+
+---
+
+## Mortal Heroes
+
+Some SMs and Players may be interested in playing mortal characters, either for an extra challenge or simply because they want to play through their character's exaltation. In this case, simply don't choose an Exaltation. A mortal character is fragile and short-lived compared to an exalt, but their Hero Points still show them to be something special.

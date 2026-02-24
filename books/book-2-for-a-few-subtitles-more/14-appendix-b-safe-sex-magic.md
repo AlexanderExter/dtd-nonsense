@@ -1,0 +1,249 @@
+---
+title: "Appendix B: Safe Sex Magic"
+book: 2
+order: 14
+type: "appendix"
+---
+
+# Appendix B: Safe Sex Magic
+
+> **Integrated:** Key findings from this appendix have been summarized in Book 1, Chapter VIII: Magic (Warp Safety Analysis section). See below for full probability tables.
+
+## Safe, Boring, Predictable Magic
+
+People are amazingly afraid of the magic system, they read the worst results on the perils of the Warp charts and assume that they happen regularly. They look at the TNs of the spells and think they can't reliably cast spells without pushing and invoking the Warp. Obviously they haven't actually tried the magic system or checked the math. That's what we'll do here. Let's fire up the calculators.
+
+Let's take our worst case scenarios for having to roll for Warp effects, vampire necromancers, werewolf transmuters, and dragon
+blooded evokers. A vampire with the Tremere asset and 5 Iintelligence can roll 7k6 to cast a
+TN 15 first rank spell. 90% of the results are 28 or higher, massive overkill for a first level spell.
+You can reliably cast third level spells with that, before using re-rolls. Checking our handy probability chart (appended to this document near the
+end) tells us that 5k4 has a 97% success rate for
+TN 15, running that on the calculator get us
+3.3% of the results in the 1-14 range. The chart is right, so looking at casting Fettered we see that
+3k3 gets us a 66% chance to cast TN 15 and the calculator says 67% +/- a couple 1/10ths of a
+percent which is close enough to 66%. Casting fettered is always perfectly safe and you succeed
+2/3rds of the time. Get yourself to 2nd level, spend 100xp for the second dot of Necromancy
+and you have 4k4 when casting Fettered, giving us a 90% chance to get TN 15 and 69% chance
+to get TN 20. Great, so you don't need to risk
+Warp rolls to cast spells.
+OK, the real worst case is injudicious use of the Spell Might feat to
+give us 5k5 with a 41% chance of 10s. But by now you're choosing that to get a 95% chance of
+a 25+ result and you can do the same thing with
+8k5 much much more safely. But what if you want to be a complete ass who tries to screw up
+everything? You worship Malal. Lets' skip that.
+There is a 10% chance that any one die rolls a 10. All seven dice rolling...
+You know what? We had a long math thing going here. Then we decided to use
+technology, wrote a little script, and brute forced our statistics. Trust us or do the work yourself,
+the brute force tests matched our math results and were more precise. We made the computer
+roll each test a million times.
+That's a 48%+37% = 85% safe casting rate, which means a 100-85 = 15% unsafe casting
+rate. A 1/6 chance of having to roll for Warp crap.
+Yup, that's pretty dangerous. You might want to maybe not blindly cast at full power every time.
+That's our worst case scenario, and it's a little risky. Too risky for some people. Let's do a
+bit better. There's lots of ways to make casting safer, even without casting Fettered. An Eldarin
+can take a racial trait to add +1k0 to Focus
+Power tests, a Dragon Blooded has a +1k0 to
+Focus Power tests, the Apprentice class offers the feat Implement Focus to reroll any one die, a
+Daemonhosts and Atlanteans can add dice for a
+Resource Point. Let's just take that risky vampire necromancer and take them up to level 2 and
+spend 100xp to get the second rank of Necromancy. Now they're rolling 8k6, dropping two
+dice (why you've decided not to cast Fettered at
+4k4 for a first level spell is your problem).
+Calculate it out and we end up with a 3.8443% chance of having to roll for a Warp event on 8k6.
+A 96% safety rate and the Warp still isn't guaranteed to be more than a harmless cosmetic
+change to the environment. Re-rolling a die is similar. Reroll every time we get a single 10 adds
+Number of 10sChance Action0
+47.8595 %
+None1
+37.1349 %
+Drop the 102
+12.4219 %
+Keep 13
+02.3085 %
+Keep 24
+00.2570 %
+Keep 35
+00.0176 %
+Keep 46
+00.0006 %
+Keep 58k6 ? # of 10sChance Action0
+43.0146 %
+None1
+38.2618 %
+Drop the 102
+14.8793 %
+Drop both 10s3
+03.3327 %
+Keep 14
+00.4667 %
+Keep 25
+00.0416 %
+Keep 36
+00.0031 %
+Keep 47
+00.0002 %
+Keep 5
+
+---
+
+times we kept zero 10s, 85%+(0.9\*12.4%) =
+96.2% safe. So adding just a single die reroll is the same as adding an extra die to the roll.
+So, you want to cast spells safely? Let's go all-in on safety here. A Dragon-blooded
+Eldarin Apprentice with an implement and a
+Wraithbone bionic heart. That's 3 Background points, 100 XP for a 4th Background point, 100
+XP for a racial asset, 200 XP for a magic school, and 100 XP for the Tested feat. If they have the
+full 5 dot attribute for the magic school they roll
+8k5, reroll one die, and roll four times on the
+Warp tables at +0 (for being Tested), picking the roll that they like best.
+So 8k5 gives us a 0.5% or a 1/200 base
+Warp rate. Re-rolling one die saves us 90% off of keeping the last one, reducing it to 00.4531
+times 0.1 + 00.0435 = 00.0888 or a 0.09% chance of rolling on the Warp tables. Once out
+of every 1000 casts we get a roll on the Warp charts, before we level up and buy the next dot
+of magic and get even safer. If you're really desperate you can go through a class that has
+the Lucky feat (Peasant or Minstrel) and use
+Hero Points to reroll your Focus Power tests.
+A simple method of achieving safety is an Atlantean exalt with a wraithbone bionic
+heart using their rank 2 power stat ability to add
++3 to a magic school for a Focus Power test.
+That gives them three more rolled dice to drop, and being an Atlantean they could already roll a
+Warp effect twice and choose which result they wanted. Combined with the wraithbone bionic
+heart they'll roll any Warp effects four times and get to choose one. A Chosen of Tzeench is also
+quite safe as they, personally, don't suffer from the Warp effects. Sure, you can still tech scorn
+the helicopter you're riding in.
+But being an exalt in a helicopter in this game is just asking to get blown out of the sky anyways.
+Besides, you should have remembered to pack a parachute.
+10sChance Action0
+43.0562 %
+None1
+38.3052 %
+Drop the 102
+14.8354 %
+Drop two 10s3
+03.3066 %
+Drop three 10s4
+00.4531 %
+Drop 3, reroll 15
+00.0408 %
+Keep 26
+00.0024 %
+Keep 37
+00.0003 %
+Keep 4RollingTN 10TN 15TN 20TN 25TN 30TN 354k3 keep 10s
+
+> 90%
+> 80%
+> 55%
+> 30%
+> 15%
+> <5%
+> 4k3 drop 10s85%
+> 70%
+> 30%
+
+## 5%
+
+- 5k4 keep 10s
+    > 99%
+    > 95%
+    > 85%
+    > 60%
+    > 35%
+    > 20%
+    > 5k4 drop 10s
+    > 95%
+    > 90%
+    > 65%
+    > 35%
+    > 10%
+    > <5%
+    > 6k5 keep 10s
+    > 99%
+    > 99%
+    > 95%
+    > 85%
+    > 65%
+    > 45%
+    > 6k5 drop 10s
+    > 99%
+    > 95%
+    > 85%
+    > 65%
+    > 35%
+    > 15%
+    > 7k6 keep 10s
+    > 99%
+    > 99%
+    > 99%
+    > 95%
+    > 85%
+    > 65%
+    > 7k6 drop 10s
+    > 99%
+    > 99%
+    > 95%
+    > 85%
+    > 65%
+    > 40%
+    > Fettered 2k260%
+    > 25%
+    > 15%
+    > <5%
+-
+- Fettered 3k390%
+  65%
+  35%
+  15%
+  <5%
+- Fettered 4k4
+    > 95%
+    > 90%
+    > 65%
+    > 40%
+    > 25%
+    > 15%
+    > Fettered 5k5
+    > 99%
+    > 95%
+    > 85%
+    > 70%
+    > 45%
+    > 25%
+    > Above: What happens shortly after
+    > the words "I don't understand what
+    > Fettered casting is about" are uttered.
+    > Left: The chance to hit a particular
+    > TN rolling specific sets of dice that are
+    > likely to be seen in starting characters.
+
+---
+
+In case you're interested the "danger level" of the default Warp tables is:
+Psychic phenomena:
+
+- 3% 1 insanity if rolling with a mod less than +10
+- 3% Fear(1)
+- 3% fall 1d10m
+- 3% 1d5 wounds & Fear(2)
+- 3% tech jamming & bionics save vs. 1d5 wounds
+- (26+mod)% chance of rolling on the Perils table
+
+That's a 15% chance of insanity/hp/fear/etc. danger plus the 26+% chance of going to the higher table leaving a 59% or less "safe" result.
+Perils of the Warp:
+
+- 1% instant death
+- 30% insanity (13% 1d5, 9% 1d10, 8% 3d10)
+- 9% out for 1d5 rounds
+- 10% out for 1 round
+- 8% out for 1d10 rounds
+- 9% out for 1d10 weeks
+- 25% damage (1d5 wounds to 3d10 damage)
+- 5% no casting for 1 hour
+- 4% no casting 1d5 hours
+- 5% all spells cause a roll on the Perils of the Warp (not Psychic phenomena) table for 1d5 rounds
+- 4% everyone loses all unspent Hero Points
+- 8% all future Peril & Phenomena rolls at +10 (adds +10% to the instant death result)
+- 44% of these are area effects that will hit allies
+- 12% are "safe" (blind & deaf, etc.)
+  Every roll on these tables has a (25+ mod)/100 percentage chance of instant death
+  (e.g. a +10 has 35/100 or 0.35%, or about 1/300 chance). Which does mean that a +75 modifier
+  gives you a 1% instant death rate.

@@ -1,0 +1,90 @@
+---
+title: "Appendix H: Zero-G Combat"
+book: 2
+order: 20
+type: "appendix"
+---
+# Appendix H: Zero-G Combat
+
+## Zero-G Combat
+
+It may happen at some point that your players get into a fight where gravity (natural or
+artificial) is not present. We present these untested optional rules for movement and fighting in
+zero-G combat.
+This section depends a lot on the concept of being Braced. That means that you're
+secured on or against something stable. It can be holding onto a strut with one hand, being tied to
+(immobile) heavy equipment, hooked around a pipe, glued to a wall, or clipped to a tie-down
+point. One very popular choice is heavy magnetic boots on (most) spaceship hulls. Basically life is
+just easier if you aren't flailing around without anything to grab hold of and steady yourself on.
+Taking a Half Action to Brace yourself counts as being braced for the purposes of firing heavy
+weapons
+We introduce here a new condition: Out of Control (or "All Spinny" if you like that
+instead). When you're Out of Control you get half your normal rolled dice to do anything. You
+can stop being Out of Control if you can grab onto something and brace yourself. Generally you
+can test any of Athletics, Acrobatics, Brawling, Tech-Use (if you have the
+appropriate device), Weaponry (whips?), Ballistics
+(fire extinguishers, and grappling hooks), Piloting
+(jet-packs, and fire extinguishers again), or just about anything you can justify. The base TN is
+15 and you get a free Raise if you're using something designed for this purpose. That includes
+grabbing onto crash webbing, those convenient
+'don't fall into space' safety lines like NASA uses, and the ever popular magnetic space-boots. Being
+Braced prevents you from being Out of Control, but not being Braced does not make you go Out
+of Control.
+Ranges of thrown and muscle powered projectiles (a kind SM may include crossbows of
+various sorts,) are tripled, other weapon ranges are unaffected as their accuracy
+vs. range interaction is not primarily dependent on acceleration due to gravity.
+Your effective Strength is halved for melee strikes unless you're Braced against something. Damage inflicted by and during Grappling
+is unaffected, as are parrying weapons (using short stabbing motions)
+and weapons with the Power Field effect.
+TLDRThe short version of the rest of this: If you aren't Braced take cumulative -1k0s until
+you stop to brace or steady yourself. Getting around is usually TN 15, and stopping is TN 10. If you're hit by an explosion test against the
+damage or get knocked off and go Out of
+Control.
+Melee: Melee attacks take a cumulative
+-1k0 penalty per attack unless you're Braced.
+This carries over from turn to turn as long as you're making continual attacks. If you take the
+multi-attack action three times in a row using
+Swift Attack each time your first attack one the first round is at -1k0 and your last
+attack on the third round will be a -6k0.
+Ranged: Projectile weapon attacks take the same penalty for the number of shots that
+they've previously fired. Using Double Tap for three rounds your first shot
+is at no penalty, but the last shot is at -5k0.
+Using weapons on Full Auto Burst without Bracing loses the normal +2k1
+bonus and applies a penalty equal to half the
+RoF being used. An long burst from an autogun will get you a -5k0 penalty, doing it again the
+next round ups then penalty to -10k0 as you spin around in space scattering bullets everywhere. This
+is when Grim Servant 'O Death comes into play. Taking a Half Action to Brace
+yourself against a solid object or something negates and resets the penalties to zero.
+
+---
+
+## Movement
+
+If you can't fly then you're getting around by climbing (but you can't fall
+and get a free Raise to everything), jumping (but you travel 10x the 'distance'
+each round in a straight line and get a free Raise), or using some means of artificial propulsion.
+That's usually a jet-pack (Vehicles) or shooting a projectile gun in the opposite direction
+(Ballistics). Directed energy weapons, needlers, and rocket launchers are just
+about useless for propulsion. Flamers are actually easier to use as a means of travel since they give a
+lower but steadier thrust than the explosive jolts of projectiles. Changing direction is often
+accomplished using Dexterity, perhaps aided by
+Acrobatics, with a normal TN of 15 modified by how fast you're going and how precisely you
+need to aim your trajectory. Trying to come to a near stop is just TN 10. Of course you can
+always grab onto something, Brace yourself, and then jump off in the desired direction too.
+**Explosions**
+
+Being caught in the blast of an explosion tends to throw people around. If
+you're Braced you can test Athletics + Strength against the damage roll to stay put. That's
+assuming that you're the one holding on. If it's a piece of equipment doing the holding you just
+have to hope it doesn't get too damaged. If you aren't Braced then you test
+Acrobatics + Dexterity against the rolled damage to prevent going Out of Control and you're still
+getting pushed away from the blast. Treat anything that would knock you prone or fling you around in the same manner as an explosion.
+Zero-G Creatures In the course of your game there may come a time when some critter or creature
+should be naturally adept at zero gravity stuff.
+Like space kaiju take no form of penalties in ship-to-kaiju combat sort of things. Great. Either
+they can fly or they have some way to Brace themselves (suckers, natural glue, anything your
+diseased SM brain can think of). If they have to roll they automatically get two free Raises (or
+knock 10 of the TN, same thing,).
+There's also immaterial and/or phasing stuff like ghosts. Those annoying buggers just don't bother to roll, they just go.
+
+---

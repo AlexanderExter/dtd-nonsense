@@ -1,0 +1,2229 @@
+[
+    {
+        "id": "general-noncombatant",
+        "name": "General Noncombatant",
+        "category": "mortal",
+        "level": 1,
+        "size": 4,
+        "speed": 4,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 2,
+            "constitution": 2,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Common Lore", "dots": 1 },
+            { "name": "Perception", "dots": 1 },
+            { "name": "Crafts", "dots": 1 }
+        ],
+        "feats": [],
+        "traits": [],
+        "armor": [],
+        "weapons": [{ "name": "Unarmed", "type": "melee", "damage": "", "damageType": "", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": ["Drab garb", "a few coins"]
+    },
+    {
+        "id": "green-troops",
+        "name": "Green Troops/Common Outlaws",
+        "category": "mortal",
+        "level": 1,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 2,
+            "constitution": 3,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Perception", "dots": 1 },
+            { "name": "Common Lore", "dots": 1 },
+            { "name": "Intimidate", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 1 },
+            { "name": "Ballistics", "dots": 1 }
+        ],
+        "feats": ["Weapon Proficiency (Ordinary, Parrying)"],
+        "traits": [],
+        "armor": [{ "name": "Leathers", "ap": 2, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Knife", "type": "melee", "damage": "4k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Autopistol",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "I",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/6",
+                "clip": 12,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [],
+        "gear": ["Threadbare clothing", "leathers", "2 autopistol clips", "a few coins"]
+    },
+    {
+        "id": "regular-troops",
+        "name": "Regular Troops/Rebels",
+        "category": "mortal",
+        "level": 2,
+        "size": 4,
+        "speed": 6,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Perception", "dots": 1 },
+            { "name": "Common Lore", "dots": 1 },
+            { "name": "Intimidate", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 }
+        ],
+        "feats": ["Weapon Proficiency (Ordinary, Parrying, Las)", "Sound Constitution x2", "Jaded", "Armor Proficiency (light, medium)"],
+        "traits": [],
+        "armor": [
+            { "name": "Flak Vest, Gauntlets", "ap": 5, "locations": ["Arms", "Body"] },
+            { "name": "Helmet", "ap": 4, "locations": ["Head"] }
+        ],
+        "weapons": [
+            { "name": "Knife", "type": "melee", "damage": "4k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Lasgun",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 60,
+                "rof": "S/3",
+                "clip": 60,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [],
+        "gear": ["Uniform", "Flak Armor", "Lasgun", "2 Energy Packs", "Micro-bead", "Torch"]
+    },
+    {
+        "id": "elite-soldiers",
+        "name": "Elite Soldiers/Raiders",
+        "category": "mortal",
+        "level": 3,
+        "size": 4,
+        "speed": 7,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Common Lore", "dots": 1 },
+            { "name": "Intimidate", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 2 },
+            { "name": "Ballistics", "dots": 3 }
+        ],
+        "feats": ["Weapon Proficiency (Ordinary, Parrying, Las)", "Sound Constitution x3", "Jaded", "Armor Proficiency (light, medium, Heavy)"],
+        "traits": [],
+        "armor": [{ "name": "Carapace Armor", "ap": 7, "locations": ["Arms", "Body", "Legs", "Head"] }],
+        "weapons": [
+            { "name": "Knife", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Lasgun",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 60,
+                "rof": "S/3",
+                "clip": 60,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [],
+        "gear": ["Uniform", "Carapace Armor", "Lasgun", "2 Energy Packs", "Micro-bead", "Torch", "Rebreather", "2 Frag Grenades"]
+    },
+    {
+        "id": "mortal-hero",
+        "name": "Mortal Hero",
+        "category": "mortal",
+        "level": 3,
+        "size": 4,
+        "speed": 9,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 4,
+            "constitution": 4,
+            "charisma": 3,
+            "fellowship": 4,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Intimidate", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Ballistics", "dots": 3 }
+        ],
+        "feats": [
+            "Weapon Proficiency (Ordinary, Parrying, Las, Chain)",
+            "Sound Constitution x2",
+            "Jaded",
+            "Armor Proficiency (light, medium, heavy, extreme, power)",
+            "True Grit",
+            "Blind Fighting",
+            "Luck"
+        ],
+        "traits": [],
+        "armor": [{ "name": "Light Power Armor", "ap": 10, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Chainsword", "type": "melee", "damage": "8k2", "damageType": "R", "pen": 4, "special": "Tearing" },
+            {
+                "name": "Lasgun",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "E",
+                "pen": 2,
+                "range": 100,
+                "rof": "S/4",
+                "clip": 40,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [],
+        "gear": [
+            "Flashy clothing",
+            "Light Power Armor",
+            "Pulse Rifle",
+            "2 Energy Packs",
+            "Micro-bead",
+            "Torch",
+            "Rebreather",
+            "2 Frag Grenades"
+        ]
+    },
+    {
+        "id": "sabbat-thug",
+        "name": "Sabbat Thug",
+        "category": "supernatural",
+        "level": 2,
+        "size": 4,
+        "speed": 6,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 1,
+            "wisdom": 1,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Athletics", "dots": 1 },
+            { "name": "Ballistics", "dots": 1 },
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Drive", "dots": 1 },
+            { "name": "Intimidation", "dots": 1 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Weaponry", "dots": 2 }
+        ],
+        "feats": ["Sound Constitution", "Weapon Proficiency (Ordinary)"],
+        "traits": [{ "id": "resourceStat", "param": "Vitae; 5" }, { "id": "darkSight" }],
+        "armor": [],
+        "weapons": [
+            { "name": "Bite", "type": "melee", "damage": "4k1", "damageType": "R", "pen": 0, "special": "" },
+            { "name": "Brass Knuckles", "type": "melee", "damage": "3k2", "damageType": "", "pen": 0, "special": "" },
+            {
+                "name": "Hand Cannon",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "I",
+                "pen": 3,
+                "range": 35,
+                "rof": "S/-",
+                "clip": 6,
+                "reload": "2 Full",
+                "special": ""
+            }
+        ],
+        "abilities": [
+            { "name": "Undead Resilience", "description": "As the Vampire power" },
+            { "name": "Sunlight Weakness", "description": "As the Vampire power" },
+            { "name": "Blood Dependency", "description": "As the Vampire power" }
+        ],
+        "gear": ["Dark clothing", "Brass Knuckles", "Hand Cannon", "Chrono", "5 reloads for the Hand Cannon"]
+    },
+    {
+        "id": "sabbat-prince",
+        "name": "Sabbat Prince",
+        "category": "supernatural",
+        "level": 3,
+        "size": 4,
+        "speed": 9,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 4,
+            "constitution": 5,
+            "charisma": 4,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Drive", "dots": 1 },
+            { "name": "Intimidation", "dots": 3 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Politics", "dots": 3 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": ["Sound Constitution x3", "Weapon Proficiency (Ordinary)", "Quick Draw", "Swift Attack", "Fearless", "Wall of Steel"],
+        "traits": [{ "id": "resourceStat", "param": "Vitae; 15" }, { "id": "darkSight" }, { "id": "fear", "param": 1 }],
+        "armor": [],
+        "weapons": [
+            { "name": "Bite", "type": "melee", "damage": "6k2", "damageType": "R", "pen": 0, "special": "" },
+            { "name": "Brass Knuckles", "type": "melee", "damage": "5k3", "damageType": "", "pen": 0, "special": "" },
+            {
+                "name": "Hand Cannon",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "I",
+                "pen": 3,
+                "range": 35,
+                "rof": "S/-",
+                "clip": 6,
+                "reload": "2 Full",
+                "special": ""
+            }
+        ],
+        "abilities": [
+            { "name": "Undead Resilience", "description": "As the Vampire power" },
+            { "name": "Sunlight Weakness", "description": "As the Vampire power" },
+            { "name": "Blood Dependency", "description": "As the Vampire power" }
+        ],
+        "gear": ["Sharp black suit", "Brass Knuckles", "Hand Cannon", "Expensive Chrono", "5 reloads for the Hand Cannon"]
+    },
+    {
+        "id": "zoanoid-thug",
+        "name": "Zoanoid Thug",
+        "category": "supernatural",
+        "level": 2,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 2,
+            "constitution": 4,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 4,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Intimidate", "dots": 2 },
+            { "name": "Weaponry", "dots": 2 }
+        ],
+        "feats": ["Furious Assault", "Heightened Senses (smell)", "Iron Jaw"],
+        "traits": [
+            { "id": "resourceStat", "param": "Rage; 6" },
+            { "id": "regeneration", "param": 1 }
+        ],
+        "armor": [],
+        "weapons": [
+            { "name": "Claws (Warform)", "type": "melee", "damage": "7k1", "damageType": "R", "pen": 0, "special": "" },
+            { "name": "Bite (Warform)", "type": "melee", "damage": "8k2", "damageType": "R", "pen": 0, "special": "" }
+        ],
+        "abilities": [
+            { "name": "Shifting", "description": "As the Werewolf power. Stats in brackets are for Warform" },
+            { "name": "Lycan Resistance", "description": "As the Werewolf power" },
+            { "name": "Silver Bane", "description": "As the Werewolf power" }
+        ],
+        "gear": ["Torn street clothing"]
+    },
+    {
+        "id": "zoanoid-heavy",
+        "name": "Zoanoid Heavy",
+        "category": "supernatural",
+        "level": 3,
+        "size": 4,
+        "speed": 8,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 5,
+            "charisma": 2,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Intimidate", "dots": 4 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": ["Sound Constitution x2", "Furious Assault", "Power Attack", "Heightened Senses (smell)", "Iron Jaw"],
+        "traits": [
+            { "id": "resourceStat", "param": "Rage; 10" },
+            { "id": "regeneration", "param": 1 }
+        ],
+        "armor": [],
+        "weapons": [
+            { "name": "Claws (Warform)", "type": "melee", "damage": "9k1", "damageType": "R", "pen": 0, "special": "" },
+            { "name": "Bite (Warform)", "type": "melee", "damage": "10k2", "damageType": "R", "pen": 0, "special": "" }
+        ],
+        "abilities": [
+            { "name": "Shifting", "description": "As the Werewolf power. Stats in brackets are for Warform" },
+            { "name": "Lycan Resistance", "description": "As the Werewolf power" },
+            { "name": "Silver Bane", "description": "As the Werewolf power" }
+        ],
+        "gear": ["Expendable suit", "sunglasses"]
+    },
+    {
+        "id": "monodrone-modron",
+        "name": "Monodrone Modron",
+        "category": "construct",
+        "level": 3,
+        "size": 5,
+        "speed": 3,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 2,
+            "constitution": 5,
+            "charisma": 0,
+            "fellowship": 0,
+            "composure": 0,
+            "intelligence": 0,
+            "wisdom": 4,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Brawl", "dots": 3 },
+            { "name": "Perception", "dots": 3 }
+        ],
+        "feats": ["True Grit"],
+        "traits": [
+            { "id": "armorPlating", "param": 4 },
+            { "id": "aura", "param": 4 },
+            { "id": "crawler" },
+            { "id": "fear", "param": 2 },
+            { "id": "mindless" },
+            { "id": "regeneration", "param": 1 },
+            { "id": "stuffOfNightmares" }
+        ],
+        "armor": [{ "name": "Armor Plating", "ap": 4, "locations": ["All"] }],
+        "weapons": [
+            {
+                "name": "Gauss Flayer",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "X",
+                "pen": 12,
+                "range": 80,
+                "rof": "S/-",
+                "clip": null,
+                "reload": null,
+                "special": "Tearing"
+            },
+            { "name": "Melee Attachment", "type": "melee", "damage": "8k3", "damageType": "R", "pen": 4, "special": "" }
+        ],
+        "abilities": [
+            {
+                "name": "Gauss Weapon",
+                "description": "Whenever a creature takes damage from the Gauss Flayer, they suffer 1 critical damage to that location even if they have HP remaining"
+            },
+            {
+                "name": "Frightful Presence",
+                "description": "Whenever this creature charges or makes an all out attack, all creatures within melee range must test against its fear rating"
+            },
+            {
+                "name": "We'll Be Back",
+                "description": "When 'killed', roll 1d10 at the start of each of its turns. On 8+, teleports away. After three rounds, comes back to life at 0 wounds"
+            }
+        ],
+        "gear": []
+    },
+    {
+        "id": "duodrone-modron",
+        "name": "Duodrone Modron",
+        "category": "construct",
+        "level": 4,
+        "size": 6,
+        "speed": 4,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 8,
+            "charisma": 0,
+            "fellowship": 0,
+            "composure": 0,
+            "intelligence": 0,
+            "wisdom": 4,
+            "willpower": 8
+        },
+        "skills": [
+            { "name": "Weaponry", "dots": 4 },
+            { "name": "Ballistics", "dots": 4 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Perception", "dots": 4 }
+        ],
+        "feats": ["True Grit"],
+        "traits": [
+            { "id": "armorPlating", "param": 6 },
+            { "id": "aura", "param": 6 },
+            { "id": "crawler" },
+            { "id": "fear", "param": 2 },
+            { "id": "mindless" },
+            { "id": "regeneration", "param": 1 },
+            { "id": "stuffOfNightmares" }
+        ],
+        "armor": [{ "name": "Armor Plating", "ap": 6, "locations": ["All"] }],
+        "weapons": [
+            {
+                "name": "Gauss Blaster",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "X",
+                "pen": 12,
+                "range": 80,
+                "rof": "S/3",
+                "clip": null,
+                "reload": null,
+                "special": "Tearing"
+            },
+            { "name": "Melee Attachment", "type": "melee", "damage": "10k3", "damageType": "R", "pen": 4, "special": "" }
+        ],
+        "abilities": [
+            {
+                "name": "Gauss Weapon",
+                "description": "Whenever a creature takes damage from the Gauss Blaster, they suffer 1 critical damage to that location even if they have HP remaining"
+            },
+            {
+                "name": "Frightful Presence",
+                "description": "Whenever this creature charges or makes an all out attack, all creatures within melee range must test against its fear rating"
+            },
+            {
+                "name": "We'll Be Back",
+                "description": "When 'killed', roll 1d10 at the start of each of its turns. On 8+, teleports away. After three rounds, comes back to life at 0 wounds"
+            }
+        ],
+        "gear": []
+    },
+    {
+        "id": "cultist",
+        "name": "Cultist",
+        "category": "mortal",
+        "level": 1,
+        "size": 4,
+        "speed": 4,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 2,
+            "constitution": 2,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 1,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 2 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Weaponry", "dots": 2 },
+            { "name": "Persuasion", "dots": 2 }
+        ],
+        "feats": ["Lucky", "Powerful Charge", "Weapon Proficiency (Ordinary)"],
+        "traits": [{ "id": "resourceStat", "param": "Favor; 6" }],
+        "armor": [],
+        "weapons": [{ "name": "Hand Weapon", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": ["Tattered Robes", "Hand Weapon", "Heretical Writings", "Charm"]
+    },
+    {
+        "id": "arch-heretic",
+        "name": "Arch-Heretic",
+        "category": "mortal",
+        "level": 3,
+        "size": 4,
+        "speed": 4,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 4,
+            "charisma": 3,
+            "fellowship": 4,
+            "composure": 4,
+            "intelligence": 3,
+            "wisdom": 3,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 4 },
+            { "name": "Arcana", "dots": 3 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Persuasion", "dots": 3 },
+            { "name": "Ballistics", "dots": 3 }
+        ],
+        "feats": [
+            "Lucky",
+            "Powerful Charge",
+            "Weapon Proficiency (Ordinary, Flail, Flame)",
+            "Armor Proficiency (Extreme)",
+            "Sound Constitution x2",
+            "True Grit",
+            "Divine Ministration"
+        ],
+        "traits": [{ "id": "resourceStat", "param": "Favor; 8" }],
+        "armor": [{ "name": "Plate Armor", "ap": 8, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Dire Flail", "type": "melee", "damage": "6k2", "damageType": "I", "pen": 3, "special": "Two Hands, Flexible" },
+            {
+                "name": "Hand Flamer",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "E",
+                "pen": 4,
+                "range": 10,
+                "rof": "S/-",
+                "clip": 3,
+                "reload": "2Full",
+                "special": "Flame"
+            }
+        ],
+        "abilities": [],
+        "gear": ["Ornate Robes", "Dire Flail", "Hand Flamer", "extra fuel tank", "Plate Armor", "Heretical Writings", "Charm"]
+    },
+    {
+        "id": "heretek",
+        "name": "Heretek",
+        "category": "mortal",
+        "level": 2,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 2,
+            "constitution": 4,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 3,
+            "intelligence": 4,
+            "wisdom": 2,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 3 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Drive", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 3 },
+            { "name": "Pilot", "dots": 2 },
+            { "name": "Tech-Use", "dots": 3 }
+        ],
+        "feats": ["Weapon Proficiency (Las, Ordinary)"],
+        "traits": [{ "id": "armorPlating", "param": 2 }, { "id": "stuffOfNightmares" }, { "id": "resourceStat", "param": "Pyros; 3" }],
+        "armor": [{ "name": "Subdermal Plating", "ap": 2, "locations": ["All"] }],
+        "weapons": [
+            {
+                "name": "Laspistol",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/-",
+                "clip": 30,
+                "reload": "Full",
+                "special": "Reliable"
+            },
+            { "name": "Wrench", "type": "melee", "damage": "4k2", "damageType": "I", "pen": 0, "special": "" }
+        ],
+        "abilities": [
+            {
+                "name": "Man of Iron",
+                "description": "Ignores critical effects that would cause death except for effects resulting from critical damage to the gizzards or head"
+            }
+        ],
+        "gear": ["Tattered robes", "Combi-tool", "Data Slate", "Chrono", "Laspistol", "2 power packs", "Heavy wrench"]
+    },
+    {
+        "id": "dark-mechanius",
+        "name": "Dark Mechanius",
+        "category": "mortal",
+        "level": 4,
+        "size": 4,
+        "speed": 8,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 6,
+            "charisma": 3,
+            "fellowship": 2,
+            "composure": 4,
+            "intelligence": 5,
+            "wisdom": 2,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 3 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Drive", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 3 },
+            { "name": "Pilot", "dots": 2 },
+            { "name": "Tech-Use", "dots": 3 }
+        ],
+        "feats": ["Weapon Proficiency (Las, Ordinary, Plasma)", "Crack Shot", "Sound Constitution x3", "Iron Jaw"],
+        "traits": [{ "id": "armorPlating", "param": 4 }, { "id": "stuffOfNightmares" }, { "id": "resourceStat", "param": "Pyros; 9" }],
+        "armor": [{ "name": "Subdermal Plating", "ap": 4, "locations": ["All"] }],
+        "weapons": [
+            {
+                "name": "Integrated Plasma Gun",
+                "type": "ranged",
+                "damage": "3k3",
+                "damageType": "E",
+                "pen": 8,
+                "range": 90,
+                "rof": "S/2",
+                "clip": null,
+                "reload": null,
+                "special": "Recharge"
+            },
+            { "name": "Power Sword", "type": "melee", "damage": "9k2", "damageType": "R", "pen": 4, "special": "Power Field" }
+        ],
+        "abilities": [
+            {
+                "name": "Man of Iron",
+                "description": "Ignores critical effects that would cause death except for effects resulting from critical damage to the gizzards or head"
+            },
+            {
+                "name": "Mechendrites",
+                "description": "Extra mechanical limbs allow an extra half action per turn for tasks those limbs could do (ready action or attack)"
+            }
+        ],
+        "gear": ["Tattered robes", "Combi-tool", "Data Slate", "Chrono", "Power Sword"]
+    },
+    {
+        "id": "lesser-daemon",
+        "name": "Incarnate Lesser Daemon",
+        "category": "supernatural",
+        "level": 2,
+        "size": 4,
+        "speed": 6,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 3,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 1,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Perception", "dots": 1 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Brawl", "dots": 3 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "daemonic" }, { "id": "darkSight" }, { "id": "fear", "param": 1 }, { "id": "resourceStat", "param": "Essence; 7" }],
+        "armor": [{ "name": "Daemonic Toughness", "ap": 3, "locations": ["All"] }],
+        "weapons": [{ "name": "Claws and Teeth", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "Tearing" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "greater-daemon",
+        "name": "Incarnate Greater Daemon",
+        "category": "supernatural",
+        "level": 4,
+        "size": 8,
+        "speed": 8,
+        "characteristics": {
+            "strength": 6,
+            "dexterity": 4,
+            "constitution": 6,
+            "charisma": 3,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 3,
+            "wisdom": 3,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Perception", "dots": 1 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Brawl", "dots": 4 }
+        ],
+        "feats": ["Frenzy", "Swift Attack"],
+        "traits": [{ "id": "daemonic" }, { "id": "darkSight" }, { "id": "fear", "param": 2 }, { "id": "resourceStat", "param": "Essence; 14" }],
+        "armor": [{ "name": "Daemonic Toughness", "ap": 6, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Claws and Teeth", "type": "melee", "damage": "8k3", "damageType": "R", "pen": 0, "special": "Tearing" },
+            {
+                "name": "Warp Fire",
+                "type": "ranged",
+                "damage": "4k3",
+                "damageType": "E",
+                "pen": 0,
+                "range": 50,
+                "rof": "S/-",
+                "clip": null,
+                "reload": null,
+                "special": "Flame"
+            }
+        ],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "beast-of-burden",
+        "name": "Beast of Burden",
+        "category": "creature",
+        "level": 1,
+        "size": 8,
+        "speed": 8,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 2,
+            "constitution": 4,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 1,
+            "intelligence": 1,
+            "wisdom": 3,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Perception", "dots": 2 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Brawl", "dots": 1 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "quadruped" }],
+        "armor": [],
+        "weapons": [{ "name": "Kick", "type": "melee", "damage": "5k2", "damageType": "I", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "ferocious-creature",
+        "name": "Ferocious Creature",
+        "category": "creature",
+        "level": 2,
+        "size": 4,
+        "speed": 6,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 4,
+            "constitution": 3,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 1,
+            "intelligence": 1,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Perception", "dots": 3 },
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Stealth", "dots": 2 },
+            { "name": "Brawl", "dots": 3 }
+        ],
+        "feats": ["Heightened Senses (Scent)", "Step Aside"],
+        "traits": [{ "id": "quadruped" }, { "id": "darkSight" }],
+        "armor": [],
+        "weapons": [{ "name": "Bite", "type": "melee", "damage": "6k3", "damageType": "R", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "flying-creature",
+        "name": "Flying Creature",
+        "category": "creature",
+        "level": 1,
+        "size": 3,
+        "speed": 7,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 5,
+            "constitution": 2,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 1,
+            "intelligence": 1,
+            "wisdom": 4,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Perception", "dots": 3 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Brawl", "dots": 1 }
+        ],
+        "feats": ["Swift Attack"],
+        "traits": [{ "id": "flyer", "param": 21 }],
+        "armor": [],
+        "weapons": [{ "name": "Claws", "type": "melee", "damage": "3k1", "damageType": "R", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "slithering-creature",
+        "name": "Slithering Creature",
+        "category": "creature",
+        "level": 1,
+        "size": 2,
+        "speed": 3,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 4,
+            "constitution": 2,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 1,
+            "intelligence": 1,
+            "wisdom": 4,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Perception", "dots": 2 },
+            { "name": "Stealth", "dots": 4 },
+            { "name": "Brawl", "dots": 2 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "crawler" }],
+        "armor": [],
+        "weapons": [{ "name": "Bite", "type": "melee", "damage": "4k2", "damageType": "R", "pen": 0, "special": "Toxic" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "walking-creature",
+        "name": "Walking Creature",
+        "category": "creature",
+        "level": 1,
+        "size": 6,
+        "speed": 6,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 1,
+            "wisdom": 1,
+            "willpower": 2
+        },
+        "skills": [{ "name": "Brawl", "dots": 4 }],
+        "feats": [],
+        "traits": [],
+        "armor": [],
+        "weapons": [{ "name": "Fist", "type": "melee", "damage": "4k2", "damageType": "I", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "combat-servitor",
+        "name": "Combat Servitor",
+        "category": "construct",
+        "level": 3,
+        "size": 6,
+        "speed": 7,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 4,
+            "constitution": 6,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 1,
+            "intelligence": 1,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 1 },
+            { "name": "Crafts", "dots": 1 },
+            { "name": "Tech Use", "dots": 1 },
+            { "name": "Ballistics", "dots": 3 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "machine", "param": 10 }],
+        "armor": [{ "name": "Machine Toughness", "ap": 10, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Claw", "type": "melee", "damage": "6k2", "damageType": "I", "pen": 0, "special": "Snare" },
+            {
+                "name": "Multilas",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 60,
+                "rof": "S/8",
+                "clip": null,
+                "reload": null,
+                "special": "Reliable"
+            }
+        ],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "industrial-servitor",
+        "name": "Industrial Servitor",
+        "category": "construct",
+        "level": 1,
+        "size": 5,
+        "speed": 6,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 2,
+            "constitution": 5,
+            "charisma": 1,
+            "fellowship": 1,
+            "composure": 3,
+            "intelligence": 1,
+            "wisdom": 1,
+            "willpower": 1
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 1 },
+            { "name": "Crafts", "dots": 1 },
+            { "name": "Tech Use", "dots": 1 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "machine", "param": 4 }],
+        "armor": [{ "name": "Machine Toughness", "ap": 4, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Claw", "type": "melee", "damage": "6k2", "damageType": "I", "pen": 0, "special": "Snare" },
+            {
+                "name": "Arc Welder",
+                "type": "ranged",
+                "damage": "3k3",
+                "damageType": "E",
+                "pen": 0,
+                "range": 10,
+                "rof": "S/-",
+                "clip": null,
+                "reload": null,
+                "special": "Flame"
+            }
+        ],
+        "abilities": [],
+        "gear": []
+    },
+    {
+        "id": "dragon",
+        "name": "Dragon",
+        "category": "creature",
+        "level": 5,
+        "size": 12,
+        "speed": 12,
+        "characteristics": {
+            "strength": 7,
+            "dexterity": 4,
+            "constitution": 6,
+            "charisma": 6,
+            "fellowship": 3,
+            "composure": 4,
+            "intelligence": 5,
+            "wisdom": 5,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 3 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Arcana", "dots": 4 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Charm", "dots": 3 },
+            { "name": "Command", "dots": 5 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 2 },
+            { "name": "Intimidation", "dots": 5 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Politics", "dots": 2 },
+            { "name": "Scrutiny", "dots": 4 },
+            { "name": "Weaponry", "dots": 3 }
+        ],
+        "feats": ["Danger Sense", "Eidetic Memory", "Iron Jaw", "Power Attack", "Powerful Charge", "Strong Minded"],
+        "traits": [
+            { "id": "flyer", "param": 22 },
+            { "id": "unnaturalToughness" },
+            { "id": "armorPlating", "param": 10 },
+            { "id": "darkSight" },
+            { "id": "caster", "param": "Evocation 3, Divination 4" },
+            { "id": "fear", "param": 2 }
+        ],
+        "armor": [{ "name": "Iron Scales", "ap": 10, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Claws and Teeth", "type": "melee", "damage": "10k3", "damageType": "R", "pen": 0, "special": "Tearing" },
+            {
+                "name": "Dragon Fire",
+                "type": "ranged",
+                "damage": "6k3",
+                "damageType": "E",
+                "pen": 0,
+                "range": 80,
+                "rof": "S/-",
+                "clip": null,
+                "reload": null,
+                "special": "Flame"
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Frightful Presence",
+                "description": "Whenever this creature charges or makes an all out attack, all creatures within melee range must test against its fear rating"
+            }
+        ],
+        "gear": []
+    },
+    {
+        "id": "lich",
+        "name": "Lich",
+        "category": "undead",
+        "level": 4,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 5,
+            "fellowship": 1,
+            "composure": 4,
+            "intelligence": 5,
+            "wisdom": 4,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 3 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Arcana", "dots": 5 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Charm", "dots": 3 },
+            { "name": "Command", "dots": 5 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 5 },
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Politics", "dots": 2 },
+            { "name": "Scrutiny", "dots": 4 }
+        ],
+        "feats": ["Wizard Tradition (All)", "Spell Specialization (All)", "Tested"],
+        "traits": [
+            { "id": "undead" },
+            { "id": "darkSight" },
+            { "id": "caster", "param": "Evocation 4, Illusion 3, Abjuration 3, Conjuration 3" }
+        ],
+        "armor": [],
+        "weapons": [{ "name": "Unarmed", "type": "melee", "damage": "", "damageType": "", "pen": 0, "special": "" }],
+        "abilities": [
+            {
+                "name": "Phylactery",
+                "description": "Cannot be killed as long as their Phylactery exists. A lich's phylactery is invariably a constructed and typically valuable item"
+            }
+        ],
+        "gear": ["Musty but expensive robes", "staff", "ancient gems and jewelry"]
+    },
+    {
+        "id": "mind-flayer",
+        "name": "Mind Flayer",
+        "category": "supernatural",
+        "level": 3,
+        "size": 3,
+        "speed": 5,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 3,
+            "constitution": 2,
+            "charisma": 3,
+            "fellowship": 2,
+            "composure": 4,
+            "intelligence": 5,
+            "wisdom": 5,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 4 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Arcana", "dots": 4 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Command", "dots": 3 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 5 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 5 }
+        ],
+        "feats": ["Danger Sense", "Eidetic Memory", "Strong Minded"],
+        "traits": [{ "id": "darkSight" }, { "id": "caster", "param": "Divination 3, Enchantment 3, Illusion 3" }],
+        "armor": [],
+        "weapons": [{ "name": "Tentacles", "type": "melee", "damage": "2k2", "damageType": "I", "pen": 0, "special": "Snare" }],
+        "abilities": [
+            {
+                "name": "Mind Blast",
+                "description": "Half action: 60' cone of psychic power. All targets must make TN 25 Willpower Test or become stunned for one round"
+            },
+            {
+                "name": "Eats Your Goddamn Brain",
+                "description": "Attacks in a grapple always hit the head. While grappling, tentacles gain Tearing"
+            }
+        ],
+        "gear": ["Blasphemous Robes"]
+    },
+    {
+        "id": "aboleth",
+        "name": "Aboleth",
+        "category": "supernatural",
+        "level": 4,
+        "size": 8,
+        "speed": 4,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 4,
+            "charisma": 4,
+            "fellowship": 1,
+            "composure": 4,
+            "intelligence": 6,
+            "wisdom": 5,
+            "willpower": 6
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 4 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Arcana", "dots": 4 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Brawl", "dots": 4 },
+            { "name": "Command", "dots": 3 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 5 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 5 }
+        ],
+        "feats": ["Danger Sense", "Eidetic Memory", "Strong Minded", "Swift Attack"],
+        "traits": [
+            { "id": "darkSight" },
+            { "id": "caster", "param": "Divination 4, Enchantment 4, Illusion 4" },
+            { "id": "crawler" },
+            { "id": "amphibious" },
+            { "id": "armorPlating", "param": 3 }
+        ],
+        "armor": [{ "name": "Bone Ridges", "ap": 3, "locations": ["All"] }],
+        "weapons": [{ "name": "Tentacles", "type": "melee", "damage": "4k2", "damageType": "I", "pen": 0, "special": "Snare, Toxic" }],
+        "abilities": [
+            {
+                "name": "Mindslaver",
+                "description": "Can concentrate to maintain Enchantment spells as a free action; targets do not get extra dice to resist based on orders given"
+            }
+        ],
+        "gear": ["Slime"]
+    },
+    {
+        "id": "elemental",
+        "name": "Elemental",
+        "category": "supernatural",
+        "level": 2,
+        "size": 6,
+        "speed": 6,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 3,
+            "charisma": 1,
+            "fellowship": 2,
+            "composure": 3,
+            "intelligence": 1,
+            "wisdom": 2,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Perception", "dots": 3 },
+            { "name": "Brawl", "dots": 3 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "amorphous" }, { "id": "stuffOfNightmares" }],
+        "armor": [],
+        "weapons": [{ "name": "Slam", "type": "melee", "damage": "6k3", "damageType": "I", "pen": 0, "special": "" }],
+        "abilities": [
+            { "name": "Earth", "description": "Gains 9 armor to all locations" },
+            { "name": "Air", "description": "Gains Phasing and Flyer" },
+            { "name": "Fire", "description": "Deals E damage; targets within melee test Con TN 15/turn or gain fatigue" },
+            { "name": "Water", "description": "Gains Regeneration 2 and Amphibious" }
+        ],
+        "gear": []
+    },
+    {
+        "id": "walkin-dead",
+        "name": "The Walkin' Dead",
+        "category": "undead",
+        "level": 1,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 1,
+            "constitution": 2,
+            "charisma": 0,
+            "fellowship": 0,
+            "composure": 0,
+            "intelligence": 0,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Perception", "dots": 2 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "undead" }, { "id": "mindless" }],
+        "armor": [],
+        "weapons": [{ "name": "Claws and Teeth", "type": "melee", "damage": "3k1", "damageType": "R", "pen": 0, "special": "" }],
+        "abilities": [],
+        "gear": ["Bloody and torn clothing"]
+    },
+    {
+        "id": "ghost",
+        "name": "Ghost",
+        "category": "undead",
+        "level": 2,
+        "size": 4,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 2,
+            "constitution": 2,
+            "charisma": 4,
+            "fellowship": 1,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Arcana", "dots": 3 }
+        ],
+        "feats": [],
+        "traits": [{ "id": "undead" }, { "id": "flyer", "param": 10 }, { "id": "phasing" }, { "id": "fear", "param": 1 }],
+        "armor": [],
+        "weapons": [],
+        "abilities": [{ "name": "Possession", "description": "May test Charisma and Arcana to affect a target as the Dominate spell" }],
+        "gear": []
+    },
+    {
+        "id": "fire-warrior",
+        "name": "Fire Warrior",
+        "category": "mortal",
+        "level": 2,
+        "size": 4,
+        "speed": 6,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 3,
+            "constitution": 2,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 1 },
+            { "name": "Perception", "dots": 1 },
+            { "name": "Persuasion", "dots": 2 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 1 },
+            { "name": "Ballistics", "dots": 3 }
+        ],
+        "feats": ["Weapon Proficiency (Ordinary, Parrying, Las)", "Sound Constitution x1", "Armor Proficiency (light, medium)", "Deadeye Shot"],
+        "traits": [],
+        "armor": [
+            { "name": "Flak Vest, Gauntlets", "ap": 5, "locations": ["Arms", "Body"] },
+            { "name": "Helmet", "ap": 4, "locations": ["Head"] }
+        ],
+        "weapons": [
+            { "name": "Knife", "type": "melee", "damage": "4k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Pulse Rifle",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "E",
+                "pen": 2,
+                "range": 100,
+                "rof": "S/4",
+                "clip": 40,
+                "reload": "Full",
+                "special": "Reliable"
+            }
+        ],
+        "abilities": [{ "name": "Fall Back", "description": "As the Tau racial power" }],
+        "gear": ["Uniform", "Flak Armor", "Pulse Rifle", "2 Energy Packs", "Micro-bead", "Torch"]
+    },
+    {
+        "id": "ratling",
+        "name": "Ratling",
+        "category": "mortal",
+        "level": 1,
+        "size": 2,
+        "speed": 5,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 3,
+            "constitution": 2,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Common Lore", "dots": 3 },
+            { "name": "Deceive", "dots": 2 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 1 },
+            { "name": "Larceny", "dots": 3 },
+            { "name": "Ballistics", "dots": 1 }
+        ],
+        "feats": ["Weapon Proficiency (Ordinary, Parrying)", "Sneak Attack"],
+        "traits": [],
+        "armor": [{ "name": "Leathers", "ap": 2, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Knife", "type": "melee", "damage": "3k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Autopistol",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "I",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/6",
+                "clip": 12,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [{ "name": "Shifty", "description": "As the Halfling racial power" }],
+        "gear": ["Threadbare clothing", "leathers", "Autopistol", "Knife", "2 autopistol clips", "a few coins"]
+    },
+    {
+        "id": "slayer",
+        "name": "Slayer",
+        "category": "mortal",
+        "level": 2,
+        "size": 3,
+        "speed": 5,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 2,
+            "constitution": 3,
+            "charisma": 2,
+            "fellowship": 2,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 2,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Crafts", "dots": 2 },
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Common Lore", "dots": 2 }
+        ],
+        "feats": ["Iron Jaw", "True Grit", "Sturdy", "Sand"],
+        "traits": [],
+        "armor": [],
+        "weapons": [{ "name": "Axe", "type": "melee", "damage": "6k2", "damageType": "R", "pen": 0, "special": "" }],
+        "abilities": [{ "name": "Squat Toughness", "description": "As the racial ability" }],
+        "gear": ["Axe", "boots", "loincloth", "body paint", "mean look", "Plasma Grenade"]
+    },
+    {
+        "id": "living-ancestor",
+        "name": "Living Ancestor",
+        "category": "mortal",
+        "level": 3,
+        "size": 3,
+        "speed": 7,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 2,
+            "constitution": 5,
+            "charisma": 4,
+            "fellowship": 3,
+            "composure": 3,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Crafts", "dots": 4 },
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Weaponry", "dots": 4 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Command", "dots": 3 },
+            { "name": "Academic Lore", "dots": 2 }
+        ],
+        "feats": ["Iron Jaw", "Armor Proficiency (Power)"],
+        "traits": [],
+        "armor": [{ "name": "Power Armor", "ap": 12, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Power Axe", "type": "melee", "damage": "8k2", "damageType": "R", "pen": 0, "special": "Power Field" },
+            {
+                "name": "Plasma Pistol",
+                "type": "ranged",
+                "damage": "3k3",
+                "damageType": "E",
+                "pen": 8,
+                "range": 30,
+                "rof": "S/-",
+                "clip": 10,
+                "reload": "4Full",
+                "special": "Recharge, Overheats"
+            }
+        ],
+        "abilities": [{ "name": "Squat Toughness", "description": "As the racial ability" }],
+        "gear": ["Power Axe", "Power Armor", "Plasma Pistol", "2 extra plasma charges", "mean look", "beard jewelry", "embroidered clothing"]
+    },
+    {
+        "id": "talon-of-tiamat",
+        "name": "Talon of Tiamat",
+        "category": "mortal",
+        "level": 2,
+        "size": 5,
+        "speed": 6,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 2,
+            "constitution": 3,
+            "charisma": 4,
+            "fellowship": 2,
+            "composure": 5,
+            "intelligence": 2,
+            "wisdom": 4,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Command", "dots": 2 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Perception", "dots": 2 }
+        ],
+        "feats": ["Armor Proficiency (Medium)", "Weapon Proficiency (Ordinary, Fencing)"],
+        "traits": [],
+        "armor": [{ "name": "Flak Jacket", "ap": 5, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Fencing Sword", "type": "melee", "damage": "6k2", "damageType": "R", "pen": 0, "special": "Balanced" },
+            {
+                "name": "Pump Shotgun",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "I",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/-",
+                "clip": 8,
+                "reload": "2Full",
+                "special": "Scatter"
+            }
+        ],
+        "abilities": [{ "name": "Dragon Breath", "description": "As the Dragonborn racial abilities" }],
+        "gear": ["Flak Jacket", "Pump Shotgun", "24 extra shells", "Fencing Sword", "Micro-Bead", "Tough clothing"]
+    },
+    {
+        "id": "dragonfire-adept",
+        "name": "Dragonfire Adept",
+        "category": "supernatural",
+        "level": 3,
+        "size": 5,
+        "speed": 7,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 3,
+            "constitution": 4,
+            "charisma": 5,
+            "fellowship": 3,
+            "composure": 4,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Command", "dots": 2 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Brawl", "dots": 2 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Academic Lore", "dots": 2 }
+        ],
+        "feats": ["Armor Proficiency (Medium)", "Weapon Proficiency (Ordinary, Fencing)", "Spell Focus (Evocation)"],
+        "traits": [{ "id": "caster", "param": "Evocation 3" }],
+        "armor": [{ "name": "Flak Jacket", "ap": 5, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Fencing Sword", "type": "melee", "damage": "6k2", "damageType": "R", "pen": 0, "special": "Balanced" },
+            {
+                "name": "Meltagun",
+                "type": "ranged",
+                "damage": "4k3",
+                "damageType": "E",
+                "pen": 12,
+                "range": 20,
+                "rof": "S/-",
+                "clip": 5,
+                "reload": "2Full",
+                "special": ""
+            }
+        ],
+        "abilities": [{ "name": "Dragon Breath", "description": "As the Dragonborn racial ability" }],
+        "gear": ["Flak Jacket", "Meltagun", "2 extra reloads", "Fencing Sword", "Micro-Bead", "Brightly colored robes"]
+    },
+    {
+        "id": "tinkerer",
+        "name": "Tinkerer",
+        "category": "mortal",
+        "level": 2,
+        "size": 3,
+        "speed": 5,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 3,
+            "constitution": 2,
+            "charisma": 2,
+            "fellowship": 3,
+            "composure": 2,
+            "intelligence": 3,
+            "wisdom": 1,
+            "willpower": 2
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 3 },
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Common Lore", "dots": 3 },
+            { "name": "Drive", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Pilot", "dots": 3 },
+            { "name": "Scrutiny", "dots": 1 },
+            { "name": "Weaponry", "dots": 2 },
+            { "name": "Crafts", "dots": 4 },
+            { "name": "Tech-Use", "dots": 2 }
+        ],
+        "feats": ["Armor Prof (Light)", "Weapon Prof (All)"],
+        "traits": [],
+        "armor": [{ "name": "Mesh Vest", "ap": 4, "locations": ["Body"] }],
+        "weapons": [
+            {
+                "name": "Laspistol",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/-",
+                "clip": 30,
+                "reload": "Full",
+                "special": "Reliable"
+            },
+            {
+                "name": "Web Pistol",
+                "type": "ranged",
+                "damage": "",
+                "damageType": "",
+                "pen": 0,
+                "range": 30,
+                "rof": "S/-",
+                "clip": 1,
+                "reload": "Full",
+                "special": "Snare"
+            },
+            { "name": "Katar", "type": "melee", "damage": "2k2", "damageType": "R", "pen": 3, "special": "" }
+        ],
+        "abilities": [{ "name": "Improvise", "description": "As the Gnome racial ability" }],
+        "gear": [
+            "Laspistol",
+            "3 energy packs",
+            "Web Pistol",
+            "2 web loads",
+            "Katar",
+            "Mesh Vest",
+            "Auspex",
+            "Backpack",
+            "Chrono",
+            "Combi-Tool",
+            "Data Slate",
+            "Torch",
+            "Void Suit"
+        ]
+    },
+    {
+        "id": "ork-freeboota",
+        "name": "Ork Freeboota",
+        "category": "mortal",
+        "level": 2,
+        "size": 5,
+        "speed": 6,
+        "characteristics": {
+            "strength": 4,
+            "dexterity": 2,
+            "constitution": 3,
+            "charisma": 3,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Intimidation", "dots": 2 },
+            { "name": "Scrutiny", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Weaponry", "dots": 3 },
+            { "name": "Brawl", "dots": 2 }
+        ],
+        "feats": ["Cleave", "Crushing Blow", "Power Attack", "Fearless", "Armor Proficiency (Light)", "Weapon Proficiency (Ordinary)"],
+        "traits": [],
+        "armor": [{ "name": "Heavy Leathers", "ap": 3, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Choppa", "type": "melee", "damage": "7k2", "damageType": "R", "pen": 0, "special": "" },
+            {
+                "name": "Autogun",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "I",
+                "pen": 0,
+                "range": 90,
+                "rof": "S/10",
+                "clip": 30,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [{ "name": "WAAAAAGH!", "description": "As the Ork racial ability" }],
+        "gear": ["Charm", "Heavy Leathers", "Choppa", "Autogun", "3 clips", "Patchwork clothing"]
+    },
+    {
+        "id": "ork-nob",
+        "name": "Ork Nob",
+        "category": "mortal",
+        "level": 3,
+        "size": 6,
+        "speed": 8,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 4,
+            "charisma": 4,
+            "fellowship": 2,
+            "composure": 2,
+            "intelligence": 2,
+            "wisdom": 3,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Intimidation", "dots": 3 },
+            { "name": "Command", "dots": 4 },
+            { "name": "Scrutiny", "dots": 2 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Weaponry", "dots": 4 },
+            { "name": "Brawl", "dots": 3 }
+        ],
+        "feats": [
+            "Cleave",
+            "Crushing Blow",
+            "Power Attack",
+            "Fearless",
+            "Armor Proficiency (Light)",
+            "Weapon Proficiency (Ordinary)",
+            "Sound Constitution x4"
+        ],
+        "traits": [],
+        "armor": [{ "name": "Heavy Leathers", "ap": 3, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [
+            { "name": "Big Choppa", "type": "melee", "damage": "9k2", "damageType": "R", "pen": 4, "special": "" },
+            {
+                "name": "Autogun",
+                "type": "ranged",
+                "damage": "3k2",
+                "damageType": "I",
+                "pen": 5,
+                "range": 120,
+                "rof": "-/10",
+                "clip": 100,
+                "reload": "Full",
+                "special": ""
+            }
+        ],
+        "abilities": [{ "name": "WAAAAAGH!", "description": "As the Ork racial ability" }],
+        "gear": ["Charm", "Heavy Leathers", "SAW", "Autogun", "3 belts of ammunition", "Patchwork clothing"]
+    },
+    {
+        "id": "aspect-warrior",
+        "name": "Aspect Warrior",
+        "category": "mortal",
+        "level": 3,
+        "size": 3,
+        "speed": 7,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 4,
+            "constitution": 2,
+            "charisma": 3,
+            "fellowship": 4,
+            "composure": 3,
+            "intelligence": 4,
+            "wisdom": 4,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 2 },
+            { "name": "Acrobatics", "dots": 3 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Common Lore", "dots": 3 },
+            { "name": "Deceive", "dots": 2 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 2 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": [
+            "Blademaster",
+            "Armor Proficiency (Light)",
+            "Blind Fighting",
+            "Catfall",
+            "Defensive Mobility",
+            "Fleet of Foot",
+            "Swift Attack",
+            "Weapon Proficiency (Fencing, Syrneth)",
+            "Sound Constitution x2"
+        ],
+        "traits": [],
+        "armor": [{ "name": "Mesh Overcoat", "ap": 4, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Fencing Sword", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "Balanced" },
+            {
+                "name": "Lightning Gun",
+                "type": "ranged",
+                "damage": "4k2",
+                "damageType": "E",
+                "pen": 4,
+                "range": 30,
+                "rof": "S/2",
+                "clip": 6,
+                "reload": "2Full",
+                "special": "Scatter, Shocking"
+            }
+        ],
+        "abilities": [{ "name": "Warp Step", "description": "As the Eldarin Racial ability" }],
+        "gear": ["Lightning Gun", "2 Lightning Charges", "3 Photon Flash Grenades", "Fencing Sword", "Mesh Overcoat", "silk suit"]
+    },
+    {
+        "id": "eldarin-farseer",
+        "name": "Eldarin Farseer",
+        "category": "supernatural",
+        "level": 3,
+        "size": 3,
+        "speed": 6,
+        "characteristics": {
+            "strength": 2,
+            "dexterity": 4,
+            "constitution": 2,
+            "charisma": 4,
+            "fellowship": 4,
+            "composure": 2,
+            "intelligence": 4,
+            "wisdom": 3,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 1 },
+            { "name": "Acrobatics", "dots": 3 },
+            { "name": "Arcana", "dots": 4 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Common Lore", "dots": 3 },
+            { "name": "Deceive", "dots": 2 },
+            { "name": "Forbidden Lore", "dots": 3 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 3 },
+            { "name": "Weaponry", "dots": 2 }
+        ],
+        "feats": [
+            "Common Sense",
+            "Danger Sense",
+            "Defensive Mobility",
+            "Fast Reflexes",
+            "Foresight",
+            "Spell Might",
+            "Spell Penetration",
+            "Strong Minded",
+            "Weapon Proficiency (Fencing, Syrneth)"
+        ],
+        "traits": [{ "id": "caster", "param": "Divination 4, Enchantment 2, Illusion 3, Evocation 2" }],
+        "armor": [{ "name": "Leathers", "ap": 2, "locations": ["Arms", "Body", "Legs"] }],
+        "weapons": [{ "name": "Fencing Sword", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "Balanced" }],
+        "abilities": [{ "name": "Warp Step", "description": "As the Eldarin Racial ability" }],
+        "gear": ["Fencing Sword", "Staff", "Leathers", "Elaborate robes"]
+    },
+    {
+        "id": "space-marine",
+        "name": "Space Marine",
+        "category": "mortal",
+        "level": 3,
+        "size": 5,
+        "speed": 8,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 3,
+            "constitution": 5,
+            "charisma": 3,
+            "fellowship": 3,
+            "composure": 4,
+            "intelligence": 3,
+            "wisdom": 5,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Scrutiny", "dots": 3 },
+            { "name": "Weaponry", "dots": 3 }
+        ],
+        "feats": ["Sound Constitution x3", "Combat Master", "Armor Proficiency (all)", "Weapon Proficiency (all)"],
+        "traits": [],
+        "armor": [{ "name": "Power Armor", "ap": 12, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Chainsword", "type": "melee", "damage": "8k2", "damageType": "R", "pen": 4, "special": "Tearing" },
+            {
+                "name": "Boltgun",
+                "type": "ranged",
+                "damage": "4k2",
+                "damageType": "X",
+                "pen": 6,
+                "range": 90,
+                "rof": "S/3",
+                "clip": 24,
+                "reload": "Full",
+                "special": "Tearing"
+            }
+        ],
+        "abilities": [{ "name": "And They Shall Know No Fear", "description": "As the Aasimar racial ability" }],
+        "gear": ["Power Armor", "Chainsword", "Boltgun", "2 Bolt clips", "Plain clothing", "charms"]
+    },
+    {
+        "id": "grey-knight",
+        "name": "Grey Knight",
+        "category": "mortal",
+        "level": 4,
+        "size": 5,
+        "speed": 9,
+        "characteristics": {
+            "strength": 6,
+            "dexterity": 3,
+            "constitution": 5,
+            "charisma": 4,
+            "fellowship": 3,
+            "composure": 5,
+            "intelligence": 3,
+            "wisdom": 5,
+            "willpower": 5
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 3 },
+            { "name": "Athletics", "dots": 4 },
+            { "name": "Ballistics", "dots": 4 },
+            { "name": "Common Lore", "dots": 3 },
+            { "name": "Forbidden Lore", "dots": 3 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 4 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": [
+            "Sound Constitution x5",
+            "Combat Master",
+            "Armor Proficiency (all)",
+            "Weapon Proficiency (all)",
+            "Blind Fighting",
+            "Danger Sense",
+            "Luck",
+            "Strong Minded"
+        ],
+        "traits": [],
+        "armor": [{ "name": "Power Armor", "ap": 12, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Power Sword", "type": "melee", "damage": "9k2", "damageType": "R", "pen": 4, "special": "Power Field" },
+            {
+                "name": "Boltgun",
+                "type": "ranged",
+                "damage": "4k2",
+                "damageType": "X",
+                "pen": 6,
+                "range": 90,
+                "rof": "S/3",
+                "clip": 24,
+                "reload": "Full",
+                "special": "Tearing"
+            }
+        ],
+        "abilities": [{ "name": "And They Shall Know No Fear", "description": "As the Aasimar racial ability" }],
+        "gear": ["Power Armor", "Power Sword", "Boltgun", "2 Bolt clips", "Plain clothing", "charms"]
+    },
+    {
+        "id": "chaos-marine",
+        "name": "Chaos Marine",
+        "category": "mortal",
+        "level": 3,
+        "size": 5,
+        "speed": 8,
+        "characteristics": {
+            "strength": 5,
+            "dexterity": 4,
+            "constitution": 5,
+            "charisma": 3,
+            "fellowship": 3,
+            "composure": 4,
+            "intelligence": 3,
+            "wisdom": 4,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Intimidate", "dots": 3 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": ["Sound Constitution x3", "Armor Proficiency (all)", "Weapon Proficiency (all)", "Frenzy"],
+        "traits": [],
+        "armor": [{ "name": "Power Armor", "ap": 12, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Chainsword", "type": "melee", "damage": "8k2", "damageType": "R", "pen": 4, "special": "Tearing" },
+            {
+                "name": "Boltgun",
+                "type": "ranged",
+                "damage": "4k2",
+                "damageType": "X",
+                "pen": 6,
+                "range": 90,
+                "rof": "S/3",
+                "clip": 24,
+                "reload": "Full",
+                "special": "Tearing"
+            }
+        ],
+        "abilities": [{ "name": "Bloody Minded", "description": "As the Tiefling racial ability" }],
+        "gear": ["Power Armor", "Chainsword", "Boltgun", "2 Bolt clips", "Plain clothing", "charms"]
+    },
+    {
+        "id": "obliterator",
+        "name": "Obliterator",
+        "category": "supernatural",
+        "level": 4,
+        "size": 8,
+        "speed": 8,
+        "characteristics": {
+            "strength": 6,
+            "dexterity": 4,
+            "constitution": 6,
+            "charisma": 3,
+            "fellowship": 1,
+            "composure": 4,
+            "intelligence": 2,
+            "wisdom": 1,
+            "willpower": 4
+        },
+        "skills": [
+            { "name": "Acrobatics", "dots": 2 },
+            { "name": "Athletics", "dots": 3 },
+            { "name": "Ballistics", "dots": 3 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Perception", "dots": 2 },
+            { "name": "Intimidate", "dots": 3 },
+            { "name": "Weaponry", "dots": 3 }
+        ],
+        "feats": ["Sound Constitution x5", "Armor Proficiency (all)", "Weapon Proficiency (all)", "Sturdy"],
+        "traits": [{ "id": "autoStabilized" }, { "id": "machine", "param": 15 }],
+        "armor": [{ "name": "Armor Plating", "ap": 15, "locations": ["All"] }],
+        "weapons": [
+            {
+                "name": "MP Lascannon",
+                "type": "ranged",
+                "damage": "5k4",
+                "damageType": "E",
+                "pen": 10,
+                "range": 300,
+                "rof": "S/-",
+                "clip": null,
+                "reload": null,
+                "special": "Recharge"
+            },
+            {
+                "name": "Heavy Bolter",
+                "type": "ranged",
+                "damage": "4k2",
+                "damageType": "X",
+                "pen": 8,
+                "range": 120,
+                "rof": "-/10",
+                "clip": null,
+                "reload": null,
+                "special": "Tearing"
+            },
+            { "name": "Crushing Fist", "type": "melee", "damage": "6k3", "damageType": "I", "pen": 0, "special": "" }
+        ],
+        "abilities": [
+            { "name": "Bloody Minded", "description": "As the Tiefling racial ability" },
+            {
+                "name": "Integrated Weapons Array",
+                "description": "Can create nearly any weapon from its body. Can generate Ordinary, Las, Plasma, Melta, Bolt, or Flame weapons. Infinite ammo. Full round to shift, two weapons at a time."
+            }
+        ],
+        "gear": []
+    },
+    {
+        "id": "dark-eldarin-raider",
+        "name": "Dark Eldarin Raider",
+        "category": "mortal",
+        "level": 3,
+        "size": 3,
+        "speed": 8,
+        "characteristics": {
+            "strength": 3,
+            "dexterity": 5,
+            "constitution": 2,
+            "charisma": 4,
+            "fellowship": 4,
+            "composure": 3,
+            "intelligence": 3,
+            "wisdom": 3,
+            "willpower": 3
+        },
+        "skills": [
+            { "name": "Academic Lore", "dots": 1 },
+            { "name": "Acrobatics", "dots": 3 },
+            { "name": "Arcana", "dots": 2 },
+            { "name": "Athletics", "dots": 2 },
+            { "name": "Ballistics", "dots": 2 },
+            { "name": "Common Lore", "dots": 2 },
+            { "name": "Deceive", "dots": 4 },
+            { "name": "Forbidden Lore", "dots": 2 },
+            { "name": "Perception", "dots": 3 },
+            { "name": "Scrutiny", "dots": 2 },
+            { "name": "Weaponry", "dots": 4 }
+        ],
+        "feats": [
+            "Blademaster",
+            "Armor Proficiency (Light)",
+            "Backstab",
+            "Catfall",
+            "Defensive Mobility",
+            "Decadence",
+            "Fleet of Foot",
+            "Sneak Attack",
+            "Weapon Proficiency (Fencing, Exotic, Parrying)"
+        ],
+        "traits": [],
+        "armor": [{ "name": "Mesh Overcoat", "ap": 4, "locations": ["All"] }],
+        "weapons": [
+            { "name": "Officer's Cutlass", "type": "melee", "damage": "5k2", "damageType": "R", "pen": 0, "special": "Shocking" },
+            {
+                "name": "Needle Gun",
+                "type": "ranged",
+                "damage": "2k2",
+                "damageType": "E",
+                "pen": 0,
+                "range": 180,
+                "rof": "S/-",
+                "clip": 6,
+                "reload": "2Full",
+                "special": "Accurate, Toxic"
+            }
+        ],
+        "abilities": [{ "name": "Warp Miasma", "description": "As the Dark Eldarin Racial ability" }],
+        "gear": ["Needle Gun", "2 Needle Packs", "3 Smoke Grenades", "Officer's Cutlass", "Mesh Overcoat", "spider silk suit"]
+    }
+]

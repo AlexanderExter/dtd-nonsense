@@ -1,0 +1,1376 @@
+---
+title: "Chapter XIV: Playing the Game"
+book: 1
+chapter: 14
+order: 14
+type: "chapter"
+---
+# Chapter XIV: Playing the Game
+
+Dungeons the Dragoning provides a rich game experience where players use creative thinking, tactics, strategy, and total overwhelming force to overcome a huge breadth of challenges. Life in the Great Wheel can be exciting, but it is seldom easy. Innumerable dangers, from untimely mechanical failures and bloodthirsty aliens to treacherous warp storms and deadly trapped ruins, await those daring enough to explore the cold, uncharted Crystal Spheres in deep space. This chapter discusses the fundamental rules of how such situations (and many others) are resolved.
+
+## Tests
+
+Tests are the basic way of determining success or failure in a game of DUNGEONS THE DRAGONING. When a hero performs any task that could have dramatic consequences - affecting the story, a character's health, a leader's reputation, the safety of the ship, and so on - a Test must be performed.
+
+### Exploding Dice
+
+Ten-sided dice generate numbers from one to ten. Generally, the ten on a die is indicated with a zero. Whenever a die rolls 10, roll that die again and add the result to the 10. This is called an exploding die. If the hero rolls again and gets an additional 10, he may add that 10 and continue rolling until he doesn't get an additional 10. Some feats and abilities can change how explosions work, these apply to both initial and followup explosions.
+
+### Rolling More Than Ten Dice
+
+While most gamers like rolling lots of dice, ten is about as many as you can reasonably be expected to throw down at once and keep the game moving at any reasonable kind of speed. Therefore, whenever you are rolling more than ten dice at once, rolled dice over 10 are changed into kept dice at a 2 to 1 ratio. Thus, if you were rolling 12k6, you would drop the two extra rolled dice and Keep one extra die, for a roll of 10k7. Should you reach 10k10 and still have extra dice left over, each additional die (whether it's Kept or rolled) becomes a bonus of 5 to the roll. Thus, 15k10 becomes 10k10+25, and 11k11 becomes 10k10+10.
+
+### Skill Tests
+
+The most common type of Test. Each of the three main branches of skills is governed by the appropriate stats. You simply roll a number of dice equal to the appropriate skill and characteristic and keep a number of dice equal to the characteristic. The SM will set a Target Number for this Test. The base TN for an ordinary skill Test is 15.
+
+Success is more likely to occur in a skill Test where the character has training in the skill. An explorer can attempt a Skill Test with an untrained Basic skill, but in such cases, it becomes a characteristic Test with a -1 penalty to the characteristic. If an untrained basic skill Test involves situational modifiers, they apply as normal after the penalty to the characteristic. A character cannot attempt a skill Test with an untrained advanced skill.
+
+### Characteristic Tests
+
+If what you attempt isn't covered by a skill, the SM may ask you to make a characteristic Test. The SM determines the most appropriate characteristic for the Test, and the appropriate TN for the Test. Unlike a skill Test, you just roll dice equal to your characteristic and total them against the TN.
+
+#### Rank 0 Characteristics
+
+It's possible, due to penalties or curses, to end up with zero dots in a Characteristic. This means that you're pretty much crippled in that aspect. A hero with a Rank 0 Dexterity may be literally crippled, while a hero with Rank 0 Strength might be sickly and weak.
+
+A Hero who must make a roll based on a Characteristic in which he has a 0 always rolls one die for the characteristic, applying skills and specialities as normal, but if he rolls a 10 on any of his dice, they count as 0 and not as 10, and the die never explodes.
+
+### Raises and Checks
+
+For most Tests, it's just enough to know if you succeeded, but sometimes it's good to know just how well you succeeded or failed. This is particularly important with social skills, such as Charm and Persuasion, as well as certain combat situations, such as firing a gun capable of automatic fire.
+
+Measuring raises is straightforward. After the roll is made, compare the total against the Target Number of the Test. For each 5 points by which the TN was exceeded, one raise is achieved. Conversely, for each 5 points by which the Test failed, you have a Check.
+
+If a feat or ability would give you a free Raise to a Test, simply add +5 to the result of the roll for each free Raise granted.
+
+### Opposed Rolls
+
+Sometimes you'll need to Test your skill against another's. This is known as an Opposed Test. For example, if an explorer needed to hide from a guard, he could Test his Stealth skill against the guard's Perception skill.
+
+In an opposed skill Test, both participants make Tests normally. Whoever succeeds at his Test wins. If both participants succeed, the participant with the highest total roll wins.
+
+Should both parties fail, one of two things occurs. Either there is a stalemate and nothing happens or both parties should reroll until there is a clear winner.
+
+For example to dodge you'd need to roll Dexterity + Acrobatics against the opponent's Dexterity + Weaponry. The process is simple - each participant rolls, and the highest roll wins. If there's a tie, the character with the highest applying Characteristic wins.
+
+### Target Number
+
+| TN  | Difficulty             |
+| --- | ---------------------- |
+| 5   | Mundane                |
+| 10  | Easy                   |
+| 15  | Average                |
+| 20  | Hard                   |
+| 25  | Very Hard              |
+| 30  | Heroic                 |
+| 35  | Never Done Before      |
+| 40  | Never to be Done Again |
+
+## Stunting
+
+The rules of DUNGEONS THE DRAGONING reward players with drama dice, additional rolled dice granted for good roleplaying, for describing their characters' actions in an evocative manner. The out-of-game rationale for a stunt bonus is that well-described dramatic actions keep the game interesting for everyone and help the Story Master set the scene. In game, stunts represent the capacity of epic heroes to be truly spectacular when they take risks and act like heroes.
+
+At the lowest level, **one-drama die stunts** require a good description of an action, adjudicated by the Story Master. In return, the player gains one drama die to use as a rolled die on that roll and the character may perform feats that border on impossible (such as running across the heads of people in a crowd, deflecting a blade barehanded and so on).
+
+_Example: Lyra snaps her switchblade open behind her back with a soft click, swiping it across the guard's throat in the same moment. She folds it back up as she watches him collapse in a gurgling heap at her feet._
+
+**Two-die stunts** require that the character interact with the environment in some notable fashion, taking advantage of the scenery that the Story Master has provided. This can be physical environment or things the character knows about the world, like an enemy's phobias or a lover's favorite flower. The player gets two bonus dice and may perform limited dramatic editing. No detail of the scene may be contradicted, but minor details may be 'revealed' in the context of the character's actions. For instance, a character might leap off a parapet to escape a hail of arrows, and the player could use a two-die stunt to reveal a banner fortuitously hung on the wall, which the character grabs to save himself. The Story Master may veto any editing that he feels strains belief or is otherwise inappropriate (such as an edit that contradicts a major detail he has not yet revealed). Players cannot generally use a stunt to draw a "hidden" weapon from nowhere, though some assassins might well have knives or other small weapons hidden all over your person, leaving exact placement vague until a good stunt opportunity arises.
+
+_Example: Lyra watches the two guards charging her from each side, intending to flank her. At the last moment, she crouches and flips back against the wall. In the instant she stands horizontal, she aims and fires at their knees with her twin bolt pistols held out to either side. The bolts tear through their legs, and both men collide with each other on momentum alone as she lands catlike leaving the two collapsed behind her._
+
+**Three-die stunts** are singular acts of greatness, stunning bravado and visual poetry, defined by their capacity to leave the other players slack-jawed in astonishment. If any
+
+> **Play Tip:** Talk with the SM when you want to use artifact functions. Don't try to surprise them with a sudden, unannounced, unapproved ability. It's a good way for a character sheet to be set on fire.
+
+> **Clarification:** Vehicles are in Book 2. A vehicle from the Folding Vehicle artifact should have a value equal to two fewer dots of Holdings than the artifact rating. An artifact 4 folding vehicle would be valued as a Holdings 2 vehicle, and an artifact 1 folding vehicle would be equal to a very rare vehicle. For reference, a Holdings 2 vehicle is about equal to an armored luxury jet, elite mini-mecha power armor, or very heavy tank. A very rare vehicle might be a high-end jet-pack, TIE Fighter, armored scout car, or comparable walker mech.
+
+> **Clarification:** Converting dice over 10 doesn't make much practical difference. The averages for `20k8` and `10k10+15` are almost identical — converting dice over 10 results in very slightly higher averages, but the biggest difference found was about 3 points. If you don't want to convert anything and prefer rolling big piles of dice, go right ahead.
+
+See Appendix I for more advice on tests.
+
+> **Clarification:** It is totally appropriate to call for a characteristic Test that adds a skill. The "saving throws" for magic spells and the Dodge action are considered this sort of Test. Otherwise only characters trained in Acrobatics could attempt to dodge, and anyone untrained in Arcana would take a penalty — not terribly unrealistic, but not much fun and a nuisance to calculate on the fly.
+
+doubt exists as to whether a stunt merits three drama dice, it isn't a three-die stunt. In addition to providing three drama dice, these feats allow for the same measure of dramatic editing as two-die stunts.
+
+_Example: The daemon swings his burning fist at Lyra, and she leaps straight up in a somersault, balancing in a tentative handstand on his massive hand. Her feet connect with a lighting fixture above, breaking it away from the ceiling and causing it to swing into the daemon's head, the fluorescent lights shatter against the warp horror's head, not hurting it but distracting him long enough for her to release a hand and grab a bolt pistol from her belt. Still balanced on the monster's swinging arm, Lyra shoves her bolt pistol into the daemon's eye, firing directly into its skull._
+
+Players should note that the preceding examples set the scene as well as providing the action. In the first, the stunt is the description of the attack as something more than "I hit him." In the second, the stunt is Lyra's use of the wall as a springboard and arranging for her opponents to crash together. In the final example, it's her audacity to perform acrobatic feats while perched on her enemy as she sets him up to expose a point of vulnerability.
+
+During play, the Story Master should have already set the scene by the time a character acts, so a stunt does not need to be a five minute narrative. Without exception, short and flowing is always better than long and clunky. Merely stringing adjectives and adverbs together isn't good enough. The description must be interesting without interrupting the flow of play.
+
+Important Story Master characters may also use stunts to benefit their actions but they should only do so sparingly since the Story Master is the final authority on all stunts. Unimportant characters should never gain the advantage of stunts, no matter how well the Story Master narrates their actions. In gritty games, Story Masters may limit the effect of stunts for all characters.
+
+## Hero Points
+
+Heroes are unusual people, individuals with abilities, backgrounds, and experiences well beyond those of ordinary citizens of the Wheel. More than anything, it's the hero's tie to fate that separates him from the masses. All adventurers begin play with a number of Hero Points. For some, these Hero Points represent destiny, a sign that the gods have marked them for greatness. For others, they represent simple luck.
+
+### Using Hero Points
+
+Hero Points allow an adventurer to manipulate situations by mitigating bad results or turning a mishap into fortune. Among other things, this allows players to take more risks, which makes the game faster and far more exciting. A hero has a limited pool of Hero Points, and when a Hero Point is spent, that pool is reduced by one. Spent Hero Points are restored at the beginning of the next gaming session, or possibly under special circumstances in the middle of a game session that the SM deems appropriate. A Hero Point can be used at any time, either on the character's own turn or in reaction to the action of another character. Spending a Hero Point is a Free Action.
+
+Spending a Hero Point allows for one of the following effects:
+
+- Reroll a failed Test once. The results of the reroll are final.
+- Reduce the TN of a roll by 5. This must be chosen before dice are rolled.
+- Add an extra raise to an already successful Test.
+- Count as having rolled a 10 for initiative.
+- Instantly recover from being stunned.
+
+### Burning Hero Points
+
+Burning Hero points is much more severe. When you absolutely need to, you can burn a Hero point, permanently reducing the pool by one. The result is that the character survives whatever would have killed him. Most of the time it's just that the attack wasn't fatal but leaves you out of the fight, more complicated situations (being trapped in a collapsing chamber) might require some working things out with the SM. The consequences of burning a Hero Point should largely be in the hands of the player - there might be no consequences, or the character might end up losing an arm or becoming heavily scarred or something of the sort. A Hero point may be burnt even if it has already been used for that gaming session.
+
+### Gaining Additional Hero Points
+
+Characters are awarded additional Hero Points (or are allowed to replenish burnt Hero Points) at the SM's discretion. Such awards should be given out only for reaching milestones, accomplishing major goals, etc.
+
+## Combat
+
+The galaxy is a dangerous place, especially for those who choose to leave behind the relative safety of established Crystal Spheres and explore the unknown. Over the course of a Hero's journey, they're bound to encounter all manner of people, aliens, and worse that would see them dead. Unless they plan to spend their lives running away from their enemies (and they aren't very good heroes if that's all they do), they will have to fight. As a result, combat can form a key component to a game.
+
+### Narrative Time vs Structured Time
+
+The passage of time is flexible in a game of DUNGEONS THE DRAGONING and subject to the SM's discretion based on the needs of the story and the choices the players make. Sometimes the SM only needs to convey a very loose sense of time, which is known as narrative time. In other situations, especially combats, more precise time keeping is necessary, and the SM should adopt what is known as structured time.
+
+**Narrative Time:** Most of the time, you don't need to worry about exact timing, and it just passes as needed for the story. It's usually enough to know if a certain action takes a few minutes, or about an hour, or several weeks, or anything in between. Narrative time is most often used outside of combat and other situations where the precise order of actions is unimportant.
+
+**Structured Time:** In contrast to the abstract approach of narrative time, structured time is important for resolving complex encounters, such as combat, where every second counts and the order in which things happen is crucial. Structured time is divided into Rounds, Turns, and Actions.
+
+- _A Round_ consists of every character participating in the encounter taking one turn each. It is assumed that characters act more or less simultaneously in an encounter, so a round is approximately ten to twelve seconds long regardless of how many characters are involved.
+- _Each character_ in an encounter gets one Turn each round. During a character's turn, he can perform one or more actions. While character's turns overlap each other slightly, Turns are resolved in a specific order known as Initiative order.
+- _Actions_ are what a character does. A character can perform one or more actions on his turn. A character can take one Reaction Action per round, any number of Free Actions, and one Full Action OR two Half Actions. A character may not take the same Half Action twice in one turn (a character couldn't use Standard Attack twice, for example, but could use a Standard Attack and a Bull Rush).
+
+### Combat Overview
+
+Combat is usually resolved using structured time divided into Rounds, Turns, and Actions. Each character, including NPCs, takes one Turn each Round. The order in which turns are resolved depends on initiative order. When a new combat begins, follow these steps to determine what happens.
+
+1. **Step 1: Surprise** - At the beginning of a combat, the SM determines if any characters are Surprised. This can only happen once at the beginning of a combat, and there will be many combats where nobody is surprised. A surprised character loses his turn on the first round of combat because he has been caught unawares by his enemies.
+2. **Step 2: Roll Initiative**
+3. **Step 3: Determine Initiative Order**
+4. **Step 4: Combatants Take Turns**
+5. **Step 5: Round Ends** - The round ends when everyone has taken their turn, and any effects that last until the end of the round now end.
+6. **Step 6: Repeat Steps 4-5 as needed** - Continue to play through combat rounds until the combat is resolved.
+
+### Surprise
+
+Surprise only affects the beginning of a new combat. It is up to the SM to decide if any of the combatants are Surprised. Ultimately, this comes down to a judgment call on the SM's part, based on the circumstances and the actions of the various combatants leading up to the encounter. The SM should take the following into account when determining surprise:
+
+- Is anyone hiding? Successful Stealth Tests may mean that some combatants are hidden.
+- Are there any unusual circumstances that would mask the approach of attackers? This can cover nearly anything, from pouring rain to whining engines to nearby explosions.
+- Are there any distractions? It's possible that something quite distracting is going on. A cultist's attention may be so fixated on the sermon of his confessor that he doesn't notice his attackers approaching.
+  Bearing all of this in mind, the SM must decide which combatants are surprised. Whilst it's often the case that one entire side or the other is surprised, there can be individual exceptions.
+
+If no one is surprised, proceed with the combat as normal.
+
+A surprised character loses his Turn in the first Round. He can do nothing except stand dumbfounded. Furthermore, he grants combat advantage to all non-Surprised attackers. After the Surprise round completely resolves, all surprised characters recover their wits and can act normally.
+
+Some people cannot be surprised, Paragons and people with the Danger Sense feat are the most common. Usually there won't be any problems but sometimes you get an ambush predator that won't leap until the perfect moment or the Paragon will win initiative and take actions that cause the attacker to never have started anything. In these cases you should have people know that their danger sense was triggered, then determine what they know and what they will do before rolling initiative. This avoids problems with embarrassing retcons, pre-combat attacks, and other timing issues.
+
+### Initiative
+
+At the start of the first Round, participants roll initiative to determine turn order. Roll 1d10 and add Dexterity and Composure. Highest result goes first. If two people are tied for result, the character with the higher die roll wins. If they're still tied, highest Dex wins. If still tied, roll again, winner goes first. The results of this roll apply for all successive Rounds in this combat.
+
+The SM ranks all the Initiative rolls, including those of the NPCs, from highest to lowest. This is the order in which the characters take their turns during each round of combat.
+
+Starting with the character at the top of the initiative order, each character takes a turn. The character currently taking his turn is known as the active character. During his turn, the active character can perform one or more actions. Once his actions have been resolved, the next character in the initiative order becomes the active character and takes his Turn, and so forth.
+
+## Actions in Combat
+
+| Name               | Type | Description                                                                                     |
+| ------------------ | ---- | ----------------------------------------------------------------------------------------------- |
+| Aid Another        | H    | Give another character +1k0 on their next Test.                                                 |
+| Aim                | H/F  | +1k0 to hit on a Half Action aim or +2k0 to hit on a Full Action, applying to your next attack. |
+| All-Out Attack     | F    | +2k0 to hit, +1k0 melee damage, cannot Dodge or Parry.                                          |
+| Brace              | H    | Brace a heavy weapon to fire it normally.                                                       |
+| Bull Rush          | H    | Opposed Size + Strength, move target 2m, plus 2m per Raise.                                     |
+| Called Shot        | F    | Attack specific location on your target at -2k0 to hit.                                         |
+| Charge             | F    | Must move 4 meters before attack, +1k0 to attack.                                               |
+| Delay              | H    | Before your next turn take any Half Action.                                                     |
+| Disarm             | H    | Test opposed Level + Weaponry, disarm opponent on success.                                      |
+| Dodge              | R    | Test Acrobatics + Dexterity to try to negate a hit.                                             |
+| Feint              | H    | Opposed Level + Weaponry Test, if you win your next attack cannot be dodged or parried.         |
+| Fight Defensively  | F    | -2k0 to hit, +2k0 to parry and dodge.                                                           |
+| Focus Power        | V    | Cast a spell.                                                                                   |
+| Full Auto Burst    | F    | +2k1 to hit, add +1k0 damage for every Raise, up to the RoF.                                    |
+| Full Defense       | F    | Improve your Static Defense by +10, gain an additional Reaction.                                |
+| Grapple            | H/F  | Affect a grappled opponent or escape from a grapple.                                            |
+| Healing Surge      | H    | Spend a Resource point to heal during battle.                                                   |
+| Knock Down         | H    | Opposed Size + Strength and knock an opponent to the ground.                                    |
+| Move               | H/F  | Move up to your speed as a Half Action or double it as a Full Action.                           |
+| Multiple Attacks   | F    | Attack more than once in the same round - requires two weapons, a feat, or both.                |
+| Opportunity Attack | Fr   | Attack a target that has left itself open.                                                      |
+| Overwatch          | F    | Shoot targets coming into a set kill zone.                                                      |
+| Parry              | R    | Test Level + Weaponry to negate a hit.                                                          |
+| Ready              | H    | Ready, draw, or prepare a weapon or item.                                                       |
+| Reload             | V    | Reload a weapon.                                                                                |
+| Run                | F    | Move a long distance, enemies attack you at -2k0 on ranged attacks and +2k0 on melee attacks.   |
+| Shift              | H    | Make a small movement that doesn't provoke attacks.                                             |
+| Stand              | H    | Stand up from being prone.                                                                      |
+| Standard Attack    | H    | Make one melee or ranged attack.                                                                |
+| Suppressing Fire   | F    | Force opponents to take cover with fully automatic weapons.                                     |
+| Tactical Advance   | F    | Move from cover to cover, retaining the benefits of your cover.                                 |
+| Use a Skill        | V    | You may use a skill.                                                                            |
+| Withdraw           | F    | Break off from melee and move without opportunity attacks.                                      |
+
+**Action Type Key:** H = Half Action, F = Full Action, R = Reaction, Fr = Free Action, V = Variable
+
+## Actions
+
+During each normal round, every character gets a Turn to act. On his Turn, a character can take one or more actions. There are five types of actions in DUNGEONS THE DRAGONING, and every action also has one or more subtypes.
+
+### Types of Actions
+
+Every action is categorized into one of the following types: Full actions, half actions, reactions, free actions, and Extended actions.
+
+**Full Actions:** A full action requires a character's complete attention to accomplish. A character can take one Full Action on his turn and cannot take any Half Actions. Grappling an opponent is an example of a Full Action.
+
+**Half Actions:** A half action is fairly simple; it requires some effort or concentration, but not so much that it consumes a character's entire turn. A character can take two different Half Actions on his turn instead of taking one full action. A character cannot take the same half action twice in the same turn. Readying a weapon or making a Standard Attack are both examples of Half Actions.
+
+**Reactions:** A Reaction is a special Action made in response to some event, such as an attack. A character receives one Reaction each Round, which may only be used when it is not his turn. Examples include making a Dodge Test or parrying an attack.
+
+**Free Actions:** A free action takes only a moment and requires no real effort by the character. Free actions may be performed in addition to any other Actions on a character's turn, and there is no formal limit to the number of Free Actions one character can take. The SM should use common sense to set reasonable limits on what can be done in a few seconds. Examples of Free Actions include dropping an item or speaking a few words.
+
+**Extended Actions:** Some actions take more than a single round to complete. Once a character commits to an Extended Action, he is considered to be working towards completing it for as long as necessary. If the character abandons the Extended action, or is interrupted, all progress towards completing the Extended Action is lost.
+
+### Action Subtypes
+
+In addition to its type, every action is also categorized into one or more subtypes. Action subtypes don't do anything in and of themselves, but they are used to clarify what a character is and is not allowed to do in a variety of special circumstances. For example, a character that is Immobilized cannot perform any Actions with the movement subtype.
+
+### Using Actions
+
+During his turn, a character may perform one Full Action or two different half actions. A character could, for example, make a charge attack (Full action) or aim and shoot (two half actions). It's important to remember that a round is only a few seconds long, so the character's turn within that round is but a few moments.
+
+Any action can be combined with talking, banter, battle cries, and other short verbal expressions - these are considered free actions. It is left to the SM to decide what a player might be able to say in that amount of time. A wry aside to a companion or a terse insult to an enemy is always reasonable, but recounting the intimate details of one's seven duels-to-the-death between swings of a daiklave should probably count as something more than just a Free Action.
+Most actions are started and completed within the active character's same turn.
+For example, a character does not begin acharge one Turn and then finish it on a laterturn; he performs the entire Charge (which isa full action) at once on his turn. But, thereare two exceptions. Reactions are almost al
+
+ways performed when it is not the reacting character's turn, and Extended Actions take
+more than one Round to complete.
+AID ANOTHERHalf Action Subtype: Miscellaneous The character creates an opportunity for
+another character. By working together with them, the active character gives them +1k0
+to their next Test. If the Test is to be a skill, the character must have at least one dot in
+that skill or this Aid Another bonus does not apply. Supernatural template abilities and
+spells cannot get bonuses via this method.
+The active character must be adjacent to the character performing the Test. The Aid
+Another bonus cannot be used on Free
+Actions, and the bonus cannot be given on
+Tests made to resist disease, poison, Fear, or anything else the SM deems inappropriate, and no more than two characters may
+attempt to assist another on a single Test.
+AIMHalf or Full Action Subtype: Melee or Ranged The active character takes extra time to
+make a more precise attack. You may take a half action to get +1k0 on your next attack
+or a full action to get +2k0 on your next attack. The next action the aiming character
+performs must be an attack or the benefits of aiming are lost. Aiming benefits are also
+lost if the character performs a Reaction before making his attack. Aiming can be
+used with both melee and ranged attacks.
+ALL-OUT ATTACKFull Action Subtypes: Attack, Melee The character attacks with everything
+they've got, making a melee attack with a
++2k0 bonus to hit and a +1k0 bonus to damage. However, the active character loses
+the ability to use Reactions until their next turn.
+BRACEHalf Action Subtype: Miscellaneous Heavy weapons must be braced before firing.
+Bracing a heavy weapon can involve using a stand, propping it up on a windowsill, or
+simply assuming a wide stance or kneeling.
+The firer cannot move after bracing without losing the benefits, and depending on how it's
+braced, may be unable to traverse the weapon very far. If a heavy weapon is fired without
+bracing, the firer takes -3k0 to his attack roll.
+BULL RUSHHalf Action Subtypes: Attack, Melee, Movement The character body slams into an opponent
+and attempts to move him. The character and a target in melee range make opposed
+Size + Strength Tests. If the active character succeeds, she moves the target 2m, plus 2m
+for every Raise she gets on this opposed Test.
+CALLED SHOTFull Action Subtypes: Attack, Melee or Ranged The character attempts to attack a specific
+or vulnerable area on his target. The attacker declares a location on his target
+(Head, Body, Left Arm, Right Arm,
+Gizzards, Left Leg or Right Leg), then makes an attack at -2k0. Instead of rolling
+for a hit location, if the attack is successful it hits the named location.
+CHARGEFull Action Subtypes: Attack, Melee, Movement The character rushes at his target and makes
+a single melee attack. The target must be at least four meters away, and a character maycharge up to twice their Speed in meters.
+The movement of the charge must be in a straight line so the attacker can build speed
+and line up with his target. The attacker gains a +1k0 bonus on the attack made at
+the end of the charge. If the charging character is unarmed, he can attempt to
+grapple his opponent instead of inflicting damage. The attack at the end of the charge
+can also be replaced by a Bull Rush or
+Knock Down attempt.
+
+DELAYHalf Action Subtype: Miscellaneous Instead of acting immediately, the character
+saves an action for later. At any time before her next turn, she may take any half action.
+If the character uses this stored action in response to someone taking an action, this
+action occurs first.
+DISARMHalf Action Subtype: Attack, Melee The character attempts to disarm an
+opponent. Both the attacking character and her target make opposed Level + Weaponry
+Tests. If the attacking character gets two or more raises on this opposed Test, the
+opponent drops their weapon.
+DODGEReaction Action Subtype: Movement Dodge is a Reaction that a character can
+perform when it is not her turn. After an attack is declared on the character, the
+character may spend a Reaction Action to make a Dodge Test (Dexterity + Acrobatics).
+A character must be a\ware of the attack in order to make the Test. Half of the result of
+this test is added to the character's Static
+Defense against the attack that they are attempting to dodge.
+FEINTHalf Action Subtype: Attack, Melee The character attempts to use guile and
+combat training to trick her opponent into a mistake. The character and her target make
+an opposed Level + Weaponry Test. If the attacking character \wins, her next melee
+attack against that same target cannot be dodged or parried. If the active character's
+next action is anything other than a melee attack, the advantage of feinting is lost.
+FIGHT DEFENSIVELYFull Action Subtype: Attack, Melee or Ranged The character performs a careful attack,
+making sure she remains \well poised to defend herself. The character suffers a -2k0
+penalty to her \Weaponry Test, but she gains a +2k0 bonus to all dodge and parry Tests
+until the start of her next turn.
+FOCUS POWERVariable Action Subtype: Varies by po\wer, Provokes The character casts a spell. The spell will list
+the Target Number and the magic skill
+Tested. If the character succeeds, the spell
+\works. If not, the spell fails.
+FULL AUTO BURSTFull Action Subtype: Attack, Ranged, Provokes The character hurls a roaring burst of fully
+automatic gunfire at her enemies. The attacker must be wielding a ranged \weapon capable of
+fully automatic fire to take this action. If the
+
+character has a pistol in each hand, both capable of fully automatic fire, she may fire
+both with this action.
+The attacker makes a Ballistics Test with a +2k1 bonus. If she succeeds, the attack
+scored a hit normally. Furthermore, each raise on the Ballistics Test means another shot has
+hit the target. Each additional hit adds +1k0 to the damage of the attack, up to a maximum
+of the weapon's Rate of Fire.
+A character using this action with a pistol or basic class weapon may also move up
+to his Dexterity in meters. However, if he does so, he gains no bonus to his Ballistics Test and
+instead suffers a -1k0 penalty.
+FULL DEFENSEFull Action Subtype: Melee The character makes no attacks and instead
+concentrates entirely on self-defense. Until the start of her next turn, the character can make
+one additional Reaction Action and gains a
++10 bonus to her Static Defense.
+GRAPPLEHalf or Full Action Subtype: Attack, Melee If the character is not in a grapple, she may
+use the Half Action Grapple to enter a grapple with target opponent. Make a Brawl Test to
+hit the opponent. If it is successful, she begins grappling the target as the controller of the
+grapple.
+The controller of a grapple must spend a Full Action on every subsequent turn
+to maintain this grapple. If she doesn't, the grapple immediately ends. She may then
+make an Opposed Size + Strength Test. If she succeeds, she may take one of the following
+actions:
+Attack with Weapon: The controller of the grapple can damage the opponent with
+her fists, teeth, claws, or a melee weapon. The opponent cannot make any Reactions to this
+attack. Roll damage normally. You cannot use weapons that normally require the use of both
+hands in a grapple.
+Throw Down Opponent: The controller of the grapple can wrestle the Grappled
+opponent to the ground. The grappled opponent becomes Prone.
+Push Opponent: The controller of the
+
+grapple makes a Bull Rush attempt. The pushed distance cannot exceed the active character's
+Speed. The active character must move with her grappled opponent in order to maintain
+the grapple or she can choose to let go of her opponent, which ends the grapple, but allows
+the active character to keep her ground.
+Ready: The controller of the grapple can ready one of her own items. Or if the SM
+allows, she can use the Ready action to grab an item belonging to her grappled opponent.
+Stand: If both grappling participants are on the ground, the controller of the grapple
+can regain her feet with this action. She can also drag her grappled opponent up with her.
+If she so desires, both participants stand.
+Use item: The controller of the grapple can use a readied item.
+If the active character is the target of the grapple the first thing she must do on her
+turn is declare Grapple as a Half Action - this is part of the penalty for being grappled. After
+that, she may choose one of the following options:
+Break Free: The grappled target can attempt to break free of the grapple by making
+an Opposed Size + Strength Test against the controller of the grapple. If the active character
+wins, she breaks free and may perform any regular Half Action.
+Slip Free: The grappled target can attempt to wriggle out of the grapple by
+making an Athletics + Dexterity test opposed by controllers Athletics + Strength. If she
+succeeds, she slips free and may perform any regular Half Action.
+Take Control: The grappled target can attempt to take control of the Grapple by
+making an opposed Athletics + Strength test against the opponent's Athletics (or Size) +
+Strength. If the active character wins, she becomes the controller of the grapple and her
+opponent becomes the grappled target. The active character then immediately performs
+one of the controller grapple options, but cannot take any other Half Actions.
+HEALING SURGEHalf Action Subtype: Miscellaneous While normally a character cannot spend
+resource points during combat to heal, they do
+
+have the option of using this action to heal their wounds. They take a half action and
+spend Resource points up to their level, healing that many hit points. A character
+gains +5 to their Static Defense until their next turn when they use Healing Surge.
+KNOCK DOWNHalf Action Subtype: Attack, Melee The attacker smashes her opponent in the
+hopes of knocking him off his feet. Make an
+Opposed Size + Strength Test. If the attacker wins, the target is knocked prone and must
+make a Stand action on his turn to regain his feet. If the target wins the opposed Test,
+he keeps his footing. If the target wins with three or more raises, the attacker is knocked
+prone instead.
+MOVEHalf or Full Action Subtype: Movement, Provokes The active character can spend a Half Action
+to move a number of meters equal to their
+Speed. As a Full Action, she may move twice that distance. If the active character ends her
+movement adjacent to an opponent, she may engage that opponent in melee. If the activecharacter moves away from an opponent
+with whom she is engaged, he provokes
+Opportunity Attacks.
+
+MULTIPLE ATTACKS
+Full Action Subtype: Attack, Melee or Ranged This action allows a character with an appropriate feat to make one or more attacks on
+his turn. The character must spend one
+Reaction Action for each attack beyond the first. A character must be wielding two
+weapons or have an appropriate feat such as
+Swift Attack or Lightning Attack in order to use this action.
+
+OPPORTUNITY ATTACK
+Free Action Subtype: Attack, Melee Whenever an character uses an action with
+the provokes keyword while engaged in melee with an opponent, she provokes an
+Opportunity Attack. All opponents in melee range of the Provoking character may use
+this action in order to make a Standard
+Attack against the Provoking character. This is a special free action that you can use once
+per turn, during any character's turn.
+
+OVERWATCH
+Full Action Subtype: Attack, Ranged, Provokes The active character guards a specific area or target, poised to shoot at an opportune moment. When Overwatch is declared, the active character establishes a kill zone, which is any general area, such as a corridor or tree line, which encompasses a 45 degree arch in the direction the active character is facing.
+The active character then specifies either Full Auto Burst or Suppressing Fire, along with the conditions under which she will perform the chosen attack. At any time the specified conditions are met before the start of the character's next turn, she can perform that attack. If a character on Overwatch performs any actions or reactions, such as Dodge, her Overwatch immediately ends. Note this does not include free actions such as speech.
+
+PARRY
+Reaction Action Subtype: Defense, Melee If the character is wielding a melee weapon capable of parrying, she can attempt to thwart an incoming melee attack by making a Weaponry Test. This test is made just like a melee attack - roll and keep a number of dice equal to your Weaponry, and you get a +Xk0 bonus (X being your Level) if you're proficient with the weapon. Half of the result of this test is added to the character's Static Defense against this attack. A character must be aware of the attack being made on them in order to parry it.
+READY
+Half Action Subtype: Miscellaneous, Provokes The active character draws a weapon or retrieves an object stowed in a pouch or pocket. A weapon or item can also be properly stowed away with this action (but note that simply dropping an item is considered a free action). This action can also be used to do things such as apply a bandage, coat a blade with poison, and so forth.
+
+RELOAD
+Varies Subtype: Miscellaneous, Provokes The active character can reload a ranged weapon. The amount of time the reload action takes depends on the weapon.
+
+RUN
+Full Action Subtype: Movement, Provokes The active character runs, covering a distance equal to six times their speed. This makes the character harder to hit with ranged weapons, but easier prey for melee attacks. Until the beginning of the character's next turn, ranged attacks made against her suffer a -2k0 penalty, while melee attacks gain a +2k0 bonus.
+
+SHIFT
+Half Action Subtype: Movement The character moves a distance equal to her dexterity in meters.
+
+STAND
+Half Action Subtype: Movement, Provokes If the active character is on the ground, she can stand.
+
+STANDARD ATTACK
+Half Action Subtype: Attack, Melee or Ranged The active character makes one melee or ranged attack.
+SUPPRESSING FIRE
+Full Action Subtypes: Attack, Ranged, Provokes The active character unleashes a devastating hail of firepower to force her opponents to take cover. This action requires a weapon capable of full automatic fire. When Suppressing Fire is declared, the active character establishes a kill zone (or uses one previously established, such as through overwatch), which is any general area, such as a corridor or tree line, that encompasses a 45 degree arch in the direction the active character is facing. Then, the active character fires a Full Auto Burst and expends the appropriate ammo.
+Targets within the kill zone must make a Pinning Test or become Pinned. The
+active character makes a Ballistics Test against TN 20 to determine if her wild spray
+of gunfire hits anyone, friend or foe, within the kill zone. If the Test succeeds, the SM
+assigns one hit to a random target within the kill zone. For each raise on the Test, the SM
+has to assign another hit, up to the weapon's automatic rate of fire. The active character
+cannot choose to fail this Test.
+TACTICAL ADVANCE
+Full Action Subtype: Movement, Defense The active character moves from one
+position of cover to another position of cover. In so doing, she may cover a distance
+up to twice her Speed. For the duration of the move, she is considered to benefit from
+the cover she left, even though she is in the open for a brief time.
+
+USE A SKILL
+Variable Action Subtypes: Concentration, Miscellaneous
+The active character may use a skill. How long this takes and what kind of Test they
+need to make are covered in the descriptions of the individual skills.
+
+WITHDRAW
+Full Action Subtypes: Movement The active character breaks off from melee
+combat and may move up to their Speed.
+
+Other Actions
+
+If a player wants to take some action not covered in the rules, the SM should make a
+judgment about how long this will take and any relevant Tests. Generally most actions
+should be resolved with some sort of Test:
+Characteristic Test, skill Test, or opposed
+Test. Keep in mind that a round is only a few seconds long, which is a very limited
+amount of time to accomplish a task.
+
+The Attack
+
+The most common action in combat is the attack - the characters are fighting, after all.
+Whether armed with a melee or ranged weapon, the process is the same. Before an attack is made, the SM should verify that the attack is even possible by checking the basic requirements for the attack.
+Melee attacks require the attacker to be engaged in melee combat with his target.
+Ranged attacks cannot be made if the attacker is engaged in melee unless he is firing a pistol-class weapon. In either case, the attacker must be aware of his target.
+Assuming the attack is possible, follow these steps:
+
+Step One: Apply Modifiers to the Attack Test
+Step Two: Attacker Makes a Test
+Step Three: Determine Hit Location
+Step Four: Attacker Determines Damage
+Step Five: Apply Damage to Hit Points
+
+Step One: Apply Modifiers to the Attack Test
+
+Attacks require the character to make a test using one of the attack skills (Weaponry, Brawl, or Ballistics). There are many instances where circumstances and factors will make the attack easier or more difficult than normal. For example, using the All Out Attack option gives +2k0 to the roll.
+
+If a situation calls for two or more bonuses or penalties, simply combine all modifiers together and apply the total to the appropriate roll.
+
+Step Two: Attacker Makes a Test
+
+After the modifiers have been determined, the attacker makes his Attack Test. Attack Tests are made using the appropriate skill for the weapon used (Weaponry for melee, Ballistics for ranged attacks, and Brawl for unarmed). No characteristic is used for this test; the number of kept dice is equal to the skill used. If the character is proficient with the weapon used, they get +Xk0 to this test, where X is their level.
+
+The TN for this test is the target's Static Defense. A target's normal Static Defense is equal to 10, plus 3 for every dot he has in Wisdom and Dexterity. Bigger characters are easier to hit, though, so they take twice your Size as a penalty to their Static Defense.
+
+Dodge and Parry Reactions
+
+If a character is hit by an attack, they have an opportunity to make a Dodge or Parry reaction as an opposed roll against the attack. If successful, the attack is negated and no damage is dealt.
+
+Step Three: Determine Hit Location
+
+On a successful hit, the attacker needs to determine where the hit landed. Simply roll on the following chart to determine hit location:
+
+| Roll (1d10) | Location  |
+| ----------- | --------- |
+| 1           | Left Leg  |
+| 2           | Right Leg |
+| 3-6         | Body      |
+| 7           | Gizzards  |
+| 8           | Left Arm  |
+| 9           | Right Arm |
+| 10          | Head      |
+
+Step Four: Attacker Determines Damage
+
+After the hit location has been determined, the attacker determines the damage dealt by his attack. Each weapon has a damage listing, usually a given number of kept and rolled dice. Melee weapons add the user's strength as rolled die on the damage roll. Roll the appropriate dice and apply any indicated modifiers. The result is the damage total.
+
+Step Five: Target Applies Damage
+
+From the damage total, the target subtracts any Armor Points that protect the location hit by the attack. If the target is hit by a spell, Armor Points do not apply, but the target may instead subtract his Aura value from the spell's damage. If this reduces the damage to zero or less, the target shrugs off the attack.
+
+Any remaining damage is compared against the target's resilience. For every multiple of the target's resilience he takes in damage, he loses one hit point. For example, if the target has a resilience of 4, and he takes 15 points of damage from a sword attack, he loses 3 Hit Points. (15 divided by 4 is 3, with 3 leftover. The left over damage is simply wasted.)
+
+If a target's resilience would be 0 or lower for some reason, it is considered to be 1 for determining hit points lost from damage.
+
+If the target has run out of Hit Points, he begins taking Critical Damage, one point of Critical Damage for every Hit Point he'd otherwise lose.
+
+UNARMED COMBAT
+
+Not every fight in DUNGEONS THE DRAGONING requires bolters and daiklaves. Some conflicts can be settled the old-fashioned way with fists (not to mention feet and, if you're the bloodthirsty type, teeth).
+
+Unarmed attacks are resolved in the same way as any other melee attack, with some differences. Unarmed attacks can be used for any Melee combat action, but wherever the normal combat action calls for the use of the Weaponry Skill, an Unarmed attack uses Brawl instead.
+
+Unarmed attacks cannot be used to parry attacks made with weapons except with a Stunt. Unarmed attacks typically deal 0k1 damage, adding the character's Strength as rolled dice as normal for melee attacks.
+
+If a target loses at least one hit point from an unarmed attack, the attack also inflicts one level of Fatigue.
+
+## Combat Situations
+
+DUNGEONS THE DRAGONING offers endless potential for gripping, dramatic, white-knuckle action. Combat is an essential element for such action, and each combat, from simple corridor shoot-outs to titanic civilization-crushing battles, should offer unique experiences. The combat circumstances described in this section offer many ways to help make every combat exciting, varied, and dangerous.
+
+Combat circumstances can be used to reflect the effects of terrain, the weather, tactical situations, and a variety of other factors. Many circumstances alter the difficulty of tasks by providing bonuses or penalties to Tests, while others provide opportunities for characters to leverage good fortune, or exploit misfortunes that befall their enemies. Adventurers should make as much use of beneficial circumstances as possible. A good plan, suitable equipment or skillful use of tactics can often mean the difference between life and death for a hero. The following circumstances are some of the most common ones encountered in combat.
+
+### Situations Summary
+
+| Name                | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| Combat Advantage    | Attackers get a free Raise to hit.                                    |
+| Cover               | Body parts behind cover have extra AP.                                |
+| Concealment         | Adds +5 or more to Static Defense.                                    |
+| Difficult Terrain   | -1k0 or more to melee attacks and dodging.                            |
+| Engaged in Melee    | Shooting into melee applies a -2k1 to hit.                            |
+| Extreme Range       | Shooting more than 3x the base range applies a -3k0 to hit.           |
+| Falling             | Take damage for smashing into hard floors.                            |
+| Ganging Up          | Outnumbering your foes 2 to 1 or more gives a bonus to hit them.      |
+| Higher Ground       | Jump onto a table for +1k0 to melee attacks.                          |
+| Long Range          | Shooting more than 2x the base range applies a -1k0 to hit.           |
+| Off Hand            | Take -2k0 unless you are Ambidextrous.                                |
+| Point Blank Range   | +2k1 to hit at ranges under 3m when not engaged in melee.             |
+| Short Range         | +1k0 to hit when shooting at less than half the weapon's base range.  |
+| Two Weapon Fighting | Use the Multiple Attack action. Takes penalties without a feat.       |
+| Weapon Jammed       | Rolling more 1s on an attack than your Ballistics skill causes a jam. |
+
+For situations not covered here, use these as a guide. Remember, the SM has the final say about the difficulty of any particular Test or the outcome of any unusual situation.
+
+### Combat Advantage
+
+One of the most common attack modifiers is combat advantage. Combat advantage represents a situation in which the defender can't give full attention to defense. The defender is pressed by multiple enemies at the same time, stunned, distracted, or otherwise caught off guard. When you have combat advantage against a target, you get a free Raise to hit them.
+
+### Cover
+
+Cover is a vital part of surviving a firefight and a good Adventurer knows that you go for cover first and draw your gun second. There are no penalties to Ballistics Test made to attack targets standing partly behind cover. However, there is a chance that the shot may hit the cover rather than the target. It is up to the Adventurer to decide which parts of his body he is exposing when behind cover, but as a general rule, a character firing around or over cover will have his body and legs concealed. If the shot would hit a body location that is concealed behind cover, work out the damage against the Armor Points of the cover instead, with any excess being applied to the target as normal.
+
+### Engaged in Melee
+
+If the attacking character is adjacent to his target, both the character and his target are considered to be engaged in melee. Ballistics Tests made to hit a target engaged in melee combat take a `-2k0` penalty. If one or more characters engaged in the melee is granting combat advantage, this penalty is ignored.
+
+### Extreme Range
+
+Targets that are at a distance of more than three times the range of a character's weapon are at Extreme Range. Ballistics Tests made to hit targets at Extreme range take a penalty of `-3k0` to hit.
+
+### Falling
+
+Characters can fall off things for any number of reasons, though the results are usually the same -- Hilarious! A character takes `1k1` damage for every two meters they fall and adds their Size as rolled dice - even with a high Resilience, the bigger you are, the harder you fall. Armor only offers half its normal AP against this damage but a character may Test Acrobatics against `TN 15` to reduce falling damage. On a success, they take `-1k0`, and every Raise further reduces damage taken by another `-1k0`. If a character intentionally jumps down, they may fall 2m per dot of their Acrobatics rating before taking damage. Intentionally dropping down will reduce the fall by 1m per dot of Dexterity.
+
+### Ganging Up
+
+A character has an advantage when he and his allies engage the same foe in melee combat. If a group of characters outnumber their opponents by two to one, their melee attacks gain `+1k0` to hit. If a group of characters outnumber their opponents by three to one or more, their melee attacks are at `+2k0` to hit instead.
+
+### Higher Ground
+
+Characters standing on higher ground, such as standing on a table, hill, or atop a mound of slain enemies and/or dead puppies, have an advantage. Melee attacks made by these characters are at `+1k0`.
+
+COVER EXAMPLES
+
+| Cover Type                             | AP  |
+| -------------------------------------- | --- |
+| Armor-glass, Pipes, Thin Metal         | 4   |
+| Storage Crate, Sandbags, Ice           | 8   |
+| Computer bank, stasis pod              | 12  |
+| Rockcrete, hatchway, thick iron, stone | 16  |
+| Armaplas, bulkhead, plasteel           | 32  |
+
+### Long Range
+
+Targets that are at a distance of more than double the range of a character's weapon are at Long Range. Tests made to hit those targets are at a `-1k0` penalty to hit.
+
+### Point Blank Range
+
+When a character makes a ranged attack against a target that is two meters away or closer, that target is at Point Blank Range. Tests made to hit a character at Point Blank range are made at `+2k1` to hit. This bonus does not apply when the attacker and the target are engaged in melee combat with each other.
+
+### Short Range
+
+Targets that are at a distance of less than half the range of a character's weapon are at short range. Tests made to attack targets at short range are made at `+1k0`.
+
+### Two Weapon Fighting
+
+Many warriors fight with a weapon in either hand. There are important advantages and disadvantages to this style of fighting. A character fighting with two weapons may attack with either weapon when making attack actions. If he is able to make multiple attacks, he may split up his attacks between the two weapons if they are applicable (one can't use Lightning Attack with a pistol, for example).
+
+A character wielding two weapons may use the Multiple Attacks action to attack once with each weapon, but each attack is made at `-3k0`. If the character has the Ambidextrous asset, the penalties are reduced by `1k0` (to `-2k0`). If he has the Two Weapon Fighting feat, the penalties are reduced by `2k0` (to `-1k0`). If he has both, there is no penalty with his attacks.
+
+### Weapon Jams
+
+Unfortunately, no weapon is perfect. Sometimes a weapon will jam, either through age, neglect, or simply poor design. When a character rolls more 1s on a roll to hit with their weapon than their Ballistics skill (two 1s at Ballistics 1, three 1s at two dots, etc.) then the weapon has jammed. A jammed weapon can not be fired until it is cleared, though if the Test to hit was successful on the jamming shot, the weapon jams on the recoil - the shot is good but the weapon is now fouled. Clearing a Jam is a full action that requires a `TN 15` Tech-Use or Ballistics Test. On a success, the jam has been cleared, and the weapon needs to be reloaded, any ammunition in the weapon is lost. If the Test fails, the weapon is still jammed and the character may attempt to clear the jam next round.
+
+### Blast Weapons — Optional Rules
+
+> **Optional Rule (Book 2, Appendix J):** These rules expand on blast weapon targeting.
+
+So you chuck a krak grenade at someone, there's no blast radius on it so you have to hit their Static Defense. Ok, no problems, works like all the other attacks. You chuck a frag grenade with a blast(4) at them and miss... Where did the grenade go? Say you want to blow up several people at once (not just minions) so you're trying to land the grenade in the middle of them... What's the TN? Blast radius makes this important and it's unaddressed in the original base rules. You can theoretically place a small shielded remote control vehicle (Rarity: Uncommon, Size 1, Static Defense 5, Maneuver -4, VTOL, Remote Control, Void Shield 1, 6m per momentum, Speed 1, Accel 3) next to your target and throw explosives at that. We tried TN 5 to TN 15 to land a shot at a fixed spot on the ground, and it meant nobody ever missed dropping a grenade exactly 1m away from their target. What to do?
+
+We came up with the following optional rules for blast weapons:
+
+Missing: You shoot directly at the person and miss? You miss by 1m per range increment (1m at short, 2m at normal, 3m at long, 4m at extreme) plus 1m per check on the attack roll. Estimate the surrounding area and randomize a scatter (we have a die with arrows on it, you can use a d12 for a clock face directional or a spinner if you like). If it's not some indirect, arcing, attack or a shot from above then don't just scatter it across a flat map on the table. Figure what it would look like from the shooter's point of view and scatter that way (make pictures, imagine it, just guess, whatever), the shot could go off into space or hit a low wall right in front of you.
+
+Grouping: You want to shoot at a point near someone to catch them (or several people) in the blast? OK. The overall method is to roll the attack, add twice the weapon's blast radius when trying to hit things, subtract the weapon's blast radius to miss things, and try to place the blast to best match the hit/miss results. This may be easier if you aren't using a map/grid and miniatures.
+
+First of all, you can't shoot at people further apart than the blast diameter. No trying to cheese out a weird result by "aiming" to hit people 12m apart with a blast(5) weapon. Everyone being shot at needs to potentially fit in the blast.
+
+Roll your attack and add twice the blast number to the total (roll a 24 with a blast(4) and it's 24+8=32). Check that number against all their Static Defenses and see if there's a spot that would get everyone hit and exclude everyone missed. That's where it lands. If there isn't such a spot just choose a spot that gets as many of the intended targets as possible, if there are multiple such spots then the shooter chooses which one to use. The nice bit about this is that as it's not a direct attack it can't be dodged without a two die stunt (or better) that uses the environment to gain cover, and then that's just cover so the damage can still potentially penetrate the cover's AP. If you missed the shot do the normal scatter as above but the minimum distance is whatever is required to miss the whole group.
+
+If the rolls indicate that someone right in the middle of a group was hit and nobody else in the group was then your best chances are to place the blast as a miss on everyone and say that a random piece of shrapnel nailed the target. You may consider changing the damage type to Rending if you want to really simulate it. If only one person in the middle of the group was missed then try to place the blast to catch everyone but place something, anything, between the center of the blast and the survivor. Say that some poor sot stood between the survivor and the blast, absorbing all the hurt. Failing all that, real life has done some pretty weird stuff with explosions. This could just be one of those astonishingly rare instances where someone in the middle of an explosion is thrown clear without harm.
+
+If the shooter wants to miss a particular person, to get the blast as close as possible without hitting them. This is usually an ally close to or in melee with some group of enemies and the intent is to catch as many enemies in the blast while not hitting the ally. In this case when you roll the attack figure out the results from both adding twice the blast radius to the attack roll (to hit enemies, as above) and subtracting twice the blast radius from the attack roll (to miss the ally or allies). In this case the ally's Static Defense is used as the TN to miss them. Meet or exceed that TN and the ally is outside the blast, roll under the TN and the ally is in the blast. There will likely be some conflict as to adjudicating the placement of the blast to include all the hit enemies and include or exclude the ally. The shooter gets to choose to prioritize hitting more enemies or missing the ally (if possible), and must then choose from the available options.
+
+The explanation behind all this, the 'fiction layer' or 'narration' if you like that terminology, is that the character is trying to hit a moving target. When you do that you lead the target, shoot at where it's going to be when the shot gets out to that range. Since most explosives are thrown or launched at lower velocities you have to take a bigger lead with them. So you try to anticipate where the target will be when your shot/pitch will get there and make the throw. The misses are potentially a combination of bad guessing, bad timing, bad aim, and/or the target being able to see the incoming projectile and move somewhere else.
+
+Yeah, this doesn't fix a knocked out rat 1m from someone being auto-hit (unconscious & helpless conditions,) and automatically catching the other guy in the blast. We can't fix everything for you. Just don't be a jerkass about it and everything should work out. If someone is being a jerk about it point out that the rules work the same for the NPCs as it does for the PCs. What one person does, another person can replicate.
+
+Missing & Hitting Allies & Enemies with Blast Weapons:
+
+| Situation                   | Attack − 2×Blast vs. Ally SD                      | Attack + 2×Blast vs. Enemy SD     | Result                                                                                                                                                                           |
+| --------------------------- | ------------------------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Miss All**                | The results are under all of the Static Defenses. |                                   | Determine a scatter direction and distance, adding more distance as required to miss all of the potential targets.                                                               |
+| **Miss Ally & Hit Enemies** | Over the ally's TN                                | Over the enemies' Static Defenses | Determine a position that hits the enemies and excludes the ally. If none exists the attacker chooses to include or exclude the ally while maximizing the number of hit enemies. |
+| **Hit All**                 | Under the ally's TN                               | Over the enemy's Static Defense   | Get the maximum number of hits in the blast, if the ally has to be excluded to do that then they're really, really lucky.                                                        |
+
+## Injury
+
+A natural consequence of pushing one's luck in far reaches of the Wheel is getting hurt. Adventurers can get into fights with an endless array of enemies, machinery can malfunction, pilots can discover exciting new ways to land that don't involve leaving their craft in one piece, and careless sorcerers can invite all sorts of horrors from the Warp to show up and ruin everyone's day.
+
+Common physical injuries to DUNGEONS THE DRAGONING characters are represented by Damage and Fatigue. Additionally, characters can also experience several types of conditions and special damage such as fire, suffocation, being stunned, and the amputation of limbs. With all these different types of punishment waiting to befall characters, it's important to know how much physical abuse a character can take and a key measurement of this is how many Hit Points he possesses.
+
+### Hit Points
+
+Hit Points are a measurement of how much punishment a character can take before suffering debilitating effects and, ultimately, death.
+
+`Max Hit Points = (Constitution + Willpower) × 2`
+
+There may be feats, racial abilities, or effects from your character's template that add to your maximum Hit Points as well.
+
+<!-- EDITOR: Original omitted the ×2 multiplier. Corrected to match Step Nine and the Quick Reference formula. Replaced prose with formula notation. -->
+
+Whenever a character loses Hit Points, they are subtracted from the character's Current Hit Points. Once a character's current Hit Points drop to zero or below, he is in real trouble.
+
+### Damage
+
+Damage is physical trauma dealt to a character. Characters can suffer damage in any number of ways - being shot by a boltgun, lacerated by daemon claws, falling into a lava-filled crevasse, exposure to the vacuum of space, and worse.
+
+When a character suffers Damage, compare the damage he takes against his Resilience. For every multiple of his resilience, the character loses one Hit Point. For example, if a target with resilience 4 takes 18 damage from an attack, he would lose 4 Hit Points. (18 divided by 4 is 4. The remainder of two is simply wasted.) A target with resilience 3 would lose 6 Hit Points from the same amount of damage.
+
+<!-- EDITOR: Changed "takes one wound" to "loses one Hit Point" for consistency with the attack procedure (Step Five) which uses "loses one hit point" for the same mechanic. -->
+
+Each time a character suffers damage, there may be an opportunity to reduce it. Armor Points reduce damage taken from most sources, but are ineffective against distinctly magical effects like spells. Aura, on the other hand, reduces damage from spells but is worthless against things like, say, bullets.
+
+Some effects, such as fire and falling, can directly wound a character regardless of their resilience.
+
+#### Damage Types
+
+All damage is divided up into four types: Energy (lasers, fire, plasma), Explosive (grenades, bolt rounds), Impact (clubs, bullets, falling), and Rending (swords, claws). If a source of Damage does not specify a type, treat it as impact. Damage type is usually only important for determining Critical Effects resulting from Critical Damage.
+
+### Critical Damage
+
+Whenever a character runs out of Hit Points, he begins to take critical damage. Each time a character suffers Critical Damage, he also suffers one or more Critical Effects. These are determined by consulting the appropriate Critical Effects Table based on the affected body location (Arm, Body, Gizzards, Head, or Leg) and the type of damage (Energy, Explosive, Impact, or Rending).
+
+As with normal damage, Critical Damage is cumulative and remains with the character until he either heals naturally over time or receives medical attention. Each critical effect also has its own duration (including permanent). If a Critically Damaged character loses more Hit Points, the amount is added to his existing critical damage and a new set of critical effects are applied based on his Critical Damage.
+
+### Healing
+
+A character who has gotten injured will probably like to get healed at some point. As a character takes wounds, he progresses through three different states: Lightly Wounded, Heavily Wounded, and Critically Wounded. Characters naturally recover from wounds at a slow rate that varies depending on the character's state. Rest, medical attention, and a few spells can speed up wound recovery.
+
+#### Lightly Wounded
+
+A character is considered Lightly Wounded if he has lost Hit Points equal to or less than his Willpower. A lightly wounded character recovers 1 hit point per day through natural healing. If a lightly wounded character devotes an entire day to bed rest, he recovers a number of hit points equal to his Constitution.
+
+#### Heavily Wounded
+
+A character is Heavily Wounded whenever he has lost Hit Points greater than his Willpower. A Heavily Wounded character recovers 1 hit point per week through natural healing. If a heavily damaged character devotes an entire week to complete rest, he recovers an amount of hit points equal to his Constitution. Once a Heavily Wounded character's hit points are equal to or less than his Willpower, he becomes Lightly Wounded.
+
+#### Critically Wounded
+
+A character is Critically Wounded whenever he has lost Hit Points in excess of his hit points. Critical Damage does not heal on its own - it requires medical attention. With rest and medical attention, a character removes 1 point of Critical Damage per week. After all Critical Damage has been removed, a character becomes Heavily Wounded instead.
+
+### Energy Critical Effects
+
+#### Energy -- Arm
+
+| Roll | Effect                                                                                                                                                                                         |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | A blast to the arm leaves it numb. All Tests using the arm are made at `-2k0` for one round.                                                                                                   |
+| 2    | The energy leaves the target's arm burned and useless for `1d5` rounds and the character takes one level of fatigue.                                                                           |
+| 3    | The attack wreathes the arm in flame, scorching clothing and armor. The target's attack rolls require two additional raises to hit for one round and the target takes `1d5` levels of fatigue. |
+| 4    | Energy sears through the arm at the shoulder, causing the limb to be severed from the body. The target suffers `1d10` levels of fatigue and is inflicted with Blood Loss.                      |
+| 5    | The attack reduces the arm to a cloud of ash and sends the target to the ground where he immediately dies from shock.                                                                          |
+
+#### Energy -- Body
+
+| Roll | Effect                                                                                                                                                                          |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The blast takes the breath from his lungs. He can only take a single half action on his next turn.                                                                              |
+| 2    | The target is burned badly, cooking the flesh on his chest and abdomen, and suffers `1d5` levels of fatigue.                                                                    |
+| 3    | Struck by the full force of the attack, the target is sent reeling to the ground, smoke spiralling out of the wound. The target is knocked prone and stunned for `1d10` rounds. |
+| 4    | The attack blackens and burns off the target's skin. The target is stunned for `2d10` rounds, and his Str, Con, and Dex are halved until the critical damage heals.             |
+| 5    | The target is completely encased in fire, melting his skin and popping his eyes like superheated eggs. He falls to the ground a blackened corpse.                               |
+
+#### Energy -- Gizzards
+
+| Roll | Effect                                                                                                                                            |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Ripples of heat make the character stumble and vomit. The target is stunned for one round.                                                        |
+| 2    | The target falls to the ground screaming and suffers 1 level of fatigue.                                                                          |
+| 3    | The intense power of the energy attack scorches the target's heart and lungs. The target is stunned for `2d10` rounds.                            |
+| 4    | The character's flesh and organs are cooked completely through. He falls to the ground, splitting open and steaming.                              |
+| 5    | The target falls to the ground in a heap of burning flesh. Any grenades or missiles on the character's body detonate. The character is very dead. |
+
+#### Energy -- Head
+
+| Roll | Effect                                                                                                                                                          |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | A grazing blow to the head dazzles the target for one round.                                                                                                    |
+| 2    | All of the target's hair is burned off, and he is blinded for `1d5` rounds.                                                                                     |
+| 3    | The attack cooks the target's face, melting his features and damaging his eyes. The target is blinded for `1d10` hours and reduces Fellowship by 1 permanently. |
+| 4    | In a gruesome display, the flesh is burned from the target's head, exposing charred bone and muscle underneath. He does not survive.                            |
+| 5    | Superheated by the attack, the target's brain explodes, tearing apart his skull and sending flaming chunks of meat flying at those nearby.                      |
+
+#### Energy -- Legs
+
+| Roll | Effect                                                                                                                                                                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | A grazing strike against the leg slows the target for a bit. The target's movement is halved for 1 round.                                                                                                             |
+| 2    | A solid blow to the leg sends electric currents of agony coursing through the target. Target's movement is halved for `1d5` rounds and suffers 1 level of fatigue.                                                    |
+| 3    | The attack burns the target's foot, charring the flesh. The target must successfully Test Constitution (`TN 20`) or lose the foot. On a success, the target's movement is halved until he receives medical attention. |
+| 4    | Energy sears through the bone, causing the leg to be severed. The target must Test Constitution (`TN 20`) or be stunned for 1 round. The target gains `1d10` levels of fatigue and is suffering from blood loss.      |
+| 5    | In a terrifying display of power, the leg immolates and fire consumes the target completely. The target dies in a matter of agonizing seconds.                                                                        |
+
+### Explosive Critical Effects
+
+#### Explosive -- Arm
+
+| Roll | Effect                                                                                                                                                                                   |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The target's arm fractures, making the character's hand spasm in pain. The character drops anything he is holding.                                                                       |
+| 2    | The blast causes the target to scream in agony. The target is stunned for 1 round and the limb is useless until the critical damage is healed.                                           |
+| 3    | Fragments from the explosion tear into the target's hand, ripping away flesh and muscle. He must Test Constitution (`TN 20`) or lose the hand. The target takes `1d5` levels of fatigue. |
+| 4    | In a violent burst of shattering power, the target's arm is mangled. He must make a `TN 20` Constitution Test or else die from shock. He suffers Blood Loss.                             |
+| 5    | The arm disintegrates into a red mist, taking a good portion of the shoulder and chest with it. The target is sent screaming to the ground, dying in a pool of his own blood and organs. |
+
+#### Explosive -- Body
+
+| Roll | Effect                                                                                                                                                                                                       |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1    | The target is blown backwards `1d5` meters and takes 1 level of fatigue per meter travelled. He lands prone.                                                                                                 |
+| 2    | As above, but if the character was wearing any armor, the armor is breached and no longer protects the body until it has been repaired.                                                                      |
+| 3    | Chunks of the target's flesh are ripped free by the force of the attack, leaving large weeping wounds. The target is stunned for one round, takes `1d10` levels of fatigue, and is now suffering blood loss. |
+| 4    | Pieces of the target's body fly in all directions as he is torn into giblets by the attack.                                                                                                                  |
+| 5    | As above, and anyone within `1d10` meters of the target is drenched in gore and must make a `TN 20` Dexterity Test or else become dazzled for one round as blood fouls their sight.                          |
+
+#### Explosive -- Gizzards
+
+| Roll | Effect                                                                                                                                                                                               |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The target is blown backwards `1d10` meters, taking one level of fatigue for every meter traveled.                                                                                                   |
+| 2    | The explosion sends the target sprawling to the ground. He takes `1d5` levels of fatigue and becomes prone.                                                                                          |
+| 3    | Concussion from the explosion knocks the target to the ground and tenderizes his innards. The target falls down Stunned for 1 round, takes `1d10` levels of fatigue and is now suffering Blood Loss. |
+| 4    | The target's chest explodes outwards, disgorging a river of cooked organs onto the ground, killing him instantly.                                                                                    |
+| 5    | As above, and in addition if the character was carrying any ammunition or explosives, they detonate.                                                                                                 |
+
+#### Explosive -- Head
+
+| Roll | Effect                                                                                                                                                                                                                                       |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The flash and noise leaves the target Blinded and Deafened for 1 round.                                                                                                                                                                      |
+| 2    | The detonation knocks the target to the ground and stuns him for one round. The target takes two levels of fatigue.                                                                                                                          |
+| 3    | The target's head explodes under the force of the attack, leaving his headless corpse to spurt blood from the neck for the next few minutes. The target takes `-1k0` to all perception checks for one round and, worse, is killed instantly. |
+| 4    | In a series of unpleasant explosions the target's head and torso peel apart, leaving a gory mess on the ground. You don't get much deader than this except...                                                                                |
+| 5    | As above, except such is the unspeakably appalling manner in which the target was killed that any allies of the target who are within 2m of where he once stood must Test against Fear 1.                                                    |
+
+#### Explosive -- Legs
+
+| Roll | Effect                                                                                                                                                                                                                                                                                         |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | A glancing blast sends the character backwards one meter.                                                                                                                                                                                                                                      |
+| 2    | The concussion cracks the target's leg, leaving him stunned for one round and halving all movement for `1d5` rounds. The target takes 1 level of fatigue.                                                                                                                                      |
+| 3    | Explosive force removes part of the target's foot and scatters it over a wide area. The target must make a `TN 20` Constitution Test or permanently lose the use of his foot, inflicting `1d5` levels of fatigue.                                                                              |
+| 4    | The explosion reduces the target's leg into a hunk of smoking meat. The target must make a `TN 20` Constitution Test or die from shock. On a successful Test, the target is merely stunned for `1d10` rounds, takes `1d10` levels of fatigue, and suffers Blood Loss. He now has only one leg. |
+| 5    | The leg explodes in an eruption of blood, killing the target immediately and sending bloody bits of him in all directions.                                                                                                                                                                     |
+
+### Impact Critical Effects
+
+#### Impact -- Arm
+
+| Roll | Effect                                                                                                                                                                                                        |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The attack numbs the target's limb, causing him to drop anything held in that hand.                                                                                                                           |
+| 2    | The impact leaves crushing pain and the target takes one level of fatigue.                                                                                                                                    |
+| 3    | The attack pulverizes the target's hand, crushing and breaking `1d5` fingers (a thumb counts as a finger). The target takes 1 level of fatigue and loses the use of his hand until he gets medical attention. |
+| 4    | With a loud snap, the arm bone is shattered and the limb is left hanging limply. The arm is broken and useless until healed. The target also takes two levels of fatigue.                                     |
+| 5    | In a rain of gore, blood, and meat, the target's arm is removed from his body. He screams incoherently for a few seconds before collapsing to the ground and dying.                                           |
+
+#### Impact -- Body
+
+| Roll | Effect                                                                                                                                                                                                                        |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The target is momentarily knocked off balance by the attack, and can take only a half action on his next turn.                                                                                                                |
+| 2    | The attack breaks a rib and inflicts two levels of fatigue. The target is also stunned for one round.                                                                                                                         |
+| 3    | A solid blow to the chest winds the target and he momentarily doubles over in pain, clutching himself and crying in agony. The target takes `1d5` levels of fatigue and is stunned for two rounds.                            |
+| 4    | With an audible crack, `1d5` of the target's ribs break. The target can either lay down and stay still awaiting medical attention or continue to take actions, though if he takes any actions he begins suffering Blood Loss. |
+| 5    | The target jerks back from the force of the attack, throwing back his head and spewing out a jet of blood before crumpling to the ground dead.                                                                                |
+
+#### Impact -- Gizzards
+
+| Roll | Effect                                                                                                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The impact punches the air from the target's body, inflicting one level of fatigue.                                                                                       |
+| 2    | The blow batters the target, almost stopping his heart. The target takes `1d5` levels of fatigue and is stunned for 1 round.                                              |
+| 3    | The attack knocks the target to the ground, sending him flying `1d5` meters away and falling prone. The target takes `1d5` levels of fatigue and is stunned for 2 rounds. |
+| 4    | The force of the attack ruptures several organs and knocks the target down gasping in wretched pain. The target suffers Blood Loss and takes `1d10` levels of fatigue.    |
+| 5    | The target's organs are turned into a fine paste. While this would be great for spreading on crackers, it's not so great for being alive. The target dies instantly.      |
+
+#### Impact -- Head
+
+| Roll | Effect                                                                                                                                                                                    |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The attack causes the target to see stars. The target takes one level of fatigue and becomes dazzled for one round.                                                                       |
+| 2    | The target's nose explodes in a torrent of blood, blinding him for one round and dealing two levels of fatigue.                                                                           |
+| 3    | The target's head is snapped back by the attack, leaving him staggering around trying to control mind-numbing pain. The target is stunned for `1d5` rounds and takes 2 levels of fatigue. |
+| 4    | Blood pours from the target's nose, mouth, ears, and eyes as the attack pulverizes his brain. He does not survive.                                                                        |
+| 5    | The target's head explodes like an overripe fruit and sprays blood, bone and brains in all directions.                                                                                    |
+
+#### Impact -- Legs
+
+| Roll | Effect                                                                                                                                                                                                                                                                                                    |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | A light blow to the leg leaves the target stumbling. His movement is halved for one round.                                                                                                                                                                                                                |
+| 2    | The blow breaks the target's leg, leaving him stunned for one round and halving all movement for `1d5` rounds. The target takes one level of fatigue.                                                                                                                                                     |
+| 3    | Several of the tiny bones in the target's foot snap like twigs with cracking noises. The target must make an immediate Constitution Test (`TN 20`) or permanently lose the use of his foot. On a success, halve all movement until medical attention is received. The target takes two levels of fatigue. |
+| 4    | The force of the attack rips the lower half of the leg away in a stream of blood. The target must make a `TN 20` Constitution Test or else die from shock. On a success, the target is stunned for `1d10` rounds, takes `1d5` levels of fatigue and suffers blood loss. He now only has one leg.          |
+| 5    | The hit rips apart the flesh of the leg, causing blood to spray out in all directions. Not only does he not even have a leg to stand on, but he also dies horribly in a spreading pool of gore.                                                                                                           |
+
+### Rending Critical Effects
+
+#### Rending -- Arm
+
+| Roll | Effect                                                                                                                                                                                                                     |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The slashing attack tears anything free that was held in this arm.                                                                                                                                                         |
+| 2    | The shredding attack sends the target screaming in pain. As above, and the target takes 2 levels of fatigue.                                                                                                               |
+| 3    | The blow mangles flesh and muscle as it hacks into the target's hand, liberating `1d5` fingers in the process. The target takes 3 levels of fatigue and must make a `TN 20` Constitution Test or lose the use of his hand. |
+| 4    | With an assortment of interesting wet ripping sounds, the arm flies free of the body, trailing blood behind it in a crimson arc. The target is now missing an arm and suffering blood loss.                                |
+| 5    | The attack slices clean through the arm and into the torso, drenching the ground in gore and killing the target instantly.                                                                                                 |
+
+#### Rending -- Body
+
+| Roll | Effect                                                                                                                                                         |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | If the target is not wearing armor on this location, he takes 1 level of fatigue from a painful laceration. If he is wearing armor, there is no effect.        |
+| 2    | The attack rips a large patch of skin from the target's torso, leaving him gasping in pain. The target is stunned for one round and takes 2 levels of fatigue. |
+| 3    | The blow opens up a long wound in the target's torso, causing him to double over in terrible pain. The target takes `1d5` levels of fatigue.                   |
+| 4    | The target is sent screaming to the ground, clutching at his wounds. He goes prone and takes `1d10` levels of fatigue.                                         |
+| 5    | The powerful blow cleaves the target in twain. Unfortunately, he doesn't survive the experience.                                                               |
+
+#### Rending -- Gizzards
+
+| Roll | Effect                                                                                                                                                                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The attack hits a weak point on the target's armor, tearing at straps or between joints and reducing its Armor Points by 1 until it is repaired. The target takes one level of fatigue.                               |
+| 2    | A torrent of blood spills from the deep cuts, making the ground slick with gore. He takes `1d5` levels of fatigue.                                                                                                    |
+| 3    | The attack cuts open the target's abdomen. The target suffers from blood loss and can either use one arm to hold himself together or else roll twice for blood loss each turn. He also takes `1d5` levels of fatigue. |
+| 4    | The target is rent into several bits. He is now quite dead.                                                                                                                                                           |
+| 5    | As above, except the area around the target is awash in gore and counts as difficult terrain for the rest of the fight.                                                                                               |
+
+#### Rending -- Head
+
+| Roll | Effect                                                                                                                                                                                             |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The attack tears skin from the target's face dealing 1 level of fatigue. If the target is wearing a helmet, there is no effect.                                                                    |
+| 2    | The attack scoops out one of the target's eyes, inflicting `1d5` levels of fatigue and leaving the target stunned for 1 round.                                                                     |
+| 3    | The attack opens up the target's face, leaving him stunned for `1d5` rounds and inflicting `1d5` levels of fatigue. If the target is wearing a helmet, the helmet is torn free.                    |
+| 4    | With a sound not unlike a wet sponge being torn in half, the target's head flies free of its body and sails through the air, landing harmlessly `2d10` meters away. The target is instantly slain. |
+| 5    | As above, only blood spews out in a torrent, drenching all those nearby and dazzling them as gore fills their eyes.                                                                                |
+
+#### Rending -- Legs
+
+| Roll | Effect                                                                                                                                                                                                                                                                            |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | The target's kneecap splits open. He must make a `TN 20` Dexterity Test or fall prone. He takes 1 level of fatigue.                                                                                                                                                               |
+| 2    | The attack rips a length of flesh from the leg, causing blood to gush from the wound. The target takes 1 level of fatigue and suffers Blood Loss.                                                                                                                                 |
+| 3    | The blow slices a couple of centimeters off the end of the target's foot. The target must make a `TN 20` Constitution Test or lose the foot. In either case, movement is halved until the character receives medical attention and takes `1d5` levels of fatigue.                 |
+| 4    | In a single bloody hack the leg is lopped off the target. The target must immediately make a `TN 20` Constitution Test or die from shock. On a success, the target is stunned for `1d10` rounds, takes `1d10` levels of fatigue, and suffers Blood Loss. He now has only one leg. |
+| 5    | With a meaty chop, the leg comes away. The target pitches to the ground howling, before dying moments later.                                                                                                                                                                      |
+
+## Conditions
+
+Common injuries are far from the only forms of bodily harm facing those who dare to venture into the unknown. Spells, monsters, traps, and the environment can all afflict your character with various conditions. A condition imposes a penalty, a vulnerability, a hindrance, or a combination of effects.
+
+### Amputated Limbs
+
+A character that loses body parts (except for the head, which almost certainly means death) is also affected by Blood Loss and must be treated for it quickly. If the character lives, someone with the Medicae skill must be found to ensure that it heals well. If no medic is available, the character becomes Diseased. Assuming the character survives the Blood Loss, he'll also have to cope with the disagreeable side-effects of the lost limb, which are explained below.
+
+#### Lost Hand
+
+The character suffers a `-2k1` penalty on all skill and characteristic Tests that rely on the use of two hands and she cannot wield two-handed weapons. A shield can be strapped to the injured arm, however. Should this be the character's primary hand, she must cope with the customary `-2k0` penalty to Weaponry using his secondary hand. For every 100 xp she spends, she can reduce this penalty by `1k0`.
+
+If a character loses both hands, she should either secure at least one replacement or get someone to sharpen her teeth.
+
+Conditions
+
+| Name                | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| Amputation          | Causes Blood Loss, possible Disease, and other issues.                |
+| Blinded             | Fail at Ballistics, -2k1 most other tests, grant Combat Advantage.    |
+| Blood Loss/Bleeding | Roll 1d10, die on a 1. Medicae TN 20 to staunch the flow.             |
+| Dazzled             | Dazed and confused, -1k0 to all tests but -2k0 to vision tests.       |
+| Deafened            | Fail all hearing tests.                                               |
+| Diseased            | Cannot recover Hit Points. May have additional effects.               |
+| Fire/On Fire        | Save Dex TN 15 or be On Fire, then lose HP and fatigue each round.    |
+| Fatigue             | Take -1k0 to all tests. Fall Unconscious when it is greater than Con. |
+| Helpless            | Automatically gets hit. Roll damage twice and add.                    |
+| Immobilized         | Cannot take action with the Movement subtype.                         |
+| Lost Eye            | Halves effective weapon ranges and applies -1k1 to vision tests.      |
+| Pinned              | Taking Suppressing Fire. Willpower TN 20 or must take cover.          |
+| Prone               | Grant Combat Advantage at close range and take penalties to actions.  |
+| Restrained          | Tied up. Grant Combat Advantage and may be Immobilized.               |
+| Stunned             | Grant Combat Advantage and cannot take actions.                       |
+| Suffocating         | Test Constitution TN 20 or gain Fatigue.                              |
+| Surprised           | Grant Combat Advantage and cannot act until it is over.               |
+| Unconscious         | Knocked out and Helpless. Lasts 10-Constitution hours.                |
+
+#### Lost Arm
+
+As with a lost hand, but a character cannot strap a shield to the arm since he no longer has it. Losing both arms is bad, plus it's a bit difficult to reach those hard-to-clean spots.
+
+#### Lost Eye
+
+Losing one eye permanently halves the effective range of all ranged attacks the character makes. In addition, he suffers a `-1k1` penalty to all Skill and Characteristics Tests that rely on sight. If a character has the misfortune to lose both eyes, he becomes Blinded.
+
+#### Lost Foot
+
+The character permanently reduces all his movement by half (round the remaining movement up) and suffers a `-2k0` penalty to all movement Actions as well as Skill and Characteristic Tests that rely on mobility, such as Stealth. Losing both feet makes it hard to walk.
+
+#### Lost Leg
+
+Treat this as a lost foot, but the character cannot use the Dodge action. Losing both legs renders the character half the person he was, but the good news is he also becomes half the target for his enemies.
+
+### Blinded
+
+A blind character automatically fails all Tests based on vision and automatically fails all Ballistics Tests. She also suffers a `-2k1` penalty to Weaponry Tests and most other Tests that ordinarily benefit from vision. Blinded characters grant Combat Advantage. Needless to say, most heroes find blindness very inconvenient.
+
+### Blood Loss
+
+Blood Loss is an effect that can result from Critical Damage. Characters suffering from blood loss roll `1d10`. On a roll of 1, the character dies. If the suffering character is conscious, she may attempt a `TN 20` Medicae Test each Round to staunch the bleeding. If the character is also trying to simultaneously engage in strenuous activity, such as running away from whatever caused the blood loss, attempts to stop the bleeding instead requires a `TN 30` Medicae Test. If the suffering character is not conscious, or doesn't fancy her chances, another character may attempt the Test.
+
+### Dazzled
+
+A Dazzled character has been dazed and confused. He takes `-1k0` to all Tests and an additional `-1k0` (that's a `-2k0` total) to all Tests based on sight.
+
+### Deafened
+
+The character cannot hear at all, or at least not well enough to communicate with others. Until the character recovers or has his disability repaired, he automatically fails any Skill or Characteristic Test that relies on hearing. Apart from having trouble communicating with his fellow Adventurers, the SM is free to decide what effects a deaf character will have on the game.
+
+### Diseased
+
+While Exalts are immune to the vast majority of diseases, there are some supernatural afflictions that can still knock them on their arse. While Diseased, a character cannot recover hit points. Most supernatural diseases have their own additional effects.
+
+### Fire
+
+A character suffers damage from fire each round she is exposed to it. At the start of each round after the first in which a character is exposed to the same source of flames (or if he is hit by a weapon with the Flame quality) she must make a `TN 15` Dexterity Test or catch on fire.
+
+Once a character is on fire, she loses one Hit Point and gains one level of Fatigue each round until the fire is extinguished. All damage from fire is Energy damage for determining Critical effects - if the hit location is not specified, use the Body location.
+
+A character that is on fire may try to extinguish the flames herself by dropping prone and making a `TN 15` Dexterity Test as a full action. The SM can make this Test easier or harder depending on environmental conditions and whether the blazing character receives any help from nearby allies.
+
+### Fatigue
+
+Exhaustion, combat trauma, or swapping licks with bare fists can all leave a character battered, but more or less intact. Fatigue measures the amount of non-lethal injury a character can take. Characters gain Fatigue from certain types of attacks, some critical effects, and some weapons and feats.
+
+Fatigue is measured in levels. A character can take a number of levels of Fatigue equal to his Constitution score and still function, albeit with some side-effects. Should a character take a number of levels of fatigue in excess of his Constitution, he collapses, unconscious, for 10-Constitution hours. After the character awakens, his levels of fatigue revert to a number equal to his Constitution. Characters suffering any level of fatigue suffer `-1k0` to all Tests. A character recovers one level of fatigue per hour as long as they can rest and relax.
+
+### Helpless
+
+Tests made to hit an unconscious, tied up, or otherwise helpless target automatically succeed. When rolling damage against such a target, roll twice and add the results.
+
+### Immobilized
+
+Characters who are Immobilized have some serious problems moving. An immobilized character cannot use any action with the Movement subtype.
+
+### Pinned
+
+Being shot at is an unpleasant experience at the best of times, and even the most inexperienced Adventurers know to keep their heads down when the bullets are flying. Pinning is a person's survival instincts telling him to stay in cover. A character on the receiving end of Suppressive Fire, even if he isn't hit, must make a Pinning Test. This is a Willpower Test at `TN 20`. Succeed and the character may act normally. Fail and the character is Pinned.
+
+A Pinned character may only take Half Actions. If he is in cover relative to the attacker that Pinned him, he may not leave it except to retreat (provided he can remain in cover while retreating). If he is not in cover when Pinned, he must use his actions to reach cover. If there is no cover nearby, he must move away from the attacker.
+
+A character can make a Pinning Test at the end of his Turn to escape Pinning, in which case he may act normally on his next turn. The Test is reduced to `TN 10` if the character is no longer under fire. A character in melee combat automatically escapes Pinning.
+
+### Prone
+
+Prone characters grant Combat Advantage against melee attackers and ranged attackers within Point Blank Range. Ranged attackers from further away need an extra raise to hit. A prone character suffers `-1k0` to melee attack Tests and `-2k0` to dodge Tests. Dropping prone is a free action.
+
+### Restrained
+
+It's easy enough for a character to end up restrained. Perhaps he's gone and gotten himself arrested, or he's having to fight off attackers in the middle of something intimate involving fuzzy handcuffs. Either way, a restrained character grants Combat Advantage. If his legs are bound, he's also Immobilized. All attack rolls he makes are at `-1k0`.
+
+### Stunned
+
+In addition to damage and Fatigue, characters may also become Stunned. Stunned characters grant Combat Advantage and cannot take actions. A stunned character is not Helpless or unaware.
+
+### Suffocation
+
+There are many ways to suffocate, including drowning, smoke inhalation, and exposure to certain toxins. The rate of suffocation depends on the character's activity level. If a character is trying to conserve oxygen, he can hold his breath for a number of minutes equal to his Constitution. If he is engaged in strenuous activity (combat, swimming, etc.) he may hold his breath for a number of rounds equal to twice his Constitution.
+
+While holding his breath, a character must make a `TN 10` Constitution Test each minute (if conserving oxygen) or each round (if getting busy). If he fails, he gains one level of Fatigue. If the character has not gained a fresh source of oxygen by the end of the allotted time he automatically falls Unconscious regardless of his levels of Fatigue. If a character is both unconscious and deprived of a fresh source of oxygen, he loses one Hit Point per round until he dies.
+
+### Surprised
+
+When you're surprised or taken unawares, you grant combat advantage. Surprised characters cannot take actions until the second round of combat.
+
+### Unconsciousness
+
+Unconsciousness is usually a temporary state that typically results from excessive levels of Fatigue or Critical damage. The duration of a state of unconsciousness is usually included in the description of the effect that caused it. If no other duration is given, unconsciousness lasts for 10-Constitution hours. Unconscious characters are completely unaware of their surroundings and cannot take any actions. They are also Helpless.
+
+## Movement
+
+In many game situations, it is unnecessary to worry about how fast a character can run or how long it takes him to walk from his private quarters to the ship's armory. On the other hand, there are many situations that come up during a game, such as combat, where knowing how far a character can move over a given period of time becomes very important.
+
+### Narrative Movement and Terrain
+
+Terrain conditions affect how fast a character can cover ground during Narrative Time. Obviously, slogging through a waist-deep death world swamp is far more laborious than strolling through the steel corridors of an orbital space station. If you're moving through difficult terrain, you can only cover half of the normal distance in a given amount of time. The SM has the final decision about what, if any, modifiers apply to Narrative Time caused by the environment.
+
+A character may hurry - either because they're running or because they're on a forced march - and cover more ground. Characters may double their movement during narrative time, but for every hour spent doing this they must make a `TN 10` Constitution Test or take a level of fatigue, with the TN increasing by 5 for every hour after the first.
+
+In general, a character may move 20x their speed per minute, a number of kilometers equal to their Speed per hour, and ten times that per day.
+
+### Climbing
+
+Climbing an object requires Athletics rolls. Under most circumstances, as long as a character has both hands free, has a dot in Athletics, and isn't being distracted (by, say, being shot at), a character can automatically succeed at simple climbing tests like fences, trees, boulders, and the like.
+
+If he's trying to move quickly or is being distracted, he needs to make an Athletics Test to climb. On a successful Test, he can ascend up to half of his Speed. For every Raise on the Test, he can move an additional meter. If he fails, he falls, and might take damage.
+
+The SM can adjust the difficulty of the Test based on the nature of the climb, and can rule that certain surfaces, like sheer surfaces like building faces and cliffs, require Tests and can't be attempted automatically. The default difficulty of most climbing Tests is `TN 15`.
+
+### Jumping
+
+A jump is, well, you should be familiar with this one. If a character gets a running start of at least 4m before his jump, he makes an Acrobatics and Strength Test against `TN 10`. On a success, he leaps a number of meters horizontally equal to his Strength, plus another meter for every Raise. On a failure, he only leaps a number of meters equal to half his Strength (round up). He can achieve a height of one half of this distance travelled in meters (round down). If he's just making a vertical leap, make the Test as normal and simply ignore the horizontal distance travelled. A character can attempt to make the same jumps from a standing start, but the initial Test is made against `TN 15` instead of `TN 10`.
+
+### Swimming
+
+A character doesn't need to make a Swim Test (Athletics and Strength) under ideal circumstances, but hazardous conditions such as rough waters, hands being tied, or swimming while fighting all require Swim Tests to move. A successful swim Test allows the character to move at half speed through the water. Normally, swim Tests are made against `TN 10`, but difficult conditions might increase the TN. A failed Test means the character doesn't get to move that turn. Heavy equipment, especially armor, makes swimming extremely difficult. Swim Tests made while wearing Medium or heavier armor is made against `TN 20`. A character must, normally, hold their breath if they're completely submerged.
+
+Of course, Heroes don't always need to solve problems and differences by punching each other in the face, launching bolts of plasma, and accidentally opening a gate to the Warp because someone rolled really badly on a Perils of the Warp roll. There is also the option to simply talk things over.
+
+Any great heroic epic has heroes who can motivate a nation through force of personality, making speeches to open up the hardest heart, wooing the princess, and so forth. While simple Tests might be enough to pass for a lie or two, important debates and social situations with far-reaching implications shouldn't be left to succeed or fail on the basis of a single roll - or at least no more than combat.
+
+A really serious social situation should be handled with the same seriousness and depth as a fight to the death - especially since death might really be on the line!
+
+For the most part, Social Combat is handled like real combat. Initiative is rolled, actions are taken, and then people take turns until the situation is resolved.
+
+> **Play Tip:** Stunting is important, especially for Paragon exalts who can recharge their Resource points that way. Remember that stunting gives you bonus dice, so tricky maneuvers are actually easier if you describe them well. A stunt should never involve more than one additional roll, and that roll's TN shouldn't be extreme. The one-die stunt example is a well-described quickdraw and called shot to the head — nothing extra required. The two-die stunt involves a well-timed acrobatic flip and a multi-attack action, something like TN 15 for the hop and a couple shots. Options to encourage stunts: (1) Let the additional dice be rolled anywhere in the stunt, including on damage and hit location rolls. (2) Let the player roll dice first, then narrate the stunt — this avoids the embarrassment of narrating a head-shot and then rolling a popped kneecap. (3) Allow stunts to automatically include the called shot action as a bonus on the attack.
+
+> **Clarification:** Things that it makes sense to do as double Half Actions are Full Action options — it works out the same. But this rule cuts back on the tendency to just take the same action over and over again that bogs down other games. Yes, you can cast a spell and shoot in the same turn. It's not the most powerful or broken thing you can do. Have fun.
+
+> **Clarification:** Characters can take a Reaction in response to anything they can justify. You can even react to the end of your own turn — if you want to cast Jaunt, you don't have to wait for someone to attack you. You can react to anything going on by casting Jaunt. This stops the problems that arise in other games where you don't have reactions unless a specific trigger occurs. If you want to react to an avalanche by trying to Parry it, go ahead. If you want to use your Reaction for a fast Use A Skill action or to drop Prone, that's fine. You don't need a special "Drop Prone" Reaction ability.
+
+> **Play Tip:** Suggested use for Danger Sense — don't tell the players that combat starts. State that the feat activates and ask them what they want to do. Then roll initiative (if you know all of the character's modifiers you can just ask them to roll 1d10 and add it up yourself). If the PCs go first, they do what they declared and opponents react to it, which could cause opponents to avoid combat or change their planned actions. If the PCs don't go first, proceed as normal but the PCs are not surprised — they do not grant combat advantage and may react normally.
+
+> **Clarification:** See Appendix A for more information on perception and stealth. Don't roll if there's a reason to believe something would be automatic. Do not roll to spot things when there aren't distractions, obscurement, and people trying not to be seen — you need at least two of those before considering a Perception Test. The simplified spotting method: TN 5 to spot a human at 100m, add +5 per additional 100m, halve the perceived distance for every doubling of size, double the perceived distance for every halving of size. Except for light levels, everything in the spotter's favor adds +1k0, everything detrimental inflicts -1k0. Each light level drop (good daylight → heavily overcast → twilight → full moon → half moonlight → starlight → total blackout) applies a -1k1 penalty. A moving target gets +1k0 to be spotted; a moving spotter takes -1k0.
+
+> **Clarification:** You can spend Resource points to get more Reactions, but remember that you can't spend more Resource points in a round than your Power stat.
+
+> **Clarification:** Charge is a double move plus a melee attack. It does not provoke opportunity attacks. It must be in a generally straight line but jumping and acrobatics are allowed. It does not require you to see your victim.
+
+> **Open Question:** The Delay action is ambiguous: does it mean you spend a Half Action declaring Delay and then spend your other Half Action, or can you take a Half Action and then declare Delay to spend the delayed Half Action later in the round? The SM must decide.
+
+> **Optional Rule:** By the skill rules, because Acrobatics is an "advanced" skill, only trained acrobats can try to dodge anything. Use this instead: Dodging is a Dexterity Test to which you may add any dots in Acrobatics as rolled dice.
+
+> **Clarification:** By default all Focus Power Tests provoke opportunity attacks. Check your spells and with the SM. Most combat spells should be usable somewhat safely, but something may have been missed. Spells that work as Dodge or Parry actions definitely do not provoke opportunity attacks. Touch spells that are not intentionally attack spells (Enlarge/Shrink, Teleport, Transformation, etc.) have specifically been left in a form where they need to be cast in melee and do provoke opportunity attacks.
+
+> **Optional Rule:** Brawling can be used to Disarm as well. For weapons that are worn instead of held, they are just "out of alignment" until the victim uses a Reaction or a Ready action to recover.
+
+> **Optional Rule:** Feint can be used with Brawling attacks.
+
+> **Clarification:** Fight Defensively says "Weaponry Test" but also applies to ranged combat. The Fight Defensively action should work with all combat skills and modes: armed, unarmed, and ranged.
+
+> **Clarification:** Starting a grapple requires: 1) Use a Half Action to land a regular Brawling attack. 2) Win an opposed Strength Test. 3) Do one of the other grapple options listed. When grappling, you can either opt to escape as a Half Action or participate as a Full Action. If you choose to participate, you must win an opposed Strength Test — if you win, you can take one of the listed actions; otherwise your turn ends. Focus Power Tests are not one of the things you can do while grappling.
+
+> **Clarification:** Resource points spent on extra grapple actions count towards the per-round Resource point limit. If you have spent Resource points equal to or greater than your Power attribute, you cannot spend more Resource points until the start of your next turn.
+
+> **Clarification:** You can only take opportunity attacks against the character that is provoking at that time. When the rule says "once per turn, during any character's turn," it means you can take this free action attack once on everyone's turn. If twenty kobolds try to conga line past someone with a chainsword, she gets twenty opportunity attacks — one on each kobold's turn.
+
+> **Clarification:** Suppressive fire does bypass Static Defense. That is intentional and correct. Get out of the kill zone if you don't want a bullet in it.
+
+> **Clarification:** Tactical Advance is a double move that retains the benefit of the cover you just left. It does not provoke opportunity attacks but does require you to start with some cover from the attacks.
+
+> **Clarification:** Perception should not be penalized for being untrained or require much effort. Don't roll Perception without a really good reason.
+
+> **Clarification:** The difficult terrain rule is simple: you move at half speed.
+
+> **Optional Rule:** Cover damage — if damage penetrates cover, the cover is degraded by one point of AP (e.g. AP 4 → AP 3). If the damage penetrates by a multiple of the cover's AP, the cover loses that multiple in AP (e.g. 40 damage penetrates AP 8: 8×5=40, so the cover loses 5 AP and is now AP 3).
+
+> **Clarification:** Position within a melee doesn't matter much — it's all one big mess of limbs, blood, swords, and claws. Only characters granting combat advantage are easier to shoot. For the rest, the -2k0 penalty to hit people in melee still applies.
+
+> **Clarification:** Falling damage example — a Size 5 ork falls 2m and rolls 6k1 damage. If he falls 20m it's 15k10 → `10k10+25` damage. If he scored 50 on an Acrobatics Test to reduce it, that's 15−8=7 → 7k7 damage.
+
+> **Optional Rule:** The gun jam rule as written means that as a character's level increases, their chance of jamming increases. The original rule (rolling more 1s than the character's Level would jam) also increased jams with skill. Suggested alternative: if you have to keep 1s equal to or greater than your Ballistics skill, then the gun jams.
+
+> **Optional Rule:** Alternative HP system — instead of dividing damage by Resilience and taking wounds: 1) The character has "Damage Points" (DP) calculated as Resilience × Hit Points. 2) All damage that gets through armor is subtracted from these Damage Points. 3) When a character is out of Damage Points, they take one level of Critical Damage for each hit, accumulating on each hit location until death. 4) Weapons with the "Tearing" property always do at least 5 damage. Any reference to taking "wounds" translates to 5 DP per wound.
+
+> **Optional Rule:** Alternative Critical Damage — instead of the critical damage charts: 1) Each time a character takes critical damage, they take 1 level of Fatigue instead. 2) Characters do not fall unconscious when Fatigue exceeds Constitution; each hit after that causes Bleeding. 3) When Fatigue exceeds Constitution, the character is Heavily Wounded and takes -2k1 to all rolls (instead of the normal -1k0 Fatigue penalty). 4) When Fatigue equals Constitution + Willpower, the character dies. On death, roll 1d10 — on a 10 they expire in a spray of ludicrous giblets and buckets of blood.
+
+> **Play Tip:** Natural healing almost never matters in practice. Most parties pick up some form of healing — feats, healing magic, or easy Resource point replenishment. The basic class Initiate is short, has no prerequisites, and offers both Minor Magic and Divine Ministration. A good SM should note if the party can't or won't start every scene at full Hit Points. You don't have to make things easier for them, but be aware it could be an issue.
+
+> **Clarification:** As exalts are generally immune to disease, this section isn't often applicable. It may matter for non-exalt allies or hangers-on who get a limb blown off, but generally blood loss is the thing that matters most.
+
+## Social Combat
+
+### Overview
+
+Just like regular combat, social combat is resolved with structured time. Social combat rounds, however, are considerably longer than normal rounds - social combat rounds can be a minute or more long, though
+
+SOCIAL COMBAT ACTIONS
+
+| Action          | Type | Description                                               |
+| --------------- | ---- | --------------------------------------------------------- |
+| Monologue/Study | H/F  | Take time to make your next social attack more effective. |
+| Move            | Fr   | Move around the area.                                     |
+| Poker Face      | F    | Focus on defending yourself from social attacks.          |
+| Refute          | R    | Negate someone's social attack.                           |
+| Social Attack   | H    | Make a social attack.                                     |
+| Speak Carefully | F    | Make a social attack while preparing a defense.           |
+| Support         | H    | Provide wingman support for someone.                      |
+| Wordplay        | H    | Catch someone off-guard with tricky words.                |
+
+really they just take however long is required for the actions people are taking. If someone is making a particularly long speech or monologue, a round might be several minutes or more. Social combat works in the same way as normal combat with the following notes:
+
+A character can be just as surprised in a social situation as anywhere else - someone might just walk right up to a hero and try to persuade them to do them a favor or invite them into the back room. A character who is surprised loses their first turn in the combat.
+
+A character uses their Wisdom and Composure to modify their initiative roll rather than Dexterity and Composure. Being quick on your feet isn't all that impressive in a battle of wits.
+
+Social combat can be resolved in a number of different ways, not just killing everyone involved. Make sure to read over the resolution phase to understand how social combat can end.
+
+### Resolve
+
+Resolve is a character's defense against social attacks. Resolve is calculated by adding a character's Willpower and Composure together. Resolve recovers more quickly than Hit Points. Each morning, the character may roll her Composure against `TN 10`. If the roll succeeds, she regains one point of Resolve, plus one for every Raise on the roll. The character gains a point of resolve if they perform a stunt that furthers their Alignment (at the SM's discretion).
+
+### Mental Defense
+
+Just as a character's Static Defense in normal combat is determined by their Dexterity, a character's Mental Defense is determined by their Composure. A character's base Mental Defense value is `5 + (5 × Composure)`.
+
+### Social Combat Actions
+
+The list of actions in a social situation are somewhat different from the actions taken during normal combat - you'll find a distinct lack of options that involve stabbing someone. If a character does decide to use the point of his sword rather than his argument, then social combat ends rather abruptly and normal combat takes its place - possibly with one very surprised person who came expecting a debate.
+
+#### Monologue/Study
+
+_Half Action_
+
+The active character takes some time to prepare himself, building a fortress of words or considering carefully the arguments of another for flaws. You may take a half action to get `+1k0` on your next social attack or a full action to get `+2k0` on your next social attack. The next action the monologuing character performs must be a social attack or the benefits of this study are lost. These benefits are also lost if the character performs a reaction before making his attack.
+
+#### Move
+
+_Free Action_
+
+Unlike in a normal combat situation where bullets are going all over the place and cover is a very nice thing to have, movement during social combat is more for flavor than anything else. Unless someone is specifically making a withdraw action or otherwise fleeing the scene, movement is a free action that is simply taken while making other actions.
+
+#### Poker Face
+
+_Full Action_
+
+The character makes no social attacks and instead concentrates entirely on self-defense. Until the start of her next turn, the character can make one additional reaction and gains a +10 bonus to her static social defense.
+
+#### Refute
+
+_Reaction Action_
+
+Refuting a social attack can be done in a number of different ways. The two main methods of social refutation are as follows, though given the variety of social situations the SM may allow a character to use a stunt to Test other skills and characteristics:
+
+**Wisdom and Scrutiny** - By Testing wisdom and scrutiny a Hero is seeing through the arguments people are making. A wisdom and scrutiny Test can be made against any social attack.
+
+**Intelligence and Lore** - The last thing an adventurer wants to do is debate an expert on their chosen topic. Whenever a Lore would be appropriate, an Intelligence and Lore Test may be used to refute social attacks, and gains a free Raise on his Test (he's got the facts on his side, after all).
+
+#### Social Attack
+
+_Half Action_
+
+Making a Social Attack depends on a number of factors. A hero must choose exactly which tactic they'll be using in order to determine what they'll be rolling. First, the character must decide if they're using Charisma (for honest persuasion) or Fellowship (for guile and seduction). A hero then selects from Charm (for seduction and simply improving disposition), Command (for giving orders), Deceive (for attempting to get their way through lies), Intimidation (for scaring the hell out of people), Performer (for influencing large crowds), and Persuasion (making an honest attempt to talk to someone).
+
+#### Speak Carefully
+
+_Full Action_
+
+The character presents a careful argument, making sure she remains well poised to defend herself. The character suffers a `-1k0` penalty to her social attack Test, but she gains a `+1k0` bonus to all Refute Tests until the start of her next turn.
+
+#### Support
+
+_Half Action_
+
+The character creates an opportunity for another character. He might support his argument, present more facts, or simply add another voice. By working together with them, the active character gives them `+1k0` to their next social skill Test. It cannot be used on any actions the SM deems inappropriate, and no more than two characters may attempt to assist another on a single Test.
+
+#### Wordplay
+
+_Half Action_
+
+The character attempts to use guile and debate training to trick her opponent into a mistake. The character and her target make an opposed Test, the active character using Deceive + Fellowship and the defending character using Scrutiny + Wisdom. If the active character wins, her next social attack against that same target cannot be refuted. If the active character's next action is anything other than a social attack, the advantage of wordplay is lost.
+
+## Effects Of Social Attacks
+
+Social attacks don't reduce a target's Hit Points. At least not under normal circumstances. The effects of a social attack are actually much more subtle, attacking a target's Resolve. The TN of a social attack is made against a target's Mental Defense.
+
+Whenever a character is overcome by a social attack, he has two options: he may spend a point of Resolve to resist the effects of the social attack or he may consent to the attack, performing the behavior described in the initial attack declaration. Keep in mind that additional raises on the social attack have no effect - one that hits with ten raises has the same effect as one with no raises at all.
+
+In a given scene, a character can suffer only two points of Resolve drain from social attacks. Once this has happened, the character becomes jaded and suspicious. Any further attempts at persuasion automatically fail unless the attacker uses a stunt to try a new approach. Whenever a social attack would make a character act against their alignment they must spend a Resolve point in order to resist. Social attacks can impose a range of possible effects:
+**Building/Eroding Dispositions:** The most basic type of social attack effect, building and eroding dispositions simply makes a character like or dislike a given cause, belief, or other character. The results of a single social attack aren't going to win an enemy over as a lover or turn a patriot against their nation, though - whenever a character consents to this effect, their disposition only moves one place, and the change is typically temporary unless the same effect has been used a number of times equal to the defender's willpower (the average person with Willpower 2 would need to be subject to this effect twice for it to become permanent). Typically characters will spend resolve to resist having existing loyalties eroded, but they are less likely to oppose attacks on a different front targeting causes and people they don't have strong feelings for already.
+
+**Compelling Behavior:** Characters who don't or can't resist a social attack can be convinced against their better judgement to spend the rest of the scene doing any one task, provided that doing so doesn't violate their Alignment. Typically a character will resist any course of action that violates their normal behavior, but they are not required to do so - a husband may have a loving wife and still accede to the proposition of a beautiful concubine, for instance.
+
+**Breaking Alignment:** If a character is reduced to zero Resolve through social attacks and she is prevented from regaining their full Resolve for a number of days equal to their Devotion, her will is broken. In this state (which lasts until the character has fully recovered their Resolve), successful social attacks may compel her to take actions betraying her Alignment. Story Masters should be wary of inflicting such a dire fate on a protagonist.
+
+### Disposition
+
+The disposition of a character determines the general difficulty of influencing their actions, as well as just what they're likely to do. A low disposition (like Hostile) is likely to be less than helpful, whereas a high disposition might see you getting favors and even some assistance. The following table shows the general attitudes of disposition as well as the effects they have on Mental Defense to change these attitudes and what they mean.
+
+| Attitude       | TN  | Means                                                          |
+| -------------- | --- | -------------------------------------------------------------- |
+| Kismesissitude | +10 | FROM HELL'S HEART I STAB AT THEE.                              |
+| Hostile        | +5  | Will take risks to hurt you.                                   |
+| Unfriendly     | 0   | Wishes you ill.                                                |
+| Indifferent    | 0   | Doesn't much care.                                             |
+| Friendly       | 0   | Wishes you well.                                               |
+| Helpful        | +5  | Will take risks to help you.                                   |
+| Fanatical      | +10 | There is only the Emperor, and he is our shield and protector. |
+
+## Fear and Insanity
+
+The Great Wheel is a dark and terrible place where billions inhabit a universe filled with unnumbered horrors and countless dangers. The rules presented here reflect these many threats to the mind and soul, and how the player characters interact with them. They are separated in two distinct sections: Fear covers a character's immediate reaction to frightening events and creatures and Insanity details the long term effects of trauma on a character. During combat encounters, the only rules that will be used from this chapter are those for fear. The effects of Insanity are dealt with in the aftermath of a battle rather than during it.
+
+### Fear
+
+### Shock and Snapping Out of It
+
+### Going Insane
+
+FEAR TEST DIFFICULTIES
+
+| Severity of Fear     | TN  | Examples                     |
+| -------------------- | --- | ---------------------------- |
+| Fear 1 - Disturbing  | 15  | Walking Dead                 |
+| Fear 2 - Frightening | 20  | Ebon Wraith                  |
+| Fear 3 - Horrifying  | 25  | Incarnate Daemon             |
+| Fear 4 - Terrifying  | 30  | The King in Rags and Tatters |
+
+<!-- RESOLVED: Interleaved text from multi-column PDF extraction has been reconstructed. Fragment "...requires concentration" rejoined with "any skill or Test that"; "Such are the stresses..." rejoined with "that the slow slide into insanity...". -->
+
+Fear comes into effect when the characters are confronted with scenes of atrocity or horror, or when they are called on to battle against terrifying aliens, insane perversions of science, and nightmarish entities from the warp. When a PC is confronted by such a frightening event or adversary, he must make a Fear Test. This is a Willpower Test, with the TN determined by how frightening the thing is. If the PC passes this Test, then he may continue to act as normal. If he fails, however, he succumbs to fear.
+
+If a character fails the fear Test in a combat situation, he must immediately roll on the Shock Table, adding +1 to the result for every Check on the Test. The effects listed are applied immediately to the character. If the character fails the fear Test in a non-combat situation, the character becomes unnerved and suffers a `-1k0` penalty to any skill or Test that requires concentration on his part. This penalty lasts while the character remains in the vicinity of the object of his fear. In addition, if any non-combat fear Test is failed by 10 or more, the character also gains `+1d5` Insanity Points.
+
+Characters may be able to shake off some of the effects of fear after the initial shock has worn off. Where on the Shock Table that a character may 'snap out of it', a character can make a Composure Test (TN equal to the initial fear's TN). If this succeeds, then he regains his senses, shrugs off the effects, and may act normally from then on. If he fails this Test, the effect continues. A character may Test again at the beginning of each of his subsequent turns until he succeeds.
+
+Characters in DUNGEONS THE DRAGONING face things in their travels that most people will forever remain unaware of, spending prolonged periods in the warp, visiting ancient and terrible worlds, and dealing with treacherous aliens are just a few of these. Such are the stresses and horrors of these tasks that the slow slide into insanity is a constant threat. No mind, not even one hardened by the harsh rigors of life in the Great Wheel, is immune to the slow erosion of sanity by the horrors of the galaxy, and a party of Heroes is no exception.
+
+In DUNGEONS THE DRAGONING, these dangers are represented by insanity points. Insanity points represent the strain put on a character's mind by his experiences; the more Insanity Points a character has, the more fragile his mind. The cumulative effects of gaining Insanity Points are divided into traumas, which represent the short term after-effects of particularly terrible experiences and Disorders, which are permanent mental afflictions that sign-post a character's slide into total madness.
+
+### Mental Trauma
+
+Mental Trauma represents the relatively short-term damage to a character's state of mind that he suffers after experiencing a horrific or supernatural event. Each time the character gains 10 Insanity Points in a session he must make a Trauma Test. This is a Composure Test with a variable difficulty. The Target Number for this Test is 15, plus one for every five points of Insanity the character has accumulated (17 at 10 Insanity Points, 25 at 50 Insanity Points, etc). If the Test is failed, roll on the Trauma table, adding one to the roll for every Check on the roll.
+
+> **Optional Rule:** The maximum Resolve that can be drained equals the attacker's Fellowship score.
+
+> **Design Note:** This section has been reworked to make Willpower less of a super-stat. See Appendix C for additional optional rules on therapy, derangements, and phobias. Fear Tests should be rolled at the beginning of a character's turn. Alternative: do not roll a Test to snap out of Shock if you've rolled a Fear Test since your last turn.
+
+## Gaining Mental Disorders
+
+Mental disorders reflect the permanent, long-term effects on a character's mind as a result of exposure to things horrific and unnatural. A character automatically gains a new disorder (or a more severe version of an existing disorder) each time he acquires a total number of Insanity Points. A character gains one Minor Disorder when he gains 40 Insanity Points, one Severe Disorder when he gains 60 IP, and one Acute Disorder when he gains 80 IP. If a character reaches 100 Insanity Points, they are removed from play - they've completely cracked and are now under the control of the SM.
+
+SHOCK TABLE
+
+<!-- RESOLVED: Roll ranges reconstructed as sequential 1-13+ based on 13 progressively severe entries for a d10+checks roll. Partial OCR captured "1, 7, 9, 10, 11, 13+" which are consistent with the full 1-13 sequence. -->
+
+| Roll (d10) | Result                                                                                                                                                                                                                                                                                    |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1          | Startled: You may only take one half action on your next turn unless you attack the source of the fear.                                                                                                                                                                                   |
+| 2          | Startled: You may only take one half action on your next turn unless you flee from source of the fear.                                                                                                                                                                                    |
+| 3          | Dazed: You are Dazzled and may not take actions with the Concentration sub-type until you snap out of it.                                                                                                                                                                                 |
+| 4          | Frightened: You gain 1 Insanity Point and may not approach the source of the fear in any manner.                                                                                                                                                                                          |
+| 5          | Frightened: You gain 1 Insanity Point and must flee from the source of the fear if it is at all possible.                                                                                                                                                                                 |
+| 6          | Stunned: You gain 1d2 Insanity Points and are Stunned until you snap out of it.                                                                                                                                                                                                           |
+| 7          | Scared: You gain 1d2 Insanity Points and flee at top speed. If that is impossible you take -2k0 to everything and may only take Half Actions. You cannot try to snap out of it until the source of the fear is gone or you have escaped.                                                  |
+| 8          | Panic: You gain 1d5 Insanity Points and must shoot or chop. Until you snap out of it you have the feats Fan The Hammer and Lightning Attack, you must use Multiple Attack or Full-Auto Burst actions. You cannot snap out of it until the source of the fear is gone or you have escaped. |
+| 9          | Fainting spell: You gain 1d5 Insanity Points and faint. You are unconscious for 1d5 rounds and then Dazzled until the end of the scene.                                                                                                                                                   |
+| 10         | Screaming: You gain 1d5 Insanity Points and succumb to panicked screaming and vomiting. You are Helpless for 1d5 rounds and can only take a single Half Action on your turns until you get a chance to rest and recover.                                                                  |
+| 11         | Triggered: You gain 1d10 Insanity Points and begin panic firing. For this scene you have access to the feat Fan The Hammer, you must use the Multiple Attack or Full-Auto Burst actions. Once out of ammo you may take a single Half Actions on your turn until the end of the scene.     |
+| 12         | Down: You gain 1d10 Insanity Points and fall down weeping and wailing. You are Prone and Stunned for 1d10 rounds. After that you take -2k0 to all actions until the end of the scene.                                                                                                     |
+| 13+        | Down and out: You take 1k1 Insanity Points and are completely catatonic for 1d10 hours. You are Helpless until it ends.                                                                                                                                                                   |
+
+Disorders can be selected by the SM, or the SM can allow the player to select one if he prefers. Some disorders would be phobia, obsessions and compulsions, hallucinations, and horrific nightmares. The exact effects of a disorder should be decided on by the SM. Rolls made to resist the effects of a disorder depend on their difficulty - Minor Disorders require a `TN 10` roll, Severe Disorders require `TN 15`, and Acute Disorders require `TN 20`. See the Appendix C (Insanity) for some optional therapy rules and derangement charts.
+
+> **Play Tip:** Decide how often characters roll for mental trauma: 1) When they gain 10 Insanity Points at once — almost never happens. 2) When they gain 10 IP in a single scene — rarely happens. 3) When they gain 10 IP during a session — the session gets scarier as it goes on. 4) When total IP reaches a number evenly divisible by 10 — all insanity becomes scary. The more insanity rolls players face, the more you'll want to consider the optional psychiatric therapy rule in Appendix C.
+
+## Mental Traumas
+
+| Roll (1d10) | Result                                                                                                                                                                                   |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1           | The character becomes withdrawn and quiet, suffering -1 to their Charisma attribute for `3d10` hours.                                                                                    |
+| 2           | The character starts babbling with incoherent and rapid speech for `1d5` hours. The character cannot cast spells with verbal components or use voice activated devices during this time. |
+| 3           | The character begins to perform a compulsive behavior and pays less attention to anything else. All Intelligence and social attribute based tests take `-1k0` for `3d10` hours.          |
+| 4           | The character becomes angry and anti-social, suffering -1 to their Fellowship attribute for `3d10` hours.                                                                                |
+| 5           | The character sees danger everywhere. They gain `+2k0` on Perception tests and suffer a -1 to their Wisdom attribute for the next `1d5` days.                                            |
+| 6           | The character becomes agitated and jumpy, suffering -1 to their Composure attribute for `3d10` hours.                                                                                    |
+| 7           | The character suffers from a temporary severe phobia for the next `1d5` days.                                                                                                            |
+| 8           | The character becomes depressed and passive, suffering -1 to their Willpower attribute for `3d10` hours.                                                                                 |
+| 9           | The character becomes agitated and distracted in stressful situations. For the next `1d5` days all rolls in stressful situations (including all combats) are at `-1k0`.                  |
+| 10          | Night Terrors. Treat this as the Night Terrors Hindrance for the next `1d10` days.                                                                                                       |
+| 11          | The character is unable to speak for the next `1d5` days.                                                                                                                                |
+| 12          | Homicidal or suicidal mania (roll `1d10`, 1-5 is homicidal, 6-10 is suicidal). Begin combat as the character attempts to kill themselves or everyone around them.                        |
+| 13          | The character suffers from temporary hysterical blindness for `1d5` days.                                                                                                                |
+| 14-15+      | Extreme trauma renders the character almost totally unresponsive for `1d5` days. They cannot initiate actions but may be gently led around.                                              |
+
+The man walked down the street. In the small town, he cut an imposing figure, not least because he was an unknown, having ridden out of the dust storms on a ragged-looking grox. The town had enough troubles already with the Dark Eldarin raiders that had stripped it to shambles and the regular everyday human raiders that had taken over after the professionals had left. There wasn't even enough left for anyone to care about stealing.
+
+When he got into town, the man's grox had been run off by a couple of local thugs with autopistols. He hadn't done anything then. He had just looked at them, the kind of look that would have given a wise man pause. The thugs just laughed.
+
+But now he'd had a couple of drinks and learned enough about the town and its past to get properly angry. He sucked on a Lho-stick and paused near an old man hammering caskets together. The old man was singing to himself.
+
+"Get three coffins ready," the man said, puffing on his lho-stick. The old man looked over and nodded, not really understanding. The smoking man walked away, towards the thugs that had run his grox off. The two strolled over casually to meet him. Two more watched from behind them.
+
+"Hello, friend," the taller of the two thugs said. "Listen here, didn't you get the idea? We don't like to see sods like you in town. Why don't you go get your dirty lizard and..." he sneered and looked around. "What, you let him get away from you?" The two thugs laughed.
+
+"See, that's what I want to talk to you about," the man said, calmly. "He's feelin' real bad."
+
+"Huh?" the shorter thug asked, confused.
+
+"My grox. You see, he got all riled up when you went and fired those shots at his feet." The two thugs looked at each other. The shorter thug narrowed his eyes.
+
+"Hey, you makin' some kinda joke?" the short thug asked. The man shook his head.
+
+"No. See I understand that you berks were just playin' around. The grox just doesn't get it." He looked around at the four men. "'Course if you were to all apologize..." The two watching thugs laughed. The shorter thug joined in.
+
+The tall one, though... he could sense something was wrong.
+
+The man puffed on his lho-stick and opened his dust cloak. He was wearing a gunbelt. He clenched his jaw and looked at the laughing men with a gaze that could cut stone.
+
+"I don't think it's nice of you, laughin'." They all shut up. That wasn't a normal look. "See, my grox don't like people laughin'. Gets the crazy idea you're laughin' at him. Now if you'll apologize like I know you're going to..." the thugs started slowly going for their guns. "I might be able to convince him that you didn't really mean it."
+The tension in the air was so thick you could almost choke on it. The thugs were the first ones to lose their nerve. They scrambled for their guns and in the moment they did, the man drew his gun and fired, fanning the hammer of his hand cannon and catching all four of them. He waited a moment, then holstered his gun.
+
+The man turned around and walked back towards the bar. He paused by the old man making caskets.
+
+"My mistake. Four coffins."
+
+---

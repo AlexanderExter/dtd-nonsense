@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NPC Stat Block Builder — DTD 40,000</title>
+        <link rel="stylesheet" href="../shared/css/dtd-theme.css" />
+        <link rel="stylesheet" href="npc-generator.css" />
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <header class="top-bar no-print">
+            <div class="top-bar-left">
+                <a href="../index.html" class="back-link">← Tools</a>
+                <h1>NPC Stat Block Builder</h1>
+            </div>
+            <div class="top-bar-right">
+                <select id="template-select" title="Load template">
+                    <option value="">— Templates —</option>
+                </select>
+                <select id="saved-select" title="Load saved NPC">
+                    <option value="">— Saved —</option>
+                </select>
+                <button class="btn btn-primary btn-sm" id="btn-save" title="Save NPC">Save</button>
+                <button class="btn btn-ghost btn-sm" id="btn-delete-saved" title="Delete saved NPC">Delete</button>
+                <button class="btn btn-secondary btn-sm" id="btn-clear" title="Clear all fields">Clear</button>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <main class="builder-layout">
+            <!-- LEFT: Input Panel -->
+            <section class="input-panel no-print">
+                <!-- Core Stats -->
+                <div class="input-section">
+                    <h2 class="section-title">Core</h2>
+                    <div class="core-fields">
+                        <div class="field field-wide">
+                            <label for="npc-name">Name</label>
+                            <input type="text" id="npc-name" placeholder="NPC Name" />
+                        </div>
+                        <div class="field">
+                            <label for="npc-level">Level</label>
+                            <select id="npc-level">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="npc-size">Size</label>
+                            <input type="number" id="npc-size" min="1" max="20" value="4" />
+                        </div>
+                        <div class="field">
+                            <label for="npc-speed">Speed</label>
+                            <input type="number" id="npc-speed" min="0" max="30" value="4" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Characteristics -->
+                <div class="input-section">
+                    <h2 class="section-title">Characteristics</h2>
+                    <div class="char-grid">
+                        <div class="char-cell">
+                            <label for="char-str">Str</label>
+                            <input type="number" id="char-str" class="char-input" data-char="strength" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-dex">Dex</label>
+                            <input type="number" id="char-dex" class="char-input" data-char="dexterity" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-con">Con</label>
+                            <input type="number" id="char-con" class="char-input" data-char="constitution" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-cha">Cha</label>
+                            <input type="number" id="char-cha" class="char-input" data-char="charisma" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-fel">Fel</label>
+                            <input type="number" id="char-fel" class="char-input" data-char="fellowship" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-cmp">Cmp</label>
+                            <input type="number" id="char-cmp" class="char-input" data-char="composure" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-int">Int</label>
+                            <input type="number" id="char-int" class="char-input" data-char="intelligence" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-wis">Wis</label>
+                            <input type="number" id="char-wis" class="char-input" data-char="wisdom" min="0" max="10" value="2" />
+                        </div>
+                        <div class="char-cell">
+                            <label for="char-wil">Wil</label>
+                            <input type="number" id="char-wil" class="char-input" data-char="willpower" min="0" max="10" value="2" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Skills</h2>
+                        <button class="btn btn-ghost btn-sm" id="btn-add-skill">+ Add</button>
+                    </div>
+                    <div class="quick-add-row">
+                        <button class="btn btn-ghost btn-xs" data-quick-skills="combat">+ Combat</button>
+                        <button class="btn btn-ghost btn-xs" data-quick-skills="social">+ Social</button>
+                        <button class="btn btn-ghost btn-xs" data-quick-skills="stealth">+ Stealth</button>
+                    </div>
+                    <div id="skills-list" class="list-entries"></div>
+                </div>
+
+                <!-- Feats -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Feats</h2>
+                        <button class="btn btn-ghost btn-sm" id="btn-add-feat">+ Add</button>
+                    </div>
+                    <div id="feats-list" class="list-entries"></div>
+                </div>
+
+                <!-- Traits -->
+                <div class="input-section">
+                    <h2 class="section-title">Traits</h2>
+                    <div id="traits-grid" class="traits-grid"></div>
+                </div>
+
+                <!-- Armor -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Armor</h2>
+                        <button class="btn btn-ghost btn-sm" id="btn-add-armor">+ Add</button>
+                    </div>
+                    <div id="armor-list" class="list-entries"></div>
+                </div>
+
+                <!-- Weapons -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Weapons</h2>
+                        <button class="btn btn-ghost btn-sm" id="btn-add-weapon">+ Add</button>
+                    </div>
+                    <div id="weapons-list" class="list-entries"></div>
+                </div>
+
+                <!-- Abilities -->
+                <div class="input-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Abilities</h2>
+                        <button class="btn btn-ghost btn-sm" id="btn-add-ability">+ Add</button>
+                    </div>
+                    <div id="abilities-list" class="list-entries"></div>
+                </div>
+
+                <!-- Gear -->
+                <div class="input-section">
+                    <h2 class="section-title">Gear</h2>
+                    <textarea id="gear-text" rows="3" placeholder="Comma-separated gear list"></textarea>
+                </div>
+            </section>
+
+            <!-- RIGHT: Preview Panel -->
+            <section class="preview-panel">
+                <!-- Derived Stats Bar -->
+                <div class="derived-bar no-print">
+                    <div class="derived-stat">
+                        <span class="derived-label">SD</span>
+                        <span class="derived-value" id="derived-sd">22</span>
+                    </div>
+                    <div class="derived-stat">
+                        <span class="derived-label">HP</span>
+                        <span class="derived-value" id="derived-hp">8</span>
+                    </div>
+                    <div class="derived-stat">
+                        <span class="derived-label">Resilience</span>
+                        <span class="derived-value" id="derived-resilience">4</span>
+                    </div>
+                    <div class="derived-stat">
+                        <span class="derived-label">Mental Def</span>
+                        <span class="derived-value" id="derived-mental">15</span>
+                    </div>
+                    <div class="derived-stat">
+                        <span class="derived-label">Aura</span>
+                        <span class="derived-value" id="derived-aura">0</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card Preview -->
+                <div class="stat-card" id="stat-card">
+                    <h2 class="card-name" id="card-name">New NPC</h2>
+                    <table class="char-table" id="card-char-table">
+                        <thead>
+                            <tr>
+                                <th>Str</th>
+                                <th>Dex</th>
+                                <th>Con</th>
+                                <th>Cha</th>
+                                <th>Fel</th>
+                                <th>Cmp</th>
+                                <th>Int</th>
+                                <th>Wis</th>
+                                <th>Wil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="card-char-row">
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card-stats" id="card-stats"></div>
+                    <div class="card-body" id="card-body"></div>
+                </div>
+
+                <!-- Actions -->
+                <div class="preview-actions no-print">
+                    <button class="btn btn-primary" id="btn-copy-md" title="Copy stat block as Markdown">Copy Markdown</button>
+                    <button class="btn btn-secondary" id="btn-print" title="Print stat card">Print Card</button>
+                    <button class="btn btn-secondary" id="btn-duplicate" title="Duplicate as new NPC">Duplicate</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast -->
+        <div id="toast" class="toast" hidden></div>
+
+        <script src="../shared/js/core.js"></script>
+        <script src="npc-generator.js"></script>
+    </body>
+</html>

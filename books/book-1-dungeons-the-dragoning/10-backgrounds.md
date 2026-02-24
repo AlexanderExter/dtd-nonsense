@@ -1,0 +1,154 @@
+---
+title: "Chapter X: Backgrounds"
+book: 1
+chapter: 10
+order: 10
+type: "chapter"
+---
+# Chapter X: Backgrounds
+
+### Allies
+
+Allies are close friends and trusted companions. Unlike Followers, allies are never mere faceless NPCs. Most are Exalted (of any type), Daemons, or other magical beings that are at least as powerful as a starting character. They may alternatively be exotic beings like intelligent animals, rogue AIs, or exceptionally skilled or powerful mortals. Characters don't have to buy Allies to represent the rest of the party - allies are always NPCs. Also, allies are independent people with their own lives and goals. If your character constantly asks for help and gives nothing in return, they will abandon her. Allies do what they can to help, but they won't risk their lives. And they'll almost always want something in return.
+
+**Background Effects:** Each dot in this background typically represents one ally approximately equal to a starting character in power. More powerful allies require higher ratings.
+
+See Appendix J for more discussion about Allies, including whether they gain XP and how often they can join adventures. These details should be decided ahead of time.
+
+### Artifact
+
+In both the distant past and the modern day, sorcerers created all manner of items of power, ranging from magical weapons and armor to flying vehicles or enchanted disguises. A character with the Artifact background possesses one or more such items. Most Syrneth artifacts were lost or destroyed millennia ago, and much of the knowledge of how to make such items has also been lost. Today, all artifacts are rare and precious.
+
+Consider carefully how your character acquired her artifacts. She may have been rich or powerful enough before hearing the call of a hero to have some trappings of the glory of the old empires. Or perhaps she followed prophetic dreams after rising to power and found the artifacts in some lost fortress-tomb. Perhaps she stole it or took the artifact from the body of one of her foes.
+
+**Background Effects:** Your character can purchase this Background multiple times, once for each artifact she owns. Each artifact has a rating between 1 and 5, and this is the background cost of that particular artifact. Artifacts with ratings of 4 and 5 are now exceptionally rare and will be coveted greatly by the Hero's foes. A character may only have up to five total dots of Artifacts at character creation.
+
+## Backing
+
+Your character is an important member of an organization, such as a government, an army, the Harmonium or a powerful underground Syndicate such as the Doomguard. The higher your character's Backing, the higher her rank is in this organization. At your SM's discretion, you may take Backing multiple times for rank in different organizations. Neglecting duties can easily result in demotion or worse.
+
+**Background Effects:**
+
+- X: None. Your character has no connections to any governments or factions. Why?
+- Backing 1: Your character is a lower officer or a minor functionary.
+- Backing 2: Your character is a mid-level officer, the head of a small department or some similarly intermediate position.
+- Backing 3: Your character is moderately powerful and has many people working under her.
+- Backing 4: Your character is extremely powerful, often directly reporting to the highest ranking of power in her organization.
+- Backing 5: Your character is one of the leaders of her organization, a general or admiral, a Factol of one of Sigil's 15 factions, or a similarly powerful position.
+
+## Contacts
+
+In addition to friends and Allies, many characters know people in various sectors of society. Contacts use their talents, information, or resources to help your character, but they'll always expect a similar favor in return. Where an Ally will help you out of friendship as long as it doesn't put their lives on the line, a Contact won't work for free.
+
+Each dot in this background represents both minor and major contacts. Major contacts are individuals you are on a first name basis with, people in positions where they are useful. High-ranking military officers, powerful courtiers, faction members in positions of influence, and so forth. Minor contacts simply represent overall connectedness. They aren't as useful, but you can use `Contacts + (Charisma or Fellowship)` to gather information and find minor help.
+
+**Background Effects:** Each dot of this Background provides one major contact and one dice for finding minor ones.
+
+> **Optional Rule:** If a player hasn't defined their Contacts, consider the background as having three attributes: Availability, Power, and Responsiveness. All start at 1 "dot" and you can add 1 for each dot of the background. For example, Contact 3 could be (A:1, P:2, R:3). Availability ranges from 1 (single planet/sphere) to 5 (accessible even from a no-tech backwater). Power ranges from 1 (minor favors) to 5 (orbital bombardments or capital pardons). Responsiveness ranges from 1 (appointment next week) to 5 (immediate action, results in minutes). Alternatively, treat backgrounds like a virtual "Wealth" score and use the purchasing rules.
+
+## Fame
+
+You enjoy widespread recognition in society, for better or worse. People know your name and face and they may enjoy just being seen with you. This will open a lot of doors in some places, but also means that it can be difficult to avoid attracting attention. It's definitely a mixed blessing in some ways, especially if you've made enemies.
+
+**Background Effects:**
+
+- X: None. Your character either hasn't done anything of note or has been working hard to keep their identity secret. Why?
+- Fame 1: You're known to a select subculture or city.
+- Fame 2: You have nationwide renown. Perhaps you're a politician or a minor star.
+- Fame 3: Nationally famous, everybody knows something about you.
+- Fame 4: You're an internationally famous media icon.
+- Fame 5: You're so famous that even other crystal spheres buzz with news about you.
+
+## Followers
+
+Your character has one or more loyal assistants, oathbound warriors, devoted acolytes, or similar companions. These people are exceptionally devoted to her. They might worship her, might regard her as their best hope to achieve some lofty goal, or they might simply be willing to follow her to have some fun. Followers are almost always merely mortals.
+
+Regardless of exactly what they do for a living, they're always exceptionally loyal. Poor treatment or neglect will strain and break that loyalty quickly, and will end in abandonment or revolt. However, with care and respect, most will gladly lay down their lives for you. Part of treating them well is caring for their needs. Your character needs Wealth, Backing, or Holdings equal to her dots in Followers in order to support them all.
+
+**Background Effects:**
+
+- X: None. No one is willing to follow your character, or she pushes everyone away who tries. Why?
+- Followers 1: Provides up to 5 followers.
+- Followers 2: Provides 20 followers.
+- Followers 3: Provides a loyal band of 100 followers.
+- Followers 4: Provides a small army of 1000 followers.
+- Followers 5: Provides a mighty force of 10000 followers.
+
+## Holdings
+
+You own property or a spelljamming ship. This might be a family or business holding, but it is both a potential base of operations and a resource by itself. A holding is always a safe place to rest, a home that many of the Exalted simply don't have. To support a Holding, you'll need to hire staff or crew, requiring Followers, Backing, or Wealth equal to the Holdings in order to support it.
+
+> **Play Tip:** Talk to the players and SM about how much responsibility any particular background comes with. Holdings should be a viable alternative to the Wealth background.
+
+**Background Effects:**
+
+- X: None. The character has no permanent holdings. Why doesn't he have this kind of lasting connection?
+- Holdings 1: Your character owns a very small spelljammer (as large as a shuttlecraft, for example) or an average house or a small local business (a repair shop or restaurant, for example).
+- Holdings 2: Your character owns a small spelljammer (a smuggling ship, perhaps?) or a small manor home or a successful local business (a major local construction firm, a repair dock for ships, or so forth).
+- Holdings 3: Your character owns a medium ship (like, say, a Bird of Prey) or a small castle or a large business with some off-world contacts (an importing company or mining operation for example).
+- Holdings 4: Your character owns a large ship (think the Enterprise or a Whitestar ship) or a huge castle or a corporation with operations on several worlds.
+- Holdings 5: Your character owns a powerful and ancient ship (think a kilometer-long battleship) or a massive castle or a megacorporation with ties on many worlds (like ExoGeni Corporation or Weyland-Yutani).
+
+> **Play Tip:** The player and SM need to work out Holdings before the game starts. If the SM is planning a game set only in Sigil, a spelljammer is inappropriate. Likewise, taking a business or planetary holding when the game is about exploring far-away Crystal Spheres.
+
+## Inheritance
+
+You begin play with something beyond your means to normally acquire. There are many things that are almost impossible for a normal person to get their hands on - Syrne artifacts, power armor, deadly weapons - and you've somehow gotten one of these rare and precious items.
+
+Consider carefully how your character acquired her Inheritance. Perhaps an ancestor passed it down to her, or she looted it from a forgotten ruin on some lost world floating around a dead star, or maybe she stole it, or took it from the body of a foe.
+
+**Background Effects:**
+
+- X: None. The character has nothing but their normal starting gear. Why are they left with nothing but the clothes on their back?
+- Inheritance 1: Begin play with one Uncommon, two Common, four Very Common, or eight Ubiquitous items.
+- Inheritance 2: You begin play with one Rare item, or two choices from Inheritance 1.
+- Inheritance 3: You begin play with one Very Rare item, or two choices from Inheritance 2.
+- Inheritance 4: You begin play with one Mythic Rare item, or two choices from Inheritance 3.
+- Inheritance 5: You begin play with any one non-artifact item or two choices from Inheritance 4.
+
+> **Play Tip:** The SM needs to decide and communicate whether equipment from Inheritance has plot protection. Never let someone take this background if you're planning a jailbreak scenario — unless you're willing to work it in as escape loot. Characters who have only Inheritance, Wealth, and Artifact backgrounds tend to be rich, heavily armed social outcasts with no friends, family, or allies. These characters do not get invited to the good parties and often have nobody to post bail for them.
+
+## Mentor
+
+Although most Exalted meet their new life without a guide, you found one. The mentor is a patron, a teacher, a defender, and a friend. However, the mentor expects your character to obey her, though they will always act in what they see as your character's best interests. Your character is the mentor's student, ward, or apprentice, not her equal.
+
+**Background Effects:**
+
+- X: None. Either your character was forced to go through their Exaltation alone or they were abandoned. Why?
+- Mentor 1: Your character's mentor is just a bit more worldly and wise than her.
+- Mentor 2: Your character's mentor is someone of minor note or an exceedingly important individual who has little time for your character.
+- Mentor 3: Your character's mentor is wise, influential, and considerably more powerful than your character.
+- Mentor 4: Your character's mentor is an exceedingly important individual whose words and deeds shape the course of history.
+- Mentor 5: Your character's mentor is exceedingly powerful and he takes great interest in your welfare. However, he expects much from you and his enemies will likely see you as a way to get to him.
+
+> **Play Tip:** Mentor is a tricky background. Treat it as a mix between Backing, Contacts, and Allies. The requirements on the character shouldn't be too inconvenient, and the mentor needs to be helpful and useful — after all, their goal is to guide the character on to bigger and better things.
+
+## Status
+
+You have something of a reputation and a standing (earned or not) within the community of Exalts. This may be for great deeds, prophesy, or simply because you've made yourself well-known at gatherings. This doesn't cover rank in an organization or fame among the wider population.
+
+**Background Effects:**
+
+- X: The character has no status among other Exalts. Are they merely new and clueless, or are they trying to avoid attention?
+- Status 1: Known by some, even if they haven't met her before.
+- Status 2: Respected, her words carry weight in serious discussion.
+- Status 3: Influential, the character is often asked to consult.
+- Status 4: Powerful, other Exalts may flock to you and follow your lead.
+- Status 5: Luminary, there are few who can match the respect that goes with your name.
+
+## Wealth
+
+Your personal financial resources, or your access to such. A high Wealth reflects your liquid assets, how much cash flow you generate. This background also describes your standard of living, your possessions, and your buying power. No dots in wealth means that you have the clothes on your back and not much more, and probably rarely eats well.
+
+Where your wealth comes from is something you should detail. It may be a trust fund, income from a job, or income from holdings. Depending on events, it may be increased, reduced, or cut off entirely. Like fame, few Exalted have problems acquiring wealth, through one means or another.
+
+**Background Effects:**
+
+- X: None. Your character is destitute and poor. What has left them in this condition?
+- Wealth 1: Middle class, your character lives comfortably if not particularly well. He rarely has spending money in any significant amount.
+- Wealth 2: A larger savings means that you have quite a bit more leeway in your lifestyle. You likely have a domestic servant of some kind and can afford to eat what you like.
+- Wealth 3: Being actually wealthy is even better. You probably have several servants and live a life of luxury, dining in fine restaurants if you don't have a private chef and having more than enough left over for any sort of entertainment.
+- Wealth 4: This is where you become fabulously wealthy - a merchant prince, a bandit king, a mercenary lord, you have vast riches and if you don't have an army at hand you can rent one at need.
+- Wealth 5: You have so much money that there are no longer little things like limits. You have only your imagination and a nearly endless supply of wealth to support your desires.
+
+> **Play Tip:** Players should write down the source of their wealth, as events may conspire to cut them off for a time. Wealth is generally the easiest background to acquire during play. Characters who have only Inheritance, Wealth, and Artifact backgrounds tend to be rich, heavily armed social outcasts — these people do not get invited to the good parties.

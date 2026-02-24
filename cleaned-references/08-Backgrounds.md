@@ -1,0 +1,143 @@
+---
+description: Background dots — Allies, Wealth, Holdings, and more
+sidebar:
+  label: Backgrounds
+  order: 8
+title: Backgrounds
+---
+
+﻿# Backgrounds
+
+Backgrounds are external advantages from birth, circumstance, and opportunity. Cannot be improved with XP—only through play. Most characters begin with **7 dots** of backgrounds.
+
+---
+
+## Allies
+
+Trusted companions who are at least as powerful as a starting character (Exalted, Daemons, magical beings, rogue AIs, or exceptional mortals). Always NPCs. Will help but won't risk their lives, and expect something in return.
+
+1. One ally approximately equal to a starting character
+2. Two allies, or one more powerful ally
+3. Three allies, or fewer more powerful allies
+4. Four allies, or fewer very powerful allies
+5. Five allies, or fewer exceptionally powerful allies
+
+---
+
+## Artifact
+
+Magical items of power (weapons, armor, vehicles, etc.). Can purchase multiple times, once per artifact owned. Maximum 5 total dots at character creation. Artifacts rated 4-5 are exceptionally rare and coveted.
+
+1. Minor artifact
+2. Notable artifact
+3. Significant artifact
+4. Powerful artifact (rare, will attract attention)
+5. Legendary artifact (extremely rare, highly coveted)
+
+---
+
+## Backing
+
+Rank in an organization (government, army, faction, syndicate). May take multiple times for different organizations. Neglecting duties can result in demotion.
+
+1. Lower officer or minor functionary
+2. Mid-level officer or department head
+3. Moderately powerful, many subordinates
+4. Extremely powerful, reports directly to leadership
+5. Leader of organization (general, admiral, Factol, etc.)
+
+---
+
+## Contacts
+
+People who help in exchange for favors. Each dot provides one major contact (first-name basis, useful position) and one die for Contacts + (Charisma or Fellowship) to find minor contacts.
+
+1. One major contact, +1 die for minor contacts
+2. Two major contacts, +2 dice for minor contacts
+3. Three major contacts, +3 dice for minor contacts
+4. Four major contacts, +4 dice for minor contacts
+5. Five major contacts, +5 dice for minor contacts
+
+---
+
+## Fame
+
+Widespread recognition in society. Opens doors but attracts attention.
+
+1. Known to a select subculture or city
+2. Nationwide renown (politician, minor star)
+3. Nationally famous, everybody knows something about you
+4. Internationally famous media icon
+5. Famous across crystal spheres
+
+---
+
+## Followers
+
+Loyal mortal assistants, warriors, or acolytes. Require Wealth, Backing, or Holdings equal to Followers dots to support them.
+
+1. Up to 5 followers
+2. 20 followers
+3. 100 followers
+4. 1,000 followers
+5. 10,000 followers
+
+---
+
+## Holdings
+
+Property or spelljamming ship. Requires Followers, Backing, or Wealth equal to Holdings dots to support staff/crew.
+
+1. Very small spelljammer (shuttle-sized), average house, or small local business
+2. Small spelljammer (smuggling ship), small manor, or successful local business
+3. Medium ship (Bird of Prey-sized), small castle, or large business with off-world contacts
+4. Large ship (Enterprise-sized), huge castle, or multi-world corporation
+5. Massive ship (kilometer-long battleship), massive castle, or megacorporation
+
+---
+
+## Inheritance
+
+Start play with items beyond normal means. Choose from one tier, or two choices from the tier below.
+
+1. One Uncommon, two Common, four Very Common, or eight Ubiquitous items
+2. One Rare item, or two choices from Inheritance 1
+3. One Very Rare item, or two choices from Inheritance 2
+4. One Mythic Rare item, or two choices from Inheritance 3
+5. Any one non-artifact item, or two choices from Inheritance 4
+
+---
+
+## Mentor
+
+A patron, teacher, and guide. Expects obedience but acts in your best interests.
+
+1. Mentor is slightly more worldly and wise than you
+2. Someone of minor note, or important but has little time for you
+3. Wise, influential, and considerably more powerful
+4. Exceedingly important individual whose words shape history
+5. Exceedingly powerful with great interest in your welfare (but expects much and has enemies)
+
+---
+
+## Status
+
+Reputation and standing within the community of Exalts. Does not cover organizational rank or general fame.
+
+1. Known by some Exalts
+2. Respected, words carry weight in discussion
+3. Influential, often asked to consult
+4. Powerful, other Exalts follow your lead
+5. Luminary, few can match your reputation
+
+---
+
+## Wealth
+
+Personal financial resources and standard of living.
+
+1. Middle class, comfortable but little spending money
+2. Comfortable lifestyle, domestic servant, can afford luxuries
+3. Actually wealthy, several servants, life of luxury
+4. Fabulously wealthy (merchant prince, bandit king), can hire armies
+5. Unlimited wealth, no practical limits

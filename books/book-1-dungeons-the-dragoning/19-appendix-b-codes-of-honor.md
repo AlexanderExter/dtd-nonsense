@@ -1,0 +1,67 @@
+---
+title: "Appendix B: Codes Of Honor"
+book: 1
+order: 19
+type: "appendix"
+---
+
+# Appendix B: Codes Of Honor
+
+This is all shamelessly cribbed from the
+Palladium and Rifts RPGs because they're absolutely better than the most common crap
+out there.
+
+Principled:
+
+1. Always keeps her word.
+2. Avoids all lies.
+3. Never kills OR attacks unarmed foes.
+4. Never harms an innocent for any reason.
+5. Never torture. Never.
+6. Never kills for pleasure.
+7. Always tries to help others.
+8. Works well with others.
+9. Respects authority, laws, discipline, and honor.
+10. Never betrays a friend.
+11. Never break the law unless conditions are
+    absolutely desperate.
+
+    Scrupulous:
+
+12. Keeps her word to any honorable person.
+13. Lies only to people who have proven
+    themselves dishonest and without honor.
+14. Never kills OR attacks unarmed foes.
+15. Never harms an innocent for any reason.
+16. Never tortures for pleasure, but may need to
+    extract information from criminals or evil people.
+17. Never kills for pleasure, and will always try to
+    bring villains to justice alive.
+18. Always tries to help others.
+19. Works within the law whenever possible.
+20. Bends laws when absolutely necessary.
+21. Distrusts authority because it may be corrupt.
+22. Work with groups, she but dislikes confining
+    laws and bureaucracy (red tape).
+
+    Aberrant:
+
+23. Always keeps his word of honor.
+24. May lie and cheat those not worthy of respect.
+25. May or may not kill an unarmed foe.
+26. Never kill an innocent, particularly a child.
+    But he may kidnap them.
+27. Never kills for pleasure.
+28. Never resorts to inhumane treatment of prisoners. But torture, although distasteful, may be a
+    necessary means of extracting information.
+29. Never tortures for pleasure.
+30. May or may not help someone in need.
+31. Works with others to attain his goals.
+32. Respects honor and self-discipline in others.
+33. Never betrays a friend.
+
+    Although let's be serious, 99% of players are
+    just going to go with Aberrant and never look back. As consolation, you can remind yourself
+    that at least they aren't being totally amoral murder-hobos again.
+    That's it. If you're looking for advice on honorable characters, it isn't here. We'd be
+    thrilled if a character ever made it as far up the honor ladder as Aberrant.

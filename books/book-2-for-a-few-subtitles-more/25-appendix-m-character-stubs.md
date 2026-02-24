@@ -1,0 +1,126 @@
+---
+title: "Appendix M: Character Stubs"
+book: 2
+order: 25
+type: "appendix"
+---
+# Appendix M: Character Stubs
+
+## Ideas for Characters
+
+These are some bare-bones mechanical suggestions for a few character concepts.
+Bardic Awesomeness: Gnome (Ranged 2, Power
+Armor), Linguist, complete the Initiate class and enter Bard, Artifact 4 (Rod of Might [Flamer,
+Chain Axe, Guitar, Mini-Bar]), Inheritance 5
+(Best Power Armor), Charisma, Common Lore,
+Performer, 2 Hindrances. See picture.
+Super-Smart Magic-User: Eldarin (Intelligence
+5), Daemonhost, complete the Apprentice class and enter Science Officer, Arcanoi +1, Veteran O'
+the Wheel asset (Int +1), all of the knowledge skills, 1 Hindrance. Spend a Resource point to
+cast Necromancy and Illusion as though you had
++3 dots, 9k6 averages ~45.
+Buff Werewolf Monk: Squat, Sturdy asset, No
+One Tougher racial asset, Brother class, Wholeness of Body, Inheritance 3 (Machinator Array),
+Silent Striders Werewolf asset, Strength, Wisdom,
+Constitution, Willpower, Brawling, Acrobatics,
+Athletics. A good tough brawler with Transmutation magic for self-buffing.
+Full-Auto Gun-Bunny: Assimar (Ballistics 4),
+Atlantean (Ancient Style), Big-Shot, 200 XP (+1
+Ballistics), Celestial Wrath racial asset, Veteran O' the Wheel asset (+1 Ballistics), Inheritance 3
+(Good quality SAW), Charisma, Brawling. Ballistics 6, full auto at 9k7 and once a scene adds
+Charisma to damage as rolled dice.
+Charismatic Spell-Shooter: Dragonborn (Charisma
+5), Atlantean (Enchantment), complete the Spellshooter class and enter Riflemancer, Gnosis +1,
+Minor Magic (Evocation), 2 Hindrances, Arcana,
+Ballistics, social skills. Spend a Resource point to cast spells as though you were 5th level & 5 Evocation, 10k5 averages 40 for 5x 2k1+5 missiles.
+Master Swordsman: Tiefling (Weaponry 4),
+Werewolf, Swordsman class, Veteran O' the
+Wheel (Strength 5, Weaponry 5), Get of Fenris
+Werewolf asset, Sturdy asset, a good sword and a matching sword school, Athletics, Constitution.
+Spending a Resource point increases both
+Strength and Weaponry to 6.
+Power-Healer Omani-Magician: Elf (Wisdom 5),
+Daemonhost (Healing), complete the Apprentice class and enter Preacher, Arcanoi +1, Veteran O'
+the Wheel (Wis +1), Willpower, Charisma, Arcana,
+Arcane Lore, Forbidden Lore, 1 Hindrance. You start with Healing magic, access to all magics
+except Enchantment, and Cure Light Wounds at
+7k6 (9k6 if spending a Resource Point).
+Ork Rock Star: Ork, Chosen, Minstrel class, Mark of Bahamut Chosen asset, Appearance asset,
+Dangerous Beauty asset, I'm Da Boss racial asset,
+Backgrounds (Fame, Wealth, & Followers), Charisma, Fellowship, Common Lore, Performer, all
+social skills. You're like Elvis or Brittany Spears or something.
+Super Safe Sorcerer: Eldarin, Dragon-blooded,
+Apprentice class, Willpower 4, Wisdom 4, Intelligence 4, Charisma 4, Arcana 4, Academic Lore
+4, Exaltation Quickening: Air or Wood, Implement
+Focus, Ancestral Recall racial asset, Inheritance:
+Best quality Cortex Implant, magic schools. Cast spells at 7k4 and reroll one die to average ~27 on
+Focus Power tests while keeping no 10s. Invoking
+Perils of the Warp happens about once out of every 5000 rolls.
+Armored Tech-Priest with Big Laser: Human, complete the Peasant and Operations Officer
+classes then enter Tech-Priest, Armor Proficiency
+(Power Armor), Inheritance 4 (Power Armor &
+Las-Cannon), Sturdy asset, Artifact 2 (Hearthstone Bracers), Intelligence, Tech-Use, Craft,
+Academic Lore, Ballistics, 4 Hindrances. Start the game wearing power armor, shooting a las
+cannon, and being a technology genius.
+Socialite Hammer-Lord: Tau (Composure 5),
+Wraith, Spell-Sword class, Academy asset (Basic
+& Melee 3), Farsighted racial asset, Inheritance 3
+(Good quality Silver Goremaul), Children of Salt
+Wraith asset, Minor Magic (Conjuration: Call
+Item), Extra-curricular Study (Stone Dragon), 1
+Hindrance. Socially adept, summons a giant silver hammer, hard to kill.
+
+---
+
+**Untouchable Dodge-Tank:** Halfling, Paragon,
+Outcast, Halfling Agility racial asset, Legendary
+Trait Paragon asset, 400 XP for Dexterity 5,
+Veteran O' the Wheel (Dexterity 6), Artifact 3
+(Mithril Bionic Locomotion), Larceny, Stealth,
+Acrobatics. A 46 Static Defense and up to a 10k7 dodge roll don't actually make you a tank, but
+at least you're hard to hit.
+Illusionist Defender: Squat, Promethian, Spellsword, Constitution 5, Veteran O' the Wheel
+(Wisdom 5), Inheritance 3 (Best quality Cortex
+Implant [Intelligence 5]), Minor Magic (Illusion
+[Blur]), Sturdy asset, Darksteel Promethian asset,
+No One Tougher racial asset, Artifact 1 (Mithril
+Hand Weapon), Artifact 2 (Hearthstone Bracers),
+Arcana, Weaponry. A character with 20 HP, 10
+AP, and 36 + Blur Static Defense,
+Amazing Mecha-Druid Speed Machine: Dark
+Eldarin (Dexterity 5), Promethian, Veteran O' the
+Wheel (Strength 5), Mithril Promethian asset,
+Fast asset, Inheritance 4 (Good quality Bionic
+Locomotion and Good quality Bionic Heart),
+Artifact 2 (Perfected Boots), complete the Ovate class and enter Oak-Knower, Wild Shape feat,
+Brawling, Animal Ken, 3 Hindrances. Speed 16 and a 7x run, Fleet of Foot with immunity to
+Fatigue, then Wild Shape adds the quadruped 2x speed trait. Also happens to be a good brawler.
+Sky-Hunter: Kenku, Ballistics, Stealth, Veteran
+O' the Wheel (Dexterity 5, Piloting 5), Inheritance (a custom jetpack and a Mind-Impulse
+Unit), Artifact (an accurate gun), Ace Pilot racial asset. You fly and are hard to hit with a good
+Static Defense and 10k5 dodge for the jetpack, plus there's the sniper rifle.
+Face-Crushing Warrior: Assimar, Chosen, Gallant,
+Mark of Khorn (White Raven) Chosen asset,
+Veteran O' the Wheel (Strength 5, Weaponry 4),
+Celestial Wrath racial asset, Artifact 3 (Darksteel
+Flail), Forbidden Lore. You're a charismatic warrior with the makings of a good leader, and once per
+scene you can attack for 10k5 damage or more.
+Iron-Claw Monk: Squat (Constitution 5), Dragonblooded (Wood, Wisdom 5), Brother, Wholeness
+of Body, Double Dragon (Fire) Dragon-blooded asset, No One Tougher racial asset, Sturdy asset,
+Inheritance 3 (Machinator Array), Veteran of the
+Wheel (Strength 5), Brawling, Athletics, Acrobatics. Reasonably tough, has Wisdom as Armor
+Points, a 34 Static Defense, and a strong claw attack.
+Pyromaniac Starship Captain: Dark Eldarin,
+Atlantean or Daemonhost, Charisma 5, Arcana
+2, Forbidden Lore 1, Academic Lore 2, Command 3, Politics 2, Persuasion 2, Ballistics, Backing
+3, Holdings 3 (a Destroyer class spelljammer), exalt magic: Evocation, complete the Apprentice
+& Science Officer classes and enter the Captain class, purchase Evocation to 3 dots (Energy Ball).
+Requires all four Hindrances. You start play with the Energy Ball spell (at a 90% casting success
+rate) and a spaceship, you have significant social prowess and only have to accept Perils of the
+Warp about once out of every 2400 rolls.
+Note: Many of these stubs have the asset Veteran
+O' the Wheel because that's an easy way to get an attribute to 5 dots if the species
+you want doesn't have that as one of their favored attributes. None of that is absolutely required
+except for the stat-at-6 stubs of course.
+
+---

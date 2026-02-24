@@ -1,0 +1,84 @@
+---
+title: "Appendix C: Daemonic Possession"
+book: 2
+order: 15
+type: "appendix"
+---
+# Appendix C: Daemonic Possession
+
+> **Integrated:** This content has been incorporated into Book 1, Chapter XVII: Antagonists. See that section for the authoritative version.
+
+What happens when someone gets possessed by a daemon?
+Well, it depends on the daemon. We'll be assuming that the possession attempt
+succeeds here.
+If you're using the Daemons out of the
+Book 1 Antagonists chapter take your selected victim and;
+
+1. Increase their Strength, Constitution, and
+   Willpower by 1 each if it's a Lesser Daemon, and by 2 each if it's a Greater Daemon. This can take
+   stats to 6 or higher.
+2. Add the traits Daemonic (+Con to AP &
+   HP), DarkSight, and Resource.
+3. Increase the victim's Level by 1 to a maximum of the possessing daemon's level.
+4. Increase their Resilience by 1. This is so you
+   don't have to worry about if the Level increase affected it, we'll just say it did.
+5. Double check that you've recalculated the Hit
+   Points, Speed, and whatever else correctly.
+6. If it's a Greater Daemon they also get the
+   warp fire breath weapon.
+   If you're using our suggested daemon modifications or one of the randomly generated
+   daemons take your victim and;
+7. Increase their Strength, Constitution, and
+   Resilience by 1. Level by +1 if it's less than the daemon's Level.
+8. Add the Darksight trait and make them a
+   Daemonhost exalt with a Power stat equal to the daemon's Level. This means a magic school,
+   bonus armor, Resource Points, etc.
+9. If the daemon has any feats, special powers,
+   extra magic schools, gun katas, or sword schools you want to add those too.
+10. Use the better of the daemon's or victim's skills.
+11. Double check that you've recalculated the Hit
+    Points, Speed, and whatever else (don't worry about Resilience) correctly.
+12. If it's a Greater Daemon they also get the
+    warp fire breath weapon.
+    Here, let's take a generated lesser daemon and a regular soldier getting possessed.
+    Daemon: Str Dex Con: 3, Int: 2, Wis: & Will: 3, Cha: 5,
+    Fel: 1, Cmp: 2, Static Defense: 20, Armor(all): 10,
+    Resilience: 4, Hit Points: 9, Init: +7, Speed: 6, Level: 2,
+    Size: 4, Social Defense: 15, Resolve: 7, Resource Points:
+    12, Dodge: 4K3. Weaponry/Parry: 4K2. Sense: 4K3.
+    Stealth: 3K3. Arcana/Detect: 4K2. Bite/Claws, 5K3 does
+    5K2 R, p0, Tearing. When downs enemy in melee get
+    2nd attack to adjacent, +1 wound doing crit dam-age, if
+    All Out Attack wounds repeat attack once, Con vs
+    10+5/round resist stuns. Recover RP = wounds from bite
+    & by 3K3 vs 10+2/spent as free action. Spend 1 RP for
+    +2 magic school next spell cast. Fearless(Angry). Illusion
+    4k2 (Int), Spells: Disguise: TN 10, Self Non-combat
+    Sustain(Reaction) S: Scrutiny vs Focus Power. Invisibility: TN 15, Self Full Act Subtle, as Stealth roll, pops on
+    attack or 2 minutes. Arcana: 2. Perception: 1. Acrobat: 1.
+    Ballistics: 2. Brawl: 3. Larceny: 2 Weaponry: 2. Inorganic:
+    Immune breathing, vacuum, mind affecting, bleeding, toxins. Takes half E type damage. Extra Feats: Cleave,
+    Iron Jaw, Devastating Critical, Furious Assault. Sees through all darkness. Fear Caster: Fear(1) 31m, TN 15.
+    And now the soldier.
+    Stats: physicals 3, else 2, Acrobat 1, Perception 1,
+    Common Lore 1, Intimidate 2, Scrutiny 1, Weaponry 2,
+    Ballistics 2. Speed 6, Size/Resilience 4/4, Static Defense
+    17, HP 7, Feats Sound Con x2, Jaded, Armor: Flak Vest
+    & Gauntlets,(5 AP; Arms, Body) Helmet (4 AP; Head),
+    Attacks Knife (4k2 R), Lasgun (60m; S/3; 3k2 E; Clip 60;
+    Reload Full), Gear: Uniform, Flak Armor, Lasgun, 2
+    Energy Packs, Micro-bead, Torch, Level 2Combine for:
+    Str 4, Dex 3, Con 4, else=2, Level 2, Resource 8 [recovery by bite wounds = RP or 2k2 vs 10+2/spent as a free
+    action]. Acrobat 1, Perception 1, Common Lore 1, Intimidate 2, Scrutiny 1, Weaponry 2, Ballistics 2, Brawl 3,
+    Larceny 2, Speed 7, Size /Resilience 4/5, Static Defense
+    17, HP 8, AP: Flak 5 (arms/body) & 4(head) + daemon
+    +6(all) not vs magic/silver. When downs enemy in melee make another attack, +1 wound if doing critical damage.
+    If All Out Attack wounds repeat it once, Con[4k4] vs
+    10+5 /round to resist stun, Fearless(Angry). SEE IN
+    DARK. Spend 1 Resource for +2 magic school next spell cast. Illusion 4k2, Spells: Disguise: TN 10, Self Noncombat Sustain(Reaction) S: Scrutiny v Focus Power.
+    Invisibility: TN 15, Self Full Act Subtle, as Stealth roll, pops on offense or 2 minutes. Knife [4k2](5k2 R),
+    Lasgun [4k2](60m; S/3; 3k2 E; Clip 60; Reload Full), bite [5k3](5k1 R gain resource), Gear: Uniform, Flak
+    Armor, Lasgun, 2 Energy Packs, Micro-bead, Torch.
+    Heh, now he's going to be a problem for someone isn't he?
+
+---

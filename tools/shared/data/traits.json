@@ -1,0 +1,166 @@
+[
+    {
+        "id": "amphibious",
+        "name": "Amphibious",
+        "parameterized": false,
+        "effect": "No tests for underwater movement; double speed while swimming",
+        "derivedEffects": {}
+    },
+    {
+        "id": "amorphous",
+        "name": "Amorphous",
+        "parameterized": false,
+        "effect": "All hits go to body; double Hit Points",
+        "derivedEffects": {
+            "hp": "double"
+        }
+    },
+    {
+        "id": "armorPlating",
+        "name": "Armor Plating",
+        "parameterized": true,
+        "paramLabel": "AP",
+        "effect": "Natural armor rating X to all locations",
+        "derivedEffects": {
+            "armor_all": "param"
+        }
+    },
+    {
+        "id": "aura",
+        "name": "Aura",
+        "parameterized": true,
+        "paramLabel": "Rating",
+        "effect": "Aura X reduces magical damage; protects all locations",
+        "derivedEffects": {
+            "aura": "param"
+        }
+    },
+    {
+        "id": "autoStabilized",
+        "name": "Auto-Stabilized",
+        "parameterized": false,
+        "effect": "Always counts as braced; may fire full-auto as a half action",
+        "derivedEffects": {}
+    },
+    {
+        "id": "caster",
+        "name": "Caster",
+        "parameterized": true,
+        "paramLabel": "Schools",
+        "paramType": "caster",
+        "effect": "Can cast spells; school ranks listed. Counts as sanctioned",
+        "derivedEffects": {}
+    },
+    {
+        "id": "crawler",
+        "name": "Crawler",
+        "parameterized": false,
+        "effect": "Speed halved; no terrain penalties",
+        "derivedEffects": {}
+    },
+    {
+        "id": "daemonic",
+        "name": "Daemonic",
+        "parameterized": false,
+        "effect": "Extra HP and armor equal to Constitution; stacks with all armor",
+        "derivedEffects": {
+            "hp": "add_con",
+            "armor_all": "add_con",
+            "resilience": "add_con"
+        }
+    },
+    {
+        "id": "darkSight",
+        "name": "Dark Sight",
+        "parameterized": false,
+        "effect": "See normally in total darkness; no lighting penalties",
+        "derivedEffects": {}
+    },
+    {
+        "id": "fear",
+        "name": "Fear",
+        "parameterized": true,
+        "paramLabel": "Rating",
+        "effect": "Opponents must pass fear test at the listed rating",
+        "derivedEffects": {}
+    },
+    {
+        "id": "flyer",
+        "name": "Flyer",
+        "parameterized": true,
+        "paramLabel": "Speed",
+        "effect": "Can fly at listed speed (default double ground speed)",
+        "derivedEffects": {}
+    },
+    {
+        "id": "machine",
+        "name": "Machine",
+        "parameterized": true,
+        "paramLabel": "AP",
+        "effect": "Inorganic; immune to vacuum, cold, mind effects; armor X to all locations",
+        "derivedEffects": {
+            "armor_all": "param"
+        }
+    },
+    {
+        "id": "mindless",
+        "name": "Mindless",
+        "parameterized": false,
+        "effect": "No Cha/Fel/Cmp/Int; auto-fail social tests; immune to mind control",
+        "derivedEffects": {}
+    },
+    {
+        "id": "phasing",
+        "name": "Phasing",
+        "parameterized": false,
+        "effect": "Can become incorporeal (half action); immune to normal weapons while phasing",
+        "derivedEffects": {}
+    },
+    {
+        "id": "quadruped",
+        "name": "Quadruped",
+        "parameterized": false,
+        "effect": "Ground speed doubled",
+        "derivedEffects": {}
+    },
+    {
+        "id": "regeneration",
+        "name": "Regeneration",
+        "parameterized": true,
+        "paramLabel": "HP/round",
+        "effect": "Regain X Hit Points at the start of each turn",
+        "derivedEffects": {}
+    },
+    {
+        "id": "resourceStat",
+        "name": "Resource Stat",
+        "parameterized": true,
+        "paramLabel": "Type; Amount",
+        "paramType": "resource",
+        "effect": "Has a resource pool following normal resource stat rules",
+        "derivedEffects": {}
+    },
+    {
+        "id": "stuffOfNightmares",
+        "name": "Stuff of Nightmares",
+        "parameterized": false,
+        "effect": "Immune to poison, disease, breathing, bleeding, stunning; death only from Spell/Power Weapon criticals",
+        "derivedEffects": {}
+    },
+    {
+        "id": "undead",
+        "name": "Undead",
+        "parameterized": false,
+        "effect": "No need to breathe/eat/drink; immune to blood loss, fatigue, and stunning",
+        "derivedEffects": {}
+    },
+    {
+        "id": "unnaturalToughness",
+        "name": "Unnatural Toughness",
+        "parameterized": false,
+        "effect": "Hit Points are doubled (including Sound Constitution)",
+        "derivedEffects": {
+            "hp": "double"
+        }
+    }
+]

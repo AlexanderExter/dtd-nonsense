@@ -1,0 +1,228 @@
+---
+title: "Chapter VII: Gun Kata"
+book: 2
+chapter: 7
+order: 7
+type: "chapter"
+---
+# Chapter VII: Gun Kata
+
+Just as the Sublime Way is a system of martial arts that makes the most of melee mastery, Gun Kata are the disciplines of ranged combat. The warriors who study this art of heroic bloodshed are known as Gunslingers, and they come in all shapes and sizes, from roaming lawmen dealing out hard boiled justice to the classic elven hunter with deadly bow.
+
+## Gunslinger Level
+
+Some effects of Advantages and Restrictions will reference a character's Gunslinger Level. A character's Gunslinger Level is equal to the number of ranks he has in his highest level Gun Kata. Like Sword Schools, different types of Gun Kata build on each other, so the highest Gun Kata level is always used, even when determining level related effects of other types of Gun Kata.
+
+## Trick Shots
+
+Trick shots are the core of the art of heroic bloodshed. They are built similarly to special attacks, using restrictions and advantages to build specific attacks. Like a Special Attack, Trick Shots are built out of specific combat actions, and take the same amount of time and effort as any action of their base type, a Trick Shot based on a Standard Attack uses a Half Action, and so forth.
+
+Weapons that launch explosives, those with the Blast or Flame qualities, and grenades of all kinds cannot be used with Trick Shots.
+
+## Building A Trick Shot
+
+Trick Shots start with choosing an action to base it on. You add Advantages and Restrictions to improve it, buying it with XP. There are some Universal Advantages and Restrictions that can be used by any Gunslinger, but the majority of Advantages and Restrictions come from the Gun Katas.
+
+Every Advantage on a Trick Shot costs a certain number of Style Points. While a Gunslinger has Style Points equal to their Martial Adept level to use on every attack he buys, going beyond that requires him to gain Style Points by adding Restrictions to his attack. Where an Advantage improves an attack, a Restriction imposes a penalty on the attack.
+
+It's possible to both buy and improve Trick Shots. Buying an attack is fairly inexpensive, costing 50 XP per Style Point of the attack. Improving an attack you already have costs, naturally, 50 XP per style point you're adding to it.
+
+When a person learns a new level of mastery they gain free Style Points equal to the new level that they can spend on creating new attacks or improving their existing attacks.
+
+### Universal Advantages
+
+| Name                        | Cost | Effect                                                              |
+| --------------------------- | ---- | ------------------------------------------------------------------- |
+| First Damage Improvement    | 1\*  | Add `+1k0` to damage.                                               |
+| Second Damage Improvement   | 3\*  | Add `+0k1` to damage.                                               |
+| First Accuracy Improvement  | 1\*  | Add `+1k0` to the attack roll.                                      |
+| Second Accuracy Improvement | 2\*  | Add `+0k1` to the attack roll.                                      |
+| Penetration Mastery         | 1\*  | For every style point you spend, add 2 to the attack's Penetration. |
+
+### Universal Restrictions
+
+| Name             | Cost | Effect                                                        |
+| ---------------- | ---- | ------------------------------------------------------------- |
+| Difficult Shot   | -1   | You may not use this attack if you used it in the last round. |
+| Last Resort      | -2   | You may only use the attack once per scene.                   |
+| Restrained Force | -1\* | This attack deals `-1k0` damage.                              |
+| Unbroken Skin    | -2\* | This attack deals `-0k1` damage.                              |
+| Inaccurate       | -1\* | The attack roll is made at `-1k0`.                            |
+| Bad Aim          | -2\* | The attack roll is made at `-0k1`.                            |
+| Non-Penetrating  | -1   | This attack has 0 penetration.                                |
+
+\* You may apply this modifier more than once.
+
+---
+
+## Clay Pigeon
+
+Developed almost as more of a performance technique than a fighting style, Clay Pigeon is a pistol-using art that demands extreme precision and perfect calculation of angles on the fly, billiards played with bullets. The original users of Clay Pigeon are thought to be a troupe of carnival workers.
+
+The key skill for Clay Pigeon is Performer. Most of its techniques are all about showmanship and style, and that's about the best way to do it. Because it uses such precision and exactly-placed shots, its special action is naturally the Called Shot.
+
+| Name                       | Cost | Effect                                                                                                                                                                 |
+| -------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Level 1: Apprentice**    |      |                                                                                                                                                                        |
+| Weapon (Ordinary)          | -    | You may use trick shots with Ordinary ranged weapons.                                                                                                                  |
+| Action (Called Shot)       | -    | Use Called Shot actions with trick shots. Any attack-related advantages applied to this Trick Shot are applied to the attack that benefits from the called shot bonus. |
+| **Level 2: Initiate**      |      |                                                                                                                                                                        |
+| Safe Shot                  | (-2) | This attack does no damage.                                                                                                                                            |
+| Speed Loader               | 1    | After this trick shot you may reload the weapon as a Reaction Action.                                                                                                  |
+| **Level 3: Journeyman**    |      |                                                                                                                                                                        |
+| Skill (Performer)          | (-1) | As part of this attack, make a Performer Test against the Static Defense of the target. If it fails, the attack fails.                                                 |
+| Total Recoil               | 1    | Targets hit by this attack are knocked prone.                                                                                                                          |
+| **Level 4: Master**        |      |                                                                                                                                                                        |
+| Jumping Dove Concentration | 2    | This attack does not expend ammunition.                                                                                                                                |
+| Rescue Shot                | -    | You may use Ballistics + Level in place of Weaponry + Level to parry ranged attacks by shooting into the attack.                                                       |
+| **Level 5: Grandmaster**   |      |                                                                                                                                                                        |
+| Manhattan Transfer         | 2    | This attack ignores cover and concealment.                                                                                                                             |
+
+---
+
+## Crisis Zone
+
+Crisis Zone is not a subtle discipline. It is about very powerful, loud weapons firing many, many times. And then firing more. Because there is nothing so beautiful in the world as replacing all the air around a person with bullets. Beauty, is, as always, in the eye of the beholder and occasionally those on the receiving end do not appreciate the artistry.
+
+Crisis Zone's key skill is Tech-Use, learning to push their guns past the limits the manufacturers intended. The Gun Katas of Crisis Zone are excellent for support tactics and using heavy weapons.
+
+| Name                                    | Cost | Effect                                                                                                                                                                                                                                                                               |
+| --------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Level 1: Apprentice**                 |      |                                                                                                                                                                                                                                                                                      |
+| Weapon (Heavy)                          | -    | You may use trick shots with Heavy weapons.                                                                                                                                                                                                                                          |
+| Action (Suppressing Fire and Overwatch) | -    | Use Suppressing Fire and Overwatch actions with trick shots. Any attack-related advantages applied to this Trick Shot are applied to the Suppressing Fire or Overwatch attack.                                                                                                       |
+| **Level 2: Initiate**                   |      |                                                                                                                                                                                                                                                                                      |
+| Like a Rock                             | (-2) | After this attack you suffer a -10 penalty to your Static Defense until the start of your next turn.                                                                                                                                                                                 |
+| Tracer Rounds                           | 1    | If you hit with this attack, your allies do not need to roll for hit location against this target. They may use the same hit location you hit.                                                                                                                                       |
+| **Level 3: Journeyman**                 |      |                                                                                                                                                                                                                                                                                      |
+| Skill (Tech-Use)                        | (-1) | As part of this attack, make a Tech-Use test against the Static Defense of the target. If it fails, the attack fails.                                                                                                                                                                |
+| Five Rounds Rapid                       | 2    | Targets hit by this attack lose a Half Action next turn and cannot take a Full Action.                                                                                                                                                                                               |
+| **Level 4: Master**                     |      |                                                                                                                                                                                                                                                                                      |
+| Rock and Roll                           | -    | You no longer need to brace heavy weapons. This works like the Auto-stabilized trait.                                                                                                                                                                                                |
+| Razing Storm                            | 2    | The damage increase from each raise on a Full-Auto Burst increases from `+1k0` to `+2k0`.                                                                                                                                                                                            |
+| **Level 5: Grandmaster**                |      |                                                                                                                                                                                                                                                                                      |
+| Moar Dakka                              | 4    | This attack counts as a Full Auto Burst. You may fire up to the RoF of the weapon and gain all the bonuses and penalties associated with the Full-Auto Burst action. If the weapon used in the attack is not capable of Full-Auto Burst you must treat it as if it had a RoF of -/3. |
+
+---
+
+## Elemental Gearbolt
+
+A primal expression of magical power combined with technology, Elemental Gearbolt is a Gun Kata type that was originally developed as a method of enhancing bows but has proven to be just as effective with more modern weapons. It is the oldest of the Gun Kata by far, predating the others by a huge gulf of time.
+
+Arcana is the key skill for Elemental Gearbolt, as an understanding of magical theory is required for most of its techniques. Primitive weapons like bows and crossbows are still a large part of Elemental Gearbolt tradition, and their techniques often work best with them.
+
+| Name                      | Cost | Effect                                                                                                                                                                                                                           |
+| ------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Level 1: Apprentice**   |      |                                                                                                                                                                                                                                  |
+| Weapon (Primitive)        | -    | You may use trick shots with primitive weapons.                                                                                                                                                                                  |
+| Action (Multiple Attacks) | -    | Use Multiple Attacks actions with trick shots. The advantages applied to this Trick Shot are applied to one of the attacks of the Multiple Attacks action.                                                                       |
+| **Level 2: Initiate**     |      |                                                                                                                                                                                                                                  |
+| Pushing the Limit         | (-2) | You gain a level of Fatigue after making this trick attack.                                                                                                                                                                      |
+| Twice Bound Spirits       | 1    | You may choose to reroll your attack once before the target reacts. You must keep the result of the second roll.                                                                                                                 |
+| **Level 3: Journeyman**   |      |                                                                                                                                                                                                                                  |
+| Skill (Arcana)            | (-1) | As part of this attack, make an Arcana test against the Static Defense of the target. If it fails, the attack fails.                                                                                                             |
+| Exit Wound Kata           | 3\*  | For each time you take this advantage your attack does one wound. This effect only works on creatures. Kaiju vehicles, buildings, trees, etc., take normal rolled damage.                                                        |
+| **Level 4: Master**       |      |                                                                                                                                                                                                                                  |
+| Warp Weapons              | -    | Your trick attacks may do any type of damage (rending, impact, explosive, energy). Choose a type each time you make an attack.                                                                                                   |
+| Cloud Shooting            | 1    | Your shot curves off or vanishes into the sky. As long as the target is still within range, roll the attack on your next turn. The target is unaware of the attack until it strikes, grants combat advantage, and may not dodge. |
+| **Level 5: Grandmaster**  |      |                                                                                                                                                                                                                                  |
+| Curse of Red Rain         | 4    | Targets hit by this attack automatically suffer Blood Loss and must roll for survival at the start of their turn.                                                                                                                |
+
+\* You may apply this modifier more than once.
+
+---
+
+## Point Blank
+
+It could be said Point Blank was developed as a technique of last resort - few people with guns really want to get into close combat when they could be shooting. However, a gun is really quite deadly at close range, if you can manage to use it. Pistols are easy, but it takes someone with the right skills and training to use heavier weapons.
+
+The key skill for Point Blank is Athletics, and its special action type is Full Auto Burst - rapid-fire weapons are even better when you're close enough to your target to ram the gun down into its gizzards.
+
+| Name                     | Cost | Effect                                                                                                                                                                                                                                                                                                     |
+| ------------------------ | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Level 1: Apprentice**  |      |                                                                                                                                                                                                                                                                                                            |
+| Weapon (Basic)           | -    | You may use trick shots with basic weapons.                                                                                                                                                                                                                                                                |
+| Action (Full Auto Burst) | -    | Use Full Auto Burst actions with trick shots.                                                                                                                                                                                                                                                              |
+| **Level 2: Initiate**    |      |                                                                                                                                                                                                                                                                                                            |
+| Dragon's Dance           | (-2) | This attack may only be made when engaged in Melee with the target. (This normally provokes opportunity attacks)                                                                                                                                                                                           |
+| Less than Lethal         | 2    | Any targets hit by this attack gain a level of Fatigue.                                                                                                                                                                                                                                                    |
+| **Level 3: Journeyman**  |      |                                                                                                                                                                                                                                                                                                            |
+| Skill (Athletics)        | (-1) | As part of this attack, make an Athletics test against the Static Defense of the target. If it fails, the attack fails.                                                                                                                                                                                    |
+| Bullet Dance Technique   | 1    | You may force a target hit by this attack to move up to its Speed in any direction.                                                                                                                                                                                                                        |
+| **Level 4: Master**      |      |                                                                                                                                                                                                                                                                                                            |
+| Hard Stock Swing         | -    | You may take a free unarmed Brawling attack as part of this attack. You may use Basic weapons in Melee combat without the penalties or opportunity attacks normally incurred by doing so.                                                                                                                  |
+| **Level 5: Grandmaster** |      |                                                                                                                                                                                                                                                                                                            |
+| Stay On Target           | 3    | The damage increase for raises on a Full-Auto Burst with this advantage increases from `1k0` to `1k1`.                                                                                                                                                                                                     |
+| Full Frontal             | 2    | You may use Basic weapons in Melee combat without the penalties or opportunity attacks normally incurred by doing so. <!-- NOTE: Value from cleaned-references/13-Gun-Kata.md; processed source lists Full Frontal at Level 4 with cost — (free), not Level 5 with cost 2. May differ from original PDF --> |
+
+---
+
+## Silent Scope
+
+The Silent Scope Gun Kata does not have a glorious or famous past, except among a certain circle. The primary users of the Silent Scope school are assassins, to put it simply and accurately. The techniques of the Silent Scope are best used against targets that aren't expecting a fight. Its key skill is Perception, which is something you need to find just the right spot for a large-caliber round. Naturally, its special action is the Aim action.
+
+Rumors say that the Silent Scope Gun Katas were originally developed by an assassin who found true love on the battlefield. He had a target under his scope, nearly ten kilometers away, and discovered that love meant knowing your target, putting them in the center of the targeting reticle, and together, achieving a singular purpose, against statistically long odds.
+
+| Name                     | Cost | Effect                                                                                                                                                                                                                                                                                                                           |
+| ------------------------ | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Level 1: Apprentice**  |      |                                                                                                                                                                                                                                                                                                                                  |
+| Weapon (Las)             | -    | You may use trick shots with Las weapons.                                                                                                                                                                                                                                                                                        |
+| Action (Aim)             | -    | Use Aim actions with trick shots. Any attack-related advantages applied to this Trick Shot are applied to the attack that benefits from the aim bonus.                                                                                                                                                                           |
+| **Level 2: Initiate**    |      |                                                                                                                                                                                                                                                                                                                                  |
+| When Suddenly...         | (-2) | You may only use this Trick Shot if the target is unaware of you.                                                                                                                                                                                                                                                                |
+| Bulls Eye                | 1    | Roll for hit location twice and choose one.                                                                                                                                                                                                                                                                                      |
+| **Level 3: Journeyman**  |      |                                                                                                                                                                                                                                                                                                                                  |
+| Skill (Perception)       | (-1) | As part of this attack, make a Perception Test against the Static Defense of the target. If it fails, the attack fails.                                                                                                                                                                                                          |
+| One Shot, One Kill       | 2    | This attack gains the Accurate property.                                                                                                                                                                                                                                                                                         |
+| **Level 4: Master**      |      |                                                                                                                                                                                                                                                                                                                                  |
+| Spawn Camping Meditation | 1    | You may test Stealth at `-2k1` immediately after making an attack. If you succeed you may remain hidden.                                                                                                                                                                                                                         |
+| There Is No Wind         | -    | You suffer no penalties for shooting at long or extreme ranges.                                                                                                                                                                                                                                                                  |
+| **Level 5: Grandmaster** |      |                                                                                                                                                                                                                                                                                                                                  |
+| Boom. Head-shot!         | 2\*  | Roll your attack twice and use the higher roll. Your weapon's armor penetration is doubled and, if both attacks beat the target's Static Defense, you may choose the hit location as if you had made a Called Shot. For each time you take this advantage after the first you get a free Raise if the attack roll is successful. |
+
+\* You may apply this modifier more than once.
+
+---
+
+## Tin Star
+
+A Gun Kata developed by lawmen working on the very fringes of civilization, the Tin Star Gun Kata is a gun fighting style that emphasizes simple but effective techniques. It doesn't use complicated shots or anything tricky to pull off, relying on reliable action and, traditionally, simple and rugged firearms.
+
+The key skill for Tin Star is Scrutiny. The Kata's special action is the Ready action, which makes a quick draw a very useful skill for Tin Star gunslingers. Because Tin Star Trick Shots are so basic, the very core of gun fighting refined time and again into a perfect whole, they're not very flashy at all, and most of the time a Tin Star gunslinger is simply noted as a quick hand with a firearm instead of what they really are.
+
+| Name                     | Cost | Effect                                                                                                                                                                                                                    |
+| ------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Level 1: Apprentice**  |      |                                                                                                                                                                                                                           |
+| Weapon (Pistol)          | -    | You may use trick shots with pistols.                                                                                                                                                                                     |
+| Action (Ready)           | -    | You can use Ready actions with trick shots. Any attack-related advantages applied to this Trick Shot instead are applied to your next attack if you use this action to ready a weapon and use that weapon in your attack. |
+| **Level 2: Initiate**    |      |                                                                                                                                                                                                                           |
+| Blaze of Glory           | (-2) | You can only use this attack if you have lost half or more of your total Hit Points.                                                                                                                                      |
+| Shot in the Arm          | 2    | The attacked target must test Dexterity TN 20 or drop anything that they were holding.                                                                                                                                    |
+| **Level 3: Journeyman**  |      |                                                                                                                                                                                                                           |
+| Skill (Scrutiny)         | (-1) | As part of this attack, make a Scrutiny Test against the Static Defense of the target. If it fails, the attack fails.                                                                                                     |
+| Justifier                | 1    | This attack ignores penalties from environmental effects, effects from criticals or Fatigue, and having allies in melee combat with the target.                                                                           |
+| **Level 4: Master**      |      |                                                                                                                                                                                                                           |
+| Hair Trigger             | -    | You gain a +5 bonus on all Initiative rolls.                                                                                                                                                                              |
+| Silver Bullet            | 3    | This attack's damage dice explode on 9s and 10s. The attack also counts as silver and coming from a magic weapon.                                                                                                         |
+| **Level 5: Grandmaster** |      |                                                                                                                                                                                                                           |
+| Dead Man's Hand          | 5    | Add your Devotion score to the rolled damage dice and your dots in Composure to the weapon's penetration.                                                                                                                 |
+
+---
+
+> **Design Note:** No grenade launchers, rocket launchers, or flamers are supported by Gun Kata. Playtesting showed these combinations were unbalanced.
+
+> **Design Note:** This whole section was reworked to function like the Sword Schools. Like the Sword Schools there was some content that was underpowered. Unlike the Sword Schools there was some content that was too good not to take. Originally one dot of Clay Pigeon and one dot of Point Blank would let you expend no ammo shooting anything on full auto or standard attacks. It caused problems with grenade launchers using plasma grenades, SAWs with wraithbone ammo, and custom weapons of various sorts.
+
+> **Clarification:** Example: Schmoe Blow the Gun-Ho has level 2 in Clay Pigeon and picks up level 3 in Silent Scope. This gives him 3 free style points to build a new trick shot or improve existing ones. Schmoe will build a new trick shot. He can use Ordinary and Las weapons with his trick shots. He selects the Aim action from Silent Scope. The attack that benefits from aiming will have this trick shot's effects applied, as long as that shot is not itself a trick shot. Schmoe uses two style points to add 'One Shot, One Kill' from Silent Scope, two more points to add 'Speed Loader' from Clay Pigeon, and two more points for the universal 'Second Accuracy Improvement'. That's +6 style points of advantages, but Schmoe only has 3 free points and can only take +3 worth of advantages before having to offset them with disadvantages. Schmoe spends an additional 150 XP and takes 'Difficult Shot', 'Inaccurate', and a Perception Test against the target's Static Defense for -3 style points of disadvantages. Schmoe slaps a fancy name on the trick shot, picks up his favorite double barreled shotgun and goes hunting. Let's assume that Schmoe has a basic `6k3` ballistics attack. Schmoe plans to move into short range (5m) of a varmint and take a Half Action Aim, then unleash both barrels with the Full-Auto Burst action on the next round. The attack is `6k3 + 1k0` (range) `+ 2k0` (aim & accurate) `+ 2k1` (burst) `+ 0k1` (Second Accuracy Improvement) `- 1k0` (Inaccurate) = `10k5` plus a Perception Test required to hit the critter. A shotgun's stat line is [`3k2` I pen 0, s/2, 10m, 2ammo, 2Full reload, Scatter + Reliable], for this attack it is [`3k2` I pen 0, s/2, 10m, 2ammo, Reaction reload, Accurate + Scatter + Reliable]. The damage will be `3k2` I with an additional `+2k1` per two raises due to the combination of Accurate and Scatter. The use of 'Difficult Shot' means that Schmoe cannot use this trick shot again next round.
+
+> **Clarification:** This functions as the Storm property.
+
+> **Open Question:** How this interacts with weapons that already have the Storm property is up to the SM.
+
+> **Clarification:** Yes, you can three-round burst a lascannon as a standard attack with that.
+
+> **Optional Rule:** The SM may let the Guardsman track classes from Book 1 swap out the Iron Heart Sword School with this Gun Kata.
+
+> **Open Question:** The SM should decide if this effect happens immediately, on the target's turn (using up at least a Half Action for the target), or let the player decide.
+
+> **Clarification:** Example: Schmoe Blow has a trick attack with three instances of 'Boom Head-shot!'. He pops a monodrone modron with an aimed attack from a long las using this trick attack. Roll the attack twice (28 & 37) and use the higher roll (37), double the penetration of the attack (2 × 2 = 4), both attack rolls are higher than the monodrone's 18 Static Defense so Schmoe gets to choose the hit location (probably the gun arm). Since the shot did hit he gets to add (3 × 5 = 15) to the final attack result giving him a 52, which is 34 over the monodrone's Static Defense and therefore a `+3k3` on the damage.

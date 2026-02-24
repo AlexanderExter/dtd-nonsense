@@ -1,0 +1,243 @@
+---
+title: "Appendix A: Perception And Stealth"
+book: 1
+order: 18
+type: "appendix"
+---
+# Appendix A: Perception And Stealth
+
+These optional suggestions for seeing things are based on actual research done by real people
+and interpreted for the game. They are intended to model people actually looking for
+things that can reasonably be missed. Noticing a tank with camouflage netting on it in the
+jungle is a proper use of these rules, spotting a drunk fan in the middle of an empty football
+field isn't.
+Now, lets talk vision, hearing, and stealth.
+Perception skill tests under normal everyday circumstances shouldn't be penalized for not
+having dots in the skill. People notice stuff just fine all the time without special training. Apply
+the penalty for not having the Perception skill when it's a special trial, like spotting a specific
+coin in a big pile. If you would say "Yeah, I'd use that situation to train someone to be a
+better spotter." then you can apply the no-dots-in-the-skill penalty if you're interested.
+First we'll get the very simplified version out of the way. If this is good enough then you don't
+need to look any further.
+People looking for stuff automatically spot things at a distance of Size x10 meters. Double
+that distance if the terrain is open and clear.
+Double it again if there's nothing else out there.
+Double it again if it's the only thing moving.
+Double it again for large (size 11+) vehicles
+(Book 2). If it's out past automatic success range the spotting TN is 10 at 100m
+and +5 for every 100m more, then subtract the target's Size or subtract twice the Size if it's a
+vehicle or something of Size 10+. Figure out the number of things in the spotter's favor and
+the number of things in the target's favor. Add rolled dice for things that favor the spotter and
+subtract rolled dice for things that favor the target. Stealth attempts add to the spotting
+TN.
+The not so simple version.
+Assumptions: First we're assuming that most normal people are looking at a range from `2k2`
+to `4k3`. The 50% chances of these are; `2k2` =
+11, `3k2` = 14, `4k2` = 16, `3k3` = 17, `4k3` = 20.
+So you're safe in assuming that normal humans in normal conditions automatically spot a TN
+10 thing instantly and a TN 15 object in under
+30 seconds. In a crowd of 40 average people who are actively looking for something you can
+safely assume that 10 of them get TN 20, three get TN 25, and someone gets a TN 30 result immediately. Second we assume that this is all
+about people putting in actual effort and attention. These numbers are for spotting cars
+and pedestrians while driving at night, finding birds when you're out bird watching, searching
+for your lost car keys in your kid's toy box.
+They are not for randomly noticing a spot of gum on the sidewalk while you're out jogging.
+When: When a character wants to or tries to find something, might notice something important,
+or is trying to hide something. Note that in these examples; 1) nobody is shooting at you
+while you're reading this, 2) the easy ones aren't trying to hide, 3) spotting and identification are
+different things.
+Don't bother, automatic success:
+You see the zebra, red shirt, and helicopter.
+Easy Tests, TNs 10-15:
+Still easy to see the dog and the guy in a blue hats.
+
+Hard Tests, TNs 20+:
+A feline, a boat, and a sniper.
+Don't bother, automatic failure:
+Top: Guy with a snake tattoo. Bottom: ???
+The When of hearing.
+Don't bother, automatic success: Nukes & orbital strikes anywhere closer than way past
+the horizon, gunshots on the same floor of a building or in the same neighborhood, people
+shouting and trying to be heard with anything less than chainsaws and explosions
+going off, multi-ton armored vehicles driving around right on the other side of a wall.
+Easy Tests: People shouting at you during a rock concert, identifying the calibers of close
+gunshots, a squad of troops stomping around on this floor of a building, rioting at 2km.
+Hard Tests: The tiger sneaking up on you in the jungle, eavesdropping several rooms
+away in an office, a silenced gunshot during a party, someone breathing in a dark room.
+Don't bother, automatic failure: A laser shot during a rock concert, a (normal) fish under
+the surface of the water, a midsize automobile engine idling inside of a closed garage
+across the street, a jet plane flying 10km up.
+Then When of hiding.
+This is basically the inverse of the spotting pictures and hearing stuff with the exception
+that a stunt, distraction, or taking actions to change the circumstances could allow someone or something to sneak around even if
+they would normally be automatically seen.
+Who rolls: The perceiving character rolls unless there isn't one or the SM is feeling lazy
+and using an average. Spotters trying to spot something, guards on watch, etc. Stealth
+makes it an opposed or modified roll. You can test stealth against a static TN to deal
+with mechanical or automated sensors, like moving slow enough to not set off a motion
+sensor. If you would need to roll lots of dice for a bunch of spotters you can use averages
+(see the Assumptions section above).
+How: Perception often uses Wisdom and stealth often uses Dexterity, but not always.
+Here are some examples. Deducing that if something was there then it would logically
+be in such-and-such a spot or figuring out a path through the blind spots of security
+cameras (Stealth + Intelligence). When fighting boredom for long periods of time
+(Perception + Willpower). Imitating a statue for an hour (Stealth + Constitution). Getting
+a good look at an identifying tattoo without being rude (Perception + Fellowship).
+
+Looking the other way:
+Half rolled dice after modifiers. If you really have to know if someone driving a car spotted a
+sale sign in a shop window as they went past you use half the rolled dice. They were paying
+attention but not looking for window signs, drivers are (OK, they should be) looking for
+other cars and pedestrians on the road. If they're specifically searching for sale signs as
+they drive past then you halve the dice and make them roll to notice the little old lady
+crossing the road. And even this is when they're still sort of paying attention. Someone
+zombified by sitting in front of the TV binge watching their favorite action movie franchise?
+They don't even get to roll.
+Perception vs. Stealth:
+You can run this different ways. If someone casts Invisibility or uses some artifact stealth
+cloaking device then that's a straight opposed Test. You should also do straight opposed
+Tests when range isn't going to be a factor and the sneaker would be automatically spotted
+if they weren't trying to be stealthy.
+Circumstances can give the sneaker a bonus or penalty, or give the spotter a bonus or penalty,
+just don't double them up. If someone is sneaking through a green forest in a sequined
+neon pink body suit don't give them a penalty and the spotter a bonus, just pick one roll to
+modify. The issue comes up when there's already some distance modifier or perception
+interference going on. You can take the higher of the general spotting TN or the stealth test,
+add those two numbers, or add half of the stealth test to the general spotting TN. Any of
+those approaches work, but they scale the difficulty of spotting the sneaker differently. As
+a default you probably want to take the higher of the two numbers, that results in the lowest
+TN of these options. If that repeatedly turns out to be too easy in your game you can then
+move up to adding half or all of the stealth test to the spotting TN. This pretty much all
+applies to the hearing perception tests as well.
+The visual spotting TNs:
+It turns out that human perception follows the general shape of this graph. The details will
+vary, exact shape, distances, accuracy, etc. But the general shape holds true for daytime,
+nighttime, spotting tanks in the desert from a jet fighter, seeing people moving through a
+forest, and picking out a "-" in fields of "="
+(clutter or 'noise' filtering ability). People are really good up to a certain distance/item count,
+then there's a steep drop-off in accuracy and speed until some point where it's generally a
+very low chance for any distance or situation until it becomes impossible. Seriously, the
+military is really interested in this stuff, you can check the bibliography at the end of this
+section. The result of research into other's research is this chart:
+Each additional 200m is another +5 up to 5km
+(that's another +25/km, total TN 95), then each additional kilometer is another +5 out to
+about 50km (total TN 140, and yes some people can roll that once in a while), after that
+you're on your own.
+Modifiers Subtract twice the target's Size. Always do this.
+Extreme shortcut for all the other modifiers:
+Figure out the number of things in the spotter's favor and the number of things in the target's
+favor. Add rolled dice for things that favor the spotter and subtract rolled dice for things that
+favor the target.
+Range(m)
+TN505
+1501025015300203502540030450355004055045600507005580060900651km70
+
+Cover: Short version: More cover removes more rolled dice. -`1k0`: Light cover & low obstacles, a few modest bushes and tall grass. -`2k0`: Some underbrush and a few trees large enough to hide behind, -`3k0`: Significant clutter, lots of bushes and many trees, a forest. -`4k0`: Extreme visual cover and short LoS, a lush rain forest/jungle.
+Lighting: Short version: Worse lighting removes more kept dice. -`0k1`: Just enough light to read by, dim restaurant, thick cigarette smoke. -`0k2`: Full moonlight, dark corners of a dance club, smoke & fire extinguishers. -`0k3`: Half moon, badly lit parking lot, bathroom nightlight. -`0k4`: Only starlight, can barely see your own body, obscuring smoke. -`0k5`: Total darkness, zero visibility fog, unable to see your own body.
+Movement: Short version: People see moving object more easily but have a harder
+times spotting things when they are the ones moving.
+-5: Target is continually moving
+-10: Target is running or moving at 20+ kph momentum 6+.
+-15: Target is leaving a trail (exhaust clouds, dust plumes, etc.).
+-20: Target is the only thing moving against the background.
++5: Observer is continually moving.
++10: Observer is running or moving at high speed (this is the inverse of the -10 TN bonus
+for spotting runners).
+Contrast: Short version: Those black letters on the white board at the eye doctor are
+easier to see than a chameleon.
++15: Extremely low: black cloth on a black screen at night.
++5: Low: common camouflage outfit or colors matching the background.
+-5: High: clothing intended to be visible, hunter's orange safety vests.
+-15: Extremely high: lit up with lights at night.
+Sound: If you can hear it coming take another -10 off the TN.
+Distractions: Because boredom kills. -`1k0`: Minor, your partner keeps flicking his lighter on and off. -`2k0`: Major, that guy over there keeps shooting at me. -`4k0`: Deadly, if you take your eyes off the statue it will kill you. +`4k0`: Helps you concentrate wonderfully, bonus to watch the statue moving +`2k0`: Which window are the shots coming from (even if you get shot for looking). +`1k0`: Blessed silence, your partner is off to the medics to get the lighter pulled out of his nose.
+Example: Incoming jet fighter! At about size 12 screaming along
+at Mach 2 on the afterburners during a clear day is... high speed(-10) + noisy(-10) + leaving
+a trail(-15) + size(-24) + the only thing in the sky(-20) = -69 to any TN and automatically
+spotted at a minimum of 2km (1920m) anyway.
+Under the optional rule you can set the spotting TN at 2km to be 5 and add another
++5 per 2km of additional distance.
+Bonus Extra: How far can we see in this crap?
+The chance of a line of sight existing, as function of altitude and terrain. This is of
+course assuming Earth normal trees, animals, and stuff. If your planet normally has 400m tall
+trees and animals you'll have to figure out your own bloody chart.
+Halve the distances for bad lighting and quarter them for night time. Halve the
+distances again for bad weather (fog, rain), and quarter it for terrible weather (hurricane, pea
+soup).
+| % Chance | Terrain | Alt = 2m | 75m | 200m |
+| -------- | ------- | -------- | ---- | ---- |
+| 80% | Smooth | 300 | 2100 | yes |
+| 50% | Smooth | 750 | 3600 | yes |
+| 20% | Smooth | 1400 | yes | yes |
+| 80% | Rolling | 300 | 750 | 1200 |
+| 50% | Rolling | 600 | 1200 | 2500 |
+| 20% | Rolling | 1000 | 2500 | yes |
+| 80% | Rough | 150 | 600 | 1000 |
+| 50% | Rough | 300 | 900 | 1400 |
+| 20% | Rough | 600 | 1700 | 1200 |
+
+To use this chart: For a given terrain at a given altitude, that is the percent chance that an unobstructed view out to the chart distance exists in the direction you're interested in looking. So in rolling terrain there is an 80% chance that you can see 300m in any particular direction.
+
+Hearing stuff TNs: Decent data is really hard to come by on this. You mostly get
+lots of decibel charts and people talking about possible variables, very little about how far
+away people really hear and accurately identify the sounds of things. Here is a best guess rule
+of thumb.
+Locating the source and identifying the content of a sound (like making out what
+someone said, identifying a motor as a 2cylinder as opposed to a 4-cylinder, or figuring
+the direction of a safety switching off in the dark) happens at about 1/4th or 1/5th the
+detection range, or about 1/10th the detection range if you're unprepared or facing the other
+way.
+Apply modifiers in order:
+x2 TN for each: Intervening wall
+(without large openings), background noise of a higher level, each level layer of hearing
+protection or sound-proofing.
+Distance modifier: -`1k1` or +10 TN per doubling of the distance (a crying baby at
+160m is TN 20), -10 TN for each halving of the distance (a crying baby at 40m is
+automatic)
++5 TN for each: Intervening chunk of forest, hill, or neighborhood (outdoors),
+intervening light interior door or open room
+(indoors), background noise of the same level.
+| To notice the sound | TN 10 | TN 20 | TN 30 | TN 40 |
+| -------------------------------------- | ----- | ----- | ----- | ----- |
+| Whisper, library, laser shot | 5m | 10m | 20m | 40m |
+| Running shower, office or forest | 10m | 20m | 40m | 80m |
+| Conversation, busy restaurant | 20m | 40m | 80m | 160m |
+| Household appliance, passing truck | 40m | 80m | 160m | 320m |
+| Alarm clock, crying baby | 80m | 160m | 320m | 640m |
+| Lawnmower, shouting | 250m | 500m | 1km | 2km |
+| Circular saw, busy highway | 500m | 1km | 2km | 4km |
+| Disco, light rioting, las cannon | 1km | 2km | 4km | 8km |
+| Rock concert, gunpowder pistols | 2km | 4km | 8km | 16km |
+| Jet engines, gunpowder longarm | 5km | 10km | 20km | 40km |
+| Grenades, rockets, collapsing tower | 10km | 20km | 40km | 80km |
+| Artillery, thunderbolts | 50km | 100km | 200km | 400km | Silencers on guns move the distance down by an amount equal to their
+quality level with poor quality silencers moving pistol shots down to 'light
+rioting' distances and best quality silencers moving it down to 'baby crying'
+distances.
+Once the TN goes over 65 go back to adding +5 to the TN instead of doubling
+the TN.
+Examples: A ganger shoots a silenced hand cannon. The gunshot is TN 10 at
+2km, reduced to TN
+10 at 500m for the silencer and 120m to discern it's a hand cannon instead of a
+light pistol or revolver.
+Inside a house 1km away would be TN
+30 (10, x2 for the exterior wall, +10 for distance) to hear it and identifying it a
+TN 60 (10, x2 for the wall, and 4x10 for distance). A crying baby in the next room
+would double those
+TNs (the baby is louder at that range).
+Without the silencer but still 1km away and inside would be a
+TN 10 to hear it and
+TN 30 to identify it.
+Remember, this is out in the open. In a suburb or city you would add +5 or
+more to the TN from intervening houses and trees, and with another doubling of the base TN if there is a busy highway within
+250m or cars passing within 20m.
+
+<!-- Bibliography section removed: contained OCR-garbled references to real-world military detection research papers (ASTIA, HumRRO, USAIHRU, Scripps, RAND Corp). These were embedded by the source PDF author as supplementary reading for the detection rules appendix. Original titles preserved in this comment for reference. -->
+
+> **Clarification:** The stealth resolution can be simplified to a straight opposed Test, or treated like Parry and Dodge attempts.
+
+> **Optional Rule:** Simplified spotting — TN 5 at 100m, +5 per additional 100m, then subtract twice the target's Size.
+
+> **Optional Rule:** Automatic spotting — you automatically spot something at 100m × Size, ±20% per factor that would adjust a spotting TN, unless the target is actively making Stealth rolls against you.
+
+> **Optional Rule:** Movement and Contrast can be converted from TN modifiers to rolled dice at 1 die per 5 points, where a "−" modifier adds dice to the spotter or subtracts dice from the sneaker, and "+" goes the other way.

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ship Builder — DTD 40,000</title>
+        <link rel="stylesheet" href="../shared/css/dtd-theme.css" />
+        <link rel="stylesheet" href="ship-builder.css" />
+    </head>
+    <body>
+        <!-- Ship Management Bar -->
+        <div class="ship-bar no-print">
+            <div class="ship-bar-left">
+                <select id="ship-select" title="Switch ship"></select>
+                <button class="btn btn-primary btn-sm" id="btn-new" title="New ship">+ New</button>
+                <button class="btn btn-ghost btn-sm" id="btn-delete" title="Delete ship">Delete</button>
+            </div>
+            <div class="ship-bar-center">
+                <button class="mode-btn active" data-mode="builder">Builder</button>
+                <button class="mode-btn" data-mode="sheet">Sheet</button>
+            </div>
+            <div class="ship-bar-right">
+                <button class="btn btn-secondary btn-sm" id="btn-import">Import</button>
+                <button class="btn btn-secondary btn-sm" id="btn-export">Export</button>
+                <input type="file" id="file-import" accept=".json" hidden />
+            </div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- BUILDER MODE -->
+        <!-- ================================================================ -->
+        <div id="mode-builder" class="mode-panel">
+            <div class="builder-layout">
+                <!-- Left: Build Panel -->
+                <div class="build-panel">
+                    <!-- Hull Selection -->
+                    <section class="build-section" id="section-hull">
+                        <h2 class="section-title">Hull Selection</h2>
+                        <div class="hull-filters">
+                            <button class="filter-btn active" data-class="all">All</button>
+                            <button class="filter-btn" data-class="Escort">Escort</button>
+                            <button class="filter-btn" data-class="Destroyer">Destroyer</button>
+                            <button class="filter-btn" data-class="Cruiser">Cruiser</button>
+                            <button class="filter-btn" data-class="Battleship">Battleship</button>
+                        </div>
+                        <div class="hull-grid" id="hull-grid"></div>
+                    </section>
+
+                    <!-- Console Slots -->
+                    <section class="build-section" id="section-consoles">
+                        <h2 class="section-title">Console Slots</h2>
+                        <p class="section-hint" id="console-hint">Select a hull first</p>
+                        <div id="console-slots"></div>
+                    </section>
+
+                    <!-- Weapons -->
+                    <section class="build-section" id="section-weapons">
+                        <h2 class="section-title">Weapons</h2>
+                        <p class="section-hint" id="weapon-hint">Select a hull first</p>
+                        <div id="weapon-slots"></div>
+                    </section>
+
+                    <!-- Torpedo Tube -->
+                    <section class="build-section" id="section-torpedoes">
+                        <h2 class="section-title">Torpedoes</h2>
+                        <div class="torpedo-controls">
+                            <label class="toggle-row">
+                                <input type="checkbox" id="has-torpedo-tube" />
+                                <span>Torpedo Tube (5 BP) — holds 5 torpedoes</span>
+                            </label>
+                            <div id="torpedo-loadout" class="hidden">
+                                <h4>Torpedo Loadout (5 slots)</h4>
+                                <div id="torpedo-slots"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Shields -->
+                    <section class="build-section" id="section-shields">
+                        <h2 class="section-title">Shields</h2>
+                        <div class="shield-picker">
+                            <div class="field-row">
+                                <label for="shield-type">Type</label>
+                                <select id="shield-type">
+                                    <option value="">— None —</option>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Covariant">Covariant</option>
+                                    <option value="Regenerative">Regenerative</option>
+                                    <option value="Resilient">Resilient</option>
+                                    <option value="Multiphasic">Multiphasic</option>
+                                </select>
+                            </div>
+                            <div class="field-row">
+                                <label for="shield-mark">Mark</label>
+                                <select id="shield-mark" disabled>
+                                    <option value="1">Mk I</option>
+                                    <option value="2">Mk II</option>
+                                    <option value="3">Mk III</option>
+                                    <option value="4">Mk IV</option>
+                                </select>
+                            </div>
+                            <div class="shield-preview" id="shield-preview"></div>
+                        </div>
+                    </section>
+
+                    <!-- Crew -->
+                    <section class="build-section" id="section-crew">
+                        <h2 class="section-title">Crew</h2>
+                        <div class="crew-config">
+                            <div class="field-row">
+                                <label for="crew-quality">Crew Quality</label>
+                                <select id="crew-quality">
+                                    <option value="1">1 (−5 BP)</option>
+                                    <option value="2" selected>2 (Base)</option>
+                                    <option value="3">3 (+10 BP)</option>
+                                    <option value="4">4 (+20 BP)</option>
+                                    <option value="5">5 (+30 BP)</option>
+                                </select>
+                            </div>
+                            <h4>Bridge Officers</h4>
+                            <div class="officer-grid">
+                                <div class="officer-row" data-position="helmsman">
+                                    <span class="officer-title">Helmsman</span>
+                                    <input type="text" class="officer-name" placeholder="Name" data-officer="helmsman" />
+                                    <span class="officer-skill">Pilot</span>
+                                    <input type="number" class="officer-skill-val" min="0" max="10" value="0" data-officer-skill="helmsman" />
+                                </div>
+                                <div class="officer-row" data-position="tactical">
+                                    <span class="officer-title">Tactical Officer</span>
+                                    <input type="text" class="officer-name" placeholder="Name" data-officer="tactical" />
+                                    <span class="officer-skill">Ballistics</span>
+                                    <input type="number" class="officer-skill-val" min="0" max="10" value="0" data-officer-skill="tactical" />
+                                </div>
+                                <div class="officer-row" data-position="engineer">
+                                    <span class="officer-title">Chief Engineer</span>
+                                    <input type="text" class="officer-name" placeholder="Name" data-officer="engineer" />
+                                    <span class="officer-skill">Tech-Use</span>
+                                    <input type="number" class="officer-skill-val" min="0" max="10" value="0" data-officer-skill="engineer" />
+                                </div>
+                                <div class="officer-row" data-position="captain">
+                                    <span class="officer-title">Captain</span>
+                                    <input type="text" class="officer-name" placeholder="Name" data-officer="captain" />
+                                    <span class="officer-skill">Command</span>
+                                    <input type="number" class="officer-skill-val" min="0" max="10" value="0" data-officer-skill="captain" />
+                                </div>
+                                <div class="officer-row" data-position="arcana">
+                                    <span class="officer-title">Chief Arcana Officer</span>
+                                    <input type="text" class="officer-name" placeholder="Name" data-officer="arcana" />
+                                    <span class="officer-skill">Arcana</span>
+                                    <input type="number" class="officer-skill-val" min="0" max="10" value="0" data-officer-skill="arcana" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right: Summary Panel -->
+                <aside class="summary-panel" id="summary-panel">
+                    <div class="summary-header">
+                        <input type="text" id="ship-name" class="ship-name-input" placeholder="Ship Name" />
+                    </div>
+
+                    <div class="summary-hull" id="summary-hull">
+                        <span class="text-muted">No hull selected</span>
+                    </div>
+
+                    <div class="summary-stats" id="summary-stats"></div>
+
+                    <div class="summary-bp">
+                        <h4>Build Points</h4>
+                        <div class="field-row">
+                            <label for="holdings-input">Holdings</label>
+                            <select id="holdings-input">
+                                <option value="0">0 — 0 BP</option>
+                                <option value="1">1 — 2 BP</option>
+                                <option value="2">2 — 3 BP</option>
+                                <option value="3">3 — 4 BP</option>
+                                <option value="4">4 — 5 BP</option>
+                                <option value="5">5 — 5+ BP</option>
+                            </select>
+                        </div>
+                        <label class="toggle-row">
+                            <input type="checkbox" id="custom-bp-toggle" />
+                            <span>Custom BP budget</span>
+                        </label>
+                        <input type="number" id="custom-bp-input" class="hidden" min="0" value="0" />
+                        <div class="budget-bar" id="budget-bar">
+                            <div class="label">
+                                <span>BP Spent</span>
+                                <span id="bp-display">0 / 0</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" id="bp-bar-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="bp-breakdown" id="bp-breakdown"></div>
+                    </div>
+
+                    <div class="summary-actions">
+                        <button class="btn btn-primary" id="btn-to-sheet">Switch to Sheet →</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- SHEET MODE -->
+        <!-- ================================================================ -->
+        <div id="mode-sheet" class="mode-panel hidden">
+            <div class="sheet-layout">
+                <!-- Ship Display -->
+                <div class="sheet-main">
+                    <header class="sheet-header">
+                        <h1 id="sheet-ship-name" class="text-accent">Unnamed Ship</h1>
+                        <span id="sheet-hull-class" class="text-muted"></span>
+                    </header>
+
+                    <!-- Stat Block -->
+                    <section class="sheet-section">
+                        <h3>Ship Statistics</h3>
+                        <table class="stat-table" id="sheet-stats-table">
+                            <tbody></tbody>
+                        </table>
+                    </section>
+
+                    <!-- Consoles -->
+                    <section class="sheet-section">
+                        <h3>Consoles</h3>
+                        <div id="sheet-consoles" class="sheet-list"></div>
+                    </section>
+
+                    <!-- Weapons -->
+                    <section class="sheet-section">
+                        <h3>Weapons</h3>
+                        <div id="sheet-weapons" class="sheet-list"></div>
+                    </section>
+
+                    <!-- Torpedoes -->
+                    <section class="sheet-section hidden" id="sheet-torpedo-section">
+                        <h3>Torpedoes</h3>
+                        <div id="sheet-torpedoes" class="sheet-list"></div>
+                    </section>
+
+                    <!-- Bridge Officers -->
+                    <section class="sheet-section">
+                        <h3>Bridge Officers</h3>
+                        <div id="sheet-officers" class="officer-roster"></div>
+                    </section>
+                </div>
+
+                <!-- Combat Tracker Sidebar -->
+                <aside class="combat-sidebar">
+                    <h3>Combat Tracker</h3>
+
+                    <!-- Shield HP -->
+                    <div class="tracker-block">
+                        <div class="tracker-header">
+                            <span>Shields</span>
+                            <span id="sheet-shield-type" class="text-muted"></span>
+                        </div>
+                        <div class="hp-bar-row">
+                            <button class="hp-btn" data-target="shield" data-delta="-5">−5</button>
+                            <button class="hp-btn" data-target="shield" data-delta="-1">−1</button>
+                            <div class="hp-display">
+                                <input type="number" id="shield-current" class="hp-input" value="0" min="0" />
+                                <span class="hp-sep">/</span>
+                                <span id="shield-max">0</span>
+                            </div>
+                            <button class="hp-btn" data-target="shield" data-delta="1">+1</button>
+                            <button class="hp-btn" data-target="shield" data-delta="5">+5</button>
+                        </div>
+                        <div class="regen-row">
+                            <span class="text-muted">Regen/turn:</span>
+                            <span id="shield-regen">0</span>
+                            <button class="btn btn-ghost btn-sm" id="btn-regen-shields">Regenerate</button>
+                        </div>
+                        <div class="disruption-row">
+                            <span class="text-muted">Disruption:</span>
+                            <input type="number" id="disruption-total" class="small-input" value="0" min="0" />
+                            <button class="btn btn-ghost btn-sm" id="btn-reset-disruption">Reset</button>
+                        </div>
+                    </div>
+
+                    <!-- Hull HP -->
+                    <div class="tracker-block">
+                        <div class="tracker-header">
+                            <span>Hull Strength</span>
+                        </div>
+                        <div class="hp-bar-row">
+                            <button class="hp-btn" data-target="hull" data-delta="-5">−5</button>
+                            <button class="hp-btn" data-target="hull" data-delta="-1">−1</button>
+                            <div class="hp-display">
+                                <input type="number" id="hull-current" class="hp-input" value="0" min="0" />
+                                <span class="hp-sep">/</span>
+                                <span id="hull-max">0</span>
+                            </div>
+                            <button class="hp-btn" data-target="hull" data-delta="1">+1</button>
+                            <button class="hp-btn" data-target="hull" data-delta="5">+5</button>
+                        </div>
+                    </div>
+
+                    <!-- Crew -->
+                    <div class="tracker-block">
+                        <div class="tracker-header">
+                            <span>Crew</span>
+                        </div>
+                        <div class="hp-bar-row">
+                            <button class="hp-btn" data-target="crew" data-delta="-1">−1</button>
+                            <div class="hp-display">
+                                <input type="number" id="crew-current" class="hp-input" value="0" min="0" />
+                                <span class="hp-sep">/</span>
+                                <span id="crew-max">0</span>
+                            </div>
+                            <button class="hp-btn" data-target="crew" data-delta="1">+1</button>
+                        </div>
+                    </div>
+
+                    <!-- Initiative -->
+                    <div class="tracker-block">
+                        <div class="tracker-header"><span>Initiative</span></div>
+                        <div class="initiative-row">
+                            <span class="text-muted" id="init-formula"></span>
+                            <button class="btn btn-primary btn-sm" id="btn-roll-init">Roll Initiative</button>
+                        </div>
+                        <div class="init-result hidden" id="init-result">
+                            <span class="text-accent" id="init-value"></span>
+                        </div>
+                    </div>
+
+                    <!-- TN to Hit -->
+                    <div class="tracker-block">
+                        <div class="tracker-header"><span>TN to Hit</span></div>
+                        <div class="tn-display">
+                            <span class="tn-value" id="tn-to-hit">0</span>
+                            <span class="text-muted" id="tn-formula"></span>
+                        </div>
+                    </div>
+
+                    <!-- Department Actions -->
+                    <div class="tracker-block">
+                        <div class="tracker-header">
+                            <span>Department Actions</span>
+                            <button class="btn btn-ghost btn-sm" id="btn-reset-actions">Reset</button>
+                        </div>
+                        <div class="dept-actions">
+                            <label class="dept-check"><input type="checkbox" data-dept="maneuver" /> Maneuver</label>
+                            <label class="dept-check"><input type="checkbox" data-dept="tactical" /> Tactical</label>
+                            <label class="dept-check"><input type="checkbox" data-dept="engineering" /> Engineering</label>
+                            <label class="dept-check"><input type="checkbox" data-dept="command" /> Command</label>
+                            <label class="dept-check"><input type="checkbox" data-dept="arcana" /> Arcana</label>
+                        </div>
+                    </div>
+
+                    <!-- Turn Counter -->
+                    <div class="tracker-block">
+                        <div class="tracker-header">
+                            <span>Turn</span>
+                        </div>
+                        <div class="turn-row">
+                            <button class="btn btn-ghost btn-sm" id="btn-prev-turn">←</button>
+                            <span class="turn-number" id="turn-counter">1</span>
+                            <button class="btn btn-primary btn-sm" id="btn-next-turn">Next Turn →</button>
+                        </div>
+                    </div>
+
+                    <!-- Critical Damage -->
+                    <div class="tracker-block">
+                        <div class="tracker-header"><span>Critical Damage</span></div>
+                        <div class="crit-controls">
+                            <div class="field-row">
+                                <label for="crit-modifier">Weapon Crit Rating</label>
+                                <input type="number" id="crit-modifier" class="small-input" value="0" />
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="btn-roll-crit">Roll Critical</button>
+                        </div>
+                        <div class="crit-log" id="crit-log"></div>
+                    </div>
+
+                    <!-- Back to Builder -->
+                    <div class="tracker-block">
+                        <button class="btn btn-secondary" id="btn-to-builder" style="width: 100%">← Back to Builder</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <script src="../shared/js/core.js"></script>
+        <script src="../shared/js/dice.js"></script>
+        <script src="ship-builder.js"></script>
+    </body>
+</html>

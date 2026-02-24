@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DTD Tools - Dungeons the Dragoning Toolset</title>
+        <link rel="stylesheet" href="shared/css/dtd-theme.css" />
+        <style>
+            .tools-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .tool-card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                text-decoration: none;
+                color: var(--text);
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s,
+                    border-color 0.2s;
+            }
+
+            .tool-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                border-color: var(--accent);
+            }
+
+            .tool-card.coming-soon {
+                opacity: 0.7;
+            }
+
+            .tool-card.coming-soon:hover {
+                opacity: 1;
+            }
+
+            .tool-card h2 {
+                margin: 0 0 0.5rem 0;
+                color: var(--accent);
+                font-size: 1.25rem;
+            }
+
+            .tool-card p {
+                margin: 0;
+                color: var(--text-muted);
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .tool-card .status {
+                display: inline-block;
+                margin-top: 1rem;
+                padding: 0.25rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            .tool-card .status.ready {
+                background: var(--success-bg);
+                color: var(--success);
+            }
+
+            .tool-card .status.planned {
+                background: var(--warning-bg);
+                color: var(--warning);
+            }
+
+            header {
+                text-align: center;
+                padding: 3rem 1rem 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            header h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                color: var(--accent);
+            }
+
+            header p {
+                margin: 0.5rem 0 0;
+                color: var(--text-muted);
+            }
+
+            .source-note {
+                text-align: center;
+                padding: 1rem;
+                color: var(--text-muted);
+                font-size: 0.85rem;
+            }
+
+            .source-note a {
+                color: var(--accent);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Dungeons the Dragoning</h1>
+            <p>40,000: 7th Edition — Player Tools</p>
+        </header>
+
+        <main class="tools-grid">
+            <a href="character-sheet/index.html" class="tool-card">
+                <h2>Character Sheet</h2>
+                <p>
+                    Freeform character sheet for creation and play. Edit all sections freely, auto-calculated derived stats, multiple character
+                    slots, and JSON import/export.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="character-builder/index.html" class="tool-card">
+                <h2>Character Builder</h2>
+                <p>Guided 11-step character creation wizard with priority-based allocation, XP tracking, and JSON export.</p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="dice-roller/index.html" class="tool-card">
+                <h2>Dice Roller</h2>
+                <p>
+                    Roll XkY dice pools with exploding d10s, overflow compression, and automatic Raise/Check calculation. Supports modifiers and
+                    roll history.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="quick-reference/index.html" class="tool-card">
+                <h2>Quick Reference</h2>
+                <p>Searchable index of conditions, action types, combat modifiers, and common rules. Find what you need fast during play.</p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="npc-generator/index.html" class="tool-card">
+                <h2>NPC Stat Block Builder</h2>
+                <p>
+                    Build NPC stat blocks with auto-calculated derived stats, trait modifiers, and 40+ templates from the core rules. Save,
+                    print, and copy as Markdown.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="combat-tracker/index.html" class="tool-card">
+                <h2>Combat Tracker</h2>
+                <p>Initiative order management, HP and resource tracking, condition toggles. Keep your battles organized.</p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="ship-builder/index.html" class="tool-card">
+                <h2>Ship Builder</h2>
+                <p>
+                    Build and customize spelljammer ships with hull selection, consoles, weapons, shields, and crew. Includes a Sheet mode for
+                    tracking combat with shield/hull HP, initiative, criticals, and department actions.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="success-curves/index.html" class="tool-card">
+                <h2>Success Curve Analyzer</h2>
+                <p>
+                    Visualize XkY probability distributions against Target Numbers. Compare up to 4 dice pools, view success curves, result
+                    histograms, and Raise/Check breakdowns via Monte Carlo simulation.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+
+            <a href="defense-graph/index.html" class="tool-card">
+                <h2>Defense Graph Simulator</h2>
+                <p>
+                    Visualize how damage mitigation evolves across the defense pipeline. See how armor, penetration, aura, cover, and resilience
+                    interact with attacker profiles via waterfall charts, HP curves, hit probability analysis, and location heat maps.
+                </p>
+                <span class="status ready">Ready</span>
+            </a>
+        </main>
+
+        <footer class="source-note">
+            Data extracted from <em>Dungeons the Dragoning 40,000: 7th Edition</em> and <em>For a Few Subtitles More</em>.<br />
+            This is a fan-made tool. All content belongs to its respective creators.
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,1218 @@
+---
+title: "Chapter VI: Classes"
+book: 1
+chapter: 6
+order: 6
+type: "chapter"
+---
+# Chapter VI: Classes
+
+Classes are packages that represent your character's training and work. Your classis the primary definition of what your character can do in the extraordinary magical landscape
+of the
+
+A class is more than just a profession: it defines the power and skills that the character is focused on learning while they adventure across a spell-tangled, monster-ridden, battle-torn fantasy world. You can be a gutsy swordmaster, a spellcaster with questionable ties, a gun-toting soldier with dead aim, a skilled assassin for hire. The choice is yours.
+The primary focus of a class is determining just what a character may spend XP on. It can be difficult for a wizard to suddenly learn how to use a sword like an expert, and similarly difficult for a gunslinger to just pick up the basics of sorcery over a long weekend.
+As such, when spending XP, a character may only improve characteristics and skills that are allowed by the class. These represent the kind of things the character can expect to improve while exercising the talents of the class. Each Class also has a list of feats that are available for purchase, and many also include one or more Sword or Magic Schools. These are the meat of each class, the abilities that go above and beyond mere skills.
+Each class has a list of prerequisites, skills, characteristics, and occasionally classes that the character must have in order to be allowed to go into the class. Without meeting these prerequisites, a character may not even go into the class.
+A character may only be in one class at a time. In order to finish the class he is in a character must purchase every non-optional feat in the class. Once a character has purchased the non-optional feats in a class, he may choose a new class and begin spending XP on it's advances. Once a character has moved on to another class, he cannot purchase the Characteristics, Skills, Sword Schools, Magic Schools, and any optional feats they passed over from the old class.
+Each class has a Level. This level determines the effect of many spells and feats, but more importantly, the highest rank a character may have in their Power Stat, their Sword Schools, and their Magic Schools is capped at the character's level. A character's level is equal to the level of the highest level class they have. For example, a character with Fighter 4, Bard 2 is a Level 4 character.
+
+This chapter describes the following classes.
+Classes marked with an apostrophe (_) are Level 1 classes and thus appropriate for a starting character:
+Apprentice_ - Someone who has just started on the path to mastering sorcery.
+Armsman - An experienced gunman with a few tricks under his sleeve.
+Aspirant - A sorcerer with a talent for making things up as they go along.
+Assassin - They're not mass murderers. It's a profession, not a mental illness.
+Barbarian - Wild and tough warriors with amazing talents.
+Bard - Versatile jack-of-all-trades with the potential to do anything.
+Berserker - A guy who gets really super pissed off and kills others.
+Bishop - One of the highest ranking officials in their church.
+Chevalier - A powerful and dangerous holy warrior.
+Cleric - A divinely inspired warrior.
+Conscript* - Not everyone gets to decide when they become a warrior. Or a meatshield.
+Defender - A devoted man who is willing to give his sword and life for his god.
+Feral* - Maybe they're from the jungle. Maybe they're from the slums. They're angry.
+Fighter - A master of weapons, armor, and melee training.
+Fight Guy - A guy who is can be fight good.
+Freeblade - Some people don't have little things like ties or morals, just wallets.
+Gallant* - A man of faith and steel, learning to serve his god with violence.
+Guardsman - A class that's good at shooting things.
+Initiate* - Healers and the faithful, low ranking members of religious organizations.
+Magic User - A versatile and powerful wizard or warlock.
+Master Bard - Like a Bard, but higher level and with an even better singing voice.
+Master Fight Guy - One of the best, most masterful guys at fight.
+Master Sorcerer - An archmage of the highest caliber.
+Mercenary* - A basic fighting class for anyone who wants to learn to fight.
+Minstrel* - Minstrels can... sing. Sometimes well. Often not.
+Myrmidon - A fighting man of no small experience.
+Nighthawk - A step up from a simple cutthroat, with skills to back it up.
+Nihilator - When you want someone dead, this is who you send.
+Outcast* - Scum and dirt little better than gutterslime.
+Outlaw - Criminals operating on the wrong side of the law.
+Paladin - Holy warriors with talents at healing and smiting. Lots of smiting.
+Peasant* - A very basic class that anyone can enter.
+Preacher - A healer and scholar schooled in many things.
+Priest\* - Holy men come in every shape and size. And dress code.
+Protector - More than just a swordsman, they learn to tap into divine power.
+Rager - Getting angry is easy. Being good at getting angry is hard.
+Ratcatcher* - Sneaky buggers with basic stealth skills.
+Renegade - Breaking the law and getting away with it is a valuable skill.
+Rogue - A combatant who uses stealth and slyness to thwart enemies.
+Savage - They do not let rage become their master, but master their rage.
+Scholar* - A basic class that teaches the basics needed to learn magic.
+Sell-Steel* - A murderer. Not yet with skills to be a real assassin, but plenty of ambition.
+Sergeant - A good Sergeant is worth a dozen men or more.
+Skald - No mere singer, a skald has other uses! Like bait.
+Sorcerer - Guarded against the warp and with surprising magical strength.
+Stubjack - The best thieves and knights of the post in the wheel.
+Swashbuckler - Insult swordfighting had better be a real thing, or they're in trouble.
+Swordsman* - A man with a sword, becoming one. If they're not good, quickly and painfully.
+Veteran - A war is an easy thing to get into and a difficult thing to live through.
+Zealot - When someone cares enough about their god, all they need is a sword and some direction.
+
+## FREE STUDY
+
+After you've finished your current class, you have an opportunity for a little free study. You can spend XP to buy optional feats from classes you've already completed, and to improve any skills, characteristics, spell schools, sword schools, or gun kata, that are on the lists of classes you've completed. If you want to improve other skills and characteristics, you may, but the costs are doubled if they don't appear on your class lists.
+
+## The Leveling Process
+
+### Procedure
+
+1. Choose a class. This is your character's starting class. In order to go into a class, you probably have to meet some prerequisites, so make sure you do. You may only choose a class that is no more than one level higher than your Level -- you cannot advance two or more levels in a flash, even if you otherwise meet the prerequisites.
+
+2. When spending XP, what you can spend it on (the class' Advances) is determined by your class:
+    - a) Each class has a level. A character's level is equal to the level of the highest level class they have. For example, a character with Swordsman, Fight Guy, Minstrel and Fighter is a level 3 character.
+    - b) Each class has a list of Characteristics. You may only buy improvements for the class' listed characteristics.
+    - c) Each class also has a list of skills. These are the only skills you may spend XP on while working on the class.
+    - d) The core of every class is a list of feats. These feats come in two types, mandatory and optional.
+    - e) A class can also have Magic Schools and Sword Schools. The maximum rank of your character's Magic and Sword Schools is capped at your character's level.
+    - f) You may also buy ranks in your Exaltation's Power Stat. The maximum rank of your character's Power Stat is also capped at your character's level.
+
+3. Until you have purchased all mandatory feats in a class, you may not change classes. Most feats can only be taken once. If you already have a feat that's in a class list, and it can't be taken more than once, you don't have to purchase it again. Some classes have the option of taking one feat or another. When you choose one of these feats, you cannot get the other feat from this class, though you can get it from another class that has this feat in its class progression.
+
+4. When you change classes, you can no longer purchase the advances from your old class unless they appear on your new class list.
+
+### Class Tracks
+
+Certain classes just flow into each other. These are called class tracks, and they'll show you the easiest way to get from level one to level five. Each class in these class tracks has the same completion bonus, which reinforce their themes and work well with the abilities and playstyle of the class.
+
+You don't have to follow these class tracks -- there are spots where you can move from one class track into another. You can also, of course, just start in another class track at any point where you meet the prerequisites.
+
+Some classes, like Peasant and Mercenary, don't appear on any of these tracks -- but they're still perfectly servicible classes and very useful for meeting prerequisites to get into other classes.
+
+| Track      | Level 1    | Level 2   | Level 3    | Level 4      | Level 5          |
+| ---------- | ---------- | --------- | ---------- | ------------ | ---------------- |
+| Bard       | Minstrel   | Bard      | Skald      | Swashbuckler | Master Bard      |
+| Barbarian  | Feral      | Savage    | Rager      | Barbarian    | Berserker        |
+| Assassin   | Sell-Steel | Nighthawk | Assassin   | Freeblade    | Nihilator        |
+| Fighter    | Swordsman  | Myrmidon  | Fight Guy  | Fighter      | Master Fight Guy |
+| Cleric     | Priest     | Preacher  | Cleric     | Zealot       | Bishop           |
+| Guardsman  | Conscript  | Guardsman | Sergeant   | Grenadier    | Stormtrooper     |
+| Magic User | Apprentice | Aspirant  | Magic User | Sorcerer     | Master Sorcerer  |
+| Thief      | Outcast    | Outlaw    | Renegade   | Rogue        | Stubjack         |
+| Paladin    | Gallant    | Protector | Defender   | Paladin      | Chevalier        |
+
+Optional feats are marked with an asterisk (\*). Choice feats are marked with OR.
+
+---
+
+> **Clarification:** You can only purchase feats as many times as they appear in your classes. If the feat Minor Magic appears once in all of your classes then you can only take it once. It's also important to enforce the restriction that you can only buy feats from your classes. In this context "advances" refers to feats, attributes, skills, sword schools, magic, gun kata, etc. The restriction lasts as long as you are in a class. As soon as you have bought all of the required feats you are again in Free Study and may purchase what you wish as detailed in the Free Study paragraph.
+
+> **Design Note:** The classes were reworked to improve your ability to cross over to another track. This is noted in the "Suggested Exits" section of each class. Those exits are simply possibilities and not restrictions. They are the easiest next classes to qualify for, not the only ones.
+
+> **Clarification:** Minstrel requires a Charisma of 3 which, because that is not one of the attributes for this class, will have to wait until you are in Free Study and will cost double XP to increase.
+
+## Class Definitions
+
+### Rat Catcher
+
+**Level:** 1
+**Prerequisites:** --
+**Characteristics:** Dexterity, Composure, Wisdom
+**Skills:** Acrobatics, Common Lore, Crafts, Perception, Larceny, Stealth, Weaponry, Animal Ken, Deceive, Performer, Disguise
+**Feats:**
+
+- Common Sense
+- \*Fast Reflexes
+- Blind Fighting
+- \*Light Sleeper
+- Obtain Familiar
+- Weapon Prof (Basic)
+
+**Bonus for Completion:** +2 to maximum Hit Points.
+**Suggested Exits:** Outcast, Minstrel, Outlaw, Sell-Steel, Swordsman
+
+---
+
+### Scholar
+
+**Level:** 1
+**Prerequisites:** --
+**Characteristics:** Intelligence, Willpower, Wisdom
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Politics, Tech-Use
+**Feats:**
+
+- Eidetic Memory
+- Speak Language
+- Skill Focus (Any Lore)
+- \*Peer (Academic)
+- Expanded Knowledge
+- \*Foresight
+
+**Bonus for Completion:** Gain one specialty in any skill.
+**Suggested Exits:** Apprentice, Priest, Gallant (if Weaponry 2), Minstrel (if Performer 1)
+
+---
+
+### Initiate
+
+**Level:** 1
+**Prerequisites:** --
+**Characteristics:** Wisdom, Fellowship, Intelligence
+**Skills:** Academic Lore, Forbidden Lore, Medicae, Crafts, Politics, Performer
+**Feats:**
+
+- Divine Ministration
+- Hatred (Heretics)
+- Minor Magic
+- Peer (Religious Organization)
+- \*Weapon Prof (Basic)
+
+**Bonus for Completion:** Gain one specialty in any skill.
+**Suggested Exits:** Priest, Preacher, Bard (if Linguist), Protector (if Weaponry 3)
+
+---
+
+### Mercenary
+
+**Level:** 1
+**Prerequisites:** --
+**Characteristics:** Strength, Constitution, Wisdom
+**Skills:** Command, Scrutiny, Common Lore, Athletics, Ballistics, Weaponry, Perception, Brawl, Drive
+**Feats:**
+
+- Armor Prof (Light)
+- \*Armor Prof (Medium)
+- Speak Language
+- \*Peer (Mercenary Organization)
+- Sound Constitution
+- Weapon Prof (Basic)
+
+**Bonus for Completion:** +2 to maximum HP.
+**Suggested Exits:** Feral, Swordsman, Conscript, Guardsman, Minstrel (if Performer 1)
+
+---
+
+### Peasant
+
+**Level:** 1
+**Prerequisites:** --
+**Characteristics:** All
+**Skills:** Crafts, Common Lore, Athletics, Animal Ken, Scrutiny, Performer
+**Feats:**
+
+- Luck
+- Common Sense
+- \*Skill Focus (Any)
+- Sound Constitution
+- Unremarkable
+
+**Bonus for Completion:** Hardy
+**Suggested Exits:** Minstrel, Guardsman (if Ballistics 3)
+
+---
+
+### Sell-Steel
+
+**Level:** 1
+**Prerequisites:** (Weaponry or Ballistics) 2, Stealth 2
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+**Feats:**
+
+- Fast Reflexes
+- Sneak Attack
+- Improved Feint
+- Two Weapon Fighting OR Far Shot
+- Weapon Prof (Basic)
+- \*Weapon Prof (Any)
+- \*Skill Focus (Any)
+
+**Sword Schools:** Shadow Hand, Setting Sun
+**Bonus for Completion:** +1 to all initiative rolls.
+**Suggested Exits:** Nighthawk, Outlaw
+
+---
+
+### Assassin
+
+**Level:** 3
+**Prerequisites:** (Weaponry or Ballistics) 3, Stealth 3, Sneak Attack, Blind Fighting
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+**Feats:**
+
+- Quick Draw
+- Swift Attack OR Deadeye Shot
+- Back Stab
+- Weapon Focus (Any)
+- Skill Focus (Any)
+- \*Peer (Any Criminal or Mercenary)
+- \*Weapon Prof (Any)
+
+**Sword Schools:** Shadow Hand, Setting Sun
+**Bonus for Completion:** +1 to all initiative rolls.
+**Suggested Exits:** Freeblade, Grenadier
+
+---
+
+### Nighthawk
+
+**Level:** 2
+**Prerequisites:** (Weaponry or Ballistics) 2, Stealth 3, Improved Feint or Far Shot
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+**Feats:**
+
+- Blind Fighting
+- Armor Prof (Light)
+- Catfall
+- Two Weapon Fighting OR Furious Assault
+- Weapon Prof (Any)
+- \*Skill Focus (Any)
+- \*Speak Language
+
+**Sword Schools:** Shadow Hand, Setting Sun
+**Bonus for Completion:** +1 to all initiative rolls.
+**Suggested Exits:** Assassin, Renegade, Fight Guy
+
+---
+
+### Nihilator
+
+**Level:** 5
+**Prerequisites:** (Weaponry or Ballistics) 5, Stealth 5, Improved Back Stab
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+**Feats:**
+
+- Step Aside
+- Assassin Strike
+- Counter Attack
+- Hard Target
+- Devastating Critical
+- \*Skill Focus (Any)
+- \*Weapon Specialization (Any)
+
+**Sword Schools:** Shadow Hand, Setting Sun
+**Bonus for Completion:** +1 to all initiative rolls.
+
+---
+
+### Freeblade
+
+**Level:** 4
+**Prerequisites:** (Weaponry or Ballistics) 4, Stealth 4, Back Stab, Quick Draw
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Acrobatics, Athletics, Common Lore, Perception, Brawl, Ballistics, Larceny, Stealth, Pilot, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Disguise
+**Feats:**
+
+- Crack Shot OR Crushing Blow
+- Improved Back Stab
+- Luck
+- Decadence
+- Skill Focus (Any)
+- \*Improved Weapon Focus (Any)
+- \*Weapon Prof (Any)
+
+**Sword Schools:** Shadow Hand, Setting Sun
+**Bonus for Completion:** +1 to all initiative rolls.
+**Suggested Exit:** Nihilator
+
+---
+
+### Feral
+
+**Level:** 1
+**Prerequisites:** Weaponry 2, Athletics 1
+**Characteristics:** Strength, Charisma, Constitution
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+**Feats:**
+
+- Frenzy
+- Danger Sense
+- Armor Proficiency (Light)
+- Power Attack
+- Weapon Proficiency (Any)
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+**Bonus for Completion:** +1 to all melee and primitive weapon damage.
+**Suggested Exits:** Savage, Outlaw, Myrmidon
+
+---
+
+### Savage
+
+**Level:** 2
+**Prerequisites:** Weaponry 3, Athletics 2, Frenzy
+**Characteristics:** Strength, Charisma, Constitution
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+**Feats:**
+
+- Jaded
+- Quick Draw
+- Light Sleeper
+- Powerful Charge
+- Weapon Focus (Any)
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+**Bonus for Completion:** +1 to all melee and primitive weapon damage.
+**Suggested Exits:** Rager, Fight Guy
+
+---
+
+### Rager
+
+**Level:** 3
+**Prerequisites:** Weaponry 4, Athletics 3, Powerful Charge, Frenzy
+**Characteristics:** Strength, Charisma, Constitution
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+**Feats:**
+
+- Crushing Blow
+- Furious Assault
+- Swift Attack
+- Armor Proficiency (Medium)
+- \*Weapon Proficiency (Any)
+- \*Fleet of Foot
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+**Bonus for Completion:** +1 to all melee and primitive weapon damage.
+**Suggested Exits:** Barbarian, Rogue
+
+---
+
+### Barbarian
+
+**Level:** 4
+**Prerequisites:** Weaponry 5, Athletics 4, Crushing Blow, Frenzy
+**Characteristics:** Strength, Charisma, Constitution
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+**Feats:**
+
+- Battle Rage
+- Fearless (Angry)
+- Iron Jaw
+- Cleave
+- \*Weapon Proficiency (Any)
+- \*Weapon Focus (Any)
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+**Bonus for Completion:** +1 to all melee and primitive weapon damage.
+**Suggested Exit:** Berserker
+
+---
+
+### Berserker
+
+**Level:** 5
+**Prerequisites:** Weaponry 5, Athletics 5, Battle Rage, Frenzy
+**Characteristics:** Strength, Charisma, Constitution
+**Skills:** Acrobatics, Athletics, Craft, Perception, Brawl, Weaponry, Stealth, Intimidation, Animal Ken
+**Feats:**
+
+- Devastating Critical
+- True Grit
+- Lightning Attack
+- Armor Proficiency (Heavy)
+- \*Improved Weapon Focus (Any)
+
+**Sword Schools:** Stone Dragon, Tiger Claw, Desert Wind
+**Bonus for Completion:** +1 to all melee damage and primitive weapon damage.
+
+---
+
+### Minstrel
+
+**Level:** 1
+**Prerequisites:** Charisma 3, Common Lore 3, Performer 1
+**Characteristics:** Charisma, Fellowship, Dexterity
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+**Feats:**
+
+- Speak Language
+- Luck
+- Jack of All Trades
+- Peer (Any)
+- Weapon Prof (Melee 2)
+- \*Danger Sense OR Foresight OR Speak Language
+
+**Sword Schools:** White Raven, Diamond Mind
+**Magic Schools:** Enchantment, Illusion
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level.
+**Suggested Exits:** Bard, Outlaw, Aspirant
+
+---
+
+### Bard
+
+**Level:** 2
+**Prerequisites:** Charisma 3, Common Lore 4, Performer 2, (Peer (Any) and speak 4+ languages) OR (any two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind)
+**Characteristics:** Charisma, Fellowship, Dexterity
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+**Feats:**
+
+- Speak Language
+- Peer (Any)
+- Skill Focus (Any) OR Spell Focus (Enchantment or Illusion)
+- Armor Prof (Light)
+- \*Catfall
+
+**Sword Schools:** White Raven, Diamond Mind
+**Magic Schools:** Enchantment, Illusion
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level.
+**Suggested Exits:** Skald, Renegade, Magic User
+
+---
+
+### Skald
+
+**Level:** 3
+**Prerequisites:** Charisma 4, Common Lore 4, Performer 3, Peer (Any), any one at rank 2 and two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind
+**Characteristics:** Charisma, Fellowship, Dexterity
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+**Feats:**
+
+- Speak Language
+- Peer (Any)
+- Weapon Focus (Fencing)
+- Decadence
+- \*Skill Focus (Any)
+
+**Sword Schools:** White Raven, Diamond Mind
+**Magic Schools:** Enchantment, Illusion
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level.
+**Suggested Exits:** Swashbuckler
+
+---
+
+### Swashbuckler
+
+**Level:** 4
+**Prerequisites:** Charisma 4, Common Lore 4, Performer 4, (Decadence or Weapon Focus), any one at rank 3 and two at rank 1 from: Enchantment, Illusion, White Raven, Diamond Mind
+**Characteristics:** Charisma, Fellowship, Dexterity
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+**Feats:**
+
+- Fearless (Cool)
+- Good Reputation (Any)
+- Spell Focus (Enchantment or Illusion)
+- Skill Focus (Any)
+- \*Speak Language
+- \*Evasion
+
+**Sword Schools:** White Raven, Diamond Mind
+**Magic Schools:** Enchantment, Illusion
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level.
+**Suggested Exit:** Master Bard
+
+---
+
+### Master Bard
+
+**Level:** 5
+**Prerequisites:** Charisma 5, Common Lore 5, Performer 5, Fearless, Good Reputation, any one at rank 3 and two at rank 2 from: Enchantment, Illusion, White Raven, Diamond Mind
+**Characteristics:** Charisma, Fellowship, Dexterity
+**Skills:** Academic Lore, Acrobatics, Arcana, Common Lore, Medicae, Politics, Larceny, Performer, Weaponry, Persuasion, Charm, Deceive, Disguise, Scrutiny, Command
+**Feats:**
+
+- Expanded Knowledge OR Improvisational Magic
+- Mental Fortress
+- Armor of Contempt
+- \*Skill Focus (Any) OR Counter Attack
+- \*Heightened Senses (Any) OR Speak Language
+
+**Sword Schools:** White Raven, Diamond Mind
+**Magic Schools:** Enchantment, Illusion
+**Bonus for Completion:** +1 dot to a skill with a rank lower than your Level.
+
+---
+
+### Priest
+
+**Level:** 1
+**Prerequisites:** Academic Lore 2, Forbidden Lore 2
+**Characteristics:** Willpower, Wisdom, Composure
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+**Feats:**
+
+- Pure Faith
+- \*Powerful Charge
+- Hatred (Heretics)
+- Armor Prof (Light)
+- Tested
+- Weapon Prof (Basic)
+- \*Weapon Prof (Melee 1)
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+**Bonus for Completion:** +1 to maximum HP.
+
+<!-- NEEDS_REVIEW: Source says "Suggested Exits: Priest, Aspirant, Protector" -- "Priest" is likely a typo for "Preacher" -->
+
+**Suggested Exits:** Priest, Aspirant, Protector
+
+---
+
+### Preacher
+
+**Level:** 2
+**Prerequisites:** Academic Lore 2, Forbidden Lore 3, Healing or Abjuration at rank 1 OR Pure Faith
+**Characteristics:** Willpower, Wisdom, Composure
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+**Feats:**
+
+- Peer (Religious Order)
+- Spell Focus (Any)
+- Sound Constitution
+- Armor Prof (Medium)
+- Virgil's Guidance
+- \*Weapon Prof (Any)
+- \*Divine Grace
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+**Bonus for Completion:** +1 to maximum HP.
+**Suggested Exits:** Cleric, Magic User, Defender
+
+---
+
+### Cleric
+
+**Level:** 3
+**Prerequisites:** Academic Lore 3, Forbidden Lore 4, (Healing or Abjuration at rank 2) OR (Peer(Religious Order) and Divine Grace)
+**Characteristics:** Willpower, Wisdom, Composure
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+**Feats:**
+
+- Divine Ministration
+- True Grit
+- Spell Focus (Any)
+- Channel Energy
+- \*Weapon Focus (Any)
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+**Bonus for Completion:** +1 to maximum HP.
+**Suggested Exits:** Zealot, Sorcerer, Paladin
+
+---
+
+### Zealot
+
+**Level:** 4
+**Prerequisites:** Academic Lore 4, Forbidden Lore 4, (Healing or Abjuration at rank 3) OR (Divine Ministration and True Grit)
+**Characteristics:** Willpower, Wisdom, Composure
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+**Feats:**
+
+- Armor Prof (Heavy)
+- Absolution
+- Good Reputation (Religious Order)
+- Sound Constitution
+- Greater Spell Focus (Any)
+- \*Skill Focus (Any)
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+**Bonus for Completion:** +1 to maximum HP.
+**Suggested Exit:** Bishop
+
+---
+
+### Bishop
+
+**Level:** 5
+**Prerequisites:** Academic Lore 5, Forbidden Lore 5, Healing or Abjuration at rank 4, Good Reputation (Religious Order)
+**Characteristics:** Willpower, Wisdom, Composure
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Politics, Weaponry, Intimidation, Persuasion, Command
+**Feats:**
+
+- Fearless (Any)
+- Armor of Contempt
+- Purge the Unclean
+- Greater Spell Focus (Any)
+
+**Magic Schools:** Abjuration, Divination, Healing, Necromancy, Transmutation
+**Bonus for Completion:** +1 to maximum HP.
+
+---
+
+### Swordsman
+
+**Level:** 1
+**Prerequisites:** Weaponry 2, Athletics 1
+**Characteristics:** Strength, Constitution, Intelligence
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+**Feats:**
+
+- Hardy
+- Armor Proficiency (Light)
+- \*Armor Proficiency (Medium)
+- Power Attack
+- Powerful Charge
+- Weapon Proficiency (Any)
+- \*Improved Feint OR Two Weapon Fighting
+
+**Sword Schools:** Iron Heart, White Raven
+**Bonus for Completion:** +1 to all Melee attack tests.
+**Suggested Exits:** Myrmidon, Nighthawk, Guardsman
+
+---
+
+### Myrmidon
+
+**Level:** 2
+**Prerequisites:** Weaponry 3, Athletics 2, Power Attack
+**Characteristics:** Strength, Constitution, Intelligence
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+**Feats:**
+
+- Quick Draw
+- Jaded
+- \*Blind Fighting
+- Armor Proficiency (Medium)
+- \*Armor Proficiency (Heavy)
+- Weapon Proficiency (Any)
+- Weapon Focus (Any)
+
+**Sword Schools:** Iron Heart, White Raven
+**Bonus for Completion:** +1 to all Melee attack tests.
+**Suggested Exits:** Fight Guy, Sergeant
+
+---
+
+### Fight Guy
+
+**Level:** 3
+**Prerequisites:** Weaponry 4, Athletics 3, Blind Fighting or Powerful Charge, Quick Draw or Two Weapon Fighting
+**Characteristics:** Strength, Constitution, Intelligence
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+**Feats:**
+
+- Crushing Blow OR Crack Shot
+- Combat Insight OR Deadeye Shot
+- Swift Attack
+- \*Armor Proficiency (Heavy)
+- \*Armor Proficiency (Extreme)
+- Weapon Proficiency (Any) OR Frenzy
+- Weapon Specialization (Any)
+
+**Sword Schools:** Iron Heart, White Raven
+**Bonus for Completion:** +1 to all Melee attack tests.
+**Suggested Exits:** Fighter, Grenadier, Barbarian
+
+---
+
+### Fighter
+
+**Level:** 4
+**Prerequisites:** Weaponry 5, Athletics 4, Swift Attack or Crack Shot, Combat Insight or Deadeye Shot
+**Characteristics:** Strength, Constitution, Intelligence
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+**Feats:**
+
+- Fearless (Any)
+- Iron Jaw
+- \*Armor Specialization (Any)
+- Wall of Steel
+- Combat Master
+- \*Armor Proficiency (Power)
+- \*Weapon Focus (Any)
+- Improved Weapon Focus (Any)
+
+**Sword Schools:** Iron Heart, White Raven
+**Bonus for Completion:** +1 to all Melee attack tests.
+**Suggested Exit:** Master Fight Guy
+
+---
+
+### Master Fight Guy
+
+**Level:** 5
+**Prerequisites:** Weaponry 5, Athletics 5, Swift Attack, Combat Master
+**Characteristics:** Strength, Constitution, Intelligence
+**Skills:** Acrobatics, Athletics, Brawl, Drive, Ballistics, Weaponry, Intimidation, Perception, Command
+**Feats:**
+
+- Counter Attack
+- True Grit
+- Blademaster
+- Lightning Attack
+- Improved Weapon Specialization (Any)
+- \*Weapon Specialization (Any)
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** Iron Heart, White Raven
+**Bonus for Completion:** +1 to all Melee attack tests.
+
+---
+
+### Conscript
+
+**Level:** 1
+**Prerequisites:** Ballistics 2, Athletics 1
+**Characteristics:** Strength, Dexterity, Willpower
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+**Feats:**
+
+- Sound Constitution
+- Far Shot
+- Armor Proficiency (Light)
+- Quick Draw
+- Weapon Proficiency (Any)
+- \*Hardy
+- \*Armor Proficiency (Medium)
+
+**Sword Schools:** Iron Heart
+**Bonus for Completion:** +1 to all Ranged attack tests.
+**Suggested Exits:** Guardsman, Nighthawk
+
+---
+
+### Guardsman
+
+**Level:** 2
+**Prerequisites:** Ballistics 3, Athletics 2, Sound Constitution, Quick Draw or Armor Proficiency (Medium) or Hardy
+**Characteristics:** Strength, Dexterity, Willpower
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+**Feats:**
+
+- Sound Constitution
+- \*Sound Constitution OR Blind Fighting
+- Double Tap
+- Crack Shot
+- Armor Proficiency (Medium)
+- Weapon Proficiency (Any)
+- \*Jaded
+
+**Sword Schools:** Iron Heart
+**Bonus for Completion:** +1 to all Ranged attack tests.
+**Suggested Exits:** Sergeant, Fight Guy
+
+---
+
+### Sergeant
+
+**Level:** 3
+**Prerequisites:** Ballistics 4, Athletics 3, Crack Shot or Quick Draw, Far Shot or Armor Proficiency (Medium)
+**Characteristics:** Strength, Dexterity, Willpower
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+**Feats:**
+
+- Sound Constitution
+- Hip Shooting
+- Fast Reflexes
+- Deadeye Shot
+- \*Armor Proficiency (Heavy)
+- \*Weapon Proficiency (Any)
+- Weapon Focus (Any)
+
+**Sword Schools:** Iron Heart
+**Bonus for Completion:** +1 to all Ranged attack tests.
+**Suggested Exits:** Grenadier, Fighter
+
+---
+
+### Grenadier
+
+**Level:** 4
+**Prerequisites:** Ballistics 5, Athletics 4, Deadeye Shot
+**Characteristics:** Strength, Dexterity, Willpower
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+**Feats:**
+
+- Sound Constitution
+- \*Sound Constitution
+- Fearless (Angry)
+- Iron Jaw
+- Armor Specialization (Any)
+- \*Armor Proficiency (Extreme)
+- Weapon Proficiency (Any)
+- \*Weapon Focus (Any)
+
+**Sword Schools:** Iron Heart
+**Bonus for Completion:** +1 to all Ranged attack tests.
+**Suggested Exit:** Stormtrooper
+
+---
+
+### Stormtrooper
+
+**Level:** 5
+**Prerequisites:** Ballistics 5, Athletics 5, Iron Jaw, Deadeye Shot
+**Characteristics:** Strength, Dexterity, Willpower
+**Skills:** Athletics, Perception, Tech-Use, Drive, Ballistics, Weaponry, Command, Pilot
+**Feats:**
+
+- Sound Constitution
+- Hard Target
+- True Grit
+- Sharpshooter
+- Fan the Hammer
+- \*Armor Proficiency (Power)
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** Iron Heart
+**Bonus for Completion:** +1 to all Ranged attack tests.
+
+---
+
+### Apprentice
+
+**Level:** 1
+**Prerequisites:** Academic Lore 2, Arcana 3
+**Characteristics:** Intelligence, Charisma, Willpower
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+**Feats:**
+
+- Obtain Familiar OR Implement Focus
+- Eidetic Memory
+- Foresight
+- Spell Might
+- \*Tested
+- \*Weapon Prof (Ordinary)
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+**Bonus for Completion:** +1 to all Focus Power tests.
+**Suggested Exits:** Aspirant, Priest, Bard (if Performer 2)
+
+---
+
+### Aspirant
+
+**Level:** 2
+**Prerequisites:** Academic Lore 3, Arcana 3, Foresight or Tested, any two Magics at rank 1
+**Characteristics:** Intelligence, Charisma, Willpower
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+**Feats:**
+
+- Spell Book
+- Spell Focus (Any)
+- Improvisational Magic
+- Strong Minded
+- Wizard Tradition
+- \*Tested OR Peer (Renegade Sorcerers)
+- \*Skill Focus (Any Lore)
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+**Bonus for Completion:** +1 to all Focus Power tests.
+**Suggested Exits:** Magic User, Cleric, Skald
+
+---
+
+### Magic User
+
+**Level:** 3
+**Prerequisites:** Academic Lore 3, Arcana 4, any two Magics at rank 2, Spell Focus.
+**Characteristics:** Intelligence, Charisma, Willpower
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+**Feats:**
+
+- Spell Book
+- Spell Penetration
+- \*Touch Spell Specialization
+- Wizard Tradition
+- Skill Focus (Any Lore)
+- \*Tested OR Luck
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+**Bonus for Completion:** +1 to all Focus Power tests.
+**Suggested Exits:** Sorcerer, Cleric
+
+---
+
+### Sorcerer
+
+**Level:** 4
+**Prerequisites:** Academic Lore 4, Arcana 4, any Magic at rank 3, any two Magics at rank 2, Spell Focus
+**Characteristics:** Intelligence, Charisma, Willpower
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+**Feats:**
+
+- Spell Book
+- Greater Spell Focus (Any)
+- Mental Fortress
+- Wizard Tradition
+- \*Skill Focus (Any Lore)
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+**Bonus for Completion:** +1 to all Focus Power tests.
+**Suggested Exit:** Master Sorcerer
+
+---
+
+### Master Sorcerer
+
+**Level:** 5
+**Prerequisites:** Academic Lore 5, Arcana 5, Greater Spell Focus, any Magic at rank 4, any two Magics at rank 3
+**Characteristics:** Intelligence, Charisma, Willpower
+**Skills:** Arcana, Academic Lore, Common Lore, Forbidden Lore, Scrutiny, Deceive, Charm
+**Feats:**
+
+- Spell Book
+- Archmage Tradition
+- Greater Spell Penetration
+- Spell Mastery
+- \*Spell Focus (Any)
+- \*Skill Focus (Any Lore)
+
+**Magic Schools:** Abjuration, Evocation, Illusion, Conjuration, Divination, Necromancy
+**Bonus for Completion:** +1 to all Focus Power tests.
+
+---
+
+### Gallant
+
+**Level:** 1
+**Prerequisites:** Weaponry 2, Forbidden Lore 2
+**Characteristics:** Willpower, Wisdom, Constitution
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+**Feats:**
+
+- Pure Faith
+- Sound Constitution
+- Weapon Proficiency (Melee 1)
+- Hatred (Heretics)
+- Armor Proficiency (Light)
+- \*Power Attack
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+**Bonus for Completion:** +1 AP while wearing armor.
+**Suggested Exits:** Protector, Priest, Myrmidon
+
+---
+
+### Protector
+
+**Level:** 2
+**Prerequisites:** Weaponry 2, Forbidden Lore 3, Pure Faith or Hatred (Heretics)
+**Characteristics:** Willpower, Wisdom, Constitution
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+**Feats:**
+
+- Peer (Religious Order)
+- Guardian
+- Sound Constitution
+- Armor Proficiency (Medium)
+- Divine Grace
+- \*Divine Bond
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+**Bonus for Completion:** +1 AP while wearing armor.
+**Suggested Exits:** Defender, Cleric
+
+---
+
+### Defender
+
+**Level:** 3
+**Prerequisites:** Weaponry 3, Forbidden Lore 4, Divine Grace, Guardian or Peer (Religious Order)
+**Characteristics:** Willpower, Wisdom, Constitution
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+**Feats:**
+
+- Sound Constitution
+- Divine Ministration
+- True Grit
+- Swift Attack
+- Divine Bond
+- \*Armor Proficiency (Heavy)
+- \*Weapon Focus (Any)
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+**Bonus for Completion:** +1 AP while wearing armor.
+**Suggested Exits:** Paladin, Zealot
+
+---
+
+### Paladin
+
+**Level:** 4
+**Prerequisites:** Weaponry 4, Forbidden Lore 4, Divine Ministration, True Grit or Crushing Blow
+**Characteristics:** Willpower, Wisdom, Constitution
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+**Feats:**
+
+- Blademaster
+- Sound Constitution
+- Good Reputation (Religious Order)
+- Weapon Proficiency (Any) OR Weapon Focus (Any)
+- Wall of Steel
+- \*Armor Proficiency (Extreme)
+- \*Skill Focus (Any)
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+**Bonus for Completion:** +1 AP while wearing armor.
+**Suggested Exit:** Chevalier
+
+---
+
+### Chevalier
+
+**Level:** 5
+**Prerequisites:** Weaponry 5, Forbidden Lore 5, Wall of Steel, Good Reputation (Religious Order)
+**Characteristics:** Willpower, Wisdom, Constitution
+**Skills:** Academic Lore, Arcana, Forbidden Lore, Medicae, Athletics, Weaponry, Command, Intimidation, Persuasion, Scrutiny
+**Feats:**
+
+- Armor Specialization (Any)
+- Sound Constitution
+- Fearless (Angry)
+- Death Before Defeat
+- Armor of Contempt
+- \*Armor Proficiency (Power)
+
+**Sword Schools:** White Raven, Devoted Spirit, Stone Dragon
+**Bonus for Completion:** +1 AP while wearing armor.
+
+---
+
+### Outcast
+
+**Level:** 1
+**Prerequisites:** Larceny 2, Stealth 2
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+**Feats:**
+
+- Danger Sense
+- Fast Reflexes
+- Blind Fighting
+- Improved Feint
+- Weapon Proficiency (Melee 2)
+- \*Weapon Proficiency (Basic)
+- \*Weapon Proficiency (Throwing)
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+**Bonus for Completion:** +1 to Static Defense.
+**Suggested Exits:** Outlaw, Nighthawk
+
+---
+
+### Outlaw
+
+**Level:** 2
+**Prerequisites:** Larceny 2, Stealth 3, Danger Sense or Fast Reflexes
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+**Feats:**
+
+- Sneak Attack
+- Armor Proficiency (Light)
+- Catfall
+- Evasion
+- Skill Focus (Any)
+- \*Two Weapon Fighting
+- \*Skill Focus (Any)
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+**Bonus for Completion:** +1 to Static Defense.
+**Suggested Exits:** Renegade, Assassin, Fight Guy
+
+---
+
+### Renegade
+
+**Level:** 3
+**Prerequisites:** Larceny 3, Stealth 3, Evasion or (Skill Focus (Larceny) and Catfall)
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+**Feats:**
+
+- Fleet of Foot
+- Quick Draw
+- Back Stab
+- Weapon Focus (Fencing)
+- Skill Focus (Any)
+- \*Weapon Proficiency (Any)
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+**Bonus for Completion:** +1 to Static Defense.
+**Suggested Exits:** Rogue, Freeblade
+
+---
+
+### Rogue
+
+**Level:** 4
+**Prerequisites:** Larceny 4, Stealth 4, Fleet of Foot, Quick Draw
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+**Feats:**
+
+- Improved Sneak Attack
+- Hard Target
+- Luck
+- Jaded
+- Skill Focus (Any)
+- \*Weapon Focus (Any)
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+**Bonus for Completion:** +1 to Static Defense.
+**Suggested Exit:** Stubjack
+
+---
+
+### Stubjack
+
+**Level:** 5
+**Prerequisites:** Larceny 5, Stealth 5, Improved Sneak Attack
+**Characteristics:** Dexterity, Intelligence, Fellowship
+**Skills:** Perception, Common Lore, Acrobatics, Ballistics, Larceny, Stealth, Weaponry, Scrutiny, Persuasion, Charm, Deceive, Pilot, Disguise, Tech-Use
+**Feats:**
+
+- Step Aside
+- Fearless (Cool)
+- Improved Back Stab
+- Devastating Critical
+- Skill Focus (Any)
+- \*Improved Weapon Focus (Any)
+
+**Sword Schools:** Shadow Hand, Diamond Mind
+**Bonus for Completion:** +1 to Static Defense.
+
+---
+
+"Strangers from distant lands... friends of old. You have been summoned here to answer the threat of Mortarion. Terros stands upon the brink of destruction. None can escape it. You will unite... or you will fall. Each race is bound to this fate... this one doom."
+
+A council had gathered in that small forest. The elven elder stood before a group of just over twenty that represented the free peoples of Terros. He nodded to a halfling.
+
+"Bring forth the ring, Prefect," the elder said. The young halfling stepped forward and put a simple gold ring on the stone plinth that was the focus of the gathering, then returned to his seat.
+
+"So it is true," Brother Boromos of the White Templars muttered, his voice raspy through the filter of his power armor's ventilator.
+
+"Saurious' ring! The ring of power!" Megablos, one of the local elves, exclaimed. One of the squats looked at the ring and shook his head.
+
+"The doom of man," the squat muttered.
+
+"It is a gift," Brother Boromos said. "We can use this ring to strike at the enemy, if it is such a powerful artifact."
+
+"You cannot wield it," Walker said, gruffly. He brushed his hands over his denim pants, dislodging road dust. "None of us can. The one ring answers to the daemon Saurious alone."
+
+"And what would a ranger know of this matter?" Brother Boromos asked, turning to face Walker. Walker just fixed him with a level gaze. The air filled with unspoken threat.
+
+"He is no mere ranger," Megablos said, trying to defuse the situation. "He is Walker, son of Tecksas."
+
+"Walker?" Boromos asked, quietly. "Norris' heir?" There was a gentle cough as a man dressed in strange robes, the robes of the Syrneth, spoke up.
+
+"Walker is right... we cannot use it," the wizard said.
+
+"We have only one choice," said the elven elder. "The ring must be destroyed." The squat suddenly stood up, bringing his meltagun to bear.
+
+"Then... what are we waiting for?" He asked. He fired the meltagun. There was a crack as the superheated air washed over the group. The stone plinth vanished, turning into ash and molten stone. The ring hung suspended in midair for a moment, then landed on the ground with the tone of pure metal, unharmed. Pentagrammatic wards flared on its surface, an evil and arcane script.
+
+"The ring cannot be destroyed," the elder said, to the suddenly silent chamber, "Cheri, son of Chearwin, by any craft that we here possess. The ring was made in the fires of Mount Kismet... only there can it be unmade. It must be taken deep into Mortarion, and cast back into the fiery chasm from whence it came. One of you must do this."
+
+"One does not simply walk into Mortarion," Brother Boromos said. "Its black gates are guarded by worse than just orks. There is evil there that does not sleep and the Great Eye is ever watchful." He paused. "We will need to take drop pods. We shall not fail in this. Before this day is done, the evil of Mortarion will fall."
+
+---

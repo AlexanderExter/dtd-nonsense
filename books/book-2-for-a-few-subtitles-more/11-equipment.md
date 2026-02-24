@@ -1,0 +1,512 @@
+---
+title: "Chapter XI: Equipment"
+book: 2
+chapter: 11
+order: 11
+type: "chapter"
+---
+# Chapter XI: Equipment
+
+## Weapon Creation
+
+There are probably as many types of weapons in the Wheel as there are people. It would be impossible for any single book to cover in full the implements of death that have been created in the name of the endless wars and battles waged across the Wheel. While the main Dungeons The Dragoning book covers the most common types of firearms and melee weapons, this section will show you how to create weapons to nearly any specification.
+
+### Creating a Weapon
+
+1. Choose a Template
+2. Choose a Type
+3. Apply Mods
+4. Determine Price
+
+### Choose a Template
+
+To create a unique weapon, the first step is to choose which weapon template you are using. There are five starting weapon templates, one for melee weapons and four for ranged (pistol, basic, cannon, and heavy weapons). These templates determine the base stats of the weapon - damage, penetration, and so forth.
+
+**Templates:**
+
+- **PISTOL:** (Pistol, `2k2` I, Pen 0, ROF S/-, 30m, Clip 6, Reload Full)
+- **BASIC:** (Basic, `3k2` I, Pen 0, ROF S/-, 40m, Clip 12, Reload Full)
+- **CANNON:** (Heavy, `3k3` I, Pen 4, ROF S/-, 60m, Clip 4, Reload 2 Full)
+- **HEAVY RIFLE:** (Heavy, `2k2` I, Pen 2, ROF S/-, 60m, Clip 40, Reload 2 Full)
+- **MELEE:** (Melee, `1k2` I, Pen 0)
+
+### Choose a Type
+
+The next step in creating a weapon is to choose a weapon type. There are two separate lists, one for melee and one for ranged. The proficiency required to use the weapon is determined by its type, and its type also changes
+a weapon's base stats slightly.
+
+---
+
+## Melee Mods
+
+Mods are what really sets two weapons apart from one another. When creating a custom weapon, melee weapons may choose up to three mods that increase the Cost and ranged weapons may take up to four. All weapons may take up to two mods that decrease the Cost. Not every weapon can take every mod. Ranged and Melee weapons have different mods available.
+
+Mods have a Cost, Compatibility, and Effect. The Cost is added to the weapon's overall rarity level. Only weapons listed in the Compatibility section may take the mod. The effect is what you'd expect, the change it makes to the weapon's stat line. You may not take a mod twice except where noted, and some mods are incompatible.
+
+**MELEE MODS**
+
+| Name           | Cost | Compatibility | Effect                                                             |
+| -------------- | ---- | ------------- | ------------------------------------------------------------------ |
+| Armored        | +1   | OPFTSH        | The weapon gains Armored                                           |
+| Balanced       | +1   | OPS           | The weapon gains Balanced                                          |
+| Combat Sheath  | +1   | OPNS          | Gain Quick Draw with this weapon                                   |
+| Defensive      | +0   | PS            | The weapon gains Defensive                                         |
+| Extra Damage   | +1   | Any           | The weapon deals `+1k0` damage. This mod may be stacked.           |
+| Extra Pen      | +1   | Any           | The weapon gains +3 Pen. This mod may be stacked.                  |
+| Flexible       | +2   | S             | The weapon gains Flexible                                          |
+| Incendiary     | +2   | TS            | The weapon gains Incendiary, deals E damage                        |
+| Orgone Array   | +1   | S             | Whenever damage dice explode, roll for psychic phenomena.          |
+| Power Field    | +2   | Any           | The weapon gains Power Field                                       |
+| Razor Sharp    | +1   | OPNTSCU       | The weapon gains Razor Sharp                                       |
+| Reach          | +1   | CFTS          | The weapon gains Reach                                             |
+| Shocking       | +1   | Any           | The weapon gains Shocking                                          |
+| Snare          | +1   | FS            | The weapon gains Snare                                             |
+| Tearing        | +1   | OS            | The weapon gains Tearing                                           |
+| Throwing       | +0   | OPC           | The weapon gains Throwing (Str x5 m Range)                         |
+| Toxic          | +1   | PNS           | The weapon gains Toxic                                             |
+| Two Hand, Good | +2   | OFSA          | The weapon gains `+1k1` damage, Two Handed, & Unwieldy             |
+| Unbalanced     | -1   | OCFTSA        | The weapon gains Unbalanced. May not take with Unwieldy.           |
+| Volatile       | +2   | CTS           | The weapon's damage dice explode on 9 and 10                       |
+| Two Hand, Bad  | -1   | OCFSA         | The weapon gains Two Handed                                        |
+| Unwieldy       | -1   | OCFTSA        | The weapon gains Unwieldy. May not take with Unbalanced.           |
+| Weak           | -1   | Any           | The weapon deals `-1k0` or `-0k1` damage. This mod may be stacked. |
+| Wounding       | +2   | OPFTSAU       | The weapon deals `+0k1` damage. This mod may be stacked.           |
+
+<!-- NOTE: Wounding compatibility code "OPFTSAU" from cleaned-references/10-Equipment.md (original extraction had no code; was assumed "Any"). -->
+
+> **Design Note:** This is a "best effort" section. The rules were tweaked to get as close as reasonably possible to recreating the weapons from Book 1 in the space allowed. Accuracy is not guaranteed, but it should be approximately correct. If anything, the main book weapons will be a bit cheaper simply because they're being mass produced all across the universe.
+
+---
+
+## Ranged Mods
+
+<!-- NOTE: Ranged Mods table corrected from cleaned-references/10-Equipment.md. "Unknown" mod identified as "Armor Ablating". "Bypass Defenses" entry added at end. Some values may differ from original PDF. -->
+
+| Name                   | Cost | Compatibility | Effect                                                                                  |
+| ---------------------- | ---- | ------------- | --------------------------------------------------------------------------------------- |
+| Adv. Rifling           | +3   | OLSE          | Gain Accurate                                                                           |
+| AP Rounds              | +1   | Any           | Gain +3 Pen. This mod may be taken more than once.                                      |
+| Armor Ablating         | +1   | S             | Gain +4 Pen and `+1k0` damage                                                           |
+| Beam                   | +1   | L             | Gain the Beam property                                                                  |
+| Blast Shield           | +1   | Any           | Gain Armored                                                                            |
+| Burst Fire             | +1   | LPSBE         | Firing profile becomes S/3                                                              |
+| Bullet Spam            | +1   | OB            | Firing profile becomes S/6                                                              |
+| Combiweapon            | +1   | Any           | Gain Combiweapon                                                                        |
+| Compact                | +1   | OLPSE         | Gain Compact                                                                            |
+| Double Barrel          | +1   | OBEF          | Firing profile becomes S/2 and the weapon gains +2 Pen                                  |
+| Explosive Rounds       | +1   | OEB           | Gain Blast 2. Change the damage type to X and the proficiency to Launcher.              |
+| Extended Clip          | +1   | Any           | Double Ammo. This mod may be stacked.                                                   |
+| Felling                | +2   | BE            | Gain Tearing                                                                            |
+| Grenade-Like           | +0   | OEB           | Gain Indirect                                                                           |
+| Heavy Warhead          | +2   | OEB           | Gain Blast 5. Change the damage type to X and the proficiency to Launcher.              |
+| High Caliber           | +1   | Any           | Gain `+1k0` damage. This mod may be stacked.                                            |
+| Incendiary             | +3   | SEF           | Gain the Incendiary property                                                            |
+| Longer Barrel          | +1   | Any           | Double Range. This mod may be stacked.                                                  |
+| Low Ammo               | -1   | Any           | Half Ammo (round down). This mod may be stacked.                                        |
+| Machine Gun            | +2   | OE            | Firing profile becomes S/10                                                             |
+| Magnum Rounds          | +2   | Any           | Gain `+0k1` damage.                                                                     |
+| Maximal Power          | +1   | LMP           | Gain `+1k1` damage and half ammo                                                        |
+| Melee Attach: Bayonet  | +1   | Any           | Works as a Spear in Melee                                                               |
+| Melee Attach: Chainsaw | +2   | Any           | Works as a Chainsword in Melee                                                          |
+| Motion Predict         | +1   | OLPMBSE       | Gain `+1k0` to hit with Full Auto                                                       |
+| Nonlethal              | -1   | OSEF          | The weapon does no damage                                                               |
+| Overheats              | -2   | LPMF          | Gains Overheats                                                                         |
+| Power Coils            | -2   | LPMSE         | Gain Recharge                                                                           |
+| Power Hog              | +1   | OBLEMP        | Gain `+2k0` damage and Unreliable.                                                      |
+| Practical              | +2   | OBE           | Gain Reliable                                                                           |
+| Proven                 | +2   | OBSE          | Gain Proven 1. When stacked the rating increases by +1 each time.                       |
+| Quick Draw             | +1   | OLPMBSE       | Gain Quick Draw                                                                         |
+| Reliable. Not!         | -1   | Any           | Gains Unreliable. If it was previously Reliable then it loses that quality.             |
+| Rock and Roll          | +1   | OBS           | Firing profile becomes -/10                                                             |
+| Sawed Off              | -1   | Any           | Half Range. This mod may be stacked.                                                    |
+| Shocking               | +1   | PSEF          | Gain Shocking                                                                           |
+| Shotgun                | +2   | OSE           | Gain Scatter, -2 Pen, half ammo, 2x reload time.                                        |
+| Storm                  | +2   | OLBE          | Gain the Storm Property                                                                 |
+| Sprayer                | +2   | OSEF          | Half range, half ammo, gain Inaccurate, affects a 30 degree cone out to the base range. |
+| Tangler                | +3   | OSEF          | Gain Snare, half ammo.                                                                  |
+| Toxic                  | +1   | EF            | Gain Toxic                                                                              |
+| Twin Linked            | +2   | LPMS          | Gain the Twin Linked Property                                                           |
+| Technologically Simple | -1   | OE            | Change the proficiency category to Primitive, reduce ammo to 1, gain Reliable.          |
+| Volatile               | +2   | OBE           | Damage dice explode on 9 or 10.                                                         |
+| Bypass Defenses        | +2   | SE            | Requires the Nonlethal mod. Targets make a save at TN 15 to avoid the effect.           |
+| Customized             | +1   | Any           | Halve Reload Time. This mod may be stacked.                                             |
+| Weak                   | -1   | Any           | Reduce damage by `-1k0` or `-0k1`. This mod may be stacked to a minimum of `1k1`.       |
+
+<!-- NOTE: Ranged mods table corrected from cleaned-references/10-Equipment.md. Resolved issues:
+  1. Unknown mod identified as "Armor Ablating" (+1, S)
+  2. Burst Fire cost confirmed as +1 per processed source
+  3. Longer Barrel and Sawed Off compatibility confirmed as "Any" per processed source
+  4. "Bypass Defenses" (+2, SE) added - was lost in garbled extraction text
+  Remaining unresolved: "Stun Rounds" mentioned in garbled text not found in processed source. -->
+
+### Determine Price
+
+The price of a weapon depends on the total cost of any mods attached to it. A weapon's cost starts at zero. Apply any changes from mods and find the weapon's rarity on the chart.
+
+## New Weapon Properties
+
+**Beam:** These energy weapons fire a continuous beam. When making attacks in consecutive rounds, you may reuse the result of a successful attack on the next round.
+
+**Bi-Modal:** Bi-modal energy weapons have two modes. A standard mode and a high power mode that requires a recharge or may cause it to overheat.
+
+**Combiweapon:** A weapon with a combiweapon module can be attached to any weapon of a larger size (a pistol can be attached to a basic or heavy, and basic to a heavy). Its ammo is reduced by half and its reload time is doubled. You may fire either weapon during an attack.
+
+**Compact:** Compact weapons are easy to hide, adding 10 to the TN to discover them. When using a Compact basic gun with one hand, you suffer half the normal penalties.
+
+**Homing:** These missiles are counted as being both Accurate and having been aimed as a full action even when fired as a standard half action attack. ECM or stealth defeats the homing property. As long as there is no active ECM the missiles take no penalties for long range, one third of the penalty for extreme range, and `-3k0` beyond that. They can be fired past extreme range, up to 40x the base range, but they are not counted as being Accurate weapons at that distance. Beyond extreme range they require an additional round to travel to their target for every "extreme range" of distance they have to cover, and they make another attack roll using the same number of dice as the original attack but adjusted for the new range or else they lose their target.
+
+**Incendiary:** Things damaged by an incendiary weapon are set On Fire.
+
+**Indirect:** The weapon is designed to launch its shots in an arc, striking targets from above. It can fire over obstacles, but it will not benefit from any aiming, feats, or other abilities that increase accuracy when doing so.
+
+**Minimum Range:** The weapon has a minimum range under which it either cannot be fired or cannot hit a target. This is usually half the weapon's base range.
+
+**Orgone Array:** Targets damaged by orgone array weapons roll on the Psychic Phenomena table with a +5 for every two wounds suffered.
+
+**Proven:** When dealing damage with a Proven weapon you may reroll any damage dice that are equal to or less than the weapon's Proven value. For example, a weapon with Proven (2) rerolls 1s and 2s on damage dice.
+
+**Razor Sharp:** If you hit with this weapon and get at least two raises, you may double its Pen.
+
+**Storm:** When firing this weapon on full auto, it deals `+2k0` for each Raise instead of `+1k0`. The number of times the weapon can gain this bonus is still equal to the weapon's RoF.
+
+**Tandem Charge:** Warheads that are designed to penetrate armor and then explode again, inside the target. When used on vehicles they always inflict Critical Damage if they do any damage. When used on people they inflict extra critical hits equal to the Wounds they cause.
+
+**Twin Linked:** When firing a single shot with this weapon, it gets `+1k0` to hit. If you hit with at least two raises, it deals `+2k0` damage.
+
+### Availability
+
+| Cost | Rarity       | TN  |
+| ---- | ------------ | --- |
+| -3   | Worthless    | 0   |
+| -2   | Ubiquitous   | 2   |
+| -1   | Very Common  | 5   |
+| 0    | Common       | 10  |
+| +1   | Uncommon     | 15  |
+| +2   | Rare         | 20  |
+| +3   | Very Rare    | 25  |
+| +4   | Mythic Rare  | 30  |
+| +5   | Near Unique  | 35  |
+| +6   | Fabulous Max | 40  |
+
+---
+
+## Drugs
+
+There are combat drugs, medical drugs, recreational drugs, and magical drugs. Some people try to enhance their body and mind with drugs. Some are chemicals, others are specialized bacteria, nano-machines, or even electronic - transmitting to the body and mind as carefully regulated patterns of energy.
+
+Addiction is always a consideration for anyone who gets too comfortable with popping the same pills too often, though there are drugs that can be taken to help with that, too, of course.
+
+Drug descriptions include benefits, side effects, noticeable signs that a person is using the drug, addictiveness, and effects from long-term use. Descriptions also include the drug's duration and its addictiveness.
+
+When purchasing drugs, one acquisition test is enough to get ten doses. One may get twice as many doses by increasing the TN of the test by 5. These doses may be acquired as hyposprays (which can be used against unwilling targets with melee attacks), ammunition for Needle weapons, or a social form like patches or powders.
+
+If purchased as ammunition for Needle Weapons, while using a dose of a drug, the weapon deals no damage and delivers the dose of the drug in place of its normal effects.
+
+### Addiction
+
+Some drugs are addictive, either physically or mentally and sometimes both. Every drug has an addiction rating. Every time a character uses the drug, they must make a Willpower Test to avoid addiction. The TN of this Test is determined by the drug's Addictivity.
+
+Failure on the test indicates that the character has gained a Minor addiction to the drug. A character who is addicted to a drug will start to suffer from the effects of withdrawal if they haven't taken it recently. Each time they take the drug, they must roll the same Willpower Tests. Failures increase the severity of the addiction. The effects of addiction depend on its severity and are cumulative - a character suffering from a moderate addiction still suffers the effect of Minor addiction, and with a major addiction you get the whole menu.
+
+To break an addiction, a character must stay off the drug for at least one week. At the end of the week, the character makes a Willpower Test based on the drug's Addictivity. If they pass, the drug's addiction rating is reduced by one level. If they only had a minor addiction, they kick the addiction entirely - though if they start using it again they might find themselves back on the horse.
+**Addiction Effects:**
+
+| Severity | Effect                                                                                                                                                                    |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Minor    | The character suffers minor shakes and pains. `-1k0` to all rolls.                                                                                                        |
+| Moderate | The character suffers terrible trembles and psychological turmoil. The character's dice no longer explode.                                                                |
+| Major    | The character is almost useless from the pains of withdrawal. The character suffers `-1k2` to all rolls (for a total of `-2k2`, counting the effects of Minor addiction). |
+
+**Addictivity Levels:**
+
+| Level    | TN  | Time before Withdrawal             |
+| -------- | --- | ---------------------------------- |
+| None     | 0   | -                                  |
+| Low      | 10  | One Week                           |
+| Moderate | 15  | Three Days                         |
+| High     | 20  | One Day                            |
+| Extreme  | 25  | Upon the end of the drug's effects |
+
+---
+
+### Alpha
+
+Alpha is popular with hypercorp execs, street thugs, and anyone else who wants to come across as a domineering asshole. Typically, Alpha is made as a white powder to be snorted. It's designed to stimulate production of threat pheromones and promote a feeling of confidence, a feeling of power, and alertness. People on Alpha tend to act like impatient, unfocused, assholes. They rarely retain more than sketchy memories of anything they try to learn while the drug is active.
+
+**Effect:** Users can function without sleep for days on end, gain `+1k1` on offensive social combat rolls, and `+1k1` to resist the effects of fear. The bonuses to rolls last for one scene.
+
+**Addictivity:** Low
+
+### Bio-Foam
+
+Designed as a way to reduce the effects of battlefield injuries in a single quick injection, Bio-Foam is a combination of several very useful drugs in one package. It's designed to be injected directly into a wound, where it will act as antibacterial agent, coagulant, numbing agent, and helps keep everything in a wound stable and in place. Biofoam tends to hurt badly while being applied, but the burning crawling feeling quickly goes away to be replaced with numbness and relief.
+
+**Effect:** Applying Bio-Foam instantly stops blood loss. While it's no substitute for real medical care, it does patch up the body enough to effectively heal one hit point per dose applied. The effects are instant and permanent - the wounds will not spontaneously reopen.
+
+**Addictivity:** None
+
+### Comfort
+
+An over-the-counter drug sold pretty much everywhere in a variety of forms, Comfort is a drug designed to help people deal with low levels of stress and pain. Most of the time, comfort is served as an additive to food, almost always as a form of very comforting or simple food such as yogurt or sugary drink. There are no obvious effects of Comfort use except a docility and, in abusers, a chronic itchiness.
+
+**Effect:** While under the effects of Comfort, a person's mood is stabilized. They may ignore the effects of any minor derangement, and if they would gain Insanity Points while under the effects of Comfort, they gain 1 fewer IP.
+
+**Addictivity:** Low
+
+### Detox
+
+Detox is a drug designed to counter the effect of drugs in the body and to help fight addiction. It's most often applied as a patch to be absorbed through the skin, though it can also be found in almost any form a patient desires or needs. It's one of the most common drugs on the market, though not as cheap as Comfort. Patients on detox tend to have bloodshot eyes, headaches, and a generally bad mood as it eliminates the body's natural mood-stabilizing agents just like every other drug.
+
+**Effect:** Detox instantly ends the effect of any drugs affecting the user. If the user is suffering withdrawal, the effects are reduced by one level.
+
+**Addictivity:** None
+
+### Drive
+
+Drive is a mind-altering drug usually found as an inhalant, Drive is designed to make a person think faster (if not necessarily better). It's mildly illegal in many places, but there's a market for Drive any place where people compete.
+
+**Drugs Reference Table:**
+
+| Name         | Rarity      |
+| ------------ | ----------- |
+| Alpha        | Uncommon    |
+| Bio-Foam     | Uncommon    |
+| Comfort      | Very Common |
+| Detox        | Common      |
+| Drive        | Uncommon    |
+| Flight       | Rare        |
+| Frenzon      | Uncommon    |
+| Hither       | Common      |
+| Null         | Mythic Rare |
+| Obscura      | Uncommon    |
+| Polymorphine | Mythic Rare |
+| Slaught      | Rare        |
+| Spook        | Very Rare   |
+| Stimm        | Very Common |
+| Tranq        | Uncommon    |
+| Truth        | Rare        |
+
+---
+
+Universities and law firms are some of the places most likely to have supplies of Drive on hand. There are a few signs of Drive use, but the most obvious is that someone on Drive will totally ignore outside stimulus while absorbed in a task. They've been known to ignore obvious danger - fire, armed men, and so forth - while doing things like solving simple puzzles or working out math problems.
+
+**Effect:** While under the effects of Drive, a creature gets +1 to all mental characteristics but automatically fails any perception test. The effects of Drive last until the end of the scene.
+
+**Addictivity:** Moderate
+
+### Flight
+
+Originally developed as a crowd-control drug to be used in Needle rifles and pistols, Flight is a psychoactive cocktail of fear pheromones and mild hallucinogens. It takes people places. Places they might not want to go. It isn't used as much for crowd-control as its designers hoped, as it has been unfortunately found to be addictive, and repeated doses in a short time can lead to permanent insanity. Repeat users tend to have characteristic pinpoint pupils and phobias related to the trips they've had while under Flight's effects.
+
+**Effect:** Anyone dosed with Flight immediately rolls on the Shock Table. Additional doses within the same day add cumulative +1 modifiers to the roll (the second dose at +1, the third at +2, etc).
+
+**Addictivity:** Moderate
+
+### Frenzon
+
+One of the most common combat drugs, Frenzon is often used as an enhancement drug in some sports. It's addictive, makes the user strong and almost immune to pain, and tightly controlled in most places. People on frenzon tend to go berserk, lashing out at anything that so much as annoys them. The immediate, obvious signs of Frenzon use are a full-body blush as blood rushes to the skin, prominent veins, and bleeding from the eyes in frequent abusers.
+
+**Effect:** While under the effect of Frenzon, the user gains the use of the Frenzy feat and suffers -1 to Fellowship, Wisdom, and Intelligence. The effects of Frenzon last for a single scene.
+
+**Addictivity:** Moderate
+
+### Hither
+
+Sometimes you just want to ooze sexy like a daemonette. Hither is the best way to do that. It changes body chemistry to encourage the production of pheromones to attract and arouse, while at the same time lowering inhibitions and making the user comfortable. It's a common club drug, and it rarely proves to be addictive. People using hither are hard to specifically point out, but they have a kind of glow to them, an attractiveness that is hard to explain.
+
+**Effect:** Anyone on Hither gains `+2k1` to Charm tests. The TN for any Willpower or Wisdom tests they make to resist temptation is increased by 10.
+
+**Addictivity:** Low
+
+### Null
+
+One of the rarest and most expensive chemicals in the wheel, Null is only produced and shipped in extraordinarily small quantities. It has the unique property of suppressing spellcasting ability in anyone it is injected into. Null is supposedly made from spinal fluid from spellcasters, put through a secret process to make it into a magic-suppressing agent. Those dosed with Null become docile, but if kept on it for a long time will develop schizophrenic tendencies.
+
+**Effect:** Anyone dosed with Null takes `-1k1` to all spellcasting rolls and has their caster level reduced by 1. The effects of Null last for one day.
+
+**Addictivity:** None
+
+### Obscura
+
+Obscura is a prohibited narcotic, and one of the most common targets of crackdowns. Smugglers can make a good living shipping it from system to system. Unlike many drugs, the users don't all belong to a single social class or group. Obscura users can be found in every walk of life, from lowly hive scum to a secret vice for nobility. It's obvious when someone is under the effects of Obscura, as they usually act like they're sleepwalking - and often they lie comatose while they experience a strange dream-state.
+
+**Effect:** Anyone dosed with Obscura begins to have mild hallucinations which last for `1d10` hours. These hallucinations are generally pleasant, and most of the time they replay happy memories from the user's past in a dreamlike way.
+
+**Addictivity:** Moderate
+
+### Polymorphine
+
+A shape-altering drug designed to be injected into trained operatives, Polymorphine can completely change a person's appearance. It takes an expert trained in its use to keep the effects from going out of control. Essentially, polymorphine breaks the bonds that holds cells together into tissues and puts them into the user's controls. The user can become almost anyone as long as they can maintain focus.
+
+**Effect:** A dose of Polymorphine allows the user to change their appearance. This can act as an almost perfect disguise for one scene, or the user can affect minor but permanent changes to their appearance (like cosmetic surgery).
+
+**Addictivity:** High
+
+### Slaught
+
+This drug heightens awareness and improves reaction time, literally speeding up the user but causing fatigue and neural damage with prolonged use. It is a combat drug favored by Dark Eldarin and combat pilots, though due to its cost and rarity it's not something the average junkie can afford to use very often. The effects of Slaught use are obvious and hard to disguise, which is one reason it's rarely used as a performance enhancer. The muscle twitches, minor sweat (the exact color depending on the manufacturer and batch) serving to mark its users easily.
+**Effect:** Slaught gives users +1 Dexterity and reduces the TN of Perception tests by 10. The effects of Slaught last for one scene. After Slaught wears off, the user suffers two levels of fatigue.
+
+**Addictivity:** Moderate
+
+### Spook
+
+A psychoactive drug somewhat like Null, Spook has exactly the opposite effect. It is designed to chemically open a person's mind to the Warp. Spook is neither a subtle or legal drug. It is highly addictive, dangerous on a level no other drug could be, and if it started being used on a large scale, it may well lead to a disaster of biblical proportions.
+
+**Effect:** Spook gives the user `+1k1` to all spellcasting rolls while under its effect and gives a +1 bonus to the user's caster level. Upon dosing with Spook, and when casting any spell while it is active, the spell automatically causes warp phenomenon. Spook lasts for one scene.
+
+**Addictivity:** High
+
+### Stimm
+
+Developed for emergency medical use, or more appropriately and accurately for soldiers, Stimms are a variety of painkillers and stimulant that can allow the user to ignore almost any wound or injury. Users might not even be aware that they're injured at all. Stimms can be administered in almost any form, but injections and slap-patches are the most common methods by far. Stimms are somewhat addictive, and many soldiers who have had battlefield injuries end up coming back from service with the pale skin and thin blood indicative of a stimm abuser.
+
+**Effect:** While under the effects of Stimm, the user may ignore critical damage effects except those that cause death and any effect that specifically functions through pain. Stimm lasts for the duration of one scene, after which the user is hit with any effects that Stimm allowed him to ignore with full force.
+
+**Addictivity:** Moderate
+
+### Tranq
+
+Tranq is, as the name suggests, any of a very large number of tranquilizing substances. They have obvious medical uses, but they are also often see use in injector rounds for Needle rifles as a popular nonlethal option for hunting game and self-defense. Tranqs are rarely addictive, and against really tough opponents Tranqs might do little more than annoy. But when they work, they're extremely handy.
+
+**Effect:** When dosed with Tranq, the user takes 1 level of fatigue and makes a TN 15 Constitution test. If this fails, they take `1d10` more levels of fatigue. These levels of fatigue wear off as normal.
+
+**Addictivity:** None
+
+### Truth
+
+While it's rarely taken willingly and also not very useful in combat, Truth is extraordinarily useful in its own way. It is a designer drug developed for special police units and governments, causing mind-altering effects that make it difficult or impossible for the one given the drug to lie. That the drug causes drowsiness and hallucinations are only considered benefits for interrogations.
+
+**Effect:** Anyone on the effects of Truth must make TN 15 Willpower tests to knowingly tell a falsehood. The effects of Truth last for one scene.
+
+**Addictivity:** None
+
+---
+
+## Bionics
+
+### Cortex Implants
+
+Cortex Implants, often called brain-ware, may be used to repair a damaged brain or, more commonly, to augment its abilities. They aid in data retention and processing, with rare types coming pre-loaded with volumes of knowledge. Nearly all have visible plugs located either in the side of the skull or the back of the neck.
+
+Normal implants have no effect other than restoring someone injured back to normal.
+
+Poor quality implants can do little more than restore some function to a corpse, making them a kind of cyber-zombie. The bearer has a maximum of 1 dot in Intelligence and Fellowship.
+
+Good quality implants give a free Raise to tests for one Lore skill.
+
+Best quality implants increase Intelligence by 1, to a maximum of 5, and have the same effect as good quality implants.
+
+### Implanted Equipment
+
+Many types of equipment can be implanted in someone's body. The trouble is in the command interfaces and miniaturization. With Implanted Equipment, the user has anything they desire placed into their bodies. The only limit is cost, and the fact that weapons and armor cannot be implanted this way. The effect is exactly the same as the equipment of chosen to be implanted. The availability of Implanted Equipment is one step higher than normal for the equipment.
+
+### Injector Rig
+
+An Injector Rig is a simple piece of medical equipment that can supply drugs on command. They can either be controlled by the bearer or with a remote system - injector rigs loaded with tranquilizers are occasionally used for dangerous criminals.
+
+Normal quality Injector Rigs can hold three doses of drugs (which can be three different drugs) and can be used as a Half Action.
+
+Poor quality rigs have a shared reservoir and can only hold one type of drug.
+
+Good quality rigs can hold up to five doses of five different drugs and be programmed to release one of them when a certain medical condition is met, like blood sugar levels falling below a certain point.
+
+Best quality rigs are much like a good rig except they can be triggered as a Reaction Action.
+
+### Machinator Array
+
+One of the most extensive cybernetic systems that can be installed in a living being, a Machinator Array is an implanted partial exoskeleton, nearly impossible to conceal. The bearer of a Machinator Array masses nearly three times as much as normal and may no longer swim.
+
+Normal Machinator Arrays grant +1 to Strength (to a maximum of 5), inflict a -1 to Dexterity, and add +1 Resilience.
+
+Poor quality Arrays are slow to move. The bearer can no longer Run or Dodge.
+
+Good quality Machinator Arrays are mostly concealed, looking like a suit of armor or sub-dermal plating, if they are visible at all, though when the bearer exerts their full strength they often seem to 'bulk up'.
+
+### Voidskin
+
+A protection against the ravages of space, Voidskin is an emergency-use bionic that is much in favor with people who have to spend a lot of time in space. There are many disasters that can send a person into space without a suit. Voidskin is an implant placed, as indicated by the name, under the skin. It protects against hard vacuum and includes a limited air supply - enough to last about ten minutes.
+
+Poor quality Voidskins only include enough air for three minutes.
+
+Good quality voidskins provide 2 points of armor to all body locations which doesn't stack with any other forms of armor.
+
+Best quality voidskins can't be detected. They have the effects of a Good quality voidskin, and an air supply that can last thirty minutes.
+
+**Bionics Reference Table:**
+
+| Type                      | Rarity    |
+| ------------------------- | --------- |
+| Cortex Implants           | Uncommon  |
+| Implanted Equipment       | Varies    |
+| Injector Rig              | Uncommon  |
+| Machinator Array          | Very Rare |
+| Voidskin                  | Rare      |
+| Ballistic Mechadendrite   | Very Rare |
+| Manipulator Mechadendrite | Rare      |
+| Medicae Mechadendrite     | Very Rare |
+| Optical Mechadendrite     | Very Rare |
+| Utility Mechadendrite     | Rare      |
+
+### Mechadendrites
+
+Mechadendrites are cybernetic limbs that are usually mounted on the back or shoulder. The maximum number of Mechadendrites a character may have mounted upon his body is equal to his Constitution. Only tech-priests have the required training and secret implants to make use of Mechadendrites.
+
+### Ballistic Mechadendrite
+
+This solid, shoulder mounted mechadendrite is designed for self-defense. The meter long limb is mounted with a sleek, miniaturized laspistol that draws from a tech-priest's potentia coil for power. The owner may fire the laspistol as a Reaction Action or as a normal weapon as part of an attack action, but regardless, the pistol may only be fired once per round.
+
+### Manipulator Mechadendrite
+
+This powerful shoulder mounted limb is designed for heavy lifting and manipulation of industrial machinery. Built of hardened steel and ceramite, it may extend up to 2 meters. While using the limb, the character gains a +2 bonus to Strength for applications of sustained force like lifting or moving objects. The limb is tipped with a set of gripping pincers. These may be locked around a suitable anchor point as a Free Action, safely tethering the tech-priest to lifting gear, gantries, etc. It may also be used as a Club, adding the arm's +2 Strength bonus. It cannot be used for any task that requires fine manipulation such as typing or handling delicate objects.
+
+### Medicae Mechadendrite
+
+A 2 meter long flexible limb designed to provide medical and surgical assistance in the field, it grants a `+2k0` bonus to Medicae Tests. It houses six injector pistons, each of which may be filled with one dose of a drug (acquired separately). The Mechadendrite may also be used to staunch Blood Loss automatically as a Half Action.
+
+A small chain-scalpel may be used as an improvised weapon, dealing `1k1` R damage (without the character's Strength). Finally, it grants its bonus to Medicae tests to any rolls made to interrogate a target.
+
+### Optical Mechadendrite
+
+This highly flexible mechadendrite set with pict-capture and sensor devices is designed to assist in inspection and detection. This mechadendrite extends up to 3 meters and can reduce its width to 1 cm. It grants a `+2k0` bonus to all tests made for Perception. The pict-devices allow the user to examine items at a microscopic level and can be used as magnoculars.
+
+The mechadendrite is also fitted with an infrared torch and sensors. A character using the mechadendrite suffers no penalties due to darkness. Finally, the limb is fitted with a light that may be tinted a variety of different colors, depending on the controller's whim.
+
+### Utility Mechadendrite
+
+This two-meter long limb houses a variety of tools and attachments designed to assist the tech-priest in the course of his holy duties. The mechadendrite may be used as a combi-tool and can be fitted with almost any normal tool the tech-priest desires. It may be used to manipulate fine objects with precision.
+
+---
+
+### Interlude
+
+> _His face was covered in blood, most if it his own._
+>
+> He couldn't even feel his left arm. He stood up, pain almost overwhelming him.
+> "This is Imperious to Reliable. You are ordered to surrender your vessel. Please respond."
+> The voice was coming over the comm. Czarro grit his teeth, pulling himself over the broken bodies of his men, the broken systems of the crew. "Come in Reliable."
+> He leaned against the case he had stolen from Rivendell 1. With his good arm, he unlocked it, panels lighting up.
+> "No, Cain, the game's not over..." He gasped for breath, turning a key and starting to release the safeties on Bjork. One turn. A button pressed. A switch flipped. A key, turned again.
+> "To the last, I grapple with thee," Czarro said, activating Bjork. A countdown timer started.
+> "Admiral. Scanning a warp signature on Reliable. A pattern I've never seen before." Vail walked over to look at his scan.
+> "It's a Protoculture wave from the Bjork," the Admiral said. "It's on a buildup to detonation."
+> "How long do we have?" Cain asked.
+> "We coded in a delay of four minutes."
+> "We can use the teleportarium to-"
+> "You can't," Vail said.
+> "Magos Scott, I need you to drop us into warp in four minutes or we're all dead."
+> Sulla walked into the engine room. Everything was a mess. Bolts of lightning shot around the machinery. She made her way over to the warp core, stepping towards the access hatch. The tech-priests had all been knocked out by some arcane flux of electromagnetism.
+> "Are you out of your mind? You can't survive in there!" The medic said. Sulla looked at him, frowning. "You aren't going in there!"
+> "Perhaps you are right. What is Magos Scott's condition?"
+> "Well, he-" Sulla karate chopped his neck, instantly knocking him out.
+> "Sorry, doctor. I don't have time to discuss this."
+> "Time?"
+> "Thirty microts."
+> "Distance from Reliable?"
+> "Four void units."
+> "No, no," Czarro said, starting to black out from pain and blood loss. "You can't get away.
+> From Hell's heart I stab at thee. For hate's sake I spit my last breath at thee..."
+> "The mains are back online!"
+> "Bless you Magos Scott. Get us out of here!"
+
+---

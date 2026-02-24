@@ -1,0 +1,58 @@
+---
+title: "Dungeons the Dragoning 40,000 7th Edition"
+book: 1
+order: 0
+type: "title"
+---
+# Dungeons the Dragoning 40,000 7th Edition
+
+---
+
+## Roleplaying In The Grim Darkness Of The Great Wheel
+
+Revised by some random person on the Internet
+Brought to you by:
+LawfulNice Version 1.6z+T
+
+Updates on the WWW Blog:
+www.lawfulnice.blogspot.com
+
+This is intended as a work of parody and should not be mistaken for a real roleplaying game. It's a monster made from the corpses of a dozen roleplaying games, animated by a vital spark that knows only darkness and terror.
+
+That said, everything in here is copyright LawfulNice. If it's original. If it's shamelessly stolen, then I take no credit. All credit goes to original source, etc.
+
+Anyway, have fun, and don't take roleplaying too seriously!
+
+**Special Thanks:**
+
+- Gary Gygax - Your rapidly-spinning corpse is providing megawatts of clean electrical power, helping us create a greener, better future!
+- Everybody in #dtdchat and who gave comments on the blog - it helped me find things I'd otherwise miss.
+- Jane, James, Tony, Ai, and Michael
+
+Revised by Telok of Giant in the Playground forums.
+
+---
+
+## Introduction Flavor Text
+
+If you cry when you lose a character, get lost - you're going to cry. If it hurts your fragile sensibilities to see your favorite character get pounded unmercifully by horrors from beyond the Crystal Spheres, you'd better look the other way. If you've ever whined the words "That's too powerful," then put the book down slowly and walk away before making eye contact with anyone or they'll realize your voice hasn't changed yet.
+
+This game is about aggression. This is the game of Immortal on Immortal combat. This is magic power hopped up on steroids. This is DUNGEONS THE DRAGONING - the roleplaying game that kicks so much ass it's accidentally branded every donkey from here to the Shire.
+
+We didn't set out to reinvent the wheel with this game - we just covered it in skulls and eagles, threw it into space, and used it to slay a Void Dragon.
+
+DUNGEONS THE DRAGONING is simple. It's easy to learn. It has no THAC0, no heavy arithmetic, and doesn't require constant trips to the rule book. At the same time, the options it gives you give it great depth. The ability to unlock combinations of abilities and spells and skills is practically limitless. For every perfect strategy, there is a foil. For every immovable object, there is an unstoppable force. Just when you think you've got it all worked out, you'll be blindsided by something you never saw before. The more you dig, the more you'll find.
+
+DUNGEONS THE DRAGONING favors the aggressor. You've got to fire the first shot if you want to land on top! Too many games set players up to be timid, afraid of a little insanity or resting every few minutes to rest in a secret tent. Players are afraid to go all out and use their big powers just in case they need it later.
+
+Not in DUNGEONS THE DRAGONING! If you wait for your opponent to come to you, you're going to get purged and cleansed. You've got to have balls to play this game! You've got to charge your opponent and hang it all out there! You've got to break his formations. You've got to be relentless. Show them what a really pissed off immortal hero can do. Anything less, and you'll be hamburger.
+
+You're playing with power now. Don't be afraid - Few things are more satisfying than tearing apart an entire army with an Aasimar in powered armor, or slaying a dragon with death-defying acrobatics and sword skills. Try chaining together the special abilities of a few Swordsman Schools, or abusing Porte for fun and profit. It's almost more fun than you should be allowed to have with a roleplaying game.
+
+The rules in this book deliver on every level. Your character will radiate power like none other. We're pouring so much badass into this book that if you bump it too hard, Vin Diesel will fall out of solution.
+
+This is a new era in tabletop roleplaying games. This is a game made for you, by people like you. It's not a load of sterilized mass market drek designed by a room full of corporate meatplows. This is raw. This is brutal. This is DUNGEONS THE DRAGONING.
+
+So play like you've got a pair or put down the dice and go find a My Little Pony doll.
+
+---

@@ -1,0 +1,1307 @@
+---
+description: Complete feat list with effects and prerequisites
+sidebar:
+  label: Feats, Assets & Hindrances
+  order: 7
+title: Feats, Assets & Hindrances
+---
+
+# Feats, Assets, and Hindrances
+
+## Feat Groups
+
+Several feats represent a general ability that can be applied to a specific category within that group. When selecting one of these feats, the player chooses one of the entries from the group. Thus, when selecting the Peer feat, the Hero would also choose a specific group or organization such as Peer (Mercykillers). Each time the Hero gains the talent, she may choose a different specialty.
+
+In many cases a class will have the feat's group already chosen for you - a Paladin doesn't have just Peer, but Peer (Religious Order). In this case, you do not get to make a choice as to the group the feat applies to. Often, group listings are representative as opposed to all-inclusive.
+
+> **Note:** Feats marked with \* may be taken more than once. If the feat has groups, you must choose a different group each time.
+
+---
+
+## General Feats
+
+### Feat Summary Table
+
+| Feat                             | Effect                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------ |
+| Absolution                       | Spend a Hero Point to remove one ongoing effect with a touch                   |
+| Archmage Tradition               | Choose: Arcane Mastery or Spellbloom for enhanced magic control                |
+| Armor of Contempt                | Cannot be forced to go against Alignment even if out of Resolve                |
+| Armor Proficiency\*              | Use armor type with reduced penalties                                          |
+| Armor Specialization             | Chosen armor type provides +2 armor points                                     |
+| Assassin Strike                  | Move at Half Move rate as Free Action after melee attack                       |
+| Back Stab                        | +`2k0` to damage rolls when Ganging Up                                           |
+| Battle Rage                      | May make parry actions while using Frenzy                                      |
+| Blademaster                      | Reroll a missed melee attack once per round                                    |
+| Blind Fighting                   | No penalties for fighting blind                                                |
+| Catfall                          | Halve falling distance, always land on feet                                    |
+| Channel Energy                   | Touch target to heal or damage using Resource Points                           |
+| Cleave                           | Extra melee attack when you kill an enemy                                      |
+| Combat Insight                   | Use Intelligence in place of Dexterity for Dodge, Parry, Aim                   |
+| Combat Master                    | Opponents gain no bonuses for outnumbering you                                 |
+| Common Sense                     | SM may ask for Wisdom roll to avoid stupid actions                             |
+| Counter Attack                   | Attack opponent after successful parry at -`2k0`                                 |
+| Crack Shot                       | Ranged attacks deal +2 damage                                                  |
+| Crushing Blow                    | Melee attacks deal +2 damage                                                   |
+| Danger Sense                     | Act normally in surprise rounds                                                |
+| Deadeye Shot                     | Only -`1k0` for called shots instead of -`2k0`                                     |
+| Death Before Defeat              | Spend Hero Point to ignore non-lethal critical hit effects                     |
+| Decadence                        | Never affected by drugs or alcohol                                             |
+| Defensive Mobility               | +5 to Static Defense against opportunity attacks                               |
+| Devastating Critical             | Deal additional wound on critical damage                                       |
+| Divine Bond                      | Summon a holy steed at will                                                    |
+| Divine Grace                     | Use Charisma instead of Willpower to resist effects                            |
+| Divine Ministration              | Spend Hero Point to heal 1d5 HP and remove fatigue                             |
+| Double Tap                       | Make two ranged attacks with Multiple Attacks action                           |
+| Eidetic Memory                   | Perfect recall of anything heard or read                                       |
+| Evasion                          | Move up to Dexterity in meters when dodging                                    |
+| Expanded Knowledge               | Gain additional specialty for all Lore skills                                  |
+| Fan The Hammer                   | Make additional ranged attacks up to clip size at cumulative -`1k0`              |
+| Far Shot                         | No penalties for Long Range                                                    |
+| Fast Reflexes                    | Reroll initiative die                                                          |
+| Fearless\*                       | Cool: Immune to fear; Angry: Immune to fear and pinning but TN 15 to disengage |
+| Fleet of Foot                    | +Dex meters on Full Move; double speed when running (causes Fatigue)           |
+| Foresight                        | Spend 10 minutes examining problem for free raise on Int Test                  |
+| Frenzy                           | +1 Str/Con, -2 Int/Wis, must attack each turn, cannot parry                    |
+| Furious Assault                  | Second attack on successful All Out Attack that deals wound                    |
+| Good Reputation\*                | +`0k1` to Charm/Persuasion/Command with Peer group                               |
+| Greater Spell Focus              | Extra raise on successful magic Tests with chosen school                       |
+| Greater Spell Penetration        | Tests to resist spells need additional raise                                   |
+| Guardian                         | Use Parry for attacks against targets within melee range                       |
+| Hard Target                      | -`2k0` to ranged attacks against you while charging/running                      |
+| Hardy                            | Always counted as Lightly Wounded while recovering                             |
+| Hatred\*                         | +`1k0` to melee attacks against chosen group/race                                |
+| Heightened Senses\*              | +`1k1` to Tests using chosen sense                                               |
+| Hip Shooting                     | Full Move + single Pistol attack as Full Action                                |
+| Implement Focus                  | Reroll one die on Magic Tests when using Implement                             |
+| Improved Back Stab               | +`0k1` to damage rolls when Ganging Up                                           |
+| Improved Feint                   | Failed Feint still gives target -`2k0` to reactions                              |
+| Improved Sneak Attack            | Ignore armor of unaware targets                                                |
+| Improved Weapon Focus\*          | Additional +`0k1` to attacks with specific weapon type                           |
+| Improved Weapon Specialization\* | Additional +`0k1` to damage with specific weapon type                            |
+| Improvisational Magic            | Spend Hero Point to cast lower-rank spell from any school                      |
+| Iron Jaw                         | Con Test to shrug off stun effect                                              |
+| Jack of All Trades               | Use Advanced skills untrained; +`1k0` to basic skills with 0 ranks               |
+| Jaded                            | No fear tests for normal gore and death                                        |
+| Lightning Attack                 | Three melee attacks with multiple attacks action                               |
+| Light Sleeper                    | Always counted as awake even when asleep                                       |
+| Luck                             | Reroll one die per day                                                         |
+| Mental Fortress                  | Choose what mind readers perceive                                              |
+| Minor Magic\*                    | Gain single level in any magic school with no levels                           |
+| Obtain Familiar                  | Get small animal companion                                                     |
+| Peer\*                           | +`2k0` to Charm/Persuasion/Command with chosen group                             |
+| Power Attack                     | Take -Xk0 to attack to gain +Xk0 to damage (X up to Level)                     |
+| Powerful Charge                  | +`1k0` to melee damage on charge                                                 |
+| Pure Faith                       | +2 to all Alignment Checks                                                     |
+| Purge The Unclean                | Spend Hero Point to repel spiritual enemies of your God                        |
+| Quick Draw                       | Ready weapon as free action                                                    |
+| Sharpshooter                     | No penalty for Called Shot                                                     |
+| Skill Focus\*                    | Gain additional skill specialty                                                |
+| Sneak Attack                     | Halve armor of unaware targets                                                 |
+| Sound Constitution\*             | Gain 1 additional Hit Point                                                    |
+| Speak Language\*                 | Learn one additional language                                                  |
+| Spell Book\*                     | Learn one additional spell from chosen school at owned rank                    |
+| Spell Focus\*                    | Extra raise on successful magic Tests with chosen school                       |
+| Spell Mastery\*                  | Reroll failed Tests for chosen spell (rank 3 or lower)                         |
+| Spell Might                      | Take -`2k0` to Magic Roll to add 10 to result                                    |
+| Spell Penetration                | Tests to resist spells need extra raise                                        |
+| Spell Specialization\*           | Reroll failed magic test from chosen school once per scene                     |
+| Step Aside                       | Additional reaction for Dodge only                                             |
+| Strong Minded                    | Reroll failed Willpower Test to resist magic once per scene                    |
+| Swift Attack                     | Two melee attacks with multiple attacks action                                 |
+| Tested                           | Count as Sanctioned Sorcerer                                                   |
+| Touch Spell Specialization       | +`2k0` to hit with attack spells                                                 |
+| True Grit                        | Halve critical damage taken                                                    |
+| Two Weapon Fighting              | Reduced penalties for dual wielding                                            |
+| Unremarkable                     | -`2k0` to attempts to identify or describe you                                   |
+| Virgil's Guidance                | Buy Devotion at half cost                                                      |
+| Wall of Steel                    | Additional reaction for Parry only                                             |
+| Weapon Focus\*                   | +`2k0` to attacks with specific weapon type                                      |
+| Weapon Proficiency\*             | Use weapon category with no penalties                                          |
+| Weapon Specialization\*          | +`2k0` to damage with specific weapon type                                       |
+| Wizard Tradition\*               | Choose special magic tradition effect                                          |
+
+---
+
+### Feat Descriptions
+
+**Absolution**
+You can perform incredible feats of healing, removing diseases and poisons with a touch. By spending a Hero Point, you may touch a target and remove one ongoing effect. If that effect comes from a source greater than your own power (an Exalt with a higher level, a god, or similar), this ability might not work at the SM's discretion.
+
+**Archmage Traditions**
+Your study of magic has reached its peak. Choose one:
+
+- **Arcane Mastery:** Spend a Hero Point to copy a spell on your next turn using the same result. Creatures without Hero Points may use once per scene.
+- **Spellbloom:** When you cast a spell, all allies who cast within 5m have TN reduced by 5 until your next turn.
+
+**Armor of Contempt**
+You've cultivated a fine shell of divine insight and hatred. Even if you run out of Resolve, you cannot be forced to go against your Alignment.
+
+**Armor Proficiency**
+_Groups: Light, Medium, Heavy, Extreme, Power_
+You can use armor with fewer penalties. Light and medium armor have no penalties; heavy, extreme, and power armor reduce Static Defense penalty by half. Without this feat, apply armor's AP as penalty to Static Defense.
+_Optional Rule: Heavy armor -3, extreme armor -4, power armor -7._
+
+**Armor Specialization**
+Choose a particular category of armor. That armor type provides +2 armor points.
+
+**Assassin Strike**
+Once per turn when you make a melee attack, you may move at Half Move rate as a Free Action. Your opponent does not get a free attack for disengaging.
+
+**Back Stab**
+If you are Ganging Up on your opponent, you gain +`2k0` to damage rolls.
+
+**Battle Rage**
+While using Frenzy, you may make parry actions.
+
+**Blademaster**
+You may reroll a missed melee attack once per round.
+
+**Blind Fighting**
+You do not suffer normal penalties for fighting blind (still can't read, etc.).
+
+**Catfall**
+Halve falling distance when calculating damage, always land on your feet.
+
+**Channel Energy**
+As a Half Action, touch a target and spend up to your Level in Resource Points. For each point spent, heal 1 HP or deal 1 wound.
+
+**Cleave**
+Each time you kill an enemy with a melee attack, you may attack another enemy within reach.
+
+**Combat Insight**
+Use Intelligence in place of Dexterity for Dodge, in place of Level on Aim attacks, and in place of Level on Parry and Disarm rolls.
+
+**Combat Master**
+Opponents gain no bonuses for outnumbering you in melee, including Gang Up bonuses and talents like Back Stab.
+
+**Common Sense**
+The SM can ask you to make a Wisdom roll (TN 15) to pick up on when you're about to do something stupid.
+
+**Counter Attack**
+When you successfully parry an attack, you may attack that opponent at -`2k0`.
+
+**Crack Shot**
+Ranged attacks deal +2 damage.
+
+**Crushing Blow**
+Melee attacks deal +2 damage.
+
+**Danger Sense**
+You are never surprised. You may act normally during surprise rounds.
+
+**Deadeye Shot**
+Take only -`1k0` for called shots (instead of -`2k0`).
+
+**Death Before Defeat**
+Spend a Hero Point to ignore effects of a single critical hit (unless it would cause death).
+
+**Decadence**
+You are never affected by drugs or alcohol.
+
+**Defensive Mobility**
++5 to Static Defense against opportunity attacks.
+
+**Devastating Critical**
+Whenever you deal critical damage, deal an additional wound.
+
+**Divine Bond**
+Gain a holy steed (warhorse, riding animal, or small vehicle) summoned as a full action. Lasts one day. If destroyed, cannot use for three days.
+
+**Divine Grace**
+Use Charisma in place of Willpower when resisting enemy or environmental effects.
+
+**Divine Ministration**
+As a half action, spend a Hero Point to touch a target, remove a fatigue level, and heal 1d5 HP.
+
+**Double Tap**
+Make two ranged attacks with Multiple Attacks action (not with Recharge, clip size 1, or Full Auto only weapons). Can target different opponents.
+
+**Eidetic Memory**
+Perfect recall of anything you've heard or read.
+
+**Evasion**
+When dodging, also move up to Dexterity in meters. No opportunity attack from the dodged enemy (others may still attack).
+
+**Expanded Knowledge**
+Gain an additional specialty for all Lore skills.
+
+**Fan The Hammer**
+Make any number of additional ranged attacks up to clip size with Multiple Attacks action. Each attack at -`1k0` cumulative (3 attacks = -`3k0`, etc.). Not usable with Recharge or Full Auto only weapons.
+
+**Far Shot**
+No penalties for Long Range. Extreme range penalties still apply.
+
+**Fast Reflexes**
+Reroll initiative die (must take result of reroll).
+
+**Fearless**
+_Groups: Cool, Angry_
+
+- **Cool:** Immune to all fear effects.
+- **Angry:** Immune to fear and pinning, but disengaging or backing down requires Willpower vs TN 15.
+
+**Fleet of Foot**
++Dexterity meters on Full Move. When running, double movement for one round. Using two turns in a row causes Fatigue (or spend Resource if immune).
+
+**Foresight**
+Spend 10 minutes examining a problem to get a free raise on your next Int Test.
+
+**Frenzy**
+As a Half Action, enter rage: +1 Strength and Constitution, -2 Intelligence and Wisdom until end of combat. Must make melee attack, move closer to enemy, or Full Auto each turn. Cannot parry.
+
+**Furious Assault**
+If All Out Attack hits and deals at least one wound, make a second attack with same bonuses and penalties.
+
+**Good Reputation**
+_Groups: Academics, Sigil Factions, Churches, Specific Races, Government, Military, Middle Classes, Nobility, Insane, Underworld, etc._
++`0k1` to Charm, Persuasion, and Command with a group you have as a Peer.
+
+**Greater Spell Focus**
+Extra raise on successful magic Tests with chosen school (stacks with Spell Focus).
+
+**Greater Spell Penetration**
+Tests to resist your spells need additional raise (stacks with Spell Penetration).
+
+**Guardian**
+Use Parry against attacks made by or against targets within melee range. Failed parries hit you instead.
+
+**Hard Target**
+When charging or running, opponents take -`2k0` to ranged attacks against you until your next turn.
+
+**Hardy**
+Always counted as Lightly Wounded while recovering from injuries.
+
+**Hatred**
+_Groups: Criminals, Rivals, Pirates, Race (specific), Magic Users, Heretics, etc._
++`1k0` to melee attacks against chosen group/race (must be aware of their identity).
+
+**Heightened Senses**
+_Groups: Sight, Sound, Smell, etc._
++`1k1` to Tests using chosen sense. Can reduce environmental penalties but not give attack bonuses.
+
+**Hip Shooting**
+As a Full Action, take Full Move and make single shot with ranged weapon (no automatic fire).
+
+**Implement Focus**
+When using an Implement, reroll one die on Magic Tests.
+
+**Improved Back Stab**
++`0k1` to damage rolls when Ganging Up.
+
+**Improved Feint**
+Failed Feint still gives target -`2k0` to reactions. Successful Feint allows Sneak Attack/Improved Sneak Attack benefits.
+
+**Improved Sneak Attack**
+Ignore armor of unaware targets (they still lose Static Defense if applicable).
+
+**Improved Weapon Focus**
+_Requires choosing specific weapon type (e.g., Heavy Bolter, not Bolt Weapons)_
++`0k1` to attacks with that weapon type.
+
+**Improved Weapon Specialization**
+_Requires choosing specific weapon type (e.g., Lasgun, not Las Weapons)_
++`0k1` to damage with that weapon type.
+
+**Improvisational Magic**
+Spend a Hero Point to cast one spell from any school at lower rank than your highest.
+
+**Iron Jaw**
+When stunned, make Con Test (TN 10 + 5 × rounds stunned) to shrug it off. Once per stun effect.
+
+**Jack of All Trades**
+Use Advanced skills untrained. +`1k0` to basic skills with 0 ranks.
+
+**Jaded**
+No fear tests for normal gore and death (supernatural effects still apply).
+
+**Lightning Attack**
+Make three melee attacks with Multiple Attacks action (does not stack with Swift Attack).
+
+**Light Sleeper**
+Counted as awake even when asleep. Not helpless while resting.
+
+**Luck**
+Reroll one die per day (any die, including Alignment Checks).
+
+**Mental Fortress**
+When someone reads your thoughts, choose what they perceive.
+
+**Minor Magic**
+Gain single level in any magic school where you have no levels.
+
+**Obtain Familiar**
+Get a small animal companion (rat, toad, raven, simple robot, etc.) that follows orders and carries messages.
+
+**Peer**
+_Groups: Academics, Sigil's Factions, Churches, Specific Races, Government, Military, Middle Classes, Nobility, Underworld, Workers, etc._
++`2k0` to Charm, Persuasion, and Command with chosen group.
+
+**Power Attack**
+Take -Xk0 to melee attack to gain +Xk0 to damage (X up to Level). Applies to all attacks that round; must decide before attacking.
+
+**Powerful Charge**
++`1k0` to melee damage on a charge.
+
+**Pure Faith**
++2 to all Alignment Checks.
+
+**Purge The Unclean**
+Spend Hero Point and make opposed Willpower Test against spiritual enemy of your deity. Success repels target 2×Willpower meters for 1d10 rounds.
+
+**Quick Draw**
+Ready weapon as free action.
+
+**Sharpshooter**
+No penalty for Called Shot.
+
+**Skill Focus**
+Gain additional skill specialty (doesn't require 4 ranks).
+
+**Sneak Attack**
+Halve armor of unaware targets (round up).
+
+**Sound Constitution**
+Gain 1 additional Hit Point.
+
+**Speak Language**
+_Groups: Human, Elven, Squat, Trade, Syrneth, Gnomish, Celestial, Infernal, Eldarin, Dark Eldarin, Clawspeak, Draconic, Orkish, etc._
+Learn one additional language.
+
+**Spell Book**
+Choose a magic school. Learn one additional spell at a rank you possess.
+
+**Spell Focus**
+Extra raise on successful magic Tests with chosen school (stacks with Greater Spell Focus).
+
+**Spell Mastery**
+Choose a spell of rank 3 or lower. Reroll failed Tests to cast that spell.
+
+**Spell Might**
+Take -`2k0` to Magic Roll to add 10 to final result.
+
+**Spell Penetration**
+Tests to resist your spells need extra raise.
+
+**Spell Specialization**
+Choose a magic school. Once per scene, reroll failed magic test from that school.
+
+**Step Aside**
+Gain additional reaction per round for Dodge only.
+
+**Strong Minded**
+Reroll one failed Willpower Test to resist magic per scene.
+
+**Swift Attack**
+Make two melee attacks with Multiple Attacks action (does not stack with Lightning Attack).
+
+**Tested**
+Count as Sanctioned Sorcerer when rolling magic Tests.
+
+**Touch Spell Specialization**
++`2k0` to hit with spells requiring an attack roll.
+
+**True Grit**
+Halve critical damage suffered (round up).
+
+**Two Weapon Fighting**
+Reduced penalties for fighting with two weapons.
+
+**Unremarkable**
+Attempts to identify or describe you are at -`2k0` (partly supernatural).
+
+**Virgil's Guidance**
+Buy Devotion at half normal cost.
+
+**Wall of Steel**
+Gain additional reaction per round for Parry only.
+
+**Weapon Focus**
+_Requires choosing specific weapon type (e.g., Shotgun, not Ordinary Weapons)_
++`2k0` to attacks with that weapon type.
+
+**Weapon Proficiency**
+_Choices: Basic, Melee 1, Melee 2, Melee 3, Ranged 1, Ranged 2, Thrown_
+Gain rolled dice equal to Level on attacks with proficient weapons.
+
+**Weapon Specialization**
+_Requires choosing specific weapon type (e.g., Needle Gun, not Exotic Weapons)_
++`2k0` to damage with that weapon type.
+
+**Wizard Traditions**
+Choose one (cannot take same option twice):
+
+- **Hidden Flame:** Illusion spells Dazzle enemies within 5m until end of next turn.
+- **Iron Sigil:** Abjuration spells grant Aura equal to 5 + Abjuration rank until next turn.
+- **Golden Wyvern:** Divination spells grant next skill roll bonus equal to Divination ranks.
+- **Emerald Frost:** Evocation spells ignore Aura equal to Evocation ranks.
+- **Speed Dial:** After Conjuration spell, next Full Action Conjuration becomes Half Action.
+- **Chill of the Grave:** Necromancy spells grant next Necromancy caster free raise and +5 on Perils.
+
+---
+
+## Racial Feats
+
+Racial feats can be purchased by virtue of being a particular race. Purchase at any time for normal cost as though part of your class list.
+
+### Aasimar
+
+**Terminator Honors**
+Gain Armor Specialization feat. May spend Hero Point to negate damage equal to Size + Level.
+
+**Celestial Wrath**
+Once per scene, add Charisma as rolled dice on a damage roll.
+
+### Dark Eldarin
+
+**Dark Cruelty**
++`1k1` to Intimidation and Charm tests.
+
+**Warp Fire**
+Use Warp Miasma to outline a target within 30m. Attacks against that target are +`2k0` to hit for the scene.
+
+### Dragonborn
+
+**Dragonborn Frenzy**
+While you have at least 1 critical damage, attacks deal extra damage equal to total critical damage taken.
+
+**Dragon Sight**
+Reroll one failed Perception Test per scene. Can see in the dark.
+
+### Elf
+
+**Elven Precision**
++`2k0` to Elven Accuracy rerolls of Weaponry or Ballistics tests.
+
+**Light Step**
++`2k0` to all Acrobatics and Stealth rolls.
+
+### Eldarin
+
+**Guess Destination**
+Warp Step doesn't require line of sight. Shunted to nearest safe spot if target is blocked.
+
+**Extra Warp**
+Warp Step goes twice as far.
+
+### Gnome
+
+**Tinker**
+Sacrifice Average+ quality item to create lower Rarity item at one less quality. Takes at least one hour.
+
+**Eureka!**
+Once per scene, make Crafts Test in place of any other Test.
+
+### Halfling
+
+**Second Chance**
+Once per scene, force opponent to reroll one roll against you.
+
+**Halfling Agility**
++4 bonus to Static Defense.
+
+### Human
+
+**Able Learner**
+Always buy skills and feats as if in Free Study.
+
+**Human Perseverance**
+Once per round, +`1k0` to an opposed roll.
+
+### Ork
+
+**Mobbing Up**
+On failed Fear test, retreat toward an ally instead of normal consequences. Stop fleeing when adjacent.
+
+**I'm Da Boss!**
+Add Size as bonus to Command, Persuasion, and Intimidate tests.
+
+### Squat
+
+**Squat Armor Proficiency**
+Halve all Static Defense penalties for armor.
+
+**Squat Stability**
+May choose not to be moved or knocked prone by enemy effects.
+
+### Tau
+
+**Farsighted**
++3 Resolve and +5 to Mental Defense.
+
+**Move And Shoot**
+When attacking with ranged weapon and moving same turn, Static Defense increases by 5.
+
+### Tiefling
+
+**Mutation**
+Natural weapon: `2k2` I or R, Melee, Brawling. Proficient with natural weapons.
+
+**Outsider**
+First time you would suffer critical damage in a scene, take only 1 point instead (negated if would only take 1).
+
+---
+
+## Supplementary Racial Feats
+
+### Aasimar
+
+**Made of Mettle**
++1 to your lowest characteristic.
+
+### Dark Eldarin
+
+**Recluse**
+Immune to all poisons and Toxic weapon effect. Toxins you craft have +5 TN to resist.
+
+### Dragonborn
+
+**Elder Wyrm's Fire**
+Breath weapons and natural weapons deal +`1k1` damage and +2 Pen, damage becomes X.
+
+### Dryad
+
+**Matron**
+-1 Fellowship, -1 Dexterity, +1 Strength. Lose Pheromones, gain +2 Size, Armor Plating (4), +`2k0` Brawling damage.
+
+**Photosynthetic**
+No food needed if 2+ hours in sunlight. Heal 1 HP per hour in direct sunlight. Vampire Dryads lose Sunlight Weakness instead.
+
+**Treestrider**
+Once per scene, enter one large living plant and exit another within 1km/Level. Additional use at Levels 3 and 5.
+
+### Eldarin
+
+**Ancestral Recall**
++`1k0` to all Focus Power tests and +10 on Warp Phenomena rolls.
+
+### Elf
+
+**Precise Technique**
+Use Elven Accuracy reroll with any Test once per Level per session.
+
+### Gnome
+
+**Explorer**
+Serve as Navigator without Divination magic. Journey counts as one step lower on difficulty table.
+
+### Halfling
+
+**Escape Artist**
+Roll twice vs Immobilization, take better. If no roll allowed, roll Level + Dexterity to resist.
+
+### Human
+
+**Mixed Heritage**
+Choose another race. May take racial feats for that race (if they reference a racial ability you lack, cannot take).
+
+### Kenku
+
+**Ace Pilot**
++5 Maneuver when serving as Helmsman or piloting any vehicle.
+
+**Developed Wings**
+Wing-Aided Movement upgrades to Flyer at normal Speed.
+
+**Teacher**
+Once per session per skill, Aid Another anyone you can communicate with; they use one of your Specialties.
+
+### Kobold
+
+**K'sten'mannav**
+Gain Peer (Kobolds). Force kobold encounters to begin with social combat. Gain Paranoia feat.
+
+**K'vend'l**
+Max TN for finding items increased by 5. Reduce Wealth Test TN by 5 when buying from kobolds.
+
+**Experienced Miner**
++`2k1` to tests involving underground/mining (spelunking, secret doors, stone traps, etc.).
+
+**Trapmaster**
+Gain free Traps Specialties in Crafts, Perception, Scrutiny, and Tech-Use.
+
+### Ork
+
+**WAAAAAGH CRY!**
+When ganging up, you and allies get additional +`1k0` to hit and damage with melee attacks.
+
+### Squat
+
+**No One Tougher**
+Use Constitution instead of Dexterity for Static Defense.
+
+### Tau
+
+**Silent Arcana**
+Increase Focus Power TN by 10 to remove Verbal, Somatic, Material keywords and add Subtle.
+
+### Thri-Kreen
+
+**Lightning Bug**
+Produce light at will (lantern-level, variable color). Gain Luminen Blast feat.
+
+**Mandibles**
+Natural weapon: `1k1` R, Pen 4, Brawling, Toxic, Razor-Sharp.
+
+**Noisy Cricket**
+Gain Jumping specialties in Acrobatics and Athletics. Each raise on jump tests counts as two.
+
+### Tiefling
+
+**Beneficial Mutation**
++2 dots to lowest characteristic, -1 dot to another characteristic.
+
+---
+
+## Assets
+
+Assets can only be taken during character creation. You may spend any amount of starting XP on Assets.
+
+| Asset                | Effect                                                                                       |
+| -------------------- | -------------------------------------------------------------------------------------------- |
+| Academy              | Begin with any two weapon proficiencies                                                      |
+| Ambidextrous         | Reduced penalties for two-weapon fighting                                                    |
+| Androgynous          | Pass as either gender; two free raises on disguise                                           |
+| Appearance           | +`2k0` to social rolls where looks help                                                        |
+| Brave                | Reroll failed Fear tests                                                                     |
+| Dangerous Beauty     | +`1k1` to all seduction attempts                                                               |
+| Driven               | Conditional Hero Point for overcoming odds or refusing to back down                          |
+| Education            | Free skill specialties equal to Intelligence                                                 |
+| Eagle Eyes           | +`1k1` and free raise on vision-based Perception                                               |
+| Fast                 | Sprint multiplies speed by x7, +2m base Speed in light/no armor                              |
+| Gifted               | Choose Physical/Social/Mental/Power/Finesse/Resilience: raise anytime, specialties at 3 dots |
+| Left Handed          | Opponents get -`2k0` to parry your attacks                                                     |
+| Level Headed         | After initiative, may switch places with person immediately ahead                            |
+| Linguist             | Begin speaking two additional languages; Speak Language always in class lists                |
+| Magic Resistance     | Spell TNs against you increased by 5 or Level + Power stat (whichever greater)               |
+| Nerves o' Steel      | May stand ground instead of fleeing on failed fear test                                      |
+| Nine Lives           | First time you'd burn Hero Point to survive, lose this Asset instead                         |
+| Sand                 | Take two extra Fatigue levels before passing out                                             |
+| Spirit Mentor        | Ghostly companion provides help and guidance                                                 |
+| Sturdy               | +1 Resilience                                                                                |
+| Tough as Nails       | If you have any HP, max critical damage from one attack is 1                                 |
+| Veteran o' the Wheel | +1 dot to any characteristic, +1 dot to any skill; SM assigns haunting past                  |
+
+---
+
+## Exalted Assets
+
+Each Exalt type has Assets to improve base powers or show tribe/caste membership. Taking an Exalted Asset prevents taking a second (except Paragon Assets).
+
+### Atlantean Caste Assets
+
+**Dawn Caste**
+When spending a Mote, gain +`2k0` to Intimidate and Weaponry for the scene.
+
+**Zenith Caste**
+When spending a Mote, reduce damage by Gnosis + Motes spent until next turn.
+
+**Twilight Caste**
+Spend a Mote to add Gnosis as rolled dice to Parry or Dodge.
+
+**Night Caste**
+Spend 1 Mote to hide spellcasting source (appears from thin air).
+
+**Eclipse Caste**
+Spend Motes to create binding oath. Oathbreaker automatically fails at critical moments (repeats for each Mote + Gnosis).
+
+### Chosen Mark Assets
+
+**Mark of Acererak**
+No need to eat, sleep, or breathe while at 1+ Favor. Spending Favor to heal also removes Fatigue.
+
+**Mark of Bahamut**
+Free raise on Command, Intimidate, Persuasion while at 1+ Favor.
+
+**Mark of Corellon**
+Reroll any 1s on rolls where you spend Favor.
+
+**Mark of Cuthbert**
+Free raise to hit against those you've witnessed commit crimes.
+
+**Mark of Khorne**
+After Charge or All-Out Attack, spend 1 Favor for extra basic attack. Cannot learn magic. Gain 1 dot in chosen Sword School, always advance it as class.
+
+**Mark of Luna**
+Spend 1 Favor + 1 Hero Point to duplicate any other Mark until end of scene.
+
+**Mark of Malal**
+Attacks against neutral/allied targets deal +`1k1` damage. Blast weapons gain +1m radius.
+
+**Mark of Moradin**
+Free raise on Parry/Dodge against creatures with Size greater than yours.
+
+**Mark of Nurgle**
+Ignore non-lethal critical damage effects less than your Faith.
+
+**Mark of Pelor**
+Produce bright light at will. Spend Favor to attack with plasma pistol profile.
+
+**Mark of The Raven**
+Creatures reduced to 5 critical damage by your attacks die unless they burn Hero Point (works with R damage on vampires, etc.).
+
+**Mark of Slaanesh**
+Spend Favor to alter appearance (ideal form of your race) for scene. +`2k0` to seduction, disguise, performance.
+
+**Mark of Sigmar**
++`0k1` to damage against targets that damaged your allies in their last action.
+
+**Mark of Tzeentch**
+Never suffer Perils of the Warp effects (they happen to others).
+
+**Mark of Vectron**
+Regain 1 Favor per scene by loudly praising Vectron.
+
+### Daemonhost Sin Assets
+
+**Desire**
+Sense desires with Arcanoi + Charisma vs Mental Defense. Raises equal to Willpower answer one question. Convert Resonance to Essence when tempting lust.
+
+**Hunger**
+Feed on corpses (killed within hour) for 1 Essence. Convert Resonance to Essence when convincing material greed.
+
+**Pride**
+Free raise on opposed tests and against ganging opponents. Convert Resonance to Essence when defeating someone at their specialty.
+
+**Rage**
+Once per scene, breathe fire (hand flamer profile). Convert Resonance to Essence when provoking violence.
+
+**Sloth**
++2 Hit Points. Convert Resonance to Essence when convincing inaction.
+
+**Greed**
++1 dot each in Wealth, Inheritance, Artifact backgrounds (max 5). Gain Enemy hindrance. Convert Resonance to Essence when encouraging theft.
+
+### Paragon Assets
+
+**Action Hero**
+Recover 1 spent action point at start of each combat (if any spent this session).
+
+**Extra Action**
++2 Action Points at start of each session.
+
+**High Pressure**
++Level additional Pressure points.
+
+**Legendary Trait**
+One characteristic may be purchased to rank 6. Always available to improve. May take multiple times.
+
+### Promethean Material Assets
+
+**Orichalcum**
+For every 2 rolled dice from Pyros, add 1 kept die. Transhuman Potential gives additional +1 to boosted characteristic.
+
+**Mithril**
+Spend Pyros to take full action as half action.
+
+**Darksteel**
+Double Integrated Armor bonus. Max Dex becomes 3.
+
+**Wraithbone**
+As free action, spend Pyros to heal 1 HP.
+
+**Necrodermis**
+Spend Pyros to gain Fear (rating = Generation) until end of scene.
+
+### Vampire Clan Assets
+
+**Brujah**
+When someone fails social roll against you, +`2k0` damage against them until end of scene.
+
+**Malkavian**
+Begin with Minor Disorder. Not removed from play at 100+ IP (continue gaining derangements every 20 IP).
+
+**Toreador**
++1 dot in Crafts and Performer (max 5). +Blood Potency kept dice when rolling those skills.
+
+**Tremere**
+Gain 1 rank Necromancy. May purchase as any class. +`1k1` on Necromancy Focus Power tests.
+
+**Ventrue**
+Gain Peer (Ventrue), 1 dot Contact (another Ventrue), +5 to Wealth tests.
+
+### Werewolf Tribe Assets
+
+**Black Spiral Dancers**
++`1k1` damage to claw/bite in Warform. Cannot distinguish friend from foe without Willpower Test (TN 20) each round. Regain 1 Rage per kill in Warform.
+
+**Get of Fenris**
+Spend 1 Rage: +1 Strength, Acrobatics, Athletics, Brawling, Weaponry until end of combat/scene. Regain 1 Rage per significant opponent defeated in Warform.
+
+**Iron Masters**
+Always use Free Study. +1 dot in Tech-Use, Craft, or Politics (max 5). Gain 1 Rage when rare/expensive technology destroyed.
+
+**Red Talons**
+-`2k0` to social rolls vs humanoids. Use social skills on animals in wolf form. Understand animal speech always. Regain 1 Rage per hour in wolf form.
+
+**Silent Striders**
+Gain 1 rank Transmutation. Purchase as any class. +`1k1` on Transmutation Focus Power tests. Regain 1 Rage first time per round rolling Perils of the Warp.
+
+### Dragonblooded Bloodline Assets
+
+**Adamic Dragon**
+Replace normal Blood Quickening with one of:
+
+- **Metal:** +1 Resilience. Spend Breath as Half Action for +Aspect Armor. Claws have Pen = Aspect, Razor Sharp.
+- **Void:** +1 Composure. No breathing needed, survive vacuum. Claw wounds can't be accelerated healed. Claws have Pen = Aspect, Proven (half Level).
+- **Heart:** +1 Fellowship. Spend 2 Breath as Free Action to treat one social die as 10 (explodes). Claws have Pen = Aspect, Power Field.
+- **Warp:** +1 Willpower. Gain 1 rank Evocation, +`0k1` Focus Power. Claws have Pen = Aspect, Orgone Array.
+
+**Blood of Bahamut**
+Claws, natural weapons, breath deal +`1k1` damage, +2 Pen, X damage type.
+
+**Blood of Io**
+Spend Full Action to consume valuables and regain 2 Breath.
+
+**Blood of Tiamat**
+Once per day, hour-long ritual to change Blood Quickening.
+
+**Double Dragon**
+Choose additional Blood Quickening (Air/Earth/Fire/Water/Wood). Gain benefits except characteristic bonus.
+
+### Wraith Haunting Assets
+
+**Children of Ash**
+Spend 2 Plasm as Half Action to force opponent to roll on Shock table.
+
+**Children of Dust**
+Cast Rot spell using Synergy + Willpower instead of Focus Power.
+
+**Children of Salt**
+Spend 1 Plasm as Free Action: enemies in melee must declare actions at round start and cannot change. Lasts 1 round.
+
+**Children of Silence**
+Spend 1 Plasm as Half Action to raise nearby corpse as Walking Dead. May have up to Synergy zombies; excess form minion squads (Quality/Threat = half Synergy).
+
+**Children of Void**
+Spend 1 Plasm as Half Action: one opponent within 50m makes Willpower Test (TN 10 + 3×Synergy). Failure = only Half Action next turn. Two checks failure = lose entire turn.
+
+---
+
+## Hindrances
+
+Hindrances give 100 bonus XP during character creation. Maximum 4 hindrances. Cannot gain hindrances later for XP (SM may assign hindrances during play without XP).
+
+| Hindrance             | Effect                                                                        |
+| --------------------- | ----------------------------------------------------------------------------- |
+| Ailin'                | Test Con TN 20 each session or -`2k0` to all Tests                              |
+| All Thumbs            | Tech-Use/Craft cost 2× XP; -`1k0` to machinery rolls                            |
+| Bad Luck              | Cannot spend Hero Points to reroll                                            |
+| Big Britches          | TN 20 Wisdom to back down; -`1k0` to Wisdom social combat                       |
+| Clueless              | -`1k0` to bluff/impress/Refute against people from other places                 |
+| Will to Live          | TN 20 Willpower to keep fighting when at disadvantage; -`2k0` vs pinning        |
+| Enemy                 | Powerful, insatiable enemy is hunting you                                     |
+| Geezer                | -1 HP; cannot Run                                                             |
+| Grim Servant O' Death | SM targets you with trouble                                                   |
+| High-Falutin'         | -`1k0` social with those who know you think them beneath you                    |
+| Illiterate            | Cannot read (200xp to learn)                                                  |
+| Impulsive             | Test lowest of Composure/Willpower/Wisdom TN 15 to not act immediately        |
+| Intolerance           | +`1k0` to taunt chosen group; -`2k0` to other social with them                    |
+| Kid                   | Appear 12-13; -`2k0` social, -5 Wealth/background tests; 200xp to buy off       |
+| Law o' the Stars      | Must follow honor code; Alignment Check when violated                          |
+| Loco                  | Begin with Minor Derangement                                                  |
+| Night Terrors         | Fear(2) TN 20 each night or gain Fatigue                                      |
+| Slowpoke              | Halve Dexterity for Speed                                                     |
+| Ugly as Sin           | -`1k0` social when looks matter                                                 |
+| Vengeful              | Test Composure TN 20 for slightest offense or break bones                     |
+| Wanted                | Death penalty in dozen Crystal Spheres; bounty hunters                        |
+| Wimpy                 | Halve Constitution for Fatigue/endurance; -`1k0` social where toughness matters |
+
+---
+
+## Supplementary Feats
+
+### General Feats Summary
+
+| Feat                        | Effect                                                                                          |
+| --------------------------- | ----------------------------------------------------------------------------------------------- |
+| Acceptable Losses           | As Captain, +`1k0` to any ship action; lose 1 Crew at turn end                                    |
+| Air of Authority            | In social combat, influence everyone who hears you                                              |
+| Animal Companion            | Gain minion (Threat 1, Damage 1) or Level 1 animal                                              |
+| Arcane Blade                | Weaponry attacks count as magic                                                                 |
+| Arcane Mark                 | Brand enemy: no Gang Up bonus vs you, -5 to their Static Defense                                |
+| Bear Hug                    | +1 effective Strength for grapple; +5 to opponent's Slip Free TN                                |
+| Beastmaster                 | Animal Companion minion squad = Level+1, +1 Threat/Damage (max 5)                               |
+| Binary Chatter              | Interface with computers by speaking; +`2k0` Tech-Use with computers                              |
+| Bodge Together              | As Chief Engineer, extra Extended Repairs test between ports                                    |
+| Chem Geld                   | +10 Mental Defense vs seduction/pleasure persuasion                                             |
+| Combat Sense                | Wisdom replaces Dexterity for Dodge Tests; replaces Level for Aim                               |
+| Courtier's Privilege\*      | +1 rank in Allies/Backing/Contacts/Fame/Followers/Status (max 5)                                |
+| Crushing Bear               | Auto-deal unarmed damage each turn while grappling                                              |
+| Daggerspell Stance          | Focus Power tests don't provoke Opportunity Attacks                                             |
+| Detailed Analysis           | As Chief Arcana Officer, free raise on Active Augury                                            |
+| Diamond Body                | Wholeness of Body grants additional +4 armor (ignored by magic)                                 |
+| Discipline\*                | +1 Resolve                                                                                      |
+| Druid's Oath                | No metal armor, respect nature; reroll Warp Phenomenon for Healing/Transmutation once per round |
+| Elemental Shot I\*          | Once/day bind Fire/Ice/Bolt to weapon                                                           |
+| Elemental Shot II\*         | Once/day bind Aero/Aqua/Geo to weapon                                                           |
+| Elemental Shot III\*        | Once/day bind Holy/Gravity to weapon                                                            |
+| Engineering Team Leader     | As Chief Engineer, +1 Crew for Engineering Actions only                                         |
+| Expert Tracker              | -5 TN to track                                                                                  |
+| Extracurricular Study\*     | +1 rank in Sword School/Gun Kata/Magic (max half Level)                                         |
+| Feather Step                | Walk on any surface including water                                                             |
+| Ferric Lure                 | Full Action: pull unsecured metal object (Willpower kg, 10m) to hand                            |
+| Ferric Summons              | Full Action: move metal object (4×Willpower kg, 40m) with Willpower Strength                    |
+| Gain Access                 | +`1k0` Tech-Use to hack; same for Jam/break interference as Chief Arcana                          |
+| Gun Blessing                | Arcana TN 20 Half Action: unjam, make magic, or +1 quality for scene                            |
+| Hailing Frequencies         | Force target to respond to Hail; ends combat for social combat                                  |
+| Headstrong                  | Immune to Pinning                                                                               |
+| Improved Animal Companion\* | Minion Threat/Damage +1, squad = Level; Critter +1 attribute, +1 feat                           |
+| Improved Wild Shape         | +1 stat point to move; gain Armor Plating(3)/DarkSight/Flyer/Aura(3)                            |
+| Improvisational Master      | Improvised weapons gain +2 Penetration                                                          |
+| Improvisational Savant      | Improvised weapons gain appropriate special quality                                             |
+| Improvisational Warrior     | Improvised weapons deal +`1k0` damage                                                             |
+| Iron Curtain                | Spend Hero Point to ignore all damage until next turn                                           |
+| Iron Fist                   | Unarmed: +4 Pen, Explosive damage                                                               |
+| Iron Tower                  | Use melee weapon as Implement                                                                   |
+| Jerry Rig                   | As Chief Engineer, Emergency Repair Hull restores +1d5                                          |
+| Just As Planned             | Spend Hero Point for retroactive preparation within 10 minutes                                  |
+| Ki Strike                   | Unarmed/natural count as magic                                                                  |
+| Lead Fingers                | Use gun to manipulate objects at short range (buttons, switches, etc.)                          |
+| Lend Expertise              | Picard Speech: +2 Crew Quality if 3+ ranks in Tech-Use/Arcana/Ballistics                        |
+| Luminen Blast               | Ranged: `0k2`+`1k0`/Willpower E, 10m, Shocking; Con test or Fatigue                                 |
+| Luminen Charge              | Recharge batteries/jump-start with Fatigue                                                      |
+| Mana Generator              | Aid Another grants free raise on next Focus Power test                                          |
+| Master of Bombardment       | As Tactical Officer, -5 TN for planetary targets; reroll scatter                                |
+| Master of Disguise          | Full Action disguise without quality penalty; always have materials                             |
+| Match Frequency             | As Tactical Officer, once/scene double disruption on scanned target                             |
+| Mechadendrite Use           | May take and use Mechadendrite implants                                                         |
+| Meditation                  | Once/session, 1 hour meditation regains 1 spent Hero Point                                      |
+| Mechanicus Implants         | Gain Electro-Graft, Electoo Inductors, Respirator, Cyber-Mantle, Potentia Coil                  |
+| Miracle Worker              | As Chief Engineer, Emergency Repair two systems at once                                         |
+| Naturalize                  | Hero Point: 3m burst within 10m, -`2k0` to all technology actions                                 |
+| Nature Sense                | Sense animals and natural hazards within 10m                                                    |
+| Nekomimi Mode               | Partial Wild Shape: keep equipment, 5 round limit                                               |
+| Nerves of Steel             | Immune to fear; +10 Mental Defense vs intimidation                                              |
+| Paranoia                    | +2 initiative; SM may test to notice hidden threats                                             |
+| Perfect Self                | No eat/drink/sleep if 1hr meditation; Aura = Wisdom                                             |
+| Pinball Wizard              | Up to short range, shoot electronics to manipulate them                                         |
+| Protocol                    | Common Lore + Int TN 15 for local customs (like Common Sense)                                   |
+| Raven's Eye                 | Auto-spot target in crowd (must see through disguise)                                           |
+| Redshirt Shield             | As Captain, first damage each session hits random crewman instead                               |
+| Research                    | Auto-know local rulers and general trivia                                                       |
+| Rock and Roll               | Free raise per consecutive Full Auto Burst round                                                |
+| Rotate Shield Frequency     | As Chief Arcana, once/scene Arcana TN 20 removes all disruption                                 |
+| Spell Bullet                | Prepare one bullet to hold spell; spell affects what shot hits                                  |
+| Spell Parry                 | Spend Hero Point to Parry spell (TN = Focus Power result)                                       |
+| Spell Shield                | Free hand: +Arcana ranks to Aura                                                                |
+| Steel Rain                  | Dodge vs Full Auto at -2× rounds fired penalty                                                  |
+| Storm of Iron               | Full Auto: +1 rate of fire                                                                      |
+| Stunning Fist               | Spend Resource/Fatigue for Shocking unarmed until end of turn                                   |
+| Sword Beam                  | All Out Attack becomes 10m Reach ranged melee                                                   |
+| Tachyon Beam                | As Chief Arcana, once/session Arcana Action replaces any other action                           |
+| Trance                      | Deep trance for Constitution days; instant wake, full awareness                                 |
+| Unarmed Master              | +`0k1` unarmed damage                                                                             |
+| Unarmed Warrior             | +`1k0` unarmed damage                                                                             |
+| Upgraded\*                  | Gain cybernetic implant (max Uncommon unless specified)                                         |
+| Wholeness of Body           | Armor = Wisdom (doesn't stack)                                                                  |
+| Wild Empathy                | Speak with animals; use social skills on them                                                   |
+| Wild Shape                  | Shift 1 physical stat point; gain Quadruped/Crawler/Amphibious                                  |
+| Worf Barrage                | As Tactical Officer, once/scene reroll ship weapon critical (must take result)                  |
+| Worf Effect                 | Enemies target you unless Int TN 15; passed = normal targeting                                  |
+| Zen Shooting                | Use Perception instead of Ballistics with proficient weapons                                    |
+
+### Supplementary Feat Descriptions
+
+**Acceptable Losses**
+While Captain, once per turn give any ship action +`1k0`. Lose 1 Crew at turn end.
+
+**Air of Authority**
+In social combat, influence everyone who hears and pays attention.
+
+**Animal Companion**
+Get minion (Threat 1, Damage 1) or Level 1 animal. Replaceable after 24 hours with ritual.
+
+**Arcane Blade**
+Your Weaponry attacks count as magic.
+
+**Arcane Mark**
+Strike opponent and make Arcana + Int vs Static Defense. Success brands them: track general location in same Crystal Sphere, they don't gain Gang Up against you, treat their Static Defense as -5. One mark at a time.
+
+**Bear Hug**
+While grappling, +1 effective Strength for Break Free attempts. +5 to opponent's Slip Free TN.
+
+**Beastmaster**
+Animal Companion minion squad = Level+1 size, +1 Threat and Damage (max 5). Critter levels with you, +1 to two attributes, SM picks feat/trait.
+
+**Binary Chatter**
+Interface with computers by speaking; +`2k0` on computer Tech-Use tests.
+
+**Bodge Together**
+As Chief Engineer, make additional Extended Repairs test between ports.
+
+**Chem Geld**
++10 Mental Defense against seduction or pleasure-based persuasion.
+
+**Combat Sense**
+Use Wisdom in place of Dexterity for Dodge Tests and in place of Level for Aim benefits.
+
+**Courtier's Privilege**
++1 rank in Allies, Backing, Contacts, Fame, Followers, or Status (max 5).
+
+**Crushing Bear**
+While grappling, auto-deal unarmed damage each turn in addition to Grapple actions.
+
+**Daggerspell Stance**
+Focus Power tests don't provoke Opportunity Attacks.
+
+**Detailed Analysis**
+As Chief Arcana Officer, free raise on Active Augury tests.
+
+**Diamond Body**
+Wholeness of Body grants additional +4 armor (ignored by magic weapons).
+
+**Discipline**
++1 Resolve.
+
+**Druid's Oath**
+Swear not to wear metal armor, respect nature. Reroll Warp Phenomenon once per round for Healing or Transmutation spells.
+
+**Elemental Shot I**
+_Groups: Fire, Ice, Bolt_
+Once/day, Half Action to bind element to weapon. Next attack gains:
+
+- **Fire:** E damage, Set On Fire
+- **Ice:** I damage, Snare
+- **Bolt:** E damage, Shocking
+
+**Elemental Shot II**
+_Groups: Aero, Aqua, Geo_
+Once/day, Half Action to bind element:
+
+- **Aero:** I damage, target moved 10m by wind
+- **Aqua:** R damage, Proven (3)
+- **Geo:** I damage, target knocked prone (not flying)
+
+**Elemental Shot III**
+_Groups: Holy, Gravity_
+Once/day, Half Action to bind element:
+
+- **Holy:** X damage, target rolls Psychic Phenomenon (+5 per exploding die)
+- **Gravity:** X damage, Tearing, target treated as -1 Resilience
+
+**Engineering Team Leader**
+As Chief Engineer, +1 Crew for Engineering Actions only (not removed by criticals).
+
+**Expert Tracker**
+-5 TN to track someone.
+
+**Extracurricular Study**
++1 rank in Sword School, Gun Kata, or Magic School (max half Level rounded up).
+
+**Feather Step**
+Walk on any surface that wouldn't normally support weight: rope, awnings, mud, water.
+
+**Ferric Lure**
+Full Action: pull unsecured metal object to hand (Willpower kg weight, 10m range).
+
+**Ferric Summons**
+Full Action: move metal object with effective Strength = Willpower (4×Willpower kg, 40m range).
+
+**Gain Access**
++`1k0` Tech-Use to hack systems. As Chief Arcana Officer, bonus to Jam and break interference.
+
+**Gun Blessing**
+Arcana TN 20 (Half Action): unjam gun, make it magic for scene, or +1 quality for scene (doesn't stack, not on Artifacts).
+
+**Hailing Frequencies**
+When ship uses Hail, target must respond. In combat, ends combat for social combat.
+
+**Headstrong**
+Immune to Pinning.
+
+**Improved Animal Companion**
+Minions gain +1 Threat or Damage, squad = Level. Critters gain +1 non-Int attribute and SM-selected feat.
+
+**Improved Wild Shape**
+Move additional stat point. May gain Armor Plating(3), DarkSight, Flyer, or Aura(3).
+
+**Improvisational Master**
+Improvised weapons gain +2 Penetration.
+
+**Improvisational Savant**
+Improvised weapons gain appropriate quality (Defensive, Flexible, Reach, etc.). SM final say.
+
+**Improvisational Warrior**
+Improvised weapons deal +`1k0` damage.
+
+**Iron Curtain**
+Spend Hero Point to ignore all damage until start of next turn.
+
+**Iron Fist**
+Unarmed strikes gain +4 Pen and deal Explosive damage.
+
+**Iron Tower**
+Use melee weapon as Implement for feats/abilities.
+
+**Jerry Rig**
+As Chief Engineer, Emergency Repair for Hull restores +1d5 Hull Integrity.
+
+**Just As Planned**
+Spend Hero Point to have retroactively prepared or taken action within last 10 minutes that now comes into play.
+
+**Ki Strike**
+Unarmed and natural attacks count as magical weapons.
+
+**Lead Fingers**
+Use gun to press buttons, flip switches, push objects at short range. Physical projectiles only.
+
+**Lend Expertise**
+Picard Speech increases Crew Quality by 2 (instead of 1) for Engineering/Arcana/Tactical if you have 3+ ranks in relevant skill.
+
+**Luminen Blast**
+Ranged attack: `0k2` E + `1k0` per Willpower, 10m range, Shocking. Con test (TN 15 + 5×uses this scene) or gain Fatigue. If immune to Fatigue, spend Resource.
+
+**Luminen Charge**
+Meditation and prayers to recharge batteries with Fatigue. Small items = 1 Fatigue, vehicles = 2, ships = 3+. Fatigue-immune spend 2× Resource.
+
+**Mana Generator**
+Aid Another to give free raise on ally's next Focus Power test (before your next turn).
+
+**Master of Bombardment**
+As Tactical Officer, -5 TN to hit planetary targets. Reroll scatter direction/distance.
+
+**Master of Disguise**
+Disguise as Full Action without penalty. Always have adequate disguise materials.
+
+**Match Frequency**
+As Tactical Officer, once/scene double disruption against scanned target.
+
+**Mechadendrite Use**
+May take and use Mechadendrite implants.
+
+**Meditation**
+Once/session, 1 hour quiet meditation regains 1 spent (not burned) Hero Point.
+
+**Mechanicus Implants**
+Gain: Electro-Graft (poor MIU), Electoo Inductors, Respirator Unit, Cyber-Mantle, Potentia Coil.
+
+**Miracle Worker**
+As Chief Engineer, Emergency Repair may restore two systems at once.
+
+**Naturalize**
+Spend Hero Point: 3m burst within 10m. All technology actions at -`2k0`. Melee weapons become Hand Weapons or equivalent.
+
+**Nature Sense**
+Sense animals and natural hazards (quicksand, poison ivy) within 10m. Doesn't detect unnatural (undead, Modrons).
+
+**Nekomimi Mode**
+Partial Wild Shape: equipment doesn't meld, keep humanoid appearance. Only 5 rounds, then normal form and 1 hour cooldown.
+
+**Nerves of Steel**
+Immune to fear. +10 Mental Defense vs intimidation.
+
+**Paranoia**
++2 initiative. SM may secretly test to notice hidden threats.
+
+**Perfect Self**
+No eat/drink/sleep if 1hr daily meditation. Gain Aura = Wisdom.
+
+**Pinball Wizard**
+Up to short range, use gun to manipulate electronics (open locks, shut down machinery).
+
+**Protocol**
+Common Lore + Int (TN 15) for local customs, like Common Sense.
+
+**Raven's Eye**
+Automatically spot target in crowd (must see through disguise first).
+
+**Redshirt Shield**
+While Captain in port, first damage each session hits random crewman (dies horribly, saves you).
+
+**Research**
+Automatically know local rulers and publicly available trivia.
+
+**Rock and Roll**
+Full Auto Burst grants free raise per consecutive round used.
+
+**Rotate Shield Frequency**
+As Chief Arcana Officer, once/scene Arcana TN 20 action removes all disruption that round.
+
+**Spell Bullet**
+Prepare one bullet with spell (cast when preparing). Spell affects/centers on hit target. Not with energy weapons.
+
+**Spell Parry**
+Spend Hero Point to Parry spell targeting only you. TN = spell's Focus Power result.
+
+**Spell Shield**
+Free hand: Aura bonus = Arcana ranks.
+
+**Steel Rain**
+Targets dodge Full Auto at penalty = 2×rounds fired.
+
+**Storm of Iron**
+Full Auto: +1 rate of fire.
+
+**Stunning Fist**
+Spend Resource or gain Fatigue: unarmed Shocking until end of turn.
+
+**Sword Beam**
+All Out Attack becomes Reach attack at 10m range with normal penalties.
+
+**Tachyon Beam**
+As Chief Arcana Officer, once/session Arcana Action replaces any other action via technobabble.
+
+**Trance**
+Deep trance for Constitution days without eating/drinking. Instant wake, full awareness.
+
+**Unarmed Master**
+Unarmed strikes deal +`0k1` damage.
+
+**Unarmed Warrior**
+Unarmed strikes deal +`1k0` damage.
+
+**Upgraded**
+Gain cybernetic implant (max Uncommon rarity unless specified).
+
+**Wholeness of Body**
+Gain Armor = Wisdom (doesn't stack with other armor).
+
+**Wild Empathy**
+Speak with animals (general understanding, not true speech). Use social skills on animals normally.
+
+**Wild Shape**
+Turn into animal: shift 1 point between physical stats (min 1). Gain Quadruped, Crawler, or Amphibious. Equipment melds into form. Full Action to transform. Can remain indefinitely.
+
+**Worf Barrage**
+As Tactical Officer, once/scene reroll ship weapon critical damage (must take result).
+
+**Worf Effect**
+Enemies target you unless Int TN 15 passed. After passing, normal targeting.
+
+**Zen Shooting**
+Use Perception instead of Ballistics with proficient weapons.
+
+---
+
+## Additional Feats
+
+### Greater Spell Penetration
+
+_Prerequisites: Spell Penetration_
+
+It's even harder to resist your spells, the energy blasting through defenses both mental and physical. Tests made to resist your spells need an additional raise to succeed. This stacks with Spell Penetration.
+
+### Purge the Unclean
+
+_Prerequisites: Alignment with a deity_
+
+You may spend a Hero Point to repel the enemies of your God. Choose an opponent that represents a foe of your deity (Warp Entities, Daemonhosts, and Chosen almost always count—the SM will let you know if a target doesn't count) and spend a Hero Point. Make an opposed Willpower Test with the target. If it succeeds, the target is repelled a distance of meters away equal to twice your Willpower. It cannot approach closer than this distance for 1d10 rounds.
+
+### Spell Mastery
+
+_Prerequisites: At least 3 dots in a Magic School_
+
+By practicing the motions of a spell over and over again, you can make sure you'll be able to cast it even in the worst circumstances. Choose a single spell of the third rank or lower. You may reroll failed Tests to cast that spell.
+
+### Spell Specialization
+
+_Prerequisites: At least 1 dot in a Magic School_
+
+Most sorcerers are best with a certain type of spells—blowing things up, healing, seeing the future, whatever. Choose a school of magic. Once per scene you may reroll a failed magic test from that school.
+
+### Touch Spell Specialization
+
+_Prerequisites: None_
+
+Aiming a spell is almost exactly unlike aiming a gun. That doesn't mean you can't get better at it and you're living proof. You gain +`2k0` to hit with all spells that require you to make an Attack.

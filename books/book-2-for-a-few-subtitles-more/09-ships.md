@@ -1,0 +1,1021 @@
+---
+title: "Chapter IX: Ships"
+book: 2
+chapter: 9
+order: 9
+type: "chapter"
+---
+# Chapter IX: Ships
+
+## Building a Ship
+
+**Step One:** Determine Build Points
+**Step Two:** Purchase a Hull
+**Step Three:** Outfitting the Hull
+**Step Four:** Ship's Armaments
+**Step Five:** Finishing Touches
+
+### Step One: Determine Build Points
+
+The first step in building your own ship is to determine just how many build points (BP) you have to work with. The number of build points you have to spend is determined entirely by the number of dots you have in Holdings. Build Points are used to purchase everything from the hull of the ship itself to systems, weapons, and even the crew of the ship.
+
+### Step Two: Purchase a Hull
+
+There are a large variety of hulls available to purchase. Really, there are no two ships in the sky that are entirely identical. The hulls presented here are merely a representative sample of the infinite possibilities, and the names and flavor of them are merely one variation possible. A Steamboat-class ship, for example, could represent anything from a bodged-together Ork ship to a graceful Eldarin scout to a Kobold trader's personal transport. Each of which will look and act vastly different from the others based on the equipment installed and the temperament of the Captain.
+
+## Ship Hulls
+
+Each ship hull has a number of stats which are all very important. Here are what they mean:
+
+**Hull Class** - The hull class of the ship mostly determines its size. Escort ships are small and fast, Destroyers are a middle-sized ships, Cruisers are large ships, and Battleships are huge. The Hull Class of a ship affects the damage it does while Ramming.
+
+**Cost** - The hull's cost in BP. This cost includes all the basic necessities of the hull (listed later), but while the ship is spaceworthy at this cost it's also defenseless.
+
+**Crew** - The ship's maximum Crew Size. This is not literally how many people are on board the ship. On an Escort, each point of Crew is more like 10 people. For destroyers, around 20. Cruisers have about 30 per point, and Battleships about 50. The important thing about Crew is that it is how many dice a ship can roll in each round of combat.
+**Hull Strength** - Hull Strength is basically hit points for a ship. Lose all of them and you lose the ship.
+
+**Maneuverability** - How maneuverable the ship is. This is a modifier to certain tests in combat.
+
+**Acceleration** - How quickly the ship reacts with changes in speed. This is, again, a modifier to certain tests in combat.
+
+**Speed** - The ship's speed in combat. Speed is measured in Void Units. A void unit is a very rough measurement, though it's around 6Mm in open space if you really need to calculate things out. In system, this might be greatly reduced due to gravity wells and the like.
+
+**Sensors** - The ship's Sensors rating is used to passively and actively detect objects, serving as a modifier to perception-type tests made by the ship's Crew.
+
+**Consoles** - How many consoles the ship can hold. A console is a general term for ship equipment, and can be anything from a reinforced hull to a cargo hold to an advanced computer. A console can only be installed in the appropriate type of console slot, with the exception that universal slots can hold anything and universal consoles can be fitted to any slot.
+
+**Weapons** - How many weapon hard points the ship has to the fore and rear.
+| Holdings | Build Points |
+|----------|-------------|
+| 0 | 0 |
+| 1 | 2 |
+| 2 | 3 |
+| 3 | 4 |
+| 4 | 5 |
+| 5 | 5+ |
+
+---
+
+### Escort Hulls
+
+### Steamboat-Class Multipurpose Ship
+
+The Steamboat-Class ship is one of the most basic and widespread of all ship types, and they're common sights throughout the Wheel. Many of the greatest Captains first served on Steamboat-Class ships before moving onto something better. They can be outfitted with a variety of equipment and weapons, and some have surprisingly advanced equipment for such common frames.
+
+- **Hull Class:** Escort
+- **Cost:** 10 BP
+- **Crew:** 12
+- **Hull Strength:** 40
+- **Maneuverability:** +0
+- **Acceleration:** +0
+- **Speed:** 6
+- **Sensors:** +0
+- **Consoles:** 2 Universal
+- **Weapons:** 1 Forward, 1 Rear
+
+### Sultana-Class Light Frigate
+
+The Sultana Class is one of the lightest ships that is commonly in use in militaries. It's an extraordinarily fast and nimble ship, and some captains actually prefer it over the more heavily armed and armored ships because they can feel it move under their feet. A Sultana with a good crew and well outfitted with equipment is a deadly opponent to even some much larger ships.
+
+- **Hull Class:** Escort
+- **Cost:** 20 BP
+- **Crew:** 14
+- **Hull Strength:** 45
+- **Maneuverability:** +5
+- **Acceleration:** +10
+- **Speed:** 12
+- **Sensors:** +0
+- **Consoles:** 1 Tactical, 1 Universal
+- **Weapons:** 2 Forward, 1 Rear
+
+### Wanderer-Class Runeship
+
+The Wanderer-Class ship is an advanced hull design that was designed specifically to be easier to maneuver and pilot in the warp. Even the corridor placement was made according to the precepts of geomancy so minor warp flows wouldn't build dangerous amounts of psychic energy in any of the ship's subsystems. The Wanderer-class has a reputation as a safe and reliable ship, and it's one well-deserved.
+
+- **Hull Class:** Escort
+- **Cost:** 20 BP
+- **Crew:** 14
+- **Hull Strength:** 40
+- **Maneuverability:** +0
+- **Acceleration:** +5
+- **Speed:** 8
+- **Sensors:** +5
+- **Consoles:** 2 Arcana, 1 Universal
+- **Weapons:** 1 Forward, 1 Rear
+
+### Endurance-Class Support Ship
+
+Most Endurance-Class ships in service are extremely old, as befits their title. They are tough ships that were, at the time they were made, built almost entirely from off-the-shelf parts. Because these ships were so successful, those parts managed to stay on the shelves for a very, very long time. Those parts are still easy to find, and new Endurance-Class ships are being built every year.
+
+- **Hull Class:** Escort
+- **Cost:** 20 BP
+- **Crew:** 14
+- **Hull Strength:** 60
+- **Maneuverability:** +0
+- **Acceleration:** +5
+- **Speed:** 7
+- **Sensors:** +0
+- **Consoles:** 2 Engineering, 1 Universal
+- **Weapons:** 1 Forward, 1 Rear
+
+---
+
+### Destroyer Hulls
+
+### Thresher-Class Destroyer
+
+A versatile ship, the Thresher-Class is caught between the small and light near-fighters of the Sultana-class and the much larger true battleships of the larger Essex and Belle classes. The Thresher is a standard ship of the line in most fleets, able to mount a variety of equipment that allow it to assume many roles. Over the course of their careers, most Threshers serve in a variety of roles as they're refitted and reproposed for various duties.
+
+- **Hull Class:** Destroyer
+- **Cost:** 30 BP
+- **Crew:** 16
+- **Hull Strength:** 60
+- **Maneuverability:** +5
+- **Acceleration:** +10
+- **Speed:** 10
+- **Sensors:** +5
+- **Consoles:** 1 Arcana, 1 Command, 1 Engineering, 2 Tactical, 1 Universal
+- **Weapons:** 3 Forward, 2 Rear
+
+### Monitor-Class Exploration Ship
+
+Designed to explore crystal spheres far from the well-traveled routes of the Wheel, the Monitor is a large ship that is normally equipped with deep supply vaults and advanced sensor arrays, though those that have been sold off are often given quite different loadouts. One particularly infamous pirate captain equipped his Monitor-class ship as a raider, hiding out in one of those far-off crystal spheres and loading his supply vaults with loot.
+
+- **Hull Class:** Destroyer
+- **Cost:** 25 BP
+- **Crew:** 16
+- **Hull Strength:** 60
+- **Maneuverability:** +0
+- **Acceleration:** +5
+- **Speed:** 8
+- **Sensors:** +10
+- **Consoles:** 2 Arcana, 1 Command, 1 Engineering, 1 Tactical, 1 Universal
+- **Weapons:** 2 Forward, 2 Rear
+
+### Majestic-Class Command Ship
+
+The Majestic-class of ships is easily distinguished from other ships of similar size thanks to its large forward bridge, whose armored observation dome extends from the ship's prow like a giant eyeball. Most were built as command ships for small fleet operations, with most weapons only firing from the rear, as the Majestic-Class was only expected to do much fighting while running from enemy attacks.
+
+- **Hull Class:** Destroyer
+- **Cost:** 30 BP
+- **Crew:** 16
+- **Hull Strength:** 70
+- **Maneuverability:** +0
+- **Acceleration:** +5
+- **Speed:** 8
+- **Sensors:** +0
+- **Consoles:** 1 Arcana, 2 Command, 1 Engineering, 1 Tactical, 1 Universal
+- **Weapons:** 1 Forward, 3 Rear
+
+### Cole-Class Advanced Destroyer
+
+The Cole-Class is a purpose-built warship, and that purpose is to mount the newest, most cutting-edge technology available. The Cole-class is fragile compared to more rugged ships that use reliable older technology, and it is considered somewhat underpowered for the sheer amount of equipment it can carry, but as a technology demonstrator or in a situation where its advanced loadout can be used to best effect, the Cole-class shines.
+
+- **Hull Class:** Destroyer
+- **Cost:** 40 BP
+- **Crew:** 18
+- **Hull Strength:** 55
+- **Maneuverability:** +5
+- **Acceleration:** +5
+- **Speed:** 9
+- **Sensors:** +5
+- **Consoles:** 2 Arcana, 1 Command, 3 Tactical, 1 Universal
+- **Weapons:** 2 Forward, 2 Rear
+
+### Essex-Class Cruiser
+
+The Essex is a large ship, and ships like it usually serve as the backbone of a fleet, equipped with enough weapons and armor to survive almost any battle. They are often deployed alone and well away from supply lines, as they have everything they need for a variety of exploration and combat missions.
+
+- **Hull Class:** Cruiser
+- **Cost:** 50 BP
+- **Crew:** 20
+- **Hull Strength:** 75
+- **Maneuverability:** -5
+- **Acceleration:** +0
+- **Speed:** 6
+- **Sensors:** +0
+- **Consoles:** 2 Arcana, 1 Command, 1 Engineering, 2 Tactical, 2 Universal
+- **Weapons:** 3 Forward, 3 Rear
+
+### Graff Spree-Class Pocket Battleship
+
+Built for one purpose, the Graff Spree is a ship class that is only designed to fight. They are relatively fast and nimble ships, and can carry enough weapons in their forward batteries to rival any ship. They are somewhat smaller and more fragile than other ships in their price range, but such is the price one pays for superior firepower.
+
+- **Hull Class:** Destroyer
+- **Cost:** 45 BP
+- **Crew:** 18
+- **Hull Strength:** 65
+- **Maneuverability:** +0
+- **Acceleration:** +0
+- **Speed:** 8
+- **Sensors:** +5
+- **Consoles:** 1 Arcana, 1 Command, 2 Engineering, 2 Tactical, 1 Universal
+- **Weapons:** 4 Forward, 1 Rear
+
+### Bismark-Class Fleet Command Ship
+
+The Bismark-Class ships were intended for service as a tough ship loaded down with computers and teams to coordinate the actions of entire battle fleets across sectors of the Astra Sea. They often serve as flagships, and the thick bulkheads and armor plating mean that any admiral would feel safer on a Bismark than nearly anywhere else.
+
+- **Hull Class:** Cruiser
+- **Cost:** 60 BP
+- **Crew:** 22
+- **Hull Strength:** 100
+- **Maneuverability:** +0
+- **Acceleration:** +0
+- **Speed:** 8
+- **Sensors:** +10
+- **Consoles:** 2 Arcana, 3 Command, 1 Engineering, 1 Tactical, 1 Universal
+- **Weapons:** 2 Forward, 2 Rear
+
+### Borealis-Class Multipurpose Ship
+
+The Borealis is one of the most common large ship classes to be found in civilian hands. A great many are produced and sold from various forge worlds to all sorts of interests, from mercenary groups to navies to the ultra-rich. The Borealis has been used as everything from a battleship to research vessel to merchant trader.
+
+- **Hull Class:** Cruiser
+- **Cost:** 50 BP
+- **Crew:** 20
+- **Hull Strength:** 75
+- **Maneuverability:** +0
+- **Acceleration:** +5
+- **Speed:** 9
+- **Sensors:** +5
+- **Consoles:** 2 Arcana, 2 Command, 2 Engineering, 2 Tactical
+- **Weapons:** 2 Forward, 2 Rear
+
+---
+
+### Cruiser and Battleship Hulls
+
+### Belle-Class Battleship
+
+A true Battleship, the Belle can outgun most ships. And if it can't outgun them it has enough armor and men to figure something else out. The Belle is a massive starship. Few can afford to maintain such a grand vessel, and so when one appears, it means that people should sit up and listen, because someone important has arrived.
+
+- **Hull Class:** Battleship
+- **Cost:** 75 BP
+- **Crew:** 24
+- **Hull Strength:** 90
+- **Maneuverability:** -5
+- **Acceleration:** -5
+- **Speed:** 4
+- **Sensors:** +0
+- **Consoles:** 1 Arcana, 2 Command, 1 Engineering, 3 Tactical, 1 Universal
+- **Weapons:** 4 Forward, 3 Rear
+
+### Bounty-Class Fleet Support Ship
+
+The Bounty-Class ships were designed to be dangerous in a somewhat different way than the Belle-class ships. While they don't mount as many guns, the Bounty-Class ship is, if anything, even tougher than the Belle, with a huge crew and advanced engineering and arcana systems. Because they can mount advanced warp equipment, they're often used as extremely heavy scouts and first-responders.
+
+- **Hull Class:** Battleship
+- **Cost:** 75 BP
+- **Crew:** 24
+- **Hull Strength:** 100
+- **Maneuverability:** -5
+- **Acceleration:** -5
+- **Speed:** 4
+- **Sensors:** +5
+- **Consoles:** 2 Arcana, 1 Command, 3 Engineering, 1 Tactical, 1 Universal
+- **Weapons:** 3 Forward, 3 Rear
+
+### Step Three: Outfitting the Hull
+
+Now that you've gotten yourself a hull, you'll probably want to put some equipment in it. Every ship hull has some basic components installed - a sensor array, life support, simple living quarters, engines, a small shuttlebay, a main reactor, a Geller Field generator, and a spelljamming helm. The exact forms these things take depends on what race built the ship. Even with all this equipment, it's still relatively defenseless. Shields, Weapons, and various Ship Consoles are all extras that must be purchased separately.
+
+### Crew
+
+A Crew is absolutely necessary to getting a ship to run. A ship hull tells you the size of the crew (in rather abstract units), but not the quality. By default, a ship has a Crew Quality of 2. This represents a fairly average ship crew. By spending BP, it's possible to have a better crew for your ship.
+| Quality | Cost |
+|---------|------|
+| 1 | -5 BP |
+| 2 | 0 BP |
+| 3 | +10 BP |
+| 4 | +20 BP |
+| 5 | +30 BP |
+
+---
+
+### Shields
+
+Shields are energy fields that protect a ship from attack. They come in a variety of strengths and types, some with special abilities, but each has a Capacity and a Regeneration. The shield's Capacity is the maximum field potential of the shield, the amount of damage it can absorb before it fails. The Regeneration of the shield is how much shield strength it regains at the beginning of each of the ship's turns.
+
+**Standard Shields** are, well, standard. They're the baseline that other shields are measured by. They usually form a bubble around a ship, protecting it from attacks.
+
+**Covariant Shields** have a larger overall capacity for damage, but their regeneration is much slower than standard shields. They excel at protecting a ship against burst damage and foes armed with extremely disruptive weapons.
+
+**Regenerative Shields** recover their shield strength very quickly, and against enemies without much punch to their weapons, they can simply hold out forever.
+
+**Resilient Shields** combine aspects of Covariant and Regenerative shields. While their capacity is only slightly better than a Standard shield generator, and their regenerating speed is closer to that of a Covariant shield, they cannot be disrupted. All weapons used against a Resilient shield have their Disruption reduced to zero.
+
+**Multiphasic Shields** are a recent development in shield technology. They're a series of layered field generators that create a number of weak but overlapping shields. Depending on the Mark of shield generator, there are between three and six layers. Each one must be attacked one at a time, and they don't fail until all of the layers are brought down.
+
+### Weapons
+
+One of the most important systems on a ship are the weapons. Weapons are a great way to keep people from trying to kill you to death, because you can discourage them with death beams. Weapons come broadly in two types - directed energy weapons and torpedoes. Energy weapons are the most common by far, especially since their ammunition supply isn't limited. Torpedoes are considerably more expensive to maintain, and typically only seen on military ships.
+
+### Shields
+
+| Type          | Mk.I (Cap/Regen) | Mk.II (Cap/Regen) | Mk.III (Cap/Regen) | Mk.IV (Cap/Regen) |
+| ------------- | ---------------- | ----------------- | ------------------ | ----------------- |
+| Standard      | 80/15            | 105/15            | 125/20             | 150/20            |
+| Covariant     | 100/5            | 135/5             | 165/10             | 200/10            |
+| Regenerative  | 60/25            | 75/30             | 85/35              | 100/40            |
+| Resilient     | 80/7             | 115/9             | 140/11             | 170/13            |
+| Multiphasic   | 20/10 (×3)       | 20/10 (×4)        | 20/10 (×5)         | 20/10 (×6)        |
+| **Cost (BP)** | **10**           | **15**            | **20**             | **25**            |
+
+### Weapon Stats
+
+**Cost** - The amount of BP this weapon costs to buy and install on a ship.
+
+**Arc** - The weapon's firing arc. Weapons can be placed to the front or rear. A ship has four quadrants its weapons can fire into, front, starboard, rear, and port. Weapons with a Narrow arc can only fire to either the fore or rear quadrant, depending on where it is installed. Weapons with a Normal arc can also fire into the port and starboard arcs. A weapon with the Wide arc can fire into all four quadrants.
+
+**Type** - Weapons are either Lance or Array weapons. The difference between them is quite simple - Lance weapons must be fired by themselves, whereas Array weapons can be linked together. The main savings of Array weapons is in manpower. Every shot from a starship requires its own allocation of Crew - if a ship has three Lance weapons it wishes to fire, and the Captain wants four dice rolled on every shot, that requires twelve Crew to the weapons. As long as Array weapons are firing at the same target (which must be within the range and arcs of all the involved weapons), their firing controls can be linked - they are all be fired with the same test. Resolve the damage from each hit separately, but if the attack hits, all the linked attacks hit, and if the attack misses, they all miss.
+
+**Dam** - How much damage the weapon does.
+
+**Dis** - The weapon's Disruption. The weapon's disruption reduces the regeneration of any shields hit by attacks from this weapon.
+
+**Acc** - The weapon's Accuracy. Add this (or subtract this) from the attacks made with this weapon.
+
+**Crit** - The Weapon's Critical rating. When dealing damage directly to the hull, add this to the critical roll made with the weapon.
+
+**Range** - The weapon's range, in VU.
+
+**Crater** - When used to bombard planets from orbit, this is the diameter of the crater it leaves. Everything within the crater is usually vaporized.
+
+**Blast** - The blast radius of a lance weapon's orbital strike is how far out it does secondary damage. For each blast increment the orbital strike damage is halved.
+
+**Radius** - Array weapons saturate an area during an orbital bombardment. Add this much additional radius to that area for the weapon.
+
+**Roll, Keep, Pen** - Orbital strikes from arrays sum the damage dice from all the weapons. Add these to the rolled and kept dice, and how much armor penetration the strike has.
+
+### Weapon Mounting Types
+
+**Cannon** - A powerful heavy energy weapon, the Heavy Cannon is rather inaccurate thanks to its small traverse range. However, its sheer stopping power makes up for it. A light cannon has less power than a heavy cannon, but a wider firing arc and somewhat better accuracy.
+
+**Beam Array** - An array of forward-firing beams that are designed to be fired in sequence, the Heavy beam offers more stopping power than a standard beam array at the cost of a much smaller firing arc that makes them unsuitable for use in broadsides. One of the most common weapons to be installed in starships, Beam Arrays are often used to make broadside attacks. They're one of the most accurate weapons available, though their low damage potential compared to other weapons is something of a liability.
+
+### Weapon Types
+
+**Las** - By default, ship weapons are Las weapons. They don't have any particular strengths or weaknesses.
+
+**Melta** - Melta weapons release great blasts of microwaves. They have shorter range but excellent damage against both shields and hulls. However, they are somewhat pricey.
+
+**Plasma** - Plasma weapons are one of the premier weapons for starships. Their range isn't limited like melta weapons, though they're slightly less damaging and their slow projectiles are rather hard to hit with.
+
+**Orgone** - Orgone weapons fire bolts of pure magical energy. They're extremely accurate and disrupt shields well, though the actual damage they do to ship's hulls isn't very good.
+
+**Mass Driver** - Mass Driver weapons fire actual chunks of metal, most use magnetic accelerators. Array driver weapons fire volleys of smaller shots rather than a few large ones. They are poor at disrupting shields and have short range, but are accurate and cheap.
+
+### Heavy Cannon (Arc: Narrow, Type: Lance)
+
+| Weapon      | Dam | Dis | Acc | Crit | Range | Cost | Crater | Blast | Orbital Strike |
+| ----------- | --- | --- | --- | ---- | ----- | ---- | ------ | ----- | -------------- |
+| Las         | 6k4 | 5   | -10 | +2   | 20    | 20   | 200m   | 600m  | 10k10+30       |
+| Melta       | 7k5 | 6   | -15 | +4   | 8     | 25   | 250m   | 700m  | 10k10+55       |
+| Plasma      | 7k4 | 3   | -15 | +5   | 20    | 25   | 200m   | 700m  | 10k10+40       |
+| Orgone      | 5k4 | 8   | -5  | +1   | 20    | 15   | 200m   | 500m  | 10k10+25       |
+| Mass Driver | 6k4 | 4   | -5  | +3   | 16    | 15   | 200m   | 600m  | 10k10+30       |
+| Positron    | 6k4 | 7   | -15 | +4   | 32    | 25   | 200m   | 600m  | 10k10+30       |
+| Anti-Meson  | 5k4 | 4   | -10 | +3   | 40    | 15   | 200m   | 500m  | 10k10+25       |
+
+---
+
+**Positron** - Positron weapons are like great arcing bursts of lightning in a variety of shades. They remain coherent even at very long range, and disrupt the very molecular bonds of hull plating, but the arcing nature of the beams makes them inaccurate and they're expensive to maintain and install.
+
+**Anti-Meson** - Anti-meson weapons are somewhat cheap weapons that have excellent range at the expense of stopping power. They're commonly used in large arrays as a kind of sniping weapon against vulnerable targets.
+
+### Torpedoes
+
+Torpedoes are handled a little differently than other weapons. They have limited ammunition, but with a single torpedo tube a Captain can fire a variety of ammunition types from his stores. Torpedoes are handled much like any other weapon, albeit with a limited ammunition store which must be purchased separately. While they are powerful weapons, the limited ammunition means that the ship risks running out of ammunition during extended engagements. They are better used as a secondary armament to complement the main energy weapon batteries.
+
+**Torpedo Tube**
+
+**Cost:** 5 BP
+
+A Torpedo tube allows you to fire torpedoes, and its internal bay can hold five torpedoes. The damage, range, and other weapon statistics are determined by the Torpedoes used.
+
+### Light Beams (Arc: Normal, Type: Array)
+
+| Weapon      | Dam | Dis | Acc | Crit | Range | Cost | Radius | Roll, Keep, Pen |
+| ----------- | --- | --- | --- | ---- | ----- | ---- | ------ | --------------- |
+| Las         | 3k2 | 2   | +5  | -1   | 10    | 10   | +300m  | +2k2, +1 pen    |
+| Melta       | 4k3 | 3   | +0  | +0   | 4     | 15   | +400m  | +4k3, +5 pen    |
+| Plasma      | 4k2 | 0   | +0  | +1   | 10    | 15   | +400m  | +5k2, +1 pen    |
+| Orgone      | 2k2 | 5   | +10 | -1   | 10    | 5    | +200m  | +1k2, +4 pen    |
+| Mass Driver | 3k2 | 0   | +10 | -1   | 8     | 5    | +300m  | +2k2, +0 pen    |
+| Positron    | 3k2 | 4   | +0  | +0   | 16    | 15   | +300m  | +3k2, +4 pen    |
+| Anti-Meson  | 2k2 | 0   | +5  | -1   | 20    | 5    | +200m  | +1k2, +0 pen    |
+
+### Heavy Beams (Arc: Narrow, Type: Array)
+
+| Weapon      | Dam | Dis | Acc | Crit | Range | Cost | Radius | Roll, Keep, Pen |
+| ----------- | --- | --- | --- | ---- | ----- | ---- | ------ | --------------- |
+| Las         | 4k2 | 2   | +0  | +1   | 15    | 15   | +400m  | +5k2, +3 pen    |
+| Melta       | 5k3 | 3   | -5  | +2   | 6     | 20   | +500m  | +7k3, +5 pen    |
+| Plasma      | 5k2 | 0   | -5  | +3   | 15    | 20   | +500m  | +8k2, +0 pen    |
+| Orgone      | 3k2 | 5   | +5  | +1   | 15    | 10   | +300m  | +4k2, +6 pen    |
+| Mass Driver | 4k2 | 0   | +5  | +1   | 12    | 10   | +400m  | +4k2, +1 pen    |
+| Positron    | 4k2 | 4   | -5  | +2   | 24    | 20   | +400m  | +6k2, +6 pen    |
+| Anti-Meson  | 3k2 | 1   | +0  | +1   | 30    | 10   | +300m  | +4k2, +2 pen    |
+
+### Turrets (Arc: Wide, Type: Lance)
+
+| Weapon      | Dam | Dis | Acc | Crit | Range | Cost | Crater | Blast | Orbital Strike |
+| ----------- | --- | --- | --- | ---- | ----- | ---- | ------ | ----- | -------------- |
+| Las         | 3k2 | 3   | +0  | +0   | 5     | 10   | 100m   | 300m  | 9k6            |
+| Melta       | 4k3 | 4   | -5  | +1   | 3     | 15   | 150m   | 400m  | 10k10          |
+| Plasma      | 4k2 | 1   | -5  | +2   | 5     | 15   | 100m   | 400m  | 10k7           |
+| Orgone      | 2k2 | 6   | +5  | -2   | 5     | 5    | 100m   | 200m  | 6k6            |
+| Mass Driver | 3k2 | 2   | +5  | +0   | 4     | 5    | 100m   | 300m  | 9k6            |
+| Positron    | 3k2 | 5   | -5  | +1   | 8     | 15   | 100m   | 300m  | 9k6            |
+| Anti-Meson  | 2k2 | 2   | +0  | +0   | 10    | 5    | 100m   | 200m  | 6k6            |
+
+---
+
+### Torpedo Types
+
+**Micro** - Micro torpedoes are smaller and much less expensive than other torpedo types. They're something of the cheap option as far as torpedoes go, and most captains maintain a store of them simply so his torpedo tubes will never run dry in the middle of combat.
+
+**Photon** - The standard torpedo type used on spelljammers, Photon torpedoes are dangerous weapons that can destroy a city in seconds. Most military ships are equipped with them.
+
+**Monopole** - Monopole torpedos are armed with a generator that is designed to overload and explode in a burst of magnetically charged particles. They interfere greatly with ship systems - any ship struck by a Monopole torpedo, even if it doesn't penetrate shields, suffers -10 to its Maneuverability and Acceleration for `1d10` rounds. This does not stack with multiple hits.
+
+**Quath** - Quath torpedoes use special technology to pierce a ship's shields. If they hit a shielded target, they penetrate the shields, automatically damaging the hull. If they do pierce through shields, reduce their Crit rating to 0.
+
+**Cruise** - Cruise torpedoes have exceptional range and flight control systems that let them be fired from extreme range. When using a Cruise Torpedo for bombardment, the firing ship does not need to reach stable orbit first, eliminating the need for the piloting Test before firing on the ground target.
+
+**High-Act** - High-Accuracy torpedoes are extraordinarily maneuverable, able to fire in any direction and use an extraordinary guidance system to hit even extremely evasive targets. If they miss during an orbital bombardment, you may roll the random direction and distance twice and take either result.
+
+**Rift** - Rift torpedoes open uncontrolled, dangerous rifts into the warp, using sorcery and a type of inverted Geller Field. They are hideously dangerous weapons, and if they deal damage to a ship's hull the ship automatically loses `1d10` crew. If used in an orbital bombardment, thousands of screaming daemons come out of the warp rift they create, thirsty for the blood of anyone left in the wake of the attack. Some Rift torpedoes are dedicated to one particular god, and always summon daemonic servants of that god.
+
+## Consoles
+
+Consoles are the additional ship systems that are installed on ships beyond simple guns and shields and the like. Many consoles improve a ship's tests in combat, but others give a ship entirely new abilities. A console can only be installed if the ship has an open slot of the correct type. Universal console slots can accept any console type, and a Universal console can be fitted to any console slot.
+
+### Arcana Consoles
+
+**Ancient Spelljamming Helm** (Arcana)
+
+**Cost:** 10
+
+This ancient experimental Spelljamming Helm design uses technology that is largely considered unreliable and prone to catastrophic failure today, but which gives remarkable speed. The ship's travel time in the warp is cut in half, but all Warp Encounters rolls are at +2.
+
+**Bioneural Gel Packs** (Arcana)
+
+**Cost:** 5
+
+A form of computer technology that has yet to gain widespread acceptance, Bioneural Gel Packs can operate on fuzzy logic and operate at faster speeds than common circuit technology. The ship may make one reroll on any Arcana test once per combat.
+
+**Cloaking Device** (Arcana)
+
+**Cost:** 15
+
+A form of stealth technology that bends electromagnetic waves around a ship and blocks divination magic, a Cloaking device is an expensive piece of technology that is illegal in many Crystal Spheres. The ship gains +20 on Silent Running tests.
+
+### Torpedo Stats
+
+<!-- NOTE: Torpedo stats table reconstructed from cleaned-references/18-Ships.md. Column order corrected to match processed source (Dam, Dis, Acc, Crit, Arc, Range, Cost). Original extraction had misaligned columns. -->
+
+| Name     | Dam | Dis | Acc | Crit | Arc    | Range | Cost |
+| -------- | --- | --- | --- | ---- | ------ | ----- | ---- |
+| Micro    | 4k4 | 2   | 2   | +5   | Normal | 5     | 1    |
+| Photon   | 6k6 | 3   | 3   | +0   | Narrow | 8     | 2    |
+| Monopole | 6k4 | 10  | 0   | +0   | Narrow | 2     | 2    |
+| Quath    | 4k4 | 0   | 0   | 8    | Narrow | 2     | 2    |
+| Cruise   | 6k6 | 3   | 3   | +0   | Narrow | 30    | 3    |
+| High-Act | 6k6 | 3   | 3   | +5   | Wide   | 20    | 5    |
+| Rift     | 8k8 | 4   | 4   | +0   | Narrow | 5     | 5    |
+
+---
+
+### Arcana Consoles (Continued)
+
+**Improved Sensors** (Arcana)
+
+**Cost:** 5
+
+A series of improvements to a ship's sensors, usually in the form of large dishes or antennae and such. The Ship's Sensors are at +5.
+
+**Improved Shields** (Arcana)
+
+**Cost:** 10
+
+By adding automatic rotators to the shield frequency modulators, a ship's shields can be made more resistant to damage. The ship's shield capacity is increased by 10%. If the ship is using Multiphasic shields, the bonus applies to each layer.
+
+**Teleportarium** (Arcana)
+
+**Cost:** 20
+
+The ship gains a Teleportarium, allowing it to move people and objects by throwing them through the warp - a relatively safe procedure despite how it sounds. It may make Boarding Actions at a range of 5 VU as long as the target's shields are down. This console may be used in any number of other ways - escaping from a nearby planet, teleporting goods directly to a cargo hold, and so forth, at the SM's discretion.
+
+**Warpsbane Hull** (Arcana)
+
+**Cost:** 10
+
+The entire hull of the ship is covered with silver, hand-inscribed hexagrammatic wards. These reinforce a ship's Geller Field. Most ships with a Warpsbane Hull have a large shrine area onboard ship, and are dedicated to one of the Gods. When navigating the warp, roll at -2 on the Warp Encounters chart.
+
+### Command Consoles
+
+**Advanced Bridge Design** (Command)
+
+**Cost:** 10
+
+This bridge design uses advanced controls and self-adjusting holographic displays, granting the Captain and crew unparalleled control over their vessel. Plus, all the chairs have seatbelts. Command Action tests are made at `+1k1`.
+
+**Destiny Knot** (Command)
+
+**Cost:** 15
+
+A mysterious and extremely rare device, the Destiny Knot is a tangle of wires and cords that wind themselves throughout the ship, using arcane and bizarre methods to improve nearly every system on the ship in subtle ways. The Captain and his Bridge Officers may use their own Hero Points to reroll tests made by the ship and its crew, even if they aren't the officer for the appropriate section - The Captain may spend a Hero Point to reroll missed hits or emergency repair actions, for example.
+
+**Diplomatic Quarters** (Command)
+
+**Cost:** 5
+
+Your ship is equipped with a plush set of diplomatic quarters for visiting guests, dignitaries, and ship's officers. In addition to making the ship an acceptable place to hold any diplomatic or social gatherings, it gives a `+1k0` bonus to any social rolls made with visitors to the ship.
+
+**Library Computer** (Command)
+
+**Cost:** 5
+
+An upgrade to the ship's computers that gives them a massive database of facts and information on all subjects. As long as the character can spend a few minutes consulting with the ship's main computer, they may roll Lore tests untrained, and gain `+1k1` to all Lore tests.
+
+**Self Destruct** (Command)
+
+**Cost:** 5
+
+A series of scuttling charges designed to rupture the most volatile components of a ship. When the Captain sets the ship for self-destruct she may choose any delay before the ship explodes, from immediate (taking a Command Action) to hours (up to 24 hours). When the ship explodes, it deals `4k4` damage to all ships within 5 VU, and half that damage to all ships from 6 to 10 VU.
+
+---
+
+### Engineering Consoles
+
+**Tenebro-Maze** (Engineering)
+
+**Cost:** 5
+
+The ship's systems are shielded and hidden from attackers with a variety of sensor shadows, thickened bulkheads, and power couplings designed to give false readings, and reflective surfaces. On any critical hit result where the attacker chooses a console to disable on your ship, you may choose the affected console instead.
+
+**Ablative Armor** (Engineering)
+
+**Cost:** 10
+
+Designed to disintegrate at a controlled rate under direct fire, Ablative Hull Armor is a last line of defense after shields have gone down, and often save a ship from a finishing blow. Ignore the first hit to your ship's hull in each combat - it does no damage, there's no need to roll on the critical chart, and so forth.
+
+**Damage Control Station** (Engineering)
+
+**Cost:** 10
+
+Displays that accurately represent damage to ship's systems and equipped with learning computers that are able to suggest work arounds and automatically bypass damaged systems. You get `+2k0` to all Emergency Repairs tests.
+
+**EPS Conduits** (Engineering)
+
+**Cost:** 10
+
+While most ships use more stable and traditional methods for distributing power, Electro Plasma Systems provide much more power to ship's systems. All successful Divert Power tests get two additional raises.
+
+**Hardened Armor** (Engineering)
+
+**Cost:** 5
+
+A very simple upgrade found on a great number of ships, this is simply better armor, and can be applied at even the crudest of shipyards. Your ship gains an additional 10% to it's Hull Points. This upgrade may be taken multiple times.
+
+**Large Engine Core** (Engineering)
+
+**Cost:** 15
+
+A larger core that has some parts made from the magical materials, a Large Engine Core is an expensive component that delivers on value, greatly improving a ship's speed. Your ship's Speed is increased by 2. The ship's Acceleration is improved by +5.
+
+**Reinforced Bulkheads** (Engineering)
+
+**Cost:** 10
+
+Honeycombed bulkheads throughout a ship make it a bit easier to trip on struts in the corridors, but the greatly improve a ship's lifespan in battle. Critical hits on your ship are rolled at -2.
+
+**Thrust Vectoring** (Engineering)
+
+**Cost:** 10
+
+Normally, a ship's main thrusters can not be moved from their fixed positions, and it uses secondary thrusters to maneuver. With an advanced thrust vectoring system, the main thrusters on the ship can be swiveled to more quickly change the ship's heading. Your ship's Maneuver is increased by 5.
+
+### Tactical Consoles
+
+**Arsenal** (Tactical)
+
+**Cost:** 5
+
+The loading bays that come with a ship's Torpedo Tubes can only hold a limited supply of ammunition. With an Arsenal, more can be stored in safety. You have space for an additional 10 Torpedoes. They can be fired from any Torpedo Tube.
+
+**Assault Shuttles** (Tactical)
+
+**Cost:** 5
+
+A ship's shuttles are not usually equipped for boarding actions. With this upgrade, your shuttles have the equipment and connections to the ship's tactical sections needed to use them in combat. You may make boarding actions 3 VU away rather than a 1 VU. They also have slightly better armor and mount a light personnel weapon that could be used in ground combat.
+
+**Fighter Bay** (Tactical)
+
+**Cost:** 10/20
+
+You may launch and retrieve one fighter squad of up to 5 crew worth of fighters each turn. This console may be taken more than once, increasing the number of fighter squads that may be launched or retrieved at one time. The 20 BP fighter bay supports fighters that are capable of atmospheric operation, landings, and ground attacks. These are treated as a light mass driver array orbital bombardment attack with a number of guns equal to the crew quality. The ship does not have to enter a low orbit in order to make this attack.
+
+**Murder Servitors** (Tactical)
+
+**Cost:** 5
+
+The ship possesses a stock of powerful, skull-faced killing machines. They're exceptionally useful for defending a ship against boarding actions. When rolling against boarding actions, you get an additional `2k1` to your rolls.
+
+**Ramming Prow** (Tactical)
+
+**Cost:** 10
+
+The trademark of cruisers and battleships in Ork and Chaos navies, heavy sheets of armor tens of meters thick protect the ship while it crashes into an enemy. Your ship deals `+1k1` damage with Ramming attacks and does not suffer a roll on the Critical Chart. Enemy ships roll at +2 on the Critical Chart.
+
+**Targeting Computer** (Tactical)
+
+**Cost:** 15
+
+One of the more expensive upgrades that can be applied to a ship's computer, a Targeting Computer interfaces with all the weapons on a ship and assists the gunners with adjustments to their aim and better overall fire control. All Shoot Guns tests are made at +5.
+
+**Weapon Capacitor** (Tactical)
+
+**Cost:** 10
+
+A series of high powered batteries drain power from the main reactor to supercharge weapons arrays in combat. Your Energy Weapons deal an additional `+1k0` damage.
+
+### Universal Consoles
+
+**Advanced Sickbay** (Universal)
+
+**Cost:** 15
+
+While every ship has a basic infirmary, the Advanced Sickbay provides the facilities for diagnostics and treatment needed to help more people. The ship may recover any number of crew lost since last turn when using the Triage action, rather than just half. The high tech equipment also sports an MIU interface and adds an additional `+1k1` to Medicae tests outside of combat.
+
+**Cargo Bays** (Universal)
+
+**Cost:** 5
+
+The ship has a large cargo vault for stowing goods. This makes it appropriate for any sort of trade or cargo shipping. More bays give the ship additional room for storing things like extra mini torpedoes.
+
+**Expanded Shuttle Bay** (Universal)
+
+**Cost:** 5
+
+Most ships come equipped with room to hold a shuttle for use in ferrying people and goods. The ship has room for an additional shuttle. This console can be taken more than once.
+
+**Extended Supply Vaults** (Universal)
+
+**Cost:** 10
+
+Extensive supply stowage allows the vessel to make longer journeys. The ship may go twice as long between stops to resupply, and may make two Extended Repairs tests between stops at port rather than just one.
+
+**Hidden Cargo Bays** (Universal)
+
+**Cost:** 10
+
+The ship has a series of smaller cargo bays. While they cannot hold nearly the volume of normal cargo bays, the contents cannot be scanned from outside the ship and will evade most inspections.
+
+**Partial Wing** (Universal)
+
+**Cost:** 10
+
+Sometimes a literal giant wing assembly, sometimes a set of anti-gravity generators. The ship may maneuver in an atmosphere and even land in a gravity well on extending landing struts.
+
+**Rating Quarters** (Universal)
+
+**Cost:** 10
+
+There is always room somewhere to shove more people in. If you're willing to convert the quarters of the less-important crewmen to bunk beds and shared spaces, you can do it without much trouble at all. The ship gains +2 Crew. Just, you know, be sure to upgrade the plumbing and septic tanks too.
+
+---
+
+## Ship Combat
+
+It's inevitable that at some point, two ships are going to start shooting at one another. What's the point of having a battleship if you can't liberate a few planets of their wealth? Space combat is a terrifying experience, though, knife fighting with laser cannons and arrays of energy weapons powerful enough to vaporize cities. A spelljammer is the ultimate expression of military force, and when two ships come together to fire weapons at each other and boil armor plates away into the void, well, some people call that love.
+
+### Rounds... IN SPAAAAACE
+
+Space combat is handled similarly to normal combat. The time is broken up into rounds and turns. Where normal rounds are only a few seconds long, space combat rounds are, well, as long as they take. Because of the huge distances and times typically involved in space combat, the average length of a round in Space Combat is about ten minutes. Close-in fighting might be only a few seconds per round.
+
+### Space Combat Overview
+
+**Surprise** - It's certainly possible for one ship to surprise another in combat. A surprised ship loses its turn in the first round of combat.
+
+**Initiative** - At the beginning of combat, initiative is determined with a ship's Sensors plus Acceleration plus `1d10`. Unless expressly stated, bonuses a character has to initiative don't apply to Space Combat initiative. The initiative of a ship represents the readiness and speed of an entire crew, not merely one man.
+
+**Taking Turns** - In initiative order, each participant takes a turn in combat. During their turn, each participant must take one Maneuver action and may take a number of additional actions.
+
+**Round Ends** - Once every ship has taken its turn, the round ends. Continue to play successive rounds until the SM determines that combat is over.
+
+### Actions
+
+During each ship's turn, they can make several actions. The actions a ship can perform fall under five general types. The first type of action is the **Maneuver Action**. A ship is required to take a Maneuver Action every turn - starships are too large, with too much inertia, to simply sit still. Failure to allocate crew and take a Maneuver Action results in all attacks automatically striking the ship and potential to crash.
+
+**Tactical Actions** are actions that roughly equate to attacks in personal combat. Firing ship weapons, sending over boarding parties, called shots, aim actions, and so forth.
+
+**Engineering Actions** allow the crew to make minor repairs to a ship, reroute power around, and keep things running smoothly. They're mostly support actions.
+
+**Command Actions** are fairly general actions - they're a mix of social actions like communicating with other ships and the crew and general orders to focus the crew on a given task.
+
+**Arcana Actions** use the ship's most advanced and arcane systems, the void shields, spelljamming helm, augury array, and so forth, to create and enhance magical effects.
+
+### Ship Tests
+
+All tests a Ship makes use **Crew Quality** and **Crew Assigned**. A Ship has a limited number of crew to assign to different tasks, and so as a ship takes actions it must divvy out that crew to their assignments. Ship Tests are made at `XkY`, where X is the number of Crew Assigned and Y is the Crew Quality. The maximum number of Crew that can be assigned to any one test is 10. Crew Quality is a general measure of the skill of the crew onboard a ship. Most ships have a Crew Quality of 2, and it's very very rare for all but the most legendary ships to have a Crew Quality above 4.
+
+### Bridge Officers
+
+A ship needs great Officers even more than it needs great crewmen, though. **Bridge Officers** are skilled characters (nearly always PCs) that are put in charge of a given department. The five positions are rather obvious - each officer is in charge of one of the five types of actions, from Helm Ops to Main Engineering to the Captain's Seat itself. The owner of the ship is, by default, the Captain and in charge of the Command Actions of the ship.
+
+A Bridge Officer may use his own skill in place of Crew Quality for a test that involves his department (for example, the Helmsman may use his own Piloting Skill in place of Crew Quality for Evasive Maneuvers). Crew must still be assigned to these tests to get rolled dice - even the best Officers can't do it all by themselves. Some feats key off of being a Bridge Officer and offer bonuses to actions.
+
+---
+
+### Maneuver Actions
+
+Every turn, each ship involved in combat must take a Maneuver Action. If you have a Bridge Officer assigned to Maneuver Actions, his title would be Helmsman. Most Maneuver Actions use the Pilot skill. Failure to assign any crew to piloting the ship and take a Maneuver Action results in all attacks automatically hitting the ship and a near certainty of crashing into something. If, for any reason, the ship does not or cannot move or be piloted (for example the Adjust Speed maneuver is used to bring the ship to a halt) then all Tactical Actions taken against the immobile ship automatically succeed and gain an extra raise on any result.
+
+**Move** - The Ship can move at half or full Speed, then make a turn of up to 90 degrees. This most basic Maneuver Action does not require a test, but at least one Crew must be assigned to it. If a test must be made - as part of a chase, because of difficult terrain, or so forth, the Pilot skill is used.
+
+**Adjust Speed** - The ship can move at half or full Speed, and by making a Pilot test as part of this, the ship's Speed can be finely adjusted (to a certain extent - there's only so much one can do when inertia is working against them). A Pilot test is made, modified by the ship's Acceleration, against a TN of 20. If the test is successful, the ship's Speed is increased or decreased by 1. Every two raises on this test further increases or decreases the ship's Speed by another 1. This cannot more than double the ship's Speed, but an excellent roll may allow it to back up.
+
+**Adjust Heading** - The ship can move at half Speed, and by making a Pilot test as part of this, the ship can attempt to turn more quickly. With a TN 15, the ship may turn up to 90 degrees before moving half its Speed. With a TN 25, the ship may turn up to 90 degrees both before and after moving. With a TN 35, the ship may move up to 1/4th of it's Speed before pulling a 180 degree turn and then completing it's half Speed move.
+
+**Evasive Maneuvers** - The TN to hit a ship is normally three times the Crew Quality plus the ship's Maneuver score. This action allows the pilot to grab the stick and do a barrel roll or two. The ship moves at half Speed. Until your next turn, the TN to hit the ship becomes the result of your Pilot test plus the ships Maneuver score. You may subtract 15 from the TN to hit the ship in order to add a 90 degree turn at the end of the move.
+
+### Tactical Actions
+
+Every turn, each ship involved in combat may take Tactical Actions. If you have a Bridge Officer assigned to Tactical Actions, he is appropriately called the Tactical Officer. Tactical Actions often, but not always, use Ballistics.
+
+**Shoot Guns** - You can fire any number of your ship's weapons with this action. The targets must be within the weapon's Range and in an appropriate firing arc. Attacks are made with Ballistics against the opposing ship's Static Defense (usually 3x the Crew Quality plus the ship's Maneuver score).
+
+**Boarding Party** - Send a boarding party to try to take over the enemy ship. You must be within 1 VU of the target to send over boarding parties. This uses Weaponry or Brawling, and the crew being used are put somewhat at risk. You and the target make opposed Weaponry or Brawling tests, the target using a number of dice equal to their Crew Quality or their Tactical Officer's skill. If the test is successful, reduce the target's Crew by 2, plus one for every Raise. If the test fails, you lose half of the Crew that you used in the test.
+
+**Target Subsystem** - In order to use Target Subsystem, you must have made an Active Augury scan against the target already. You may target any console you have identified on the target ship. If you are able to hit the ship with a Ballistics test at `-1k0`, or win a Boarding Party test with two raises, that console is disabled until the target can make an Emergency Repair action against a TN of the damage done by your weapon or the result of the Boarding Party test.
+
+**Ramming Speed!** - A ship may make a Ramming Action if it ends its turn within 1 VU and facing its target, or it passes through the space of the target. Make an opposed Piloting test against the target, each modified by it's ship's Maneuver modifier. If the test succeeds, the target takes damage based on the Speed and Hull Class of the ship. The rolled dice are equal to the ship's Speed or it's kept dice, whichever is more. The kept dice are; 2 for Escorts, 3 for Destroyers, 4 for Cruisers, 5 for Battleships, 6 for space stations, 8 for asteroids, and 10 for moons or planets. This attack ignores shields. The Ramming ship suffers half of the rolled damage if it is hitting another ship, and full damage otherwise. Both ships roll on the Critical Chart at +0.
+
+---
+
+### Engineering Actions
+
+Every turn, each ship involved in combat may take Engineering Actions. If you have a bridge officer assigned to Engineering, they're called the Chief Engineer. Engineering Actions use Tech-Use.
+
+**Divert Power to Weapons** - When you divert power to weapons, you increase their damage potential at the cost of your defense and mobility. Your ship's Void Shields don't regenerate next turn and the only Maneuver Action you can take is to move at half Speed. Make a Tech-Use test against TN 15. On a success, each of your energy weapons deals `+1k0` damage on their next attack, plus `+1k0` for every two raises you get on that test.
+
+**Divert Power to Shields** - When you divert power to shields, you help regenerate them more quickly, at the cost of mobility and firepower. On your next turn, any energy weapons attacks you make are at `-1k0` to attack and damage and the only Maneuver Action you can take is to move at half Speed. Make a Tech-Use test against TN 15. On a success you regenerate your shields immediately. For every two raises you get on this test, regenerate an extra `1d10` points to your shields.
+
+**Divert Power to Engines** - Diverting power to your engines allows you to move more quickly, though you likely won't be doing more than just moving. On your next turn, your shields don't regenerate and any energy weapon attacks you make are at `-1k0` to attack and damage. Make a Tech-Use test against TN 15. Next turn, if you move at full speed, you move additional VU equal to half the ship's Speed. For every two raises you get on the test move an additional VU. This action cannot be used with the Adjust Speed action.
+
+**Divert Power to Deflector Dish** - When you divert power to the Deflector Dish, you're giving yourself a large bonus to Arcana tests at the expense of all other systems. On your next turn, your shields don't regenerate, any energy weapon attacks you make are at `-1k0` damage, and the only Maneuver Action you can take is to move at half Speed. Make a Tech-Use test at TN 15. You get `+1k0` to all your Arcana tests next round, plus `+1k0` for every two raises.
+
+**Emergency Repair** - Make a Tech-Use test. If you're just attempting to repair hull damage, you make a TN 15 Tech-Use test. If you succeed, the hull is repaired for `1k1` damage. every Raise on the test improves the damage healed by `+1k0`. This cannot repair more than half of the damage done to the hull since the ship's last turn. Some critical damage results will disable consoles or ship systems - the TN for the Emergency Repair tests to end the penalties for those is listed along with the effects. A ship can split crew among multiple Emergency Repair Actions each turn.
+
+### Command Actions
+
+Every turn, every ship may take one Command Action. Command Actions don't require the use of Crew. They rely entirely on tests from the Captain (or commanding officer, if the Captain is dead, in bed with a green-skinned woman-thing, etc.), usually using the Command skill.
+
+**Brace for Impact!** - Test `Charisma + Command` against TN 30. Reduce the TN of this Test by 5 for each point of Crew Quality. If this test succeeds, until your next turn, reduce Crew losses from critical damage by 1 to a minimum of 0.
+
+**Hail** - Talk to the other ship. This allows you to initiate social combat with the other ship's captain. If he's listening. Just be careful he doesn't decide to fire a few Las blasts if you piss him off enough.
+
+**Picard Speech** - A motivational speech can do a surprising amount to improve the work of an inexperienced crew. Make a `Fellowship + Command` Test against TN 10, adding 5 to the TN for each level of Crew Quality. If you succeed, your Crew Quality is increased by 1 for all other tests this round. You may make this test once per scene, twice a scene at Level 3, and three times a scene at Level 5.
+
+**Micromanage** - The Captain can sit on his staff and make them do what she wants. As long as she has at least one dot in the relevant skill (the skill being used for the test), she can make a `Composure + Command` test against TN 15 to give any one test a `+1k0` bonus.
+
+### Arcana Actions
+
+Each turn, a ship may take Arcana Actions. These actions utilize the most advanced systems on the ship, especially the spelljamming helm, void shields, and sensors. The officer in charge of Arcana is usually called the Chief Arcana Officer. A ship's Navigator is also part of this section, though typically they and the Chief Arcana Officer are not the same person for security reasons. Most Arcana Actions use, well, Arcana.
+
+**Active Augury** - You use the ship's sensors to scan the target. This is an Arcana Test against TN 10. A success tells you the target's hull strength, crew remaining, shield strength, or one console or weapon system on the ship. For every Raise, choose another option from that list.
+
+**Jam Communications** - Make an Arcana test. In order for the target to send out signals, they must first make an Arcana test that beats yours. This effect lasts until the start your next turn.
+
+**Triage** - Test Medicae against TN 15. On a success, one Crew lost to critical effects or a Boarding Party since your last turn is returned to duty. every Raise 'heals' one more lost Crew. The Triage action cannot recover more than half of the Crew lost since your last turn.
+
+### Fighter Craft
+
+Just as a ship is essentially a character writ large, fighters are minions. A ship with a Fighter Bay can launch fighters during combat.
+
+Devote a number of Crew to the fighters. This results in a fighter minion squad of twice that number of Crew, with a quality rating equal to the Crew Quality. Their **Static Defense** is 5 times their Crew Quality, and a base damage of 5. You may deploy or retrieve one fighter squadron per bay each turn. These squads can be used in attack or defense.
+
+When used to attack they attack using the normal minion rules, with no shield disruption and no critical bonuses. Their attack range is twice their Crew Quality in VU.
+
+On defense each squadron may prevent one Boarding Action, sacrifice one fighter to block a single weapon hit, or replace the ship's Static Defense with an opposed roll against an enemy fighter squadron.
+
+---
+
+### Attacks and Damage
+
+**Step One: Fire Everything** - When a ship makes a Shooting action, they can fire any number of its mounted weapons. Weapons broadly fall into two categories - **Lance** and **Array** weapons (as well as a few specialized weapons like Torpedoes with their own rules). The difference between Lance and Array weapons is quite simple - Lance weapons must be fired by themselves, whereas Array weapons can be linked together. For the most part, the main savings of Array weapons is in manpower. Every shot from a starship requires its own allocation of crew - if a ship has three Lance weapons it wishes to fire, and the Captain wants four dice rolled on every shot, that requires twelve dice total from the pool generated by the Crew. As long as Array weapons are firing at the same target (which must be within the range of all the involved weapons), their firing controls can be linked - effectively, they may all be fired with the same test. Resolve the damage from each hit separately, but if the attack hits, all the linked attacks hit, and if the attack misses, they all miss.
+
+**Step Two: Hitting Things With Lasers** - The TN to hit a ship is usually three times the ship's Crew Quality, plus the ships maneuverability. This can be increased by some actions, consoles, and feats.
+
+**Step Three: Shields Up** - If the target's Shields are still up, the damage from the attack goes to the shields. At the beginning of each ship's turn, they regenerate damage to their shields equal to their Shield system's Regeneration statistic. This regeneration is reduced by the Disruption of each weapon that hit the shields since that ship's last turn.
+
+**Step Four: Cracking Some Bulkheads** - If Shields have gone down, the attack instead goes right to the hull. The ship's hull strength is reduced by the damage done to it. With each hit to the hull, roll on the Ship Critical Damage chart, adding the weapon's Critical rating to the rolled number. Apply the effect to the target ship.
+
+**Step Five: The Results Of Damage** - If a ship's shield strength is reduced all the way to Zero or lower, the Shields have collapsed. Collapsed shields cannot be regenerated during combat. If a ship's Hull Strength is reduced to zero, it explodes, with the loss of all hands (aside from anyone who managed to get to an escape pod).
+
+---
+
+### Spelljammer Critical Chart
+
+Roll `1d10` and add the weapon's Critical rating.
+
+| Roll | Result                                                                                                                                                                                                                                                             |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <1   | **Armor Scuffing:** The hit could have been far worse. The armor plating is seriously scraped and people were knocked around a bit, but the ship is otherwise unaffected.                                                                                          |
+| 1    | **Minor Damage:** The attacker chooses one console on the target. It is disabled until emergency repairs (TN 15) have been made to it.                                                                                                                             |
+| 2    | **Power Surge:** Power conduits explode, causing showers of sparks and people to fall over dramatically. If only surge protectors existed in the grim darkness of the far future! Target loses 1 Crew.                                                             |
+| 3    | **Sensors Damaged:** Until emergency repairs are made (TN 15), the ship's sensors are at -20.                                                                                                                                                                      |
+| 4    | **Venting Plasma:** The ship vents hot plasma from its main drive. No Divert Power tests can be made and the hull takes 1 point of damage at the end of each of its turns until emergency repairs (TN 15) are made.                                                |
+| 5    | **Bridge Rattled:** A stray shot crashes into the ceiling of the bridge. Until emergency repairs (TN 15) are made, no Command Actions can be made. Target loses 1 Crew.                                                                                            |
+| 6    | **Thrusters Damaged:** The ship's thrusters are damaged. Until the thrusters are repaired (TN 20), the Pilot cannot attempt Adjust Heading or Evasive Manoeuvers.                                                                                                  |
+| 7    | **Hull Cracked:** A weak point on the hull cracks open. The ship loses an additional 1d10 points of Hull Integrity. Target loses 2 Crew.                                                                                                                           |
+| 8    | **Radiation Leak:** A massive radiation leak contaminates the ship. Until it is repaired (TN 20) the ship loses 1 Crew at the end of each round.                                                                                                                   |
+| 9    | **Weapons Offline:** The shot destroys the power relays to the ship's weapons. Until the relays are repaired (TN 20), the ship cannot fire its weapons.                                                                                                            |
+| 10   | **System Failure:** The attacker chooses one console on the target. It is disabled until emergency repairs (TN 25) have been made to it. Target loses 2 Crew.                                                                                                      |
+| 11   | **Hull Breached:** The hull bursts under the stress of the attack. 1d10 crew are lost, and additional rolls on the crit chart are made at +2 until the breach is repaired (requiring two separate TN 15 tests).                                                    |
+| 12   | **Engines Crippled:** The ship's engines are slagged. It's set adrift, and it cannot take any Manoeuver Actions until the engines are repaired (requiring two separate TN 20 tests). Instead of making Manoeuver Actions, the ship travels forwards at half speed. |
+| 13+  | **Secondary Explosion:** The ship loses an extra 1d10 points of hull integrity and loses 1d10 crew. Roll again on the Crit Table. The weapon's Critical stat applies to this extra roll.                                                                           |
+
+---
+
+### Surface Bombardment
+
+By turning their massive lances and arrays of smaller weapons on a planet and unleashing a storm of steel, fire, and death, a ship can perform a Surface Bombardment. Unspeakably devastating, a single ship can lay waste to entire armies or cities, and a battle group of ships working in concert can turn vast reaches of a world to ash.
+
+Calling in a Bombardment requires a spelljammer to enter a dangerously low orbit and hold steady over its target. Unless the ship is equipped to travel in an atmosphere, the ship must assign Crew and make a Maneuver Test (TN 25) to safely enter the required low orbit. Failure by more than one Check requires a second Test to avoid performing an emergency lithobraking maneuver.
+
+The next part of a Bombardment is the actual shooting. The TN to hit a planetary object is 25. A ship cannot aim at anything smaller than a city block, a group of vehicles, or general area around that size. The Captain will assign the gunnery Crew and choose whether to present the ship's bow, stern, or sides to the planet for determining which weapons can be fired. If the shooting test fails, that shot is still going somewhere. The shot scatters in a random direction by `1k2` km, `+1k0` for every check on the failed test.
+
+**Lance Weapons:** Lance weapons are the weapons most suitable for orbital bombardment of hardened targets. Anything in the crater area is annihilated. The blast wave then does the listed damage out to the listed radius. For every increment of blast radius the damage is halved. Due to the massive shockwave and flying debris, void shields provide no protection against the blast.
+
+**Array Weapons:** Array weapons are excellent for area saturation attacks. Unlike Lance weapons, there is no single point of annihilation, but a series of arrays can be linked to spread more damage across a larger area. Add up the orbital strike radius, damage, and armor penetration of all the linked weapons in the array. For example, an attack from four linked light positron beam arrays produces `10k9`, penetration 16, devastation across an area almost 2.5 km across.
+
+**Torpedoes:** Torpedoes are the best weapons to use in an orbital bombardment, if somewhat expensive. They may be used in direct ground strikes like lance weapons, or set to detonate above the target in an air-burst that can flatten a whole city like an array strike.
+
+### Surface Bombardment with Torpedoes
+
+| Torpedo Type         | Crater Diameter | Ground Burst Blast Radius | Ground Burst Damage | Air Burst Radius | Air Burst Damage |
+| -------------------- | --------------- | ------------------------- | ------------------- | ---------------- | ---------------- |
+| Mini                 | 100m            | 200m                      | 10k10+15            | 600m             | 8k8, pen 8       |
+| Quath                | 200m            | 400m                      | 10k10+15            | 1200m            | 8k8, pen 16      |
+| Monopole             | 300m            | 600m                      | 10k10+30            | 1800m            | 10k9, pen 20     |
+| Photon/Cruise/Homing | 300m            | 600m                      | 10k10+60            | 1800m            | 10k10+15, pen 12 |
+| Rift                 | 800m            | 1600m                     | 10k10+100           | 4800m            | 10k10+45, pen 16 |
+
+---
+
+### Silent Running
+
+A ship may attempt to avoid notice by going on silent running, shutting down non-essential systems and attempting to slip past its opposition. When on silent running, a ship makes Maneuver Actions as normal, except the spelljammer's Speed value is halved, and the difficulty of all ship tests is increased by 10. A failure on any Maneuver Action reveals the ship's location to anyone with working sensors. The only Arcana Action the ship may take is to maintain Silent Running, requiring an Arcana test any time the ship changes direction or the enemy scans the area. The result of this test becomes the difficulty to detect it with Active Augury. If the ship fires its weapons, it is immediately detected.
+
+### Repairs and Resupply
+
+There's only so much you can do with the limited supplies aboard a ship. Eventually you end up with damage that simply can't be repaired, empty supply vaults, and a morgue full of dead crewmen who need to be buried. Thankfully, this is where having the Wealth, Backing, or Followers background comes in. Each has its own benefits and drawbacks.
+
+**Wealth** is perhaps the easiest of the three required backgrounds for Holdings. The character can simply use their own personal wealth to finance things. Each week while they're in port, the Captain may choose to repair `1d10` Hull Integrity or recover (read: replace) one Crew. The Captain cannot make requisition tests while funding the repair efforts for his ship. Ammunition, fuel, and food takes one week to be refueled and take on supplies. Torpedoes must be resupplied with Wealth tests, though as the Captain is already expected to have money it may be a bit easier for them than another background.
+
+**Backing** means that you're part of an organization, and so it can be either easier or more difficult to get the things you need. Unless you're in a port with a base of operations for your source of backing, you're stuck waiting for permission and wired funds. This takes `1d10` weeks for the paperwork to go through. Generally, as long as the ship is being used for purposes that suit the organization, the funding will be approved. However, if the organization does not approve of the ship's mission, then the Captain is going to have to pull some strings. After getting approved for sanctioned funding, the ship is able to be repaired at `1d10` Hull Integrity and 1 Crew per week. If not approved, the ship is repaired at `1d10` Hull Integrity or 1 Crew for every two weeks spent in port as the Captain contacts friends within the organization and they divert what help they can.
+
+As long as it's in a friendly port, Backing can resupply you quickly and easily. Fuel and food take only a week to be supplied, and Torpedoes take a number of weeks equal to the cost of the Torpedo (minimum 1 - all torpedoes with a cost of 1 are resupplied after one week, all those with a cost of 2 after the second, and so forth). However, outside of a friendly port a ship running on Backing cannot resupply Torpedoes except with Wealth tests.
+
+**Followers** can be difficult to work with. While followers are faultlessly loyal, they can't contribute vast sums of wealth to maintain a ship, though they serve well as crew. The Captain can, however, motivate them to make repairs and use manpower where money doesn't exist. For every week spent in port, the ship recovers an amount of Hull Integrity equal to the Craft skill of the Chief Engineering Officer, and 1 Crew is recruited from the local population.
+
+Followers do a bit better at finding food and fuel. It takes `1d10` weeks for Followers to scavenge and otherwise acquire food and fuel for the ship, bartering work and taking donations. Torpedoes, however, are rarely things one can just find lying around. Torpedoes must be resupplied with Acquisition tests.
+
+### Extended Repairs
+
+When you can't get to a real port, sometimes the best you can do is make Extended Repairs. These function like Emergency Repairs, but they're a bit slower and more permanent. Where Emergency Repairs is mostly bodging stuff together to keep everyone alive right now, Extended Repairs is the slower job of replacing broken components and cracked hull plating.
+
+A ship can make one Extended Repair test with the supplies it has on board. To make the test, the ship must first find suitable anchorage. High orbit around a gas giant, hidden inside an asteroid field, perhaps even landing on a planet if the ship is equipped to do so. The Captain decides how many Crew to assign to repairs, they will be unavailable for any other duties until the repairs are completed. After a month or two the repair crew makes a TN 25 Tech-Use Engineering Action. If the test is failed, the damage is simply too much and repairs have failed. On a success `2k1` points of the ship's Hull Integrity is restored and all critical effects are repaired. For each raise on the test you can restore an additional console or repair an additional `1d5` Hull.
+
+### Getting More Consoles/Weapons
+
+It's actually a fairly simple matter to get Consoles and Weapons for a Spelljammer. The first step, naturally, is to go where they're being sold. Outside of a port with a shipyard, it's extremely unlikely one can find any equipment for a spelljamming ship (SM's discretion), and completely impossible to install anything.
+
+With a suitable port, characters can make normal Wealth tests to find components for a ship. The TN of these tests is 15, plus the BP of the component. After the purchase, it takes one day per BP to have it transferred and installed.
+
+The resale value of components is indescribably terrible, sad, and painful. It's zero.
+
+---
+
+## Warp Travel
+
+A ship needs three things to travel the Warp. The first is a spelljamming engine or helm, which allows the ship to enter and move in the tides of raw energy and primordial matter of the Warp. The second thing is a Geller Field, which keeps the Warp's psychic power from destroying the minds of the crew and prevents Daemons from entering the ship. The third is a Navigator. Without a Navigator, a ship flies blind in the warp. Only a character with at least one dot in Divination magic may be a ship's Navigator. If there is no qualified Bridge Officer character, the Navigator is assumed to have a rating equal to the Ship's Crew Quality in any relevant skills and characteristics. Navigating the Warp is broken down into four steps.
+
+- **Step One:** Opening a Portal into the Warp
+- **Step Two:** Charting the Course
+- **Step Three:** Steering the Vessel
+- **Step Four:** Leaving the Warp
+
+### Step Zero: Leaving the Crystal Sphere
+
+A ship's Spelljamming Helm allows it to enter the Warp at any point in space outside of a Crystal Sphere. So the first thing you're doing is going to the edge of the sphere and getting out. Natural openings can be found (if they exist) with an Active Augury crew action plus the ship's sensors against TN 20. You get +10 on the roll if you possess a map of the Crystal Sphere that shows such openings (or if you entered through such an opening and it hasn't closed). Transmitting navigation beacons and active Syrneth Crystal Sphere Portal Stations are automatically located by even the most basic sensors. For random dice rolling purposes they are often about 500 VU away (`1d100+50` times 5). Once at the edge of the Crystal Sphere, if there isn't an existing portal, you can open your own portal by adjusting your shields to emit a field that disrupts the shell of the Crystal Sphere instead of protecting the ship. This takes an Arcana Action at TN 25. Add +5 per mark of your shields, but such things as warp vortexes, astral rifts, manifest daemons, and impeded magic flows add to the difficulty. On a success the opening in the Crystal Sphere will stay open for `1d5` hours +/- (Captain's choice) an hour for each raise on the test. Failure by 2 or more checks means that the portal will open but it is unstable and may close at any time. The remaining crew (the augury crew are still trying to keep the hole from closing on you) make a Maneuver Action, modified by the ship's acceleration, against TN 20 to get through. Failing this test means that the Crystal Sphere edge collapses into your ship doing `8k6` hull damage, and `2d5` critical damage rolls at +3 each. If you survive and wish to try again you will need to move at least 100 VU away from your last attempt or wait 10 to 20 hours, in order to minimize the disruptive instability.
+
+### Step One: Opening a Portal into the Warp
+
+Assuming that you've made it out of the Crystal Sphere and into Astral Space, you will need to turn on your Geller Field and open a portal into the Warp. If there is a working Syrneth Warp Relay available you should use it, otherwise your Navigator will make an `Arcana + Intelligence` test at TN 15, `+2k0` for using an Ancient Spelljamming Helm console, and the target number will be higher if you're in a Sargasso or there is Modron activity within a few light years. Failure will tax the Navigator to the tune of `1d10` levels of Fatigue. Bleeding out of the nose and ears is normal and your Navigator will recover without permanent damage. Succeed and the portal will engulf nearby space, including your ship, and you will be in the Warp. If your Geller Field wasn't turned on then you're going to die at this point.
+
+---
+
+### Voyage Time and Difficulty
+
+| TN  | Duration      | Example Voyage                                  |
+| --- | ------------- | ----------------------------------------------- |
+| 5   | 1d10+5 days   | Nearby, next door, less than half a sector away |
+| 10  | 1d10 weeks    | Almost nearby, the other side of the sector     |
+| 15  | 1d10+5 weeks  | The near side of the next sector                |
+| 20  | 2d5 months    | Somewhere in the next sector                    |
+| 30  | 1d10+5 months | Skipping past the next sector                   |
+| 40  | 1d5 years     | More than half way across explored space        |
+
+### Step Two: Charting the Course
+
+The Navigator must now chart a course through the Warp, using Sigil and any nearby Syrneth Warp beacons as navigational aids. The Navigator rolls `Divination + Wisdom` against TN 20. The roll is modified by the ship's sensors, and you get raises for; possession of a Syrneth route map, starting from a Syrneth Warp Relay, going to Sigil, and going somewhere with a working Syrneth Warp Relay. You take `-2k0` on the roll for going where nobody has ever gone before. For every two raises that you succeed by you get an additional `+1k0` on the rolls in Step 3. If you've failed the navigation roll you take a `-3k0` penalty on the rolls in Step 3.
+
+### Step Three: Steering the Vessel
+
+Someone has to be in charge of steering the ship through the Warp. Your best pilot makes a `Piloting + Wisdom` roll, adjusted for the ship's acceleration, against a target number from the Voyage Time and Difficulty table. Additional `+1k0`s come from using a Syrneth route map or being part of a convoy. `-1k0`s come from passing near warp vortexes, reality rifts, Sargasso, daemon spawn, nebula, and not having someone else to take the helm while the pilot gets some sleep once in a while. For every two raises on a successful roll you reduce the time that the trip takes by one step on the table, to a minimum of `1d10+5` days. Each time you fail the piloting roll you roll on the Warp Encounters chart at a cumulative +1, have to make another piloting Test at a cumulative `-1k0` penalty, and the time that the trip takes is increased by one step. Time increases beyond the `1d5` years simply add another year for each increase. Either way, at the end of your trip roll once on the Warp Encounters chart with whatever total horribleness you've accumulated along the way.
+
+### Step Four: Leaving the Warp
+
+Once you get where you're going it's time to leave the Warp. If there is a working Syrneth Warp Relay available you should use it, since that is the safest option. Otherwise your Navigator will make an `Arcana + Intelligence` test at TN 15, `+1k0` for using an Ancient Spelljamming Helm console, and the TN will be higher if you're in a Sargasso or there is Modron activity within a few light years. Failure will drop you out of the Warp dangerously close to another object, probably flying right at it if you get a check on the roll. Get two or more checks and you're trapped in the Warp. Your Navigator takes warp energy damage to the head with rolled dice equal to the number of checks and half (rounded up) that many kept dice (no armor or aura), and `1d10` Fatigue. Try again. If you're stuck there for more than a couple hours roll another Warp encounter and keep rolling every `2d10` hours after that.
+
+### Warp Encounters
+
+| Roll | Result                                                                                                                                                                                                                                                                            |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| < 3  | **No Encounters.** A nice boring trip.                                                                                                                                                                                                                                            |
+| 3-4  | **Whispers, Dreams & Hallucinations.** Everyone wandering around with only a single dot in Willpower or Composure will have to test Fear(1).                                                                                                                                      |
+| 5    | **Visitations.** Ghosts, shades, and other nuisances haunt the ship. Some of them might not be bad, others may drink all the beer. Roll a d10, on a 8+ you get to deal with an actual hostile Ghost or 2d10.                                                                      |
+| 6    | **Do the Time Warp Again.** The time the trip takes changes. It's 50/50 if it ship time or universe time, and 50/50 if the time increases or decreases. Warp time by two steps on the Voyage Time Table.                                                                          |
+| 7    | **Reality Erosion.** Corridors don't lead to the usual places, gravity is unstable, and your keys are gone. It's possible to even swap some pieces of the ship with other ships in the Warp, which could be bad if that other ship is a wrecked space hulk infested with Daemons. |
+| 8    | **Ghost Ships.** A space hulk, pirates, giant monsters, flying daemon palaces, who knows? There's something strange out there at the edge of your sensor range, and if you don't do anything it will get the drop on you.                                                         |
+| 9    | **Minor Incursion.** A Lesser Daemon has slipped on board. Wicked and cunning, it will haunt the dark corners of the ship preying on the crew. You should probably hunt it down and kill it.                                                                                      |
+| 10   | **Warp Storm.** A terrible storm in the Warp messes it all up. Re-roll your navigation and piloting Tests without any bonuses from maps, portals, or anything else.                                                                                                               |
+| 11   | **Major Incursion.** A blip in the Geller Field let a Greater Daemon slip aboard or possess someone. If it's a possession then it's probably the Navigator, but possibly the pilot or Captain. Things are going to get ugly, fast.                                                |
+| 12+  | **Geller Field Failure.** The Geller Field is failing (a bad thing) and there's a bunch of dead engineering crew. Get down there, wipe the guts off the consoles, and try to make repairs while random daemons spawn all over the ship.                                           |
+
+---
+
+## VIDEO
+
+"Admiral on the bridge!" An ensign yelled, as Cain stepped onboard.
+"That was excellent work with the Teleportarium, Magos," Cain said. The techpriest nodded.
+"But you said it would take days-"
+"A deception, Sulla," Cain replied. "Never tell your enemy your true status over an open comm line. Everyone to battle stations." He nodded to the main pict viewer.
+"Tactical."
+"She can still outrun us and outgun us," Magos Scott said. "But there is the Momotaros Nebula."
+"Can we make it inside?" Cain asked.
+"The plasma relays are lit up like a christmas tree. Do not strain the great machine too strenuously."
+"No promises, Magos."
+"Trouble with the Nebula, sir," Sulla said. "Is that the static discharge and gas will cloud the tactical display. Visual won't function and shields will be useless."
+"Sauce for the goose," Inquisitor Vail said. "The odds will be even."
+"There she is!" Czarro crowed, pointing at the Imperious on the pict viewer.
+"There she is! Ah! Not so wounded as we were led to believe. So much the better."
+"Estimating nebula penetration in 126 microts. The Reliable is closing."
+"Why are we slowing?"
+"We can't follow them into the nebula, sir. Our shields would be useless!"
+"They are reducing speed."
+"Patch me in." Cain stood up. "This is Admiral Cain. We tried it once your way,
+Czarro. Are you game for a rematch? Czarro - I'm laughing at the superior intellect."
+"Full power."
+"No sir! You have Bjork! You can have anything you-" Czarro grabbed the man,
+dragging him like a doll.
+"Full power, damn you!"
+
+---
+
+> **Design Note:** These are not all the possible hulls. The SM should come up with special purpose ships of their own.
+
+> **Design Note:** Spreadsheets with logarithms were involved in trying to make some of the weapons less useless and others less of an 'always best choice'.
+
+> **Clarification:** You can think of the way the weapons are mounted as similar to the big turrets on WWII battleships. The front turrets could fire forwards and to the sides, the aft turrets could fire behind and to the sides. The biggest difference is that some weapons are too big to fit in a turret.
+
+> **Clarification:** Being on the ground 150 to 850 meters from the impact point of a heavy melta cannon orbital strike is extremely dangerous — the blast wave will inflict significant damage at those distances.
+
+The orbital bombardment effects of torpedoes are detailed.
+
+> **Clarification:** The Teleportarium functions like Star Trek transporters, with all the issues and problems those entail. The SM should decide how fast they are and any difficulties in how they are used. Suggested timing: about 30 seconds from a cold start to warm up, then another 30 seconds to get a reasonable lock on each end point (with zero time taken beaming into or out of the teleportarium room). The time can be reduced by keeping the system warmed up or doing pre-targeting scanning. Potential problems from leaving them running hot all the time or using them in the Warp are left to the SM.
+
+> **Design Note:** Despite how useful the Diplomatic Quarters and Library Computer are, they're cheap because they're amenities that most crews appreciate but many player groups will skip in favor of combat systems.
+
+Landing and assault shuttle stats are provided in the appendix.
+
+For Murder Servitor stats, see Combat Servitors in.
+
+> **Clarification:** Extra torpedoes stored in Cargo Bays cannot be loaded into tubes fast enough to matter during combat, but the ship does have a place to carry spare torpedoes, camp followers, heavy artillery, or actual cargo for trading.
+
+> **Clarification:** If a ship is not moving or not being piloted, it automatically gets hit by anything that targets it.
+
+> **Clarification:** There is only one Captain and one Helm Officer. You don't usually need more than one Chief Gunnery Officer or Head Arcana Officer either. However, you can have multiple officers leading different boarding parties on different enemy ships, a Chief Medical Officer doing battle triage, and a couple of flight officers leading fighter squadrons on different missions.
+
+> **Clarification:** It is typically assumed that the Tactical Officer whose skill is being used accompanies the boarding party, and makes it back unless something really unusual happens. That means the officer would be unavailable for the Shoot Guns action, any other boarding parties, or to repel boarders during that turn.
+
+> **Clarification:** Regarding multiphasic shields and shield regeneration: each layer must regenerate separately, and multiphasic shields only "go down" when all layers are down at the same time. Having each layer go down on its own would make the shields far too weak.
+
+> **Clarification:** A Rift Torpedo's ground burst covers a circle approximately 10 km in diameter.
+
+> **Design Note:** Considerable math went into the warp travel numbers. The target was a level of danger where average crews could make standard shipping trips across well-mapped routes, where poor crews in junk ships could risk it and not always succeed, and where it takes an elite crew to successfully make very long voyages.

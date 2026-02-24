@@ -1,0 +1,249 @@
+---
+title: "Chapter XVI: The Story Master"
+book: 1
+chapter: 16
+order: 16
+type: "chapter"
+---
+# Chapter XVI: The Story Master
+
+This chapter offers guidance for you to share stories about grand Heroes molding the fate of the Great Wheel and provides advice for running a game of DUNGEONS THE DRAGONING. You will learn the practicalities of running a DUNGEONS THE DRAGONING game, how to create your own campaign and how to simplify bookkeeping.
+You will also find some rules for character advancement and tips on the tone and themes of the game. Take what you need, ignore what you don't, and run the best damn DUNGEONS THE DRAGONING game you and your players can come up with.
+
+## Getting Started
+
+As Story Master, your first goal is to focus the options for the DUNGEONS THE DRAGONING game. You need to create some general parameters for your game, and the players need to do the same for potential characters. Next, you need to figure out the style of game you're trying to run and where it will occur in the Great Wheel. Finally, you need to work with your players so they can figure out how their characters interact with your campaign.
+
+### Initial Questions
+
+Before you begin a DUNGEONS THE DRAGONING campaign, you and your players need to answer some basic questions about the characters, the setting and the rules.
+Story Masters need to figure out the following:
+
+- Are there any elements of the setting that you want to explicitly avoid? Will you need to change or ignore any of the rules before you play?
+- Who are the direct antagonists and recurring characters the Heroes will encounter throughout the campaign? With what allies do the heroes begin, or what aid can they initially procure? How far across the Wheel do you expect the game to span?
+- Where are the characters from?
+  How did they arrive at the game's starting location? How do they know one another?
+- What areas of knowledge and expertise does each character bring to the party?
+  Are there any hooks characters should possess or avoid? Should the characters have vastly different capabilities, or is it okay to overlap?
+- Should the characters form a balanced party with healing, skills, fighting, and magic? Can they possess similar Backgrounds such as belonging to the same organization or matching artifact armor?
+
+Use these questions to get started. If you like to plan ahead, come up with useful questions of your own for current or future games.
+
+### Changing the Rules
+
+You are in complete control of your game and can change any rule you want, at any time, for any reason. However, DUNGEONS THE DRAGONING rules often interlock with others, so be sure you understand what the rule affects before making changes.
+Players who find their spells and special attacks invalidated by your changes can become frustrated, particularly if they discover this during play. Be flexible in each case, and always apply the rules consistently.
+
+### Keeping Characters Unique
+
+It's okay if characters have similar Characteristics and Skills or have the same race or Exaltation. If players have character ideas that overlap, have them work together to make sure their concepts aren't too similar. As long as nobody feels her character is overshadowed by another (whether by numbers on a sheet or involvement in the story), each should be able to fill her own niche. Character choices are broad and customizable enough that no two characters need be alike.
+
+## Themes in Dungeons the Dragoning
+
+The universe of the Great Wheel, and the DUNGEONS THE DRAGONING game which resides within it, are different from any other science fiction setting. To better evoke this universe and weave its flavour and colour into his games, the Story Master should become familiar with its key themes.
+Being able to add these themes to a game will help to make it undeniably set within the realms of the Great Wheel, and by extension,
+help the players to better sink into the roles of their characters.
+
+### The Ancient and the Forgotten
+
+The Great Wheel's standard calendar runs from the disappearance of the Syrne over 40,000 years ago. There is an incredible depth of time, tens of millennia, ages of galactic history that lie forgotten and lost, either destroyed in war or simply forgotten over time.
+The Great wheel is filled with mysticism, fear,
+and superstition, and people survive huddled together away from the darkest parts of the universe. Crystal Spheres lie unexplored, Syrneth ruins dot the stars, and the golden age of the galaxy is long past.
+
+### Into the Unknown
+
+Every hero has their quest, goals for their gods or their avarice or their own personal moral values. These quests drive them to become prolific explorers, some of the few in the Great Wheel willing to take on the dangerous task of charting pathways into Crystal Spheres and breaking the ancient laws to open new paths on the Portal network. Such is the vast scope of the Galaxy that entire empires of aliens, lost worlds, and never-before-seen celestial phenomena have all been found hidden
+within the folds of the known stars or on their edges.
+
+### Points of Light
+
+Civilization is not the norm in the Great Wheel. Most of the galaxy is unexplored wilderness and the centers of civilization are few and far between. There are great empires and powerful worlds, but the void and the unknown dangers in it separate them by huge gulfs of time and space. Anything could be lurking off the beaten path, and any journey carries with it the inherent dangers of Warp Travel. Almost anything could happen to a world without anyone noticing for a long time.
+
+### One Minute to Midnight
+
+The galaxy is tottering on the brink of ruin and disaster. There are enemies around every corner, from daemons to the ancient nightmare automatons of the modrons to the vile aliens that lurk in the shadows. Across the Great Wheel, there is a constant struggle to survive. Doom fills the air, and the end is nigh.
+
+## Game Styles
+
+There is no one true way to play DUNGEONS THE DRAGONING, but there are basic assumptions many players bring to the table. if you need inspiration, or if your players want to try something different,
+use these style summaries for ideas. Each includes a 'focus' a general recommendation for building characters to suit that style.
+
+### "Vanilla" Dungeons the Dragoning
+
+The most obvious DUNGEONS THE DRAGONING game involves the Heroes returning to the world, confronting their enemies, establishing a power base, conquering the surrounding regions and becoming god-kings. Their grand conflict could involve drawing a line in the sand and fighting anyone who dares cross it. It could mean working behind the scenes to spy and assassinate. It could even mean actively seeking to bring down the Factions, either from within or without.
+The players' characters eventually end up calling the shots in their own empire carved in the stars, defending their people and the Great Wheel from all who oppose them. This style can emphasize rebuilding and restoration of society from the tragic mess of things made by the Factions, or it could focus solely on the long, hard road to seizing Sigil itself.
+Focus: No change.
+By Your Powers Combined DUNGEONS THE DRAGONING is usually over-the-top, but this style cranks it to eleven and pours enough excess over it
+that
+Slaanesh would be pleased.
+This game might involve Heroes with color-coded
+powered armor riding drop pods down into a hot battle zone where they fight hundreds of enemies then return home to be embroiled in melodramatic, soap-opera relationships
+with Story Master characters (or each other).
+The players' characters may sport Lascannons, Null Rays, and the ability to call down orbital strikes upon their enemies. Powerful individuals and organizations will have complicated, intricate plots that might inadvertently destroy the world.
+This style of game harks back to how the Wheel looked back when the Syrne were in charge, the golden age of the galaxy, but it can be really fun if you're going for a more extreme vibe. Be sure to throw in a vengeful Dragon Empire, an enraged behemoth that is slowly eating Crystal Spheres, and mysterious dead ship floating between the stars made of some terrible living metal.
+Focus: Artifact Background.
+Outlander Perhaps the known Crystal Spheres don't interest you much at all. Whether the call of the stars has lured the characters to a life of searching out lost treasure or simply exploring to see what lies at the second star on the right,
+there are alien ways of living and surviving in the stars that might appeal to the Heroes. An Outlander game brings the character in close contact with these foreign elements, letting them boldly go where no man has gone before.
+The Story Master should concentrate on the differences between the new expanses the players are exploring and the familiar places they come from, highlighting the peculiar denizens and the strange logic by which they operate. Remember that the Heroes are powerful on a large scale, so even in these alien worlds they represent a force to be reckoned with - don't make them the smallest fish in a very big pond.
+Focus: Lore skills.
+The Clans Similar to a standard game of DUNGEONS THE DRAGONING, this style of game focuses more on a single common background. Each character belongs to the same race or has the same Exaltation, allowing them to focus on the internal politics of that group.
+This style of game can encompass smaller and more focused problems, and typically allows characters to come together and focus because of their shared background. They might be seen as heroic special agents of their government, a special team of experts, or members of the same vampire clan or werewolf tribe. By having one element be the same for all characters,
+it gives everyone common ground to work from.
+Focus: Social Backgrounds, Differing skillsets.
+
+### Miscellany
+
+There are many other game styles you can apply to your DUNGEONS THE DRAGONING game. Here are a few more suggestions:
+Bolter and Chainsword with Daiklave is a lighthearted, goofy take on the DUNGEONS THE DRAGONING setting. Perhaps the characters are all teenagers in a Sigil academy or must prove their worth to be a ruler by finding the Lady of Pain a date for an exclusive ball. This style doesn't take much of anything seriously and is mostly played for the lulz.
+Invasion! presents your standard DUNGEONS THE DRAGONING game with a massive influx of otherworldly beings bent upon conquering, enslaving, or destroying the Great Wheel. The characters attempt to fight, delay, or flee from the seemingly unstoppable enemy, be they Daemons, the armies of the Modrons, terrible beings from beyond the stars, aliens from a newly-opened Crystal Sphere, angry ghosts, or anything else.
+
+Perhaps the characters can stop the invasion with some form of Syrneth superweapon after finding allies among those who would normally seek to destroy them.
+The Hero Who Came in from the Cold assumes a game of intrigue and espionage, perhaps with the characters working for one of the Factions, a powerful Rogue Trader,
+a particularly important government, or even a god. The characters won't always know who to trust, but they must rely on brains, skills,
+and cunning to survive rather than their combat capabilities.
+**Sorcery & Sorcery** is similar to a standard DUNGEONS THE DRAGONING game, except every character plays a sorcerer.
+Should the players wish to emphasize this aspect, the game can take on a life of its own as the Story Master plays to their sorcerous ambitions.
+**Walk the Earth** is perhaps the simplest form of game, for it follows the characters as they wander around the Wheel with no overriding purpose beyond a desire to see the universe and have unique escapades in new places. This style of game is a DUNGEONS THE DRAGONING travelogue, allowing Story Masters to alter the Wheel as they see fit to share cool, standalone stories set in a personalized backdrop.
+
+## Forming a Party
+
+There are many reasons why a group of Heroes might form a party. Some of the most common are these:
+
+### The Enemy of My Enemy
+
+The easiest way for characters to encounter one another is when they're working against a common menace. They might be on the run from some terribly powerful evil, or they may simply be out to take down the same dark overlord or oppressive tyrant. Characters can come from almost anywhere in the Great Wheel, and even if they don't necessarily know each other, by the end of the first adventure they should decide to stick together for their own safety, at least for the time being.
+
+### The Gods Will It
+
+If the characters have similar alignments, they may have been thrust together by the will of the gods themselves. The Ruinous Powers, the Blessed Pantheon, and the Grey Council can all exert an otherworldly impetus to unite the characters. If this pull is not subtle, the Heroes might receive prophetic dreams full of places they have never been. The Heroes travel to find one another, for their visions clearly indicate the importance of the other characters to the accomplishment of their divine task. This backdrop works well in a game with an emphasis on the more mystic elements of the setting.
+
+### Supernatural Conspiracy
+
+There is no shortage of people looking to improve their position, and naive Heroes can make perfect tools if properly controlled.
+At least, that's how the ambitious and the arrogant view it, be they one of the Factions of Sigil, a collection of daemons, an ambitious government, a cunning Pirate Prince or any number of supernatural movers and shakers.
+While the characters begin the game serving a power they are told is greater than their own,
+they should have many opportunities to disabuse their controllers of this notion.
+
+### Beyond the Call to Action
+
+The characters knew one another before they became Exalted. Perhaps they were all close friends. Whatever their backgrounds,
+they are now Heroes who stick together because of their previous connections. The implications of so close a group all ascending to become Exalted at the same time could easily become a major plot point.
+
+## Running the Game
+
+DUNGEONS THE DRAGONING is unlike a lot of roleplaying games when it comes to the level of control provided to the players. This can be daunting to even the most experienced Story Masters, to say nothing of those running a roleplaying game for the first time. The important thing for both you and the players to realize is that the characters control the direction of the game. While they regularly react to circumstances you provide them, you will just as often be the one improvising a response to what they are doing.
+
+### The Prelude
+
+You might want to run a short session called a prelude as the players get a feel for their characters' personalities. We recommend you do this with each player individually before the first session. A prelude should be a short session focused more on roleplaying and involve few, if any, dice rolls. They provide a way to explore a character outside of the normal pressures of the game. These minisessions are also useful for deciding exactly what characters do during their downtime and as something to do if not everyone can show up for a full session.
+
+### The First Session
+
+The first session of the campaign introduces your players to the game. Do everything you can to start it with a bang. Instead of the characters meeting in a dive onboard some space station before leaving to search through some ancient ruins for an artifact,
+have them start the game with the artifact in hand, escaping from the collapsing ancient ruins and being chased by beastmen hordes,
+then end it with a relaxing tavern visit.
+Think of the opening to a James Bond movie - you see the action-packed culmination of an exciting adventure that seems unrelated to what comes next, but later on ties into the plot. Aim for this by setting an over-the-top scene and asking your players to describe exactly how they got into this predicament. Cut them some slack and let them get creative, because you can tie that into the ongoing campaign later.
+If this is your first time running DUNGEONS THE DRAGONING or if you have players who are new to the game, you should primarily use this session to test out the limits of the system and show the players' characters exactly how cool they can be. Go lenient with stunt requirements to get people in the mood, giving examples of the kinds of things they can do before letting them run with it. Encourage them to focus on the basics, to test out any rules they don't fully understand and to use any powers they're itching to try out.
+While the characters should feel threatened in dangerous circumstances, killing off a character in the first session is discouraged. The point is not to show the players how easily you can destroy their characters, but for your players to test out what does and doesn't work. Should your players be very timid and hesitant to put themselves into dangerous situations, you might want to tell them flat out that if they 'die' in this session you won't force them to Burn any Hero Points, but they'll just be incapacitated instead, maybe ending up with a cool scar for their troubles. Only do this if the characters are being too timid - DUNGEONS THE DRAGONING is a game about heroes, and knowing you're invincible doesn't make you brave.
+
+### Reworking the Characters
+
+You might want to allow players who were unsatisfied with the way their character performed in the first session to rework their characters. If any player finds a character fundamentally boring to play or poorly balanced,
+now is the time to change it. However, be sure to take an active role with the player to smooth out the rough spots. Some players might want to completely remove non-combat skills in favor of ass-kicking. If your first session was mostly action, encourage them to keep any non-combat skills you forsee coming up in your game. While combat skills can certainly tip the balance in a fight, non-combat skills can sway whole nations.
+
+### Beyond the First Session
+
+The first session lays the groundwork for your first DUNGEONS THE DRAGONING campaign. It is vital to recognize that the campaign itself is a shared experience. You are not dictating an unchangeable narrative,
+displaying the elaborate schemes of antagonists and extras punctuated by the occasional interruption of the players' characters. Instead,
+you are crafting a fun experience based around the characters themselves. Talk frankly with your players about what they want out of the game, and make sure you get their feedback,
+or you'll never be able to give them what they want.
+
+## Experience
+
+Character growth is measured with numerical points provided by the Story Master to the players, known as Experience Points.
+There are two kinds of experience points:
+banked and total experience. Banked experience is any experience stored by the player for future improvement of a character's traits.
+Players who spend experience in this manner reduce their banked experience by the amount spent.
+Total experience is the total amount received from the Story Master and is never spent or reduced. When the Story Master awards experience, the player adds this amount to banked and total experience. Keeping track of total experience gives you a good idea of the overall power level of your character, and makes sure you have the same amount as the other characters in the campaign.
+There are two main ways for the SM to award experience to his players: the Abstract Method and the Detailed Method.
+
+### Abstract Method
+
+This is the easiest and recommended
+(certainly for beginning SMs) way to award experience. It relies simply on the amount of time spent gaming and ensures a steady and smooth rise in power for the characters. For each game session each player should receive 500 xp. The SM can adjust the reward for longer or shorter sessions.
+
+### Detailed Method
+
+A more detailed method of awarding experience is also possible, in which each reward is broken down on a case-by-case basis and players gain experience for completing specific tasks. For this method to work, however, the SM must assign a value to each encounter. For example, he might have a session that includes a dangerous journey through the warp, a space battle against orks, and a tense negotiation with some hostile natives. In this case, each of the three encounters would be worth a set amount of XP that would be awarded to the players when the encounters are completed or overcome.
+The ### Encounter Difficulty table gives examples of encounters based on difficulty. To work out the difficulty of an encounter, consider how much it taxes the resources of the group and what it costs them in Hit Points,
+equipment, or time.
+When using this method, it is important to remember to award experience for only meaningful encounters and obstacles, lest the players embark on the wholesale slaughter of worlds simply for the 'experience'. Likewise, as the player characters gain in power, some challengers will be so easily overcome as to be worth little or no experience.
+
+### Spending Experience
+
+Players can spend a character's banked experience to purchase new traits or increase existing ones. Increasing a trait costs banked experience equal to a multiple of its current rating. This is the value of the trait before it is raised. Players should always bring up the desired increase with their Story Master.
+The rank of some abilities - your Power Stat,
+Magic Schools, and Fighting Styles - are capped by your character's level.
+Example: Mistress Scarlet wants to increase her Charisma from 3 to 4. Charisma is a characteristic, so it costs (100 x current rank) to increase. Her current rank is 3, so it costs (100 x 3), or 300 xp. Should her Story Master approve, Mistress Scarlet can subtract 300 from her banked Experience and fill in one more dot of Charisma.
+
+### Other Rewards
+
+There are plenty of other rewards that a player can get aside from raw Experience.
+Backgrounds are the most obvious of these - a character may well be rewarded with a high ranking position in some group (gaining Backing), a mystical talisman of power (gaining an Artifact), or simply a lot of cash (gaining Wealth). Fame and Status are probably the easiest to get - an Exalt will naturally get both as long as they aren't trying to keep their activities a secret.
+A character can also gain Assets in this way. They might necessitate some downtime - a promethean might be rebuilt to use Necrodermis in his construction, or a Chosen could undergo a ceremony to gain the Mark of their patron. Similarly, a Vampire or Werewolf can become a member of a clan or tribe.
+Some Assets might be rather difficult to get in this way - there's no simple method for someone to become Large, after all.
+
+### Encounter Difficulty
+
+| Difficulty  | Award |
+| ----------- | ----- |
+| Easy        | 50    |
+| Routine     | 70    |
+| Ordinary    | 100   |
+| Average     | 130   |
+| Challenging | 170   |
+| Hard        | 200   |
+| Very Hard   | 250   |
+
+### Spending Experience Table
+
+| Improvement              | Cost                 |
+| ------------------------ | -------------------- |
+| Improve a Characteristic | 100 x Current Rank   |
+| Improve Devotion         | 50 x Current Rank    |
+| Improve a Skill          | 50 x Current Rank    |
+| Improve your Power Stat  | 200 x Current Rank\* |
+| Improve a Magic School   | 100 x Current Rank\* |
+| Improve a Sword School   | 100 x Current Rank\* |
+| Buy a Feat               | 100                  |
+| New Skill                | 100                  |
+| New Magic or Sword       | 200                  |
+
+\* Your Power Stat, Magic Schools, and Fighting Style ranks are all capped at your current level.
+
+The galaxy of the Great Wheel is a strange and limitless place, filled with horrors and wonders in equal measure. So too are the individuals, creatures, and alien races in it.
+From the spires of Sigil to the darkest depths of Pandemonium, Heroes can encounter countless different foes, from mortal soldiers to otherworldly beasts and the most hideous terrors imaginable. The trick, of course, is to know which one is which...
+**Traits:** Skills and Feats represent ability and knowledge gained over a character's life.
+Traits, then, are innate abilities gained by virtue of birth and racial circumstance. They may be gained through other means later in life, but almost never by choice. Racial abilities are one example of traits, albeit extremely specific ones that are limited just to their given races. Other characters can have various traits,
+features inherited from their particular type of species or their environment.
+**Amphibious:** Amphibious creatures are more suited for underwater movement than crawling around on the ground. When moving underwater, Amphibious creatures never need to make tests to advance through less-than-ideal conditions like rushing water. They also double their listed speed while swimming.
+**Amorphous:** Amorphous creatures don't have body structures that lend themselves to easy understanding. All hits on an amorphous creature go to the body. An Amorphous creature doubles its hit points.
+**Armor Plating (X):** Creatures with armor plating have a natural armor rating because of their tough skin, bone ridges, scales, or just generally being a tough bastard. The rating of a creature's armor plating is always listed, and by default protects all parts of a creature's body unless otherwise listed.
+
+> **Design Note:** Book 2 changes were made with the following goals: 1) Clarification and minor gameplay tweaks. 2) Improving the Werewolf exalt. 3) Evening out class advancements and allowing more class track crosses. 4) Making spells more even — e.g. moving Blink to 2nd level and boosting many 5th level spells to Meteor Storm levels. 5) Improving the sword schools, especially higher-end abilities. 6) Providing more options and advice about what worked in playtesting.
+
+See also Book 2, Appendix F (Vehicles) and Book 2, Appendix I (Character Optimization).
+
+<!-- EDITOR: Original descriptions were wrong — "Enemies & Challenges" and "Dice Rolls & Probability" don't match any appendix. Corrected to actual Book 2 appendix titles. -->
+
+> **Play Tip:** At 500 XP per session, characters gain about one whole class per session — slightly less if buying magic, sword schools, and Power stat. At that rate they hit 5th level around session 6. For a longer campaign, try: 1) 100 XP just for attendance. 2) 100 XP for awesome moments. 3) 100 XP for a hindrance coming into play — Enemy, Hunted, Grim Servant O' Death, and other SM-activated ones. Not the passive player-activated ones like All Thumbs, Hatred, or Illiterate.
+
+> **Play Tip:** The individual XP method can be too much bother. Checking Book 2, Appendix I (Character Optimization) might help if you want to use it.
+
+<!-- EDITOR: Original said "Appendix F" which is Vehicles. In context (XP advice), Appendix I (Character Optimization) is the relevant appendix. -->
+
+> **Optional Rule:** Devotion can be expensive — going from 8 to 9 dots is 400 XP at base price, still 200 XP for a Chosen. Alternatives: 1) All dots are 50 XP each. 2) Half price for everyone (25 XP × dots). 3) Get a free dot whenever you gain a higher level or increase your Power stat.
+
+> **Clarification:** You cannot buy feats that aren't on your class lists, ever. Double XP cost for off-list feats was tried and became unbalanced very fast.
+
+> **Play Tip:** Backgrounds like Wealth, Backing, and Contacts should be earned in-game by playing, not just by spending XP. These should be reasonably easy to get if the players are actively pursuing them. Keep in mind that each new dot represents roughly 5× to 10× more effect than the previous dot. Holdings and Followers require upkeep — characters can defer costs for a while or risk depleting their Wealth, but eventually they must cover them.

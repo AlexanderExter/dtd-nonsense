@@ -1,0 +1,357 @@
+/* Success Curve Analyzer — Tool-Specific Styles */
+
+/* ================================================================
+   Header
+   ================================================================ */
+.app-header {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--accent);
+}
+
+.app-header p {
+    margin: var(--space-xs) 0 0;
+}
+
+.back-link {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+    font-size: 0.85rem;
+}
+
+/* ================================================================
+   Input Panel
+   ================================================================ */
+.input-panel {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* --- Pool Rows -------------------------------------------------- */
+#pool-rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.pool-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    flex-wrap: wrap;
+}
+
+.pool-color-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pool-field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin: 0;
+}
+
+.pool-field .field-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 3rem;
+    flex-shrink: 0;
+}
+
+.pool-slider {
+    width: 90px;
+    accent-color: var(--accent);
+}
+
+.pool-input {
+    width: 3.5rem;
+    text-align: center;
+    padding: var(--space-xs) var(--space-sm) !important;
+}
+
+.pool-field-narrow .pool-input {
+    width: 3.5rem;
+}
+
+.k-separator {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 var(--space-xs);
+}
+
+.remove-pool-btn {
+    margin-left: auto;
+    padding: 0 var(--space-sm);
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.remove-pool-btn:hover {
+    color: var(--error);
+    background: var(--error-bg);
+}
+
+/* --- TN Row ----------------------------------------------------- */
+.tn-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+}
+
+.tn-field {
+    flex: 1;
+}
+
+.tn-field .field-label {
+    width: auto;
+}
+
+#tn-slider {
+    flex: 1;
+    min-width: 120px;
+    accent-color: var(--accent);
+}
+
+#tn-input {
+    width: 3.5rem;
+    text-align: center;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+.tn-difficulty {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 10rem;
+    text-align: right;
+}
+
+/* --- Controls Row ----------------------------------------------- */
+.controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    align-items: flex-start;
+}
+
+.preset-group,
+.stunt-group,
+.helper-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.preset-group > .field-label,
+.stunt-group > .field-label,
+.helper-group > .field-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+}
+
+.preset-buttons,
+.stunt-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.preset-btn,
+.stunt-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+.stunt-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.helper-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.helper-inputs label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.helper-inputs input {
+    width: 3rem;
+    text-align: center;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+/* --- Pool Actions ----------------------------------------------- */
+.pool-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* ================================================================
+   Graphs Grid
+   ================================================================ */
+.graphs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+}
+
+.graph-card {
+    min-height: 320px;
+}
+
+.chart-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 280px;
+}
+
+.chart-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.stats-card .table-wrap {
+    overflow-x: auto;
+}
+
+.stats-card table {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.stats-card td,
+.stats-card th {
+    white-space: nowrap;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+.stats-pool-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: var(--space-xs);
+    vertical-align: middle;
+}
+
+/* ================================================================
+   Toast
+   ================================================================ */
+.toast {
+    position: fixed;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-lg);
+    color: var(--text);
+    font-size: 0.85rem;
+    opacity: 0;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.toast.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+@media (max-width: 860px) {
+    .graphs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .pool-row {
+        flex-wrap: wrap;
+    }
+
+    .pool-slider {
+        width: 70px;
+    }
+
+    .tn-row {
+        flex-wrap: wrap;
+    }
+
+    .tn-difficulty {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .controls-row {
+        flex-direction: column;
+    }
+}
+
+/* ================================================================
+   Print
+   ================================================================ */
+@media print {
+    .graphs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .graph-card {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+    }
+
+    .card-header {
+        background: #f0f0f0;
+    }
+}

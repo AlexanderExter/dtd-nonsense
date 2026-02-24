@@ -1,0 +1,422 @@
+/*
+ * DTD Tool Components — shared styles for play tools
+ * Ported from tools/shared/css/dtd-theme.css for use within Astro pages.
+ *
+ * These styles are scoped to .dtd-tool to avoid conflicts with Starlight's base styles.
+ */
+
+/* ========================================================================
+   Tool Layout Container
+   ======================================================================== */
+
+.dtd-tool {
+    /* Re-declare tool-specific tokens (bridge from Starlight vars) */
+    --bg: var(--sl-color-bg, #0d0d0f);
+    --surface: var(--sl-color-gray-7, #16161a);
+    --surface-raised: var(--sl-color-gray-6, #1e1e24);
+    --border: var(--sl-color-hairline-shade, #2a2a32);
+    --border-light: var(--sl-color-hairline-light, #3a3a44);
+
+    --text: var(--sl-color-text, #e8e6e3);
+    --text-muted: var(--sl-color-gray-3, #94929d);
+    --text-dim: var(--sl-color-gray-4, #6c6a75);
+
+    --accent: var(--sl-color-accent, #d4a84b);
+    --accent-hover: #e6bc5f;
+    --accent-dim: #8b7033;
+
+    --success: #4ade80;
+    --success-bg: rgba(74, 222, 128, 0.15);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.15);
+    --error: #f87171;
+    --error-bg: rgba(248, 113, 113, 0.15);
+    --info: #60a5fa;
+    --info-bg: rgba(96, 165, 250, 0.15);
+
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    --font-mono: var(--sl-font-system-mono, "Fira Code", "Consolas", monospace);
+
+    color: var(--text);
+}
+
+/* ========================================================================
+   Buttons
+   ======================================================================== */
+
+.dtd-tool .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.dtd-tool .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+}
+.dtd-tool .btn-primary:hover {
+    background: var(--accent-hover);
+}
+
+.dtd-tool .btn-secondary {
+    background: var(--surface-raised);
+    border-color: var(--border);
+    color: var(--text);
+}
+.dtd-tool .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.dtd-tool .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+}
+.dtd-tool .btn-ghost:hover {
+    color: var(--text);
+    background: var(--surface);
+}
+
+.dtd-tool .btn-accent {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+}
+.dtd-tool .btn-accent:hover {
+    background: var(--accent-hover);
+}
+
+/* ========================================================================
+   Form Elements
+   ======================================================================== */
+
+.dtd-tool input,
+.dtd-tool select,
+.dtd-tool textarea {
+    font-family: inherit;
+    font-size: inherit;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    transition: border-color 0.15s;
+}
+
+.dtd-tool input:focus,
+.dtd-tool select:focus,
+.dtd-tool textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.dtd-tool input::placeholder {
+    color: var(--text-dim);
+}
+
+.dtd-tool label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* ========================================================================
+   Cards
+   ======================================================================== */
+
+.dtd-tool .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+}
+
+.dtd-tool .card-header {
+    margin: calc(-1 * var(--space-lg));
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--surface-raised);
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dtd-tool .card-header h3 {
+    margin: 0;
+}
+
+/* ========================================================================
+   Accordion
+   ======================================================================== */
+
+.dtd-tool .accordion {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.dtd-tool .accordion-item {
+    border-bottom: 1px solid var(--border);
+}
+.dtd-tool .accordion-item:last-child {
+    border-bottom: none;
+}
+
+.dtd-tool .accordion-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: inherit;
+}
+
+.dtd-tool .accordion-header:hover {
+    background: var(--surface-raised);
+}
+
+.dtd-tool .accordion-header::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform 0.2s;
+    color: var(--accent);
+}
+
+.dtd-tool .accordion-item.open .accordion-header::before {
+    transform: rotate(90deg);
+}
+
+.dtd-tool .accordion-content {
+    display: none;
+    padding: var(--space-lg);
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+}
+
+.dtd-tool .accordion-item.open .accordion-content {
+    display: block;
+}
+
+/* ========================================================================
+   Dot Rating Display
+   ======================================================================== */
+
+.dtd-tool .dot-rating {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.dtd-tool .dot-rating .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: transparent;
+}
+
+.dtd-tool .dot-rating .dot.filled {
+    background: var(--accent);
+}
+
+/* ========================================================================
+   Selection Grid
+   ======================================================================== */
+
+.dtd-tool .selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+}
+
+.dtd-tool .selection-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.dtd-tool .selection-card:hover {
+    border-color: var(--border-light);
+    background: var(--surface-raised);
+}
+
+.dtd-tool .selection-card.selected {
+    border-color: var(--accent);
+    background: rgba(212, 168, 75, 0.1);
+}
+
+/* ========================================================================
+   Tables (within tools)
+   ======================================================================== */
+
+.dtd-tool table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+}
+
+.dtd-tool th,
+.dtd-tool td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.dtd-tool th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dtd-tool tr:hover {
+    background: var(--surface);
+}
+
+/* ========================================================================
+   Budget Bar
+   ======================================================================== */
+
+.dtd-tool .budget-bar {
+    margin: var(--space-md) 0;
+}
+
+.dtd-tool .budget-bar .label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-xs);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.dtd-tool .budget-bar .bar {
+    height: 8px;
+    background: var(--surface);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dtd-tool .budget-bar .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.dtd-tool .budget-bar .bar-fill.over-budget {
+    background: var(--error);
+}
+
+/* ========================================================================
+   Status Colors
+   ======================================================================== */
+
+.dtd-tool .text-muted {
+    color: var(--text-muted);
+}
+.dtd-tool .text-accent {
+    color: var(--accent);
+}
+.dtd-tool .text-success {
+    color: var(--success);
+}
+.dtd-tool .text-warning {
+    color: var(--warning);
+}
+.dtd-tool .text-error {
+    color: var(--error);
+}
+
+/* ========================================================================
+   Utility Classes
+   ======================================================================== */
+
+.dtd-tool .mt-sm {
+    margin-top: var(--space-sm);
+}
+.dtd-tool .mt-md {
+    margin-top: var(--space-md);
+}
+.dtd-tool .mt-lg {
+    margin-top: var(--space-lg);
+}
+.dtd-tool .mb-sm {
+    margin-bottom: var(--space-sm);
+}
+.dtd-tool .mb-md {
+    margin-bottom: var(--space-md);
+}
+.dtd-tool .mb-lg {
+    margin-bottom: var(--space-lg);
+}
+
+.dtd-tool .flex {
+    display: flex;
+}
+.dtd-tool .flex-wrap {
+    flex-wrap: wrap;
+}
+.dtd-tool .items-center {
+    align-items: center;
+}
+.dtd-tool .justify-between {
+    justify-content: space-between;
+}
+.dtd-tool .gap-sm {
+    gap: var(--space-sm);
+}
+.dtd-tool .gap-md {
+    gap: var(--space-md);
+}
+
+.dtd-tool .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ========================================================================
+   Print Styles
+   ======================================================================== */
+
+@media print {
+    .dtd-tool .no-print {
+        display: none !important;
+    }
+}
