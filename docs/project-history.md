@@ -75,7 +75,7 @@ Completed items:
 
 **Status:** All 12 JSON files pass full validation. ~41 cross-ref warnings remain — all are genuine data quality issues (abbreviated feat names in classes.json, missing skills like "Craft"). Pipeline is the primary gate for data quality before the Astro migration.
 
-### Phase 6 — Astro/Starlight Migration (In Progress)
+### Phase 6 — Astro/Starlight Migration
 
 **Goal:** Publish rules and tools as a static documentation site with search, navigation, and theming.
 
@@ -86,10 +86,12 @@ Completed items:
 | 6.3 Theme               | `custom.css` (WH40K dark/gold theme overriding Starlight CSS custom properties), `tool-components.css`                                                   |
 | 6.4 Shared ES Modules   | ES module ports of `core.js` and `dice.js` in `src/lib/dtd/` — named exports replacing `DTD.*` global namespace                                          |
 | 6.5 Tool Infrastructure | `ToolLayout.astro` wrapper, tools index dashboard, `@/` path alias for imports                                                                           |
-| 6.6 Pilot Tool Ports    | **Dice Roller** and **Quick Reference** fully ported to Astro pages                                                                                      |
-| 6.7 Stub Pages          | 7 placeholder pages for remaining tools (character-sheet, character-builder, combat-tracker, npc-generator, ship-builder, success-curves, defense-graph) |
+| 6.6 Tool Ports           | **7/9 tools fully ported**: Dice Roller, Quick Reference, Success Curves, NPC Generator, Defense Graph, Combat Tracker, Ship Builder                     |
+| 6.7 Stub Pages          | 2 remaining stubs: Character Sheet, Character Builder (deferred — too complex for single session)                                                        |
+| 6.8 Infrastructure       | `README.md`, `.github/workflows/build.yml` CI, npm audit fixed (0 vulnerabilities), speed formula corrected in Quick Reference                           |
+| 6.9 Git & Deployment     | History squashed (295 → 1 commit), pushed to `github.com/AlexanderExter/dtd-nonsense`, Vercel deployment pending                                         |
 
-**Status:** Build produces 89 pages in ~5s. Pagefind indexes 78 content pages. 2/9 tools fully ported, 7 stubs. Not yet deployed — no GitHub remote, no Vercel project. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for next steps.
+**Status:** Build produces 89 pages in ~5.7s. Pagefind indexes 78 content pages. 7/9 tools fully ported, 2 stubs (character-sheet, character-builder). Repo live on GitHub. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for remaining work and [session-handover.md](session-handover.md) for detailed session notes.
 
 ---
 

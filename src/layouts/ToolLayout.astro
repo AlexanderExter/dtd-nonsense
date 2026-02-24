@@ -18,7 +18,7 @@ const { title, description = "" } = Astro.props;
 
     <!-- Starlight theme vars (loaded from our custom CSS) -->
     <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-    <style>@import "../styles/tool-components.css";</style>
+    <style is:global>@import "../styles/tool-components.css";</style>
   </head>
   <body>
     <header class="tool-site-header">
