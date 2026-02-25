@@ -14,6 +14,11 @@ export default defineConfig({
       description:
         "Rulebook reference and play tools for Dungeons the Dragoning 40,000: 7th Edition",
 
+      // Override Head component to include Vercel Analytics
+      components: {
+        Head: "./src/components/Head.astro",
+      },
+
       // Custom dark theme (tool pages use ToolLayout.astro's own :root tokens)
       customCss: ["./src/styles/custom.css"],
 
