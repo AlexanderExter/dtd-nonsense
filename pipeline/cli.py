@@ -41,10 +41,7 @@ def validate(xref: bool, filename: str | None, data_dir: Path | None) -> None:
 
     target_dir = data_dir or DATA_DIR
 
-    if filename:
-        results = [validate_file(filename, target_dir)]
-    else:
-        results = validate_all(target_dir)
+    results = [validate_file(filename, target_dir)] if filename else validate_all(target_dir)
 
     # Display results table
     table = Table(title="Schema Validation", show_lines=False)

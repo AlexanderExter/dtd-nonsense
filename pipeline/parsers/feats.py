@@ -51,7 +51,6 @@ def parse_feats(content: str) -> list[ParsedFeat]:
 
     # Also try parsing **Feat Name** bold-header patterns within sections
     # This handles the flat list format
-    bold_pattern = re.compile(r"^\*\*(.+?)\*\*\s*$", re.MULTILINE)
     current_category = None
 
     for line_num, line in enumerate(content.splitlines()):

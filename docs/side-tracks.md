@@ -4,27 +4,21 @@ Observations, suspicions, and minor items noticed during work that weren't in sc
 
 ---
 
-## CSS Architecture Tension
+## CSS Architecture Tension — Resolved
 
-The project has **three CSS layers** that don't compose cleanly:
+The project originally had **three CSS layers** that didn't compose cleanly:
 
 1. **Starlight theme** (`src/styles/custom.css`) — WH40K dark/gold theme for doc pages, loaded via `customCss` in astro.config.mjs
 2. **Tool components** (`src/styles/tool-components.css`) — shared component classes (`.dtd-tool .btn`, `.card`, `.stat-row`, etc.) intended for tool pages
 3. **Per-tool inline styles** — each `.astro` tool page has its own `<style>` block with comprehensive CSS
 
-Layer 2 was originally `tools/shared/css/tool-components.css` loaded via `<link>` in vanilla HTML. In Astro, it needs to either be:
-
-- A global import in ToolLayout (currently broken due to scoping)
-- Inlined into each tool page that needs it
-- Deleted in favor of each tool being fully self-contained
-
-The newly ported tools (this session) are all self-contained — they don't depend on layer 2. The two pre-ported tools (dice-roller, quick-reference) also appear self-contained. This suggests **deleting tool-components.css** might be the cleanest path forward, but it needs verification against character-sheet and character-builder when they're ported.
+**Resolution (2026-02-25):** All 9 tools are self-contained. `tool-components.css` was deleted and its import removed from `ToolLayout.astro`. Sheet and builder bring their own CSS via `src/styles/sheet.css` and `src/styles/builder.css`.
 
 ---
 
 ## core.js Export Surface Area
 
-`src/lib/dtd/core.js` exports **30+ symbols** including utility functions (`debounce`, `escapeHtml`, `showNotification`), data loading (`loadData`), character CRUD, derived stat calculations, and UI helpers (`initAccordion`). This is a "god module" — fine for now but will be hard to maintain if the project grows.
+`src/lib/dtd/core.js` exports **~13 top-level symbols** including utility functions (`debounce`, `escapeHtml`), data loading (`loadData`, `loadAllData`), character CRUD (`character.*`), derived stat calculations (`derived.*`), and UI helpers (`initAccordion`). This is a "god module" — fine for now but will be hard to maintain if the project grows.
 
 A future refactor could split into:
 
@@ -85,7 +79,7 @@ These are editorial suggestions, not errors. The 8 warnings are worth reviewing 
 
 ## [2026-02-25] — Character Sheet & Builder Porting
 
-- **debt**: CSS Architecture Tension (above) is now fully resolved — all 9 tools are self-contained. `tool-components.css` can be safely deleted. _Context_: Sheet and builder both bring their own CSS via `src/styles/sheet.css` and `src/styles/builder.css`, neither references tool-components.css classes.
+- **debt**: CSS Architecture Tension (above) is now fully resolved and `tool-components.css` has been deleted. See section header for details.
 
 - **debt**: Triple module stack — vanilla `tools/shared/js/core.js`, ES module `src/lib/dtd/core.js`, and now tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from originals. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times. But it creates a maintenance surface.
 

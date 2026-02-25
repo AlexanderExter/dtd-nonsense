@@ -14,20 +14,19 @@
 | ------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- |
 | **1 — Scaffold**          | ✅     | `package.json`, `astro.config.mjs`, `tsconfig.json`, `content.config.ts`                                                    |
 | **2 — Content Pipeline**  | ✅     | `starlight-prep` (24 cleaned-refs), `prebuild.mjs` (77 content + 12 data files)                                             |
-| **3 — Theme**             | ✅     | `custom.css` (WH40K dark/gold), `tool-components.css`                                                                       |
+| **3 — Theme**             | ✅     | `custom.css` (WH40K dark/gold)                                                                                              |
 | **4A — Shared Modules**   | ✅     | `core.js` + `dice.js` ES module ports in `src/lib/dtd/`                                                                     |
 | **4B — Pilot Tools**      | ✅     | **dice-roller**, **quick-reference** (fully ported)                                                                         |
 | **4C — Stub Pages**       | ✅     | All 9 tool pages created and ported                                                                                         |
 | **5A — Tool Ports**       | ✅     | **success-curves**, **npc-generator**, **defense-graph**, **combat-tracker**, **ship-builder**                              |
 | **5D — Final Tool Ports** | ✅     | **character-sheet**, **character-builder** (copy+edit approach: JS as ES modules in `src/lib/tools/`, CSS in `src/styles/`) |
 | **5B — Infrastructure**   | ✅     | GitHub URL configured, npm audit clean (0 vulns), CI workflow, README                                                       |
-| **5C — Style Cleanup**    | ✅     | Removed dead `tool-components.css` from Starlight bundle, imported in ToolLayout                                            |
+| **5C — Style Cleanup**    | ✅     | Removed dead `tool-components.css` (deleted entirely; all tools self-contained)                                             |
 
 ### What's Not Done
 
 | Item                   | Detail                    |
 | ---------------------- | ------------------------- |
-| **Vercel deployment**  | Not created               |
 | **Favicon / OG image** | Starlight defaults in use |
 
 ---
@@ -158,7 +157,7 @@ The prebuild script copies files at build time. The generated directories are in
 
 ### 5.1 — Style Duplication ✅
 
-Resolved: `tool-components.css` removed from Starlight's `customCss` (was dead CSS, scoped to `.dtd-tool` which doesn't exist in Starlight pages). Now imported directly in `ToolLayout.astro` where tools use it. `ToolLayout.astro` keeps its own `:root` token declarations for the standalone HTML shell.
+Resolved: `tool-components.css` has been completely deleted. All 9 tools are self-contained with their own CSS. `ToolLayout.astro` keeps its own `:root` token declarations for the standalone HTML shell.
 
 ### 5.2 — core.js Coverage Gaps
 
@@ -222,24 +221,23 @@ No license file — fan content makes licensing ambiguous.
 
 ---
 
-## 7 · Vercel Deployment
+## 7 · Vercel Deployment ✅
 
-### 7.1 — Connect to Vercel
+The site is live at **https://dtd-nonsense.vercel.app** via Vercel's GitHub integration.
 
-- [ ] Import `AlexanderExter/dtd-nonsense` on [vercel.com](https://vercel.com)
-- [ ] Auto-detects Astro framework
-- [ ] Build command: `npm run build`
-- [ ] No environment variables needed
+| Setting               | Value                                                      |
+| --------------------- | ---------------------------------------------------------- |
+| Production URL        | `https://dtd-nonsense.vercel.app`                          |
+| Framework             | Astro (auto-detected)                                      |
+| Build command         | `npm run build`                                            |
+| Output                | Static (`@astrojs/vercel` adapter, static output mode)     |
+| Preview deployments   | Auto-created for every PR, unique URL posted as PR comment |
+| Production deploys    | Triggered when commits land on `main`                      |
+| Environment variables | None required                                              |
 
-### 7.2 — Verify Deployment
+Vercel runs its own build independently of GitHub Actions CI. A PR can have a working preview deployment even while CI checks are still running.
 
-- [ ] Landing page renders with WH40K theme
-- [ ] Rules page (`/rules/01-core-rules/`) renders with Starlight navigation
-- [ ] Book pages render under `/books/book-1/`, `/books/book-2/`
-- [ ] Pagefind search works
-- [ ] `/tools/` dashboard shows 9 Ready badges
-- [ ] 9 ported tools are fully functional
-- [ ] `/data/*.json` files are accessible
+See [docs/architecture.md — Deployment & CI](architecture.md#deployment--ci) for the full CI pipeline description.
 
 ---
 

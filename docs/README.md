@@ -18,6 +18,8 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 | [Pipeline](pipeline.md)                               | Python CLI: validation, linting, Astro prep   |
 | [Astro Migration Roadmap](astro-migration-roadmap.md) | Astro/Starlight porting status and next steps |
 | [Project History](project-history.md)                 | Roadmap narrative, decisions, lessons         |
+| [Session Handover](session-handover.md)               | Latest session context and next steps         |
+| [Side Tracks](side-tracks.md)                         | Observed tech debt and deferred items         |
 
 ---
 
@@ -56,6 +58,8 @@ docs/                          ← You are here
 ├── pipeline.md                Python CLI: validation, linting, Astro prep
 ├── project-conventions.md     Cross-cutting conventions (single source of truth)
 ├── project-history.md         Roadmap, decisions, lessons learned
+├── session-handover.md        Latest session context and next steps
+├── side-tracks.md             Observed tech debt and deferred items
 ├── tools/                     Per-tool specifications
 │   ├── character-sheet.md
 │   ├── character-builder.md

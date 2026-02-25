@@ -14,7 +14,7 @@ export default defineConfig({
       description:
         "Rulebook reference and play tools for Dungeons the Dragoning 40,000: 7th Edition",
 
-      // Custom dark theme (tool-components.css loaded by ToolLayout, not needed here)
+      // Custom dark theme (tool pages use ToolLayout.astro's own :root tokens)
       customCss: ["./src/styles/custom.css"],
 
       // Default to dark mode (WH40K aesthetic)

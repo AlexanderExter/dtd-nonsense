@@ -82,14 +82,17 @@ src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
   lib/dtd/             ES module ports of core.js and dice.js
+  lib/tools/           Tool-specific ES module scripts (sheet-app.js, builder-app.js)
   layouts/             ToolLayout.astro
-  styles/              custom.css (WH40K theme), tool-components.css
+  styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
 public/data/           Generated JSON data copies (gitignored)
 ```
 
 **Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `tools/shared/data/` powers the web tools and is copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
 
 **Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (89 pages, Pagefind search). Dev server: `npm run dev`.
+
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs the Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
 
 ### Pipeline CLI
 
