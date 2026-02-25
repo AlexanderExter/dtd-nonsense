@@ -22,17 +22,17 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 
 Key files:
 
-| File / Directory       | Purpose                                                      |
-| ---------------------- | ------------------------------------------------------------ |
-| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter             |
-| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data |
-| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored      |
-| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                   |
-| `src/lib/dtd/`         | ES module ports of core.js and dice.js                       |
-| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.js, builder-app.js) |
-| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                  |
+| File / Directory       | Purpose                                                           |
+| ---------------------- | ----------------------------------------------------------------- |
+| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                  |
+| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data      |
+| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored           |
+| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                        |
+| `src/lib/dtd/`         | ES module ports of core.js and dice.js                            |
+| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.js, builder-app.js)    |
+| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
 | `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
-| `public/data/`         | Generated JSON data copies — gitignored                      |
+| `public/data/`         | Generated JSON data copies — gitignored                           |
 
 Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies source content into Astro structure, then Astro builds the static site.
 
@@ -61,6 +61,44 @@ The ES module ports in `src/lib/dtd/` must stay in sync with `tools/shared/js/`.
 ### Python Pipeline
 
 A `pipeline/` Python package (Pydantic v2 + Click CLI) provides data validation, content linting, and Astro/Starlight migration prep. Managed via `uv`; entry point is `dtd` CLI. See [docs/pipeline.md](pipeline.md) for details.
+
+---
+
+## Deployment & CI
+
+### Vercel
+
+The site is deployed to **Vercel** as a static site via `@astrojs/vercel`.
+
+| Setting          | Value                                  |
+| ---------------- | -------------------------------------- |
+| Framework        | Astro (auto-detected)                  |
+| Build command    | `npm run build`                        |
+| Output directory | `.vercel/output/static`                |
+| Production URL   | `https://dtd-nonsense.vercel.app`      |
+| Adapter          | `@astrojs/vercel` (static output mode) |
+| Env variables    | None required                          |
+
+Vercel is connected to the GitHub repository (`AlexanderExter/dtd-nonsense`). It automatically:
+
+- **Deploys production** when commits land on `main`
+- **Creates preview deployments** for every pull request, with a unique URL posted as a PR comment
+- Runs its own build (`npm run build`) independently of GitHub Actions
+
+### GitHub Actions CI
+
+The `.github/workflows/build.yml` workflow runs on every push and pull request:
+
+```
+Node / Astro          Python pipeline
+─────────────         ─────────────────
+npm ci                uv sync --dev
+npm run build         ruff check .
+                      dtd validate
+                      dtd lint
+```
+
+Both pipelines must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
 
 ---
 
@@ -127,8 +165,10 @@ var DTD = { ... };
 Tools load shared scripts as needed:
 
 ```html
-<script src="../shared/js/core.js"></script>   <!-- most tools -->
-<script src="../shared/js/dice.js"></script>    <!-- tools that roll dice -->
+<script src="../shared/js/core.js"></script>
+<!-- most tools -->
+<script src="../shared/js/dice.js"></script>
+<!-- tools that roll dice -->
 <script src="[tool-name].js"></script>
 ```
 

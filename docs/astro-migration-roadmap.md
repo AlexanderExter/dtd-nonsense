@@ -27,7 +27,6 @@
 
 | Item                   | Detail                    |
 | ---------------------- | ------------------------- |
-| **Vercel deployment**  | Not created               |
 | **Favicon / OG image** | Starlight defaults in use |
 
 ---
@@ -222,24 +221,23 @@ No license file — fan content makes licensing ambiguous.
 
 ---
 
-## 7 · Vercel Deployment
+## 7 · Vercel Deployment ✅
 
-### 7.1 — Connect to Vercel
+The site is live at **https://dtd-nonsense.vercel.app** via Vercel's GitHub integration.
 
-- [ ] Import `AlexanderExter/dtd-nonsense` on [vercel.com](https://vercel.com)
-- [ ] Auto-detects Astro framework
-- [ ] Build command: `npm run build`
-- [ ] No environment variables needed
+| Setting               | Value                                                      |
+| --------------------- | ---------------------------------------------------------- |
+| Production URL        | `https://dtd-nonsense.vercel.app`                          |
+| Framework             | Astro (auto-detected)                                      |
+| Build command         | `npm run build`                                            |
+| Output                | Static (`@astrojs/vercel` adapter, static output mode)     |
+| Preview deployments   | Auto-created for every PR, unique URL posted as PR comment |
+| Production deploys    | Triggered when commits land on `main`                      |
+| Environment variables | None required                                              |
 
-### 7.2 — Verify Deployment
+Vercel runs its own build independently of GitHub Actions CI. A PR can have a working preview deployment even while CI checks are still running.
 
-- [ ] Landing page renders with WH40K theme
-- [ ] Rules page (`/rules/01-core-rules/`) renders with Starlight navigation
-- [ ] Book pages render under `/books/book-1/`, `/books/book-2/`
-- [ ] Pagefind search works
-- [ ] `/tools/` dashboard shows 9 Ready badges
-- [ ] 9 ported tools are fully functional
-- [ ] `/data/*.json` files are accessible
+See [docs/architecture.md — Deployment & CI](architecture.md#deployment--ci) for the full CI pipeline description.
 
 ---
 

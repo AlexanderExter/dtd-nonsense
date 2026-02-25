@@ -92,6 +92,8 @@ public/data/           Generated JSON data copies (gitignored)
 
 **Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (89 pages, Pagefind search). Dev server: `npm run dev`.
 
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs the Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
+
 ### Pipeline CLI
 
 The `dtd` CLI (run via `uv run dtd <command>`) provides:
