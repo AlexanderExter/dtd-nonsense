@@ -97,7 +97,7 @@ Each tool port follows the same pattern:
 
 Current state has **24 modified** files (cleaned-references with Starlight frontmatter) and **~30 new** files (entire Astro stack). This needs to be committed in logical chunks on a feature branch.
 
-**Recommended commit sequence:**
+**Recommended commit sequence** _(historical — migration completed on `port-sheet-builder`; history was squashed on merge to `main`)_:
 
 ```
 git checkout -b astro-migration
@@ -195,8 +195,8 @@ Everything needed before pushing to GitHub:
 ### 6.1 — Create GitHub Repository
 
 - [x] URL configured in `astro.config.mjs`: `https://github.com/AlexanderExter/dtd-nonsense`
-- [ ] Create repo on GitHub: `AlexanderExter/dtd-nonsense`
-- [ ] Add remote: `git remote add origin https://github.com/AlexanderExter/dtd-nonsense.git`
+- [x] Create repo on GitHub: `AlexanderExter/dtd-nonsense`
+- [x] Add remote: `git remote add origin https://github.com/AlexanderExter/dtd-nonsense.git`
 
 ### 6.2 — Git History Reset
 

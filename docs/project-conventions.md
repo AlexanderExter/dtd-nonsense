@@ -185,7 +185,7 @@ When sources conflict: higher tier wins. When unclear: document in `books/open-q
 
 For the full resolution protocol and annotation standards, see the `dtd-source-hierarchy` skill.
 
-**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.md`), never `archive/extracted/` paths.
+**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.md`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
 
 ---
 
