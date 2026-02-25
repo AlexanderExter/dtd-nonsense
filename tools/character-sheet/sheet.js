@@ -139,7 +139,6 @@ const Sheet = {
         const meleeList = document.getElementById('datalist-weapons-melee');
         if (meleeList && this.data.weapons) {
             const melee = (this.data.weapons.weapons?.melee || [])
-                .concat(this.data.weapons.weapons?.exotic || [])
                 .filter(w => w.type === 'melee' || !w.range);
             meleeList.innerHTML = melee.map(w =>
                 `<option value="${this.esc(w.name)}">`
