@@ -86,12 +86,12 @@ Completed items:
 | 6.3 Theme               | `custom.css` (WH40K dark/gold theme overriding Starlight CSS custom properties), `tool-components.css`                                                   |
 | 6.4 Shared ES Modules   | ES module ports of `core.js` and `dice.js` in `src/lib/dtd/` — named exports replacing `DTD.*` global namespace                                          |
 | 6.5 Tool Infrastructure | `ToolLayout.astro` wrapper, tools index dashboard, `@/` path alias for imports                                                                           |
-| 6.6 Tool Ports           | **7/9 tools fully ported**: Dice Roller, Quick Reference, Success Curves, NPC Generator, Defense Graph, Combat Tracker, Ship Builder                     |
-| 6.7 Stub Pages          | 2 remaining stubs: Character Sheet, Character Builder (deferred — too complex for single session)                                                        |
+| 6.6 Tool Ports           | **9/9 tools fully ported**: Dice Roller, Quick Reference, Success Curves, NPC Generator, Defense Graph, Combat Tracker, Ship Builder, Character Sheet, Character Builder |
+| 6.7 ~~Stub Pages~~       | All tools now ported — no stubs remaining                                                                                                                |
 | 6.8 Infrastructure       | `README.md`, `.github/workflows/build.yml` CI, npm audit fixed (0 vulnerabilities), speed formula corrected in Quick Reference                           |
 | 6.9 Git & Deployment     | History squashed (295 → 1 commit), pushed to `github.com/AlexanderExter/dtd-nonsense`, Vercel deployment pending                                         |
 
-**Status:** Build produces 89 pages in ~5.7s. Pagefind indexes 78 content pages. 7/9 tools fully ported, 2 stubs (character-sheet, character-builder). Repo live on GitHub. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for remaining work and [session-handover.md](session-handover.md) for detailed session notes.
+**Status:** Build produces 89 pages in ~9s. Pagefind indexes 78 content pages. **9/9 tools fully ported.** Repo live on GitHub. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for remaining work and [session-handover.md](session-handover.md) for detailed session notes.
 
 ---
 

@@ -3,24 +3,94 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Character Sheet" description="Interactive digital character sheet with auto-calculations">
-  <div class="dtd-tool stub-page">
-    <div class="stub-content">
-      <div class="stub-icon">📋</div>
-      <h1>Character Sheet</h1>
-      <p class="stub-desc">Interactive digital character sheet with auto-calculations</p>
-      <div class="stub-badge">Porting in Progress</div>
-      <p class="stub-hint">This tool is being migrated from the standalone version. Check back soon!</p>
-      <a href="/tools/" class="btn btn-accent">← Back to Tools</a>
+    <!-- Character Management Bar -->
+    <div class="char-bar no-print">
+        <div class="char-bar-left">
+            <select id="char-select" title="Switch character"></select>
+            <button class="btn btn-primary btn-sm" id="btn-new" title="New character">+ New</button>
+            <button class="btn btn-ghost btn-sm" id="btn-delete" title="Delete character">Delete</button>
+        </div>
+        <div class="char-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-import">Import</button>
+            <button class="btn btn-secondary btn-sm" id="btn-export">Export</button>
+            <input type="file" id="file-import" accept=".json" hidden />
+        </div>
     </div>
-  </div>
 
-  <style>
-    .stub-page { display: flex; justify-content: center; align-items: center; min-height: 60vh; padding: 2rem; }
-    .stub-content { text-align: center; max-width: 500px; }
-    .stub-icon { font-size: 4rem; margin-bottom: 1rem; }
-    .stub-content h1 { color: var(--accent); font-size: 2rem; margin: 0 0 0.5rem; }
-    .stub-desc { color: var(--text-muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
-    .stub-badge { display: inline-block; background: rgba(251, 191, 36, 0.15); color: #fbbf24; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
-    .stub-hint { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem; }
-  </style>
+    <!-- Sheet Header -->
+    <header class="sheet-header">
+        <div class="header-identity">
+            <input type="text" id="char-name" class="char-name-input" placeholder="Character Name" data-field="name" />
+            <div class="header-meta">
+                <span class="meta-badge">Lvl <strong id="disp-level">1</strong></span>
+                <span class="meta-badge"
+                    >Total XP <input type="number" id="header-total-xp" class="header-xp-input" value="600" min="0"
+                /></span>
+                <span class="meta-badge">Spent <input type="number" id="header-xp-spent" class="header-xp-input" value="0" min="0" /></span>
+                <span class="meta-badge">Remaining: <strong id="disp-xp-left">600</strong></span>
+            </div>
+        </div>
+        <div class="header-trackers">
+            <div class="tracker">
+                <span class="tracker-label">HP</span>
+                <input type="number" id="track-hp" class="tracker-input" min="0" data-field="currentHP" />
+                <span class="tracker-sep">/</span>
+                <span class="tracker-max" id="disp-hp-max">0</span>
+            </div>
+            <div class="tracker">
+                <span class="tracker-label" id="disp-resource-name">Resource</span>
+                <input type="number" id="track-resource" class="tracker-input" min="0" data-field="resourceCurrent" />
+                <span class="tracker-sep">/</span>
+                <span class="tracker-max" id="disp-resource-max">0</span>
+            </div>
+            <div class="tracker">
+                <span class="tracker-label">Resolve</span>
+                <input type="number" id="track-resolve" class="tracker-input" min="0" data-field="currentResolve" />
+                <span class="tracker-sep">/</span>
+                <span class="tracker-max" id="disp-resolve-max">0</span>
+            </div>
+            <div class="tracker">
+                <span class="tracker-label">Hero Pts</span>
+                <input type="number" id="track-hero" class="tracker-input" min="0" data-field="heroPointsCurrent" />
+                <span class="tracker-sep">/</span>
+                <span class="tracker-max" id="disp-hero-max">2</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="sheet-layout">
+        <main class="sheet-main">
+            <nav class="tab-nav no-print">
+                <button class="tab-btn active" data-tab="identity">Identity</button>
+                <button class="tab-btn" data-tab="stats">Stats</button>
+                <button class="tab-btn" data-tab="combat">Combat</button>
+                <button class="tab-btn" data-tab="powers">Powers</button>
+                <button class="tab-btn" data-tab="features">Features</button>
+            </nav>
+
+            <div class="tab-panels">
+                <section class="tab-panel active" id="panel-identity" data-tab="identity" data-print-title="Identity"></section>
+                <section class="tab-panel" id="panel-stats" data-tab="stats" data-print-title="Characteristics & Skills"></section>
+                <section class="tab-panel" id="panel-combat" data-tab="combat" data-print-title="Combat"></section>
+                <section class="tab-panel" id="panel-powers" data-tab="powers" data-print-title="Powers & Schools"></section>
+                <section class="tab-panel" id="panel-features" data-tab="features" data-print-title="Features & Equipment"></section>
+            </div>
+        </main>
+    </div>
+
+    <div class="save-status no-print" id="save-status">Saved</div>
+
+    <!-- Datalists for autocomplete -->
+    <datalist id="datalist-feats"></datalist>
+    <datalist id="datalist-weapons-melee"></datalist>
+    <datalist id="datalist-weapons-ranged"></datalist>
+
+    <script>
+        import '@/lib/tools/sheet-app.js';
+    </script>
+
+    <style is:global>
+        @import '@/styles/sheet.css';
+    </style>
 </ToolLayout>

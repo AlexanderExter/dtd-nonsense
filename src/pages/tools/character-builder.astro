@@ -3,24 +3,299 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Character Builder" description="Step-by-step wizard for building DTD 40k characters">
-  <div class="dtd-tool stub-page">
-    <div class="stub-content">
-      <div class="stub-icon">🧙</div>
-      <h1>Character Builder</h1>
-      <p class="stub-desc">Step-by-step wizard for building DTD 40k characters</p>
-      <div class="stub-badge">Porting in Progress</div>
-      <p class="stub-hint">This tool is being migrated from the standalone version. Check back soon!</p>
-      <a href="/tools/" class="btn btn-accent">← Back to Tools</a>
-    </div>
-  </div>
+    <main class="builder-layout">
+        <!-- Sidebar Summary -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-identity">
+                <div class="sidebar-name" id="sidebar-name">New Character</div>
+                <div class="sidebar-badges">
+                    <span class="badge" id="sidebar-race">—</span>
+                    <span class="badge" id="sidebar-exaltation">—</span>
+                </div>
+            </div>
 
-  <style>
-    .stub-page { display: flex; justify-content: center; align-items: center; min-height: 60vh; padding: 2rem; }
-    .stub-content { text-align: center; max-width: 500px; }
-    .stub-icon { font-size: 4rem; margin-bottom: 1rem; }
-    .stub-content h1 { color: var(--accent); font-size: 2rem; margin: 0 0 0.5rem; }
-    .stub-desc { color: var(--text-muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
-    .stub-badge { display: inline-block; background: rgba(251, 191, 36, 0.15); color: #fbbf24; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
-    .stub-hint { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem; }
-  </style>
+            <div class="sidebar-section">
+                <h3>Derived Stats</h3>
+                <div class="stat-row"><span>Static Defense</span><span id="sidebar-sd">—</span></div>
+                <div class="stat-row"><span>Hit Points</span><span id="sidebar-hp">—</span></div>
+                <div class="stat-row"><span>Mental Defense</span><span id="sidebar-md">—</span></div>
+                <div class="stat-row"><span>Resolve</span><span id="sidebar-resolve">—</span></div>
+                <div class="stat-row"><span>Speed</span><span id="sidebar-speed">—</span></div>
+                <div class="stat-row"><span>Resilience</span><span id="sidebar-resilience">—</span></div>
+                <div class="stat-row"><span>Initiative</span><span id="sidebar-initiative">—</span></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>XP Budget</h3>
+                <div class="xp-label"><span id="xp-remaining">600</span> / 600 remaining</div>
+                <div class="xp-breakdown" id="xp-breakdown"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Steps</h3>
+                <ol class="step-checklist" id="step-checklist"></ol>
+            </div>
+
+            <div class="sidebar-actions">
+                <button class="btn btn-primary" id="btn-open-sheet">Open in Sheet</button>
+                <button class="btn btn-secondary" id="btn-export">Export JSON</button>
+                <button class="btn btn-ghost" id="btn-start-over">Start Over</button>
+            </div>
+        </aside>
+
+        <!-- Main Wizard Content -->
+        <section class="builder-content">
+            <div class="accordion" id="wizard">
+                <!-- Step 1: Identity -->
+                <div class="accordion-item" data-step="1">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Identity</span>
+                        <span class="step-summary" id="step-summary-1"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">Name your character and jot down a concept. No mechanics here — just who they are.</p>
+                        <div class="form-group">
+                            <label for="field-name">Name <span class="required">*</span></label>
+                            <input type="text" id="field-name" placeholder="Character name…" />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="field-player">Player</label>
+                                <input type="text" id="field-player" placeholder="Player name…" />
+                            </div>
+                            <div class="form-group">
+                                <label for="field-concept">Concept</label>
+                                <input type="text" id="field-concept" placeholder="e.g. Ork Bard, Eldarin Witch-hunter…" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Race -->
+                <div class="accordion-item" data-step="2">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Race</span>
+                        <span class="step-summary" id="step-summary-2"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">Your race determines Size, characteristic bonuses, skill bonuses, and a racial power.</p>
+                        <div class="filter-bar">
+                            <label>Source:</label>
+                            <select id="filter-race-source">
+                                <option value="all">All</option>
+                                <option value="book1">Core Book</option>
+                                <option value="book2">Book 2</option>
+                            </select>
+                        </div>
+                        <div class="selection-grid" id="race-grid"></div>
+                        <div class="detail-panel" id="race-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Exaltation -->
+                <div class="accordion-item" data-step="3">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Exaltation</span>
+                        <span class="step-summary" id="step-summary-3"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Your Exaltation grants supernatural powers, a Power Stat, and a Resource pool. Mortals gain bonus dots instead.
+                        </p>
+                        <div class="selection-grid" id="exaltation-grid"></div>
+                        <div class="detail-panel" id="exaltation-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Characteristics -->
+                <div class="accordion-item" data-step="4">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Characteristics</span>
+                        <span class="step-summary" id="step-summary-4"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Assign priority groups (6 / 4 / 2 bonus dots) to Physical, Social, and Mental, then distribute within each
+                            group. All characteristics start at 1. No characteristic may exceed 4 in this step (racial bonuses can raise it
+                            further).
+                        </p>
+                        <div class="priority-selector" id="char-priorities"></div>
+                        <div class="allocation-grid" id="char-allocation"></div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Skills -->
+                <div class="accordion-item" data-step="5">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">5</span>
+                        <span class="step-title">Skills</span>
+                        <span class="step-summary" id="step-summary-5"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Assign priority groups (8 / 6 / 4 dots) to Physical, Social, and Mental skill groups, then distribute dots. No
+                            skill may exceed 3 dots in this step.
+                        </p>
+                        <div class="priority-selector" id="skill-priorities"></div>
+                        <div class="allocation-grid" id="skill-allocation"></div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Backgrounds -->
+                <div class="accordion-item" data-step="6">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">6</span>
+                        <span class="step-title">Backgrounds</span>
+                        <span class="step-summary" id="step-summary-6"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Distribute 7 free dots among backgrounds (max 3 per background). Dots 4 and 5 cost 100 XP each.
+                        </p>
+                        <div class="budget-display" id="bg-budget">
+                            <span>Budget:</span>
+                            <span><strong id="bg-remaining">7</strong> / 7 dots remaining</span>
+                        </div>
+                        <div class="backgrounds-grid" id="bg-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Alignment -->
+                <div class="accordion-item" data-step="7">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">7</span>
+                        <span class="step-title">Alignment</span>
+                        <span class="step-summary" id="step-summary-7"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Choose a deity or remain Unaligned. Your alignment determines moral code and grants certain powers.
+                        </p>
+                        <div class="filter-bar">
+                            <label>Pantheon:</label>
+                            <select id="filter-pantheon">
+                                <option value="all">All Pantheons</option>
+                                <option value="ruinousPowers">Ruinous Powers</option>
+                                <option value="blessedPantheon">Blessed Pantheon</option>
+                                <option value="grayCouncil">Gray Council</option>
+                                <option value="unaligned">Unaligned</option>
+                            </select>
+                        </div>
+                        <div class="selection-grid" id="alignment-grid"></div>
+                        <div class="detail-panel" id="alignment-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Classes -->
+                <div class="accordion-item" data-step="8">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">8</span>
+                        <span class="step-title">Classes</span>
+                        <span class="step-summary" id="step-summary-8"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Choose your starting class (first is free, additional cost 100 XP each). Only Tier 1 classes are available at
+                            character creation.
+                        </p>
+                        <div class="filter-bar">
+                            <label>Track:</label>
+                            <select id="filter-class-track">
+                                <option value="all">All Tracks</option>
+                            </select>
+                        </div>
+                        <div class="purchased-classes" id="purchased-classes"></div>
+                        <div class="selection-grid" id="class-grid"></div>
+                        <div class="detail-panel" id="class-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 9: Feats -->
+                <div class="accordion-item" data-step="9">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">9</span>
+                        <span class="step-title">Feats, Assets &amp; Hindrances</span>
+                        <span class="step-summary" id="step-summary-9"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">Select feats (100 XP each). Class mandatory feats are auto-included.</p>
+                        <div class="filter-bar">
+                            <label>Category:</label>
+                            <select id="filter-feat-cat">
+                                <option value="all">All Feats</option>
+                                <option value="general">General</option>
+                                <option value="racial">Racial</option>
+                                <option value="supplementary">Supplementary</option>
+                                <option value="hindrance">Hindrances</option>
+                            </select>
+                            <label>Search:</label>
+                            <input type="text" id="filter-feat-search" placeholder="Search feats…" />
+                        </div>
+                        <div class="selected-feats" id="selected-feats"></div>
+                        <div class="selection-grid" id="feat-grid"></div>
+                        <div class="detail-panel" id="feat-detail"></div>
+
+                        <hr class="section-divider" />
+                        <h3 class="subsection-heading">Assets &amp; Hindrances</h3>
+                        <p class="step-desc">
+                            Assets cost 100 XP each. Hindrances grant bonus XP. These are commonly taken during character creation.
+                        </p>
+                        <div class="filter-bar">
+                            <label>Show:</label>
+                            <select id="filter-ah-cat">
+                                <option value="all">All Assets &amp; Hindrances</option>
+                                <option value="asset">Assets</option>
+                                <option value="exaltedAsset">Exalted Assets</option>
+                                <option value="hindrance">Hindrances</option>
+                            </select>
+                        </div>
+                        <div class="selected-ah" id="selected-ah"></div>
+                        <div class="selection-grid" id="ah-grid"></div>
+                        <div class="detail-panel" id="ah-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 10: Equipment -->
+                <div class="accordion-item" data-step="10">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">10</span>
+                        <span class="step-title">Equipment</span>
+                        <span class="step-summary" id="step-summary-10"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <p class="step-desc">
+                            Choose one of five starting equipment packages (Earth, Air, Fire, Water, Void), then resolve any choices within
+                            it.
+                        </p>
+                        <div class="selection-grid" id="equipment-grid"></div>
+                        <div class="detail-panel" id="equipment-detail"></div>
+                    </div>
+                </div>
+
+                <!-- Step 11: Review & Export -->
+                <div class="accordion-item" data-step="11">
+                    <button class="accordion-header" type="button">
+                        <span class="step-number">11</span>
+                        <span class="step-title">Review &amp; Export</span>
+                        <span class="step-summary" id="step-summary-11"></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div id="review-panel"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        import '@/lib/tools/builder-app.js';
+    </script>
+
+    <style is:global>
+        @import '@/styles/builder.css';
+    </style>
 </ToolLayout>

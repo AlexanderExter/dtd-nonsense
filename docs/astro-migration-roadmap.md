@@ -1,8 +1,8 @@
 # Astro Migration Roadmap
 
-> **Last updated:** 2026-02-24
-> Build: **89 pages in ~5.8s** · Pagefind: **78 pages, 12,928 words** · All green.
-> **Status:** 7/9 tools ported. Character Sheet and Character Builder remain as stubs.
+> **Last updated:** 2026-02-25
+> Build: **89 pages in ~9s** · Pagefind: **78 pages, 12,928 words** · All green.
+> **Status:** **9/9 tools ported.** All tool migration complete.
 
 ---
 
@@ -17,8 +17,9 @@
 | **3 — Theme**            | ✅     | `custom.css` (WH40K dark/gold), `tool-components.css`                           |
 | **4A — Shared Modules**  | ✅     | `core.js` + `dice.js` ES module ports in `src/lib/dtd/`                         |
 | **4B — Pilot Tools**     | ✅     | **dice-roller**, **quick-reference** (fully ported)                              |
-| **4C — Stub Pages**      | ✅     | All 7 remaining tool pages created                                              |
+| **4C — Stub Pages**      | ✅     | All 9 tool pages created and ported                                             |
 | **5A — Tool Ports**      | ✅     | **success-curves**, **npc-generator**, **defense-graph**, **combat-tracker**, **ship-builder** |
+| **5D — Final Tool Ports** | ✅     | **character-sheet**, **character-builder** (copy+edit approach: JS as ES modules in `src/lib/tools/`, CSS in `src/styles/`) |
 | **5B — Infrastructure**  | ✅     | GitHub URL configured, npm audit clean (0 vulns), CI workflow, README            |
 | **5C — Style Cleanup**   | ✅     | Removed dead `tool-components.css` from Starlight bundle, imported in ToolLayout |
 
@@ -26,9 +27,6 @@
 
 | Item                    | Detail                                                                     |
 | ----------------------- | -------------------------------------------------------------------------- |
-| **2 tool ports**        | Character Sheet (2,538 LOC) and Character Builder (1,672 LOC) remain stubs |
-| **Git history squash**  | Old history should be discarded before first push                          |
-| **GitHub repo creation**| `AlexanderExter/dtd-nonsense` — not yet created                           |
 | **Vercel deployment**   | Not created                                                                |
 | **Favicon / OG image**  | Starlight defaults in use                                                  |
 
@@ -61,8 +59,8 @@ Using npm import via dynamic `import('chart.js/auto')` in success-curves and def
 | 3   | **defense-graph**     | 1,823 | 0                                       | Chart.js + inline Blob Worker + Canvas 2D heatmap           | ✅ Ported   |
 | 4   | **combat-tracker**    | 2,204 | 0 (inline data)                         | Heavy core.js usage (6+ APIs), cross-tool import from Sheet | ✅ Ported   |
 | 5   | **ship-builder**      | 2,298 | 1 (`ships`)                             | Dual-mode UI, JSON import/export, combat sidebar            | ✅ Ported   |
-| 6   | **character-sheet**   | 3,497 | 8                                       | 5-tab system, massive DOM gen, full persistence layer       | ⏳ Stub     |
-| 7   | **character-builder** | 2,569 | 9                                       | 11-step wizard, XP budgeting, **depends on sheet**          | ⏳ Stub     |
+| 6   | **character-sheet**   | 3,497 | 8                                       | 5-tab system, massive DOM gen, full persistence layer       | ✅ Ported   |
+| 7   | **character-builder** | 2,569 | 9                                       | 11-step wizard, XP budgeting, **depends on sheet**          | ✅ Ported   |
 
 ### Dependency Chain
 
