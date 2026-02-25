@@ -42,7 +42,7 @@ def parse_races(content: str) -> list[ParsedRace]:
         size = int(size_str) if size_str and size_str.isdigit() else None
 
         lang_str = extract_bold_field(section.content, "Languages")
-        languages = [l.strip() for l in lang_str.split(",")] if lang_str else []
+        languages = [lang.strip() for lang in lang_str.split(",")] if lang_str else []
 
         char_bonus = extract_bold_field(section.content, "Characteristic Modifiers")
         if not char_bonus:

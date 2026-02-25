@@ -31,10 +31,16 @@ packages = ["pipeline"]
 
 [tool.ruff]
 target-version = "py312"
-line-length = 100
+line-length = 120
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Pydantic models use camelCase field names to match JSON schema
+"pipeline/models/*.py" = ["N815"]
+# Terminology linter legitimately uses Unicode math symbols in strings/docstrings
+"pipeline/linting/terminology.py" = ["RUF001", "RUF002"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

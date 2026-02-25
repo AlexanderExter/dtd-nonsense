@@ -80,7 +80,18 @@ def validate_file(filename: str, data_dir: Path = DATA_DIR) -> ValidationResult:
 def _count_records(model: object) -> int:
     """Attempt to count the primary records in a validated model."""
     # Try common field names that contain the main data list
-    for attr in ("races", "classes", "feats", "skills", "exaltations", "backgrounds", "alignments", "packages", "hulls", "weapons"):
+    for attr in (
+        "races",
+        "classes",
+        "feats",
+        "skills",
+        "exaltations",
+        "backgrounds",
+        "alignments",
+        "packages",
+        "hulls",
+        "weapons",
+    ):
         val = getattr(model, attr, None)
         if isinstance(val, list):
             return len(val)

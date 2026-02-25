@@ -79,7 +79,7 @@ def extract_pipe_table(content: str) -> list[dict[str, str]]:
     Returns list of {header: value} dicts.
     """
     lines = content.splitlines()
-    table_lines = [l.strip() for l in lines if l.strip().startswith("|") and l.strip().endswith("|")]
+    table_lines = [ln.strip() for ln in lines if ln.strip().startswith("|") and ln.strip().endswith("|")]
 
     if len(table_lines) < 3:
         return []
@@ -92,6 +92,6 @@ def extract_pipe_table(content: str) -> list[dict[str, str]]:
     for line in table_lines[2:]:
         cells = [cell.strip() for cell in line.split("|")[1:-1]]
         if len(cells) == len(headers):
-            rows.append(dict(zip(headers, cells)))
+            rows.append(dict(zip(headers, cells, strict=False)))
 
     return rows
