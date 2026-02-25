@@ -132,14 +132,26 @@ All 12 JSON data files pass schema validation. Cross-reference checks produce wa
 
 ### CI Integration
 
-Recommended GitHub Actions workflow (`.github/workflows/validate.yml`):
+The CI workflow (`.github/workflows/build.yml`) runs the full Python pipeline on every push and PR:
 
 ```yaml
+- run: uv run ruff check . # Python lint — must pass
 - run: uv run dtd validate # Schema check — must pass
 - run: uv run dtd lint # Terminology/formatting — must pass
-- run: uv run dtd validate --xref # Cross-refs — informational
-  continue-on-error: true
 ```
+
+### Ruff Configuration
+
+Ruff is configured in `pyproject.toml` with these intentional suppressions:
+
+| Rule                    | Scope                             | Reason                                                                      |
+| ----------------------- | --------------------------------- | --------------------------------------------------------------------------- |
+| N815 (camelCase)        | `pipeline/models/*.py`            | Pydantic field names match JSON keys — renaming would break serialization   |
+| RUF001/RUF002 (Unicode) | `pipeline/linting/terminology.py` | Terminology patterns use `×` (multiplication) and `−` (minus) intentionally |
+
+Line length is set to **120** characters (bumped from default 100 to accommodate Rich formatting strings and Pydantic model definitions).
+
+Do not "fix" the suppressed rules — the camelCase names are load-bearing for JSON round-trip, and the Unicode symbols match the project's [formula conventions](project-conventions.md#formula-symbols).
 
 ### Astro/Starlight Support
 
@@ -160,10 +172,9 @@ The pipeline directly supports the active Astro + Starlight migration (see [astr
 
 ## Roadmap
 
-| Priority | Item                              | Status  | Notes                                                                         |
-| -------- | --------------------------------- | ------- | ----------------------------------------------------------------------------- |
-| Active   | Astro/Starlight migration         | Phase 4 | Tracked in [astro-migration-roadmap.md](astro-migration-roadmap.md)           |
-| Medium   | `dtd schema-export` command       | Planned | Pydantic → JSON Schema → Zod for Starlight content collections                |
-| Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats)   |
-| Lower    | PDF re-extraction pipeline        | Planned | `pipeline/extraction/` is a skeleton; use pymupdf for reproducible extraction |
-| Lower    | Auto-generate `data-reference.md` | Planned | From Pydantic model introspection — eliminate manual schema docs              |
+| Priority | Item                              | Status  | Notes                                                                       |
+| -------- | --------------------------------- | ------- | --------------------------------------------------------------------------- |
+| Active   | Astro/Starlight migration         | Phase 4 | Tracked in [astro-migration-roadmap.md](astro-migration-roadmap.md)         |
+| Medium   | `dtd schema-export` command       | Planned | Pydantic → JSON Schema → Zod for Starlight content collections              |
+| Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
+| Lower    | Auto-generate `data-reference.md` | Planned | From Pydantic model introspection — eliminate manual schema docs            |
