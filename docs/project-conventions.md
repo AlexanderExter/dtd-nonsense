@@ -42,13 +42,23 @@ When applying multiple `multi_replace_string_in_file` operations to the same fil
 
 External formatters or editor extensions may silently revert agent edits between sessions. After resuming work on a branch, always re-read recently edited files and verify that prior changes are still present before building on them.
 
-For pipeline Python files specifically: run `uv run dtd validate` after any external edits touch `pipeline/` — formatters can break imports or type annotations that the IDE won't catch.
+For pipeline Python files specifically: run `uv run ruff check .` and `uv run dtd validate` after any external edits touch `pipeline/`. Formatters commonly undo manual line-wrapping (E501 fixes), re-merge split strings, and reformat f-strings — all of which can re-introduce ruff violations.
+
+### Python Code Style
+
+Ruff enforces Python style. Key settings (in `pyproject.toml`):
+
+- **Line length: 120** characters (not the default 100)
+- **Per-file-ignores**: N815 suppressed in `pipeline/models/` (Pydantic camelCase matches JSON), RUF001/RUF002 suppressed in `terminology.py` (intentional Unicode symbols)
+- Run `uv run ruff check .` before committing any Python changes
+
+See [docs/pipeline.md — Ruff Configuration](pipeline.md#ruff-configuration) for full rationale.
 
 ### Subagent Discipline
 
 When dispatching subagents, always specify the exact branch name and explicitly state "Do NOT create a new branch." Without this, subagents create their own branches, causing merge conflicts and orphaned work. Also tell subagents to commit directly — don't rely on them to follow the parent's workflow.
 
-**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of *input* source. The main agent also fails when asked to *generate* 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
+**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of _input_ source. The main agent also fails when asked to _generate_ 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
 
 ---
 
@@ -237,7 +247,7 @@ Never set an explicit `display` value (e.g., `display: flex`) on an element that
 
 ### Astro `<style>` Scoping Eats `@import`
 
-A bare `<style>@import "../styles/foo.css";</style>` in an Astro layout is **scoped by default**. Astro appends a scope hash (e.g., `:where(.astro-mqzpnqfb)`) to every selector in the imported file. Slotted content from child pages gets a *different* hash, so imported rules never match child elements — the CSS is silently dead.
+A bare `<style>@import "../styles/foo.css";</style>` in an Astro layout is **scoped by default**. Astro appends a scope hash (e.g., `:where(.astro-mqzpnqfb)`) to every selector in the imported file. Slotted content from child pages gets a _different_ hash, so imported rules never match child elements — the CSS is silently dead.
 
 **Fix:** Use `<style is:global>` for any `@import` whose selectors must reach into slotted/child content. Alternatively, make each page fully self-contained and skip the shared import entirely.
 

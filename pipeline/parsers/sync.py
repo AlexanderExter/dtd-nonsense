@@ -73,7 +73,8 @@ def check_sync(
         table.add_row("[red]- missing[/red]", name, "JSON only")
 
     console.print(table)
-    console.print(f"\n[bold]Summary:[/bold] {len(matched)} matched, {len(only_md)} in markdown only, {len(only_json)} in JSON only")
+    matched_n, md_n, json_n = len(matched), len(only_md), len(only_json)
+    console.print(f"\n[bold]Summary:[/bold] {matched_n} matched, {md_n} in markdown only, {json_n} in JSON only")
 
     if not only_md and not only_json:
         console.print("[green]✓ Markdown and JSON are in sync (by name).[/green]")
