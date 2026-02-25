@@ -254,3 +254,32 @@ const melee = (this.data.weapons.weapons?.melee || [])
 ```
 
 Items fetched from `weapons.weapons.melee` are melee by definition (the data structure already partitions by category). The secondary filter `|| !w.range` is redundant against the existing data and could accidentally include future weapon entries that lack a `range` field but aren't melee (e.g., a placeholder row). Removing the filter entirely, or using `w.type === 'melee'` alone, is cleaner.
+
+---
+
+## [2026-02-25] — TypeScript Migration (Phase 1 Complete, Phases 2–3 Tracked)
+
+Phase 1 completed: `core.js`, `dice.js`, `sheet-app.js`, and `builder-app.js` renamed to `.ts`. Shared interfaces extracted to `src/lib/dtd/types.ts`. `core.ts` and `dice.ts` are fully typed and pass `astro check` clean. Tool apps (`sheet-app.ts`, `builder-app.ts`) have typed imports and `CharacterData` on state, with DOM-element typing deferred to Phase 2 (`// @ts-nocheck` in place).
+
+### TODO — Phase 2: Tool Module Refactor
+
+Break up the monolithic tool apps into logical units to reduce the maintenance burden and enable per-module typing:
+
+- `src/lib/tools/sheet/state.ts` — character state and persistence (wraps `character.*` from core.ts)
+- `src/lib/tools/sheet/calc.ts` — derived stat calculations and XP budget
+- `src/lib/tools/sheet/render.ts` — DOM rendering functions (panels, weapon rows, etc.)
+- `src/lib/tools/sheet/events.ts` — event handler registration
+
+Same split pattern for `builder-app.ts`. Once split, remove `// @ts-nocheck` and add proper `HTMLInputElement` / `HTMLSelectElement` casts. Pre-condition: browser testing confirms the current port is fully functional.
+
+Also covers: resolving the existing persistence duplication between `sheet-app.ts` (`getDefaultChar`, `mergeDefaults`) and `core.ts` (`character.DEFAULTS`, `character.validate`).
+
+### Open Consideration — Phase 3: Reactivity Layer
+
+If Phase 2's module refactor still leaves the DOM manipulation feeling painful, consider adding a lightweight reactivity layer. Decision factors:
+
+- **Preact** (`@astrojs/preact`, 7KB) — identical React API, zero extra config, Astro island-compatible. Best fit if the goal is reactive components without ecosystem commitment.
+- **React** (`@astrojs/react`) — worth it only if shadcn/Radix component library is a confirmed target or external contributors familiar with React are expected.
+- **No framework** — If Phase 2's module split makes the vanilla TS pattern clean enough, skip entirely. This is a real outcome worth evaluating before committing.
+
+Start with the dice roller (smallest tool) as a proof-of-concept island before migrating sheet/builder. Relevant skills: `vercel-react-best-practices`, `vercel-composition-patterns`.
