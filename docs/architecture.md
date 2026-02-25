@@ -29,8 +29,9 @@ Key files:
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored      |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                   |
 | `src/lib/dtd/`         | ES module ports of core.js and dice.js                       |
+| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.js, builder-app.js) |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                  |
-| `src/styles/`          | `custom.css` (WH40K theme), `tool-components.css`            |
+| `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
 | `public/data/`         | Generated JSON data copies — gitignored                      |
 
 Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies source content into Astro structure, then Astro builds the static site.

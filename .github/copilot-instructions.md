@@ -82,8 +82,9 @@ src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
   lib/dtd/             ES module ports of core.js and dice.js
+  lib/tools/           Tool-specific ES module scripts (sheet-app.js, builder-app.js)
   layouts/             ToolLayout.astro
-  styles/              custom.css (WH40K theme), tool-components.css
+  styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
 public/data/           Generated JSON data copies (gitignored)
 ```
 
