@@ -178,7 +178,8 @@ def cross_reference_check(data_dir: Path = DATA_DIR) -> list[str]:
                 if isinstance(trait_ref, dict):
                     trait_id = trait_ref.get("id", "")
                     if trait_id not in trait_ids:
-                        issues.append(f"npc-templates.json: NPC '{npc['name']}' references unknown trait id '{trait_id}'")
+                        msg = f"NPC '{npc['name']}' references unknown trait id '{trait_id}'"
+                        issues.append(f"npc-templates.json: {msg}")
                 else:
                     # String refs may have parameters like "Fear (3)" — strip those
                     base_trait = trait_ref.split(" (")[0] if " (" in trait_ref else trait_ref
