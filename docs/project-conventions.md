@@ -48,7 +48,7 @@ For pipeline Python files specifically: run `uv run dtd validate` after any exte
 
 When dispatching subagents, always specify the exact branch name and explicitly state "Do NOT create a new branch." Without this, subagents create their own branches, causing merge conflicts and orphaned work. Also tell subagents to commit directly — don't rely on them to follow the parent's workflow.
 
-**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of *input* source. Larger files (character-sheet at 2,538 LOC, character-builder at 1,672 LOC) exhaust context and produce incomplete output. For large ports, work directly in the main agent session or split the file into phases.
+**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of *input* source. The main agent also fails when asked to *generate* 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
 
 ---
 
