@@ -1,27 +1,27 @@
 name: Build
 on: [push, pull_request]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      # --- Node / Astro ---
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+            # --- Node / Astro ---
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+            - run: npm ci
+            - run: npm run build
 
-      # --- Python pipeline ---
-      - uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: uv sync --dev
-      - run: uv run ruff check .
-      - run: uv run dtd validate
-      - run: uv run dtd lint
+            # --- Python pipeline ---
+            - uses: astral-sh/setup-uv@v5
+              with:
+                  enable-cache: true
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+            - run: uv sync --dev
+            - run: uv run ruff check .
+            - run: uv run dtd validate
+            - run: uv run dtd lint
