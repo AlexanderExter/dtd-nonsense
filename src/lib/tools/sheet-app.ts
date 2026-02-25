@@ -1,3 +1,4 @@
+// @ts-nocheck -- Phase 2: DOM element typing (getElementById cast patterns) deferred to module refactor
 /**
  * DTD Character Sheet
  * Freeform character sheet for Dungeons the Dragoning 40,000: 7th Edition
@@ -8,6 +9,7 @@
 
 import { character as characterAPI, escapeHtml, loadAllData } from '@/lib/dtd/core.js';
 import { parseNotation } from '@/lib/dtd/dice.js';
+import type { CharacterData } from '@/lib/dtd/types.js';
 
 const Sheet = {
 
@@ -90,8 +92,8 @@ const Sheet = {
     // =========================================================================
 
     data: {},
-    char: null,
-    charId: null,
+    char: null as CharacterData | null,
+    charId: null as string | null,
     charList: [],
     saveTimer: null,
     derived: {},

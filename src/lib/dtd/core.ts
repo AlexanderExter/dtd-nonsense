@@ -4,6 +4,12 @@
  * Ported from tools/shared/js/core.js.
  * Import specific functions: import { loadData, derived, character } from '@/lib/dtd/core';
  */
+import type {
+    CharacterData,
+    CharacterListEntry,
+    Characteristics,
+    DerivedStats,
+} from './types.js';
 
 // =========================================================================
 // Data Loading
@@ -14,12 +20,12 @@
  * @param {string} filename - Name of the JSON file (e.g., 'races.json')
  * @returns {Promise<any>} Parsed JSON data
  */
-export async function loadData(filename) {
+export async function loadData<T = unknown>(filename: string): Promise<T> {
   const response = await fetch(`/data/${filename}`);
   if (!response.ok) {
     throw new Error(`Failed to load ${filename}: ${response.status}`);
   }
-  return response.json();
+  return response.json() as Promise<T>;
 }
 
 /**
@@ -27,9 +33,9 @@ export async function loadData(filename) {
  * @param {string[]} filenames - Array of JSON filenames
  * @returns {Promise<Object>} Object with filename (without .json) as key
  */
-export async function loadAllData(filenames) {
+export async function loadAllData(filenames: string[]): Promise<Record<string, unknown>> {
   const results = await Promise.all(filenames.map((f) => loadData(f)));
-  const data = {};
+  const data: Record<string, unknown> = {};
   filenames.forEach((f, i) => {
     const key = f.replace(".json", "");
     data[key] = results[i];
@@ -46,7 +52,7 @@ export const derived = {
    * Static Defense: 10 + (Dex + Wis) × 3 − Size × 2
    * Halfling variant: 10 + Dex × 6 − Size × 2
    */
-  calculateSD(dex, wis, size, isHalfling = false) {
+  calculateSD(dex: number, wis: number, size: number, isHalfling = false): number {
     if (isHalfling) {
       return 10 + dex * 6 - size * 2;
     }
@@ -54,32 +60,32 @@ export const derived = {
   },
 
   /** Hit Points: (Con + Wil) × 2 */
-  calculateHP(con, wil) {
+  calculateHP(con: number, wil: number): number {
     return (con + wil) * 2;
   },
 
   /** Mental Defense: 5 + Composure × 5 */
-  calculateMentalDefense(composure) {
+  calculateMentalDefense(composure: number): number {
     return 5 + composure * 5;
   },
 
   /** Resolve: Willpower + Composure */
-  calculateResolve(wil, composure) {
+  calculateResolve(wil: number, composure: number): number {
     return wil + composure;
   },
 
   /** Initiative base: Dex + Composure */
-  calculateInitiativeBase(dex, composure) {
+  calculateInitiativeBase(dex: number, composure: number): number {
     return dex + composure;
   },
 
   /** Speed: Strength + Dexterity */
-  calculateSpeed(str, dex) {
+  calculateSpeed(str: number, dex: number): number {
     return str + dex;
   },
 
   /** Resilience: ceil((Size + Level) / 2) + 1 */
-  calculateResilience(size, level) {
+  calculateResilience(size: number, level: number): number {
     return Math.ceil((size + level) / 2) + 1;
   },
 };
@@ -89,10 +95,10 @@ export const derived = {
  * @param {Object} char - Character data with characteristics, race, etc.
  * @returns {Object} All calculated derived stats
  */
-export function calculateDerivedStats(char) {
+export function calculateDerivedStats(char: CharacterData): DerivedStats {
   const c = getTotalCharacteristics(char);
-  const size = char.race?.size ?? 4;
-  const level = char.level ?? 1;
+  const size = (char as unknown as { race?: { size?: number } }).race?.size ?? 4;
+  const level = (char as unknown as { level?: number }).level ?? 1;
 
   return {
     staticDefense: derived.calculateSD(c.dexterity, c.wisdom, size),
@@ -109,11 +115,11 @@ export function calculateDerivedStats(char) {
 /**
  * Get total characteristic values including racial bonuses.
  */
-export function getTotalCharacteristics(char) {
-  const base = char.characteristics || {};
-  const racial = char.race?.charBonus || {};
+export function getTotalCharacteristics(char: CharacterData): Characteristics {
+  const base = char.characteristics || {} as Characteristics;
+  const racial = (char as unknown as { race?: { charBonus?: Partial<Characteristics> } }).race?.charBonus || {};
 
-  const characteristics = [
+  const characteristics: (keyof Characteristics)[] = [
     "strength",
     "dexterity",
     "constitution",
@@ -125,7 +131,7 @@ export function getTotalCharacteristics(char) {
     "willpower",
   ];
 
-  const result = {};
+  const result = {} as Characteristics;
   for (const c of characteristics) {
     result[c] = (base[c] || 1) + (racial[c] || 0);
   }
@@ -137,20 +143,20 @@ export function getTotalCharacteristics(char) {
 // =========================================================================
 
 export const XP_COSTS = {
-  characteristic: (rank) => 100 * rank,
-  skill: (rank) => (rank === 0 ? 50 : 50 * rank),
+  characteristic: (rank: number) => 100 * rank,
+  skill: (rank: number) => (rank === 0 ? 50 : 50 * rank),
   newSchool: 100,
-  schoolRank: (rank) => 100 * rank,
+  schoolRank: (rank: number) => 100 * rank,
   asset: 100,
-  background: (rank) => (rank <= 3 ? 50 : 100),
-  powerStat: (rank) => 200 * rank,
-  devotion: (rank) => 50 * rank,
+  background: (rank: number) => (rank <= 3 ? 50 : 100),
+  powerStat: (rank: number) => 200 * rank,
+  devotion: (rank: number) => 50 * rank,
 };
 
 /**
  * Calculate total XP spent.
  */
-export function calculateXPSpent(char) {
+export function calculateXPSpent(char: CharacterData): number {
   let total = 0;
 
   for (const val of Object.values(char.characteristics || {})) {
@@ -260,20 +266,20 @@ export const character = {
     currentResolve: 0,
   },
 
-  createDefault() {
-    const ch = JSON.parse(JSON.stringify(this.DEFAULTS));
+  createDefault(): CharacterData {
+    const ch = JSON.parse(JSON.stringify(this.DEFAULTS)) as CharacterData;
     ch.id = this._genId();
     return ch;
   },
 
-  validate(data) {
+  validate(data: unknown): CharacterData {
     if (!data || typeof data !== "object") {
       return this.createDefault();
     }
-    return this._mergeDefaults(data, this.DEFAULTS);
+    return this._mergeDefaults(data as Record<string, unknown>, this.DEFAULTS as unknown as Record<string, unknown>) as unknown as CharacterData;
   },
 
-  save(id, data) {
+  save(id: string, data: CharacterData): void {
     try {
       localStorage.setItem(this.STORAGE_PREFIX + id, JSON.stringify(data));
       const list = this.list();
@@ -287,7 +293,7 @@ export const character = {
     }
   },
 
-  load(id) {
+  load(id: string): CharacterData {
     try {
       const raw = localStorage.getItem(this.STORAGE_PREFIX + id);
       if (raw) {
@@ -305,7 +311,7 @@ export const character = {
     return def;
   },
 
-  list() {
+  list(): CharacterListEntry[] {
     try {
       const raw = localStorage.getItem(this.STORAGE_LIST_KEY);
       return raw ? JSON.parse(raw) : [];
@@ -314,13 +320,13 @@ export const character = {
     }
   },
 
-  remove(id) {
+  remove(id: string): void {
     localStorage.removeItem(this.STORAGE_PREFIX + id);
     const list = this.list().filter((c) => c.id !== id);
     localStorage.setItem(this.STORAGE_LIST_KEY, JSON.stringify(list));
   },
 
-  exportJSON(data, filename) {
+  exportJSON(data: CharacterData, filename?: string): void {
     const name =
       filename ||
       (data.name || "character").replace(/[^a-z0-9]/gi, "_").toLowerCase() +
@@ -335,7 +341,7 @@ export const character = {
     URL.revokeObjectURL(url);
   },
 
-  async importJSON(file) {
+  async importJSON(file: File): Promise<CharacterData> {
     const text = await file.text();
     let data = JSON.parse(text);
     data = this._migrateIfNeeded(data);
@@ -351,8 +357,8 @@ export const character = {
     );
   },
 
-  _mergeDefaults(obj, defaults) {
-    const result = { ...defaults };
+  _mergeDefaults(obj: Record<string, unknown>, defaults: Record<string, unknown>): Record<string, unknown> {
+    const result: Record<string, unknown> = { ...defaults };
     for (const key of Object.keys(defaults)) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
         if (
@@ -360,7 +366,10 @@ export const character = {
           defaults[key] !== null &&
           !Array.isArray(defaults[key])
         ) {
-          result[key] = this._mergeDefaults(obj[key] || {}, defaults[key]);
+          result[key] = this._mergeDefaults(
+            (obj[key] as Record<string, unknown>) || {},
+            defaults[key] as Record<string, unknown>
+          );
         } else {
           result[key] = obj[key];
         }
@@ -374,29 +383,30 @@ export const character = {
     return result;
   },
 
-  _migrateIfNeeded(data) {
+  _migrateIfNeeded(data: Record<string, unknown>): Record<string, unknown> {
     if (!data || typeof data !== "object") return data;
 
     if (data.race && typeof data.race === "object") {
-      data.race = data.race.id || data.raceId || "";
+      data.race = (data.race as Record<string, unknown>).id || data.raceId || "";
     }
     if (data.exaltation && typeof data.exaltation === "object") {
-      data.exaltation = data.exaltation.id || data.exaltationId || "";
+      data.exaltation = (data.exaltation as Record<string, unknown>).id || data.exaltationId || "";
     }
     if (data.alignment && typeof data.alignment === "object") {
-      data.alignment = data.alignment.id || data.alignmentId || "";
+      data.alignment = (data.alignment as Record<string, unknown>).id || data.alignmentId || "";
     }
-    if (data.raceChoices?.charBonus && !data.raceCharBonus) {
-      data.raceCharBonus = data.raceChoices.charBonus;
+    const raceChoices = data.raceChoices as Record<string, unknown> | undefined;
+    if (raceChoices?.charBonus && !data.raceCharBonus) {
+      data.raceCharBonus = raceChoices.charBonus;
     }
     if (data.backgrounds && !Array.isArray(data.backgrounds)) {
-      const oldBgs = data.backgrounds;
-      const oldNotes = data.backgroundNotes || {};
+      const oldBgs = data.backgrounds as Record<string, number>;
+      const oldNotes = (data.backgroundNotes as Record<string, string>) || {};
       data.backgrounds = [];
       for (const [id, dots] of Object.entries(oldBgs)) {
         if (dots > 0) {
           const name = id.charAt(0).toUpperCase() + id.slice(1);
-          data.backgrounds.push({ name, dots, notes: oldNotes[id] || "" });
+          (data.backgrounds as unknown[]).push({ name, dots, notes: oldNotes[id] || "" });
         }
       }
       delete data.backgroundNotes;
@@ -406,21 +416,21 @@ export const character = {
       data.feats.length > 0 &&
       typeof data.feats[0] === "string"
     ) {
-      data.feats = data.feats.map((f) => ({ name: f, notes: "" }));
+      data.feats = (data.feats as unknown[]).map((f) => ({ name: f as string, notes: "" }));
     }
     if (
       Array.isArray(data.assets) &&
       data.assets.length > 0 &&
       typeof data.assets[0] === "string"
     ) {
-      data.assets = data.assets.map((a) => ({ name: a, notes: "" }));
+      data.assets = (data.assets as unknown[]).map((a) => ({ name: a as string, notes: "" }));
     }
     if (
       Array.isArray(data.hindrances) &&
       data.hindrances.length > 0 &&
       typeof data.hindrances[0] === "string"
     ) {
-      data.hindrances = data.hindrances.map((h) => ({ name: h, notes: "" }));
+      data.hindrances = (data.hindrances as unknown[]).map((h) => ({ name: h as string, notes: "" }));
     }
     if (
       data.weapons &&
@@ -430,11 +440,11 @@ export const character = {
     ) {
       data.meleeWeapons = [];
       data.rangedWeapons = [];
-      for (const w of data.weapons) {
+      for (const w of data.weapons as Record<string, unknown>[]) {
         if (w.type === "melee" || w.category === "melee") {
-          data.meleeWeapons.push(w);
+          (data.meleeWeapons as unknown[]).push(w);
         } else {
-          data.rangedWeapons.push(w);
+          (data.rangedWeapons as unknown[]).push(w);
         }
       }
       delete data.weapons;
@@ -475,7 +485,7 @@ export const character = {
 /**
  * Render dot rating (filled and empty circles).
  */
-export function renderDotRating(value, max = 5) {
+export function renderDotRating(value: number, max = 5): string {
   let html = '<span class="dot-rating">';
   for (let i = 1; i <= max; i++) {
     html += `<span class="dot ${i <= value ? "filled" : ""}"></span>`;
@@ -485,22 +495,22 @@ export function renderDotRating(value, max = 5) {
 }
 
 /** Initialize accordion behavior. */
-export function initAccordion(container) {
+export function initAccordion(container: Element): void {
   const items = container.querySelectorAll(".accordion-item");
   items.forEach((item) => {
     const header = item.querySelector(".accordion-header");
-    header.addEventListener("click", () => {
+    header?.addEventListener("click", () => {
       item.classList.toggle("open");
     });
   });
 }
 
 /** Initialize accordion with single-open behavior. */
-export function initAccordionExclusive(container) {
+export function initAccordionExclusive(container: Element): void {
   const items = container.querySelectorAll(".accordion-item");
   items.forEach((item) => {
     const header = item.querySelector(".accordion-header");
-    header.addEventListener("click", () => {
+    header?.addEventListener("click", () => {
       items.forEach((other) => {
         if (other !== item) other.classList.remove("open");
       });
@@ -510,16 +520,16 @@ export function initAccordionExclusive(container) {
 }
 
 /** Debounce function for search/filter inputs. */
-export function debounce(fn, delay = 300) {
-  let timeout;
-  return (...args) => {
+export function debounce<T extends (...args: unknown[]) => void>(fn: T, delay = 300): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout>;
+  return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => fn(...args), delay);
   };
 }
 
 /** Escape HTML to prevent XSS. */
-export function escapeHtml(str) {
+export function escapeHtml(str: string): string {
   const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;

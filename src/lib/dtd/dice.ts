@@ -6,13 +6,14 @@
  *
  * Ported from tools/shared/js/dice.js.
  */
+import type { DiceResult, DieRoll, Outcome, OverflowInfo, ParsedNotation } from './types.js';
 
 // =========================================================================
 // Internal Helpers
 // =========================================================================
 
 /** Roll a single exploding d10. */
-function rollOneDie() {
+function rollOneDie(): DieRoll {
   const firstRoll = Math.floor(Math.random() * 10) + 1;
   let value = firstRoll;
   let exploded = false;
@@ -28,7 +29,7 @@ function rollOneDie() {
 }
 
 /** Roll a single d10 for rank-0 mode (no explosion, 10 → 0). */
-function rollRankZero() {
+function rollRankZero(): DieRoll {
   const roll = Math.floor(Math.random() * 10) + 1;
   return {
     value: roll === 10 ? 0 : roll,
@@ -45,7 +46,7 @@ function rollRankZero() {
  * 2. Kept dice >10: each excess kept die adds flat +5
  * 3. Combined: first compress rolled, then compress kept
  */
-function _compressOverflow(numDice, keepDice, modifier) {
+function _compressOverflow(numDice: number, keepDice: number, modifier: number): OverflowInfo {
   let compressed = false;
 
   if (numDice > 10) {
@@ -84,7 +85,7 @@ function _compressOverflow(numDice, keepDice, modifier) {
  * @param {boolean} [options.rankZero=false] - Rank-0 mode.
  * @returns {DiceResult}
  */
-export function roll(numDice, keepDice, modifier = 0, options = {}) {
+export function roll(numDice: number, keepDice: number, modifier = 0, options: { rankZero?: boolean } = {}): DiceResult {
   if (options.rankZero || keepDice === 0) {
     const die = rollRankZero();
     return {
@@ -136,7 +137,7 @@ export function roll(numDice, keepDice, modifier = 0, options = {}) {
  * @param {number} tn - Target Number
  * @returns {{ success: boolean, raises: number, checks: number }}
  */
-export function calculateOutcome(total, tn) {
+export function calculateOutcome(total: number, tn: number): Outcome {
   const diff = total - tn;
   if (diff >= 0) {
     return {
@@ -158,7 +159,7 @@ export function calculateOutcome(total, tn) {
  * @param {string} str - Dice notation string
  * @returns {{ num: number, keep: number, modifier: number } | null}
  */
-export function parseNotation(str) {
+export function parseNotation(str: unknown): ParsedNotation | null {
   if (!str || typeof str !== "string") return null;
   const match = str
     .trim()
@@ -175,7 +176,7 @@ export function parseNotation(str) {
 /**
  * Format a DiceResult for human display.
  */
-export function formatResult(result, tn) {
+export function formatResult(result: DiceResult, tn?: number | null): string {
   let text = `Total: ${result.total}`;
   if (result.modifier !== 0) {
     text += ` (${result.diceTotal}${result.modifier >= 0 ? "+" : ""}${result.modifier})`;
@@ -204,6 +205,6 @@ export function formatResult(result, tn) {
 /**
  * Expose overflow compression for testing/display.
  */
-export function compressOverflow(numDice, keepDice, modifier = 0) {
+export function compressOverflow(numDice: number, keepDice: number, modifier = 0): OverflowInfo {
   return _compressOverflow(numDice, keepDice, modifier);
 }
