@@ -210,6 +210,25 @@ Characters created by the sheet will have characteristics starting at 1; charact
 
 ---
 
+### B4 — CI: `uv sync --dev` Does Not Install Dev Extras — **FIXED**
+
+`.github/workflows/build.yml` was running:
+
+```yaml
+- run: uv sync --dev
+- run: uv run ruff check .
+```
+
+`--dev` in uv refers to `[dependency-groups].dev` (PEP 735). The project defines its dev tools under `[project.optional-dependencies].dev` (PEP 508 extras). These are separate concepts — `--dev` never installs from the extras section.
+
+Result: after `uv sync --dev`, ruff (and pytest) are not present in the virtual environment. `uv run ruff check .` then fails with a binary-not-found error, blocking every CI run.
+
+**Fixed:** changed `uv sync --dev` → `uv sync --extra dev` in `build.yml`.
+
+Note: the underlying ambiguity (`--dev` silently being a no-op when there are no `[dependency-groups]` defined) is a pyproject.toml structure issue. A future cleanup option is to migrate dev tools to `[dependency-groups]` (uv-native), which makes `--dev` work as expected and removes the need for `--extra dev` in CI.
+
+---
+
 ### I1 — Melee Datalist Filter Has Redundant Condition
 
 `src/lib/tools/sheet-app.js:144–145`:
