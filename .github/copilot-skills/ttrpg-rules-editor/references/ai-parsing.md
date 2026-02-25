@@ -177,7 +177,7 @@ Damage imposes penalties to all dice pools (not static values):
 
 ## JSON Alignment
 
-When writing rules that will be mirrored in `tools/shared/data/` JSON files:
+When writing rules that will be mirrored in `data/` JSON files:
 
 - Use consistent `id` naming: `kebab-case` for IDs
 - Match field names between markdown headers and JSON keys

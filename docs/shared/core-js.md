@@ -2,7 +2,7 @@
 
 Foundation module that defines the `DTD` global namespace and provides character data management, derived stat calculations, XP cost tables, and shared UI helpers.
 
-**File:** `tools/shared/js/core.js` (~681 lines)
+**File:** `src/lib/dtd/core.js` (ES module — ported from vanilla `tools/shared/js/core.js`)
 **Consumers:** Every tool in the project
 
 ---

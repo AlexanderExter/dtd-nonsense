@@ -8,12 +8,7 @@
 
 ## Ecosystem
 
-The DTD toolset exists in **two forms**:
-
-1. **Vanilla JavaScript** (`tools/`) — HTML, CSS, and JS served directly from the filesystem. Nine tools share the `DTD` global namespace, CSS theme, and JSON data files. All state persists via `localStorage`.
-2. **Astro/Starlight pages** (`src/pages/tools/`) — ES module-based ports using `ToolLayout.astro`. Import shared code from `src/lib/dtd/core.js` and `dice.js`. Migration complete (9/9 tools) — see [docs/astro-migration-roadmap.md](../../docs/astro-migration-roadmap.md).
-
-When editing tools, check which version you're working on. Changes to shared logic must be applied to both `tools/shared/js/` and `src/lib/dtd/` until migration is complete.
+All tools are **Astro/Starlight pages** (`src/pages/tools/`) — ES module-based using `ToolLayout.astro`. Import shared code from `src/lib/dtd/core.js` and `dice.js`. Migration complete (9/9 tools).
 
 ## Documentation Map
 
@@ -71,7 +66,7 @@ This approach succeeded on the first attempt for both character-sheet and charac
 
 ## Data Sync Rule
 
-JSON data in `tools/shared/data/` must stay in sync with `cleaned-references/`. Before editing any JSON data file:
+JSON data in `data/` must stay in sync with `cleaned-references/`. Before editing any JSON data file:
 
 1. Check [docs/data-reference.md](../../docs/data-reference.md) for the schema
 2. Verify changes match the corresponding cleaned-reference content
@@ -83,4 +78,4 @@ If a tool change touches game mechanics (formulas, stat calculations, race/class
 
 - The relevant `cleaned-references/` file
 - `docs/project-conventions.md` formula table
-- `tools/shared/js/core.js` derived stat implementations
+- `src/lib/dtd/core.js` derived stat implementations

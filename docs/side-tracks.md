@@ -46,7 +46,7 @@ Both work but the Blob Worker approach is fragile — the worker source code is 
 
 Tool JSON data exists in three places:
 
-1. `tools/shared/data/*.json` — canonical source, 12 files
+1. `data/*.json` — canonical source, 12 files
 2. `public/data/*.json` — copies for Astro (created by `prebuild.mjs`)
 3. Pipeline models (`pipeline/models/`) — Pydantic schemas that validate #1
 
@@ -81,7 +81,7 @@ These are editorial suggestions, not errors. The 8 warnings are worth reviewing 
 
 - **debt**: CSS Architecture Tension (above) is now fully resolved and `tool-components.css` has been deleted. See section header for details.
 
-- **debt**: Triple module stack — vanilla `tools/shared/js/core.js`, ES module `src/lib/dtd/core.js`, and now tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from originals. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times. But it creates a maintenance surface.
+- **debt**: Dual module stack — `src/lib/dtd/core.js` (ES module) and tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from the ES module versions. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times.
 
 - ~~**investigation**: Sheet's exotic weapons display~~ **FIXED (2026-02-25 technical-stabilizer)** — Both `tools/character-sheet/sheet.js` and `src/lib/tools/sheet-app.js` had `.concat(this.data.weapons.weapons?.exotic || [])` in the melee weapons datalist builder. `weapons.json` has no `exotic` key (only `ranged`/`melee`/`thrown`). The dead concat was removed from both files.
 

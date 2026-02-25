@@ -35,7 +35,7 @@ Follow the git workflow in [docs/project-conventions.md](../../docs/project-conv
 
 ## Directory Structure
 
-Key locations for editorial work: `books/` (core reference), `cleaned-references/` (condensed references), `books/open-questions.md` (ambiguities), `tools/shared/data/` (JSON data synced with cleaned-references).
+Key locations for editorial work: `books/` (core reference), `cleaned-references/` (condensed references), `books/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
 
 ### Content Maturity
 
@@ -296,7 +296,7 @@ If you notice yourself doing any of these, pause and verify your approach:
 - **Editing without a branch** — Always branch before modifying files
 - **Writing scripts for file edits** — Edit directly; scripts produce untraceable changes and have caused destructive mistakes
 - **Scripting context-dependent terminology** — If the same word has multiple valid meanings (e.g., \"check\"), use manual review with an audit checklist, not automated find-replace- **Leaving game terms lowercase** — Test, Static Defense, Mental Defense, Hero Points, Hit Points etc. must always be capitalized as game terms. Lowercase "test" or "static defense" in rules text is a bug
-- **Ignoring tool data files** — When editing mechanics in `cleaned-references/`, verify consistency with `tools/shared/data/` JSON and `tools/shared/js/` implementations
+- **Ignoring tool data files** — When editing mechanics in `cleaned-references/`, verify consistency with `data/` JSON and `src/lib/dtd/` implementations
 - **Reorganizing content that's merely imperfect** — Reorganize only when content is CLEARLY under the wrong heading or CLEARLY interrupts an unrelated passage. Dense-but-self-contained sections don't need restructuring
 - **Rewriting unclear-but-functional phrasing** — Only rewrite prose if a player could misapply the mechanic as written. Roundabout ≠ broken
 - **Converting `X` to `×` in weapon stat blocks** — `X` in weapon/attack damage columns is the Explosive damage type abbreviation, not a multiplication sign. Only convert `x` → `×` in formulas, drive multipliers, and similar mathematical contexts

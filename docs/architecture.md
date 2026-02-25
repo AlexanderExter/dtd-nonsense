@@ -1,12 +1,10 @@
 # Architecture
 
-System-wide architecture for the DTD 40k project: Astro/Starlight documentation site + vanilla JavaScript play tools.
+System-wide architecture for the DTD 40k project: Astro/Starlight documentation site with ES module play tools.
 
 ---
 
 ## Technology Stack
-
-The project has **two co-existing layers**:
 
 ### Astro / Starlight Layer (Documentation Site)
 
@@ -32,30 +30,13 @@ Key files:
 | `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.js, builder-app.js)    |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
 | `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
-| `public/data/`         | Generated JSON data copies — gitignored                           |
+| `data/`                | Canonical JSON game data (12 files) — source for prebuild         |
+| `public/data/`         | Generated JSON data copies (from `data/`) — gitignored            |
 
 Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies source content into Astro structure, then Astro builds the static site.
 
-### Vanilla JavaScript Layer (Original Tools)
-
-The `tools/` directory contains the original vanilla JS implementations — no frameworks, no build step.
-
-| Choice           | Rationale                                                                                      |
-| ---------------- | ---------------------------------------------------------------------------------------------- |
-| No framework     | Zero build step — open HTML files directly, even from filesystem                               |
-| No TypeScript    | Project is ~21K LoC with a single maintainer; type safety not yet justified                    |
-| ES6+ features    | Modern destructuring, template literals, async/await, but no module imports (global namespace) |
-| CSS custom props | Theme tokens in `dtd-theme.css`; tools inherit a consistent visual language                    |
-| localStorage     | Client-side persistence; no server component                                                   |
-| Chart.js (CDN)   | Used by Success Curves and Defense Graph for line/bar chart rendering                          |
-
-### Dual-Stack Sync
-
-The ES module ports in `src/lib/dtd/` must stay in sync with `tools/shared/js/`. There is no automated sync — changes to one must be manually applied to the other. The vanilla versions remain the source of truth until the Astro migration is complete.
-
 ### When to Reconsider
 
-- **Remove vanilla tools/:** Once all 9 tools are ported to Astro pages, `tools/` becomes archival. Keep `tools/shared/data/` as the JSON source.
 - **TypeScript for tools:** If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.
 
 ### Python Pipeline
@@ -102,77 +83,25 @@ Both pipelines must pass for a PR to be merge-ready. Vercel preview builds run i
 
 ---
 
-## File Structure
+## File Structure — Game Data
 
 ```
-tools/
-├── index.html                    Dashboard linking all 9 active tools
-├── shared/
-│   ├── css/
-│   │   └── dtd-theme.css         Common CSS custom properties and base styling
-│   ├── data/
-│   │   ├── alignments.json       21 alignments, devotion/sin tables
-│   │   ├── backgrounds.json      11 background types
-│   │   ├── classes.json          18 tracks × 5 levels (90 class entries)
-│   │   ├── equipment.json        Starting equipment packages
-│   │   ├── exaltations.json      9 supernatural types, power stat pools
-│   │   ├── feats.json            100+ feats with prerequisites
-│   │   ├── npc-templates.json    40+ pre-built NPC stat blocks
-│   │   ├── races.json            16 playable races
-│   │   ├── ships.json            Hulls, consoles, weapons, shields
-│   │   ├── skills.json           27 skills with grouping metadata
-│   │   ├── traits.json           ~20 NPC traits with parameterized effects
-│   │   └── weapons.json          Ranged and melee weapon stats
-│   └── js/
-│       ├── core.js               DTD namespace root — data loading, DTD.character, DTD.derived, XP, UI helpers
-│       └── dice.js               DTD.dice — XkY rolling, overflow compression, notation parsing
-├── character-sheet/              Primary tool (~2500 lines JS)
-├── character-builder/            11-step wizard (~1670 lines JS)
-├── dice-roller/                  Standalone roller (~330 lines JS)
-├── combat-tracker/               Initiative + HP/condition tracker
-├── quick-reference/              Searchable rules index
-├── npc-generator/                Stat block builder
-├── ship-builder/                 Ship construction + combat sheet
-├── success-curves/               Monte Carlo probability visualizer
-└── defense-graph/                Damage mitigation visualizer
+data/
+├── alignments.json       21 alignments, devotion/sin tables
+├── backgrounds.json      11 background types
+├── classes.json          18 tracks × 5 levels (90 class entries)
+├── equipment.json        Starting equipment packages
+├── exaltations.json      9 supernatural types, power stat pools
+├── feats.json            100+ feats with prerequisites
+├── npc-templates.json    40+ pre-built NPC stat blocks
+├── races.json            16 playable races
+├── ships.json            Hulls, consoles, weapons, shields
+├── skills.json           27 skills with grouping metadata
+├── traits.json           ~20 NPC traits with parameterized effects
+└── weapons.json          Ranged and melee weapon stats
 ```
 
-Each tool follows the same three-file pattern: `index.html`, `[tool-name].js`, `[tool-name].css`. Three tools use shortened names: `sheet.js`/`sheet.css` (character-sheet), `builder.js`/`builder.css` (character-builder), and `roller.js`/`roller.css` (dice-roller).
-
----
-
-## Global Namespace
-
-All shared code lives under a single `DTD` global object, declared with `var` in `core.js`:
-
-```javascript
-var DTD = { ... };
-```
-
-**Why `var` and not `const`/`let`?** At global scope, `var` creates a property on `window` (`window.DTD`). Other modules like `dice.js` extend it via `window.DTD = window.DTD || {}`. Using `const` or `let` would create a separate lexical binding invisible to `window`, silently splitting the namespace between files.
-
-### Namespace Map
-
-| Namespace       | Module  | Contents                                                               |
-| --------------- | ------- | ---------------------------------------------------------------------- |
-| `DTD`           | core.js | `loadData()`, `loadAllData()`, `getBasePath()`, `XP_COSTS`, UI helpers |
-| `DTD.derived`   | core.js | Stat formula functions (`calculateSD`, `calculateHP`, etc.)            |
-| `DTD.character` | core.js | Character CRUD, validation, migration, import/export                   |
-| `DTD.dice`      | dice.js | Rolling (`roll()`), outcome calculation, notation parsing              |
-
-### Script Load Order
-
-Tools load shared scripts as needed:
-
-```html
-<script src="../shared/js/core.js"></script>
-<!-- most tools -->
-<script src="../shared/js/dice.js"></script>
-<!-- tools that roll dice -->
-<script src="[tool-name].js"></script>
-```
-
-`dice.js` depends on `window.DTD` existing (set by `core.js`). Some tools (success-curves, quick-reference) are fully self-contained and load neither shared script.
+`data/` is the canonical source for all game data. `scripts/prebuild.mjs` copies these files to `public/data/` during the build — `public/data/` is gitignored and never committed.
 
 ---
 

@@ -62,12 +62,11 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 books/                 Core reference material (per-chapter split, 2 books)
   open-questions.md    Tracked ambiguities and contradictions
 cleaned-references/    Succinct combined reading references (merged by topic)
+data/                  Canonical JSON game data (12 files, validated by pipeline/models/)
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
   tools/               Per-tool feature specs (9 tools)
   shared/              Shared module API docs (core.js, dice.js)
-tools/                 Web-based play aids (vanilla JS, no build step)
-  shared/              Shared JS, CSS, JSON data
 pipeline/              Python package: validation, linting, Astro prep
   models/              Pydantic schemas (source of truth for all 12 JSON files)
   linting/             Terminology + formatting linters
@@ -88,7 +87,7 @@ src/                   Astro source files
 public/data/           Generated JSON data copies (gitignored)
 ```
 
-**Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `tools/shared/data/` powers the web tools and is copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
+**Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
 
 **Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (89 pages, Pagefind search). Dev server: `npm run dev`.
 

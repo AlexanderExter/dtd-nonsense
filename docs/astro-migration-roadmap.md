@@ -147,7 +147,7 @@ The prebuild script copies files at build time. The generated directories are in
 
 - `src/content/docs/rules/` (generated from `cleaned-references/`)
 - `src/content/docs/books/` (generated from `books/`)
-- `public/data/` (generated from `tools/shared/data/`)
+- `public/data/` (generated from `data/`)
 
 **Verify:** Run `git status` after build and confirm no generated files leak into commits.
 
@@ -182,9 +182,9 @@ Starlight defaults in use. No custom favicon or social sharing image.
 
 Docs have been updated: `architecture.md`, `development-guide.md`, `project-conventions.md` all reference Astro. `copilot-instructions.md` reflects the new structure.
 
-### 5.6 — Unused Original Tools Directory
+### 5.6 — Unused Original Tools Directory ✅
 
-After character-sheet and character-builder are ported, the original `tools/` directory becomes fully archival. `tools/shared/data/*.json` remains the canonical JSON source (used by prebuild).
+Resolved: `tools/` has been deleted. `data/` at the project root is the canonical JSON source (used by prebuild). All 9 tools were ported to Astro before deletion.
 
 ---
 

@@ -2,9 +2,9 @@
 
 > **⚠️ Schema accuracy warning:** Several per-file schemas below are outdated (written from initial samples, not comprehensive audits). The Pydantic models in `pipeline/models/` are now the authoritative schemas. When in doubt, inspect the actual JSON files or run `uv run dtd validate`.
 
-Documentation for all JSON data files in `tools/shared/data/`. These files drive the game-data dropdowns, autocomplete, and calculation engines across all tools.
+Documentation for all JSON data files in `data/`. These files drive the game-data dropdowns, autocomplete, and calculation engines across all tools.
 
-> **Astro note:** The prebuild script (`scripts/prebuild.mjs`) copies all 12 JSON files to `public/data/` for the Astro site. The `tools/shared/data/` directory remains the single source of truth — `public/data/` is gitignored and regenerated on every build.
+> **Astro note:** The prebuild script (`scripts/prebuild.mjs`) copies all 12 JSON files to `public/data/` for the Astro site. The `data/` directory is the single source of truth — `public/data/` is gitignored and regenerated on every build.
 
 ---
 
@@ -57,7 +57,7 @@ const data = await DTD.loadAllData(["races.json", "exaltations.json", "skills.js
 // → data.races, data.exaltations, data.skills
 ```
 
-Files are fetched relative to `tools/shared/data/` via `DTD.getBasePath()`.
+Files are fetched by Astro tools via ES module imports: `import { loadData } from "@/lib/dtd/core.js"` — which fetches from `/data/[file].json` at runtime.
 
 ---
 

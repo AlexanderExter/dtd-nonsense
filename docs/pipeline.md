@@ -20,7 +20,7 @@ dtd --version         # Show version
 
 ### `dtd validate`
 
-Validate all 12 JSON data files in `tools/shared/data/` against their Pydantic schemas.
+Validate all 12 JSON data files in `data/` against their Pydantic schemas.
 
 ```bash
 dtd validate                # Validate all files

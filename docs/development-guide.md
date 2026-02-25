@@ -12,48 +12,7 @@ See [project-conventions.md](project-conventions.md#git-workflow) for the full g
 
 ## Adding a New Tool
 
-### Vanilla JS (tools/ directory)
-
-1. Create `tools/[tool-name]/` with three files: `index.html`, `[tool-name].js`, `[tool-name].css`
-2. Follow the **object literal pattern**:
-
-```javascript
-const ToolName = {
-    state: { ... },
-
-    init() {
-        // Load data, bind events, render
-    },
-
-    render() {
-        // Full re-render from state
-    }
-};
-
-document.addEventListener('DOMContentLoaded', () => ToolName.init());
-```
-
-3. Load shared scripts in order:
-
-```html
-<script src="../shared/js/core.js"></script>
-<script src="../shared/js/dice.js"></script>
-<script src="[tool-name].js"></script>
-```
-
-4. Use `dtd-theme.css` for consistent styling:
-
-```html
-<link rel="stylesheet" href="../shared/css/dtd-theme.css" />
-```
-
-5. Add a card to `tools/index.html` with status badge
-6. Update `DTD.getBasePath()` in `core.js` to include the new tool's path
-7. Create documentation in `docs/tools/[tool-name].md`
-
 ### Astro Pages (src/pages/tools/)
-
-Tools are being ported from vanilla JS to Astro pages. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for status.
 
 1. Create `src/pages/tools/[tool-name].astro`
 2. Import `ToolLayout` and wrap content:
@@ -79,11 +38,8 @@ import { roll, parseNotation } from "@/lib/dtd/dice.js";
 
 4. For Chart.js: `const { Chart } = await import('chart.js/auto');`
 5. For Web Workers: use `new Worker(new URL('./worker.js', import.meta.url))` or inline Blob
-6. Update the badge in `src/pages/tools/index.astro` from "Porting" → "Ready"
-
-### Dual-Stack Sync
-
-When editing shared logic (`tools/shared/js/core.js` or `dice.js`), apply the same change to `src/lib/dtd/core.js` and `dice.js`. There is no automated sync — vanilla versions remain source of truth until migration completes.
+6. Create documentation in `docs/tools/[tool-name].md`
+7. Add a card to `src/pages/tools/index.astro` with a `status` badge
 
 ---
 
@@ -119,11 +75,12 @@ astro build                   ← Builds 89 static pages + Pagefind search index
 
 ## Adding a New JSON Data File
 
-1. Create `tools/shared/data/newdata.json`
-2. Add to `DTD.loadAllData()` call in the tool's init:
+1. Create `data/newdata.json`
+2. Add to `loadAllData()` call in the tool's init:
 
 ```javascript
-const data = await DTD.loadAllData(['newdata.json', ...]);
+import { loadAllData } from "@/lib/dtd/core.js";
+const data = await loadAllData(['newdata.json', ...]);
 ```
 
 3. Store in tool state: `this.state.data.newdata = data.newdata`
@@ -141,22 +98,23 @@ const data = await DTD.loadAllData(['newdata.json', ...]);
 
 ---
 
-## Adding a Shared Module
+## Adding a Shared ES Module
 
-1. Create `tools/shared/js/module.js`
-2. Attach to the `DTD` namespace using `window.DTD`:
+1. Create `src/lib/dtd/module.js` as a named-export ES module:
 
 ```javascript
-(function () {
-    window.DTD = window.DTD || {};
-    window.DTD.moduleName = {
-        // ...API
-    };
-})();
+export function myFunction() {
+    // ...
+}
 ```
 
-3. Include `<script src="../shared/js/module.js">` in consuming HTML files **after** `core.js`
-4. Document the API in `docs/shared/`
+2. Import in consuming tool scripts:
+
+```javascript
+import { myFunction } from "@/lib/dtd/module.js";
+```
+
+3. Document the API in `docs/shared/`
 
 ---
 
@@ -168,7 +126,7 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ## CSS Conventions
 
-Use CSS custom properties from `dtd-theme.css`:
+Use CSS custom properties defined in `ToolLayout.astro` and `src/styles/custom.css`:
 
 ```css
 var(--bg)                /* Page background */
