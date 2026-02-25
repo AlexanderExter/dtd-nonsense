@@ -229,6 +229,21 @@ Note: the underlying ambiguity (`--dev` silently being a no-op when there are no
 
 ---
 
+### L1 — Linting Coverage Todos
+
+Outstanding gaps in linting/static-analysis scaffolding, collected as of 2026-02-25.
+
+| # | What | Priority | Notes |
+|---|---|---|---|
+| L1a | Migrate `[project.optional-dependencies].dev` → `[dependency-groups]` | Low | Makes `uv sync --dev` work idiomatically; removes need for `--extra dev` in CI. One-line pyproject.toml restructure + lock refresh. |
+| L1b | Add `dtd lint docs/` coverage | Low | `run_linter()` supports any target path but CI only runs `dtd lint` (defaults to books + cleaned-refs). `docs/` prose is unscanned. |
+| L1c | Add `dtd validate --xref` to CI | Medium | 41 known xref warnings exist (see **xref Warnings** section). Needs a baseline suppression file so CI treats new warnings as failures without blocking on pre-existing ones. |
+| L1d | Add ESLint or Biome for `tools/**/*.js` | Low | 21K+ LOC of vanilla JS has zero static analysis (C3). Biome is zero-config and fast; straightforward to add. |
+| L1e | Add Vitest for `src/lib/dtd/*.js` | Low | No JS unit tests exist (A4). Vitest would cover `dice.js`, `core.js`, and the ES module ports. |
+| L1f | Add mypy or pyright to CI | Low | Python pipeline has no type checking beyond ruff's basic checks. Not urgent given the codebase is small and well-typed, but a natural next step once tests exist. |
+
+---
+
 ### I1 — Melee Datalist Filter Has Redundant Condition
 
 `src/lib/tools/sheet-app.js:144–145`:
