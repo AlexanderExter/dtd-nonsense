@@ -99,14 +99,14 @@ Completed items:
 
 **Goal:** Audit for accumulated debt, remove dead code and obsolete structure, reduce the project to its leanest form post-migration.
 
-| Component       | What Was Done                                                                                                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 7.1 Bug Fix     | Removed dead `.concat(this.data.weapons.weapons?.exotic \|\| [])` from character sheet melee datalist builder — `weapons.json` has no `exotic` key (`ranged`/`melee`/`thrown` only)   |
-| 7.2 Dead Code   | Removed vestigial `pagefind-ui.css` `<link>` from `ToolLayout.astro` (caused silent 404 in dev; tool pages have no Pagefind UI)                                                       |
-| 7.3 Dead Code   | Removed dead `.tool-card.coming-soon` CSS block from `tools/index.html` before deletion (all 9 tools were `status ready`)                                                             |
-| 7.4 Data Move   | Moved canonical JSON data from `tools/shared/data/` → `data/` at project root. Updated `pipeline/__init__.py` and `scripts/prebuild.mjs`. `dtd validate` passes at new location.    |
-| 7.5 Deletion    | Deleted entire `tools/` directory — 32 files, ~21,800 LOC of vanilla HTML/CSS/JS. All 9 tools are live on Astro; the standalone copy served no further purpose.                      |
-| 7.6 Docs        | Removed vanilla JS layer sections from `docs/architecture.md` and `docs/development-guide.md`; updated all `tools/shared/` path references across 16 files; reset `session-handover.md` |
+| Component     | What Was Done                                                                                                                                                                           |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7.1 Bug Fix   | Removed dead `.concat(this.data.weapons.weapons?.exotic \|\| [])` from character sheet melee datalist builder — `weapons.json` has no `exotic` key (`ranged`/`melee`/`thrown` only)     |
+| 7.2 Dead Code | Removed vestigial `pagefind-ui.css` `<link>` from `ToolLayout.astro` (caused silent 404 in dev; tool pages have no Pagefind UI)                                                         |
+| 7.3 Dead Code | Removed dead `.tool-card.coming-soon` CSS block from `tools/index.html` before deletion (all 9 tools were `status ready`)                                                               |
+| 7.4 Data Move | Moved canonical JSON data from `tools/shared/data/` → `data/` at project root. Updated `pipeline/__init__.py` and `scripts/prebuild.mjs`. `dtd validate` passes at new location.        |
+| 7.5 Deletion  | Deleted entire `tools/` directory — 32 files, ~21,800 LOC of vanilla HTML/CSS/JS. All 9 tools are live on Astro; the standalone copy served no further purpose.                         |
+| 7.6 Docs      | Removed vanilla JS layer sections from `docs/architecture.md` and `docs/development-guide.md`; updated all `tools/shared/` path references across 16 files; reset `session-handover.md` |
 
 **Status:** Project is at its leanest post-migration form. `data/` is the single JSON source. `src/pages/tools/` is the single tool deployment. No dual-stack maintenance surface.
 

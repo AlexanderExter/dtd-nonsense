@@ -30,10 +30,10 @@
 
 ## Why It Changed
 
-| Decision | Chosen | Alternative Rejected | Reasoning |
-| -------- | ------ | -------------------- | --------- |
-| Data location | Move to `data/` at project root | Keep at `tools/shared/data/` | Cleaner path when the containing directory no longer exists for any other reason |
-| Vanilla tools | Delete entirely | Keep as archival standalone fallback | All 9 tools are live on Astro; standalone copies have no audience and create a maintenance surface illusion |
+| Decision      | Chosen                          | Alternative Rejected                 | Reasoning                                                                                                   |
+| ------------- | ------------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Data location | Move to `data/` at project root | Keep at `tools/shared/data/`         | Cleaner path when the containing directory no longer exists for any other reason                            |
+| Vanilla tools | Delete entirely                 | Keep as archival standalone fallback | All 9 tools are live on Astro; standalone copies have no audience and create a maintenance surface illusion |
 
 ---
 
@@ -51,4 +51,3 @@
 2. **Lighthouse / Core Web Vitals audit** — Run against the Vercel deployment.
 3. **Fix `docs/shared/core-js.md` and `dice-js.md`** — Verify export lists match `src/lib/dtd/` after browser testing.
 4. **Consider favicon and OG image** — Currently Starlight defaults (roadmap §5.4).
-
