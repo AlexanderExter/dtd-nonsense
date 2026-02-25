@@ -46,7 +46,7 @@ Both work but the Blob Worker approach is fragile — the worker source code is 
 
 Tool JSON data exists in three places:
 
-1. `tools/shared/data/*.json` — canonical source, 12 files
+1. `data/*.json` — canonical source, 12 files
 2. `public/data/*.json` — copies for Astro (created by `prebuild.mjs`)
 3. Pipeline models (`pipeline/models/`) — Pydantic schemas that validate #1
 
@@ -81,10 +81,21 @@ These are editorial suggestions, not errors. The 8 warnings are worth reviewing 
 
 - **debt**: CSS Architecture Tension (above) is now fully resolved and `tool-components.css` has been deleted. See section header for details.
 
-- **debt**: Triple module stack — vanilla `tools/shared/js/core.js`, ES module `src/lib/dtd/core.js`, and now tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from originals. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times. But it creates a maintenance surface.
+- **debt**: Dual module stack — `src/lib/dtd/core.js` (ES module) and tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from the ES module versions. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times.
 
-- **investigation**: Sheet's exotic weapons display — open-questions entry #55 documents a real bug where exotic weapons never render in the character sheet's combat tab. Both `tools/character-sheet/sheet.js` and `src/lib/tools/sheet-app.js` contain this bug identically. _Context_: `this.data.weapons.weapons?.exotic` accesses a key that doesn't exist in the JSON structure.
+- ~~**investigation**: Sheet's exotic weapons display~~ **FIXED (2026-02-25 technical-stabilizer)** — Both `tools/character-sheet/sheet.js` and `src/lib/tools/sheet-app.js` had `.concat(this.data.weapons.weapons?.exotic || [])` in the melee weapons datalist builder. `weapons.json` has no `exotic` key (only `ranged`/`melee`/`thrown`). The dead concat was removed from both files.
 
 - **refactor**: Sheet and builder persistence reconciliation — the sheet has its own `getDefaultChar()`, `mergeDefaults()`, and data migration logic that overlaps with `character.*` in core.js. The builder uses core.js's API. Unifying would reduce duplicate default character shapes and migration paths, but risks breaking save compatibility. _Context_: Deliberately deferred during porting to avoid risk.
 
 - **optimization**: Sheet's `body` CSS selectors — sheet.css may contain selectors targeting `body` directly, which could interfere with ToolLayout styles. Needs visual testing to confirm. _Context_: Noticed during code review but not tested in browser.
+
+---
+
+## [2026-02-25] — Technical Stabilizer Pass (Acknowledged Tech Debt)
+
+Items reviewed and accepted as-is during the stabilizer pass. No action needed unless the project scope changes.
+
+- **A4 — No JavaScript unit tests**: `tests/` contains only `tests/__init__.py`. No unit tests exist for any JS module (`core.js`, `dice.js`, ES module ports) or `prebuild.mjs`. CI uses the Astro build as a smoke test only. _Recommended future tool_: Vitest for `src/lib/dtd/` modules.
+- **A5 — CI skips `--xref` and `sync-check`**: `build.yml` runs `dtd validate` but not `dtd validate --xref` or `dtd sync-check`. The 41 known xref warnings are pre-existing data gaps, not regressions — adding `--xref` to CI would require a baseline suppression mechanism to avoid treating known warnings as failures.
+- **C3 — No ESLint/Biome for vanilla tools**: `tools/**/*.js` has no configured static analysis (21K+ LOC). Accepted as intentional per architecture rationale. Straightforward to add if the tools grow.
+- **F2 — Shared module docs may lag ES module ports**: `docs/shared/core-js.md` and `dice-js.md` describe the shared module APIs but were not updated during the `port-sheet-builder` porting session. Verify export lists match after browser testing confirms the port is equivalent to the originals.

@@ -79,17 +79,17 @@ Completed items:
 
 **Goal:** Publish rules and tools as a static documentation site with search, navigation, and theming.
 
-| Component               | What Was Built                                                                                                                                                           |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 6.1 Scaffold            | `astro.config.mjs`, `package.json`, `tsconfig.json`, `content.config.ts` — Astro 5 + Starlight with Vercel adapter, 8 sidebar groups                                     |
-| 6.2 Content Pipeline    | `scripts/prebuild.mjs` — copies 24 cleaned-references (lowercased), 53 book chapters, and 12 JSON data files into Astro structure                                        |
-| 6.3 Theme               | `custom.css` (WH40K dark/gold theme overriding Starlight CSS custom properties), `tool-components.css`                                                                   |
-| 6.4 Shared ES Modules   | ES module ports of `core.js` and `dice.js` in `src/lib/dtd/` — named exports replacing `DTD.*` global namespace                                                          |
-| 6.5 Tool Infrastructure | `ToolLayout.astro` wrapper, tools index dashboard, `@/` path alias for imports                                                                                           |
-| 6.6 Tool Ports          | **9/9 tools fully ported**: Dice Roller, Quick Reference, Success Curves, NPC Generator, Defense Graph, Combat Tracker, Ship Builder, Character Sheet, Character Builder |
-| 6.7 ~~Stub Pages~~      | All tools now ported — no stubs remaining                                                                                                                                |
-| 6.8 Infrastructure      | `README.md`, `.github/workflows/build.yml` CI, npm audit fixed (0 vulnerabilities), speed formula corrected in Quick Reference                                           |
-| 6.9 Git & Deployment    | History squashed (295 → 1 commit), pushed to `github.com/AlexanderExter/dtd-nonsense`, Vercel deployment pending                                                         |
+| Component               | What Was Built                                                                                                                                                                                                    |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 6.1 Scaffold            | `astro.config.mjs`, `package.json`, `tsconfig.json`, `content.config.ts` — Astro 5 + Starlight with Vercel adapter, 8 sidebar groups                                                                              |
+| 6.2 Content Pipeline    | `scripts/prebuild.mjs` — copies 24 cleaned-references (lowercased), 53 book chapters, and 12 JSON data files into Astro structure                                                                                 |
+| 6.3 Theme               | `custom.css` (WH40K dark/gold theme overriding Starlight CSS custom properties), `tool-components.css` _(later deleted 2026-02-25 — all tools are self-contained; see side-tracks.md § CSS Architecture Tension)_ |
+| 6.4 Shared ES Modules   | ES module ports of `core.js` and `dice.js` in `src/lib/dtd/` — named exports replacing `DTD.*` global namespace                                                                                                   |
+| 6.5 Tool Infrastructure | `ToolLayout.astro` wrapper, tools index dashboard, `@/` path alias for imports                                                                                                                                    |
+| 6.6 Tool Ports          | **9/9 tools fully ported**: Dice Roller, Quick Reference, Success Curves, NPC Generator, Defense Graph, Combat Tracker, Ship Builder, Character Sheet, Character Builder                                          |
+| 6.7 ~~Stub Pages~~      | All tools now ported — no stubs remaining                                                                                                                                                                         |
+| 6.8 Infrastructure      | `README.md`, `.github/workflows/build.yml` CI, npm audit fixed (0 vulnerabilities), speed formula corrected in Quick Reference                                                                                    |
+| 6.9 Git & Deployment    | History squashed (295 → 1 commit), pushed to `github.com/AlexanderExter/dtd-nonsense`, Vercel deployment pending                                                                                                  |
 
 **Status:** Build produces 89 pages in ~9s. Pagefind indexes 78 content pages. **9/9 tools fully ported.** Repo live on GitHub. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for remaining work and [session-handover.md](session-handover.md) for detailed session notes.
 

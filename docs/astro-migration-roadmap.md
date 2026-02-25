@@ -97,7 +97,7 @@ Each tool port follows the same pattern:
 
 Current state has **24 modified** files (cleaned-references with Starlight frontmatter) and **~30 new** files (entire Astro stack). This needs to be committed in logical chunks on a feature branch.
 
-**Recommended commit sequence:**
+**Recommended commit sequence** _(historical — migration completed on `port-sheet-builder`; history was squashed on merge to `main`)_:
 
 ```
 git checkout -b astro-migration
@@ -147,7 +147,7 @@ The prebuild script copies files at build time. The generated directories are in
 
 - `src/content/docs/rules/` (generated from `cleaned-references/`)
 - `src/content/docs/books/` (generated from `books/`)
-- `public/data/` (generated from `tools/shared/data/`)
+- `public/data/` (generated from `data/`)
 
 **Verify:** Run `git status` after build and confirm no generated files leak into commits.
 
@@ -182,9 +182,9 @@ Starlight defaults in use. No custom favicon or social sharing image.
 
 Docs have been updated: `architecture.md`, `development-guide.md`, `project-conventions.md` all reference Astro. `copilot-instructions.md` reflects the new structure.
 
-### 5.6 — Unused Original Tools Directory
+### 5.6 — Unused Original Tools Directory ✅
 
-After character-sheet and character-builder are ported, the original `tools/` directory becomes fully archival. `tools/shared/data/*.json` remains the canonical JSON source (used by prebuild).
+Resolved: `tools/` has been deleted. `data/` at the project root is the canonical JSON source (used by prebuild). All 9 tools were ported to Astro before deletion.
 
 ---
 
@@ -195,8 +195,8 @@ Everything needed before pushing to GitHub:
 ### 6.1 — Create GitHub Repository
 
 - [x] URL configured in `astro.config.mjs`: `https://github.com/AlexanderExter/dtd-nonsense`
-- [ ] Create repo on GitHub: `AlexanderExter/dtd-nonsense`
-- [ ] Add remote: `git remote add origin https://github.com/AlexanderExter/dtd-nonsense.git`
+- [x] Create repo on GitHub: `AlexanderExter/dtd-nonsense`
+- [x] Add remote: `git remote add origin https://github.com/AlexanderExter/dtd-nonsense.git`
 
 ### 6.2 — Git History Reset
 

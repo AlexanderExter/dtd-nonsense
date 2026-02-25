@@ -185,7 +185,7 @@ When sources conflict: higher tier wins. When unclear: document in `books/open-q
 
 For the full resolution protocol and annotation standards, see the `dtd-source-hierarchy` skill.
 
-**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.md`), never `archive/extracted/` paths.
+**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.md`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
 
 ---
 
@@ -273,7 +273,7 @@ When moving, renaming, or removing functions in shared JS files (core.js, dice.j
 
 ### Never Trust Docs for JSON Schemas
 
-`docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `tools/shared/data/*.json`, always inspect the **actual JSON files** — not the docs. The Pydantic models in `pipeline/models/` are now the closest thing to ground-truth schemas.
+`docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `data/*.json`, always inspect the **actual JSON files** — not the docs. The Pydantic models in `pipeline/models/` are now the closest thing to ground-truth schemas.
 
 ### Unicode Escapes in Python Source
 
@@ -314,11 +314,9 @@ Files heavily reference each other. Key relationships to verify when editing:
 - Feats → reference class features from `06-Classes.md`
 - Magic/Sword schools → gated by class level
 - `99-Appendix-Archive.md` → contains errata that supersedes earlier files
-- `tools/shared/data/` → JSON data must match `cleaned-references/` (skill mappings, dot values, formulas)
-- `tools/shared/js/core.js` → DTD namespace root; extended by dice.js
-- `tools/shared/js/dice.js` → sole dice module; attaches via `window.DTD`
-- `src/lib/dtd/core.js` ↔ `tools/shared/js/core.js` → ES module port, must stay in manual sync
-- `src/lib/dtd/dice.js` ↔ `tools/shared/js/dice.js` → ES module port, must stay in manual sync
+- `data/` → JSON data must match `cleaned-references/` (skill mappings, dot values, formulas)
+- `src/lib/dtd/core.js` → ES module root — data loading, character CRUD, derived stats, XP, UI helpers
+- `src/lib/dtd/dice.js` → dice module — XkY rolling, overflow compression, notation parsing
 
 ### Astro / Starlight Build
 
@@ -338,8 +336,6 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 3. `astro build` — builds 89 static pages + Pagefind search index
 
 Generated directories (`src/content/docs/rules/`, `src/content/docs/books/`, `public/data/`) are in `.gitignore` — never commit them.
-
-**ES module sync:** `src/lib/dtd/core.js` and `dice.js` are manual ports of `tools/shared/js/core.js` and `dice.js`. There is no automated sync. When editing shared logic, update both versions. The vanilla versions remain source of truth until migration is complete.
 
 See [astro-migration-roadmap.md](astro-migration-roadmap.md) for porting status and next steps.
 

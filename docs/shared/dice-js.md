@@ -2,8 +2,8 @@
 
 Sole dice module for the project. Implements D:TD's `XkY` exploding d10 system with notation parsing, roll execution, outcome evaluation, and result formatting.
 
-**File:** `tools/shared/js/dice.js` (~314 lines)
-**Pattern:** IIFE wrapping `DTD.dice` namespace
+**File:** `src/lib/dtd/dice.js` (ES module — ported from vanilla `tools/shared/js/dice.js`)
+**Pattern:** Named export wrapping dice functionality
 **Consumers:** Dice Roller, Combat Tracker, NPC Generator, Success Curves
 
 ---

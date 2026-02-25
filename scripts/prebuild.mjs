@@ -5,7 +5,7 @@
  * 1. Copy cleaned-references/ → src/content/docs/rules/
  * 2. Copy books/book-1/ → src/content/docs/books/book-1/
  * 3. Copy books/book-2/ → src/content/docs/books/book-2/
- * 4. Copy tools/shared/data/ → public/data/
+ * 4. Copy data/ → public/data/
  *
  * Frontmatter must already exist on cleaned-references/ files
  * (run `uv run dtd starlight-prep` first).
@@ -25,7 +25,7 @@ const ROOT = join(__dirname, "..");
 const CLEANED_REFS = join(ROOT, "cleaned-references");
 const BOOK_1 = join(ROOT, "books", "book-1-dungeons-the-dragoning");
 const BOOK_2 = join(ROOT, "books", "book-2-for-a-few-subtitles-more");
-const DATA_SRC = join(ROOT, "tools", "shared", "data");
+const DATA_SRC = join(ROOT, "data");
 
 // Destination directories
 const RULES_DEST = join(ROOT, "src", "content", "docs", "rules");

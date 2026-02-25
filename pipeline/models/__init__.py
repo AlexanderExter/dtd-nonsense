@@ -1,6 +1,6 @@
 """Pydantic models for DTD JSON data schemas.
 
-Each module mirrors one JSON file in tools/shared/data/.
+Each module mirrors one JSON file in data/.
 The *File model is the top-level schema for that file.
 """
 
