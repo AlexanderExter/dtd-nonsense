@@ -2,7 +2,8 @@
 
 Foundation module that defines the `DTD` global namespace and provides character data management, derived stat calculations, XP cost tables, and shared UI helpers.
 
-**File:** `src/lib/dtd/core.js` (ES module — ported from vanilla `tools/shared/js/core.js`)
+**File:** `src/lib/dtd/core.ts` (ES module — ported from vanilla `tools/shared/js/core.js`, migrated to TypeScript)
+**Types:** `src/lib/dtd/types.ts` — canonical interfaces (`CharacterData`, `Characteristics`, `DerivedStats`, etc.)
 **Consumers:** Every tool in the project
 
 ---

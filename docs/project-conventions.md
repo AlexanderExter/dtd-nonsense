@@ -251,9 +251,11 @@ A bare `<style>@import "../styles/foo.css";</style>` in an Astro layout is **sco
 
 **Fix:** Use `<style is:global>` for any `@import` whose selectors must reach into slotted/child content. Alternatively, make each page fully self-contained and skip the shared import entirely.
 
-### `var` vs `const`/`let` for DTD Namespace
+### `var` vs `const`/`let` for DTD Namespace (Historical)
 
-The `DTD` global is declared with `var` (not `const`/`let`) in core.js so it exists as `window.DTD`. Other modules (dice.js) extend it via `window.DTD = window.DTD || {}`. Using `const` or `let` at global scope creates a separate lexical binding invisible to `window`, silently splitting the namespace.
+> **Note:** This pattern was replaced by ES module named exports during the Astro port. The `DTD.*` global namespace no longer exists in `src/lib/dtd/`. This section is preserved for context when reading the vanilla `tools/` history or `project-history.md`.
+
+The `DTD` global was declared with `var` (not `const`/`let`) in core.js so it existed as `window.DTD`. Other modules (dice.js) extended it via `window.DTD = window.DTD || {}`. Using `const` or `let` at global scope creates a separate lexical binding invisible to `window`, silently splitting the namespace.
 
 ### Empty-State Guards
 
@@ -261,11 +263,11 @@ Features that depend on data from another tool (e.g., importing characters from 
 
 ### Refactoring Shared Modules
 
-When moving, renaming, or removing functions in shared JS files (core.js, dice.js):
+When moving, renaming, or removing functions in shared TS files (core.ts, dice.ts):
 
 1. **Grep all tool directories** for every affected function name before committing — callers in sheet.js, roller.js, builder.js, etc. will break silently if not updated
 2. **Check all HTML files** that include the modified script — if a module gains new dependencies, every consuming HTML page needs `<script>` tags updated
-3. **Test the load chain** mentally: verify every `<script>` loads in correct order (core.js → dice.js → tool .js) and nothing is missing
+3. **Test the load chain** mentally: verify every `<script>` loads in correct order (core.ts → dice.ts → tool .ts) and nothing is missing
 
 ### Weapon Stat Block `X` vs `×`
 
@@ -315,8 +317,9 @@ Files heavily reference each other. Key relationships to verify when editing:
 - Magic/Sword schools → gated by class level
 - `99-Appendix-Archive.md` → contains errata that supersedes earlier files
 - `data/` → JSON data must match `cleaned-references/` (skill mappings, dot values, formulas)
-- `src/lib/dtd/core.js` → ES module root — data loading, character CRUD, derived stats, XP, UI helpers
-- `src/lib/dtd/dice.js` → dice module — XkY rolling, overflow compression, notation parsing
+- `src/lib/dtd/core.ts` → ES module root — data loading, character CRUD, derived stats, XP, UI helpers
+- `src/lib/dtd/dice.ts` → dice module — XkY rolling, overflow compression, notation parsing
+- `src/lib/dtd/types.ts` → canonical TypeScript interfaces (CharacterData, DiceResult, etc.)
 
 ### Astro / Starlight Build
 
