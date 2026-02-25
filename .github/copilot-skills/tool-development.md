@@ -11,7 +11,7 @@
 The DTD toolset exists in **two forms**:
 
 1. **Vanilla JavaScript** (`tools/`) — HTML, CSS, and JS served directly from the filesystem. Nine tools share the `DTD` global namespace, CSS theme, and JSON data files. All state persists via `localStorage`.
-2. **Astro/Starlight pages** (`src/pages/tools/`) — ES module-based ports using `ToolLayout.astro`. Import shared code from `src/lib/dtd/core.js` and `dice.js`. Migration in progress — see [docs/astro-migration-roadmap.md](../../docs/astro-migration-roadmap.md).
+2. **Astro/Starlight pages** (`src/pages/tools/`) — ES module-based ports using `ToolLayout.astro`. Import shared code from `src/lib/dtd/core.js` and `dice.js`. Migration complete (9/9 tools) — see [docs/astro-migration-roadmap.md](../../docs/astro-migration-roadmap.md).
 
 When editing tools, check which version you're working on. Changes to shared logic must be applied to both `tools/shared/js/` and `src/lib/dtd/` until migration is complete.
 
@@ -55,7 +55,19 @@ When porting a vanilla tool (`tools/<name>/`) to an Astro page (`src/pages/tools
 6. **`localStorage` keys** → keep unchanged for backward-compatibility with vanilla versions
 7. **Update dashboard** → change badge in `src/pages/tools/index.astro` from "Porting" to "Ready"
 
-**Size guidance:** Subagents handle ports up to ~1,500 LOC input reliably. Larger tools (character-sheet, character-builder) need direct agent work or phased porting.
+**Size guidance:** Subagents handle ports up to ~1,500 LOC input reliably. Larger tools need direct agent work — see the copy+edit variant below.
+
+### Large Tool Copy+Edit Variant
+
+For tools exceeding ~1,500 LOC of source JS (e.g., character-sheet at 2,538 LOC, character-builder at 1,674 LOC), generating an entire `.astro` file from scratch fails repeatedly — both subagents and main agents hit output/context limits around 2,000+ LOC. Use the **copy+edit** approach instead:
+
+1. **Copy JS** → `src/lib/tools/<name>-app.js` (preserves original structure intact)
+2. **Copy CSS** → `src/styles/<name>.css` (usually no modifications needed)
+3. **Surgical edits** — add ES module imports at top, find-replace `DTD.*` calls (typically 4–24 replacements), fix cross-tool URLs to use Astro routes
+4. **Thin `.astro` wrapper** — `<script>import '@/lib/tools/<name>-app.js'</script>` + `<style is:global>@import '@/styles/<name>.css'</style>` + HTML template
+5. Follow steps 6–7 from the standard recipe (localStorage keys, dashboard badge)
+
+This approach succeeded on the first attempt for both character-sheet and character-builder after 4 failed attempts at full generation.
 
 ## Data Sync Rule
 
