@@ -7,7 +7,7 @@
  *             character persistence, and XP cost tables.
  */
 
-import { loadAllData, escapeHtml, character, derived, debounce } from '@/lib/dtd/core.js';
+import { character, debounce, derived, escapeHtml, loadAllData } from '@/lib/dtd/core.js';
 
 const Builder = {
 

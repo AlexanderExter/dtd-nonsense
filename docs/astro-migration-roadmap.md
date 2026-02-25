@@ -10,25 +10,25 @@
 
 ### What's Done
 
-| Phase                    | Status | Detail                                                                          |
-| ------------------------ | ------ | ------------------------------------------------------------------------------- |
-| **1 — Scaffold**         | ✅     | `package.json`, `astro.config.mjs`, `tsconfig.json`, `content.config.ts`        |
-| **2 — Content Pipeline** | ✅     | `starlight-prep` (24 cleaned-refs), `prebuild.mjs` (77 content + 12 data files) |
-| **3 — Theme**            | ✅     | `custom.css` (WH40K dark/gold), `tool-components.css`                           |
-| **4A — Shared Modules**  | ✅     | `core.js` + `dice.js` ES module ports in `src/lib/dtd/`                         |
-| **4B — Pilot Tools**     | ✅     | **dice-roller**, **quick-reference** (fully ported)                              |
-| **4C — Stub Pages**      | ✅     | All 9 tool pages created and ported                                             |
-| **5A — Tool Ports**      | ✅     | **success-curves**, **npc-generator**, **defense-graph**, **combat-tracker**, **ship-builder** |
+| Phase                     | Status | Detail                                                                                                                      |
+| ------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **1 — Scaffold**          | ✅     | `package.json`, `astro.config.mjs`, `tsconfig.json`, `content.config.ts`                                                    |
+| **2 — Content Pipeline**  | ✅     | `starlight-prep` (24 cleaned-refs), `prebuild.mjs` (77 content + 12 data files)                                             |
+| **3 — Theme**             | ✅     | `custom.css` (WH40K dark/gold), `tool-components.css`                                                                       |
+| **4A — Shared Modules**   | ✅     | `core.js` + `dice.js` ES module ports in `src/lib/dtd/`                                                                     |
+| **4B — Pilot Tools**      | ✅     | **dice-roller**, **quick-reference** (fully ported)                                                                         |
+| **4C — Stub Pages**       | ✅     | All 9 tool pages created and ported                                                                                         |
+| **5A — Tool Ports**       | ✅     | **success-curves**, **npc-generator**, **defense-graph**, **combat-tracker**, **ship-builder**                              |
 | **5D — Final Tool Ports** | ✅     | **character-sheet**, **character-builder** (copy+edit approach: JS as ES modules in `src/lib/tools/`, CSS in `src/styles/`) |
-| **5B — Infrastructure**  | ✅     | GitHub URL configured, npm audit clean (0 vulns), CI workflow, README            |
-| **5C — Style Cleanup**   | ✅     | Removed dead `tool-components.css` from Starlight bundle, imported in ToolLayout |
+| **5B — Infrastructure**   | ✅     | GitHub URL configured, npm audit clean (0 vulns), CI workflow, README                                                       |
+| **5C — Style Cleanup**    | ✅     | Removed dead `tool-components.css` from Starlight bundle, imported in ToolLayout                                            |
 
 ### What's Not Done
 
-| Item                    | Detail                                                                     |
-| ----------------------- | -------------------------------------------------------------------------- |
-| **Vercel deployment**   | Not created                                                                |
-| **Favicon / OG image**  | Starlight defaults in use                                                  |
+| Item                   | Detail                    |
+| ---------------------- | ------------------------- |
+| **Vercel deployment**  | Not created               |
+| **Favicon / OG image** | Starlight defaults in use |
 
 ---
 
@@ -52,15 +52,15 @@ Using npm import via dynamic `import('chart.js/auto')` in success-curves and def
 
 ### Port Order (easiest → hardest)
 
-| #   | Tool                  | LOC   | Data Files                              | Key Complexity                                              | Status      |
-| --- | --------------------- | ----- | --------------------------------------- | ----------------------------------------------------------- | ----------- |
-| 1   | **success-curves**    | 1,398 | 0                                       | Chart.js + separate Web Worker, URL hash sharing            | ✅ Ported   |
-| 2   | **npc-generator**     | 1,730 | 3 (`traits`, `npc-templates`, `skills`) | localStorage save/load, Markdown export                     | ✅ Ported   |
-| 3   | **defense-graph**     | 1,823 | 0                                       | Chart.js + inline Blob Worker + Canvas 2D heatmap           | ✅ Ported   |
-| 4   | **combat-tracker**    | 2,204 | 0 (inline data)                         | Heavy core.js usage (6+ APIs), cross-tool import from Sheet | ✅ Ported   |
-| 5   | **ship-builder**      | 2,298 | 1 (`ships`)                             | Dual-mode UI, JSON import/export, combat sidebar            | ✅ Ported   |
-| 6   | **character-sheet**   | 3,497 | 8                                       | 5-tab system, massive DOM gen, full persistence layer       | ✅ Ported   |
-| 7   | **character-builder** | 2,569 | 9                                       | 11-step wizard, XP budgeting, **depends on sheet**          | ✅ Ported   |
+| #   | Tool                  | LOC   | Data Files                              | Key Complexity                                              | Status    |
+| --- | --------------------- | ----- | --------------------------------------- | ----------------------------------------------------------- | --------- |
+| 1   | **success-curves**    | 1,398 | 0                                       | Chart.js + separate Web Worker, URL hash sharing            | ✅ Ported |
+| 2   | **npc-generator**     | 1,730 | 3 (`traits`, `npc-templates`, `skills`) | localStorage save/load, Markdown export                     | ✅ Ported |
+| 3   | **defense-graph**     | 1,823 | 0                                       | Chart.js + inline Blob Worker + Canvas 2D heatmap           | ✅ Ported |
+| 4   | **combat-tracker**    | 2,204 | 0 (inline data)                         | Heavy core.js usage (6+ APIs), cross-tool import from Sheet | ✅ Ported |
+| 5   | **ship-builder**      | 2,298 | 1 (`ships`)                             | Dual-mode UI, JSON import/export, combat sidebar            | ✅ Ported |
+| 6   | **character-sheet**   | 3,497 | 8                                       | 5-tab system, massive DOM gen, full persistence layer       | ✅ Ported |
+| 7   | **character-builder** | 2,569 | 9                                       | 11-step wizard, XP budgeting, **depends on sheet**          | ✅ Ported |
 
 ### Dependency Chain
 
@@ -204,7 +204,7 @@ Everything needed before pushing to GitHub:
 Old history is obsolete (pre-Astro, local-only, no collaborators). Plan:
 
 1. Back up `.git`: `Copy-Item -Recurse .git ../.git-backup-dtd`
-2. Reinitialize: `Remove-Item -Recurse -Force .git; git init; git add -A; git commit -m "feat: Astro/Starlight site with 7/9 play tools ported"`
+2. Reinitialize: `Remove-Item -Recurse -Force .git; git init; git add -A; git commit -m "feat: Astro/Starlight site with 9/9 play tools ported"`
 3. Add remote and push
 
 ### 6.3 — Repository Hygiene
@@ -237,17 +237,16 @@ No license file — fan content makes licensing ambiguous.
 - [ ] Rules page (`/rules/01-core-rules/`) renders with Starlight navigation
 - [ ] Book pages render under `/books/book-1/`, `/books/book-2/`
 - [ ] Pagefind search works
-- [ ] `/tools/` dashboard shows 7 Ready + 2 Porting badges
-- [ ] 7 ported tools are fully functional
-- [ ] 2 stub pages show placeholder message
+- [ ] `/tools/` dashboard shows 9 Ready badges
+- [ ] 9 ported tools are fully functional
 - [ ] `/data/*.json` files are accessible
 
 ---
 
 ## 8 · Remaining Priorities
 
-1. **Port character-sheet** — largest tool (2,538 LOC), foundational for builder
-2. **Port character-builder** — depends on sheet, final tool (1,672 LOC)
+1. ~~**Port character-sheet**~~ — Done (copy+edit approach, ES module imports)
+2. ~~**Port character-builder**~~ — Done (copy+edit approach, ES module imports)
 3. **Performance audit** — Lighthouse, Core Web Vitals
 4. **Favicon / OG image** — custom branding for social sharing
-5. **Cleanup original tools/** — archive or remove vanilla JS versions after all ports complete
+5. **Cleanup original tools/** — archive or remove vanilla JS versions after all ports verified

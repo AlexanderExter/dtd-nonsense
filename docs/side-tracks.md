@@ -74,3 +74,17 @@ These are pre-existing and documented in the baseline. They should be resolved e
 - Minor formatting preferences
 
 These are editorial suggestions, not errors. The 8 warnings are worth reviewing individually.
+
+---
+
+## [2026-02-25] — Character Sheet & Builder Porting
+
+- **debt**: CSS Architecture Tension (above) is now fully resolved — all 9 tools are self-contained. `tool-components.css` can be safely deleted. *Context*: Sheet and builder both bring their own CSS via `src/styles/sheet.css` and `src/styles/builder.css`, neither references tool-components.css classes.
+
+- **debt**: Triple module stack — vanilla `tools/shared/js/core.js`, ES module `src/lib/dtd/core.js`, and now tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from originals. *Context*: Copy+edit was the only viable approach after generate-from-scratch failed 3 times. But it creates a maintenance surface.
+
+- **investigation**: Sheet's exotic weapons display — open-questions entry #55 documents a real bug where exotic weapons never render in the character sheet's combat tab. Both `tools/character-sheet/sheet.js` and `src/lib/tools/sheet-app.js` contain this bug identically. *Context*: `this.data.weapons.weapons?.exotic` accesses a key that doesn't exist in the JSON structure.
+
+- **refactor**: Sheet and builder persistence reconciliation — the sheet has its own `getDefaultChar()`, `mergeDefaults()`, and data migration logic that overlaps with `character.*` in core.js. The builder uses core.js's API. Unifying would reduce duplicate default character shapes and migration paths, but risks breaking save compatibility. *Context*: Deliberately deferred during porting to avoid risk.
+
+- **optimization**: Sheet's `body` CSS selectors — sheet.css may contain selectors targeting `body` directly, which could interfere with ToolLayout styles. Needs visual testing to confirm. *Context*: Noticed during code review but not tested in browser.
