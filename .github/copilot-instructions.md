@@ -80,8 +80,8 @@ scripts/prebuild.mjs   Copies content into Astro structure before build
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
-  lib/dtd/             ES module ports of core.js and dice.js
-  lib/tools/           Tool-specific ES module scripts (sheet-app.js, builder-app.js)
+  lib/dtd/             ES module ports: core.ts, dice.ts, types.ts
+  lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   layouts/             ToolLayout.astro
   styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
 public/data/           Generated JSON data copies (gitignored)

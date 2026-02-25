@@ -31,9 +31,10 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 
 3. Convert `DTD.*` global calls → ES module imports:
 
-```javascript
+```typescript
 import { loadData, derived, escapeHtml } from "@/lib/dtd/core.js";
 import { roll, parseNotation } from "@/lib/dtd/dice.js";
+import type { CharacterData } from "@/lib/dtd/types.js";
 ```
 
 4. For Chart.js: `const { Chart } = await import('chart.js/auto');`

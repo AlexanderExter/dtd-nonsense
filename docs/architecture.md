@@ -15,7 +15,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming |
 | npm                 | Manages Astro, Starlight, Chart.js, Sharp, Vercel adapter                         |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                     |
-| ES modules          | `src/lib/dtd/core.js` and `dice.js` are ES module ports of the shared libraries   |
+| ES modules          | `src/lib/dtd/core.ts` and `dice.ts` are typed ES module ports of the shared libraries; `types.ts` provides canonical interfaces |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                  |
 
 Key files:
@@ -26,8 +26,8 @@ Key files:
 | `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data      |
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored           |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                        |
-| `src/lib/dtd/`         | ES module ports of core.js and dice.js                            |
-| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.js, builder-app.js)    |
+| `src/lib/dtd/`         | Typed ES modules: core.ts, dice.ts, types.ts                      |
+| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)    |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
 | `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild         |
@@ -37,7 +37,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### When to Reconsider
 
-- **TypeScript for tools:** If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.
+- **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; tool apps have `@ts-nocheck` pending Phase 2 module refactor.
 
 ### Python Pipeline
 
