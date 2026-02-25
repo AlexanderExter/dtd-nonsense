@@ -99,7 +99,7 @@ tools/
 └── defense-graph/                Damage mitigation visualizer
 ```
 
-Each tool follows the same three-file pattern: `index.html`, `[tool-name].js`, `[tool-name].css`.
+Each tool follows the same three-file pattern: `index.html`, `[tool-name].js`, `[tool-name].css`. Three tools use shortened names: `sheet.js`/`sheet.css` (character-sheet), `builder.js`/`builder.css` (character-builder), and `roller.js`/`roller.css` (dice-roller).
 
 ---
 
@@ -124,15 +124,15 @@ var DTD = { ... };
 
 ### Script Load Order
 
-Every tool's HTML must load scripts in this order:
+Tools load shared scripts as needed:
 
 ```html
-<script src="../shared/js/core.js"></script>
-<script src="../shared/js/dice.js"></script>
+<script src="../shared/js/core.js"></script>   <!-- most tools -->
+<script src="../shared/js/dice.js"></script>    <!-- tools that roll dice -->
 <script src="[tool-name].js"></script>
 ```
 
-`dice.js` depends on `window.DTD` existing (set by `core.js`). Tool scripts depend on both.
+`dice.js` depends on `window.DTD` existing (set by `core.js`). Some tools (success-curves, quick-reference) are fully self-contained and load neither shared script.
 
 ---
 
