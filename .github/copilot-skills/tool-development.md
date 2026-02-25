@@ -51,7 +51,7 @@ When porting a vanilla tool (`tools/<name>/`) to an Astro page (`src/pages/tools
 2. **CDN scripts** (e.g., Chart.js) → `await import('chart.js/auto')` (npm dynamic import, Vite-bundled)
 3. **External Workers** → put in `public/workers/` (or use inline Blob Worker for small ones)
 4. **HTML body** → Astro component template inside `<ToolLayout title="..." description="...">`
-5. **CSS** → self-contained `<style>` block per tool (don't rely on `tool-components.css` — see pitfall #5)
+5. **CSS** → self-contained `<style>` block per tool (no shared CSS dependency)
 6. **`localStorage` keys** → keep unchanged for backward-compatibility with vanilla versions
 7. **Update dashboard** → change badge in `src/pages/tools/index.astro` from "Porting" to "Ready"
 
