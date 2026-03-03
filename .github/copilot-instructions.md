@@ -13,6 +13,8 @@ All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Ke
 - **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
 - **Python**: Managed via `uv` with a `.venv` in the project root. Always use `uv run` to execute Python commands.
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
+- **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check, `npm run lint:fix` to auto-fix. Config in `biome.json`. CI runs `biome ci .` before build.
+- **Vitest**: Unit tests for `core.ts` and `dice.ts`. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
 ---
@@ -91,8 +93,10 @@ pipeline/              Python package: validation, linting, Astro prep
   parsers/             Markdown↔JSON sync checkers
 .github/               Agent instructions, skills, prompt files
 astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
+biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           npm dependencies (Astro, Starlight, Chart.js)
 tsconfig.json          TypeScript strict config with @/ path alias
+vitest.config.ts       Vitest unit test configuration
 scripts/prebuild.mjs   Copies content into Astro structure before build
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
@@ -106,9 +110,9 @@ public/data/           Generated JSON data copies (gitignored)
 
 **Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
 
-**Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (Pagefind search). Dev server: `npm run dev`.
+**Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (Pagefind search). Dev server: `npm run dev`. Lint with `npm run lint`. Run tests with `npm run test`.
 
-**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs the Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → Vitest tests → Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
 
 ### Pipeline CLI
 

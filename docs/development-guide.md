@@ -62,6 +62,10 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 | `npm run dev`               | Start Astro dev server with hot reload                                      |
 | `npm run build`             | Full build: prebuild → astro build                                          |
 | `npm run preview`           | Preview production build locally                                            |
+| `npm run lint`              | Check JS/TS/CSS with Biome                                                  |
+| `npm run lint:fix`          | Auto-fix Biome lint issues                                                  |
+| `npm run test`              | Run Vitest unit tests                                                       |
+| `npm run test:watch`        | Run Vitest in watch mode                                                    |
 | `uv run dtd starlight-prep` | Inject Starlight frontmatter (run once or after cleaning references change) |
 
 ### Build Pipeline
@@ -169,6 +173,34 @@ See [project-conventions.md](project-conventions.md#dtd-conventions) for standar
 ## Formula Quick Reference
 
 See [project-conventions.md](project-conventions.md#formula-quick-reference) for the complete formula table.
+
+---
+
+## Unit Tests
+
+Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
+
+| Test File                       | Covers                                                    |
+| ------------------------------- | --------------------------------------------------------- |
+| `src/lib/dtd/core.test.ts`      | derived stats, character CRUD, migration, data loading    |
+| `src/lib/dtd/dice.test.ts`      | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+
+128 tests total. Run with:
+
+```bash
+npm run test          # single run
+npm run test:watch    # re-run on file changes
+```
+
+### CI Pipeline Order
+
+GitHub Actions runs the following steps on every push/PR:
+
+```
+Biome lint  →  Vitest tests  →  Astro build  →  Python pipeline (ruff, validate, lint)
+```
+
+All steps must pass for a PR to be merge-ready.
 
 ---
 
