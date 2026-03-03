@@ -3,8 +3,8 @@
 Generates NPC stat blocks for Story Masters. Supports both quick-build (template-based) and custom-build (manual specification) workflows.
 
 **Phase:** 3
-**Files:** `tools/npc-generator/index.html`, `npc.js`, `npc.css`
-**Pattern:** Object literal (`const NPCBuilder = { ... }`)
+**Files:** `src/pages/tools/npc-generator.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -41,7 +41,7 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
 
 ## Architecture
 
-**Dependencies:** `core.js` (`DTD.derived`), `dice.js` (`DTD.dice`), `dtd-theme.css`
+**Dependencies:** `import { derived } from '@/lib/dtd/core.ts'`, `import { roll } from '@/lib/dtd/dice.ts'`
 
 **Data sources:** `npc-templates.json`, `traits.json`, `weapons.json`, `equipment.json`
 
@@ -82,10 +82,10 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
 ### Stat Calculation
 
 ```javascript
-// Derived stats use standard DTD.derived formulas
-const sd = DTD.derived.calculateSD(chars.dexterity, chars.wisdom, npc.size);
-const hp = DTD.derived.calculateHP(chars.constitution, chars.willpower);
-const md = DTD.derived.calculateMentalDefense(chars.composure);
+// Derived stats use standard formulas from core.ts
+const sd = derived.calculateSD(chars.dexterity, chars.wisdom, npc.size);
+const hp = derived.calculateHP(chars.constitution, chars.willpower);
+const md = derived.calculateMentalDefense(chars.composure);
 ```
 
 NPC stat blocks use the **same formulas** as player characters. The books note "NPCs may use simplified flat values" but this tool uses calculated values for consistency.

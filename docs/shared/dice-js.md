@@ -1,217 +1,287 @@
-# dice.js — DTD.dice Rolling Engine
+# dice.ts — Dice Engine API
 
-Sole dice module for the project. Implements D:TD's `XkY` exploding d10 system with notation parsing, roll execution, outcome evaluation, and result formatting.
+Sole dice module for the project. Implements D:TD's `XkY+N` exploding d10 system with notation parsing, roll execution, overflow compression, and outcome evaluation.
 
-**File:** `src/lib/dtd/dice.ts` (ES module — ported from vanilla `tools/shared/js/dice.js`, migrated to TypeScript)
+**File:** `src/lib/dtd/dice.ts` (pure ES module with named exports)
 **Types:** `src/lib/dtd/types.ts` — provides `DiceResult`, `DieRoll`, `Outcome`, `ParsedNotation`, `OverflowInfo`
-**Pattern:** Named export wrapping dice functionality
+**Pattern:** Named exports — `import { roll, calculateOutcome, parseNotation } from '@/lib/dtd/dice.ts'`
 **Consumers:** Dice Roller, Combat Tracker, NPC Generator, Success Curves
 
 ---
 
-## Namespace Attachment
+## Exported Functions
 
-```javascript
-(function () {
-    window.DTD = window.DTD || {};
-    const dice = (DTD.dice = {});
-    // ... all functions defined on dice object
-})();
+### `roll(numDice, keepDice, modifier?, options?)`
+
+Roll `numDice` exploding d10s, keep the highest `keepDice`, add a flat `modifier`. Applies overflow compression automatically when pools exceed 10.
+
+**Signature:**
+
+```typescript
+export function roll(
+    numDice: number,
+    keepDice: number,
+    modifier?: number, // default: 0
+    options?: { rankZero?: boolean } // default: {}
+): DiceResult;
 ```
-
-Extends the `DTD` global via `window.DTD` — same pattern rationale as core.js (must use `window` property, not lexical binding).
-
----
-
-## Public API
-
-### dice.roll(pool, keep, options)
-
-Rolls `pool` d10s, keeps `keep` highest. Returns a `DiceResult` object.
 
 **Parameters:**
-| Param | Type | Description |
-| ------- | ------ | --------------------------------------------- |
-| pool | number | Number of d10s to roll |
-| keep | number | Number of highest dice to keep |
-| options | object | Optional: `{ rankZero: boolean }` |
 
-**Returns:** `DiceResult`
-
-```javascript
-const result = DTD.dice.roll(5, 3);
-// {
-//     dice: [DieRoll, DieRoll, ...],   // All 5 dice
-//     kept: [DieRoll, DieRoll, DieRoll], // Top 3
-//     total: 27,                         // Sum of kept
-//     pool: 5,
-//     keep: 3,
-//     isRankZero: false
-// }
-```
+| Param      | Type                     | Description                                         |
+| ---------- | ------------------------ | --------------------------------------------------- |
+| `numDice`  | `number`                 | Number of d10s to roll (the X in XkY)               |
+| `keepDice` | `number`                 | Number of highest dice to keep (the Y in XkY)       |
+| `modifier` | `number`                 | Flat bonus/penalty added to the total (default `0`) |
+| `options`  | `{ rankZero?: boolean }` | Optional flags (see below)                          |
 
 **Options:**
 
-- `rankZero: true` — 10s count as 0 instead of 10 (for Rank 0 skill rolls)
+- `rankZero: true` — Rank-0 mode. Rolls a single d10 with no explosion; a natural 10 counts as 0. Used for untrained skill tests. Also triggered automatically when `keepDice === 0`.
 
-### dice.calculateOutcome(result, tn)
+**Returns:** `DiceResult` (see [Types](#types) below)
 
-Evaluates a roll result against a Target Number.
-
-**Parameters:**
-| Param | Type | Description |
-| ------ | ---------- | ---------------------- |
-| result | DiceResult | From `dice.roll()` |
-| tn | number | Target Number to beat |
-
-**Returns:**
-
-```javascript
-{
-    passed: true,       // total >= tn
-    raises: 2,          // Math.floor((total - tn) / 5) when passed
-    checks: 0,          // Math.floor((tn - total) / 5) when failed
-    margin: 12          // total - tn (positive = success, negative = failure)
-}
-```
-
-### dice.parseNotation(input)
-
-Parses dice notation string into components.
-
-**Accepts:** `"5k3"`, `"5K3"`, `"10k5"`, etc.
-
-**Returns:**
-
-```javascript
-{
-    pool: 5,
-    keep: 3,
-    valid: true
-}
-```
-
-Returns `{ valid: false }` for unparseable input.
-
-### dice.formatResult(result)
-
-Produces a display-ready string from a `DiceResult`.
-
-```javascript
-DTD.dice.formatResult(result);
-// "5k3: [8, 10→6, 5, 3, 2] → kept [16, 8, 5] = 29"
-```
-
-Includes explosion chains (e.g., `10→6` = rolled 10 then 6 = 16).
-
-### dice.compressOverflow(results)
-
-Maps an array of die results to a 1-10 scale for visualization (e.g., bar charts). Used by Success Curves tool.
-
-```javascript
-DTD.dice.compressOverflow([3, 15, 7, 22, 8]);
-// → scaled values for chart rendering
-```
-
----
-
-## Internal Functions
-
-### rollOneDie()
-
-Core die rolling. Implements exploding d10:
-
-```javascript
-function rollOneDie() {
-    let total = 0, roll;
-    do {
-        roll = Math.ceil(Math.random() * 10);
-        total += roll;
-    } while (roll === 10);
-    return { total, rolls: [...] };
-}
-```
-
-- Rolls a d10
-- On 10: roll again and add (chains infinitely)
-- Returns total and individual roll chain
-
-### rollRankZero()
-
-Variant roller where 10s on kept dice count as 0 instead of 10. Used for Rank 0 skill Tests where the character has no training.
-
----
-
-## Type Definitions
-
-### DiceResult
+**Usage:**
 
 ```typescript
-interface DiceResult {
-    dice: DieRoll[]; // All rolled dice
-    kept: DieRoll[]; // Selected (highest) dice
-    total: number; // Sum of kept dice values
-    pool: number; // Original pool size
-    keep: number; // Original keep count
-    isRankZero: boolean; // Whether Rank Zero rules applied
+import { roll } from "@/lib/dtd/dice.ts";
+
+// Standard roll: 5k3
+const result = roll(5, 3);
+// result.total → sum of 3 highest dice
+
+// Roll with modifier: 5k3+5
+const buffed = roll(5, 3, 5);
+
+// Rank-0 roll: single d10, 10 → 0
+const rankZero = roll(1, 0);
+```
+
+**Behavior details:**
+
+1. If `rankZero` option is set or `keepDice === 0`, rolls a single non-exploding d10 (10 → 0) plus modifier.
+2. Otherwise, clamps `numDice` and `keepDice` to at least 1. If `keepDice > numDice`, it's reduced to `numDice`.
+3. Applies overflow compression (see [Overflow Compression](#overflow-compression)).
+4. Rolls `numDice` exploding d10s.
+5. Sorts all dice descending by value, keeps the top `keepDice`.
+6. Returns the full result with kept/dropped dice, totals, and overflow info.
+
+---
+
+### `calculateOutcome(total, tn)`
+
+Evaluate a roll total against a Target Number (TN). Determines pass/fail and counts raises (every 5 above TN) or checks (every 5 below TN).
+
+**Signature:**
+
+```typescript
+export function calculateOutcome(total: number, tn: number): Outcome;
+```
+
+**Parameters:**
+
+| Param   | Type     | Description             |
+| ------- | -------- | ----------------------- |
+| `total` | `number` | The roll total to check |
+| `tn`    | `number` | Target Number to beat   |
+
+**Returns:** `Outcome`
+
+| Field     | Type      | Description                                                 |
+| --------- | --------- | ----------------------------------------------------------- |
+| `success` | `boolean` | `true` if `total >= tn`                                     |
+| `raises`  | `number`  | `Math.floor((total - tn) / 5)` on success, else `0`         |
+| `checks`  | `number`  | `Math.floor(Math.abs(total - tn) / 5)` on failure, else `0` |
+
+**Usage:**
+
+```typescript
+import { roll, calculateOutcome } from "@/lib/dtd/dice.ts";
+
+const result = roll(5, 3);
+const outcome = calculateOutcome(result.total, 20);
+
+if (outcome.success) {
+    console.log(`Passed with ${outcome.raises} raises!`);
+} else {
+    console.log(`Failed by ${outcome.checks} checks.`);
 }
 ```
 
-### DieRoll
+---
+
+### `parseNotation(str)`
+
+Parse an `XkY`, `XkY+N`, or `XkY-N` dice notation string into its numeric components.
+
+**Signature:**
+
+```typescript
+export function parseNotation(str: unknown): ParsedNotation | null;
+```
+
+**Parameters:**
+
+| Param | Type      | Description                               |
+| ----- | --------- | ----------------------------------------- |
+| `str` | `unknown` | Notation string to parse (e.g. `"5k3+2"`) |
+
+**Returns:** `ParsedNotation | null` — returns `null` for invalid/empty input.
+
+| Field      | Type     | Description                             |
+| ---------- | -------- | --------------------------------------- |
+| `num`      | `number` | Number of dice to roll (X)              |
+| `keep`     | `number` | Number of dice to keep (Y)              |
+| `modifier` | `number` | Flat modifier (N), `0` if not specified |
+
+**Accepted formats:** `"5k3"`, `"5K3"`, `"10k5+3"`, `"3k2-1"`, `"5k3 + 2"` (whitespace around modifier allowed).
+
+**Usage:**
+
+```typescript
+import { parseNotation } from "@/lib/dtd/dice.ts";
+
+parseNotation("5k3+2"); // { num: 5, keep: 3, modifier: 2 }
+parseNotation("10k5"); // { num: 10, keep: 5, modifier: 0 }
+parseNotation("3k2-1"); // { num: 3, keep: 2, modifier: -1 }
+parseNotation(""); // null
+parseNotation(42); // null
+parseNotation("garbage"); // null
+```
+
+---
+
+## Types
+
+All types are defined in `src/lib/dtd/types.ts` and imported by the dice module.
+
+### `DieRoll`
+
+Represents a single die in a roll.
 
 ```typescript
 interface DieRoll {
-    value: number; // Final value of this die
-    rolls: number[]; // Individual rolls (length > 1 if exploded)
-    exploded: boolean; // Whether this die exploded
-    kept: boolean; // Whether this die was kept
+    value: number; // Final value (sum of all rolls if exploded)
+    base: number; // First d10 result (before explosion)
+    exploded: boolean; // Whether the die exploded (rolled a 10)
+}
+```
+
+### `DiceResult`
+
+Complete result of a `roll()` call.
+
+```typescript
+interface DiceResult {
+    allRolls: DieRoll[]; // All dice rolled (unsorted, original order)
+    keptRolls: DieRoll[]; // Highest dice kept (sorted descending)
+    droppedRolls: DieRoll[]; // Dice not kept (sorted descending)
+    diceTotal: number; // Sum of kept dice values only
+    modifier: number; // Flat modifier (post-compression)
+    total: number; // diceTotal + modifier
+    overflow: OverflowInfo | null; // Non-null if overflow compression was applied
+}
+```
+
+### `OverflowInfo`
+
+Compression details when the original pool exceeded d10 limits.
+
+```typescript
+interface OverflowInfo {
+    numDice: number; // Final number of dice rolled (after compression)
+    keepDice: number; // Final number of dice kept (after compression)
+    modifier: number; // Final modifier (after adding excess-keep bonuses)
+    compressed: boolean; // Always true when returned in DiceResult.overflow
+}
+```
+
+### `Outcome`
+
+Result of `calculateOutcome()`.
+
+```typescript
+interface Outcome {
+    success: boolean; // total >= tn
+    raises: number; // Full 5-point increments above TN (on success)
+    checks: number; // Full 5-point increments below TN (on failure)
+}
+```
+
+### `ParsedNotation`
+
+Result of `parseNotation()`.
+
+```typescript
+interface ParsedNotation {
+    num: number; // Dice to roll (X in XkY)
+    keep: number; // Dice to keep (Y in XkY)
+    modifier: number; // Flat modifier (N in XkY+N)
 }
 ```
 
 ---
 
-## Backward Compatibility Aliases
+## Mechanics
 
-```javascript
-dice.rollKeepHighest = dice.roll; // Old name
-dice.formatRollResult = dice.formatResult; // Old name
+### Exploding d10s
+
+Every die is a d10 (1–10). When a die rolls a natural 10, it "explodes": roll again and add the new result to the same die's total. Explosions chain — if the re-roll is also a 10, roll again. This continues until a non-10 result.
+
+```
+Example: roll 10 → roll 10 → roll 4 → die value = 24
 ```
 
-These exist for legacy callers. New code should use the canonical names.
+The `DieRoll.base` field captures the first roll (always 10 for exploded dice). `DieRoll.value` captures the full sum. `DieRoll.exploded` is `true` if any explosion occurred.
 
----
+### Keep Highest
 
-## Script Load Order
+After rolling all dice, they are sorted descending by value. The top `keepDice` are kept; the rest are dropped. The `diceTotal` is the sum of kept dice only.
 
-dice.js must load after core.js (needs `window.DTD` to exist):
+### Rank-0 Mode
 
-```html
-<script src="../shared/js/core.js"></script>
-<!-- 1st: creates DTD -->
-<script src="../shared/js/dice.js"></script>
-<!-- 2nd: extends DTD.dice -->
+When a character has no training in a skill (rank 0), they roll a single flat d10 with no explosion. A natural 10 counts as 0 instead. This is triggered by `options.rankZero = true` or `keepDice === 0`.
+
+### Overflow Compression
+
+When dice pools grow beyond 10 (common at high levels), the internal `_compressOverflow` function applies the D:TD overflow rules:
+
+1. **Excess rolled dice (numDice > 10):** Every 2 excess rolled dice convert to +1 kept die. Rolled dice are capped at 10.
+2. **Keep can't exceed rolled:** If `keepDice > numDice` after step 1, keep is clamped to numDice.
+3. **Excess kept dice (keepDice > 10):** Each excess kept die converts to a flat +5 modifier. Kept dice are capped at 10.
+
+**Example:** `14k8` → Step 1: 4 excess rolled → +2 kept → `10k10`. Step 3: 0 excess kept → final `10k10+0`.
+
+**Example:** `16k12` → Step 1: 6 excess rolled → +3 kept → `10k15`. Keep clamped to 10 → `10k10`. Step 3: 5 excess kept (from 15) → +25 modifier → final `10k10+25`.
+
+The `DiceResult.overflow` field is `null` when no compression was needed, or an `OverflowInfo` object showing the final compressed values.
+
+**Internal signature (not exported):**
+
+```typescript
+function _compressOverflow(numDice: number, keepDice: number, modifier: number): OverflowInfo;
 ```
 
 ---
 
 ## Mathematical Properties
 
-| Property              | Value                                              |
-| --------------------- | -------------------------------------------------- |
-| Die range             | 1-10 per roll, unbounded with explosions           |
-| Explosion chance      | 10% per die per roll                               |
-| Expected value (1d10) | ~6.11 (accounting for explosions)                  |
-| Max chain observed    | Theoretically infinite, practically 3-4 explosions |
-| Pool cap              | No hard cap; UI typically limits to 10k10          |
+| Property                | Value                                              |
+| ----------------------- | -------------------------------------------------- |
+| Die range               | 1–10 per roll, unbounded with explosions           |
+| Explosion chance        | 10% per die per roll                               |
+| Expected value (1d10)   | ~6.11 (accounting for explosions)                  |
+| Max pool (pre-compress) | Unlimited; compressed to ≤10k10+N                  |
+| Max chain               | Theoretically infinite, practically 3–4 explosions |
 
 ---
 
 ## Modification Checklist
 
-When editing dice.js:
+When editing `dice.ts`:
 
-1. **Test explosion behavior** — edge case: 10→10→10→... must not infinite loop (it won't, but verify)
-2. **Verify compressOverflow** — Success Curves depends on consistent scaling
-3. **Check backward compat aliases** — removing them breaks old callers
-4. **Grep all tool directories** — Dice Roller, Combat Tracker, NPC Generator, Success Curves all import DTD.dice
+1. **Test explosion behavior** — verify 10→10→10→… chains terminate correctly
+2. **Verify overflow compression** — Success Curves tool depends on consistent results
+3. **Check type alignment** — types live in `types.ts`; keep signatures in sync
+4. **Grep consumers** — Dice Roller, Combat Tracker, NPC Generator, Success Curves all import from this module
 5. **Run Dice Roller manually** — fastest way to verify roll correctness

@@ -69,7 +69,7 @@ For each changed file, trace its consumers and producers:
 | `pipeline/models/*.py`    | `uv run dtd validate` still passes                                   |
 | `pipeline/linting/*.py`   | `uv run dtd lint` — results match expectations                       |
 | `data/*.json`             | Tools that load this data still render correctly                     |
-| `src/lib/dtd/core.js`     | All 9 tools — shared ES module                                        |
+| `src/lib/dtd/core.ts`     | All 9 tools — shared ES module                                        |
 | `cleaned-references/*.md` | `uv run dtd lint`, `uv run dtd sync-check`, starlight-prep          |
 | `books/*.md`              | `uv run dtd lint --target books`, open-questions.md                  |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |

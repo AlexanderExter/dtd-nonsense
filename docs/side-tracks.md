@@ -16,9 +16,9 @@ The project originally had **three CSS layers** that didn't compose cleanly:
 
 ---
 
-## core.js Export Surface Area
+## core.ts Export Surface Area
 
-`src/lib/dtd/core.js` exports **~13 top-level symbols** including utility functions (`debounce`, `escapeHtml`), data loading (`loadData`, `loadAllData`), character CRUD (`character.*`), derived stat calculations (`derived.*`), and UI helpers (`initAccordion`). This is a "god module" — fine for now but will be hard to maintain if the project grows.
+`src/lib/dtd/core.ts` exports **~13 top-level symbols** including utility functions (`debounce`, `escapeHtml`), data loading (`loadData`, `loadAllData`), character CRUD (`character.*`), derived stat calculations (`derived.*`), and UI helpers (`initAccordion`). This is a "god module" — fine for now but will be hard to maintain if the project grows.
 
 A future refactor could split into:
 
@@ -81,11 +81,11 @@ These are editorial suggestions, not errors. The 8 warnings are worth reviewing 
 
 - **debt**: CSS Architecture Tension (above) is now fully resolved and `tool-components.css` has been deleted. See section header for details.
 
-- **debt**: Dual module stack — `src/lib/dtd/core.js` (ES module) and tool-specific copies `src/lib/tools/sheet-app.js` / `builder-app.js`. The tool copies will drift from the ES module versions. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times.
+- **debt**: Dual module stack — `src/lib/dtd/core.ts` (ES module) and tool-specific copies `src/lib/tools/sheet-app.ts` / `builder-app.ts`. The tool copies will drift from the ES module versions. _Context_: Copy+edit was the only viable approach after generate-from-scratch failed 3 times.
 
 - ~~**investigation**: Sheet's exotic weapons display~~ **FIXED (2026-02-25 technical-stabilizer)** — Both `tools/character-sheet/sheet.js` and `src/lib/tools/sheet-app.js` had `.concat(this.data.weapons.weapons?.exotic || [])` in the melee weapons datalist builder. `weapons.json` has no `exotic` key (only `ranged`/`melee`/`thrown`). The dead concat was removed from both files.
 
-- **refactor**: Sheet and builder persistence reconciliation — the sheet has its own `getDefaultChar()`, `mergeDefaults()`, and data migration logic that overlaps with `character.*` in core.js. The builder uses core.js's API. Unifying would reduce duplicate default character shapes and migration paths, but risks breaking save compatibility. _Context_: Deliberately deferred during porting to avoid risk.
+- **refactor**: Sheet and builder persistence reconciliation — the sheet has its own `getDefaultChar()`, `mergeDefaults()`, and data migration logic that overlaps with `character.*` in core.ts. The builder uses core.ts's API. Unifying would reduce duplicate default character shapes and migration paths, but risks breaking save compatibility. _Context_: Deliberately deferred during porting to avoid risk.
 
 - **optimization**: Sheet's `body` CSS selectors — sheet.css may contain selectors targeting `body` directly, which could interfere with ToolLayout styles. Needs visual testing to confirm. _Context_: Noticed during code review but not tested in browser.
 
@@ -95,10 +95,10 @@ These are editorial suggestions, not errors. The 8 warnings are worth reviewing 
 
 Items reviewed and accepted as-is during the stabilizer pass. No action needed unless the project scope changes.
 
-- **A4 — No JavaScript unit tests**: `tests/` contains only `tests/__init__.py`. No unit tests exist for any JS module (`core.js`, `dice.js`, ES module ports) or `prebuild.mjs`. CI uses the Astro build as a smoke test only. _Recommended future tool_: Vitest for `src/lib/dtd/` modules.
+- **A4 — No JavaScript unit tests**: `tests/` contains only `tests/__init__.py`. No unit tests exist for any JS module (`core.ts`, `dice.ts`, ES module ports) or `prebuild.mjs`. CI uses the Astro build as a smoke test only. _Recommended future tool_: Vitest for `src/lib/dtd/` modules.
 - **A5 — CI skips `--xref` and `sync-check`**: `build.yml` runs `dtd validate` but not `dtd validate --xref` or `dtd sync-check`. The 41 known xref warnings are pre-existing data gaps, not regressions — adding `--xref` to CI would require a baseline suppression mechanism to avoid treating known warnings as failures.
 - **C3 — No ESLint/Biome for vanilla tools**: `tools/**/*.js` has no configured static analysis (21K+ LOC). Accepted as intentional per architecture rationale. Straightforward to add if the tools grow.
-- **F2 — Shared module docs may lag ES module ports**: `docs/shared/core-js.md` and `dice-js.md` describe the shared module APIs but were not updated during the `port-sheet-builder` porting session. Verify export lists match after browser testing confirms the port is equivalent to the originals.
+- ~~**F2 — Shared module docs may lag ES module ports**~~ **FIXED (2026-03-03)** — core-js.md and dice-js.md fully rewritten from TypeScript source.
 
 ---
 
@@ -108,7 +108,9 @@ Items found during a full codebase review. Ordered roughly by severity.
 
 ---
 
-### B1 — `prebuild.mjs` Runs Twice on `npm run build`
+### ~~B1 — `prebuild.mjs` Runs Twice on `npm run build`~~ — FIXED
+
+> FIXED (2026-03-03 technical-stabilizer) — removed duplicate prebuild.mjs call from build script; now relies on npm lifecycle hook only.
 
 `package.json` has both:
 
@@ -123,7 +125,9 @@ npm automatically runs a `prebuild` lifecycle hook before `build`. Since the `bu
 
 ---
 
-### B2 — `calculateDerivedStats()` Ignores Halfling Racial Variant
+### ~~B2 — `calculateDerivedStats()` Ignores Halfling Racial Variant~~ — FIXED
+
+> **FIXED (2026-03-03 technical-stabilizer)** — `calculateDerivedStats()` was removed entirely from `core.ts` (unused export). Tools call `derived.calculateSD()` directly with the `isHalfling` parameter. The bug is moot.
 
 `src/lib/dtd/core.js:98` calls:
 
@@ -135,7 +139,9 @@ staticDefense: derived.calculateSD(c.dexterity, c.wisdom, size),
 
 ---
 
-### B3 — `character.save()` Does Not Register New Characters in the List
+### ~~B3 — `character.save()` Does Not Register New Characters in the List~~ — FIXED
+
+> FIXED (2026-03-03 technical-stabilizer) — save() now pushes new entries to the character list when the ID is not found.
 
 `src/lib/dtd/core.js:276–288`:
 
@@ -157,12 +163,14 @@ If a character's ID is not already in the list (e.g., on first save), the charac
 
 ---
 
-### W1 — Blob Worker URL Leak in `defense-graph.astro`
+### ~~W1 — Blob Worker URL Leak in `defense-graph.astro`~~ — FIXED
+
+> FIXED (2026-03-03) — URL.revokeObjectURL() called after Worker creation.
 
 `src/pages/tools/defense-graph.astro:722–723`:
 
 ```js
-const blob = new Blob([getWorkerSource()], { type: 'application/javascript' });
+const blob = new Blob([getWorkerSource()], { type: "application/javascript" });
 worker = new Worker(URL.createObjectURL(blob));
 ```
 
@@ -172,7 +180,9 @@ The object URL returned by `createObjectURL` is never revoked. Each page load ho
 
 ---
 
-### W2 — Web Workers Not Terminated on Page Unload
+### ~~W2 — Web Workers Not Terminated on Page Unload~~ — FIXED
+
+> FIXED (2026-03-03) — beforeunload listener added to both tools.
 
 Neither `success-curves.astro` nor `defense-graph.astro` calls `worker.terminate()` when the page is unloaded. Browsers usually GC workers with the page, but explicit cleanup is good practice and prevents issues in SPA-style navigation scenarios where Astro's View Transitions may be added later.
 
@@ -184,7 +194,7 @@ Neither `success-curves.astro` nor `defense-graph.astro` calls `worker.terminate
 
 The same overflow compression + exploding d10 algorithm is implemented in:
 
-1. `src/lib/dtd/dice.js` — ES module, used by builder and sheet
+1. `src/lib/dtd/dice.ts` — ES module, used by builder and sheet
 2. `public/workers/simulation-worker.js` — external worker file, used by success-curves
 3. `src/pages/tools/defense-graph.astro` (inside `getWorkerSource()`) — inline blob worker string
 
@@ -194,19 +204,19 @@ The existing `public/workers/simulation-worker.js` pattern is the right model. T
 
 ---
 
-### W4 — Divergent Default Character Shapes Between `core.js` and `sheet-app.js`
+### W4 — Divergent Default Character Shapes Between `core.ts` and `sheet-app.ts`
 
-`core.js` `character.DEFAULTS` and `sheet-app.js` `getDefaultChar()` are parallel but not identical:
+`core.ts` `character.DEFAULTS` and `sheet-app.ts` `getDefaultChar()` are parallel but not identical:
 
-| Field | `core.js DEFAULTS` | `sheet-app getDefaultChar()` |
-|---|---|---|
-| `characteristics.*` | `2` (each) | `1` (each) |
-| `trickShots` | `[]` | absent |
-| `backgroundNotes` | absent | `{}` (legacy shape) |
-| `devotion` | `6` | `0` |
-| `sanctioned` | `false` | `true` |
+| Field               | `core.ts DEFAULTS` | `sheet-app getDefaultChar()` |
+| ------------------- | ------------------ | ---------------------------- |
+| `characteristics.*` | `2` (each)         | `1` (each)                   |
+| `trickShots`        | `[]`               | absent                       |
+| `backgroundNotes`   | absent             | `{}` (legacy shape)          |
+| `devotion`          | `6`                | `0`                          |
+| `sanctioned`        | `false`            | `true`                       |
 
-Characters created by the sheet will have characteristics starting at 1; characters created by core.js will start at 2. When sheet-app's `mergeDefaults()` processes a core.js character (or vice versa), the differing starting values and missing/extra keys can produce unexpected saves. This is the pre-existing "Sheet and builder persistence reconciliation" debt — logging here for completeness and to capture the specific field-level drift discovered.
+Characters created by the sheet will have characteristics starting at 1; characters created by core.ts will start at 2. When sheet-app's `mergeDefaults()` processes a core.ts character (or vice versa), the differing starting values and missing/extra keys can produce unexpected saves. This is the pre-existing "Sheet and builder persistence reconciliation" debt — logging here for completeness and to capture the specific field-level drift discovered.
 
 ---
 
@@ -233,24 +243,25 @@ Note: the underlying ambiguity (`--dev` silently being a no-op when there are no
 
 Outstanding gaps in linting/static-analysis scaffolding, collected as of 2026-02-25.
 
-| # | What | Priority | Notes |
-|---|---|---|---|
-| L1a | Migrate `[project.optional-dependencies].dev` → `[dependency-groups]` | Low | Makes `uv sync --dev` work idiomatically; removes need for `--extra dev` in CI. One-line pyproject.toml restructure + lock refresh. |
-| L1b | Add `dtd lint docs/` coverage | Low | `run_linter()` supports any target path but CI only runs `dtd lint` (defaults to books + cleaned-refs). `docs/` prose is unscanned. |
-| L1c | Add `dtd validate --xref` to CI | Medium | 41 known xref warnings exist (see **xref Warnings** section). Needs a baseline suppression file so CI treats new warnings as failures without blocking on pre-existing ones. |
-| L1d | Add ESLint or Biome for `tools/**/*.js` | Low | 21K+ LOC of vanilla JS has zero static analysis (C3). Biome is zero-config and fast; straightforward to add. |
-| L1e | Add Vitest for `src/lib/dtd/*.js` | Low | No JS unit tests exist (A4). Vitest would cover `dice.js`, `core.js`, and the ES module ports. |
-| L1f | Add mypy or pyright to CI | Low | Python pipeline has no type checking beyond ruff's basic checks. Not urgent given the codebase is small and well-typed, but a natural next step once tests exist. |
+| #   | What                                                                  | Priority | Notes                                                                                                                                                                        |
+| --- | --------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| L1a | Migrate `[project.optional-dependencies].dev` → `[dependency-groups]` | Low      | Makes `uv sync --dev` work idiomatically; removes need for `--extra dev` in CI. One-line pyproject.toml restructure + lock refresh.                                          |
+| L1b | Add `dtd lint docs/` coverage                                         | Low      | `run_linter()` supports any target path but CI only runs `dtd lint` (defaults to books + cleaned-refs). `docs/` prose is unscanned.                                          |
+| L1c | Add `dtd validate --xref` to CI                                       | Medium   | 41 known xref warnings exist (see **xref Warnings** section). Needs a baseline suppression file so CI treats new warnings as failures without blocking on pre-existing ones. |
+| L1d | Add ESLint or Biome for `tools/**/*.js`                               | Low      | 21K+ LOC of vanilla JS has zero static analysis (C3). Biome is zero-config and fast; straightforward to add.                                                                 |
+| L1e | Add Vitest for `src/lib/dtd/*.ts`                                     | Low      | No JS unit tests exist (A4). Vitest would cover `dice.ts`, `core.ts`, and the ES module ports.                                                                               |
+| L1f | Add mypy or pyright to CI                                             | Low      | Python pipeline has no type checking beyond ruff's basic checks. Not urgent given the codebase is small and well-typed, but a natural next step once tests exist.            |
 
 ---
 
-### I1 — Melee Datalist Filter Has Redundant Condition
+### ~~I1 — Melee Datalist Filter Has Redundant Condition~~ — FIXED
+
+> FIXED (2026-03-03) — removed redundant .filter() call.
 
 `src/lib/tools/sheet-app.js:144–145`:
 
 ```js
-const melee = (this.data.weapons.weapons?.melee || [])
-    .filter(w => w.type === 'melee' || !w.range);
+const melee = (this.data.weapons.weapons?.melee || []).filter((w) => w.type === "melee" || !w.range);
 ```
 
 Items fetched from `weapons.weapons.melee` are melee by definition (the data structure already partitions by category). The secondary filter `|| !w.range` is redundant against the existing data and could accidentally include future weapon entries that lack a `range` field but aren't melee (e.g., a placeholder row). Removing the filter entirely, or using `w.type === 'melee'` alone, is cleaner.
@@ -283,3 +294,19 @@ If Phase 2's module refactor still leaves the DOM manipulation feeling painful, 
 - **No framework** — If Phase 2's module split makes the vanilla TS pattern clean enough, skip entirely. This is a real outcome worth evaluating before committing.
 
 Start with the dice roller (smallest tool) as a proof-of-concept island before migrating sheet/builder. Relevant skills: `vercel-react-best-practices`, `vercel-composition-patterns`.
+
+---
+
+## [2026-03-03] — Technical Stabilizer Session
+
+- **Fixed B1:** prebuild double-run
+- **Fixed B2:** calculateDerivedStats() Halfling variant (function removed entirely — moot)
+- **Fixed B3:** character.save() list registration
+- **Fixed W1:** blob worker URL leak
+- **Fixed W2:** worker cleanup on unload
+- **Fixed I1:** redundant melee filter
+- **Fixed P14/F1:** pipeline Unicode crash on Windows (Rich Console UTF-8 wrapper)
+- **Removed dead code:** 6 unused exports from core.ts, 2 from dice.ts, 3 from pipeline/common.py, 3 CSS classes from sheet.css
+- **Import cleanup:** normalized .js→.ts import extensions across all tool files
+- **Dependency cleanup:** removed unused `sharp` and `@astrojs/check`, resolved audit vulnerabilities to 0
+- **Documentation rewrite:** core-js.md and dice-js.md rewritten from scratch; all 9 tool docs + architecture + dev guide + data-reference updated for ES module era

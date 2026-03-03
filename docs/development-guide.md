@@ -32,12 +32,16 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 3. Convert `DTD.*` global calls → ES module imports:
 
 ```typescript
-import { loadData, derived, escapeHtml } from "@/lib/dtd/core.js";
-import { roll, parseNotation } from "@/lib/dtd/dice.js";
-import type { CharacterData } from "@/lib/dtd/types.js";
+import { loadData, derived, escapeHtml } from "@/lib/dtd/core.ts";
+import { roll, parseNotation } from "@/lib/dtd/dice.ts";
+import type { CharacterData } from "@/lib/dtd/types.ts";
 ```
 
-4. For Chart.js: `const { Chart } = await import('chart.js/auto');`
+4. For Chart.js:
+    ```typescript
+    const { Chart, registerables } = await import("chart.js");
+    Chart.register(...registerables);
+    ```
 5. For Web Workers: use `new Worker(new URL('./worker.js', import.meta.url))` or inline Blob
 6. Create documentation in `docs/tools/[tool-name].md`
 7. Add a card to `src/pages/tools/index.astro` with a `status` badge
@@ -79,8 +83,8 @@ astro build                   ← Builds 89 static pages + Pagefind search index
 1. Create `data/newdata.json`
 2. Add to `loadAllData()` call in the tool's init:
 
-```javascript
-import { loadAllData } from "@/lib/dtd/core.js";
+```typescript
+import { loadAllData } from "@/lib/dtd/core.ts";
 const data = await loadAllData(['newdata.json', ...]);
 ```
 
@@ -91,19 +95,19 @@ const data = await loadAllData(['newdata.json', ...]);
 
 ## Adding a Character Field
 
-1. Add default value to `DTD.character.DEFAULTS` in `core.js`
+1. Add default value to `character.DEFAULTS` in `core.ts`
 2. Add UI for the field in the Character Sheet
 3. The field automatically serializes via `JSON.stringify(state.character)`
-4. Update `DTD.character._migrateIfNeeded()` if migrating from old formats
+4. Update `character.validate()` if migrating from old formats
 5. If the Builder also needs this field, add it to the relevant wizard step
 
 ---
 
 ## Adding a Shared ES Module
 
-1. Create `src/lib/dtd/module.js` as a named-export ES module:
+1. Create `src/lib/dtd/module.ts` as a named-export ES module:
 
-```javascript
+```typescript
 export function myFunction() {
     // ...
 }
@@ -111,8 +115,8 @@ export function myFunction() {
 
 2. Import in consuming tool scripts:
 
-```javascript
-import { myFunction } from "@/lib/dtd/module.js";
+```typescript
+import { myFunction } from "@/lib/dtd/module.ts";
 ```
 
 3. Document the API in `docs/shared/`

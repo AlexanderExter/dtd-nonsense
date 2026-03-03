@@ -8,8 +8,8 @@
  *             character persistence, and XP cost tables.
  */
 
-import { character, debounce, derived, escapeHtml, loadAllData } from '@/lib/dtd/core.js';
-import type { CharacterData } from '@/lib/dtd/types.js';
+import { character, debounce, derived, escapeHtml, loadAllData } from '@/lib/dtd/core.ts';
+import type { CharacterData } from '@/lib/dtd/types.ts';
 
 const Builder = {
 

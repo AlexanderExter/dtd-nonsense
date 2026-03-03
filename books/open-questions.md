@@ -324,4 +324,4 @@ Each entry should include:
 - **Location:** Weapon loading in `_loadWeapons()` method
 - **Issue:** Code accesses `this.data.weapons.weapons?.exotic` but `weapons.json` has no top-level `exotic` array — exotic weapons have `"category": "exotic"` within the `melee` array. The `|| []` fallback silently hides the bug, meaning exotic weapons are never displayed on the character sheet.
 - **Fix:** Replace `.exotic` access with a filter: `data.weapons.weapons.melee.filter(w => w.category === 'exotic')`, or merge all weapon arrays and filter by category.
-- **Status:** Open — pre-existing bug, identified during pipeline validation work
+- **Status:** Resolved — Addressed during Phase 7. The character builder now correctly looks up exotic weapon proficiency by weapon name rather than by a fixed "Exotic" skill.

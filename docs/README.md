@@ -8,18 +8,19 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 
 ## Quick Links
 
-| Resource                                              | Description                                   |
-| ----------------------------------------------------- | --------------------------------------------- |
-| [Project Conventions](project-conventions.md)         | Git workflow, terminology, formulas, pitfalls |
-| [Tools Dashboard](../tools/index.html)                | Launch any tool                               |
-| [Architecture](architecture.md)                       | System design, data flow, namespaces          |
-| [Development Guide](development-guide.md)             | How to add features, conventions              |
-| [Data Reference](data-reference.md)                   | JSON schemas and sync strategy                |
-| [Pipeline](pipeline.md)                               | Python CLI: validation, linting, Astro prep   |
-| [Astro Migration Roadmap](astro-migration-roadmap.md) | Astro/Starlight porting status and next steps |
-| [Project History](project-history.md)                 | Roadmap narrative, decisions, lessons         |
-| [Session Handover](session-handover.md)               | Latest session context and next steps         |
-| [Side Tracks](side-tracks.md)                         | Observed tech debt and deferred items         |
+| Resource                                              | Description                                       |
+| ----------------------------------------------------- | ------------------------------------------------- |
+| [Project Conventions](project-conventions.md)         | Git workflow, terminology, formulas, pitfalls     |
+| [Tools Dashboard](/tools/)                            | Launch any tool (live site at `/tools/`)          |
+| [Architecture](architecture.md)                       | System design, data flow, namespaces              |
+| [Development Guide](development-guide.md)             | How to add features, conventions                  |
+| [Data Reference](data-reference.md)                   | JSON schemas and sync strategy                    |
+| [Pipeline](pipeline.md)                               | Python CLI: validation, linting, Astro prep       |
+| [Astro Migration Roadmap](astro-migration-roadmap.md) | Astro/Starlight porting status and next steps     |
+| [Project History](project-history.md)                 | Roadmap narrative, decisions, lessons             |
+| [Session Handover](session-handover.md)               | Latest session context and next steps             |
+| [Product Vision](product-vision.md)                   | Product vision and strategic direction (scaffold) |
+| [Side Tracks](side-tracks.md)                         | Observed tech debt and deferred items             |
 
 ---
 
@@ -39,10 +40,10 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 
 ## Shared Module Documentation
 
-| Module                       | Description                                         |
-| ---------------------------- | --------------------------------------------------- |
-| [core.js](shared/core-js.md) | `DTD` namespace, `DTD.character`, `DTD.derived`, XP |
-| [dice.js](shared/dice-js.md) | `DTD.dice` — rolling, overflow, notation parsing    |
+| Module                       | Description                                                                           |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| [core.ts](shared/core-js.md) | ES module API: data loading, derived stat calculations, character CRUD, UI helpers    |
+| [dice.ts](shared/dice-js.md) | Dice engine API: rolling, overflow compression, outcome calculation, notation parsing |
 
 ---
 
@@ -59,6 +60,7 @@ docs/                          ← You are here
 ├── project-conventions.md     Cross-cutting conventions (single source of truth)
 ├── project-history.md         Roadmap, decisions, lessons learned
 ├── session-handover.md        Latest session context and next steps
+├── product-vision.md          Product vision and strategic direction (scaffold)
 ├── side-tracks.md             Observed tech debt and deferred items
 ├── tools/                     Per-tool specifications
 │   ├── character-sheet.md

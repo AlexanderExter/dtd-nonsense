@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
@@ -11,12 +10,7 @@ from pydantic import BaseModel, ConfigDict
 # Reusable constrained types
 # ---------------------------------------------------------------------------
 
-# Dice notation: XkY with optional modifiers like +1k0
-DICE_PATTERN = re.compile(r"^\d+k\d+$")
-
 Source = Literal["book1", "book2"]
-
-DamageType = Literal["I", "E", "R", "X", "I/R", "R/I", "E/R", "I/E", ""]
 
 CharacteristicId = Literal[
     "strength",
@@ -31,8 +25,6 @@ CharacteristicId = Literal[
 ]
 
 CharacteristicGroup = Literal["physical", "social", "mental"]
-
-SkillGroup = Literal["physical", "social", "mental"]
 
 
 # ---------------------------------------------------------------------------

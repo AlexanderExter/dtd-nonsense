@@ -53,6 +53,7 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 | `dtd-source-hierarchy`  | Source authority questions, rule verification, ambiguity resolution  |
 | `open-question-manager` | Adding, resolving, or applying entries in open-questions.md          |
 | `tool-development`      | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
+| `product-owner`         | Decisions about what to build, prioritize, or cut; strategic context |
 
 ---
 
@@ -66,7 +67,7 @@ data/                  Canonical JSON game data (12 files, validated by pipeline
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
   tools/               Per-tool feature specs (9 tools)
-  shared/              Shared module API docs (core.js, dice.js)
+  shared/              Shared module API docs (core.ts, dice.ts)
 pipeline/              Python package: validation, linting, Astro prep
   models/              Pydantic schemas (source of truth for all 12 JSON files)
   linting/             Terminology + formatting linters
@@ -155,3 +156,4 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                               |
 | Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)              |
 | Project history          | [docs/project-history.md](../docs/project-history.md)                 |
+| Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)                   |

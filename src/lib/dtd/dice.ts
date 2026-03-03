@@ -6,7 +6,7 @@
  *
  * Ported from tools/shared/js/dice.js.
  */
-import type { DiceResult, DieRoll, Outcome, OverflowInfo, ParsedNotation } from './types.js';
+import type { DiceResult, DieRoll, Outcome, OverflowInfo, ParsedNotation } from './types.ts';
 
 // =========================================================================
 // Internal Helpers
@@ -173,38 +173,4 @@ export function parseNotation(str: unknown): ParsedNotation | null {
   };
 }
 
-/**
- * Format a DiceResult for human display.
- */
-export function formatResult(result: DiceResult, tn?: number | null): string {
-  let text = `Total: ${result.total}`;
-  if (result.modifier !== 0) {
-    text += ` (${result.diceTotal}${result.modifier >= 0 ? "+" : ""}${result.modifier})`;
-  }
 
-  if (tn != null) {
-    const outcome = calculateOutcome(result.total, tn);
-    if (outcome.success) {
-      if (outcome.raises > 0) {
-        text += ` — Success with ${outcome.raises} Raise${outcome.raises > 1 ? "s" : ""}`;
-      } else {
-        text += " — Success";
-      }
-    } else {
-      if (outcome.checks > 0) {
-        text += ` — Failure (${outcome.checks} Check${outcome.checks > 1 ? "s" : ""})`;
-      } else {
-        text += " — Failure";
-      }
-    }
-  }
-
-  return text;
-}
-
-/**
- * Expose overflow compression for testing/display.
- */
-export function compressOverflow(numDice: number, keepDice: number, modifier = 0): OverflowInfo {
-  return _compressOverflow(numDice, keepDice, modifier);
-}

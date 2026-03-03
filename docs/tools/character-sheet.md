@@ -3,8 +3,8 @@
 The primary character tool — a freeform editable sheet for both character creation and gameplay tracking. Replaces the old builder-only workflow with a single unified interface where all sections are accessible at once.
 
 **Phase:** 4 (ongoing polish)
-**Files:** `tools/character-sheet/index.html`, `sheet.js` (~2500 lines), `sheet.css` (~1400 lines)
-**Pattern:** Object literal (`const Sheet = { ... }`)
+**Files:** `src/pages/tools/character-sheet.astro`, `src/lib/tools/sheet-app.ts`, `src/styles/sheet.css`
+**Pattern:** Inline `<script>` in Astro page + extracted TS module
 
 ---
 
@@ -72,21 +72,21 @@ The primary character tool — a freeform editable sheet for both character crea
 
 ### Import / Export
 
-- **JSON Export:** `DTD.character.exportJSON()` → downloadable file
-- **JSON Import:** `DTD.character.importJSON()` with legacy Builder format detection and migration
-- **"Open in Sheet" from Builder:** Direct save via `DTD.character.save()` with redirect
+- **JSON Export:** `character.exportJSON()` → downloadable file
+- **JSON Import:** `character.importJSON()` with legacy Builder format detection and migration
+- **"Open in Sheet" from Builder:** Direct save via `character.save()` with redirect
 
 ---
 
 ## Architecture
 
-| Component    | Description                                                                       |
-| ------------ | --------------------------------------------------------------------------------- |
-| `index.html` | Static shell — management bar, header trackers, sidebar, tab structure, datalists |
-| `sheet.css`  | All styling — layout, responsive breakpoints, print stylesheet                    |
-| `sheet.js`   | Entire application logic as a single `Sheet` object literal                       |
+| Component                      | Description                                                                       |
+| ------------------------------ | --------------------------------------------------------------------------------- |
+| `character-sheet.astro`        | Astro page shell — management bar, header trackers, sidebar, tab structure, datalists |
+| `src/styles/sheet.css`         | All styling — layout, responsive breakpoints, print stylesheet                    |
+| `src/lib/tools/sheet-app.ts`   | Extracted application logic (TS module)                                           |
 
-**Dependencies:** `core.js` (`DTD` global), `dtd-theme.css`
+**Dependencies:** `import { character, derived, loadData } from '@/lib/dtd/core.ts'`, `src/styles/sheet.css`
 
 **Data sources:** `races.json`, `exaltations.json`, `alignments.json`, `classes.json`, `feats.json`, `skills.json`, `weapons.json`, `backgrounds.json`
 
@@ -104,7 +104,7 @@ The primary character tool — a freeform editable sheet for both character crea
 
 - **Storage:** `dtd_sheet_{id}` per character, `dtd_sheet_list` for the character index
 - **Auto-save:** 400ms debounce on any state change
-- **Validation:** `DTD.character.validate()` fills missing fields on load (forward-compatible)
+- **Validation:** `character.validate()` fills missing fields on load (forward-compatible)
 
 ---
 

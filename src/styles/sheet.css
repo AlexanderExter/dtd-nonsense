@@ -141,8 +141,6 @@
     min-width: 16px;
 }
 
-/* (Conditions badge removed) */
-
 /* =========================================================================
    Main Layout
    ========================================================================= */
@@ -618,18 +616,6 @@
     margin-top: var(--space-sm);
 }
 
-.quick-fill-row {
-    display: flex;
-    gap: var(--space-sm);
-    align-items: center;
-    margin-bottom: var(--space-sm);
-}
-
-.quick-fill-row select {
-    flex: 1;
-    max-width: 300px;
-}
-
 /* =========================================================================
    Armor Location Display
    ========================================================================= */
@@ -1064,14 +1050,6 @@
     font-style: italic;
 }
 
-.feat-m {
-    background: var(--error-bg);
-    color: var(--error);
-}
-.feat-o {
-    background: var(--accent-bg);
-    color: var(--accent);
-}
 .feat-c {
     background: #1a3a1a;
     color: #5cb85c;

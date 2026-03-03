@@ -1,6 +1,6 @@
 # Dungeons the Dragoning 40,000: 7th Edition
 
-Rulebook reference and web-based play tools for *Dungeons the Dragoning 40,000: 7th Edition* — a TTRPG blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics.
+Rulebook reference and web-based play tools for _Dungeons the Dragoning 40,000: 7th Edition_ — a TTRPG blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics.
 
 **Live site:** [dtd-nonsense.vercel.app](https://dtd-nonsense.vercel.app)
 
@@ -14,17 +14,17 @@ Rulebook reference and web-based play tools for *Dungeons the Dragoning 40,000: 
 
 ### Tools
 
-| Tool | Description |
-|------|-------------|
-| Dice Roller | XkY dice pools with exploding d10s, overflow compression, raise/check calculation |
-| Quick Reference | Searchable index of conditions, actions, modifiers, and common rules |
-| Character Builder | Guided 11-step wizard with priority allocation and XP tracking |
-| Character Sheet | Freeform sheet with auto-calculated derived stats and JSON export |
-| Combat Tracker | Initiative management, HP tracking, condition toggles, character import |
-| NPC Generator | Stat block builder with templates, traits, and Markdown export |
-| Ship Builder | Spelljammer ship configuration with hull, consoles, weapons, and combat mode |
-| Success Curves | Monte Carlo probability analysis for XkY dice pools vs target numbers |
-| Defense Graph | Damage mitigation visualization across the full defense pipeline |
+| Tool              | Description                                                                       |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Dice Roller       | XkY dice pools with exploding d10s, overflow compression, raise/check calculation |
+| Quick Reference   | Searchable index of conditions, actions, modifiers, and common rules              |
+| Character Builder | Guided 11-step wizard with priority allocation and XP tracking                    |
+| Character Sheet   | Freeform sheet with auto-calculated derived stats and JSON export                 |
+| Combat Tracker    | Initiative management, HP tracking, condition toggles, character import           |
+| NPC Generator     | Stat block builder with templates, traits, and Markdown export                    |
+| Ship Builder      | Spelljammer ship configuration with hull, consoles, weapons, and combat mode      |
+| Success Curves    | Monte Carlo probability analysis for XkY dice pools vs target numbers             |
+| Defense Graph     | Damage mitigation visualization across the full defense pipeline                  |
 
 ---
 
@@ -65,11 +65,10 @@ uv run dtd sync-check     # detect drift between markdown and JSON data
 ```
 books/                 Source rulebook chapters (2 books, per-chapter split)
 cleaned-references/    Condensed rules reference (merged by topic, 24 files)
-tools/                 Original vanilla JS tools + shared data/CSS/JS
-  shared/data/         12 JSON data files (canonical source)
+data/                  12 canonical JSON data files (validated by pipeline)
 src/                   Astro source
-  pages/tools/         Tool pages (standalone, outside Starlight)
-  lib/dtd/             ES module ports of core.js and dice.js
+  pages/tools/         9 Astro tool pages (standalone, outside Starlight)
+  lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro
   styles/              WH40K theme CSS
 pipeline/              Python validation, linting, content processing
@@ -89,4 +88,4 @@ docs/                  Technical documentation and conventions
 
 ---
 
-*This is a fan-made project. All game content belongs to its respective creators.*
+_This is a fan-made project. All game content belongs to its respective creators._

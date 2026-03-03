@@ -83,7 +83,7 @@ pipeline/
 ├── cli.py                Click CLI entry point
 ├── validate.py           JSON schema validation engine
 ├── models/               Pydantic schemas for all 12 JSON data files
-│   ├── common.py         Shared types (DamageType, CharacteristicId, etc.)
+│   ├── common.py         Shared types (CharacteristicGroup, CharacteristicId, etc.)
 │   ├── races.py          races.json schema
 │   ├── classes.py        classes.json schema
 │   ├── feats.py          feats.json schema

@@ -3,8 +3,8 @@
 Interactive dice rolling tool for D:TD's `XkY` system. Provides visual roll displays, history tracking, and flexible notation parsing.
 
 **Phase:** 0 (Foundation)
-**Files:** `tools/dice-roller/index.html`, `roller.js`, `roller.css`
-**Pattern:** Object literal (`const Roller = { ... }`)
+**Files:** `src/pages/tools/dice-roller.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -35,19 +35,18 @@ Interactive dice rolling tool for D:TD's `XkY` system. Provides visual roll disp
 
 ## Architecture
 
-**Dependencies:** `dice.js` (`DTD.dice`), `core.js` (namespace only), `dtd-theme.css`
+**Dependencies:** `import { roll, calculateOutcome, parseNotation } from '@/lib/dtd/dice.ts'`
 
 ### Core Flow
 
 ```
-User input → parseNotation() → roll() → calculateOutcome() → formatResult() → render
+User input → parseNotation() → roll() → calculateOutcome() → render
 ```
 
-1. `DTD.dice.parseNotation(input)` — extracts pool size, keep count, modifiers
-2. `DTD.dice.roll(pool, keep, options)` — generates dice, applies explosions, selects kept
-3. `DTD.dice.calculateOutcome(result, tn)` — determines Raises/Checks vs TN
-4. `DTD.dice.formatResult(result)` — produces display-ready output
-5. Roller renders the formatted result into the roll display area
+1. `parseNotation(input)` — extracts pool size, keep count, modifiers
+2. `roll(pool, keep, options)` — generates dice, applies explosions, selects kept
+3. `calculateOutcome(result, tn)` — determines Raises/Checks vs TN
+4. Roller reads `result.keptRolls`, `result.total`, etc. directly and renders inline
 
 ### Exploding Dice
 
@@ -68,12 +67,7 @@ function rollOneDie() {
 
 ### Overflow Compression
 
-When results exceed the die maximum, `compressOverflow()` maps them to a 1-10 scale range:
-
-```javascript
-DTD.dice.compressOverflow(results);
-// [3, 15, 7, 22, 8] → compressed to 1-10 range for visualization
-```
+When exploding dice produce totals exceeding the die maximum, overflow compression maps them to a 1–10 visual scale. This is handled internally by `roll()` (via the private `_compressOverflow` helper) — callers do not need to invoke it separately.
 
 ---
 

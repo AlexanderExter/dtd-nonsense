@@ -3,8 +3,8 @@
 Turn-based combat management tool for Story Masters. Handles initiative order, HP/resource tracking, condition management, and multi-encounter support.
 
 **Phase:** 2
-**Files:** `tools/combat-tracker/index.html`, `tracker.js` (~1560 lines), `tracker.css`
-**Pattern:** Object literal (`const Tracker = { ... }`)
+**Files:** `src/pages/tools/combat-tracker.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -14,7 +14,7 @@ Turn-based combat management tool for Story Masters. Handles initiative order, H
 
 - **Character import** — loads characters from localStorage (saved via Character Sheet)
 - **Quick-add combatants** — manual entry for NPCs and enemies
-- **Initiative rolling** — integrated `DTD.dice.roll()` for initiative, auto-sorted
+- **Initiative rolling** — integrated `roll()` from `@/lib/dtd/dice.ts` for initiative, auto-sorted
 - **Round tracking** — round counter with next/previous turn controls
 - **Turn indicator** — highlights active combatant
 
@@ -29,8 +29,8 @@ Each combatant displays:
 | Hit Points      | Current / Max (calculated from char data)             |
 | Resource Points | Exaltation-specific pool                              |
 | Hero Points     | Narrative resource                                    |
-| Static Defense  | Calculated via `DTD.derived.calculateSD()`            |
-| Mental Defense  | Calculated via `DTD.derived.calculateMentalDefense()` |
+| Static Defense  | Calculated via `derived.calculateSD()`            |
+| Mental Defense  | Calculated via `derived.calculateMentalDefense()` |
 | Conditions      | Active conditions with duration tracking              |
 | Armor / Aura    | From equipment data                                   |
 
@@ -58,7 +58,7 @@ Each combatant displays:
 
 ## Architecture
 
-**Dependencies:** `core.js` (`DTD.character`, `DTD.derived`), `dice.js` (`DTD.dice`), `dtd-theme.css`
+**Dependencies:** `import { character, derived } from '@/lib/dtd/core.ts'`, `import { roll } from '@/lib/dtd/dice.ts'`
 
 ### State Structure
 
@@ -94,20 +94,20 @@ Tracker.state = {
 ### Character Import Flow
 
 ```
-Characters in localStorage → DTD.character.list() → user selects →
-DTD.character.load(id) → DTD.derived calculations → combatant card created
+Characters in localStorage → character.list() → user selects →
+character.load(id) → derived calculations → combatant card created
 ```
 
 ### Initiative Resolution
 
 ```javascript
 // For each combatant:
-const initRoll = DTD.dice.roll(initPool, initKeep);
+const initRoll = roll(initPool, initKeep);
 combatant.initiative = initRoll.total + initiativeBase;
 // Sort descending, ties broken by Dexterity then Wisdom
 ```
 
-Initiative base is calculated from `DTD.derived.calculateInitiativeBase()` = `Dexterity + Wisdom`.
+Initiative base is calculated from `derived.calculateInitiativeBase()` = `Dexterity + Wisdom`.
 
 ---
 
@@ -151,7 +151,7 @@ Auto-saves after every state change (damage, turn advance, condition update).
 | Decision            | Choice                  | Rationale                                     |
 | ------------------- | ----------------------- | --------------------------------------------- |
 | Derived stat source | Calculated live         | Character edits in Sheet propagate to Tracker |
-| Initiative engine   | Shared `DTD.dice`       | Consistent explosion behavior across tools    |
+| Initiative engine   | Shared `dice.ts`        | Consistent explosion behavior across tools    |
 | Condition list      | Matches `16-Conditions` | Single source of truth with rulebook          |
 | Auto-save           | Every state change      | SM should never lose encounter state          |
 | NPC quick-add       | Flat stat entry         | NPCs don't need full character objects        |

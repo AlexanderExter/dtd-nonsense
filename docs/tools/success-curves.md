@@ -3,8 +3,8 @@
 Probability visualization tool for D:TD's XkY dice system. Generates success probability curves, distribution histograms, and comparative analysis for different dice pools.
 
 **Phase:** 4
-**Files:** `tools/success-curves/index.html`, `curves.js`, `curves.css`
-**Pattern:** IIFE (`const Analyzer = (function() { ... })()`)
+**Files:** `src/pages/tools/success-curves.astro` (JS/CSS inline), `public/workers/simulation-worker.js`
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -38,7 +38,7 @@ Default: 10,000 simulations per pool. Adjustable via UI slider (1,000 to 100,000
 
 ## Architecture
 
-**Dependencies:** `dice.js` (`DTD.dice`), `core.js` (namespace), `dtd-theme.css`, **Chart.js** (via CDN)
+**Dependencies:** **Chart.js** (via npm dynamic import), external Web Worker (`/workers/simulation-worker.js`)
 
 ### Simulation Flow
 
@@ -47,14 +47,14 @@ Default: 10,000 simulations per pool. Adjustable via UI slider (1,000 to 100,000
 for (let tn = 5; tn <= 50; tn++) {
     let successes = 0;
     for (let i = 0; i < sampleCount; i++) {
-        const result = DTD.dice.roll(pool, keep);
+        const result = roll(pool, keep);  // runs inside Worker
         if (result.total >= tn) successes++;
     }
     probabilities[tn] = successes / sampleCount;
 }
 ```
 
-Uses `DTD.dice.roll()` directly — ensures exploding dice behavior matches the Dice Roller exactly.
+The Web Worker contains its own dice roll implementation — ensures exploding dice behavior matches the Dice Roller exactly.
 
 ### Chart Rendering
 
@@ -72,7 +72,7 @@ const chart = new Chart(ctx, {
 
 ### Performance
 
-Monte Carlo with 10,000 samples × 10 TN steps × 4 pools = 400,000 dice rolls. With `DTD.dice.roll()`, this completes in <500ms on modern hardware. The simulation runs in the main thread (no Web Workers) — acceptable for the data volume.
+Monte Carlo with 10,000 samples × 10 TN steps × 4 pools = 400,000 dice rolls. The simulation runs in a dedicated Web Worker (`/workers/simulation-worker.js`) to keep the UI responsive during computation.
 
 ---
 
@@ -124,9 +124,9 @@ Minimal persistence — saves pool configuration for quick reload.
 | Decision           | Choice            | Rationale                                           |
 | ------------------ | ----------------- | --------------------------------------------------- |
 | Computation method | Monte Carlo       | Exploding dice make analytical solutions complex    |
-| Dice engine        | Shared `DTD.dice` | Exact same behavior as Dice Roller                  |
-| Chart library      | Chart.js CDN      | No build step required, good enough for the task    |
-| Threading          | Main thread       | 400K rolls complete in <500ms, Workers not worth it |
+| Dice engine        | Worker-embedded   | Own dice implementation in Web Worker               |
+| Chart library      | Chart.js (npm)    | Dynamic import, bundled by Vite                     |
+| Threading          | Web Worker        | Offloads simulation to background thread            |
 | Sample default     | 10,000            | Good accuracy/speed tradeoff                        |
 
 ---

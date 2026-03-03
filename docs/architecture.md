@@ -13,7 +13,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Choice              | Rationale                                                                                                                       |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                               |
-| npm                 | Manages Astro, Starlight, Chart.js, Sharp, Vercel adapter                                                                       |
+| npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                           |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                   |
 | ES modules          | `src/lib/dtd/core.ts` and `dice.ts` are typed ES module ports of the shared libraries; `types.ts` provides canonical interfaces |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                |
@@ -107,9 +107,10 @@ data/
 
 ## Code Patterns
 
-All tools follow the **object literal pattern**:
+Most tools follow the **object literal pattern**, though Sheet and Builder have been migrated to **ES module imports** (see Pattern column):
 
 ```javascript
+// Object literal pattern (most tools)
 const ToolName = {
     state: { ... },
     init() { ... },
@@ -120,17 +121,24 @@ const ToolName = {
 document.addEventListener('DOMContentLoaded', () => ToolName.init());
 ```
 
-| Tool              | Global Name   | Pattern                 |
-| ----------------- | ------------- | ----------------------- |
-| Character Sheet   | `Sheet`       | Object literal          |
-| Character Builder | `Builder`     | Object literal          |
-| Dice Roller       | _(loose fns)_ | DOM caching + listeners |
-| Combat Tracker    | `Tracker`     | Object literal          |
-| Quick Reference   | `QRef`        | Object literal          |
-| NPC Generator     | `NPCBuilder`  | Object literal          |
-| Ship Builder      | `ShipTool`    | Object literal          |
-| Success Curves    | `Analyzer`    | IIFE returning object   |
-| Defense Graph     | `DefGraph`    | IIFE returning object   |
+```typescript
+// ES module pattern (Sheet, Builder)
+import { loadData, loadAllData } from "@/lib/dtd/core";
+import { rollDice } from "@/lib/dtd/dice";
+// Tool-specific app module handles init/render
+```
+
+| Tool              | Module / Global  | Pattern                             |
+| ----------------- | ---------------- | ----------------------------------- |
+| Character Sheet   | `sheet-app.ts`   | ES module import (`src/lib/tools/`) |
+| Character Builder | `builder-app.ts` | ES module import (`src/lib/tools/`) |
+| Dice Roller       | _(loose fns)_    | DOM caching + listeners             |
+| Combat Tracker    | `Tracker`        | Object literal                      |
+| Quick Reference   | `QRef`           | Object literal                      |
+| NPC Generator     | `NPCBuilder`     | Object literal                      |
+| Ship Builder      | `ShipTool`       | Object literal                      |
+| Success Curves    | `Analyzer`       | IIFE returning object               |
+| Defense Graph     | `DefGraph`       | IIFE returning object               |
 
 Event handling uses **delegation** on a root container (e.g., `.tab-panels`) with `data-*` attributes for routing:
 
@@ -153,11 +161,11 @@ The Character Sheet defines the **canonical character JSON schema**. All other t
 ┌──────────────────────────────────────────────────────────────┐
 │                      CHARACTER SHEET                          │
 │                                                              │
-│  DTD.character.createDefault() → new character with UUID     │
-│  DTD.character.save(id, data) → localStorage dtd_sheet_{id}  │
-│  DTD.character.load(id)       → validated + migrated char    │
-│  DTD.character.exportJSON()   → JSON file download           │
-│  DTD.character.importJSON()   → legacy migration → save      │
+│  character.createDefault()    → new character with UUID      │
+│  character.save(id, data)     → localStorage dtd_sheet_{id}  │
+│  character.load(id)           → validated + migrated char    │
+│  character.exportJSON()       → JSON file download           │
+│  character.importJSON()       → legacy migration → save      │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -167,7 +175,7 @@ The Character Sheet defines the **canonical character JSON schema**. All other t
 Character Builder                      Character Sheet
 ┌────────────────────┐                ┌────────────────────┐
 │ User makes choices │                │                    │
-│ via 11-step wizard │                │ DTD.character      │
+│ via 11-step wizard │                │ character           │
 │                    │ ── JSON ──►    │ .importJSON(file)  │
 │ Exports canonical  │  export/       │                    │
 │ Sheet-format JSON  │  import        │ Legacy detection   │
@@ -175,11 +183,11 @@ Character Builder                      Character Sheet
                                       └────────────────────┘
 ```
 
-The Builder also has a direct "Open in Sheet" button that calls `DTD.character.save()` and redirects to the Sheet with the character pre-selected.
+The Builder also has a direct "Open in Sheet" button that calls `character.save()` and redirects to the Sheet with the character pre-selected.
 
 ### Legacy Format Migration
 
-`DTD.character.importJSON()` detects old Builder format and converts:
+`character.importJSON()` detects old Builder format and converts:
 
 | Builder (Legacy)                         | Sheet (Canonical)                              |
 | ---------------------------------------- | ---------------------------------------------- |
@@ -192,24 +200,26 @@ The Builder also has a direct "Open in Sheet" button that calls `DTD.character.s
 
 ### Cross-Tool Data Consumption
 
-| Consumer       | Reads From                          | Via                                             |
-| -------------- | ----------------------------------- | ----------------------------------------------- |
-| Combat Tracker | Character Sheet characters          | `DTD.character.list()` + `DTD.character.load()` |
-| NPC Generator  | `npc-templates.json`, `traits.json` | `DTD.loadData()`                                |
-| Ship Builder   | `ships.json`                        | `DTD.loadData()`                                |
-| Success Curves | _(no external data)_                | Self-contained Monte Carlo                      |
-| Defense Graph  | _(no external data)_                | Self-contained simulation                       |
+| Consumer       | Reads From                          | Via                                     |
+| -------------- | ----------------------------------- | --------------------------------------- |
+| Combat Tracker | Character Sheet characters          | `character.list()` + `character.load()` |
+| NPC Generator  | `npc-templates.json`, `traits.json` | `loadData()`                            |
+| Ship Builder   | `ships.json`                        | `loadData()`                            |
+| Success Curves | _(no external data)_                | Self-contained Monte Carlo              |
+| Defense Graph  | _(no external data)_                | Self-contained simulation               |
 
 ### JSON Data Loading
 
-All game data loads via `core.js`:
+All game data loads via `core.ts` (ES module):
 
-```javascript
+```typescript
+import { loadData, loadAllData } from "@/lib/dtd/core";
+
 // Single file
-const races = await DTD.loadData("races.json");
+const races = await loadData("races.json");
 
 // Multiple files in parallel
-const data = await DTD.loadAllData([
+const data = await loadAllData([
     "races.json",
     "exaltations.json",
     "skills.json",
@@ -223,7 +233,7 @@ const data = await DTD.loadAllData([
 // data.races, data.exaltations, etc.
 ```
 
-`DTD.getBasePath()` resolves the relative path to `tools/` based on the current page URL, so `shared/data/` is always reachable regardless of which tool subfolder the HTML lives in.
+`loadData()` fetches from `/data/{filename}` (files copied to `public/data/` by `scripts/prebuild.mjs` during build).
 
 ### JSON Wrapper Key Patterns
 
@@ -236,8 +246,8 @@ Most JSON files use a top-level wrapper key matching the filename. Tools access 
 | Character Builder | `data.feats.feats` → array                           | Wrapper key `feats`            |
 | Character Builder | `data.weapons.weapons.melee` / `.ranged` / `.thrown` | Nested under `weapons.weapons` |
 | Character Builder | `data.skills.skills` → dict of group → array         | Nested groups                  |
-| NPC Generator     | `DTD.loadData('npc-templates.json')` → bare array    | No wrapper key                 |
-| NPC Generator     | `DTD.loadData('traits.json')` → bare array           | No wrapper key                 |
+| NPC Generator     | `loadData('npc-templates.json')` → bare array        | No wrapper key                 |
+| NPC Generator     | `loadData('traits.json')` → bare array               | No wrapper key                 |
 | Ship Builder      | `data.hulls`, `data.consoles`, `data.weapons`        | Direct top-level keys          |
 | Ship Builder      | `data.torpedoTubeCost`, `data.criticalDamage`        | Scalar + array                 |
 | Ship Builder      | `data.holdingsBP`, `data.crewQualityCost`            | Config values                  |
@@ -352,7 +362,7 @@ Auto-save uses a 400ms debounce on state changes.
 
 ## CSS Theming
 
-All tools inherit from `shared/css/dtd-theme.css` which defines custom properties:
+Theme tokens are defined in `src/styles/custom.css` (Starlight global theme) and `src/layouts/ToolLayout.astro` (`:root` tokens for tool pages). All tools inherit these custom properties:
 
 ```css
 var(--bg)                /* Page background */

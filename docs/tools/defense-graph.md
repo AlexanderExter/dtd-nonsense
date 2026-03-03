@@ -3,8 +3,8 @@
 Visual analysis tool for Static Defense (SD) distributions across character builds. Helps Story Masters calibrate encounter difficulty and players understand defensive scaling.
 
 **Phase:** 4
-**Files:** `tools/defense-graph/index.html`, `defense.js`, `defense.css`
-**Pattern:** IIFE (`const DefGraph = (function() { ... })()`)
+**Files:** `src/pages/tools/defense-graph.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -51,11 +51,11 @@ Component contribution at different dot levels:
 
 ## Architecture
 
-**Dependencies:** `core.js` (`DTD.derived.calculateSD`), `dtd-theme.css`, **Chart.js** (via CDN)
+**Dependencies:** `import { derived } from '@/lib/dtd/core.ts'`, **Chart.js** (via npm dynamic import), inline Blob Web Worker
 
 ### Data Sources
 
-- **Imported characters** — loads from localStorage via `DTD.character.list()` / `DTD.character.load()`
+- **Imported characters** — loads from localStorage via `character.list()` / `character.load()`
 - **Manual builds** — user-specified characteristic sets
 - **Race data** — Size values from `races.json` for racial comparison mode
 
@@ -84,12 +84,13 @@ DefGraph.renderChart = function () {
 
 ### SD Calculation
 
-Uses `DTD.derived.calculateSD()` from core.js:
+Uses `derived.calculateSD()` from `@/lib/dtd/core.ts`:
 
-```javascript
-DTD.derived.calculateSD = function (dex, wis, size) {
+```typescript
+// from core.ts
+export function calculateSD(dex: number, wis: number, size: number): number {
     return 10 + (dex + wis) * 3 - size * 2;
-};
+}
 ```
 
 ---
@@ -140,7 +141,7 @@ DTD.derived.calculateSD = function (dex, wis, size) {
 | ------------- | ------------------ | ---------------------------------------------------- |
 | Chart type    | Scatter + Bar      | Scatter for builds over time, bar for racial compare |
 | SD formula    | Character formula  | Tool is for character SD, not vehicle SD             |
-| Chart library | Chart.js CDN       | Consistent with Success Curves                       |
+| Chart library | Chart.js (npm)     | Dynamic import, consistent with Success Curves       |
 | Import source | localStorage chars | Uses existing Character Sheet data                   |
 | Calculator    | Inline panel       | Quick what-if analysis without full character build  |
 

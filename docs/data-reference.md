@@ -46,18 +46,20 @@ All source markdown files are in `cleaned-references/`.
 
 ## Loading Mechanism
 
-All data loads through `core.js`:
+All data loads through `core.ts`:
 
-```javascript
+```typescript
+import { loadData, loadAllData } from "@/lib/dtd/core";
+
 // Single file
-const races = await DTD.loadData("races.json");
+const races = await loadData("races.json");
 
 // Multiple files in parallel (returns keyed object)
-const data = await DTD.loadAllData(["races.json", "exaltations.json", "skills.json"]);
+const data = await loadAllData(["races.json", "exaltations.json", "skills.json"]);
 // → data.races, data.exaltations, data.skills
 ```
 
-Files are fetched by Astro tools via ES module imports: `import { loadData } from "@/lib/dtd/core.js"` — which fetches from `/data/[file].json` at runtime.
+Fetches from `/data/[file].json` at runtime.
 
 ---
 
@@ -349,7 +351,7 @@ Files are fetched by Astro tools via ES module imports: `import { loadData } fro
 | `melee`  | —                                            | No range/ammo fields     |
 | `thrown` | `range` (int or formula string like `"Sx3"`) | No `rof`/`clip`/`reload` |
 
-**Known tool bug:** `character-sheet/sheet.js` line 142 references `weapons.weapons?.exotic` — should be `thrown`. Filed for fix.
+**Known tool bug:** `src/lib/tools/sheet-app.ts` references `weapons.weapons?.exotic` — should be `thrown`. Filed for fix.
 
 ### npc-templates.json
 

@@ -9,6 +9,8 @@ Usage:
 
 from __future__ import annotations
 
+import io
+import sys
 from pathlib import Path
 
 import click
@@ -17,7 +19,12 @@ from rich.table import Table
 
 from pipeline import DATA_DIR
 
-console = Console()
+# Force UTF-8 output so Rich's Unicode symbols (✓, ✗, ⚠, →) don't crash
+# on Windows terminals using cp1252 / legacy code pages.
+_utf8_stdout = io.TextIOWrapper(
+    sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True
+)
+console = Console(file=_utf8_stdout)
 
 
 @click.group()

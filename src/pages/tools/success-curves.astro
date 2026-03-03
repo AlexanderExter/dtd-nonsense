@@ -161,6 +161,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
     let selectedTN = 15;
     let activeStunt = 0;
     let worker: Worker | null = null;
+    window.addEventListener('beforeunload', () => worker?.terminate());
     const cache = new Map<string, any>();
     let pendingJobs = 0;
     let jobIdCounter = 0;

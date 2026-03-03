@@ -7,9 +7,7 @@
 import type {
     CharacterData,
     CharacterListEntry,
-    Characteristics,
-    DerivedStats,
-} from './types.js';
+} from './types.ts';
 
 // =========================================================================
 // Data Loading
@@ -90,89 +88,7 @@ export const derived = {
   },
 };
 
-/**
- * Calculate all derived stats for a character (aggregate convenience).
- * @param {Object} char - Character data with characteristics, race, etc.
- * @returns {Object} All calculated derived stats
- */
-export function calculateDerivedStats(char: CharacterData): DerivedStats {
-  const c = getTotalCharacteristics(char);
-  const size = (char as unknown as { race?: { size?: number } }).race?.size ?? 4;
-  const level = (char as unknown as { level?: number }).level ?? 1;
 
-  return {
-    staticDefense: derived.calculateSD(c.dexterity, c.wisdom, size),
-    hitPoints: derived.calculateHP(c.constitution, c.willpower),
-    speed: derived.calculateSpeed(c.strength, c.dexterity),
-    mentalDefense: derived.calculateMentalDefense(c.composure),
-    resolve: derived.calculateResolve(c.willpower, c.composure),
-    resilience: derived.calculateResilience(size, level),
-    size,
-    level,
-  };
-}
-
-/**
- * Get total characteristic values including racial bonuses.
- */
-export function getTotalCharacteristics(char: CharacterData): Characteristics {
-  const base = char.characteristics || {} as Characteristics;
-  const racial = (char as unknown as { race?: { charBonus?: Partial<Characteristics> } }).race?.charBonus || {};
-
-  const characteristics: (keyof Characteristics)[] = [
-    "strength",
-    "dexterity",
-    "constitution",
-    "charisma",
-    "fellowship",
-    "composure",
-    "intelligence",
-    "wisdom",
-    "willpower",
-  ];
-
-  const result = {} as Characteristics;
-  for (const c of characteristics) {
-    result[c] = (base[c] || 1) + (racial[c] || 0);
-  }
-  return result;
-}
-
-// =========================================================================
-// XP Calculations
-// =========================================================================
-
-export const XP_COSTS = {
-  characteristic: (rank: number) => 100 * rank,
-  skill: (rank: number) => (rank === 0 ? 50 : 50 * rank),
-  newSchool: 100,
-  schoolRank: (rank: number) => 100 * rank,
-  asset: 100,
-  background: (rank: number) => (rank <= 3 ? 50 : 100),
-  powerStat: (rank: number) => 200 * rank,
-  devotion: (rank: number) => 50 * rank,
-};
-
-/**
- * Calculate total XP spent.
- */
-export function calculateXPSpent(char: CharacterData): number {
-  let total = 0;
-
-  for (const val of Object.values(char.characteristics || {})) {
-    for (let r = 2; r <= val; r++) {
-      total += XP_COSTS.characteristic(r);
-    }
-  }
-
-  for (const val of Object.values(char.skills || {})) {
-    for (let r = 1; r <= val; r++) {
-      total += XP_COSTS.skill(r);
-    }
-  }
-
-  return total;
-}
 
 // =========================================================================
 // Character Persistence
@@ -286,8 +202,10 @@ export const character = {
       const entry = list.find((c) => c.id === id);
       if (entry) {
         entry.name = data.name || "Unnamed";
-        localStorage.setItem(this.STORAGE_LIST_KEY, JSON.stringify(list));
+      } else {
+        list.push({ id, name: data.name || "Unnamed" });
       }
+      localStorage.setItem(this.STORAGE_LIST_KEY, JSON.stringify(list));
     } catch (e) {
       console.error("Failed to save character:", e);
     }
@@ -482,38 +400,12 @@ export const character = {
 // UI Helpers
 // =========================================================================
 
-/**
- * Render dot rating (filled and empty circles).
- */
-export function renderDotRating(value: number, max = 5): string {
-  let html = '<span class="dot-rating">';
-  for (let i = 1; i <= max; i++) {
-    html += `<span class="dot ${i <= value ? "filled" : ""}"></span>`;
-  }
-  html += "</span>";
-  return html;
-}
-
 /** Initialize accordion behavior. */
 export function initAccordion(container: Element): void {
   const items = container.querySelectorAll(".accordion-item");
   items.forEach((item) => {
     const header = item.querySelector(".accordion-header");
     header?.addEventListener("click", () => {
-      item.classList.toggle("open");
-    });
-  });
-}
-
-/** Initialize accordion with single-open behavior. */
-export function initAccordionExclusive(container: Element): void {
-  const items = container.querySelectorAll(".accordion-item");
-  items.forEach((item) => {
-    const header = item.querySelector(".accordion-header");
-    header?.addEventListener("click", () => {
-      items.forEach((other) => {
-        if (other !== item) other.classList.remove("open");
-      });
       item.classList.toggle("open");
     });
   });

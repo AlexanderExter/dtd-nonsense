@@ -3,8 +3,8 @@
 Searchable, categorized rules reference for at-the-table lookup. Provides rapid access to commonly needed rules, tables, and formulas.
 
 **Phase:** 2
-**Files:** `tools/quick-reference/index.html`, `qref.js`, `qref.css`
-**Pattern:** Object literal (`const QRef = { ... }`)
+**Files:** `src/pages/tools/quick-reference.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -38,7 +38,7 @@ Searchable, categorized rules reference for at-the-table lookup. Provides rapid 
 
 ## Architecture
 
-**Dependencies:** `core.js` (UI helpers: `initAccordion`), `dtd-theme.css`
+**Dependencies:** None (self-contained Astro page)
 
 ### Content Source
 

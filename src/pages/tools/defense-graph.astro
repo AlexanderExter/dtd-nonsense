@@ -340,7 +340,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
   <!-- Script                                                        -->
   <!-- ============================================================= -->
   <script>
-    import { derived } from '@/lib/dtd/core.js';
+    import { derived } from '@/lib/dtd/core.ts';
 
     const { Chart, registerables } = await import('chart.js');
     Chart.register(...registerables);
@@ -412,6 +412,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 
     let debounceTimer = null;
     let worker = null;
+    window.addEventListener('beforeunload', () => worker?.terminate());
     let jobId = 0;
     const pendingJobs = new Map();
 
@@ -720,7 +721,9 @@ self.onmessage = function(e) {
 
     function initWorker() {
       const blob = new Blob([getWorkerSource()], { type: 'application/javascript' });
-      worker = new Worker(URL.createObjectURL(blob));
+      const url = URL.createObjectURL(blob);
+      worker = new Worker(url);
+      URL.revokeObjectURL(url);
       worker.onmessage = (e) => {
         const { id } = e.data;
         const cb = pendingJobs.get(id);

@@ -7,9 +7,9 @@
  * Validation is informational (budget displays) rather than blocking.
  */
 
-import { character as characterAPI, escapeHtml, loadAllData } from '@/lib/dtd/core.js';
-import { parseNotation } from '@/lib/dtd/dice.js';
-import type { CharacterData } from '@/lib/dtd/types.js';
+import { character as characterAPI, escapeHtml, loadAllData } from '@/lib/dtd/core.ts';
+import { parseNotation } from '@/lib/dtd/dice.ts';
+import type { CharacterData } from '@/lib/dtd/types.ts';
 
 const Sheet = {
 
@@ -143,8 +143,7 @@ const Sheet = {
         // Melee weapons datalist
         const meleeList = document.getElementById('datalist-weapons-melee');
         if (meleeList && this.data.weapons) {
-            const melee = (this.data.weapons.weapons?.melee || [])
-                .filter(w => w.type === 'melee' || !w.range);
+            const melee = this.data.weapons.weapons?.melee || [];
             meleeList.innerHTML = melee.map(w =>
                 `<option value="${this.esc(w.name)}">`
             ).join('');

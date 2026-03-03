@@ -3,8 +3,8 @@
 Spelljammer ship construction and management tool. Handles hull selection, component installation, crew assignment, and derived ship stat calculations.
 
 **Phase:** 3
-**Files:** `tools/ship-builder/index.html`, `ship.js`, `ship.css`
-**Pattern:** Object literal (`const ShipTool = { ... }`)
+**Files:** `src/pages/tools/ship-builder.astro` (JS/CSS inline)
+**Pattern:** Inline `<script>` in Astro page
 
 ---
 
@@ -51,7 +51,7 @@ Vehicle/Ship SD uses a different formula than character SD:
 
 ## Architecture
 
-**Dependencies:** `core.js` (namespace), `dtd-theme.css`
+**Dependencies:** `import { loadData } from '@/lib/dtd/core.ts'`
 
 **Data sources:** `ships.json`
 

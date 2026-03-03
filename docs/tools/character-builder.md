@@ -3,8 +3,8 @@
 Guided 11-step character creation wizard that enforces creation rules and outputs Character Sheet-compatible JSON. Designed for new players who need structured guidance through the character creation process.
 
 **Phase:** 1.2
-**Files:** `tools/character-builder/index.html`, `builder.js` (~1670 lines), `builder.css`
-**Pattern:** Object literal (`const Builder = { ... }`)
+**Files:** `src/pages/tools/character-builder.astro`, `src/lib/tools/builder-app.ts`, `src/styles/builder.css`
+**Pattern:** Inline `<script>` in Astro page + extracted TS module
 
 ---
 
@@ -68,7 +68,7 @@ Groups for both characteristics and skills:
 
 Rewrite of the original Builder, following Character Sheet patterns.
 
-**Dependencies:** `core.js` (`DTD.character`, `DTD.derived`), `dtd-theme.css`
+**Dependencies:** `import { character, derived } from '@/lib/dtd/core.ts'`, `src/styles/builder.css`
 
 **Data sources:** `races.json`, `exaltations.json`, `skills.json`, `classes.json`, `feats.json`, `backgrounds.json`, `alignments.json`, `equipment.json`, `weapons.json`
 
@@ -78,7 +78,7 @@ Rewrite of the original Builder, following Character Sheet patterns.
 Builder.state = {
     step: 1,                              // Current wizard step
     stepsCompleted: [false, ...],         // Completion tracking per step
-    character: DTD.character.createDefault(), // Canonical format throughout
+    character: character.createDefault(), // Canonical format throughout
     charPriority: { physical: null, social: null, mental: null },
     skillPriority: { physical: null, social: null, mental: null },
     xpBudget: { total: 600, spent: {} }   // Breakdown by category
@@ -125,8 +125,8 @@ Accordion wizard with non-linear navigation (jump back to any completed step). S
 
 ## Export
 
-- **"Open in Sheet"** — `DTD.character.save(id, data)` → redirect to Character Sheet with character pre-selected
-- **"Export JSON"** — `DTD.character.exportJSON(data)` → file download
+- **"Open in Sheet"** — `character.save(id, data)` → redirect to Character Sheet with character pre-selected
+- **"Export JSON"** — `character.exportJSON(data)` → file download
 - **"Start Over"** — resets all state
 
 Output is always canonical Character Sheet format. The Builder no longer produces its own legacy format.
@@ -152,7 +152,7 @@ The Builder itself does not auto-save wizard state. Characters are persisted onl
 | Output format | Custom Builder JSON       | Canonical Character Sheet JSON             |
 | Export target | "Open in Play" (removed)  | "Open in Sheet" → Character Sheet          |
 | Code pattern  | IIFE with loose functions | Object literal with delegated events       |
-| Persistence   | None (export only)        | `DTD.character.save()` for "Open in Sheet" |
+| Persistence   | None (export only)        | `character.save()` for "Open in Sheet" |
 | XP tracking   | Not tracked               | Running XP budget with breakdown           |
 | Steps         | 9 steps                   | 11 steps (Identity + Review added)         |
 

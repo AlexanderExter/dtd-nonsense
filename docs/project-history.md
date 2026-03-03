@@ -112,6 +112,25 @@ Completed items:
 
 ---
 
+## Phase 8 — Technical Stabilization (2026-03-03)
+
+**Goal:** Eliminate latent bugs, dead code, and stale documentation accumulated during the Astro migration and TypeScript conversion.
+
+| Component              | What Was Done                                                                                                                                                                                                                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 8.1 Dead Code Removal  | Removed 11 unused exports across `core.ts` (6), `dice.ts` (2), and `pipeline/models/common.py` (3). Also removed 3 unused CSS classes and 1 unused Python constant.                                                                                                                                   |
+| 8.2 Bug Fixes          | Fixed `character.save()` not registering new characters in the list (one-time creation bug). Fixed Blob Worker URL memory leak in defense-graph. Fixed workers not terminated on page unload (defense-graph, success-curves). Fixed pipeline Unicode crash on Windows (Rich library cp1252 encoding). |
+| 8.3 Import Cleanup     | Converted all `.js` → `.ts` import extensions across 9+ source files — leftover from Phase 7's TypeScript rename that the bundler silently resolved.                                                                                                                                                  |
+| 8.4 Dependency Cleanup | Removed unused `sharp` and `@astrojs/check` packages. Resolved all 6 npm audit vulnerabilities down to 0.                                                                                                                                                                                             |
+| 8.5 Documentation      | Rewrote `core-js.md` and `dice-js.md` from actual TypeScript source. Updated all 9 tool docs for Astro file paths. Fixed stale `DTD.*` global references across `architecture.md`, dev guide, data reference, and tool-development skill.                                                             |
+| 8.6 Prebuild Fix       | Removed duplicate prebuild invocation in build script — was running twice due to both an explicit call and an npm lifecycle hook.                                                                                                                                                                     |
+
+**Branch:** `technical-stabilizer`, 12 commits.
+
+**Status:** All latent bugs from the migration resolved. Documentation fully aligned with current TypeScript source. Zero npm audit issues. No dead code remaining in shared modules.
+
+---
+
 ## Decision Log
 
 Key architectural and design decisions made during development:
