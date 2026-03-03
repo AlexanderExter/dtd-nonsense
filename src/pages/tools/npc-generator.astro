@@ -219,7 +219,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
   <div id="toast" class="toast" hidden></div>
 
   <script>
-    import { loadData, derived } from '@/lib/dtd/core.ts';
+    import { loadData, derived, escapeHtml } from '@/lib/dtd/core.ts';
 
     // =========================================================================
     // Constants
@@ -288,12 +288,6 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
         }
       }
       return names.sort();
-    }
-
-    function escapeHtml(str) {
-      const el = document.createElement('span');
-      el.textContent = str;
-      return el.innerHTML;
     }
 
     // =========================================================================

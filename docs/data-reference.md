@@ -1,6 +1,6 @@
 # Data Reference
 
-> **⚠️ Schema accuracy warning:** Several per-file schemas below are outdated (written from initial samples, not comprehensive audits). The Pydantic models in `pipeline/models/` are now the authoritative schemas. When in doubt, inspect the actual JSON files or run `uv run dtd validate`.
+> **⚠️ Schema accuracy warning:** The per-file schemas below are manually maintained and may drift from the actual data. Auto-generation from the Pydantic models in `pipeline/models/` is aspirational but not yet implemented. When in doubt, inspect the actual JSON files or run `uv run dtd validate`.
 
 Documentation for all JSON data files in `data/`. These files drive the game-data dropdowns, autocomplete, and calculation engines across all tools.
 
@@ -68,18 +68,23 @@ Fetches from `/data/[file].json` at runtime.
 ### races.json
 
 ```json
-[
-    {
-        "id": "eldarin",
-        "name": "Eldarin",
-        "size": 4,
-        "languages": ["Elven", "Common"],
-        "charBonus": ["dexterity", "intelligence"],
-        "skillBonuses": { "perception": 1, "arcana": 1 },
-        "racialPower": "Ancient Knowledge: +1k0 to Arcana Tests",
-        "source": "book1"
-    }
-]
+{
+    "races": [
+        {
+            "id": "aasimar",
+            "name": "Aasimar",
+            "size": 5,
+            "languages": ["Trade", "Celestial"],
+            "charBonus": {
+                "options": ["wisdom", "constitution"],
+                "description": "+1 to Wisdom or Constitution"
+            },
+            "skillBonuses": { ... },
+            "racialPower": "...",
+            "source": "book1"
+        }
+    ]
+}
 ```
 
 | Field          | Type     | Description                                     |
@@ -96,23 +101,25 @@ Fetches from `/data/[file].json` at runtime.
 ### exaltations.json
 
 ```json
-[
-    {
-        "id": "vampire",
-        "name": "Vampire",
-        "description": "Undead predators...",
-        "powerStat": "Blood Potency",
-        "resourceName": "Vitae",
-        "resourceFormula": "Blood Potency + Composure",
-        "resourceRecovery": "Feed on living blood",
-        "tell": "Fangs, pale skin",
-        "staticPowers": ["Undead resilience", "..."],
-        "progression": [
-            { "dots": 1, "name": "Celerity", "effect": "..." },
-            { "dots": 2, "name": "Resilience", "effect": "..." }
-        ]
-    }
-]
+{
+    "exaltations": [
+        {
+            "id": "vampire",
+            "name": "Vampire",
+            "description": "Undead predators...",
+            "powerStat": "Blood Potency",
+            "resourceStat": "Vitae",
+            "resourceFormula": "Blood Potency + Composure",
+            "resourceRecovery": "Feed on living blood",
+            "tell": "Fangs, pale skin",
+            "staticPowers": ["Undead resilience", "..."],
+            "progression": [
+                { "dots": 1, "name": "Celerity", "effect": "..." },
+                { "dots": 2, "name": "Resilience", "effect": "..." }
+            ]
+        }
+    ]
+}
 ```
 
 | Field              | Type     | Description                                    |
@@ -121,7 +128,7 @@ Fetches from `/data/[file].json` at runtime.
 | `name`             | string   | Display name                                   |
 | `description`      | string   | Flavor text                                    |
 | `powerStat`        | string   | Name of the power stat (e.g., "Blood Potency") |
-| `resourceName`     | string   | Name of the resource pool (e.g., "Vitae")      |
+| `resourceStat`     | string   | Name of the resource pool (e.g., "Vitae")      |
 | `resourceFormula`  | string   | How max resource is calculated                 |
 | `resourceRecovery` | string   | How resource is replenished                    |
 | `tell`             | string   | Visible supernatural marker                    |
@@ -131,64 +138,79 @@ Fetches from `/data/[file].json` at runtime.
 ### skills.json
 
 ```json
-[
-    {
-        "id": "athletics",
-        "name": "Athletics",
-        "group": "physical",
-        "advanced": false,
-        "description": "Running, climbing, swimming..."
+{
+    "characteristics": {
+        "physical": [ { "id": "strength", "name": "Strength", ... } ],
+        "social":   [ ... ],
+        "mental":   [ ... ]
+    },
+    "skills": {
+        "mental":   [ { "id": "academicLore", "name": "Academic Lore", "characteristic": "intelligence", "advanced": true, "description": "..." } ],
+        "social":   [ ... ],
+        "physical": [ ... ]
     }
-]
+}
 ```
 
-| Field         | Type    | Description                                       |
-| ------------- | ------- | ------------------------------------------------- |
-| `id`          | string  | Unique ID (used in character schema `skills` key) |
-| `name`        | string  | Display name                                      |
-| `group`       | string  | `"physical"`, `"social"`, or `"mental"`           |
-| `advanced`    | boolean | Requires training to use (true = advanced)        |
-| `description` | string  | Brief description                                 |
+**Top-level keys:** `characteristics` (grouped by physical/social/mental), `skills` (grouped by mental/social/physical).
+
+| Field            | Type    | Description (skill entry)                         |
+| ---------------- | ------- | ------------------------------------------------- |
+| `id`             | string  | Unique ID (used in character schema `skills` key) |
+| `name`           | string  | Display name                                      |
+| `characteristic` | string  | Governing characteristic ID                       |
+| `advanced`       | boolean | Requires training to use (true = advanced)        |
+| `description`    | string  | Brief description                                 |
 
 ### classes.json
 
 ```json
-[
-    {
-        "id": "fighter-1",
-        "name": "Fighter",
-        "track": "Fighter",
-        "level": 1,
-        "characteristics": ["strength", "dexterity"],
-        "skills": ["weaponry", "athletics"],
-        "feats": {
-            "mandatory": ["Weapon Proficiency (Ordinary)"],
-            "optional": ["Light Armor Proficiency", "Shield Proficiency"],
-            "class": []
-        },
-        "swordSchools": ["ironHeart"],
-        "magicSchools": [],
-        "gunKata": [],
-        "completionBonus": "+1 HP",
-        "suggestedExits": ["Knight", "Barbarian"]
-    }
-]
+{
+    "metadata": { "description": "...", "version": "complete", "levelsComplete": [1,2,3,4,5], "levelsPending": [] },
+    "tracks": {
+        "assassin": { "name": "Assassin Track", "classes": ["sellSteel", "nighthawk", ...] },
+        ...
+    },
+    "classes": [
+        {
+            "id": "ratCatcher",
+            "name": "Rat Catcher",
+            "level": 1,
+            "track": null,
+            "prerequisites": "None",
+            "characteristics": ["Dexterity", "Composure", "Wisdom"],
+            "skills": ["Acrobatics", "Common Lore", "Crafts", ...],
+            "feats": [
+                { "name": "Common Sense", "type": "mandatory" },
+                { "name": "Light Sleeper", "type": "optional" }
+            ],
+            "swordSchools": [],
+            "magicSchools": [],
+            "gunKata": [],
+            "completionBonus": "...",
+            "suggestedExits": ["..."]
+        }
+    ]
+}
 ```
 
-| Field             | Type     | Description                            |
-| ----------------- | -------- | -------------------------------------- |
-| `id`              | string   | Unique ID (`track-level`)              |
-| `name`            | string   | Display name                           |
-| `track`           | string   | Class track name                       |
-| `level`           | number   | Level within track (1-5)               |
-| `characteristics` | string[] | Characteristics advanced by this level |
-| `skills`          | string[] | Skills advanced by this level          |
-| `feats`           | object   | Mandatory, optional, class feat lists  |
-| `swordSchools`    | string[] | Sword school access granted            |
-| `magicSchools`    | string[] | Magic school access granted            |
-| `gunKata`         | string[] | Gun kata access granted                |
-| `completionBonus` | string   | Bonus on completing this level         |
-| `suggestedExits`  | string[] | Recommended next class tracks          |
+**Top-level keys:** `metadata`, `tracks` (track ID → track info with ordered class list), `classes` (flat array of all classes).
+
+| Field             | Type           | Description                                                               |
+| ----------------- | -------------- | ------------------------------------------------------------------------- |
+| `id`              | string         | Unique ID (camelCase)                                                     |
+| `name`            | string         | Display name                                                              |
+| `track`           | string \| null | Track ID, or null for trackless classes                                   |
+| `level`           | number         | Level within track (1–5)                                                  |
+| `prerequisites`   | string         | Prerequisite text (e.g., "None")                                          |
+| `characteristics` | string[]       | Characteristics advanced by this level                                    |
+| `skills`          | string[]       | Skills advanced by this level                                             |
+| `feats`           | array          | Array of `{ name, type }` objects (`type`: `"mandatory"` or `"optional"`) |
+| `swordSchools`    | string[]       | Sword school access granted                                               |
+| `magicSchools`    | string[]       | Magic school access granted                                               |
+| `gunKata`         | string[]       | Gun kata access granted                                                   |
+| `completionBonus` | string         | Bonus on completing this level                                            |
+| `suggestedExits`  | string[]       | Recommended next class tracks                                             |
 
 ### feats.json
 
@@ -230,20 +252,20 @@ Fetches from `/data/[file].json` at runtime.
 ### backgrounds.json
 
 ```json
-[
-    {
-        "id": "allies",
-        "name": "Allies",
-        "description": "People who will help you...",
-        "dotEffects": [
-            "1: A single useful contact",
-            "2: A small group of associates",
-            "3: A network of reliable allies",
-            "4: A powerful patron or faction",
-            "5: A major organization at your disposal"
-        ]
-    }
-]
+{
+    "backgrounds": [
+        {
+            "id": "allies",
+            "name": "Allies",
+            "description": "Trusted companions at least as powerful as a starting character...",
+            "ratings": [
+                { "dots": 1, "effect": "One ally approximately equal to a starting character" },
+                { "dots": 2, "effect": "Two allies, or one more powerful ally" },
+                ...
+            ]
+        }
+    ]
+}
 ```
 
 ### alignments.json
@@ -350,8 +372,6 @@ Fetches from `/data/[file].json` at runtime.
 | `ranged` | `rof`, `range`, `clip`, `reload`             | Full ranged stats        |
 | `melee`  | —                                            | No range/ammo fields     |
 | `thrown` | `range` (int or formula string like `"Sx3"`) | No `rof`/`clip`/`reload` |
-
-**Known tool bug:** `src/lib/tools/sheet-app.ts` references `weapons.weapons?.exotic` — should be `thrown`. Filed for fix.
 
 ### npc-templates.json
 

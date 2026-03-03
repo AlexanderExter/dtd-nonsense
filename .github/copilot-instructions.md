@@ -43,7 +43,7 @@ Every task that changes mechanics, tool behavior, or project conventions must up
 | JSON data schemas         | `docs/data-reference.md`, `pipeline/models/*.py`               |
 | Pipeline behavior         | `docs/pipeline.md`                                             |
 | Workflow or conventions   | `docs/project-conventions.md`                                  |
-| Astro config / pages      | `docs/astro-migration-roadmap.md`, `docs/architecture.md`      |
+| Astro config / pages      | `docs/architecture.md`                                         |
 | Skills or instructions    | `.github/copilot-skills/`, `.github/copilot-instructions.md`   |
 
 ### Git Essentials
@@ -106,7 +106,7 @@ public/data/           Generated JSON data copies (gitignored)
 
 **Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
 
-**Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (89 pages, Pagefind search). Dev server: `npm run dev`.
+**Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (Pagefind search). Dev server: `npm run dev`.
 
 **Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs the Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
 
@@ -159,17 +159,16 @@ All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names
 
 All project conventions (git workflow, terminology, formulas, pitfalls, appendix mapping) live in **[docs/project-conventions.md](../docs/project-conventions.md)** the canonical cross-cutting reference. Skills and other docs link there rather than duplicating.
 
-| Need                     | Go To                                                                 |
-| ------------------------ | --------------------------------------------------------------------- |
-| Conventions and pitfalls | [docs/project-conventions.md](../docs/project-conventions.md)         |
-| Editorial technique      | `ttrpg-rules-editor` skill (auto-loads for editing tasks)             |
-| Source authority         | `dtd-source-hierarchy` skill                                          |
-| Tool architecture        | [docs/architecture.md](../docs/architecture.md)                       |
-| How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)             |
-| JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)                   |
-| Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                               |
-| Astro migration status   | [docs/astro-migration-roadmap.md](../docs/astro-migration-roadmap.md) |
-| Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                               |
-| Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)              |
-| Project history          | [docs/project-history.md](../docs/project-history.md)                 |
-| Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)                   |
+| Need                     | Go To                                                         |
+| ------------------------ | ------------------------------------------------------------- |
+| Conventions and pitfalls | [docs/project-conventions.md](../docs/project-conventions.md) |
+| Editorial technique      | `ttrpg-rules-editor` skill (auto-loads for editing tasks)     |
+| Source authority         | `dtd-source-hierarchy` skill                                  |
+| Tool architecture        | [docs/architecture.md](../docs/architecture.md)               |
+| How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)     |
+| JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)           |
+| Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                       |
+| Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                       |
+| Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)      |
+| Project history          | [docs/project-history.md](../docs/project-history.md)         |
+| Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)           |

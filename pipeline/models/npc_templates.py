@@ -74,9 +74,3 @@ class NpcTemplate(LenientModel):
     weapons: list[NpcWeapon]
     abilities: list[str | NpcAbility]
     gear: list[str]
-
-
-# npc-templates.json is a bare array (no wrapper object).
-# The file-level type is list[NpcTemplate].
-# We provide a helper for loading:
-NpcTemplatesFile = list[NpcTemplate]

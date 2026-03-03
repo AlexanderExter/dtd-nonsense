@@ -1,52 +1,62 @@
 ---
-description: 'Documentation and content creation standards'
-applyTo: '**/*.md'
+description: "Markdown content standards for DTD rulebook documentation"
+applyTo: "**/*.md"
 ---
 
-## Markdown Content Rules
+# Markdown Standards for D:TD
 
-The following markdown content rules are enforced in the validators:
+Rules for editing markdown files in this tabletop RPG documentation project. These complement the conventions in `docs/project-conventions.md`.
 
-1. **Headings**: Use appropriate heading levels (H2, H3, etc.) to structure your content. Do not use an H1 heading, as this will be generated based on the title.
-2. **Lists**: Use bullet points or numbered lists for lists. Ensure proper indentation and spacing.
-3. **Code Blocks**: Use fenced code blocks for code snippets. Specify the language for syntax highlighting.
-4. **Links**: Use proper markdown syntax for links. Ensure that links are valid and accessible.
-5. **Images**: Use proper markdown syntax for images. Include alt text for accessibility.
-6. **Tables**: Use markdown tables for tabular data. Ensure proper formatting and alignment.
-7. **Line Length**: Limit line length to 400 characters for readability.
-8. **Whitespace**: Use appropriate whitespace to separate sections and improve readability.
-9. **Front Matter**: Include YAML front matter at the beginning of the file with required metadata fields.
+## Front Matter
 
-## Formatting and Structure
+Cleaned-reference files use **Starlight YAML front matter** injected by `dtd starlight-prep`:
 
-Follow these guidelines for formatting and structuring your markdown content:
+```yaml
+---
+title: "Core Rules"
+description: "Dice system, tests, raises, and checks"
+sidebar:
+    order: 1
+---
+```
 
-- **Headings**: Use `##` for H2 and `###` for H3. Ensure that headings are used in a hierarchical manner. Recommend restructuring if content includes H4, and more strongly recommend for H5.
-- **Lists**: Use `-` for bullet points and `1.` for numbered lists. Indent nested lists with two spaces.
-- **Code Blocks**: Use triple backticks (`) to create fenced code blocks. Specify the language after the opening backticks for syntax highlighting (e.g., `csharp).
-- **Links**: Use `[link text](URL)` for links. Ensure that the link text is descriptive and the URL is valid.
-- **Images**: Use `![alt text](image URL)` for images. Include a brief description of the image in the alt text.
-- **Tables**: Use `|` to create tables. Ensure that columns are properly aligned and headers are included.
-- **Line Length**: Break lines at 80 characters to improve readability. Use soft line breaks for long paragraphs.
-- **Whitespace**: Use blank lines to separate sections and improve readability. Avoid excessive whitespace.
+Do **not** add or modify front matter manually — it is managed by the pipeline. Book source files (`books/`) have no front matter.
 
-## Validation Requirements
+## Heading Hierarchy
 
-Ensure compliance with the following validation requirements:
+- **H1 (`#`)** — chapter title. One per file. Matches the `title` in front matter for cleaned-references.
+- **H2 (`##`)** — major sections within a chapter.
+- **H3 (`###`)** — subsections.
+- **H4+ (`####`)** — avoid where possible. If content needs H4, consider restructuring.
+- Never skip heading levels (e.g., H1 → H3 without an H2).
 
-- **Front Matter**: Include the following fields in the YAML front matter:
+## Game Terminology
 
-  - `post_title`: The title of the post.
-  - `author1`: The primary author of the post.
-  - `post_slug`: The URL slug for the post.
-  - `microsoft_alias`: The Microsoft alias of the author.
-  - `featured_image`: The URL of the featured image.
-  - `categories`: The categories for the post. These categories must be from the list in /categories.txt.
-  - `tags`: The tags for the post.
-  - `ai_note`: Indicate if AI was used in the creation of the post.
-  - `summary`: A brief summary of the post. Recommend a summary based on the content when possible.
-  - `post_date`: The publication date of the post.
+Follow the canonical terminology in `docs/project-conventions.md`:
 
-- **Content Rules**: Ensure that the content follows the markdown content rules specified above.
-- **Formatting**: Ensure that the content is properly formatted and structured according to the guidelines.
-- **Validation**: Run the validation tools to check for compliance with the rules and guidelines.
+- **Dice notation** in backticks: `3k2`, `1d10`, `5k3+2`
+- **Characteristics** capitalized: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Composure, Fellowship, Willpower
+- **Derived stats**: Static Defense, Hit Points, Mental Defense, Resolve, Speed, Resilience, Initiative
+- **Formulas** in backticks: `(Con + Wil) × 2`
+- **Game terms** capitalized when used as proper nouns: Feat, Asset, Hindrance, Exaltation, Sword School, Gun Kata
+
+## Formatting
+
+- **Tables**: use markdown pipe tables with header row. Align columns for readability.
+- **Code blocks**: fenced with triple backticks. Specify language for syntax highlighting.
+- **Links**: use relative paths for internal links. Verify targets exist.
+- **Lists**: use `-` for unordered, `1.` for ordered. Indent nested lists with 2 spaces.
+- **Line length**: no hard limit, but break very long lines at logical points for diff readability.
+- **Whitespace**: single blank line between sections. No trailing whitespace.
+
+## Source Files (`books/`)
+
+These are faithful transcriptions of the original rulebook PDFs. Do **not** reformat or restructure them. Edits should only correct OCR errors or add editorial notes in `<!-- comments -->`.
+
+## Cleaned References (`cleaned-references/`)
+
+These are curated, merged summaries organized by topic. They may restructure, clarify, and consolidate content from both books. Follow all conventions above. Front matter is auto-injected.
+
+## Documentation (`docs/`)
+
+Technical documentation follows standard markdown conventions. No Starlight front matter required (these files are not published to the site).

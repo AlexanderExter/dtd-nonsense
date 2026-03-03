@@ -41,9 +41,9 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
 
 ## Architecture
 
-**Dependencies:** `import { derived } from '@/lib/dtd/core.ts'`, `import { roll } from '@/lib/dtd/dice.ts'`
+**Dependencies:** `import { loadData, derived, escapeHtml } from '@/lib/dtd/core.ts'`
 
-**Data sources:** `npc-templates.json`, `traits.json`, `weapons.json`, `equipment.json`
+**Data sources:** `npc-templates.json`, `traits.json`, `skills.json`
 
 ### Template Schema
 
@@ -69,15 +69,6 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
     "equipment": ["Choppa", "Slugga", "Light Armor"]
 }
 ```
-
-### Threat Level Scaling
-
-| Threat   | HP Multiplier | Stat Modifier | Action Economy       |
-| -------- | ------------- | ------------- | -------------------- |
-| Minion   | ×0.5          | −1 all        | 1 half action/round  |
-| Standard | ×1            | +0            | Normal               |
-| Elite    | ×1.5          | +1 key stats  | +1 half action/round |
-| Boss     | ×2            | +2 key stats  | +1 full action/round |
 
 ### Stat Calculation
 

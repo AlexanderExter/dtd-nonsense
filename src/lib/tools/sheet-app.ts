@@ -7,7 +7,7 @@
  * Validation is informational (budget displays) rather than blocking.
  */
 
-import { character as characterAPI, escapeHtml, loadAllData } from '@/lib/dtd/core.ts';
+import { character as characterAPI, derived, escapeHtml, loadAllData } from '@/lib/dtd/core.ts';
 import { parseNotation } from '@/lib/dtd/dice.ts';
 import type { CharacterData } from '@/lib/dtd/types.ts';
 
@@ -410,47 +410,43 @@ const Sheet = {
         const size = this.getRaceSize();
         const level = this.getLevel();
         const mods = this.char.modifiers || {};
+        const isHalfling = this.char.race === 'halfling';
 
         const d = {};
 
-        // Static Defense: 10 + (Dex + Wis) × 3 − (Size × 2)
-        // Halfling variant: 10 + Dex × 6 − Size × 2
-        if (this.char.race === 'halfling') {
-            d.sdBase = 10 + c.dexterity * 6 - size * 2;
-        } else {
-            d.sdBase = 10 + (c.dexterity + c.wisdom) * 3 - size * 2;
-        }
+        // Static Defense (delegates to core.ts derived)
+        d.sdBase = derived.calculateSD(c.dexterity, c.wisdom, size, isHalfling);
         d.sdMod = mods.staticDefense || 0;
         d.sd = d.sdBase + d.sdMod;
 
-        // Hit Points: (Con + Wil) × 2
-        d.hpBase = (c.constitution + c.willpower) * 2;
+        // Hit Points
+        d.hpBase = derived.calculateHP(c.constitution, c.willpower);
         d.hpMod = mods.hitPoints || 0;
         d.hp = d.hpBase + d.hpMod;
 
-        // Mental Defense: 5 + (Composure × 5)
-        d.mdBase = 5 + c.composure * 5;
+        // Mental Defense
+        d.mdBase = derived.calculateMentalDefense(c.composure);
         d.mdMod = mods.mentalDefense || 0;
         d.md = d.mdBase + d.mdMod;
 
-        // Resolve: Willpower + Composure
-        d.resolveBase = c.willpower + c.composure;
+        // Resolve
+        d.resolveBase = derived.calculateResolve(c.willpower, c.composure);
         d.resolveMod = mods.resolve || 0;
         d.resolve = d.resolveBase + d.resolveMod;
 
-        // Speed: Strength + Dexterity
-        d.speedBase = c.strength + c.dexterity;
+        // Speed
+        d.speedBase = derived.calculateSpeed(c.strength, c.dexterity);
         d.speedMod = mods.speed || 0;
         d.speed = d.speedBase + d.speedMod;
         d.runSpeed = d.speed * 6;
 
-        // Resilience: ceil((Size + Level) / 2) + 1
-        d.resilienceBase = Math.ceil((size + level) / 2) + 1;
+        // Resilience
+        d.resilienceBase = derived.calculateResilience(size, level);
         d.resilienceMod = mods.resilience || 0;
         d.resilience = d.resilienceBase + d.resilienceMod;
 
-        // Initiative: Dexterity + Composure
-        d.initBase = c.dexterity + c.composure;
+        // Initiative
+        d.initBase = derived.calculateInitiativeBase(c.dexterity, c.composure);
         d.initMod = mods.initiative || 0;
         d.init = d.initBase + d.initMod;
 

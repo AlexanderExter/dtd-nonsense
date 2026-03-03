@@ -35,7 +35,7 @@ Interactive dice rolling tool for D:TD's `XkY` system. Provides visual roll disp
 
 ## Architecture
 
-**Dependencies:** `import { roll, calculateOutcome, parseNotation } from '@/lib/dtd/dice.ts'`
+**Dependencies:** `import { roll, calculateOutcome } from '@/lib/dtd/dice.ts'`
 
 ### Core Flow
 

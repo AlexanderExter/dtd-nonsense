@@ -10,11 +10,11 @@ from .classes import ClassesFile
 from .equipment import EquipmentFile
 from .exaltations import ExaltationsFile
 from .feats import FeatsFile
-from .npc_templates import NpcTemplate, NpcTemplatesFile
+from .npc_templates import NpcTemplate
 from .races import RacesFile
 from .ships import ShipsFile
 from .skills import SkillsFile
-from .traits import Trait, TraitsFile
+from .traits import Trait
 from .weapons import WeaponsFile
 
 # Registry: JSON filename → (model class, is_bare_array)
@@ -43,11 +43,9 @@ __all__ = [
     "ExaltationsFile",
     "FeatsFile",
     "NpcTemplate",
-    "NpcTemplatesFile",
     "RacesFile",
     "ShipsFile",
     "SkillsFile",
     "Trait",
-    "TraitsFile",
     "WeaponsFile",
 ]

@@ -91,7 +91,7 @@ Completed items:
 | 6.8 Infrastructure      | `README.md`, `.github/workflows/build.yml` CI, npm audit fixed (0 vulnerabilities), speed formula corrected in Quick Reference                                                                                    |
 | 6.9 Git & Deployment    | History squashed (295 → 1 commit), pushed to `github.com/AlexanderExter/dtd-nonsense`, Vercel deployment pending                                                                                                  |
 
-**Status:** Build produces 89 pages in ~9s. Pagefind indexes 78 content pages. **9/9 tools fully ported.** Repo live on GitHub. See [astro-migration-roadmap.md](astro-migration-roadmap.md) for remaining work and [session-handover.md](session-handover.md) for detailed session notes.
+**Status:** Build produces ~90 pages in ~9s. Pagefind indexes 78 content pages. **9/9 tools fully ported.** Repo live on GitHub. Migration complete — see [architecture.md](architecture.md) for the current system design.
 
 ---
 

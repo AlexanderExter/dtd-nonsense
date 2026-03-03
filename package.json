@@ -3,6 +3,9 @@
     "type": "module",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": ">=20"
+    },
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
@@ -24,5 +27,8 @@
         "@vercel/routing-utils": {
             "path-to-regexp": "^8.0.0"
         }
+    },
+    "_comments": {
+        "overrides": "path-to-regexp override fixes ReDoS vulnerability in @vercel/routing-utils via @astrojs/vercel. Re-evaluate when @astrojs/vercel upgrades past 8.2.x."
     }
 }

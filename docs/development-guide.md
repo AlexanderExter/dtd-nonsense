@@ -60,7 +60,7 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 | Command                     | Purpose                                                                     |
 | --------------------------- | --------------------------------------------------------------------------- |
 | `npm run dev`               | Start Astro dev server with hot reload                                      |
-| `npm run build`             | Full build: prebuild → astro build (89 pages)                               |
+| `npm run build`             | Full build: prebuild → astro build                                          |
 | `npm run preview`           | Preview production build locally                                            |
 | `uv run dtd starlight-prep` | Inject Starlight frontmatter (run once or after cleaning references change) |
 
@@ -71,7 +71,7 @@ uv run dtd starlight-prep     ← Run once: adds YAML frontmatter to cleaned-ref
         ↓
 node scripts/prebuild.mjs     ← Copies: cleaned-refs → rules, books → books, JSON → public/data
         ↓
-astro build                   ← Builds 89 static pages + Pagefind search index
+astro build                   ← Builds static pages + Pagefind search index
 ```
 
 `npm run build` runs the last two steps. The `starlight-prep` step is a prerequisite that only needs re-running when `cleaned-references/` files are edited.
@@ -131,6 +131,15 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ## CSS Conventions
 
+### File Organization
+
+- **Large tools** (character-sheet, character-builder) use separate `.css` files in `src/styles/` imported via `<style is:global>@import`
+- **Small tools** use inline `<style>` blocks in the `.astro` file (scoped or `is:global` as needed)
+- **ToolLayout.astro** declares `:root` CSS custom properties for the standalone HTML shell
+- **Starlight theme** lives in `src/styles/custom.css`
+
+### Custom Properties
+
 Use CSS custom properties defined in `ToolLayout.astro` and `src/styles/custom.css`:
 
 ```css
@@ -174,7 +183,7 @@ Per-tool verification before merge:
 5. **Print output** — meaningful and readable
 6. **Persistence** — save, reload page, data persists
 7. **Cross-tool** — Sheet export → other tool import (via canonical format)
-8. **Astro build** — `npm run build` succeeds with 0 errors (89+ pages)
+8. **Astro build** — `npm run build` succeeds with 0 errors
 9. **Pipeline** — `uv run dtd validate` passes (12/12 files)
 
 ### Dice Module Verification

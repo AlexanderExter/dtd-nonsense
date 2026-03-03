@@ -16,7 +16,7 @@ dependencies = [
 [project.scripts]
 dtd = "pipeline.cli:main"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=8.0",
     "ruff>=0.9",

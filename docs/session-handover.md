@@ -1,60 +1,40 @@
 ﻿# Session Handover
 
 > **Date:** 2026-03-03
-> **Branch:** `framework-evolution-prompts` (15 commits ahead of main, pending merge)
-> **Objective:** Technical stabilization + sanity checks — full health audit of codebase, dead code removal, bug fixes, documentation rewrites, dependency cleanup, followed by two rounds of sanity checks
+> **Branch:** `session-2026-03-03` (11 commits ahead of main, pending merge)
+> **Objective:** Technical stabilization (full health audit) + documentation housekeeping
 
 ---
 
 ## What Changed
 
-### Code
+### Code (3 commits)
 
-- Removed 11 unused exports across `core.ts`, `dice.ts`, `pipeline/models/common.py`, `pipeline/__init__.py`.
-- Removed redundant `.filter()` on melee weapons array in `sheet-app.ts`; removed 3 unused CSS classes from `sheet.css`.
-- **Bug fix:** Fixed `character.save()` to register new characters in the list (was only updating existing entries).
-- **Memory leak:** Fixed blob Worker URL leak in `defense-graph.astro` (`URL.revokeObjectURL`).
-- **Cleanup:** Added worker termination on `beforeunload` in defense-graph and success-curves.
-- **Imports:** Normalized all `.js`→`.ts` import extensions across 9 files.
-- **Platform:** Fixed pipeline CLI Unicode crash on Windows (Rich Console UTF-8 wrapper).
+- Removed dead exports: `DerivedStats` type, `NpcTemplatesFile`/`TraitsFile` aliases, dead `__all__` entries.
+- Deduplicated `calculateDerived()` in `sheet-app.ts` — now delegates to `derived.*` functions from `core.ts`.
+- Fixed `escapeHtml` in `npc-generator.astro` — was locally defined, now imported from `core.ts`.
 
-### Config
+### Config (2 commits)
 
-- Removed unused `sharp` dependency (Astro bundles its own).
-- Removed unused `@astrojs/check` devDependency (no script invoked it; eliminated audit vulns).
-- Fixed `prebuild.mjs` double-run (npm lifecycle hook was triggering it twice).
-- **Result: 0 npm audit vulnerabilities.**
+- `package.json`: Added `engines` field (`node >=20`), documented `path-to-regexp` override.
+- `pyproject.toml`: Migrated `[project.optional-dependencies].dev` → `[dependency-groups].dev`.
+- `.github/workflows/build.yml`: Updated `uv sync --extra dev` → `uv sync --group dev`.
 
-### Documentation
+### Documentation (6 commits)
 
-- Full rewrite of `docs/shared/core-js.md` and `docs/shared/dice-js.md` — rebuilt from TypeScript source.
-- Updated all 9 `docs/tools/*.md` — file paths, dependency patterns, architecture.
-- Updated `docs/architecture.md` — code patterns, JSON loading, CSS theming sections.
-- Updated `docs/development-guide.md` — Chart.js, ES module patterns, `.ts` extensions.
-- Updated `docs/data-reference.md` — loading mechanism, file path references.
-- Swept `.js`→`.ts` references across all docs.
-- Added Phase 8 to `docs/project-history.md`.
-- Resolved `books/open-questions.md` #48.
-- Rewrote `tool-development` skill.
-
-### New Files
-
-- `.github/copilot-skills/product-owner/` — product-owner skill.
-- `.github/prompts/product-owner.prompt.md` — product-owner prompt.
-- `.github/prompts/self-improvement-loop.prompt.md` — self-improvement-loop prompt.
-- `docs/product-vision.md` — product vision and strategic direction (scaffold).
-
----
-
-## Why
-
-Technical debt had accumulated — stale `DTD.*` global references everywhere, wrong file extensions in imports and docs, unused dependencies creating audit vulnerabilities, dead code, and 2 tools with resource leaks. This session performed a full health audit to bring everything current.
+- **Instruction files:** Full rewrite of `markdown.instructions.md` and `astro.instructions.md` — was generic boilerplate, now DTD-specific.
+- **Data reference:** Fixed 5 wrong wrapper-key schemas in `data-reference.md`, removed stale exotic weapons bug note.
+- **Architecture:** Fixed field types, persistence key, skills.json wrapper description, added Chart.js section.
+- **Tool specs:** Fixed deps/data sources in `npc-generator.md`, `dice-roller.md`, `ship-builder.md`; fixed consumer list in `dice-js.md`.
+- **Conventions:** Documented CSS convention, removed hardcoded page counts, fixed stale `tools/` reference.
+- **Side-tracks:** Rewritten from chronological journal (325 lines, mixed resolved/open) to prioritized backlog (130 lines, 18 open items across 5 themes).
+- **Migration roadmap:** Dispersed remaining useful content, deleted `astro-migration-roadmap.md`.
 
 ---
 
 ## Known Issues
 
-None that are broken. This file (`session-handover.md`) was the last fix item.
+None broken. Build passes, pipeline validates, 0 npm vuln.
 
 ---
 
@@ -67,7 +47,6 @@ None that are broken. This file (`session-handover.md`) was the last fix item.
 
 ## Suggested Next Steps
 
-1. **Merge `framework-evolution-prompts` branch to `main`.**
-2. **Review `docs/side-tracks.md`** — L1 linting items are ready to address.
-3. **Consider standardizing import extension convention** — pick one style and apply consistently.
-4. **`docs/product-vision.md`** needs first PO session content.
+1. **Merge `session-2026-03-03` to `main`.**
+2. **Work `side-tracks.md` backlog** — L1b–L1f infrastructure items are ready to address.
+3. **`docs/product-vision.md`** needs first PO session content.

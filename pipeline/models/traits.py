@@ -16,7 +16,3 @@ class Trait(LenientModel):
     # Optional — only present when parameterized=True
     paramLabel: str | None = None
     paramType: str | None = None
-
-
-# traits.json is a bare array (no wrapper object).
-TraitsFile = list[Trait]

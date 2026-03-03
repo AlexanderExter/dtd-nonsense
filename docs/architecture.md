@@ -149,6 +149,17 @@ container.addEventListener('click', (e) => {
 });
 ```
 
+### Chart.js
+
+Two tools (success-curves, defense-graph) use Chart.js via dynamic import so the ~208 KB bundle (~71 KB gzip) is only loaded when those tools are visited:
+
+```typescript
+const { Chart, registerables } = await import("chart.js");
+Chart.register(...registerables);
+```
+
+Vite bundles Chart.js from the npm package — no CDN dependency.
+
 ---
 
 ## Data Flow
@@ -200,13 +211,13 @@ The Builder also has a direct "Open in Sheet" button that calls `character.save(
 
 ### Cross-Tool Data Consumption
 
-| Consumer       | Reads From                          | Via                                     |
-| -------------- | ----------------------------------- | --------------------------------------- |
-| Combat Tracker | Character Sheet characters          | `character.list()` + `character.load()` |
-| NPC Generator  | `npc-templates.json`, `traits.json` | `loadData()`                            |
-| Ship Builder   | `ships.json`                        | `loadData()`                            |
-| Success Curves | _(no external data)_                | Self-contained Monte Carlo              |
-| Defense Graph  | _(no external data)_                | Self-contained simulation               |
+| Consumer       | Reads From                                         | Via                                     |
+| -------------- | -------------------------------------------------- | --------------------------------------- |
+| Combat Tracker | Character Sheet characters                         | `character.list()` + `character.load()` |
+| NPC Generator  | `npc-templates.json`, `traits.json`, `skills.json` | `loadData()`                            |
+| Ship Builder   | `ships.json`                                       | `loadData()`                            |
+| Success Curves | _(no external data)_                               | Self-contained Monte Carlo              |
+| Defense Graph  | _(no external data)_                               | Self-contained simulation               |
 
 ### JSON Data Loading
 
@@ -239,18 +250,19 @@ const data = await loadAllData([
 
 Most JSON files use a top-level wrapper key matching the filename. Tools access nested data through these paths:
 
-| Tool / Context    | Access Pattern                                       | Notes                          |
-| ----------------- | ---------------------------------------------------- | ------------------------------ |
-| Character Builder | `data.races.races` → array                           | Wrapper key `races`            |
-| Character Builder | `data.classes.tracks` → dict                         | Wrapper key `tracks`           |
-| Character Builder | `data.feats.feats` → array                           | Wrapper key `feats`            |
-| Character Builder | `data.weapons.weapons.melee` / `.ranged` / `.thrown` | Nested under `weapons.weapons` |
-| Character Builder | `data.skills.skills` → dict of group → array         | Nested groups                  |
-| NPC Generator     | `loadData('npc-templates.json')` → bare array        | No wrapper key                 |
-| NPC Generator     | `loadData('traits.json')` → bare array               | No wrapper key                 |
-| Ship Builder      | `data.hulls`, `data.consoles`, `data.weapons`        | Direct top-level keys          |
-| Ship Builder      | `data.torpedoTubeCost`, `data.criticalDamage`        | Scalar + array                 |
-| Ship Builder      | `data.holdingsBP`, `data.crewQualityCost`            | Config values                  |
+| Tool / Context    | Access Pattern                                           | Notes                                                           |
+| ----------------- | -------------------------------------------------------- | --------------------------------------------------------------- |
+| Character Builder | `data.races.races` → array                               | Wrapper key `races`                                             |
+| Character Builder | `data.classes.tracks` → dict                             | Wrapper key `tracks`                                            |
+| Character Builder | `data.feats.feats` → array                               | Wrapper key `feats`                                             |
+| Character Builder | `data.weapons.weapons.melee` / `.ranged` / `.thrown`     | Nested under `weapons.weapons`                                  |
+| Character Builder | `data.skills.skills` → dict of group → array             | Three top-level keys: `characteristics`, `skills`, `skillNotes` |
+| NPC Generator     | `loadData('npc-templates.json')` → bare array            | No wrapper key                                                  |
+| NPC Generator     | `loadData('traits.json')` → bare array                   | No wrapper key                                                  |
+| NPC Generator     | `loadData('skills.json').skills` → dict of group → array | Extracts skill names                                            |
+| Ship Builder      | `data.hulls`, `data.consoles`, `data.weapons`            | Direct top-level keys                                           |
+| Ship Builder      | `data.torpedoTubeCost`, `data.criticalDamage`            | Scalar + array                                                  |
+| Ship Builder      | `data.holdingsBP`, `data.crewQualityCost`                | Config values                                                   |
 
 The pipeline Pydantic models (`pipeline/models/`) mirror these exact shapes.
 
@@ -285,14 +297,14 @@ Every field, its type, and its default value:
     skillSpecialties: {},      // Per-skill specialty text
 
     backgrounds: [],           // [{ name, dots, notes }]
-    classes: [],               // [{ classId, level }]
+    classes: [],               // [string] — class IDs taken
     feats: [],                 // [{ name, notes }]
     assets: [],                // [{ name, notes }]
     hindrances: [],            // [{ name, notes }]
 
-    meleeWeapons: [],          // [{ name, type, proficiency, test, damage, ... }]
-    rangedWeapons: [],         // [{ name, type, proficiency, test, damage, ... }]
-    armor: [],                 // [{ name, type, ap, maxDex, locations[], special }]
+    meleeWeapons: [],          // [{ name, damage, damageType, proficiency, qualities, notes }]
+    rangedWeapons: [],         // [{ name, damage, damageType, range, proficiency, qualities, notes }]
+    armor: [],                 // [{ name, type, locations[], ap, qualities }]
     naturalArmor: 0,
     aura: 0,
     auraSource: "",
@@ -300,9 +312,9 @@ Every field, its type, and its default value:
     magicSchools: {},          // { evocation: 0, ... }
     swordSchools: {},          // { ironHeart: 0, ... }
     gunKata: {},               // { clayPigeon: 0, ... }
-    spells: [],                // [{ school, level, name, notes }]
-    specialAttacks: [],        // [{ name, description }]
-    trickShots: [],            // [{ name, description }]
+    spells: [],                // [string] — spell names
+    specialAttacks: [],        // [string]
+    trickShots: [],            // [string]
 
     powerStat: 1,
     heroPointsMax: 2,
@@ -326,7 +338,7 @@ Every field, its type, and its default value:
         initiative: 0
     },
 
-    savedPools: [],            // [{ label, pool }]
+    savedPools: [],            // [{ label, notation }]
     languages: [],             // [string]
     equipment: "",             // Freeform
     notes: "",                 // Freeform
@@ -352,7 +364,7 @@ All tools use localStorage with consistent key patterns:
 | Combat Tracker  | `dtd_encounter_{id}` | `dtd_encounter_list` |
 | NPC Generator   | `dtd_npc_{id}`       | `dtd_npc_list`       |
 | Ship Builder    | `dtd_ship_{id}`      | `dtd_ship_list`      |
-| Dice Roller     | `dtd_dice_history`   | _(single key)_       |
+| Dice Roller     | `dtd-roll-history`   | _(single key)_       |
 
 Pattern: data stored as JSON string per-entity, with a separate JSON array index mapping `[{ id, name }]` entries.
 

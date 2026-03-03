@@ -51,12 +51,12 @@ Multiple agents (VS Code Copilot, Claude, etc.) may work on the same repo concur
 
 For work that spans multiple sessions or needs isolation beyond day-scoping:
 
-| Task Type          | Pattern                           | Example                          |
-| ------------------ | --------------------------------- | -------------------------------- |
-| Multi-day feature  | `feature-[description]`           | `feature-combat-tracker-v2`      |
-| Chapter processing | `process-chapter-NN-name`         | `process-chapter-14-combat`      |
-| Bug fixes          | `fix-[description]`               | `fix-sd-formula-antagonists`     |
-| Bulk operations    | `batch-[operation]-[scope]`       | `batch-terminology-all-chapters` |
+| Task Type          | Pattern                     | Example                          |
+| ------------------ | --------------------------- | -------------------------------- |
+| Multi-day feature  | `feature-[description]`     | `feature-combat-tracker-v2`      |
+| Chapter processing | `process-chapter-NN-name`   | `process-chapter-14-combat`      |
+| Bug fixes          | `fix-[description]`         | `fix-sd-formula-antagonists`     |
+| Bulk operations    | `batch-[operation]-[scope]` | `batch-terminology-all-chapters` |
 
 ### Additional Rules
 
@@ -97,6 +97,10 @@ When dispatching subagents, always specify the exact branch name and explicitly 
 **Staging rule:** Tell subagents to `git add` only the specific files they changed — never `git add -A`. In multi-agent sessions, `-A` sweeps in unrelated changes from concurrent agents, contaminating commits with work that belongs elsewhere.
 
 **Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of _input_ source. The main agent also fails when asked to _generate_ 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
+
+**`git rm` pitfall:** After `git rm <file>`, the deletion is already staged. Do not `git add` the same path again — it will fail with `fatal: pathspec did not match`. This commonly happens when batching a `git rm` with `git add` of other files in the same command.
+
+**Whitespace normalization:** Subagent-generated file rewrites often introduce LF line endings (vs the repo's CRLF) and trailing whitespace changes. Expect a cosmetic diff after subagent file rewrites. Either normalize in the same commit or accept a separate normalization commit.
 
 ---
 
@@ -321,7 +325,7 @@ Use `\uXXXX` escape sequences for non-ASCII patterns in Python string literals �
 
 ### `.github/` Relative Link Prefix
 
-Markdown files in `.github/` need `../` prefix to link to project root directories (`docs/`, `tools/`, etc.). VS Code's markdown validator catches broken links, but anchor fragments (`#section`) cause false positives — the file path resolves correctly even if the validator complains about the fragment.
+Markdown files in `.github/` need `../` prefix to link to project root directories (`docs/`, `data/`, etc.). VS Code's markdown validator catches broken links, but anchor fragments (`#section`) cause false positives — the file path resolves correctly even if the validator complains about the fragment.
 
 ### Temporary Diagnostic Scripts
 
@@ -366,7 +370,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 | Command                     | Purpose                                                       |
 | --------------------------- | ------------------------------------------------------------- |
 | `npm run dev`               | Start Astro dev server with hot reload                        |
-| `npm run build`             | Full build: `prebuild.mjs` + `astro build` (89 pages)         |
+| `npm run build`             | Full build: `prebuild.mjs` + `astro build`                    |
 | `npm run preview`           | Preview production build locally                              |
 | `uv run dtd starlight-prep` | Inject Starlight frontmatter (run after editing cleaned-refs) |
 
@@ -378,7 +382,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 
 Generated directories (`src/content/docs/rules/`, `src/content/docs/books/`, `public/data/`) are in `.gitignore` — never commit them.
 
-See [astro-migration-roadmap.md](astro-migration-roadmap.md) for porting status and next steps.
+The Astro/Starlight migration is complete — all 9 tools ported, site live on Vercel. See [architecture.md](architecture.md) for the current system design.
 
 ### Python Pipeline
 
