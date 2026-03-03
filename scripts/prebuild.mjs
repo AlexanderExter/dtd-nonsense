@@ -34,26 +34,26 @@ const BOOK_2_DEST = join(ROOT, "src", "content", "docs", "books", "book-2");
 const DATA_DEST = join(ROOT, "public", "data");
 
 function ensureDir(dir) {
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
+	if (!existsSync(dir)) {
+		mkdirSync(dir, { recursive: true });
+	}
 }
 
 function copyMdFiles(src, dest, transform = null, lowercaseNames = false) {
-  ensureDir(dest);
-  const files = readdirSync(src).filter((f) => f.endsWith(".md"));
-  let count = 0;
+	ensureDir(dest);
+	const files = readdirSync(src).filter((f) => f.endsWith(".md"));
+	let count = 0;
 
-  for (const file of files) {
-    let content = readFileSync(join(src, file), "utf-8");
-    if (transform) {
-      content = transform(content, file);
-    }
-    const outName = lowercaseNames ? file.toLowerCase() : file;
-    writeFileSync(join(dest, outName), content, "utf-8");
-    count++;
-  }
-  return count;
+	for (const file of files) {
+		let content = readFileSync(join(src, file), "utf-8");
+		if (transform) {
+			content = transform(content, file);
+		}
+		const outName = lowercaseNames ? file.toLowerCase() : file;
+		writeFileSync(join(dest, outName), content, "utf-8");
+		count++;
+	}
+	return count;
 }
 
 /**
@@ -62,60 +62,56 @@ function copyMdFiles(src, dest, transform = null, lowercaseNames = false) {
  * Starlight needs: title, sidebar.order, sidebar.label
  */
 function transformBookFrontmatter(content, filename) {
-  // Check if file has frontmatter
-  if (!content.startsWith("---")) {
-    // No frontmatter — add minimal Starlight frontmatter
-    const title = filename
-      .replace(/^\d+-/, "")
-      .replace(/.md$/, "")
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-    const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
+	// Check if file has frontmatter
+	if (!content.startsWith("---")) {
+		// No frontmatter — add minimal Starlight frontmatter
+		const title = filename
+			.replace(/^\d+-/, "")
+			.replace(/.md$/, "")
+			.replace(/-/g, " ")
+			.replace(/\b\w/g, (c) => c.toUpperCase());
+		const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
 
-    return `---\ntitle: "${title}"\nsidebar:\n  order: ${order}\n---\n\n${content}`;
-  }
+		return `---\ntitle: "${title}"\nsidebar:\n  order: ${order}\n---\n\n${content}`;
+	}
 
-  // Parse existing frontmatter
-  const fmEnd = content.indexOf("---", 3);
-  if (fmEnd === -1) return content;
+	// Parse existing frontmatter
+	const fmEnd = content.indexOf("---", 3);
+	if (fmEnd === -1) return content;
 
-  const fmBlock = content.substring(3, fmEnd).trim();
-  const body = content.substring(fmEnd + 3);
+	const fmBlock = content.substring(3, fmEnd).trim();
+	const body = content.substring(fmEnd + 3);
 
-  // Extract fields from existing frontmatter
-  const titleMatch = fmBlock.match(/title:\s*"?([^"\n]+)"?/);
-  const orderMatch = fmBlock.match(/order:\s*(\d+)/);
-  const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
+	// Extract fields from existing frontmatter
+	const titleMatch = fmBlock.match(/title:\s*"?([^"\n]+)"?/);
+	const orderMatch = fmBlock.match(/order:\s*(\d+)/);
+	const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
 
-  const title = titleMatch ? titleMatch[1].trim() : filename.replace(/.md$/, "");
-  const order = orderMatch
-    ? parseInt(orderMatch[1], 10)
-    : chapterMatch
-      ? parseInt(chapterMatch[1], 10)
-      : 99;
+	const title = titleMatch ? titleMatch[1].trim() : filename.replace(/.md$/, "");
+	const order = orderMatch ? parseInt(orderMatch[1], 10) : chapterMatch ? parseInt(chapterMatch[1], 10) : 99;
 
-  // Build new Starlight-compatible frontmatter
-  const newFm = `---
+	// Build new Starlight-compatible frontmatter
+	const newFm = `---
 title: "${title}"
 sidebar:
   order: ${order}
   label: "${title}"
 ---`;
 
-  return newFm + body;
+	return newFm + body;
 }
 
 function copyDataFiles(src, dest) {
-  ensureDir(dest);
-  const files = readdirSync(src).filter((f) => f.endsWith(".json"));
-  let count = 0;
+	ensureDir(dest);
+	const files = readdirSync(src).filter((f) => f.endsWith(".json"));
+	let count = 0;
 
-  for (const file of files) {
-    const content = readFileSync(join(src, file));
-    writeFileSync(join(dest, file), content);
-    count++;
-  }
-  return count;
+	for (const file of files) {
+		const content = readFileSync(join(src, file));
+		writeFileSync(join(dest, file), content);
+		count++;
+	}
+	return count;
 }
 
 // ============================================================================
