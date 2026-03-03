@@ -4,18 +4,32 @@ This is a **tabletop RPG rulebook documentation project** with **web-based play 
 
 ---
 
+## Environment
+
+All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Keep this in mind for every command and file operation:
+
+- **Paths**: Use backslashes or forward slashes — both work in PowerShell, but external tools may differ. Always quote paths with spaces.
+- **Encoding**: Windows defaults to cp1252. Never use `Set-Content` or `Out-File` for non-ASCII files — they silently corrupt UTF-8. Use agent edit tools (replace_string_in_file, create_file) instead of terminal commands for file edits.
+- **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
+- **Python**: Managed via `uv` with a `.venv` in the project root. Always use `uv run` to execute Python commands.
+- **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
+- **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
+
+---
+
 ## How We Work
 
 ### Ask Questions, Challenge Approaches
 
-**Ambiguity is the enemy.** Before starting work, raise anything that isn't obvious:
+**Ambiguity is the enemy.** Use the `ask_questions` tool early and often — it exists so you can clarify before committing to a direction.
 
-- Ask clarifying questions about scope, priorities, and edge cases even when things seem clear, alignment questions prevent costly backtracking
-- Challenge the proposed approach if you see a better path or a potential problem
-- When in doubt, ask rather than confidently march on with assumptions
-- Flag trade-offs explicitly so the user can make informed decisions
+- **Before starting work**: Ask about scope, priorities, and edge cases. Don't wait until you're stuck.
+- **When choosing between approaches**: Present the options with trade-offs. Let the user pick.
+- **When instructions conflict or feel incomplete**: Ask rather than guessing. A 10-second question prevents a 10-minute redo.
+- **When multiple agents are involved**: Ask which work to prioritize, what to defer, how to reconcile.
+- **Challenge the proposed approach** if you see a better path or a potential problem. Flag trade-offs explicitly.
 
-Questions are not a sign of weakness they're the primary tool for alignment.
+Questions are not a sign of weakness — they're the primary tool for alignment. A confident agent that marches in the wrong direction wastes more time than one that pauses to confirm.
 
 ### Keep Docs in Sync
 
@@ -34,12 +48,15 @@ Every task that changes mechanics, tool behavior, or project conventions must up
 
 ### Git Essentials
 
-All work on dedicated branches. Commit incrementally. Never edit main/master directly. Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#git-workflow).
+All work on **date-based session branches** (`session-YYYY-MM-DD`). If today's branch already exists, use it. Otherwise, create it from `main`. Commit incrementally. Never edit main directly. Merge via squash at session end.
 
-**Two critical rules (always apply):**
+Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#git-workflow).
 
-- **No scripts for file edits** edit directly; scripts cause untraceable destructive changes
-- **PowerShell encoding** never use `Set-Content` for non-ASCII files; it silently corrupts UTF-8
+**Three critical rules (always apply):**
+
+- **No scripts for file edits** — edit directly; scripts cause untraceable destructive changes
+- **PowerShell encoding** — never use `Set-Content` for non-ASCII files; it silently corrupts UTF-8
+- **Check git state first** — other agents may have committed. Run `git status` and `git log --oneline -5` before starting work
 
 ---
 

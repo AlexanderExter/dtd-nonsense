@@ -6,27 +6,63 @@ Single source of truth for all cross-cutting conventions — git workflow, termi
 
 ## Git Workflow
 
-**All agent-driven work must be performed on a dedicated git branch.**
+**All agent-driven work must be performed on a session branch. Never edit main directly.**
 
-1. **Branch first** — `git checkout -b [task-description]` before any edits
-2. **Commit incrementally** — after each logical unit of work (a section, a file, a coherent change set)
-3. **Write meaningful commit messages** — describe what changed and why
-4. **Review via diff** — use `git diff` before committing to verify changes
-5. **Main stays clean** — no direct edits to main/master branch ever
-6. **Clean up after merge** — delete the source branch immediately after merging. Before starting a new branch, check for existing branches on the same topic to avoid parallel/superseded work
-7. **Task prompts are ephemeral** — prompt files in `.github/prompts/` that describe a specific task (e.g., `continue-pipeline.prompt.md`) should be deleted once complete. Migrate lessons to permanent docs before deletion.
+### Session Branches
 
-### Branch Naming
+Every work session uses a **date-based branch**: `session-YYYY-MM-DD`.
 
-`[type]-[description]` — e.g., `process-chapter-14-combat`, `fix-sd-formula`, `batch-terminology-update`, `tools-character-builder-races`
+**Start of session:**
+
+```powershell
+git branch --list                          # Check existing branches
+git status                                 # Check for uncommitted changes
+```
+
+- If `session-YYYY-MM-DD` already exists (from another agent or earlier in the day) → `git checkout session-YYYY-MM-DD`
+- If no session branch exists → `git checkout -b session-YYYY-MM-DD` from `main`
+- If uncommitted changes exist on any branch → ask the user how to proceed before creating/switching
+
+**During session:**
+
+1. **Commit incrementally** — after each logical unit of work (a section, a file, a coherent change set)
+2. **Write meaningful commit messages** — describe what changed and why
+3. **Review via diff** — use `git diff` before committing to verify changes
+4. **Check for concurrent work** — other agents may commit to the same branch. Run `git status` before committing.
+
+**End of session:**
+
+- Squash-merge the session branch to `main`: `git checkout main && git merge --squash session-YYYY-MM-DD`
+- Write a comprehensive squash commit message summarizing all session work
+- Delete the session branch: `git branch -D session-YYYY-MM-DD`
+- Or leave the branch open if work will continue tomorrow — the next session creates `session-YYYY-MM-DD+1`
+
+### Multi-Agent Sessions
+
+Multiple agents (VS Code Copilot, Claude, etc.) may work on the same repo concurrently. This causes branch confusion if not managed:
+
+- **Same-day agents share a branch** — both commit to `session-YYYY-MM-DD`
+- **Always check git state** before committing (`git status`, `git log --oneline -5`)
+- **Expect unexpected commits** — another agent may have pushed changes since you last checked
+- **Ask the user** if you find uncommitted changes you didn't make, or commits you don't recognize
+- **Reconciliation**: If branches diverge, ask the user how to merge rather than guessing. The session-wrapup prompt handles this.
+
+### Other Branch Patterns
+
+For work that spans multiple sessions or needs isolation beyond day-scoping:
 
 | Task Type          | Pattern                           | Example                          |
 | ------------------ | --------------------------------- | -------------------------------- |
+| Multi-day feature  | `feature-[description]`           | `feature-combat-tracker-v2`      |
 | Chapter processing | `process-chapter-NN-name`         | `process-chapter-14-combat`      |
-| Feat/class updates | `update-[scope]`                  | `update-feats-placeholder-fill`  |
 | Bug fixes          | `fix-[description]`               | `fix-sd-formula-antagonists`     |
 | Bulk operations    | `batch-[operation]-[scope]`       | `batch-terminology-all-chapters` |
-| Tool updates       | `tools-[component]-[description]` | `tools-character-builder-races`  |
+
+### Additional Rules
+
+5. **Main stays clean** — no direct edits to main branch ever
+6. **Clean up after merge** — delete the source branch immediately after merging
+7. **Task prompts are ephemeral** — prompt files in `.github/prompts/` that describe a specific task (e.g., `continue-pipeline.prompt.md`) should be deleted once complete. Migrate lessons to permanent docs before deletion.
 
 ### Editing Policy
 
@@ -57,6 +93,8 @@ See [docs/pipeline.md — Ruff Configuration](pipeline.md#ruff-configuration) fo
 ### Subagent Discipline
 
 When dispatching subagents, always specify the exact branch name and explicitly state "Do NOT create a new branch." Without this, subagents create their own branches, causing merge conflicts and orphaned work. Also tell subagents to commit directly — don't rely on them to follow the parent's workflow.
+
+**Staging rule:** Tell subagents to `git add` only the specific files they changed — never `git add -A`. In multi-agent sessions, `-A` sweeps in unrelated changes from concurrent agents, contaminating commits with work that belongs elsewhere.
 
 **Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of _input_ source. The main agent also fails when asked to _generate_ 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
 

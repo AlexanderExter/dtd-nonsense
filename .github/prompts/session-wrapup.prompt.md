@@ -2,6 +2,8 @@
 
 Close out the current editing session by harvesting lessons learned into project instructions and skills, then performing git housekeeping.
 
+**Environment reminder:** You are running in VS Code on Windows with PowerShell terminals. Multiple agents may have been active this session — verify git state before any merge operations.
+
 ---
 
 ## Phase 1 — Review the Session
@@ -67,7 +69,7 @@ After applying lessons, check that the same content doesn't now exist in multipl
 
 ### Editing Approach
 
-Create a branch `update-session-lessons` (or similar) for all instruction/skill changes. Commit after each file is updated with a message describing what lessons were added and why.
+Apply lesson updates directly on the current session branch (`session-YYYY-MM-DD`). Commit after each file is updated with a message describing what lessons were added and why.
 
 ---
 
@@ -79,27 +81,30 @@ Create a branch `update-session-lessons` (or similar) for all instruction/skill 
 2. If on a feature branch with uncommitted work:
     - Review changes with `git diff`
     - Commit with a descriptive message
-3. If uncommitted changes exist on master — this shouldn't happen. Stage and commit to a new branch, or stash and flag for the user.
+3. If uncommitted changes exist on main — this shouldn't happen. Stage and commit to a new session branch, or stash and flag for the user.
 
-### 3b. Merge Completed Branches
+### 3b. Merge Session Branch
+
+Session branches use the squash-merge pattern:
+
+```powershell
+git checkout main
+git merge --squash session-YYYY-MM-DD
+git commit -m "Session YYYY-MM-DD: [summary of all session work]"
+git branch -D session-YYYY-MM-DD
+```
+
+If multiple branches exist (from multi-agent confusion or multi-day features):
 
 1. List all branches: `git branch`
-2. For each non-master branch, assess status:
-    - **Ready to merge** — work is complete and reviewed → merge to master, delete branch
-    - **Work in progress** — leave as-is, note for user
-    - **Stale/abandoned** — no recent commits, superseded by other work → flag for deletion (confirm with user)
-3. Merge pattern (use `--no-ff` to preserve branch history as discrete merge events, enabling clean identification and revert of complete features):
-    ```
-    git checkout master
-    git merge [branch-name] --no-ff -m "Merge [branch-name]: [summary of work]"
-    git branch -d [branch-name]
-    ```
+2. **Ask the user** how to reconcile — don't guess merge order
+3. For each branch assess: same-session work (merge), multi-day WIP (leave), stale (flag for deletion)
 
 ### 3c. Clean Up
 
-1. Delete all branches that have been fully merged into master, excluding master itself
+1. Delete all branches that have been fully merged into main, excluding main itself
 2. Scan the working tree for orphaned backup files, temp files, or build artifacts — remove if found
-3. Verify master is clean: `git status` should report a clean working tree with nothing to commit
+3. Verify main is clean: `git status` should report a clean working tree with nothing to commit
 
 ---
 
