@@ -54,7 +54,6 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 
 **Three critical rules (always apply):**
 
-- **No scripts for file edits** — edit directly; scripts cause untraceable destructive changes
 - **PowerShell encoding** — never use `Set-Content` for non-ASCII files; it silently corrupts UTF-8
 - **Check git state first** — other agents may have committed. Run `git status` and `git log --oneline -5` before starting work
 
