@@ -10,13 +10,13 @@ System-wide architecture for the DTD 40k project: Astro/Starlight documentation 
 
 The rulebook and play tools are published as a static site via **Astro 5 + Starlight**, deployed to Vercel.
 
-| Choice              | Rationale                                                                         |
-| ------------------- | --------------------------------------------------------------------------------- |
-| Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming |
-| npm                 | Manages Astro, Starlight, Chart.js, Sharp, Vercel adapter                         |
-| TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                     |
+| Choice              | Rationale                                                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                               |
+| npm                 | Manages Astro, Starlight, Chart.js, Sharp, Vercel adapter                                                                       |
+| TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                   |
 | ES modules          | `src/lib/dtd/core.ts` and `dice.ts` are typed ES module ports of the shared libraries; `types.ts` provides canonical interfaces |
-| Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                  |
+| Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                |
 
 Key files:
 
