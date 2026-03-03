@@ -34,17 +34,6 @@ export interface CharacterModifiers {
   initiative: number;
 }
 
-export interface DerivedStats {
-  staticDefense: number;
-  hitPoints: number;
-  speed: number;
-  mentalDefense: number;
-  resolve: number;
-  resilience: number;
-  size: number;
-  level: number;
-}
-
 // =============================================================================
 // Character Sub-Objects
 // =============================================================================

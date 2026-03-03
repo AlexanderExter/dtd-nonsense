@@ -155,7 +155,7 @@ Do not "fix" the suppressed rules — the camelCase names are load-bearing for J
 
 ### Astro/Starlight Support
 
-The pipeline directly supports the active Astro + Starlight migration (see [astro-migration-roadmap.md](astro-migration-roadmap.md) for status):
+The pipeline directly supports the Astro + Starlight site (migration complete — all 9 tools ported):
 
 - **Frontmatter injection** (`dtd starlight-prep`): Adds Starlight-compatible YAML frontmatter to `cleaned-references/` files — already applied to all 24 files
 - **Content linting** (`dtd lint`): Enforces terminology and formatting consistency before content enters Starlight
@@ -174,7 +174,7 @@ The pipeline directly supports the active Astro + Starlight migration (see [astr
 
 | Priority | Item                              | Status  | Notes                                                                       |
 | -------- | --------------------------------- | ------- | --------------------------------------------------------------------------- |
-| Active   | Astro/Starlight migration         | Phase 4 | Tracked in [astro-migration-roadmap.md](astro-migration-roadmap.md)         |
+| Done     | Astro/Starlight migration         | —       | Complete — all 9 tools ported, site live on Vercel                          |
 | Medium   | `dtd schema-export` command       | Planned | Pydantic → JSON Schema → Zod for Starlight content collections              |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Pydantic model introspection — eliminate manual schema docs            |

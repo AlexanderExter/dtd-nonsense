@@ -34,7 +34,6 @@ Gather situational awareness:
 - Read `docs/project-history.md` — where has the project been?
 - Read `docs/session-handover.md` — what's the current state?
 - Read `docs/side-tracks.md` — what's been deferred or observed?
-- Scan `docs/astro-migration-roadmap.md` — what's the technical trajectory?
 - Read `.github/copilot-instructions.md` — what does the framework think the project is?
 
 ### 1c. Usage Signals

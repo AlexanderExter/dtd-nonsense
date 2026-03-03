@@ -73,17 +73,17 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 
 ### Import Patterns by Tool
 
-| Tool              | Imports from core.ts                                      | Imports from dice.ts            | Pattern         |
-| ----------------- | --------------------------------------------------------- | ------------------------------- | --------------- |
-| Character Sheet   | `loadData`, `loadAllData`, `character`, `derived`         | `roll`                          | Extracted `.ts`  |
-| Character Builder | `loadAllData`, `character`, `derived`                     | —                               | Extracted `.ts`  |
-| Dice Roller       | —                                                         | `roll`, `calculateOutcome`      | Inline `<script>` |
-| Combat Tracker    | `derived`, `character`, `initAccordion`, `debounce`, `escapeHtml` | `roll`                  | Inline `<script>` |
-| Quick Reference   | `loadData`                                                | —                               | Inline `<script>` |
-| NPC Generator     | `loadData`, `derived`                                     | —                               | Inline `<script>` |
-| Ship Builder      | `loadData`                                                | `roll`                          | Inline `<script>` |
-| Success Curves    | —                                                         | _(self-contained Monte Carlo)_  | Inline `<script>` |
-| Defense Graph     | `derived`                                                 | —                               | Inline `<script>` |
+| Tool              | Imports from core.ts                                              | Imports from dice.ts           | Pattern           |
+| ----------------- | ----------------------------------------------------------------- | ------------------------------ | ----------------- |
+| Character Sheet   | `loadData`, `loadAllData`, `character`, `derived`                 | `roll`                         | Extracted `.ts`   |
+| Character Builder | `loadAllData`, `character`, `derived`                             | —                              | Extracted `.ts`   |
+| Dice Roller       | —                                                                 | `roll`, `calculateOutcome`     | Inline `<script>` |
+| Combat Tracker    | `derived`, `character`, `initAccordion`, `debounce`, `escapeHtml` | `roll`                         | Inline `<script>` |
+| Quick Reference   | `loadData`                                                        | —                              | Inline `<script>` |
+| NPC Generator     | `loadData`, `derived`                                             | —                              | Inline `<script>` |
+| Ship Builder      | `loadData`                                                        | `roll`                         | Inline `<script>` |
+| Success Curves    | —                                                                 | _(self-contained Monte Carlo)_ | Inline `<script>` |
+| Defense Graph     | `derived`                                                         | —                              | Inline `<script>` |
 
 ### Large Tool Pattern (Sheet & Builder)
 
@@ -106,20 +106,17 @@ The extracted `.ts` files currently use `@ts-nocheck` (Phase 2 typing deferred).
 ### Single File
 
 ```typescript
-import { loadData } from '@/lib/dtd/core.ts';
+import { loadData } from "@/lib/dtd/core.ts";
 
-const races = await loadData<RaceData>('races.json');
+const races = await loadData<RaceData>("races.json");
 ```
 
 ### Multiple Files
 
 ```typescript
-import { loadAllData } from '@/lib/dtd/core.ts';
+import { loadAllData } from "@/lib/dtd/core.ts";
 
-const data = await loadAllData([
-  'races.json', 'exaltations.json', 'skills.json',
-  'classes.json', 'feats.json', 'weapons.json',
-]);
+const data = await loadAllData(["races.json", "exaltations.json", "skills.json", "classes.json", "feats.json", "weapons.json"]);
 // Access: data.races, data.exaltations, etc.
 ```
 
@@ -129,16 +126,16 @@ const data = await loadAllData([
 
 Most JSON files nest data under a top-level key matching the filename. You must drill into the wrapper:
 
-| File               | Access Pattern                                       | Notes                              |
-| ------------------ | ---------------------------------------------------- | ---------------------------------- |
-| `races.json`       | `data.races.races` → array                           | Wrapper key `races`                |
-| `classes.json`     | `data.classes.tracks` → dict                         | Wrapper key `tracks`               |
-| `feats.json`       | `data.feats.feats` → array                           | Wrapper key `feats`                |
-| `weapons.json`     | `data.weapons.weapons.melee` / `.ranged` / `.thrown` | Nested under `weapons.weapons`     |
-| `skills.json`      | `data.skills.skills` → dict of group → array         | Nested groups                      |
-| `npc-templates.json` | `loadData(...)` → bare array                       | No wrapper key                     |
-| `traits.json`      | `loadData(...)` → bare array                         | No wrapper key                     |
-| `ships.json`       | `data.hulls`, `data.consoles`, `data.weapons`        | Direct top-level keys (no wrapper) |
+| File                 | Access Pattern                                       | Notes                              |
+| -------------------- | ---------------------------------------------------- | ---------------------------------- |
+| `races.json`         | `data.races.races` → array                           | Wrapper key `races`                |
+| `classes.json`       | `data.classes.tracks` → dict                         | Wrapper key `tracks`               |
+| `feats.json`         | `data.feats.feats` → array                           | Wrapper key `feats`                |
+| `weapons.json`       | `data.weapons.weapons.melee` / `.ranged` / `.thrown` | Nested under `weapons.weapons`     |
+| `skills.json`        | `data.skills.skills` → dict of group → array         | Nested groups                      |
+| `npc-templates.json` | `loadData(...)` → bare array                         | No wrapper key                     |
+| `traits.json`        | `loadData(...)` → bare array                         | No wrapper key                     |
+| `ships.json`         | `data.hulls`, `data.consoles`, `data.weapons`        | Direct top-level keys (no wrapper) |
 
 ## Critical Pitfalls
 
@@ -147,11 +144,13 @@ These have each caused real bugs. Memorize them:
 1. **`@ts-nocheck` files need careful typing** — `sheet-app.ts` and `builder-app.ts` have `@ts-nocheck` at line 1. TypeScript won't catch errors in these files. When editing them, manually verify DOM element types, null checks, and API signatures. Don't trust the lack of red squiggles.
 
 2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
-   ```typescript
-   const { Chart, registerables } = await import('chart.js');
-   Chart.register(...registerables);
-   ```
-   Never use `import Chart from 'chart.js'` at the top level.
+
+    ```typescript
+    const { Chart, registerables } = await import("chart.js");
+    Chart.register(...registerables);
+    ```
+
+    Never use `import Chart from 'chart.js'` at the top level.
 
 3. **Web Workers can't import ES modules** — Workers in `public/workers/` run outside Vite's module system. They must self-contain all logic or use `importScripts()` for external dependencies. Don't use `import` statements inside worker files.
 
@@ -162,6 +161,8 @@ These have each caused real bugs. Memorize them:
 6. **localStorage keys use tool-specific prefixes** — Character Sheet uses `dtd_sheet_{id}` / `dtd_sheet_list`. Combat Tracker uses `dtd_encounter_{id}`. Never change existing key names (breaks user data). See [docs/architecture.md](../../docs/architecture.md#persistence-conventions) for the full key table.
 
 7. **Always grep all tool files when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, or `types.ts` can break any of the 9 tool pages plus `sheet-app.ts` and `builder-app.ts`. Search `src/pages/tools/` and `src/lib/tools/` for all callers before modifying exports.
+
+8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. In the March 2026 audit, 6 of 9 spec files had wrong imports, fabricated features, or incorrect data sources. When editing a tool or its spec, always verify against the actual `.astro`/`.ts` source. Never trust spec docs as ground truth for what a tool actually imports or does.
 
 ## Adding a New Tool
 

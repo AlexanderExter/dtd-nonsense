@@ -8,19 +8,18 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 
 ## Quick Links
 
-| Resource                                              | Description                                       |
-| ----------------------------------------------------- | ------------------------------------------------- |
-| [Project Conventions](project-conventions.md)         | Git workflow, terminology, formulas, pitfalls     |
-| [Tools Dashboard](/tools/)                            | Launch any tool (live site at `/tools/`)          |
-| [Architecture](architecture.md)                       | System design, data flow, namespaces              |
-| [Development Guide](development-guide.md)             | How to add features, conventions                  |
-| [Data Reference](data-reference.md)                   | JSON schemas and sync strategy                    |
-| [Pipeline](pipeline.md)                               | Python CLI: validation, linting, Astro prep       |
-| [Astro Migration Roadmap](astro-migration-roadmap.md) | Astro/Starlight porting status and next steps     |
-| [Project History](project-history.md)                 | Roadmap narrative, decisions, lessons             |
-| [Session Handover](session-handover.md)               | Latest session context and next steps             |
-| [Product Vision](product-vision.md)                   | Product vision and strategic direction (scaffold) |
-| [Side Tracks](side-tracks.md)                         | Observed tech debt and deferred items             |
+| Resource                                      | Description                                       |
+| --------------------------------------------- | ------------------------------------------------- |
+| [Project Conventions](project-conventions.md) | Git workflow, terminology, formulas, pitfalls     |
+| [Tools Dashboard](/tools/)                    | Launch any tool (live site at `/tools/`)          |
+| [Architecture](architecture.md)               | System design, data flow, namespaces              |
+| [Development Guide](development-guide.md)     | How to add features, conventions                  |
+| [Data Reference](data-reference.md)           | JSON schemas and sync strategy                    |
+| [Pipeline](pipeline.md)                       | Python CLI: validation, linting, Astro prep       |
+| [Project History](project-history.md)         | Roadmap narrative, decisions, lessons             |
+| [Session Handover](session-handover.md)       | Latest session context and next steps             |
+| [Product Vision](product-vision.md)           | Product vision and strategic direction (scaffold) |
+| [Side Tracks](side-tracks.md)                 | Observed tech debt and deferred items             |
 
 ---
 
@@ -53,7 +52,6 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 docs/                          ← You are here
 ├── README.md                  Table of contents (this file)
 ├── architecture.md            System architecture and data flow
-├── astro-migration-roadmap.md Astro/Starlight porting status
 ├── data-reference.md          JSON data files, schemas, sync strategy
 ├── development-guide.md       Contributor conventions and patterns
 ├── pipeline.md                Python CLI: validation, linting, Astro prep

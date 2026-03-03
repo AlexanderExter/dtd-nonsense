@@ -5,7 +5,7 @@ Sole dice module for the project. Implements D:TD's `XkY+N` exploding d10 system
 **File:** `src/lib/dtd/dice.ts` (pure ES module with named exports)
 **Types:** `src/lib/dtd/types.ts` — provides `DiceResult`, `DieRoll`, `Outcome`, `ParsedNotation`, `OverflowInfo`
 **Pattern:** Named exports — `import { roll, calculateOutcome, parseNotation } from '@/lib/dtd/dice.ts'`
-**Consumers:** Dice Roller, Combat Tracker, NPC Generator, Success Curves
+**Consumers:** Dice Roller, Combat Tracker, Ship Builder, Success Curves
 
 ---
 
