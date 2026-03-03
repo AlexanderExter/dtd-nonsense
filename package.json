@@ -11,6 +11,8 @@
         "build": "astro build",
         "preview": "astro preview",
         "prebuild": "node scripts/prebuild.mjs",
+        "test": "vitest run",
+        "test:watch": "vitest",
         "lint": "biome check .",
         "lint:fix": "biome check --write .",
         "astro": "astro"
@@ -24,7 +26,8 @@
     "devDependencies": {
         "@astrojs/vercel": "^8.0.4",
         "@biomejs/biome": "2.4.5",
-        "typescript": "^5.9.3"
+        "typescript": "^5.9.3",
+        "vitest": "4.0.18"
     },
     "overrides": {
         "@vercel/routing-utils": {
