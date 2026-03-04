@@ -12,7 +12,7 @@ All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Ke
 - **Encoding**: Windows defaults to cp1252. Never use `Set-Content` or `Out-File` for non-ASCII files — they silently corrupt UTF-8. Use agent edit tools (replace_string_in_file, create_file) instead of terminal commands for file edits.
 - **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
-- **tsx**: TypeScript pipeline scripts run via `npx tsx`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
+- **Bun**: TypeScript pipeline scripts run via `bun run`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
 - **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check, `npm run lint:fix` to auto-fix. Config in `biome.json`. CI runs `biome ci .` before build.
 - **Vitest**: Unit tests across 6 test files (core, dice, schemas, pipeline scripts). 187 tests. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.

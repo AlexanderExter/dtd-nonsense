@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
-	extractBoldField,
-	extractBoldFieldFullLine,
-	extractPipeTable,
-	extractSections,
-	pad,
-	parseClasses,
-	parseFeats,
-	parseRaces,
+    extractBoldField,
+    extractBoldFieldFullLine,
+    extractPipeTable,
+    extractSections,
+    pad,
+    parseClasses,
+    parseFeats,
+    parseRaces,
 } from "../sync-check.ts";
 
 // ---------------------------------------------------------------------------

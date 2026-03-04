@@ -33,11 +33,11 @@ Ran the full `.github/prompts/sanity-check.prompt.md` audit against the post-mer
 - Removed "core.ts Export Surface Area" section (split already done in commit `5e2fde7`)
 - Updated W3 from "Three Copies" to "Two Copies" (defense-worker.js extracted in Phase 3D)
 - Updated Phase 2 "Tool Module Refactor" with revised type-in-place approach
-- Added "Bun Migration" side-track (plan said Bun, execution used tsx — decision: keep tsx for now)
+- Added "Bun Migration" side-track (plan said Bun, execution used tsx — decision: **resolved in stabilization pass, Bun now the runtime**)
 
 ### Bun vs tsx Decision
 
-The implementation plan's Open Question #2 said "Commit to Bun" but the executing agent used `npx tsx` instead. Commit `1429809` confirms scripts work with both. **Decision: keep tsx for now.** Bun migration tracked as a future side-track in `docs/side-tracks.md`.
+**Resolved in technical stabilization pass (2026-03-04).** Pipeline scripts now run via `bun run`. `tsx` removed from devDependencies. CI updated with `oven-sh/setup-bun@v2`. See `package.json` and `.github/workflows/build.yml`.
 
 ---
 

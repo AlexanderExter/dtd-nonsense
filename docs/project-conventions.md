@@ -390,7 +390,7 @@ The Astro/Starlight migration is complete — all 9 tools ported, site live on V
 ### TypeScript Pipeline Scripts
 
 - **Schema authority:** Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
-- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `npx tsx scripts/validate.ts --xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
+- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `bun run scripts/validate.ts --xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
 - **Content linting:** `npm run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
 - **Baseline verification:** Always re-verify pipeline output baselines (error counts, warning counts) after scope changes. Don't carry forward numbers from previous sessions without validation — e.g., lint:data reported "2 warnings" when only scanning `cleaned-references/`, but "19 warnings" after scope expanded to include `books/`.
 - **Starlight prep:** Frontmatter injection is now handled automatically by `scripts/prebuild.mjs` during the build.
