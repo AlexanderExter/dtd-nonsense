@@ -17,7 +17,7 @@ Implementation plan for the 5-phase technical consolidation described in [Extern
 | 4.1 — Schema Tests | ✅ Done | (in 3B) | 15 validation + rejection tests |
 | 4.2 — Pipeline Tests | ✅ Done | `d5309fe` | 44 tests across 3 files |
 | 5 Pre-Work — core.ts Split | ✅ Done | `5e2fde7` | 5 sub-modules + barrel re-export |
-| **5 Main — @ts-nocheck Removal** | **⬜ Not Started** | — | ~1,036 type errors, see reconnaissance below |
+| **5 Main — @ts-nocheck Removal** | **🟨 In Progress** | — | In-place stabilization started; historical reconnaissance below captured ~1,036 errors |
 | 4.3 — Tool Module Tests | ⬜ Blocked | — | Depends on Phase 5 |
 
 **Current totals:** 187 tests passing, 0 Biome errors, 12/12 JSON validated, Python fully removed.
@@ -208,8 +208,8 @@ Create a minimal `CharacterData` fixture. Test each `derived.*` function against
 | 3E.1 | Remove Python pipeline        | Delete `pipeline/`, `pyproject.toml`, `uv.lock`, `tests/__init__.py` (empty), `.venv/` from `.gitignore` if present.                                                                          |
 | 3E.2 | Update `package.json` scripts | Add: `"validate": "bun run scripts/validate.ts"`, `"lint:data": "bun run scripts/lint.ts"`, `"sync-check": "bun run scripts/sync-check.ts"`.                                                  |
 | 3E.3 | Update CI                     | Remove Python job from `build.yml`. Add Bun setup step + `bun run validate`, `bun run lint:data` to Node.js job.                                                                              |
-| 3E.4 | Update all documentation      | `copilot-instructions.md` (remove all `uv run dtd` references, add Bun equivalents), `development-guide.md`, `pipeline.md` (rewrite or archive), `architecture.md`, `project-conventions.md`. |
-| 3E.5 | Update agent prompts          | Search for all files referencing `uv run dtd` and update to Bun equivalents.                                                                                                                  |
+| 3E.4 | Update all documentation      | `copilot-instructions.md` (remove legacy Python command references, add npm/tsx equivalents), `development-guide.md`, `pipeline.md` (rewrite or archive), `architecture.md`, `project-conventions.md`. |
+| 3E.5 | Update agent prompts          | Search for all files referencing legacy Python command patterns and update to npm/tsx equivalents.                                                                                                 |
 
 ### Estimated Effort
 
@@ -257,7 +257,7 @@ The original audit mentioned E2E tests for the 9 interactive tools. This is high
 
 **Prerequisites:** All previous phases complete.
 
-**Status:** Pre-work done (core.ts split). Main work deferred — see reconnaissance below.
+**Status:** In progress. Pre-work done (core.ts split); in-place stabilization is active. Historical reconnaissance is retained below for context.
 
 ### Pre-Work: core.ts God Module Split ✅
 
@@ -274,7 +274,7 @@ Split completed. `core.ts` (428 lines, 13 exports) → 5 focused modules + barre
 
 ### Reconnaissance (2026-03-04)
 
-Error assessment with `@ts-nocheck` removed:
+Historical error assessment snapshot (2026-03-04) with directives removed:
 
 | File | TS Errors | Lines |
 |------|-----------|-------|
@@ -304,7 +304,7 @@ Both files are single object literals (`const Sheet = {...}`, `const Builder = {
 **Approach: Type-in-place** for both files (~4–6 hours each). The module split from the original plan below should be deferred to a separate initiative after Playwright E2E tests are in place.
 
 Strategy:
-1. Create a DOM helper module (`src/lib/tools/dom.ts`) with typed `$el<T>()` wrappers
+1. Prefer local typed casts/guards in-place; only introduce shared DOM helpers when broadly adopted
 2. Remove `@ts-nocheck` from `sheet-app.ts`, fix all errors top-to-bottom
 3. Run Vitest + `tsc --noEmit` to verify
 4. Repeat for `builder-app.ts`

@@ -10,7 +10,7 @@ Rulebook reference and web-based play tools for _Dungeons the Dragoning 40,000: 
 
 - **Full Rulebook** — Searchable, cross-referenced rules from both source books
 - **9 Play Tools** — Character builder, dice roller, combat tracker, NPC generator, and more
-- **Python Pipeline** — Validation, linting, and content processing for the data layer
+- **TypeScript Pipeline** — Validation, linting, and sync checks for data and content
 
 ### Tools
 
@@ -33,7 +33,6 @@ Rulebook reference and web-based play tools for _Dungeons the Dragoning 40,000: 
 ### Prerequisites
 
 - **Node.js 20+** (required)
-- **Python 3.12+** with [uv](https://docs.astral.sh/uv/) (optional — for pipeline tools)
 
 ### Build
 
@@ -48,14 +47,12 @@ npm run build     # runs prebuild + astro build
 npm run dev       # starts Astro dev server at localhost:4321
 ```
 
-### Pipeline (optional)
+### Data & Content Checks
 
 ```bash
-uv run dtd validate       # validate JSON data against Pydantic schemas
-uv run dtd validate --xref  # also check cross-file references
-uv run dtd lint           # lint markdown for terminology and formatting
-uv run dtd starlight-prep # inject Starlight frontmatter into cleaned-references
-uv run dtd sync-check     # detect drift between markdown and JSON data
+npm run validate   # validate JSON data against Zod schemas
+npm run lint:data  # lint markdown terminology/formatting conventions
+npm run sync-check # detect drift between markdown and JSON data
 ```
 
 ---
@@ -65,13 +62,13 @@ uv run dtd sync-check     # detect drift between markdown and JSON data
 ```
 books/                 Source rulebook chapters (2 books, per-chapter split)
 cleaned-references/    Condensed rules reference (merged by topic, 24 files)
-data/                  12 canonical JSON data files (validated by pipeline)
+data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         9 Astro tool pages (standalone, outside Starlight)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro
   styles/              WH40K theme CSS
-pipeline/              Python validation, linting, content processing
+scripts/               TypeScript pipeline scripts (validate, lint, sync-check, prebuild)
 docs/                  Technical documentation and conventions
 ```
 
@@ -80,10 +77,10 @@ docs/                  Technical documentation and conventions
 ## Tech Stack
 
 - **[Astro](https://astro.build) + [Starlight](https://starlight.astro.build)** — Static documentation site
-- **Vanilla JavaScript** — All tools are client-side, no framework dependencies
+- **Vanilla TypeScript** — All tools are client-side, no framework dependencies
 - **Chart.js** — Probability curves and defense graphs
 - **[Pagefind](https://pagefind.app)** — Full-text search across all rules content
-- **Python + Pydantic** — Data validation pipeline
+- **TypeScript + Zod + tsx** — Data/content validation pipeline
 - **Vercel** — Static hosting and deployment
 
 ---

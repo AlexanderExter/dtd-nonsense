@@ -8,18 +8,18 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 
 ## Quick Links
 
-| Resource                                      | Description                                       |
-| --------------------------------------------- | ------------------------------------------------- |
-| [Project Conventions](project-conventions.md) | Git workflow, terminology, formulas, pitfalls     |
-| [Tools Dashboard](/tools/)                    | Launch any tool (live site at `/tools/`)          |
-| [Architecture](architecture.md)               | System design, data flow, namespaces              |
-| [Development Guide](development-guide.md)     | How to add features, conventions                  |
-| [Data Reference](data-reference.md)           | JSON schemas and sync strategy                    |
-| [Pipeline](pipeline.md)                       | Python CLI: validation, linting, Astro prep       |
-| [Project History](project-history.md)         | Roadmap narrative, decisions, lessons             |
-| [Session Handover](session-handover.md)       | Latest session context and next steps             |
-| [Product Vision](product-vision.md)           | Product vision and strategic direction (scaffold) |
-| [Side Tracks](side-tracks.md)                 | Observed tech debt and deferred items             |
+| Resource                                      | Description                                         |
+| --------------------------------------------- | --------------------------------------------------- |
+| [Project Conventions](project-conventions.md) | Git workflow, terminology, formulas, pitfalls       |
+| [Tools Dashboard](/tools/)                    | Launch any tool (live site at `/tools/`)            |
+| [Architecture](architecture.md)               | System design, data flow, namespaces                |
+| [Development Guide](development-guide.md)     | How to add features, conventions                    |
+| [Data Reference](data-reference.md)           | JSON schemas and sync strategy                      |
+| [Pipeline](pipeline.md)                       | TypeScript scripts: validation, linting, Astro prep |
+| [Project History](project-history.md)         | Roadmap narrative, decisions, lessons               |
+| [Session Handover](session-handover.md)       | Latest session context and next steps               |
+| [Product Vision](product-vision.md)           | Product vision and strategic direction (scaffold)   |
+| [Side Tracks](side-tracks.md)                 | Observed tech debt and deferred items               |
 
 ---
 
@@ -54,7 +54,7 @@ docs/                          ← You are here
 ├── architecture.md            System architecture and data flow
 ├── data-reference.md          JSON data files, schemas, sync strategy
 ├── development-guide.md       Contributor conventions and patterns
-├── pipeline.md                Python CLI: validation, linting, Astro prep
+├── pipeline.md                TypeScript scripts: validation, linting, Astro prep
 ├── project-conventions.md     Cross-cutting conventions (single source of truth)
 ├── project-history.md         Roadmap, decisions, lessons learned
 ├── session-handover.md        Latest session context and next steps

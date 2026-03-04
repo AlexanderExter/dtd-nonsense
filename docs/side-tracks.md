@@ -35,29 +35,17 @@ Start with the dice roller (smallest tool) as a proof-of-concept island before m
 
 ## Infrastructure & Tooling
 
-### L1b: dtd lint docs/ Coverage
+### L1b: lint:data docs/ Coverage
 
-`run_linter()` supports any target path but CI only runs `dtd lint` (defaults to `books/` and `cleaned-references/`). The `docs/` prose is completely unscanned. Adding `docs/` as a target would catch terminology drift in technical documentation.
+`scripts/lint.ts` supports target paths, but CI currently runs `npm run lint:data` with default scope (`books/` and `cleaned-references/`). The `docs/` prose is unscanned. Adding `docs/` as a target would catch terminology drift in technical documentation.
 
-### L1c: dtd validate --xref in CI
+### L1c: validate --xref in CI
 
-41 known xref warnings exist (see **xref Warnings** in Data Quality). Adding `--xref` to CI requires a baseline suppression file so new warnings are treated as failures without blocking on pre-existing ones.
-
-### L1d: ESLint or Biome for JS/TS
-
-21K+ LOC of vanilla JS/TS has zero static analysis. Biome is zero-config and fast — straightforward to add. Would catch type coercion bugs, unused variables, and import issues.
-
-### L1e: Vitest for src/lib/dtd/\*.ts
-
-No JavaScript unit tests exist anywhere in the project. `tests/` contains only `__init__.py`. CI uses the Astro build as a smoke test. Vitest would cover `dice.ts`, `core.ts`, and the ES module ports.
-
-### L1f: mypy or pyright in CI
-
-Python pipeline has no type checking beyond ruff's basic checks. Not urgent given the codebase is small and well-typed, but a natural next step once tests exist.
+41 known xref warnings exist (see **xref Warnings** in Data Quality). Adding cross-reference validation to CI requires a baseline suppression file so new warnings are treated as failures without blocking on pre-existing ones.
 
 ### A5: CI Skips --xref and sync-check
 
-`build.yml` runs `dtd validate` but not `dtd validate --xref` or `dtd sync-check`. The 41 known xref warnings are pre-existing data gaps, not regressions. Adding these commands to CI requires the baseline suppression mechanism described in **L1c**.
+`build.yml` runs `npm run validate` and `npm run lint:data` but not cross-reference validation mode or `npm run sync-check`. The known xref warnings are pre-existing data gaps, not regressions. Adding those checks to CI requires the baseline suppression mechanism described in **L1c**.
 
 ### Import Extension Convention
 

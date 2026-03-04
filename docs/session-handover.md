@@ -46,7 +46,7 @@
 | JSON validation | 12/12 files pass |
 | Content lint | 0 errors, 2 warnings, ~900 info |
 | Python | Fully removed |
-| `@ts-nocheck` | 2 files remain (`sheet-app.ts`, `builder-app.ts`) |
+| `@ts-nocheck` | 1 file remains (`builder-app.ts`); `sheet-app.ts` now runs without the directive |
 
 ### npm Scripts
 
@@ -62,9 +62,9 @@
 
 ---
 
-## Phase 5 Assessment (Deferred)
+## Phase 5 Assessment (Ongoing)
 
-Phase 5 (`@ts-nocheck` removal from `sheet-app.ts` and `builder-app.ts`) was assessed but is too large for this session.
+Historical reconnaissance from the consolidation session is retained below; active in-place stabilization is now underway.
 
 ### Error Scope
 
@@ -73,6 +73,8 @@ Phase 5 (`@ts-nocheck` removal from `sheet-app.ts` and `builder-app.ts`) was ass
 | `sheet-app.ts` | ~614 | 2,662 |
 | `builder-app.ts` | ~422 | 1,825 |
 | **Total** | **~1,036** | **4,487** |
+
+Note: The table above is a historical snapshot. `sheet-app.ts` no longer carries `@ts-nocheck` as of the technical stabilizer pass.
 
 ### Error Patterns (90%+ mechanical)
 
