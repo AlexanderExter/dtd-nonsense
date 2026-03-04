@@ -1,40 +1,42 @@
 ﻿# Session Handover
 
-> **Date:** 2026-03-04 (Technical Stabilizer Pass + Sanity Check — complete)
+> **Date:** 2026-03-04 (Sanity Check Pass — documentation drift resolution)
 > **Branch:** merged to `main`
-> **Prior session:** PR #8 merged `session-2026-03-03-consolidation` → `main` (Phases 1–4 complete)
-> **Objective:** Technical stabilizer: cleanup, import standardization, Bun migration, ESM workers; sanity check pass
+> **Prior session:** Technical stabilizer pass (15 commits, 40 files, Python removal, Bun migration, ESM workers)
+> **Objective:** Post-stabilizer sanity check — find and fix documentation drift causing bad agent context
 
 ---
 
 ## What Changed (This Session)
 
-### Full Pass Summary (Commits on session-2026-03-04)
+### Sanity Check — Documentation Drift Fix (Commit on sanity-check-doc-drift)
 
-1. **`21da311`** — Deleted: `.venv/`, stale Haiku tracking docs (3 root files + dated handover), `project-setup-pipeline.prompt.md`
-2. **`fa297a9`** — Standardized `.js` → `.ts` imports across 13 files; fixed `External-audit.md` H1
-3. **`62bb1cb`** — Bun migration: `package.json` (scripts + removed `tsx`), `build.yml` (`setup-bun@v2`), 5 doc files updated; `side-tracks.md` cleaned (3 entries removed)
-4. **`1a17231`** — ESM worker migration: `src/workers/simulation-worker.ts` + `defense-worker.ts` (TypeScript ports importing from `dice-primitives.ts`); both Astro pages updated to `new Worker(new URL(...), { type: "module" })`; `public/workers/*.js` deleted; `biome.json`, `docs/` updated
+**Root cause:** Multi-agent stabilizer session (15 commits, 40 files) updated code and some docs, but `tool-development.md` (Copilot skill file) was only partially updated. It retained 5 stale claims about worker architecture and @ts-nocheck status. `copilot-instructions.md` was missing `dice-primitives.ts` from its module listing.
 
-### Bun Migration
+**7 drift items found and fixed:**
 
-`tsx` replaced by `bun run` for all pipeline scripts. `oven-sh/setup-bun@v2` added to CI. `bun run scripts/validate.ts` → 12/12 pass confirmed.
+| # | Severity | File | Fix |
+|---|----------|------|-----|
+| D1 | HIGH | tool-development.md | File layout: `public/workers/` → `src/workers/` (ESM TypeScript) |
+| D2 | HIGH | tool-development.md | Pitfall #3: rewritten from "Workers can't import ES modules" → ESM worker pattern |
+| D3 | HIGH | tool-development.md | Pitfall #1: corrected to say only `builder-app.ts` has `@ts-nocheck` |
+| D4 | HIGH | tool-development.md | File layout: removed `(@ts-nocheck)` label from `sheet-app.ts` |
+| D5 | HIGH | tool-development.md | Large Tool Pattern: corrected to say only `builder-app.ts` uses `@ts-nocheck` |
+| D6 | MEDIUM | copilot-instructions.md | Added `dice-primitives.ts` to `lib/dtd/` module listing |
+| D7 | MEDIUM | tool-development.md | Added `dice-primitives.ts` to file layout section |
 
-### ESM Worker Migration
+### Why This Mattered
 
-Workers moved from `public/workers/` (legacy JS, `importScripts` + `dice-common.js`) → `src/workers/` (TypeScript, ESM, direct import from `dice-primitives.ts`). `dice-common.js` deleted. Both workers bundled by Vite via `{ type: "module" }` constructor. Relative imports used (not `@/` alias — alias doesn't resolve in worker bundles).
+`tool-development.md` is a Copilot skill file loaded automatically for any tool task. An agent reading the old Pitfall #3 would:
+- Avoid `import` in workers (wrong — ESM workers use imports)
+- Place new workers in `public/workers/` (wrong — deleted directory)
+- Use `importScripts()` (wrong — deprecated pattern)
 
-### Post-Merge Sanity Check
+This directly contradicted `astro.instructions.md` (correct ESM guidance). When both files loaded in the same session, agents saw conflicting instructions — the "messy info" the user detected.
 
-Sanity check run after stabilizer merge. Findings and fixes:
+### Files Verified Clean (No Drift)
 
-- **Fixed:** `simulation-worker.ts` had a Biome format violation (auto-fixed with `npx biome check --write`)
-- **Fixed:** `copilot-instructions.md` expanded PowerShell/Windows guidance — added Unix→PowerShell command equivalents table, `Toolchain` subsection, reinforced `npm run lint:fix` as mass-fix workflow
-- **Fixed:** `copilot-instructions.md` added `src/workers/` to architecture tree
-- **Fixed:** `astro.instructions.md` updated `lib/dtd/` module list to include `dice-primitives.ts` and `src/workers/` directory
-- **Verified:** All baselines confirmed clean (see Current State below)
-
-**Doubt flagged (unchecked):** `defense-worker.ts` `simulateTrial()` logic was a fresh port from the deleted JS original — no line-by-line diff verified. The simulation model (hit location %, AP reduction, resilience formula) should be regression-tested before Phase 5 work begins.
+architecture.md, development-guide.md, pipeline.md, dice-js.md, core-js.md, astro.instructions.md, markdown.instructions.md, project-conventions.md, side-tracks.md, project-history.md
 
 ---
 
@@ -43,13 +45,12 @@ Sanity check run after stabilizer merge. Findings and fixes:
 | Metric          | Value                                                                         |
 | --------------- | ----------------------------------------------------------------------------- |
 | Tests           | 187 passing (6 test files)                                                    |
-| Biome           | 0 errors from new files; pre-existing warnings in sheet-app.ts/builder-app.ts |
+| Biome           | 0 new errors; pre-existing in sheet-app.ts/builder-app.ts                     |
 | JSON validation | 12/12 files pass                                                              |
-| Content lint    | 0 errors, 19 warnings, 884 info                                               |
+| Content lint    | 0 errors, 19 warnings, 884 info                                              |
 | Build           | 89 pages built successfully                                                   |
 | Python          | Fully removed                                                                 |
-| Workers         | ESM (`src/workers/*.ts`), `dice-common.js` deleted                            |
-| Bun             | 1.3.10, replaces tsx                                                          |
+| Workers         | ESM (`src/workers/*.ts`), documentation now consistent across all files       |
 
 ### Key Baselines
 
@@ -59,6 +60,17 @@ Sanity check run after stabilizer merge. Findings and fixes:
 - `npm run build` → 89 pages, 0 errors
 - `npm run test` → 187 tests passing
 - `npx tsc --noEmit` → 614 errors in sheet-app.ts + 1 in core.test.ts
+
+### Agent-Facing File Consistency Matrix (Post-Fix)
+
+All agent-facing files now agree on these facts:
+
+| Fact | copilot-instructions | astro.instructions | tool-development | architecture |
+|------|-----|-----|-----|-----|
+| Workers in `src/workers/` | ✅ | ✅ | ✅ | ✅ |
+| Workers are ESM | ✅ | ✅ | ✅ | ✅ |
+| `dice-primitives.ts` exists | ✅ | ✅ | ✅ | ✅ |
+| Only builder has @ts-nocheck | — | — | ✅ | ✅ |
 
 ---
 
@@ -72,22 +84,12 @@ Sanity check run after stabilizer merge. Findings and fixes:
 | `builder-app.ts` | ~422       | 1,825     | Present       |
 | **Total**        | **~1,036** | **4,487** |               |
 
-### Error Patterns (90%+ mechanical)
-
-| Pattern                                        | ~Count | Fix                                           |
-| ---------------------------------------------- | ------ | --------------------------------------------- |
-| `getElementById` returns `HTMLElement \| null` | ~200   | `as HTMLInputElement` or null-guard           |
-| `querySelector` returns `Element \| null`      | ~100   | Same                                          |
-| Implicit `any` parameters in callbacks         | ~150   | Add `: Event`, `: string`, etc.               |
-| Property access on `any`-typed objects         | ~100   | Add interface or inline type                  |
-| Object method `this` typing                    | ~50    | Explicit `this` parameter or class conversion |
-
 **Recommended approach:** Type-in-place (fix errors without splitting). Module split deferred until Playwright E2E tests exist.
 
 ---
 
 ## Suggested Next Steps
 
-1. **Phase 5: Fix 614 TS errors in `sheet-app.ts`** — Mechanical type fixes, ~4–6 hours estimated. Start with TS2531 null checks (209 errors, most repetitive).
-2. **Phase 5: Fix ~422 TS errors in `builder-app.ts`** — Remove `@ts-nocheck`, apply same patterns.
-3. **Phase 4.3: Tool module tests** — Depends on Phase 5. Defer to same session.
+1. **Phase 5: Fix 614 TS errors in `sheet-app.ts`** — Mechanical type fixes, ~4–6 hours estimated
+2. **Phase 5: Fix ~422 TS errors in `builder-app.ts`** — Remove `@ts-nocheck`, apply same patterns
+3. **Push 17 local commits to origin** — `main` is ahead of `origin/main` by 17 commits
