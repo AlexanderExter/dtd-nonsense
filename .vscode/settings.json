@@ -1,4 +1,5 @@
 {
+    "python.terminal.activateEnvironment": false,
     "cSpell.words": [
         "Aasimar",
         "Atlanteans",
