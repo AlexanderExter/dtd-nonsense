@@ -1,5 +1,5 @@
 /**
- * Zod schema for NPC template data — mirrors pipeline/models/npc_templates.py.
+ * Zod schema for NPC template data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

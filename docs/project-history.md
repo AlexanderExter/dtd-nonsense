@@ -131,6 +131,21 @@ Completed items:
 
 ---
 
+## Phase 9 — Python-to-TypeScript Pipeline Consolidation (2026-03-04)
+
+**Goal:** Eliminate the dual Python/TypeScript stack by porting all pipeline functionality to TypeScript and deleting the Python pipeline.
+
+| Component                | What Was Done                                                                                                                                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9.1 Pipeline Port        | All pipeline commands ported to TypeScript: `scripts/validate.ts`, `scripts/lint.ts`, `scripts/sync-check.ts`. Starlight frontmatter injection folded into `scripts/prebuild.mjs`.               |
+| 9.2 Schema Migration     | Pydantic models in `pipeline/models/` replaced by Zod schemas in `src/lib/dtd/schemas/` (already existed; now the sole source of truth).                                                        |
+| 9.3 Python Deletion      | Deleted `pipeline/` directory, `pyproject.toml`, and `uv.lock`. Removed all `uv`, `ruff`, and Python dependencies.                                                                              |
+| 9.4 Documentation Update | Updated all docs (`pipeline.md`, `architecture.md`, `project-conventions.md`, `development-guide.md`, `data-reference.md`, `copilot-instructions.md`, etc.) to reference TypeScript equivalents. |
+
+**Status:** Project is now a single-stack TypeScript/Node project. No Python dependencies remain. All validation, linting, and sync checking runs via `npm run` scripts.
+
+---
+
 ## Decision Log
 
 Key architectural and design decisions made during development:

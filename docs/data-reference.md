@@ -1,6 +1,6 @@
 # Data Reference
 
-> **⚠️ Schema accuracy warning:** The per-file schemas below are manually maintained and may drift from the actual data. Auto-generation from the Pydantic models in `pipeline/models/` is aspirational but not yet implemented. When in doubt, inspect the actual JSON files or run `uv run dtd validate`.
+> **⚠️ Schema accuracy warning:** The per-file schemas below are manually maintained and may drift from the actual data. The Zod schemas in `src/lib/dtd/schemas/` are the source of truth. When in doubt, inspect the actual JSON files or run `npm run validate`.
 
 Documentation for all JSON data files in `data/`. These files drive the game-data dropdowns, autocomplete, and calculation engines across all tools.
 
@@ -31,7 +31,7 @@ All source markdown files are in `cleaned-references/`.
 
 ## Sync Strategy
 
-**Semi-automated synchronization** — the `pipeline` package provides `uv run dtd validate --xref` for schema validation and cross-reference checking, plus `uv run dtd sync-check --source <type>` for markdown↔JSON drift detection (races, classes, feats). After editing rules in `books/` or `cleaned-references/`, run these checks and manually verify any remaining gaps.
+**Semi-automated synchronization** — the TypeScript pipeline scripts provide `npm run validate` for schema validation (add `--xref` via `npx tsx scripts/validate.ts --xref` for cross-reference checking), plus `npm run sync-check` for markdown↔JSON drift detection (races, classes, feats). After editing rules in `books/` or `cleaned-references/`, run these checks and manually verify any remaining gaps.
 
 **Recommended practice:** Document changes in git commit messages (e.g., "Update classes.json to match 06-Classes.md additions").
 

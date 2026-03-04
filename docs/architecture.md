@@ -50,9 +50,9 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 **Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/`. 128 tests currently cover `core.ts` and `dice.ts`.
 
-### Python Pipeline
+### TypeScript Pipeline Scripts
 
-A `pipeline/` Python package (Pydantic v2 + Click CLI) provides data validation, content linting, and Astro/Starlight migration prep. Managed via `uv`; entry point is `dtd` CLI. See [docs/pipeline.md](pipeline.md) for details.
+TypeScript scripts in `scripts/` provide data validation, content linting, and sync checking. Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data. See [docs/pipeline.md](pipeline.md) for details.
 
 ---
 
@@ -82,15 +82,17 @@ Vercel is connected to the GitHub repository (`AlexanderExter/dtd-nonsense`). It
 The `.github/workflows/build.yml` workflow runs on every push and pull request:
 
 ```
-Node / Astro          Python pipeline
-─────────────         ─────────────────
-npm ci                uv sync --dev
-biome ci .            ruff check .
-npm run test          dtd validate
-npm run build         dtd lint
+Node / Astro
+─────────────
+npm ci
+biome ci .
+npm run test
+npm run validate
+npm run lint:data
+npm run build
 ```
 
-Both pipelines must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
+All steps must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
 
 ---
 
@@ -275,7 +277,7 @@ Most JSON files use a top-level wrapper key matching the filename. Tools access 
 | Ship Builder      | `data.torpedoTubeCost`, `data.criticalDamage`            | Scalar + array                                                  |
 | Ship Builder      | `data.holdingsBP`, `data.crewQualityCost`                | Config values                                                   |
 
-The pipeline Pydantic models (`pipeline/models/`) mirror these exact shapes.
+The Zod schemas (`src/lib/dtd/schemas/`) mirror these exact shapes.
 
 ---
 

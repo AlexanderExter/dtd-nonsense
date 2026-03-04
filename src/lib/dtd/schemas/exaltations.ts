@@ -1,7 +1,7 @@
 /**
  * Zod schemas for exaltation data.
  *
- * Mirrors pipeline/models/exaltations.py.
+ * Replaces former Pydantic model.
  */
 
 import { z } from "zod";

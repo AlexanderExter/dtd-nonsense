@@ -68,7 +68,7 @@ For work that spans multiple sessions or needs isolation beyond day-scoping:
 
 All editing is done directly by the agent. Do not write Python scripts for file modifications — they produce pseudo-random edits that are hard to trace in diffs and have caused destructive mistakes in the past.
 
-**Exception — pipeline scripts:** Version-controlled scripts in `pipeline/` may write files (JSON validation, frontmatter injection, linting auto-fix) when they are tested and review-gated. This does not apply to ad-hoc throwaway scripts.
+**Exception — pipeline scripts:** Version-controlled scripts in `scripts/` may write files (JSON validation, frontmatter injection, linting auto-fix) when they are tested and review-gated. This does not apply to ad-hoc throwaway scripts.
 
 ### Batched Replacements
 
@@ -78,17 +78,7 @@ When applying multiple `multi_replace_string_in_file` operations to the same fil
 
 External formatters or editor extensions may silently revert agent edits between sessions. After resuming work on a branch, always re-read recently edited files and verify that prior changes are still present before building on them.
 
-For pipeline Python files specifically: run `uv run ruff check .` and `uv run dtd validate` after any external edits touch `pipeline/`. Formatters commonly undo manual line-wrapping (E501 fixes), re-merge split strings, and reformat f-strings — all of which can re-introduce ruff violations.
-
-### Python Code Style
-
-Ruff enforces Python style. Key settings (in `pyproject.toml`):
-
-- **Line length: 120** characters (not the default 100)
-- **Per-file-ignores**: N815 suppressed in `pipeline/models/` (Pydantic camelCase matches JSON), RUF001/RUF002 suppressed in `terminology.py` (intentional Unicode symbols)
-- Run `uv run ruff check .` before committing any Python changes
-
-See [docs/pipeline.md — Ruff Configuration](pipeline.md#ruff-configuration) for full rationale.
+After any external edits touch `scripts/`, run `npm run validate` to verify data integrity.
 
 ### Subagent Discipline
 
@@ -317,11 +307,7 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 ### Never Trust Docs for JSON Schemas
 
-`docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `data/*.json`, always inspect the **actual JSON files** — not the docs. The Pydantic models in `pipeline/models/` are now the closest thing to ground-truth schemas.
-
-### Unicode Escapes in Python Source
-
-Use `\uXXXX` escape sequences for non-ASCII patterns in Python string literals — never embed raw non-ASCII characters. Files that contain raw `×`, `½`, or CP1252 byte patterns are vulnerable to the same encoding corruption they're trying to detect. This was learned the hard way when `formatting.py`'s encoding-corruption checker was itself corrupted by an editor/OS round-trip.
+`docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `data/*.json`, always inspect the **actual JSON files** — not the docs. The Zod schemas in `src/lib/dtd/schemas/` are the ground-truth schemas.
 
 ### `.github/` Relative Link Prefix
 
@@ -372,25 +358,25 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 | `npm run dev`               | Start Astro dev server with hot reload                        |
 | `npm run build`             | Full build: `prebuild.mjs` + `astro build`                    |
 | `npm run preview`           | Preview production build locally                              |
-| `uv run dtd starlight-prep` | Inject Starlight frontmatter (run after editing cleaned-refs) |
+| `npm run validate`          | Validate JSON data against Zod schemas                        |
+| `npm run lint:data`         | Lint markdown for terminology, formatting, encoding           |
+| `npm run sync-check`        | Detect drift between markdown and JSON data                   |
 
 **Build dependency chain:**
 
-1. `uv run dtd starlight-prep` — adds YAML frontmatter to `cleaned-references/` (run once, or after edits)
-2. `node scripts/prebuild.mjs` — copies cleaned-refs → `src/content/docs/rules/`, books → `src/content/docs/books/`, JSON → `public/data/`
-3. `astro build` — builds 89 static pages + Pagefind search index
+1. `node scripts/prebuild.mjs` — copies cleaned-refs → `src/content/docs/rules/`, books → `src/content/docs/books/`, JSON → `public/data/`, injects Starlight frontmatter
+2. `astro build` — builds 89 static pages + Pagefind search index
 
 Generated directories (`src/content/docs/rules/`, `src/content/docs/books/`, `public/data/`) are in `.gitignore` — never commit them.
 
 The Astro/Starlight migration is complete — all 9 tools ported, site live on Vercel. See [architecture.md](architecture.md) for the current system design.
 
-### Python Pipeline
+### TypeScript Pipeline Scripts
 
-- **Package manager:** `uv` — run with `uv run dtd <command>`, sync deps with `uv sync`
-- **Schema authority:** Pydantic models in `pipeline/models/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
-- **Validation:** `uv run dtd validate --xref` checks all 12 JSON files and cross-references (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
-- **Content linting:** `uv run dtd lint` enforces terminology, formatting, and encoding consistency across markdown files.
-- **Astro prep:** `uv run dtd starlight-prep` injects Starlight-compatible YAML frontmatter into `cleaned-references/`.
-- **Sync checking:** `uv run dtd sync-check --source <type>` detects drift between markdown and JSON data (races, classes, feats).
-- **Documentation:** See `docs/pipeline.md` for CLI commands, package structure, and conventions.
-- **When editing JSON data:** Always run `uv run dtd validate` afterward to catch schema violations. If adding new fields, update both the Pydantic model and `docs/data-reference.md`.
+- **Schema authority:** Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
+- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `npx tsx scripts/validate.ts --xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
+- **Content linting:** `npm run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
+- **Starlight prep:** Frontmatter injection is now handled automatically by `scripts/prebuild.mjs` during the build.
+- **Sync checking:** `npm run sync-check` detects drift between markdown and JSON data (races, classes, feats).
+- **Documentation:** See `docs/pipeline.md` for CLI commands, script structure, and conventions.
+- **When editing JSON data:** Always run `npm run validate` afterward to catch schema violations. If adding new fields, update both the Zod schema and `docs/data-reference.md`.

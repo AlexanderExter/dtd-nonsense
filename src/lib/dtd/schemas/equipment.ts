@@ -1,5 +1,5 @@
 /**
- * Zod schema for equipment data — mirrors pipeline/models/equipment.py.
+ * Zod schema for equipment data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

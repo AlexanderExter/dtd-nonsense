@@ -1,7 +1,7 @@
 /**
  * Zod schema registry — maps JSON filenames to their validation schemas.
  *
- * Mirrors pipeline/models/__init__.py FILE_MODELS registry.
+ * Replaces former Pydantic FILE_MODELS registry.
  * isBareArray=true means the JSON file is a top-level array, not an object.
  */
 
@@ -42,7 +42,6 @@ export { WeaponsFile } from "./weapons.js";
 // ---------------------------------------------------------------------------
 
 export interface SchemaEntry {
-	// biome-ignore lint/suspicious/noExplicitAny: registry holds heterogeneous schemas
 	schema: z.ZodType<any>;
 	isBareArray: boolean;
 }

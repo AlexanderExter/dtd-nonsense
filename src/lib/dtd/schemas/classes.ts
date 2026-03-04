@@ -1,7 +1,7 @@
 /**
  * Zod schemas for class data.
  *
- * Mirrors pipeline/models/classes.py.
+ * Replaces former Pydantic model.
  */
 
 import { z } from "zod";

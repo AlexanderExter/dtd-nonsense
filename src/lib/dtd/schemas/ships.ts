@@ -1,5 +1,5 @@
 /**
- * Zod schema for ships data — mirrors pipeline/models/ships.py.
+ * Zod schema for ships data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

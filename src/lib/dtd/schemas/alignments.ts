@@ -1,5 +1,5 @@
 /**
- * Zod schema for alignments data — mirrors pipeline/models/alignments.py.
+ * Zod schema for alignments data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

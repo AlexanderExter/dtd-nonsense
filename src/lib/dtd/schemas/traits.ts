@@ -1,5 +1,5 @@
 /**
- * Zod schema for traits data — mirrors pipeline/models/traits.py.
+ * Zod schema for traits data — replaces former Pydantic model.
  *
  * Top-level JSON is a bare array of Trait objects.
  */

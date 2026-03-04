@@ -294,8 +294,8 @@ Each entry should include:
 
 ### Entry 46
 
-- **File:** `pipeline/linting/terminology.py` (rule), flagged in `cleaned-references/05-Exaltations.md`, `07-Feats.md`, `books/book-1-dungeons-the-dragoning/05-exaltation.md`
-- **Location:** Terminology rule on line 47: `\bAction Points?\b` → "Hero Points"
+- **File:** `scripts/lint.ts` (rule), flagged in `cleaned-references/05-Exaltations.md`, `07-Feats.md`, `books/book-1-dungeons-the-dragoning/05-exaltation.md`
+- **Location:** Terminology rule: `\bAction Points?\b` → "Hero Points"
 - **Issue:** The linter flags all "Action Points" as wrong, suggesting "Hero Points." However, **Action Points are the canonical Paragon resource stat** — a distinct game mechanic from Hero Points. The original book (05-exaltation.md L382–389, L406) consistently uses "Action Points" for the Paragon's resource pool. Feats also reference them (07-Feats.md: "Recover 1 spent action point", "+2 Action Points at start of each session").
 - **Interpretations:**
     - (a) Remove the `Action Points → Hero Points` rule entirely — Action Points is a valid game term for the Paragon exaltation
@@ -305,8 +305,8 @@ Each entry should include:
 
 ### Entry 47
 
-- **File:** `pipeline/linting/terminology.py` (rule), flagged in `cleaned-references/05-Exaltations.md`, `books/book-1-dungeons-the-dragoning/05-exaltation.md`
-- **Location:** Terminology rule on line 43: `\bPerform\b(?!er|ance)` → "Performer"
+- **File:** `scripts/lint.ts` (rule), flagged in `cleaned-references/05-Exaltations.md`, `books/book-1-dungeons-the-dragoning/05-exaltation.md`
+- **Location:** Terminology rule: `\bPerform\b(?!er|ance)` → "Performer"
 - **Issue:** The linter flags the English verb "Perform" as a misspelling of the skill name "Performer." All 5 flagged instances in `05-Exaltations.md` are the verb form: "Perform a special ritual" (L197), "Perform a 6-hour ritual" (L399), "perform minor magical tricks" (L144), etc. The regex negative lookahead `(?!er|ance)` excludes "Performer" and "Performance" but not the bare verb.
 - **Interpretations:**
     - (a) Remove the `Perform → Performer` rule — the verb is far more common than the skill name typo

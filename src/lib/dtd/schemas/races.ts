@@ -1,7 +1,7 @@
 /**
  * Zod schemas for race data.
  *
- * Mirrors pipeline/models/races.py.
+ * Replaces former Pydantic model.
  */
 
 import { z } from "zod";

@@ -1,7 +1,7 @@
 /**
  * Zod schemas for feat data.
  *
- * Mirrors pipeline/models/feats.py.
+ * Replaces former Pydantic model.
  */
 
 import { z } from "zod";

@@ -105,11 +105,11 @@ Characters created by the sheet start with characteristics at 1; characters crea
 
 ### xref Warnings (41 Known)
 
-`uv run dtd validate --xref` produces 41 warnings. These are real data gaps in the JSON files, not bugs — abbreviated feat names in `classes.json` that don't match canonical names in `feats.json`, and skill references in templates that aren't in `skills.json`. The tools work fine with approximate names, but the data should be corrected eventually.
+`npx tsx scripts/validate.ts --xref` produces 41 warnings. These are real data gaps in the JSON files, not bugs — abbreviated feat names in `classes.json` that don't match canonical names in `feats.json`, and skill references in templates that aren't in `skills.json`. The tools work fine with approximate names, but the data should be corrected eventually.
 
 ### Lint Info Messages (880)
 
-`uv run dtd lint` produces 880 "info" level messages — mostly directional quotes vs straight quotes, en/em dash suggestions, and minor formatting preferences. These are editorial suggestions, not errors. The 8 warnings are worth reviewing individually.
+`npm run lint:data` produces 880 "info" level messages — mostly directional quotes vs straight quotes, en/em dash suggestions, and minor formatting preferences. These are editorial suggestions, not errors. The 8 warnings are worth reviewing individually.
 
 ---
 

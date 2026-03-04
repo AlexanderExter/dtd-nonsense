@@ -1,7 +1,7 @@
 /**
  * Shared Zod types and helpers used across DTD data schemas.
  *
- * Mirrors pipeline/models/common.py. All game-data schemas import from here.
+ * Replaces former Pydantic common module. All game-data schemas import from here.
  */
 
 import { z } from "zod";

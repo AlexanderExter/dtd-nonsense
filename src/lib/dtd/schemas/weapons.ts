@@ -1,5 +1,5 @@
 /**
- * Zod schema for weapons data — mirrors pipeline/models/weapons.py.
+ * Zod schema for weapons data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

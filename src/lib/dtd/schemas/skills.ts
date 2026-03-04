@@ -1,5 +1,5 @@
 /**
- * Zod schema for skills data — mirrors pipeline/models/skills.py.
+ * Zod schema for skills data — replaces former Pydantic model.
  */
 
 import { z } from "zod";

@@ -1,5 +1,5 @@
 /**
- * Zod schema for backgrounds data — mirrors pipeline/models/backgrounds.py.
+ * Zod schema for backgrounds data — replaces former Pydantic model.
  */
 
 import { z } from "zod";
