@@ -15,7 +15,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                               |
 | npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                           |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                   |
-| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic; `types.ts` provides canonical interfaces |
+| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                |
 
 Key files:
@@ -26,7 +26,7 @@ Key files:
 | `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data      |
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored           |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                        |
-| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts |
+| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)    |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
 | `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
