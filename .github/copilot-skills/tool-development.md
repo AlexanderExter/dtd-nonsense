@@ -32,14 +32,15 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 src/pages/tools/[name].astro     ← Astro page (HTML + <style> + <script>)
 src/lib/dtd/core.ts              ← Shared: data loading, derived stats, character CRUD
 src/lib/dtd/dice.ts              ← Shared: roll(), calculateOutcome(), parseNotation()
+src/lib/dtd/dice-primitives.ts   ← Canonical dice algorithms (used by dice.ts and workers)
 src/lib/dtd/types.ts             ← Shared: CharacterData, CharacterListEntry, etc.
-src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (@ts-nocheck)
+src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (614 TS errors, no @ts-nocheck)
 src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (@ts-nocheck)
+src/workers/                     ← TypeScript ESM Web Workers (bundled by Vite)
 src/layouts/ToolLayout.astro     ← Wrapper layout for all tool pages
 src/styles/custom.css            ← WH40K theme tokens
 src/styles/sheet.css             ← Per-tool CSS for large tools
 src/styles/builder.css           ← Per-tool CSS for large tools
-public/workers/                  ← External Web Worker files
 data/                            ← Canonical JSON (12 files, copied to public/data/ at build)
 ```
 
@@ -99,7 +100,7 @@ When a tool exceeds ~1,500 LOC, logic is extracted to `src/lib/tools/[name]-app.
 </style>
 ```
 
-The extracted `.ts` files currently use `@ts-nocheck` (Phase 2 typing deferred). They contain all tool state, DOM manipulation, and event handling.
+`builder-app.ts` uses `@ts-nocheck` (Phase 2 typing deferred). `sheet-app.ts` had it removed but has ~614 unfixed TS errors. Both files contain all tool state, DOM manipulation, and event handling.
 
 ## Data Loading
 
@@ -141,7 +142,7 @@ Most JSON files nest data under a top-level key matching the filename. You must 
 
 These have each caused real bugs. Memorize them:
 
-1. **`@ts-nocheck` files need careful typing** — `sheet-app.ts` and `builder-app.ts` have `@ts-nocheck` at line 1. TypeScript won't catch errors in these files. When editing them, manually verify DOM element types, null checks, and API signatures. Don't trust the lack of red squiggles.
+1. **`@ts-nocheck` and untyped files need careful editing** — `builder-app.ts` has `@ts-nocheck` at line 1 (TypeScript won't catch errors). `sheet-app.ts` had the directive removed but still has ~614 unfixed TS errors — TypeScript flags them, but they're not yet resolved. When editing either file, manually verify DOM element types, null checks, and API signatures.
 
 2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
 
@@ -152,7 +153,7 @@ These have each caused real bugs. Memorize them:
 
     Never use `import Chart from 'chart.js'` at the top level.
 
-3. **Web Workers can't import ES modules** — Workers in `public/workers/` run outside Vite's module system. They must self-contain all logic or use `importScripts()` for external dependencies. Don't use `import` statements inside worker files.
+3. **Web Workers use ESM and live in `src/workers/`** — Workers are TypeScript files in `src/workers/` bundled by Vite via `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. They import from `src/lib/dtd/` using relative paths (not the `@/` alias — it doesn't resolve in worker bundles). Do **not** put workers in `public/workers/` — that directory no longer exists.
 
 4. **CSS `display` overrides `hidden`** — Never set `display: flex` (or similar) on elements using the HTML `hidden` attribute for toggle. Use class-based toggling instead (`.open { display: flex }`).
 
