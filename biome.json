@@ -66,6 +66,19 @@
 					}
 				}
 			}
+		},
+		{
+			"includes": ["public/workers/**"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedVariables": "off"
+					},
+					"complexity": {
+						"useArrowFunction": "off"
+					}
+				}
+			}
 		}
 	]
 }
