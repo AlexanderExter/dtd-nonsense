@@ -10,14 +10,11 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 ### Phase 2: Tool Module Refactor
 
-Break up the monolithic tool apps (`sheet-app.ts`, `builder-app.ts`) into logical sub-modules to reduce maintenance burden and enable per-module typing. Each tool gets the same split pattern:
+Break up the monolithic tool apps (`sheet-app.ts`, `builder-app.ts`) into logical sub-modules to reduce maintenance burden and enable per-module typing.
 
-- `src/lib/tools/sheet/state.ts` — character state and persistence (wraps `character.*` from core.ts)
-- `src/lib/tools/sheet/calc.ts` — derived stat calculations and XP budget
-- `src/lib/tools/sheet/render.ts` — DOM rendering functions (panels, weapon rows, etc.)
-- `src/lib/tools/sheet/events.ts` — event handler registration
+**Revised approach (2026-03-03):** The implementation plan originally proposed splitting each tool into `state.ts`, `calc.ts`, `render.ts`, `events.ts` sub-modules. After analysis, the revised recommendation is a **type-in-place** strategy — fix TypeScript errors directly in the existing files first, then evaluate whether a module split is still warranted. This avoids a risky structural refactor before Playwright E2E tests exist to catch regressions.
 
-Once split, remove `// @ts-nocheck` and add proper `HTMLInputElement` / `HTMLSelectElement` casts. Pre-condition: browser testing confirms the current port is fully functional.
+**Current status:** `@ts-nocheck` removed from `sheet-app.ts` (614 TS errors exposed, unfixed). `builder-app.ts` still has `@ts-nocheck` (~422 errors hidden). Phase 5 of the implementation plan covers the actual error fixing.
 
 Also covers: resolving the persistence duplication between `sheet-app.ts` (`getDefaultChar`, `mergeDefaults`) and `core.ts` (`character.DEFAULTS`, `character.validate`). See **W4** below for specific field-level drift.
 
@@ -51,19 +48,22 @@ Start with the dice roller (smallest tool) as a proof-of-concept island before m
 
 Both `.ts` and extensionless imports work in Vite's dev server and Astro's build. The codebase currently mixes both styles. Pick one convention and enforce it — either always use `.ts` extensions or always omit them.
 
+### Bun Migration
+
+Pipeline scripts currently run via `npx tsx`. The implementation plan originally called for Bun as the TypeScript runner (Open Question #2: "Commit to Bun, we will revert the branch if it proves unworkable"), but the executing agent used tsx instead. Commit `1429809` confirms scripts work with both `npx tsx` and `bun run`. Bun offers faster cold starts and native TypeScript execution, but tsx is proven stable in CI. Revisit if Bun's CI story matures or if script execution time becomes a bottleneck.
+
 ---
 
 ## Code Quality
 
-### W3: Dice Logic in Three Independent Copies
+### W3: Dice Logic in Two Independent Copies
 
-The same overflow compression + exploding d10 algorithm is implemented in three places:
+The same overflow compression + exploding d10 algorithm is implemented in two places:
 
 1. `src/lib/dtd/dice.ts` — ES module, used by builder and sheet
 2. `public/workers/simulation-worker.js` — external worker file, used by success-curves
-3. `src/pages/tools/defense-graph.astro` (inside `getWorkerSource()`) — inline blob worker string
 
-The three copies are currently consistent but can diverge silently. A rule change to the overflow formula requires three synchronized edits with no lint or test to catch drift. The defense-graph blob worker should be extracted to a file in `public/workers/` to match the success-curves pattern.
+The defense-graph blob worker was extracted to `public/workers/defense-worker.js` in Phase 3D (commit `5e2fde7`), reducing the copy count from 3 to 2. The remaining two copies are consistent but can diverge silently. A rule change to the overflow formula requires two synchronized edits with no lint or test to catch drift.
 
 ### W4: Divergent Default Character Shapes
 
@@ -78,10 +78,6 @@ The three copies are currently consistent but can diverge silently. A rule chang
 | `sanctioned`        | `false`            | `true`                       |
 
 Characters created by the sheet start with characteristics at 1; characters created via core.ts start at 2. When `sheet-app.ts`'s `mergeDefaults()` processes a core.ts character (or vice versa), the differing starting values and missing/extra keys can produce unexpected saves. Resolution is part of the Phase 2 persistence reconciliation.
-
-### core.ts Export Surface Area
-
-`src/lib/dtd/core.ts` exports ~13 top-level symbols including utility functions (`debounce`, `escapeHtml`), data loading (`loadData`, `loadAllData`), character CRUD (`character.*`), derived stat calculations (`derived.*`), and UI helpers (`initAccordion`). This is a "god module" — fine for now but will be hard to maintain if the project grows. A future refactor could split into `util.ts`, `data.ts`, `character.ts`, and `ui.ts`.
 
 ### sheet.css Body CSS Selectors
 

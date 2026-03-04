@@ -1,6 +1,11 @@
 ````prompt
 # Python Pipeline Setup for Content Projects
 
+> **⚠️ HISTORICAL REFERENCE** — This project migrated from Python to TypeScript in Phase 3 (2026-03-03).
+> The Python pipeline described here no longer exists. This file is retained as a generic reference
+> for setting up Python/Pydantic pipelines in other projects. For the current TypeScript pipeline,
+> see `docs/pipeline.md`.
+
 Reusable lessons for bootstrapping a Python support pipeline alongside a non-Python project (e.g., vanilla JS tools, static sites, markdown content). Learned from building a Pydantic validation + linting + migration-prep pipeline for a TTRPG documentation project.
 
 ---

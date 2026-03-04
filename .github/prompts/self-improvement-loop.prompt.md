@@ -33,7 +33,7 @@ Read and catalog every framework file:
 | Prompts            | `.github/prompts/*.prompt.md`                                      |
 | Skills             | `.github/copilot-skills/**`                                        |
 | Documentation      | `docs/*.md`, `docs/**/*.md`                                        |
-| Project config     | `pyproject.toml`, `astro.config.mjs`, `package.json`, `tsconfig.json` |
+| Project config     | `biome.json`, `vitest.config.ts`, `astro.config.mjs`, `package.json`, `tsconfig.json` |
 | CI/CD              | `.github/workflows/*.yml`                                          |
 
 For each file, note:

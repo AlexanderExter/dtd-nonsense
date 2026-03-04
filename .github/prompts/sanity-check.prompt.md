@@ -15,11 +15,11 @@ Before checking anything, understand what changed:
     git status
     ```
 2. **Categorize changes** by layer:
-    - **Data** (JSON files, Pydantic models)
-    - **Code** (JS tools, Python pipeline)
+    - **Data** (JSON files, Zod schemas)
+    - **Code** (JS/TS tools, TypeScript pipeline)
     - **Content** (markdown rules, cleaned-references)
     - **Documentation** (docs/, instructions, skills)
-    - **Config** (.gitignore, pyproject.toml, prompts)
+    - **Config** (.gitignore, biome.json, vitest.config.ts, prompts)
 
 This determines which downstream checks matter.
 
@@ -41,18 +41,16 @@ This step exists because you are at peak context fatigue. Treat your own memory 
 
 Run the pipeline to catch machine-detectable issues:
 
-````
-
-uv run dtd validate # Schema validation — must pass
-uv run dtd validate --xref # Cross-references — note new warnings vs baseline
-uv run dtd lint # Terminology + formatting
-
-````
+```
+npm run validate       # Schema validation — must pass
+npm run lint:data      # Terminology + formatting
+npm run sync-check     # Markdown ↔ JSON sync comparison
+```
 
 Compare results against known baselines:
 - Validate: 12/12 pass
 - Cross-ref: ~41 known warnings (abbreviated feat names, missing skills)
-- Lint cleaned-references: 2 info-level empty-table-cells in 16-Conditions.md
+- Lint: 0 errors, 19 warnings, ~883 info
 
 **Any delta from baseline is a finding.** New warnings may be legitimate, but they need explanation.
 
@@ -66,12 +64,12 @@ For each changed file, trace its consumers and producers:
 
 | If you changed...         | Check these downstream consumers...                                  |
 | ------------------------- | -------------------------------------------------------------------- |
-| `pipeline/models/*.py`    | `uv run dtd validate` still passes                                   |
-| `pipeline/linting/*.py`   | `uv run dtd lint` — results match expectations                       |
+| `src/lib/dtd/schemas/*.ts`| `npm run validate` still passes                                     |
+| `scripts/lint.ts`         | `npm run lint:data` — results match expectations                     |
 | `data/*.json`             | Tools that load this data still render correctly                     |
-| `src/lib/dtd/core.ts`     | All 9 tools — shared ES module                                        |
-| `cleaned-references/*.md` | `uv run dtd lint`, `uv run dtd sync-check`, starlight-prep          |
-| `books/*.md`              | `uv run dtd lint --target books`, open-questions.md                  |
+| `src/lib/dtd/core.ts`     | All 10 tools — shared ES module                                      |
+| `cleaned-references/*.md` | `npm run lint:data`, `npm run sync-check`, prebuild                  |
+| `books/*.md`              | `npm run lint:data`, open-questions.md                               |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
 | `.github/copilot-*`       | Relative links resolve correctly (files live in `.github/`)          |
 

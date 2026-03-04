@@ -309,6 +309,22 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 `docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `data/*.json`, always inspect the **actual JSON files** — not the docs. The Zod schemas in `src/lib/dtd/schemas/` are the ground-truth schemas.
 
+### Biome Write on Windows (CRLF)
+
+`npx biome check --write .` normalizes line endings to LF, which on a CRLF repo produces large cosmetic diffs (45+ files). Always run `git diff -w` after Biome auto-fix to check whether any **real** code changes exist before committing. If the diff is whitespace-only, discard with `git checkout -- .`. The same applies to `biome ci .` — it reports CRLF as format errors on Windows but passes on Ubuntu CI.
+
+### Git Push stderr on PowerShell
+
+`git push` outputs informational messages (like the "Create a pull request" URL) to stderr. PowerShell interprets any stderr output as a non-terminating error, setting `$LASTEXITCODE = 1` even when the push succeeds. Check the actual output message — if the branch was created/updated on the remote, it worked. Don't treat exit code 1 from `git push` as a failure without reading the output.
+
+### Plan vs Execution Drift
+
+Decisions in planning documents (`implementation-plan.md`, open questions) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
+
+### Stale .venv After Python Removal
+
+After removing Python from the project (Phase 3E), the `.venv/` directory and VS Code's auto-activation (`python.defaultInterpreterPath`, terminal auto-activate) may persist. Delete `.venv/`, check `.vscode/settings.json` for Python-related settings, and verify `terminal.integrated.env.*` doesn't reference the venv. All 19+ terminal sessions showing `.venv\Scripts\Activate.ps1` is a symptom of this.
+
 ### `.github/` Relative Link Prefix
 
 Markdown files in `.github/` need `../` prefix to link to project root directories (`docs/`, `data/`, etc.). VS Code's markdown validator catches broken links, but anchor fragments (`#section`) cause false positives — the file path resolves correctly even if the validator complains about the fragment.
@@ -376,6 +392,7 @@ The Astro/Starlight migration is complete — all 9 tools ported, site live on V
 - **Schema authority:** Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
 - **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `npx tsx scripts/validate.ts --xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
 - **Content linting:** `npm run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
+- **Baseline verification:** Always re-verify pipeline output baselines (error counts, warning counts) after scope changes. Don't carry forward numbers from previous sessions without validation — e.g., lint:data reported "2 warnings" when only scanning `cleaned-references/`, but "19 warnings" after scope expanded to include `books/`.
 - **Starlight prep:** Frontmatter injection is now handled automatically by `scripts/prebuild.mjs` during the build.
 - **Sync checking:** `npm run sync-check` detects drift between markdown and JSON data (races, classes, feats).
 - **Documentation:** See `docs/pipeline.md` for CLI commands, script structure, and conventions.

@@ -22,7 +22,7 @@ src/
   pages/tools/       ← .astro tool pages (each is self-contained)
   layouts/           ← ToolLayout.astro (standalone HTML shell for tools)
   components/        ← Head.astro (Starlight override for analytics)
-  lib/dtd/           ← Shared ES modules: core.ts, dice.ts, types.ts
+  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts
   lib/tools/         ← Large tool scripts: sheet-app.ts, builder-app.ts
   styles/            ← custom.css (Starlight theme), sheet.css, builder.css
   content.config.ts  ← Content Collection definitions

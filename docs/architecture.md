@@ -15,7 +15,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                               |
 | npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                           |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                   |
-| ES modules          | `src/lib/dtd/core.ts` and `dice.ts` are typed ES module ports of the shared libraries; `types.ts` provides canonical interfaces |
+| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic; `types.ts` provides canonical interfaces |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                |
 
 Key files:
@@ -26,7 +26,7 @@ Key files:
 | `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data      |
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored           |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                        |
-| `src/lib/dtd/`         | Typed ES modules: core.ts, dice.ts, types.ts                      |
+| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts |
 | `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)    |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
 | `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
@@ -37,7 +37,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### When to Reconsider
 
-- **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; tool apps have `@ts-nocheck` pending Phase 2 module refactor.
+- **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; `builder-app.ts` retains `@ts-nocheck` pending Phase 2 module refactor; `sheet-app.ts` runs without the directive.
 
 ### Code Quality & Testing
 
@@ -48,7 +48,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 **Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
 
-**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/`. 128 tests currently cover `core.ts` and `dice.ts`.
+**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/`. 187 tests across 6 test files (core, dice, schemas, and pipeline scripts).
 
 ### TypeScript Pipeline Scripts
 

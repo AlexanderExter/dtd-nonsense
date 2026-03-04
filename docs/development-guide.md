@@ -179,12 +179,16 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
 
-| Test File                       | Covers                                                    |
-| ------------------------------- | --------------------------------------------------------- |
-| `src/lib/dtd/core.test.ts`      | derived stats, character CRUD, migration, data loading    |
-| `src/lib/dtd/dice.test.ts`      | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+| Test File                            | Covers                                                    |
+| ------------------------------------ | --------------------------------------------------------- |
+| `src/lib/dtd/core.test.ts`           | derived stats, character CRUD, migration, data loading    |
+| `src/lib/dtd/dice.test.ts`           | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+| `src/lib/dtd/schemas.test.ts`        | Schema validation + rejection tests (15 tests)            |
+| `scripts/__tests__/validate.test.ts` | Validate script unit tests (9 tests)                      |
+| `scripts/__tests__/lint.test.ts`     | Lint script unit tests (24 tests)                         |
+| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests (11 tests)                 |
 
-128 tests total. Run with:
+187 tests total. Run with:
 
 ```bash
 npm run test          # single run
@@ -196,8 +200,10 @@ npm run test:watch    # re-run on file changes
 GitHub Actions runs the following steps on every push/PR:
 
 ```
-Biome lint  →  Vitest tests  →  Astro build (includes validate + lint:data)
+Biome lint  →  Vitest tests  →  Zod validate  →  Content lint  →  Astro build
 ```
+
+Corresponds to separate CI steps: `npx biome ci .` → `npm run test` → `npm run validate` → `npm run lint:data` → `npm run build`.
 
 All steps must pass for a PR to be merge-ready.
 

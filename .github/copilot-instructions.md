@@ -14,7 +14,7 @@ All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Ke
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
 - **tsx**: TypeScript pipeline scripts run via `npx tsx`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
 - **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check, `npm run lint:fix` to auto-fix. Config in `biome.json`. CI runs `biome ci .` before build.
-- **Vitest**: Unit tests for `core.ts` and `dice.ts`. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
+- **Vitest**: Unit tests across 6 test files (core, dice, schemas, pipeline scripts). 187 tests. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
 ---
@@ -97,7 +97,7 @@ scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight fr
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
-  lib/dtd/             ES module ports: core.ts, dice.ts, types.ts
+  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   layouts/             ToolLayout.astro

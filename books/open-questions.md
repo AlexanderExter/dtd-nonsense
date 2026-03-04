@@ -301,7 +301,7 @@ Each entry should include:
     - (a) Remove the `Action Points → Hero Points` rule entirely — Action Points is a valid game term for the Paragon exaltation
     - (b) Refine the rule to only flag "Action Points" when not in a Paragon/Exaltation context (complex, likely not worth the effort)
     - (c) Keep the rule but add an allowlist/ignore comment mechanism for known valid usages
-- **Status:** Resolved — (a) Rule removed from `terminology.py`. Action Points is a valid Paragon resource stat, distinct from Hero Points.
+- **Status:** Resolved — (a) Rule removed from `scripts/lint.ts`. Action Points is a valid Paragon resource stat, distinct from Hero Points.
 
 ### Entry 47
 
@@ -312,7 +312,7 @@ Each entry should include:
     - (a) Remove the `Perform → Performer` rule — the verb is far more common than the skill name typo
     - (b) Refine to only flag "Perform" when preceded by skill-context words (e.g., after characteristic names, in skill lists, in `+Xk0` contexts)
     - (c) Add a word-boundary check for common verb patterns: skip when followed by "a ", "the ", "this ", "their ", or preceded by "may ", "to ", "can ", "must "
-- **Status:** Resolved — (a) Rule removed from `terminology.py`. The bare verb "Perform" is far more common than the skill-name typo; removing avoids false positives.
+- **Status:** Resolved — (a) Rule removed from `scripts/lint.ts`. The bare verb "Perform" is far more common than the skill-name typo; removing avoids false positives.
 
 ---
 
