@@ -121,7 +121,7 @@ scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight fr
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
-  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts
+  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
