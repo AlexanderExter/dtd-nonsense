@@ -15,9 +15,6 @@ public/data/
 .env
 .env.local
 .env.*.local
-.venv/
-.ruff_cache/
-__pycache__/
 
 # OS
 .DS_Store
