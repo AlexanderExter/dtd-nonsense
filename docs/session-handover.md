@@ -1,9 +1,9 @@
 ﻿# Session Handover
 
-> **Date:** 2026-03-04 (Technical Stabilizer Pass — complete)
-> **Branch:** `session-2026-03-04` — merged to `main` after this pass
+> **Date:** 2026-03-04 (Technical Stabilizer Pass + Sanity Check — complete)
+> **Branch:** merged to `main`
 > **Prior session:** PR #8 merged `session-2026-03-03-consolidation` → `main` (Phases 1–4 complete)
-> **Objective:** Technical stabilizer: cleanup, import standardization, Bun migration, ESM workers
+> **Objective:** Technical stabilizer: cleanup, import standardization, Bun migration, ESM workers; sanity check pass
 
 ---
 
@@ -24,20 +24,32 @@
 
 Workers moved from `public/workers/` (legacy JS, `importScripts` + `dice-common.js`) → `src/workers/` (TypeScript, ESM, direct import from `dice-primitives.ts`). `dice-common.js` deleted. Both workers bundled by Vite via `{ type: "module" }` constructor. Relative imports used (not `@/` alias — alias doesn't resolve in worker bundles).
 
+### Post-Merge Sanity Check
+
+Sanity check run after stabilizer merge. Findings and fixes:
+
+- **Fixed:** `simulation-worker.ts` had a Biome format violation (auto-fixed with `npx biome check --write`)
+- **Fixed:** `copilot-instructions.md` expanded PowerShell/Windows guidance — added Unix→PowerShell command equivalents table, `Toolchain` subsection, reinforced `npm run lint:fix` as mass-fix workflow
+- **Fixed:** `copilot-instructions.md` added `src/workers/` to architecture tree
+- **Fixed:** `astro.instructions.md` updated `lib/dtd/` module list to include `dice-primitives.ts` and `src/workers/` directory
+- **Verified:** All baselines confirmed clean (see Current State below)
+
+**Doubt flagged (unchecked):** `defense-worker.ts` `simulateTrial()` logic was a fresh port from the deleted JS original — no line-by-line diff verified. The simulation model (hit location %, AP reduction, resilience formula) should be regression-tested before Phase 5 work begins.
+
 ---
 
 ## Current State
 
-| Metric | Value |
-|--------|-------|
-| Tests | 187 passing (6 test files) |
-| Biome | 0 errors from new files; pre-existing warnings in sheet-app.ts/builder-app.ts |
-| JSON validation | 12/12 files pass |
-| Content lint | 0 errors, 19 warnings, 884 info |
-| Build | 89 pages built successfully |
-| Python | Fully removed |
-| Workers | ESM (`src/workers/*.ts`), `dice-common.js` deleted |
-| Bun | 1.3.10, replaces tsx |
+| Metric          | Value                                                                         |
+| --------------- | ----------------------------------------------------------------------------- |
+| Tests           | 187 passing (6 test files)                                                    |
+| Biome           | 0 errors from new files; pre-existing warnings in sheet-app.ts/builder-app.ts |
+| JSON validation | 12/12 files pass                                                              |
+| Content lint    | 0 errors, 19 warnings, 884 info                                               |
+| Build           | 89 pages built successfully                                                   |
+| Python          | Fully removed                                                                 |
+| Workers         | ESM (`src/workers/*.ts`), `dice-common.js` deleted                            |
+| Bun             | 1.3.10, replaces tsx                                                          |
 
 ### Key Baselines
 
@@ -54,21 +66,21 @@ Workers moved from `public/workers/` (legacy JS, `importScripts` + `dice-common.
 
 ### Error Scope
 
-| File | TS Errors | Lines | `@ts-nocheck` |
-|------|-----------|-------|---------------|
-| `sheet-app.ts` | ~614 | 2,662 | Removed |
-| `builder-app.ts` | ~422 | 1,825 | Present |
-| **Total** | **~1,036** | **4,487** | |
+| File             | TS Errors  | Lines     | `@ts-nocheck` |
+| ---------------- | ---------- | --------- | ------------- |
+| `sheet-app.ts`   | ~614       | 2,662     | Removed       |
+| `builder-app.ts` | ~422       | 1,825     | Present       |
+| **Total**        | **~1,036** | **4,487** |               |
 
 ### Error Patterns (90%+ mechanical)
 
-| Pattern | ~Count | Fix |
-|---------|--------|-----|
-| `getElementById` returns `HTMLElement \| null` | ~200 | `as HTMLInputElement` or null-guard |
-| `querySelector` returns `Element \| null` | ~100 | Same |
-| Implicit `any` parameters in callbacks | ~150 | Add `: Event`, `: string`, etc. |
-| Property access on `any`-typed objects | ~100 | Add interface or inline type |
-| Object method `this` typing | ~50 | Explicit `this` parameter or class conversion |
+| Pattern                                        | ~Count | Fix                                           |
+| ---------------------------------------------- | ------ | --------------------------------------------- |
+| `getElementById` returns `HTMLElement \| null` | ~200   | `as HTMLInputElement` or null-guard           |
+| `querySelector` returns `Element \| null`      | ~100   | Same                                          |
+| Implicit `any` parameters in callbacks         | ~150   | Add `: Event`, `: string`, etc.               |
+| Property access on `any`-typed objects         | ~100   | Add interface or inline type                  |
+| Object method `this` typing                    | ~50    | Explicit `this` parameter or class conversion |
 
 **Recommended approach:** Type-in-place (fix errors without splitting). Module split deferred until Playwright E2E tests exist.
 

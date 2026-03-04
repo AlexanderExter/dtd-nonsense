@@ -22,8 +22,9 @@ src/
   pages/tools/       ← .astro tool pages (each is self-contained)
   layouts/           ← ToolLayout.astro (standalone HTML shell for tools)
   components/        ← Head.astro (Starlight override for analytics)
-  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts
+  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
   lib/tools/         ← Large tool scripts: sheet-app.ts, builder-app.ts
+  workers/           ← TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   styles/            ← custom.css (Starlight theme), sheet.css, builder.css
   content.config.ts  ← Content Collection definitions
 ```
@@ -58,6 +59,21 @@ src/
 - `scripts/prebuild.mjs` copies `cleaned-references/` → `src/content/docs/rules/` and `data/` → `public/data/` at build time
 - Generated content dirs are gitignored — never edit files in `src/content/docs/rules/` or `public/data/`
 - Starlight frontmatter is injected during prebuild by `scripts/prebuild.mjs` (gray-matter)
+
+### Web Workers
+
+- Place worker scripts in `src/workers/` as `.ts` files
+- Instantiate with `new Worker(new URL("../../workers/name.ts", import.meta.url), { type: "module" })` — Vite bundles them as ESM
+- Workers use **relative imports only** (e.g., `../lib/dtd/dice-primitives.ts`) — the `@/` alias does not resolve inside worker bundles
+- Do **not** put workers in `public/workers/` — they cannot import TypeScript from there
+
+### Biome (Linter/Formatter)
+
+- Config: `biome.json`. Covers `src/**` and `scripts/**`
+- **Check**: `npm run lint` — reports errors/warnings
+- **Auto-fix**: `npm run lint:fix` — fixes all fixable violations in one pass. Use this for bulk formatting fixes instead of manual file edits.
+- CI runs `biome ci .` (no writes). Failures block build.
+- Pre-existing fixable violations in `sheet-app.ts` / `builder-app.ts`: run `npm run lint:fix` to resolve at scale before doing manual TS work
 
 ### Build
 

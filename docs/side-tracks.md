@@ -113,3 +113,15 @@ No Lighthouse or Core Web Vitals audit has been performed. Should be done before
 ### Product Vision
 
 Needs a first product-owner session to define target audience, success metrics, and feature priorities. See `docs/product-vision.md` for the placeholder.
+
+---
+
+## Agent Workflow
+
+### Biome Auto-Fix Before Phase 5
+
+`sheet-app.ts` and `builder-app.ts` have 44 pre-existing Biome violations (all `FIXABLE`). Run `npm run lint:fix` **before** starting Phase 5 TypeScript work — the auto-fixer handles the bulk of formatting/style violations in one pass, so agents don't waste turns patching them individually mid-TS-fix session. _Context: identified during 2026-03-04 sanity check when biome ci showed 46 errors, 44 of which are fixable._
+
+### Defense-Worker Simulation Logic Verification
+
+`src/workers/defense-worker.ts` `simulateTrial()` was ported from the now-deleted `public/workers/defense-worker.js` without a line-by-line diff. The hit location percentages, AP reduction formula (`locAP - pen`, doubled if blast), and resilience HP calculation were reconstructed from structure. The test scenario to verify: run defense-graph tool with known inputs and compare results against pre-migration snapshots. _Context: original JS deleted in 2026-03-04 stabilizer, port was fresh reconstruction._

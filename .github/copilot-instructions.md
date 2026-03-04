@@ -6,14 +6,37 @@ This is a **tabletop RPG rulebook documentation project** with **web-based play 
 
 ## Environment
 
-All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Keep this in mind for every command and file operation:
+All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. This is not a Linux/Mac environment — POSIX shell assumptions will fail silently or with cryptic errors.
 
-- **Paths**: Use backslashes or forward slashes — both work in PowerShell, but external tools may differ. Always quote paths with spaces.
-- **Encoding**: Windows defaults to cp1252. Never use `Set-Content` or `Out-File` for non-ASCII files — they silently corrupt UTF-8. Use agent edit tools (replace_string_in_file, create_file) instead of terminal commands for file edits.
+### PowerShell Command Equivalents
+
+Common Unix commands **do not exist** in PowerShell. Always use the PowerShell equivalent:
+
+| Unix (BROKEN here)  | PowerShell equivalent        |
+| ------------------- | ---------------------------- |
+| `cmd1 && cmd2`      | `cmd1 ; cmd2`                |
+| `head -n 20`        | `Select-Object -First 20`    |
+| `tail -n 20`        | `Select-Object -Last 20`     |
+| `grep pattern file` | `Select-String -Pattern ...` |
+| `cat file`          | `Get-Content file`           |
+| `rm file`           | `Remove-Item file`           |
+| `which cmd`         | `Get-Command cmd`            |
+| `echo $?`           | `$LASTEXITCODE`              |
+
+When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism. Translate before re-running.
+
+### Other Windows Constraints
+
+- **Paths**: Use backslashes or forward slashes — both work in PowerShell, but always quote paths with spaces.
+- **Encoding**: Windows defaults to cp1252. **Never use `Set-Content` or `Out-File` for non-ASCII files** — they silently corrupt UTF-8. Use agent edit tools (`replace_string_in_file`, `create_file`) instead of terminal commands for file edits.
 - **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
+- **PATH**: Newly installed tools (e.g., Bun) need `$env:Path = [System.Environment]::GetEnvironmentVariable("Path","User") + ";" + [System.Environment]::GetEnvironmentVariable("Path","Machine")` to take effect in current terminal.
+
+### Toolchain
+
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
 - **Bun**: TypeScript pipeline scripts run via `bun run`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
-- **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check, `npm run lint:fix` to auto-fix. Config in `biome.json`. CI runs `biome ci .` before build.
+- **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check; **run `npm run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
 - **Vitest**: Unit tests across 6 test files (core, dice, schemas, pipeline scripts). 187 tests. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
@@ -42,7 +65,7 @@ Every task that changes mechanics, tool behavior, or project conventions must up
 | Game rules / terminology  | `books/`, `cleaned-references/`, `docs/project-conventions.md` |
 | Tool behavior or features | `docs/tools/[tool].md`, `docs/architecture.md`                 |
 | Shared module API         | `docs/shared/core-js.md` or `dice-js.md`                       |
-| JSON data schemas         | `docs/data-reference.md`, `src/lib/dtd/schemas/*.ts`          |
+| JSON data schemas         | `docs/data-reference.md`, `src/lib/dtd/schemas/*.ts`           |
 | Pipeline behavior         | `docs/pipeline.md`                                             |
 | Workflow or conventions   | `docs/project-conventions.md`                                  |
 | Astro config / pages      | `docs/architecture.md`                                         |
@@ -56,6 +79,7 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 
 **Three critical rules (always apply):**
 
+- **PowerShell only** — no `bash`, no `&&`, no `head`/`tail`/`grep`. See the command equivalents table above.
 - **PowerShell encoding** — never use `Set-Content` for non-ASCII files; it silently corrupts UTF-8
 - **Check git state first** — other agents may have committed. Run `git status` and `git log --oneline -5` before starting work
 
@@ -100,6 +124,7 @@ src/                   Astro source files
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
+  workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   layouts/             ToolLayout.astro
   styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
 public/data/           Generated JSON data copies (gitignored)
@@ -115,11 +140,11 @@ public/data/           Generated JSON data copies (gitignored)
 
 TypeScript pipeline scripts (run via npm):
 
-| Script                | Purpose                                                              |
-| --------------------- | -------------------------------------------------------------------- |
-| `npm run validate`    | Validate all 12 JSON data files against Zod schemas                  |
-| `npm run lint:data`   | Lint markdown for terminology, formatting, encoding                  |
-| `npm run sync-check`  | Detect drift between markdown and JSON data                          |
+| Script               | Purpose                                             |
+| -------------------- | --------------------------------------------------- |
+| `npm run validate`   | Validate all 12 JSON data files against Zod schemas |
+| `npm run lint:data`  | Lint markdown for terminology, formatting, encoding |
+| `npm run sync-check` | Detect drift between markdown and JSON data         |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 
