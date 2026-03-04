@@ -11,8 +11,10 @@ All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Ke
 - **Paths**: Use backslashes or forward slashes — both work in PowerShell, but external tools may differ. Always quote paths with spaces.
 - **Encoding**: Windows defaults to cp1252. Never use `Set-Content` or `Out-File` for non-ASCII files — they silently corrupt UTF-8. Use agent edit tools (replace_string_in_file, create_file) instead of terminal commands for file edits.
 - **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
-- **Python**: Managed via `uv` with a `.venv` in the project root. Always use `uv run` to execute Python commands.
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
+- **tsx**: TypeScript pipeline scripts run via `npx tsx`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
+- **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check, `npm run lint:fix` to auto-fix. Config in `biome.json`. CI runs `biome ci .` before build.
+- **Vitest**: Unit tests for `core.ts` and `dice.ts`. Run `npm run test` to run all tests. Config in `vitest.config.ts`.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
 ---
@@ -40,7 +42,7 @@ Every task that changes mechanics, tool behavior, or project conventions must up
 | Game rules / terminology  | `books/`, `cleaned-references/`, `docs/project-conventions.md` |
 | Tool behavior or features | `docs/tools/[tool].md`, `docs/architecture.md`                 |
 | Shared module API         | `docs/shared/core-js.md` or `dice-js.md`                       |
-| JSON data schemas         | `docs/data-reference.md`, `pipeline/models/*.py`               |
+| JSON data schemas         | `docs/data-reference.md`, `src/lib/dtd/schemas/*.ts`          |
 | Pipeline behavior         | `docs/pipeline.md`                                             |
 | Workflow or conventions   | `docs/project-conventions.md`                                  |
 | Astro config / pages      | `docs/architecture.md`                                         |
@@ -79,48 +81,45 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 books/                 Core reference material (per-chapter split, 2 books)
   open-questions.md    Tracked ambiguities and contradictions
 cleaned-references/    Succinct combined reading references (merged by topic)
-data/                  Canonical JSON game data (12 files, validated by pipeline/models/)
+data/                  Canonical JSON game data (12 files, validated by Zod schemas)
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
   tools/               Per-tool feature specs (9 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
-pipeline/              Python package: validation, linting, Astro prep
-  models/              Pydantic schemas (source of truth for all 12 JSON files)
-  linting/             Terminology + formatting linters
-  starlight/           Frontmatter injection for Astro/Starlight
-  parsers/             Markdown↔JSON sync checkers
+scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
 .github/               Agent instructions, skills, prompt files
 astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
+biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           npm dependencies (Astro, Starlight, Chart.js)
 tsconfig.json          TypeScript strict config with @/ path alias
-scripts/prebuild.mjs   Copies content into Astro structure before build
+vitest.config.ts       Vitest unit test configuration
+scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight frontmatter
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
   lib/dtd/             ES module ports: core.ts, dice.ts, types.ts
+  lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   layouts/             ToolLayout.astro
   styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
 public/data/           Generated JSON data copies (gitignored)
 ```
 
-**Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `pipeline/models/` validates the data. `docs/` documents everything.
+**Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `src/lib/dtd/schemas/` validates the data. `docs/` documents everything.
 
-**Build:** `npm run build` runs `prebuild.mjs` (copies content/data) then `astro build` (Pagefind search). Dev server: `npm run dev`.
+**Build:** `npm run build` runs `prebuild.mjs` (copies content/data, injects frontmatter) then `astro build` (Pagefind search). Dev server: `npm run dev`. Lint with `npm run lint`. Run tests with `npm run test`.
 
-**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs the Astro build + Python pipeline checks (ruff, validate, lint) on every push/PR.
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → Vitest tests → JSON validation → content lint → Astro build on every push/PR.
 
-### Pipeline CLI
+### Pipeline Scripts
 
-The `dtd` CLI (run via `uv run dtd <command>`) provides:
+TypeScript pipeline scripts (run via npm):
 
-| Command               | Purpose                                                              |
+| Script                | Purpose                                                              |
 | --------------------- | -------------------------------------------------------------------- |
-| `dtd validate`        | Validate all 12 JSON data files against Pydantic schemas             |
-| `dtd validate --xref` | Also check cross-file references (skills, feats, traits)             |
-| `dtd lint`            | Lint markdown for terminology, formatting, encoding                  |
-| `dtd starlight-prep`  | Inject Starlight-compatible YAML frontmatter into cleaned-references |
-| `dtd sync-check`      | Detect drift between markdown and JSON data                          |
+| `npm run validate`    | Validate all 12 JSON data files against Zod schemas                  |
+| `npm run lint:data`   | Lint markdown for terminology, formatting, encoding                  |
+| `npm run sync-check`  | Detect drift between markdown and JSON data                          |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 

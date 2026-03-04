@@ -12,16 +12,8 @@ jobs:
                   node-version: 20
                   cache: npm
             - run: npm ci
+            - run: npx biome ci .
+            - run: npm run test
+            - run: npm run validate
+            - run: npm run lint:data
             - run: npm run build
-
-            # --- Python pipeline ---
-            - uses: astral-sh/setup-uv@v5
-              with:
-                  enable-cache: true
-            - uses: actions/setup-python@v5
-              with:
-                  python-version: "3.12"
-            - run: uv sync --group dev
-            - run: uv run ruff check .
-            - run: uv run dtd validate
-            - run: uv run dtd lint

@@ -49,7 +49,7 @@ src/
 
 - `tsconfig.json` extends `astro/tsconfigs/strict`
 - Path alias: `@/*` → `src/*`
-- `sheet-app.ts` and `builder-app.ts` have `@ts-nocheck` — intentional, deferred to Phase 2 module refactor
+- `builder-app.ts` currently has `@ts-nocheck` — temporary while in-place typing work continues
 - All other `.ts` files should be fully typed
 
 ### Content Pipeline
@@ -57,7 +57,7 @@ src/
 - Content Collections defined in `src/content.config.ts` using Content Layer API with `glob()` loader
 - `scripts/prebuild.mjs` copies `cleaned-references/` → `src/content/docs/rules/` and `data/` → `public/data/` at build time
 - Generated content dirs are gitignored — never edit files in `src/content/docs/rules/` or `public/data/`
-- Starlight frontmatter injected by `uv run dtd starlight-prep`
+- Starlight frontmatter is injected during prebuild by `scripts/prebuild.mjs` (gray-matter)
 
 ### Build
 

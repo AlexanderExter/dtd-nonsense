@@ -39,9 +39,20 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 - **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; tool apps have `@ts-nocheck` pending Phase 2 module refactor.
 
-### Python Pipeline
+### Code Quality & Testing
 
-A `pipeline/` Python package (Pydantic v2 + Click CLI) provides data validation, content linting, and Astro/Starlight migration prep. Managed via `uv`; entry point is `dtd` CLI. See [docs/pipeline.md](pipeline.md) for details.
+| Tool   | Purpose                    | Config              | npm Scripts                  |
+| ------ | -------------------------- | ------------------- | ---------------------------- |
+| Biome  | Linter + formatter (JS/TS/CSS) | `biome.json`    | `lint`, `lint:fix`           |
+| Vitest | Unit testing framework     | `vitest.config.ts`  | `test`, `test:watch`         |
+
+**Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
+
+**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/`. 128 tests currently cover `core.ts` and `dice.ts`.
+
+### TypeScript Pipeline Scripts
+
+TypeScript scripts in `scripts/` provide data validation, content linting, and sync checking. Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data. See [docs/pipeline.md](pipeline.md) for details.
 
 ---
 
@@ -71,15 +82,17 @@ Vercel is connected to the GitHub repository (`AlexanderExter/dtd-nonsense`). It
 The `.github/workflows/build.yml` workflow runs on every push and pull request:
 
 ```
-Node / Astro          Python pipeline
-─────────────         ─────────────────
-npm ci                uv sync --dev
-npm run build         ruff check .
-                      dtd validate
-                      dtd lint
+Node / Astro
+─────────────
+npm ci
+biome ci .
+npm run test
+npm run validate
+npm run lint:data
+npm run build
 ```
 
-Both pipelines must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
+All steps must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
 
 ---
 
@@ -264,7 +277,7 @@ Most JSON files use a top-level wrapper key matching the filename. Tools access 
 | Ship Builder      | `data.torpedoTubeCost`, `data.criticalDamage`            | Scalar + array                                                  |
 | Ship Builder      | `data.holdingsBP`, `data.crewQualityCost`                | Config values                                                   |
 
-The pipeline Pydantic models (`pipeline/models/`) mirror these exact shapes.
+The Zod schemas (`src/lib/dtd/schemas/`) mirror these exact shapes.
 
 ---
 

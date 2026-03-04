@@ -2,21 +2,19 @@
  * Prebuild script — copies content into Astro's src/content/docs/ structure.
  *
  * Runs before `astro build` to:
- * 1. Copy cleaned-references/ → src/content/docs/rules/
+ * 1. Inject Starlight frontmatter + copy cleaned-references/ → src/content/docs/rules/
  * 2. Copy books/book-1/ → src/content/docs/books/book-1/
  * 3. Copy books/book-2/ → src/content/docs/books/book-2/
  * 4. Copy data/ → public/data/
  *
- * Frontmatter must already exist on cleaned-references/ files
- * (run `uv run dtd starlight-prep` first).
- *
- * For books/ files that have non-Starlight frontmatter, this script
- * transforms their existing frontmatter to be Starlight-compatible.
+ * Frontmatter injection is built-in — no separate `starlight-prep` step needed.
+ * For books/ files, existing frontmatter is transformed to Starlight format.
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import matter from "gray-matter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -34,26 +32,26 @@ const BOOK_2_DEST = join(ROOT, "src", "content", "docs", "books", "book-2");
 const DATA_DEST = join(ROOT, "public", "data");
 
 function ensureDir(dir) {
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
+	if (!existsSync(dir)) {
+		mkdirSync(dir, { recursive: true });
+	}
 }
 
 function copyMdFiles(src, dest, transform = null, lowercaseNames = false) {
-  ensureDir(dest);
-  const files = readdirSync(src).filter((f) => f.endsWith(".md"));
-  let count = 0;
+	ensureDir(dest);
+	const files = readdirSync(src).filter((f) => f.endsWith(".md"));
+	let count = 0;
 
-  for (const file of files) {
-    let content = readFileSync(join(src, file), "utf-8");
-    if (transform) {
-      content = transform(content, file);
-    }
-    const outName = lowercaseNames ? file.toLowerCase() : file;
-    writeFileSync(join(dest, outName), content, "utf-8");
-    count++;
-  }
-  return count;
+	for (const file of files) {
+		let content = readFileSync(join(src, file), "utf-8");
+		if (transform) {
+			content = transform(content, file);
+		}
+		const outName = lowercaseNames ? file.toLowerCase() : file;
+		writeFileSync(join(dest, outName), content, "utf-8");
+		count++;
+	}
+	return count;
 }
 
 /**
@@ -62,60 +60,181 @@ function copyMdFiles(src, dest, transform = null, lowercaseNames = false) {
  * Starlight needs: title, sidebar.order, sidebar.label
  */
 function transformBookFrontmatter(content, filename) {
-  // Check if file has frontmatter
-  if (!content.startsWith("---")) {
-    // No frontmatter — add minimal Starlight frontmatter
-    const title = filename
-      .replace(/^\d+-/, "")
-      .replace(/.md$/, "")
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (c) => c.toUpperCase());
-    const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
+	// Check if file has frontmatter
+	if (!content.startsWith("---")) {
+		// No frontmatter — add minimal Starlight frontmatter
+		const title = filename
+			.replace(/^\d+-/, "")
+			.replace(/.md$/, "")
+			.replace(/-/g, " ")
+			.replace(/\b\w/g, (c) => c.toUpperCase());
+		const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
 
-    return `---\ntitle: "${title}"\nsidebar:\n  order: ${order}\n---\n\n${content}`;
-  }
+		return `---\ntitle: "${title}"\nsidebar:\n  order: ${order}\n---\n\n${content}`;
+	}
 
-  // Parse existing frontmatter
-  const fmEnd = content.indexOf("---", 3);
-  if (fmEnd === -1) return content;
+	// Parse existing frontmatter
+	const fmEnd = content.indexOf("---", 3);
+	if (fmEnd === -1) return content;
 
-  const fmBlock = content.substring(3, fmEnd).trim();
-  const body = content.substring(fmEnd + 3);
+	const fmBlock = content.substring(3, fmEnd).trim();
+	const body = content.substring(fmEnd + 3);
 
-  // Extract fields from existing frontmatter
-  const titleMatch = fmBlock.match(/title:\s*"?([^"\n]+)"?/);
-  const orderMatch = fmBlock.match(/order:\s*(\d+)/);
-  const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
+	// Extract fields from existing frontmatter
+	const titleMatch = fmBlock.match(/title:\s*"?([^"\n]+)"?/);
+	const orderMatch = fmBlock.match(/order:\s*(\d+)/);
+	const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
 
-  const title = titleMatch ? titleMatch[1].trim() : filename.replace(/.md$/, "");
-  const order = orderMatch
-    ? parseInt(orderMatch[1], 10)
-    : chapterMatch
-      ? parseInt(chapterMatch[1], 10)
-      : 99;
+	const title = titleMatch ? titleMatch[1].trim() : filename.replace(/.md$/, "");
+	const order = orderMatch ? parseInt(orderMatch[1], 10) : chapterMatch ? parseInt(chapterMatch[1], 10) : 99;
 
-  // Build new Starlight-compatible frontmatter
-  const newFm = `---
+	// Build new Starlight-compatible frontmatter
+	const newFm = `---
 title: "${title}"
 sidebar:
   order: ${order}
   label: "${title}"
 ---`;
 
-  return newFm + body;
+	return newFm + body;
+}
+
+// ---------------------------------------------------------------------------
+// Starlight frontmatter metadata for cleaned-references
+// ---------------------------------------------------------------------------
+
+/** @type {Record<string, {title: string, description: string, group: string}>} */
+const CONTENT_METADATA = {
+	"01-Core-Rules.md": { title: "Core Rules", description: "Dice system, Tests, Raises, and Checks", group: "Rules" },
+	"02-Char-Creation.md": {
+		title: "Character Creation",
+		description: "9-step character creation process",
+		group: "Character",
+	},
+	"03-Characteristics-Skills.md": {
+		title: "Characteristics & Skills",
+		description: "9 characteristics and full skill list",
+		group: "Character",
+	},
+	"04-Races.md": {
+		title: "Races",
+		description: "16 playable races with traits, bonuses, and racial powers",
+		group: "Character",
+	},
+	"05-Exaltations.md": {
+		title: "Exaltations",
+		description: "Supernatural types — Vampire, Werewolf, and more",
+		group: "Character",
+	},
+	"06-Classes.md": {
+		title: "Classes",
+		description: "50+ classes with progression tracks and feat tables",
+		group: "Character",
+	},
+	"07-Feats.md": {
+		title: "Feats, Assets & Hindrances",
+		description: "Complete feat list with effects and prerequisites",
+		group: "Character",
+	},
+	"08-Backgrounds.md": {
+		title: "Backgrounds",
+		description: "Background dots — Allies, Wealth, Holdings, and more",
+		group: "Character",
+	},
+	"09-Alignments.md": {
+		title: "Alignments",
+		description: "Pantheons, devotion mechanics, and sin tables",
+		group: "Character",
+	},
+	"10-Equipment.md": {
+		title: "Equipment",
+		description: "Weapons, armor, gear, and starting packages",
+		group: "Equipment",
+	},
+	"11-Magic.md": { title: "Magic", description: "Sorcery system and spell schools", group: "Powers" },
+	"12-Sword-Schools.md": { title: "Sword Schools", description: "9 melee combat disciplines", group: "Powers" },
+	"13-Gun-Kata.md": { title: "Gun Kata", description: "6 ranged combat disciplines", group: "Powers" },
+	"14-Combat.md": { title: "Combat", description: "Combat rules, action economy, and initiative", group: "Rules" },
+	"15-Social-Combat.md": { title: "Social Combat", description: "Social interaction mechanics", group: "Rules" },
+	"16-Conditions.md": {
+		title: "Conditions",
+		description: "Status effects and their mechanical impact",
+		group: "Rules",
+	},
+	"17-Vehicles.md": { title: "Vehicles", description: "Vehicle rules and combat", group: "Advanced" },
+	"18-Ships.md": { title: "Ships", description: "Spelljammer-style space vessels", group: "Advanced" },
+	"19-Antagonists.md": {
+		title: "Antagonists",
+		description: "NPC creation and 40+ stat blocks",
+		group: "Storytelling",
+	},
+	"20-Artifacts.md": { title: "Artifacts", description: "Magical items and their properties", group: "Equipment" },
+	"21-Advanced-Rules.md": {
+		title: "Advanced Rules",
+		description: "Optional and supplemental rules",
+		group: "Advanced",
+	},
+	"22-SM-Reference.md": {
+		title: "Story Master Reference",
+		description: "Story Master tools and guidelines",
+		group: "Storytelling",
+	},
+	"23-Setting-Lore.md": {
+		title: "Setting & Lore",
+		description: "The Great Wheel, crystal spheres, and factions",
+		group: "Storytelling",
+	},
+	"99-Appendix-Archive.md": {
+		title: "Appendix & Errata",
+		description: "Errata and archived content — supersedes earlier files",
+		group: "Reference",
+	},
+};
+
+/**
+ * Inject Starlight-compatible frontmatter into a cleaned-references file.
+ * Uses gray-matter to parse/serialize YAML frontmatter.
+ */
+function injectStarlightFrontmatter(content, filename) {
+	const meta = CONTENT_METADATA[filename];
+	if (!meta) return content; // Unknown file — pass through unchanged
+
+	const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
+	const parsed = matter(content);
+
+	const targetFm = {
+		title: meta.title,
+		description: meta.description,
+		sidebar: {
+			order,
+			label: meta.title,
+		},
+	};
+
+	// Special badge for errata
+	if (filename === "99-Appendix-Archive.md") {
+		targetFm.sidebar = {
+			order,
+			label: "Errata",
+			badge: { text: "Errata", variant: "caution" },
+		};
+	}
+
+	parsed.data = targetFm;
+	return matter.stringify(parsed.content, parsed.data);
 }
 
 function copyDataFiles(src, dest) {
-  ensureDir(dest);
-  const files = readdirSync(src).filter((f) => f.endsWith(".json"));
-  let count = 0;
+	ensureDir(dest);
+	const files = readdirSync(src).filter((f) => f.endsWith(".json"));
+	let count = 0;
 
-  for (const file of files) {
-    const content = readFileSync(join(src, file));
-    writeFileSync(join(dest, file), content);
-    count++;
-  }
-  return count;
+	for (const file of files) {
+		const content = readFileSync(join(src, file));
+		writeFileSync(join(dest, file), content);
+		count++;
+	}
+	return count;
 }
 
 // ============================================================================
@@ -124,9 +243,9 @@ function copyDataFiles(src, dest) {
 
 console.log("🔧 DTD Prebuild — copying content to Astro structure\n");
 
-// 1. Cleaned references → rules (lowercase filenames for consistent slugs)
-const rulesCount = copyMdFiles(CLEANED_REFS, RULES_DEST, null, true);
-console.log(`  ✓ ${rulesCount} rules files → src/content/docs/rules/`);
+// 1. Cleaned references → rules (inject frontmatter + lowercase filenames)
+const rulesCount = copyMdFiles(CLEANED_REFS, RULES_DEST, injectStarlightFrontmatter, true);
+console.log(`  ✓ ${rulesCount} rules files → src/content/docs/rules/ (frontmatter injected)`);
 
 // 2. Books → books/book-1, books/book-2
 const book1Count = copyMdFiles(BOOK_1, BOOK_1_DEST, transformBookFrontmatter);

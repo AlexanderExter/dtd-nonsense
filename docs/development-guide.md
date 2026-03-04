@@ -53,7 +53,6 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 ### Prerequisites
 
 - Node 20+ and npm
-- Python 3.12+ with `uv` (for pipeline)
 
 ### Commands
 
@@ -62,19 +61,23 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 | `npm run dev`               | Start Astro dev server with hot reload                                      |
 | `npm run build`             | Full build: prebuild → astro build                                          |
 | `npm run preview`           | Preview production build locally                                            |
-| `uv run dtd starlight-prep` | Inject Starlight frontmatter (run once or after cleaning references change) |
+| `npm run lint`              | Check JS/TS/CSS with Biome                                                  |
+| `npm run lint:fix`          | Auto-fix Biome lint issues                                                  |
+| `npm run test`              | Run Vitest unit tests                                                       |
+| `npm run test:watch`        | Run Vitest in watch mode                                                    |
+| `npm run validate`          | Validate JSON data against Zod schemas                                      |
+| `npm run lint:data`         | Lint markdown for terminology, formatting, encoding                         |
+| `npm run sync-check`        | Detect drift between markdown and JSON data                                 |
 
 ### Build Pipeline
 
 ```
-uv run dtd starlight-prep     ← Run once: adds YAML frontmatter to cleaned-references/
-        ↓
-node scripts/prebuild.mjs     ← Copies: cleaned-refs → rules, books → books, JSON → public/data
+node scripts/prebuild.mjs     ← Copies: cleaned-refs → rules, books → books, JSON → public/data, injects frontmatter
         ↓
 astro build                   ← Builds static pages + Pagefind search index
 ```
 
-`npm run build` runs the last two steps. The `starlight-prep` step is a prerequisite that only needs re-running when `cleaned-references/` files are edited.
+`npm run build` runs both steps. Starlight frontmatter injection is handled automatically by `prebuild.mjs`.
 
 ---
 
@@ -172,6 +175,34 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 ---
 
+## Unit Tests
+
+Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
+
+| Test File                       | Covers                                                    |
+| ------------------------------- | --------------------------------------------------------- |
+| `src/lib/dtd/core.test.ts`      | derived stats, character CRUD, migration, data loading    |
+| `src/lib/dtd/dice.test.ts`      | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+
+128 tests total. Run with:
+
+```bash
+npm run test          # single run
+npm run test:watch    # re-run on file changes
+```
+
+### CI Pipeline Order
+
+GitHub Actions runs the following steps on every push/PR:
+
+```
+Biome lint  →  Vitest tests  →  Astro build (includes validate + lint:data)
+```
+
+All steps must pass for a PR to be merge-ready.
+
+---
+
 ## Testing Checklist
 
 Per-tool verification before merge:
@@ -184,7 +215,7 @@ Per-tool verification before merge:
 6. **Persistence** — save, reload page, data persists
 7. **Cross-tool** — Sheet export → other tool import (via canonical format)
 8. **Astro build** — `npm run build` succeeds with 0 errors
-9. **Pipeline** — `uv run dtd validate` passes (12/12 files)
+9. **Pipeline** — `npm run validate` passes (12/12 files)
 
 ### Dice Module Verification
 
