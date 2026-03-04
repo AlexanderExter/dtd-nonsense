@@ -321,6 +321,10 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 Decisions in planning documents (`implementation-plan.md`, open questions) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
 
+### Skill Files Drift After Broad Refactors
+
+Copilot skill files (`.github/copilot-skills/*.md`) load automatically for matching tasks but are easy to miss during documentation sweeps. After broad refactors (worker migration, toolchain changes, `@ts-nocheck` removal), cross-check **all** agent-facing files — not just `docs/`. In March 2026, a multi-agent stabilizer session updated 40 files across 15 commits but left `tool-development.md` with 5 stale claims about worker architecture, causing agents in subsequent sessions to receive contradictory instructions.
+
 ### `.github/` Relative Link Prefix
 
 Markdown files in `.github/` need `../` prefix to link to project root directories (`docs/`, `data/`, etc.). VS Code's markdown validator catches broken links, but anchor fragments (`#section`) cause false positives — the file path resolves correctly even if the validator complains about the fragment.
