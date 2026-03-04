@@ -1,4 +1,3 @@
-// @ts-nocheck -- Phase 2: DOM element typing (getElementById cast patterns) deferred to module refactor
 /**
  * DTD Character Sheet
  * Freeform character sheet for Dungeons the Dragoning 40,000: 7th Edition
