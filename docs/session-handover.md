@@ -1,52 +1,99 @@
 ﻿# Session Handover
 
-> **Date:** 2026-03-03
-> **Branch:** `session-2026-03-03` (11 commits ahead of main, pending merge)
-> **Objective:** Technical stabilization (full health audit) + documentation housekeeping
+> **Date:** 2026-03-04
+> **Branch:** `session-2026-03-03-consolidation` (10 commits ahead of main, pending merge)
+> **Objective:** Technical consolidation — Phases 1–4 of the 5-phase plan from `implementation-plan.md`
 
 ---
 
-## What Changed
+## What Changed (This Session)
 
-### Code (3 commits)
+### Phase 1: Biome ✅
 
-- Removed dead exports: `DerivedStats` type, `NpcTemplatesFile`/`TraitsFile` aliases, dead `__all__` entries.
-- Deduplicated `calculateDerived()` in `sheet-app.ts` — now delegates to `derived.*` functions from `core.ts`.
-- Fixed `escapeHtml` in `npc-generator.astro` — was locally defined, now imported from `core.ts`.
+- Installed Biome 2.4.5, configured `biome.json` (tabs, 120-char lines, double quotes, semicolons)
+- Auto-formatted all JS/TS/CSS files, added `npm run lint` / `npm run lint:fix`, wired into CI
 
-### Config (2 commits)
+### Phase 2: Vitest ✅
 
-- `package.json`: Added `engines` field (`node >=20`), documented `path-to-regexp` override.
-- `pyproject.toml`: Migrated `[project.optional-dependencies].dev` → `[dependency-groups].dev`.
-- `.github/workflows/build.yml`: Updated `uv sync --extra dev` → `uv sync --group dev`.
+- Installed Vitest 4.0.18, created 128 unit tests (63 dice + 65 core)
+- Added `npm run test` / `npm run test:watch`
 
-### Documentation (6 commits)
+### Phase 3: Pipeline Consolidation ✅
 
-- **Instruction files:** Full rewrite of `markdown.instructions.md` and `astro.instructions.md` — was generic boilerplate, now DTD-specific.
-- **Data reference:** Fixed 5 wrong wrapper-key schemas in `data-reference.md`, removed stale exotic weapons bug note.
-- **Architecture:** Fixed field types, persistence key, skills.json wrapper description, added Chart.js section.
-- **Tool specs:** Fixed deps/data sources in `npc-generator.md`, `dice-roller.md`, `ship-builder.md`; fixed consumer list in `dice-js.md`.
-- **Conventions:** Documented CSS convention, removed hardcoded page counts, fixed stale `tools/` reference.
-- **Side-tracks:** Rewritten from chronological journal (325 lines, mixed resolved/open) to prioritized backlog (130 lines, 18 open items across 5 themes).
-- **Migration roadmap:** Dispersed remaining useful content, deleted `astro-migration-roadmap.md`.
+- **3B — Zod Schemas:** Ported 13 Pydantic models → 14 Zod schema files + 15 tests
+- **3C — Pipeline Scripts:** Created `scripts/validate.ts`, `lint.ts`, `sync-check.ts`; updated `prebuild.mjs` with frontmatter injection; installed `gray-matter` + `tsx`
+- **3D — Web Workers:** Created `dice-common.js` shared module, extracted `defense-worker.js` from inline blob
+- **3E — Python Removal:** Deleted `pipeline/` (25 files, ~2,263 lines), `pyproject.toml`, `uv.lock`; updated CI + all docs
+
+### Phase 4.2: Pipeline Tests ✅
+
+- 44 unit tests across `scripts/__tests__/` (validate, lint, sync-check)
+- Refactored scripts to export pure functions with guarded `main()`
+
+### Phase 5 Pre-Work ✅
+
+- Split `core.ts` god module into 5 focused sub-modules (`data.ts`, `derived.ts`, `character.ts`, `ui.ts`, `util.ts`)
+- `core.ts` reduced to 12-line barrel re-export
 
 ---
 
-## Known Issues
+## Current State
 
-None broken. Build passes, pipeline validates, 0 npm vuln.
+| Metric | Value |
+|--------|-------|
+| Tests | 187 passing (6 test files) |
+| Biome | 0 errors, 27 warnings, 45 infos |
+| JSON validation | 12/12 files pass |
+| Content lint | 0 errors, 2 warnings, ~900 info |
+| Python | Fully removed |
+| `@ts-nocheck` | 2 files remain (`sheet-app.ts`, `builder-app.ts`) |
+
+### npm Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Astro dev server |
+| `npm run build` | Prebuild + Astro build |
+| `npm run test` | Vitest (187 tests) |
+| `npm run lint` / `lint:fix` | Biome check / auto-fix |
+| `npm run validate` | JSON schema validation (12 files) |
+| `npm run lint:data` | Markdown content linting |
+| `npm run sync-check` | Markdown ↔ JSON sync comparison |
 
 ---
 
-## Areas of Concern
+## Phase 5 Assessment (Deferred)
 
-- `sheet-app.ts` and `builder-app.ts` still have `@ts-nocheck` — Phase 2 TypeScript migration deferred.
-- Import extension convention not 100% consistent — extensionless in shared docs, `.ts` in tools. Both work in Vite.
+Phase 5 (`@ts-nocheck` removal from `sheet-app.ts` and `builder-app.ts`) was assessed but is too large for this session.
+
+### Error Scope
+
+| File | TS Errors | Lines |
+|------|-----------|-------|
+| `sheet-app.ts` | ~614 | 2,662 |
+| `builder-app.ts` | ~422 | 1,825 |
+| **Total** | **~1,036** | **4,487** |
+
+### Error Patterns (90%+ mechanical)
+
+| Pattern | ~Count | Fix |
+|---------|--------|-----|
+| `getElementById` returns `HTMLElement \| null` | ~200 | `as HTMLInputElement` or null-guard |
+| `querySelector` returns `Element \| null` | ~100 | Same |
+| Implicit `any` parameters in callbacks | ~150 | Add `: Event`, `: string`, etc. |
+| Property access on `any`-typed objects | ~100 | Add interface or inline type |
+| Object method `this` typing | ~50 | Explicit `this` parameter or class conversion |
+
+### Architecture Note
+
+Both files are single object literals (`const Sheet = {...}`, `const Builder = {...}`) where every method accesses `this.char` and `this.data`. The implementation plan proposed splitting into 5 sub-modules each, but this is risky without E2E tests due to tight `this`-coupling.
+
+**Recommended approach:** Type-in-place (fix errors without splitting). Module split should be a separate initiative after Playwright E2E tests exist.
 
 ---
 
 ## Suggested Next Steps
 
-1. **Merge `session-2026-03-03` to `main`.**
-2. **Work `side-tracks.md` backlog** — L1b–L1f infrastructure items are ready to address.
-3. **`docs/product-vision.md`** needs first PO session content.
+1. **Merge `session-2026-03-03-consolidation` to `main`** via squash PR — Phases 1–4 are complete and stable.
+2. **Phase 5 in a new session** — Remove `@ts-nocheck`, type-fix in-place (~4–6 hours per file).
+3. **Phase 4.3 (tool module tests)** — Depends on Phase 5. Defer to same session.

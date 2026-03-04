@@ -4,7 +4,27 @@ Implementation plan for the 5-phase technical consolidation described in [Extern
 
 ---
 
-## Current State Summary
+## Progress (Updated 2026-03-04)
+
+| Phase | Status | Commit | Notes |
+|-------|--------|--------|-------|
+| 1 — Biome | ✅ Done | `c022259` | Biome 2.4.5, CI wired |
+| 2 — Vitest | ✅ Done | `ba87420` | 128 tests (dice + core) |
+| 3B — Zod Schemas | ✅ Done | `7a3a0ec` | 14 schema files + 15 tests |
+| 3C — Pipeline Scripts | ✅ Done | `1429809` | validate.ts, lint.ts, sync-check.ts, prebuild.mjs |
+| 3D — Web Workers | ✅ Done | `cc7a5b2` | dice-common.js, defense-worker.js extraction |
+| 3E — Python Removal | ✅ Done | `2ce984d` | 25 Python files deleted, CI + docs updated |
+| 4.1 — Schema Tests | ✅ Done | (in 3B) | 15 validation + rejection tests |
+| 4.2 — Pipeline Tests | ✅ Done | `d5309fe` | 44 tests across 3 files |
+| 5 Pre-Work — core.ts Split | ✅ Done | `5e2fde7` | 5 sub-modules + barrel re-export |
+| **5 Main — @ts-nocheck Removal** | **⬜ Not Started** | — | ~1,036 type errors, see reconnaissance below |
+| 4.3 — Tool Module Tests | ⬜ Blocked | — | Depends on Phase 5 |
+
+**Current totals:** 187 tests passing, 0 Biome errors, 12/12 JSON validated, Python fully removed.
+
+---
+
+## Original State Summary (Pre-Consolidation)
 
 | Category                         | Metric                                                  |
 | -------------------------------- | ------------------------------------------------------- |
@@ -237,9 +257,11 @@ The original audit mentioned E2E tests for the 9 interactive tools. This is high
 
 **Prerequisites:** All previous phases complete.
 
-### Pre-Work: core.ts God Module Split
+**Status:** Pre-work done (core.ts split). Main work deferred — see reconnaissance below.
 
-Before touching the tool files, split `core.ts` (428 lines, 13 exports) into focused modules:
+### Pre-Work: core.ts God Module Split ✅
+
+Split completed. `core.ts` (428 lines, 13 exports) → 5 focused modules + barrel:
 
 | New Module                 | From core.ts      | Exports                                                                      |
 | -------------------------- | ----------------- | ---------------------------------------------------------------------------- |
@@ -250,7 +272,45 @@ Before touching the tool files, split `core.ts` (428 lines, 13 exports) into foc
 | `src/lib/dtd/ui.ts`        | UI helpers        | `initAccordion()`                                                            |
 | `src/lib/dtd/core.ts`      | Re-export barrel  | Re-exports all of the above for backward compatibility                       |
 
-### Tool Module Split
+### Reconnaissance (2026-03-04)
+
+Error assessment with `@ts-nocheck` removed:
+
+| File | TS Errors | Lines |
+|------|-----------|-------|
+| `sheet-app.ts` | ~614 | 2,662 |
+| `builder-app.ts` | ~422 | 1,825 |
+| **Total** | **~1,036** | **4,487** |
+
+#### Error Pattern Breakdown
+
+| Pattern | ~Count | Fix |
+|---------|--------|-----|
+| `TS2531` — `getElementById` returns `null \| HTMLElement` | ~200 | `as HTMLInputElement` or `!` non-null assertion |
+| `TS2339` — property access on `Element` (needs cast) | ~100 | `as HTMLInputElement` for `.value`, `.checked`, etc. |
+| `TS7006` — implicit `any` on callback parameters | ~150 | Add `: Event`, `: string`, `: number` etc. |
+| `TS2345` — argument type mismatch (`any` to specific) | ~100 | Interface definitions for data objects |
+| `TS2683` — `this` implicitly has type `any` | ~50 | Explicit `this` parameter or class conversion |
+
+#### Architecture Observation
+
+Both files are single object literals (`const Sheet = {...}`, `const Builder = {...}`) where every method accesses `this.char` and `this.data`. This tight `this`-coupling means:
+
+- **Module split per the original plan below is risky** without E2E tests (Playwright) to catch regressions
+- **Type-in-place is safer** — remove `@ts-nocheck`, fix 600+ errors without restructuring
+
+#### Revised Recommendation
+
+**Approach: Type-in-place** for both files (~4–6 hours each). The module split from the original plan below should be deferred to a separate initiative after Playwright E2E tests are in place.
+
+Strategy:
+1. Create a DOM helper module (`src/lib/tools/dom.ts`) with typed `$el<T>()` wrappers
+2. Remove `@ts-nocheck` from `sheet-app.ts`, fix all errors top-to-bottom
+3. Run Vitest + `tsc --noEmit` to verify
+4. Repeat for `builder-app.ts`
+5. Add `tsc --noEmit` to CI
+
+### Original Tool Module Split Plan (Deferred)
 
 Follow the pattern from [side-tracks.md](side-tracks.md):
 
