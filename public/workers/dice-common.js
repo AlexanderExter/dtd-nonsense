@@ -1,11 +1,19 @@
 /**
  * Shared dice rolling primitives for web workers.
  * Used by simulation-worker.js and defense-worker.js via importScripts.
- * Canonical source: src/lib/dtd/dice.ts — keep in sync.
+ *
+ * IMPORTANT: This is a DERIVED copy of the canonical implementation in:
+ * 	src/lib/dtd/dice-primitives.ts
+ *
+ * When the overflow formula, explosion behavior, or roll logic changes,
+ * BOTH this file and dice-primitives.ts MUST be updated in sync.
+ *
+ * If these diverge, workers may produce incorrect results that don't match
+ * the main UI dice rolls.
  */
 
 // =========================================================================
-// Dice Primitives (self-contained — no DOM dependencies)
+// Dice Primitives (KEEP IN SYNC with src/lib/dtd/dice-primitives.ts)
 // =========================================================================
 
 /**
