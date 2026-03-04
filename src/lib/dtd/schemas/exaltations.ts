@@ -5,7 +5,7 @@
  */
 
 import { z } from "zod";
-import { Source } from "./common.js";
+import { Source } from "./common.ts";
 
 // ---------------------------------------------------------------------------
 // Sub-schemas

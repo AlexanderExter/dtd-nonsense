@@ -5,7 +5,7 @@
  */
 
 import { z } from "zod";
-import { ClassFeatEntry } from "./common.js";
+import { ClassFeatEntry } from "./common.ts";
 
 // ---------------------------------------------------------------------------
 // Sub-schemas

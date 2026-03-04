@@ -8,7 +8,7 @@ import {
 	checkTerminology,
 	newTracker,
 	updateTracker,
-} from "../lint.js";
+} from "../lint.ts";
 
 const FILE = "test.md";
 

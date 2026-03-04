@@ -3,7 +3,7 @@
  */
 
 import { z } from "zod";
-import { CharacteristicGroup, CharacteristicId, DotRating } from "./common.js";
+import { CharacteristicGroup, CharacteristicId, DotRating } from "./common.ts";
 
 // ---------------------------------------------------------------------------
 // Characteristic (lenient)

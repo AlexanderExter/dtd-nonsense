@@ -8,7 +8,7 @@ import {
 	parseClasses,
 	parseFeats,
 	parseRaces,
-} from "../sync-check.js";
+} from "../sync-check.ts";
 
 // ---------------------------------------------------------------------------
 // extractSections

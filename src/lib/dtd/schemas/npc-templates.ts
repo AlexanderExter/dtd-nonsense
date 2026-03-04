@@ -3,7 +3,7 @@
  */
 
 import { z } from "zod";
-import { SkillRef } from "./common.js";
+import { SkillRef } from "./common.ts";
 
 // ---------------------------------------------------------------------------
 // NpcCharacteristics (strict)
