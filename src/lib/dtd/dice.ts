@@ -6,26 +6,16 @@
  *
  * Ported from tools/shared/js/dice.js.
  */
-import type { DiceResult, DieRoll, Outcome, OverflowInfo, ParsedNotation } from "./types.ts";
+import { compressOverflow as _compressOverflow, rollOneDie as _rollOneDie } from "./dice-primitives.ts";
+import type { DiceResult, DieRoll, Outcome, ParsedNotation } from "./types.ts";
 
 // =========================================================================
 // Internal Helpers
 // =========================================================================
 
-/** Roll a single exploding d10. */
+/** Roll a single exploding d10 (re-exported from dice-primitives.ts). */
 function rollOneDie(): DieRoll {
-	const firstRoll = Math.floor(Math.random() * 10) + 1;
-	let value = firstRoll;
-	let exploded = false;
-	let current = firstRoll;
-
-	while (current === 10) {
-		exploded = true;
-		current = Math.floor(Math.random() * 10) + 1;
-		value += current;
-	}
-
-	return { value, base: firstRoll, exploded };
+	return _rollOneDie();
 }
 
 /** Roll a single d10 for rank-0 mode (no explosion, 10 → 0). */
@@ -40,36 +30,11 @@ function rollRankZero(): DieRoll {
 
 /**
  * Apply overflow compression to numDice/keepDice.
- *
- * Rules:
- * 1. >10 rolled dice: every 2 excess rolled → +1 kept die
- * 2. Kept dice >10: each excess kept die adds flat +5
- * 3. Combined: first compress rolled, then compress kept
+ * This function is imported from dice-primitives.ts to serve as the canonical
+ * source for the overflow formula. Other modules (workers) must keep their
+ * copies synchronized with dice-primitives.ts.
  */
-function _compressOverflow(numDice: number, keepDice: number, modifier: number): OverflowInfo {
-	let compressed = false;
-
-	if (numDice > 10) {
-		const excessRolled = numDice - 10;
-		const extraKept = Math.floor(excessRolled / 2);
-		keepDice += extraKept;
-		numDice = 10;
-		compressed = true;
-	}
-
-	if (keepDice > numDice) {
-		keepDice = numDice;
-	}
-
-	if (keepDice > 10) {
-		const excessKept = keepDice - 10;
-		modifier += excessKept * 5;
-		keepDice = 10;
-		compressed = true;
-	}
-
-	return { numDice, keepDice, modifier, compressed };
-}
+// _compressOverflow is imported from dice-primitives.ts (line 8)
 
 // =========================================================================
 // Public API

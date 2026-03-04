@@ -177,7 +177,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
     // =====================================================================
 
     function initWorker() {
-      worker = new Worker("/workers/simulation-worker.js");
+      worker = new Worker(new URL("../../workers/simulation-worker.ts", import.meta.url), { type: "module" });
       worker.onmessage = (e) => {
         const { id } = e.data;
         const cb = pendingCallbacks.get(id);

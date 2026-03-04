@@ -5,7 +5,7 @@
  */
 
 import { z } from "zod";
-import { SkillBonusEntry, Source } from "./common.js";
+import { SkillBonusEntry, Source } from "./common.ts";
 
 // ---------------------------------------------------------------------------
 // Sub-schemas

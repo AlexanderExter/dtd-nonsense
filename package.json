@@ -15,9 +15,9 @@
         "test:watch": "vitest",
         "lint": "biome check .",
         "lint:fix": "biome check --write .",
-        "validate": "npx tsx scripts/validate.ts",
-        "lint:data": "npx tsx scripts/lint.ts",
-        "sync-check": "npx tsx scripts/sync-check.ts",
+        "validate": "bun run scripts/validate.ts",
+        "lint:data": "bun run scripts/lint.ts",
+        "sync-check": "bun run scripts/sync-check.ts",
         "astro": "astro"
     },
     "dependencies": {
@@ -31,7 +31,6 @@
     "devDependencies": {
         "@astrojs/vercel": "^8.0.4",
         "@biomejs/biome": "2.4.5",
-        "tsx": "^4.21.0",
         "typescript": "^5.9.3",
         "vitest": "4.0.18"
     },

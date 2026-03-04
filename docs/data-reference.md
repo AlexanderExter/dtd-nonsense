@@ -31,7 +31,7 @@ All source markdown files are in `cleaned-references/`.
 
 ## Sync Strategy
 
-**Semi-automated synchronization** — the TypeScript pipeline scripts provide `npm run validate` for schema validation (add `--xref` via `npx tsx scripts/validate.ts --xref` for cross-reference checking), plus `npm run sync-check` for markdown↔JSON drift detection (races, classes, feats). After editing rules in `books/` or `cleaned-references/`, run these checks and manually verify any remaining gaps.
+**Semi-automated synchronization** — the TypeScript pipeline scripts provide `npm run validate` for schema validation (add `--xref` via `bun run scripts/validate.ts --xref` for cross-reference checking), plus `npm run sync-check` for markdown↔JSON drift detection (races, classes, feats). After editing rules in `books/` or `cleaned-references/`, run these checks and manually verify any remaining gaps.
 
 **Recommended practice:** Document changes in git commit messages (e.g., "Update classes.json to match 06-Classes.md additions").
 

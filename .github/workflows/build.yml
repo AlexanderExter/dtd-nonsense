@@ -12,6 +12,11 @@ jobs:
                   node-version: 20
                   cache: npm
             - run: npm ci
+
+            # --- Bun (pipeline scripts) ---
+            - uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
             - run: npx biome ci .
             - run: npm run test
             - run: npm run validate

@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
-	checkDiceNotation,
-	checkEmptyTableCells,
-	checkEncodingMarkers,
-	checkFormulaSymbols,
-	checkHeadingHierarchy,
-	checkTerminology,
-	newTracker,
-	updateTracker,
-} from "../lint.js";
+    checkDiceNotation,
+    checkEmptyTableCells,
+    checkEncodingMarkers,
+    checkFormulaSymbols,
+    checkHeadingHierarchy,
+    checkTerminology,
+    newTracker,
+    updateTracker,
+} from "../lint.ts";
 
 const FILE = "test.md";
 

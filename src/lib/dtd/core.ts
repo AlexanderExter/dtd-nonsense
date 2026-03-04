@@ -5,8 +5,8 @@
  *   import { derived } from "@/lib/dtd/derived";
  *   import { character } from "@/lib/dtd/character";
  */
-export { character } from "./character.js";
-export { loadAllData, loadData } from "./data.js";
-export { derived } from "./derived.js";
-export { initAccordion } from "./ui.js";
-export { debounce, escapeHtml } from "./util.js";
+export { character } from "./character.ts";
+export { loadAllData, loadData } from "./data.ts";
+export { derived } from "./derived.ts";
+export { initAccordion } from "./ui.ts";
+export { debounce, escapeHtml } from "./util.ts";

@@ -42,7 +42,7 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
     const { Chart, registerables } = await import("chart.js");
     Chart.register(...registerables);
     ```
-5. For Web Workers: use `new Worker(new URL('./worker.js', import.meta.url))` or inline Blob
+5. For Web Workers: place `.ts` files in `src/workers/`, then instantiate with `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. Workers import from `src/lib/dtd/` using relative paths (not `@/` alias).
 6. Create documentation in `docs/tools/[tool-name].md`
 7. Add a card to `src/pages/tools/index.astro` with a `status` badge
 
@@ -56,18 +56,18 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 
 ### Commands
 
-| Command                     | Purpose                                                                     |
-| --------------------------- | --------------------------------------------------------------------------- |
-| `npm run dev`               | Start Astro dev server with hot reload                                      |
-| `npm run build`             | Full build: prebuild → astro build                                          |
-| `npm run preview`           | Preview production build locally                                            |
-| `npm run lint`              | Check JS/TS/CSS with Biome                                                  |
-| `npm run lint:fix`          | Auto-fix Biome lint issues                                                  |
-| `npm run test`              | Run Vitest unit tests                                                       |
-| `npm run test:watch`        | Run Vitest in watch mode                                                    |
-| `npm run validate`          | Validate JSON data against Zod schemas                                      |
-| `npm run lint:data`         | Lint markdown for terminology, formatting, encoding                         |
-| `npm run sync-check`        | Detect drift between markdown and JSON data                                 |
+| Command              | Purpose                                             |
+| -------------------- | --------------------------------------------------- |
+| `npm run dev`        | Start Astro dev server with hot reload              |
+| `npm run build`      | Full build: prebuild → astro build                  |
+| `npm run preview`    | Preview production build locally                    |
+| `npm run lint`       | Check JS/TS/CSS with Biome                          |
+| `npm run lint:fix`   | Auto-fix Biome lint issues                          |
+| `npm run test`       | Run Vitest unit tests                               |
+| `npm run test:watch` | Run Vitest in watch mode                            |
+| `npm run validate`   | Validate JSON data against Zod schemas              |
+| `npm run lint:data`  | Lint markdown for terminology, formatting, encoding |
+| `npm run sync-check` | Detect drift between markdown and JSON data         |
 
 ### Build Pipeline
 
@@ -179,14 +179,14 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
 
-| Test File                            | Covers                                                    |
-| ------------------------------------ | --------------------------------------------------------- |
-| `src/lib/dtd/core.test.ts`           | derived stats, character CRUD, migration, data loading    |
-| `src/lib/dtd/dice.test.ts`           | parseNotation, calculateOutcome, roll (exploding, rank-0) |
-| `src/lib/dtd/schemas.test.ts`        | Schema validation + rejection tests (15 tests)            |
-| `scripts/__tests__/validate.test.ts` | Validate script unit tests (9 tests)                      |
-| `scripts/__tests__/lint.test.ts`     | Lint script unit tests (24 tests)                         |
-| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests (11 tests)                 |
+| Test File                              | Covers                                                    |
+| -------------------------------------- | --------------------------------------------------------- |
+| `src/lib/dtd/core.test.ts`             | derived stats, character CRUD, migration, data loading    |
+| `src/lib/dtd/dice.test.ts`             | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+| `src/lib/dtd/schemas.test.ts`          | Schema validation + rejection tests (15 tests)            |
+| `scripts/__tests__/validate.test.ts`   | Validate script unit tests (9 tests)                      |
+| `scripts/__tests__/lint.test.ts`       | Lint script unit tests (24 tests)                         |
+| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests (11 tests)                   |
 
 187 tests total. Run with:
 

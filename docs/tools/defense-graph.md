@@ -3,7 +3,7 @@
 Visual analysis tool for Static Defense (SD) distributions across character builds. Helps Story Masters calibrate encounter difficulty and players understand defensive scaling.
 
 **Phase:** 4
-**Files:** `src/pages/tools/defense-graph.astro` (JS/CSS inline)
+**Files:** `src/pages/tools/defense-graph.astro` (JS/CSS inline), `src/workers/defense-worker.ts`
 **Pattern:** Inline `<script>` in Astro page
 
 ---
@@ -51,7 +51,7 @@ Component contribution at different dot levels:
 
 ## Architecture
 
-**Dependencies:** `import { derived } from '@/lib/dtd/core.ts'`, **Chart.js** (via npm dynamic import), inline Blob Web Worker
+**Dependencies:** `import { derived } from '@/lib/dtd/core.ts'`, **Chart.js** (via npm dynamic import), ESM Web Worker (`src/workers/defense-worker.ts`, bundled by Vite)
 
 ### Data Sources
 

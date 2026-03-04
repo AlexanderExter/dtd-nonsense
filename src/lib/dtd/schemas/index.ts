@@ -6,36 +6,36 @@
  */
 
 import type { z } from "zod";
-import { AlignmentsFile } from "./alignments.js";
-import { BackgroundsFile } from "./backgrounds.js";
-import { ClassesFile } from "./classes.js";
-import { EquipmentFile } from "./equipment.js";
-import { ExaltationsFile } from "./exaltations.js";
-import { FeatsFile } from "./feats.js";
-import { NpcTemplatesFile } from "./npc-templates.js";
-import { RacesFile } from "./races.js";
-import { ShipsFile } from "./ships.js";
-import { SkillsFile } from "./skills.js";
-import { TraitsFile } from "./traits.js";
-import { WeaponsFile } from "./weapons.js";
+import { AlignmentsFile } from "./alignments.ts";
+import { BackgroundsFile } from "./backgrounds.ts";
+import { ClassesFile } from "./classes.ts";
+import { EquipmentFile } from "./equipment.ts";
+import { ExaltationsFile } from "./exaltations.ts";
+import { FeatsFile } from "./feats.ts";
+import { NpcTemplatesFile } from "./npc-templates.ts";
+import { RacesFile } from "./races.ts";
+import { ShipsFile } from "./ships.ts";
+import { SkillsFile } from "./skills.ts";
+import { TraitsFile } from "./traits.ts";
+import { WeaponsFile } from "./weapons.ts";
 
 // ---------------------------------------------------------------------------
 // Re-exports for convenience
 // ---------------------------------------------------------------------------
 
-export { AlignmentsFile } from "./alignments.js";
-export { BackgroundsFile } from "./backgrounds.js";
-export { ClassesFile } from "./classes.js";
-export * from "./common.js";
-export { EquipmentFile } from "./equipment.js";
-export { ExaltationsFile } from "./exaltations.js";
-export { FeatsFile } from "./feats.js";
-export { NpcTemplatesFile } from "./npc-templates.js";
-export { RacesFile } from "./races.js";
-export { ShipsFile } from "./ships.js";
-export { SkillsFile } from "./skills.js";
-export { TraitsFile } from "./traits.js";
-export { WeaponsFile } from "./weapons.js";
+export { AlignmentsFile } from "./alignments.ts";
+export { BackgroundsFile } from "./backgrounds.ts";
+export { ClassesFile } from "./classes.ts";
+export * from "./common.ts";
+export { EquipmentFile } from "./equipment.ts";
+export { ExaltationsFile } from "./exaltations.ts";
+export { FeatsFile } from "./feats.ts";
+export { NpcTemplatesFile } from "./npc-templates.ts";
+export { RacesFile } from "./races.ts";
+export { ShipsFile } from "./ships.ts";
+export { SkillsFile } from "./skills.ts";
+export { TraitsFile } from "./traits.ts";
+export { WeaponsFile } from "./weapons.ts";
 
 // ---------------------------------------------------------------------------
 // Registry

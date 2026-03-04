@@ -8,10 +8,10 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { ClassesFile } from "./schemas/classes.js";
-import { EquipmentFile } from "./schemas/equipment.js";
-import { FILE_SCHEMAS } from "./schemas/index.js";
-import { RacesFile } from "./schemas/races.js";
+import { ClassesFile } from "./schemas/classes.ts";
+import { EquipmentFile } from "./schemas/equipment.ts";
+import { FILE_SCHEMAS } from "./schemas/index.ts";
+import { RacesFile } from "./schemas/races.ts";
 
 const DATA_DIR = resolve(import.meta.dirname, "../../../data");
 

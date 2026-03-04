@@ -10,28 +10,29 @@ System-wide architecture for the DTD 40k project: Astro/Starlight documentation 
 
 The rulebook and play tools are published as a static site via **Astro 5 + Starlight**, deployed to Vercel.
 
-| Choice              | Rationale                                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                               |
-| npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                           |
-| TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                   |
-| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic; `types.ts` provides canonical interfaces |
-| Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                |
+| Choice              | Rationale                                                                                                                                                                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                                                                                                                                                            |
+| npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
+| TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
+| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
+| Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
 
 Key files:
 
-| File / Directory       | Purpose                                                           |
-| ---------------------- | ----------------------------------------------------------------- |
-| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                  |
-| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data      |
-| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored           |
-| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                        |
-| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, types.ts |
-| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)    |
-| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                       |
-| `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css) |
-| `data/`                | Canonical JSON game data (12 files) — source for prebuild         |
-| `public/data/`         | Generated JSON data copies (from `data/`) — gitignored            |
+| File / Directory       | Purpose                                                                                                                                |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                                                                                       |
+| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data                                                                           |
+| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
+| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                                                                                             |
+| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts |
+| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)                                                                         |
+| `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
+| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                                                                                            |
+| `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css)                                                                      |
+| `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
+| `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
 
 Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies source content into Astro structure, then Astro builds the static site.
 
@@ -41,10 +42,10 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### Code Quality & Testing
 
-| Tool   | Purpose                    | Config              | npm Scripts                  |
-| ------ | -------------------------- | ------------------- | ---------------------------- |
-| Biome  | Linter + formatter (JS/TS/CSS) | `biome.json`    | `lint`, `lint:fix`           |
-| Vitest | Unit testing framework     | `vitest.config.ts`  | `test`, `test:watch`         |
+| Tool   | Purpose                        | Config             | npm Scripts          |
+| ------ | ------------------------------ | ------------------ | -------------------- |
+| Biome  | Linter + formatter (JS/TS/CSS) | `biome.json`       | `lint`, `lint:fix`   |
+| Vitest | Unit testing framework         | `vitest.config.ts` | `test`, `test:watch` |
 
 **Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
 

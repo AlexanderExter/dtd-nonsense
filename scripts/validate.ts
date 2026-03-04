@@ -12,7 +12,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { ZodError } from "zod";
-import { FILE_SCHEMAS, type SchemaEntry } from "../src/lib/dtd/schemas/index.js";
+import { FILE_SCHEMAS, type SchemaEntry } from "../src/lib/dtd/schemas/index.ts";
 
 // ---------------------------------------------------------------------------
 // Paths

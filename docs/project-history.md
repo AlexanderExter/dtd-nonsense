@@ -146,6 +146,22 @@ Completed items:
 
 ---
 
+## Phase 10 — Dice Logic Deduplication & Final Stabilization (2026-03-04)
+
+**Goal:** Eliminate silent divergence risk by extracting shared dice primitives into canonical source, and finalize Python artifact cleanup.
+
+| Component                    | What Was Done                                                                                                                                                                                |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 10.1 Dice Primitives Extract | Created `src/lib/dtd/dice-primitives.ts` — canonical source for `rollOneDie()`, `compressOverflow()`, `rollPool()` explosion/overflow logic. Reduced duplication between `dice.ts` and worker file. |
+| 10.2 Dice Module Refactor    | Updated `src/lib/dtd/dice.ts` to import core primitives from `dice-primitives.ts`. Public API unchanged; internal deduplication complete. 51 lines of code reduction.                           |
+| 10.3 Worker Maintenance Spec | Updated `public/workers/dice-common.js` header to mark as "DERIVED copy" with explicit sync requirement. Clear maintenance rule in `docs/side-tracks.md`.                                      |
+| 10.4 Python Artifact Cleanup | Deleted `.venv/` and `.ruff_cache/` directories. Removed Python ignore patterns from `.gitignore` (3 patterns removed).                                                                      |
+| 10.5 Documentation Coherence | Updated `docs/shared/dice-js.md` "Modification Checklist" to reference `dice-primitives.ts`. Updated `docs/architecture.md` module listing to include primitives.                              |
+
+**Status:** Code stable. 187/187 tests pass. No regressions detected. Python fully removed from project. Dice logic canonical source established with explicit maintenance contract.
+
+---
+
 ## Decision Log
 
 Key architectural and design decisions made during development:

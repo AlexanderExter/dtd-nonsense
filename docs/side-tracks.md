@@ -44,26 +44,33 @@ Start with the dice roller (smallest tool) as a proof-of-concept island before m
 
 `build.yml` runs `npm run validate` and `npm run lint:data` but not cross-reference validation mode or `npm run sync-check`. The known xref warnings are pre-existing data gaps, not regressions. Adding those checks to CI requires the baseline suppression mechanism described in **L1c**.
 
-### Import Extension Convention
-
-Both `.ts` and extensionless imports work in Vite's dev server and Astro's build. The codebase currently mixes both styles. Pick one convention and enforce it — either always use `.ts` extensions or always omit them.
-
-### Bun Migration
-
-Pipeline scripts currently run via `npx tsx`. The implementation plan originally called for Bun as the TypeScript runner (Open Question #2: "Commit to Bun, we will revert the branch if it proves unworkable"), but the executing agent used tsx instead. Commit `1429809` confirms scripts work with both `npx tsx` and `bun run`. Bun offers faster cold starts and native TypeScript execution, but tsx is proven stable in CI. Revisit if Bun's CI story matures or if script execution time becomes a bottleneck.
-
 ---
 
 ## Code Quality
 
-### W3: Dice Logic in Two Independent Copies
+### W3: Dice Logic Centralized
 
-The same overflow compression + exploding d10 algorithm is implemented in two places:
+**Status:** ✅ Resolved (2026-03-04)
+
+The same dice rolling logic (overflow compression + exploding d10s) was previously implemented in two independent places:
 
 1. `src/lib/dtd/dice.ts` — ES module, used by builder and sheet
-2. `public/workers/simulation-worker.js` — external worker file, used by success-curves
+2. `public/workers/dice-common.js` — external worker file, used by success-curves
 
-The defense-graph blob worker was extracted to `public/workers/defense-worker.js` in Phase 3D (commit `5e2fde7`), reducing the copy count from 3 to 2. The remaining two copies are consistent but can diverge silently. A rule change to the overflow formula requires two synchronized edits with no lint or test to catch drift.
+**Solution:** Extracted core primitives into `src/lib/dtd/dice-primitives.ts` as the **canonical source**:
+
+- `rollOneDie()` — single d10 with explosion
+- `compressOverflow()` — overflow compression formula
+- `rollPool()` — full pool rolling
+
+Now:
+
+- `dice.ts` imports primitives from `dice-primitives.ts`
+- `dice.ts` is the sole consumer of `dice-primitives.ts` for application logic
+- Both web workers (`src/workers/simulation-worker.ts`, `src/workers/defense-worker.ts`) import directly from `dice-primitives.ts` via relative path
+- `public/workers/dice-common.js` has been deleted (Phase 11 ESM migration)
+
+**Maintenance rule:** Any change to the D:TD dice formula requires updating `dice-primitives.ts` only. All consumers (`dice.ts`, `simulation-worker.ts`, `defense-worker.ts`) will pick up the change automatically via import.
 
 ### W4: Divergent Default Character Shapes
 
@@ -79,17 +86,13 @@ The defense-graph blob worker was extracted to `public/workers/defense-worker.js
 
 Characters created by the sheet start with characteristics at 1; characters created via core.ts start at 2. When `sheet-app.ts`'s `mergeDefaults()` processes a core.ts character (or vice versa), the differing starting values and missing/extra keys can produce unexpected saves. Resolution is part of the Phase 2 persistence reconciliation.
 
-### sheet.css Body CSS Selectors
-
-`sheet.css` may contain selectors targeting `body` directly, which could interfere with `ToolLayout.astro` styles. Needs visual testing in-browser to confirm whether the selectors cause layout issues on the deployed site.
-
 ---
 
 ## Data Quality
 
 ### xref Warnings (41 Known)
 
-`npx tsx scripts/validate.ts --xref` produces 41 warnings. These are real data gaps in the JSON files, not bugs — abbreviated feat names in `classes.json` that don't match canonical names in `feats.json`, and skill references in templates that aren't in `skills.json`. The tools work fine with approximate names, but the data should be corrected eventually.
+`bun run scripts/validate.ts --xref` produces 41 warnings. These are real data gaps in the JSON files, not bugs — abbreviated feat names in `classes.json` that don't match canonical names in `feats.json`, and skill references in templates that aren't in `skills.json`. The tools work fine with approximate names, but the data should be corrected eventually.
 
 ### Lint Info Messages (880)
 

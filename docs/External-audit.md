@@ -1,3 +1,7 @@
+# External Audit — Technical Consolidation
+
+This document records the findings and approved scope from the Phase 0 audit of the DTD Nonsense codebase (2026-03-03). It is the source document from which [implementation-plan.md](implementation-plan.md) was derived.
+
 ## What Was Approved
 
 | Item                               | Decision                                                             |

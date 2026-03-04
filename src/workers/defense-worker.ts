@@ -11,7 +11,40 @@
  *          medianRawDmg, hpDistribution, locationHits, hits, trials }
  */
 
-importScripts("./dice-common.js");
+import { compressOverflow, rollPool } from "../lib/dtd/dice-primitives.ts";
+
+// =========================================================================
+// Types
+// =========================================================================
+
+interface DefenseCfg {
+	atkRolled: number;
+	atkLevel: number;
+	atkKept: number;
+	atkMod: number;
+	sd: number;
+	dodgePool: number;
+	dodgeDex: number;
+	parryPool: number;
+	parryLevel: number;
+	dmgRolled: number;
+	dmgKept: number;
+	dmgFlat: number;
+	pen: number;
+	blast: boolean;
+	cover: number;
+	aura: number;
+	resilience: number;
+	tearing: boolean;
+	locationAP: Record<string, number>;
+}
+
+interface TrialResult {
+	hit: boolean;
+	hitLocation: string | null;
+	rawDmg: number;
+	hpLost: number;
+}
 
 // =========================================================================
 // Dice Pool Convenience Wrapper
@@ -19,12 +52,8 @@ importScripts("./dice-common.js");
 
 /**
  * Roll a compressed dice pool: applies overflow compression then rolls.
- * @param {number} numDice  - Number of dice to roll
- * @param {number} keepDice - Number of dice to keep (highest)
- * @param {number} modifier - Flat modifier added to the total
- * @returns {number} Final total
  */
-function simulateRoll(numDice, keepDice, modifier) {
+function simulateRoll(numDice: number, keepDice: number, modifier: number): number {
 	const ov = compressOverflow(numDice, keepDice, modifier);
 	return rollPool(ov.numDice, ov.keepDice, ov.modifier);
 }
@@ -33,7 +62,7 @@ function simulateRoll(numDice, keepDice, modifier) {
 // Trial Simulation
 // =========================================================================
 
-function simulateTrial(cfg) {
+function simulateTrial(cfg: DefenseCfg): TrialResult {
 	const attackTotal = simulateRoll(cfg.atkRolled + cfg.atkLevel, cfg.atkKept, cfg.atkMod);
 
 	let sd = cfg.sd;
@@ -50,7 +79,7 @@ function simulateTrial(cfg) {
 	}
 
 	const locRoll = Math.floor(Math.random() * 10) + 1;
-	let hitLocation;
+	let hitLocation: string;
 	if (locRoll === 1) hitLocation = "lleg";
 	else if (locRoll === 2) hitLocation = "rleg";
 	else if (locRoll <= 6) hitLocation = "body";
@@ -83,15 +112,19 @@ function simulateTrial(cfg) {
 // Worker Message Handler
 // =========================================================================
 
-self.onmessage = function (e) {
-	const { id, cfg, trials } = e.data;
+self.onmessage = (e: MessageEvent) => {
+	const { id, cfg, trials } = e.data as {
+		id: number;
+		cfg: DefenseCfg;
+		trials: number;
+	};
 
 	let hits = 0;
 	let totalHPLost = 0;
 	let totalRawDmg = 0;
-	const hpDistribution = {};
-	const rawDmgOnHit = [];
-	const locationHits = {};
+	const hpDistribution: Record<number, number> = {};
+	const rawDmgOnHit: number[] = [];
+	const locationHits: Record<string, number> = {};
 
 	for (let i = 0; i < trials; i++) {
 		const result = simulateTrial(cfg);
@@ -101,7 +134,7 @@ self.onmessage = function (e) {
 			totalRawDmg += result.rawDmg;
 			hpDistribution[result.hpLost] = (hpDistribution[result.hpLost] || 0) + 1;
 			rawDmgOnHit.push(result.rawDmg);
-			locationHits[result.hitLocation] = (locationHits[result.hitLocation] || 0) + 1;
+			locationHits[result.hitLocation!] = (locationHits[result.hitLocation!] || 0) + 1;
 		}
 	}
 

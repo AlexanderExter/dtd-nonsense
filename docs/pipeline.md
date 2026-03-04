@@ -4,13 +4,13 @@ TypeScript pipeline scripts for data validation, content linting, and sync check
 
 ## CLI Commands
 
-All commands run via npm scripts (backed by `tsx`):
+All commands run via npm scripts (backed by `bun`):
 
 | Script               | Command                         | Purpose                                             |
 | -------------------- | ------------------------------- | --------------------------------------------------- |
-| `npm run validate`   | `npx tsx scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
-| `npm run lint:data`  | `npx tsx scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
-| `npm run sync-check` | `npx tsx scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
+| `npm run validate`   | `bun run scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
+| `npm run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
+| `npm run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
 
 ### `npm run validate`
 
@@ -18,7 +18,7 @@ Validate all 12 JSON data files in `data/` against their Zod schemas.
 
 ```bash
 npm run validate                              # Validate all files
-npx tsx scripts/validate.ts --xref            # Also run cross-file reference checks
+bun run scripts/validate.ts --xref            # Also run cross-file reference checks
 ```
 
 **Cross-reference checks** (`--xref`):
@@ -94,7 +94,7 @@ The Zod schemas in `src/lib/dtd/schemas/` are the **single source of truth** for
 
 All 12 JSON data files pass schema validation. Cross-reference checks produce warnings for genuine data quality issues (abbreviated feat names in `classes.json` like "Weapon Prof" instead of "Weapon Proficiency", and missing skills like "Craft", "Brawling", "Intimidate") — these are real data gaps, not checker bugs.
 
-> **Exit code behavior:** `npx tsx scripts/validate.ts --xref` exits with code 1 if any cross-ref warnings exist. For CI, use `npm run validate` (exits 0 when schemas pass) and run `--xref` as an informational step that's allowed to fail.
+> **Exit code behavior:** `bun run scripts/validate.ts --xref` exits with code 1 if any cross-ref warnings exist. For CI, use `npm run validate` (exits 0 when schemas pass) and run `--xref` as an informational step that's allowed to fail.
 
 ### CI Integration
 

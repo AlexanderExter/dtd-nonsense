@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { countRecords, crossReferenceCheck, validateAll } from "../validate.js";
+import { countRecords, crossReferenceCheck, validateAll } from "../validate.ts";
 
 // ---------------------------------------------------------------------------
 // countRecords
