@@ -201,7 +201,7 @@ JSON data in `data/` must stay in sync with `cleaned-references/`. Before editin
 2. Verify changes match the corresponding cleaned-reference content
 3. Update the data-reference doc if you change the schema
 
-Pipeline validation: `uv run dtd validate` checks all 12 JSON files against Pydantic schemas in `pipeline/models/`.
+Pipeline validation: `npm run validate` checks all 12 JSON files against Zod schemas in `src/lib/dtd/schemas/`.
 
 ## When Editing Affects Rules
 

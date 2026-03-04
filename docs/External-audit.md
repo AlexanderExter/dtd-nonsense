@@ -1,5 +1,9 @@
 # External Audit — Technical Consolidation
 
+> **⚠️ HISTORICAL REFERENCE** — This audit was conducted on 2026-03-03 and fully executed by 2026-03-04.
+> The Python pipeline described here no longer exists. All phases are complete. For the current
+> TypeScript pipeline, see [pipeline.md](pipeline.md). For implementation status, see [implementation-plan.md](implementation-plan.md).
+
 This document records the findings and approved scope from the Phase 0 audit of the DTD Nonsense codebase (2026-03-03). It is the source document from which [implementation-plan.md](implementation-plan.md) was derived.
 
 ## What Was Approved

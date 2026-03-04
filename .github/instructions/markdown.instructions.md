@@ -9,7 +9,7 @@ Rules for editing markdown files in this tabletop RPG documentation project. The
 
 ## Front Matter
 
-Cleaned-reference files use **Starlight YAML front matter** injected by `dtd starlight-prep`:
+Cleaned-reference files use **Starlight YAML front matter** injected by `scripts/prebuild.mjs` during the build:
 
 ```yaml
 ---
@@ -20,7 +20,7 @@ sidebar:
 ---
 ```
 
-Do **not** add or modify front matter manually — it is managed by the pipeline. Book source files (`books/`) have no front matter.
+Do **not** add or modify front matter manually — it is managed by the prebuild script. Book source files (`books/`) have no front matter.
 
 ## Heading Hierarchy
 
