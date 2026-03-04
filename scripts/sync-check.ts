@@ -26,7 +26,7 @@ const DATA_DIR = path.join(PROJECT_ROOT, "data");
 // Base parser types & utilities (port of parsers/base.py)
 // ---------------------------------------------------------------------------
 
-interface ParsedSection {
+export interface ParsedSection {
 	heading: string;
 	level: number;
 	content: string;
@@ -37,7 +37,7 @@ interface ParsedSection {
  * Split markdown into sections at the given heading level.
  * Each section spans from its heading to the next heading at the same level (or EOF).
  */
-function extractSections(text: string, targetLevel: number = 2): ParsedSection[] {
+export function extractSections(text: string, targetLevel: number = 2): ParsedSection[] {
 	const hashes = "#".repeat(targetLevel);
 	const pattern = new RegExp(`^${hashes}\\s+(.+)$`, "gm");
 	const sections: ParsedSection[] = [];
@@ -68,7 +68,7 @@ function extractSections(text: string, targetLevel: number = 2): ParsedSection[]
  * Extract value of a **Field Name:** pattern, stopping at | or end of line.
  * Example: "**Size:** 5 | **Languages:** Trade" → for "Size" returns "5".
  */
-function extractBoldField(content: string, fieldName: string): string | null {
+export function extractBoldField(content: string, fieldName: string): string | null {
 	const escaped = fieldName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 	const pattern = new RegExp(`\\*\\*${escaped}:\\*\\*\\s*(.+?)(?:\\s*\\||\\s*$)`, "m");
 	const match = content.match(pattern);
@@ -78,7 +78,7 @@ function extractBoldField(content: string, fieldName: string): string | null {
 /**
  * Extract the full line value after a **Field Name:** pattern.
  */
-function extractBoldFieldFullLine(content: string, fieldName: string): string | null {
+export function extractBoldFieldFullLine(content: string, fieldName: string): string | null {
 	const escaped = fieldName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 	const pattern = new RegExp(`\\*\\*${escaped}:\\*\\*\\s*(.+)$`, "m");
 	const match = content.match(pattern);
@@ -93,7 +93,7 @@ function extractBoldFieldFullLine(content: string, fieldName: string): string | 
  *   | ---     | ---     |
  *   | val1    | val2    |
  */
-function extractPipeTable(content: string): Record<string, string>[] {
+export function extractPipeTable(content: string): Record<string, string>[] {
 	const lines = content.split("\n");
 	const tableLines = lines.map((ln) => ln.trim()).filter((ln) => ln.startsWith("|") && ln.endsWith("|"));
 
@@ -127,7 +127,7 @@ function extractPipeTable(content: string): Record<string, string>[] {
 // Race parser (port of parsers/races.py)
 // ---------------------------------------------------------------------------
 
-interface ParsedRace {
+export interface ParsedRace {
 	name: string;
 	size: number | null;
 	languages: string[];
@@ -137,7 +137,7 @@ interface ParsedRace {
 	powerDescription: string | null;
 }
 
-function parseRaces(content: string): ParsedRace[] {
+export function parseRaces(content: string): ParsedRace[] {
 	const sections = extractSections(content, 2);
 	const races: ParsedRace[] = [];
 
@@ -199,7 +199,7 @@ function parseRaces(content: string): ParsedRace[] {
 // Class parser (port of parsers/classes.py)
 // ---------------------------------------------------------------------------
 
-interface ParsedClass {
+export interface ParsedClass {
 	name: string;
 	level: number | null;
 	prerequisites: string | null;
@@ -210,7 +210,7 @@ interface ParsedClass {
 	suggestedExits: string[];
 }
 
-function parseClasses(content: string): ParsedClass[] {
+export function parseClasses(content: string): ParsedClass[] {
 	const sections = extractSections(content, 2);
 	const classes: ParsedClass[] = [];
 
@@ -271,7 +271,7 @@ function parseClasses(content: string): ParsedClass[] {
 // Feat parser (port of parsers/feats.py)
 // ---------------------------------------------------------------------------
 
-interface ParsedFeat {
+export interface ParsedFeat {
 	name: string;
 	category: string | null;
 	effect: string | null;
@@ -280,7 +280,7 @@ interface ParsedFeat {
 	prerequisites: string | null;
 }
 
-function parseFeats(content: string): ParsedFeat[] {
+export function parseFeats(content: string): ParsedFeat[] {
 	const feats: ParsedFeat[] = [];
 	let currentCategory: string | null = null;
 
@@ -362,14 +362,14 @@ const SYNC_SOURCES: Record<string, { mdFile: string; jsonFile: string }> = {
 	feats: { mdFile: "07-Feats.md", jsonFile: "feats.json" },
 };
 
-function extractNamesFromMarkdown(source: string, content: string): string[] {
+export function extractNamesFromMarkdown(source: string, content: string): string[] {
 	if (source === "races") return parseRaces(content).map((r) => r.name);
 	if (source === "classes") return parseClasses(content).map((c) => c.name);
 	if (source === "feats") return parseFeats(content).map((f) => f.name);
 	return [];
 }
 
-function extractNamesFromJson(source: string, data: Record<string, unknown>): string[] {
+export function extractNamesFromJson(source: string, data: Record<string, unknown>): string[] {
 	const key = source; // "races", "classes", "feats" — matches top-level key
 	const list = data[key];
 	if (!Array.isArray(list)) return [];
@@ -381,17 +381,17 @@ function extractNamesFromJson(source: string, data: Record<string, unknown>): st
 // ---------------------------------------------------------------------------
 
 /** Pad string to width (right-pad). */
-function pad(str: string, width: number): string {
+export function pad(str: string, width: number): string {
 	return str.length >= width ? str : str + " ".repeat(width - str.length);
 }
 
-interface SyncResult {
+export interface SyncResult {
 	matched: string[];
 	onlyMd: string[];
 	onlyJson: string[];
 }
 
-function checkSync(source: string): SyncResult | null {
+export function checkSync(source: string): SyncResult | null {
 	if (!(source in SYNC_SOURCES)) {
 		console.error(`Unknown source type: ${source}`);
 		console.error(`Available: ${Object.keys(SYNC_SOURCES).join(", ")}`);
@@ -500,4 +500,8 @@ function main(): void {
 	}
 }
 
-main();
+// Only run when executed directly (not imported by tests)
+const isDirectRun = process.argv[1] && /sync-check\.ts$/.test(process.argv[1]);
+if (isDirectRun) {
+	main();
+}

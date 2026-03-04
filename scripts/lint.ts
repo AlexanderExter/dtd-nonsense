@@ -27,7 +27,7 @@ const DOCS_DIR = path.join(PROJECT_ROOT, "docs");
 // Types
 // ---------------------------------------------------------------------------
 
-interface LintIssue {
+export interface LintIssue {
 	file: string;
 	line: number;
 	column: number;
@@ -37,7 +37,7 @@ interface LintIssue {
 	suggestion?: string;
 }
 
-type Target = "books" | "cleaned-references" | "docs" | "all";
+export type Target = "books" | "cleaned-references" | "docs" | "all";
 
 // ---------------------------------------------------------------------------
 // Terminology rules
@@ -71,13 +71,13 @@ const TERM_REPLACEMENTS: TermRule[] = [
 // Frontmatter / code-block tracking helpers
 // ---------------------------------------------------------------------------
 
-interface BlockTracker {
+export interface BlockTracker {
 	inFrontmatter: boolean;
 	frontmatterCount: number;
 	inCodeBlock: boolean;
 }
 
-function newTracker(): BlockTracker {
+export function newTracker(): BlockTracker {
 	return { inFrontmatter: false, frontmatterCount: 0, inCodeBlock: false };
 }
 
@@ -85,7 +85,7 @@ function newTracker(): BlockTracker {
  * Update tracker state for the current line.
  * Returns `true` if the line should be skipped (inside frontmatter or code block).
  */
-function updateTracker(tracker: BlockTracker, stripped: string): boolean {
+export function updateTracker(tracker: BlockTracker, stripped: string): boolean {
 	if (stripped === "---") {
 		tracker.frontmatterCount++;
 		if (tracker.frontmatterCount === 1) {
@@ -108,7 +108,7 @@ function updateTracker(tracker: BlockTracker, stripped: string): boolean {
 // 1. Terminology check
 // ---------------------------------------------------------------------------
 
-function checkTerminology(filepath: string, lines: string[]): LintIssue[] {
+export function checkTerminology(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 	const tracker = newTracker();
 
@@ -142,7 +142,7 @@ function checkTerminology(filepath: string, lines: string[]): LintIssue[] {
 
 const DICE_PATTERN = /(?<!`)\b(\d+k\d+)\b(?!`)/g;
 
-function checkDiceNotation(filepath: string, lines: string[]): LintIssue[] {
+export function checkDiceNotation(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 	const tracker = newTracker();
 
@@ -179,7 +179,7 @@ function checkDiceNotation(filepath: string, lines: string[]): LintIssue[] {
 const FORMULA_INDICATORS = /(?:Static Defense|Hit Points|Mental Defense|Speed|Resilience|Initiative)/;
 const MULT_X_PATTERN = /(?<=\d)\s*x\s*(?=\d)/g;
 
-function checkFormulaSymbols(filepath: string, lines: string[]): LintIssue[] {
+export function checkFormulaSymbols(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 	const tracker = newTracker();
 
@@ -213,7 +213,7 @@ function checkFormulaSymbols(filepath: string, lines: string[]): LintIssue[] {
 
 const HEADING_PATTERN = /^(#{1,6})\s/;
 
-function checkHeadingHierarchy(filepath: string, lines: string[]): LintIssue[] {
+export function checkHeadingHierarchy(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 	const tracker = newTracker();
 	let lastLevel = 0;
@@ -250,7 +250,7 @@ function checkHeadingHierarchy(filepath: string, lines: string[]): LintIssue[] {
 
 const SEPARATOR_ROW = /^\|[\s\-:|]+\|$/;
 
-function checkEmptyTableCells(filepath: string, lines: string[]): LintIssue[] {
+export function checkEmptyTableCells(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 	const tracker = newTracker();
 
@@ -304,7 +304,7 @@ const CORRUPTION_PATTERNS: CorruptionRule[] = [
 	{ pattern: /\u00c2\u00bd/g, message: "Likely corrupted '\u00bd' (one-half)" },
 ];
 
-function checkEncodingMarkers(filepath: string, lines: string[]): LintIssue[] {
+export function checkEncodingMarkers(filepath: string, lines: string[]): LintIssue[] {
 	const issues: LintIssue[] = [];
 
 	for (let i = 0; i < lines.length; i++) {
@@ -330,7 +330,7 @@ function checkEncodingMarkers(filepath: string, lines: string[]): LintIssue[] {
 // File collection
 // ---------------------------------------------------------------------------
 
-function collectMarkdownFiles(target: Target): string[] {
+export function collectMarkdownFiles(target: Target): string[] {
 	const files: string[] = [];
 
 	if (target === "books" || target === "all") {
@@ -375,7 +375,7 @@ function globDir(dir: string): string[] {
 // Run all checks on one file
 // ---------------------------------------------------------------------------
 
-function runChecks(filepath: string): LintIssue[] {
+export function runChecks(filepath: string): LintIssue[] {
 	const content = fs.readFileSync(filepath, "utf-8");
 	const lines = content.split(/\r?\n/);
 
@@ -394,7 +394,7 @@ function runChecks(filepath: string): LintIssue[] {
 // Auto-fix
 // ---------------------------------------------------------------------------
 
-function applyFixes(filepath: string, issues: LintIssue[]): number {
+export function applyFixes(filepath: string, issues: LintIssue[]): number {
 	const fixable = issues.filter(
 		(i) => i.suggestion != null && (i.rule === "terminology" || i.rule === "dice-notation"),
 	);
@@ -563,4 +563,8 @@ function main(): void {
 	}
 }
 
-main();
+// Only run when executed directly (not imported by tests)
+const isDirectRun = process.argv[1] && /lint\.ts$/.test(process.argv[1]);
+if (isDirectRun) {
+	main();
+}

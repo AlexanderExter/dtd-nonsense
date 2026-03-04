@@ -25,7 +25,7 @@ const DATA_DIR = path.resolve(SCRIPT_DIR, "..", "data");
 // Types
 // ---------------------------------------------------------------------------
 
-interface ValidationResult {
+export interface ValidationResult {
 	file: string;
 	ok: boolean;
 	recordCount: number;
@@ -50,7 +50,7 @@ const LIST_FIELDS = [
 	"weapons",
 ] as const;
 
-function countRecords(data: unknown): number {
+export function countRecords(data: unknown): number {
 	if (Array.isArray(data)) return data.length;
 	if (typeof data !== "object" || data === null) return 0;
 
@@ -74,7 +74,7 @@ function countRecords(data: unknown): number {
 // Validation
 // ---------------------------------------------------------------------------
 
-function validateFile(filename: string): ValidationResult {
+export function validateFile(filename: string): ValidationResult {
 	const entry: SchemaEntry | undefined = FILE_SCHEMAS[filename];
 	if (!entry) {
 		return { file: filename, ok: false, recordCount: 0, errors: [`No schema registered for ${filename}`] };
@@ -105,7 +105,7 @@ function validateFile(filename: string): ValidationResult {
 	return { file: filename, ok: false, recordCount: 0, errors };
 }
 
-function validateAll(): ValidationResult[] {
+export function validateAll(): ValidationResult[] {
 	return Object.keys(FILE_SCHEMAS)
 		.sort()
 		.map((filename) => validateFile(filename));
@@ -115,11 +115,11 @@ function validateAll(): ValidationResult[] {
 // Cross-reference checks
 // ---------------------------------------------------------------------------
 
-function loadJson(filename: string): unknown {
+export function loadJson(filename: string): unknown {
 	return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), "utf-8"));
 }
 
-function crossReferenceCheck(): string[] {
+export function crossReferenceCheck(): string[] {
 	const issues: string[] = [];
 
 	// 1. classes → skills
@@ -280,4 +280,8 @@ function main(): void {
 	}
 }
 
-main();
+// Only run when executed directly (not imported by tests)
+const isDirectRun = process.argv[1] && /validate\.ts$/.test(process.argv[1]);
+if (isDirectRun) {
+	main();
+}
