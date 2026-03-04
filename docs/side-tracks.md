@@ -56,14 +56,28 @@ Pipeline scripts currently run via `npx tsx`. The implementation plan originally
 
 ## Code Quality
 
-### W3: Dice Logic in Two Independent Copies
+### W3: Dice Logic Centralized
 
-The same overflow compression + exploding d10 algorithm is implemented in two places:
+**Status:** ✅ Resolved (2026-03-04)
+
+The same dice rolling logic (overflow compression + exploding d10s) was previously implemented in two independent places:
 
 1. `src/lib/dtd/dice.ts` — ES module, used by builder and sheet
-2. `public/workers/simulation-worker.js` — external worker file, used by success-curves
+2. `public/workers/dice-common.js` — external worker file, used by success-curves
 
-The defense-graph blob worker was extracted to `public/workers/defense-worker.js` in Phase 3D (commit `5e2fde7`), reducing the copy count from 3 to 2. The remaining two copies are consistent but can diverge silently. A rule change to the overflow formula requires two synchronized edits with no lint or test to catch drift.
+**Solution:** Extracted core primitives into `src/lib/dtd/dice-primitives.ts` as the **canonical source**:
+
+- `rollOneDie()` — single d10 with explosion
+- `compressOverflow()` — overflow compression formula
+- `rollPool()` — full pool rolling
+
+Now:
+
+- `dice.ts` imports primitives from `dice-primitives.ts`
+- `dice-common.js` is explicitly marked as derived; must be kept in sync manually
+- Defense-graph blob worker (extracted separately in Phase 3D) contains its own independent logic; marked for future care
+
+**Maintenance rule:** Any change to the D:TD dice formula requires synchronized updates to ALL THREE locations (dice-primitives.ts, dice.ts imports, dice-common.js).
 
 ### W4: Divergent Default Character Shapes
 
