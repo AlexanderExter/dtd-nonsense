@@ -321,10 +321,6 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 Decisions in planning documents (`implementation-plan.md`, open questions) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
 
-### Stale .venv After Python Removal
-
-After removing Python from the project (Phase 3E), the `.venv/` directory and VS Code's auto-activation (`python.defaultInterpreterPath`, terminal auto-activate) may persist. Delete `.venv/`, check `.vscode/settings.json` for Python-related settings, and verify `terminal.integrated.env.*` doesn't reference the venv. All 19+ terminal sessions showing `.venv\Scripts\Activate.ps1` is a symptom of this.
-
 ### `.github/` Relative Link Prefix
 
 Markdown files in `.github/` need `../` prefix to link to project root directories (`docs/`, `data/`, etc.). VS Code's markdown validator catches broken links, but anchor fragments (`#section`) cause false positives — the file path resolves correctly even if the validator complains about the fragment.
