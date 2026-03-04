@@ -3,7 +3,7 @@
 Probability visualization tool for D:TD's XkY dice system. Generates success probability curves, distribution histograms, and comparative analysis for different dice pools.
 
 **Phase:** 4
-**Files:** `src/pages/tools/success-curves.astro` (JS/CSS inline), `public/workers/simulation-worker.js`
+**Files:** `src/pages/tools/success-curves.astro` (JS/CSS inline), `src/workers/simulation-worker.ts`
 **Pattern:** Inline `<script>` in Astro page
 
 ---
@@ -38,7 +38,7 @@ Default: 10,000 simulations per pool. Adjustable via UI slider (1,000 to 100,000
 
 ## Architecture
 
-**Dependencies:** **Chart.js** (via npm dynamic import), external Web Worker (`/workers/simulation-worker.js`)
+**Dependencies:** **Chart.js** (via npm dynamic import), ESM Web Worker (`src/workers/simulation-worker.ts`, bundled by Vite)
 
 ### Simulation Flow
 
@@ -47,7 +47,7 @@ Default: 10,000 simulations per pool. Adjustable via UI slider (1,000 to 100,000
 for (let tn = 5; tn <= 50; tn++) {
     let successes = 0;
     for (let i = 0; i < sampleCount; i++) {
-        const result = roll(pool, keep);  // runs inside Worker
+        const result = roll(pool, keep); // runs inside Worker
         if (result.total >= tn) successes++;
     }
     probabilities[tn] = successes / sampleCount;
@@ -72,7 +72,7 @@ const chart = new Chart(ctx, {
 
 ### Performance
 
-Monte Carlo with 10,000 samples × 10 TN steps × 4 pools = 400,000 dice rolls. The simulation runs in a dedicated Web Worker (`/workers/simulation-worker.js`) to keep the UI responsive during computation.
+Monte Carlo with 10,000 samples × 10 TN steps × 4 pools = 400,000 dice rolls. The simulation runs in a dedicated Web Worker (`src/workers/simulation-worker.ts`, bundled as ESM by Vite) to keep the UI responsive during computation.
 
 ---
 
@@ -121,13 +121,13 @@ Minimal persistence — saves pool configuration for quick reload.
 
 ## Design Decisions
 
-| Decision           | Choice            | Rationale                                           |
-| ------------------ | ----------------- | --------------------------------------------------- |
-| Computation method | Monte Carlo       | Exploding dice make analytical solutions complex    |
-| Dice engine        | Worker-embedded   | Own dice implementation in Web Worker               |
-| Chart library      | Chart.js (npm)    | Dynamic import, bundled by Vite                     |
-| Threading          | Web Worker        | Offloads simulation to background thread            |
-| Sample default     | 10,000            | Good accuracy/speed tradeoff                        |
+| Decision           | Choice          | Rationale                                        |
+| ------------------ | --------------- | ------------------------------------------------ |
+| Computation method | Monte Carlo     | Exploding dice make analytical solutions complex |
+| Dice engine        | Worker-embedded | Own dice implementation in Web Worker            |
+| Chart library      | Chart.js (npm)  | Dynamic import, bundled by Vite                  |
+| Threading          | Web Worker      | Offloads simulation to background thread         |
+| Sample default     | 10,000          | Good accuracy/speed tradeoff                     |
 
 ---
 

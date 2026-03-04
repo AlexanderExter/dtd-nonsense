@@ -282,7 +282,7 @@ When editing `dice.ts`:
 
 1. **Remember: primitives in another file** — Core explosion/overflow logic lives in `src/lib/dtd/dice-primitives.ts` (canonical source). If formula changes, **update both files**.
 2. **Test explosion behavior** — verify 10→10→10→… chains terminate correctly
-3. **Verify overflow compression** — Success Curves tool depends on consistent results; also update `public/workers/dice-common.js` if compression algorithm changes
+3. **Verify overflow compression** — Success Curves and Defense Graph tools depend on consistent results via `src/workers/simulation-worker.ts` and `src/workers/defense-worker.ts` (both import from `dice-primitives.ts` directly)
 4. **Check type alignment** — types live in `types.ts`; keep signatures in sync
 5. **Grep consumers** — Dice Roller, Combat Tracker, NPC Generator, Success Curves all import from this module
 6. **Run Dice Roller manually** — fastest way to verify roll correctness

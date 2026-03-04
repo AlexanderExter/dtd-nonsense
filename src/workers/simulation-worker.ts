@@ -9,13 +9,19 @@
  *   OUT: { id, mean, median, stdDev, min, max, histogram, successRates, raiseChecks }
  */
 
-importScripts("./dice-common.js");
+import { compressOverflow, rollPool } from "../lib/dtd/dice-primitives.ts";
 
 // =========================================================================
 // Statistics Helpers
 // =========================================================================
 
-function computeStats(totals) {
+function computeStats(totals: Float64Array): {
+	mean: number;
+	median: number;
+	stdDev: number;
+	min: number;
+	max: number;
+} {
 	const n = totals.length;
 	if (n === 0) return { mean: 0, median: 0, stdDev: 0, min: 0, max: 0 };
 
@@ -45,7 +51,7 @@ function computeStats(totals) {
 	return { mean, median, stdDev, min, max };
 }
 
-function buildHistogram(totals, maxBin) {
+function buildHistogram(totals: Float64Array, maxBin: number): number[] {
 	const bins = new Uint32Array(maxBin + 1);
 	const n = totals.length;
 	for (let i = 0; i < n; i++) {
@@ -53,15 +59,20 @@ function buildHistogram(totals, maxBin) {
 		const idx = Math.max(0, Math.min(v, maxBin));
 		bins[idx]++;
 	}
-	const histogram = new Array(maxBin + 1);
+	const histogram = new Array<number>(maxBin + 1);
 	for (let i = 0; i <= maxBin; i++) {
 		histogram[i] = (bins[i] / n) * 100;
 	}
 	return histogram;
 }
 
-function computeSuccessRates(totals, tnMin, tnMax, tnStep) {
-	const rates = {};
+function computeSuccessRates(
+	totals: Float64Array,
+	tnMin: number,
+	tnMax: number,
+	tnStep: number,
+): Record<number, number> {
+	const rates: Record<number, number> = {};
 	const n = totals.length;
 	for (let tn = tnMin; tn <= tnMax; tn += tnStep) {
 		let successes = 0;
@@ -73,7 +84,7 @@ function computeSuccessRates(totals, tnMin, tnMax, tnStep) {
 	return rates;
 }
 
-function computeRaiseCheckDistribution(totals, tn) {
+function computeRaiseCheckDistribution(totals: Float64Array, tn: number): number[] {
 	const buckets = new Float64Array(7);
 	const n = totals.length;
 	for (let i = 0; i < n; i++) {
@@ -91,7 +102,7 @@ function computeRaiseCheckDistribution(totals, tn) {
 			else buckets[6]++;
 		}
 	}
-	const result = new Array(7);
+	const result = new Array<number>(7);
 	for (let i = 0; i < 7; i++) {
 		result[i] = (buckets[i] / n) * 100;
 	}
@@ -102,7 +113,7 @@ function computeRaiseCheckDistribution(totals, tn) {
 // Worker Message Handler
 // =========================================================================
 
-self.onmessage = (e) => {
+self.onmessage = (e: MessageEvent) => {
 	const {
 		id,
 		numDice: rawNum,
@@ -113,7 +124,17 @@ self.onmessage = (e) => {
 		tnMax = 50,
 		tnStep = 1,
 		selectedTN = 15,
-	} = e.data;
+	} = e.data as {
+		id: number;
+		numDice: number;
+		keepDice: number;
+		modifier: number;
+		trials?: number;
+		tnMin?: number;
+		tnMax?: number;
+		tnStep?: number;
+		selectedTN?: number;
+	};
 
 	const { numDice, keepDice, modifier } = compressOverflow(rawNum, rawKeep, rawMod || 0);
 

@@ -66,10 +66,11 @@ The same dice rolling logic (overflow compression + exploding d10s) was previous
 Now:
 
 - `dice.ts` imports primitives from `dice-primitives.ts`
-- `dice-common.js` is explicitly marked as derived; must be kept in sync manually
-- Defense-graph blob worker (extracted separately in Phase 3D) contains its own independent logic; marked for future care
+- `dice.ts` is the sole consumer of `dice-primitives.ts` for application logic
+- Both web workers (`src/workers/simulation-worker.ts`, `src/workers/defense-worker.ts`) import directly from `dice-primitives.ts` via relative path
+- `public/workers/dice-common.js` has been deleted (Phase 11 ESM migration)
 
-**Maintenance rule:** Any change to the D:TD dice formula requires synchronized updates to ALL THREE locations (dice-primitives.ts, dice.ts imports, dice-common.js).
+**Maintenance rule:** Any change to the D:TD dice formula requires updating `dice-primitives.ts` only. All consumers (`dice.ts`, `simulation-worker.ts`, `defense-worker.ts`) will pick up the change automatically via import.
 
 ### W4: Divergent Default Character Shapes
 
