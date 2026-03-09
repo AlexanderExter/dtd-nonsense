@@ -101,7 +101,7 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 **Verification protocol:**
 
 - **Start of session:** Run `npm run session:start` to create the branch and establish a green baseline. If anything fails, fix it before doing other work.
-- **After code/data changes:** Run `npm run check` to confirm nothing broke. Biome warnings in `sheet-app.ts`/`builder-app.ts` are pre-existing — watch for _new_ warnings only.
+- **After code/data changes:** Run `npm run check` to confirm nothing broke. Biome reports ~12 pre-existing warnings globally (false positives and intentional CSS) — watch for _new_ warnings only.
 - **After doc-only changes:** No check needed unless you edited `scripts/`, `src/lib/`, or `data/`.
 - **Before committing:** The pre-commit hook runs `npm run check` automatically. If you want to verify before staging, run `npm run check` manually.
 - **Quick targeted checks:** Use `npm run test` (unit tests only), `npm run lint` (Biome only), or `npm run validate` (JSON schemas only) when you know exactly what scope changed.

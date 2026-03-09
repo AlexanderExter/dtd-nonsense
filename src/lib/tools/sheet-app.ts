@@ -8,7 +8,7 @@
 
 import { character as characterAPI, derived, escapeHtml, loadAllData } from "@/lib/dtd/core.ts";
 import { parseNotation } from "@/lib/dtd/dice.ts";
-import type { CharacterData } from "@/lib/dtd/types.ts";
+import type { CharacterData, CharacterModifiers } from "@/lib/dtd/types.ts";
 
 const Sheet = {
 	// =========================================================================
@@ -110,12 +110,13 @@ const Sheet = {
 	// State
 	// =========================================================================
 
-	data: {},
-	char: null as CharacterData | null,
+	data: {} as Record<string, any>,
+	/** Non-null after init — init() always loads or creates a character. */
+	char: null as unknown as CharacterData,
 	charId: null as string | null,
-	charList: [],
-	saveTimer: null,
-	derived: {},
+	charList: [] as Array<{ id: string; name: string }>,
+	saveTimer: null as ReturnType<typeof setTimeout> | null,
+	derived: {} as Record<string, any>,
 
 	// =========================================================================
 	// Initialization
@@ -159,21 +160,21 @@ const Sheet = {
 		const featList = document.getElementById("datalist-feats");
 		if (featList && this.data.feats) {
 			const feats = this.data.feats.feats || [];
-			featList.innerHTML = feats.map((f) => `<option value="${this.esc(f.name)}">`).join("");
+			featList.innerHTML = feats.map((f: { name: string }) => `<option value="${this.esc(f.name)}">`).join("");
 		}
 
 		// Melee weapons datalist
 		const meleeList = document.getElementById("datalist-weapons-melee");
 		if (meleeList && this.data.weapons) {
 			const melee = this.data.weapons.weapons?.melee || [];
-			meleeList.innerHTML = melee.map((w) => `<option value="${this.esc(w.name)}">`).join("");
+			meleeList.innerHTML = melee.map((w: { name: string }) => `<option value="${this.esc(w.name)}">`).join("");
 		}
 
 		// Ranged weapons datalist
 		const rangedList = document.getElementById("datalist-weapons-ranged");
 		if (rangedList && this.data.weapons) {
 			const ranged = this.data.weapons.weapons?.ranged || [];
-			rangedList.innerHTML = ranged.map((w) => `<option value="${this.esc(w.name)}">`).join("");
+			rangedList.innerHTML = ranged.map((w: { name: string }) => `<option value="${this.esc(w.name)}">`).join("");
 		}
 	},
 
@@ -181,126 +182,30 @@ const Sheet = {
 	// Character CRUD
 	// =========================================================================
 
-	getDefaultChar() {
-		const ch = {
-			id: this.genId(),
-			name: "",
-			player: "",
-			concept: "",
-			totalXP: 600,
-			xpSpent: 0,
-			race: "",
-			raceCharBonus: "",
-			exaltation: "",
-			alignment: "",
-			devotion: 6,
-			characteristics: {
-				strength: 1,
-				dexterity: 1,
-				constitution: 1,
-				charisma: 1,
-				fellowship: 1,
-				composure: 1,
-				intelligence: 1,
-				wisdom: 1,
-				willpower: 1,
-			},
-			charSpecialties: {},
-			skills: {},
-			skillSpecialties: {},
-			classes: [],
-			classNotes: "",
-			powerStat: 1,
-			resourceCurrent: 0,
-			exaltationNotes: "",
-			magicSchools: {
-				abjuration: 0,
-				conjuration: 0,
-				divination: 0,
-				enchantment: 0,
-				evocation: 0,
-				healing: 0,
-				illusion: 0,
-				necromancy: 0,
-				transmutation: 0,
-			},
-			bonusSchoolLevels: {},
-			spells: [],
-			fettered: false,
-			pushAmount: 0,
-			extraSchoolLevels: 0,
-			sanctioned: false,
-			swordSchools: {
-				desertWind: 0,
-				devotedSpirit: 0,
-				diamondMind: 0,
-				ironHeart: 0,
-				settingSun: 0,
-				shadowHand: 0,
-				stoneDragon: 0,
-				tigerClaw: 0,
-				whiteRaven: 0,
-			},
-			gunKata: {
-				clayPigeon: 0,
-				crisisZone: 0,
-				elementalGearbolt: 0,
-				pointBlank: 0,
-				silentScope: 0,
-				tinStar: 0,
-			},
-			specialAttacks: [],
-			trickShots: [],
-			armor: [],
-			aura: 0,
-			auraSource: "",
-			naturalArmor: 0,
-			meleeWeapons: [],
-			rangedWeapons: [],
-			feats: [],
-			assets: [],
-			hindrances: [],
-			backgrounds: [],
-			backgroundNotes: {},
-			heroPointsMax: 2,
-			heroPointsCurrent: 2,
-			heroPointsBurnt: 0,
-			languages: ["Trade"],
-			equipment: "",
-			notes: "",
-			height: "",
-			weight: "",
-			age: "",
-			description: "",
-			savedPools: [],
-			modifiers: {
-				staticDefense: 0,
-				hitPoints: 0,
-				mentalDefense: 0,
-				resolve: 0,
-				speed: 0,
-				resilience: 0,
-				initiative: 0,
-			},
-			currentHP: 0,
-			currentResolve: 0,
-		};
-
-		// Initialize skills from loaded data
+	/** Ensure school keys and skill keys exist — UI needs these for rendering. */
+	_ensureToolDefaults(ch: CharacterData) {
+		for (const s of this.MAGIC_SCHOOLS) {
+			if (!(s.id in (ch.magicSchools || {}))) ch.magicSchools[s.id] = 0;
+		}
+		for (const s of this.SWORD_SCHOOLS) {
+			if (!(s.id in (ch.swordSchools || {}))) ch.swordSchools[s.id] = 0;
+		}
+		for (const s of this.GUN_KATA) {
+			if (!(s.id in (ch.gunKata || {}))) ch.gunKata[s.id] = 0;
+		}
 		if (this.data.skills) {
 			const groups = this.data.skills.skills || {};
 			for (const cat of Object.values(groups)) {
-				for (const sk of cat) {
-					ch.skills[sk.id] = 0;
+				for (const sk of cat as { id: string }[]) {
+					if (!(sk.id in ch.skills)) ch.skills[sk.id] = 0;
 				}
 			}
 		}
-
-		return ch;
 	},
 
 	createCharacter() {
-		const ch = this.getDefaultChar();
+		const ch = characterAPI.createDefault();
+		this._ensureToolDefaults(ch);
 		this.char = ch;
 		this.charId = ch.id;
 		this.charList.push({ id: ch.id, name: ch.name || "New Character" });
@@ -309,47 +214,9 @@ const Sheet = {
 		this.renderAll();
 	},
 
-	loadCharacter(id) {
-		try {
-			const raw = localStorage.getItem(this.STORAGE_PREFIX + id);
-			if (raw) {
-				this.char = JSON.parse(raw);
-				// Merge with defaults for any missing fields
-				const def = this.getDefaultChar();
-				this.char = this.mergeDefaults(this.char, def);
-				this.char.id = id;
-				// Migrate old psychicStrength field
-				if (this.char.psychicStrength && !Object.hasOwn(this.char, "fettered")) {
-					this.char.fettered = this.char.psychicStrength === "fettered";
-					delete this.char.psychicStrength;
-				}
-				// Migrate old keyed-object backgrounds to array format
-				if (this.char.backgrounds && !Array.isArray(this.char.backgrounds)) {
-					const oldBgs = this.char.backgrounds;
-					const oldNotes = this.char.backgroundNotes || {};
-					this.char.backgrounds = [];
-					for (const [id, dots] of Object.entries(oldBgs)) {
-						if (dots > 0) {
-							const name = id.charAt(0).toUpperCase() + id.slice(1);
-							this.char.backgrounds.push({ name, dots, notes: oldNotes[id] || "" });
-						}
-					}
-					delete this.char.backgroundNotes;
-				}
-				// Migrate globalPush → extraSchoolLevels
-				if (Object.hasOwn(this.char, "globalPush") && !Object.hasOwn(this.char, "extraSchoolLevels")) {
-					this.char.extraSchoolLevels = this.char.globalPush || 0;
-					delete this.char.globalPush;
-				}
-			} else {
-				this.char = this.getDefaultChar();
-				this.char.id = id;
-			}
-		} catch (e) {
-			console.error("Failed to load character:", e);
-			this.char = this.getDefaultChar();
-			this.char.id = id;
-		}
+	loadCharacter(id: string) {
+		this.char = characterAPI.load(id);
+		this._ensureToolDefaults(this.char);
 		this.charId = id;
 		this.renderAll();
 	},
@@ -371,7 +238,7 @@ const Sheet = {
 		}
 	},
 
-	deleteCharacter(id) {
+	deleteCharacter(id: string) {
 		if (!id) return;
 		if (this.charList.length <= 1) {
 			alert("Cannot delete the last character. Create a new one first.");
@@ -391,7 +258,7 @@ const Sheet = {
 		try {
 			const raw = localStorage.getItem(this.STORAGE_LIST_KEY);
 			this.charList = raw ? JSON.parse(raw) : [];
-		} catch (e) {
+		} catch (_e) {
 			this.charList = [];
 		}
 	},
@@ -400,34 +267,10 @@ const Sheet = {
 		localStorage.setItem(this.STORAGE_LIST_KEY, JSON.stringify(this.charList));
 	},
 
-	switchCharacter(id) {
+	switchCharacter(id: string) {
 		if (id === this.charId) return;
 		this.saveCharacter();
 		this.loadCharacter(id);
-	},
-
-	mergeDefaults(obj, defaults) {
-		const result = { ...defaults };
-		for (const key of Object.keys(defaults)) {
-			if (Object.hasOwn(obj, key)) {
-				if (typeof defaults[key] === "object" && defaults[key] !== null && !Array.isArray(defaults[key])) {
-					result[key] = this.mergeDefaults(obj[key] || {}, defaults[key]);
-				} else {
-					result[key] = obj[key];
-				}
-			}
-		}
-		// Preserve extra keys from saved data
-		for (const key of Object.keys(obj)) {
-			if (!Object.hasOwn(defaults, key)) {
-				result[key] = obj[key];
-			}
-		}
-		return result;
-	},
-
-	genId() {
-		return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 	},
 
 	// =========================================================================
@@ -436,14 +279,14 @@ const Sheet = {
 
 	scheduleAutoSave() {
 		this.showSaveStatus("saving");
-		clearTimeout(this.saveTimer);
+		clearTimeout(this.saveTimer as ReturnType<typeof setTimeout>);
 		this.saveTimer = setTimeout(() => this.saveCharacter(), this.AUTOSAVE_DELAY);
 	},
 
-	showSaveStatus(state) {
+	showSaveStatus(state: string) {
 		const el = document.getElementById("save-status");
 		if (!el) return;
-		el.className = "save-status no-print " + state;
+		el.className = `save-status no-print ${state}`;
 		el.textContent = state === "saving" ? "Saving..." : state === "saved" ? "Saved" : "Error";
 	},
 
@@ -458,7 +301,7 @@ const Sheet = {
 		const mods = this.char.modifiers || {};
 		const isHalfling = this.char.race === "halfling";
 
-		const d = {};
+		const d: Record<string, any> = {};
 
 		// Static Defense (delegates to core.ts derived)
 		d.sdBase = derived.calculateSD(c.dexterity, c.wisdom, size, isHalfling);
@@ -507,15 +350,15 @@ const Sheet = {
 	},
 
 	getEffChars() {
-		const base = this.char.characteristics || {};
-		const racialBonus = {};
+		const base = (this.char.characteristics || {}) as unknown as Record<string, number>;
+		const racialBonus: Record<string, number> = {};
 
 		// Apply chosen racial bonus
 		if (this.char.race && this.char.raceCharBonus && this.data.races) {
 			racialBonus[this.char.raceCharBonus] = 1;
 		}
 
-		const result = {};
+		const result: Record<string, number> = {};
 		for (const id of Object.keys(this.CHAR_NAMES)) {
 			result[id] = (base[id] || 1) + (racialBonus[id] || 0);
 		}
@@ -524,7 +367,7 @@ const Sheet = {
 
 	getRaceSize() {
 		if (!this.char.race || !this.data.races) return 4;
-		const race = (this.data.races.races || []).find((r) => r.id === this.char.race);
+		const race = (this.data.races.races || []).find((r: { id: string; size: number }) => r.id === this.char.race);
 		return race ? race.size : 4;
 	},
 
@@ -533,9 +376,12 @@ const Sheet = {
 		return Math.max(1, ...this.char.classes.map((c) => c.level || 1));
 	},
 
-	getResourceMax(chars) {
+	getResourceMax(chars: Record<string, number>) {
 		if (!this.char.exaltation || !this.data.exaltations) return 0;
-		const exalt = (this.data.exaltations.exaltations || []).find((e) => e.id === this.char.exaltation);
+		const exalt = (this.data.exaltations.exaltations || []).find(
+			(e: { id: string; resourceStat?: { formula?: string; name?: string }; powerStat?: { name: string } }) =>
+				e.id === this.char.exaltation,
+		);
 		if (!exalt || !exalt.resourceStat) return 0;
 
 		const formula = exalt.resourceStat.formula || "";
@@ -639,7 +485,7 @@ const Sheet = {
 		this.updateWoundStatus(d.hp, c.currentHP);
 	},
 
-	updateWoundStatus(maxHP, currentHP) {
+	updateWoundStatus(maxHP: number, currentHP: number) {
 		const el = document.getElementById("wound-status");
 		const descEl = document.getElementById("wound-description");
 		if (!el) return;
@@ -651,7 +497,7 @@ const Sheet = {
 		const willpower = eff.willpower || 1;
 		const con = eff.constitution || 1;
 
-		let status, cssClass, description;
+		let status: string, cssClass: string, description: string;
 
 		if (hpLost <= 0) {
 			status = "Healthy";
@@ -681,8 +527,15 @@ const Sheet = {
 	// Full Rendering
 	// =========================================================================
 
-	renderDerivedStat(label, formulaText, baseId, modId, modField, effId, formulaId) {
-		const d = this.derived || {};
+	renderDerivedStat(
+		label: string,
+		formulaText: string,
+		baseId: string,
+		modId: string,
+		modField: keyof CharacterModifiers,
+		effId: string,
+		formulaId?: string,
+	) {
 		const c = this.char;
 		const mod = c.modifiers?.[modField] ?? 0;
 		return `
@@ -714,19 +567,19 @@ const Sheet = {
 
 	updateHeaderTrackers() {
 		const c = this.char;
-		document.getElementById("char-name").value = c.name || "";
-		const totalXpEl = document.getElementById("header-total-xp");
+		(document.getElementById("char-name") as HTMLInputElement).value = c.name || "";
+		const totalXpEl = document.getElementById("header-total-xp") as HTMLInputElement | null;
 		if (totalXpEl && document.activeElement !== totalXpEl) {
-			totalXpEl.value = c.totalXP ?? 600;
+			totalXpEl.value = String(c.totalXP ?? 600);
 		}
-		const spentXpEl = document.getElementById("header-xp-spent");
+		const spentXpEl = document.getElementById("header-xp-spent") as HTMLInputElement | null;
 		if (spentXpEl && document.activeElement !== spentXpEl) {
-			spentXpEl.value = c.xpSpent ?? 0;
+			spentXpEl.value = String(c.xpSpent ?? 0);
 		}
-		document.getElementById("track-hp").value = c.currentHP ?? 0;
-		document.getElementById("track-resource").value = c.resourceCurrent ?? 0;
-		document.getElementById("track-resolve").value = c.currentResolve ?? 0;
-		document.getElementById("track-hero").value = c.heroPointsCurrent ?? 2;
+		(document.getElementById("track-hp") as HTMLInputElement).value = String(c.currentHP ?? 0);
+		(document.getElementById("track-resource") as HTMLInputElement).value = String(c.resourceCurrent ?? 0);
+		(document.getElementById("track-resolve") as HTMLInputElement).value = String(c.currentResolve ?? 0);
+		(document.getElementById("track-hero") as HTMLInputElement).value = String(c.heroPointsCurrent ?? 2);
 	},
 
 	renderCharSelect() {
@@ -752,14 +605,17 @@ const Sheet = {
 		// Race options
 		const races = this.data.races?.races || [];
 		const raceOpts = races
-			.map((r) => `<option value="${r.id}" ${c.race === r.id ? "selected" : ""}>${this.esc(r.name)}</option>`)
+			.map(
+				(r: { id: string; name: string }) =>
+					`<option value="${r.id}" ${c.race === r.id ? "selected" : ""}>${this.esc(r.name)}</option>`,
+			)
 			.join("");
 
 		// Exaltation options
 		const exalts = this.data.exaltations?.exaltations || [];
 		const exaltOpts = exalts
 			.map(
-				(e) =>
+				(e: { id: string; name: string }) =>
 					`<option value="${e.id}" ${c.exaltation === e.id ? "selected" : ""}>${this.esc(e.name)}</option>`,
 			)
 			.join("");
@@ -768,7 +624,8 @@ const Sheet = {
 		const alignments = this.data.alignments?.alignments || [];
 		const alignOpts = alignments
 			.map(
-				(a) => `<option value="${a.id}" ${c.alignment === a.id ? "selected" : ""}>${this.esc(a.name)}</option>`,
+				(a: { id: string; name: string }) =>
+					`<option value="${a.id}" ${c.alignment === a.id ? "selected" : ""}>${this.esc(a.name)}</option>`,
 			)
 			.join("");
 
@@ -875,13 +732,15 @@ const Sheet = {
 
 	renderRaceBonusChoice() {
 		if (!this.char.race) return "";
-		const race = (this.data.races?.races || []).find((r) => r.id === this.char.race);
+		const race = (this.data.races?.races || []).find(
+			(r: { id: string; charBonus?: { options: string[]; description?: string } }) => r.id === this.char.race,
+		);
 		if (!race || !race.charBonus?.options) return "";
 
 		const opts = race.charBonus.options
 			.map(
-				(id) =>
-					`<option value="${id}" ${this.char.raceCharBonus === id ? "selected" : ""}>${this.CHAR_NAMES[id] || id}</option>`,
+				(id: string) =>
+					`<option value="${id}" ${this.char.raceCharBonus === id ? "selected" : ""}>${(this.CHAR_NAMES as Record<string, string>)[id] || id}</option>`,
 			)
 			.join("");
 
@@ -898,10 +757,21 @@ const Sheet = {
 
 	renderRaceInfo() {
 		if (!this.char.race) return "";
-		const race = (this.data.races?.races || []).find((r) => r.id === this.char.race);
+		const race = (this.data.races?.races || []).find(
+			(r: {
+				id: string;
+				name: string;
+				size: number;
+				skillBonus?: { skill: string; value: number }[];
+				languages?: string[];
+				power?: { name: string; description: string };
+			}) => r.id === this.char.race,
+		);
 		if (!race) return "";
 
-		const skillBonuses = (race.skillBonus || []).map((s) => `${s.skill}: +${s.value}`).join(", ");
+		const skillBonuses = (race.skillBonus || [])
+			.map((s: { skill: string; value: number }) => `${s.skill}: +${s.value}`)
+			.join(", ");
 		return `
             <div class="info-box">
                 <h4>${this.esc(race.name)}</h4>
@@ -954,7 +824,10 @@ const Sheet = {
 
 	renderAlignmentInfo() {
 		if (!this.char.alignment) return "";
-		const align = (this.data.alignments?.alignments || []).find((a) => a.id === this.char.alignment);
+		const align = (this.data.alignments?.alignments || []).find(
+			(a: { id: string; name: string; pantheon: string; description?: string; commandments?: string[] }) =>
+				a.id === this.char.alignment,
+		);
 		if (!align) return "";
 
 		const pantheonKey = align.pantheon;
@@ -1094,17 +967,17 @@ const Sheet = {
 		const eff = this.getEffChars();
 		let html = "";
 
-		for (const [groupId, group] of Object.entries(this.CHAR_GROUPS)) {
+		for (const [_groupId, group] of Object.entries(this.CHAR_GROUPS)) {
 			html += `<div class="char-group"><h4>${group.label}</h4>`;
 			for (const charId of group.chars) {
-				const base = this.char.characteristics[charId] || 1;
+				const base = (this.char.characteristics as unknown as Record<string, number>)[charId] || 1;
 				const total = eff[charId];
 				const hasRacialBonus = this.char.raceCharBonus === charId;
 				const spec = this.char.charSpecialties?.[charId] || "";
 
 				html += `
                     <div class="char-entry">
-                        <span class="char-label">${this.CHAR_NAMES[charId]} <span class="char-abbrev">(${this.CHAR_ABBREV[charId]})</span></span>
+                        <span class="char-label">${(this.CHAR_NAMES as Record<string, string>)[charId]} <span class="char-abbrev">(${(this.CHAR_ABBREV as Record<string, string>)[charId]})</span></span>
                         <input type="number" class="dot-input" min="1" max="6" value="${base}" data-char="${charId}">
                         ${hasRacialBonus ? '<span class="char-racial">+1</span>' : ""}
                         <span class="char-total">${total}</span>
@@ -1119,9 +992,11 @@ const Sheet = {
 
 	getRacialSkillBonuses() {
 		if (!this.char.race || !this.data.races) return {};
-		const race = (this.data.races.races || []).find((r) => r.id === this.char.race);
+		const race = (this.data.races.races || []).find(
+			(r: { id: string; skillBonus?: { skill: string; value: number }[] }) => r.id === this.char.race,
+		);
 		if (!race || !race.skillBonus) return {};
-		const bonuses = {};
+		const bonuses: Record<string, number> = {};
 		for (const sb of race.skillBonus) {
 			bonuses[sb.skill] = (bonuses[sb.skill] || 0) + sb.value;
 		}
@@ -1137,7 +1012,7 @@ const Sheet = {
 			const groupLabel = groupId.charAt(0).toUpperCase() + groupId.slice(1);
 			html += `<div class="skill-group"><h4>${groupLabel}</h4>`;
 
-			for (const sk of skills) {
+			for (const sk of skills as { id: string; name: string; advanced?: boolean }[]) {
 				const val = this.char.skills?.[sk.id] ?? 0;
 				const racialBonus = racialBonuses[sk.id] || 0;
 				const spec = this.char.skillSpecialties?.[sk.id] || "";
@@ -1163,8 +1038,8 @@ const Sheet = {
 	getSkillOptions() {
 		const skillData = this.data.skills?.skills || {};
 		let opts = "";
-		for (const [groupId, skills] of Object.entries(skillData)) {
-			for (const sk of skills) {
+		for (const [_groupId, skills] of Object.entries(skillData)) {
+			for (const sk of skills as { id: string; name: string }[]) {
 				opts += `<option value="${sk.id}">${this.esc(sk.name)}</option>`;
 			}
 		}
@@ -1172,12 +1047,12 @@ const Sheet = {
 	},
 
 	updatePoolCalcResult() {
-		const charSel = document.getElementById("pool-calc-char");
-		const skillSel = document.getElementById("pool-calc-skill");
-		const charBonusInput = document.getElementById("pool-calc-char-bonus");
-		const skillBonusInput = document.getElementById("pool-calc-skill-bonus");
-		const flatInput = document.getElementById("pool-calc-flat");
-		const specCheck = document.getElementById("pool-calc-spec");
+		const charSel = document.getElementById("pool-calc-char") as HTMLSelectElement | null;
+		const skillSel = document.getElementById("pool-calc-skill") as HTMLSelectElement | null;
+		const charBonusInput = document.getElementById("pool-calc-char-bonus") as HTMLInputElement | null;
+		const skillBonusInput = document.getElementById("pool-calc-skill-bonus") as HTMLInputElement | null;
+		const flatInput = document.getElementById("pool-calc-flat") as HTMLInputElement | null;
+		const specCheck = document.getElementById("pool-calc-spec") as HTMLInputElement | null;
 		const specHint = document.getElementById("pool-calc-spec-hint");
 		const resultEl = document.getElementById("pool-calc-result");
 		if (!charSel || !resultEl) return;
@@ -1191,12 +1066,13 @@ const Sheet = {
 
 		const eff = this.getEffChars();
 		const charVal = eff[charId] || 1;
-		const charBonus = parseInt(charBonusInput?.value) || 0;
-		const skillVal = this.char.skills?.[skillSel?.value] ?? 0;
+		const charBonus = parseInt(charBonusInput?.value ?? "", 10) || 0;
+		const skillId = skillSel?.value ?? "";
+		const skillVal = this.char.skills?.[skillId] ?? 0;
 		const racialBonuses = this.getRacialSkillBonuses();
-		const racialBonus = racialBonuses[skillSel?.value] || 0;
-		const skillBonus = parseInt(skillBonusInput?.value) || 0;
-		const flat = parseInt(flatInput?.value) || 0;
+		const racialBonus = racialBonuses[skillId] || 0;
+		const skillBonus = parseInt(skillBonusInput?.value ?? "", 10) || 0;
+		const flat = parseInt(flatInput?.value ?? "", 10) || 0;
 
 		const kept = charVal + charBonus;
 		const rolled = kept + skillVal + racialBonus + skillBonus;
@@ -1291,11 +1167,11 @@ const Sheet = {
 
 	renderArmorLocations() {
 		// Calculate effective AP per location from armor list + natural armor
-		const locs = {};
+		const locs: Record<string, number> = {};
 		for (const loc of this.LOCATIONS) locs[loc] = 0;
 
 		for (const a of this.char.armor || []) {
-			const ap = parseInt(a.ap) || 0;
+			const ap = parseInt(String(a.ap), 10) || 0;
 			const covered = a.locations || [];
 			for (const loc of covered) {
 				if (Object.hasOwn(locs, loc)) {
@@ -1304,7 +1180,7 @@ const Sheet = {
 			}
 		}
 
-		const natArmor = parseInt(this.char.naturalArmor) || 0;
+		const natArmor = parseInt(String(this.char.naturalArmor), 10) || 0;
 
 		return this.LOCATIONS.map((loc) => {
 			const wornAP = locs[loc];
@@ -1333,7 +1209,7 @@ const Sheet = {
 			).join("");
 			const locChecks = this.LOCATIONS.map((loc) => {
 				const checked = (a.locations || []).includes(loc) ? "checked" : "";
-				return `<label style="font-size:0.7rem;display:inline-flex;align-items:center;gap:2px;margin-right:4px"><input type="checkbox" data-armor-loc="${i}" data-loc="${loc}" ${checked}>${loc.replace(/(Left|Right)\s/, (m, p) => p[0] + " ")}</label>`;
+				return `<label style="font-size:0.7rem;display:inline-flex;align-items:center;gap:2px;margin-right:4px"><input type="checkbox" data-armor-loc="${i}" data-loc="${loc}" ${checked}>${loc.replace(/(Left|Right)\s/, (_m, p) => `${p[0]} `)}</label>`;
 			}).join("");
 
 			html += `<tr>
@@ -1600,7 +1476,7 @@ const Sheet = {
 			return `
                 <div class="school-entry">
                     <span class="school-name">${school.name}</span>
-                    <span class="school-char">${this.CHAR_ABBREV[school.char]}</span>
+                    <span class="school-char">${(this.CHAR_ABBREV as Record<string, string>)[school.char]}</span>
                     <input type="number" class="dot-input" min="0" max="${level}" value="${dots}" data-magic="${school.id}" title="School dots (max: Level ${level})">
                     <input type="number" class="school-bonus" min="0" value="${perSchoolBonus}" data-magic-bonus="${school.id}" title="Bonus levels (e.g., Atlantean)" ${bonusDisabled}>
                     <span class="school-pool">${pool}</span>
@@ -1609,10 +1485,10 @@ const Sheet = {
 		}).join("");
 	},
 
-	renderSchoolDots(schools, fieldGroup) {
-		const vals = this.char[fieldGroup] || {};
+	renderSchoolDots(schools: Array<{ id: string; name: string }>, fieldGroup: keyof CharacterData) {
+		const vals = (this.char[fieldGroup] as Record<string, number>) || {};
 		return schools
-			.map((school) => {
+			.map((school: { id: string; name: string }) => {
 				const dots = vals[school.id] ?? 0;
 				return `
                 <div class="school-entry">
@@ -1638,26 +1514,26 @@ const Sheet = {
 		const spells = this.char.spells || [];
 		if (spells.length === 0) return '<p class="text-muted" style="font-size:0.85rem">No spells known.</p>';
 
-		const schoolOpts = this.MAGIC_SCHOOLS.map((s) => `<option value="${s.id}">${s.name}</option>`).join("");
-
 		let html = `<table class="list-table">
             <thead><tr>
                 <th>School</th><th class="col-narrow">Level</th><th>Name</th><th>Notes</th><th class="col-actions"></th>
             </tr></thead><tbody>`;
 
-		spells.forEach((sp, i) => {
-			const opts = this.MAGIC_SCHOOLS.map(
-				(s) => `<option value="${s.id}" ${sp.school === s.id ? "selected" : ""}>${s.name}</option>`,
-			).join("");
+		(spells as unknown as Array<{ school: string; level: number; name: string; notes: string }>).forEach(
+			(sp, i) => {
+				const opts = this.MAGIC_SCHOOLS.map(
+					(s) => `<option value="${s.id}" ${sp.school === s.id ? "selected" : ""}>${s.name}</option>`,
+				).join("");
 
-			html += `<tr>
+				html += `<tr>
                 <td><select data-spell="${i}" data-prop="school">${opts}</select></td>
                 <td><input type="number" data-spell="${i}" data-prop="level" value="${sp.level ?? 1}" min="1" max="5" class="col-narrow"></td>
                 <td><input type="text" data-spell="${i}" data-prop="name" value="${this.esc(sp.name || "")}"></td>
                 <td><input type="text" data-spell="${i}" data-prop="notes" value="${this.esc(sp.notes || "")}" placeholder="Effect summary"></td>
                 <td class="col-actions"><button class="btn-remove" data-action="remove-spell" data-index="${i}">&times;</button></td>
             </tr>`;
-		});
+			},
+		);
 
 		html += "</tbody></table>";
 		return html;
@@ -1670,7 +1546,7 @@ const Sheet = {
 		let html = `<table class="list-table">
             <thead><tr><th>Name</th><th>Description</th><th class="col-actions"></th></tr></thead><tbody>`;
 
-		items.forEach((sa, i) => {
+		(items as unknown as Array<{ name: string; description: string }>).forEach((sa, i) => {
 			html += `<tr>
                 <td><input type="text" data-special-attack="${i}" data-prop="name" value="${this.esc(sa.name || "")}"></td>
                 <td><input type="text" data-special-attack="${i}" data-prop="description" value="${this.esc(sa.description || "")}"></td>
@@ -1751,12 +1627,12 @@ const Sheet = {
 		items.forEach((entry, i) => {
 			const classOpts = classes
 				.map(
-					(cls) =>
+					(cls: { id: string; name: string; level: number }) =>
 						`<option value="${cls.id}" ${entry.classId === cls.id ? "selected" : ""}>${this.esc(cls.name)} (L${cls.level})</option>`,
 				)
 				.join("");
 
-			const cls = classes.find((cl) => cl.id === entry.classId);
+			const cls = classes.find((cl: { id: string }) => cl.id === entry.classId);
 
 			html += `<div class="class-row">
                 <div class="class-row-header">
@@ -1771,7 +1647,7 @@ const Sheet = {
 		return html;
 	},
 
-	renderClassDetails(cls) {
+	renderClassDetails(cls: Record<string, any>) {
 		const chars = (cls.characteristics || []).join(", ");
 		const skills = (cls.skills || []).join(", ");
 
@@ -1780,7 +1656,7 @@ const Sheet = {
 			featsHtml =
 				'<ul class="class-feat-list">' +
 				cls.feats
-					.map((f) => {
+					.map((f: { name: string; type?: string }) => {
 						const suffix = f.type === "optional" || f.type === "mandatory-choice" ? " *" : "";
 						return `<li>${this.esc(f.name)}${suffix}</li>`;
 					})
@@ -1811,8 +1687,8 @@ const Sheet = {
 		return html;
 	},
 
-	renderNameNotesList(listName) {
-		const items = this.char[listName] || [];
+	renderNameNotesList(listName: string) {
+		const items = (this.char as Record<string, any>)[listName] || [];
 		if (items.length === 0) return `<p class="text-muted" style="font-size:0.85rem">None added.</p>`;
 
 		const useDatalist = listName === "feats" ? ' list="datalist-feats"' : "";
@@ -1820,7 +1696,7 @@ const Sheet = {
 		let html = `<table class="list-table">
             <thead><tr><th>Name</th><th>Notes</th><th class="col-actions"></th></tr></thead><tbody>`;
 
-		items.forEach((item, i) => {
+		items.forEach((item: { name: string; notes: string }, i: number) => {
 			html += `<tr>
                 <td><input type="text" data-list="${listName}" data-index="${i}" data-prop="name" value="${this.esc(item.name || "")}"${useDatalist}></td>
                 <td><input type="text" data-list="${listName}" data-index="${i}" data-prop="notes" value="${this.esc(item.notes || "")}" placeholder="Effect / source"></td>
@@ -1886,27 +1762,29 @@ const Sheet = {
 	bindEvents() {
 		// Tab navigation
 		document.querySelectorAll(".tab-btn").forEach((btn) => {
-			btn.addEventListener("click", () => this.switchTab(btn.dataset.tab));
+			btn.addEventListener("click", () => this.switchTab((btn as HTMLElement).dataset.tab));
 		});
 
 		// Character management bar
 		document.getElementById("char-select")?.addEventListener("change", (e) => {
-			this.switchCharacter(e.target.value);
+			const target = e.target as HTMLSelectElement;
+			this.switchCharacter(target.value);
 		});
 		document.getElementById("btn-new")?.addEventListener("click", () => this.createCharacter());
-		document.getElementById("btn-delete")?.addEventListener("click", () => this.deleteCharacter(this.charId));
+		document.getElementById("btn-delete")?.addEventListener("click", () => this.deleteCharacter(this.charId ?? ""));
 		document.getElementById("btn-export")?.addEventListener("click", () => this.exportJSON());
 		document.getElementById("btn-import")?.addEventListener("click", () => {
 			document.getElementById("file-import")?.click();
 		});
 		document.getElementById("file-import")?.addEventListener("change", (e) => {
-			if (e.target.files[0]) this.importFromFile(e.target.files[0]);
-			e.target.value = "";
+			const target = e.target as HTMLInputElement;
+			if (target.files?.[0]) this.importFromFile(target.files[0]);
+			target.value = "";
 		});
 
 		// Header name
 		document.getElementById("char-name")?.addEventListener("input", (e) => {
-			this.char.name = e.target.value;
+			this.char.name = (e.target as HTMLInputElement).value;
 			this.scheduleAutoSave();
 			this.renderCharSelect();
 		});
@@ -1919,7 +1797,7 @@ const Sheet = {
 			["track-hero", "heroPointsCurrent"],
 		]) {
 			document.getElementById(id)?.addEventListener("input", (e) => {
-				this.char[field] = parseInt(e.target.value) || 0;
+				(this.char as Record<string, any>)[field] = parseInt((e.target as HTMLInputElement).value, 10) || 0;
 				if (field === "currentHP") this.updateWoundStatus(this.derived.hp, this.char.currentHP);
 				this.scheduleAutoSave();
 			});
@@ -1927,14 +1805,14 @@ const Sheet = {
 
 		// Header Total XP input
 		document.getElementById("header-total-xp")?.addEventListener("input", (e) => {
-			this.char.totalXP = parseInt(e.target.value) || 0;
+			this.char.totalXP = parseInt((e.target as HTMLInputElement).value, 10) || 0;
 			this.setText("disp-xp-left", (this.char.totalXP || 600) - (this.char.xpSpent || 0));
 			this.scheduleAutoSave();
 		});
 
 		// Header XP Spent input
 		document.getElementById("header-xp-spent")?.addEventListener("input", (e) => {
-			this.char.xpSpent = parseInt(e.target.value) || 0;
+			this.char.xpSpent = parseInt((e.target as HTMLInputElement).value, 10) || 0;
 			this.setText("disp-xp-left", (this.char.totalXP || 600) - (this.char.xpSpent || 0));
 			this.scheduleAutoSave();
 		});
@@ -1945,12 +1823,12 @@ const Sheet = {
 		document.querySelector(".tab-panels")?.addEventListener("click", (e) => this.handlePanelClick(e));
 	},
 
-	switchTab(tabName) {
+	switchTab(tabName: string | undefined) {
 		document.querySelectorAll(".tab-btn").forEach((b) => {
-			b.classList.toggle("active", b.dataset.tab === tabName);
+			b.classList.toggle("active", (b as HTMLElement).dataset.tab === tabName);
 		});
 		document.querySelectorAll(".tab-panel").forEach((p) => {
-			p.classList.toggle("active", p.dataset.tab === tabName);
+			p.classList.toggle("active", (p as HTMLElement).dataset.tab === tabName);
 		});
 	},
 
@@ -1958,18 +1836,18 @@ const Sheet = {
 	// Delegated Event Handlers
 	// =========================================================================
 
-	handlePanelInput(e) {
-		const el = e.target;
+	handlePanelInput(e: Event) {
+		const el = e.target as HTMLInputElement;
 
 		// Generic data-field inputs
 		if (el.dataset.field) {
 			const field = el.dataset.field;
 			if (el.type === "checkbox") {
-				this.char[field] = el.checked;
+				(this.char as Record<string, any>)[field] = el.checked;
 			} else if (el.type === "number") {
-				this.char[field] = parseInt(el.value) || 0;
+				(this.char as Record<string, any>)[field] = parseInt(el.value, 10) || 0;
 			} else {
-				this.char[field] = el.value;
+				(this.char as Record<string, any>)[field] = el.value;
 			}
 
 			// Fields that affect derived stats
@@ -1977,12 +1855,12 @@ const Sheet = {
 				this.setText("disp-xp-left", (this.char.totalXP || 600) - (this.char.xpSpent || 0));
 				// Sync header inputs when changed from panel
 				if (field === "totalXP") {
-					const hdrEl = document.getElementById("header-total-xp");
-					if (hdrEl && document.activeElement !== hdrEl) hdrEl.value = this.char.totalXP;
+					const hdrEl = document.getElementById("header-total-xp") as HTMLInputElement | null;
+					if (hdrEl && document.activeElement !== hdrEl) hdrEl.value = String(this.char.totalXP);
 				}
 				if (field === "xpSpent") {
-					const hdrEl = document.getElementById("header-xp-spent");
-					if (hdrEl && document.activeElement !== hdrEl) hdrEl.value = this.char.xpSpent;
+					const hdrEl = document.getElementById("header-xp-spent") as HTMLInputElement | null;
+					if (hdrEl && document.activeElement !== hdrEl) hdrEl.value = String(this.char.xpSpent);
 				}
 			}
 			if (["powerStat"].includes(field)) {
@@ -2014,7 +1892,7 @@ const Sheet = {
 		if (el.dataset.mod !== undefined) {
 			const mod = el.dataset.mod;
 			if (this.char.modifiers) {
-				this.char.modifiers[mod] = parseInt(el.value) || 0;
+				(this.char.modifiers as unknown as Record<string, number>)[mod] = parseInt(el.value, 10) || 0;
 				this.calculateDerived();
 				this.updateDerivedDisplay();
 			}
@@ -2031,14 +1909,17 @@ const Sheet = {
 		// Characteristic inputs
 		if (el.dataset.char !== undefined) {
 			const charId = el.dataset.char;
-			this.char.characteristics[charId] = Math.min(6, Math.max(1, parseInt(el.value) || 1));
+			(this.char.characteristics as unknown as Record<string, number>)[charId] = Math.min(
+				6,
+				Math.max(1, parseInt(el.value, 10) || 1),
+			);
 			this.calculateDerived();
 			this.updateDerivedDisplay();
 
 			// Update total display next to the input
 			const eff = this.getEffChars();
 			const totalEl = el.closest(".char-entry")?.querySelector(".char-total");
-			if (totalEl) totalEl.textContent = eff[charId];
+			if (totalEl) totalEl.textContent = String(eff[charId]);
 
 			// Re-render stats to show/hide specialty field
 			this.renderStats();
@@ -2058,7 +1939,7 @@ const Sheet = {
 		if (el.dataset.skill !== undefined) {
 			const skillId = el.dataset.skill;
 			if (!this.char.skills) this.char.skills = {};
-			this.char.skills[skillId] = Math.min(6, Math.max(0, parseInt(el.value) || 0));
+			this.char.skills[skillId] = Math.min(6, Math.max(0, parseInt(el.value, 10) || 0));
 			// Re-render to show/hide specialty
 			this.renderStats();
 			this.scheduleAutoSave();
@@ -2077,7 +1958,7 @@ const Sheet = {
 		if (el.dataset.magic !== undefined) {
 			const id = el.dataset.magic;
 			if (!this.char.magicSchools) this.char.magicSchools = {};
-			this.char.magicSchools[id] = Math.min(this.getLevel(), Math.max(0, parseInt(el.value) || 0));
+			this.char.magicSchools[id] = Math.min(this.getLevel(), Math.max(0, parseInt(el.value, 10) || 0));
 			this.rerenderPowerSection("magic-schools", () => this.renderMagicSchools());
 			this.scheduleAutoSave();
 			return;
@@ -2087,7 +1968,7 @@ const Sheet = {
 		if (el.dataset.magicBonus !== undefined) {
 			const id = el.dataset.magicBonus;
 			if (!this.char.bonusSchoolLevels) this.char.bonusSchoolLevels = {};
-			this.char.bonusSchoolLevels[id] = Math.max(0, parseInt(el.value) || 0);
+			this.char.bonusSchoolLevels[id] = Math.max(0, parseInt(el.value, 10) || 0);
 			this.rerenderPowerSection("magic-schools", () => this.renderMagicSchools());
 			this.scheduleAutoSave();
 			return;
@@ -2098,8 +1979,8 @@ const Sheet = {
 			const parts = el.dataset.school.split(".");
 			const group = parts[0];
 			const id = parts[1];
-			if (!this.char[group]) this.char[group] = {};
-			this.char[group][id] = Math.min(5, Math.max(0, parseInt(el.value) || 0));
+			if (!(this.char as Record<string, any>)[group]) (this.char as Record<string, any>)[group] = {};
+			(this.char as Record<string, any>)[group][id] = Math.min(5, Math.max(0, parseInt(el.value, 10) || 0));
 
 			// Update martial/gunslinger level display
 			if (group === "swordSchools") {
@@ -2113,7 +1994,7 @@ const Sheet = {
 
 		// Background name inputs
 		if (el.dataset.bgName !== undefined) {
-			const idx = parseInt(el.dataset.bgName);
+			const idx = parseInt(el.dataset.bgName, 10);
 			if (this.char.backgrounds?.[idx]) {
 				this.char.backgrounds[idx].name = el.value;
 			}
@@ -2123,9 +2004,9 @@ const Sheet = {
 
 		// Background dot inputs
 		if (el.dataset.bgDots !== undefined) {
-			const idx = parseInt(el.dataset.bgDots);
+			const idx = parseInt(el.dataset.bgDots, 10);
 			if (this.char.backgrounds?.[idx]) {
-				this.char.backgrounds[idx].dots = Math.min(5, Math.max(0, parseInt(el.value) || 0));
+				this.char.backgrounds[idx].dots = Math.min(5, Math.max(0, parseInt(el.value, 10) || 0));
 				// Update budget display
 				const totalEl = document.getElementById("bg-total");
 				if (totalEl) totalEl.innerHTML = this.renderBgTotal();
@@ -2136,7 +2017,7 @@ const Sheet = {
 
 		// Background notes
 		if (el.dataset.bgNotes !== undefined) {
-			const idx = parseInt(el.dataset.bgNotes);
+			const idx = parseInt(el.dataset.bgNotes, 10);
 			if (this.char.backgrounds?.[idx]) {
 				this.char.backgrounds[idx].notes = el.value;
 			}
@@ -2146,7 +2027,7 @@ const Sheet = {
 
 		// Language inputs
 		if (el.dataset.language !== undefined) {
-			const idx = parseInt(el.dataset.language);
+			const idx = parseInt(el.dataset.language, 10);
 			if (!this.char.languages) this.char.languages = [];
 			this.char.languages[idx] = el.value;
 			this.scheduleAutoSave();
@@ -2156,19 +2037,19 @@ const Sheet = {
 		// List item inputs (feats, assets, hindrances)
 		if (el.dataset.list !== undefined) {
 			const listName = el.dataset.list;
-			const idx = parseInt(el.dataset.index);
-			const prop = el.dataset.prop;
-			if (this.char[listName] && this.char[listName][idx]) {
-				this.char[listName][idx][prop] = el.value;
+			const idx = parseInt(el.dataset.index!, 10);
+			const prop = el.dataset.prop!;
+			if ((this.char as Record<string, any>)[listName]?.[idx]) {
+				(this.char as Record<string, any>)[listName][idx][prop] = el.value;
 
 				// Auto-populate feat description on name match
 				if (listName === "feats" && prop === "name" && this.data.feats) {
-					const feat = (this.data.feats.feats || []).find((f) => f.name === el.value);
-					if (feat && !this.char[listName][idx].notes) {
-						this.char[listName][idx].notes = feat.effect || "";
+					const feat = (this.data.feats.feats || []).find((f: any) => f.name === el.value);
+					if (feat && !(this.char as Record<string, any>)[listName][idx].notes) {
+						(this.char as Record<string, any>)[listName][idx].notes = feat.effect || "";
 						// Update the notes input in the same row
 						const row = el.closest("tr");
-						const notesInput = row?.querySelector('[data-prop="notes"]');
+						const notesInput = row?.querySelector('[data-prop="notes"]') as HTMLInputElement | null;
 						if (notesInput) notesInput.value = feat.effect || "";
 					}
 				}
@@ -2181,16 +2062,16 @@ const Sheet = {
 		this.handleIndexedInput(el);
 	},
 
-	handleIndexedInput(el) {
+	handleIndexedInput(el: HTMLInputElement) {
 		// Armor location checkboxes (no data-prop attribute)
 		if (el.dataset.armorLoc !== undefined) {
-			const idx = parseInt(el.dataset.armorLoc);
+			const idx = parseInt(el.dataset.armorLoc, 10);
 			const loc = el.dataset.loc;
 			if (this.char.armor?.[idx]) {
 				if (!this.char.armor[idx].locations) this.char.armor[idx].locations = [];
 				const locs = this.char.armor[idx].locations;
 				if (el.checked) {
-					if (!locs.includes(loc)) locs.push(loc);
+					if (!locs.includes(loc!)) locs.push(loc!);
 				} else {
 					this.char.armor[idx].locations = locs.filter((l) => l !== loc);
 				}
@@ -2207,12 +2088,12 @@ const Sheet = {
 
 		// Armor
 		if (el.dataset.armor !== undefined) {
-			const idx = parseInt(el.dataset.armor);
+			const idx = parseInt(el.dataset.armor, 10);
 			if (this.char.armor?.[idx]) {
 				if (el.type === "number") {
-					this.char.armor[idx][prop] = parseInt(el.value) || 0;
+					(this.char.armor[idx] as Record<string, any>)[prop] = parseInt(el.value, 10) || 0;
 				} else {
-					this.char.armor[idx][prop] = el.value;
+					(this.char.armor[idx] as Record<string, any>)[prop] = el.value;
 				}
 				// Update armor location display
 				const container = document.getElementById("armor-locations");
@@ -2224,12 +2105,12 @@ const Sheet = {
 
 		// Melee weapons
 		if (el.dataset.melee !== undefined) {
-			const idx = parseInt(el.dataset.melee);
+			const idx = parseInt(el.dataset.melee, 10);
 			if (this.char.meleeWeapons?.[idx]) {
 				if (el.type === "number") {
-					this.char.meleeWeapons[idx][prop] = parseInt(el.value) || 0;
+					(this.char.meleeWeapons[idx] as Record<string, any>)[prop] = parseInt(el.value, 10) || 0;
 				} else {
-					this.char.meleeWeapons[idx][prop] = el.value;
+					(this.char.meleeWeapons[idx] as Record<string, any>)[prop] = el.value;
 				}
 			}
 			this.scheduleAutoSave();
@@ -2238,12 +2119,12 @@ const Sheet = {
 
 		// Ranged weapons
 		if (el.dataset.ranged !== undefined) {
-			const idx = parseInt(el.dataset.ranged);
+			const idx = parseInt(el.dataset.ranged, 10);
 			if (this.char.rangedWeapons?.[idx]) {
 				if (el.type === "number") {
-					this.char.rangedWeapons[idx][prop] = parseInt(el.value) || 0;
+					(this.char.rangedWeapons[idx] as Record<string, any>)[prop] = parseInt(el.value, 10) || 0;
 				} else {
-					this.char.rangedWeapons[idx][prop] = el.value;
+					(this.char.rangedWeapons[idx] as Record<string, any>)[prop] = el.value;
 				}
 			}
 			this.scheduleAutoSave();
@@ -2252,12 +2133,12 @@ const Sheet = {
 
 		// Classes
 		if (el.dataset.class !== undefined) {
-			const idx = parseInt(el.dataset.class);
+			const idx = parseInt(el.dataset.class, 10);
 			if (this.char.classes?.[idx]) {
 				if (prop === "level") {
-					this.char.classes[idx][prop] = parseInt(el.value) || 1;
+					(this.char.classes[idx] as Record<string, any>)[prop] = parseInt(el.value, 10) || 1;
 				} else {
-					this.char.classes[idx][prop] = el.value;
+					(this.char.classes[idx] as Record<string, any>)[prop] = el.value;
 				}
 				// Level changes affect derived stats
 				this.calculateDerived();
@@ -2269,12 +2150,13 @@ const Sheet = {
 
 		// Spells
 		if (el.dataset.spell !== undefined) {
-			const idx = parseInt(el.dataset.spell);
+			const idx = parseInt(el.dataset.spell, 10);
 			if (this.char.spells?.[idx]) {
+				const spell = this.char.spells[idx] as Record<string, any>;
 				if (prop === "level") {
-					this.char.spells[idx][prop] = parseInt(el.value) || 1;
+					spell[prop] = parseInt(el.value, 10) || 1;
 				} else {
-					this.char.spells[idx][prop] = el.value;
+					spell[prop] = el.value;
 				}
 			}
 			this.scheduleAutoSave();
@@ -2283,26 +2165,26 @@ const Sheet = {
 
 		// Special attacks
 		if (el.dataset.specialAttack !== undefined) {
-			const idx = parseInt(el.dataset.specialAttack);
+			const idx = parseInt(el.dataset.specialAttack, 10);
 			if (this.char.specialAttacks?.[idx]) {
-				this.char.specialAttacks[idx][prop] = el.value;
+				(this.char.specialAttacks[idx] as Record<string, any>)[prop] = el.value;
 			}
 			this.scheduleAutoSave();
 			return;
 		}
 	},
 
-	handlePanelChange(e) {
-		const el = e.target;
+	handlePanelChange(e: Event) {
+		const el = e.target as HTMLInputElement;
 
 		// Race change → re-render identity tab section
 		if (el.dataset.field === "race") {
-			this.char.race = el.value || null;
-			this.char.raceCharBonus = null;
+			this.char.race = el.value || "";
+			this.char.raceCharBonus = "";
 
 			// Auto-seed languages from race
 			if (this.char.race) {
-				const race = (this.data.races?.races || []).find((r) => r.id === this.char.race);
+				const race = (this.data.races?.races || []).find((r: any) => r.id === this.char.race);
 				if (race?.languages) {
 					this.char.languages = [...new Set([...race.languages])];
 				}
@@ -2317,7 +2199,7 @@ const Sheet = {
 
 		// Race char bonus change
 		if (el.dataset.field === "raceCharBonus") {
-			this.char.raceCharBonus = el.value || null;
+			this.char.raceCharBonus = el.value || "";
 			this.calculateDerived();
 			this.updateDerivedDisplay();
 			// Update char totals in stats tab
@@ -2328,7 +2210,7 @@ const Sheet = {
 
 		// Exaltation change → re-render identity + powers
 		if (el.dataset.field === "exaltation") {
-			this.char.exaltation = el.value || null;
+			this.char.exaltation = el.value || "";
 			this.renderIdentity();
 			this.renderPowers();
 			this.calculateDerived();
@@ -2339,7 +2221,7 @@ const Sheet = {
 
 		// Alignment change
 		if (el.dataset.field === "alignment") {
-			this.char.alignment = el.value || null;
+			this.char.alignment = el.value || "";
 			// Re-render alignment info
 			const info = document.getElementById("alignment-info");
 			if (info) info.innerHTML = this.renderAlignmentInfo();
@@ -2356,11 +2238,11 @@ const Sheet = {
 
 		// Class dropdown changes
 		if (el.dataset.class !== undefined && el.dataset.prop === "classId") {
-			const idx = parseInt(el.dataset.class);
+			const idx = parseInt(el.dataset.class, 10);
 			if (this.char.classes?.[idx]) {
 				this.char.classes[idx].classId = el.value;
 				// Determine level from class data
-				const cls = (this.data.classes?.classes || []).find((c) => c.id === el.value);
+				const cls = (this.data.classes?.classes || []).find((c: any) => c.id === el.value);
 				if (cls) {
 					this.char.classes[idx].level = cls.level || 1;
 				}
@@ -2381,12 +2263,12 @@ const Sheet = {
 		}
 	},
 
-	handlePanelClick(e) {
-		const btn = e.target.closest("[data-action]");
+	handlePanelClick(e: Event) {
+		const btn = (e.target as HTMLElement).closest("[data-action]") as HTMLElement | null;
 		if (!btn) return;
 
 		const action = btn.dataset.action;
-		const idx = parseInt(btn.dataset.index);
+		const idx = parseInt(btn.dataset.index!, 10);
 
 		switch (action) {
 			// Add actions
@@ -2396,8 +2278,9 @@ const Sheet = {
 					name: "",
 					type: "Light",
 					ap: 0,
-					maxDex: null,
+					maxDex: undefined,
 					locations: [],
+					qualities: "",
 					craftsmanship: "",
 					special: "",
 				});
@@ -2409,10 +2292,12 @@ const Sheet = {
 					name: "",
 					damage: "",
 					damageType: "I",
-					pen: 0,
+					pen: "0",
 					special: "",
 					weaponType: "Melee",
 					proficiency: "Basic",
+					qualities: "",
+					notes: "",
 					test: "",
 					availability: "Common",
 				});
@@ -2424,14 +2309,16 @@ const Sheet = {
 					name: "",
 					damage: "",
 					damageType: "I",
-					pen: 0,
+					pen: "0",
 					rof: "",
-					range: 0,
-					clip: 0,
+					range: "",
+					clip: "",
 					reload: "",
 					special: "",
 					weaponType: "Basic",
 					proficiency: "Basic",
+					qualities: "",
+					notes: "",
 					test: "",
 					availability: "Common",
 				});
@@ -2439,12 +2326,12 @@ const Sheet = {
 				break;
 			case "add-spell":
 				if (!this.char.spells) this.char.spells = [];
-				this.char.spells.push({ school: "abjuration", level: 1, name: "", notes: "" });
+				this.char.spells.push({ school: "abjuration", level: 1, name: "", notes: "" } as any);
 				this.rerenderPowerSection("spells-list", () => this.renderSpellsList());
 				break;
 			case "add-special-attack":
 				if (!this.char.specialAttacks) this.char.specialAttacks = [];
-				this.char.specialAttacks.push({ name: "", description: "" });
+				this.char.specialAttacks.push({ name: "", description: "" } as any);
 				this.rerenderPowerSection("special-attacks-list", () => this.renderSpecialAttacks());
 				break;
 			case "add-class":
@@ -2479,25 +2366,27 @@ const Sheet = {
 				break;
 
 			case "save-pool": {
-				const charSel = document.getElementById("pool-calc-char");
-				const skillSel = document.getElementById("pool-calc-skill");
-				const labelInput = document.getElementById("pool-calc-label");
+				const charSel = document.getElementById("pool-calc-char") as HTMLSelectElement | null;
+				const skillSel = document.getElementById("pool-calc-skill") as HTMLSelectElement | null;
+				const labelInput = document.getElementById("pool-calc-label") as HTMLInputElement | null;
 				const resultEl = document.getElementById("pool-calc-result");
 				if (!charSel?.value) break;
 
-				const charName = this.CHAR_ABBREV[charSel.value] || charSel.value;
+				const charName = (this.CHAR_ABBREV as Record<string, string>)[charSel.value] || charSel.value;
 				const skillName = skillSel?.value
 					? this.data.skills?.skills
-						? Object.values(this.data.skills.skills)
-								.flat()
-								.find((s) => s.id === skillSel.value)?.name || skillSel.value
+						? (
+								Object.values(this.data.skills.skills)
+									.flat()
+									.find((s: any) => (s as any).id === skillSel.value) as any
+							)?.name || skillSel.value
 						: skillSel.value
 					: "";
 				const formula = skillName ? `${charName} + ${skillName}` : charName;
 				const label = labelInput?.value || formula;
 
 				if (!this.char.savedPools) this.char.savedPools = [];
-				this.char.savedPools.push({ label, formula, pool: resultEl?.textContent || "—" });
+				this.char.savedPools.push({ label, formula, pool: resultEl?.textContent || "—" } as any);
 				if (labelInput) labelInput.value = "";
 
 				const listEl = document.getElementById("pool-saved-list");
@@ -2516,7 +2405,7 @@ const Sheet = {
 			case "remove-armor":
 				this.char.armor?.splice(idx, 1);
 				this.rerenderCombatSection("armor-list", () => this.renderArmorList());
-				document.getElementById("armor-locations").innerHTML = this.renderArmorLocations();
+				document.getElementById("armor-locations")!.innerHTML = this.renderArmorLocations();
 				break;
 			case "remove-melee":
 				this.char.meleeWeapons?.splice(idx, 1);
@@ -2570,17 +2459,17 @@ const Sheet = {
 	},
 
 	// Section re-render helpers
-	rerenderCombatSection(containerId, renderFn) {
+	rerenderCombatSection(containerId: string, renderFn: () => string) {
 		const el = document.getElementById(containerId);
 		if (el) el.innerHTML = renderFn();
 	},
 
-	rerenderPowerSection(containerId, renderFn) {
+	rerenderPowerSection(containerId: string, renderFn: () => string) {
 		const el = document.getElementById(containerId);
 		if (el) el.innerHTML = renderFn();
 	},
 
-	rerenderFeatureSection(containerId, renderFn) {
+	rerenderFeatureSection(containerId: string, renderFn: () => string) {
 		const el = document.getElementById(containerId);
 		if (el) el.innerHTML = renderFn();
 	},
@@ -2595,32 +2484,29 @@ const Sheet = {
 		characterAPI.exportJSON(this.char, `${name}.json`);
 	},
 
-	async importFromFile(file) {
+	async importFromFile(file: File) {
 		try {
 			const text = await file.text();
 			const data = JSON.parse(text);
 			this.importJSON(data);
-		} catch (e) {
-			alert("Failed to import: " + e.message);
+		} catch (e: unknown) {
+			alert(`Failed to import: ${(e as Error).message}`);
 		}
 	},
 
-	importJSON(data) {
+	importJSON(data: any) {
 		if (!data || typeof data !== "object") return;
 
-		// Ensure it has an ID
-		if (!data.id) data.id = this.genId();
+		const imported = characterAPI.validate(data);
+		if (!imported.id) imported.id = characterAPI._genId();
+		this._ensureToolDefaults(imported);
 
-		const def = this.getDefaultChar();
-		const merged = this.mergeDefaults(data, def);
-		merged.id = data.id;
-
-		this.char = merged;
-		this.charId = merged.id;
+		this.char = imported;
+		this.charId = imported.id;
 
 		// Add to list if not present
-		if (!this.charList.find((c) => c.id === merged.id)) {
-			this.charList.push({ id: merged.id, name: merged.name || "Imported" });
+		if (!this.charList.find((c) => c.id === imported.id)) {
+			this.charList.push({ id: imported.id, name: imported.name || "Imported" });
 			this.saveCharList();
 		}
 
@@ -2632,18 +2518,18 @@ const Sheet = {
 	// Helpers
 	// =========================================================================
 
-	esc(str) {
+	esc(str: any) {
 		if (str == null) return "";
 		return escapeHtml(String(str));
 	},
 
-	setText(id, value) {
+	setText(id: string, value: any) {
 		const el = document.getElementById(id);
 		if (el) el.textContent = value;
 	},
 
-	setVal(id, value) {
-		const el = document.getElementById(id);
+	setVal(id: string, value: any) {
+		const el = document.getElementById(id) as HTMLInputElement | null;
 		if (el && document.activeElement !== el) {
 			el.value = value;
 		}
@@ -2651,7 +2537,7 @@ const Sheet = {
 
 	getExaltData() {
 		if (!this.char?.exaltation || !this.data.exaltations) return null;
-		return (this.data.exaltations.exaltations || []).find((e) => e.id === this.char.exaltation);
+		return (this.data.exaltations.exaltations || []).find((e: any) => e.id === this.char.exaltation);
 	},
 };
 

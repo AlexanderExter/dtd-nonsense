@@ -8,17 +8,9 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 ## TypeScript Migration
 
-### Phase 2: Tool Module Refactor
-
-Break up the monolithic tool apps (`sheet-app.ts`, `builder-app.ts`) into logical sub-modules to reduce maintenance burden and enable per-module typing.
-
-**Revised approach (2026-03-03):** The implementation plan originally proposed splitting each tool into `state.ts`, `calc.ts`, `render.ts`, `events.ts` sub-modules. After analysis, the revised recommendation is a **type-in-place** strategy — fix TypeScript errors directly in the existing files first, then evaluate whether a module split is still warranted. Testing is manual — verify tool behavior before and after changes.
-
-**Current status:** `@ts-nocheck` removed from `sheet-app.ts` (614 TS errors exposed, unfixed). `builder-app.ts` still has `@ts-nocheck` (~422 errors hidden).
-
-`sheet-app.ts` still has its own `getDefaultChar()` / `mergeDefaults()` rather than delegating to `character.DEFAULTS`. Values are now aligned, but the structural duplication remains — resolve during this phase.
-
 ### Phase 3: Reactivity Layer
+
+> Phase 2 (typing both tool files) is complete — see `docs/project-history.md` § Phase 11.
 
 Open consideration — depends on Phase 2 outcome. If the module refactor still leaves DOM manipulation feeling painful, consider a lightweight reactivity layer:
 
@@ -53,8 +45,6 @@ Start with the dice roller (smallest tool) as a proof-of-concept island before m
 ---
 
 ## Future Work
-
-### Favicon / OG Image
 
 ### Session Script Robustness
 

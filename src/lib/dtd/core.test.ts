@@ -193,7 +193,7 @@ describe("character", () => {
 			const input = { name: "Hero", customField: "custom value" };
 			const result = character.validate(input);
 			expect(result.name).toBe("Hero");
-			expect((result as Record<string, unknown>).customField).toBe("custom value");
+			expect((result as unknown as Record<string, unknown>).customField).toBe("custom value");
 		});
 	});
 
@@ -485,7 +485,7 @@ describe("character", () => {
 				race: { id: "elf", name: "Elf" },
 				feats: ["Power Attack"],
 			};
-			storage["dtd_sheet_legacy1"] = JSON.stringify(legacy);
+			storage.dtd_sheet_legacy1 = JSON.stringify(legacy);
 
 			const loaded = character.load("legacy1");
 			expect(loaded.race).toBe("elf");

@@ -34,8 +34,8 @@ src/lib/dtd/core.ts              ← Shared: data loading, derived stats, charac
 src/lib/dtd/dice.ts              ← Shared: roll(), calculateOutcome(), parseNotation()
 src/lib/dtd/dice-primitives.ts   ← Canonical dice algorithms (used by dice.ts and workers)
 src/lib/dtd/types.ts             ← Shared: CharacterData, CharacterListEntry, etc.
-src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (TS errors present, no @ts-nocheck)
-src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (@ts-nocheck)
+src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (fully typed)
+src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (fully typed)
 src/workers/                     ← TypeScript ESM Web Workers (bundled by Vite)
 src/layouts/ToolLayout.astro     ← Wrapper layout for all tool pages
 src/styles/custom.css            ← WH40K theme tokens
@@ -100,7 +100,7 @@ When a tool exceeds ~1,500 LOC, logic is extracted to `src/lib/tools/[name]-app.
 </style>
 ```
 
-`builder-app.ts` uses `@ts-nocheck` (Phase 2 typing deferred). `sheet-app.ts` had it removed but has ~614 unfixed TS errors. Both files contain all tool state, DOM manipulation, and event handling.
+Both `builder-app.ts` and `sheet-app.ts` are fully typed with zero TS errors (Phase 2 complete). Both files contain all tool state, DOM manipulation, and event handling.
 
 ## Data Loading
 
@@ -142,7 +142,7 @@ Most JSON files nest data under a top-level key matching the filename. You must 
 
 These have each caused real bugs. Memorize them:
 
-1. **`@ts-nocheck` and untyped files need careful editing** — `builder-app.ts` has `@ts-nocheck` at line 1 (TypeScript won't catch errors). `sheet-app.ts` had the directive removed but still has ~614 unfixed TS errors — TypeScript flags them, but they're not yet resolved. When editing either file, manually verify DOM element types, null checks, and API signatures.
+1. **Tool files use `Record<string, any>` casts for dynamic access** — Both `builder-app.ts` and `sheet-app.ts` are fully typed, but use `as Record<string, any>` casts for dynamic property access on `CharacterData`, `Characteristics`, and equipment types. When adding new dynamic access patterns, follow the existing cast conventions.
 
 2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
 

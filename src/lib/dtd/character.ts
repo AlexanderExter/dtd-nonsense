@@ -152,7 +152,7 @@ export const character = {
 		try {
 			const raw = localStorage.getItem(this.STORAGE_LIST_KEY);
 			return raw ? JSON.parse(raw) : [];
-		} catch (e) {
+		} catch (_e) {
 			return [];
 		}
 	},
@@ -164,7 +164,7 @@ export const character = {
 	},
 
 	exportJSON(data: CharacterData, filename?: string): void {
-		const name = filename || (data.name || "character").replace(/[^a-z0-9]/gi, "_").toLowerCase() + ".json";
+		const name = filename || `${(data.name || "character").replace(/[^a-z0-9]/gi, "_").toLowerCase()}.json`;
 		const json = JSON.stringify(data, null, 2);
 		const blob = new Blob([json], { type: "application/json" });
 		const url = URL.createObjectURL(blob);

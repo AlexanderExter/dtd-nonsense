@@ -38,7 +38,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### When to Reconsider
 
-- **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; `builder-app.ts` retains `@ts-nocheck` pending Phase 2 module refactor; `sheet-app.ts` runs without the directive.
+- **TypeScript for tools:** Phase 2 complete. All shared modules (`core.ts`, `dice.ts`, `types.ts`) and both tool files (`builder-app.ts`, `sheet-app.ts`) are fully typed with zero TS errors.
 
 ### Code Quality & Testing
 
