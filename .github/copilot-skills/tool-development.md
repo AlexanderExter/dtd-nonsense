@@ -34,14 +34,14 @@ src/lib/dtd/core.ts              ← Shared: data loading, derived stats, charac
 src/lib/dtd/dice.ts              ← Shared: roll(), calculateOutcome(), parseNotation()
 src/lib/dtd/dice-primitives.ts   ← Canonical dice algorithms (used by dice.ts and workers)
 src/lib/dtd/types.ts             ← Shared: CharacterData, CharacterListEntry, etc.
-src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (614 TS errors, no @ts-nocheck)
+src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (TS errors present, no @ts-nocheck)
 src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (@ts-nocheck)
 src/workers/                     ← TypeScript ESM Web Workers (bundled by Vite)
 src/layouts/ToolLayout.astro     ← Wrapper layout for all tool pages
 src/styles/custom.css            ← WH40K theme tokens
 src/styles/sheet.css             ← Per-tool CSS for large tools
 src/styles/builder.css           ← Per-tool CSS for large tools
-data/                            ← Canonical JSON (12 files, copied to public/data/ at build)
+data/                            ← Canonical JSON (validated by Zod schemas, copied to public/data/ at build)
 ```
 
 ### Standard Tool Pattern
@@ -163,7 +163,7 @@ These have each caused real bugs. Memorize them:
 
 7. **Always grep all tool files when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, or `types.ts` can break any of the 9 tool pages plus `sheet-app.ts` and `builder-app.ts`. Search `src/pages/tools/` and `src/lib/tools/` for all callers before modifying exports.
 
-8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. In the March 2026 audit, 6 of 9 spec files had wrong imports, fabricated features, or incorrect data sources. When editing a tool or its spec, always verify against the actual `.astro`/`.ts` source. Never trust spec docs as ground truth for what a tool actually imports or does.
+8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. A March 2026 audit found and corrected errors in 6 of 9 spec files. Specs are now more reliable, but always verify against the actual `.astro`/`.ts` source when editing a tool. The code is ground truth, not the spec doc.
 
 ## Adding a New Tool
 

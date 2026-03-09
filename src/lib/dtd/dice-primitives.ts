@@ -50,11 +50,7 @@ export function rollOneDie(): DieRoll {
  * @param {number} modifier - Flat modifier
  * @returns {OverflowInfo} Compressed parameters and flag
  */
-export function compressOverflow(
-	numDice: number,
-	keepDice: number,
-	modifier: number,
-): OverflowInfo {
+export function compressOverflow(numDice: number, keepDice: number, modifier: number): OverflowInfo {
 	let compressed = false;
 
 	if (numDice > 10) {

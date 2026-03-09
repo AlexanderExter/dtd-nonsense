@@ -16,8 +16,14 @@
         "lint": "biome check .",
         "lint:fix": "biome check --write .",
         "validate": "bun run scripts/validate.ts",
+        "validate:xref": "bun run scripts/validate.ts --xref",
         "lint:data": "bun run scripts/lint.ts",
         "sync-check": "bun run scripts/sync-check.ts",
+        "check": "vitest run && biome check . && bun run scripts/validate.ts --xref && bun run scripts/lint.ts",
+        "session:start": "node scripts/session-start.mjs",
+        "session:end": "node scripts/session-end.mjs",
+        "session:status": "node scripts/session-status.mjs",
+        "prepare": "git config core.hooksPath .githooks",
         "astro": "astro"
     },
     "dependencies": {

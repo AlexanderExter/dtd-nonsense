@@ -136,8 +136,8 @@ describe("character", () => {
 			expect(ch.id).toBe("test123");
 			expect(ch.name).toBe("");
 			expect(ch.totalXP).toBe(600);
-			expect(ch.characteristics.strength).toBe(2);
-			expect(ch.characteristics.dexterity).toBe(2);
+			expect(ch.characteristics.strength).toBe(1);
+			expect(ch.characteristics.dexterity).toBe(1);
 			expect(ch.feats).toEqual([]);
 			expect(ch.modifiers).toEqual({
 				staticDefense: 0,
@@ -156,7 +156,7 @@ describe("character", () => {
 			vi.spyOn(character, "_genId").mockReturnValue("b");
 			const b = character.createDefault();
 			a.characteristics.strength = 99;
-			expect(b.characteristics.strength).toBe(2);
+			expect(b.characteristics.strength).toBe(1);
 		});
 	});
 
@@ -185,7 +185,7 @@ describe("character", () => {
 			const result = character.validate(partial);
 			expect(result.name).toBe("Test Hero");
 			expect(result.totalXP).toBe(1000);
-			expect(result.characteristics.strength).toBe(2);
+			expect(result.characteristics.strength).toBe(1);
 			expect(result.feats).toEqual([]);
 		});
 

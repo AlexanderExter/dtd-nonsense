@@ -13,17 +13,17 @@ Documentation for all JSON data files in `data/`. These files drive the game-dat
 | File                 | Records | Source Markdown                | Consumers                                         | Added In  |
 | -------------------- | ------- | ------------------------------ | ------------------------------------------------- | --------- |
 | `races.json`         | 16      | `04-Races.md`                  | Character Sheet, Character Builder                | Phase 0   |
-| `exaltations.json`   | 9       | `05-Exaltations.md`            | Character Sheet, Character Builder                | Phase 0   |
+| `exaltations.json`   | 10      | `05-Exaltations.md`            | Character Sheet, Character Builder                | Phase 0   |
 | `skills.json`        | 27      | `03-Characteristics-Skills.md` | Character Sheet, Character Builder, NPC Generator | Phase 0   |
-| `classes.json`       | 90      | `06-Classes.md`                | Character Sheet, Character Builder                | Phase 0   |
-| `feats.json`         | 100+    | `07-Feats.md`                  | Character Sheet, Character Builder, NPC Generator | Phase 0   |
+| `classes.json`       | 103     | `06-Classes.md`                | Character Sheet, Character Builder                | Phase 0   |
+| `feats.json`         | 329     | `07-Feats.md`                  | Character Sheet, Character Builder, NPC Generator | Phase 0   |
 | `backgrounds.json`   | 11      | `08-Backgrounds.md`            | Character Sheet, Character Builder                | Phase 0   |
 | `alignments.json`    | 21      | `09-Alignments.md`             | Character Sheet, Character Builder                | Phase 0   |
-| `equipment.json`     | varies  | `10-Equipment.md`              | Character Builder                                 | Phase 0   |
-| `weapons.json`       | varies  | `10-Equipment.md`              | Character Sheet, Character Builder, NPC Generator | Phase 0   |
-| `npc-templates.json` | 40+     | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
-| `traits.json`        | ~20     | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
-| `ships.json`         | ~70     | `18-Ships.md`                  | Ship Builder                                      | Phase 2.2 |
+| `equipment.json`     | 5       | `10-Equipment.md`              | Character Builder                                 | Phase 0   |
+| `weapons.json`       | 72      | `10-Equipment.md`              | Character Sheet, Character Builder, NPC Generator | Phase 0   |
+| `npc-templates.json` | 47      | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
+| `traits.json`        | 20      | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
+| `ships.json`         | 14      | `18-Ships.md`                  | Ship Builder                                      | Phase 2.2 |
 
 All source markdown files are in `cleaned-references/`.
 

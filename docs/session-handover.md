@@ -1,95 +1,63 @@
 ﻿# Session Handover
 
-> **Date:** 2026-03-04 (Sanity Check Pass — documentation drift resolution)
-> **Branch:** merged to `main`
-> **Prior session:** Technical stabilizer pass (15 commits, 40 files, Python removal, Bun migration, ESM workers)
-> **Objective:** Post-stabilizer sanity check — find and fix documentation drift causing bad agent context
+Running context for the current work session. Updated as work progresses — not a logbook.
 
 ---
 
-## What Changed (This Session)
+## Current Branch
 
-### Sanity Check — Documentation Drift Fix (Commit on sanity-check-doc-drift)
+`technical-stabilizer` — branched from `session-2026-03-09`.
 
-**Root cause:** Multi-agent stabilizer session (15 commits, 40 files) updated code and some docs, but `tool-development.md` (Copilot skill file) was only partially updated. It retained 5 stale claims about worker architecture and @ts-nocheck status. `copilot-instructions.md` was missing `dice-primitives.ts` from its module listing.
+## Session Objective
 
-**7 drift items found and fixed:**
+Turn repetitive agent inference into deterministic script execution. Started as a technical stabilizer pass (lint fixes, data quality, doc cleanup), expanded into building session lifecycle automation.
 
-| # | Severity | File | Fix |
-|---|----------|------|-----|
-| D1 | HIGH | tool-development.md | File layout: `public/workers/` → `src/workers/` (ESM TypeScript) |
-| D2 | HIGH | tool-development.md | Pitfall #3: rewritten from "Workers can't import ES modules" → ESM worker pattern |
-| D3 | HIGH | tool-development.md | Pitfall #1: corrected to say only `builder-app.ts` has `@ts-nocheck` |
-| D4 | HIGH | tool-development.md | File layout: removed `(@ts-nocheck)` label from `sheet-app.ts` |
-| D5 | HIGH | tool-development.md | Large Tool Pattern: corrected to say only `builder-app.ts` uses `@ts-nocheck` |
-| D6 | MEDIUM | copilot-instructions.md | Added `dice-primitives.ts` to `lib/dtd/` module listing |
-| D7 | MEDIUM | tool-development.md | Added `dice-primitives.ts` to file layout section |
+## What Changed
 
-### Why This Mattered
+### Config
 
-`tool-development.md` is a Copilot skill file loaded automatically for any tool task. An agent reading the old Pitfall #3 would:
-- Avoid `import` in workers (wrong — ESM workers use imports)
-- Place new workers in `public/workers/` (wrong — deleted directory)
-- Use `importScripts()` (wrong — deprecated pattern)
+- `package.json`: Added `session:start`, `session:end`, `session:status`, `prepare` scripts
+- `.githooks/pre-commit`: Pre-commit hook running `npm run check`
+- `npm run prepare` sets `core.hooksPath .githooks` (auto-runs on `npm install`)
 
-This directly contradicted `astro.instructions.md` (correct ESM guidance). When both files loaded in the same session, agents saw conflicting instructions — the "messy info" the user detected.
+### New Scripts
 
-### Files Verified Clean (No Drift)
+- `scripts/session-start.mjs` — branch creation/switching + baseline verification
+- `scripts/session-end.mjs` — squash-merge to main + cleanup
+- `scripts/session-status.mjs` — quick git state report
 
-architecture.md, development-guide.md, pipeline.md, dice-js.md, core-js.md, astro.instructions.md, markdown.instructions.md, project-conventions.md, side-tracks.md, project-history.md
+### Code (earlier in session)
 
----
+- Biome auto-fix (44 lint errors → 0)
+- W4: aligned default character shapes between `character.ts` and `sheet-app.ts`
+- 41 xref warnings fixed in `classes.json` (skill/feat name corrections)
+- `npm run check` composite script added
+- CI updated to run `validate:xref`
 
-## Current State
+### Documentation (earlier in session)
 
-| Metric          | Value                                                                         |
-| --------------- | ----------------------------------------------------------------------------- |
-| Tests           | 187 passing (6 test files)                                                    |
-| Biome           | 0 new errors; pre-existing in sheet-app.ts/builder-app.ts                     |
-| JSON validation | 12/12 files pass                                                              |
-| Content lint    | 0 errors, 19 warnings, 884 info                                              |
-| Build           | 89 pages built successfully                                                   |
-| Python          | Fully removed                                                                 |
-| Workers         | ESM (`src/workers/*.ts`), documentation now consistent across all files       |
+- Removed stale hardcoded counts from architecture.md
+- Added "Hardcoded Counts Drift Silently" pitfall to project-conventions.md
+- Removed Playwright/E2E references from side-tracks.md and product-vision.md
+- Deleted stale historical docs (`implementation-plan.md`, `External-audit.md`)
+- Updated copilot-instructions.md and project-conventions.md with session scripts
 
-### Key Baselines
+## Known Issues
 
-- `npm run validate` → 12/12 pass, 0 errors
-- `npm run lint:data` → 0 errors, 19 warnings, 884 info
-- `npm run sync-check` → 277 matched, 8 md-only, 52 json-only
-- `npm run build` → 89 pages, 0 errors
-- `npm run test` → 187 tests passing
-- `npx tsc --noEmit` → 614 errors in sheet-app.ts + 1 in core.test.ts
+- `session-end.mjs` has 1 new Biome warning: `catch (e)` where `e` is unused (line 97)
+- Session-wrapup prompt still describes manual git ceremony — not yet updated to reference `npm run session:end`
+- `docs/development-guide.md` commands table missing session scripts
+- `docs/project-history.md` missing Phase 11 for session automation
+- `docs/architecture.md` pipeline section doesn't mention session scripts
 
-### Agent-Facing File Consistency Matrix (Post-Fix)
+## Still Open
 
-All agent-facing files now agree on these facts:
+- Merge `technical-stabilizer` branch via `npm run session:end`
+- Phase 2 TypeScript: fix TS errors in `sheet-app.ts` and `builder-app.ts` (tracked in side-tracks.md)
+- Add `sync-check` to CI (tracked in side-tracks.md)
 
-| Fact | copilot-instructions | astro.instructions | tool-development | architecture |
-|------|-----|-----|-----|-----|
-| Workers in `src/workers/` | ✅ | ✅ | ✅ | ✅ |
-| Workers are ESM | ✅ | ✅ | ✅ | ✅ |
-| `dice-primitives.ts` exists | ✅ | ✅ | ✅ | ✅ |
-| Only builder has @ts-nocheck | — | — | ✅ | ✅ |
+## Suggested Next
 
----
-
-## Phase 5 Status (Unchanged)
-
-### Error Scope
-
-| File             | TS Errors  | Lines     | `@ts-nocheck` |
-| ---------------- | ---------- | --------- | ------------- |
-| `sheet-app.ts`   | ~614       | 2,662     | Removed       |
-| `builder-app.ts` | ~422       | 1,825     | Present       |
-| **Total**        | **~1,036** | **4,487** |               |
-
-**Recommended approach:** Type-in-place (fix errors without splitting). Module split deferred until Playwright E2E tests exist.
-
----
-
-## Suggested Next Steps
-
-1. **Phase 5: Fix 614 TS errors in `sheet-app.ts`** — Mechanical type fixes, ~4–6 hours estimated
-2. **Phase 5: Fix ~422 TS errors in `builder-app.ts`** — Remove `@ts-nocheck`, apply same patterns
-3. **Push 17 local commits to origin** — `main` is ahead of `origin/main` by 17 commits
+1. Apply sanity-check findings (fix stale docs listed above)
+2. Merge `technical-stabilizer` to main
+3. Start Phase 2 TypeScript work on `sheet-app.ts`

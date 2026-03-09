@@ -54,7 +54,7 @@
             ],
             "feats": [
                 { "name": "Common Sense", "type": "mandatory" },
-                { "name": "Weapon Prof (Basic)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Basic)", "type": "mandatory" },
                 { "name": "Blind Fighting", "type": "mandatory" },
                 { "name": "Obtain Familiar", "type": "mandatory" },
                 { "name": "Light Sleeper", "type": "optional" },
@@ -101,7 +101,7 @@
                 { "name": "Hatred (Heretics)", "type": "mandatory" },
                 { "name": "Minor Magic", "type": "mandatory" },
                 { "name": "Peer (Religious Organization)", "type": "mandatory" },
-                { "name": "Weapon Prof (Basic)", "type": "optional" }
+                { "name": "Weapon Proficiency (Basic)", "type": "optional" }
             ],
             "swordSchools": [],
             "magicSchools": [],
@@ -118,12 +118,12 @@
             "characteristics": ["Strength", "Constitution", "Wisdom"],
             "skills": ["Command", "Scrutiny", "Common Lore", "Athletics", "Ballistics", "Weaponry", "Perception", "Brawl", "Drive"],
             "feats": [
-                { "name": "Armor Prof (Light)", "type": "mandatory" },
-                { "name": "Weapon Prof (Basic)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Light)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Basic)", "type": "mandatory" },
                 { "name": "Speak Language", "type": "mandatory" },
                 { "name": "Sound Constitution", "type": "mandatory" },
                 { "name": "Peer (Mercenary Organization)", "type": "optional" },
-                { "name": "Armor Prof (Medium)", "type": "optional" }
+                { "name": "Armor Proficiency (Medium)", "type": "optional" }
             ],
             "swordSchools": [],
             "magicSchools": [],
@@ -181,8 +181,8 @@
                 { "name": "Sneak Attack", "type": "mandatory" },
                 { "name": "Improved Feint", "type": "mandatory" },
                 { "name": "Two Weapon Fighting OR Far Shot", "type": "mandatory-choice" },
-                { "name": "Weapon Prof (Basic)", "type": "mandatory" },
-                { "name": "Weapon Prof (Any)", "type": "optional" },
+                { "name": "Weapon Proficiency (Basic)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Any)", "type": "optional" },
                 { "name": "Skill Focus (Any)", "type": "optional" }
             ],
             "swordSchools": ["Shadow Hand", "Setting Sun"],
@@ -198,7 +198,7 @@
             "track": "barbarian",
             "prerequisites": "Weaponry 2, Athletics 1",
             "characteristics": ["Strength", "Charisma", "Constitution"],
-            "skills": ["Acrobatics", "Athletics", "Craft", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
+            "skills": ["Acrobatics", "Athletics", "Crafts", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
             "feats": [
                 { "name": "Frenzy", "type": "mandatory" },
                 { "name": "Danger Sense", "type": "mandatory" },
@@ -242,7 +242,7 @@
                 { "name": "Luck", "type": "mandatory" },
                 { "name": "Jack of All Trades", "type": "mandatory" },
                 { "name": "Peer (Any)", "type": "mandatory" },
-                { "name": "Weapon Prof (Melee 2)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Melee 2)", "type": "mandatory" },
                 { "name": "Danger Sense OR Foresight OR Speak Language", "type": "optional-choice" }
             ],
             "swordSchools": ["White Raven", "Diamond Mind"],
@@ -262,10 +262,10 @@
             "feats": [
                 { "name": "Pure Faith", "type": "mandatory" },
                 { "name": "Hatred (Heretics)", "type": "mandatory" },
-                { "name": "Armor Prof (Light)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Light)", "type": "mandatory" },
                 { "name": "Tested", "type": "mandatory" },
-                { "name": "Weapon Prof (Basic)", "type": "mandatory" },
-                { "name": "Weapon Prof (Melee 1)", "type": "optional" },
+                { "name": "Weapon Proficiency (Basic)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Melee 1)", "type": "optional" },
                 { "name": "Powerful Charge", "type": "optional" }
             ],
             "swordSchools": [],
@@ -334,7 +334,7 @@
                 { "name": "Foresight", "type": "mandatory" },
                 { "name": "Spell Might", "type": "mandatory" },
                 { "name": "Tested", "type": "optional" },
-                { "name": "Weapon Prof (Ordinary)", "type": "optional" }
+                { "name": "Weapon Proficiency (Ordinary)", "type": "optional" }
             ],
             "swordSchools": [],
             "magicSchools": ["Abjuration", "Evocation", "Illusion", "Conjuration", "Divination", "Necromancy"],
@@ -507,7 +507,7 @@
                 "Scrutiny"
             ],
             "feats": [
-                { "name": "Weapon Prof (Basic)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Basic)", "type": "mandatory" },
                 { "name": "Druid's Oath", "type": "mandatory" },
                 { "name": "Animal Companion", "type": "mandatory" },
                 { "name": "Heightened Senses (Any) OR Frenzy", "type": "mandatory-choice" },
@@ -669,7 +669,7 @@
             "skills": [
                 "Academic Lore",
                 "Common Lore",
-                "Craft",
+                "Crafts",
                 "Forbidden Lore",
                 "Medicae",
                 "Tech-Use",
@@ -719,10 +719,10 @@
             ],
             "feats": [
                 { "name": "Blind Fighting", "type": "mandatory" },
-                { "name": "Armor Prof (Light)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Light)", "type": "mandatory" },
                 { "name": "Catfall", "type": "mandatory" },
                 { "name": "Two Weapon Fighting OR Furious Assault", "type": "mandatory-choice" },
-                { "name": "Weapon Prof (Any)", "type": "mandatory" },
+                { "name": "Weapon Proficiency (Any)", "type": "mandatory" },
                 { "name": "Skill Focus (Any)", "type": "optional" },
                 { "name": "Speak Language", "type": "optional" }
             ],
@@ -739,7 +739,7 @@
             "track": "barbarian",
             "prerequisites": "Weaponry 3, Athletics 2, Frenzy",
             "characteristics": ["Strength", "Charisma", "Constitution"],
-            "skills": ["Acrobatics", "Athletics", "Craft", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
+            "skills": ["Acrobatics", "Athletics", "Crafts", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
             "feats": [
                 { "name": "Jaded", "type": "mandatory" },
                 { "name": "Quick Draw", "type": "mandatory" },
@@ -782,7 +782,7 @@
                 { "name": "Speak Language", "type": "mandatory" },
                 { "name": "Peer (Any)", "type": "mandatory" },
                 { "name": "Skill Focus (Any) OR Spell Focus (Enchantment or Illusion)", "type": "mandatory-choice" },
-                { "name": "Armor Prof (Light)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Light)", "type": "mandatory" },
                 { "name": "Catfall", "type": "optional" }
             ],
             "swordSchools": ["White Raven", "Diamond Mind"],
@@ -803,9 +803,9 @@
                 { "name": "Peer (Religious Order)", "type": "mandatory" },
                 { "name": "Spell Focus (Any)", "type": "mandatory" },
                 { "name": "Sound Constitution", "type": "mandatory" },
-                { "name": "Armor Prof (Medium)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Medium)", "type": "mandatory" },
                 { "name": "Virgil's Guidance", "type": "mandatory" },
-                { "name": "Weapon Prof (Any)", "type": "optional" },
+                { "name": "Weapon Proficiency (Any)", "type": "optional" },
                 { "name": "Divine Grace", "type": "optional" }
             ],
             "swordSchools": [],
@@ -1010,7 +1010,7 @@
                 { "name": "Hardy", "type": "mandatory" },
                 { "name": "Jack of All Trades", "type": "mandatory" },
                 { "name": "Skill Focus (Any)", "type": "optional" },
-                { "name": "Mechanus Implants", "type": "optional" }
+                { "name": "Mechanicus Implants", "type": "optional" }
             ],
             "swordSchools": [],
             "magicSchools": [],
@@ -1047,7 +1047,7 @@
             "track": null,
             "prerequisites": "Weaponry 1 or Brawling 1, Ballistics 2",
             "characteristics": ["Strength", "Constitution", "Composure"],
-            "skills": ["Athletics", "Ballistics", "Brawl", "Command", "Common Lore", "Intimidate", "Pilot", "Weaponry"],
+            "skills": ["Athletics", "Ballistics", "Brawl", "Command", "Common Lore", "Intimidation", "Pilot", "Weaponry"],
             "feats": [
                 { "name": "Master of Bombardment", "type": "mandatory" },
                 { "name": "Worf Barrage", "type": "mandatory" },
@@ -1073,7 +1073,7 @@
             "skills": [
                 "Academic Lore",
                 "Common Lore",
-                "Craft",
+                "Crafts",
                 "Forbidden Lore",
                 "Medicae",
                 "Tech-Use",
@@ -1331,7 +1331,7 @@
                 { "name": "Weapon Focus (Any)", "type": "mandatory" },
                 { "name": "Skill Focus (Any)", "type": "mandatory" },
                 { "name": "Peer (Any Criminal or Mercenary)", "type": "optional" },
-                { "name": "Weapon Prof (Any)", "type": "optional" }
+                { "name": "Weapon Proficiency (Any)", "type": "optional" }
             ],
             "swordSchools": ["Shadow Hand", "Setting Sun"],
             "magicSchools": [],
@@ -1346,7 +1346,7 @@
             "track": "barbarian",
             "prerequisites": "Weaponry 4, Athletics 3, Powerful Charge, Frenzy",
             "characteristics": ["Strength", "Charisma", "Constitution"],
-            "skills": ["Acrobatics", "Athletics", "Craft", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
+            "skills": ["Acrobatics", "Athletics", "Crafts", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
             "feats": [
                 { "name": "Crushing Blow", "type": "mandatory" },
                 { "name": "Furious Assault", "type": "mandatory" },
@@ -1587,7 +1587,7 @@
             "feats": [
                 { "name": "Courtier's Privilege", "type": "mandatory" },
                 { "name": "Master of Disguise OR Good Reputation (Any)", "type": "mandatory-choice" },
-                { "name": "Strong Mind", "type": "mandatory" },
+                { "name": "Strong Minded", "type": "mandatory" },
                 { "name": "Peer (Any)", "type": "mandatory" },
                 { "name": "Meditation OR Combat Insight", "type": "optional-choice" },
                 { "name": "Speak Language", "type": "optional" },
@@ -1650,7 +1650,7 @@
             "track": null,
             "prerequisites": "Weaponry 3 or Brawling 3, Ballistics 3, Worf Barrage",
             "characteristics": ["Strength", "Constitution", "Composure"],
-            "skills": ["Athletics", "Ballistics", "Brawl", "Command", "Intimidate", "Persuasion", "Politics", "Weaponry"],
+            "skills": ["Athletics", "Ballistics", "Brawl", "Command", "Intimidation", "Persuasion", "Politics", "Weaponry"],
             "feats": [
                 { "name": "Worf Effect", "type": "mandatory" },
                 { "name": "Match Frequency", "type": "mandatory" },
@@ -1673,7 +1673,7 @@
             "track": null,
             "prerequisites": "Command 3, Politics 2, Persuasion 2, Lend Expertise or ownership/command of a spelljammer larger than an Escort",
             "characteristics": ["Fellowship", "Charisma", "Composure"],
-            "skills": ["Brawling", "Charm", "Command", "Intimidation", "Persuasion", "Politics", "Pilot", "Scrutiny"],
+            "skills": ["Brawl", "Charm", "Command", "Intimidation", "Persuasion", "Politics", "Pilot", "Scrutiny"],
             "feats": [
                 { "name": "Acceptable Losses", "type": "mandatory" },
                 { "name": "Lend Expertise", "type": "mandatory" },
@@ -1698,7 +1698,7 @@
             "skills": [
                 "Academic Lore",
                 "Common Lore",
-                "Craft",
+                "Crafts",
                 "Forbidden Lore",
                 "Medicae",
                 "Tech-Use",
@@ -1954,7 +1954,7 @@
                 { "name": "Decadence", "type": "mandatory" },
                 { "name": "Skill Focus (Any)", "type": "mandatory" },
                 { "name": "Improved Weapon Focus (Any)", "type": "optional" },
-                { "name": "Weapon Prof (Any)", "type": "optional" }
+                { "name": "Weapon Proficiency (Any)", "type": "optional" }
             ],
             "swordSchools": ["Shadow Hand", "Setting Sun"],
             "magicSchools": [],
@@ -1969,7 +1969,7 @@
             "track": "barbarian",
             "prerequisites": "Weaponry 5, Athletics 4, Crushing Blow, Frenzy",
             "characteristics": ["Strength", "Charisma", "Constitution"],
-            "skills": ["Acrobatics", "Athletics", "Craft", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
+            "skills": ["Acrobatics", "Athletics", "Crafts", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
             "feats": [
                 { "name": "Battle Rage", "type": "mandatory" },
                 { "name": "Fearless (Angry)", "type": "mandatory" },
@@ -2031,7 +2031,7 @@
             "characteristics": ["Willpower", "Wisdom", "Composure"],
             "skills": ["Academic Lore", "Arcana", "Forbidden Lore", "Medicae", "Politics", "Weaponry", "Intimidation", "Persuasion", "Command"],
             "feats": [
-                { "name": "Armor Prof (Heavy)", "type": "mandatory" },
+                { "name": "Armor Proficiency (Heavy)", "type": "mandatory" },
                 { "name": "Absolution", "type": "mandatory" },
                 { "name": "Good Reputation (Religious Order)", "type": "mandatory" },
                 { "name": "Sound Constitution", "type": "mandatory" },
@@ -2231,14 +2231,14 @@
             "track": null,
             "prerequisites": "Command 4, Politics 3, Persuasion 3, Lend Expertise, ownership and command of a spelljammer larger than an Escort",
             "characteristics": ["Fellowship", "Charisma", "Composure"],
-            "skills": ["Brawling", "Charm", "Command", "Intimidation", "Persuasion", "Politics", "Pilot", "Scrutiny"],
+            "skills": ["Brawl", "Charm", "Command", "Intimidation", "Persuasion", "Politics", "Pilot", "Scrutiny"],
             "feats": [
                 { "name": "Hailing Frequencies", "type": "mandatory" },
                 { "name": "Redshirt Shield", "type": "mandatory" },
                 { "name": "Peer (Spelljammer Captains)", "type": "mandatory" },
                 { "name": "Courtier's Privilege", "type": "mandatory" },
                 { "name": "Good Reputation (Any)", "type": "optional" },
-                { "name": "Just as Planned", "type": "optional" }
+                { "name": "Just As Planned", "type": "optional" }
             ],
             "swordSchools": [],
             "magicSchools": [],
@@ -2256,7 +2256,7 @@
             "skills": [
                 "Academic Lore",
                 "Common Lore",
-                "Craft",
+                "Crafts",
                 "Forbidden Lore",
                 "Medicae",
                 "Tech-Use",
@@ -2529,7 +2529,7 @@
             "track": "barbarian",
             "prerequisites": "Weaponry 5, Athletics 5, Battle Rage, Frenzy",
             "characteristics": ["Strength", "Charisma", "Constitution"],
-            "skills": ["Acrobatics", "Athletics", "Craft", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
+            "skills": ["Acrobatics", "Athletics", "Crafts", "Perception", "Brawl", "Weaponry", "Stealth", "Intimidation", "Animal Ken"],
             "feats": [
                 { "name": "Devastating Critical", "type": "mandatory" },
                 { "name": "True Grit", "type": "mandatory" },
@@ -2591,7 +2591,7 @@
             "feats": [
                 { "name": "Fearless (Any)", "type": "mandatory" },
                 { "name": "Armor of Contempt", "type": "mandatory" },
-                { "name": "Purge the Unclean", "type": "mandatory" },
+                { "name": "Purge The Unclean", "type": "mandatory" },
                 { "name": "Greater Spell Focus (Any)", "type": "mandatory" }
             ],
             "swordSchools": [],
@@ -2636,7 +2636,7 @@
                 { "name": "Hard Target", "type": "mandatory" },
                 { "name": "True Grit", "type": "mandatory" },
                 { "name": "Sharpshooter", "type": "mandatory" },
-                { "name": "Fan the Hammer", "type": "mandatory" },
+                { "name": "Fan The Hammer", "type": "mandatory" },
                 { "name": "Armor Proficiency (Power)", "type": "optional" },
                 { "name": "Weapon Proficiency (Any)", "type": "optional" }
             ],
@@ -2788,7 +2788,7 @@
             "skills": [
                 "Academic Lore",
                 "Common Lore",
-                "Craft",
+                "Crafts",
                 "Forbidden Lore",
                 "Medicae",
                 "Tech-Use",
@@ -2956,7 +2956,7 @@
                 "Scrutiny"
             ],
             "feats": [
-                { "name": "Fan the Hammer", "type": "mandatory" },
+                { "name": "Fan The Hammer", "type": "mandatory" },
                 { "name": "Hip Shooting", "type": "mandatory" },
                 { "name": "Air of Authority", "type": "mandatory" },
                 { "name": "True Grit", "type": "mandatory" },

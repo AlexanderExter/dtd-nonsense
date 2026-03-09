@@ -2,6 +2,8 @@
 
 Rulebook reference and web-based play tools for _Dungeons the Dragoning 40,000: 7th Edition_ — a TTRPG blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics.
 
+The original source PDFs are hard to read and harder to reference at the table. This project transforms them into a searchable, corrected documentation site with interactive tools — so players and Story Masters can spend less time hunting for rules and more time playing the game.
+
 **Live site:** [dtd-nonsense.vercel.app](https://dtd-nonsense.vercel.app)
 
 ---
