@@ -135,11 +135,11 @@ Completed items:
 
 **Goal:** Eliminate the dual Python/TypeScript stack by porting all pipeline functionality to TypeScript and deleting the Python pipeline.
 
-| Component                | What Was Done                                                                                                                                                                                  |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Component                | What Was Done                                                                                                                                                                                    |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 9.1 Pipeline Port        | All pipeline commands ported to TypeScript: `scripts/validate.ts`, `scripts/lint.ts`, `scripts/sync-check.ts`. Starlight frontmatter injection folded into `scripts/prebuild.mjs`.               |
-| 9.2 Schema Migration     | Pydantic models in `pipeline/models/` replaced by Zod schemas in `src/lib/dtd/schemas/` (already existed; now the sole source of truth).                                                        |
-| 9.3 Python Deletion      | Deleted `pipeline/` directory, `pyproject.toml`, and `uv.lock`. Removed all `uv`, `ruff`, and Python dependencies.                                                                              |
+| 9.2 Schema Migration     | Pydantic models in `pipeline/models/` replaced by Zod schemas in `src/lib/dtd/schemas/` (already existed; now the sole source of truth).                                                         |
+| 9.3 Python Deletion      | Deleted `pipeline/` directory, `pyproject.toml`, and `uv.lock`. Removed all `uv`, `ruff`, and Python dependencies.                                                                               |
 | 9.4 Documentation Update | Updated all docs (`pipeline.md`, `architecture.md`, `project-conventions.md`, `development-guide.md`, `data-reference.md`, `copilot-instructions.md`, etc.) to reference TypeScript equivalents. |
 
 **Status:** Project is now a single-stack TypeScript/Node project. No Python dependencies remain. All validation, linting, and sync checking runs via `npm run` scripts.
@@ -150,15 +150,33 @@ Completed items:
 
 **Goal:** Eliminate silent divergence risk by extracting shared dice primitives into canonical source, and finalize Python artifact cleanup.
 
-| Component                    | What Was Done                                                                                                                                                                                |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Component                    | What Was Done                                                                                                                                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 10.1 Dice Primitives Extract | Created `src/lib/dtd/dice-primitives.ts` — canonical source for `rollOneDie()`, `compressOverflow()`, `rollPool()` explosion/overflow logic. Reduced duplication between `dice.ts` and worker file. |
-| 10.2 Dice Module Refactor    | Updated `src/lib/dtd/dice.ts` to import core primitives from `dice-primitives.ts`. Public API unchanged; internal deduplication complete. 51 lines of code reduction.                           |
-| 10.3 Worker Maintenance Spec | Updated `public/workers/dice-common.js` header to mark as "DERIVED copy" with explicit sync requirement. Clear maintenance rule in `docs/side-tracks.md`.                                      |
-| 10.4 Python Artifact Cleanup | Deleted `.venv/` and `.ruff_cache/` directories. Removed Python ignore patterns from `.gitignore` (3 patterns removed).                                                                      |
-| 10.5 Documentation Coherence | Updated `docs/shared/dice-js.md` "Modification Checklist" to reference `dice-primitives.ts`. Updated `docs/architecture.md` module listing to include primitives.                              |
+| 10.2 Dice Module Refactor    | Updated `src/lib/dtd/dice.ts` to import core primitives from `dice-primitives.ts`. Public API unchanged; internal deduplication complete. 51 lines of code reduction.                               |
+| 10.3 Worker Maintenance Spec | Updated `public/workers/dice-common.js` header to mark as "DERIVED copy" with explicit sync requirement. Clear maintenance rule in `docs/side-tracks.md`.                                           |
+| 10.4 Python Artifact Cleanup | Deleted `.venv/` and `.ruff_cache/` directories. Removed Python ignore patterns from `.gitignore` (3 patterns removed).                                                                             |
+| 10.5 Documentation Coherence | Updated `docs/shared/dice-js.md` "Modification Checklist" to reference `dice-primitives.ts`. Updated `docs/architecture.md` module listing to include primitives.                                   |
 
 **Status:** Code stable. 187/187 tests pass. No regressions detected. Python fully removed from project. Dice logic canonical source established with explicit maintenance contract.
+
+---
+
+## Phase 11 — Technical Stabilization & Session Automation (2026-03-09)
+
+**Goal:** Resolve accumulated tech debt, fix data quality issues, and replace repetitive agent git ceremony with deterministic scripts.
+
+| Component                        | What Was Done                                                                                                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 11.1 Biome Auto-fix              | Resolved all 44 Biome lint errors across 44 files via `biome check --write`.                                                                                          |
+| 11.2 Xref Warnings               | Fixed all 41 cross-reference warnings in `classes.json` (skill/feat name corrections).                                                                                |
+| 11.3 Character Defaults (W4)     | Aligned default character shapes between `character.ts` and `sheet-app.ts`.                                                                                           |
+| 11.4 Documentation Cleanup       | Deleted stale `implementation-plan.md` and `External-audit.md`. Removed Playwright/E2E references. Added anti-drift pitfall to conventions. Removed hardcoded counts. |
+| 11.5 Verification Infrastructure | Added `npm run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
+| 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `npm run prepare` for hook installation. |
+| 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `npm run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
+
+**Status:** All checks pass (187 tests, 12/12 schemas, 0 xref warnings, 0 lint errors). Session automation replaces manual git ceremony.
 
 ---
 

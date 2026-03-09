@@ -65,7 +65,7 @@ After applying lessons, check that the same content doesn't now exist in multipl
 
 - Cross-cutting conventions live in `docs/project-conventions.md` — other files link to it
 - Skills contain domain-specific technique, not universal rules
-- `copilot-instructions.md` is a lean router (~117 lines) — don't bloat it
+- `copilot-instructions.md` is a lean router (~200 lines) — don't bloat it
 
 ### Editing Approach
 
@@ -85,20 +85,20 @@ Apply lesson updates directly on the current session branch (`session-YYYY-MM-DD
 
 ### 3b. Merge Session Branch
 
-Session branches use the squash-merge pattern:
+Run `npm run session:end` to squash-merge and clean up automatically. The script:
 
-```powershell
-git checkout main
-git merge --squash session-YYYY-MM-DD
-git commit -m "Session YYYY-MM-DD: [summary of all session work]"
-git branch -D session-YYYY-MM-DD
-```
+1. Verifies working tree is clean and branch is not main
+2. Shows the branch commit log
+3. Squash-merges to main with an auto-generated commit message
+4. Deletes the session branch
+5. Verifies clean state
 
 If multiple branches exist (from multi-agent confusion or multi-day features):
 
 1. List all branches: `git branch`
 2. **Ask the user** how to reconcile — don't guess merge order
 3. For each branch assess: same-session work (merge), multi-day WIP (leave), stale (flag for deletion)
+4. Use `npm run session:end` for the approved branch — it handles the squash-merge ceremony
 
 ### 3c. Clean Up
 

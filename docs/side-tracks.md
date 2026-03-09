@@ -8,17 +8,9 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 ## TypeScript Migration
 
-### Phase 2: Tool Module Refactor
-
-Break up the monolithic tool apps (`sheet-app.ts`, `builder-app.ts`) into logical sub-modules to reduce maintenance burden and enable per-module typing.
-
-**Revised approach (2026-03-03):** The implementation plan originally proposed splitting each tool into `state.ts`, `calc.ts`, `render.ts`, `events.ts` sub-modules. After analysis, the revised recommendation is a **type-in-place** strategy — fix TypeScript errors directly in the existing files first, then evaluate whether a module split is still warranted. This avoids a risky structural refactor before Playwright E2E tests exist to catch regressions.
-
-**Current status:** `@ts-nocheck` removed from `sheet-app.ts` (614 TS errors exposed, unfixed). `builder-app.ts` still has `@ts-nocheck` (~422 errors hidden). Phase 5 of the implementation plan covers the actual error fixing.
-
-Also covers: resolving the persistence duplication between `sheet-app.ts` (`getDefaultChar`, `mergeDefaults`) and `core.ts` (`character.DEFAULTS`, `character.validate`). See **W4** below for specific field-level drift.
-
 ### Phase 3: Reactivity Layer
+
+> Phase 2 (typing both tool files) is complete — see `docs/project-history.md` § Phase 11.
 
 Open consideration — depends on Phase 2 outcome. If the module refactor still leaves DOM manipulation feeling painful, consider a lightweight reactivity layer:
 
@@ -36,92 +28,24 @@ Start with the dice roller (smallest tool) as a proof-of-concept island before m
 
 `scripts/lint.ts` supports target paths, but CI currently runs `npm run lint:data` with default scope (`books/` and `cleaned-references/`). The `docs/` prose is unscanned. Adding `docs/` as a target would catch terminology drift in technical documentation.
 
-### L1c: validate --xref in CI
+### A5: CI Skips sync-check
 
-41 known xref warnings exist (see **xref Warnings** in Data Quality). Adding cross-reference validation to CI requires a baseline suppression file so new warnings are treated as failures without blocking on pre-existing ones.
-
-### A5: CI Skips --xref and sync-check
-
-`build.yml` runs `npm run validate` and `npm run lint:data` but not cross-reference validation mode or `npm run sync-check`. The known xref warnings are pre-existing data gaps, not regressions. Adding those checks to CI requires the baseline suppression mechanism described in **L1c**.
-
----
-
-## Code Quality
-
-### W3: Dice Logic Centralized
-
-**Status:** ✅ Resolved (2026-03-04)
-
-The same dice rolling logic (overflow compression + exploding d10s) was previously implemented in two independent places:
-
-1. `src/lib/dtd/dice.ts` — ES module, used by builder and sheet
-2. `public/workers/dice-common.js` — external worker file, used by success-curves
-
-**Solution:** Extracted core primitives into `src/lib/dtd/dice-primitives.ts` as the **canonical source**:
-
-- `rollOneDie()` — single d10 with explosion
-- `compressOverflow()` — overflow compression formula
-- `rollPool()` — full pool rolling
-
-Now:
-
-- `dice.ts` imports primitives from `dice-primitives.ts`
-- `dice.ts` is the sole consumer of `dice-primitives.ts` for application logic
-- Both web workers (`src/workers/simulation-worker.ts`, `src/workers/defense-worker.ts`) import directly from `dice-primitives.ts` via relative path
-- `public/workers/dice-common.js` has been deleted (Phase 11 ESM migration)
-
-**Maintenance rule:** Any change to the D:TD dice formula requires updating `dice-primitives.ts` only. All consumers (`dice.ts`, `simulation-worker.ts`, `defense-worker.ts`) will pick up the change automatically via import.
-
-### W4: Divergent Default Character Shapes
-
-`core.ts` `character.DEFAULTS` and `sheet-app.ts` `getDefaultChar()` define parallel but non-identical default character structures:
-
-| Field               | `core.ts DEFAULTS` | `sheet-app getDefaultChar()` |
-| ------------------- | ------------------ | ---------------------------- |
-| `characteristics.*` | `2` (each)         | `1` (each)                   |
-| `trickShots`        | `[]`               | absent                       |
-| `backgroundNotes`   | absent             | `{}` (legacy shape)          |
-| `devotion`          | `6`                | `0`                          |
-| `sanctioned`        | `false`            | `true`                       |
-
-Characters created by the sheet start with characteristics at 1; characters created via core.ts start at 2. When `sheet-app.ts`'s `mergeDefaults()` processes a core.ts character (or vice versa), the differing starting values and missing/extra keys can produce unexpected saves. Resolution is part of the Phase 2 persistence reconciliation.
+`build.yml` now runs `npm run validate:xref` (xref added 2026-03-09) and `npm run lint:data`, but not `npm run sync-check`. Sync-check could be added to CI to catch markdown↔JSON drift on every push.
 
 ---
 
 ## Data Quality
 
-### xref Warnings (41 Known)
+### Lint Info Messages (884)
 
-`bun run scripts/validate.ts --xref` produces 41 warnings. These are real data gaps in the JSON files, not bugs — abbreviated feat names in `classes.json` that don't match canonical names in `feats.json`, and skill references in templates that aren't in `skills.json`. The tools work fine with approximate names, but the data should be corrected eventually.
+`npm run lint:data` produces 884 "info" level messages — mostly directional quotes vs straight quotes, en/em dash suggestions, and minor formatting preferences. These are editorial suggestions, not errors. The 19 warnings are worth reviewing individually.
 
-### Lint Info Messages (880)
-
-`npm run lint:data` produces 880 "info" level messages — mostly directional quotes vs straight quotes, en/em dash suggestions, and minor formatting preferences. These are editorial suggestions, not errors. The 8 warnings are worth reviewing individually.
+> **Baseline note (2026-03-09):** Counts increased from 880→884 info and 8→19 warnings when lint scope expanded to include `books/` alongside `cleaned-references/`.
 
 ---
 
 ## Future Work
 
-### Favicon / OG Image
+### Session Script Robustness
 
-No custom favicon or OpenGraph social sharing image. Starlight defaults are in use. Low priority until the site has a public audience.
-
-### Performance Audit
-
-No Lighthouse or Core Web Vitals audit has been performed. Should be done before any public launch or promotional push.
-
-### Product Vision
-
-Needs a first product-owner session to define target audience, success metrics, and feature priorities. See `docs/product-vision.md` for the placeholder.
-
----
-
-## Agent Workflow
-
-### Biome Auto-Fix Before Phase 5
-
-`sheet-app.ts` and `builder-app.ts` have 44 pre-existing Biome violations (all `FIXABLE`). Run `npm run lint:fix` **before** starting Phase 5 TypeScript work — the auto-fixer handles the bulk of formatting/style violations in one pass, so agents don't waste turns patching them individually mid-TS-fix session. _Context: identified during 2026-03-04 sanity check when biome ci showed 46 errors, 44 of which are fixable._
-
-### Defense-Worker Simulation Logic Verification
-
-`src/workers/defense-worker.ts` `simulateTrial()` was ported from the now-deleted `public/workers/defense-worker.js` without a line-by-line diff. The hit location percentages, AP reduction formula (`locAP - pen`, doubled if blast), and resilience HP calculation were reconstructed from structure. The test scenario to verify: run defense-graph tool with known inputs and compare results against pre-migration snapshots. _Context: original JS deleted in 2026-03-04 stabilizer, port was fresh reconstruction._
+`session-end.mjs` builds its squash commit message by shell-escaping double quotes in commit messages. If any commit message contains backticks, `$`, or other shell metacharacters, the `git commit -m "..."` invocation could break. Consider using `--file` with a temp file for the commit message instead of inline `-m`. Low priority — only matters for exceptional commit messages.

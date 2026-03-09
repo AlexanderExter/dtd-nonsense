@@ -34,14 +34,14 @@ src/lib/dtd/core.ts              ← Shared: data loading, derived stats, charac
 src/lib/dtd/dice.ts              ← Shared: roll(), calculateOutcome(), parseNotation()
 src/lib/dtd/dice-primitives.ts   ← Canonical dice algorithms (used by dice.ts and workers)
 src/lib/dtd/types.ts             ← Shared: CharacterData, CharacterListEntry, etc.
-src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (614 TS errors, no @ts-nocheck)
-src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (@ts-nocheck)
+src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (fully typed)
+src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (fully typed)
 src/workers/                     ← TypeScript ESM Web Workers (bundled by Vite)
 src/layouts/ToolLayout.astro     ← Wrapper layout for all tool pages
 src/styles/custom.css            ← WH40K theme tokens
 src/styles/sheet.css             ← Per-tool CSS for large tools
 src/styles/builder.css           ← Per-tool CSS for large tools
-data/                            ← Canonical JSON (12 files, copied to public/data/ at build)
+data/                            ← Canonical JSON (validated by Zod schemas, copied to public/data/ at build)
 ```
 
 ### Standard Tool Pattern
@@ -100,7 +100,7 @@ When a tool exceeds ~1,500 LOC, logic is extracted to `src/lib/tools/[name]-app.
 </style>
 ```
 
-`builder-app.ts` uses `@ts-nocheck` (Phase 2 typing deferred). `sheet-app.ts` had it removed but has ~614 unfixed TS errors. Both files contain all tool state, DOM manipulation, and event handling.
+Both `builder-app.ts` and `sheet-app.ts` are fully typed with zero TS errors (Phase 2 complete). Both files contain all tool state, DOM manipulation, and event handling.
 
 ## Data Loading
 
@@ -142,7 +142,7 @@ Most JSON files nest data under a top-level key matching the filename. You must 
 
 These have each caused real bugs. Memorize them:
 
-1. **`@ts-nocheck` and untyped files need careful editing** — `builder-app.ts` has `@ts-nocheck` at line 1 (TypeScript won't catch errors). `sheet-app.ts` had the directive removed but still has ~614 unfixed TS errors — TypeScript flags them, but they're not yet resolved. When editing either file, manually verify DOM element types, null checks, and API signatures.
+1. **Tool files use `Record<string, any>` casts for dynamic access** — Both `builder-app.ts` and `sheet-app.ts` are fully typed, but use `as Record<string, any>` casts for dynamic property access on `CharacterData`, `Characteristics`, and equipment types. When adding new dynamic access patterns, follow the existing cast conventions.
 
 2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
 
@@ -163,7 +163,7 @@ These have each caused real bugs. Memorize them:
 
 7. **Always grep all tool files when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, or `types.ts` can break any of the 9 tool pages plus `sheet-app.ts` and `builder-app.ts`. Search `src/pages/tools/` and `src/lib/tools/` for all callers before modifying exports.
 
-8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. In the March 2026 audit, 6 of 9 spec files had wrong imports, fabricated features, or incorrect data sources. When editing a tool or its spec, always verify against the actual `.astro`/`.ts` source. Never trust spec docs as ground truth for what a tool actually imports or does.
+8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. A March 2026 audit found and corrected errors in 6 of 9 spec files. Specs are now more reliable, but always verify against the actual `.astro`/`.ts` source when editing a tool. The code is ground truth, not the spec doc.
 
 ## Adding a New Tool
 

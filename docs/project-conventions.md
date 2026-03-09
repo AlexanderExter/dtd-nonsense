@@ -12,6 +12,17 @@ Single source of truth for all cross-cutting conventions — git workflow, termi
 
 Every work session uses a **date-based branch**: `session-YYYY-MM-DD`.
 
+**Session lifecycle scripts** automate the git ceremony:
+
+| Command                            | Purpose                                                      |
+| ---------------------------------- | ------------------------------------------------------------ |
+| `npm run session:start`            | Create/switch to `session-YYYY-MM-DD`, run baseline check    |
+| `npm run session:start my-feature` | Create/switch to named branch, run baseline check            |
+| `npm run session:end`              | Squash-merge current branch to main, delete branch           |
+| `npm run session:status`           | Quick git state report (branch, dirty/clean, recent commits) |
+
+**Pre-commit hook:** `.githooks/pre-commit` runs `npm run check` before every commit. Installed automatically via `npm run prepare` (which runs on `npm install`). Skip with `git commit --no-verify` when needed.
+
 **Start of session:**
 
 ```powershell
@@ -32,10 +43,15 @@ git status                                 # Check for uncommitted changes
 
 **End of session:**
 
-- Squash-merge the session branch to `main`: `git checkout main && git merge --squash session-YYYY-MM-DD`
-- Write a comprehensive squash commit message summarizing all session work
-- Delete the session branch: `git branch -D session-YYYY-MM-DD`
-- Or leave the branch open if work will continue tomorrow — the next session creates `session-YYYY-MM-DD+1`
+Run `npm run session:end` to squash-merge and clean up. The script:
+
+1. Verifies working tree is clean and branch is not main
+2. Shows the branch commit log
+3. Squash-merges to main with an auto-generated commit message
+4. Deletes the session branch
+5. Verifies clean state
+
+Or leave the branch open if work will continue tomorrow — the next session creates `session-YYYY-MM-DD+1`
 
 ### Multi-Agent Sessions
 
@@ -86,7 +102,7 @@ When dispatching subagents, always specify the exact branch name and explicitly 
 
 **Staging rule:** Tell subagents to `git add` only the specific files they changed — never `git add -A`. In multi-agent sessions, `-A` sweeps in unrelated changes from concurrent agents, contaminating commits with work that belongs elsewhere.
 
-**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of _input_ source. The main agent also fails when asked to _generate_ 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch. See the "Large Tool Copy+Edit Variant" in the [tool-development skill](../.github/copilot-skills/tool-development.md).
+**Size limit:** Subagents reliably handle tool ports up to ~1,500 LOC of _input_ source. The main agent also fails when asked to _generate_ 2,000+ LOC of output from scratch (character-sheet and character-builder each failed 2+ times). For large files, use the **copy+edit** approach (copy original, make surgical replacements) instead of generating from scratch.
 
 **`git rm` pitfall:** After `git rm <file>`, the deletion is already staged. Do not `git add` the same path again — it will fail with `fatal: pathspec did not match`. This commonly happens when batching a `git rm` with `git add` of other files in the same command.
 
@@ -295,11 +311,11 @@ Features that depend on data from another tool (e.g., importing characters from 
 
 ### Refactoring Shared Modules
 
-When moving, renaming, or removing functions in shared TS files (core.ts, dice.ts):
+When moving, renaming, or removing functions in shared TS files (core.ts, dice.ts, types.ts):
 
-1. **Grep all tool directories** for every affected function name before committing — callers in sheet.js, roller.js, builder.js, etc. will break silently if not updated
-2. **Check all HTML files** that include the modified script — if a module gains new dependencies, every consuming HTML page needs `<script>` tags updated
-3. **Test the load chain** mentally: verify every `<script>` loads in correct order (core.ts → dice.ts → tool .ts) and nothing is missing
+1. **Grep all tool files** for every affected export name before committing — callers in `src/pages/tools/*.astro`, `src/lib/tools/*.ts`, and `src/workers/*.ts` will break silently if not updated
+2. **Check barrel re-exports** — `core.ts` re-exports from `character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`. If you change a sub-module's exports, verify `core.ts` still re-exports correctly
+3. **Run `npm run test`** — the unit tests cover core and dice module APIs and will catch signature changes
 
 ### Weapon Stat Block `X` vs `×`
 
@@ -313,13 +329,21 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 `npx biome check --write .` normalizes line endings to LF, which on a CRLF repo produces large cosmetic diffs (45+ files). Always run `git diff -w` after Biome auto-fix to check whether any **real** code changes exist before committing. If the diff is whitespace-only, discard with `git checkout -- .`. The same applies to `biome ci .` — it reports CRLF as format errors on Windows but passes on Ubuntu CI.
 
+### Biome Safe vs Unsafe Fixes
+
+`biome check --write` only applies **safe** fixes. Diagnostics showing `Unsafe fix:` in the output require `--write --unsafe` or manual editing. Common examples: renaming unused `catch (e)` to `catch`, converting string concatenation to template literals. If `npm run lint:fix` doesn't clear a warning, check whether it's flagged as unsafe.
+
+### `&&` in npm Scripts vs PowerShell
+
+`&&` is forbidden in PowerShell terminals (use `;` instead) but works correctly in `package.json` scripts because npm uses `cmd.exe` as its default shell on Windows. The `npm run check` composite command uses `&&` chaining — this is intentional and correct despite the general `&&` prohibition.
+
 ### Git Push stderr on PowerShell
 
 `git push` outputs informational messages (like the "Create a pull request" URL) to stderr. PowerShell interprets any stderr output as a non-terminating error, setting `$LASTEXITCODE = 1` even when the push succeeds. Check the actual output message — if the branch was created/updated on the remote, it worked. Don't treat exit code 1 from `git push` as a failure without reading the output.
 
 ### Plan vs Execution Drift
 
-Decisions in planning documents (`implementation-plan.md`, open questions) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
+Decisions in planning documents (open questions, side tracks) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
 
 ### Skill Files Drift After Broad Refactors
 
@@ -350,6 +374,17 @@ Every non-trivial tool build has been followed by fix commits (CSS bugs, missing
 
 Editorial cleanup is inherently iterative — each pass discovers issues the previous one missed. Plan for 2-3 rounds minimum. OCR artifact cleanup alone took 4+ passes to reach near-zero. Single-pass completeness is unrealistic for any file over ~100 lines.
 
+### Hardcoded Counts Drift Silently
+
+Specific counts in documentation (e.g., "187 tests", "12 files", "103 records") go stale every time a test, data record, or file is added. Agents read these as authoritative and propagate the stale values into new docs and commits.
+
+**Rules for counts in active documentation:**
+
+- **Don't embed exact counts** in prose that describes the current state. Use descriptive labels ("Unit tests cover core, dice, schemas, and pipeline scripts") or point to the command that produces the live count ("Run `npm run test` for current totals").
+- **Dated snapshots are OK** — `session-handover.md` and `project-history.md` record what was true at a point in time. Those numbers are historical facts, not current claims.
+- **`side-tracks.md` baseline notes are OK** — explicitly dated baselines (e.g., "> Baseline note (2026-03-09): ...") are timestamped by design.
+- **Data structure descriptions** should name what a file _contains_, not how many (e.g., "Feats with prerequisites" not "329 feats with prerequisites").
+
 ---
 
 ## Cross-File Dependencies
@@ -369,28 +404,35 @@ Files heavily reference each other. Key relationships to verify when editing:
 
 The project publishes a static site via Astro + Starlight, deployed to Vercel. Key commands:
 
-| Command                     | Purpose                                                       |
-| --------------------------- | ------------------------------------------------------------- |
-| `npm run dev`               | Start Astro dev server with hot reload                        |
-| `npm run build`             | Full build: `prebuild.mjs` + `astro build`                    |
-| `npm run preview`           | Preview production build locally                              |
-| `npm run validate`          | Validate JSON data against Zod schemas                        |
-| `npm run lint:data`         | Lint markdown for terminology, formatting, encoding           |
-| `npm run sync-check`        | Detect drift between markdown and JSON data                   |
+| Command                  | Purpose                                                         |
+| ------------------------ | --------------------------------------------------------------- |
+| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint |
+| `npm run dev`            | Start Astro dev server with hot reload                          |
+| `npm run build`          | Full build: `prebuild.mjs` + `astro build`                      |
+| `npm run preview`        | Preview production build locally                                |
+| `npm run test`           | Unit tests only (Vitest)                                        |
+| `npm run lint`           | Biome lint/format check only                                    |
+| `npm run validate`       | Validate JSON data against Zod schemas                          |
+| `npm run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
+| `npm run lint:data`      | Lint markdown for terminology, formatting, encoding             |
+| `npm run sync-check`     | Detect drift between markdown and JSON data                     |
+| `npm run session:start`  | Create/switch to session branch + baseline check                |
+| `npm run session:end`    | Squash-merge to main + cleanup                                  |
+| `npm run session:status` | Quick git state report                                          |
 
 **Build dependency chain:**
 
 1. `node scripts/prebuild.mjs` — copies cleaned-refs → `src/content/docs/rules/`, books → `src/content/docs/books/`, JSON → `public/data/`, injects Starlight frontmatter
-2. `astro build` — builds 89 static pages + Pagefind search index
+2. `astro build` — builds static pages + Pagefind search index
 
 Generated directories (`src/content/docs/rules/`, `src/content/docs/books/`, `public/data/`) are in `.gitignore` — never commit them.
 
-The Astro/Starlight migration is complete — all 9 tools ported, site live on Vercel. See [architecture.md](architecture.md) for the current system design.
+The Astro/Starlight migration is complete — all tools ported, site live on Vercel. See [architecture.md](architecture.md) for the current system design.
 
 ### TypeScript Pipeline Scripts
 
 - **Schema authority:** Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
-- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `bun run scripts/validate.ts --xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass; remaining warnings are real data gaps.
+- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `npm run validate:xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass with 0 xref warnings — any new warning is a regression.
 - **Content linting:** `npm run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
 - **Baseline verification:** Always re-verify pipeline output baselines (error counts, warning counts) after scope changes. Don't carry forward numbers from previous sessions without validation — e.g., lint:data reported "2 warnings" when only scanning `cleaned-references/`, but "19 warnings" after scope expanded to include `books/`.
 - **Starlight prep:** Frontmatter injection is now handled automatically by `scripts/prebuild.mjs` during the build.

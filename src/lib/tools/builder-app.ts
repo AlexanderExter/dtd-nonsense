@@ -1,4 +1,3 @@
-// @ts-nocheck -- Phase 2: DOM element typing (getElementById cast patterns) deferred to module refactor
 /**
  * DTD Character Builder — Revised (Phase 1.2)
  *
@@ -22,7 +21,7 @@ const Builder = {
 		physical: { label: "Physical", chars: ["strength", "dexterity", "constitution"] },
 		social: { label: "Social", chars: ["charisma", "fellowship", "composure"] },
 		mental: { label: "Mental", chars: ["intelligence", "wisdom", "willpower"] },
-	},
+	} as Record<string, { label: string; chars: string[] }>,
 
 	CHAR_NAMES: {
 		strength: "Strength",
@@ -34,11 +33,11 @@ const Builder = {
 		intelligence: "Intelligence",
 		wisdom: "Wisdom",
 		willpower: "Willpower",
-	},
+	} as Record<string, string>,
 
 	BASE_CHAR_DOT: 1,
-	CHAR_PRIORITY_DOTS: { primary: 6, secondary: 4, tertiary: 2 },
-	SKILL_PRIORITY_DOTS: { primary: 8, secondary: 6, tertiary: 4 },
+	CHAR_PRIORITY_DOTS: { primary: 6, secondary: 4, tertiary: 2 } as Record<string, number>,
+	SKILL_PRIORITY_DOTS: { primary: 8, secondary: 6, tertiary: 4 } as Record<string, number>,
 	MAX_CHAR_DOT: 6,
 	CREATION_CHAR_CAP: 4, // "You may not bring any Characteristic to 5 in this step"
 	MAX_SKILL_DOT: 6,
@@ -66,22 +65,23 @@ const Builder = {
 	// =========================================================================
 
 	/** Game data loaded from JSON files */
-	data: {},
+	data: {} as Record<string, any>,
 
-	/** The canonical character object (always in Sheet format) */
-	char: null as CharacterData | null,
+	/** The canonical character object (always in Sheet format).
+	 * Declared non-null — init() sets it before any method runs. */
+	char: null as unknown as CharacterData,
 
 	/** Builder-only tracking (not exported) */
 	meta: {
 		step: 1,
 		stepsCompleted: new Array(11).fill(false),
-		charPriority: { physical: null, social: null, mental: null },
-		skillPriority: { physical: null, social: null, mental: null },
+		charPriority: { physical: null, social: null, mental: null } as Record<string, string | null>,
+		skillPriority: { physical: null, social: null, mental: null } as Record<string, string | null>,
 		charDotsSpent: { physical: 0, social: 0, mental: 0 },
 		skillDotsSpent: { physical: 0, social: 0, mental: 0 },
 		/** Equipment package ID + resolved choices */
-		equipmentPkg: null,
-		equipmentChoices: {},
+		equipmentPkg: null as string | null,
+		equipmentChoices: {} as Record<string, string | null>,
 	},
 
 	// =========================================================================
@@ -108,7 +108,7 @@ const Builder = {
 		this.char = character.createDefault();
 		// Builder starts chars at 1; creation dots raise them (free, no XP)
 		for (const c of Object.keys(this.char.characteristics)) {
-			this.char.characteristics[c] = this.BASE_CHAR_DOT;
+			(this.char.characteristics as unknown as Record<string, number>)[c] = this.BASE_CHAR_DOT;
 		}
 		this.populateTrackFilter();
 		this.bindEvents();
@@ -122,22 +122,24 @@ const Builder = {
 
 	bindEvents() {
 		const wizard = document.getElementById("wizard");
+		if (!wizard) return;
 
 		// Accordion headers (delegated)
 		wizard.addEventListener("click", (e) => {
-			const header = e.target.closest(".accordion-header");
+			const target = e.target as HTMLElement;
+			const header = target.closest(".accordion-header") as HTMLElement | null;
 			if (header) {
-				const step = parseInt(header.closest(".accordion-item").dataset.step);
+				const step = parseInt((header.closest(".accordion-item") as HTMLElement).dataset.step ?? "0", 10);
 				this.openStep(step);
 				return;
 			}
 
 			// Selection cards (race, exaltation, alignment, class, feat, equipment)
-			const card = e.target.closest(".sel-card");
+			const card = target.closest(".sel-card") as HTMLElement | null;
 			if (card) {
 				const grid = card.closest(".selection-grid");
 				if (!grid) return;
-				const id = card.dataset.id;
+				const id = card.dataset.id!;
 				if (grid.id === "race-grid") this.selectRace(id);
 				if (grid.id === "exaltation-grid") this.selectExaltation(id);
 				if (grid.id === "alignment-grid") this.selectAlignment(id);
@@ -149,9 +151,9 @@ const Builder = {
 			}
 
 			// Dot +/- buttons
-			const dotBtn = e.target.closest(".d-btn");
+			const dotBtn = target.closest(".d-btn") as HTMLElement | null;
 			if (dotBtn) {
-				const delta = parseInt(dotBtn.dataset.delta);
+				const delta = parseInt(dotBtn.dataset.delta ?? "0", 10);
 				if (dotBtn.dataset.char) this.adjustChar(dotBtn.dataset.char, delta);
 				if (dotBtn.dataset.skill) this.adjustSkill(dotBtn.dataset.skill, delta);
 				if (dotBtn.dataset.bg) this.adjustBackground(dotBtn.dataset.bg, delta);
@@ -159,7 +161,7 @@ const Builder = {
 			}
 
 			// Tag pill remove buttons
-			const removeTag = e.target.closest(".remove-tag");
+			const removeTag = target.closest(".remove-tag") as HTMLElement | null;
 			if (removeTag) {
 				if (removeTag.dataset.classId) this.removeClass(removeTag.dataset.classId);
 				if (removeTag.dataset.featId) this.removeFeat(removeTag.dataset.featId);
@@ -170,29 +172,30 @@ const Builder = {
 
 		// Delegated change events (filters, priority selects, choice selects)
 		wizard.addEventListener("change", (e) => {
-			if (e.target.id === "filter-race-source") this.renderRaces();
-			if (e.target.id === "filter-pantheon") this.renderAlignments();
-			if (e.target.id === "filter-class-track") this.renderClasses();
-			if (e.target.id === "filter-feat-cat") this.renderFeats();
-			if (e.target.id === "filter-ah-cat") this.renderAH();
+			const target = e.target as HTMLInputElement;
+			if (target.id === "filter-race-source") this.renderRaces();
+			if (target.id === "filter-pantheon") this.renderAlignments();
+			if (target.id === "filter-class-track") this.renderClasses();
+			if (target.id === "filter-feat-cat") this.renderFeats();
+			if (target.id === "filter-ah-cat") this.renderAH();
 
 			// Char priority
-			if (e.target.classList.contains("char-priority-sel")) {
-				this.setCharPriority(e.target.dataset.group, e.target.value);
+			if (target.classList.contains("char-priority-sel")) {
+				this.setCharPriority(target.dataset.group!, target.value);
 			}
 			// Skill priority
-			if (e.target.classList.contains("skill-priority-sel")) {
-				this.setSkillPriority(e.target.dataset.group, e.target.value);
+			if (target.classList.contains("skill-priority-sel")) {
+				this.setSkillPriority(target.dataset.group!, target.value);
 			}
 			// Race char bonus choice
-			if (e.target.id === "race-char-choice") {
-				this.char.raceCharBonus = e.target.value || "";
+			if (target.id === "race-char-choice") {
+				this.char.raceCharBonus = target.value || "";
 				this.updateSidebar();
 			}
 			// Devotion slider
 			// Equipment choice selects
-			if (e.target.classList.contains("equip-choice-sel")) {
-				this.meta.equipmentChoices[e.target.dataset.idx] = e.target.value || null;
+			if (target.classList.contains("equip-choice-sel")) {
+				this.meta.equipmentChoices[target.dataset.idx ?? ""] = target.value || null;
 			}
 		});
 
@@ -206,16 +209,16 @@ const Builder = {
 		}
 
 		// Identity fields
-		document.getElementById("field-name")?.addEventListener("input", (e) => {
-			this.char.name = e.target.value;
+		document.getElementById("field-name")?.addEventListener("input", (e: Event) => {
+			this.char.name = (e.target as HTMLInputElement).value;
 			this.updateStepCompletion(1, !!this.char.name.trim());
 			this.updateSidebar();
 		});
-		document.getElementById("field-player")?.addEventListener("input", (e) => {
-			this.char.player = e.target.value;
+		document.getElementById("field-player")?.addEventListener("input", (e: Event) => {
+			this.char.player = (e.target as HTMLInputElement).value;
 		});
-		document.getElementById("field-concept")?.addEventListener("input", (e) => {
-			this.char.concept = e.target.value;
+		document.getElementById("field-concept")?.addEventListener("input", (e: Event) => {
+			this.char.concept = (e.target as HTMLInputElement).value;
 		});
 
 		// Sidebar buttons
@@ -225,8 +228,8 @@ const Builder = {
 
 		// Step checklist clicks
 		document.getElementById("step-checklist")?.addEventListener("click", (e) => {
-			const li = e.target.closest("li");
-			if (li?.dataset.step) this.openStep(parseInt(li.dataset.step));
+			const li = (e.target as HTMLElement).closest("li") as HTMLElement | null;
+			if (li?.dataset.step) this.openStep(parseInt(li.dataset.step, 10));
 		});
 	},
 
@@ -234,15 +237,15 @@ const Builder = {
 	// Accordion Navigation
 	// =========================================================================
 
-	openStep(n) {
+	openStep(n: number) {
 		this.meta.step = n;
 		document.querySelectorAll("#wizard .accordion-item").forEach((item) => {
-			const s = parseInt(item.dataset.step);
+			const s = parseInt((item as HTMLElement).dataset.step ?? "0", 10);
 			item.classList.toggle("open", s === n);
 		});
 		// Update checklist active state
 		document.querySelectorAll("#step-checklist li").forEach((li) => {
-			li.classList.toggle("active", parseInt(li.dataset.step) === n);
+			(li as HTMLElement).classList.toggle("active", parseInt((li as HTMLElement).dataset.step ?? "0", 10) === n);
 		});
 		// Lazy render step content when opened
 		if (n === 11) this.renderReview();
@@ -256,7 +259,7 @@ const Builder = {
 		const sel = document.getElementById("filter-class-track");
 		if (!sel || !this.data.classes?.tracks) return;
 		const tracks = this.data.classes.tracks;
-		for (const [id, track] of Object.entries(tracks)) {
+		for (const [id, track] of Object.entries(tracks as Record<string, any>)) {
 			const opt = document.createElement("option");
 			opt.value = id;
 			opt.textContent = track.name;
@@ -289,34 +292,35 @@ const Builder = {
 	// Helpers
 	// =========================================================================
 
-	esc(str) {
+	esc(str: any) {
 		return escapeHtml(String(str ?? ""));
 	},
 
-	capitalize(s) {
+	capitalize(s: string) {
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	},
 
 	/** Look up race object by ID */
-	getRace(id) {
-		return (this.data.races?.races || []).find((r) => r.id === id);
+	getRace(id: string | undefined) {
+		return (this.data.races?.races || []).find((r: any) => r.id === id);
 	},
 
 	/** Look up exaltation object by ID */
-	getExaltation(id) {
-		return (this.data.exaltations?.exaltations || []).find((e) => e.id === id);
+	getExaltation(id: string | undefined) {
+		return (this.data.exaltations?.exaltations || []).find((e: any) => e.id === id);
 	},
 
 	/** Get total characteristic values (base + racial bonus) */
-	getTotalChars() {
-		const base = this.char.characteristics;
-		const result = {};
+	getTotalChars(): Record<string, number> {
+		const base = this.char!.characteristics;
+		const result: Record<string, number> = {};
+		const baseRecord = base as unknown as Record<string, number>;
 		for (const c of Object.keys(base)) {
-			result[c] = base[c] || this.BASE_CHAR_DOT;
+			result[c] = baseRecord[c] || this.BASE_CHAR_DOT;
 		}
 		// Racial bonus
-		if (this.char.raceCharBonus && result[this.char.raceCharBonus] !== undefined) {
-			result[this.char.raceCharBonus] += 1;
+		if (this.char!.raceCharBonus && result[this.char!.raceCharBonus] !== undefined) {
+			result[this.char!.raceCharBonus] += 1;
 		}
 		return result;
 	},
@@ -338,6 +342,8 @@ const Builder = {
 
 	calcXP() {
 		const breakdown = {
+			characteristics: 0,
+			skills: 0,
 			classes: 0,
 			feats: 0,
 			assets: 0,
@@ -349,26 +355,26 @@ const Builder = {
 		// Skills: FREE during creation (covered by priority dots)
 
 		// Classes: 100 XP per class purchased, first one is free
-		const classCount = (this.char.classes || []).length;
+		const classCount = (this.char!.classes || []).length;
 		if (classCount > 1) {
 			breakdown.classes = (classCount - 1) * 100;
 		}
 
 		// Feats: 100 XP each
-		breakdown.feats = (this.char.feats || []).length * 100;
+		breakdown.feats = (this.char!.feats || []).length * 100;
 
 		// Assets: 100 XP each
-		breakdown.assets = (this.char.assets || []).length * 100;
+		breakdown.assets = (this.char!.assets || []).length * 100;
 
 		// Hindrances: refund XP
 		const allFeats = this.data.feats?.feats || [];
-		for (const h of this.char.hindrances || []) {
-			const feat = allFeats.find((f) => f.id === (h.name || h));
+		for (const h of this.char!.hindrances || []) {
+			const feat = allFeats.find((f: any) => f.id === (h.name || h));
 			breakdown.hindrances -= feat?.bonusXP || 100;
 		}
 
 		// Backgrounds: dots 4-5 cost 100 XP each (dots 1-3 are free from budget)
-		for (const b of this.char.backgrounds || []) {
+		for (const b of this.char!.backgrounds || []) {
 			const d = b.dots || 0;
 			if (d >= 4) breakdown.backgrounds += 100; // 4th dot
 			if (d >= 5) breakdown.backgrounds += 100; // 5th dot
@@ -437,14 +443,14 @@ const Builder = {
 		const xp = this.calcXP();
 		const remEl = document.getElementById("xp-remaining");
 		if (remEl) {
-			remEl.textContent = xp.remaining;
+			remEl.textContent = String(xp.remaining);
 			remEl.classList.toggle("over", xp.remaining < 0);
 		}
 
 		// XP breakdown
 		const bdEl = document.getElementById("xp-breakdown");
 		if (bdEl) {
-			const rows = [];
+			const rows: [string, number][] = [];
 			const bd = xp.breakdown;
 			if (bd.characteristics) rows.push(["Characteristics", bd.characteristics]);
 			if (bd.skills) rows.push(["Skills", bd.skills]);
@@ -453,23 +459,26 @@ const Builder = {
 			if (bd.assets) rows.push(["Assets", bd.assets]);
 			if (bd.hindrances) rows.push(["Hindrances", bd.hindrances]);
 			bdEl.innerHTML = rows
-				.map(([l, v]) => `<div class="xp-row"><span>${l}</span><span>${v > 0 ? "" : ""}${v}</span></div>`)
+				.map(
+					([l, v]: [string, number]) =>
+						`<div class="xp-row"><span>${l}</span><span>${v > 0 ? "" : ""}${v}</span></div>`,
+				)
 				.join("");
 		}
 
 		this.renderStepChecklist();
 	},
 
-	_setStat(id, val) {
+	_setStat(id: string, val: string | number) {
 		const el = document.getElementById(id);
-		if (el) el.textContent = val;
+		if (el) el.textContent = String(val);
 	},
 
 	// =========================================================================
 	// Step Completion Tracking
 	// =========================================================================
 
-	updateStepCompletion(stepNum, isDone) {
+	updateStepCompletion(stepNum: number, isDone: boolean) {
 		this.meta.stepsCompleted[stepNum - 1] = isDone;
 		const item = document.querySelector(`.accordion-item[data-step="${stepNum}"]`);
 		if (item) item.classList.toggle("done", isDone);
@@ -504,7 +513,7 @@ const Builder = {
 		this._setStepSummary(
 			7,
 			this.char.alignment
-				? this.data.alignments?.alignments?.find((a) => a.id === this.char.alignment)?.name ||
+				? this.data.alignments?.alignments?.find((a: any) => a.id === this.char.alignment)?.name ||
 						this.char.alignment
 				: "",
 		);
@@ -530,7 +539,7 @@ const Builder = {
 		this._setStepSummary(11, "");
 	},
 
-	_setStepSummary(n, text) {
+	_setStepSummary(n: number, text: string) {
 		const el = document.getElementById(`step-summary-${n}`);
 		if (el) el.textContent = text;
 	},
@@ -542,12 +551,12 @@ const Builder = {
 	renderRaces() {
 		const grid = document.getElementById("race-grid");
 		if (!grid) return;
-		const filter = document.getElementById("filter-race-source")?.value || "all";
+		const filter = (document.getElementById("filter-race-source") as HTMLSelectElement | null)?.value || "all";
 		let races = this.data.races?.races || [];
-		if (filter !== "all") races = races.filter((r) => r.source === filter);
+		if (filter !== "all") races = races.filter((r: any) => r.source === filter);
 
 		grid.innerHTML = races
-			.map((r) => {
+			.map((r: any) => {
 				const bonusText = r.charBonus?.description || "";
 				return `<div class="sel-card ${this.char.race === r.id ? "selected" : ""}" data-id="${r.id}">
                 <h4>${this.esc(r.name)}</h4>
@@ -558,7 +567,7 @@ const Builder = {
 			.join("");
 	},
 
-	selectRace(id) {
+	selectRace(id: string) {
 		const race = this.getRace(id);
 		if (!race) return;
 		this.char.race = id;
@@ -576,7 +585,7 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	showRaceDetail(race) {
+	showRaceDetail(race: any) {
 		const el = document.getElementById("race-detail");
 		if (!el) return;
 
@@ -587,14 +596,14 @@ const Builder = {
 			const list = opts[0] === "any" ? Object.keys(this.char.characteristics) : opts;
 			charBonusHtml = `<select id="race-char-choice" class="choice-select">
                 <option value="">Choose +1…</option>
-                ${list.map((c) => `<option value="${c}" ${this.char.raceCharBonus === c ? "selected" : ""}>${this.capitalize(c)}</option>`).join("")}
+                ${list.map((c: string) => `<option value="${c}" ${this.char.raceCharBonus === c ? "selected" : ""}>${this.capitalize(c)}</option>`).join("")}
             </select>`;
 		} else if (opts.length === 1) {
 			charBonusHtml = `<span>+1 ${this.capitalize(opts[0])}</span>`;
 		}
 
 		const skillBonuses =
-			(race.skillBonus || []).map((s) => `+${s.value} ${this.capitalize(s.skill)}`).join(", ") || "None";
+			(race.skillBonus || []).map((s: any) => `+${s.value} ${this.capitalize(s.skill)}`).join(", ") || "None";
 
 		const powerHtml = race.power
 			? `<p><strong>${this.esc(race.power.name)}:</strong> ${this.esc(race.power.description)}</p>`
@@ -626,7 +635,7 @@ const Builder = {
 		if (!grid) return;
 		const exaltations = this.data.exaltations?.exaltations || [];
 		grid.innerHTML = exaltations
-			.map((ex) => {
+			.map((ex: any) => {
 				const psName = ex.powerStat?.name || "No Power Stat";
 				return `<div class="sel-card ${this.char.exaltation === ex.id ? "selected" : ""}" data-id="${ex.id}">
                 <h4>${this.esc(ex.name)}</h4>
@@ -637,7 +646,7 @@ const Builder = {
 			.join("");
 	},
 
-	selectExaltation(id) {
+	selectExaltation(id: string) {
 		const ex = this.getExaltation(id);
 		if (!ex) return;
 		this.char.exaltation = id;
@@ -650,18 +659,18 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	showExaltationDetail(ex) {
+	showExaltationDetail(ex: any) {
 		const el = document.getElementById("exaltation-detail");
 		if (!el) return;
 
 		const powersHtml =
 			(ex.staticPowers || [])
-				.map((p) => `<li><strong>${this.esc(p.name)}:</strong> ${this.esc(p.description)}</li>`)
+				.map((p: any) => `<li><strong>${this.esc(p.name)}:</strong> ${this.esc(p.description)}</li>`)
 				.join("") || "<li>None</li>";
 
 		const progHtml = (ex.progression || [])
 			.map(
-				(p) =>
+				(p: any) =>
 					`<li class="${p.dots <= 1 ? "power-unlocked" : "power-locked"}">
                 <span class="unlock-icon">${p.dots <= 1 ? "✓" : "○"}</span>
                 <strong>${p.dots} dot${p.dots > 1 ? "s" : ""} — ${this.esc(p.name)}:</strong> ${this.esc(p.description)}
@@ -707,7 +716,7 @@ const Builder = {
 			.join("");
 	},
 
-	setCharPriority(group, priority) {
+	setCharPriority(group: string, priority: string) {
 		if (!priority) {
 			this.meta.charPriority[group] = null;
 		} else {
@@ -716,8 +725,10 @@ const Builder = {
 				if (g !== group && this.meta.charPriority[g] === priority) {
 					this.meta.charPriority[g] = null;
 					// Reset dots for that group
-					this.CHAR_GROUPS[g].chars.forEach((c) => (this.char.characteristics[c] = this.BASE_CHAR_DOT));
-					this.meta.charDotsSpent[g] = 0;
+					for (const c of this.CHAR_GROUPS[g].chars) {
+						(this.char.characteristics as unknown as Record<string, number>)[c] = this.BASE_CHAR_DOT;
+					}
+					(this.meta.charDotsSpent as Record<string, number>)[g] = 0;
 				}
 			}
 			this.meta.charPriority[group] = priority;
@@ -736,18 +747,16 @@ const Builder = {
 			.map(([gk, g]) => {
 				const pri = this.meta.charPriority[gk];
 				const maxDots = pri ? this.CHAR_PRIORITY_DOTS[pri] : 0;
-				const spent = this.meta.charDotsSpent[gk];
+				const spent = (this.meta.charDotsSpent as Record<string, number>)[gk];
 				const remaining = maxDots - spent;
-				const race = this.getRace(this.char.race);
 
 				return `<div class="alloc-group">
                 <h4>${g.label}</h4>
                 <div class="alloc-budget">${pri ? `<strong>${remaining}</strong> / ${maxDots} dots remaining` : "Set priority above"}</div>
                 ${g.chars
 					.map((c) => {
-						const val = this.char.characteristics[c];
+						const val = (this.char.characteristics as unknown as Record<string, number>)[c];
 						const hasRacialBonus = this.char.raceCharBonus === c;
-						const raceSkillBonus = race?.skillBonus || [];
 						const canUp = pri && val < this.CREATION_CHAR_CAP && spent < maxDots;
 						const canDown = val > this.BASE_CHAR_DOT;
 						const total = val + (hasRacialBonus ? 1 : 0);
@@ -773,21 +782,21 @@ const Builder = {
 			.join("");
 	},
 
-	adjustChar(charId, delta) {
+	adjustChar(charId: string, delta: number) {
 		const group = Object.keys(this.CHAR_GROUPS).find((g) => this.CHAR_GROUPS[g].chars.includes(charId));
 		if (!group) return;
 		const pri = this.meta.charPriority[group];
 		if (!pri) return;
 
-		const cur = this.char.characteristics[charId];
+		const cur = (this.char.characteristics as unknown as Record<string, number>)[charId];
 		const newVal = cur + delta;
 		if (newVal < this.BASE_CHAR_DOT || newVal > this.CREATION_CHAR_CAP) return;
 
-		const newSpent = this.meta.charDotsSpent[group] + delta;
+		const newSpent = (this.meta.charDotsSpent as Record<string, number>)[group] + delta;
 		if (newSpent < 0 || newSpent > this.CHAR_PRIORITY_DOTS[pri]) return;
 
-		this.char.characteristics[charId] = newVal;
-		this.meta.charDotsSpent[group] = newSpent;
+		(this.char.characteristics as unknown as Record<string, number>)[charId] = newVal;
+		(this.meta.charDotsSpent as Record<string, number>)[group] = newSpent;
 
 		this.renderCharAllocation();
 		this.updateCharSummary();
@@ -813,7 +822,7 @@ const Builder = {
 		const cont = document.getElementById("skill-priorities");
 		if (!cont) return;
 		const groups = ["physical", "social", "mental"];
-		const labels = { physical: "Physical", social: "Social", mental: "Mental" };
+		const labels: Record<string, string> = { physical: "Physical", social: "Social", mental: "Mental" };
 
 		cont.innerHTML = groups
 			.map((gk) => {
@@ -823,7 +832,7 @@ const Builder = {
 				const names =
 					skills
 						.slice(0, 4)
-						.map((s) => s.name)
+						.map((s: any) => s.name)
 						.join(", ") + (skills.length > 4 ? "…" : "");
 				return `<div class="priority-card ${cls}">
                 <h4>${labels[gk]}</h4>
@@ -839,7 +848,7 @@ const Builder = {
 			.join("");
 	},
 
-	setSkillPriority(group, priority) {
+	setSkillPriority(group: string, priority: string) {
 		if (!priority) {
 			this.meta.skillPriority[group] = null;
 		} else {
@@ -848,10 +857,10 @@ const Builder = {
 					this.meta.skillPriority[g] = null;
 					// Reset dots for that group
 					const skills = this.data.skills?.skills?.[g] || [];
-					skills.forEach((s) => {
+					skills.forEach((s: any) => {
 						if (this.char.skills[s.id] !== undefined) this.char.skills[s.id] = 0;
 					});
-					this.meta.skillDotsSpent[g] = 0;
+					(this.meta.skillDotsSpent as Record<string, number>)[g] = 0;
 				}
 			}
 			this.meta.skillPriority[group] = priority;
@@ -866,10 +875,10 @@ const Builder = {
 		const cont = document.getElementById("skill-allocation");
 		if (!cont) return;
 		const groups = ["physical", "social", "mental"];
-		const labels = { physical: "Physical", social: "Social", mental: "Mental" };
+		const labels: Record<string, string> = { physical: "Physical", social: "Social", mental: "Mental" };
 		const race = this.getRace(this.char.race);
-		const racialBonuses = {};
-		(race?.skillBonus || []).forEach((sb) => {
+		const racialBonuses: Record<string, number> = {};
+		(race?.skillBonus || []).forEach((sb: any) => {
 			racialBonuses[sb.skill] = sb.value;
 		});
 
@@ -877,7 +886,7 @@ const Builder = {
 			.map((gk) => {
 				const pri = this.meta.skillPriority[gk];
 				const maxDots = pri ? this.SKILL_PRIORITY_DOTS[pri] : 0;
-				const spent = this.meta.skillDotsSpent[gk];
+				const spent = (this.meta.skillDotsSpent as Record<string, number>)[gk];
 				const remaining = maxDots - spent;
 				const skills = this.data.skills?.skills?.[gk] || [];
 
@@ -885,7 +894,7 @@ const Builder = {
                 <h4>${labels[gk]}</h4>
                 <div class="alloc-budget">${pri ? `<strong>${remaining}</strong> / ${maxDots} dots remaining` : "Set priority above"}</div>
                 ${skills
-					.map((s) => {
+					.map((s: any) => {
 						const val = this.char.skills[s.id] || 0;
 						const rb = racialBonuses[s.id] || 0;
 						const canUp = pri && val < this.CREATION_SKILL_CAP && spent < maxDots;
@@ -908,10 +917,10 @@ const Builder = {
 			.join("");
 	},
 
-	adjustSkill(skillId, delta) {
+	adjustSkill(skillId: string, delta: number) {
 		let group = null;
 		for (const g of ["physical", "social", "mental"]) {
-			if ((this.data.skills?.skills?.[g] || []).some((s) => s.id === skillId)) {
+			if ((this.data.skills?.skills?.[g] || []).some((s: any) => s.id === skillId)) {
 				group = g;
 				break;
 			}
@@ -924,11 +933,11 @@ const Builder = {
 		const newVal = cur + delta;
 		if (newVal < 0 || newVal > this.CREATION_SKILL_CAP) return;
 
-		const newSpent = this.meta.skillDotsSpent[group] + delta;
+		const newSpent = (this.meta.skillDotsSpent as Record<string, number>)[group] + delta;
 		if (newSpent < 0 || newSpent > this.SKILL_PRIORITY_DOTS[pri]) return;
 
 		this.char.skills[skillId] = newVal;
-		this.meta.skillDotsSpent[group] = newSpent;
+		(this.meta.skillDotsSpent as Record<string, number>)[group] = newSpent;
 
 		this.renderSkillAllocation();
 		this.updateSkillSummary();
@@ -958,12 +967,12 @@ const Builder = {
 		const remaining = this.BG_BUDGET - spent;
 
 		const remEl = document.getElementById("bg-remaining");
-		if (remEl) remEl.textContent = remaining;
+		if (remEl) remEl.textContent = String(remaining);
 
 		const { remaining: xpRemaining } = this.calcXP();
 
 		grid.innerHTML = bgs
-			.map((bg) => {
+			.map((bg: any) => {
 				const dots = this.getBgDots(bg.id);
 				// Free dots: 1-3 from budget.  Dots 4-5: XP (100 each)
 				const inFreeRange = dots < this.MAX_BG_FREE_DOT;
@@ -1003,17 +1012,17 @@ const Builder = {
 		this.updateBgSummary();
 	},
 
-	getBgDots(bgId) {
+	getBgDots(bgId: string) {
 		const entry = (this.char.backgrounds || []).find(
 			(b) => b.name?.toLowerCase() === bgId.toLowerCase() || b.id === bgId,
 		);
 		return entry?.dots || 0;
 	},
 
-	setBgDots(bgId, dots) {
+	setBgDots(bgId: string, dots: number) {
 		if (!this.char.backgrounds) this.char.backgrounds = [];
 		const bgs = this.data.backgrounds?.backgrounds || [];
-		const bgDef = bgs.find((b) => b.id === bgId);
+		const bgDef = bgs.find((b: any) => b.id === bgId);
 		const name = bgDef?.name || this.capitalize(bgId);
 
 		const entry = this.char.backgrounds.find((b) => b.id === bgId);
@@ -1036,7 +1045,7 @@ const Builder = {
 		}, 0);
 	},
 
-	adjustBackground(bgId, delta) {
+	adjustBackground(bgId: string, delta: number) {
 		const curDots = this.getBgDots(bgId);
 		const newDots = curDots + delta;
 		if (newDots < 0 || newDots > this.MAX_BG_DOT) return;
@@ -1071,14 +1080,14 @@ const Builder = {
 	renderAlignments() {
 		const grid = document.getElementById("alignment-grid");
 		if (!grid) return;
-		const filter = document.getElementById("filter-pantheon")?.value || "all";
+		const filter = (document.getElementById("filter-pantheon") as HTMLSelectElement)?.value || "all";
 		let alignments = this.data.alignments?.alignments || [];
-		if (filter !== "all") alignments = alignments.filter((a) => a.pantheon === filter);
+		if (filter !== "all") alignments = alignments.filter((a: any) => a.pantheon === filter);
 		const pantheons = this.data.alignments?.pantheons || {};
 
 		grid.innerHTML = alignments
 			.map(
-				(al) => `
+				(al: any) => `
             <div class="sel-card ${this.char.alignment === al.id ? "selected" : ""}" data-id="${al.id}">
                 <h4>${this.esc(al.name)}</h4>
                 <div class="card-sub">${this.esc(pantheons[al.pantheon]?.name || al.pantheon)}</div>
@@ -1088,8 +1097,8 @@ const Builder = {
 			.join("");
 	},
 
-	selectAlignment(id) {
-		const al = (this.data.alignments?.alignments || []).find((a) => a.id === id);
+	selectAlignment(id: string) {
+		const al = (this.data.alignments?.alignments || []).find((a: any) => a.id === id);
 		if (!al) return;
 		this.char.alignment = id;
 		this.char.devotion = 6;
@@ -1100,17 +1109,17 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	showAlignmentDetail(al) {
+	showAlignmentDetail(al: any) {
 		const el = document.getElementById("alignment-detail");
 		if (!el) return;
 
 		const commandmentsHtml = (al.commandments || []).length
-			? `<ul class="detail-list">${al.commandments.map((c) => `<li>${this.esc(c)}</li>`).join("")}</ul>`
+			? `<ul class="detail-list">${al.commandments.map((c: any) => `<li>${this.esc(c)}</li>`).join("")}</ul>`
 			: "<p>No commandments.</p>";
 
 		const sinsHtml = (al.sins || [])
 			.map(
-				(s) =>
+				(s: any) =>
 					`<div class="sin-row"><span class="sin-devotion">${s.devotion}</span><span>${this.esc(s.sin)}</span></div>`,
 			)
 			.join("");
@@ -1133,16 +1142,16 @@ const Builder = {
 	renderClasses() {
 		const grid = document.getElementById("class-grid");
 		if (!grid) return;
-		const trackFilter = document.getElementById("filter-class-track")?.value || "all";
+		const trackFilter = (document.getElementById("filter-class-track") as HTMLSelectElement)?.value || "all";
 		// During creation characters are level 1 — only Tier 1 classes available
-		let classes = (this.data.classes?.classes || []).filter((c) => c.level === 1);
+		let classes = (this.data.classes?.classes || []).filter((c: any) => c.level === 1);
 
 		if (trackFilter !== "all") {
-			classes = classes.filter((c) => c.track === trackFilter);
+			classes = classes.filter((c: any) => c.track === trackFilter);
 		}
 
 		grid.innerHTML = classes
-			.map((cls) => {
+			.map((cls: any) => {
 				const purchased = (this.char.classes || []).some((c) => c.classId === cls.id);
 				const trackName = cls.track ? this.capitalize(cls.track) : "Standalone";
 				return `<div class="sel-card ${purchased ? "selected" : ""}" data-id="${cls.id}">
@@ -1157,8 +1166,8 @@ const Builder = {
 		const pills = document.getElementById("purchased-classes");
 		if (pills) {
 			pills.innerHTML = (this.char.classes || [])
-				.map((c) => {
-					const cls = (this.data.classes?.classes || []).find((cl) => cl.id === c.classId);
+				.map((c: any) => {
+					const cls = (this.data.classes?.classes || []).find((cl: any) => cl.id === c.classId);
 					return cls
 						? `<span class="tag-pill">${this.esc(cls.name)} (Tier ${cls.level})
                     <span class="remove-tag" data-class-id="${cls.id}">×</span></span>`
@@ -1168,10 +1177,10 @@ const Builder = {
 		}
 	},
 
-	showClassDetail(classId) {
+	showClassDetail(classId: string) {
 		const el = document.getElementById("class-detail");
 		if (!el) return;
-		const cls = (this.data.classes?.classes || []).find((c) => c.id === classId);
+		const cls = (this.data.classes?.classes || []).find((c: any) => c.id === classId);
 		if (!cls) return;
 
 		const purchased = (this.char.classes || []).some((c) => c.classId === cls.id);
@@ -1188,7 +1197,7 @@ const Builder = {
 		if (cls.gunKata?.length) schools.push(`<strong>Gun Kata:</strong> ${cls.gunKata.join(", ")}`);
 
 		const featsHtml = (cls.feats || [])
-			.map((f) => `<li>${this.esc(f.name)} <span style="color:var(--text-dim)">(${f.type})</span></li>`)
+			.map((f: any) => `<li>${this.esc(f.name)} <span style="color:var(--text-dim)">(${f.type})</span></li>`)
 			.join("");
 
 		el.innerHTML = `
@@ -1211,13 +1220,13 @@ const Builder = {
 		});
 	},
 
-	toggleClass(classId) {
+	toggleClass(classId: string) {
 		if (!this.char.classes) this.char.classes = [];
 		const idx = this.char.classes.findIndex((c) => c.classId === classId);
 		if (idx >= 0) {
 			this.char.classes.splice(idx, 1);
 		} else {
-			const cls = (this.data.classes?.classes || []).find((c) => c.id === classId);
+			const cls = (this.data.classes?.classes || []).find((c: any) => c.id === classId);
 			// Guard: only Tier 1 classes allowed at character creation
 			if (cls && cls.level > 1) return;
 			this.char.classes.push({ classId, level: cls?.level || 1 });
@@ -1230,10 +1239,10 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	removeClass(classId) {
-		this.char.classes = (this.char.classes || []).filter((c) => c.classId !== classId);
+	removeClass(classId: string) {
+		this.char.classes = (this.char.classes || []).filter((c: any) => c.classId !== classId);
 		this.renderClasses();
-		document.getElementById("class-detail").innerHTML = "";
+		document.getElementById("class-detail")!.innerHTML = "";
 		const count = this.char.classes.length;
 		this._setStepSummary(8, count ? `${count} class${count > 1 ? "es" : ""}` : "");
 		this.updateStepCompletion(8, count > 0);
@@ -1245,14 +1254,14 @@ const Builder = {
 	// =========================================================================
 
 	/** Filter applicable feats (race/exaltation restrictions) */
-	_filterByRestrictions(feats) {
+	_filterByRestrictions(feats: any[]) {
 		const race = this.getRace(this.char.race);
 		const ex = this.getExaltation(this.char.exaltation);
-		return feats.filter((f) => {
+		return feats.filter((f: any) => {
 			if (f.raceRestriction && (!race || f.raceRestriction !== race.name)) return false;
 			if (f.exaltationRestriction) {
 				if (!ex) return false;
-				const norm = (s) => s.replace(/\s+/g, "").toLowerCase();
+				const norm = (s: string) => s.replace(/\s+/g, "").toLowerCase();
 				if (norm(f.exaltationRestriction) !== norm(ex.name)) return false;
 			}
 			return true;
@@ -1280,15 +1289,18 @@ const Builder = {
 	renderFeats() {
 		const grid = document.getElementById("feat-grid");
 		if (!grid) return;
-		const catFilter = document.getElementById("filter-feat-cat")?.value || "all";
-		const searchTerm = (document.getElementById("filter-feat-search")?.value || "").toLowerCase();
+		const catFilter = (document.getElementById("filter-feat-cat") as HTMLSelectElement)?.value || "all";
+		const searchTerm = (
+			(document.getElementById("filter-feat-search") as HTMLInputElement)?.value || ""
+		).toLowerCase();
 		const FEAT_CATS = ["general", "racial", "supplementary"];
-		let feats = (this.data.feats?.feats || []).filter((f) => FEAT_CATS.includes(f.category));
+		let feats = (this.data.feats?.feats || []).filter((f: any) => FEAT_CATS.includes(f.category));
 
-		if (catFilter !== "all") feats = feats.filter((f) => f.category === catFilter);
+		if (catFilter !== "all") feats = feats.filter((f: any) => f.category === catFilter);
 		if (searchTerm)
 			feats = feats.filter(
-				(f) => f.name.toLowerCase().includes(searchTerm) || (f.effect || "").toLowerCase().includes(searchTerm),
+				(f: any) =>
+					f.name.toLowerCase().includes(searchTerm) || (f.effect || "").toLowerCase().includes(searchTerm),
 			);
 		feats = this._filterByRestrictions(feats);
 
@@ -1297,10 +1309,10 @@ const Builder = {
 
 		grid.innerHTML = feats
 			.map(
-				(f) => `
+				(f: any) => `
             <div class="sel-card ${selectedIds.has(f.id) ? "selected" : ""}" data-id="${f.id}">
                 <h4>${this.esc(f.name)}</h4>
-                <div class="card-sub">${catLabels[f.category] || f.category}</div>
+                <div class="card-sub">${(catLabels as Record<string, string>)[f.category] || f.category}</div>
                 <div class="card-preview">${this.esc((f.effect || "").slice(0, 80))}</div>
             </div>`,
 			)
@@ -1311,9 +1323,9 @@ const Builder = {
 		if (pills) {
 			const allFeats = this.data.feats?.feats || [];
 			pills.innerHTML = (this.char.feats || [])
-				.map((f) => {
+				.map((f: any) => {
 					const id = typeof f === "object" ? f.name : f;
-					const feat = allFeats.find((fd) => fd.id === id);
+					const feat = allFeats.find((fd: any) => fd.id === id);
 					return `<span class="tag-pill">${this.esc(feat?.name || id)}
                     <span class="remove-tag" data-feat-id="${id}">×</span></span>`;
 				})
@@ -1321,16 +1333,16 @@ const Builder = {
 		}
 	},
 
-	showFeatDetail(featId) {
+	showFeatDetail(featId: string) {
 		const el = document.getElementById("feat-detail");
 		if (!el) return;
-		const feat = (this.data.feats?.feats || []).find((f) => f.id === featId);
+		const feat = (this.data.feats?.feats || []).find((f: any) => f.id === featId);
 		if (!feat) return;
 
 		const selected = this._getSelectedFeatIds().has(featId);
 		const btnText = selected ? "Remove" : "Add (100 XP)";
 		const btnClass = selected ? "btn-danger" : "btn-primary";
-		const prereqs = (feat.prerequisites || []).map((p) => `<li>${this.esc(p)}</li>`).join("");
+		const prereqs = (feat.prerequisites || []).map((p: any) => `<li>${this.esc(p)}</li>`).join("");
 
 		el.innerHTML = `
             <h3>${this.esc(feat.name)}</h3>
@@ -1345,7 +1357,7 @@ const Builder = {
 		});
 	},
 
-	toggleFeat(featId) {
+	toggleFeat(featId: string) {
 		if (!this.char.feats) this.char.feats = [];
 		const idx = this.char.feats.findIndex((e) => (typeof e === "object" ? e.name : e) === featId);
 		if (idx >= 0) {
@@ -1359,13 +1371,13 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	removeFeat(featId) {
+	removeFeat(featId: string) {
 		if (this.char.feats) {
 			const idx = this.char.feats.findIndex((e) => (typeof e === "object" ? e.name : e) === featId);
 			if (idx >= 0) this.char.feats.splice(idx, 1);
 		}
 		this.renderFeats();
-		document.getElementById("feat-detail").innerHTML = "";
+		document.getElementById("feat-detail")!.innerHTML = "";
 		this._updateStep9Summary();
 		this.updateSidebar();
 	},
@@ -1375,22 +1387,22 @@ const Builder = {
 	renderAH() {
 		const grid = document.getElementById("ah-grid");
 		if (!grid) return;
-		const catFilter = document.getElementById("filter-ah-cat")?.value || "all";
+		const catFilter = (document.getElementById("filter-ah-cat") as HTMLSelectElement)?.value || "all";
 		const AH_CATS = ["asset", "exaltedAsset", "hindrance"];
-		let items = (this.data.feats?.feats || []).filter((f) => AH_CATS.includes(f.category));
+		let items = (this.data.feats?.feats || []).filter((f: any) => AH_CATS.includes(f.category));
 
-		if (catFilter !== "all") items = items.filter((f) => f.category === catFilter);
+		if (catFilter !== "all") items = items.filter((f: any) => f.category === catFilter);
 		items = this._filterByRestrictions(items);
 
 		const selectedIds = this._getSelectedFeatIds();
 		const catLabels = { asset: "Asset", exaltedAsset: "Exalted Asset", hindrance: "Hindrance" };
 
 		grid.innerHTML = items
-			.map((f) => {
+			.map((f: any) => {
 				const xpNote = f.category === "hindrance" ? `+${f.bonusXP || 100} XP` : "100 XP";
 				return `<div class="sel-card ${selectedIds.has(f.id) ? "selected" : ""}" data-id="${f.id}">
                 <h4>${this.esc(f.name)}</h4>
-                <div class="card-sub">${catLabels[f.category]} · ${xpNote}</div>
+                <div class="card-sub">${(catLabels as Record<string, string>)[f.category]} · ${xpNote}</div>
                 <div class="card-preview">${this.esc((f.effect || "").slice(0, 80))}</div>
             </div>`;
 			})
@@ -1401,15 +1413,18 @@ const Builder = {
 		if (pills) {
 			const allFeats = this.data.feats?.feats || [];
 			const entries = [
-				...(this.char.assets || []).map((a) => ({ id: typeof a === "object" ? a.name : a, type: "asset" })),
-				...(this.char.hindrances || []).map((h) => ({
+				...(this.char.assets || []).map((a: any) => ({
+					id: typeof a === "object" ? a.name : a,
+					type: "asset",
+				})),
+				...(this.char.hindrances || []).map((h: any) => ({
 					id: typeof h === "object" ? h.name : h,
 					type: "hindrance",
 				})),
 			];
 			pills.innerHTML = entries
-				.map((e) => {
-					const feat = allFeats.find((f) => f.id === e.id);
+				.map((e: any) => {
+					const feat = allFeats.find((f: any) => f.id === e.id);
 					const cls = e.type === "hindrance" ? "hindrance" : "asset";
 					return `<span class="tag-pill ${cls}">${this.esc(feat?.name || e.id)}
                     <span class="remove-tag" data-ah-id="${e.id}">×</span></span>`;
@@ -1418,10 +1433,10 @@ const Builder = {
 		}
 	},
 
-	showAHDetail(itemId) {
+	showAHDetail(itemId: string) {
 		const el = document.getElementById("ah-detail");
 		if (!el) return;
-		const feat = (this.data.feats?.feats || []).find((f) => f.id === itemId);
+		const feat = (this.data.feats?.feats || []).find((f: any) => f.id === itemId);
 		if (!feat) return;
 
 		const selected = this._getSelectedFeatIds().has(itemId);
@@ -1429,7 +1444,7 @@ const Builder = {
 		const xpText = isHindrance ? `+${feat.bonusXP || 100} XP` : "100 XP";
 		const btnText = selected ? "Remove" : `Add (${xpText})`;
 		const btnClass = selected ? "btn-danger" : "btn-primary";
-		const prereqs = (feat.prerequisites || []).map((p) => `<li>${this.esc(p)}</li>`).join("");
+		const prereqs = (feat.prerequisites || []).map((p: any) => `<li>${this.esc(p)}</li>`).join("");
 
 		el.innerHTML = `
             <h3>${this.esc(feat.name)}</h3>
@@ -1445,14 +1460,14 @@ const Builder = {
 		});
 	},
 
-	toggleAH(itemId) {
-		const feat = (this.data.feats?.feats || []).find((f) => f.id === itemId);
+	toggleAH(itemId: string) {
+		const feat = (this.data.feats?.feats || []).find((f: any) => f.id === itemId);
 		if (!feat) return;
 
 		const isHindrance = feat.category === "hindrance";
-		const arr = isHindrance
-			? this.char.hindrances || (this.char.hindrances = [])
-			: this.char.assets || (this.char.assets = []);
+		if (isHindrance && !this.char.hindrances) this.char.hindrances = [];
+		if (!isHindrance && !this.char.assets) this.char.assets = [];
+		const arr = isHindrance ? this.char.hindrances! : this.char.assets!;
 
 		const idx = arr.findIndex((e) => (typeof e === "object" ? e.name : e) === itemId);
 		if (idx >= 0) {
@@ -1467,7 +1482,7 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	removeAH(itemId) {
+	removeAH(itemId: string) {
 		for (const arr of [this.char.assets, this.char.hindrances]) {
 			if (!arr) continue;
 			const idx = arr.findIndex((e) => (typeof e === "object" ? e.name : e) === itemId);
@@ -1477,7 +1492,7 @@ const Builder = {
 			}
 		}
 		this.renderAH();
-		document.getElementById("ah-detail").innerHTML = "";
+		document.getElementById("ah-detail")!.innerHTML = "";
 		this._updateStep9Summary();
 		this.updateSidebar();
 	},
@@ -1492,10 +1507,10 @@ const Builder = {
 		const packages = this.data.equipment?.packages || [];
 
 		grid.innerHTML = packages
-			.map((pkg) => {
+			.map((pkg: any) => {
 				const preview = (pkg.items || [])
 					.slice(0, 3)
-					.map((i) => i.name)
+					.map((i: any) => i.name)
 					.join(", ");
 				return `<div class="sel-card ${this.meta.equipmentPkg === pkg.id ? "selected" : ""}" data-id="${pkg.id}">
                 <h4>${this.esc(pkg.name)}</h4>
@@ -1506,8 +1521,8 @@ const Builder = {
 			.join("");
 	},
 
-	selectEquipment(pkgId) {
-		const pkg = (this.data.equipment?.packages || []).find((p) => p.id === pkgId);
+	selectEquipment(pkgId: string) {
+		const pkg = (this.data.equipment?.packages || []).find((p: any) => p.id === pkgId);
 		if (!pkg) return;
 		this.meta.equipmentPkg = pkgId;
 		this.meta.equipmentChoices = {};
@@ -1519,20 +1534,20 @@ const Builder = {
 		this.updateSidebar();
 	},
 
-	showEquipmentDetail(pkg) {
+	showEquipmentDetail(pkg: any) {
 		const el = document.getElementById("equipment-detail");
 		if (!el) return;
 
-		const standard = (pkg.items || []).filter((i) => !i.choice);
-		const choices = (pkg.items || []).filter((i) => i.choice);
+		const standard = (pkg.items || []).filter((i: any) => !i.choice);
+		const choices = (pkg.items || []).filter((i: any) => i.choice);
 
-		const standardHtml = standard.map((i) => `<li>${this.esc(i.name)}</li>`).join("");
+		const standardHtml = standard.map((i: any) => `<li>${this.esc(i.name)}</li>`).join("");
 		const choicesHtml = choices
-			.map((item, idx) => {
+			.map((item: any, idx: number) => {
 				const cur = this.meta.equipmentChoices[idx] || "";
 				return `<li><select class="choice-select equip-choice-sel" data-idx="${idx}">
                 <option value="">Choose…</option>
-                ${item.options.map((o) => `<option value="${o}" ${cur === o ? "selected" : ""}>${this.esc(o)}</option>`).join("")}
+                ${item.options.map((o: any) => `<option value="${o}" ${cur === o ? "selected" : ""}>${this.esc(o)}</option>`).join("")}
             </select></li>`;
 			})
 			.join("");
@@ -1546,7 +1561,7 @@ const Builder = {
 
 	/** Resolve equipment choices into char.equipment text */
 	resolveEquipment() {
-		const pkg = (this.data.equipment?.packages || []).find((p) => p.id === this.meta.equipmentPkg);
+		const pkg = (this.data.equipment?.packages || []).find((p: any) => p.id === this.meta.equipmentPkg);
 		if (!pkg) {
 			this.char.equipment = "";
 			return;
@@ -1602,7 +1617,7 @@ const Builder = {
 		const classesHtml =
 			(this.char.classes || [])
 				.map((c) => {
-					const cls = (this.data.classes?.classes || []).find((cl) => cl.id === c.classId);
+					const cls = (this.data.classes?.classes || []).find((cl: any) => cl.id === c.classId);
 					return cls ? `<li><strong>${this.esc(cls.name)}</strong> (Tier ${cls.level})</li>` : "";
 				})
 				.join("") || "<li>None</li>";
@@ -1612,7 +1627,7 @@ const Builder = {
 		const featsHtml =
 			(this.char.feats || [])
 				.map((f) => {
-					const feat = allFeats.find((fd) => fd.id === (typeof f === "object" ? f.name : f));
+					const feat = allFeats.find((fd: any) => fd.id === (typeof f === "object" ? f.name : f));
 					return feat ? `<li>${this.esc(feat.name)}</li>` : "";
 				})
 				.join("") || "<li>None</li>";
@@ -1620,7 +1635,7 @@ const Builder = {
 		const assetsHtml =
 			(this.char.assets || [])
 				.map((a) => {
-					const feat = allFeats.find((fd) => fd.id === (typeof a === "object" ? a.name : a));
+					const feat = allFeats.find((fd: any) => fd.id === (typeof a === "object" ? a.name : a));
 					return feat ? `<li>${this.esc(feat.name)}</li>` : "";
 				})
 				.join("") || "<li>None</li>";
@@ -1628,7 +1643,7 @@ const Builder = {
 		const hindrancesHtml =
 			(this.char.hindrances || [])
 				.map((h) => {
-					const feat = allFeats.find((fd) => fd.id === (typeof h === "object" ? h.name : h));
+					const feat = allFeats.find((fd: any) => fd.id === (typeof h === "object" ? h.name : h));
 					return feat ? `<li>${this.esc(feat.name)}</li>` : "";
 				})
 				.join("") || "<li>None</li>";
@@ -1641,7 +1656,7 @@ const Builder = {
 				.join("") || "<li>None</li>";
 
 		// Alignment
-		const alObj = (this.data.alignments?.alignments || []).find((a) => a.id === this.char.alignment);
+		const alObj = (this.data.alignments?.alignments || []).find((a: any) => a.id === this.char.alignment);
 
 		el.innerHTML = `
             ${warnings.length ? `<div class="review-warning">${warnings.join(" · ")}</div>` : ""}
@@ -1674,7 +1689,7 @@ const Builder = {
                 <div class="review-chars">
                     ${Object.entries(this.CHAR_GROUPS)
 						.map(
-							([gk, g]) => `
+							([_gk, g]) => `
                         <div class="group-col">
                             <h4>${g.label}</h4>
                             ${g.chars.map((c) => `<div class="stat-row"><span>${this.CHAR_NAMES[c]}</span><span>${chars[c]}</span></div>`).join("")}
@@ -1784,22 +1799,22 @@ const Builder = {
 	startOver() {
 		if (!confirm("Reset all progress? This cannot be undone.")) return;
 		this.char = character.createDefault();
-		for (const c of Object.keys(this.char.characteristics)) {
-			this.char.characteristics[c] = this.BASE_CHAR_DOT;
+		for (const c of Object.keys(this.char!.characteristics)) {
+			(this.char!.characteristics as unknown as Record<string, number>)[c] = this.BASE_CHAR_DOT;
 		}
 		this.meta = {
 			step: 1,
 			stepsCompleted: new Array(11).fill(false),
-			charPriority: { physical: null, social: null, mental: null },
-			skillPriority: { physical: null, social: null, mental: null },
+			charPriority: { physical: null, social: null, mental: null } as Record<string, string | null>,
+			skillPriority: { physical: null, social: null, mental: null } as Record<string, string | null>,
 			charDotsSpent: { physical: 0, social: 0, mental: 0 },
 			skillDotsSpent: { physical: 0, social: 0, mental: 0 },
-			equipmentPkg: null,
-			equipmentChoices: {},
+			equipmentPkg: null as string | null,
+			equipmentChoices: {} as Record<string, string | null>,
 		};
-		document.getElementById("field-name").value = "";
-		document.getElementById("field-player").value = "";
-		document.getElementById("field-concept").value = "";
+		(document.getElementById("field-name") as HTMLInputElement).value = "";
+		(document.getElementById("field-player") as HTMLInputElement).value = "";
+		(document.getElementById("field-concept") as HTMLInputElement).value = "";
 		// Clear detail panels
 		[
 			"race-detail",

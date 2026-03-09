@@ -39,9 +39,15 @@ export interface CharacterModifiers {
 // =============================================================================
 
 export interface Background {
+	id?: string;
 	name: string;
 	dots: number;
 	notes: string;
+}
+
+export interface ClassEntry {
+	classId: string;
+	level: number;
 }
 
 /** Used for feats, assets, and hindrances. */
@@ -57,6 +63,11 @@ export interface MeleeWeapon {
 	proficiency: string;
 	qualities: string;
 	notes: string;
+	weaponType?: string;
+	availability?: string;
+	test?: string;
+	pen?: string;
+	special?: string;
 }
 
 export interface RangedWeapon {
@@ -67,6 +78,14 @@ export interface RangedWeapon {
 	proficiency: string;
 	qualities: string;
 	notes: string;
+	weaponType?: string;
+	availability?: string;
+	test?: string;
+	pen?: string;
+	rof?: string;
+	clip?: string;
+	reload?: string;
+	special?: string;
 }
 
 export interface ArmorEntry {
@@ -75,11 +94,28 @@ export interface ArmorEntry {
 	locations: string[];
 	ap: number;
 	qualities: string;
+	maxDex?: number;
+	special?: string;
+	craftsmanship?: string;
+}
+
+export interface SpellEntry {
+	school: string;
+	level: number;
+	name: string;
+	notes: string;
+}
+
+export interface SpecialAttackEntry {
+	name: string;
+	description: string;
 }
 
 export interface SavedPool {
 	label: string;
-	notation: string;
+	notation?: string;
+	formula?: string;
+	pool?: string;
 }
 
 // =============================================================================
@@ -107,7 +143,7 @@ export interface CharacterData {
 	skillSpecialties: Record<string, string>;
 
 	backgrounds: Background[];
-	classes: string[];
+	classes: ClassEntry[];
 	feats: FeatEntry[];
 	assets: FeatEntry[];
 	hindrances: FeatEntry[];
@@ -122,8 +158,8 @@ export interface CharacterData {
 	magicSchools: Record<string, number>;
 	swordSchools: Record<string, number>;
 	gunKata: Record<string, number>;
-	spells: string[];
-	specialAttacks: string[];
+	spells: Array<string | SpellEntry>;
+	specialAttacks: Array<string | SpecialAttackEntry>;
 	trickShots: string[];
 
 	powerStat: number;

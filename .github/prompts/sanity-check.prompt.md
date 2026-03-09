@@ -48,9 +48,8 @@ npm run sync-check     # Markdown ↔ JSON sync comparison
 ```
 
 Compare results against known baselines:
-- Validate: 12/12 pass
-- Cross-ref: ~41 known warnings (abbreviated feat names, missing skills)
-- Lint: 0 errors, 19 warnings, ~883 info
+- Validate + xref: 12/12 pass, 0 xref warnings
+- Lint: 0 errors, ~19 warnings, ~884 info
 
 **Any delta from baseline is a finding.** New warnings may be legitimate, but they need explanation.
 
@@ -67,7 +66,7 @@ For each changed file, trace its consumers and producers:
 | `src/lib/dtd/schemas/*.ts`| `npm run validate` still passes                                     |
 | `scripts/lint.ts`         | `npm run lint:data` — results match expectations                     |
 | `data/*.json`             | Tools that load this data still render correctly                     |
-| `src/lib/dtd/core.ts`     | All 10 tools — shared ES module                                      |
+| `src/lib/dtd/core.ts`     | All 9 tools + 2 large tool apps — shared ES module                   |
 | `cleaned-references/*.md` | `npm run lint:data`, `npm run sync-check`, prebuild                  |
 | `books/*.md`              | `npm run lint:data`, open-questions.md                               |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
@@ -93,7 +92,7 @@ Search for references to things that no longer exist:
 The project follows "docs own, skills point" — conventions live in `docs/project-conventions.md`, other files link to it. Check that:
 
 - The same rule doesn't now exist in two places with different wording
-- `copilot-instructions.md` stays lean (~140 lines) — it routes, not teaches
+- `copilot-instructions.md` stays lean (~200 lines) — it routes, not teaches
 - Skills contain domain technique, not universal rules
 
 ---

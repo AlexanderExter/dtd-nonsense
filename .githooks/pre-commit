@@ -1,0 +1,18 @@
+#!/bin/sh
+# Pre-commit hook: runs full verification before allowing a commit.
+# Skippable with: git commit --no-verify
+#
+# Install: git config core.hooksPath .githooks
+# (automated via npm run prepare)
+
+echo "Pre-commit: running npm run check..."
+npm run check
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "❌ Pre-commit check FAILED. Commit blocked."
+    echo "   Fix the issues above, or use --no-verify to skip."
+    exit 1
+fi
+
+echo "✅ Pre-commit check passed."

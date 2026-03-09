@@ -56,18 +56,23 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 
 ### Commands
 
-| Command              | Purpose                                             |
-| -------------------- | --------------------------------------------------- |
-| `npm run dev`        | Start Astro dev server with hot reload              |
-| `npm run build`      | Full build: prebuild → astro build                  |
-| `npm run preview`    | Preview production build locally                    |
-| `npm run lint`       | Check JS/TS/CSS with Biome                          |
-| `npm run lint:fix`   | Auto-fix Biome lint issues                          |
-| `npm run test`       | Run Vitest unit tests                               |
-| `npm run test:watch` | Run Vitest in watch mode                            |
-| `npm run validate`   | Validate JSON data against Zod schemas              |
-| `npm run lint:data`  | Lint markdown for terminology, formatting, encoding |
-| `npm run sync-check` | Detect drift between markdown and JSON data         |
+| Command                  | Purpose                                             |
+| ------------------------ | --------------------------------------------------- |
+| `npm run dev`            | Start Astro dev server with hot reload              |
+| `npm run build`          | Full build: prebuild → astro build                  |
+| `npm run preview`        | Preview production build locally                    |
+| `npm run lint`           | Check JS/TS/CSS with Biome                          |
+| `npm run lint:fix`       | Auto-fix Biome lint issues                          |
+| `npm run test`           | Run Vitest unit tests                               |
+| `npm run test:watch`     | Run Vitest in watch mode                            |
+| `npm run validate`       | Validate JSON data against Zod schemas              |
+| `npm run validate:xref`  | Validate + cross-reference checks                   |
+| `npm run lint:data`      | Lint markdown for terminology, formatting, encoding |
+| `npm run sync-check`     | Detect drift between markdown and JSON data         |
+| `npm run check`          | Run everything: tests → lint → validate → lint:data |
+| `npm run session:start`  | Create/switch to session branch + baseline check    |
+| `npm run session:end`    | Squash-merge session branch to main + cleanup       |
+| `npm run session:status` | Quick git state report (branch, dirty/clean)        |
 
 ### Build Pipeline
 
@@ -183,12 +188,12 @@ Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongs
 | -------------------------------------- | --------------------------------------------------------- |
 | `src/lib/dtd/core.test.ts`             | derived stats, character CRUD, migration, data loading    |
 | `src/lib/dtd/dice.test.ts`             | parseNotation, calculateOutcome, roll (exploding, rank-0) |
-| `src/lib/dtd/schemas.test.ts`          | Schema validation + rejection tests (15 tests)            |
-| `scripts/__tests__/validate.test.ts`   | Validate script unit tests (9 tests)                      |
-| `scripts/__tests__/lint.test.ts`       | Lint script unit tests (24 tests)                         |
-| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests (11 tests)                   |
+| `src/lib/dtd/schemas.test.ts`          | Schema validation + rejection tests                       |
+| `scripts/__tests__/validate.test.ts`   | Validate script unit tests                                |
+| `scripts/__tests__/lint.test.ts`       | Lint script unit tests                                    |
+| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests                              |
 
-187 tests total. Run with:
+Run with:
 
 ```bash
 npm run test          # single run
@@ -221,7 +226,7 @@ Per-tool verification before merge:
 6. **Persistence** — save, reload page, data persists
 7. **Cross-tool** — Sheet export → other tool import (via canonical format)
 8. **Astro build** — `npm run build` succeeds with 0 errors
-9. **Pipeline** — `npm run validate` passes (12/12 files)
+9. **Pipeline** — `npm run validate` passes (all files)
 
 ### Dice Module Verification
 

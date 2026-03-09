@@ -50,8 +50,7 @@ src/
 
 - `tsconfig.json` extends `astro/tsconfigs/strict`
 - Path alias: `@/*` → `src/*`
-- `builder-app.ts` currently has `@ts-nocheck` — temporary while in-place typing work continues
-- All other `.ts` files should be fully typed
+- All `.ts` files are fully typed — zero TS errors across the codebase
 
 ### Content Pipeline
 

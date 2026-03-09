@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
-    checkDiceNotation,
-    checkEmptyTableCells,
-    checkEncodingMarkers,
-    checkFormulaSymbols,
-    checkHeadingHierarchy,
-    checkTerminology,
-    newTracker,
-    updateTracker,
+	checkDiceNotation,
+	checkEmptyTableCells,
+	checkEncodingMarkers,
+	checkFormulaSymbols,
+	checkHeadingHierarchy,
+	checkTerminology,
+	newTracker,
+	updateTracker,
 } from "../lint.ts";
 
 const FILE = "test.md";
@@ -126,7 +126,7 @@ describe("checkEmptyTableCells", () => {
 
 describe("checkFormulaSymbols", () => {
 	it("flags 'x' in formulas with a formula indicator keyword", () => {
-		const issues = checkFormulaSymbols(FILE, ["Static Defense = 10 + Dex x 2"]);
+		checkFormulaSymbols(FILE, ["Static Defense = 10 + Dex x 2"]);
 		// The regex requires digit-x-digit pattern, so "Dex x 2" may not match.
 		// Adjust test to match actual behavior: `2x2` style
 		const issues2 = checkFormulaSymbols(FILE, ["Static Defense = 10 + 2x2"]);

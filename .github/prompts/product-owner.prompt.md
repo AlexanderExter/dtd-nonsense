@@ -220,7 +220,3 @@ Report:
 4. **Recommended next actions** — concrete steps to improve alignment
 
 **Closure** — Explicitly conclude with "Product Vision Updated" (visual marker confirming full execution of this procedure)
-
-```
-
-```

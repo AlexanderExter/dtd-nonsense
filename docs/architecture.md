@@ -38,7 +38,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### When to Reconsider
 
-- **TypeScript for tools:** ~~If tool complexity warrants it, Astro's Vite-based build supports `.ts` files natively.~~ Done — Phase 1 complete. `core.ts`, `dice.ts`, and `types.ts` are fully typed; `builder-app.ts` retains `@ts-nocheck` pending Phase 2 module refactor; `sheet-app.ts` runs without the directive.
+- **TypeScript for tools:** Phase 2 complete. All shared modules (`core.ts`, `dice.ts`, `types.ts`) and both tool files (`builder-app.ts`, `sheet-app.ts`) are fully typed with zero TS errors.
 
 ### Code Quality & Testing
 
@@ -49,11 +49,13 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 **Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
 
-**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/`. 187 tests across 6 test files (core, dice, schemas, and pipeline scripts).
+**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `npm run test` for current counts.
 
 ### TypeScript Pipeline Scripts
 
 TypeScript scripts in `scripts/` provide data validation, content linting, and sync checking. Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data. See [docs/pipeline.md](pipeline.md) for details.
+
+Session lifecycle scripts (`session-start.mjs`, `session-end.mjs`, `session-status.mjs`) automate branch creation, squash-merge, and state reporting. A pre-commit hook (`.githooks/pre-commit`) runs `npm run check` before every commit. See [project-conventions.md](project-conventions.md#git-workflow) for the full workflow.
 
 ---
 
@@ -101,19 +103,21 @@ All steps must pass for a PR to be merge-ready. Vercel preview builds run in par
 
 ```
 data/
-├── alignments.json       21 alignments, devotion/sin tables
-├── backgrounds.json      11 background types
-├── classes.json          18 tracks × 5 levels (90 class entries)
+├── alignments.json       Alignments with devotion/sin tables
+├── backgrounds.json      Background types
+├── classes.json          Class track entries across all levels
 ├── equipment.json        Starting equipment packages
-├── exaltations.json      9 supernatural types, power stat pools
-├── feats.json            100+ feats with prerequisites
-├── npc-templates.json    40+ pre-built NPC stat blocks
-├── races.json            16 playable races
+├── exaltations.json      Exaltation types with power stat pools
+├── feats.json            Feats with prerequisites
+├── npc-templates.json    Pre-built NPC stat blocks
+├── races.json            Playable races
 ├── ships.json            Hulls, consoles, weapons, shields
-├── skills.json           27 skills with grouping metadata
-├── traits.json           ~20 NPC traits with parameterized effects
+├── skills.json           Skills with grouping metadata
+├── traits.json           NPC traits with parameterized effects
 └── weapons.json          Ranged and melee weapon stats
 ```
+
+Run `npm run validate` to see current record counts for all 12 files.
 
 `data/` is the canonical source for all game data. `scripts/prebuild.mjs` copies these files to `public/data/` during the build — `public/data/` is gitignored and never committed.
 

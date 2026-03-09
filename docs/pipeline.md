@@ -12,6 +12,8 @@ All commands run via npm scripts (backed by `bun`):
 | `npm run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
 | `npm run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
 
+Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
+
 ### `npm run validate`
 
 Validate all 12 JSON data files in `data/` against their Zod schemas.
