@@ -132,7 +132,7 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 
 **`upgrade:recon` scope caveat:** `npm run upgrade:recon` only reports packages that are outside their _current_ declared version range — it will show "0 outdated" even when major upgrades are available. To see the full upgrade picture, also run `npx npm-check-updates --format group`. Always do this at the start of an upgrade session.
 
-**`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install *succeeds* despite the error exit — but the false failure is confusing. Use `npm install` instead of `bun install` when nested overrides are present.
+**`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install _succeeds_ despite the error exit — but the false failure is confusing. Use `npm install` instead of `bun install` when nested overrides are present.
 
 ---
 
@@ -358,10 +358,12 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 **Historical context (preserved for diagnosis if it recurs):** Before `.gitattributes`, `core.autocrlf=true` (Windows default) checked out all files with CRLF. Biome's formatter check then reported every tracked file as a format error, completely breaking `npm run check` and `session:start`. The symptom was 14 format errors, all showing CRLF→LF diffs with no code changes.
 
 **If the issue recurs** (e.g., after cloning on a machine without `.gitattributes` taking effect), run:
+
 ```powershell
 git add --renormalize .
 npm run lint:fix
 ```
+
 This re-normalizes all tracked files to LF and auto-fixes the format violations in one pass.
 
 ### Biome Safe vs Unsafe Fixes
