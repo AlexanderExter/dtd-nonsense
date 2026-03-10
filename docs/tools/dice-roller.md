@@ -2,9 +2,9 @@
 
 Interactive dice rolling tool for D:TD's `XkY` system. Provides visual roll displays, history tracking, and flexible notation parsing.
 
-**Phase:** 0 (Foundation)
-**Files:** `src/pages/tools/dice-roller.astro` (JS/CSS inline)
-**Pattern:** Inline `<script>` in Astro page
+**Phase:** Complete
+**Files:** `src/pages/tools/dice-roller.astro`, `src/components/preact/tools/dice-roller/` (6 components)
+**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
 
 ---
 
