@@ -78,7 +78,7 @@ Compares: `04-Races.md` ↔ `races.json`, `06-Classes.md` ↔ `classes.json`, `0
 
 ## Script Structure
 
-```
+```text
 scripts/
 ├── validate.ts       JSON schema validation engine (Zod-based)
 ├── lint.ts           Markdown content linting (terminology, formatting, encoding)
@@ -123,11 +123,11 @@ All 12 JSON data files pass schema validation. Cross-reference checks produce wa
 The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on every push and PR:
 
 ```yaml
-- run: npm run lint # Biome JS/TS/CSS lint — must pass
-- run: npm run test # Vitest unit tests — must pass
-- run: npm run validate # Zod schema check — must pass
-- run: npm run lint:data # Terminology/formatting — must pass
-- run: npm run build # Astro build — must pass
+- run: bunx biome ci .                    # Biome JS/TS/CSS lint — must pass
+- run: bun test                           # bun:test unit tests — must pass
+- run: bun run scripts/validate.ts --xref # Zod schema + xref check — must pass
+- run: bun run scripts/lint.ts            # Terminology/formatting — must pass
+- run: bun run build                      # Astro build — must pass
 ```
 
 ## Conventions

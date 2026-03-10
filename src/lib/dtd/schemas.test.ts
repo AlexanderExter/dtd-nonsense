@@ -5,9 +5,9 @@
  * This is the primary correctness check for the Pydantic → Zod port.
  */
 
+import { describe, expect, it } from "bun:test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { describe, expect, it } from "vitest";
 import { ClassesFile } from "./schemas/classes.ts";
 import { EquipmentFile } from "./schemas/equipment.ts";
 import { FILE_SCHEMAS } from "./schemas/index.ts";

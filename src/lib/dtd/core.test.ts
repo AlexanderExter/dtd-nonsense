@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, jest, mock, spyOn } from "bun:test";
 import { character, derived, loadAllData, loadData } from "./core.ts";
 
 // ---------------------------------------------------------------------------
@@ -103,35 +103,38 @@ describe("derived", () => {
 // ---------------------------------------------------------------------------
 describe("character", () => {
 	let storage: Record<string, string>;
+	let _origLocalStorage: unknown;
 
 	beforeEach(() => {
+		_origLocalStorage = (globalThis as any).localStorage;
 		storage = {};
 		const mockLocalStorage = {
-			getItem: vi.fn((key: string) => storage[key] ?? null),
-			setItem: vi.fn((key: string, value: string) => {
+			getItem: mock((key: string) => storage[key] ?? null),
+			setItem: mock((key: string, value: string) => {
 				storage[key] = value;
 			}),
-			removeItem: vi.fn((key: string) => {
+			removeItem: mock((key: string) => {
 				delete storage[key];
 			}),
-			clear: vi.fn(() => {
+			clear: mock(() => {
 				storage = {};
 			}),
 			get length() {
 				return Object.keys(storage).length;
 			},
-			key: vi.fn((i: number) => Object.keys(storage)[i] ?? null),
+			key: mock((i: number) => Object.keys(storage)[i] ?? null),
 		};
-		vi.stubGlobal("localStorage", mockLocalStorage);
+		(globalThis as any).localStorage = mockLocalStorage;
 	});
 
 	afterEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
+		(globalThis as any).localStorage = _origLocalStorage;
 	});
 
 	describe("createDefault", () => {
 		it("returns a deep copy matching DEFAULTS shape", () => {
-			vi.spyOn(character, "_genId").mockReturnValue("test123");
+			spyOn(character, "_genId").mockReturnValue("test123");
 			const ch = character.createDefault();
 			expect(ch.id).toBe("test123");
 			expect(ch.name).toBe("");
@@ -151,9 +154,9 @@ describe("character", () => {
 		});
 
 		it("returns independent copies (no shared references)", () => {
-			vi.spyOn(character, "_genId").mockReturnValue("a");
+			spyOn(character, "_genId").mockReturnValue("a");
 			const a = character.createDefault();
-			vi.spyOn(character, "_genId").mockReturnValue("b");
+			spyOn(character, "_genId").mockReturnValue("b");
 			const b = character.createDefault();
 			a.characteristics.strength = 99;
 			expect(b.characteristics.strength).toBe(1);
@@ -162,20 +165,20 @@ describe("character", () => {
 
 	describe("validate", () => {
 		it("returns default for null input", () => {
-			vi.spyOn(character, "_genId").mockReturnValue("test123");
+			spyOn(character, "_genId").mockReturnValue("test123");
 			const result = character.validate(null);
 			expect(result.id).toBe("test123");
 			expect(result.totalXP).toBe(600);
 		});
 
 		it("returns default for undefined input", () => {
-			vi.spyOn(character, "_genId").mockReturnValue("test123");
+			spyOn(character, "_genId").mockReturnValue("test123");
 			const result = character.validate(undefined);
 			expect(result.id).toBe("test123");
 		});
 
 		it("returns default for non-object input", () => {
-			vi.spyOn(character, "_genId").mockReturnValue("test123");
+			spyOn(character, "_genId").mockReturnValue("test123");
 			const result = character.validate("not an object");
 			expect(result.id).toBe("test123");
 		});
@@ -422,7 +425,7 @@ describe("character", () => {
 
 	describe("save / load / list / remove", () => {
 		beforeEach(() => {
-			vi.spyOn(character, "_genId").mockReturnValue("test123");
+			spyOn(character, "_genId").mockReturnValue("test123");
 		});
 
 		it("save stores data and updates list", () => {
@@ -520,33 +523,24 @@ describe("character", () => {
 // loadData / loadAllData (fetch mocked)
 // ---------------------------------------------------------------------------
 describe("loadData", () => {
+	const _origFetch = (globalThis as any).fetch;
 	afterEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
+		(globalThis as any).fetch = _origFetch;
 	});
 
 	it("fetches JSON from /data/ path", async () => {
 		const mockData = { skills: ["Acrobatics"] };
-		vi.stubGlobal(
-			"fetch",
-			vi.fn().mockResolvedValue({
-				ok: true,
-				json: () => Promise.resolve(mockData),
-			}),
-		);
+		const fetchMock = mock(() => Promise.resolve({ ok: true, json: () => Promise.resolve(mockData) }));
+		(globalThis as any).fetch = fetchMock;
 
 		const result = await loadData("skills.json");
-		expect(fetch).toHaveBeenCalledWith("/data/skills.json");
+		expect(fetchMock).toHaveBeenCalledWith("/data/skills.json");
 		expect(result).toEqual(mockData);
 	});
 
 	it("throws on non-ok response", async () => {
-		vi.stubGlobal(
-			"fetch",
-			vi.fn().mockResolvedValue({
-				ok: false,
-				status: 404,
-			}),
-		);
+		(globalThis as any).fetch = mock(() => Promise.resolve({ ok: false, status: 404 }));
 
 		await expect(loadData("missing.json")).rejects.toThrow("Failed to load missing.json: 404");
 	});
@@ -556,13 +550,7 @@ describe("loadData", () => {
 			name: string;
 		}
 		const mockData: Skill[] = [{ name: "Acrobatics" }];
-		vi.stubGlobal(
-			"fetch",
-			vi.fn().mockResolvedValue({
-				ok: true,
-				json: () => Promise.resolve(mockData),
-			}),
-		);
+		(globalThis as any).fetch = mock(() => Promise.resolve({ ok: true, json: () => Promise.resolve(mockData) }));
 
 		const result = await loadData<Skill[]>("skills.json");
 		expect(result[0].name).toBe("Acrobatics");
@@ -570,32 +558,25 @@ describe("loadData", () => {
 });
 
 describe("loadAllData", () => {
+	const _origFetch = (globalThis as any).fetch;
 	afterEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
+		(globalThis as any).fetch = _origFetch;
 	});
 
 	it("loads multiple files in parallel and returns keyed by name without .json", async () => {
 		const skillsData = [{ name: "Acrobatics" }];
 		const racesData = [{ name: "Human" }];
 
-		vi.stubGlobal(
-			"fetch",
-			vi.fn().mockImplementation((url: string) => {
-				if (url.includes("skills.json")) {
-					return Promise.resolve({
-						ok: true,
-						json: () => Promise.resolve(skillsData),
-					});
-				}
-				if (url.includes("races.json")) {
-					return Promise.resolve({
-						ok: true,
-						json: () => Promise.resolve(racesData),
-					});
-				}
-				return Promise.resolve({ ok: false, status: 404 });
-			}),
-		);
+		(globalThis as any).fetch = mock((url: string) => {
+			if (url.includes("skills.json")) {
+				return Promise.resolve({ ok: true, json: () => Promise.resolve(skillsData) });
+			}
+			if (url.includes("races.json")) {
+				return Promise.resolve({ ok: true, json: () => Promise.resolve(racesData) });
+			}
+			return Promise.resolve({ ok: false, status: 404 });
+		});
 
 		const result = await loadAllData(["skills.json", "races.json"]);
 		expect(result.skills).toEqual(skillsData);
@@ -604,20 +585,15 @@ describe("loadAllData", () => {
 	});
 
 	it("returns empty object for empty array", async () => {
-		vi.stubGlobal("fetch", vi.fn());
+		const fetchMock = mock(() => Promise.resolve({ ok: false, status: 404 }));
+		(globalThis as any).fetch = fetchMock;
 		const result = await loadAllData([]);
 		expect(result).toEqual({});
-		expect(fetch).not.toHaveBeenCalled();
+		expect(fetchMock).not.toHaveBeenCalled();
 	});
 
 	it("propagates fetch errors", async () => {
-		vi.stubGlobal(
-			"fetch",
-			vi.fn().mockResolvedValue({
-				ok: false,
-				status: 500,
-			}),
-		);
+		(globalThis as any).fetch = mock(() => Promise.resolve({ ok: false, status: 500 }));
 
 		await expect(loadAllData(["bad.json"])).rejects.toThrow("Failed to load bad.json: 500");
 	});

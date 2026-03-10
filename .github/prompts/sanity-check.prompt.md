@@ -19,7 +19,7 @@ Before checking anything, understand what changed:
     - **Code** (JS/TS tools, TypeScript pipeline)
     - **Content** (markdown rules, cleaned-references)
     - **Documentation** (docs/, instructions, skills)
-    - **Config** (.gitignore, biome.json, vitest.config.ts, prompts)
+    - **Config** (.gitignore, biome.json, bunfig.toml, prompts)
 
 This determines which downstream checks matter.
 

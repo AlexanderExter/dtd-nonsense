@@ -37,7 +37,7 @@ Key files:
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
 | `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
 
-Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies source content into Astro structure, then Astro builds the static site.
+Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild copies source content into Astro structure, then Astro builds the static site. `npm run build` runs both steps.
 
 ### When to Reconsider
 
@@ -45,14 +45,14 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### Code Quality & Testing
 
-| Tool   | Purpose                        | Config             | npm Scripts          |
-| ------ | ------------------------------ | ------------------ | -------------------- |
-| Biome  | Linter + formatter (JS/TS/CSS) | `biome.json`       | `lint`, `lint:fix`   |
-| Vitest | Unit testing framework         | `vitest.config.ts` | `test`, `test:watch` |
+| Tool     | Purpose                        | Config         | npm Scripts          |
+| -------- | ------------------------------ | -------------- | -------------------- |
+| Biome    | Linter + formatter (JS/TS/CSS) | `biome.json`   | `lint`, `lint:fix`   |
+| bun:test | Unit testing (Jest-compatible)  | `bunfig.toml`  | `test`, `test:watch` |
 
 **Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
 
-**Vitest** provides fast Vite-native unit testing with the same `@/` path alias used by Astro. Test files use the `*.test.ts` co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `npm run test` for current counts.
+**bun:test** is Bun's built-in Jest-compatible test runner. It auto-discovers `*.test.ts` files and picks up `@/` path aliases from `tsconfig.json` automatically. Test files use the co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `npm run test` for current counts.
 
 ### TypeScript Pipeline Scripts
 
@@ -87,15 +87,15 @@ Vercel is connected to the GitHub repository (`AlexanderExter/dtd-nonsense`). It
 
 The `.github/workflows/build.yml` workflow runs on every push and pull request:
 
-```
-Node / Astro
-─────────────
-npm ci
-biome ci .
-npm run test
-npm run validate
-npm run lint:data
-npm run build
+```text
+Bun + Node / Astro
+───────────────────
+bun install
+bunx biome ci .
+bun test
+bun run scripts/validate.ts --xref
+bun run scripts/lint.ts
+bun run build
 ```
 
 All steps must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
@@ -104,7 +104,7 @@ All steps must pass for a PR to be merge-ready. Vercel preview builds run in par
 
 ## File Structure — Game Data
 
-```
+```text
 data/
 ├── alignments.json       Alignments with devotion/sin tables
 ├── backgrounds.json      Background types
@@ -175,7 +175,7 @@ Vite bundles Chart.js from the npm package — no CDN dependency.
 
 The Character Sheet defines the **canonical character JSON schema**. All other tools that produce or consume character data use this format.
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │                      CHARACTER SHEET                          │
 │                                                              │
@@ -189,7 +189,7 @@ The Character Sheet defines the **canonical character JSON schema**. All other t
 
 ### Builder → Sheet Pipeline
 
-```
+```text
 Character Builder                      Character Sheet
 ┌────────────────────┐                ┌────────────────────┐
 │ User makes choices │                │                    │

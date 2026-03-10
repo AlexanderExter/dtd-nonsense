@@ -1,0 +1,13 @@
+# bunfig.toml — Bun runtime and test configuration
+# https://bun.sh/docs/runtime/bunfig
+# This is the authoritative toolchain config for all bun-executed commands.
+
+[run]
+# Use Bun's built-in shell for all bun run commands.
+# Default on Windows; making it explicit for cross-platform consistency.
+shell = "bun"
+
+[test]
+# bun test auto-discovers *.test.ts recursively from the project root.
+# @/ path aliases are picked up automatically from tsconfig.json.
+# No additional include patterns or alias configuration needed.

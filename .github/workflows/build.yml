@@ -6,19 +6,18 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
-            # --- Node / Astro ---
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: npm
-            - run: npm ci
-
-            # --- Bun (pipeline scripts) ---
+            # --- Bun (package manager + test runner + pipeline scripts) ---
             - uses: oven-sh/setup-bun@v2
               with:
                   bun-version: latest
-            - run: npx biome ci .
-            - run: npm run test
-            - run: npm run validate:xref
-            - run: npm run lint:data
-            - run: npm run build
+            - run: bun install
+
+            # --- Node / Astro build ---
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - run: bunx biome ci .
+            - run: bun test
+            - run: bun run scripts/validate.ts --xref
+            - run: bun run scripts/lint.ts
+            - run: bun run build

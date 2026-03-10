@@ -6,6 +6,11 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 ---
 
+## Human Additons
+
+/TODO: Repeat the .. "supervised configuration" process done with biome and rumdl for gitingnore, gitattributes, astroconfig and any other discrete candidates. As a human operator I am not a dev so I have made errors of ignorance on their setup. Additionally, the projects stack was not assembled with intent, do conflicting architectures persist. An implication of this is that the tech stack needs to be validated, sanitized and then cautiously assumed to be working by intense LLM work, and not deliberate setup.
+/TODO: The above is a pervasive issue, only noticed after the fact, its likely tsconfig is also misconfigured.
+
 ## TypeScript Migration
 
 ### Phase 3: Reactivity Layer — ✅ Complete
@@ -80,3 +85,75 @@ Manual testing revealed two critical issues that affect all Preact tools:
    - **Affected files:** `CharacterSheetApp.tsx` (8 filenames), `CharacterBuilderApp.tsx` (9 filenames)
    - **Not affected:** NPCGeneratorApp.tsx and ShipBuilderApp.tsx use `loadData()` directly with correct `.json` extensions.
    - **Fix:** Add `.json` to all filename strings in both `useAllData()` calls.
+
+---
+
+## Code Quality — Preact/Signals Correctness
+
+Identified during code review (2026-03-10). These are not blocking bugs for single-tool pages, but are correctness gaps worth fixing.
+
+### CQ1: `useData` / `useAllData` — Signals Recreated on Every Call
+
+**File:** `src/hooks/use-data.ts`
+
+`signal()` is called inside the hook body without a stabilizing wrapper. Every render creates new signals and fires a new `fetch`. Previous signals are orphaned and their in-flight promises still write to them — a memory leak and duplicate network requests. The correct Preact API is `useSignal()` from `@preact/signals`, which creates the signal once (like `useRef`) and returns the same reference on re-renders.
+
+### CQ2: `useEffect([signal.value])` — Mixed Reactivity Systems
+
+**Files:** `CharacterBuilderApp.tsx`, `CharacterSheetApp.tsx`
+
+`data.value` read in a `useEffect` dependency array works *accidentally* — Preact rerenders the component when the signal changes, causing the effect to re-run with the new snapshot. But this conflates `@preact/signals` reactivity with React-style hook deps, which is fragile and non-idiomatic. Reactive side effects that read signals should use `effect()` from `@preact/signals` directly.
+
+### CQ3: No Fetch Cancellation (`AbortController`)
+
+**File:** `src/lib/dtd/data.ts`
+
+`loadData` and `loadAllData` fire `fetch` calls with no `AbortSignal`. If a component unmounts mid-load, the request continues and (if the signal still exists) writes stale data. Should accept an optional `AbortSignal` so callers can cancel on cleanup.
+
+### CQ4: `setCharField` Uses `as any` — Type Safety Gap
+
+**File:** `src/components/preact/tools/character-sheet/CharacterSheetApp.tsx`
+
+```ts
+export function setCharField(field: string, value: any): void {
+    updateChar((c) => { (c as any)[field] = value; });
+}
+```
+
+`field` is unconstrained — any string is accepted with no compile-time check. The type-safe version:
+
+```ts
+export function setCharField<K extends keyof CharacterData>(
+    field: K, value: CharacterData[K]
+): void
+```
+
+This propagates to `StatsTab`, `WeaponTable`, `ArmorSection`.
+
+### CQ5: `JSON.parse(JSON.stringify(...))` Deep Clone
+
+**Files:** Character mutation helpers in `CharacterBuilderApp.tsx` and `CharacterSheetApp.tsx`
+
+Works for plain data but silently drops `undefined`, `Date`, `Map`/`Set`, and functions. The modern drop-in replacement is `structuredClone()` (Node ≥ 17, all modern browsers), which is semantically correct and faster. Low risk for current data shape, but worth standardizing.
+
+---
+
+## Consideration: Automated Code Quality Audit Prompt
+
+The issues in section **CQ1–CQ5** above were found by manual code review. To catch this class of problem systematically, the following agent prompt can be reused at any time:
+
+> **Code Quality Audit — Preact/Signals/TypeScript**
+>
+> Review all files in `src/` for:
+> 
+> 1. **Signal hygiene** — are `signal()` calls inside hook/component bodies stabilized with `useSignal()`? Are orphaned signals or duplicate fetches possible?
+> 2. **Reactivity model mixing** — are `@preact/signals` values read inside `useEffect` dep arrays instead of using `effect()`? Are signal subscriptions and hook deps conflated?
+> 3. **Async cleanup** — do any `fetch` or async operations lack `AbortController` / cleanup on unmount?
+> 4. **Type safety gaps** — are there `as any`, `as unknown`, or unconstrained `string` field accessors where narrower types (`keyof T`) would be safe?
+> 5. **Deep clone correctness** — is `JSON.parse(JSON.stringify(...))` used where `structuredClone()` would be more correct?
+> 6. **Module-level singleton state** — are signals declared at module scope rather than component scope? Is that intentional and documented?
+> 7. **Barrel/import hygiene** — are any files importing through the `core.ts` barrel instead of the specific module?
+>
+> For each finding: state the file, the pattern, why it matters, and a concrete fix.
+
+Save this prompt in `.github/` as a reusable audit prompt if it becomes a regular workflow step.

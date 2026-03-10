@@ -447,7 +447,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 | `npm run dev`            | Start Astro dev server with hot reload                          |
 | `npm run build`          | Full build: `prebuild.mjs` + `astro build`                      |
 | `npm run preview`        | Preview production build locally                                |
-| `npm run test`           | Unit tests only (Vitest)                                        |
+| `npm run test`           | Unit tests only (bun:test)                                      |
 | `npm run lint`           | Biome lint/format check only                                    |
 | `npm run validate`       | Validate JSON data against Zod schemas                          |
 | `npm run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
@@ -460,7 +460,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 
 **Build dependency chain:**
 
-1. `node scripts/prebuild.mjs` — copies cleaned-refs → `src/content/docs/rules/`, books → `src/content/docs/books/`, JSON → `public/data/`, injects Starlight frontmatter
+1. `bun run scripts/prebuild.mjs` — copies cleaned-refs → `src/content/docs/rules/`, books → `src/content/docs/books/`, JSON → `public/data/`, injects Starlight frontmatter
 2. `astro build` — builds static pages + Pagefind search index
 
 Generated directories (`src/content/docs/rules/`, `src/content/docs/books/`, `public/data/`) are in `.gitignore` — never commit them.

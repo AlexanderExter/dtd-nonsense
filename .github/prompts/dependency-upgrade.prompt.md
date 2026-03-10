@@ -40,7 +40,7 @@ You are the **upgrade session owner**. You have full authority over this project
 2. Read the `overrides` and `_comments` sections in `package.json` — understand why each override exists.
 3. Read the `engines` field — this constrains what Node-dependent deps can be upgraded to.
 4. If `fetch_webpage` is available, fetch migration guides for any framework-tier major bumps reported by recon (Astro, Starlight docs, GitHub releases).
-5. Read changelogs or release notes for pinned toolchain deps (Biome, Vitest) — these are pinned deliberately and deserve changelog review before bumping.
+5. Read changelogs or release notes for pinned toolchain deps (Biome) — these are pinned deliberately and deserve changelog review before bumping.
 
 ---
 
@@ -52,7 +52,7 @@ Produce a brief upgrade plan. This is for **transparency, not approval** — sta
 
 Execute in this order. The rationale: upgrade the tools that validate code before upgrading the code they validate.
 
-1. **Toolchain** (`@biomejs/biome`, `typescript`, `vitest`, `tsx`) — the validation and development tools themselves. Upgrading these first means all subsequent `npm run check` runs use the latest lint rules, type checker, and test runner.
+1. **Toolchain** (`@biomejs/biome`, `typescript`, `@types/bun`) — the validation and development tools themselves. Upgrading these first means all subsequent `npm run check` runs use the latest lint rules, type checker, and test runner types.
 2. **Framework** (`astro`, `@astrojs/starlight`, `@astrojs/vercel`) — the largest blast radius. These are version-coupled via peer dependencies and require coordinated upgrades. Migration guides are essential reading.
 3. **Utility** (`chart.js`, `zod`, `gray-matter`, `@vercel/analytics`, and any others) — standalone dependencies with low coupling risk.
 
@@ -61,7 +61,7 @@ Execute in this order. The rationale: upgrade the tools that validate code befor
 For each dependency, decide:
 
 - **Target version:** Latest? Latest compatible? Skip?
-- **Pinning:** Should exact-pinned deps (Biome, Vitest) stay pinned? Should caret deps get pinned? Why?
+- **Pinning:** Should exact-pinned deps (Biome) stay pinned? Should caret deps get pinned? Why?
 - **Overrides:** Is each override still needed? Can any be removed after the parent dep upgrades?
 
 ### B3. Acknowledgment
@@ -89,7 +89,7 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 Use ncu's doctor mode to safely upgrade toolchain deps with automatic rollback on failure:
 
 ```
-npx npm-check-updates --doctor --doctorTest "npm run check" --filter "@biomejs/biome,typescript,vitest,tsx"
+npx npm-check-updates --doctor --doctorTest "npm run check" --filter "@biomejs/biome,typescript,@types/bun"
 ```
 
 **Doctor mode behavior:** For each package, ncu upgrades it, runs the doctor test (`npm run check`), and automatically rolls back any upgrade that breaks the test. This is the programmatic equivalent of manual upgrade-test-rollback cycles.
@@ -100,10 +100,9 @@ After doctor mode completes:
 2. **Resolve rollbacks.** For each rolled-back dep, investigate why `npm run check` failed:
     - **New Biome rules:** Run `npm run lint:fix` first — many new rule violations have auto-fixes. For the rest, update code to comply or disable the specific rule with rationale.
     - **TypeScript errors:** Resolve type errors introduced by stricter checking or changed type definitions. Modernize code, don't patch with `any`.
-    - **Vitest API changes:** Update test files to match new API if test runner version changed.
     - After resolving, manually set the version in `package.json` and run `npm install` + `npm run check` to verify.
 3. **Tree health:** Run `npm ls --depth=1` — confirm no unmet peer deps.
-4. **Commit:** `chore: upgrade toolchain (biome, typescript, vitest)`
+4. **Commit:** `chore: upgrade toolchain (biome, typescript)`
 
 ### C1.5. Biome Configuration Audit (run when Biome version changed)
 
@@ -194,7 +193,7 @@ Must report *zero* errors. Warnings are acceptable if they are pre-existing or i
 Use ncu doctor for everything not in toolchain or framework:
 
 ```
-npx npm-check-updates --doctor --doctorTest "npm run check" --reject "astro,@astrojs/*,@biomejs/*,typescript,vitest,tsx"
+npx npm-check-updates --doctor --doctorTest "npm run check" --reject "astro,@astrojs/*,@biomejs/*,typescript,@types/bun"
 ```
 
 1. **Review results** — resolve any rollbacks as in C1.
@@ -266,8 +265,7 @@ Create `docs/whats-new/YYYY-MM-DD.md` (using today's date). This is the primary 
 
 <!-- Per-dep "what's now possible" — not just version numbers.
      Examples: "Biome 2.5 adds noUnusedTypes rule — consider enabling"
-               "Astro 5.4 supports view transitions natively — replaces manual approach"
-               "Vitest 5.0 dropped globals: true requirement" -->
+               "Astro 5.4 supports view transitions natively — replaces manual approach" -->
 
 ## Resolution Log
 
@@ -292,7 +290,7 @@ Create `docs/whats-new/YYYY-MM-DD.md` (using today's date). This is the primary 
 
 <!-- Config changes to consider, new rules to enable, deprecated patterns
      that should be adopted project-wide, opportunities unlocked by the upgrades.
-     
+
      If Biome was upgraded, include a sub-section:
      ### Biome
      - Schema URL updated to <new version>

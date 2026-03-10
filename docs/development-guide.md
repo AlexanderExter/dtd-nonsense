@@ -16,7 +16,7 @@ All 9 tools use the **Preact Islands** pattern. To add a new tool:
 
 ### 1. Create Component Directory
 
-```
+```text
 src/components/preact/tools/{tool-name}/
 ├── constants.ts          # Types, helpers, tool-specific constants
 ├── {ToolName}App.tsx     # Root component (signals, data loading, layout)
@@ -111,8 +111,8 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 | `npm run preview`        | Preview production build locally                    |
 | `npm run lint`           | Check JS/TS/CSS with Biome                          |
 | `npm run lint:fix`       | Auto-fix Biome lint issues                          |
-| `npm run test`           | Run Vitest unit tests                               |
-| `npm run test:watch`     | Run Vitest in watch mode                            |
+| `npm run test`           | Run Bun unit tests (bun:test)                       |
+| `npm run test:watch`     | Run Bun tests in watch mode                         |
 | `npm run validate`       | Validate JSON data against Zod schemas              |
 | `npm run validate:xref`  | Validate + cross-reference checks                   |
 | `npm run lint:data`      | Lint markdown for terminology, formatting, encoding |
@@ -124,8 +124,8 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 
 ### Build Pipeline
 
-```
-node scripts/prebuild.mjs     ← Copies: cleaned-refs → rules, books → books, JSON → public/data, injects frontmatter
+```text
+bun run scripts/prebuild.mjs  ← Copies: cleaned-refs → rules, books → books, JSON → public/data, injects frontmatter
         ↓
 astro build                   ← Builds static pages + Pagefind search index
 ```
@@ -242,7 +242,7 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 ## Unit Tests
 
-Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
+Unit tests use **bun:test** (Bun's built-in Jest-compatible runner; config in `bunfig.toml`). Test files live alongside their source modules using the `*.test.ts` pattern:
 
 | Test File                              | Covers                                                    |
 | -------------------------------------- | --------------------------------------------------------- |
@@ -264,11 +264,11 @@ npm run test:watch    # re-run on file changes
 
 GitHub Actions runs the following steps on every push/PR:
 
-```
-Biome lint  →  Vitest tests  →  Zod validate  →  Content lint  →  Astro build
+```text
+Biome lint  →  Bun tests  →  Zod validate  →  Content lint  →  Astro build
 ```
 
-Corresponds to separate CI steps: `npx biome ci .` → `npm run test` → `npm run validate` → `npm run lint:data` → `npm run build`.
+Corresponds to separate CI steps: `bunx biome ci .` → `bun test` → `bun run scripts/validate.ts --xref` → `bun run scripts/lint.ts` → `bun run build`.
 
 All steps must pass for a PR to be merge-ready.
 

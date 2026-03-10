@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, jest, spyOn } from "bun:test";
 import { calculateOutcome, parseNotation, roll } from "./dice.ts";
 
 // ---------------------------------------------------------------------------
@@ -12,7 +12,7 @@ import { calculateOutcome, parseNotation, roll } from "./dice.ts";
 function mockDice(...values: number[]): void {
 	const returns = values.map((v) => (v - 1) / 10);
 	let i = 0;
-	vi.spyOn(Math, "random").mockImplementation(() => {
+	spyOn(Math, "random").mockImplementation(() => {
 		if (i >= returns.length) {
 			throw new Error(
 				`Math.random called more times than expected (call #${i + 1}, only ${returns.length} values)`,
@@ -209,11 +209,11 @@ describe("calculateOutcome", () => {
 
 describe("roll", () => {
 	beforeEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
 	});
 
 	afterEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
 	});
 
 	describe("basic rolling", () => {

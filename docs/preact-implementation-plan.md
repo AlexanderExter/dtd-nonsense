@@ -212,7 +212,7 @@ Update `tsconfig.json` to support JSX:
 
 ### 1A — Directory Structure
 
-```
+```text
 src/components/preact/
   hooks/
     use-data.ts          ← JSON data loading with loading/error states
@@ -400,7 +400,7 @@ export function ToolShell({ title, children, loading, error }) {
 }
 ```
 
-**Session gate:** Commit infrastructure. Unit test the hooks (Vitest + preact testing library if needed, or just test the pure signal logic).
+**Session gate:** Commit infrastructure. Unit test the hooks (bun:test + preact testing library if needed, or just test the pure signal logic).
 
 ---
 
@@ -420,7 +420,7 @@ export function ToolShell({ title, children, loading, error }) {
 
 ### Component Decomposition
 
-```
+```text
 src/components/preact/tools/dice-roller/
   DiceRollerApp.tsx       ← Root component (state container)
   DiceInput.tsx           ← Notation input + preset buttons + TN field
@@ -451,11 +451,11 @@ const outcome = computed(() =>
 3. Create `DiceResult.tsx` — shows kept/dropped/exploded dice, total, outcome
 4. Create `RollHistory.tsx` — clickable history entries
 5. Update `dice-roller.astro`:
-    - Remove inline `<script>` block entirely
-    - Remove all inline HTML (tool markup)
-    - Keep ToolLayout wrapper
-    - Add: `<DiceRollerApp client:load />`
-    - Keep tool-specific CSS (can inline in components or keep as `<style>`)
+  - Remove inline `<script>` block entirely
+  - Remove all inline HTML (tool markup)
+  - Keep ToolLayout wrapper
+  - Add: `<DiceRollerApp client:load />`
+  - Keep tool-specific CSS (can inline in components or keep as `<style>`)
 6. Verify: roll, presets, TN, history, keyboard shortcuts, mobile layout
 
 ### Astro Page After Migration
@@ -503,7 +503,7 @@ import DiceRollerApp from "@/components/preact/tools/dice-roller/DiceRollerApp";
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/quick-reference/
   QuickReferenceApp.tsx    ← Root + data loading
   SearchBar.tsx            ← Global search input (reuses SearchInput)
@@ -532,7 +532,7 @@ src/components/preact/tools/quick-reference/
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/success-curves/
   SuccessCurvesApp.tsx     ← Root + worker management
   SimulationInput.tsx      ← Pool inputs (num dice, keep, mod, TN range)
@@ -554,7 +554,7 @@ src/components/preact/tools/success-curves/
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/defense-graph/
   DefenseGraphApp.tsx      ← Root + data loading + worker
   DefenseInput.tsx         ← Character defense parameters
@@ -581,7 +581,7 @@ src/components/preact/tools/defense-graph/
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/combat-tracker/
   CombatTrackerApp.tsx     ← Root + encounter state
   CombatantList.tsx        ← Sorted initiative list
@@ -617,7 +617,7 @@ const sortedCombatants = computed(() => [...combatants.value].sort((a, b) => b.i
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/npc-generator/
   NPCGeneratorApp.tsx      ← Root + template loading
   NPCForm.tsx              ← Main form container
@@ -644,7 +644,7 @@ src/components/preact/tools/npc-generator/
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/ship-builder/
   ShipBuilderApp.tsx       ← Root + mode switch
   BuilderMode/
@@ -677,7 +677,7 @@ src/components/preact/tools/ship-builder/
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/character-builder/
   BuilderApp.tsx           ← Root + wizard state
   StepNavigation.tsx       ← Step indicator + prev/next
@@ -725,7 +725,7 @@ const validationErrors = computed(() => validateStep(step.value, character.value
 
 **Component decomposition:**
 
-```
+```text
 src/components/preact/tools/character-sheet/
   SheetApp.tsx             ← Root + character state + tab management
   CharacterManager.tsx     ← Character list, new/load/delete/import/export

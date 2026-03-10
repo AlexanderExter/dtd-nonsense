@@ -10,20 +10,21 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"prebuild": "node scripts/prebuild.mjs",
-		"test": "vitest run",
-		"test:watch": "vitest",
+		"prebuild": "bun run scripts/prebuild.mjs",
+		"test": "bun test",
+		"test:watch": "bun test --watch",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
 		"validate": "bun run scripts/validate.ts",
 		"validate:xref": "bun run scripts/validate.ts --xref",
 		"lint:data": "bun run scripts/lint.ts",
+		"lint:md": "rumdl check .",
 		"sync-check": "bun run scripts/sync-check.ts",
-		"check": "vitest run && biome check . && bun run scripts/validate.ts --xref && bun run scripts/lint.ts",
-		"session:start": "node scripts/session-start.mjs",
-		"session:end": "node scripts/session-end.mjs",
-		"session:status": "node scripts/session-status.mjs",
-		"upgrade:recon": "node scripts/upgrade-recon.mjs",
+		"check": "bun test && biome check . && bun run scripts/validate.ts --xref && bun run scripts/lint.ts",
+		"session:start": "bun run scripts/session-start.mjs",
+		"session:end": "bun run scripts/session-end.mjs",
+		"session:status": "bun run scripts/session-status.mjs",
+		"upgrade:recon": "bun run scripts/upgrade-recon.mjs",
 		"prepare": "git config core.hooksPath .githooks",
 		"astro": "astro"
 	},
@@ -44,8 +45,9 @@
 	"devDependencies": {
 		"@astrojs/vercel": "^9.0.4",
 		"@biomejs/biome": "2.4.6",
-		"typescript": "^5.9.3",
-		"vitest": "4.0.18"
+		"@types/bun": "^1.3.10",
+		"rumdl": "^0.1.45",
+		"typescript": "^5.9.3"
 	},
 	"overrides": {
 		"@vercel/routing-utils": {

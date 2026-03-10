@@ -39,7 +39,7 @@ When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism.
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
 - **Bun**: TypeScript pipeline scripts run via `bun run`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
 - **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check; **run `npm run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
-- **Vitest**: Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `npm run test` to run all tests. Config in `vitest.config.ts`.
+- **bun:test**: Built-in test runner (Jest-compatible). Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `npm run test` (or `bun test` directly) to run all tests. Config via `bunfig.toml`.
 - **Preact**: UI framework for tool pages. `@astrojs/preact` with compat mode, `@preact/signals` for fine-grained reactive state.
 - **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
 - **`npm run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint. Use this as the single baseline command.
@@ -143,7 +143,7 @@ astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
 biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           npm dependencies (Astro, Starlight, Chart.js)
 tsconfig.json          TypeScript strict config with @/ path alias
-vitest.config.ts       Vitest unit test configuration
+bunfig.toml            Bun config (shell, test runner settings)
 scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight frontmatter
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
@@ -166,7 +166,7 @@ public/data/           Generated JSON data copies (gitignored)
 
 **Build:** `npm run build` runs `prebuild.mjs` (copies content/data, injects frontmatter) then `astro build` (Pagefind search). Dev server: `npm run dev`. Lint with `npm run lint`. Run tests with `npm run test`.
 
-**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → Vitest tests → JSON validation → content lint → Astro build on every push/PR.
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → bun test → JSON validation → content lint → Astro build on every push/PR.
 
 ### Pipeline Scripts
 
@@ -175,7 +175,7 @@ TypeScript pipeline scripts (run via npm):
 | Script                   | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
 | `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint |
-| `npm run test`           | Unit tests only (Vitest)                                        |
+| `npm run test`           | Unit tests only (bun:test)                                      |
 | `npm run lint`           | Biome lint/format check only                                    |
 | `npm run validate`       | Validate all 12 JSON data files against Zod schemas             |
 | `npm run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
