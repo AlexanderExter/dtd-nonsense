@@ -2,9 +2,9 @@
 
 Visual analysis tool for Static Defense (SD) distributions across character builds. Helps Story Masters calibrate encounter difficulty and players understand defensive scaling.
 
-**Phase:** 4
-**Files:** `src/pages/tools/defense-graph.astro` (JS/CSS inline), `src/workers/defense-worker.ts`
-**Pattern:** Inline `<script>` in Astro page
+**Phase:** Complete
+**Files:** `src/pages/tools/defense-graph.astro`, `src/components/preact/tools/defense-graph/` (10 components), `src/workers/defense-worker.ts`
+**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`, Web Worker for defense calculations
 
 ---
 

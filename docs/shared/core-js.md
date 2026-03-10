@@ -1,13 +1,13 @@
 # core.ts — ES Module API
 
-Shared utility module exporting data loading, derived stat calculations, character persistence (localStorage CRUD), and UI helpers. Pure ES module with named exports — no global namespace.
+Shared utility module exporting data loading, derived stat calculations, and character persistence (localStorage CRUD). Pure ES module with named exports — no global namespace.
 
 **File:** `src/lib/dtd/core.ts`
 **Types:** `src/lib/dtd/types.ts` — canonical interfaces (`CharacterData`, `Characteristics`, `CharacterModifiers`, etc.)
 **Consumers:** Character Sheet, Character Builder, Combat Tracker, NPC Generator, Defense Graph, and any future tool pages.
 
 ```typescript
-import { loadData, loadAllData, derived, character, initAccordion, debounce, escapeHtml } from "@/lib/dtd/core.ts";
+import { loadData, loadAllData, derived, character } from "@/lib/dtd/core.ts";
 import type { CharacterData } from "@/lib/dtd/types.ts";
 ```
 
@@ -285,52 +285,6 @@ Automatic migration logic run on `load()` and `importJSON()`. Handles legacy for
 - **psychicStrength → fettered** boolean conversion
 - **globalPush → extraSchoolLevels** rename
 - **Cleanup** of stale Builder-only fields (`raceId`, `exaltationId`, `charPriorities`, etc.)
-
----
-
-## UI Helpers
-
-### initAccordion(container)
-
-> **Note:** With all 9 tools migrated to Preact Islands, `initAccordion` is no longer used by most tools — Preact components handle their own accordion/tab toggle logic via signals and state. This function remains available for any non-Preact pages that need it.
-
-Initializes accordion behavior. Finds all `.accordion-item` children within `container` and adds click handlers on `.accordion-header` elements to toggle the `.open` class.
-
-```typescript
-function initAccordion(container: Element): void;
-```
-
-```typescript
-initAccordion(document.querySelector(".sidebar")!);
-```
-
-### debounce(fn, delay?)
-
-Returns a debounced version of `fn` that waits `delay` ms after the last call before executing.
-
-```typescript
-function debounce<T extends (...args: unknown[]) => void>(
-    fn: T,
-    delay?: number // default: 300
-): (...args: Parameters<T>) => void;
-```
-
-```typescript
-const search = debounce((e: Event) => filterList(e), 250);
-input.addEventListener("input", search);
-```
-
-### escapeHtml(str)
-
-Escapes HTML special characters for safe DOM insertion. Uses a temporary `<div>` element internally (`textContent` → `innerHTML`).
-
-```typescript
-function escapeHtml(str: string): string;
-```
-
-```typescript
-el.innerHTML = escapeHtml(userInput);
-```
 
 ---
 
