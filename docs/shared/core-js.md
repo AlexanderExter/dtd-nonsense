@@ -292,6 +292,8 @@ Automatic migration logic run on `load()` and `importJSON()`. Handles legacy for
 
 ### initAccordion(container)
 
+> **Note:** With all 9 tools migrated to Preact Islands, `initAccordion` is no longer used by most tools — Preact components handle their own accordion/tab toggle logic via signals and state. This function remains available for any non-Preact pages that need it.
+
 Initializes accordion behavior. Finds all `.accordion-item` children within `container` and adds click handlers on `.accordion-header` elements to toggle the `.open` class.
 
 ```typescript

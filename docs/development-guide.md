@@ -10,41 +10,89 @@ See [project-conventions.md](project-conventions.md#git-workflow) for the full g
 
 ---
 
-## Adding a New Tool
+## Creating a Preact Tool
 
-### Astro Pages (src/pages/tools/)
+All 9 tools use the **Preact Islands** pattern. To add a new tool:
 
-1. Create `src/pages/tools/[tool-name].astro`
-2. Import `ToolLayout` and wrap content:
+### 1. Create Component Directory
+
+```
+src/components/preact/tools/{tool-name}/
+├── constants.ts          # Types, helpers, tool-specific constants
+├── {ToolName}App.tsx     # Root component (signals, data loading, layout)
+├── SomeTab.tsx           # Tab/section components
+├── AnotherTab.tsx
+└── shared/               # Shared sub-components (optional)
+    └── SomeWidget.tsx
+```
+
+### 2. Define State with Module-Level Signals
+
+In `{ToolName}App.tsx`:
+
+```typescript
+import { signal, computed } from "@preact/signals";
+import { useAllData } from "@/hooks/use-data";
+
+// Module-level signals — shared across all components
+export const items = signal<Item[]>([]);
+export const selectedId = signal<string | null>(null);
+export const selectedItem = computed(() =>
+  items.value.find(i => i.id === selectedId.value) ?? null
+);
+
+export function addItem(item: Item) {
+  items.value = [...items.value, item];
+}
+
+export function ToolNameApp() {
+  const { data, loading, error } = useAllData(["skills.json", "races.json"]);
+  // ...
+}
+```
+
+### 3. Create the Astro Page
 
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App";
 ---
 
 <ToolLayout title="Tool Name" description="...">
-  <!-- HTML content -->
-  <style> /* tool styles */ </style>
-  <script> /* tool logic with ES module imports */ </script>
+  <ToolNameApp client:load />
+  <style is:global>
+    /* Tool-specific CSS overrides */
+  </style>
 </ToolLayout>
 ```
 
-3. Convert `DTD.*` global calls → ES module imports:
+### 4. Key Conventions
 
-```typescript
-import { loadData, derived, escapeHtml } from "@/lib/dtd/core.ts";
-import { roll, parseNotation } from "@/lib/dtd/dice.ts";
-import type { CharacterData } from "@/lib/dtd/types.ts";
-```
+- Use `class` not `className` (Preact)
+- All `<button>` elements need `type="button"`
+- **Named exports only** — no default exports
+- Use `@/` path aliases for imports outside the component directory
+- Use `./` relative imports within the component directory
+- Module-level signals for state, `computed` for derived data
+- `useAllData` hook from `@/hooks/use-data` for loading JSON game data
+- `useLocalStorage` hook from `@/hooks/use-local-storage` for persistence
+- `useWorker` hook from `@/hooks/use-worker` for Web Worker communication
 
-4. For Chart.js:
-    ```typescript
-    const { Chart, registerables } = await import("chart.js");
-    Chart.register(...registerables);
-    ```
-5. For Web Workers: place `.ts` files in `src/workers/`, then instantiate with `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. Workers import from `src/lib/dtd/` using relative paths (not `@/` alias).
-6. Create documentation in `docs/tools/[tool-name].md`
-7. Add a card to `src/pages/tools/index.astro` with a `status` badge
+### 5. Available Hooks
+
+| Hook                 | Source                          | Purpose                                         |
+| -------------------- | ------------------------------- | ----------------------------------------------- |
+| `useData`            | `@/hooks/use-data`              | Load a single JSON data file                    |
+| `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
+| `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist signal state to localStorage            |
+| `useWorker`          | `@/hooks/use-worker`            | Communicate with Web Workers                    |
+| `useDebouncedSignal` | `@/hooks/use-debounce`          | Debounced signal for search/filter inputs       |
+
+### 6. Documentation
+
+- Create `docs/tools/[tool-name].md`
+- Add a card to `src/pages/tools/index.astro` with a `status` badge
 
 ---
 

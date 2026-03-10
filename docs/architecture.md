@@ -16,6 +16,8 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
 | ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
+| Preact + Signals     | Lightweight reactive UI for tool pages; `@astrojs/preact` with compat mode; `@preact/signals` for fine-grained state                                                                                                                                        |
+| Tailwind CSS v4      | Utility framework; `@theme` tokens as single source of truth; `@tailwindcss/vite` plugin; `@astrojs/starlight-tailwind` bridge                                                                                                                              |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
 
 Key files:
@@ -27,10 +29,11 @@ Key files:
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                                                                                             |
 | `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts |
-| `src/lib/tools/`       | Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)                                                                         |
 | `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
-| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages                                                                                            |
-| `src/styles/`          | `custom.css` (WH40K theme), per-tool CSS (sheet.css, builder.css)                                                                      |
+| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
+| `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
+| `src/components/preact/` | Preact island components for all 9 tools (~100 components total)                                                                     |
+| `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`, `useDebouncedSignal`)                                                  |
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
 | `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
 
@@ -38,7 +41,7 @@ Build pipeline: `node scripts/prebuild.mjs && astro build` — prebuild copies s
 
 ### When to Reconsider
 
-- **TypeScript for tools:** Phase 2 complete. All shared modules (`core.ts`, `dice.ts`, `types.ts`) and both tool files (`builder-app.ts`, `sheet-app.ts`) are fully typed with zero TS errors.
+- **Preact Islands:** All 9 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 18 components (Character Builder) without issues so far.
 
 ### Code Quality & Testing
 
@@ -125,47 +128,33 @@ Run `npm run validate` to see current record counts for all 12 files.
 
 ## Code Patterns
 
-Most tools follow the **object literal pattern**, though Sheet and Builder have been migrated to **ES module imports** (see Pattern column):
+All tools use **Preact Islands** — components hydrated via `client:load` on their Astro page. Each tool lives in `src/components/preact/tools/{tool-name}/` with:
 
-```javascript
-// Object literal pattern (most tools)
-const ToolName = {
-    state: { ... },
-    init() { ... },
-    render() { ... },
-    // ...methods
-};
+- A root `*App.tsx` component (module-level signals, data loading, top-level layout)
+- Tab/section components
+- Shared sub-components in `shared/`
+- A `constants.ts` for tool-specific types and helpers
 
-document.addEventListener('DOMContentLoaded', () => ToolName.init());
-```
+State management uses `@preact/signals` with module-level signals exported from the root component:
 
 ```typescript
-// ES module pattern (Sheet, Builder)
-import { loadData, loadAllData } from "@/lib/dtd/core";
-import { rollDice } from "@/lib/dtd/dice";
-// Tool-specific app module handles init/render
+import { signal, computed } from "@preact/signals";
+export const myState = signal(initialValue);
+export const derivedValue = computed(() => myState.value * 2);
+export function updateState(fn) { myState.value = fn(myState.value); }
 ```
 
-| Tool              | Module / Global  | Pattern                             |
-| ----------------- | ---------------- | ----------------------------------- |
-| Character Sheet   | `sheet-app.ts`   | ES module import (`src/lib/tools/`) |
-| Character Builder | `builder-app.ts` | ES module import (`src/lib/tools/`) |
-| Dice Roller       | _(loose fns)_    | DOM caching + listeners             |
-| Combat Tracker    | `Tracker`        | Object literal                      |
-| Quick Reference   | `QRef`           | Object literal                      |
-| NPC Generator     | `NPCBuilder`     | Object literal                      |
-| Ship Builder      | `ShipTool`       | Object literal                      |
-| Success Curves    | `Analyzer`       | IIFE returning object               |
-| Defense Graph     | `DefGraph`       | IIFE returning object               |
-
-Event handling uses **delegation** on a root container (e.g., `.tab-panels`) with `data-*` attributes for routing:
-
-```javascript
-container.addEventListener('click', (e) => {
-    const action = e.target.closest('[data-action]')?.dataset.action;
-    if (action === 'delete') { ... }
-});
-```
+| Tool              | Components | Directory                                     |
+| ----------------- | ---------- | --------------------------------------------- |
+| Dice Roller       | 6          | `src/components/preact/tools/dice-roller/`     |
+| Quick Reference   | 13         | `src/components/preact/tools/quick-reference/` |
+| Success Curves    | 9          | `src/components/preact/tools/success-curves/`  |
+| Defense Graph     | 10         | `src/components/preact/tools/defense-graph/`   |
+| Combat Tracker    | 9          | `src/components/preact/tools/combat-tracker/`  |
+| NPC Generator     | 12         | `src/components/preact/tools/npc-generator/`   |
+| Ship Builder      | 12         | `src/components/preact/tools/ship-builder/`    |
+| Character Builder | 18         | `src/components/preact/tools/char-builder/`    |
+| Character Sheet   | 16         | `src/components/preact/tools/char-sheet/`      |
 
 ### Chart.js
 

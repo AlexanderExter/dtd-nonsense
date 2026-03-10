@@ -8,17 +8,25 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 ## TypeScript Migration
 
-### Phase 3: Reactivity Layer
+### Phase 3: Reactivity Layer — ✅ Complete
 
 > Phase 2 (typing both tool files) is complete — see `docs/project-history.md` § Phase 11.
 
-Open consideration — depends on Phase 2 outcome. If the module refactor still leaves DOM manipulation feeling painful, consider a lightweight reactivity layer:
+**Decision:** Preact with `@preact/signals` via `@astrojs/preact` (compat mode).
 
-- **Preact** (`@astrojs/preact`, 7KB) — identical React API, zero extra config, Astro island-compatible. Best fit for reactive components without ecosystem commitment.
-- **React** (`@astrojs/react`) — worth it only if shadcn/Radix library is a confirmed target or React-familiar contributors are expected.
-- **No framework** — if Phase 2's module split makes vanilla TS clean enough, skip entirely. This is a real outcome worth evaluating before committing.
+**Implementation complete:** All 9 tools migrated to Preact Islands with Tailwind CSS v4. Each tool lives in `src/components/preact/tools/{tool-name}/` with module-level signals for state management. Tailwind `@theme` tokens in `src/styles/tailwind.css` serve as the single source of truth for design tokens, bridged to short `var(--name)` aliases in `ToolLayout.astro`.
 
-Start with the dice roller (smallest tool) as a proof-of-concept island before migrating sheet/builder.
+| Tool              | Components |
+| ----------------- | ---------- |
+| Dice Roller       | 6          |
+| Quick Reference   | 13         |
+| Success Curves    | 9          |
+| Defense Graph     | 10         |
+| Combat Tracker    | 9          |
+| NPC Generator     | 12         |
+| Ship Builder      | 12         |
+| Character Builder | 18         |
+| Character Sheet   | 16         |
 
 ---
 

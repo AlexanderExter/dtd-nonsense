@@ -1,6 +1,6 @@
 # Copilot Instructions
 
-This is a **tabletop RPG rulebook documentation project** with **web-based play tools** for Dungeons the Dragoning (D:TD) a game blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics. Work spans markdown editing (rules content), an Astro/Starlight documentation site, and vanilla JavaScript tools.
+This is a **tabletop RPG rulebook documentation project** with **web-based play tools** for Dungeons the Dragoning (D:TD) a game blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics. Work spans markdown editing (rules content), an Astro/Starlight documentation site, and Preact-based interactive tools.
 
 **Strategic context:** The project's mission, design principles, scope boundaries, and feature priorities are defined in **[docs/product-vision.md](../docs/product-vision.md)**. Read it before making scope or priority decisions. The project is currently in **beta** — stabilization and polish take priority over new features.
 
@@ -40,6 +40,8 @@ When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism.
 - **Bun**: TypeScript pipeline scripts run via `bun run`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
 - **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check; **run `npm run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
 - **Vitest**: Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `npm run test` to run all tests. Config in `vitest.config.ts`.
+- **Preact**: UI framework for tool pages. `@astrojs/preact` with compat mode, `@preact/signals` for fine-grained reactive state.
+- **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
 - **`npm run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint. Use this as the single baseline command.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
@@ -146,12 +148,17 @@ scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight fr
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
+  components/
+    preact/
+      tools/           Preact island components (9 tools, ~100 components total)
+  hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts, use-debounce.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
-  lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   layouts/             ToolLayout.astro
-  styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
+  styles/
+    custom.css         WH40K theme (Starlight)
+    tailwind.css       Tailwind v4 @theme tokens (design token source of truth)
 public/data/           Generated JSON data copies (gitignored)
 ```
 
@@ -227,5 +234,8 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                       |
 | Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                       |
 | Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)      |
+| Preact components        | `src/components/preact/tools/`                                |
+| Preact hooks             | `src/hooks/`                                                  |
+| Design tokens            | `src/styles/tailwind.css` (`@theme` block)                    |
 | Project history          | [docs/project-history.md](../docs/project-history.md)         |
 | Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)           |
