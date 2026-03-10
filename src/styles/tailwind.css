@@ -1,0 +1,26 @@
+@layer base, starlight, theme, components, utilities;
+
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Tool page design tokens — exposed as Tailwind theme utilities */
+@theme {
+	--color-bg: #0d0d0f;
+	--color-surface: #16161a;
+	--color-surface-raised: #1e1e24;
+	--color-surface-alt: #1e1e24;
+	--color-border: #2a2a32;
+	--color-border-light: #3a3a44;
+	--color-text-primary: #e8e6e3;
+	--color-text-muted: #94929d;
+	--color-text-dim: #6c6a75;
+	--color-accent: #d4a84b;
+	--color-accent-hover: #e6bc5f;
+	--color-accent-dim: #8b7033;
+	--color-gold: #d4a84b;
+	--color-success: #4ade80;
+	--color-warning: #fbbf24;
+	--color-error: #f87171;
+	--color-info: #60a5fa;
+}

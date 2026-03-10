@@ -1,6 +1,8 @@
 // @ts-check
+import preact from "@astrojs/preact";
 import starlight from "@astrojs/starlight";
 import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
@@ -8,7 +10,10 @@ export default defineConfig({
   output: "static",
   adapter: vercel(),
 
+  vite: { plugins: [tailwindcss()] },
+
   integrations: [
+    preact({ compat: true }),
     starlight({
       title: "Dungeons the Dragoning 40k",
       description:
@@ -20,7 +25,7 @@ export default defineConfig({
       },
 
       // Custom dark theme (tool pages use ToolLayout.astro's own :root tokens)
-      customCss: ["./src/styles/custom.css"],
+      customCss: ["./src/styles/tailwind.css", "./src/styles/custom.css"],
 
       // Default to dark mode (WH40K aesthetic)
       defaultLocale: "root",
