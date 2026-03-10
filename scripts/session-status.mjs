@@ -7,19 +7,7 @@
  * Shows: current branch, clean/dirty, commits on branch, all branches.
  */
 
-import { execSync } from "node:child_process";
-
-const RESET = "\x1b[0m";
-const GREEN = "\x1b[32m";
-const RED = "\x1b[31m";
-const YELLOW = "\x1b[33m";
-const CYAN = "\x1b[36m";
-const BOLD = "\x1b[1m";
-const DIM = "\x1b[2m";
-
-function run(cmd) {
-	return execSync(cmd, { encoding: "utf-8" }).trim();
-}
+import { BOLD, CYAN, DIM, GREEN, RED, RESET, run, YELLOW } from "./session-utils.mjs";
 
 console.log(`${BOLD}Session Status${RESET}`);
 

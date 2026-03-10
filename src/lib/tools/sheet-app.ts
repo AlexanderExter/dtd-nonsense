@@ -6,6 +6,7 @@
  * Validation is informational (budget displays) rather than blocking.
  */
 
+import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants.ts";
 import { character as characterAPI, derived, escapeHtml, loadAllData } from "@/lib/dtd/core.ts";
 import { parseNotation } from "@/lib/dtd/dice.ts";
 import type { CharacterData, CharacterModifiers } from "@/lib/dtd/types.ts";
@@ -19,23 +20,8 @@ const Sheet = {
 	STORAGE_LIST_KEY: "dtd_sheet_list",
 	AUTOSAVE_DELAY: 400,
 
-	CHAR_GROUPS: {
-		physical: { label: "Physical", chars: ["strength", "dexterity", "constitution"] },
-		social: { label: "Social", chars: ["charisma", "fellowship", "composure"] },
-		mental: { label: "Mental", chars: ["intelligence", "wisdom", "willpower"] },
-	},
-
-	CHAR_NAMES: {
-		strength: "Strength",
-		dexterity: "Dexterity",
-		constitution: "Constitution",
-		charisma: "Charisma",
-		fellowship: "Fellowship",
-		composure: "Composure",
-		intelligence: "Intelligence",
-		wisdom: "Wisdom",
-		willpower: "Willpower",
-	},
+	CHAR_GROUPS,
+	CHAR_NAMES,
 
 	CHAR_ABBREV: {
 		strength: "Str",
