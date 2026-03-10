@@ -15,7 +15,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                                                                                                                                                            |
 | npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
-| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`, `ui.ts`, `util.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
+| ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
 | Preact + Signals     | Lightweight reactive UI for tool pages; `@astrojs/preact` with compat mode; `@preact/signals` for fine-grained state                                                                                                                                        |
 | Tailwind CSS v4      | Utility framework; `@theme` tokens as single source of truth; `@tailwindcss/vite` plugin; `@astrojs/starlight-tailwind` bridge                                                                                                                              |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
@@ -28,12 +28,12 @@ Key files:
 | `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data                                                                           |
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
 | `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                                                                                             |
-| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts |
+| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
 | `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
 | `src/components/preact/` | Preact island components for all 9 tools (~100 components total)                                                                     |
-| `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`, `useDebouncedSignal`)                                                  |
+| `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`)                                                                        |
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
 | `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
 

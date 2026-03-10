@@ -61,14 +61,14 @@ npm run sync-check # detect drift between markdown and JSON data
 
 ## Project Structure
 
-```
+```text
 books/                 Source rulebook chapters (2 books, per-chapter split)
 cleaned-references/    Condensed rules reference (merged by topic, 24 files)
 data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         9 Astro tool pages (standalone, outside Starlight)
   components/preact/   Preact island components (~105 across 9 tools)
-  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker, use-debounce)
+  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)
   styles/              WH40K theme CSS + Tailwind v4 @theme tokens

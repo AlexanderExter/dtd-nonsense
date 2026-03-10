@@ -28,7 +28,7 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 
 ### File Layout
 
-```
+```text
 src/pages/tools/[name].astro               ← Astro page (mounts Preact island via client:load)
 src/components/preact/tools/[name]/         ← Preact components for each tool
   [Name]App.tsx                             ← Root component (entry point)
@@ -37,7 +37,6 @@ src/hooks/                                  ← Custom Preact hooks
   use-data.ts                               ← useData() / useAllData() for JSON loading
   use-local-storage.ts                      ← useLocalStorage() for persistence
   use-worker.ts                             ← useWorker() for Web Worker communication
-  use-debounce.ts                           ← useDebouncedSignal() for input debouncing
 src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
 src/lib/dtd/dice.ts                         ← Shared: roll(), calculateOutcome(), parseNotation()
 src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts and workers)
@@ -84,6 +83,7 @@ export function ToolApp() {
 ```
 
 Key conventions:
+
 - **Module-level signals** — state lives outside the component for persistence across renders
 - **`class` not `className`** — Preact with compat supports both, but we use `class`
 - **Named exports only** — no default exports

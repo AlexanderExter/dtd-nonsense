@@ -87,7 +87,6 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 | `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
 | `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist signal state to localStorage            |
 | `useWorker`          | `@/hooks/use-worker`            | Communicate with Web Workers                    |
-| `useDebouncedSignal` | `@/hooks/use-debounce`          | Debounced signal for search/filter inputs       |
 
 ### 6. Documentation
 

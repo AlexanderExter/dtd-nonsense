@@ -152,7 +152,7 @@ src/                   Astro source files
     preact/
       tools/           Preact island components (9 tools, ~100 components total)
   hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts)
-  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
+  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   layouts/             ToolLayout.astro

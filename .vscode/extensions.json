@@ -10,8 +10,6 @@
 		"tamasfe.even-better-toml",
 		// Spell checker: cSpell word list is configured in settings.json
 		"streetsidesoftware.code-spell-checker",
-		// Vitest: inline test runner and explorer
-		"vitest.explorer",
 		// Bun: run scripts and manage Bun workspaces
 		"oven.bun-vscode"
 	]
