@@ -1,8 +1,8 @@
 # Dependency Upgrade
 
-//TODO: The pilot test was very good, consider how to extend the funcitionality to also govern project config files.
 //TODO: Given the nature of the project, and as a find out and learn, consider if the lockfiles are truly needed.
 //TODO: It could also manage the gitignore and gitattributes
+// NOTE: Biome configuration audit is covered by Phase C1.5 (added 2026-03-10).
 
 You are the **upgrade session owner**. You have full authority over this project's dependency versions, pinning strategy, code modernization, and cleanup for the duration of this session. No other agent or session will dispute your work. Your decisions are final.
 
@@ -104,6 +104,71 @@ After doctor mode completes:
     - After resolving, manually set the version in `package.json` and run `npm install` + `npm run check` to verify.
 3. **Tree health:** Run `npm ls --depth=1` — confirm no unmet peer deps.
 4. **Commit:** `chore: upgrade toolchain (biome, typescript, vitest)`
+
+### C1.5. Biome Configuration Audit (run when Biome version changed)
+
+Skip this step if Biome was NOT upgraded in C1. If Biome DID change, complete the full audit before continuing to C2.
+
+**Rationale:** Biome releases frequently add new rules, deprecate config options, rename options, and change their VS Code extension API. A Biome version bump without a config audit leaves the project in an untested configuration state where the schema may be wrong, rules may be silently misconfigured, and the developer experience may have regressed.
+
+#### C1.5.1 — Schema URL
+
+Update `biome.json` `$schema` to match the new version:
+
+```json
+"$schema": "https://biomejs.dev/schemas/<NEW_VERSION>/schema.json"
+```
+
+The schema URL uses the exact version string, not a range (e.g. `2.5.0`, not `^2.5.0`).
+
+#### C1.5.2 — VS Code Extension Audit
+
+Check biome.json VS Code extension version by looking at `%USERPROFILE%\.vscode\extensions\` for `biomejs.biome-*`. If the extension is behind the new CLI version, note it in the briefing — the developer should update the extension manually.
+
+Check `.vscode/settings.json` for deprecated Biome extension settings:
+- `biome.lspBin` → deprecated since v3 extension, use `biome.lsp.bin`
+- `biome.requireConfigFile` → deprecated, use `biome.requireConfiguration`
+- `quickfix.biome` in `codeActionsOnSave` → old pattern, use `source.fixAll.biome`
+- `source.organizeImports.biome` → still current, keep
+
+Fix any deprecated settings in `.vscode/settings.json`.
+
+#### C1.5.3 — Config Validity
+
+Run `npx biome check . --reporter=summary` and read the output carefully.
+
+**Parse errors in biome.json itself** → the config file has syntax problems (e.g. JS comments in a `.json` file — use `.jsonc` if comments are needed, or remove them).
+
+**"Unknown option" warnings** → a rule or config key was renamed or removed. Check the changelog and update.
+
+**New violations from upgraded rules** → run `npm run lint:fix` first for auto-fixable issues. For remaining violations, decide: fix the code, or disable the specific rule with a documented rationale.
+
+#### C1.5.4 — Domains Review
+
+Biome v2 introduced [linter domains](https://biomejs.dev/linter/domains/) — framework-aware rule sets activated by declared dependencies. Check if any new domains are now relevant to this project's stack (`react`, `test`, `project`, etc.) and aren't already declared in `biome.json`:
+
+```bash
+# Check which domains Biome would auto-detect based on package.json
+# Then compare against what's declared in linter.domains
+```
+
+Declared domains make intent explicit and survive dependency tree changes.
+
+#### C1.5.5 — HTML/Astro Support
+
+Check that `html.experimentalFullSupportEnabled` is set and that `html.formatter.enabled: false` is also set (the Astro VS Code extension owns `.astro` formatting — Biome's HTML formatter should stay off). If Biome's HTML/Astro support matured from experimental to stable in this version, update accordingly.
+
+#### C1.5.6 — Run Final Check
+
+```
+npx biome check . --reporter=summary
+```
+
+Must report *zero* errors. Warnings are acceptable if they are pre-existing or intentionally suppressed with overrides.
+
+**Commit:** `chore: sync biome config to new version`
+
+---
 
 ### C2. Framework Tier
 
@@ -226,7 +291,15 @@ Create `docs/whats-new/YYYY-MM-DD.md` (using today's date). This is the primary 
 ## Recommendations
 
 <!-- Config changes to consider, new rules to enable, deprecated patterns
-     that should be adopted project-wide, opportunities unlocked by the upgrades. -->
+     that should be adopted project-wide, opportunities unlocked by the upgrades.
+     
+     If Biome was upgraded, include a sub-section:
+     ### Biome
+     - Schema URL updated to <new version>
+     - New rules now available: list any newly enabled or worth-enabling rules
+     - Domains in use: list active linter.domains and what they cover
+     - html.experimentalFullSupportEnabled status (experimental / stable in this version)
+     - Extension version alignment: CLI <x> / Extension <y> -->
 ```
 
 **Tone:** This is a briefing, not a changelog. Be opinionated, actionable, and forward-looking. Write for the next session's agent who needs to understand what changed and why it matters.

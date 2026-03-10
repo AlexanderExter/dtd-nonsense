@@ -48,55 +48,10 @@ const { title, description = "" } = Astro.props;
     </footer>
 
     <style is:global>
-      /* Bridge Tailwind @theme tokens → short var(--name) aliases.
-         Used by tool page <style> blocks during incremental migration.
-         Remove once all tools are converted to Tailwind utilities. */
-      :root {
-        --bg: var(--color-bg);
-        --surface: var(--color-surface);
-        --surface-raised: var(--color-surface-raised);
-        --surface-alt: var(--color-surface-alt);
-        --border: var(--color-border);
-        --border-light: var(--color-border-light);
-        --text: var(--color-text-primary);
-        --text-muted: var(--color-text-muted);
-        --text-dim: var(--color-text-dim);
-        --accent: var(--color-accent);
-        --accent-hover: var(--color-accent-hover);
-        --accent-dim: var(--color-accent-dim);
-        --accent-bg: var(--color-accent-bg);
-        --gold: var(--color-gold);
-        --success: var(--color-success);
-        --success-bg: var(--color-success-bg);
-        --warning: var(--color-warning);
-        --warning-bg: var(--color-warning-bg);
-        --error: var(--color-error);
-        --error-bg: var(--color-error-bg);
-        --info: var(--color-info);
-        --info-bg: var(--color-info-bg);
-        --space-xs: var(--spacing-xs);
-        --space-sm: var(--spacing-sm);
-        --space-md: var(--spacing-md);
-        --space-lg: var(--spacing-lg);
-        --space-xl: var(--spacing-xl);
-        --radius: var(--radius-md);
-        --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        --font-mono: "Fira Code", "Consolas", monospace;
-      }
-
       *,
       *::before,
       *::after {
         box-sizing: border-box;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      a:hover {
-        color: var(--accent-hover);
       }
     </style>
   </body>
