@@ -51,10 +51,12 @@ src/
 
 ### CSS
 
-- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold design tokens
-- **Tailwind v4**: `src/styles/tailwind.css` — `@theme` block is the single source of truth for design tokens
-- **ToolLayout.astro**: bridges Tailwind tokens → short `var(--name)` aliases (e.g., `--bg`, `--surface`, `--accent`)
-- **Tool-specific CSS**: inline `<style is:global>` blocks in the `.astro` page for overrides
+- **Tailwind v4**: `src/styles/tailwind.css` — `@theme` block is the single source of truth for design tokens; `@layer components` defines `.panel` and `.btn` family
+- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold design tokens for docs pages
+- **All tool styling**: Tailwind utility classes in JSX — no `<style>` blocks, no `@apply`
+- **Print styles**: Minimal `@media print` blocks in `.astro` pages where needed
+- **Conditional classes**: `.filter(Boolean).join(" ")` pattern for dynamic class lists
+- **Dynamic values**: `style={{}}` only for runtime-computed values (percentages, Chart.js colors)
 
 ### TypeScript
 

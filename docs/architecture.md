@@ -381,28 +381,27 @@ Auto-save uses a 400ms debounce on state changes.
 
 ## CSS Theming
 
-Theme tokens are defined in `src/styles/custom.css` (Starlight global theme) and `src/layouts/ToolLayout.astro` (`:root` tokens for tool pages). All tools inherit these custom properties:
+All tool pages use **Tailwind CSS v4** utility classes. Design tokens are defined in `src/styles/tailwind.css` via the `@theme` block — this is the single source of truth for colors, spacing, radii, fonts, and animations.
 
-```css
-var(--bg)                /* Page background */
-var(--surface)           /* Card / panel backgrounds */
-var(--text)              /* Primary text color */
-var(--text-dim)          /* Secondary / muted text */
-var(--text-muted)        /* Tertiary text */
-var(--accent)            /* Gold accent color */
-var(--border)            /* Border color */
-var(--success)           /* Green status */
-var(--success-bg)        /* Green background */
-var(--warning)           /* Orange status */
-var(--warning-bg)        /* Orange background */
-var(--space-sm)          /* Spacing: small */
-var(--space-md)          /* Spacing: medium */
-var(--space-lg)          /* Spacing: large */
-var(--space-xl)          /* Spacing: extra large */
-var(--radius)            /* Border radius */
-```
+### Token Architecture
 
-All tools use a dark theme with gold accents. Cards use `var(--surface)` backgrounds with `var(--border)` borders and `var(--radius)` rounding.
+| Layer | File | Purpose |
+|-------|------|---------|
+| Design tokens | `src/styles/tailwind.css` `@theme` | Colors, spacing, radii, fonts, animations |
+| Reusable patterns | `src/styles/tailwind.css` `@layer components` | `.panel`, `.btn`, `.btn-primary`, `.btn-accent`, etc. |
+| Starlight theme | `src/styles/custom.css` | WH40K dark/gold theme for docs pages |
+| Print styles | Individual `.astro` files | `@media print` blocks for paper output |
+
+### Styling Conventions
+
+- **Tailwind utilities on every element** — no hand-written CSS in `<style>` blocks
+- **`class` attribute** (not `className`) in Preact JSX
+- **Conditional classes**: `.filter(Boolean).join(" ")` pattern
+- **Dynamic values only** via `style={{}}` (runtime percentages, Chart.js colors, canvas)
+- **No `@apply`** — utilities applied directly in JSX
+- **Color lookup maps**: Typed `Record<string, string>` for badge/status colors
+
+All tools use a dark theme with gold accents. Cards use `bg-surface` backgrounds with `border-border` borders and `rounded-md` rounding.
 
 ---
 

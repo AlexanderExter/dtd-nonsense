@@ -788,79 +788,9 @@ This is the **highest-value Preact migration** — the current imperative `rende
 
 ## Phase 6: CSS Token Migration
 
-**Goal:** Map existing CSS custom properties into Tailwind's `@theme` system for utility class access.
+**Status:** ✅ Complete — Implemented via the [Tailwind v4 migration plan](tailwind-v4-migration-plan.md).
 
-### Timeline
-
-This phase can run **in parallel** with tool migrations (Phases 2–5). Start after Phase 0 is complete. Each tool migration can incrementally adopt Tailwind utilities.
-
-### Approach
-
-**Direction:** Tailwind `@theme` defines literal values → ToolLayout bridges them to `var(--name)` for backward compatibility.
-
-**Why this direction:** Tailwind v4's `@theme` likely requires literal values (not `var()` references). The ToolLayout `:root` block becomes the consumer, not the source.
-
-Update `src/styles/tailwind.css`:
-
-```css
-@layer base, starlight, theme, components, utilities;
-
-@import "@astrojs/starlight-tailwind";
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-
-@theme {
-    --color-bg: #0d0d0f;
-    --color-surface: #16161a;
-    --color-surface-raised: #1e1e24;
-    --color-surface-alt: #1e1e24;
-    --color-border: #2a2a32;
-    --color-border-light: #3a3a44;
-    --color-text-primary: #e8e6e3;
-    --color-text-muted: #94929d;
-    --color-text-dim: #6c6a75;
-    --color-accent: #d4a84b;
-    --color-accent-hover: #e6bc5f;
-    --color-accent-dim: #8b7033;
-    --color-gold: #d4a84b;
-    --color-success: #4ade80;
-    --color-warning: #fbbf24;
-    --color-error: #f87171;
-    --color-info: #60a5fa;
-
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
-
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-}
-```
-
-### Bridge Variables
-
-Update `ToolLayout.astro` `:root` to reference Tailwind-generated custom properties:
-
-```css
-:root {
-    --bg: var(--color-bg);
-    --surface: var(--color-surface);
-    --surface-raised: var(--color-surface-raised);
-    /* ... etc ... */
-}
-```
-
-This lets existing CSS files (`builder.css`, `sheet.css`) continue using `var(--bg)` while new Preact components can use Tailwind utilities like `bg-surface` or `text-accent`.
-
-### Incremental Migration Strategy
-
-1. **New Preact components:** Use Tailwind utilities from the start
-2. **Existing CSS files:** Keep using `var()` custom properties — migrate to Tailwind utilities opportunistically during tool migration (Phases 2–5)
-3. **After all tools are migrated:** Delete `builder.css` and `sheet.css` if all their styles have been replaced by Tailwind utilities or component-level styles
-4. **ToolLayout.astro bridge vars:** Keep indefinitely as a safety net, or remove after confirming no CSS file references the old var names
+All ~5,569 lines of hand-written CSS across 10 tool pages and ~97 Preact components have been converted to Tailwind v4 utility classes. The `@theme` block in `src/styles/tailwind.css` is the single source of truth for design tokens. Bridge variables have been removed from `ToolLayout.astro`. See `docs/tailwind-v4-migration-plan.md` for the full completion log.
 
 ---
 

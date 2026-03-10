@@ -1,8 +1,50 @@
 # Tailwind CSS v4 Full Adoption Plan
 
-**Status:** Planning
+**Status:** ✅ Complete
 **Created:** 2026-03-10
+**Completed:** 2026-03-11
 **Scope:** Migrate all tool pages and ~97 Preact components from hand-written CSS to Tailwind v4 utilities
+
+---
+
+## Migration Summary
+
+All 10 tool pages and ~97 Preact components have been fully converted from hand-written CSS (~5,569 lines) to Tailwind v4 utility classes. The migration was completed in 6 phases across 6 commits on the `preact-tailwind` branch.
+
+### Phase Completion Log
+
+| Phase | Commit | Scope | CSS Removed |
+|-------|--------|-------|-------------|
+| 0–2 | `69337a6` | Tokens, @layer components, ToolLayout, Dice Roller | ~411 lines |
+| 3 | `646183c` | Dashboard, Success Curves, Quick Reference, Defense Graph | ~769 lines |
+| 4 | `b7b38f7` | NPC Generator, Combat Tracker | ~1,386 lines |
+| 5 | `3f14f9f` | Character Builder, Ship Builder, Character Sheet | ~3,153 lines |
+| 6 | `542de4c` | Bridge var removal, Dashboard card conversion | ~60 lines |
+
+### What Remains as CSS
+
+Only essential CSS that **cannot** be expressed as Tailwind utilities:
+
+| File | Lines | Content |
+|------|-------|---------|
+| `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (.panel, .btn family) |
+| `src/layouts/ToolLayout.astro` | 5 | `box-sizing: border-box` reset only |
+| `quick-reference.astro` | 6 | Print-only `@media print` |
+| `defense-graph.astro` | 4 | Print-only `@media print` |
+| `npc-generator.astro` | 6 | Print-only `@media print` |
+| `ship-builder.astro` | 5 | Print-only `@media print` |
+| `character-sheet.astro` | 12 | Print-only `@media print` + `tab-panel::before` content |
+
+### Conventions Established
+
+- **`class` not `className`** — Preact convention
+- **No `@apply`** — Utility classes applied directly in JSX
+- **`.filter(Boolean).join(" ")`** — Standard pattern for conditional classes
+- **`style={{}}`** — Only for dynamic runtime values (percentages, Chart.js colors, canvas)
+- **`.panel` / `.btn` family** — Kept in `@layer components` for high-reuse patterns
+- **`max-[Npx]:`** — Custom responsive breakpoints via arbitrary values
+- **`w-full!` / `h-full!`** — Tailwind v4 `!important` syntax (replaces `!w-full`)
+- **Lookup maps** — Color/badge class mappings use typed `Record<string, string>` constants
 
 ---
 

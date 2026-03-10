@@ -187,28 +187,40 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ## CSS Conventions
 
-### File Organization
+### Tailwind v4 Utility-First
 
-- **Large tools** (character-sheet, character-builder) use separate `.css` files in `src/styles/` imported via `<style is:global>@import`
-- **Small tools** use inline `<style>` blocks in the `.astro` file (scoped or `is:global` as needed)
-- **ToolLayout.astro** declares `:root` CSS custom properties for the standalone HTML shell
-- **Starlight theme** lives in `src/styles/custom.css`
+All tool pages use **Tailwind CSS v4** utility classes directly in JSX. No hand-written `<style>` blocks.
 
-### Custom Properties
+- **Design tokens**: `src/styles/tailwind.css` `@theme` block — colors, spacing, radii, fonts, animations
+- **Reusable patterns**: `src/styles/tailwind.css` `@layer components` — `.panel`, `.btn` family
+- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold for docs pages
+- **Print styles**: Minimal `@media print` blocks in individual `.astro` files where needed
 
-Use CSS custom properties defined in `ToolLayout.astro` and `src/styles/custom.css`:
+### Class Patterns
 
-```css
-var(--bg)                /* Page background */
-var(--surface)           /* Card / panel backgrounds */
-var(--text)              /* Primary text */
-var(--text-dim)          /* Secondary text */
-var(--text-muted)        /* Tertiary text */
-var(--accent)            /* Gold accent */
-var(--border)            /* Border color */
-var(--space-sm/md/lg/xl) /* Spacing scale */
-var(--radius)            /* Border radius */
+```tsx
+// Static classes
+<div class="bg-surface border border-border rounded-md p-lg">
+
+// Conditional classes
+<div class={[
+  "flex items-center p-sm rounded-sm",
+  isActive && "border-accent bg-accent-bg",
+  isDisabled && "opacity-50 cursor-not-allowed",
+].filter(Boolean).join(" ")}>
+
+// Dynamic runtime values (inline style — only for values computed at runtime)
+style={{ width: `${percent}%` }}
 ```
+
+### Rules
+
+- Use `class` (not `className`) — Preact convention
+- No `@apply` — defeats utility-first purpose
+- No `<style>` blocks in components — all styling via Tailwind utilities
+- `style={{}}` only for dynamic runtime values (percentages, Chart.js colors, canvas)
+- Color/badge mappings use typed `Record<string, string>` lookup constants
+- Responsive: `max-[Npx]:` for custom breakpoints, `max-md:` / `max-sm:` for standard
 
 **Hidden attribute caveat:** Never set an explicit `display` value (e.g., `display: flex`) on an element that uses the HTML `hidden` attribute for visibility toggling. CSS `display` overrides `hidden`'s implicit `display: none`, making the element permanently visible. Instead, use `display: none` as the default and toggle with a class (e.g., `.open { display: flex }`).
 
