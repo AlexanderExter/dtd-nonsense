@@ -5,10 +5,9 @@ order: 19
 type: "appendix"
 ---
 
-# Appendix B: Codes Of Honor
+## Appendix B: Codes Of This is all shamelessly cribbed from the Palladium and Rifts RPGs because
 
-This is all shamelessly cribbed from the
-Palladium and Rifts RPGs because they're absolutely better than the most common crap
+they're absolutely better than the most common crap out there.
 out there.
 
 Principled:
