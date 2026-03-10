@@ -54,74 +54,114 @@ export function Sidebar() {
 	};
 
 	return (
-		<aside class="builder-sidebar">
+		<aside class="sticky top-md max-h-[calc(100vh-2*var(--space-md))] overflow-y-auto bg-surface border border-border rounded-md p-md flex flex-col gap-md max-[900px]:static max-[900px]:max-h-none">
 			{/* Character identity */}
-			<div class="sidebar-identity">
-				<h2>{char.name || "New Character"}</h2>
-				{char.race && <span class="badge badge-race">{char.race}</span>}
-				{char.exaltation && <span class="badge badge-exalt">{char.exaltation}</span>}
+			<div class="text-center pb-md border-b border-border">
+				<h2 class="text-[1.15rem] font-bold text-accent mb-xs break-words">{char.name || "New Character"}</h2>
+				<div class="flex gap-xs justify-center flex-wrap">
+					{char.race && (
+						<span class="inline-block px-2 py-0.5 bg-surface-raised border border-accent-dim rounded-sm text-xs text-accent">
+							{char.race}
+						</span>
+					)}
+					{char.exaltation && (
+						<span class="inline-block px-2 py-0.5 bg-surface-raised border border-accent-dim rounded-sm text-xs text-accent">
+							{char.exaltation}
+						</span>
+					)}
+				</div>
 			</div>
 
 			{/* Derived Stats */}
-			<div class="sidebar-section">
-				<h3>Derived Stats</h3>
-				<div class="stat-grid">
-					<span>
-						SD: <strong>{sd}</strong>
-					</span>
-					<span>
-						HP: <strong>{hp}</strong>
-					</span>
-					<span>
-						MD: <strong>{md}</strong>
-					</span>
-					<span>
-						Resolve: <strong>{resolve}</strong>
-					</span>
-					<span>
-						Speed: <strong>{speed}</strong>
-					</span>
-					<span>
-						Resilience: <strong>{resilience}</strong>
-					</span>
-					<span>
-						Initiative: <strong>{initiative}</strong>
-					</span>
+			<div>
+				<h3 class="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">Derived Stats</h3>
+				<div class="grid grid-cols-2 gap-x-sm gap-y-0.5 text-[0.85rem]">
+					<span class="text-text-muted">SD</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{sd}</span>
+					<span class="text-text-muted">HP</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{hp}</span>
+					<span class="text-text-muted">MD</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{md}</span>
+					<span class="text-text-muted">Resolve</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{resolve}</span>
+					<span class="text-text-muted">Speed</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{speed}</span>
+					<span class="text-text-muted">Resilience</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{resilience}</span>
+					<span class="text-text-muted">Initiative</span>
+					<span class="text-text-primary font-semibold tabular-nums text-right">{initiative}</span>
 				</div>
 			</div>
 
 			{/* XP Budget */}
-			<div class="sidebar-section">
-				<h3>XP Budget</h3>
-				<div class={`xp-remaining${xp.remaining < 0 ? " over-budget" : ""}`}>
-					<strong>{xp.remaining}</strong> / {TOTAL_XP} remaining
+			<div>
+				<h3 class="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">XP Budget</h3>
+				<div
+					class={["text-[0.8rem] text-text-muted text-center mb-sm", xp.remaining < 0 && "text-error"]
+						.filter(Boolean)
+						.join(" ")}
+				>
+					<strong class={xp.remaining < 0 ? "text-error" : "text-accent"}>{xp.remaining}</strong> / {TOTAL_XP}{" "}
+					remaining
 				</div>
-				<div class="xp-breakdown">
-					{xp.breakdown.classes > 0 && <span>Classes: {xp.breakdown.classes}</span>}
-					{xp.breakdown.feats > 0 && <span>Feats: {xp.breakdown.feats}</span>}
-					{xp.breakdown.assets > 0 && <span>Assets: {xp.breakdown.assets}</span>}
-					{xp.breakdown.hindrances < 0 && <span>Hindrances: {xp.breakdown.hindrances}</span>}
-					{xp.breakdown.backgrounds > 0 && <span>Backgrounds: {xp.breakdown.backgrounds}</span>}
+				<div class="text-xs text-text-dim">
+					{xp.breakdown.classes > 0 && (
+						<div class="flex justify-between py-[1px]">
+							<span>Classes</span>
+							<span>{xp.breakdown.classes}</span>
+						</div>
+					)}
+					{xp.breakdown.feats > 0 && (
+						<div class="flex justify-between py-[1px]">
+							<span>Feats</span>
+							<span>{xp.breakdown.feats}</span>
+						</div>
+					)}
+					{xp.breakdown.assets > 0 && (
+						<div class="flex justify-between py-[1px]">
+							<span>Assets</span>
+							<span>{xp.breakdown.assets}</span>
+						</div>
+					)}
+					{xp.breakdown.hindrances < 0 && (
+						<div class="flex justify-between py-[1px]">
+							<span>Hindrances</span>
+							<span>{xp.breakdown.hindrances}</span>
+						</div>
+					)}
+					{xp.breakdown.backgrounds > 0 && (
+						<div class="flex justify-between py-[1px]">
+							<span>Backgrounds</span>
+							<span>{xp.breakdown.backgrounds}</span>
+						</div>
+					)}
 				</div>
 			</div>
 
 			{/* Step Checklist */}
-			<div class="sidebar-section">
-				<h3>Steps</h3>
-				<ol class="step-checklist">
+			<div>
+				<h3 class="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">Steps</h3>
+				<ol class="list-none p-0 m-0 text-[0.8rem]">
 					{STEP_LABELS.map((label, i) => {
 						const isDone = meta.stepsCompleted[i];
 						const isActive = currentStep.value === i + 1;
 						return (
-							<li key={i} class={`${isDone ? "done" : ""}${isActive ? " active" : ""}`}>
+							<li key={i}>
 								<button
 									type="button"
-									class="checklist-btn"
+									class={[
+										"flex items-center gap-xs py-[3px] cursor-pointer bg-transparent border-none p-0 text-left w-full text-[0.8rem] hover:text-text-primary",
+										isActive
+											? "text-accent font-semibold"
+											: isDone
+												? "text-success"
+												: "text-text-dim",
+									].join(" ")}
 									onClick={() => {
 										currentStep.value = i + 1;
 									}}
 								>
-									<span class="check-icon">{isDone ? "✓" : i + 1}</span>
+									<span class="w-[14px] text-center shrink-0">{isDone ? "✓" : i + 1}</span>
 									{label}
 								</button>
 							</li>
@@ -131,7 +171,7 @@ export function Sidebar() {
 			</div>
 
 			{/* Actions */}
-			<div class="sidebar-actions">
+			<div class="flex flex-col gap-xs pt-md border-t border-border mt-auto">
 				<button type="button" class="btn btn-primary" onClick={handleOpenInSheet}>
 					Open in Sheet
 				</button>

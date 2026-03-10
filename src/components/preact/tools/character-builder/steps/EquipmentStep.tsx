@@ -29,7 +29,10 @@ export function EquipmentStep() {
 			m.equipmentChoices[itemIndex] = choice;
 		});
 		if (preview) {
-			resolveEquipment(preview, { ...meta.equipmentChoices, [itemIndex]: choice });
+			resolveEquipment(preview, {
+				...meta.equipmentChoices,
+				[itemIndex]: choice,
+			});
 		}
 	};
 
@@ -46,8 +49,8 @@ export function EquipmentStep() {
 	};
 
 	return (
-		<div class="step-equipment">
-			<div class="selection-grid">
+		<div>
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 				{packages.map((pkg: any) => {
 					const id = pkg.id || pkg.name;
 					const previewItems = (pkg.items || [])
@@ -75,9 +78,9 @@ export function EquipmentStep() {
 					<h3>{preview.name}</h3>
 					{preview.description && <p>{preview.description}</p>}
 
-					<ul class="equipment-list">
+					<ul class="list-none p-0 m-0">
 						{(preview.items || []).map((item: any, idx: number) => (
-							<li key={idx}>
+							<li key={idx} class="py-xs border-b border-border text-[0.9rem] last:border-b-0">
 								{item.choice && item.options?.length > 0 ? (
 									<span>
 										<label>
@@ -103,7 +106,7 @@ export function EquipmentStep() {
 						))}
 					</ul>
 
-					<div class="detail-actions">
+					<div class="mt-md flex gap-sm">
 						<button type="button" class="btn btn-primary" onClick={() => selectPackage(preview)}>
 							{meta.equipmentPkg === (preview.id || preview.name) ? "Selected ✓" : "Select Package"}
 						</button>

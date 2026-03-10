@@ -68,11 +68,11 @@ export function StatsTab() {
 	}
 
 	return (
-		<section class="tab-panel panel-stats">
+		<section class="tab-panel">
 			{/* ---------- Derived Stats ---------- */}
-			<div class="card">
-				<h3>Derived Stats</h3>
-				<div class="derived-grid">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Derived Stats</h3>
+				<div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-md mb-sm">
 					<DerivedStatEntry
 						label="Static Defense"
 						formulaText={isHalfling ? "10 + Dex×6 − Size×2" : "10 + (Dex+Wis)×3 − Size×2"}
@@ -137,29 +137,30 @@ export function StatsTab() {
 						onModChange={(v) => handleModChange("initiative", v)}
 					/>
 				</div>
-				<div class="derived-extra">
+				<div class="text-[0.85rem] text-text-muted mt-sm">
 					<span>Run Speed: {stats.runSpeed}m</span>
 				</div>
 			</div>
 
 			{/* ---------- Characteristics ---------- */}
-			<div class="card">
-				<h3>Characteristics</h3>
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Characteristics</h3>
 				<CharGrid />
 			</div>
 
 			{/* ---------- Skills ---------- */}
-			<div class="card">
-				<h3>Skills</h3>
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Skills</h3>
 				<SkillGrid />
 			</div>
 
 			{/* ---------- Pool Calculator ---------- */}
-			<div class="card">
-				<h3>Pool Calculator</h3>
-				<div class="pool-calc">
-					<div class="pool-selectors">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Pool Calculator</h3>
+				<div>
+					<div class="flex items-center gap-xs flex-wrap">
 						<select
+							class="flex-1 min-w-[120px] text-[0.85rem]"
 							value={poolChar.value}
 							onChange={(e) => {
 								poolChar.value = (e.target as HTMLSelectElement).value;
@@ -172,8 +173,9 @@ export function StatsTab() {
 								</option>
 							))}
 						</select>
-						<span>+</span>
+						<span class="text-text-muted font-semibold text-[0.9rem]">+</span>
 						<select
+							class="flex-1 min-w-[120px] text-[0.85rem]"
 							value={poolSkill.value}
 							onChange={(e) => {
 								poolSkill.value = (e.target as HTMLSelectElement).value;
@@ -187,9 +189,9 @@ export function StatsTab() {
 							))}
 						</select>
 					</div>
-					<div class="pool-result">
+					<div class="text-[1.1rem] font-bold text-accent mt-xs px-sm py-xs bg-bg rounded-sm text-center">
 						<strong>Pool: {poolNotation}</strong>
-						<label class="pool-spec">
+						<label class="flex items-center gap-1 text-[0.78rem] whitespace-nowrap cursor-pointer mt-xs justify-center">
 							<input
 								type="checkbox"
 								checked={poolSpec.value}
@@ -200,9 +202,10 @@ export function StatsTab() {
 							Specialization (reroll 1s)
 						</label>
 					</div>
-					<div class="pool-save">
+					<div class="flex gap-xs items-center mt-sm">
 						<input
 							type="text"
+							class="w-[120px] text-[0.82rem] px-sm py-0.5"
 							placeholder="Pool label"
 							value={poolLabel.value}
 							onInput={(e) => {
@@ -215,13 +218,21 @@ export function StatsTab() {
 					</div>
 				</div>
 				{(char.savedPools || []).length > 0 && (
-					<div class="saved-pools">
-						<h4>Saved Pools</h4>
-						<ul>
+					<div class="mt-sm flex flex-col gap-1">
+						<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">Saved Pools</h4>
+						<ul class="list-none p-0 m-0">
 							{(char.savedPools || []).map((p, idx) => (
-								<li key={idx}>
-									<strong>{p.label}:</strong> {p.notation || p.pool || p.formula}
-									<button type="button" class="btn-remove" onClick={() => handleRemovePool(idx)}>
+								<li
+									key={idx}
+									class="flex items-center gap-sm py-1 px-sm bg-bg border border-border rounded-sm text-[0.85rem] mb-1"
+								>
+									<strong class="flex-1 text-text-primary">{p.label}:</strong>{" "}
+									<span class="font-bold text-accent">{p.notation || p.pool || p.formula}</span>
+									<button
+										type="button"
+										class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										onClick={() => handleRemovePool(idx)}
+									>
 										×
 									</button>
 								</li>

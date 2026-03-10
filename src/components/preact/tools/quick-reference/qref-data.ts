@@ -207,15 +207,30 @@ export const QREF_DATA = {
 			subtypes: ["Misc"],
 			desc: "Draw/stow weapon or item. Also: apply bandage, coat blade, etc. Provokes.",
 		},
-		{ name: "Reload", type: "V", subtypes: ["Misc"], desc: "Reload per weapon's listed reload time. Provokes." },
+		{
+			name: "Reload",
+			type: "V",
+			subtypes: ["Misc"],
+			desc: "Reload per weapon's listed reload time. Provokes.",
+		},
 		{
 			name: "Run",
 			type: "F",
 			subtypes: ["Movement"],
 			desc: "Move 6× Speed. Ranged attacks at -2k0 vs you; melee attacks at +2k0 vs you.",
 		},
-		{ name: "Shift", type: "H", subtypes: ["Movement"], desc: "Move Dexterity in meters. Does not provoke." },
-		{ name: "Stand", type: "H", subtypes: ["Movement"], desc: "Stand up from prone. Provokes." },
+		{
+			name: "Shift",
+			type: "H",
+			subtypes: ["Movement"],
+			desc: "Move Dexterity in meters. Does not provoke.",
+		},
+		{
+			name: "Stand",
+			type: "H",
+			subtypes: ["Movement"],
+			desc: "Stand up from prone. Provokes.",
+		},
 		{
 			name: "Standard Attack",
 			type: "H",
@@ -234,7 +249,12 @@ export const QREF_DATA = {
 			subtypes: ["Movement", "Defense"],
 			desc: "Move up to 2× Speed between cover. Retain old cover's benefits during move.",
 		},
-		{ name: "Use a Skill", type: "V", subtypes: ["Misc"], desc: "Use any skill. Time/Test varies by skill." },
+		{
+			name: "Use a Skill",
+			type: "V",
+			subtypes: ["Misc"],
+			desc: "Use any skill. Time/Test varies by skill.",
+		},
 		{
 			name: "Withdraw",
 			type: "F",
@@ -268,8 +288,16 @@ export const QREF_DATA = {
 			effect: "Limb unusable. Arm: can't attack with it. Leg: fall prone, crawl 1m per Half Action.",
 			duration: "Until healed",
 		},
-		{ name: "Dazzled", effect: "-1k0 to all Tests. -2k0 total to sight-based Tests.", duration: "Varies" },
-		{ name: "Deafened", effect: "-2k0 to all Tests. Auto-fail hearing-based Tests.", duration: "Until cured" },
+		{
+			name: "Dazzled",
+			effect: "-1k0 to all Tests. -2k0 total to sight-based Tests.",
+			duration: "Varies",
+		},
+		{
+			name: "Deafened",
+			effect: "-2k0 to all Tests. Auto-fail hearing-based Tests.",
+			duration: "Until cured",
+		},
 		{
 			name: "Fatigue",
 			effect: "-1k0 to all Tests per level (applied once). Levels > Constitution = unconscious for 10 − Con hours.",
@@ -344,15 +372,43 @@ export const QREF_DATA = {
 		{ tn: 40, diff: "Never to be Done Again" },
 	] satisfies QRefTN[],
 	magicSchools: [
-		{ school: "Abjuration", char: "Willpower", theme: "Protection, barriers, wards" },
-		{ school: "Conjuration", char: "Willpower", theme: "Teleportation, summoning" },
-		{ school: "Divination", char: "Wisdom", theme: "Fate, prophecy, detection" },
-		{ school: "Enchantment", char: "Charisma", theme: "Mind control, influence" },
+		{
+			school: "Abjuration",
+			char: "Willpower",
+			theme: "Protection, barriers, wards",
+		},
+		{
+			school: "Conjuration",
+			char: "Willpower",
+			theme: "Teleportation, summoning",
+		},
+		{
+			school: "Divination",
+			char: "Wisdom",
+			theme: "Fate, prophecy, detection",
+		},
+		{
+			school: "Enchantment",
+			char: "Charisma",
+			theme: "Mind control, influence",
+		},
 		{ school: "Evocation", char: "Charisma", theme: "Energy damage, blasts" },
 		{ school: "Healing", char: "Wisdom", theme: "Buffs, cures, enhancement" },
-		{ school: "Illusion", char: "Intelligence", theme: "Deception, sensory tricks" },
-		{ school: "Necromancy", char: "Intelligence", theme: "Death, undeath, life drain" },
-		{ school: "Transmutation", char: "Wisdom", theme: "Physical transformation" },
+		{
+			school: "Illusion",
+			char: "Intelligence",
+			theme: "Deception, sensory tricks",
+		},
+		{
+			school: "Necromancy",
+			char: "Intelligence",
+			theme: "Death, undeath, life drain",
+		},
+		{
+			school: "Transmutation",
+			char: "Wisdom",
+			theme: "Physical transformation",
+		},
 	] satisfies QRefMagicSchool[],
 	swordSchools: [
 		{
@@ -464,23 +520,50 @@ export const QREF_DATA = {
 		},
 	] satisfies QRefSchool[],
 	weaponProperties: [
-		{ name: "Accurate", desc: "+1k0 extra when Aiming. Single shot: +1k1 damage per 2 Raises on Aimed attack." },
-		{ name: "Armored", desc: "+2 AP to wielding arm and body. Multiple shields don't stack." },
+		{
+			name: "Accurate",
+			desc: "+1k0 extra when Aiming. Single shot: +1k1 damage per 2 Raises on Aimed attack.",
+		},
+		{
+			name: "Armored",
+			desc: "+2 AP to wielding arm and body. Multiple shields don't stack.",
+		},
 		{ name: "Balanced", desc: "+1k0 to Parry Tests." },
-		{ name: "Beam", desc: "Fire continuous beam. Reuse successful attack result on consecutive rounds." },
-		{ name: "Blast (X)", desc: "Everyone within X meters of impact is also hit. Roll location & damage for each." },
-		{ name: "Brawling", desc: "Damage added to unarmed attacks. Uses Brawl skill." },
-		{ name: "Compact", desc: "+10 TN to find when hidden. Basic weapons: half penalty one-handed." },
-		{ name: "Defensive", desc: "+2k0 to Parry, -1k0 to Attack. Unproficient: -1k0 to all attacks." },
+		{
+			name: "Beam",
+			desc: "Fire continuous beam. Reuse successful attack result on consecutive rounds.",
+		},
+		{
+			name: "Blast (X)",
+			desc: "Everyone within X meters of impact is also hit. Roll location & damage for each.",
+		},
+		{
+			name: "Brawling",
+			desc: "Damage added to unarmed attacks. Uses Brawl skill.",
+		},
+		{
+			name: "Compact",
+			desc: "+10 TN to find when hidden. Basic weapons: half penalty one-handed.",
+		},
+		{
+			name: "Defensive",
+			desc: "+2k0 to Parry, -1k0 to Attack. Unproficient: -1k0 to all attacks.",
+		},
 		{
 			name: "Flame",
 			desc: "30° cone, no attack roll. Targets Dex Test (TN 5 × Ballistics) or take damage. Jams on 9s.",
 		},
 		{ name: "Flexible", desc: "Cannot be parried." },
-		{ name: "Homing", desc: "Counts as Accurate + Full Aim. Ignores long range penalty. ECM/stealth defeats it." },
+		{
+			name: "Homing",
+			desc: "Counts as Accurate + Full Aim. Ignores long range penalty. ECM/stealth defeats it.",
+		},
 		{ name: "Inaccurate", desc: "No bonus from Aim action." },
 		{ name: "Incendiary", desc: "Targets damaged are set On Fire." },
-		{ name: "Indirect", desc: "Fires in an arc over obstacles. No aim/accuracy bonuses when arcing." },
+		{
+			name: "Indirect",
+			desc: "Fires in an arc over obstacles. No aim/accuracy bonuses when arcing.",
+		},
 		{
 			name: "Overheats",
 			desc: "On 9s in damage roll: take weapon's damage to firing arm. Drop weapon (Free) to avoid.",
@@ -491,32 +574,71 @@ export const QREF_DATA = {
 		},
 		{ name: "Proven (X)", desc: "Reroll damage dice showing X or less." },
 		{ name: "Razor Sharp", desc: "2+ Raises: double weapon's Penetration." },
-		{ name: "Reach", desc: "Engaging a target doesn't make you engaged unless they close distance." },
-		{ name: "Recharge", desc: "Must spend next Round charging. Fire every other Round only." },
+		{
+			name: "Reach",
+			desc: "Engaging a target doesn't make you engaged unless they close distance.",
+		},
+		{
+			name: "Recharge",
+			desc: "Must spend next Round charging. Fire every other Round only.",
+		},
 		{ name: "Reliable", desc: "Jams become misses instead." },
-		{ name: "Scatter", desc: "Short range: +1k0 damage per Raise. Long/Extreme: AP doubled against it." },
-		{ name: "Shocking", desc: "Wounded target: Constitution TN 15 or Stunned 1 Round." },
+		{
+			name: "Scatter",
+			desc: "Short range: +1k0 damage per Raise. Long/Extreme: AP doubled against it.",
+		},
+		{
+			name: "Shocking",
+			desc: "Wounded target: Constitution TN 15 or Stunned 1 Round.",
+		},
 		{ name: "Smoke", desc: "Creates 3d10m smoke cloud lasting 3d10 Rounds." },
-		{ name: "Snare", desc: "Hit target: Dex Test (TN = attack roll) or Immobilized." },
-		{ name: "Storm", desc: "Full Auto: +2k0 per Raise instead of +1k0 (up to RoF)." },
-		{ name: "Tearing", desc: "Always deals at least 1 wound when dealing damage, ignoring Resilience." },
-		{ name: "Toxic", desc: "After damage: Constitution TN 15 or +1 wound to Gizzards." },
-		{ name: "Twin-Linked", desc: "Single shot: +1k0 to hit. 2+ Raises: +2k0 damage." },
+		{
+			name: "Snare",
+			desc: "Hit target: Dex Test (TN = attack roll) or Immobilized.",
+		},
+		{
+			name: "Storm",
+			desc: "Full Auto: +2k0 per Raise instead of +1k0 (up to RoF).",
+		},
+		{
+			name: "Tearing",
+			desc: "Always deals at least 1 wound when dealing damage, ignoring Resilience.",
+		},
+		{
+			name: "Toxic",
+			desc: "After damage: Constitution TN 15 or +1 wound to Gizzards.",
+		},
+		{
+			name: "Twin-Linked",
+			desc: "Single shot: +1k0 to hit. 2+ Raises: +2k0 damage.",
+		},
 		{ name: "Unbalanced", desc: "-1k0 to all Parry Tests." },
-		{ name: "Unreliable", desc: "Halve Ballistics (round down) for Jam checks." },
+		{
+			name: "Unreliable",
+			desc: "Halve Ballistics (round down) for Jam checks.",
+		},
 		{ name: "Unwieldy", desc: "Cannot be used to Parry." },
 	] satisfies QRefWeaponProperty[],
 	formulas: [
-		{ metric: "Static Defense", formula: "10 + (Dexterity + Wisdom) × 3 − (Size × 2)" },
+		{
+			metric: "Static Defense",
+			formula: "10 + (Dexterity + Wisdom) × 3 − (Size × 2)",
+		},
 		{ metric: "Hit Points", formula: "(Constitution + Willpower) × 2" },
 		{ metric: "Mental Defense", formula: "5 + (Composure × 5)" },
 		{ metric: "Resolve", formula: "Willpower + Composure" },
 		{ metric: "Speed", formula: "Strength + Dexterity" },
 		{ metric: "Resilience", formula: "Size (characters)" },
 		{ metric: "Initiative", formula: "1d10 + Dexterity + Composure" },
-		{ metric: "Skill Test", formula: "(Skill + Characteristic)k(Characteristic) vs TN" },
+		{
+			metric: "Skill Test",
+			formula: "(Skill + Characteristic)k(Characteristic) vs TN",
+		},
 		{ metric: "Attack Test", formula: "(Skill)k(Skill) + (Level)k0 vs SD" },
-		{ metric: "Vehicle SD", formula: "10 + Maneuver − (2 × Size) + (Speed × Momentum Tier)" },
+		{
+			metric: "Vehicle SD",
+			formula: "10 + Maneuver − (2 × Size) + (Speed × Momentum Tier)",
+		},
 	] satisfies QRefFormula[],
 	hitLocations: [
 		{ roll: "1", location: "Left Leg" },

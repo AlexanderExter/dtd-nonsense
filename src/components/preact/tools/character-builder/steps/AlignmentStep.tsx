@@ -34,11 +34,12 @@ export function AlignmentStep() {
 	};
 
 	return (
-		<div class="step-alignment">
-			<div class="filter-bar">
-				<label>
+		<div>
+			<div class="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
+				<label class="text-[0.85rem] text-text-dim m-0">
 					Pantheon:{" "}
 					<select
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						value={pantheonFilter.value}
 						onChange={(e) => {
 							pantheonFilter.value = (e.target as HTMLSelectElement).value;
@@ -54,7 +55,7 @@ export function AlignmentStep() {
 				</label>
 			</div>
 
-			<div class="selection-grid">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 				{filtered.map((al: any) => (
 					<SelectionCard
 						key={al.id || al.name}
@@ -97,7 +98,7 @@ export function AlignmentStep() {
 					)}
 
 					{preview.sins?.length > 0 && (
-						<div class="sins-chart">
+						<div>
 							<strong>Sins:</strong>
 							<table>
 								<thead>
@@ -122,7 +123,7 @@ export function AlignmentStep() {
 						<strong>Starting Devotion:</strong> 6
 					</p>
 
-					<div class="detail-actions">
+					<div class="mt-md flex gap-sm">
 						<button type="button" class="btn btn-primary" onClick={() => selectAlignment(preview)}>
 							{char.alignment === (preview.id || preview.name) ? "Selected ✓" : "Select"}
 						</button>

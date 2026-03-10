@@ -1,563 +1,611 @@
 {
-    "exaltations": [
-        {
-            "id": "mortal",
-            "name": "Mortal",
-            "powerStat": null,
-            "resourceStat": null,
-            "description": "Some choose not to take an Exaltation. A mortal character is fragile and short-lived compared to an exalt, but their Hero Points still show them to be something special.",
-            "staticPowers": [],
-            "tell": null,
-            "progression": [],
-            "source": "book1"
-        },
-        {
-            "id": "vampire",
-            "name": "Vampire",
-            "powerStat": {
-                "name": "Blood Potency",
-                "description": "How strongly the blood of Khaine resonates within the vampire."
-            },
-            "resourceStat": {
-                "name": "Vitae",
-                "formula": "5 × Blood Potency",
-                "recovery": "Feeding on blood"
-            },
-            "description": "Undead creatures that drink blood of the living, cursed by a plague from the blood of the dying Elven god Khaine.",
-            "staticPowers": [
-                {
-                    "name": "Old Money",
-                    "description": "Begin play with four additional dots to place into Backgrounds."
-                },
-                {
-                    "name": "Undead Resilience",
-                    "description": "No biological functions. Immune to Bleeding and most Toxins. Only critical damage to head, body, or gizzards from silver, Power, artifact weapons, magical or sunlight damage, or E/X damage to gizzards can kill. Other critical damage merely leaves them unconscious."
-                },
-                {
-                    "name": "Sunlight Weakness",
-                    "description": "Automatically lose 1 HP per round in sunlight. Critical damage uses E chart and goes to body. Killed by sunlight = reduced to dust, cannot be returned. Thick cloak/hat/parasol provides protection."
-                },
-                {
-                    "name": "Blood Dependency",
-                    "description": "Must spend 1 Vitae daily to remain active or lapse into coma. Gain Bite weapon (1k1 R; Melee; Brawling). Can drain 1 resource point from bitten victim (causes fatigue level)."
-                }
-            ],
-            "tell": "Grows more pale, fangs become more prominent",
-            "progression": [
-                { "dots": 1, "name": "Auspex", "description": "Can see in the dark and +1k0 to all perception tests." },
-                { "dots": 2, "name": "Dread", "description": "Spend 1 Vitae to gain Fear 1 until end of scene." },
-                { "dots": 3, "name": "Celerity", "description": "Spend 1 Vitae to gain an extra half action." },
-                { "dots": 4, "name": "Potence", "description": "Spend 1 Vitae to gain +3 to Strength until end of scene." },
-                {
-                    "dots": 5,
-                    "name": "Dominate",
-                    "description": "May use Dominate spell, using Blood Potency + Charisma instead of Magic Test."
-                }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "werewolf",
-            "name": "Werewolf",
-            "powerStat": {
-                "name": "Feral Heart",
-                "description": "How close the character is to the ancient and wild power within them."
-            },
-            "resourceStat": {
-                "name": "Rage",
-                "formula": "Willpower + Level + (2 × Feral Heart)",
-                "recovery": "Regain Feral Heart + Level at beginning of combat and once each night when moon rises"
-            },
-            "description": "Blessed by Luna with the ability to change shape. Typically outsiders and rebels fighting for the rights of the average person.",
-            "staticPowers": [
-                {
-                    "name": "Shifting",
-                    "description": "As a half action, spend 1 Rage to change into Wolf-Form or War-Form. Changing back takes another half action. Armor/equipment does not change with you."
-                },
-                {
-                    "name": "Wolf-Form",
-                    "description": "Cannot speak or manipulate objects. +1k1 perception (scent/hearing), +2 Dexterity, -1 Size, Bite weapon (1k1 R), DarkSight, Quadruped."
-                },
-                {
-                    "name": "War-Form",
-                    "description": "Gain Fearless (TN 25), Stuff Of Nightmares, DarkSight, +2 Str/Con, +2 Size, Claw and Bite (2k1 R, magical). Lasts Constitution + (2 × Feral Heart) rounds. Must remove armor first or it breaks, dealing damage equal to AP."
-                },
-                {
-                    "name": "Lycan Resilience",
-                    "description": "Natural armor (doesn't stack with worn): Humanoid = Feral Heart, Wolf = Con + FH, War = Wil + Con + FH. Bypassed by spells, artifacts, and silver."
-                },
-                {
-                    "name": "Fast Healing",
-                    "description": "May spend Rage as free action to heal, even unconscious. In Wolf/War form: Regeneration (1, not vs silver & magic). Critical damage regenerates 1/hour."
-                },
-                {
-                    "name": "Silver Bane",
-                    "description": "Lycan Resilience and Fast Healing don't work on silver damage. Take +1 wound from any silver damage."
-                }
-            ],
-            "tell": "Develops patches of fur, grows wolflike ears and tail. Tattoos glow with silver light",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Spirit Sight",
-                    "description": "May see into spirit world. Feral Heart + Wisdom test to activate. Gain Speak Language (Spirits)."
-                },
-                {
-                    "dots": 2,
-                    "name": "Temper Tantrum",
-                    "description": "Gain 1 Rage when first wounded in combat, taking critical wound, or losing Resolve. Test Composure TN 15 or begin fighting if over max Rage."
-                },
-                {
-                    "dots": 3,
-                    "name": "Spirit Speech",
-                    "description": "Call and talk to spirits. FH + Fellowship test: TN 15 neutral, TN 30 to fight alongside. Full Action chat or hour-long séance. "
-                },
-                {
-                    "dots": 4,
-                    "name": "Sacred Hunt",
-                    "description": "6-hour ritual to hunt superlative animal. Complete ritual, then FH + Charisma vs 5 × animal's Level to gain that animal's form when Shifting."
-                },
-                {
-                    "dots": 5,
-                    "name": "Spirit Walk",
-                    "description": "FH + Composure test (often TN 20) to enter/exit Umbra through reflective surface. Anyone holding your hand may come along."
-                }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "atlantean",
-            "name": "Atlantean",
-            "powerStat": {
-                "name": "Gnosis",
-                "description": "Combination of awakening memories and the soul's growing power."
-            },
-            "resourceStat": {
-                "name": "Motes",
-                "formula": "Charisma + Intelligence + (2 × Gnosis)",
-                "recovery": "Unraveling paradox (1 hour meditation or free action roll)"
-            },
-            "description": "Reborn with souls of the lost Syrne race. They have universal magic like the Syrne practiced, but are cursed with Paradox.",
-            "staticPowers": [
-                {
-                    "name": "Magical Aptitude",
-                    "description": "Begin play with one free rank in any Magical School. May purchase ranks as if it appeared in any class progression. Roll twice for Psychic Phenomena and choose either or both effects."
-                },
-                {
-                    "name": "Prestidigitation",
-                    "description": "As a half action: move up to 1 lb, create harmless sensory effects, color/clean/soil items, light small fires, chill/warm/flavor 1 lb of material."
-                },
-                {
-                    "name": "Past Lives",
-                    "description": "Treat all skills as Basic. Begin with Speak Language (Syrneth)."
-                },
-                {
-                    "name": "Paradox",
-                    "description": "Spending a Mote gains 1 Paradox. Must Unravel paradox to regain motes: 1 hour meditation (safe) or free action once/round with Psychic Phenomena roll (fast). While you have Paradox, keeping a 9 on magic Tests forces immediate unraveling."
-                }
-            ],
-            "tell": "Begins glowing golden with Syrneth magic; an avatar of their past life appears around them",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Ancient Style",
-                    "description": "Choose any 3 skills. May go to 6 dots in those skills and gain bonus specialty (Syrneth) in each."
-                },
-                {
-                    "dots": 2,
-                    "name": "Empower Spell",
-                    "description": "Spend 1 Mote to treat level and Magic School rank as 3 higher for next spell."
-                },
-                {
-                    "dots": 3,
-                    "name": "Excellence",
-                    "description": "Spend 2 motes instead of Hero Point to reroll any skill with a specialization."
-                },
-                {
-                    "dots": 4,
-                    "name": "Maximize Spell",
-                    "description": "Before casting, spend motes. Each mote = one die counts as 10 (don't explode)."
-                },
-                { "dots": 5, "name": "Quicken Spell", "description": "Spend 1 mote to cast a spell as a free action once per turn." }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "paragon",
-            "name": "Paragon",
-            "powerStat": {
-                "name": "Excellence",
-                "description": "When a Paragon sets their mind to something, it can be very difficult to oppose them."
-            },
-            "resourceStat": {
-                "name": "Action Points",
-                "formula": "Level + Excellence",
-                "recovery": "Regained at beginning of every session"
-            },
-            "description": "Simply the best of their race. Born with supernatural level of talent and raw ability—literally unlimited potential.",
-            "staticPowers": [
-                {
-                    "name": "Destiny",
-                    "description": "Begin play with two additional Hero Points."
-                },
-                {
-                    "name": "Statuesque",
-                    "description": "Each race gives a choice of +1 to two Characteristics. You gain +1 to the Characteristic you did not choose."
-                },
-                {
-                    "name": "Flash",
-                    "description": "Never surprised, aware of every attack. Gain the Danger Sense feat."
-                },
-                {
-                    "name": "Perfection",
-                    "description": "Gain one feat that has your race as a prerequisite."
-                }
-            ],
-            "tell": "No visible effect, but a noticeable charisma that draws the eye",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Pressure Points",
-                    "description": "At scene start, gain 3 × Excellence Pressure Points. Spend to add directly to roll total. Recover 1 when opponent spends resource/Hero Point or you lose HP."
-                },
-                {
-                    "dots": 2,
-                    "name": "Swift as the Coursing River",
-                    "description": "When you succeed a 2-die Stunt or higher, recover one Action Point."
-                },
-                {
-                    "dots": 3,
-                    "name": "All the Force of a Great Typhoon",
-                    "description": "At start of turn, recover Pressure Points equal to Excellence."
-                },
-                { "dots": 4, "name": "Strength of a Raging Fire", "description": "While stunting, dice explode on 9 or 10." },
-                {
-                    "dots": 5,
-                    "name": "Mysterious as the Dark Side of the Moon",
-                    "description": "When you stunt and succeed, allies attempting same test before your next turn gain bonus equal to Pressure Points you spent."
-                }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "chosen",
-            "name": "Chosen",
-            "powerStat": {
-                "name": "Faith",
-                "description": "The Faith of a Chosen is different from the average person—a level of power few can match."
-            },
-            "resourceStat": {
-                "name": "Favor",
-                "formula": "Devotion + Faith",
-                "recovery": "Perform special ritual once per day to restore all Favor"
-            },
-            "description": "Chosen by the gods as a champion, among the greatest of a god's servants. Gain power from divine connection.",
-            "staticPowers": [
-                {
-                    "name": "Conviction",
-                    "description": "Faith is capped at 1/2 Devotion (rounded up) as well as level. If Devotion falls below required level, lose access to higher-rank powers."
-                },
-                {
-                    "name": "Redeemed",
-                    "description": "With at least 2 Faith, never in danger of death. May permanently lose 1 Faith instead of burning Hero Point to survive."
-                },
-                {
-                    "name": "Divine Power",
-                    "description": "Spend Favor to replace any rolled d10 with your Devotion (no explosion if Devotion is 10). Cannot use on Alignment Tests."
-                },
-                {
-                    "name": "Leeway",
-                    "description": "While advancing god's plans, gain +Faith on Alignment tests. Pay half XP for raising Devotion (stacks with Virgil's Guidance)."
-                }
-            ],
-            "tell": "The symbol of their god appears, and an aura forms in the deity's favored colors",
-            "progression": [
-                { "dots": 1, "name": "Overbeing", "description": "Gain Aura equal to double Faith." },
-                {
-                    "dots": 2,
-                    "name": "Divine Protection",
-                    "description": "First critical damage each round: roll 1d10, if under Devotion, ignore that critical."
-                },
-                {
-                    "dots": 3,
-                    "name": "Prayer Strip",
-                    "description": "During daily ritual, create Prayer Strip. Max Faith strips at once. Anyone allied can use as Favor point."
-                },
-                {
-                    "dots": 4,
-                    "name": "Trial of Faith",
-                    "description": "When keeping a 1 on dangerous test or rolling Perils of Warp, recover 1 Favor (max 1 per test)."
-                },
-                { "dots": 5, "name": "Demigod", "description": "When spending Favor, add 10 to result instead of +1k0." }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "promethean",
-            "name": "Promethean",
-            "powerStat": {
-                "name": "Generation",
-                "description": "As Generation increases, older equipment is swapped for newer gear. Most must return to place of birth to increase."
-            },
-            "resourceStat": {
-                "name": "Pyros",
-                "formula": "3 × Generation",
-                "recovery": "Regain 1 Pyros per hour"
-            },
-            "description": "Made by hands of mortals—machines built to bring freedom. Unique constructs with a Promethean Core hosting their soul.",
-            "staticPowers": [
-                {
-                    "name": "Living Construct",
-                    "description": "Immune to Fatigue, Poison, Disease. No need to Eat, Drink, Sleep, or Breathe. Cannot benefit from Bionic Heart or artifact versions."
-                },
-                {
-                    "name": "Refitting",
-                    "description": "Don't heal naturally; must be repaired. Craft + Int test (TN 15-25 based on wounds), 1 hour per HP. Cannot spend Pyros to heal."
-                },
-                {
-                    "name": "Disquiet",
-                    "description": "Aura of subtle wrongness. -2k1 to all social rolls against non-exalts."
-                },
-                {
-                    "name": "Superlative Constitution",
-                    "description": "Each limb tracks critical damage separately. At 5 critical, limb is destroyed. Only gizzards critical damage kills. Other destroyed parts = unconscious until repaired."
-                }
-            ],
-            "tell": "More gadgets appear, obvious mechanisms and crackling power appear from their bodies",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Integrated Armor",
-                    "description": "Armor equal to Generation + 3. Doesn't stack with worn armor. Armor proficiencies become optional feats."
-                },
-                {
-                    "dots": 2,
-                    "name": "Integrated Weapons",
-                    "description": "Integrate weapons into body equal to Generation. Concealed, can't be found by search. Draw as free action."
-                },
-                {
-                    "dots": 3,
-                    "name": "Transhuman Potential",
-                    "description": "Spend Pyros to boost characteristics (+1 per Pyros) for one test or one round."
-                },
-                { "dots": 4, "name": "Recharge", "description": "When suffering E-type damage, recover 1 Pyros per HP lost." },
-                {
-                    "dots": 5,
-                    "name": "Warstrider",
-                    "description": "Once per day for one scene: double size, +3 to all physical characteristics, integrated weapons deal +1k1 damage."
-                }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "daemonhost",
-            "name": "Daemonhost",
-            "powerStat": {
-                "name": "Arcanoi",
-                "description": "As Arcanoi grows, they warp away from previous forms—unnatural coloration, horns, claws, glowing eyes."
-            },
-            "resourceStat": {
-                "name": "Essence",
-                "formula": "Willpower + Charisma + (2 × Arcanoi)",
-                "recovery": "Feeding on the living or Resonance Eruptions"
-            },
-            "description": "What most people fear about the Exalted. Usually people who, at death's verge, gave up anything to live—fused with a warp entity.",
-            "staticPowers": [
-                {
-                    "name": "Demonic Tutor",
-                    "description": "Begin play with one free rank in any Magical School. May purchase ranks as if it appeared in class progression."
-                },
-                {
-                    "name": "Unholy Might",
-                    "description": "Spend 1 Essence to add Arcanoi rank to Magic School rank for a single Magic Test."
-                },
-                {
-                    "name": "Rejected by Creation",
-                    "description": "Spending Essence gains Resonance. Must eliminate Resonance to regain Essence. Resonance Eruption: Willpower vs TN 10 + (2 × Resonance). Fail = lose 1 HP, convert 1 Resonance to Essence, repeat. Success = convert 1 Resonance with no effect. Keeping 9 on magic Tests forces immediate eruption."
-                },
-                {
-                    "name": "Feeding",
-                    "description": "Gain Bite weapon (1k1 R; Melee; Brawling). For every HP damaged with bite, convert 1 Resonance to Essence. Can feed lightly on helpless/willing targets."
-                }
-            ],
-            "tell": "Vile marks appear on skin and forms twist with mutation",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Daemonic",
-                    "description": "Reduce all damage by Constitution + Arcanoi, except from magical effects or silver."
-                },
-                { "dots": 2, "name": "Unnatural Ability", "description": "May go to six dots in any Characteristics." },
-                { "dots": 3, "name": "Scorn Earth", "description": "Hover at will, move at normal speed in all three dimensions." },
-                {
-                    "dots": 4,
-                    "name": "Not Of This World",
-                    "description": "Do not suffer critical damage chart effects unless they would cause death."
-                },
-                {
-                    "dots": 5,
-                    "name": "Black Miracle",
-                    "description": "Killing only forces daemon back to warp. Reforms after 1 week per Resonance (unless ritual prevents). New vessel is identical."
-                }
-            ],
-            "source": "book1"
-        },
-        {
-            "id": "wraith",
-            "name": "Wraith",
-            "powerStat": {
-                "name": "Synergy",
-                "description": "How far the Wraith has come in acceptance of their own death."
-            },
-            "resourceStat": {
-                "name": "Plasm",
-                "formula": "Synergy + Resolve (Willpower + Composure)",
-                "recovery": "Only in the Umbra—recover 2 Plasm per hour. Lose 1/day in living world unless surrounded by death trappings."
-            },
-            "description": "A ghost that can still affect the living world, building ectoplasmic bodies that seem nearly alive.",
-            "staticPowers": [
-                {
-                    "name": "Dematerialize",
-                    "description": "Spend 1 Plasm as Half Action to become incorporeal (Phasing trait) for up to Resolve rounds. May enter Umbra instead. Takes 1 Plasm and Half Action to return (can't return if only 1 Plasm). Equipment goes incorporeal/into Umbra with you."
-                },
-                {
-                    "name": "Second Death",
-                    "description": "Physical form is ectoplasmic shell. Undead trait. Ignore critical damage effects—instead lose that much Plasm. At 0 Plasm, shell destroyed, forced into Umbra for 1 day to rebuild. Equipment left behind. If critical damage in Umbra with 0 Plasm = final death."
-                },
-                {
-                    "name": "Deathsight",
-                    "description": "Always see into Umbra like pale shroud. See magical auras, get feel of places. Touch corpse + spend Plasm to view deceased's final moments."
-                },
-                {
-                    "name": "Ghost Dice",
-                    "description": "When spending Plasm for extra dice, keep separate. Roll 1 = something bad happens. Roll 10 = something good happens."
-                }
-            ],
-            "tell": "Ectoplasmic aura, ghostly features become more pronounced",
-            "progression": [
-                {
-                    "dots": 1,
-                    "name": "Whispers",
-                    "description": "Always hear murmurs of unquiet dead. Cast Augury at will using Synergy + Wisdom instead of Focus Power."
-                },
-                {
-                    "dots": 2,
-                    "name": "Poltergeist",
-                    "description": "Spend 1 Plasm to manipulate objects at distance (3m per Synergy) for one scene. Effective Strength = Willpower. At Synergy 4, can make attacks."
-                },
-                {
-                    "dots": 3,
-                    "name": "Curse",
-                    "description": "Full Action: someone in Poltergeist range immediately rolls Psychic Phenomena. If Perils result, reroll unless you spend 3 Plasm. Wraith immune to immediate effects."
-                },
-                {
-                    "dots": 4,
-                    "name": "Shroud",
-                    "description": "Gain Armor equal to Resolve (doesn't stack). If incorporeal, provides Aura instead. In Umbra, provides both."
-                },
-                {
-                    "dots": 5,
-                    "name": "Ectoplasmic Form",
-                    "description": "Once per day: loose ectoplasm's bonds, gain Amorphous + temporary HP equal to max Plasm. Lose these temp HP first. Ends at scene end."
-                }
-            ],
-            "source": "book2"
-        },
-        {
-            "id": "dragonBlooded",
-            "name": "Dragon Blooded",
-            "powerStat": {
-                "name": "Aspect",
-                "description": "How strongly the blood of Dragon-kind runs in your veins."
-            },
-            "resourceStat": {
-                "name": "Breath",
-                "formula": "Level + Aspect + Constitution",
-                "recovery": "Good restful night's sleep, or very large meal including several kilograms of rare meat"
-            },
-            "description": "Children born with draconic ancestry resurfacing—scales, monstrous features, and a fraction of true dragon power.",
-            "staticPowers": [
-                {
-                    "name": "Draconic Aura",
-                    "description": "At 2-3 point Tell: opponents in melee take -Aspect to attacks/parries. At 4-5 points: gain Fear(1). At 6+ points: Fear equals Aspect."
-                },
-                {
-                    "name": "Hot-Blooded",
-                    "description": "When losing HP from E-type damage, spend Breath as Free Action to reduce HP lost by 1 each (min 0). At Aspect 3, each Breath reduces by 2."
-                },
-                {
-                    "name": "Claws",
-                    "description": "Gain natural claw attack: 1k1 R; Melee; Brawling."
-                },
-                {
-                    "name": "Blood Quickening",
-                    "description": "Choose one of five mystic elements at character creation. Each provides passive bonuses and Breath ability."
-                }
-            ],
-            "bloodQuickening": [
-                {
-                    "element": "Air",
-                    "passive": "Claws gain Balanced; +1 Intelligence",
-                    "breathAbility": "Spend Breath as Reaction to add 2 × Aspect to Static Defense until start of next turn"
-                },
-                {
-                    "element": "Earth",
-                    "passive": "Claws gain Penetration equal to Aspect; +1 Constitution, +2 Hit Points",
-                    "breathAbility": "Spend Breath as Half Action to gain +1 Resilience until end of next turn (feet must be planted)"
-                },
-                {
-                    "element": "Fire",
-                    "passive": "Claws deal +2k0 damage; +1 Charisma",
-                    "breathAbility": "Spend Breath as Half Action to deal +2k0 damage on next attack (lost if no attack before end of next turn)"
-                },
-                {
-                    "element": "Water",
-                    "passive": "Claws gain Toxic; +1 Strength",
-                    "breathAbility": "Spend Breath as Reaction to ignore environmental effects (breathe water, ignore temperature extremes) for one scene"
-                },
-                {
-                    "element": "Wood",
-                    "passive": "Claws gain Tearing; +1 Wisdom; ignore plant-caused rough terrain",
-                    "breathAbility": "May use Healing Surge action as Free Action once per round"
-                }
-            ],
-            "tell": "Scales become more prominent, elemental aura manifests",
-            "progression": [
-                { "dots": 1, "name": "Dragon Mind", "description": "Gain DarkSight ability, and all Focus Power tests are at +1k0." },
-                {
-                    "dots": 2,
-                    "name": "Dragon Wings",
-                    "description": "Gain appropriately-sized wings and fly at normal ground speed. At Aspect 4, flight speed doubles."
-                },
-                {
-                    "dots": 3,
-                    "name": "Dragon Heart",
-                    "description": "Gain breath weapon. 1 Breath = Hand Flamer profile, 2 Breath = Flamer profile."
-                },
-                {
-                    "dots": 4,
-                    "name": "Dragon Skin",
-                    "description": "Gain Aura equal to Aspect and 2 × Aspect Armor. Doesn't stack with anything."
-                },
-                {
-                    "dots": 5,
-                    "name": "Maximum Dragoning",
-                    "description": "Once per day, transform into a dragon as if successfully casting Dragon Form spell."
-                }
-            ],
-            "source": "book2"
-        }
-    ],
-    "resourcePointUses": [
-        { "cost": 1, "effect": "Heal 1 Hit Point (out of combat only)" },
-        { "cost": 1, "effect": "Gain +1k0 to a skill Test" },
-        { "cost": 1, "effect": "Gain a reaction action" },
-        { "cost": 1, "effect": "Recover from being Stunned" },
-        { "cost": 1, "effect": "Recover from being Dazed" }
-    ],
-    "notes": {
-        "resourceLimit": "An Exalt can only spend a number of resource points per round equal to their Power Stat.",
-        "tell": "Exalt's Tell becomes visible when spending Resource Points. More points = more visible.",
-        "immortality": "Exalts are functionally immortal until killed. Disease doesn't touch them, most poisons fail."
-    }
+	"exaltations": [
+		{
+			"id": "mortal",
+			"name": "Mortal",
+			"powerStat": null,
+			"resourceStat": null,
+			"description": "Some choose not to take an Exaltation. A mortal character is fragile and short-lived compared to an exalt, but their Hero Points still show them to be something special.",
+			"staticPowers": [],
+			"tell": null,
+			"progression": [],
+			"source": "book1"
+		},
+		{
+			"id": "vampire",
+			"name": "Vampire",
+			"powerStat": {
+				"name": "Blood Potency",
+				"description": "How strongly the blood of Khaine resonates within the vampire."
+			},
+			"resourceStat": {
+				"name": "Vitae",
+				"formula": "5 × Blood Potency",
+				"recovery": "Feeding on blood"
+			},
+			"description": "Undead creatures that drink blood of the living, cursed by a plague from the blood of the dying Elven god Khaine.",
+			"staticPowers": [
+				{
+					"name": "Old Money",
+					"description": "Begin play with four additional dots to place into Backgrounds."
+				},
+				{
+					"name": "Undead Resilience",
+					"description": "No biological functions. Immune to Bleeding and most Toxins. Only critical damage to head, body, or gizzards from silver, Power, artifact weapons, magical or sunlight damage, or E/X damage to gizzards can kill. Other critical damage merely leaves them unconscious."
+				},
+				{
+					"name": "Sunlight Weakness",
+					"description": "Automatically lose 1 HP per round in sunlight. Critical damage uses E chart and goes to body. Killed by sunlight = reduced to dust, cannot be returned. Thick cloak/hat/parasol provides protection."
+				},
+				{
+					"name": "Blood Dependency",
+					"description": "Must spend 1 Vitae daily to remain active or lapse into coma. Gain Bite weapon (1k1 R; Melee; Brawling). Can drain 1 resource point from bitten victim (causes fatigue level)."
+				}
+			],
+			"tell": "Grows more pale, fangs become more prominent",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Auspex",
+					"description": "Can see in the dark and +1k0 to all perception tests."
+				},
+				{
+					"dots": 2,
+					"name": "Dread",
+					"description": "Spend 1 Vitae to gain Fear 1 until end of scene."
+				},
+				{
+					"dots": 3,
+					"name": "Celerity",
+					"description": "Spend 1 Vitae to gain an extra half action."
+				},
+				{
+					"dots": 4,
+					"name": "Potence",
+					"description": "Spend 1 Vitae to gain +3 to Strength until end of scene."
+				},
+				{
+					"dots": 5,
+					"name": "Dominate",
+					"description": "May use Dominate spell, using Blood Potency + Charisma instead of Magic Test."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "werewolf",
+			"name": "Werewolf",
+			"powerStat": {
+				"name": "Feral Heart",
+				"description": "How close the character is to the ancient and wild power within them."
+			},
+			"resourceStat": {
+				"name": "Rage",
+				"formula": "Willpower + Level + (2 × Feral Heart)",
+				"recovery": "Regain Feral Heart + Level at beginning of combat and once each night when moon rises"
+			},
+			"description": "Blessed by Luna with the ability to change shape. Typically outsiders and rebels fighting for the rights of the average person.",
+			"staticPowers": [
+				{
+					"name": "Shifting",
+					"description": "As a half action, spend 1 Rage to change into Wolf-Form or War-Form. Changing back takes another half action. Armor/equipment does not change with you."
+				},
+				{
+					"name": "Wolf-Form",
+					"description": "Cannot speak or manipulate objects. +1k1 perception (scent/hearing), +2 Dexterity, -1 Size, Bite weapon (1k1 R), DarkSight, Quadruped."
+				},
+				{
+					"name": "War-Form",
+					"description": "Gain Fearless (TN 25), Stuff Of Nightmares, DarkSight, +2 Str/Con, +2 Size, Claw and Bite (2k1 R, magical). Lasts Constitution + (2 × Feral Heart) rounds. Must remove armor first or it breaks, dealing damage equal to AP."
+				},
+				{
+					"name": "Lycan Resilience",
+					"description": "Natural armor (doesn't stack with worn): Humanoid = Feral Heart, Wolf = Con + FH, War = Wil + Con + FH. Bypassed by spells, artifacts, and silver."
+				},
+				{
+					"name": "Fast Healing",
+					"description": "May spend Rage as free action to heal, even unconscious. In Wolf/War form: Regeneration (1, not vs silver & magic). Critical damage regenerates 1/hour."
+				},
+				{
+					"name": "Silver Bane",
+					"description": "Lycan Resilience and Fast Healing don't work on silver damage. Take +1 wound from any silver damage."
+				}
+			],
+			"tell": "Develops patches of fur, grows wolflike ears and tail. Tattoos glow with silver light",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Spirit Sight",
+					"description": "May see into spirit world. Feral Heart + Wisdom test to activate. Gain Speak Language (Spirits)."
+				},
+				{
+					"dots": 2,
+					"name": "Temper Tantrum",
+					"description": "Gain 1 Rage when first wounded in combat, taking critical wound, or losing Resolve. Test Composure TN 15 or begin fighting if over max Rage."
+				},
+				{
+					"dots": 3,
+					"name": "Spirit Speech",
+					"description": "Call and talk to spirits. FH + Fellowship test: TN 15 neutral, TN 30 to fight alongside. Full Action chat or hour-long séance. "
+				},
+				{
+					"dots": 4,
+					"name": "Sacred Hunt",
+					"description": "6-hour ritual to hunt superlative animal. Complete ritual, then FH + Charisma vs 5 × animal's Level to gain that animal's form when Shifting."
+				},
+				{
+					"dots": 5,
+					"name": "Spirit Walk",
+					"description": "FH + Composure test (often TN 20) to enter/exit Umbra through reflective surface. Anyone holding your hand may come along."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "atlantean",
+			"name": "Atlantean",
+			"powerStat": {
+				"name": "Gnosis",
+				"description": "Combination of awakening memories and the soul's growing power."
+			},
+			"resourceStat": {
+				"name": "Motes",
+				"formula": "Charisma + Intelligence + (2 × Gnosis)",
+				"recovery": "Unraveling paradox (1 hour meditation or free action roll)"
+			},
+			"description": "Reborn with souls of the lost Syrne race. They have universal magic like the Syrne practiced, but are cursed with Paradox.",
+			"staticPowers": [
+				{
+					"name": "Magical Aptitude",
+					"description": "Begin play with one free rank in any Magical School. May purchase ranks as if it appeared in any class progression. Roll twice for Psychic Phenomena and choose either or both effects."
+				},
+				{
+					"name": "Prestidigitation",
+					"description": "As a half action: move up to 1 lb, create harmless sensory effects, color/clean/soil items, light small fires, chill/warm/flavor 1 lb of material."
+				},
+				{
+					"name": "Past Lives",
+					"description": "Treat all skills as Basic. Begin with Speak Language (Syrneth)."
+				},
+				{
+					"name": "Paradox",
+					"description": "Spending a Mote gains 1 Paradox. Must Unravel paradox to regain motes: 1 hour meditation (safe) or free action once/round with Psychic Phenomena roll (fast). While you have Paradox, keeping a 9 on magic Tests forces immediate unraveling."
+				}
+			],
+			"tell": "Begins glowing golden with Syrneth magic; an avatar of their past life appears around them",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Ancient Style",
+					"description": "Choose any 3 skills. May go to 6 dots in those skills and gain bonus specialty (Syrneth) in each."
+				},
+				{
+					"dots": 2,
+					"name": "Empower Spell",
+					"description": "Spend 1 Mote to treat level and Magic School rank as 3 higher for next spell."
+				},
+				{
+					"dots": 3,
+					"name": "Excellence",
+					"description": "Spend 2 motes instead of Hero Point to reroll any skill with a specialization."
+				},
+				{
+					"dots": 4,
+					"name": "Maximize Spell",
+					"description": "Before casting, spend motes. Each mote = one die counts as 10 (don't explode)."
+				},
+				{
+					"dots": 5,
+					"name": "Quicken Spell",
+					"description": "Spend 1 mote to cast a spell as a free action once per turn."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "paragon",
+			"name": "Paragon",
+			"powerStat": {
+				"name": "Excellence",
+				"description": "When a Paragon sets their mind to something, it can be very difficult to oppose them."
+			},
+			"resourceStat": {
+				"name": "Action Points",
+				"formula": "Level + Excellence",
+				"recovery": "Regained at beginning of every session"
+			},
+			"description": "Simply the best of their race. Born with supernatural level of talent and raw ability—literally unlimited potential.",
+			"staticPowers": [
+				{
+					"name": "Destiny",
+					"description": "Begin play with two additional Hero Points."
+				},
+				{
+					"name": "Statuesque",
+					"description": "Each race gives a choice of +1 to two Characteristics. You gain +1 to the Characteristic you did not choose."
+				},
+				{
+					"name": "Flash",
+					"description": "Never surprised, aware of every attack. Gain the Danger Sense feat."
+				},
+				{
+					"name": "Perfection",
+					"description": "Gain one feat that has your race as a prerequisite."
+				}
+			],
+			"tell": "No visible effect, but a noticeable charisma that draws the eye",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Pressure Points",
+					"description": "At scene start, gain 3 × Excellence Pressure Points. Spend to add directly to roll total. Recover 1 when opponent spends resource/Hero Point or you lose HP."
+				},
+				{
+					"dots": 2,
+					"name": "Swift as the Coursing River",
+					"description": "When you succeed a 2-die Stunt or higher, recover one Action Point."
+				},
+				{
+					"dots": 3,
+					"name": "All the Force of a Great Typhoon",
+					"description": "At start of turn, recover Pressure Points equal to Excellence."
+				},
+				{
+					"dots": 4,
+					"name": "Strength of a Raging Fire",
+					"description": "While stunting, dice explode on 9 or 10."
+				},
+				{
+					"dots": 5,
+					"name": "Mysterious as the Dark Side of the Moon",
+					"description": "When you stunt and succeed, allies attempting same test before your next turn gain bonus equal to Pressure Points you spent."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "chosen",
+			"name": "Chosen",
+			"powerStat": {
+				"name": "Faith",
+				"description": "The Faith of a Chosen is different from the average person—a level of power few can match."
+			},
+			"resourceStat": {
+				"name": "Favor",
+				"formula": "Devotion + Faith",
+				"recovery": "Perform special ritual once per day to restore all Favor"
+			},
+			"description": "Chosen by the gods as a champion, among the greatest of a god's servants. Gain power from divine connection.",
+			"staticPowers": [
+				{
+					"name": "Conviction",
+					"description": "Faith is capped at 1/2 Devotion (rounded up) as well as level. If Devotion falls below required level, lose access to higher-rank powers."
+				},
+				{
+					"name": "Redeemed",
+					"description": "With at least 2 Faith, never in danger of death. May permanently lose 1 Faith instead of burning Hero Point to survive."
+				},
+				{
+					"name": "Divine Power",
+					"description": "Spend Favor to replace any rolled d10 with your Devotion (no explosion if Devotion is 10). Cannot use on Alignment Tests."
+				},
+				{
+					"name": "Leeway",
+					"description": "While advancing god's plans, gain +Faith on Alignment tests. Pay half XP for raising Devotion (stacks with Virgil's Guidance)."
+				}
+			],
+			"tell": "The symbol of their god appears, and an aura forms in the deity's favored colors",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Overbeing",
+					"description": "Gain Aura equal to double Faith."
+				},
+				{
+					"dots": 2,
+					"name": "Divine Protection",
+					"description": "First critical damage each round: roll 1d10, if under Devotion, ignore that critical."
+				},
+				{
+					"dots": 3,
+					"name": "Prayer Strip",
+					"description": "During daily ritual, create Prayer Strip. Max Faith strips at once. Anyone allied can use as Favor point."
+				},
+				{
+					"dots": 4,
+					"name": "Trial of Faith",
+					"description": "When keeping a 1 on dangerous test or rolling Perils of Warp, recover 1 Favor (max 1 per test)."
+				},
+				{
+					"dots": 5,
+					"name": "Demigod",
+					"description": "When spending Favor, add 10 to result instead of +1k0."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "promethean",
+			"name": "Promethean",
+			"powerStat": {
+				"name": "Generation",
+				"description": "As Generation increases, older equipment is swapped for newer gear. Most must return to place of birth to increase."
+			},
+			"resourceStat": {
+				"name": "Pyros",
+				"formula": "3 × Generation",
+				"recovery": "Regain 1 Pyros per hour"
+			},
+			"description": "Made by hands of mortals—machines built to bring freedom. Unique constructs with a Promethean Core hosting their soul.",
+			"staticPowers": [
+				{
+					"name": "Living Construct",
+					"description": "Immune to Fatigue, Poison, Disease. No need to Eat, Drink, Sleep, or Breathe. Cannot benefit from Bionic Heart or artifact versions."
+				},
+				{
+					"name": "Refitting",
+					"description": "Don't heal naturally; must be repaired. Craft + Int test (TN 15-25 based on wounds), 1 hour per HP. Cannot spend Pyros to heal."
+				},
+				{
+					"name": "Disquiet",
+					"description": "Aura of subtle wrongness. -2k1 to all social rolls against non-exalts."
+				},
+				{
+					"name": "Superlative Constitution",
+					"description": "Each limb tracks critical damage separately. At 5 critical, limb is destroyed. Only gizzards critical damage kills. Other destroyed parts = unconscious until repaired."
+				}
+			],
+			"tell": "More gadgets appear, obvious mechanisms and crackling power appear from their bodies",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Integrated Armor",
+					"description": "Armor equal to Generation + 3. Doesn't stack with worn armor. Armor proficiencies become optional feats."
+				},
+				{
+					"dots": 2,
+					"name": "Integrated Weapons",
+					"description": "Integrate weapons into body equal to Generation. Concealed, can't be found by search. Draw as free action."
+				},
+				{
+					"dots": 3,
+					"name": "Transhuman Potential",
+					"description": "Spend Pyros to boost characteristics (+1 per Pyros) for one test or one round."
+				},
+				{
+					"dots": 4,
+					"name": "Recharge",
+					"description": "When suffering E-type damage, recover 1 Pyros per HP lost."
+				},
+				{
+					"dots": 5,
+					"name": "Warstrider",
+					"description": "Once per day for one scene: double size, +3 to all physical characteristics, integrated weapons deal +1k1 damage."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "daemonhost",
+			"name": "Daemonhost",
+			"powerStat": {
+				"name": "Arcanoi",
+				"description": "As Arcanoi grows, they warp away from previous forms—unnatural coloration, horns, claws, glowing eyes."
+			},
+			"resourceStat": {
+				"name": "Essence",
+				"formula": "Willpower + Charisma + (2 × Arcanoi)",
+				"recovery": "Feeding on the living or Resonance Eruptions"
+			},
+			"description": "What most people fear about the Exalted. Usually people who, at death's verge, gave up anything to live—fused with a warp entity.",
+			"staticPowers": [
+				{
+					"name": "Demonic Tutor",
+					"description": "Begin play with one free rank in any Magical School. May purchase ranks as if it appeared in class progression."
+				},
+				{
+					"name": "Unholy Might",
+					"description": "Spend 1 Essence to add Arcanoi rank to Magic School rank for a single Magic Test."
+				},
+				{
+					"name": "Rejected by Creation",
+					"description": "Spending Essence gains Resonance. Must eliminate Resonance to regain Essence. Resonance Eruption: Willpower vs TN 10 + (2 × Resonance). Fail = lose 1 HP, convert 1 Resonance to Essence, repeat. Success = convert 1 Resonance with no effect. Keeping 9 on magic Tests forces immediate eruption."
+				},
+				{
+					"name": "Feeding",
+					"description": "Gain Bite weapon (1k1 R; Melee; Brawling). For every HP damaged with bite, convert 1 Resonance to Essence. Can feed lightly on helpless/willing targets."
+				}
+			],
+			"tell": "Vile marks appear on skin and forms twist with mutation",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Daemonic",
+					"description": "Reduce all damage by Constitution + Arcanoi, except from magical effects or silver."
+				},
+				{
+					"dots": 2,
+					"name": "Unnatural Ability",
+					"description": "May go to six dots in any Characteristics."
+				},
+				{
+					"dots": 3,
+					"name": "Scorn Earth",
+					"description": "Hover at will, move at normal speed in all three dimensions."
+				},
+				{
+					"dots": 4,
+					"name": "Not Of This World",
+					"description": "Do not suffer critical damage chart effects unless they would cause death."
+				},
+				{
+					"dots": 5,
+					"name": "Black Miracle",
+					"description": "Killing only forces daemon back to warp. Reforms after 1 week per Resonance (unless ritual prevents). New vessel is identical."
+				}
+			],
+			"source": "book1"
+		},
+		{
+			"id": "wraith",
+			"name": "Wraith",
+			"powerStat": {
+				"name": "Synergy",
+				"description": "How far the Wraith has come in acceptance of their own death."
+			},
+			"resourceStat": {
+				"name": "Plasm",
+				"formula": "Synergy + Resolve (Willpower + Composure)",
+				"recovery": "Only in the Umbra—recover 2 Plasm per hour. Lose 1/day in living world unless surrounded by death trappings."
+			},
+			"description": "A ghost that can still affect the living world, building ectoplasmic bodies that seem nearly alive.",
+			"staticPowers": [
+				{
+					"name": "Dematerialize",
+					"description": "Spend 1 Plasm as Half Action to become incorporeal (Phasing trait) for up to Resolve rounds. May enter Umbra instead. Takes 1 Plasm and Half Action to return (can't return if only 1 Plasm). Equipment goes incorporeal/into Umbra with you."
+				},
+				{
+					"name": "Second Death",
+					"description": "Physical form is ectoplasmic shell. Undead trait. Ignore critical damage effects—instead lose that much Plasm. At 0 Plasm, shell destroyed, forced into Umbra for 1 day to rebuild. Equipment left behind. If critical damage in Umbra with 0 Plasm = final death."
+				},
+				{
+					"name": "Deathsight",
+					"description": "Always see into Umbra like pale shroud. See magical auras, get feel of places. Touch corpse + spend Plasm to view deceased's final moments."
+				},
+				{
+					"name": "Ghost Dice",
+					"description": "When spending Plasm for extra dice, keep separate. Roll 1 = something bad happens. Roll 10 = something good happens."
+				}
+			],
+			"tell": "Ectoplasmic aura, ghostly features become more pronounced",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Whispers",
+					"description": "Always hear murmurs of unquiet dead. Cast Augury at will using Synergy + Wisdom instead of Focus Power."
+				},
+				{
+					"dots": 2,
+					"name": "Poltergeist",
+					"description": "Spend 1 Plasm to manipulate objects at distance (3m per Synergy) for one scene. Effective Strength = Willpower. At Synergy 4, can make attacks."
+				},
+				{
+					"dots": 3,
+					"name": "Curse",
+					"description": "Full Action: someone in Poltergeist range immediately rolls Psychic Phenomena. If Perils result, reroll unless you spend 3 Plasm. Wraith immune to immediate effects."
+				},
+				{
+					"dots": 4,
+					"name": "Shroud",
+					"description": "Gain Armor equal to Resolve (doesn't stack). If incorporeal, provides Aura instead. In Umbra, provides both."
+				},
+				{
+					"dots": 5,
+					"name": "Ectoplasmic Form",
+					"description": "Once per day: loose ectoplasm's bonds, gain Amorphous + temporary HP equal to max Plasm. Lose these temp HP first. Ends at scene end."
+				}
+			],
+			"source": "book2"
+		},
+		{
+			"id": "dragonBlooded",
+			"name": "Dragon Blooded",
+			"powerStat": {
+				"name": "Aspect",
+				"description": "How strongly the blood of Dragon-kind runs in your veins."
+			},
+			"resourceStat": {
+				"name": "Breath",
+				"formula": "Level + Aspect + Constitution",
+				"recovery": "Good restful night's sleep, or very large meal including several kilograms of rare meat"
+			},
+			"description": "Children born with draconic ancestry resurfacing—scales, monstrous features, and a fraction of true dragon power.",
+			"staticPowers": [
+				{
+					"name": "Draconic Aura",
+					"description": "At 2-3 point Tell: opponents in melee take -Aspect to attacks/parries. At 4-5 points: gain Fear(1). At 6+ points: Fear equals Aspect."
+				},
+				{
+					"name": "Hot-Blooded",
+					"description": "When losing HP from E-type damage, spend Breath as Free Action to reduce HP lost by 1 each (min 0). At Aspect 3, each Breath reduces by 2."
+				},
+				{
+					"name": "Claws",
+					"description": "Gain natural claw attack: 1k1 R; Melee; Brawling."
+				},
+				{
+					"name": "Blood Quickening",
+					"description": "Choose one of five mystic elements at character creation. Each provides passive bonuses and Breath ability."
+				}
+			],
+			"bloodQuickening": [
+				{
+					"element": "Air",
+					"passive": "Claws gain Balanced; +1 Intelligence",
+					"breathAbility": "Spend Breath as Reaction to add 2 × Aspect to Static Defense until start of next turn"
+				},
+				{
+					"element": "Earth",
+					"passive": "Claws gain Penetration equal to Aspect; +1 Constitution, +2 Hit Points",
+					"breathAbility": "Spend Breath as Half Action to gain +1 Resilience until end of next turn (feet must be planted)"
+				},
+				{
+					"element": "Fire",
+					"passive": "Claws deal +2k0 damage; +1 Charisma",
+					"breathAbility": "Spend Breath as Half Action to deal +2k0 damage on next attack (lost if no attack before end of next turn)"
+				},
+				{
+					"element": "Water",
+					"passive": "Claws gain Toxic; +1 Strength",
+					"breathAbility": "Spend Breath as Reaction to ignore environmental effects (breathe water, ignore temperature extremes) for one scene"
+				},
+				{
+					"element": "Wood",
+					"passive": "Claws gain Tearing; +1 Wisdom; ignore plant-caused rough terrain",
+					"breathAbility": "May use Healing Surge action as Free Action once per round"
+				}
+			],
+			"tell": "Scales become more prominent, elemental aura manifests",
+			"progression": [
+				{
+					"dots": 1,
+					"name": "Dragon Mind",
+					"description": "Gain DarkSight ability, and all Focus Power tests are at +1k0."
+				},
+				{
+					"dots": 2,
+					"name": "Dragon Wings",
+					"description": "Gain appropriately-sized wings and fly at normal ground speed. At Aspect 4, flight speed doubles."
+				},
+				{
+					"dots": 3,
+					"name": "Dragon Heart",
+					"description": "Gain breath weapon. 1 Breath = Hand Flamer profile, 2 Breath = Flamer profile."
+				},
+				{
+					"dots": 4,
+					"name": "Dragon Skin",
+					"description": "Gain Aura equal to Aspect and 2 × Aspect Armor. Doesn't stack with anything."
+				},
+				{
+					"dots": 5,
+					"name": "Maximum Dragoning",
+					"description": "Once per day, transform into a dragon as if successfully casting Dragon Form spell."
+				}
+			],
+			"source": "book2"
+		}
+	],
+	"resourcePointUses": [
+		{ "cost": 1, "effect": "Heal 1 Hit Point (out of combat only)" },
+		{ "cost": 1, "effect": "Gain +1k0 to a skill Test" },
+		{ "cost": 1, "effect": "Gain a reaction action" },
+		{ "cost": 1, "effect": "Recover from being Stunned" },
+		{ "cost": 1, "effect": "Recover from being Dazed" }
+	],
+	"notes": {
+		"resourceLimit": "An Exalt can only spend a number of resource points per round equal to their Power Stat.",
+		"tell": "Exalt's Tell becomes visible when spending Resource Points. More points = more visible.",
+		"immortality": "Exalts are functionally immortal until killed. Disease doesn't touch them, most poisons fail."
+	}
 }

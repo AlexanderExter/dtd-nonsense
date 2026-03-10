@@ -166,7 +166,7 @@ export const SHIELD_TYPES = ["Standard", "Covariant", "Regenerative", "Resilient
 // -------------------------------------------------------------------------
 
 export function generateId(): string {
-	return "ship_" + Date.now().toString(36) + Math.random().toString(36).substr(2, 4);
+	return `ship_${Date.now().toString(36)}${Math.random().toString(36).substr(2, 4)}`;
 }
 
 export function createDefaultShip(): ShipState {

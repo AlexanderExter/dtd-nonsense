@@ -12,9 +12,9 @@ export function ConsoleSlots() {
 
 	if (!hull) {
 		return (
-			<section class="build-section">
-				<h2 class="section-title">Console Slots</h2>
-				<p class="section-hint">Select a hull first</p>
+			<section class="mb-xl">
+				<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Console Slots</h2>
+				<p class="text-text-dim italic">Select a hull first</p>
 			</section>
 		);
 	}
@@ -26,20 +26,29 @@ export function ConsoleSlots() {
 		});
 	}, []);
 
+	const badgeColors: Record<string, string> = {
+		arcana: "bg-[#9b59b6]",
+		command: "bg-[#e74c3c]",
+		engineering: "bg-[#f39c12]",
+		tactical: "bg-[#3498db]",
+		universal: "bg-[#2ecc71]",
+	};
+
 	return (
-		<section class="build-section">
-			<h2 class="section-title">Console Slots</h2>
+		<section class="mb-xl">
+			<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Console Slots</h2>
 			{CONSOLE_TYPES.map((type) => {
 				const count = hull.consoles[type];
 				if (!count || count === 0) return null;
 
 				const options = getConsoleOptions(data, type);
+				const badgeClass = `inline-block w-5 h-5 rounded-[4px] text-center leading-5 text-[0.7rem] font-bold text-bg ${badgeColors[type] || ""}`;
 
 				return (
-					<div key={type} class="console-slot-group">
-						<h4>
-							<span class={`slot-type-badge ${type}`}>{type.charAt(0).toUpperCase()}</span>{" "}
-							{CONSOLE_LABELS[type]} ({count})
+					<div key={type} class="mb-md">
+						<h4 class="text-[0.9rem] mb-sm flex items-center gap-sm">
+							<span class={badgeClass}>{type.charAt(0).toUpperCase()}</span> {CONSOLE_LABELS[type]} (
+							{count})
 						</h4>
 						{Array.from({ length: count }, (_, i) => {
 							const slotKey = `${type}-${i}`;
@@ -47,10 +56,13 @@ export function ConsoleSlots() {
 							const selectedConsole = currentId ? data.consoles.find((c) => c.id === currentId) : null;
 
 							return (
-								<div key={slotKey} class="console-slot">
-									<span class={`slot-type-badge ${type}`}>{type.charAt(0).toUpperCase()}</span>
+								<div
+									key={slotKey}
+									class="flex items-center gap-sm p-sm mb-xs bg-surface-raised border border-border rounded-sm"
+								>
+									<span class={badgeClass}>{type.charAt(0).toUpperCase()}</span>
 									<select
-										class="console-select"
+										class="flex-1 py-1 px-2 text-[0.85rem]"
 										value={currentId}
 										onChange={(e) =>
 											handleConsoleChange(slotKey, (e.target as HTMLSelectElement).value)
@@ -63,10 +75,14 @@ export function ConsoleSlots() {
 											</option>
 										))}
 									</select>
-									<span class="console-cost">
+									<span class="text-[0.8rem] text-accent min-w-10 text-right">
 										{selectedConsole ? `${selectedConsole.cost} BP` : ""}
 									</span>
-									{selectedConsole && <div class="console-effect">{selectedConsole.effect}</div>}
+									{selectedConsole && (
+										<div class="text-xs text-text-dim px-sm py-0.5 mb-xs">
+											{selectedConsole.effect}
+										</div>
+									)}
 								</div>
 							);
 						})}

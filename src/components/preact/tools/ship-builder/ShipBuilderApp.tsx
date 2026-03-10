@@ -173,7 +173,7 @@ export function ShipBuilderApp() {
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
 		a.href = url;
-		a.download = (s.name || "ship") + ".json";
+		a.download = `${s.name || "ship"}.json`;
 		a.click();
 		URL.revokeObjectURL(url);
 	}, []);
@@ -223,10 +223,10 @@ export function ShipBuilderApp() {
 	}
 
 	return (
-		<div class="ship-builder-root">
-			<div class="ship-bar no-print">
-				<div class="ship-bar-left">
-					<select value={ship.value.id} onChange={handleShipSwitch} title="Switch ship">
+		<div>
+			<div class="flex items-center justify-between gap-md px-lg py-sm bg-surface border-b border-border sticky top-0 z-[100] max-[900px]:flex-wrap max-[900px]:gap-xs no-print">
+				<div class="flex items-center gap-sm">
+					<select value={ship.value.id} onChange={handleShipSwitch} title="Switch ship" class="min-w-[180px]">
 						{shipList.value.map((s) => (
 							<option key={s.id} value={s.id}>
 								{s.name || "Unnamed Ship"}
@@ -240,23 +240,33 @@ export function ShipBuilderApp() {
 						Delete
 					</button>
 				</div>
-				<div class="ship-bar-center">
+				<div class="flex bg-bg border border-border rounded-md overflow-hidden">
 					<button
 						type="button"
-						class={`mode-btn ${mode.value === "builder" ? "active" : ""}`}
+						class={[
+							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
+							mode.value === "builder" && "bg-accent text-bg",
+						]
+							.filter(Boolean)
+							.join(" ")}
 						onClick={() => setMode("builder")}
 					>
 						Builder
 					</button>
 					<button
 						type="button"
-						class={`mode-btn ${mode.value === "sheet" ? "active" : ""}`}
+						class={[
+							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
+							mode.value === "sheet" && "bg-accent text-bg",
+						]
+							.filter(Boolean)
+							.join(" ")}
 						onClick={() => setMode("sheet")}
 					>
 						Sheet
 					</button>
 				</div>
-				<div class="ship-bar-right">
+				<div class="flex items-center gap-sm">
 					<button type="button" class="btn btn-secondary btn-sm" onClick={() => fileRef.current?.click()}>
 						Import
 					</button>

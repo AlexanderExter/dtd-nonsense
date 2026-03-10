@@ -43,37 +43,51 @@ export function ArmorSection() {
 	};
 
 	return (
-		<div class="armor-section">
-			<h4>Armor</h4>
-			<table class="armor-table">
+		<div>
+			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">Armor</h4>
+			<table class="w-full border-collapse text-[0.85rem]">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Type</th>
-						<th>AP</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							Name
+						</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							Type
+						</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							AP
+						</th>
 						{LOCATIONS.map((loc) => (
-							<th key={loc} class="loc-col" title={loc}>
+							<th
+								key={loc}
+								class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-center font-semibold whitespace-nowrap"
+								title={loc}
+							>
 								{loc.replace("Left ", "L ").replace("Right ", "R ")}
 							</th>
 						))}
-						<th>Notes</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							Notes
+						</th>
 						<th />
 					</tr>
 				</thead>
 				<tbody>
 					{armor.map((a, idx) => (
 						<tr key={idx}>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={a.name}
 									onInput={(e) =>
 										handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
 									}
 								/>
 							</td>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<select
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={a.type}
 									onChange={(e) =>
 										handleFieldChange(idx, "type", (e.target as HTMLSelectElement).value)
@@ -87,9 +101,10 @@ export function ArmorSection() {
 									))}
 								</select>
 							</td>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="number"
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={a.ap}
 									min={0}
 									onInput={(e) =>
@@ -98,7 +113,7 @@ export function ArmorSection() {
 								/>
 							</td>
 							{LOCATIONS.map((loc) => (
-								<td key={loc} class="loc-col">
+								<td key={loc} class="py-[3px] px-sm border-b border-border align-middle text-center">
 									<input
 										type="checkbox"
 										checked={(a.locations || []).includes(loc)}
@@ -106,19 +121,20 @@ export function ArmorSection() {
 									/>
 								</td>
 							))}
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={a.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "qualities", (e.target as HTMLInputElement).value)
 									}
 								/>
 							</td>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle text-center">
 								<button
 									type="button"
-									class="btn-remove"
+									class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
 								>
@@ -129,7 +145,7 @@ export function ArmorSection() {
 					))}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-sm" onClick={handleAdd}>
+			<button type="button" class="btn btn-sm mt-sm" onClick={handleAdd}>
 				+ Add Armor
 			</button>
 		</div>

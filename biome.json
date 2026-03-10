@@ -1,5 +1,5 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -13,7 +13,8 @@
 	"formatter": {
 		"indentStyle": "tab",
 		"indentWidth": 4,
-		"lineWidth": 120
+		"lineWidth": 120,
+		"lineEnding": "lf"
 	},
 	"javascript": {
 		"formatter": {
@@ -23,23 +24,47 @@
 			"arrowParentheses": "always"
 		}
 	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
 	"css": {
 		"parser": {
 			"cssModules": false,
 			"tailwindDirectives": true
 		}
 	},
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": {
+			"enabled": false
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
 	"linter": {
 		"enabled": true,
+		"domains": {
+			"test": "recommended"
+		},
 		"rules": {
 			"recommended": true,
 			"correctness": {
 				"noUnusedVariables": "warn",
-				"noUnusedImports": "warn"
+				"noUnusedImports": "warn",
+				"useParseIntRadix": "warn"
 			},
 			"style": {
 				"noNonNullAssertion": "off",
-				"useConst": "warn"
+				"useConst": "warn",
+				"useTemplate": "warn"
 			},
 			"suspicious": {
 				"noExplicitAny": "off"
@@ -48,17 +73,21 @@
 	},
 	"overrides": [
 		{
-			"includes": ["src/pages/**/*.astro"],
+			"includes": ["**/*.astro"],
 			"linter": {
 				"rules": {
+					"complexity": {
+						"noImportantStyles": "off"
+					},
 					"correctness": {
-						"noUnusedImports": "off"
+						"noUnusedImports": "off",
+						"noUnusedVariables": "off"
 					}
 				}
 			}
 		},
 		{
-			"includes": ["src/lib/tools/**"],
+			"includes": ["src/lib/dtd/**", "src/components/preact/tools/**"],
 			"linter": {
 				"rules": {
 					"complexity": {
@@ -67,8 +96,7 @@
 					"suspicious": {
 						"noPrototypeBuiltins": "warn",
 						"noAssignInExpressions": "warn",
-						"noImplicitAnyLet": "warn",
-						"useIterableCallbackReturn": "warn"
+						"noImplicitAnyLet": "warn"
 					}
 				}
 			}

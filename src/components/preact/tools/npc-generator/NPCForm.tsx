@@ -20,7 +20,10 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 	};
 
 	const updateCharacteristic = (key: string, value: number) => {
-		onUpdate({ ...npc, characteristics: { ...npc.characteristics, [key]: value } });
+		onUpdate({
+			...npc,
+			characteristics: { ...npc.characteristics, [key]: value },
+		});
 	};
 
 	return (

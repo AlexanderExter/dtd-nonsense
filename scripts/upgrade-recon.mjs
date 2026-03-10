@@ -36,7 +36,10 @@ function fail(text) {
 /** Run a command and return stdout, or null on failure. */
 function tryRun(cmd) {
 	try {
-		return execSync(cmd, { encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }).trim();
+		return execSync(cmd, {
+			encoding: "utf-8",
+			stdio: ["pipe", "pipe", "pipe"],
+		}).trim();
 	} catch {
 		return null;
 	}
@@ -198,7 +201,15 @@ if (treeHealth.valid) {
 
 heading("Security Audit");
 
-const audit = { total: 0, critical: 0, high: 0, moderate: 0, low: 0, info: 0, advisories: [] };
+const audit = {
+	total: 0,
+	critical: 0,
+	high: 0,
+	moderate: 0,
+	low: 0,
+	info: 0,
+	advisories: [],
+};
 
 // npm audit --json exits non-zero when vulnerabilities exist
 const auditRaw = tryJson("npm audit --json");
@@ -282,7 +293,12 @@ const frameworkDeps = outdated.filter((d) => d.tier === "framework");
 const frameworkCompat = [];
 
 for (const dep of frameworkDeps) {
-	const entry = { name: dep.name, from: dep.current, to: dep.latest, migrationGuides: [] };
+	const entry = {
+		name: dep.name,
+		from: dep.current,
+		to: dep.latest,
+		migrationGuides: [],
+	};
 
 	// Check peer deps for Starlight → Astro coupling
 	if (dep.name === "@astrojs/starlight") {

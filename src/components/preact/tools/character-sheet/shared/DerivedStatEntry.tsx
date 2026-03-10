@@ -19,25 +19,28 @@ export function DerivedStatEntry({
 	formulaId,
 }: DerivedStatEntryProps) {
 	return (
-		<div class="derived-stat-entry">
-			<div class="derived-label">{label}</div>
-			<div class="derived-formula" id={formulaId}>
+		<div class="py-xs border-b border-border last:border-b-0">
+			<div class="text-[0.7rem] text-text-muted uppercase tracking-[0.3px] mb-0.5">{label}</div>
+			<div class="text-[0.65rem] text-text-muted opacity-70 tracking-[0.02em] mt-[1px]" id={formulaId}>
 				{formulaText}
 			</div>
-			<div class="derived-values">
-				<span class="derived-base" title="Base value">
+			<div class="flex items-center gap-1">
+				<span class="text-[0.85rem] text-text-dim min-w-[22px] text-center" title="Base value">
 					{baseValue}
 				</span>
-				<span class="derived-plus">+</span>
+				<span class="text-xs text-text-dim">+</span>
 				<input
 					type="number"
-					class="derived-mod"
+					class="w-[38px] py-[1px] px-[3px] text-center text-[0.8rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
 					title="Modifier"
 					value={modValue}
 					onInput={(e) => onModChange(Number((e.target as HTMLInputElement).value))}
 				/>
-				<span class="derived-eq">=</span>
-				<span class="derived-eff" title="Effective value">
+				<span class="text-xs text-text-dim">=</span>
+				<span
+					class="font-bold text-[1.15rem] text-accent min-w-[26px] text-center ml-auto"
+					title="Effective value"
+				>
 					{effValue}
 				</span>
 			</div>

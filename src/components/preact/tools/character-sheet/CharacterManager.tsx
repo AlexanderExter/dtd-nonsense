@@ -39,8 +39,8 @@ export function CharacterManager() {
 	};
 
 	return (
-		<div class="char-bar">
-			<select class="char-select" value={currentId || ""} onChange={handleSwitch}>
+		<div class="flex items-center justify-between gap-sm px-md py-sm bg-surface border-b border-border sticky top-0 z-[100]">
+			<select class="min-w-[200px]" value={currentId || ""} onChange={handleSwitch}>
 				{list.map((c) => (
 					<option key={c.id} value={c.id}>
 						{c.name || "Unnamed"}

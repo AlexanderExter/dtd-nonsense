@@ -58,7 +58,12 @@ describe("Zod schema rejection — malformed data", () => {
 
 	it("rejects a class with invalid level", () => {
 		const badData = {
-			metadata: { description: "", version: "", levelsComplete: [], levelsPending: [] },
+			metadata: {
+				description: "",
+				version: "",
+				levelsComplete: [],
+				levelsPending: [],
+			},
 			tracks: {},
 			classes: [
 				{
@@ -84,7 +89,15 @@ describe("Zod schema rejection — malformed data", () => {
 
 	it("rejects unknown extra fields in strict schemas", () => {
 		const badData = {
-			packages: [{ id: "test", name: "Test", description: "test", items: [], UNKNOWN_FIELD: true }],
+			packages: [
+				{
+					id: "test",
+					name: "Test",
+					description: "test",
+					items: [],
+					UNKNOWN_FIELD: true,
+				},
+			],
 		};
 		const result = EquipmentFile.safeParse(badData);
 		expect(result.success).toBe(false);

@@ -336,7 +336,16 @@ export function computePipeline(
 	let hpLost = def.resilience > 0 ? Math.floor(afterMitigation / def.resilience) : afterMitigation;
 	if (atk.tearing && afterMitigation > 0 && hpLost < 1) hpLost = 1;
 
-	return { raw: rawDmg, effectiveAP: armorAP, armorSoak, auraSoak, coverSoak, afterMitigation, hpLost, penApplied };
+	return {
+		raw: rawDmg,
+		effectiveAP: armorAP,
+		armorSoak,
+		auraSoak,
+		coverSoak,
+		afterMitigation,
+		hpLost,
+		penApplied,
+	};
 }
 
 export function computeWeightedAP(def: DefenderConfig, pen: number): number {

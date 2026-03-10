@@ -251,7 +251,11 @@ export function getWoundStatus(maxHP: number, currentHP: number, willpower: numb
 	const hpLost = Math.max(0, max - cur);
 
 	if (hpLost <= 0) {
-		return { status: "Healthy", cssClass: "wound-ok", description: "No Hit Points lost." };
+		return {
+			status: "Healthy",
+			cssClass: "wound-ok",
+			description: "No Hit Points lost.",
+		};
 	}
 	if (cur <= 0) {
 		return {

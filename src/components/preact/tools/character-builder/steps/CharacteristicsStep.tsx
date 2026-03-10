@@ -90,15 +90,16 @@ export function CharacteristicsStep() {
 	};
 
 	return (
-		<div class="step-characteristics">
+		<div>
 			<h3>Assign Priorities</h3>
-			<div class="priority-row">
+			<div class="grid grid-cols-3 gap-md mb-lg max-[900px]:grid-cols-1">
 				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
 					const currentPriority = meta.charPriority[groupKey];
 					return (
-						<div key={groupKey} class="priority-card">
-							<h4>{group.label}</h4>
+						<div key={groupKey} class="bg-surface border-2 border-border rounded-md p-md text-center">
+							<h4 class="text-accent mb-xs">{group.label}</h4>
 							<select
+								class="w-full px-sm py-xs text-[0.85rem]"
 								value={currentPriority || ""}
 								onChange={(e) => {
 									const val = (e.target as HTMLSelectElement).value;
@@ -118,18 +119,18 @@ export function CharacteristicsStep() {
 			</div>
 
 			{/* Dot allocation columns */}
-			<div class="char-columns">
+			<div class="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
 				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
 					const priority = meta.charPriority[groupKey];
 					const pool = priority ? CHAR_PRIORITY_DOTS[priority] || 0 : 0;
 					const spent = meta.charDotsSpent[groupKey] || 0;
 
 					return (
-						<div key={groupKey} class="char-column">
-							<h4>
+						<div key={groupKey} class="bg-surface border border-border rounded-md p-md">
+							<h4 class="text-center text-accent mb-xs pb-xs border-b border-border">
 								{group.label}{" "}
 								{priority && (
-									<span class="dots-counter">
+									<span class="text-[0.8rem] text-text-dim font-normal">
 										{spent} / {pool} dots
 									</span>
 								)}
@@ -140,8 +141,13 @@ export function CharacteristicsStep() {
 								const hasRacial = racialBonuses.has(charKey);
 
 								return (
-									<div key={charKey} class="char-row">
-										<span class="char-label">{CHAR_NAMES[charKey] || capitalize(charKey)}</span>
+									<div
+										key={charKey}
+										class="flex justify-between items-center py-xs border-b border-border last:border-b-0"
+									>
+										<span class="text-[0.9rem] flex-1">
+											{CHAR_NAMES[charKey] || capitalize(charKey)}
+										</span>
 										<DotControl
 											value={baseVal}
 											max={CREATION_CHAR_CAP}
@@ -150,7 +156,7 @@ export function CharacteristicsStep() {
 											disabled={!priority}
 											onChange={(v) => handleDotChange(groupKey, charKey, v)}
 										/>
-										{hasRacial && <span class="racial-tag">+1 racial</span>}
+										{hasRacial && <span class="text-[0.7rem] text-success ml-xs">+1 racial</span>}
 									</div>
 								);
 							})}

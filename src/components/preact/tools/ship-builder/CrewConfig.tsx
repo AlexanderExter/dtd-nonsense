@@ -9,7 +9,7 @@ export function CrewConfig() {
 	if (!data) return null;
 
 	const handleQualityChange = useCallback((e: Event) => {
-		const val = Number.parseInt((e.target as HTMLSelectElement).value);
+		const val = Number.parseInt((e.target as HTMLSelectElement).value, 10);
 		updateShip((s) => ({ ...s, crewQuality: val }));
 	}, []);
 
@@ -34,11 +34,13 @@ export function CrewConfig() {
 	}, []);
 
 	return (
-		<section class="build-section">
-			<h2 class="section-title">Crew</h2>
-			<div class="crew-config">
-				<div class="field-row">
-					<label for="crew-quality">Crew Quality</label>
+		<section class="mb-xl">
+			<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Crew</h2>
+			<div>
+				<div class="mb-sm">
+					<label for="crew-quality" class="text-[0.8rem]">
+						Crew Quality
+					</label>
 					<select id="crew-quality" value={currentShip.crewQuality} onChange={handleQualityChange}>
 						<option value="1">1 (−5 BP)</option>
 						<option value="2">2 (Base)</option>
@@ -48,33 +50,36 @@ export function CrewConfig() {
 					</select>
 				</div>
 				<h4>Bridge Officers</h4>
-				<div class="officer-grid">
+				<div class="flex flex-col gap-sm">
 					{OFFICER_POSITIONS.map((pos) => {
 						const officer = currentShip.officers[pos.id] || {
 							name: "",
 							skill: 0,
 						};
 						return (
-							<div key={pos.id} class="officer-row">
-								<span class="officer-title">{pos.title}</span>
+							<div
+								key={pos.id}
+								class="grid grid-cols-[150px_1fr_80px_60px] gap-sm items-center px-sm py-xs bg-surface-raised rounded-sm max-[900px]:grid-cols-2"
+							>
+								<span class="font-semibold text-[0.85rem]">{pos.title}</span>
 								<input
 									type="text"
-									class="officer-name"
+									class="py-1 px-2 text-[0.85rem]"
 									placeholder="Name"
 									value={officer.name}
 									onInput={(e) => handleOfficerName(pos.id, (e.target as HTMLInputElement).value)}
 								/>
-								<span class="officer-skill">{pos.skill}</span>
+								<span class="text-[0.8rem] text-text-muted text-right">{pos.skill}</span>
 								<input
 									type="number"
-									class="officer-skill-val"
+									class="w-[50px] p-1 text-[0.85rem] text-center"
 									min={0}
 									max={10}
 									value={officer.skill}
 									onInput={(e) =>
 										handleOfficerSkill(
 											pos.id,
-											Number.parseInt((e.target as HTMLInputElement).value) || 0,
+											Number.parseInt((e.target as HTMLInputElement).value, 10) || 0,
 										)
 									}
 								/>

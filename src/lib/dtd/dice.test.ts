@@ -41,12 +41,24 @@ describe("parseNotation", () => {
 		});
 
 		it("handles whitespace around modifier", () => {
-			expect(parseNotation("3k2 + 5")).toEqual({ num: 3, keep: 2, modifier: 5 });
-			expect(parseNotation("3k2 - 5")).toEqual({ num: 3, keep: 2, modifier: -5 });
+			expect(parseNotation("3k2 + 5")).toEqual({
+				num: 3,
+				keep: 2,
+				modifier: 5,
+			});
+			expect(parseNotation("3k2 - 5")).toEqual({
+				num: 3,
+				keep: 2,
+				modifier: -5,
+			});
 		});
 
 		it("handles leading/trailing whitespace", () => {
-			expect(parseNotation("  5k3+1  ")).toEqual({ num: 5, keep: 3, modifier: 1 });
+			expect(parseNotation("  5k3+1  ")).toEqual({
+				num: 5,
+				keep: 3,
+				modifier: 1,
+			});
 		});
 
 		it("is case-insensitive", () => {
@@ -55,7 +67,11 @@ describe("parseNotation", () => {
 		});
 
 		it("parses large numbers", () => {
-			expect(parseNotation("20k10+15")).toEqual({ num: 20, keep: 10, modifier: 15 });
+			expect(parseNotation("20k10+15")).toEqual({
+				num: 20,
+				keep: 10,
+				modifier: 15,
+			});
 		});
 
 		it("parses 1k1", () => {

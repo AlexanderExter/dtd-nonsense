@@ -102,12 +102,13 @@ export function FeatsStep() {
 	const ahPreview = selectedAHPreview.value;
 
 	return (
-		<div class="step-feats">
+		<div>
 			{/* ===== Feats Section ===== */}
-			<section class="feats-section">
+			<section class="mb-lg">
 				<h3>Feats</h3>
-				<div class="filter-bar">
+				<div class="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
 					<select
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						value={featCatFilter.value}
 						onChange={(e) => {
 							featCatFilter.value = (e.target as HTMLSelectElement).value;
@@ -120,6 +121,7 @@ export function FeatsStep() {
 					</select>
 					<input
 						type="text"
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						placeholder="Search feats…"
 						onInput={(e) => handleSearch((e.target as HTMLInputElement).value)}
 					/>
@@ -127,13 +129,16 @@ export function FeatsStep() {
 
 				{/* Selected feats */}
 				{char.feats.length > 0 && (
-					<div class="tag-list">
+					<div class="flex flex-wrap gap-xs mb-md">
 						{char.feats.map((f) => (
-							<span key={f.name} class="tag tag-feat">
+							<span
+								key={f.name}
+								class="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(212,168,75,0.12)] border border-accent-dim rounded-full text-[0.8rem] text-accent"
+							>
 								{f.name}
 								<button
 									type="button"
-									class="tag-remove"
+									class="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
 									onClick={() => toggleFeat({ id: f.name })}
 									aria-label={`Remove ${f.name}`}
 								>
@@ -144,7 +149,7 @@ export function FeatsStep() {
 					</div>
 				)}
 
-				<div class="selection-grid">
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 					{filteredFeats.map((f: any) => {
 						const id = f.id || f.name;
 						return (
@@ -176,8 +181,8 @@ export function FeatsStep() {
 							</p>
 						)}
 						{featPreview.effect && <p>{featPreview.effect}</p>}
-						<p class="xp-cost">Cost: 100 XP</p>
-						<div class="detail-actions">
+						<p class="text-[0.8rem] text-text-muted">Cost: 100 XP</p>
+						<div class="mt-md flex gap-sm">
 							<button
 								type="button"
 								class={`btn ${selectedFeatIds.has(featPreview.id || featPreview.name) ? "btn-danger" : "btn-primary"}`}
@@ -191,10 +196,11 @@ export function FeatsStep() {
 			</section>
 
 			{/* ===== Assets & Hindrances Section ===== */}
-			<section class="ah-section">
+			<section>
 				<h3>Assets &amp; Hindrances</h3>
-				<div class="filter-bar">
+				<div class="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
 					<select
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						value={ahCatFilter.value}
 						onChange={(e) => {
 							ahCatFilter.value = (e.target as HTMLSelectElement).value;
@@ -209,13 +215,16 @@ export function FeatsStep() {
 
 				{/* Selected assets/hindrances */}
 				{(char.assets.length > 0 || char.hindrances.length > 0) && (
-					<div class="tag-list">
+					<div class="flex flex-wrap gap-xs mb-md">
 						{char.assets.map((a) => (
-							<span key={a.name} class="tag tag-asset">
+							<span
+								key={a.name}
+								class="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(74,222,128,0.1)] border border-success rounded-full text-[0.8rem] text-success"
+							>
 								{a.name}
 								<button
 									type="button"
-									class="tag-remove"
+									class="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
 									onClick={() => toggleAH({ id: a.name, category: "asset" })}
 									aria-label={`Remove ${a.name}`}
 								>
@@ -224,11 +233,14 @@ export function FeatsStep() {
 							</span>
 						))}
 						{char.hindrances.map((h) => (
-							<span key={h.name} class="tag tag-hindrance">
+							<span
+								key={h.name}
+								class="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(248,113,113,0.1)] border border-error rounded-full text-[0.8rem] text-error"
+							>
 								{h.name}
 								<button
 									type="button"
-									class="tag-remove"
+									class="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
 									onClick={() => toggleAH({ id: h.name, category: "hindrance" })}
 									aria-label={`Remove ${h.name}`}
 								>
@@ -239,7 +251,7 @@ export function FeatsStep() {
 					</div>
 				)}
 
-				<div class="selection-grid">
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 					{filteredAH.map((item: any) => {
 						const id = item.id || item.name;
 						const isHindrance = item.category === "hindrance";
@@ -279,7 +291,7 @@ export function FeatsStep() {
 							</p>
 						)}
 						{ahPreview.effect && <p>{ahPreview.effect}</p>}
-						<div class="detail-actions">
+						<div class="mt-md flex gap-sm">
 							{(() => {
 								const id = ahPreview.id || ahPreview.name;
 								const isHindrance = ahPreview.category === "hindrance";

@@ -39,11 +39,12 @@ export function ClassesStep() {
 	};
 
 	return (
-		<div class="step-classes">
-			<div class="filter-bar">
-				<label>
+		<div>
+			<div class="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
+				<label class="text-[0.85rem] text-text-dim m-0">
 					Track:{" "}
 					<select
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						value={trackFilter.value}
 						onChange={(e) => {
 							trackFilter.value = (e.target as HTMLSelectElement).value;
@@ -61,15 +62,18 @@ export function ClassesStep() {
 
 			{/* Purchased classes */}
 			{char.classes.length > 0 && (
-				<div class="tag-list">
+				<div class="flex flex-wrap gap-xs mb-md">
 					{char.classes.map((entry) => {
 						const cls = allClasses.find((c: any) => (c.id || c.name) === entry.classId);
 						return (
-							<span key={entry.classId} class="tag">
+							<span
+								key={entry.classId}
+								class="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(212,168,75,0.12)] border border-accent-dim rounded-full text-[0.8rem] text-accent"
+							>
 								{cls?.name || entry.classId}
 								<button
 									type="button"
-									class="tag-remove"
+									class="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
 									onClick={() => toggleClass(cls || { id: entry.classId })}
 									aria-label={`Remove ${cls?.name || entry.classId}`}
 								>
@@ -81,7 +85,7 @@ export function ClassesStep() {
 				</div>
 			)}
 
-			<div class="selection-grid">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 				{filtered.map((cls: any) => {
 					const id = cls.id || cls.name;
 					return (
@@ -151,7 +155,7 @@ export function ClassesStep() {
 						</p>
 					)}
 
-					<div class="detail-actions">
+					<div class="mt-md flex gap-sm">
 						{purchasedIds.has(preview.id || preview.name) ? (
 							<button type="button" class="btn btn-danger" onClick={() => toggleClass(preview)}>
 								Remove

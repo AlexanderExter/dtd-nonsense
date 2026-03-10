@@ -44,7 +44,11 @@ export function extractSections(text: string, targetLevel: number = 2): ParsedSe
 
 	const matches: { index: number; end: number; heading: string }[] = [];
 	for (const m of text.matchAll(pattern)) {
-		matches.push({ index: m.index, end: m.index + m[0].length, heading: m[1].trim() });
+		matches.push({
+			index: m.index,
+			end: m.index + m[0].length,
+			heading: m[1].trim(),
+		});
 	}
 
 	for (let i = 0; i < matches.length; i++) {

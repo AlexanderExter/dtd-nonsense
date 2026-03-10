@@ -39,7 +39,7 @@ export function BackgroundsStep() {
 		}
 	};
 
-	const canIncrease = (bgId: string): boolean => {
+	const _canIncrease = (bgId: string): boolean => {
 		const current = getDots(bgId);
 		if (current >= 5) return false;
 		// If next dot is within free cap and we have budget, allow
@@ -52,20 +52,22 @@ export function BackgroundsStep() {
 	};
 
 	return (
-		<div class="step-backgrounds">
-			<div class="budget-bar">
+		<div>
+			<div class="flex justify-between items-center px-md py-sm bg-surface rounded-sm mb-md text-[0.9rem]">
 				<strong>Free Dots:</strong> {freeRemaining} / {BG_BUDGET} remaining
 			</div>
 
-			<div class="bg-grid">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-md">
 				{backgrounds.map((bg: any) => {
 					const dots = getDots(bg.id || bg.name);
 					const xpDots = Math.max(0, dots - FREE_BG_CAP);
 
 					return (
-						<div key={bg.id || bg.name} class="bg-card">
-							<h4>{bg.name}</h4>
-							{bg.description && <p class="bg-desc">{bg.description}</p>}
+						<div key={bg.id || bg.name} class="bg-surface border border-border rounded-md p-md">
+							<h4 class="text-accent mb-xs text-[0.95rem]">{bg.name}</h4>
+							{bg.description && (
+								<p class="text-[0.8rem] text-text-dim mb-sm leading-[1.4]">{bg.description}</p>
+							)}
 							<DotControl
 								value={dots}
 								max={5}
@@ -73,8 +75,16 @@ export function BackgroundsStep() {
 								xpDots={xpDots}
 								onChange={(v) => setDots(bg.id || bg.name, v)}
 							/>
-							{xpDots > 0 && <span class="xp-warning">+{xpDots * BG_XP_PER_DOT} XP cost</span>}
-							{dots > 0 && bg.dots?.[dots - 1] && <p class="bg-effect">{bg.dots[dots - 1]}</p>}
+							{xpDots > 0 && (
+								<span class="block text-xs text-warning text-center mt-xs">
+									+{xpDots * BG_XP_PER_DOT} XP cost
+								</span>
+							)}
+							{dots > 0 && bg.dots?.[dots - 1] && (
+								<p class="text-[0.8rem] text-text-muted mt-sm pt-sm border-t border-border min-h-[1.5em]">
+									{bg.dots[dots - 1]}
+								</p>
+							)}
 						</div>
 					);
 				})}

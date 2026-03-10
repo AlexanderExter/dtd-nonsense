@@ -47,12 +47,17 @@ export function HullSelector() {
 	const filteredHulls = data.hulls.filter((h) => filterClass.value === "all" || h.class === filterClass.value);
 
 	return (
-		<section class="build-section">
-			<h2 class="section-title">Hull Selection</h2>
-			<div class="hull-filters">
+		<section class="mb-xl">
+			<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Hull Selection</h2>
+			<div class="flex gap-sm mb-md flex-wrap">
 				<button
 					type="button"
-					class={`filter-btn ${filterClass.value === "all" ? "active" : ""}`}
+					class={[
+						"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+						filterClass.value === "all" && "bg-accent-dim border-accent text-text-primary",
+					]
+						.filter(Boolean)
+						.join(" ")}
 					onClick={() => {
 						filterClass.value = "all";
 					}}
@@ -63,7 +68,12 @@ export function HullSelector() {
 					<button
 						type="button"
 						key={cls}
-						class={`filter-btn ${filterClass.value === cls ? "active" : ""}`}
+						class={[
+							"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+							filterClass.value === cls && "bg-accent-dim border-accent text-text-primary",
+						]
+							.filter(Boolean)
+							.join(" ")}
 						onClick={() => {
 							filterClass.value = cls;
 						}}
@@ -72,7 +82,7 @@ export function HullSelector() {
 					</button>
 				))}
 			</div>
-			<div class="hull-grid">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-md">
 				{filteredHulls.map((hull) => (
 					<HullCard
 						key={hull.id}
@@ -95,36 +105,47 @@ function HullCard({ hull, selected, onSelect }: { hull: Hull; selected: boolean;
 	const totalWeapons = hull.weapons.forward + hull.weapons.rear;
 
 	return (
-		<button type="button" class={`hull-card ${selected ? "selected" : ""}`} onClick={() => onSelect(hull.id)}>
-			<div class="hull-name">{hull.name}</div>
-			<div class="hull-class">{hull.class}</div>
-			<div class="hull-stats">
+		<button
+			type="button"
+			class={[
+				"bg-surface border-2 border-border rounded-md p-md cursor-pointer transition-all duration-150 hover:border-border-light hover:bg-surface-raised text-left",
+				selected && "border-accent bg-[rgba(212,168,75,0.1)]",
+			]
+				.filter(Boolean)
+				.join(" ")}
+			onClick={() => onSelect(hull.id)}
+		>
+			<div class="font-semibold mb-0.5">{hull.name}</div>
+			<div class="text-[0.8rem] text-text-muted mb-sm">{hull.class}</div>
+			<div class="grid grid-cols-2 gap-x-md gap-y-0.5 text-[0.8rem] text-text-muted">
 				<span>
-					Hull: <strong>{hull.hullStrength}</strong>
+					Hull: <strong class="text-text-primary">{hull.hullStrength}</strong>
 				</span>
 				<span>
-					Man: <strong>{signedNum(hull.maneuverability)}</strong>
+					Man: <strong class="text-text-primary">{signedNum(hull.maneuverability)}</strong>
 				</span>
 				<span>
-					Speed: <strong>{hull.speed}</strong>
+					Speed: <strong class="text-text-primary">{hull.speed}</strong>
 				</span>
 				<span>
-					Acc: <strong>{signedNum(hull.acceleration)}</strong>
+					Acc: <strong class="text-text-primary">{signedNum(hull.acceleration)}</strong>
 				</span>
 				<span>
-					Sensors: <strong>{signedNum(hull.sensors)}</strong>
+					Sensors: <strong class="text-text-primary">{signedNum(hull.sensors)}</strong>
 				</span>
 				<span>
-					Crew: <strong>{hull.crew}</strong>
+					Crew: <strong class="text-text-primary">{hull.crew}</strong>
 				</span>
 				<span>
-					Consoles: <strong>{totalSlots}</strong>
+					Consoles: <strong class="text-text-primary">{totalSlots}</strong>
 				</span>
 				<span>
-					Weapons: <strong>{totalWeapons}</strong>
+					Weapons: <strong class="text-text-primary">{totalWeapons}</strong>
 				</span>
 			</div>
-			<span class="hull-cost">{hull.cost} BP</span>
+			<span class="inline-block mt-sm px-2 py-0.5 bg-accent-dim rounded-sm text-xs font-semibold text-text-primary">
+				{hull.cost} BP
+			</span>
 		</button>
 	);
 }

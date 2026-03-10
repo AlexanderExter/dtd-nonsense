@@ -21,28 +21,33 @@ export function CombatTab() {
 	}
 
 	return (
-		<section class="tab-panel panel-combat">
+		<section class="tab-panel">
 			{/* ---------- Armor Location Display ---------- */}
-			<div class="card">
-				<h3>Armor by Location</h3>
-				<div class="location-grid">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Armor by Location</h3>
+				<div class="grid grid-cols-6 gap-sm my-md max-[768px]:grid-cols-3">
 					{LOCATIONS.map((loc) => (
-						<div key={loc} class="location-cell">
-							<span class="loc-name">{loc}</span>
-							<span class="loc-ap">{locationAP[loc]}</span>
+						<div key={loc} class="text-center p-sm bg-bg border border-border rounded-sm">
+							<span class="block text-[0.65rem] text-text-muted uppercase tracking-[0.3px] mb-0.5">
+								{loc}
+							</span>
+							<span class="text-[1.2rem] font-bold text-accent">{locationAP[loc]}</span>
 						</div>
 					))}
 				</div>
 			</div>
 
 			{/* ---------- Natural Armor & Aura ---------- */}
-			<div class="card">
-				<h3>Natural Armor &amp; Aura</h3>
-				<div class="form-row">
-					<label>
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">
+					Natural Armor &amp; Aura
+				</h3>
+				<div class="flex gap-md mb-md flex-wrap">
+					<label class="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Natural Armor
 						<input
 							type="number"
+							class="w-full"
 							value={char.naturalArmor || 0}
 							min={0}
 							onInput={(e) =>
@@ -52,10 +57,11 @@ export function CombatTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura
 						<input
 							type="number"
+							class="w-full"
 							value={char.aura || 0}
 							min={0}
 							onInput={(e) =>
@@ -65,10 +71,11 @@ export function CombatTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura Source
 						<input
 							type="text"
+							class="w-full"
 							value={char.auraSource || ""}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -81,17 +88,17 @@ export function CombatTab() {
 			</div>
 
 			{/* ---------- Armor List ---------- */}
-			<div class="card">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<ArmorSection />
 			</div>
 
 			{/* ---------- Melee Weapons ---------- */}
-			<div class="card">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<WeaponTable type="melee" />
 			</div>
 
 			{/* ---------- Ranged Weapons ---------- */}
-			<div class="card">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<WeaponTable type="ranged" />
 			</div>
 		</section>

@@ -21,12 +21,21 @@ const rangeResult = computed(() => {
 	const wpn = weaponRange.value;
 	const dist = distance.value;
 	if (wpn <= 0) return { band: "", mod: "", note: "Enter weapon range." };
-	if (dist <= 2) return { band: "Point Blank", mod: "+2k1", note: " — Does not apply if engaged in melee" };
+	if (dist <= 2)
+		return {
+			band: "Point Blank",
+			mod: "+2k1",
+			note: " — Does not apply if engaged in melee",
+		};
 	const ratio = dist / wpn;
 	if (ratio < 0.5) return { band: "Short Range", mod: "+1k0", note: "" };
 	if (ratio <= 2) return { band: "Normal Range", mod: "— (no modifier)", note: "" };
 	if (ratio <= 3) return { band: "Long Range", mod: "−1k0", note: "" };
-	return { band: "Extreme Range", mod: "−3k0", note: " — No maximum range in rules; this is the worst penalty" };
+	return {
+		band: "Extreme Range",
+		mod: "−3k0",
+		note: " — No maximum range in rules; this is the worst penalty",
+	};
 });
 
 const modifierResult = computed(() => {

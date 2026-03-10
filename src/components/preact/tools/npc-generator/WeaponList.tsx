@@ -70,21 +70,33 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								class="flex-1 min-w-[100px] py-[2px] px-xs text-[0.85rem]"
 								placeholder="Weapon name"
 								value={w.name}
-								onInput={(e) => updateWeapon(i, { name: (e.target as HTMLInputElement).value })}
+								onInput={(e) =>
+									updateWeapon(i, {
+										name: (e.target as HTMLInputElement).value,
+									})
+								}
 							/>
 							<input
 								type="text"
 								class="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
 								placeholder="XkY"
 								value={w.damage}
-								onInput={(e) => updateWeapon(i, { damage: (e.target as HTMLInputElement).value })}
+								onInput={(e) =>
+									updateWeapon(i, {
+										damage: (e.target as HTMLInputElement).value,
+									})
+								}
 							/>
 							<input
 								type="text"
 								class="w-[55px] flex-none py-[2px] px-xs text-[0.85rem]"
 								placeholder="E/I/R/X"
 								value={w.damageType}
-								onInput={(e) => updateWeapon(i, { damageType: (e.target as HTMLInputElement).value })}
+								onInput={(e) =>
+									updateWeapon(i, {
+										damageType: (e.target as HTMLInputElement).value,
+									})
+								}
 							/>
 							<span class="text-[0.8rem] text-text-muted">Pen</span>
 							<input
@@ -129,7 +141,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									placeholder="ROF"
 									value={w.rof ?? ""}
 									onInput={(e) =>
-										updateWeapon(i, { rof: (e.target as HTMLInputElement).value || undefined })
+										updateWeapon(i, {
+											rof: (e.target as HTMLInputElement).value || undefined,
+										})
 									}
 								/>
 								<input
@@ -138,7 +152,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									placeholder="Clip"
 									value={w.clip ?? ""}
 									onInput={(e) =>
-										updateWeapon(i, { clip: (e.target as HTMLInputElement).value || undefined })
+										updateWeapon(i, {
+											clip: (e.target as HTMLInputElement).value || undefined,
+										})
 									}
 								/>
 								<input
@@ -147,7 +163,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									placeholder="Reload"
 									value={w.reload ?? ""}
 									onInput={(e) =>
-										updateWeapon(i, { reload: (e.target as HTMLInputElement).value || undefined })
+										updateWeapon(i, {
+											reload: (e.target as HTMLInputElement).value || undefined,
+										})
 									}
 								/>
 							</div>
@@ -160,7 +178,11 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								class="flex-1 min-w-[80px] py-[2px] px-xs text-[0.85rem]"
 								placeholder="Special properties"
 								value={w.special}
-								onInput={(e) => updateWeapon(i, { special: (e.target as HTMLInputElement).value })}
+								onInput={(e) =>
+									updateWeapon(i, {
+										special: (e.target as HTMLInputElement).value,
+									})
+								}
 							/>
 						</div>
 					</div>

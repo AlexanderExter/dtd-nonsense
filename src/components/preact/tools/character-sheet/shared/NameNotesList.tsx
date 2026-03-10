@@ -65,8 +65,8 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 	};
 
 	return (
-		<div class="name-notes-section">
-			<h4>{label}</h4>
+		<div>
+			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">{label}</h4>
 			{datalistId && options.length > 0 && (
 				<datalist id={datalistId}>
 					{options.map((n) => (
@@ -74,36 +74,42 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					))}
 				</datalist>
 			)}
-			<table class="name-notes-table">
+			<table class="w-full border-collapse text-[0.85rem]">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Notes</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							Name
+						</th>
+						<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							Notes
+						</th>
 						<th />
 					</tr>
 				</thead>
 				<tbody>
 					{items.map((item, idx) => (
 						<tr key={idx}>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									list={datalistId}
 									value={item.name}
 									onInput={(e) => handleNameChange(idx, (e.target as HTMLInputElement).value)}
 								/>
 							</td>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"
+									class="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={item.notes}
 									onInput={(e) => handleNotesChange(idx, (e.target as HTMLInputElement).value)}
 								/>
 							</td>
-							<td>
+							<td class="py-[3px] px-sm border-b border-border align-middle text-center w-9">
 								<button
 									type="button"
-									class="btn-remove"
+									class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
 								>
@@ -114,7 +120,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					))}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-sm" onClick={handleAdd}>
+			<button type="button" class="btn btn-sm mt-sm" onClick={handleAdd}>
 				+ Add {label.replace(/s$/, "")}
 			</button>
 		</div>

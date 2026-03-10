@@ -22,7 +22,7 @@ export function SummaryPanel() {
 	}, []);
 
 	const handleHoldingsChange = useCallback((e: Event) => {
-		const holdings = Number.parseInt((e.target as HTMLSelectElement).value);
+		const holdings = Number.parseInt((e.target as HTMLSelectElement).value, 10);
 		updateShip((s) => ({ ...s, holdings }));
 	}, []);
 
@@ -32,7 +32,7 @@ export function SummaryPanel() {
 	}, []);
 
 	const handleCustomBPValue = useCallback((e: Event) => {
-		const customBPValue = Number.parseInt((e.target as HTMLInputElement).value) || 0;
+		const customBPValue = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
 		updateShip((s) => ({ ...s, customBPValue }));
 	}, []);
 
@@ -51,66 +51,66 @@ export function SummaryPanel() {
 	].filter((l) => l.val !== 0);
 
 	return (
-		<aside class="summary-panel">
-			<div class="summary-header">
+		<aside class="sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto p-lg bg-surface border-l border-border max-[900px]:static max-[900px]:h-auto max-[900px]:border-l-0 max-[900px]:border-t max-[900px]:border-border">
+			<div>
 				<input
 					type="text"
-					class="ship-name-input"
+					class="w-full text-[1.3rem] font-semibold p-sm bg-transparent border border-transparent border-b-2 border-b-accent text-accent mb-md focus:border-accent focus:bg-surface-raised"
 					placeholder="Ship Name"
 					value={currentShip.name}
 					onInput={handleNameChange}
 				/>
 			</div>
 
-			<div class="summary-hull">
+			<div class="mb-md text-[0.9rem]">
 				{hull ? (
 					<>
-						<strong>{hull.name}</strong> <span class="text-muted">({hull.class})</span>
+						<strong>{hull.name}</strong> <span class="text-text-muted">({hull.class})</span>
 					</>
 				) : (
-					<span class="text-muted">No hull selected</span>
+					<span class="text-text-muted">No hull selected</span>
 				)}
 			</div>
 
 			{stats && (
-				<div class="summary-stats">
-					<table>
+				<div class="mb-md">
+					<table class="w-full text-[0.85rem]">
 						<tbody>
 							<tr>
-								<td>Hull Strength</td>
-								<td>{stats.hullHP}</td>
+								<td class="py-[3px] px-sm text-text-muted">Hull Strength</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{stats.hullHP}</td>
 							</tr>
 							<tr>
-								<td>Maneuverability</td>
-								<td>{signedNum(stats.man)}</td>
+								<td class="py-[3px] px-sm text-text-muted">Maneuverability</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{signedNum(stats.man)}</td>
 							</tr>
 							<tr>
-								<td>Acceleration</td>
-								<td>{signedNum(stats.acc)}</td>
+								<td class="py-[3px] px-sm text-text-muted">Acceleration</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{signedNum(stats.acc)}</td>
 							</tr>
 							<tr>
-								<td>Speed</td>
-								<td>{stats.speed}</td>
+								<td class="py-[3px] px-sm text-text-muted">Speed</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{stats.speed}</td>
 							</tr>
 							<tr>
-								<td>Sensors</td>
-								<td>{signedNum(stats.sensors)}</td>
+								<td class="py-[3px] px-sm text-text-muted">Sensors</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{signedNum(stats.sensors)}</td>
 							</tr>
 							<tr>
-								<td>Crew Quality</td>
-								<td>{stats.cq}</td>
+								<td class="py-[3px] px-sm text-text-muted">Crew Quality</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{stats.cq}</td>
 							</tr>
 							<tr>
-								<td>Crew Size</td>
-								<td>{stats.crew}</td>
+								<td class="py-[3px] px-sm text-text-muted">Crew Size</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{stats.crew}</td>
 							</tr>
 							<tr>
-								<td>TN to Hit</td>
-								<td>{stats.tn}</td>
+								<td class="py-[3px] px-sm text-text-muted">TN to Hit</td>
+								<td class="py-[3px] px-sm text-right font-semibold">{stats.tn}</td>
 							</tr>
 							<tr>
-								<td>Initiative</td>
-								<td>
+								<td class="py-[3px] px-sm text-text-muted">Initiative</td>
+								<td class="py-[3px] px-sm text-right font-semibold">
 									{signedNum(stats.sensors)} + {signedNum(stats.acc)} + 1d10
 								</td>
 							</tr>
@@ -119,10 +119,12 @@ export function SummaryPanel() {
 				</div>
 			)}
 
-			<div class="summary-bp">
-				<h4>Build Points</h4>
-				<div class="field-row">
-					<label for="holdings-input">Holdings</label>
+			<div class="mb-md">
+				<h4 class="mb-sm">Build Points</h4>
+				<div class="mb-sm">
+					<label for="holdings-input" class="text-[0.8rem]">
+						Holdings
+					</label>
 					<select id="holdings-input" value={currentShip.holdings} onChange={handleHoldingsChange}>
 						{data.holdingsBP.map((bp, i) => (
 							<option key={i} value={i}>
@@ -131,27 +133,40 @@ export function SummaryPanel() {
 						))}
 					</select>
 				</div>
-				<label class="toggle-row">
+				<label class="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
 					<input type="checkbox" checked={currentShip.customBP} onChange={handleCustomBPToggle} />
 					<span>Custom BP budget</span>
 				</label>
 				{currentShip.customBP && (
 					<input type="number" min={0} value={currentShip.customBPValue} onInput={handleCustomBPValue} />
 				)}
-				<div class="budget-bar">
-					<div class="label">
+				<div class="mt-sm">
+					<div class="flex justify-between text-[0.85rem] mb-xs">
 						<span>BP Spent</span>
 						<span>
 							{totalSpent} / {budget} BP
 						</span>
 					</div>
-					<div class="bar">
-						<div class={`bar-fill ${overBudget ? "over-budget" : ""}`} style={{ width: `${pct}%` }} />
+					<div class="h-2 bg-surface-raised rounded-[4px] overflow-hidden">
+						<div
+							class={[
+								"h-full bg-accent rounded-[4px] transition-all duration-300",
+								overBudget && "bg-error",
+							]
+								.filter(Boolean)
+								.join(" ")}
+							style={{ width: `${pct}%` }}
+						/>
 					</div>
 				</div>
-				<div class="bp-breakdown">
+				<div class="text-[0.8rem] text-text-muted">
 					{breakdownLines.map((l) => (
-						<div key={l.label} class={`bp-line ${overBudget ? "over-budget" : ""}`}>
+						<div
+							key={l.label}
+							class={["flex justify-between py-0.5", overBudget && "text-error"]
+								.filter(Boolean)
+								.join(" ")}
+						>
 							<span>{l.label}</span>
 							<span>{l.val} BP</span>
 						</div>
@@ -159,8 +174,8 @@ export function SummaryPanel() {
 				</div>
 			</div>
 
-			<div class="summary-actions">
-				<button type="button" class="btn btn-primary" onClick={handleSwitchToSheet}>
+			<div class="mt-lg no-print">
+				<button type="button" class="btn btn-primary w-full" onClick={handleSwitchToSheet}>
 					Switch to Sheet →
 				</button>
 			</div>

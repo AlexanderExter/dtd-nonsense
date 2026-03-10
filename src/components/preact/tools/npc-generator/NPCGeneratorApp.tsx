@@ -152,7 +152,10 @@ export function NPCGeneratorApp() {
 				skills: tpl.skills.map((s) => ({ ...s })),
 				feats: [...tpl.feats],
 				traits: (tpl.traits || []).map((t) => ({ ...t })),
-				armor: (tpl.armor || []).map((a) => ({ ...a, locations: [...a.locations] })),
+				armor: (tpl.armor || []).map((a) => ({
+					...a,
+					locations: [...a.locations],
+				})),
 				weapons: (tpl.weapons || []).map((w) => ({ ...w })),
 				abilities: (tpl.abilities || []).map((a) => ({ ...a })),
 				gear: Array.isArray(tpl.gear) ? tpl.gear.join(", ") : tpl.gear || "",
@@ -226,7 +229,13 @@ export function NPCGeneratorApp() {
 	// Loading state
 	if (!dataLoaded.value) {
 		return (
-			<div style={{ padding: "2rem", textAlign: "center", color: "var(--text-muted)" }}>
+			<div
+				style={{
+					padding: "2rem",
+					textAlign: "center",
+					color: "var(--text-muted)",
+				}}
+			>
 				Loading NPC Builder...
 			</div>
 		);

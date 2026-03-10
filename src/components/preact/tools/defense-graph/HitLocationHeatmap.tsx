@@ -19,7 +19,15 @@ interface BodyRegion {
 const BODY_REGIONS: BodyRegion[] = [
 	{ loc: "head", label: "Head", x: 115, y: 10, w: 70, h: 50, prob: 0.1 },
 	{ loc: "body", label: "Body", x: 90, y: 70, w: 120, h: 100, prob: 0.4 },
-	{ loc: "gizzards", label: "Gizzards", x: 100, y: 175, w: 100, h: 40, prob: 0.1 },
+	{
+		loc: "gizzards",
+		label: "Gizzards",
+		x: 100,
+		y: 175,
+		w: 100,
+		h: 40,
+		prob: 0.1,
+	},
 	{ loc: "larm", label: "L.Arm", x: 10, y: 70, w: 70, h: 120, prob: 0.1 },
 	{ loc: "rarm", label: "R.Arm", x: 220, y: 70, w: 70, h: 120, prob: 0.1 },
 	{ loc: "lleg", label: "L.Leg", x: 90, y: 225, w: 55, h: 140, prob: 0.1 },

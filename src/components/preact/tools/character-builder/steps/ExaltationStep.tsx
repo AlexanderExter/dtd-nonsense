@@ -35,8 +35,8 @@ export function ExaltationStep() {
 	};
 
 	return (
-		<div class="step-exaltation">
-			<div class="selection-grid">
+		<div>
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 				{exaltations.map((ex: any) => (
 					<SelectionCard
 						key={ex.id || ex.name}
@@ -56,7 +56,7 @@ export function ExaltationStep() {
 					{preview.description && <p>{preview.description}</p>}
 
 					{preview.staticPowers?.length > 0 && (
-						<div class="powers-list">
+						<div>
 							<strong>Static Powers:</strong>
 							<ul>
 								{preview.staticPowers.map((p: any, i: number) => (
@@ -75,7 +75,7 @@ export function ExaltationStep() {
 					)}
 
 					{preview.progression?.length > 0 && (
-						<div class="progression-table">
+						<div>
 							<strong>Progression:</strong>
 							<table>
 								<thead>
@@ -96,7 +96,7 @@ export function ExaltationStep() {
 						</div>
 					)}
 
-					<div class="detail-actions">
+					<div class="mt-md flex gap-sm">
 						{currentExalt === (preview.id || preview.name) ? (
 							<button type="button" class="btn btn-danger" onClick={removeExaltation}>
 								Remove

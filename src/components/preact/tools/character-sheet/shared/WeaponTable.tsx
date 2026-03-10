@@ -7,7 +7,15 @@ interface WeaponTableProps {
 }
 
 function emptyMelee(): MeleeWeapon {
-	return { name: "", damage: "", damageType: "", proficiency: "", qualities: "", notes: "", pen: "" };
+	return {
+		name: "",
+		damage: "",
+		damageType: "",
+		proficiency: "",
+		qualities: "",
+		notes: "",
+		pen: "",
+	};
 }
 
 function emptyRanged(): RangedWeapon {
@@ -70,37 +78,48 @@ export function WeaponTable({ type }: WeaponTableProps) {
 		});
 	};
 
+	const thClass =
+		"text-[0.72rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap";
+	const tdClass = "py-[3px] px-sm border-b border-border align-middle";
+	const inputClass =
+		"w-full py-0.5 px-1 text-[0.8rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none";
+	const selectClass =
+		"w-full text-[0.78rem] py-[1px] px-0.5 max-w-[100px] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none";
+
 	return (
-		<div class="weapon-table-section">
-			<h4>{isMelee ? "Melee Weapons" : "Ranged Weapons"}</h4>
+		<div>
+			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">
+				{isMelee ? "Melee Weapons" : "Ranged Weapons"}
+			</h4>
 			<datalist id={datalistId}>
 				{weaponOptions.map((n) => (
 					<option key={n} value={n} />
 				))}
 			</datalist>
-			<table class="weapon-table">
+			<table class="w-full border-collapse text-[0.8rem]">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Class</th>
-						{!isMelee && <th>Range</th>}
-						<th>Damage</th>
-						<th>Pen</th>
-						<th>Type</th>
-						{!isMelee && <th>RoF</th>}
-						{!isMelee && <th>Clip</th>}
-						{!isMelee && <th>Reload</th>}
-						<th>Special</th>
-						<th>Notes</th>
+						<th class={thClass}>Name</th>
+						<th class={thClass}>Class</th>
+						{!isMelee && <th class={thClass}>Range</th>}
+						<th class={thClass}>Damage</th>
+						<th class={thClass}>Pen</th>
+						<th class={thClass}>Type</th>
+						{!isMelee && <th class={thClass}>RoF</th>}
+						{!isMelee && <th class={thClass}>Clip</th>}
+						{!isMelee && <th class={thClass}>Reload</th>}
+						<th class={thClass}>Special</th>
+						<th class={thClass}>Notes</th>
 						<th />
 					</tr>
 				</thead>
 				<tbody>
 					{weapons.map((w, idx) => (
 						<tr key={idx}>
-							<td>
+							<td class={tdClass}>
 								<input
 									type="text"
+									class={inputClass}
 									list={datalistId}
 									value={w.name}
 									onInput={(e) =>
@@ -108,8 +127,9 @@ export function WeaponTable({ type }: WeaponTableProps) {
 									}
 								/>
 							</td>
-							<td>
+							<td class={tdClass}>
 								<select
+									class={selectClass}
 									value={w.proficiency}
 									onChange={(e) =>
 										handleFieldChange(idx, "proficiency", (e.target as HTMLSelectElement).value)
@@ -124,9 +144,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</select>
 							</td>
 							{!isMelee && (
-								<td>
+								<td class={tdClass}>
 									<input
 										type="text"
+										class={inputClass}
 										value={(w as RangedWeapon).range || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "range", (e.target as HTMLInputElement).value)
@@ -134,24 +155,27 @@ export function WeaponTable({ type }: WeaponTableProps) {
 									/>
 								</td>
 							)}
-							<td>
+							<td class={tdClass}>
 								<input
 									type="text"
+									class={inputClass}
 									value={w.damage}
 									onInput={(e) =>
 										handleFieldChange(idx, "damage", (e.target as HTMLInputElement).value)
 									}
 								/>
 							</td>
-							<td>
+							<td class={tdClass}>
 								<input
 									type="text"
+									class={inputClass}
 									value={w.pen || ""}
 									onInput={(e) => handleFieldChange(idx, "pen", (e.target as HTMLInputElement).value)}
 								/>
 							</td>
-							<td>
+							<td class={tdClass}>
 								<select
+									class={selectClass}
 									value={w.damageType}
 									onChange={(e) =>
 										handleFieldChange(idx, "damageType", (e.target as HTMLSelectElement).value)
@@ -166,9 +190,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</select>
 							</td>
 							{!isMelee && (
-								<td>
+								<td class={tdClass}>
 									<input
 										type="text"
+										class={inputClass}
 										value={(w as RangedWeapon).rof || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "rof", (e.target as HTMLInputElement).value)
@@ -177,9 +202,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</td>
 							)}
 							{!isMelee && (
-								<td>
+								<td class={tdClass}>
 									<input
 										type="text"
+										class={inputClass}
 										value={(w as RangedWeapon).clip || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "clip", (e.target as HTMLInputElement).value)
@@ -188,9 +214,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</td>
 							)}
 							{!isMelee && (
-								<td>
+								<td class={tdClass}>
 									<input
 										type="text"
+										class={inputClass}
 										value={(w as RangedWeapon).reload || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "reload", (e.target as HTMLInputElement).value)
@@ -198,28 +225,30 @@ export function WeaponTable({ type }: WeaponTableProps) {
 									/>
 								</td>
 							)}
-							<td>
+							<td class={tdClass}>
 								<input
 									type="text"
+									class={inputClass}
 									value={w.special || w.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "special", (e.target as HTMLInputElement).value)
 									}
 								/>
 							</td>
-							<td>
+							<td class={tdClass}>
 								<input
 									type="text"
+									class={inputClass}
 									value={w.notes}
 									onInput={(e) =>
 										handleFieldChange(idx, "notes", (e.target as HTMLInputElement).value)
 									}
 								/>
 							</td>
-							<td>
+							<td class={`${tdClass} text-center w-9`}>
 								<button
 									type="button"
-									class="btn-remove"
+									class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
 								>

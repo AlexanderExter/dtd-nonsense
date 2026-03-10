@@ -67,10 +67,10 @@ export function ReviewStep() {
 	const activeSkills = Object.entries(char.skills).filter(([, v]) => v > 0);
 
 	return (
-		<div class="step-review">
+		<div class="grid gap-md">
 			{/* Warnings */}
 			{warnings.length > 0 && (
-				<div class="warning-banner">
+				<div class="px-md py-sm bg-[rgba(248,113,113,0.1)] border border-error rounded-sm text-error text-[0.9rem] font-semibold">
 					<strong>⚠ Issues:</strong>
 					<ul>
 						{warnings.map((w, i) => (
@@ -81,9 +81,9 @@ export function ReviewStep() {
 			)}
 
 			{/* Identity */}
-			<section class="review-section">
-				<h3>Identity</h3>
-				<div class="review-grid">
+			<section class="bg-surface border border-border rounded-md p-md">
+				<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Identity</h3>
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-sm text-[0.9rem]">
 					<span>
 						<strong>Name:</strong> {char.name || "—"}
 					</span>
@@ -107,42 +107,35 @@ export function ReviewStep() {
 			</section>
 
 			{/* Derived Stats */}
-			<section class="review-section">
-				<h3>Derived Stats</h3>
-				<div class="derived-grid">
-					<span>
-						<strong>SD:</strong> {sd}
-					</span>
-					<span>
-						<strong>HP:</strong> {hp}
-					</span>
-					<span>
-						<strong>MD:</strong> {md}
-					</span>
-					<span>
-						<strong>Resolve:</strong> {resolve}
-					</span>
-					<span>
-						<strong>Speed:</strong> {speed}
-					</span>
-					<span>
-						<strong>Resilience:</strong> {resilience}
-					</span>
-					<span>
-						<strong>Initiative:</strong> {initiative}
-					</span>
+			<section class="bg-surface border border-border rounded-md p-md">
+				<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Derived Stats</h3>
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-sm">
+					{[
+						["SD", sd],
+						["HP", hp],
+						["MD", md],
+						["Resolve", resolve],
+						["Speed", speed],
+						["Resilience", resilience],
+						["Initiative", initiative],
+					].map(([label, value]) => (
+						<div key={label} class="text-center p-sm bg-surface-raised rounded-sm">
+							<span class="block text-[0.7rem] text-text-dim uppercase">{label}</span>
+							<span class="block text-[1.3rem] font-bold text-accent">{value}</span>
+						</div>
+					))}
 				</div>
 			</section>
 
 			{/* Characteristics */}
-			<section class="review-section">
-				<h3>Characteristics</h3>
-				<div class="char-review-columns">
+			<section class="bg-surface border border-border rounded-md p-md">
+				<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Characteristics</h3>
+				<div class="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
 					{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => (
 						<div key={groupKey}>
-							<h4>{group.label}</h4>
+							<h4 class="text-accent mb-xs text-[0.85rem]">{group.label}</h4>
 							{group.chars.map((ch) => (
-								<div key={ch}>
+								<div key={ch} class="py-xs border-b border-border text-[0.9rem] last:border-b-0">
 									{CHAR_NAMES[ch] || capitalize(ch)}:{" "}
 									<strong>{totalChars[ch] || BASE_CHAR_DOT}</strong>
 								</div>
@@ -154,9 +147,9 @@ export function ReviewStep() {
 
 			{/* Skills */}
 			{activeSkills.length > 0 && (
-				<section class="review-section">
-					<h3>Skills</h3>
-					<div class="review-list">
+				<section class="bg-surface border border-border rounded-md p-md">
+					<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Skills</h3>
+					<div class="flex flex-wrap gap-sm text-[0.9rem]">
 						{activeSkills.map(([key, val]) => (
 							<span key={key}>
 								{capitalize(key)}: {val}
@@ -168,9 +161,9 @@ export function ReviewStep() {
 
 			{/* Backgrounds */}
 			{char.backgrounds.length > 0 && (
-				<section class="review-section">
-					<h3>Backgrounds</h3>
-					<div class="review-list">
+				<section class="bg-surface border border-border rounded-md p-md">
+					<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Backgrounds</h3>
+					<div class="flex flex-wrap gap-sm text-[0.9rem]">
 						{char.backgrounds.map((b) => (
 							<span key={b.name}>
 								{capitalize(b.name)}: {b.dots}
@@ -182,9 +175,9 @@ export function ReviewStep() {
 
 			{/* Classes */}
 			{char.classes.length > 0 && (
-				<section class="review-section">
-					<h3>Classes</h3>
-					<div class="review-list">
+				<section class="bg-surface border border-border rounded-md p-md">
+					<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Classes</h3>
+					<div class="flex flex-wrap gap-sm text-[0.9rem]">
 						{char.classes.map((c) => (
 							<span key={c.classId}>{capitalize(c.classId)}</span>
 						))}
@@ -194,20 +187,22 @@ export function ReviewStep() {
 
 			{/* Feats / Assets / Hindrances */}
 			{(char.feats.length > 0 || char.assets.length > 0 || char.hindrances.length > 0) && (
-				<section class="review-section">
-					<h3>Feats, Assets &amp; Hindrances</h3>
+				<section class="bg-surface border border-border rounded-md p-md">
+					<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">
+						Feats, Assets &amp; Hindrances
+					</h3>
 					{char.feats.length > 0 && (
-						<div class="review-list">
+						<div class="text-[0.9rem] mb-xs">
 							<strong>Feats:</strong> {char.feats.map((f) => f.name).join(", ")}
 						</div>
 					)}
 					{char.assets.length > 0 && (
-						<div class="review-list">
+						<div class="text-[0.9rem] mb-xs">
 							<strong>Assets:</strong> {char.assets.map((a) => a.name).join(", ")}
 						</div>
 					)}
 					{char.hindrances.length > 0 && (
-						<div class="review-list">
+						<div class="text-[0.9rem]">
 							<strong>Hindrances:</strong> {char.hindrances.map((h) => h.name).join(", ")}
 						</div>
 					)}
@@ -216,16 +211,16 @@ export function ReviewStep() {
 
 			{/* Equipment */}
 			{char.equipment && (
-				<section class="review-section">
-					<h3>Equipment</h3>
+				<section class="bg-surface border border-border rounded-md p-md">
+					<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">Equipment</h3>
 					<p>{char.equipment}</p>
 				</section>
 			)}
 
 			{/* XP Budget */}
-			<section class="review-section">
-				<h3>XP Budget</h3>
-				<div class="xp-summary">
+			<section class="bg-surface border border-border rounded-md p-md">
+				<h3 class="text-base text-accent mb-sm pb-xs border-b border-border">XP Budget</h3>
+				<div class="flex flex-wrap gap-sm text-[0.9rem]">
 					<span>
 						<strong>Total:</strong> {TOTAL_XP}
 					</span>
@@ -234,14 +229,14 @@ export function ReviewStep() {
 					{xp.breakdown.assets > 0 && <span>Assets: {xp.breakdown.assets}</span>}
 					{xp.breakdown.hindrances < 0 && <span>Hindrances: {xp.breakdown.hindrances} (bonus)</span>}
 					{xp.breakdown.backgrounds > 0 && <span>Backgrounds: {xp.breakdown.backgrounds}</span>}
-					<span class={xp.remaining < 0 ? "over-budget" : ""}>
+					<span class={xp.remaining < 0 ? "text-error font-semibold" : ""}>
 						<strong>Remaining:</strong> {xp.remaining}
 					</span>
 				</div>
 			</section>
 
 			{/* Actions */}
-			<div class="review-actions">
+			<div class="flex gap-sm mt-md">
 				<button type="button" class="btn btn-primary" onClick={handleOpenInSheet}>
 					Open in Sheet
 				</button>

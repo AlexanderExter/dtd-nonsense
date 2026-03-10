@@ -31,12 +31,13 @@ export function RaceStep() {
 	};
 
 	return (
-		<div class="step-race">
+		<div>
 			{/* Filter bar */}
-			<div class="filter-bar">
-				<label>
+			<div class="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
+				<label class="text-[0.85rem] text-text-dim m-0">
 					Source:{" "}
 					<select
+						class="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						value={sourceFilter.value}
 						onChange={(e) => {
 							sourceFilter.value = (e.target as HTMLSelectElement).value as any;
@@ -50,7 +51,7 @@ export function RaceStep() {
 			</div>
 
 			{/* Selection grid */}
-			<div class="selection-grid">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
 				{races.map((r: any) => (
 					<SelectionCard
 						key={r.id || r.name}
@@ -89,7 +90,7 @@ export function RaceStep() {
 					)}
 
 					{preview.power && (
-						<div class="race-power">
+						<div>
 							<strong>{preview.power.name}:</strong> {preview.power.effect}
 						</div>
 					)}
@@ -98,8 +99,8 @@ export function RaceStep() {
 
 					{/* Characteristic bonus dropdown */}
 					{preview.charBonusOptions?.length > 0 && (
-						<div class="form-group">
-							<label>
+						<div class="mb-md flex-1">
+							<label class="block text-[0.85rem] text-text-muted mb-xs">
 								Characteristic Bonus:{" "}
 								<select
 									value={charSignal.value.raceCharBonus || ""}
@@ -121,7 +122,7 @@ export function RaceStep() {
 						</div>
 					)}
 
-					<div class="detail-actions">
+					<div class="mt-md flex gap-sm">
 						<button type="button" class="btn btn-primary" onClick={() => selectRace(preview)}>
 							{currentRace === (preview.id || preview.name) ? "Selected ✓" : "Select"}
 						</button>

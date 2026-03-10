@@ -48,7 +48,7 @@ export function StepAccordion() {
 	const meta = metaSignal.value;
 
 	return (
-		<div class="step-accordion">
+		<div class="border border-border rounded-md overflow-hidden">
 			{STEP_LABELS.map((label, i) => {
 				const stepNum = i + 1;
 				const isOpen = active === stepNum;
@@ -56,23 +56,30 @@ export function StepAccordion() {
 				const StepComponent = STEP_COMPONENTS[i];
 				const summary = stepSummary(i);
 
+				const stepNumCls = [
+					"inline-flex items-center justify-center w-[1.6rem] h-[1.6rem] rounded-full text-[0.8rem] font-bold shrink-0",
+					isOpen ? "bg-accent text-bg" : isDone ? "bg-success text-bg" : "bg-accent-dim text-text-primary",
+				].join(" ");
+
 				return (
-					<div key={stepNum} class={`accordion-item${isOpen ? " open" : ""}${isDone ? " done" : ""}`}>
+					<div key={stepNum} class="border-b border-border last:border-b-0">
 						<button
 							type="button"
-							class="accordion-header"
+							class="flex items-center gap-md w-full px-lg py-md bg-surface border-none text-text-primary text-base font-semibold text-left cursor-pointer transition-colors duration-150 hover:bg-surface-raised"
 							onClick={() => {
 								currentStep.value = isOpen ? 0 : stepNum;
 							}}
 							aria-expanded={isOpen}
 						>
-							<span class="step-number">{stepNum}</span>
-							<span class="step-title">{label}</span>
-							{isDone && summary && <span class="step-summary">{summary}</span>}
-							<span class="accordion-arrow">{isOpen ? "▾" : "▸"}</span>
+							<span class={stepNumCls}>{stepNum}</span>
+							<span class="flex-1">{label}</span>
+							{isDone && summary && (
+								<span class="font-normal text-[0.85rem] text-text-muted">{summary}</span>
+							)}
+							<span>{isOpen ? "▾" : "▸"}</span>
 						</button>
 						{isOpen && (
-							<div class="accordion-body">
+							<div class="p-lg bg-bg border-t border-border">
 								<StepComponent />
 							</div>
 						)}

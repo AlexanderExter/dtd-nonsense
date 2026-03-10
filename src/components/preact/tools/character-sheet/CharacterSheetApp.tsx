@@ -165,28 +165,39 @@ export function CharacterSheetApp() {
 	}, [gameData.value]);
 
 	if (loading.value) {
-		return <div class="sheet-loading">Loading game data…</div>;
+		return <div class="text-center py-xl text-text-muted">Loading game data…</div>;
 	}
 
 	if (error.value) {
-		return <div class="sheet-error">Failed to load data: {error.value}</div>;
+		return <div class="text-center py-xl text-error">Failed to load data: {error.value}</div>;
 	}
 
 	const tab = activeTab.value;
 
 	return (
-		<div class="character-sheet-app">
+		<div class="block p-md max-w-[1200px] mx-auto">
 			<CharacterManager />
 			<SheetHeader />
 			<TabNav />
-			<div class="tab-panels">
+			<div>
 				{tab === "identity" && <IdentityTab />}
 				{tab === "stats" && <StatsTab />}
 				{tab === "combat" && <CombatTab />}
 				{tab === "powers" && <PowersTab />}
 				{tab === "features" && <FeaturesTab />}
 			</div>
-			<div class={`save-status ${saveStatus.value}`}>
+			<div
+				class={[
+					"save-status fixed bottom-md right-md px-md py-xs rounded-sm text-xs font-semibold uppercase tracking-[0.5px] z-[200] transition-all duration-300",
+					saveStatus.value === "saving"
+						? "bg-accent/20 border border-accent text-accent"
+						: saveStatus.value === "error"
+							? "bg-error/20 border border-error text-error"
+							: "bg-surface border border-border text-text-muted",
+				]
+					.filter(Boolean)
+					.join(" ")}
+			>
 				{saveStatus.value === "saving" ? "Saving…" : saveStatus.value === "error" ? "Save error" : "Saved"}
 			</div>
 		</div>

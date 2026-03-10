@@ -30,7 +30,10 @@ import { ReferenceSidebar } from "./ReferenceSidebar";
 
 const encounterState = signal<EncounterState>(defaultEncounterState());
 const toastMessage = signal("");
-const conditionPickerState = signal<{ combatantId: string; rect: DOMRect } | null>(null);
+const conditionPickerState = signal<{
+	combatantId: string;
+	rect: DOMRect;
+} | null>(null);
 const importModalOpen = signal(false);
 const sidebarOpen = signal(false);
 const hitLocationResult = signal("");
@@ -534,7 +537,9 @@ export function CombatTrackerApp() {
 
 	const exportEncounter = useCallback(() => {
 		const s = encounterState.value;
-		const blob = new Blob([JSON.stringify(s, null, 2)], { type: "application/json" });
+		const blob = new Blob([JSON.stringify(s, null, 2)], {
+			type: "application/json",
+		});
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
 		a.href = url;

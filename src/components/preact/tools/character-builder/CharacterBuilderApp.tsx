@@ -35,7 +35,10 @@ export function updateChar(fn: (c: CharacterData) => void): void {
 }
 
 export function updateMeta(fn: (m: BuilderMeta) => void): void {
-	const next = { ...metaSignal.value, stepsCompleted: [...metaSignal.value.stepsCompleted] };
+	const next = {
+		...metaSignal.value,
+		stepsCompleted: [...metaSignal.value.stepsCompleted],
+	};
 	fn(next);
 	metaSignal.value = next;
 }
@@ -65,11 +68,11 @@ export function CharacterBuilderApp() {
 	}, [data.value]);
 
 	if (loading.value) {
-		return <div class="builder-loading">Loading game data…</div>;
+		return <div class="text-center text-text-muted p-xl">Loading game data…</div>;
 	}
 
 	if (error.value) {
-		return <div class="builder-error">Failed to load data: {error.value}</div>;
+		return <div class="text-center text-error p-xl">Failed to load data: {error.value}</div>;
 	}
 
 	const handleStartOver = () => {
@@ -80,10 +83,10 @@ export function CharacterBuilderApp() {
 	};
 
 	return (
-		<div class="builder-layout">
+		<div class="grid grid-cols-[280px_1fr] gap-lg max-w-[1440px] mx-auto p-md max-[900px]:grid-cols-1">
 			<Sidebar />
-			<main class="builder-main">
-				<div class="builder-header">
+			<main class="min-w-0">
+				<div class="flex items-center justify-between mb-md">
 					<h1>Character Builder</h1>
 					<button type="button" class="btn btn-danger btn-sm" onClick={handleStartOver}>
 						Start Over

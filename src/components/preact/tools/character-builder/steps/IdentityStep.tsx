@@ -15,9 +15,11 @@ export function IdentityStep() {
 	};
 
 	return (
-		<div class="step-identity">
-			<div class="form-group">
-				<label for="char-name">Name *</label>
+		<div>
+			<div class="mb-md flex-1">
+				<label class="block text-[0.85rem] text-text-muted mb-xs" for="char-name">
+					Name *
+				</label>
 				<input
 					type="text"
 					id="char-name"
@@ -26,8 +28,10 @@ export function IdentityStep() {
 					onInput={(e) => handleInput("name", (e.target as HTMLInputElement).value)}
 				/>
 			</div>
-			<div class="form-group">
-				<label for="char-player">Player</label>
+			<div class="mb-md flex-1">
+				<label class="block text-[0.85rem] text-text-muted mb-xs" for="char-player">
+					Player
+				</label>
 				<input
 					type="text"
 					id="char-player"
@@ -36,8 +40,10 @@ export function IdentityStep() {
 					onInput={(e) => handleInput("player", (e.target as HTMLInputElement).value)}
 				/>
 			</div>
-			<div class="form-group">
-				<label for="char-concept">Concept</label>
+			<div class="mb-md flex-1">
+				<label class="block text-[0.85rem] text-text-muted mb-xs" for="char-concept">
+					Concept
+				</label>
 				<input
 					type="text"
 					id="char-concept"

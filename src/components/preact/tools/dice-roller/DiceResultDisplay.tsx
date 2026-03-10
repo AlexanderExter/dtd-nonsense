@@ -31,7 +31,10 @@ function renderOutcomeText(outcome: { success: boolean; raises: number; checks: 
 				className: "bg-outcome-raises-bg text-gold",
 			};
 		}
-		return { text: "Success", className: "bg-outcome-success-bg text-outcome-success" };
+		return {
+			text: "Success",
+			className: "bg-outcome-success-bg text-outcome-success",
+		};
 	}
 	const text = outcome.checks > 0 ? `Failure (${outcome.checks} Check${outcome.checks > 1 ? "s" : ""})` : "Failure";
 	return { text, className: "bg-outcome-failure-bg text-outcome-failure" };

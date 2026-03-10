@@ -63,8 +63,8 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 	);
 
 	return (
-		<div class="weapon-group">
-			<h4>
+		<div class="mb-md">
+			<h4 class="text-[0.9rem] mb-sm text-text-muted">
 				{label} Hardpoints ({count})
 			</h4>
 			{Array.from({ length: count }, (_, i) => {
@@ -76,10 +76,10 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 				const currentMaterial = weapon ? weapon.material : "";
 
 				return (
-					<div key={slotKey} class="weapon-slot">
-						<div class="weapon-selectors">
+					<div key={slotKey} class="bg-surface-raised border border-border rounded-sm p-sm mb-sm">
+						<div class="flex gap-sm flex-wrap">
 							<select
-								class="weapon-size-select"
+								class="flex-1 min-w-[120px] py-1 px-2 text-[0.85rem]"
 								value={currentSize}
 								onChange={(e) => handleSizeChange(i, (e.target as HTMLSelectElement).value)}
 							>
@@ -91,7 +91,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 								))}
 							</select>
 							<select
-								class="weapon-material-select"
+								class="flex-1 min-w-[120px] py-1 px-2 text-[0.85rem]"
 								value={currentMaterial}
 								disabled={!currentSize}
 								onChange={(e) => handleMaterialChange(i, (e.target as HTMLSelectElement).value)}
@@ -118,30 +118,30 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 
 function WeaponPreview({ weapon }: { weapon: ShipWeapon }) {
 	return (
-		<div class="weapon-preview">
+		<div class="grid grid-cols-[repeat(auto-fill,minmax(90px,1fr))] gap-x-sm gap-y-0.5 text-xs text-text-dim mt-xs pt-xs border-t border-border">
 			<span>
-				Dam: <strong>{weapon.damage}</strong>
+				Dam: <strong class="text-text-primary">{weapon.damage}</strong>
 			</span>
 			<span>
-				Dis: <strong>{weapon.disruption}</strong>
+				Dis: <strong class="text-text-primary">{weapon.disruption}</strong>
 			</span>
 			<span>
-				Acc: <strong>{signedNum(weapon.accuracy)}</strong>
+				Acc: <strong class="text-text-primary">{signedNum(weapon.accuracy)}</strong>
 			</span>
 			<span>
-				Crit: <strong>{signedNum(weapon.crit)}</strong>
+				Crit: <strong class="text-text-primary">{signedNum(weapon.crit)}</strong>
 			</span>
 			<span>
-				Range: <strong>{weapon.range} VU</strong>
+				Range: <strong class="text-text-primary">{weapon.range} VU</strong>
 			</span>
 			<span>
-				Arc: <strong>{weapon.arc}</strong>
+				Arc: <strong class="text-text-primary">{weapon.arc}</strong>
 			</span>
 			<span>
-				Type: <strong>{weapon.type}</strong>
+				Type: <strong class="text-text-primary">{weapon.type}</strong>
 			</span>
 			<span>
-				Cost: <strong>{weapon.cost} BP</strong>
+				Cost: <strong class="text-text-primary">{weapon.cost} BP</strong>
 			</span>
 		</div>
 	);
@@ -161,16 +161,16 @@ export function WeaponSlots() {
 
 	if (!hull) {
 		return (
-			<section class="build-section">
-				<h2 class="section-title">Weapons</h2>
-				<p class="section-hint">Select a hull first</p>
+			<section class="mb-xl">
+				<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Weapons</h2>
+				<p class="text-text-dim italic">Select a hull first</p>
 			</section>
 		);
 	}
 
 	return (
-		<section class="build-section">
-			<h2 class="section-title">Weapons</h2>
+		<section class="mb-xl">
+			<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Weapons</h2>
 			<WeaponGroup position="forward" label="Forward" count={hull.weapons.forward} />
 			<WeaponGroup position="rear" label="Rear" count={hull.weapons.rear} />
 		</section>

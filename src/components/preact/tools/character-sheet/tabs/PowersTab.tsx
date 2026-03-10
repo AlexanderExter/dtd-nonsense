@@ -105,10 +105,10 @@ export function PowersTab() {
 	return (
 		<section class="tab-panel panel-powers">
 			{/* ---------- Hero Points ---------- */}
-			<div class="card">
-				<h3>Hero Points</h3>
-				<div class="form-row">
-					<label>
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Hero Points</h3>
+				<div class="flex gap-md mb-md flex-wrap">
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Max
 						<input
 							type="number"
@@ -121,7 +121,7 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Current
 						<input
 							type="number"
@@ -134,7 +134,7 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Burnt
 						<input
 							type="number"
@@ -147,7 +147,7 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<label class="field-inline">
+					<label class="flex items-center gap-sm text-[0.85rem]">
 						<input
 							type="checkbox"
 							checked={char.fettered || false}
@@ -159,7 +159,7 @@ export function PowersTab() {
 						/>
 						Fettered
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Push Amount
 						<input
 							type="number"
@@ -176,10 +176,12 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Power Stat & Resource ---------- */}
-			<div class="card">
-				<h3>Power Stat &amp; Resource</h3>
-				<div class="form-row">
-					<label>
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">
+					Power Stat &amp; Resource
+				</h3>
+				<div class="flex gap-md mb-md flex-wrap">
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Power Stat
 						<input
 							type="number"
@@ -192,7 +194,7 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Resource Current
 						<input
 							type="number"
@@ -206,27 +208,29 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Resource Max
-						<output>{stats.resourceMax}</output>
+						<output class="font-bold text-[1.2rem] text-accent py-xs">{stats.resourceMax}</output>
 					</label>
 				</div>
 				{selectedExalt && (
-					<div class="info-box">
-						<h4>Exaltation Powers</h4>
+					<div class="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
+						<h4 class="m-0 mb-xs text-text-primary text-[0.9rem]">Exaltation Powers</h4>
 						{selectedExalt.staticPowers && selectedExalt.staticPowers.length > 0 && (
-							<ul>
+							<ul class="my-xs pl-lg">
 								{selectedExalt.staticPowers.map((p: any, i: number) => (
-									<li key={i}>{typeof p === "string" ? p : `${p.name}: ${p.description}`}</li>
+									<li key={i} class="mb-0.5">
+										{typeof p === "string" ? p : `${p.name}: ${p.description}`}
+									</li>
 								))}
 							</ul>
 						)}
 						{selectedExalt.progression && selectedExalt.progression.length > 0 && (
 							<div>
 								<strong>Progression:</strong>
-								<ul>
+								<ul class="my-xs pl-lg">
 									{selectedExalt.progression.map((p: any, i: number) => (
-										<li key={i}>
+										<li key={i} class="mb-0.5">
 											{typeof p === "string" ? p : `Level ${p.level}: ${p.description || p.name}`}
 										</li>
 									))}
@@ -238,10 +242,10 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Magic Schools ---------- */}
-			<div class="card">
-				<h3>Magic Schools</h3>
-				<div class="form-row">
-					<label class="field-inline">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Magic Schools</h3>
+				<div class="flex gap-md mb-md flex-wrap">
+					<label class="flex items-center gap-sm text-[0.85rem]">
 						<input
 							type="checkbox"
 							checked={char.sanctioned || false}
@@ -253,7 +257,7 @@ export function PowersTab() {
 						/>
 						Sanctioned
 					</label>
-					<label>
+					<label class="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Extra School Levels
 						<input
 							type="number"
@@ -266,22 +270,27 @@ export function PowersTab() {
 							}
 						/>
 					</label>
-					<span class="stat-badge">Caster Level: {casterLevel}</span>
+					<span class="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm">
+						Caster Level: {casterLevel}
+					</span>
 				</div>
-				<div class="school-grid">
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
 					{MAGIC_SCHOOLS.map((school) => {
 						const base = char.magicSchools?.[school.id] || 0;
 						const bonus = char.bonusSchoolLevels?.[school.id] || 0;
 						const eff = base + bonus;
 						const charAbbrev = CHAR_ABBREV[school.char] || school.char;
 						return (
-							<div key={school.id} class="school-row">
-								<span class="school-name">
+							<div
+								key={school.id}
+								class="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
+							>
+								<span class="flex-1 font-medium text-[0.85rem]">
 									{school.name} <small>({charAbbrev})</small>
 								</span>
 								<input
 									type="number"
-									class="school-dots"
+									class="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] focus:border-accent"
 									value={base}
 									min={0}
 									max={level}
@@ -295,7 +304,7 @@ export function PowersTab() {
 								/>
 								<input
 									type="number"
-									class="school-bonus"
+									class="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] text-info focus:border-accent"
 									value={bonus}
 									min={0}
 									title="Bonus levels"
@@ -308,7 +317,7 @@ export function PowersTab() {
 										})
 									}
 								/>
-								<span class="school-eff" title="Effective level">
+								<span class="font-bold text-accent min-w-5 text-center" title="Effective level">
 									= {eff}
 								</span>
 							</div>
@@ -318,23 +327,32 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Spells ---------- */}
-			<div class="card">
-				<h3>Spells</h3>
-				<table class="spell-table">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Spells</h3>
+				<table class="w-full border-collapse text-[0.85rem]">
 					<thead>
 						<tr>
-							<th>School</th>
-							<th>Name</th>
-							<th>Level</th>
-							<th>Notes</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								School
+							</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								Name
+							</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								Level
+							</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								Notes
+							</th>
 							<th />
 						</tr>
 					</thead>
 					<tbody>
 						{spells.map((sp, idx) => (
 							<tr key={idx}>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<select
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sp.school}
 										onChange={(e) =>
 											handleSpellField(idx, "school", (e.target as HTMLSelectElement).value)
@@ -348,18 +366,20 @@ export function PowersTab() {
 										))}
 									</select>
 								</td>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<input
 										type="text"
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sp.name}
 										onInput={(e) =>
 											handleSpellField(idx, "name", (e.target as HTMLInputElement).value)
 										}
 									/>
 								</td>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<input
 										type="number"
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sp.level}
 										min={0}
 										onInput={(e) =>
@@ -367,17 +387,22 @@ export function PowersTab() {
 										}
 									/>
 								</td>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<input
 										type="text"
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sp.notes}
 										onInput={(e) =>
 											handleSpellField(idx, "notes", (e.target as HTMLInputElement).value)
 										}
 									/>
 								</td>
-								<td>
-									<button type="button" class="btn-remove" onClick={() => handleRemoveSpell(idx)}>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
+									<button
+										type="button"
+										class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										onClick={() => handleRemoveSpell(idx)}
+									>
 										×
 									</button>
 								</td>
@@ -391,18 +416,23 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Sword Schools ---------- */}
-			<div class="card">
-				<h3>Sword Schools</h3>
-				<span class="stat-badge">Martial Level: {martialLevel}</span>
-				<div class="school-grid">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Sword Schools</h3>
+				<span class="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm mb-sm">
+					Martial Level: {martialLevel}
+				</span>
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
 					{SWORD_SCHOOLS.map((school) => {
 						const dots = char.swordSchools?.[school.id] || 0;
 						return (
-							<div key={school.id} class="school-row">
-								<span class="school-name">{school.name}</span>
+							<div
+								key={school.id}
+								class="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
+							>
+								<span class="flex-1 font-medium text-[0.85rem]">{school.name}</span>
 								<input
 									type="number"
-									class="school-dots"
+									class="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] focus:border-accent"
 									value={dots}
 									min={0}
 									max={5}
@@ -420,39 +450,49 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Special Attacks ---------- */}
-			<div class="card">
-				<h3>Special Attacks</h3>
-				<table class="special-table">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Special Attacks</h3>
+				<table class="w-full border-collapse text-[0.85rem]">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Description</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								Name
+							</th>
+							<th class="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+								Description
+							</th>
 							<th />
 						</tr>
 					</thead>
 					<tbody>
 						{specials.map((sa, idx) => (
 							<tr key={idx}>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<input
 										type="text"
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sa.name}
 										onInput={(e) =>
 											handleSpecialField(idx, "name", (e.target as HTMLInputElement).value)
 										}
 									/>
 								</td>
-								<td>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
 									<input
 										type="text"
+										class="w-full text-[0.82rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 										value={sa.description}
 										onInput={(e) =>
 											handleSpecialField(idx, "description", (e.target as HTMLInputElement).value)
 										}
 									/>
 								</td>
-								<td>
-									<button type="button" class="btn-remove" onClick={() => handleRemoveSpecial(idx)}>
+								<td class="py-[3px] px-sm border-b border-border align-middle">
+									<button
+										type="button"
+										class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										onClick={() => handleRemoveSpecial(idx)}
+									>
 										×
 									</button>
 								</td>
@@ -466,18 +506,23 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Gun Kata ---------- */}
-			<div class="card">
-				<h3>Gun Kata</h3>
-				<span class="stat-badge">Gunslinger Level: {gunslingerLevel}</span>
-				<div class="school-grid">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Gun Kata</h3>
+				<span class="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm mb-sm">
+					Gunslinger Level: {gunslingerLevel}
+				</span>
+				<div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
 					{GUN_KATA.map((kata) => {
 						const dots = char.gunKata?.[kata.id] || 0;
 						return (
-							<div key={kata.id} class="school-row">
-								<span class="school-name">{kata.name}</span>
+							<div
+								key={kata.id}
+								class="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
+							>
+								<span class="flex-1 font-medium text-[0.85rem]">{kata.name}</span>
 								<input
 									type="number"
-									class="school-dots"
+									class="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] focus:border-accent"
 									value={dots}
 									min={0}
 									max={5}
@@ -495,17 +540,22 @@ export function PowersTab() {
 			</div>
 
 			{/* ---------- Trick Shots ---------- */}
-			<div class="card">
-				<h3>Trick Shots</h3>
-				<ul class="trick-shots-list">
+			<div class="section-card bg-surface border border-border rounded-md p-lg mb-md">
+				<h3 class="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Trick Shots</h3>
+				<ul class="list-none p-0 m-0">
 					{trickShots.map((ts, idx) => (
-						<li key={idx}>
+						<li key={idx} class="flex items-center gap-sm mb-1">
 							<input
 								type="text"
+								class="flex-1 py-0.5 px-1 text-[0.85rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 								value={ts}
 								onInput={(e) => handleTrickShotChange(idx, (e.target as HTMLInputElement).value)}
 							/>
-							<button type="button" class="btn-remove" onClick={() => handleRemoveTrickShot(idx)}>
+							<button
+								type="button"
+								class="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+								onClick={() => handleRemoveTrickShot(idx)}
+							>
 								×
 							</button>
 						</li>

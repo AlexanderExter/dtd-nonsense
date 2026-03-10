@@ -6,7 +6,7 @@ export function SkillGrid() {
 	const skills = char.skills || {};
 	const specs = char.skillSpecialties || {};
 
-	if (!data?.skills) return <div class="skill-grid-empty">Loading skills…</div>;
+	if (!data?.skills) return <div class="text-text-muted p-md">Loading skills…</div>;
 
 	const groups = data.skills.skills || {};
 
@@ -25,22 +25,29 @@ export function SkillGrid() {
 	};
 
 	return (
-		<div class="skill-grid">
+		<div class="grid grid-cols-3 gap-md max-[768px]:grid-cols-1">
 			{Object.entries(groups).map(([groupKey, skillList]) => (
-				<div key={groupKey} class="skill-group">
-					<h4 class="group-label">{groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}</h4>
+				<div key={groupKey} class="bg-bg border border-border rounded-sm p-md">
+					<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">
+						{groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}
+					</h4>
 					{(skillList as Array<{ id: string; name: string; advanced?: boolean }>).map((sk) => {
 						const dots = skills[sk.id] || 0;
 						const showSpec = dots >= 1;
 						return (
-							<div key={sk.id} class="skill-row">
-								<span class="skill-name" title={sk.advanced ? "Advanced skill" : ""}>
+							<div key={sk.id} class="flex items-center gap-sm py-[3px] text-[0.85rem]">
+								<span class="flex-1 font-medium" title={sk.advanced ? "Advanced skill" : ""}>
 									{sk.name}
-									{sk.advanced && <span class="advanced-marker"> ★</span>}
+									{sk.advanced && (
+										<span class="text-[0.6rem] text-warning uppercase font-bold py-[1px] px-[3px] bg-warning-bg rounded-[2px] ml-1">
+											{" "}
+											★
+										</span>
+									)}
 								</span>
 								<input
 									type="number"
-									class="skill-dots"
+									class="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem]"
 									value={dots}
 									min={0}
 									max={6}
@@ -51,7 +58,7 @@ export function SkillGrid() {
 								{showSpec && (
 									<input
 										type="text"
-										class="skill-spec"
+										class="w-full text-[0.78rem] px-sm py-0.5 mt-0.5 text-text-muted bg-surface-raised border border-border rounded-[3px] placeholder:text-text-dim"
 										placeholder="Specialty"
 										value={specs[sk.id] || ""}
 										onInput={(e) => handleSpecChange(sk.id, (e.target as HTMLInputElement).value)}

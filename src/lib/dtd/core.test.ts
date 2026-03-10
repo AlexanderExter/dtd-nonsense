@@ -204,7 +204,11 @@ describe("character", () => {
 				characteristics: { strength: 2, dexterity: 2, constitution: 2 },
 			};
 			const result = character._mergeDefaults(obj, defaults);
-			expect(result.characteristics).toEqual({ strength: 5, dexterity: 2, constitution: 2 });
+			expect(result.characteristics).toEqual({
+				strength: 5,
+				dexterity: 2,
+				constitution: 2,
+			});
 		});
 
 		it("replaces arrays entirely (does not merge them)", () => {
@@ -243,19 +247,25 @@ describe("character", () => {
 
 	describe("_migrateIfNeeded", () => {
 		it("converts race object to string id", () => {
-			const data = { race: { id: "human", name: "Human" } } as unknown as Record<string, unknown>;
+			const data = {
+				race: { id: "human", name: "Human" },
+			} as unknown as Record<string, unknown>;
 			const result = character._migrateIfNeeded(data);
 			expect(result.race).toBe("human");
 		});
 
 		it("converts exaltation object to string id", () => {
-			const data = { exaltation: { id: "vampire", name: "Vampire" } } as unknown as Record<string, unknown>;
+			const data = {
+				exaltation: { id: "vampire", name: "Vampire" },
+			} as unknown as Record<string, unknown>;
 			const result = character._migrateIfNeeded(data);
 			expect(result.exaltation).toBe("vampire");
 		});
 
 		it("converts alignment object to string id", () => {
-			const data = { alignment: { id: "lawful", name: "Lawful" } } as unknown as Record<string, unknown>;
+			const data = {
+				alignment: { id: "lawful", name: "Lawful" },
+			} as unknown as Record<string, unknown>;
 			const result = character._migrateIfNeeded(data);
 			expect(result.alignment).toBe("lawful");
 		});
@@ -267,10 +277,18 @@ describe("character", () => {
 			} as unknown as Record<string, unknown>;
 			const result = character._migrateIfNeeded(data);
 			expect(Array.isArray(result.backgrounds)).toBe(true);
-			const bgs = result.backgrounds as { name: string; dots: number; notes: string }[];
+			const bgs = result.backgrounds as {
+				name: string;
+				dots: number;
+				notes: string;
+			}[];
 			expect(bgs).toHaveLength(2);
 			const allies = bgs.find((b) => b.name === "Allies");
-			expect(allies).toEqual({ name: "Allies", dots: 3, notes: "Guild contacts" });
+			expect(allies).toEqual({
+				name: "Allies",
+				dots: 3,
+				notes: "Guild contacts",
+			});
 			const wealth = bgs.find((b) => b.name === "Wealth");
 			expect(wealth).toEqual({ name: "Wealth", dots: 2, notes: "" });
 			expect(result.backgroundNotes).toBeUndefined();
@@ -281,7 +299,11 @@ describe("character", () => {
 				backgrounds: { allies: 0, wealth: 3 },
 			} as unknown as Record<string, unknown>;
 			const result = character._migrateIfNeeded(data);
-			const bgs = result.backgrounds as { name: string; dots: number; notes: string }[];
+			const bgs = result.backgrounds as {
+				name: string;
+				dots: number;
+				notes: string;
+			}[];
 			expect(bgs).toHaveLength(1);
 			expect(bgs[0].name).toBe("Wealth");
 		});
@@ -560,10 +582,16 @@ describe("loadAllData", () => {
 			"fetch",
 			vi.fn().mockImplementation((url: string) => {
 				if (url.includes("skills.json")) {
-					return Promise.resolve({ ok: true, json: () => Promise.resolve(skillsData) });
+					return Promise.resolve({
+						ok: true,
+						json: () => Promise.resolve(skillsData),
+					});
 				}
 				if (url.includes("races.json")) {
-					return Promise.resolve({ ok: true, json: () => Promise.resolve(racesData) });
+					return Promise.resolve({
+						ok: true,
+						json: () => Promise.resolve(racesData),
+					});
 				}
 				return Promise.resolve({ ok: false, status: 404 });
 			}),

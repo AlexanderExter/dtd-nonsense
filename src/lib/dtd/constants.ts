@@ -3,7 +3,10 @@
  */
 
 export const CHAR_GROUPS = {
-	physical: { label: "Physical", chars: ["strength", "dexterity", "constitution"] },
+	physical: {
+		label: "Physical",
+		chars: ["strength", "dexterity", "constitution"],
+	},
 	social: { label: "Social", chars: ["charisma", "fellowship", "composure"] },
 	mental: { label: "Mental", chars: ["intelligence", "wisdom", "willpower"] },
 } as Record<string, { label: string; chars: string[] }>;

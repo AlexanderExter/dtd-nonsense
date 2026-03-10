@@ -21,25 +21,25 @@ export function TorpedoSlots() {
 	}, []);
 
 	return (
-		<section class="build-section">
-			<h2 class="section-title">Torpedoes</h2>
-			<div class="torpedo-controls">
-				<label class="toggle-row">
+		<section class="mb-xl">
+			<h2 class="text-accent text-xl mb-md pb-xs border-b border-border">Torpedoes</h2>
+			<div>
+				<label class="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
 					<input type="checkbox" checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
 					<span>Torpedo Tube ({data.torpedoTubeCost} BP) — holds 5 torpedoes</span>
 				</label>
 				{currentShip.hasTorpedoTube && (
-					<div class="torpedo-loadout">
+					<div>
 						<h4>Torpedo Loadout (5 slots)</h4>
 						{Array.from({ length: 5 }, (_, i) => {
 							const current = currentShip.torpedoes[i] || "";
 							const selectedTorpedo = current ? data.torpedoes.find((t) => t.id === current) : null;
 
 							return (
-								<div key={i} class="torpedo-slot">
+								<div key={i} class="flex items-center gap-sm py-xs">
 									<span>#{i + 1}</span>
 									<select
-										class="torpedo-select"
+										class="flex-1 py-1 px-2 text-[0.85rem]"
 										value={current}
 										onChange={(e) => handleTorpedoChange(i, (e.target as HTMLSelectElement).value)}
 									>
@@ -50,7 +50,7 @@ export function TorpedoSlots() {
 											</option>
 										))}
 									</select>
-									<span class="torpedo-cost">
+									<span class="text-[0.8rem] text-accent min-w-10 text-right">
 										{selectedTorpedo ? `${selectedTorpedo.cost} BP` : ""}
 									</span>
 								</div>

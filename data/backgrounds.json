@@ -1,141 +1,231 @@
 {
-    "backgrounds": [
-        {
-            "id": "allies",
-            "name": "Allies",
-            "description": "Trusted companions at least as powerful as a starting character. Always NPCs who will help but won't risk their lives and expect something in return.",
-            "ratings": [
-                { "dots": 1, "effect": "One ally approximately equal to a starting character" },
-                { "dots": 2, "effect": "Two allies, or one more powerful ally" },
-                { "dots": 3, "effect": "Three allies, or fewer more powerful allies" },
-                { "dots": 4, "effect": "Four allies, or fewer very powerful allies" },
-                { "dots": 5, "effect": "Five allies, or fewer exceptionally powerful allies" }
-            ]
-        },
-        {
-            "id": "artifact",
-            "name": "Artifact",
-            "description": "Magical items of power. Can purchase multiple times for different artifacts. Maximum 5 total dots at character creation. 4-5 dot artifacts are rare and coveted.",
-            "ratings": [
-                { "dots": 1, "effect": "Minor artifact" },
-                { "dots": 2, "effect": "Notable artifact" },
-                { "dots": 3, "effect": "Significant artifact" },
-                { "dots": 4, "effect": "Powerful artifact (rare, will attract attention)" },
-                { "dots": 5, "effect": "Legendary artifact (extremely rare, highly coveted)" }
-            ]
-        },
-        {
-            "id": "backing",
-            "name": "Backing",
-            "description": "Rank in an organization (government, army, faction, syndicate). May take multiple times for different organizations. Neglecting duties can result in demotion.",
-            "ratings": [
-                { "dots": 1, "effect": "Lower officer or minor functionary" },
-                { "dots": 2, "effect": "Mid-level officer or department head" },
-                { "dots": 3, "effect": "Moderately powerful, many subordinates" },
-                { "dots": 4, "effect": "Extremely powerful, reports directly to leadership" },
-                { "dots": 5, "effect": "Leader of organization (general, admiral, Factol, etc.)" }
-            ]
-        },
-        {
-            "id": "contacts",
-            "name": "Contacts",
-            "description": "People who help in exchange for favors. Each dot provides one major contact and dice for finding minor contacts.",
-            "ratings": [
-                { "dots": 1, "effect": "One major contact, +1 die for minor contacts" },
-                { "dots": 2, "effect": "Two major contacts, +2 dice for minor contacts" },
-                { "dots": 3, "effect": "Three major contacts, +3 dice for minor contacts" },
-                { "dots": 4, "effect": "Four major contacts, +4 dice for minor contacts" },
-                { "dots": 5, "effect": "Five major contacts, +5 dice for minor contacts" }
-            ]
-        },
-        {
-            "id": "fame",
-            "name": "Fame",
-            "description": "Widespread recognition in society. Opens doors but attracts attention.",
-            "ratings": [
-                { "dots": 1, "effect": "Known to a select subculture or city" },
-                { "dots": 2, "effect": "Nationwide renown (politician, minor star)" },
-                { "dots": 3, "effect": "Nationally famous, everybody knows something about you" },
-                { "dots": 4, "effect": "Internationally famous media icon" },
-                { "dots": 5, "effect": "Famous across crystal spheres" }
-            ]
-        },
-        {
-            "id": "followers",
-            "name": "Followers",
-            "description": "Loyal mortal assistants, warriors, or acolytes. Require Wealth, Backing, or Holdings equal to Followers dots to support them.",
-            "ratings": [
-                { "dots": 1, "effect": "Up to 5 followers" },
-                { "dots": 2, "effect": "20 followers" },
-                { "dots": 3, "effect": "100 followers" },
-                { "dots": 4, "effect": "1,000 followers" },
-                { "dots": 5, "effect": "10,000 followers" }
-            ]
-        },
-        {
-            "id": "holdings",
-            "name": "Holdings",
-            "description": "Property or spelljamming ship. Requires Followers, Backing, or Wealth equal to Holdings dots for staff/crew.",
-            "ratings": [
-                { "dots": 1, "effect": "Very small spelljammer (shuttle-sized), average house, or small local business" },
-                { "dots": 2, "effect": "Small spelljammer (smuggling ship), small manor, or successful local business" },
-                { "dots": 3, "effect": "Medium ship (Bird of Prey-sized), small castle, or large business with off-world contacts" },
-                { "dots": 4, "effect": "Large ship (Enterprise-sized), huge castle, or multi-world corporation" },
-                { "dots": 5, "effect": "Massive ship (kilometer-long battleship), massive castle, or megacorporation" }
-            ]
-        },
-        {
-            "id": "inheritance",
-            "name": "Inheritance",
-            "description": "Start play with items beyond normal means. Choose from one tier, or two choices from the tier below.",
-            "ratings": [
-                { "dots": 1, "effect": "One Uncommon, two Common, four Very Common, or eight Ubiquitous items" },
-                { "dots": 2, "effect": "One Rare item, or two choices from Inheritance 1" },
-                { "dots": 3, "effect": "One Very Rare item, or two choices from Inheritance 2" },
-                { "dots": 4, "effect": "One Mythic Rare item, or two choices from Inheritance 3" },
-                { "dots": 5, "effect": "Any one non-artifact item, or two choices from Inheritance 4" }
-            ]
-        },
-        {
-            "id": "mentor",
-            "name": "Mentor",
-            "description": "A patron, teacher, and guide. Expects obedience but acts in your best interests.",
-            "ratings": [
-                { "dots": 1, "effect": "Mentor is slightly more worldly and wise than you" },
-                { "dots": 2, "effect": "Someone of minor note, or important but has little time for you" },
-                { "dots": 3, "effect": "Wise, influential, and considerably more powerful" },
-                { "dots": 4, "effect": "Exceedingly important individual whose words shape history" },
-                { "dots": 5, "effect": "Exceedingly powerful with great interest in your welfare (but expects much and has enemies)" }
-            ]
-        },
-        {
-            "id": "status",
-            "name": "Status",
-            "description": "Reputation and standing within the community of Exalts. Does not cover organizational rank or general fame.",
-            "ratings": [
-                { "dots": 1, "effect": "Known by some Exalts" },
-                { "dots": 2, "effect": "Respected, words carry weight in discussion" },
-                { "dots": 3, "effect": "Influential, often asked to consult" },
-                { "dots": 4, "effect": "Powerful, other Exalts follow your lead" },
-                { "dots": 5, "effect": "Luminary, few can match your reputation" }
-            ]
-        },
-        {
-            "id": "wealth",
-            "name": "Wealth",
-            "description": "Personal financial resources and standard of living.",
-            "ratings": [
-                { "dots": 1, "effect": "Middle class, comfortable but little spending money" },
-                { "dots": 2, "effect": "Comfortable lifestyle, domestic servant, can afford luxuries" },
-                { "dots": 3, "effect": "Actually wealthy, several servants, life of luxury" },
-                { "dots": 4, "effect": "Fabulously wealthy (merchant prince, bandit king), can hire armies" },
-                { "dots": 5, "effect": "Unlimited wealth, no practical limits" }
-            ]
-        }
-    ],
-    "notes": {
-        "startingDots": 7,
-        "maxWithoutXP": 3,
-        "cannotImproveWithXP": "Backgrounds cannot be improved with XP—only through play."
-    }
+	"backgrounds": [
+		{
+			"id": "allies",
+			"name": "Allies",
+			"description": "Trusted companions at least as powerful as a starting character. Always NPCs who will help but won't risk their lives and expect something in return.",
+			"ratings": [
+				{
+					"dots": 1,
+					"effect": "One ally approximately equal to a starting character"
+				},
+				{ "dots": 2, "effect": "Two allies, or one more powerful ally" },
+				{ "dots": 3, "effect": "Three allies, or fewer more powerful allies" },
+				{ "dots": 4, "effect": "Four allies, or fewer very powerful allies" },
+				{
+					"dots": 5,
+					"effect": "Five allies, or fewer exceptionally powerful allies"
+				}
+			]
+		},
+		{
+			"id": "artifact",
+			"name": "Artifact",
+			"description": "Magical items of power. Can purchase multiple times for different artifacts. Maximum 5 total dots at character creation. 4-5 dot artifacts are rare and coveted.",
+			"ratings": [
+				{ "dots": 1, "effect": "Minor artifact" },
+				{ "dots": 2, "effect": "Notable artifact" },
+				{ "dots": 3, "effect": "Significant artifact" },
+				{
+					"dots": 4,
+					"effect": "Powerful artifact (rare, will attract attention)"
+				},
+				{
+					"dots": 5,
+					"effect": "Legendary artifact (extremely rare, highly coveted)"
+				}
+			]
+		},
+		{
+			"id": "backing",
+			"name": "Backing",
+			"description": "Rank in an organization (government, army, faction, syndicate). May take multiple times for different organizations. Neglecting duties can result in demotion.",
+			"ratings": [
+				{ "dots": 1, "effect": "Lower officer or minor functionary" },
+				{ "dots": 2, "effect": "Mid-level officer or department head" },
+				{ "dots": 3, "effect": "Moderately powerful, many subordinates" },
+				{
+					"dots": 4,
+					"effect": "Extremely powerful, reports directly to leadership"
+				},
+				{
+					"dots": 5,
+					"effect": "Leader of organization (general, admiral, Factol, etc.)"
+				}
+			]
+		},
+		{
+			"id": "contacts",
+			"name": "Contacts",
+			"description": "People who help in exchange for favors. Each dot provides one major contact and dice for finding minor contacts.",
+			"ratings": [
+				{ "dots": 1, "effect": "One major contact, +1 die for minor contacts" },
+				{
+					"dots": 2,
+					"effect": "Two major contacts, +2 dice for minor contacts"
+				},
+				{
+					"dots": 3,
+					"effect": "Three major contacts, +3 dice for minor contacts"
+				},
+				{
+					"dots": 4,
+					"effect": "Four major contacts, +4 dice for minor contacts"
+				},
+				{
+					"dots": 5,
+					"effect": "Five major contacts, +5 dice for minor contacts"
+				}
+			]
+		},
+		{
+			"id": "fame",
+			"name": "Fame",
+			"description": "Widespread recognition in society. Opens doors but attracts attention.",
+			"ratings": [
+				{ "dots": 1, "effect": "Known to a select subculture or city" },
+				{ "dots": 2, "effect": "Nationwide renown (politician, minor star)" },
+				{
+					"dots": 3,
+					"effect": "Nationally famous, everybody knows something about you"
+				},
+				{ "dots": 4, "effect": "Internationally famous media icon" },
+				{ "dots": 5, "effect": "Famous across crystal spheres" }
+			]
+		},
+		{
+			"id": "followers",
+			"name": "Followers",
+			"description": "Loyal mortal assistants, warriors, or acolytes. Require Wealth, Backing, or Holdings equal to Followers dots to support them.",
+			"ratings": [
+				{ "dots": 1, "effect": "Up to 5 followers" },
+				{ "dots": 2, "effect": "20 followers" },
+				{ "dots": 3, "effect": "100 followers" },
+				{ "dots": 4, "effect": "1,000 followers" },
+				{ "dots": 5, "effect": "10,000 followers" }
+			]
+		},
+		{
+			"id": "holdings",
+			"name": "Holdings",
+			"description": "Property or spelljamming ship. Requires Followers, Backing, or Wealth equal to Holdings dots for staff/crew.",
+			"ratings": [
+				{
+					"dots": 1,
+					"effect": "Very small spelljammer (shuttle-sized), average house, or small local business"
+				},
+				{
+					"dots": 2,
+					"effect": "Small spelljammer (smuggling ship), small manor, or successful local business"
+				},
+				{
+					"dots": 3,
+					"effect": "Medium ship (Bird of Prey-sized), small castle, or large business with off-world contacts"
+				},
+				{
+					"dots": 4,
+					"effect": "Large ship (Enterprise-sized), huge castle, or multi-world corporation"
+				},
+				{
+					"dots": 5,
+					"effect": "Massive ship (kilometer-long battleship), massive castle, or megacorporation"
+				}
+			]
+		},
+		{
+			"id": "inheritance",
+			"name": "Inheritance",
+			"description": "Start play with items beyond normal means. Choose from one tier, or two choices from the tier below.",
+			"ratings": [
+				{
+					"dots": 1,
+					"effect": "One Uncommon, two Common, four Very Common, or eight Ubiquitous items"
+				},
+				{
+					"dots": 2,
+					"effect": "One Rare item, or two choices from Inheritance 1"
+				},
+				{
+					"dots": 3,
+					"effect": "One Very Rare item, or two choices from Inheritance 2"
+				},
+				{
+					"dots": 4,
+					"effect": "One Mythic Rare item, or two choices from Inheritance 3"
+				},
+				{
+					"dots": 5,
+					"effect": "Any one non-artifact item, or two choices from Inheritance 4"
+				}
+			]
+		},
+		{
+			"id": "mentor",
+			"name": "Mentor",
+			"description": "A patron, teacher, and guide. Expects obedience but acts in your best interests.",
+			"ratings": [
+				{
+					"dots": 1,
+					"effect": "Mentor is slightly more worldly and wise than you"
+				},
+				{
+					"dots": 2,
+					"effect": "Someone of minor note, or important but has little time for you"
+				},
+				{
+					"dots": 3,
+					"effect": "Wise, influential, and considerably more powerful"
+				},
+				{
+					"dots": 4,
+					"effect": "Exceedingly important individual whose words shape history"
+				},
+				{
+					"dots": 5,
+					"effect": "Exceedingly powerful with great interest in your welfare (but expects much and has enemies)"
+				}
+			]
+		},
+		{
+			"id": "status",
+			"name": "Status",
+			"description": "Reputation and standing within the community of Exalts. Does not cover organizational rank or general fame.",
+			"ratings": [
+				{ "dots": 1, "effect": "Known by some Exalts" },
+				{ "dots": 2, "effect": "Respected, words carry weight in discussion" },
+				{ "dots": 3, "effect": "Influential, often asked to consult" },
+				{ "dots": 4, "effect": "Powerful, other Exalts follow your lead" },
+				{ "dots": 5, "effect": "Luminary, few can match your reputation" }
+			]
+		},
+		{
+			"id": "wealth",
+			"name": "Wealth",
+			"description": "Personal financial resources and standard of living.",
+			"ratings": [
+				{
+					"dots": 1,
+					"effect": "Middle class, comfortable but little spending money"
+				},
+				{
+					"dots": 2,
+					"effect": "Comfortable lifestyle, domestic servant, can afford luxuries"
+				},
+				{
+					"dots": 3,
+					"effect": "Actually wealthy, several servants, life of luxury"
+				},
+				{
+					"dots": 4,
+					"effect": "Fabulously wealthy (merchant prince, bandit king), can hire armies"
+				},
+				{ "dots": 5, "effect": "Unlimited wealth, no practical limits" }
+			]
+		}
+	],
+	"notes": {
+		"startingDots": 7,
+		"maxWithoutXP": 3,
+		"cannotImproveWithXP": "Backgrounds cannot be improved with XP—only through play."
+	}
 }

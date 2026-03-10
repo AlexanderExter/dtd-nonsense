@@ -105,7 +105,11 @@ sidebar:
 
 /** @type {Record<string, {title: string, description: string, group: string}>} */
 const CONTENT_METADATA = {
-	"01-Core-Rules.md": { title: "Core Rules", description: "Dice system, Tests, Raises, and Checks", group: "Rules" },
+	"01-Core-Rules.md": {
+		title: "Core Rules",
+		description: "Dice system, Tests, Raises, and Checks",
+		group: "Rules",
+	},
 	"02-Char-Creation.md": {
 		title: "Character Creation",
 		description: "9-step character creation process",
@@ -151,24 +155,56 @@ const CONTENT_METADATA = {
 		description: "Weapons, armor, gear, and starting packages",
 		group: "Equipment",
 	},
-	"11-Magic.md": { title: "Magic", description: "Sorcery system and spell schools", group: "Powers" },
-	"12-Sword-Schools.md": { title: "Sword Schools", description: "9 melee combat disciplines", group: "Powers" },
-	"13-Gun-Kata.md": { title: "Gun Kata", description: "6 ranged combat disciplines", group: "Powers" },
-	"14-Combat.md": { title: "Combat", description: "Combat rules, action economy, and initiative", group: "Rules" },
-	"15-Social-Combat.md": { title: "Social Combat", description: "Social interaction mechanics", group: "Rules" },
+	"11-Magic.md": {
+		title: "Magic",
+		description: "Sorcery system and spell schools",
+		group: "Powers",
+	},
+	"12-Sword-Schools.md": {
+		title: "Sword Schools",
+		description: "9 melee combat disciplines",
+		group: "Powers",
+	},
+	"13-Gun-Kata.md": {
+		title: "Gun Kata",
+		description: "6 ranged combat disciplines",
+		group: "Powers",
+	},
+	"14-Combat.md": {
+		title: "Combat",
+		description: "Combat rules, action economy, and initiative",
+		group: "Rules",
+	},
+	"15-Social-Combat.md": {
+		title: "Social Combat",
+		description: "Social interaction mechanics",
+		group: "Rules",
+	},
 	"16-Conditions.md": {
 		title: "Conditions",
 		description: "Status effects and their mechanical impact",
 		group: "Rules",
 	},
-	"17-Vehicles.md": { title: "Vehicles", description: "Vehicle rules and combat", group: "Advanced" },
-	"18-Ships.md": { title: "Ships", description: "Spelljammer-style space vessels", group: "Advanced" },
+	"17-Vehicles.md": {
+		title: "Vehicles",
+		description: "Vehicle rules and combat",
+		group: "Advanced",
+	},
+	"18-Ships.md": {
+		title: "Ships",
+		description: "Spelljammer-style space vessels",
+		group: "Advanced",
+	},
 	"19-Antagonists.md": {
 		title: "Antagonists",
 		description: "NPC creation and 40+ stat blocks",
 		group: "Storytelling",
 	},
-	"20-Artifacts.md": { title: "Artifacts", description: "Magical items and their properties", group: "Equipment" },
+	"20-Artifacts.md": {
+		title: "Artifacts",
+		description: "Magical items and their properties",
+		group: "Equipment",
+	},
 	"21-Advanced-Rules.md": {
 		title: "Advanced Rules",
 		description: "Optional and supplemental rules",
