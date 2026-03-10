@@ -70,7 +70,7 @@ src/                   Astro source
   components/preact/   Preact island components (~105 across 9 tools)
   hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker, use-debounce)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
-  layouts/             ToolLayout.astro (bridges Tailwind tokens → CSS variables)
+  layouts/             ToolLayout.astro (tool page shell)
   styles/              WH40K theme CSS + Tailwind v4 @theme tokens
 scripts/               TypeScript pipeline scripts (validate, lint, sync-check, prebuild)
 docs/                  Technical documentation and conventions

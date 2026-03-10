@@ -622,5 +622,3 @@ describe("loadAllData", () => {
 		await expect(loadAllData(["bad.json"])).rejects.toThrow("Failed to load bad.json: 500");
 	});
 });
-
-
