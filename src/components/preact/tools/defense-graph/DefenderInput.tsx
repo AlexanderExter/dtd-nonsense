@@ -80,10 +80,11 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			<legend>Defender</legend>
 
 			{/* Characteristics */}
-			<div class="field-row">
-				<label class="compact-field">
-					<span class="field-label">Dex</span>
+			<div class="flex flex-wrap items-center gap-sm max-[600px]:flex-col max-[600px]:items-stretch">
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Dex</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -91,9 +92,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("dex", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Wis</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Wis</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -101,9 +103,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("wis", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Size</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Size</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -111,9 +114,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("size", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Con</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Con</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -121,9 +125,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("con", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Wil</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Wil</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -131,9 +136,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("wil", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Composure</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+						Composure
+					</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={10}
@@ -141,9 +149,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("composure", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Level</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Level</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={1}
 						max={5}
@@ -154,31 +163,39 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			</div>
 
 			{/* Derived stats */}
-			<div class="derived-row">
-				<span class="derived-stat">
-					SD: <strong>{sdOverride.value != null ? sdOverride.value : sd}</strong>
+			<div class="flex flex-wrap gap-md px-0 py-sm text-[0.85rem] text-text-muted">
+				<span class="flex items-center gap-xs">
+					SD:{" "}
+					<strong class="text-accent font-mono text-base">
+						{sdOverride.value != null ? sdOverride.value : sd}
+					</strong>
 				</span>
-				<span class="derived-stat">
-					HP: <strong>{hp}</strong>
+				<span class="flex items-center gap-xs">
+					HP: <strong class="text-accent font-mono text-base">{hp}</strong>
 				</span>
-				<span class="derived-stat">
-					Resilience: <strong>{resilience}</strong>
+				<span class="flex items-center gap-xs">
+					Resilience: <strong class="text-accent font-mono text-base">{resilience}</strong>
 				</span>
-				<span class="derived-stat">
-					Mental Def: <strong>{mentalDef}</strong>
+				<span class="flex items-center gap-xs">
+					Mental Def: <strong class="text-accent font-mono text-base">{mentalDef}</strong>
 				</span>
 			</div>
 
 			{/* SD Override */}
-			<div class="field-row">
-				<label class="override-toggle">
-					<input type="checkbox" checked={sdOverride.value != null} onChange={toggleSDOverride} />
+			<div class="flex flex-wrap items-center gap-sm max-[600px]:flex-col max-[600px]:items-stretch">
+				<label class="inline-flex items-center gap-[2px] text-[0.7rem] text-text-dim m-0 cursor-pointer font-normal">
+					<input
+						class="w-auto m-0"
+						type="checkbox"
+						checked={sdOverride.value != null}
+						onChange={toggleSDOverride}
+					/>
 					<span>SD Override</span>
 				</label>
 				{sdOverride.value != null && (
 					<input
 						type="number"
-						class="override-input"
+						class="w-14! text-center px-sm py-xs text-[0.85rem] disabled:opacity-30"
 						min={1}
 						max={60}
 						value={sdOverride.value}
@@ -188,9 +205,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			</div>
 
 			{/* Halfling toggle */}
-			<div class="field-row">
-				<label class="toggle-field">
+			<div class="flex flex-wrap items-center gap-sm max-[600px]:flex-col max-[600px]:items-stretch">
+				<label class="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer m-0 font-normal">
 					<input
+						class="w-auto accent-accent"
 						type="checkbox"
 						checked={d.halfling}
 						onChange={(e) => update({ halfling: (e.target as HTMLInputElement).checked })}
@@ -200,11 +218,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			</div>
 
 			{/* Armor section */}
-			<div class="sub-section">
-				<div class="field-row">
-					<label class="compact-field">
-						<span class="field-label">AP</span>
+			<div class="flex flex-col gap-sm">
+				<div class="flex flex-wrap items-center gap-sm max-[600px]:flex-col max-[600px]:items-stretch">
+					<label class="flex flex-col gap-[2px] m-0">
+						<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">AP</span>
 						<input
+							class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 							type="number"
 							min={0}
 							max={20}
@@ -212,9 +231,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 							onInput={(e) => handleNumInput("ap", (e.target as HTMLInputElement).value)}
 						/>
 					</label>
-					<label class="compact-field">
-						<span class="field-label">Weight</span>
+					<label class="flex flex-col gap-[2px] m-0">
+						<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+							Weight
+						</span>
 						<select
+							class="w-auto min-w-[4.5rem] text-left px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 							value={d.weight}
 							onChange={(e) => handleWeightChange((e.target as HTMLSelectElement).value)}
 						>
@@ -225,9 +247,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 							))}
 						</select>
 					</label>
-					<label class="compact-field">
-						<span class="field-label">Max Dex</span>
+					<label class="flex flex-col gap-[2px] m-0">
+						<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+							Max Dex
+						</span>
 						<input
+							class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 							type="number"
 							min={0}
 							max={99}
@@ -238,13 +263,18 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 				</div>
 
 				{/* Per-location AP */}
-				<details class="location-details">
-					<summary>Per-Location AP</summary>
-					<div class="location-grid">
+				<details class="border border-border rounded-sm p-sm bg-bg">
+					<summary class="text-[0.8rem] text-text-muted cursor-pointer font-semibold">
+						Per-Location AP
+					</summary>
+					<div class="flex flex-wrap gap-xs mt-sm">
 						{Object.entries(HIT_LOCATIONS).map(([loc, info]) => (
-							<label key={loc} class="compact-field">
-								<span class="field-label">{info.label}</span>
+							<label key={loc} class="flex flex-col gap-[2px] m-0">
+								<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+									{info.label}
+								</span>
 								<input
+									class="w-14 text-center px-sm py-xs text-[0.9rem]"
 									type="number"
 									min={0}
 									max={20}
@@ -261,10 +291,11 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			</div>
 
 			{/* Defensive modifiers */}
-			<div class="field-row">
-				<label class="compact-field">
-					<span class="field-label">Cover</span>
+			<div class="flex flex-wrap items-center gap-sm max-[600px]:flex-col max-[600px]:items-stretch">
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Cover</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={0}
 						max={20}
@@ -272,9 +303,10 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("cover", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Aura</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">Aura</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={0}
 						max={20}
@@ -282,9 +314,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("aura", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Dodge (Acrobatics)</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+						Dodge (Acrobatics)
+					</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={0}
 						max={10}
@@ -292,9 +327,12 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 						onInput={(e) => handleNumInput("dodge", (e.target as HTMLInputElement).value)}
 					/>
 				</label>
-				<label class="compact-field">
-					<span class="field-label">Parry (Weaponry)</span>
+				<label class="flex flex-col gap-[2px] m-0">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+						Parry (Weaponry)
+					</span>
 					<input
+						class="w-[4.5rem] text-center px-sm py-xs text-[0.9rem] max-[600px]:w-full"
 						type="number"
 						min={0}
 						max={10}
@@ -305,9 +343,9 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 			</div>
 
 			{/* Presets */}
-			<div class="preset-row">
-				<span class="field-label">Presets:</span>
-				<div class="preset-buttons">
+			<div class="flex flex-col gap-xs pt-sm border-t border-border">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0">Presets:</span>
+				<div class="flex flex-wrap gap-xs">
 					{Object.keys(DEFENDER_PRESETS).map((key) => (
 						<button key={key} type="button" class="btn btn-ghost btn-sm" onClick={() => onPresetApply(key)}>
 							{key.charAt(0).toUpperCase() + key.slice(1)}

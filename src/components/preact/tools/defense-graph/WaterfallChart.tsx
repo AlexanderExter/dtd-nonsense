@@ -99,21 +99,23 @@ export function WaterfallChart({ defender, attacker }: WaterfallChartProps) {
 
 	return (
 		<div>
-			<div class="field-row" style={{ marginBottom: "0.5rem" }}>
-				<label class="compact-field" style={{ flex: 1 }}>
-					<span class="field-label">Raw Damage: {rawDmg}</span>
+			<div class="flex flex-wrap items-center gap-sm mb-sm">
+				<label class="flex flex-col gap-[2px] m-0 flex-1">
+					<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0 font-semibold">
+						Raw Damage: {rawDmg}
+					</span>
 					<input
 						type="range"
 						min={0}
 						max={40}
 						value={rawDmg}
 						onInput={(e) => setRawDmg(parseInt((e.target as HTMLInputElement).value, 10))}
-						style={{ width: "100%" }}
+						class="w-full accent-accent"
 					/>
 				</label>
 			</div>
-			<div class="chart-container">
-				<canvas ref={canvasRef} />
+			<div class="relative w-full min-h-[280px]">
+				<canvas ref={canvasRef} class="w-full! h-full!" />
 			</div>
 		</div>
 	);

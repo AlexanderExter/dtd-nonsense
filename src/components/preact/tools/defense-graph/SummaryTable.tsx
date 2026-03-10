@@ -35,55 +35,67 @@ export function SummaryTable({ defender, attacker, simResult }: SummaryTableProp
 	const attacksToDown = simResult && simResult.avgHPLost > 0 ? Math.ceil(defender.hp / simResult.avgHPLost) : null;
 
 	return (
-		<table class="stats-table">
-			<thead>
-				<tr>
-					<th>Stat</th>
-					<th>Value</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Static Defense</td>
-					<td>{defender.sd}</td>
-				</tr>
-				<tr>
-					<td>Effective SD (w/ Dodge/Parry)</td>
-					<td>
-						{effectiveSD}
-						{(dodgeBonus > 0 || parryBonus > 0) && (
-							<span style={{ opacity: 0.7, marginLeft: "0.5em" }}>
-								({dodgeBonus > 0 ? `+${dodgeBonus} dodge` : ""}
-								{parryBonus > 0 ? `+${parryBonus} parry` : ""})
-							</span>
-						)}
-					</td>
-				</tr>
-				<tr>
-					<td>Hit Probability</td>
-					<td>{simResult ? `${(simResult.hitRate * 100).toFixed(1)}%` : "—"}</td>
-				</tr>
-				<tr>
-					<td>Weighted Effective AP</td>
-					<td>{weightedAP.toFixed(1)}</td>
-				</tr>
-				<tr>
-					<td>Expected Raw Damage (on hit)</td>
-					<td>{simResult ? avgRawOnHit.toFixed(1) : "—"}</td>
-				</tr>
-				<tr>
-					<td>Expected Damage After Armor</td>
-					<td>{simResult ? pipeline.afterMitigation.toFixed(1) : "—"}</td>
-				</tr>
-				<tr>
-					<td>Expected HP Lost / Attack</td>
-					<td>{simResult ? simResult.avgHPLost.toFixed(2) : "—"}</td>
-				</tr>
-				<tr>
-					<td>Attacks to Down</td>
-					<td>{attacksToDown != null ? attacksToDown : "∞"}</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="overflow-x-auto p-sm">
+			<table class="m-0 text-[0.85rem] w-full">
+				<thead>
+					<tr>
+						<th class="whitespace-nowrap px-sm py-xs text-left">Stat</th>
+						<th class="whitespace-nowrap px-sm py-xs text-left">Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Static Defense</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">{defender.sd}</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Effective SD (w/ Dodge/Parry)</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{effectiveSD}
+							{(dodgeBonus > 0 || parryBonus > 0) && (
+								<span style={{ opacity: 0.7, marginLeft: "0.5em" }}>
+									({dodgeBonus > 0 ? `+${dodgeBonus} dodge` : ""}
+									{parryBonus > 0 ? `+${parryBonus} parry` : ""})
+								</span>
+							)}
+						</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Hit Probability</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{simResult ? `${(simResult.hitRate * 100).toFixed(1)}%` : "—"}
+						</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Weighted Effective AP</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">{weightedAP.toFixed(1)}</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Expected Raw Damage (on hit)</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{simResult ? avgRawOnHit.toFixed(1) : "—"}
+						</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Expected Damage After Armor</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{simResult ? pipeline.afterMitigation.toFixed(1) : "—"}
+						</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Expected HP Lost / Attack</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{simResult ? simResult.avgHPLost.toFixed(2) : "—"}
+						</td>
+					</tr>
+					<tr>
+						<td class="whitespace-nowrap px-sm py-xs">Attacks to Down</td>
+						<td class="whitespace-nowrap px-sm py-xs font-mono text-accent">
+							{attacksToDown != null ? attacksToDown : "∞"}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	);
 }

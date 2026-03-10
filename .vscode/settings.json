@@ -71,5 +71,6 @@
         "vite",
         "Vitest",
         "Warhammer"
-    ]
+    ],
+    "vsicons.presets.nestjs": true
 }

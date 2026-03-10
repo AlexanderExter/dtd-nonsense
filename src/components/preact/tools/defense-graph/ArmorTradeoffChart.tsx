@@ -117,8 +117,8 @@ export function ArmorTradeoffChart({ defender, attacker }: ArmorTradeoffChartPro
 	}, [defender, attacker]);
 
 	return (
-		<div class="chart-container">
-			<canvas ref={canvasRef} />
+		<div class="relative w-full min-h-[280px]">
+			<canvas ref={canvasRef} class="w-full! h-full!" />
 		</div>
 	);
 }

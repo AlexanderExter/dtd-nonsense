@@ -95,39 +95,39 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 	return (
 		<>
 			{/* Range Calculator */}
-			<div class="mod-calculator">
-				<h3>Range Calculator</h3>
-				<div class="calc-row">
-					<label>
+			<div class="bg-surface border border-border rounded-md p-md mb-md">
+				<h3 class="text-accent text-[0.95rem] m-0 mb-sm">Range Calculator</h3>
+				<div class="flex gap-md flex-wrap mb-sm max-[600px]:flex-col">
+					<label class="flex flex-col gap-[4px] text-[0.85rem] text-text-muted">
 						Weapon Range (m){" "}
 						<input
 							type="number"
 							min={1}
 							value={weaponRange}
-							class="calc-input"
+							class="w-[110px] px-[8px] py-[6px] bg-bg border border-border rounded-md text-text-primary text-[0.9rem] font-[inherit] focus:border-accent focus:outline-none"
 							onInput={(e) => {
 								weaponRange.value = Number.parseFloat((e.target as HTMLInputElement).value) || 0;
 							}}
 						/>
 					</label>
-					<label>
+					<label class="flex flex-col gap-[4px] text-[0.85rem] text-text-muted">
 						Distance to Target (m){" "}
 						<input
 							type="number"
 							min={0}
 							value={distance}
-							class="calc-input"
+							class="w-[110px] px-[8px] py-[6px] bg-bg border border-border rounded-md text-text-primary text-[0.9rem] font-[inherit] focus:border-accent focus:outline-none"
 							onInput={(e) => {
 								distance.value = Number.parseFloat((e.target as HTMLInputElement).value) || 0;
 							}}
 						/>
 					</label>
 				</div>
-				<div class="calc-result">
+				<div class="mt-sm px-md py-sm bg-accent-bg-subtle border-l-[3px] border-l-accent rounded-r-md text-[0.9rem] text-text-primary min-h-[1.6em]">
 					{rr.band ? (
 						<>
 							<strong>{rr.band}</strong> — {rr.mod}
-							<span class="calc-detail">
+							<span class="text-[0.8rem] text-text-muted ml-sm">
 								{" "}
 								(distance/range = {(distance.value / weaponRange.value).toFixed(2)}){rr.note}
 							</span>
@@ -139,12 +139,13 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 			</div>
 
 			{/* Modifier Accumulator */}
-			<div class="mod-calculator">
-				<h3>Modifier Accumulator</h3>
-				<div class="mod-toggles">
-					<label class="mod-toggle">
+			<div class="bg-surface border border-border rounded-md p-md mb-md">
+				<h3 class="text-accent text-[0.95rem] m-0 mb-sm">Modifier Accumulator</h3>
+				<div class="flex flex-wrap gap-x-md gap-y-[6px]">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={combatAdvantage}
 							onChange={(e) => {
 								combatAdvantage.value = (e.target as HTMLInputElement).checked;
@@ -152,11 +153,12 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						Combat Advantage
 					</label>
-					<span class="mod-group-label">Ganging Up:</span>
-					<label class="mod-toggle">
+					<span class="text-[0.85rem] text-accent font-semibold self-center ml-sm">Ganging Up:</span>
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="radio"
 							name="gangup"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={gangUp.value === 0}
 							onChange={() => {
 								gangUp.value = 0;
@@ -164,10 +166,11 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						None
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="radio"
 							name="gangup"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={gangUp.value === 1}
 							onChange={() => {
 								gangUp.value = 1;
@@ -175,10 +178,11 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						2:1
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="radio"
 							name="gangup"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={gangUp.value === 2}
 							onChange={() => {
 								gangUp.value = 2;
@@ -186,9 +190,10 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						3:1+
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={higherGround}
 							onChange={(e) => {
 								higherGround.value = (e.target as HTMLInputElement).checked;
@@ -196,9 +201,10 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						Higher Ground
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={offHand}
 							onChange={(e) => {
 								offHand.value = (e.target as HTMLInputElement).checked;
@@ -206,9 +212,10 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						Off Hand
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={twoWeapons}
 							onChange={(e) => {
 								twoWeapons.value = (e.target as HTMLInputElement).checked;
@@ -216,9 +223,10 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						Two Weapons (-3k0 each)
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={shootingIntoMelee}
 							onChange={(e) => {
 								shootingIntoMelee.value = (e.target as HTMLInputElement).checked;
@@ -226,9 +234,10 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						/>{" "}
 						Shooting into Melee
 					</label>
-					<label class="mod-toggle">
+					<label class="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
 						<input
 							type="checkbox"
+							class="accent-accent w-4 h-4 cursor-pointer"
 							checked={difficultTerrain}
 							onChange={(e) => {
 								difficultTerrain.value = (e.target as HTMLInputElement).checked;
@@ -237,7 +246,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						Difficult Terrain
 					</label>
 				</div>
-				<div class="calc-result">
+				<div class="mt-sm px-md py-sm bg-accent-bg-subtle border-l-[3px] border-l-accent rounded-r-md text-[0.9rem] text-text-primary min-h-[1.6em]">
 					{mr.labels.length === 0 ? (
 						"Toggle modifiers above."
 					) : (
@@ -247,7 +256,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 								{mr.totalR >= 0 ? "+" : ""}
 								{mr.totalR}k{mr.totalK} to attack roll
 							</strong>
-							<span class="calc-detail"> ({mr.labels.join(", ")})</span>
+							<span class="text-[0.8rem] text-text-muted ml-sm"> ({mr.labels.join(", ")})</span>
 						</>
 					)}
 				</div>
@@ -255,27 +264,33 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 
 			{/* Range Bands Table */}
 			<h3>Range Bands</h3>
-			<div class="table-wrap">
-				<table class="qref-table">
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 					<thead>
 						<tr>
-							<th>Band</th>
-							<th>Range</th>
-							<th>Modifier</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Band
+							</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Range
+							</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Modifier
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						{filteredRangeBands.map((r) => (
-							<tr key={r.band}>
-								<td>
+							<tr key={r.band} class="even:bg-stripe hover:bg-surface">
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<strong>
 										<Highlight text={r.band} words={searchWords} />
 									</strong>
 								</td>
-								<td>
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={r.range} words={searchWords} />
 								</td>
-								<td>
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={r.mod} words={searchWords} />
 								</td>
 							</tr>
@@ -286,21 +301,25 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 
 			{/* Situational Modifiers Table */}
 			<h3>Situational Modifiers</h3>
-			<div class="table-wrap">
-				<table class="qref-table">
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 					<thead>
 						<tr>
-							<th>Situation</th>
-							<th>Modifier</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Situation
+							</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Modifier
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						{filteredModifiers.map((m) => (
-							<tr key={m.situation}>
-								<td>
+							<tr key={m.situation} class="even:bg-stripe hover:bg-surface">
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={m.situation} words={searchWords} />
 								</td>
-								<td>
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={m.mod} words={searchWords} />
 								</td>
 							</tr>
@@ -311,21 +330,27 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 
 			{/* Cover AP Table */}
 			<h3>Cover Armor Points</h3>
-			<div class="table-wrap">
-				<table class="qref-table">
+			<div class="overflow-x-auto">
+				<table class="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 					<thead>
 						<tr>
-							<th>Cover Type</th>
-							<th>AP</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								Cover Type
+							</th>
+							<th class="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+								AP
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						{filteredCover.map((c) => (
-							<tr key={c.cover}>
-								<td>
+							<tr key={c.cover} class="even:bg-stripe hover:bg-surface">
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={c.cover} words={searchWords} />
 								</td>
-								<td>{c.ap}</td>
+								<td class="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+									{c.ap}
+								</td>
 							</tr>
 						))}
 					</tbody>

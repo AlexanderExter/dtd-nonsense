@@ -8,7 +8,13 @@ export function Highlight({ text, words }: { text: string; words: string[] }) {
 			{parts.map((part, i) => {
 				// Reset lastIndex not needed since we use a fresh non-global regex for test
 				const testRegex = new RegExp(`^(${escaped.join("|")})$`, "i");
-				return testRegex.test(part) ? <mark key={i}>{part}</mark> : part;
+				return testRegex.test(part) ? (
+					<mark key={i} class="bg-mark text-inherit rounded-[2px] px-[1px]">
+						{part}
+					</mark>
+				) : (
+					part
+				);
 			})}
 		</>
 	);

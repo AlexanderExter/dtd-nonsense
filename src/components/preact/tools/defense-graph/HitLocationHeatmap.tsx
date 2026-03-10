@@ -80,35 +80,25 @@ export function HitLocationHeatmap({ defender, attacker }: HitLocationHeatmapPro
 	}, [defender, attacker, maxAP]);
 
 	return (
-		<div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-			<canvas ref={canvasRef} width={300} height={400} style={{ border: "1px solid #2a2a32" }} />
-			<div class="heatmap-legend">
+		<div class="flex gap-md items-start p-md max-[600px]:flex-col max-[600px]:items-center">
+			<canvas ref={canvasRef} width={300} height={400} class="border border-border rounded-sm" />
+			<div class="flex flex-col gap-xs text-[0.8rem] text-text-muted">
 				{BODY_REGIONS.map((region) => {
 					const locAP = defender.locationAP[region.loc] || 0;
 					const effAP = Math.max(0, locAP - attacker.pen);
 					return (
-						<div
-							key={region.loc}
-							style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}
-						>
+						<div key={region.loc} class="flex items-center gap-sm mb-xs">
 							<span
-								style={{
-									display: "inline-block",
-									width: "12px",
-									height: "12px",
-									backgroundColor: apToColor(effAP, maxAP),
-									border: "1px solid #3a3a44",
-								}}
+								class="inline-block w-3 h-3 border border-border"
+								style={{ backgroundColor: apToColor(effAP, maxAP) }}
 							/>
-							<span style={{ fontSize: "0.85rem" }}>
+							<span class="text-[0.85rem]">
 								{region.label}: AP {effAP}
 							</span>
 						</div>
 					);
 				})}
-				<div style={{ marginTop: "0.5rem", fontWeight: "bold", fontSize: "0.85rem" }}>
-					Weighted AP: {weightedAP.toFixed(1)}
-				</div>
+				<div class="mt-sm font-bold text-[0.85rem]">Weighted AP: {weightedAP.toFixed(1)}</div>
 			</div>
 		</div>
 	);

@@ -21,9 +21,10 @@ export function SearchBar({ query, inputRef }: SearchBarProps) {
 
 	return (
 		<>
-			<div class="search-row">
+			<div class="flex gap-sm items-center">
 				<input
 					type="search"
+					class="flex-1 px-md py-sm text-base bg-surface border border-border rounded-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent"
 					placeholder="Search actions, conditions, modifiers, schools…"
 					autocomplete="off"
 					value={query}
@@ -33,8 +34,19 @@ export function SearchBar({ query, inputRef }: SearchBarProps) {
 					}}
 				/>
 			</div>
-			<div class="search-hint">
-				<kbd>/</kbd> or <kbd>Ctrl+K</kbd> to focus · <kbd>Esc</kbd> to clear
+			<div class="text-text-dim text-[0.75rem] mt-xs">
+				<kbd class="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+					/
+				</kbd>{" "}
+				or{" "}
+				<kbd class="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+					Ctrl+K
+				</kbd>{" "}
+				to focus ·{" "}
+				<kbd class="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+					Esc
+				</kbd>{" "}
+				to clear
 			</div>
 		</>
 	);

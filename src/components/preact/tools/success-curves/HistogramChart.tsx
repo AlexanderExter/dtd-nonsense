@@ -128,12 +128,12 @@ export function HistogramChart({ results, pools, selectedTN }: HistogramChartPro
 	});
 
 	return (
-		<div class="card graph-card">
-			<div class="card-header">
-				<h3>Result Distribution</h3>
+		<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border-[#ccc]">
+			<div class="px-md py-sm border-b border-border">
+				<h3 class="m-0 text-[0.95rem] text-accent">Result Distribution</h3>
 			</div>
-			<div class="chart-wrap">
-				<canvas ref={canvasRef} />
+			<div class="relative w-full min-h-[280px] p-sm">
+				<canvas ref={canvasRef} class="w-full! h-full!" />
 			</div>
 		</div>
 	);

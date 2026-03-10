@@ -32,15 +32,15 @@ export function ControlsRow({ activeStunt, onPresetClick, onStuntClick, onHelper
 	};
 
 	return (
-		<div class="controls-row">
-			<div class="preset-group">
-				<span class="field-label">Presets</span>
-				<div class="preset-buttons">
+		<div class="flex flex-wrap gap-lg items-start max-[600px]:flex-col">
+			<div class="flex flex-col gap-xs">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Presets</span>
+				<div class="flex flex-wrap gap-xs">
 					{PRESETS.map(([num, keep]) => (
 						<button
 							type="button"
 							key={`${num}k${keep}`}
-							class="btn btn-ghost preset-btn"
+							class="btn btn-ghost font-mono text-[0.8rem] px-sm py-xs"
 							onClick={() => onPresetClick(num, keep)}
 						>
 							{num}k{keep}
@@ -48,14 +48,19 @@ export function ControlsRow({ activeStunt, onPresetClick, onStuntClick, onHelper
 					))}
 				</div>
 			</div>
-			<div class="stunt-group">
-				<span class="field-label">Stunt</span>
-				<div class="stunt-buttons">
+			<div class="flex flex-col gap-xs">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Stunt</span>
+				<div class="flex flex-wrap gap-xs">
 					{STUNT_LEVELS.map((level) => (
 						<button
 							type="button"
 							key={level}
-							class={`btn btn-ghost stunt-btn${activeStunt.value === level ? " active" : ""}`}
+							class={[
+								"btn btn-ghost font-mono text-[0.8rem] px-sm py-xs",
+								activeStunt.value === level && "bg-accent text-bg",
+							]
+								.filter(Boolean)
+								.join(" ")}
 							onClick={() => onStuntClick(level)}
 						>
 							+{level}
@@ -63,17 +68,31 @@ export function ControlsRow({ activeStunt, onPresetClick, onStuntClick, onHelper
 					))}
 				</div>
 			</div>
-			<div class="helper-group">
-				<span class="field-label">Skill Test Helper</span>
-				<div class="helper-inputs">
-					<label>
+			<div class="flex flex-col gap-xs">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Skill Test Helper</span>
+				<div class="flex items-center gap-sm">
+					<label class="flex items-center gap-xs text-[0.85rem] m-0">
 						Skill
-						<input type="number" id="helper-skill" min={0} max={6} value={0} />
+						<input
+							type="number"
+							id="helper-skill"
+							class="w-12 text-center px-sm py-xs"
+							min={0}
+							max={6}
+							value={0}
+						/>
 					</label>
-					<span class="text-muted">+</span>
-					<label>
+					<span class="text-text-muted">+</span>
+					<label class="flex items-center gap-xs text-[0.85rem] m-0">
 						Char
-						<input type="number" id="helper-char" min={1} max={6} value={1} />
+						<input
+							type="number"
+							id="helper-char"
+							class="w-12 text-center px-sm py-xs"
+							min={1}
+							max={6}
+							value={1}
+						/>
 					</label>
 					<button type="button" class="btn btn-secondary" onClick={handleApply}>
 						Apply

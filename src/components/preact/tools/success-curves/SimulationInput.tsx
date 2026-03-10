@@ -29,16 +29,24 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 	};
 
 	return (
-		<section class="input-panel no-print" aria-label="Dice pool configuration">
-			<div id="pool-rows">
+		<section
+			class="max-w-[1100px] mx-auto px-md py-lg flex flex-col gap-md print:hidden"
+			aria-label="Dice pool configuration"
+		>
+			<div id="pool-rows" class="flex flex-col gap-sm">
 				{pools.value.map((pool, i) => (
-					<div class="pool-row" key={i}>
-						<span class="pool-color-swatch" style={{ background: POOL_COLORS[i] }} />
-						<label class="pool-field">
-							<span class="field-label">Rolled</span>
+					<div
+						class="flex items-center gap-sm bg-surface border border-border rounded-md px-md py-sm flex-wrap"
+						key={i}
+					>
+						<span class="w-3.5 h-3.5 rounded-full shrink-0" style={{ background: POOL_COLORS[i] }} />
+						<label class="flex items-center gap-xs m-0">
+							<span class="text-[0.75rem] text-text-muted uppercase tracking-[0.5px] w-12 shrink-0">
+								Rolled
+							</span>
 							<input
 								type="range"
-								class="pool-slider"
+								class="w-[90px] max-[600px]:w-[70px] accent-accent"
 								min={1}
 								max={15}
 								value={pool.numDice}
@@ -48,7 +56,7 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 							/>
 							<input
 								type="number"
-								class="pool-input"
+								class="w-14 text-center px-sm py-xs"
 								min={1}
 								max={15}
 								value={pool.numDice}
@@ -57,12 +65,14 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 								}
 							/>
 						</label>
-						<span class="k-separator">k</span>
-						<label class="pool-field">
-							<span class="field-label">Kept</span>
+						<span class="text-[1.1rem] font-bold text-accent mx-xs">k</span>
+						<label class="flex items-center gap-xs m-0">
+							<span class="text-[0.75rem] text-text-muted uppercase tracking-[0.5px] w-12 shrink-0">
+								Kept
+							</span>
 							<input
 								type="range"
-								class="pool-slider"
+								class="w-[90px] max-[600px]:w-[70px] accent-accent"
 								min={1}
 								max={Math.min(pool.numDice, 10)}
 								value={pool.keepDice}
@@ -72,7 +82,7 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 							/>
 							<input
 								type="number"
-								class="pool-input"
+								class="w-14 text-center px-sm py-xs"
 								min={1}
 								max={Math.min(pool.numDice, 10)}
 								value={pool.keepDice}
@@ -81,11 +91,13 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 								}
 							/>
 						</label>
-						<label class="pool-field pool-field-narrow">
-							<span class="field-label">Mod</span>
+						<label class="flex items-center gap-xs m-0">
+							<span class="text-[0.75rem] text-text-muted uppercase tracking-[0.5px] w-12 shrink-0">
+								Mod
+							</span>
 							<input
 								type="number"
-								class="pool-input"
+								class="w-14 text-center px-sm py-xs"
 								min={-10}
 								max={30}
 								value={pool.modifier}
@@ -97,7 +109,7 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 						{i > 0 && (
 							<button
 								type="button"
-								class="remove-pool-btn"
+								class="ml-auto px-sm bg-transparent border-none text-text-dim text-[1.1rem] cursor-pointer rounded-sm hover:text-error hover:bg-error-bg"
 								title="Remove pool"
 								onClick={() => onRemovePool(i)}
 							>
@@ -108,11 +120,14 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 				))}
 			</div>
 
-			<div class="tn-row">
-				<label class="pool-field tn-field">
-					<span class="field-label">Target Number</span>
+			<div class="flex items-center gap-md bg-surface border border-border rounded-md px-md py-sm max-[600px]:flex-wrap">
+				<label class="flex items-center gap-xs m-0 flex-1">
+					<span class="text-[0.75rem] text-text-muted uppercase tracking-[0.5px] w-auto shrink-0">
+						Target Number
+					</span>
 					<input
 						type="range"
+						class="flex-1 min-w-[120px] accent-accent"
 						min={TN_MIN}
 						max={TN_MAX}
 						step={1}
@@ -121,6 +136,7 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 					/>
 					<input
 						type="number"
+						class="w-14 text-center px-sm py-xs"
 						min={TN_MIN}
 						max={TN_MAX}
 						value={selectedTN}
@@ -130,7 +146,9 @@ export function SimulationInput({ pools, selectedTN, onUpdatePool, onRemovePool,
 						}}
 					/>
 				</label>
-				<span class="tn-difficulty">{getDifficultyLabel(selectedTN.value)}</span>
+				<span class="text-[0.85rem] text-accent font-semibold min-w-40 text-right max-[600px]:min-w-0 max-[600px]:text-left">
+					{getDifficultyLabel(selectedTN.value)}
+				</span>
 			</div>
 		</section>
 	);

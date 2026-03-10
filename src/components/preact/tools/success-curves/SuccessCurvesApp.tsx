@@ -268,7 +268,7 @@ export function SuccessCurvesApp() {
 				onStuntClick={handleStunt}
 				onHelperApply={handleHelperApply}
 			/>
-			<div class="pool-actions">
+			<div class="flex gap-sm px-md max-w-[1100px] mx-auto">
 				<button
 					type="button"
 					class="btn btn-secondary"
@@ -282,14 +282,17 @@ export function SuccessCurvesApp() {
 				</button>
 				<ShareButton onShare={shareURL} />
 			</div>
-			<main class="graphs-grid">
+			<main class="grid grid-cols-2 gap-lg max-w-[1200px] mx-auto px-md py-lg pb-xl max-[860px]:grid-cols-1 print:grid-cols-2 print:gap-md print:p-0">
 				<SuccessRateChart results={results} pools={pools} selectedTN={selectedTN} onSetTN={setTN} />
 				<HistogramChart results={results} pools={pools} selectedTN={selectedTN} />
 				<RaiseDistChart results={results} pools={pools} />
 				<StatsTable results={results} pools={pools} selectedTN={selectedTN} />
 			</main>
 			{toastMessage.value && (
-				<output class="toast visible" aria-live="polite">
+				<output
+					class="fixed bottom-lg left-1/2 -translate-x-1/2 bg-surface-raised border border-border rounded-md px-lg py-sm text-text-primary text-[0.85rem] z-[100]"
+					aria-live="polite"
+				>
 					{toastMessage.value}
 				</output>
 			)}

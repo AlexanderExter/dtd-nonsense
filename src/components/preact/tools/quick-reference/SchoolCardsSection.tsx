@@ -16,34 +16,40 @@ export function SchoolCardsSection({ schools, searchWords, footerNote }: SchoolC
 
 	return (
 		<>
-			<div class="school-cards">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-md max-[600px]:grid-cols-1">
 				{filtered.map((s) => (
-					<div class="school-card" key={s.school}>
-						<div class="school-card-header">
+					<div
+						class="bg-surface border border-border rounded-md overflow-hidden transition-colors duration-150 hover:border-accent"
+						key={s.school}
+					>
+						<div class="bg-surface-highlight px-md py-sm border-b border-border text-accent text-[0.95rem]">
 							<strong>
 								<Highlight text={s.school} words={searchWords} />
 							</strong>
 						</div>
-						<div class="school-card-body">
-							<p class="school-blurb">
+						<div class="px-md py-sm pb-md">
+							<p class="m-0 mb-sm text-[0.85rem] text-text-primary leading-[1.45]">
 								<Highlight text={s.blurb} words={searchWords} />
 							</p>
-							<div class="school-meta">
+							<div class="flex flex-wrap gap-x-md gap-y-[4px] text-[0.8rem] text-text-muted">
 								<span>
-									<em>Skill:</em> <Highlight text={s.skill} words={searchWords} />
+									<em class="text-text-muted not-italic opacity-70">Skill:</em>{" "}
+									<Highlight text={s.skill} words={searchWords} />
 								</span>
 								<span>
-									<em>Weapon:</em> <Highlight text={s.weapon} words={searchWords} />
+									<em class="text-text-muted not-italic opacity-70">Weapon:</em>{" "}
+									<Highlight text={s.weapon} words={searchWords} />
 								</span>
 								<span>
-									<em>Action:</em> <Highlight text={s.action} words={searchWords} />
+									<em class="text-text-muted not-italic opacity-70">Action:</em>{" "}
+									<Highlight text={s.action} words={searchWords} />
 								</span>
 							</div>
 						</div>
 					</div>
 				))}
 			</div>
-			<p style="margin-top:var(--space-md);color:var(--text-muted);font-size:0.85rem">{footerNote}</p>
+			<p class="mt-md text-text-muted text-[0.85rem]">{footerNote}</p>
 		</>
 	);
 }

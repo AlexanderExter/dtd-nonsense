@@ -12,22 +12,38 @@ export function StatsTable({ results, pools, selectedTN }: StatsTableProps) {
 	const tn = selectedTN.value;
 
 	return (
-		<div class="card graph-card stats-card">
-			<div class="card-header">
-				<h3>Statistics</h3>
+		<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border-[#ccc]">
+			<div class="px-md py-sm border-b border-border">
+				<h3 class="m-0 text-[0.95rem] text-accent">Statistics</h3>
 			</div>
-			<div class="table-wrap">
-				<table>
+			<div class="overflow-x-auto p-sm">
+				<table class="m-0 text-[0.85rem] w-full border-collapse">
 					<thead>
 						<tr>
-							<th>Pool</th>
-							<th>Mean</th>
-							<th>Median</th>
-							<th>Std Dev</th>
-							<th>P(≥TN)</th>
-							<th>P(≥TN+5)</th>
-							<th>P(≥TN+10)</th>
-							<th>E[Raises]</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								Pool
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								Mean
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								Median
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								Std Dev
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								P(≥TN)
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								P(≥TN+5)
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								P(≥TN+10)
+							</th>
+							<th class="whitespace-nowrap px-sm py-xs text-left text-text-muted border-b border-border">
+								E[Raises]
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,17 +63,20 @@ export function StatsTable({ results, pools, selectedTN }: StatsTableProps) {
 
 							return (
 								<tr key={i}>
-									<td>
-										<span class="stats-pool-swatch" style={{ background: POOL_COLORS[i] }} />
+									<td class="whitespace-nowrap px-sm py-xs text-left">
+										<span
+											class="inline-block w-2.5 h-2.5 rounded-full mr-xs align-middle"
+											style={{ background: POOL_COLORS[i] }}
+										/>
 										{poolLabel(pool)}
 									</td>
-									<td>{data.mean.toFixed(1)}</td>
-									<td>{data.median.toFixed(1)}</td>
-									<td>{data.stdDev.toFixed(1)}</td>
-									<td>{pTN.toFixed(1)}%</td>
-									<td>{pTN5.toFixed(1)}%</td>
-									<td>{pTN10.toFixed(1)}%</td>
-									<td>{expRaises.toFixed(1)}</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{data.mean.toFixed(1)}</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{data.median.toFixed(1)}</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{data.stdDev.toFixed(1)}</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{pTN.toFixed(1)}%</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{pTN5.toFixed(1)}%</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{pTN10.toFixed(1)}%</td>
+									<td class="whitespace-nowrap px-sm py-xs text-left">{expRaises.toFixed(1)}</td>
 								</tr>
 							);
 						})}

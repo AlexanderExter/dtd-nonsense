@@ -157,7 +157,7 @@ export function DefenseGraphApp() {
 
 	return (
 		<>
-			<section class="input-panel">
+			<section class="max-w-[1200px] mx-auto px-md py-lg flex gap-lg max-[960px]:flex-col">
 				<DefenderInput
 					defender={defender}
 					locationAP={locationAP}
@@ -167,52 +167,55 @@ export function DefenseGraphApp() {
 				<AttackerInput attacker={attacker} onPresetApply={handleAttackerPreset} />
 			</section>
 
-			<main class="graphs-grid">
-				<div class="card graph-card graph-card-wide">
-					<div class="card-header">
-						<h3>Damage Pipeline Waterfall</h3>
+			<main class="grid grid-cols-2 gap-lg max-w-[1200px] mx-auto px-md py-lg pb-xl max-[960px]:grid-cols-1">
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] col-span-full max-[960px]:col-span-1 print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Damage Pipeline Waterfall</h3>
 					</div>
 					<WaterfallChart defender={def} attacker={atk} />
 				</div>
 
-				<div class="card graph-card">
-					<div class="card-header">
-						<h3>Effective HP Graph</h3>
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Effective HP Graph</h3>
 					</div>
 					<EffectiveHPChart defender={def} attacker={atk} />
 				</div>
 
-				<div class="card graph-card">
-					<div class="card-header">
-						<h3>Hit Probability &amp; Expected Damage</h3>
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Hit Probability &amp; Expected Damage</h3>
 					</div>
 					<HitProbabilityChart defender={def} attacker={atk} runSimulation={runChildSimulation} />
 				</div>
 
-				<div class="card graph-card">
-					<div class="card-header">
-						<h3>Armor Weight Trade-off</h3>
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Armor Weight Trade-off</h3>
 					</div>
 					<ArmorTradeoffChart defender={def} attacker={atk} />
 				</div>
 
-				<div class="card graph-card">
-					<div class="card-header">
-						<h3>Location Coverage Heat Map</h3>
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Location Coverage Heat Map</h3>
 					</div>
 					<HitLocationHeatmap defender={def} attacker={atk} />
 				</div>
 
-				<div class="card graph-card stats-card graph-card-wide">
-					<div class="card-header">
-						<h3>Defense Summary</h3>
+				<div class="bg-surface border border-border rounded-md overflow-hidden min-h-[320px] col-span-full max-[960px]:col-span-1 print:break-inside-avoid print:border print:border-[#ccc]">
+					<div class="px-md py-sm border-b border-border print:bg-[#f0f0f0]">
+						<h3 class="m-0 text-[0.95rem] text-accent">Defense Summary</h3>
 					</div>
 					<SummaryTable defender={def} attacker={atk} simResult={simResult.value} />
 				</div>
 			</main>
 
 			{toastMessage.value && (
-				<output class="toast visible" aria-live="polite">
+				<output
+					class="fixed bottom-lg left-1/2 -translate-x-1/2 bg-surface-raised border border-border rounded-md px-lg py-sm text-text-primary text-[0.85rem] z-[100]"
+					aria-live="polite"
+				>
 					{toastMessage.value}
 				</output>
 			)}

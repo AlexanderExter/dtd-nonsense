@@ -194,13 +194,13 @@ export function QuickReferenceApp() {
 	const words = searchWords.value;
 
 	return (
-		<div class="dtd-tool qref-app">
-			<header class="qref-header no-print">
-				<h1>Quick Reference</h1>
+		<div class="max-w-[1200px] mx-auto p-md max-[600px]:p-sm">
+			<header class="sticky top-0 z-[100] bg-bg py-md border-b border-border mb-lg no-print">
+				<h1 class="text-center text-accent text-2xl mb-md">Quick Reference</h1>
 				<SearchBar query={searchQuery} inputRef={searchInputRef} />
 			</header>
 
-			<div class="controls no-print">
+			<div class="flex gap-sm justify-end mb-sm no-print">
 				<button type="button" class="btn btn-ghost" onClick={expandAll}>
 					Expand All
 				</button>
@@ -209,49 +209,59 @@ export function QuickReferenceApp() {
 				</button>
 			</div>
 
-			<div class="qref-layout">
-				<aside class="qref-sidebar">
+			<div class="grid grid-cols-[240px_1fr] gap-lg items-start max-[820px]:grid-cols-1">
+				<aside class="sticky top-[110px] max-h-[calc(100vh-130px)] overflow-y-auto max-[820px]:static max-[820px]:max-h-none max-[820px]:grid max-[820px]:grid-cols-2 max-[820px]:gap-md max-[600px]:grid-cols-1">
 					<SidebarPanel title="Target Numbers">
-						<div class="table-wrap">
-							<table class="qref-table">
+						<div class="overflow-x-auto">
+							<table class="w-full border-collapse text-[0.82rem]">
 								<thead>
 									<tr>
-										<th>TN</th>
-										<th>Difficulty</th>
+										<th class="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+											TN
+										</th>
+										<th class="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+											Difficulty
+										</th>
 									</tr>
 								</thead>
 								<tbody>
 									{QREF_DATA.tnTable.map((t) => (
-										<tr key={t.tn}>
-											<td>
+										<tr key={t.tn} class="even:bg-stripe hover:bg-surface">
+											<td class="px-[6px] py-[4px] text-left border-b border-border">
 												<strong>{t.tn}</strong>
 											</td>
-											<td>{t.diff}</td>
+											<td class="px-[6px] py-[4px] text-left border-b border-border">{t.diff}</td>
 										</tr>
 									))}
 								</tbody>
 							</table>
 						</div>
-						<p style="margin-top:var(--space-md);color:var(--text-muted);font-size:0.85rem">
+						<p class="mt-md text-text-muted text-[0.85rem]">
 							<strong>Raises:</strong> Every 5 above TN. <strong>Checks:</strong> Every 5 below TN.
 						</p>
 					</SidebarPanel>
 					<SidebarPanel title="Hit Location">
-						<div class="table-wrap">
-							<table class="qref-table">
+						<div class="overflow-x-auto">
+							<table class="w-full border-collapse text-[0.82rem]">
 								<thead>
 									<tr>
-										<th>d10 Roll</th>
-										<th>Location</th>
+										<th class="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+											d10 Roll
+										</th>
+										<th class="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+											Location
+										</th>
 									</tr>
 								</thead>
 								<tbody>
 									{QREF_DATA.hitLocations.map((h) => (
-										<tr key={h.roll}>
-											<td>
+										<tr key={h.roll} class="even:bg-stripe hover:bg-surface">
+											<td class="px-[6px] py-[4px] text-left border-b border-border">
 												<strong>{h.roll}</strong>
 											</td>
-											<td>{h.location}</td>
+											<td class="px-[6px] py-[4px] text-left border-b border-border">
+												{h.location}
+											</td>
 										</tr>
 									))}
 								</tbody>
@@ -363,7 +373,7 @@ export function QuickReferenceApp() {
 				</main>
 			</div>
 
-			<footer style="text-align: center; padding: var(--space-lg); color: var(--text-dim); font-size: 0.8rem">
+			<footer class="text-center p-lg text-text-dim text-[0.8rem]">
 				Data from <em>Dungeons the Dragoning 40,000: 7th Edition</em> and <em>For a Few Subtitles More</em>.
 			</footer>
 		</div>
