@@ -88,11 +88,11 @@ Manual testing revealed two critical issues that affect all Preact tools:
 
 Identified during code review (2026-03-10). These are not blocking bugs for single-tool pages, but are correctness gaps worth fixing.
 
-### CQ1: `useData` / `useAllData` — Signals Recreated on Every Call
+### CQ1: `useData` / `useAllData` — Signals Recreated on Every Call — ✅ Resolved
 
 **File:** `src/hooks/use-data.ts`
 
-`signal()` is called inside the hook body without a stabilizing wrapper. Every render creates new signals and fires a new `fetch`. Previous signals are orphaned and their in-flight promises still write to them — a memory leak and duplicate network requests. The correct Preact API is `useSignal()` from `@preact/signals`, which creates the signal once (like `useRef`) and returns the same reference on re-renders.
+~~`signal()` is called inside the hook body without a stabilizing wrapper.~~ **Resolved:** Replaced `signal()` with `useSignal()` and wrapped fetch calls in `useEffect` to fire once per filename set (2026-03-10).
 
 ### CQ2: `useEffect([signal.value])` — Mixed Reactivity Systems
 
