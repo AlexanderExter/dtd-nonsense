@@ -1,0 +1,705 @@
+import { signal } from "@preact/signals";
+import type { ComponentChildren } from "preact";
+import { useCallback, useEffect, useRef } from "preact/hooks";
+import { character } from "@/lib/dtd/character";
+import { derived } from "@/lib/dtd/derived";
+import { roll } from "@/lib/dtd/dice";
+import { AddCombatantForm } from "./AddCombatantForm";
+import { CombatantCard } from "./CombatantCard";
+import { ConditionPicker } from "./ConditionPicker";
+import type { Combatant, EncounterState } from "./constants";
+import {
+	AUTOSAVE_DELAY,
+	CONDITIONS,
+	calculateDamage,
+	createCombatant,
+	defaultEncounterState,
+	ENCOUNTER_LIST_KEY,
+	ENCOUNTER_PREFIX,
+	genId,
+	HIT_LOCATIONS,
+} from "./constants";
+import { EncounterBar } from "./EncounterBar";
+import { ImportModal } from "./ImportModal";
+import { QuickAddRow } from "./QuickAddRow";
+import { ReferenceSidebar } from "./ReferenceSidebar";
+
+// =========================================================================
+// Module-level signals
+// =========================================================================
+
+const encounterState = signal<EncounterState>(defaultEncounterState());
+const toastMessage = signal("");
+const conditionPickerState = signal<{ combatantId: string; rect: DOMRect } | null>(null);
+const importModalOpen = signal(false);
+const sidebarOpen = signal(false);
+const hitLocationResult = signal("");
+const damageCalcResult = signal("");
+const roundAlerts = signal<ComponentChildren[]>([]);
+const encounterList = signal<Array<{ id: string; name: string }>>([]);
+const importCharList = signal<Array<{ id: string; name: string }>>([]);
+
+// =========================================================================
+// Helpers
+// =========================================================================
+
+function showToast(msg: string) {
+	toastMessage.value = msg;
+	setTimeout(() => {
+		toastMessage.value = "";
+	}, 3000);
+}
+
+function sortByInitiative(combatants: Combatant[]): Combatant[] {
+	return [...combatants].sort((a, b) => {
+		const initA = a.initiativeTotal ?? -Infinity;
+		const initB = b.initiativeTotal ?? -Infinity;
+		if (initB !== initA) return initB - initA;
+		if (b.dexterity !== a.dexterity) return b.dexterity - a.dexterity;
+		return b.composure - a.composure;
+	});
+}
+
+function computeTieSet(combatants: Combatant[]): Set<string> {
+	const ties = new Set<string>();
+	for (let i = 0; i < combatants.length; i++) {
+		for (let j = i + 1; j < combatants.length; j++) {
+			if (
+				combatants[i].initiativeTotal !== null &&
+				combatants[i].initiativeTotal === combatants[j].initiativeTotal
+			) {
+				ties.add(combatants[i].id);
+				ties.add(combatants[j].id);
+			}
+		}
+	}
+	return ties;
+}
+
+function loadEncounterList(): Array<{ id: string; name: string }> {
+	try {
+		const raw = localStorage.getItem(ENCOUNTER_LIST_KEY);
+		return raw ? JSON.parse(raw) : [];
+	} catch {
+		return [];
+	}
+}
+
+// =========================================================================
+// Root component
+// =========================================================================
+
+export function CombatTrackerApp() {
+	const autosaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const state = encounterState.value;
+
+	// Load encounter list on mount
+	useEffect(() => {
+		encounterList.value = loadEncounterList();
+	}, []);
+
+	// -----------------------------------------------------------------------
+	// Autosave
+	// -----------------------------------------------------------------------
+
+	const scheduleAutosave = useCallback(() => {
+		if (autosaveTimer.current) clearTimeout(autosaveTimer.current);
+		autosaveTimer.current = setTimeout(() => {
+			const s = encounterState.value;
+			if (s.encounterId) {
+				localStorage.setItem(ENCOUNTER_PREFIX + s.encounterId, JSON.stringify(s));
+			}
+		}, AUTOSAVE_DELAY);
+	}, []);
+
+	// -----------------------------------------------------------------------
+	// State mutation helpers
+	// -----------------------------------------------------------------------
+
+	const updateState = useCallback(
+		(patch: Partial<EncounterState>) => {
+			encounterState.value = { ...encounterState.value, ...patch };
+			scheduleAutosave();
+		},
+		[scheduleAutosave],
+	);
+
+	const updateCombatant = useCallback(
+		(id: string, updater: (c: Combatant) => Combatant) => {
+			const s = encounterState.value;
+			updateState({
+				combatants: s.combatants.map((c) => (c.id === id ? updater(c) : c)),
+			});
+		},
+		[updateState],
+	);
+
+	// -----------------------------------------------------------------------
+	// Add / Remove combatants
+	// -----------------------------------------------------------------------
+
+	const addCombatant = useCallback(
+		(data: Partial<Combatant>) => {
+			const c = createCombatant(data);
+			updateState({ combatants: [...encounterState.value.combatants, c] });
+			showToast(`Added ${c.name}`);
+		},
+		[updateState],
+	);
+
+	const removeCombatant = useCallback(
+		(id: string) => {
+			const s = encounterState.value;
+			const idx = s.combatants.findIndex((c) => c.id === id);
+			const name = idx >= 0 ? s.combatants[idx].name : "combatant";
+			const newCombatants = s.combatants.filter((c) => c.id !== id);
+			let newIndex = s.activeTurnIndex;
+			if (idx >= 0 && idx < s.activeTurnIndex) newIndex--;
+			if (newIndex >= newCombatants.length) newIndex = newCombatants.length - 1;
+			updateState({ combatants: newCombatants, activeTurnIndex: newIndex });
+			showToast(`Removed ${name}`);
+		},
+		[updateState],
+	);
+
+	// -----------------------------------------------------------------------
+	// Quick add
+	// -----------------------------------------------------------------------
+
+	const handleQuickAdd = useCallback(
+		(name: string, initTotal: number) => {
+			const c = createCombatant({ name });
+			c.initiativeTotal = initTotal;
+			const newCombatants = sortByInitiative([...encounterState.value.combatants, c]);
+			updateState({ combatants: newCombatants });
+			showToast(`Quick-added ${name}`);
+		},
+		[updateState],
+	);
+
+	// -----------------------------------------------------------------------
+	// Initiative
+	// -----------------------------------------------------------------------
+
+	const rollAllInitiative = useCallback(() => {
+		const s = encounterState.value;
+		const updated = s.combatants.map((c) => {
+			const dieResult = roll(1, 1, 0);
+			const rollVal = c.heroPoint ? 10 : dieResult.total;
+			const total = rollVal + c.dexterity + c.composure + c.modifier;
+			return { ...c, initiativeRoll: rollVal, initiativeTotal: total };
+		});
+		const sorted = sortByInitiative(updated);
+		// Find first non-surprised combatant for active turn
+		let startIdx = 0;
+		for (let i = 0; i < sorted.length; i++) {
+			if (!sorted[i].surprised) {
+				startIdx = i;
+				break;
+			}
+		}
+		updateState({
+			combatants: sorted,
+			round: 1,
+			encounterStarted: true,
+			activeTurnIndex: startIdx,
+		});
+		showToast("Initiative rolled!");
+	}, [updateState]);
+
+	const rollSingleInitiative = useCallback(
+		(id: string) => {
+			const s = encounterState.value;
+			const c = s.combatants.find((x) => x.id === id);
+			if (!c) return;
+			const dieResult = roll(1, 1, 0);
+			const rollVal = c.heroPoint ? 10 : dieResult.total;
+			const total = rollVal + c.dexterity + c.composure + c.modifier;
+			const newCombatants = s.combatants.map((x) =>
+				x.id === id ? { ...x, initiativeRoll: rollVal, initiativeTotal: total } : x,
+			);
+			updateState({ combatants: sortByInitiative(newCombatants) });
+			showToast(`Rerolled initiative for ${c.name}: ${total}`);
+		},
+		[updateState],
+	);
+
+	// -----------------------------------------------------------------------
+	// Turn navigation
+	// -----------------------------------------------------------------------
+
+	const nextTurn = useCallback(() => {
+		const s = encounterState.value;
+		if (s.combatants.length === 0 || !s.encounterStarted) return;
+		let next = s.activeTurnIndex + 1;
+		if (next >= s.combatants.length) next = 0;
+		// Skip surprised combatants on round 1
+		if (s.round <= 1) {
+			let attempts = 0;
+			while (s.combatants[next]?.surprised && attempts < s.combatants.length) {
+				next = (next + 1) % s.combatants.length;
+				attempts++;
+			}
+		}
+		updateState({ activeTurnIndex: next });
+	}, [updateState]);
+
+	const previousTurn = useCallback(() => {
+		const s = encounterState.value;
+		if (s.combatants.length === 0 || !s.encounterStarted) return;
+		let prev = s.activeTurnIndex - 1;
+		if (prev < 0) prev = s.combatants.length - 1;
+		// Skip surprised combatants on round 1
+		if (s.round <= 1) {
+			let attempts = 0;
+			while (s.combatants[prev]?.surprised && attempts < s.combatants.length) {
+				prev = prev - 1 < 0 ? s.combatants.length - 1 : prev - 1;
+				attempts++;
+			}
+		}
+		updateState({ activeTurnIndex: prev });
+	}, [updateState]);
+
+	// -----------------------------------------------------------------------
+	// End round
+	// -----------------------------------------------------------------------
+
+	const handleEndRound = useCallback(() => {
+		const s = encounterState.value;
+		if (s.combatants.length === 0) return;
+
+		const alerts: ComponentChildren[] = [];
+		const updatedCombatants = s.combatants.map((c) => {
+			const updated = { ...c };
+
+			// Process conditions
+			for (const cond of c.conditions) {
+				const def = CONDITIONS.find((d) => d.id === cond.conditionId);
+				if (!def) continue;
+
+				if (def.id === "burning") {
+					alerts.push(
+						<li key={`${c.id}-burning`}>
+							<strong>{c.name}</strong>: Burning \u2014 takes 1d10 Energy damage
+						</li>,
+					);
+				}
+				if (def.id === "bloodLoss" && cond.level) {
+					alerts.push(
+						<li key={`${c.id}-bloodLoss`}>
+							<strong>{c.name}</strong>: Blood Loss {cond.level} \u2014 Con Test or take {cond.level}{" "}
+							damage
+						</li>,
+					);
+				}
+				if (def.id === "toxic" && cond.level) {
+					alerts.push(
+						<li key={`${c.id}-toxic`}>
+							<strong>{c.name}</strong>: Toxic {cond.level} \u2014 takes {cond.level} damage
+						</li>,
+					);
+				}
+				if (def.id === "fatigue" && cond.level) {
+					alerts.push(
+						<li key={`${c.id}-fatigue`}>
+							<strong>{c.name}</strong>: Fatigue {cond.level} \u2014 {"-"}
+							{cond.level}k0 to all Tests
+						</li>,
+					);
+				}
+			}
+
+			// Reset action budget
+			updated.actionBudget = {
+				half1: false,
+				half2: false,
+				fullAction: false,
+				reaction: false,
+			};
+
+			// Clear surprised after round 1
+			if (s.round >= 1) {
+				updated.surprised = false;
+			}
+
+			return updated;
+		});
+
+		roundAlerts.value = alerts;
+		updateState({
+			combatants: updatedCombatants,
+			round: s.round + 1,
+			activeTurnIndex: 0,
+		});
+		showToast(`Round ${s.round} ended`);
+	}, [updateState]);
+
+	// -----------------------------------------------------------------------
+	// HP / Resource modification
+	// -----------------------------------------------------------------------
+
+	const modifyHP = useCallback(
+		(id: string, delta: number) => {
+			updateCombatant(id, (c) => ({
+				...c,
+				hpCurrent: Math.max(0, Math.min(c.hpMax, c.hpCurrent + delta)),
+			}));
+		},
+		[updateCombatant],
+	);
+
+	const modifyResource = useCallback(
+		(id: string, delta: number) => {
+			updateCombatant(id, (c) => ({
+				...c,
+				resourceCurrent: Math.max(0, Math.min(c.resourceMax, c.resourceCurrent + delta)),
+			}));
+		},
+		[updateCombatant],
+	);
+
+	// -----------------------------------------------------------------------
+	// Conditions
+	// -----------------------------------------------------------------------
+
+	const openConditionPicker = useCallback((id: string, rect: DOMRect) => {
+		conditionPickerState.value = { combatantId: id, rect };
+	}, []);
+
+	const addCondition = useCallback(
+		(combatantId: string, conditionId: string) => {
+			updateCombatant(combatantId, (c) => {
+				const existing = c.conditions.find((x) => x.conditionId === conditionId);
+				const def = CONDITIONS.find((d) => d.id === conditionId);
+
+				if (existing) {
+					if (def?.leveled) {
+						return {
+							...c,
+							conditions: c.conditions.map((x) =>
+								x.conditionId === conditionId ? { ...x, level: (x.level ?? 1) + 1 } : x,
+							),
+						};
+					}
+					return c; // Non-leveled, already applied
+				}
+
+				return {
+					...c,
+					conditions: [...c.conditions, { conditionId, level: def?.leveled ? 1 : undefined }],
+				};
+			});
+		},
+		[updateCombatant],
+	);
+
+	const removeCondition = useCallback(
+		(combatantId: string, conditionId: string) => {
+			updateCombatant(combatantId, (c) => ({
+				...c,
+				conditions: c.conditions.filter((x) => x.conditionId !== conditionId),
+			}));
+		},
+		[updateCombatant],
+	);
+
+	// -----------------------------------------------------------------------
+	// Action tokens
+	// -----------------------------------------------------------------------
+
+	const toggleActionToken = useCallback(
+		(id: string, tokenType: string) => {
+			updateCombatant(id, (c) => {
+				const budget = { ...c.actionBudget };
+				if (tokenType === "fullAction") {
+					budget.fullAction = !budget.fullAction;
+					if (budget.fullAction) {
+						budget.half1 = false;
+						budget.half2 = false;
+					}
+				} else if (tokenType === "half1" || tokenType === "half2") {
+					budget[tokenType] = !budget[tokenType];
+					if (budget[tokenType]) {
+						budget.fullAction = false;
+					}
+				} else if (tokenType === "reaction") {
+					budget.reaction = !budget.reaction;
+				}
+				return { ...c, actionBudget: budget };
+			});
+		},
+		[updateCombatant],
+	);
+
+	// -----------------------------------------------------------------------
+	// Notes
+	// -----------------------------------------------------------------------
+
+	const updateNotes = useCallback(
+		(id: string, notes: string) => {
+			updateCombatant(id, (c) => ({ ...c, notes }));
+		},
+		[updateCombatant],
+	);
+
+	// -----------------------------------------------------------------------
+	// Import from sheet
+	// -----------------------------------------------------------------------
+
+	const openImportModal = useCallback(() => {
+		importCharList.value = character.list();
+		importModalOpen.value = true;
+	}, []);
+
+	const handleImportChar = useCallback(
+		(charId: string) => {
+			const data = character.load(charId);
+			if (!data) {
+				showToast("Failed to load character");
+				return;
+			}
+
+			const chars = data.characteristics || {};
+			const con = Number(chars.constitution) || 2;
+			const wil = Number(chars.willpower) || 2;
+			const dex = Number(chars.dexterity) || 2;
+			const wis = Number(chars.wisdom) || 2;
+			const composure = Number(chars.composure) || 2;
+			// CharacterData has no size/level fields; use sensible defaults (matches original)
+			const size = 4;
+			const level = Number((data as unknown as Record<string, unknown>).level) || 1;
+
+			const c = createCombatant({
+				name: data.name || "Imported",
+				dexterity: dex,
+				composure,
+				hpMax: derived.calculateHP(con, wil),
+				willpower: wil,
+				sd: derived.calculateSD(dex, wis, size),
+				resilience: derived.calculateResilience(size, level),
+				imported: true,
+				importedData: data,
+			});
+
+			updateState({ combatants: [...encounterState.value.combatants, c] });
+			importModalOpen.value = false;
+			showToast(`Imported ${c.name}`);
+		},
+		[updateState],
+	);
+
+	// -----------------------------------------------------------------------
+	// Encounter persistence
+	// -----------------------------------------------------------------------
+
+	const saveEncounter = useCallback(() => {
+		const s = encounterState.value;
+		const id = s.encounterId || genId();
+		const name =
+			s.combatants.length > 0 ? `Encounter (${s.combatants.map((c) => c.name).join(", ")})` : `Empty Encounter`;
+		const timestamp = new Date().toLocaleString();
+		const displayName = `${name} - ${timestamp}`;
+
+		localStorage.setItem(ENCOUNTER_PREFIX + id, JSON.stringify({ ...s, encounterId: id }));
+
+		const list = loadEncounterList();
+		const existingIdx = list.findIndex((e) => e.id === id);
+		if (existingIdx >= 0) {
+			list[existingIdx].name = displayName;
+		} else {
+			list.push({ id, name: displayName });
+		}
+		localStorage.setItem(ENCOUNTER_LIST_KEY, JSON.stringify(list));
+
+		encounterState.value = { ...s, encounterId: id };
+		encounterList.value = list;
+		showToast("Encounter saved");
+	}, []);
+
+	const loadEncounter = useCallback((id: string) => {
+		try {
+			const raw = localStorage.getItem(ENCOUNTER_PREFIX + id);
+			if (!raw) {
+				showToast("Encounter not found");
+				return;
+			}
+			const loaded: EncounterState = JSON.parse(raw);
+			encounterState.value = loaded;
+			roundAlerts.value = [];
+			showToast("Encounter loaded");
+		} catch {
+			showToast("Failed to load encounter");
+		}
+	}, []);
+
+	const exportEncounter = useCallback(() => {
+		const s = encounterState.value;
+		const blob = new Blob([JSON.stringify(s, null, 2)], { type: "application/json" });
+		const url = URL.createObjectURL(blob);
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = `encounter-${s.round}-${Date.now()}.json`;
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+		URL.revokeObjectURL(url);
+		showToast("Encounter exported");
+	}, []);
+
+	const clearEncounter = useCallback(() => {
+		encounterState.value = defaultEncounterState();
+		roundAlerts.value = [];
+		showToast("Encounter cleared");
+	}, []);
+
+	// -----------------------------------------------------------------------
+	// Reference sidebar actions
+	// -----------------------------------------------------------------------
+
+	const rollHitLocation = useCallback(() => {
+		const result = roll(1, 1, 0);
+		const val = Math.min(10, Math.max(1, result.total));
+		const loc = HIT_LOCATIONS.find((h) => h.roll === val);
+		hitLocationResult.value = loc ? `Rolled ${val}: ${loc.location}` : `Rolled ${val}`;
+	}, []);
+
+	const handleCalcDamage = useCallback((raw: number, ap: number, pen: number, resilience: number) => {
+		const wounds = calculateDamage(raw, ap, pen, resilience);
+		damageCalcResult.value =
+			`Raw ${raw} - AP ${ap} (pen ${pen}) = ${Math.max(0, raw - Math.max(0, ap - pen))} ` +
+			`\u00f7 Res ${resilience} = ${wounds} wound${wounds !== 1 ? "s" : ""}`;
+	}, []);
+
+	// -----------------------------------------------------------------------
+	// Computed values
+	// -----------------------------------------------------------------------
+
+	const tieSet = computeTieSet(state.combatants);
+
+	// -----------------------------------------------------------------------
+	// Render
+	// -----------------------------------------------------------------------
+
+	return (
+		<>
+			<header class="top-bar">
+				<h1 class="top-bar-title">Combat Tracker</h1>
+				<div class="round-counter">
+					<span class="round-label">Round</span>
+					<span class="round-number">{state.round}</span>
+				</div>
+				<button type="button" class="btn btn-primary" onClick={handleEndRound}>
+					End Round
+				</button>
+			</header>
+
+			{roundAlerts.value.length > 0 && (
+				<div class="round-alerts">
+					<strong>End-of-Round Effects:</strong>
+					<ul>{roundAlerts.value}</ul>
+				</div>
+			)}
+
+			<div class="tracker-layout">
+				<main class="tracker-main">
+					<AddCombatantForm onAdd={addCombatant} />
+					<QuickAddRow
+						onQuickAdd={handleQuickAdd}
+						onImportSheet={openImportModal}
+						onRollAll={rollAllInitiative}
+					/>
+					<div class="combatant-list">
+						{state.combatants.length === 0 ? (
+							<div class="empty-state">
+								<div class="empty-state-icon">\u2694\uFE0F</div>
+								<p>No combatants yet. Add some above to begin.</p>
+							</div>
+						) : (
+							state.combatants.map((c, i) => (
+								<CombatantCard
+									key={c.id}
+									combatant={c}
+									isActive={state.encounterStarted && i === state.activeTurnIndex}
+									hasTie={tieSet.has(c.id)}
+									roundNumber={state.round}
+									onModifyHP={modifyHP}
+									onModifyResource={modifyResource}
+									onRemove={removeCombatant}
+									onRerollInit={rollSingleInitiative}
+									onToggleAction={toggleActionToken}
+									onAddCondition={openConditionPicker}
+									onRemoveCondition={removeCondition}
+									onNotesChange={updateNotes}
+								/>
+							))
+						)}
+					</div>
+					<div class="turn-nav">
+						<button type="button" class="btn btn-secondary" onClick={previousTurn}>
+							\u2190 Previous Turn
+						</button>
+						<button type="button" class="btn btn-primary" onClick={nextTurn}>
+							Next Turn \u2192
+						</button>
+					</div>
+				</main>
+
+				<ReferenceSidebar
+					isOpen={sidebarOpen.value}
+					onClose={() => {
+						sidebarOpen.value = false;
+					}}
+					onRollLocation={rollHitLocation}
+					hitLocationResult={hitLocationResult.value}
+					damageResult={damageCalcResult.value}
+					onCalcDamage={handleCalcDamage}
+				/>
+			</div>
+
+			<button
+				type="button"
+				class="sidebar-toggle-btn btn btn-secondary"
+				onClick={() => {
+					sidebarOpen.value = !sidebarOpen.value;
+				}}
+			>
+				\u2630 Reference
+			</button>
+
+			<EncounterBar
+				encounters={encounterList.value}
+				onSave={saveEncounter}
+				onLoad={loadEncounter}
+				onExport={exportEncounter}
+				onClear={clearEncounter}
+			/>
+
+			<ImportModal
+				isOpen={importModalOpen.value}
+				characters={importCharList.value}
+				onImport={handleImportChar}
+				onClose={() => {
+					importModalOpen.value = false;
+				}}
+			/>
+
+			{conditionPickerState.value && (
+				<ConditionPicker
+					combatantId={conditionPickerState.value.combatantId}
+					existingConditions={
+						state.combatants.find((c) => c.id === conditionPickerState.value?.combatantId)?.conditions ?? []
+					}
+					anchorRect={conditionPickerState.value.rect}
+					onPick={addCondition}
+					onClose={() => {
+						conditionPickerState.value = null;
+					}}
+				/>
+			)}
+
+			<output class={`toast-msg${toastMessage.value ? " visible" : ""}`} aria-live="polite">
+				{toastMessage.value}
+			</output>
+		</>
+	);
+}
