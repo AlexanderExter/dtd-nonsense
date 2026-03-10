@@ -26,12 +26,15 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 	return (
 		<>
 			{/* Core Fields */}
-			<div class="input-section">
-				<h2 class="section-title">Core</h2>
-				<div class="core-fields">
-					<div class="field field-wide">
-						<label for="npc-name">Name</label>
+			<div class="mb-lg pb-md border-b border-border last:border-b-0">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Core</h2>
+				<div class="grid grid-cols-[1fr_80px_80px_80px] gap-sm items-end max-[800px]:grid-cols-2">
+					<div class="col-start-1 max-[800px]:col-span-full">
+						<label class="block text-[0.8rem] mb-[2px]" for="npc-name">
+							Name
+						</label>
 						<input
+							class="w-full px-sm py-xs text-[0.9rem]"
 							type="text"
 							id="npc-name"
 							placeholder="NPC Name"
@@ -39,9 +42,12 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 							onInput={(e) => updateField("name", (e.target as HTMLInputElement).value)}
 						/>
 					</div>
-					<div class="field">
-						<label for="npc-level">Level</label>
+					<div>
+						<label class="block text-[0.8rem] mb-[2px]" for="npc-level">
+							Level
+						</label>
 						<select
+							class="w-full px-sm py-xs text-[0.9rem]"
 							id="npc-level"
 							value={npc.level}
 							onChange={(e) =>
@@ -55,9 +61,12 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 							<option value="5">5</option>
 						</select>
 					</div>
-					<div class="field">
-						<label for="npc-size">Size</label>
+					<div>
+						<label class="block text-[0.8rem] mb-[2px]" for="npc-size">
+							Size
+						</label>
 						<input
+							class="w-full px-sm py-xs text-[0.9rem]"
 							type="number"
 							id="npc-size"
 							min={1}
@@ -68,9 +77,12 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 							}
 						/>
 					</div>
-					<div class="field">
-						<label for="npc-speed">Speed</label>
+					<div>
+						<label class="block text-[0.8rem] mb-[2px]" for="npc-speed">
+							Speed
+						</label>
 						<input
+							class="w-full px-sm py-xs text-[0.9rem]"
 							type="number"
 							id="npc-speed"
 							min={0}
@@ -114,9 +126,10 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 			<AbilityList abilities={npc.abilities} onChange={(abilities) => updateField("abilities", abilities)} />
 
 			{/* Gear */}
-			<div class="input-section">
-				<h2 class="section-title">Gear</h2>
+			<div class="mb-lg pb-md border-b border-border last:border-b-0">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Gear</h2>
 				<textarea
+					class="w-full text-[0.85rem] p-sm resize-y"
 					id="gear-text"
 					rows={3}
 					placeholder="Comma-separated gear list"

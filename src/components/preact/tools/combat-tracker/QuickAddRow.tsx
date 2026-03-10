@@ -23,10 +23,10 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 	};
 
 	return (
-		<div class="quick-add-row">
+		<div class="flex flex-wrap gap-sm items-center mb-lg p-sm bg-surface border border-border rounded-md max-[768px]:flex-col max-[768px]:items-stretch">
 			<input
 				type="text"
-				class="quick-add-name"
+				class="flex-1 min-w-[100px] max-[768px]:flex-none max-[768px]:w-full"
 				placeholder="Quick add name"
 				value={name}
 				onInput={(e) => setName((e.target as HTMLInputElement).value)}
@@ -34,7 +34,7 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 			/>
 			<input
 				type="number"
-				class="quick-add-init"
+				class="flex-none w-[100px] max-[768px]:w-full"
 				placeholder="Init"
 				value={initTotal}
 				onInput={(e) => setInitTotal(parseInt((e.target as HTMLInputElement).value, 10) || 0)}

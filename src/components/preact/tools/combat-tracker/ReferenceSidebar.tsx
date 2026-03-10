@@ -18,6 +18,13 @@ const ACTION_TYPE_LABELS: Record<ActionDef["type"], string> = {
 	Fr: "Free",
 };
 
+const ACTION_TYPE_BADGE_COLORS: Record<string, string> = {
+	H: "bg-success-bg text-success",
+	F: "bg-warning-bg text-warning",
+	R: "bg-info-bg text-info",
+	Fr: "bg-[rgba(148,146,157,0.15)] text-text-muted",
+};
+
 export function ReferenceSidebar({
 	isOpen,
 	onClose,
@@ -55,41 +62,50 @@ export function ReferenceSidebar({
 		onCalcDamage(dmgRaw, dmgAp, dmgPen, dmgRes);
 	};
 
+	const sidebarClasses = [
+		"w-[340px] shrink-0 bg-surface border-l border-border p-md overflow-y-auto max-h-[calc(100vh-60px-48px)] sticky top-[60px]",
+		"max-[1099px]:fixed max-[1099px]:top-0 max-[1099px]:right-0 max-[1099px]:bottom-0 max-[1099px]:z-[150] max-[1099px]:translate-x-full max-[1099px]:transition-transform max-[1099px]:duration-[250ms] max-[1099px]:max-h-screen",
+		"max-[768px]:w-full",
+		isOpen && "max-[1099px]:translate-x-0",
+	]
+		.filter(Boolean)
+		.join(" ");
+
 	return (
-		<aside class={`reference-sidebar ${isOpen ? "open" : ""}`}>
-			<div class="sidebar-header">
-				<h2>Reference</h2>
-				<button type="button" class="btn btn-sm sidebar-close-btn" onClick={onClose}>
+		<aside class={sidebarClasses}>
+			<div class="flex justify-between items-center mb-sm">
+				<h2 class="m-0 text-accent">Reference</h2>
+				<button type="button" class="hidden max-[1099px]:block btn btn-sm" onClick={onClose}>
 					&times;
 				</button>
 			</div>
 
-			<div class="sidebar-content">
+			<div>
 				{/* Actions */}
-				<div class="accordion-section">
+				<div class="border-b border-border">
 					<button
 						type="button"
-						class={`accordion-header ${openSections.has(0) ? "open" : ""}`}
+						class="flex items-center gap-sm w-full py-sm px-sm bg-transparent border-none text-text-primary text-[0.9rem] font-semibold cursor-pointer text-left hover:text-accent"
 						onClick={() => toggleSection(0)}
 					>
-						<span class="accordion-icon">{openSections.has(0) ? "\u25BC" : "\u25B6"}</span>
+						<span class="text-accent">{openSections.has(0) ? "\u25BC" : "\u25B6"}</span>
 						Actions
 					</button>
 					{openSections.has(0) && (
-						<div class="accordion-body">
+						<div class="px-sm pb-md">
 							<input
 								type="text"
-								class="action-filter"
+								class="w-full mb-sm px-sm py-xs text-[0.85rem]"
 								placeholder="Filter actions..."
 								value={actionFilter}
 								onInput={(e) => setActionFilter((e.target as HTMLInputElement).value)}
 							/>
-							<table class="reference-table">
+							<table class="w-full text-[0.8rem]">
 								<thead>
 									<tr>
-										<th>Action</th>
-										<th>Type</th>
-										<th>Description</th>
+										<th class="text-[0.7rem]">Action</th>
+										<th class="text-[0.7rem]">Type</th>
+										<th class="text-[0.7rem]">Description</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -97,7 +113,9 @@ export function ReferenceSidebar({
 										<tr key={a.name}>
 											<td>{a.name}</td>
 											<td>
-												<span class={`action-type-badge type-${a.type}`}>
+												<span
+													class={`inline-flex items-center justify-center min-w-6 h-5 px-1 rounded-sm text-[0.65rem] font-bold uppercase shrink-0 ${ACTION_TYPE_BADGE_COLORS[a.type] || ""}`}
+												>
 													{ACTION_TYPE_LABELS[a.type]}
 												</span>
 											</td>
@@ -111,23 +129,23 @@ export function ReferenceSidebar({
 				</div>
 
 				{/* Conditions */}
-				<div class="accordion-section">
+				<div class="border-b border-border">
 					<button
 						type="button"
-						class={`accordion-header ${openSections.has(1) ? "open" : ""}`}
+						class="flex items-center gap-sm w-full py-sm px-sm bg-transparent border-none text-text-primary text-[0.9rem] font-semibold cursor-pointer text-left hover:text-accent"
 						onClick={() => toggleSection(1)}
 					>
-						<span class="accordion-icon">{openSections.has(1) ? "\u25BC" : "\u25B6"}</span>
+						<span class="text-accent">{openSections.has(1) ? "\u25BC" : "\u25B6"}</span>
 						Conditions
 					</button>
 					{openSections.has(1) && (
-						<div class="accordion-body">
-							<table class="reference-table">
+						<div class="px-sm pb-md">
+							<table class="w-full text-[0.8rem]">
 								<thead>
 									<tr>
-										<th>Condition</th>
-										<th>Effect</th>
-										<th>Leveled</th>
+										<th class="text-[0.7rem]">Condition</th>
+										<th class="text-[0.7rem]">Effect</th>
+										<th class="text-[0.7rem]">Leveled</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -145,22 +163,22 @@ export function ReferenceSidebar({
 				</div>
 
 				{/* Situational Modifiers */}
-				<div class="accordion-section">
+				<div class="border-b border-border">
 					<button
 						type="button"
-						class={`accordion-header ${openSections.has(2) ? "open" : ""}`}
+						class="flex items-center gap-sm w-full py-sm px-sm bg-transparent border-none text-text-primary text-[0.9rem] font-semibold cursor-pointer text-left hover:text-accent"
 						onClick={() => toggleSection(2)}
 					>
-						<span class="accordion-icon">{openSections.has(2) ? "\u25BC" : "\u25B6"}</span>
+						<span class="text-accent">{openSections.has(2) ? "\u25BC" : "\u25B6"}</span>
 						Situational Modifiers
 					</button>
 					{openSections.has(2) && (
-						<div class="accordion-body">
-							<table class="reference-table">
+						<div class="px-sm pb-md">
+							<table class="w-full text-[0.8rem]">
 								<thead>
 									<tr>
-										<th>Modifier</th>
-										<th>Effect</th>
+										<th class="text-[0.7rem]">Modifier</th>
+										<th class="text-[0.7rem]">Effect</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -177,22 +195,22 @@ export function ReferenceSidebar({
 				</div>
 
 				{/* Hit Locations */}
-				<div class="accordion-section">
+				<div class="border-b border-border">
 					<button
 						type="button"
-						class={`accordion-header ${openSections.has(3) ? "open" : ""}`}
+						class="flex items-center gap-sm w-full py-sm px-sm bg-transparent border-none text-text-primary text-[0.9rem] font-semibold cursor-pointer text-left hover:text-accent"
 						onClick={() => toggleSection(3)}
 					>
-						<span class="accordion-icon">{openSections.has(3) ? "\u25BC" : "\u25B6"}</span>
+						<span class="text-accent">{openSections.has(3) ? "\u25BC" : "\u25B6"}</span>
 						Hit Locations
 					</button>
 					{openSections.has(3) && (
-						<div class="accordion-body">
-							<table class="reference-table">
+						<div class="px-sm pb-md">
+							<table class="w-full text-[0.8rem]">
 								<thead>
 									<tr>
-										<th>Roll</th>
-										<th>Location</th>
+										<th class="text-[0.7rem]">Roll</th>
+										<th class="text-[0.7rem]">Location</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -204,30 +222,35 @@ export function ReferenceSidebar({
 									))}
 								</tbody>
 							</table>
-							<button type="button" class="btn btn-secondary btn-sm" onClick={onRollLocation}>
+							<button type="button" class="btn btn-secondary btn-sm mt-sm" onClick={onRollLocation}>
 								Roll Hit Location
 							</button>
-							{hitLocationResult && <div class="roll-result">{hitLocationResult}</div>}
+							{hitLocationResult && (
+								<div class="mt-sm px-md py-sm bg-bg border border-border rounded-sm text-[0.9rem] text-center min-h-8">
+									{hitLocationResult}
+								</div>
+							)}
 						</div>
 					)}
 				</div>
 
 				{/* Damage Calculator */}
-				<div class="accordion-section">
+				<div class="border-b border-border">
 					<button
 						type="button"
-						class={`accordion-header ${openSections.has(4) ? "open" : ""}`}
+						class="flex items-center gap-sm w-full py-sm px-sm bg-transparent border-none text-text-primary text-[0.9rem] font-semibold cursor-pointer text-left hover:text-accent"
 						onClick={() => toggleSection(4)}
 					>
-						<span class="accordion-icon">{openSections.has(4) ? "\u25BC" : "\u25B6"}</span>
+						<span class="text-accent">{openSections.has(4) ? "\u25BC" : "\u25B6"}</span>
 						Damage Calculator
 					</button>
 					{openSections.has(4) && (
-						<div class="accordion-body">
-							<div class="dmg-calc-form">
-								<label class="form-group form-group-sm">
+						<div class="px-sm pb-md">
+							<div class="flex flex-wrap gap-md items-end mt-sm">
+								<label class="flex-none min-w-[90px] max-w-[120px]">
 									<span>Raw Damage</span>
 									<input
+										class="w-full"
 										type="number"
 										min={0}
 										value={dmgRaw}
@@ -236,9 +259,10 @@ export function ReferenceSidebar({
 										}
 									/>
 								</label>
-								<label class="form-group form-group-sm">
+								<label class="flex-none min-w-[90px] max-w-[120px]">
 									<span>Armor Points</span>
 									<input
+										class="w-full"
 										type="number"
 										min={0}
 										value={dmgAp}
@@ -247,9 +271,10 @@ export function ReferenceSidebar({
 										}
 									/>
 								</label>
-								<label class="form-group form-group-sm">
+								<label class="flex-none min-w-[90px] max-w-[120px]">
 									<span>Penetration</span>
 									<input
+										class="w-full"
 										type="number"
 										min={0}
 										value={dmgPen}
@@ -258,9 +283,10 @@ export function ReferenceSidebar({
 										}
 									/>
 								</label>
-								<label class="form-group form-group-sm">
+								<label class="flex-none min-w-[90px] max-w-[120px]">
 									<span>Resilience</span>
 									<input
+										class="w-full"
 										type="number"
 										min={1}
 										value={dmgRes}
@@ -273,7 +299,11 @@ export function ReferenceSidebar({
 									Calculate
 								</button>
 							</div>
-							{damageResult && <div class="calc-result">{damageResult}</div>}
+							{damageResult && (
+								<div class="mt-sm px-md py-sm bg-bg border border-border rounded-sm text-[0.9rem] text-center min-h-8">
+									{damageResult}
+								</div>
+							)}
 						</div>
 					)}
 				</div>

@@ -44,31 +44,39 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 	);
 
 	return (
-		<div class="input-section">
-			<h2 class="section-title">Traits</h2>
-			<div class="traits-grid">
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Traits</h2>
+			<div class="flex flex-col gap-xs">
 				{traitsData.map((trait) => {
 					const active = isActive(trait.id);
 					const paramValue = getParam(trait.id);
 					return (
-						<div class={`trait-item${active ? " active" : ""}`} key={trait.id}>
+						<div
+							class={[
+								"flex items-center gap-sm px-sm py-xs bg-surface border rounded-sm cursor-pointer transition-all duration-150 hover:border-border-light",
+								active ? "border-accent bg-accent-bg-subtle" : "border-border",
+							].join(" ")}
+							key={trait.id}
+						>
 							<input
 								type="checkbox"
+								class="w-auto m-0 accent-accent"
 								id={`trait-${trait.id}`}
 								checked={active}
 								onChange={(e) => toggleTrait(trait.id, (e.target as HTMLInputElement).checked)}
 							/>
-							<label class="trait-label" htmlFor={`trait-${trait.id}`}>
+							<label class="text-[0.85rem] font-medium flex-1" htmlFor={`trait-${trait.id}`}>
 								{trait.name}
 							</label>
 							{trait.parameterized && (
 								<input
 									type="text"
-									class={
+									class={[
+										"py-[2px] px-xs text-[0.85rem] text-center",
 										trait.paramType === "caster" || trait.paramType === "resource"
-											? "trait-param trait-param-wide"
-											: "trait-param"
-									}
+											? "w-[150px]"
+											: "w-[70px]",
+									].join(" ")}
 									placeholder={trait.paramLabel || "X"}
 									disabled={!active}
 									value={paramValue != null ? String(paramValue) : ""}

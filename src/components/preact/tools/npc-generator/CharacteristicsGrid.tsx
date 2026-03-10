@@ -7,16 +7,21 @@ interface CharacteristicsGridProps {
 
 export function CharacteristicsGrid({ characteristics, onChange }: CharacteristicsGridProps) {
 	return (
-		<div class="input-section">
-			<h2 class="section-title">Characteristics</h2>
-			<div class="char-grid">
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Characteristics</h2>
+			<div class="grid grid-cols-3 gap-sm">
 				{CHAR_KEYS.map((key) => (
-					<div class="char-cell" key={key}>
-						<label for={`char-${CHAR_ABBREV[key].toLowerCase()}`}>{CHAR_ABBREV[key]}</label>
+					<div class="flex flex-col items-center" key={key}>
+						<label
+							class="text-[0.75rem] font-bold uppercase text-text-muted mb-[2px]"
+							for={`char-${CHAR_ABBREV[key].toLowerCase()}`}
+						>
+							{CHAR_ABBREV[key]}
+						</label>
 						<input
 							type="number"
 							id={`char-${CHAR_ABBREV[key].toLowerCase()}`}
-							class="char-input"
+							class="w-[60px] text-center py-xs text-base font-semibold"
 							min={0}
 							max={10}
 							value={characteristics[key]}

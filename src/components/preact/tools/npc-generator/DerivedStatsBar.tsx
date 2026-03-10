@@ -6,26 +6,26 @@ interface DerivedStatsBarProps {
 
 export function DerivedStatsBar({ stats }: DerivedStatsBarProps) {
 	return (
-		<div class="derived-bar no-print">
-			<div class="derived-stat">
-				<span class="derived-label">SD</span>
-				<span class="derived-value">{stats.sd}</span>
+		<div class="flex gap-md px-md py-sm bg-surface-raised border border-border rounded-md flex-wrap no-print">
+			<div class="flex flex-col items-center min-w-[50px]">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">SD</span>
+				<span class="text-[1.3rem] font-bold text-accent">{stats.sd}</span>
 			</div>
-			<div class="derived-stat">
-				<span class="derived-label">HP</span>
-				<span class="derived-value">{stats.hp}</span>
+			<div class="flex flex-col items-center min-w-[50px]">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">HP</span>
+				<span class="text-[1.3rem] font-bold text-accent">{stats.hp}</span>
 			</div>
-			<div class="derived-stat">
-				<span class="derived-label">Resilience</span>
-				<span class="derived-value">{stats.resilience}</span>
+			<div class="flex flex-col items-center min-w-[50px]">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Resilience</span>
+				<span class="text-[1.3rem] font-bold text-accent">{stats.resilience}</span>
 			</div>
-			<div class="derived-stat">
-				<span class="derived-label">Mental Def</span>
-				<span class="derived-value">{stats.mentalDef}</span>
+			<div class="flex flex-col items-center min-w-[50px]">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Mental Def</span>
+				<span class="text-[1.3rem] font-bold text-accent">{stats.mentalDef}</span>
 			</div>
-			<div class="derived-stat">
-				<span class="derived-label">Aura</span>
-				<span class="derived-value">{stats.aura}</span>
+			<div class="flex flex-col items-center min-w-[50px]">
+				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Aura</span>
+				<span class="text-[1.3rem] font-bold text-accent">{stats.aura}</span>
 			</div>
 		</div>
 	);

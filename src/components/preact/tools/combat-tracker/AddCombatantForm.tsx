@@ -42,14 +42,29 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 	};
 
 	return (
-		<div class="add-form-wrapper">
-			<button type="button" class="add-form-toggle" onClick={() => setIsOpen(!isOpen)}>
-				<span class="toggle-icon">{isOpen ? "\u25BC" : "\u25B6"}</span> Add Combatant
+		<div class="mb-lg bg-surface border border-border rounded-md overflow-hidden">
+			<button
+				type="button"
+				class={[
+					"flex items-center gap-sm w-full px-lg py-md bg-transparent border-none text-text-primary text-base font-semibold cursor-pointer transition-colors duration-150 hover:bg-surface-raised",
+				]
+					.filter(Boolean)
+					.join(" ")}
+				onClick={() => setIsOpen(!isOpen)}
+			>
+				<span
+					class={["text-accent transition-transform duration-200", isOpen && "rotate-90"]
+						.filter(Boolean)
+						.join(" ")}
+				>
+					&#x25B6;
+				</span>{" "}
+				Add Combatant
 			</button>
 			{isOpen && (
-				<form class="add-form" onSubmit={handleSubmit}>
-					<div class="form-row">
-						<label class="form-group">
+				<form class="px-lg pb-lg border-t border-border" onSubmit={handleSubmit}>
+					<div class="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
+						<label class="flex-1 min-w-[140px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Name</span>
 							<input
 								type="text"
@@ -58,9 +73,10 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								onInput={(e) => setName((e.target as HTMLInputElement).value)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Dexterity</span>
 							<input
+								class="w-full"
 								type="number"
 								min={1}
 								max={10}
@@ -68,9 +84,10 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								onInput={(e) => setDexterity(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Composure</span>
 							<input
+								class="w-full"
 								type="number"
 								min={1}
 								max={10}
@@ -78,28 +95,31 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								onInput={(e) => setComposure(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Modifier</span>
 							<input
+								class="w-full"
 								type="number"
 								value={modifier}
 								onInput={(e) => setModifier(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
 					</div>
-					<div class="form-row">
-						<label class="form-group form-group-sm">
+					<div class="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>HP Max</span>
 							<input
+								class="w-full"
 								type="number"
 								min={1}
 								value={hpMax}
 								onInput={(e) => setHpMax(parseInt((e.target as HTMLInputElement).value, 10) || 8)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Willpower</span>
 							<input
+								class="w-full"
 								type="number"
 								min={1}
 								max={10}
@@ -107,18 +127,20 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								onInput={(e) => setWillpower(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Static Defense</span>
 							<input
+								class="w-full"
 								type="number"
 								min={0}
 								value={sd}
 								onInput={(e) => setSd(parseInt((e.target as HTMLInputElement).value, 10) || 20)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resilience</span>
 							<input
+								class="w-full"
 								type="number"
 								min={1}
 								value={resilience}
@@ -126,51 +148,56 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							/>
 						</label>
 					</div>
-					<div class="form-row">
-						<label class="form-group form-group-sm">
+					<div class="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Max</span>
 							<input
+								class="w-full"
 								type="number"
 								min={0}
 								value={resourceMax}
 								onInput={(e) => setResourceMax(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
-						<label class="form-group form-group-sm">
+						<label class="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Label</span>
 							<input
+								class="w-full"
 								type="text"
 								placeholder="Mana"
 								value={resourceLabel}
 								onInput={(e) => setResourceLabel((e.target as HTMLInputElement).value)}
 							/>
 						</label>
-						<label class="checkbox-label">
+						<label class="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
 							<input
 								type="checkbox"
+								class="accent-accent"
 								checked={heroPoint}
 								onChange={(e) => setHeroPoint((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Hero Point (count as 10)
 						</label>
-						<label class="checkbox-label">
+						<label class="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
 							<input
 								type="checkbox"
+								class="accent-accent"
 								checked={surprised}
 								onChange={(e) => setSurprised((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Surprised
 						</label>
-						<label class="checkbox-label">
+						<label class="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
 							<input
 								type="checkbox"
+								class="accent-accent"
 								checked={isNpc}
 								onChange={(e) => setIsNpc((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							NPC
 						</label>
 					</div>
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn btn-primary mt-md">
 						Add Combatant
 					</button>
 				</form>

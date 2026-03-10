@@ -31,30 +31,38 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 	);
 
 	return (
-		<div class="input-section">
-			<div class="section-header">
-				<h2 class="section-title">Abilities</h2>
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<div class="flex items-center justify-between mb-sm">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Abilities</h2>
 				<button type="button" class="btn btn-ghost btn-sm" onClick={addAbility}>
 					+ Add
 				</button>
 			</div>
-			<div class="list-entries">
+			<div class="flex flex-col gap-xs">
 				{abilities.map((a, i) => (
-					<div class="list-entry ability-entry" key={i}>
-						<div class="ability-header">
+					<div
+						class="flex flex-col items-stretch gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
+						key={i}
+					>
+						<div class="flex items-center gap-sm">
 							<input
 								type="text"
-								class="ability-name"
+								class="flex-1 py-[2px] px-xs text-[0.85rem]"
 								placeholder="Ability name"
 								value={a.name}
 								onInput={(e) => updateAbility(i, "name", (e.target as HTMLInputElement).value)}
 							/>
-							<button type="button" class="entry-remove" title="Remove" onClick={() => removeAbility(i)}>
+							<button
+								type="button"
+								class="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
+								title="Remove"
+								onClick={() => removeAbility(i)}
+							>
 								×
 							</button>
 						</div>
 						<textarea
-							class="ability-desc"
+							class="text-[0.85rem] py-xs resize-y min-h-[40px]"
 							placeholder="Description"
 							rows={2}
 							value={a.description}

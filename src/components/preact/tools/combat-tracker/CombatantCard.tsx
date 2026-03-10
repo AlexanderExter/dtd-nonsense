@@ -23,6 +23,22 @@ function conditionLabel(cond: CombatantCondition): string {
 	return def.leveled && cond.level ? `${def.name} ${cond.level}` : def.name;
 }
 
+const WOUND_FILL_COLORS: Record<string, string> = {
+	healthy: "bg-success",
+	light: "bg-wound-light",
+	heavy: "bg-warning",
+	critical: "bg-error",
+	down: "bg-[#4a0000]",
+};
+
+const WOUND_BADGE_COLORS: Record<string, string> = {
+	healthy: "bg-success-bg text-success",
+	light: "bg-wound-light-bg text-wound-light",
+	heavy: "bg-warning-bg text-warning",
+	critical: "bg-error-bg text-error",
+	down: "bg-wound-down-bg text-wound-down",
+};
+
 export function CombatantCard({
 	combatant: c,
 	isActive,
@@ -41,9 +57,18 @@ export function CombatantCard({
 	const woundStatus = getWoundStatus(c);
 	const hpPercent = c.hpMax > 0 ? Math.max(0, (c.hpCurrent / c.hpMax) * 100) : 0;
 
-	const cardClasses = ["combatant-card", isActive && "active", c.hpCurrent <= 0 && "defeated"]
+	const cardClasses = [
+		"bg-surface border-2 rounded-md px-lg py-md transition-all duration-200 relative",
+		isActive ? "border-accent shadow-[0_0_12px_rgba(212,168,75,0.25)]" : "border-border",
+		c.hpCurrent <= 0 && "opacity-45",
+	]
 		.filter(Boolean)
 		.join(" ");
+
+	const initClasses = [
+		"flex items-center justify-center w-10 h-10 rounded-full text-[1.1rem] font-bold text-accent shrink-0 border-2 cursor-pointer",
+		isActive ? "border-accent bg-accent-bg-strong" : "border-accent-dim bg-bg",
+	].join(" ");
 
 	const handleAddCondition = (e: MouseEvent) => {
 		const btn = e.currentTarget as HTMLElement;
@@ -53,27 +78,47 @@ export function CombatantCard({
 	return (
 		<div class={cardClasses} data-id={c.id}>
 			{/* Top bar: initiative + name + badges */}
-			<div class="card-top-bar">
+			<div class="flex items-center gap-md mb-sm max-[768px]:flex-wrap">
 				<button
 					type="button"
-					class="init-circle"
+					class={initClasses}
 					title="Click to reroll initiative"
 					onClick={() => onRerollInit(c.id)}
 				>
 					{c.initiativeTotal !== null ? c.initiativeTotal : "\u2014"}
 				</button>
-				<div class="card-name-area">
-					<span class="combatant-name">{c.name}</span>
-					<span class="badge-row">
-						{c.surprised && roundNumber <= 1 && <span class="badge badge-surprised">Surprised</span>}
-						{hasTie && <span class="badge badge-tie">TIE</span>}
-						{c.isNpc && <span class="badge badge-npc">NPC</span>}
+				<div class="flex-1">
+					<span
+						class={["text-[1.1rem] font-semibold text-text-primary", c.hpCurrent <= 0 && "line-through"]
+							.filter(Boolean)
+							.join(" ")}
+					>
+						{c.name}
 					</span>
+					{c.surprised && roundNumber <= 1 && (
+						<span class="inline-block px-1.5 py-0.5 bg-warning-bg text-warning rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+							Surprised
+						</span>
+					)}
+					{hasTie && (
+						<span class="inline-block px-1.5 py-0.5 bg-info-bg text-info rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+							TIE
+						</span>
+					)}
+					{c.isNpc && (
+						<span class="inline-block px-1.5 py-0.5 bg-surface-raised text-text-dim rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+							NPC
+						</span>
+					)}
 				</div>
-				<span class={`wound-badge wound-${woundStatus}`}>{woundStatus}</span>
+				<span
+					class={`inline-block px-2 py-0.5 rounded-sm text-[0.7rem] font-semibold uppercase tracking-[0.5px] ${WOUND_BADGE_COLORS[woundStatus] || ""}`}
+				>
+					{woundStatus}
+				</span>
 				<button
 					type="button"
-					class="btn btn-danger btn-sm card-remove-btn"
+					class="btn btn-danger btn-sm"
 					title="Remove combatant"
 					onClick={() => onRemove(c.id)}
 				>
@@ -82,36 +127,40 @@ export function CombatantCard({
 			</div>
 
 			{/* Stat row */}
-			<div class="stat-row">
-				<span class="stat" title="Static Defense">
-					<abbr>SD</abbr> {c.sd}
+			<div class="flex flex-wrap gap-x-lg gap-y-sm items-center mb-sm text-[0.85rem] text-text-muted max-[768px]:gap-sm">
+				<span class="flex items-center gap-xs text-text-primary font-medium" title="Static Defense">
+					<abbr class="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">SD</abbr> {c.sd}
 				</span>
-				<span class="stat" title="Dexterity">
-					<abbr>Dex</abbr> {c.dexterity}
+				<span class="flex items-center gap-xs text-text-primary font-medium" title="Dexterity">
+					<abbr class="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Dex</abbr>{" "}
+					{c.dexterity}
 				</span>
-				<span class="stat" title="Composure">
-					<abbr>Com</abbr> {c.composure}
+				<span class="flex items-center gap-xs text-text-primary font-medium" title="Composure">
+					<abbr class="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Com</abbr>{" "}
+					{c.composure}
 				</span>
-				<span class="stat" title="Willpower">
-					<abbr>Wil</abbr> {c.willpower}
+				<span class="flex items-center gap-xs text-text-primary font-medium" title="Willpower">
+					<abbr class="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Wil</abbr>{" "}
+					{c.willpower}
 				</span>
-				<span class="stat" title="Resilience">
-					<abbr>Res</abbr> {c.resilience}
+				<span class="flex items-center gap-xs text-text-primary font-medium" title="Resilience">
+					<abbr class="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Res</abbr>{" "}
+					{c.resilience}
 				</span>
 			</div>
 
 			{/* HP bar */}
-			<div class="hp-section">
-				<div class="hp-header">
-					<span class="hp-label">HP</span>
-					<div class="hp-controls">
+			<div class="my-sm">
+				<div class="flex justify-between items-center mb-1">
+					<span class="text-[0.8rem] font-semibold text-text-muted">HP</span>
+					<div class="flex items-center gap-0.5">
 						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, -5)}>
 							-5
 						</button>
 						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, -1)}>
 							-1
 						</button>
-						<span class="hp-value">
+						<span class="text-[0.8rem] font-bold text-text-primary">
 							{c.hpCurrent} / {c.hpMax}
 						</span>
 						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, 1)}>
@@ -122,21 +171,24 @@ export function CombatantCard({
 						</button>
 					</div>
 				</div>
-				<div class="hp-bar">
-					<div class={`hp-bar-fill wound-${woundStatus}`} style={{ width: `${hpPercent}%` }} />
+				<div class="h-2.5 bg-bg rounded-[5px] overflow-hidden border border-border">
+					<div
+						class={`h-full rounded-[5px] transition-all duration-300 ${WOUND_FILL_COLORS[woundStatus] || ""}`}
+						style={{ width: `${hpPercent}%` }}
+					/>
 				</div>
 			</div>
 
 			{/* Resource bar */}
 			{c.resourceMax > 0 && (
-				<div class="resource-section">
-					<div class="resource-header">
-						<span class="resource-label">{c.resourceLabel || "Resource"}</span>
-						<div class="resource-controls">
+				<div class="my-xs">
+					<div class="flex justify-between items-center mb-0.5">
+						<span class="text-xs font-semibold text-text-dim">{c.resourceLabel || "Resource"}</span>
+						<div class="flex items-center gap-0.5">
 							<button type="button" class="btn btn-sm" onClick={() => onModifyResource(c.id, -1)}>
 								-
 							</button>
-							<span class="resource-value">
+							<span class="text-xs font-bold text-info">
 								{c.resourceCurrent} / {c.resourceMax}
 							</span>
 							<button type="button" class="btn btn-sm" onClick={() => onModifyResource(c.id, 1)}>
@@ -148,34 +200,54 @@ export function CombatantCard({
 			)}
 
 			{/* Action budget */}
-			<div class="action-budget">
+			<div class="flex gap-sm items-center my-sm flex-wrap max-[768px]:gap-1">
 				<button
 					type="button"
-					class={`action-token ${c.actionBudget.half1 ? "used" : ""}`}
-					disabled={c.actionBudget.fullAction}
+					class={[
+						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						c.actionBudget.half1 && "!bg-accent-dim !border-accent !text-text-primary",
+						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
+					]
+						.filter(Boolean)
+						.join(" ")}
 					onClick={() => onToggleAction(c.id, "half1")}
 				>
 					Half 1
 				</button>
 				<button
 					type="button"
-					class={`action-token ${c.actionBudget.half2 ? "used" : ""}`}
-					disabled={c.actionBudget.fullAction}
+					class={[
+						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						c.actionBudget.half2 && "!bg-accent-dim !border-accent !text-text-primary",
+						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
+					]
+						.filter(Boolean)
+						.join(" ")}
 					onClick={() => onToggleAction(c.id, "half2")}
 				>
 					Half 2
 				</button>
 				<button
 					type="button"
-					class={`action-token ${c.actionBudget.fullAction ? "used" : ""}`}
-					disabled={c.actionBudget.half1 || c.actionBudget.half2}
+					class={[
+						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						c.actionBudget.fullAction && "!bg-accent-dim !border-accent !text-text-primary",
+						(c.actionBudget.half1 || c.actionBudget.half2) && "opacity-35 pointer-events-none",
+					]
+						.filter(Boolean)
+						.join(" ")}
 					onClick={() => onToggleAction(c.id, "fullAction")}
 				>
 					Full
 				</button>
 				<button
 					type="button"
-					class={`action-token ${c.actionBudget.reaction ? "used" : ""}`}
+					class={[
+						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						c.actionBudget.reaction && "!bg-accent-dim !border-accent !text-text-primary",
+					]
+						.filter(Boolean)
+						.join(" ")}
 					onClick={() => onToggleAction(c.id, "reaction")}
 				>
 					Reaction
@@ -183,13 +255,16 @@ export function CombatantCard({
 			</div>
 
 			{/* Conditions */}
-			<div class="conditions-area">
+			<div class="flex flex-wrap gap-1 my-sm items-center">
 				{c.conditions.map((cond) => (
-					<span class="condition-chip" key={cond.conditionId}>
+					<span
+						class="inline-flex items-center gap-1 px-2 py-0.5 bg-error-bg border border-error-border rounded-xl text-[0.72rem] text-error whitespace-nowrap"
+						key={cond.conditionId}
+					>
 						{conditionLabel(cond)}
 						<button
 							type="button"
-							class="chip-remove"
+							class="bg-transparent border-none text-error cursor-pointer text-[0.8rem] p-0 leading-none opacity-60 hover:opacity-100"
 							title="Remove condition"
 							onClick={() => onRemoveCondition(c.id, cond.conditionId)}
 						>
@@ -197,21 +272,25 @@ export function CombatantCard({
 						</button>
 					</span>
 				))}
-				<button type="button" class="btn btn-sm add-condition-btn" onClick={handleAddCondition}>
-					+ Condition
+				<button
+					type="button"
+					class="inline-flex items-center justify-center w-[22px] h-[22px] bg-surface-raised border border-dashed border-border rounded-full text-text-dim cursor-pointer text-[0.85rem] leading-none hover:border-accent hover:text-accent"
+					onClick={handleAddCondition}
+				>
+					+
 				</button>
 			</div>
 
 			{/* Expandable details */}
-			<div class="card-details-toggle">
+			<div>
 				<button type="button" class="btn btn-sm btn-ghost" onClick={() => setDetailsOpen(!detailsOpen)}>
 					{detailsOpen ? "\u25BC Notes" : "\u25B6 Notes"}
 				</button>
 			</div>
 			{detailsOpen && (
-				<div class="card-details">
+				<div class="mt-sm pt-sm border-t border-border">
 					<textarea
-						class="notes-textarea"
+						class="w-full min-h-[60px] resize-y"
 						placeholder="Combatant notes..."
 						value={c.notes}
 						onInput={(e) => onNotesChange(c.id, (e.target as HTMLTextAreaElement).value)}

@@ -49,27 +49,30 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 	);
 
 	return (
-		<div class="input-section">
-			<div class="section-header">
-				<h2 class="section-title">Armor</h2>
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<div class="flex items-center justify-between mb-sm">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Armor</h2>
 				<button type="button" class="btn btn-ghost btn-sm" onClick={addArmor}>
 					+ Add
 				</button>
 			</div>
-			<div class="list-entries">
+			<div class="flex flex-col gap-xs">
 				{armor.map((a, i) => (
-					<div class="list-entry armor-entry" key={i}>
+					<div
+						class="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm flex-wrap"
+						key={i}
+					>
 						<input
 							type="text"
-							class="armor-name"
+							class="flex-1 min-w-[100px] py-[2px] px-xs text-[0.85rem]"
 							placeholder="Armor name"
 							value={a.name}
 							onInput={(e) => updateField(i, "name", (e.target as HTMLInputElement).value)}
 						/>
-						<span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>AP</span>
+						<span class="text-[0.8rem] text-text-muted">AP</span>
 						<input
 							type="number"
-							class="armor-ap"
+							class="w-[50px] text-center py-[2px] px-xs text-[0.85rem]"
 							min={0}
 							max={30}
 							value={a.ap}
@@ -77,11 +80,15 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 								updateField(i, "ap", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
 							}
 						/>
-						<div class="armor-locations">
+						<div class="flex gap-xs flex-wrap">
 							{ARMOR_LOCATIONS.map((loc) => (
-								<label key={loc}>
+								<label
+									class="flex items-center gap-[2px] text-[0.75rem] m-0 cursor-pointer text-text-muted"
+									key={loc}
+								>
 									<input
 										type="checkbox"
+										class="w-auto p-0 m-0"
 										value={loc}
 										checked={a.locations.includes(loc)}
 										onChange={(e) => toggleLocation(i, loc, (e.target as HTMLInputElement).checked)}
@@ -90,7 +97,12 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 								</label>
 							))}
 						</div>
-						<button type="button" class="entry-remove" title="Remove" onClick={() => removeArmor(i)}>
+						<button
+							type="button"
+							class="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
+							title="Remove"
+							onClick={() => removeArmor(i)}
+						>
 							×
 						</button>
 					</div>

@@ -27,12 +27,12 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 	};
 
 	return (
-		<div class="encounter-bar">
+		<div class="sticky bottom-0 z-[90] flex items-center gap-sm px-lg py-sm bg-surface border-t border-border max-[768px]:flex-wrap max-[768px]:justify-center max-[768px]:p-sm">
 			<button type="button" class="btn btn-primary btn-sm" onClick={onSave}>
 				Save Encounter
 			</button>
 			<select
-				class="encounter-select"
+				class="flex-none min-w-[160px] px-sm py-xs text-[0.8rem] max-[768px]:min-w-[120px]"
 				value={selectedId}
 				onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
 			>

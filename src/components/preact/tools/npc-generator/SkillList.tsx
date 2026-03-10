@@ -44,14 +44,14 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 	);
 
 	return (
-		<div class="input-section">
-			<div class="section-header">
-				<h2 class="section-title">Skills</h2>
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<div class="flex items-center justify-between mb-sm">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Skills</h2>
 				<button type="button" class="btn btn-ghost btn-sm" onClick={() => addSkill()}>
 					+ Add
 				</button>
 			</div>
-			<div class="quick-add-row">
+			<div class="flex gap-xs mb-sm flex-wrap">
 				<button type="button" class="btn btn-ghost btn-xs" onClick={() => addQuickPack("combat")}>
 					+ Combat
 				</button>
@@ -62,12 +62,15 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 					+ Stealth
 				</button>
 			</div>
-			<div class="list-entries">
+			<div class="flex flex-col gap-xs">
 				{skills.map((skill, i) => (
-					<div class="list-entry skill-entry" key={i}>
+					<div
+						class="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
+						key={i}
+					>
 						<input
 							type="text"
-							class="entry-name"
+							class="flex-1 min-w-0 py-[2px] px-xs text-[0.85rem]"
 							value={skill.name}
 							placeholder="Skill name"
 							list="skill-datalist"
@@ -75,7 +78,7 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 						/>
 						<input
 							type="number"
-							class="entry-dots"
+							class="w-[50px] text-center py-[2px] px-xs text-[0.85rem]"
 							min={1}
 							max={6}
 							value={skill.dots}
@@ -83,7 +86,12 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 								updateSkill(i, "dots", Number.parseInt((e.target as HTMLInputElement).value, 10) || 1)
 							}
 						/>
-						<button type="button" class="entry-remove" title="Remove" onClick={() => removeSkill(i)}>
+						<button
+							type="button"
+							class="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
+							title="Remove"
+							onClick={() => removeSkill(i)}
+						>
 							×
 						</button>
 					</div>

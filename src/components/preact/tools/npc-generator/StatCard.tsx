@@ -11,15 +11,22 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 	const d = derivedStats;
 
 	return (
-		<div class="stat-card">
-			<h2 class="card-name">{npc.name || "New NPC"}</h2>
+		<div class="stat-card bg-surface border-2 border-border rounded-md p-lg flex-1">
+			<h2 class="text-accent text-[1.4rem] m-0 mb-md pb-sm border-b-2 border-b-accent-dim">
+				{npc.name || "New NPC"}
+			</h2>
 
 			{/* Characteristics table */}
-			<table class="char-table">
+			<table class="m-0 mb-md w-auto">
 				<thead>
 					<tr>
 						{CHAR_KEYS.map((key) => (
-							<th key={key}>{CHAR_ABBREV[key]}</th>
+							<th
+								class="text-center px-sm py-xs min-w-[36px] text-[0.75rem] text-text-muted bg-transparent border-b border-border"
+								key={key}
+							>
+								{CHAR_ABBREV[key]}
+							</th>
 						))}
 					</tr>
 				</thead>
@@ -27,35 +34,44 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 					<tr>
 						{CHAR_KEYS.map((key) => {
 							const val = npc.characteristics[key];
-							return <td key={key}>{val === 0 ? "-" : val}</td>;
+							return (
+								<td
+									class="text-center px-sm py-xs min-w-[36px] text-[0.9rem] font-bold border-b-0"
+									key={key}
+								>
+									{val === 0 ? "-" : val}
+								</td>
+							);
 						})}
 					</tr>
 				</tbody>
 			</table>
 
 			{/* Stats line */}
-			<div class="card-stats">
-				<strong>Speed:</strong> {npc.speed} | <strong>Size/Resilience:</strong> {npc.size}/{d.resilience} |{" "}
-				<strong>SD:</strong> {d.sd} | <strong>HP:</strong> {d.hp} | <strong>Level:</strong> {npc.level}
+			<div class="text-[0.9rem] mb-md text-text-primary leading-[1.8]">
+				<strong class="text-accent">Speed:</strong> {npc.speed} |{" "}
+				<strong class="text-accent">Size/Resilience:</strong> {npc.size}/{d.resilience} |{" "}
+				<strong class="text-accent">SD:</strong> {d.sd} | <strong class="text-accent">HP:</strong> {d.hp} |{" "}
+				<strong class="text-accent">Level:</strong> {npc.level}
 			</div>
 
 			{/* Body sections */}
-			<div class="card-body">
+			<div class="text-[0.9rem] leading-[1.7]">
 				{npc.skills.length > 0 && (
-					<div class="card-line">
-						<span class="card-line-label">Skills:</span>{" "}
+					<div class="mb-xs">
+						<span class="font-bold text-text-primary">Skills:</span>{" "}
 						{npc.skills.map((s) => `${s.name} ${s.dots}`).join(", ")}
 					</div>
 				)}
 
 				{npc.feats.length > 0 && (
-					<div class="card-line">
-						<span class="card-line-label">Feats:</span> {npc.feats.join(", ")}
+					<div class="mb-xs">
+						<span class="font-bold text-text-primary">Feats:</span> {npc.feats.join(", ")}
 					</div>
 				)}
 
-				<div class="card-line">
-					<span class="card-line-label">Armor:</span>{" "}
+				<div class="mb-xs">
+					<span class="font-bold text-text-primary">Armor:</span>{" "}
 					{npc.armor.length > 0
 						? npc.armor
 								.map((a) => {
@@ -67,20 +83,20 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 				</div>
 
 				{npc.weapons.length > 0 && (
-					<div class="card-line">
-						<span class="card-line-label">Attacks:</span>{" "}
+					<div class="mb-xs">
+						<span class="font-bold text-text-primary">Attacks:</span>{" "}
 						{npc.weapons.map((w) => formatWeapon(w)).join(", ")}
 					</div>
 				)}
 
 				{npc.abilities.length > 0 && (
 					<>
-						<div class="card-line">
-							<span class="card-line-label">Abilities:</span>
+						<div class="mb-xs">
+							<span class="font-bold text-text-primary">Abilities:</span>
 						</div>
 						{npc.abilities.map((a, i) => (
-							<div class="card-ability" key={i}>
-								- <span class="card-ability-name">{a.name}</span>
+							<div class="ml-md mb-xs" key={i}>
+								- <span class="font-semibold text-accent">{a.name}</span>
 								{a.description ? ` - ${a.description}` : ""}
 							</div>
 						))}
@@ -88,8 +104,8 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 				)}
 
 				{npc.traits.length > 0 && (
-					<div class="card-line">
-						<span class="card-line-label">Traits:</span>{" "}
+					<div class="mb-xs">
+						<span class="font-bold text-text-primary">Traits:</span>{" "}
 						{npc.traits
 							.map((t) => {
 								const def = traitsData.find((d) => d.id === t.id);
@@ -101,8 +117,8 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 				)}
 
 				{npc.gear && (
-					<div class="card-line">
-						<span class="card-line-label">Gear:</span> {npc.gear}
+					<div class="mb-xs">
+						<span class="font-bold text-text-primary">Gear:</span> {npc.gear}
 					</div>
 				)}
 			</div>

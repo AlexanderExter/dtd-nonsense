@@ -29,24 +29,32 @@ export function FeatList({ feats, onChange }: FeatListProps) {
 	);
 
 	return (
-		<div class="input-section">
-			<div class="section-header">
-				<h2 class="section-title">Feats</h2>
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<div class="flex items-center justify-between mb-sm">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Feats</h2>
 				<button type="button" class="btn btn-ghost btn-sm" onClick={() => addFeat()}>
 					+ Add
 				</button>
 			</div>
-			<div class="list-entries">
+			<div class="flex flex-col gap-xs">
 				{feats.map((feat, i) => (
-					<div class="list-entry feat-entry" key={i}>
+					<div
+						class="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
+						key={i}
+					>
 						<input
 							type="text"
-							class="entry-name"
+							class="flex-1 min-w-0 py-[2px] px-xs text-[0.85rem]"
 							value={feat}
 							placeholder="Feat name"
 							onInput={(e) => updateFeat(i, (e.target as HTMLInputElement).value)}
 						/>
-						<button type="button" class="entry-remove" title="Remove" onClick={() => removeFeat(i)}>
+						<button
+							type="button"
+							class="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
+							title="Remove"
+							onClick={() => removeFeat(i)}
+						>
 							×
 						</button>
 					</div>

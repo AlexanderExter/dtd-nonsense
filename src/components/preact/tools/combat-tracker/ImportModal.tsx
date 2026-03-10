@@ -30,24 +30,30 @@ export function ImportModal({ isOpen, characters, onImport, onClose }: ImportMod
 	}, [onClose]);
 
 	return (
-		<div class="modal-overlay">
-			<div class="modal-content" ref={contentRef}>
-				<div class="modal-header">
-					<h2>Import from Character Sheet</h2>
+		<div class="fixed inset-0 z-[200] bg-overlay flex items-center justify-center p-lg">
+			<div
+				class="bg-surface border border-border rounded-lg p-xl max-w-[500px] w-full max-h-[80vh] overflow-y-auto"
+				ref={contentRef}
+			>
+				<div class="flex justify-between items-center">
+					<h2 class="m-0 mb-sm text-accent">Import from Character Sheet</h2>
 					<button type="button" class="btn btn-sm" onClick={onClose}>
 						&times;
 					</button>
 				</div>
-				<div class="modal-body">
+				<div>
 					{characters.length === 0 ? (
-						<p class="empty-state">
+						<p class="text-center px-lg py-xl text-text-dim">
 							No saved characters found. Create one in the Character Sheet tool first.
 						</p>
 					) : (
-						<div class="import-char-list">
+						<div class="flex flex-col gap-sm">
 							{characters.map((ch) => (
-								<div class="import-char-card" key={ch.id}>
-									<span class="import-char-name">{ch.name}</span>
+								<div
+									class="flex items-center justify-between px-md py-sm bg-bg border border-border rounded-sm cursor-pointer transition-colors duration-150 hover:border-accent"
+									key={ch.id}
+								>
+									<span class="font-semibold text-text-primary">{ch.name}</span>
 									<button
 										type="button"
 										class="btn btn-primary btn-sm"
@@ -60,7 +66,7 @@ export function ImportModal({ isOpen, characters, onImport, onClose }: ImportMod
 						</div>
 					)}
 				</div>
-				<div class="modal-footer">
+				<div class="flex justify-end gap-sm mt-lg">
 					<button type="button" class="btn btn-secondary" onClick={onClose}>
 						Cancel
 					</button>

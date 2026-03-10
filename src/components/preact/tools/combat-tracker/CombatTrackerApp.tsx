@@ -582,11 +582,13 @@ export function CombatTrackerApp() {
 
 	return (
 		<>
-			<header class="top-bar">
-				<h1 class="top-bar-title">Combat Tracker</h1>
-				<div class="round-counter">
-					<span class="round-label">Round</span>
-					<span class="round-number">{state.round}</span>
+			<header class="sticky top-0 z-[100] flex items-center gap-md py-sm px-lg bg-surface border-b border-border max-[768px]:flex-wrap max-[768px]:p-sm">
+				<h1 class="m-0 text-xl text-accent whitespace-nowrap max-[768px]:text-base">Combat Tracker</h1>
+				<div class="flex items-center gap-sm ml-auto px-md py-xs bg-bg border border-border rounded-md max-[768px]:ml-0">
+					<span class="text-xs uppercase tracking-[0.5px] text-text-muted">Round</span>
+					<span class="text-[1.75rem] font-bold text-accent leading-none min-w-[2ch] text-center">
+						{state.round}
+					</span>
 				</div>
 				<button type="button" class="btn btn-primary" onClick={handleEndRound}>
 					End Round
@@ -594,24 +596,24 @@ export function CombatTrackerApp() {
 			</header>
 
 			{roundAlerts.value.length > 0 && (
-				<div class="round-alerts">
+				<div class="px-lg py-sm bg-warning-bg border-b border-warning text-warning text-[0.85rem]">
 					<strong>End-of-Round Effects:</strong>
-					<ul>{roundAlerts.value}</ul>
+					<ul class="m-0 pl-lg">{roundAlerts.value}</ul>
 				</div>
 			)}
 
-			<div class="tracker-layout">
-				<main class="tracker-main">
+			<div class="flex gap-0 min-h-[calc(100vh-60px-48px)]">
+				<main class="flex-1 min-w-0 p-lg max-[768px]:p-md">
 					<AddCombatantForm onAdd={addCombatant} />
 					<QuickAddRow
 						onQuickAdd={handleQuickAdd}
 						onImportSheet={openImportModal}
 						onRollAll={rollAllInitiative}
 					/>
-					<div class="combatant-list">
+					<div class="flex flex-col gap-md mb-lg">
 						{state.combatants.length === 0 ? (
-							<div class="empty-state">
-								<div class="empty-state-icon">\u2694\uFE0F</div>
+							<div class="text-center px-lg py-xl text-text-dim">
+								<div class="text-[3rem] mb-md">\u2694\uFE0F</div>
 								<p>No combatants yet. Add some above to begin.</p>
 							</div>
 						) : (
@@ -634,7 +636,7 @@ export function CombatTrackerApp() {
 							))
 						)}
 					</div>
-					<div class="turn-nav">
+					<div class="flex justify-center gap-md py-md max-[768px]:flex-col max-[768px]:items-stretch">
 						<button type="button" class="btn btn-secondary" onClick={previousTurn}>
 							\u2190 Previous Turn
 						</button>
@@ -658,7 +660,7 @@ export function CombatTrackerApp() {
 
 			<button
 				type="button"
-				class="sidebar-toggle-btn btn btn-secondary"
+				class="hidden max-[1099px]:flex fixed bottom-[60px] right-md z-[90] btn btn-secondary"
 				onClick={() => {
 					sidebarOpen.value = !sidebarOpen.value;
 				}}
@@ -697,7 +699,13 @@ export function CombatTrackerApp() {
 				/>
 			)}
 
-			<output class={`toast-msg${toastMessage.value ? " visible" : ""}`} aria-live="polite">
+			<output
+				class={[
+					"fixed bottom-[70px] left-1/2 -translate-x-1/2 px-lg py-sm bg-surface-raised border border-border-light rounded-md text-text-primary text-[0.85rem] z-[250] transition-all duration-[250ms] pointer-events-none shadow-[0_4px_16px_rgba(0,0,0,0.4)]",
+					toastMessage.value ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2.5",
+				].join(" ")}
+				aria-live="polite"
+			>
 				{toastMessage.value}
 			</output>
 		</>

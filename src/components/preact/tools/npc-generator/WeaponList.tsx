@@ -38,20 +38,23 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 	);
 
 	return (
-		<div class="input-section">
-			<div class="section-header">
-				<h2 class="section-title">Weapons</h2>
+		<div class="mb-lg pb-md border-b border-border last:border-b-0">
+			<div class="flex items-center justify-between mb-sm">
+				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Weapons</h2>
 				<button type="button" class="btn btn-ghost btn-sm" onClick={addWeapon}>
 					+ Add
 				</button>
 			</div>
-			<div class="list-entries">
+			<div class="flex flex-col gap-xs">
 				{weapons.map((w, i) => (
-					<div class="list-entry weapon-entry" key={i}>
+					<div
+						class="flex flex-col items-stretch gap-xs p-sm bg-surface border border-border rounded-sm"
+						key={i}
+					>
 						{/* Row 1: core fields */}
-						<div class="weapon-row">
+						<div class="flex items-center gap-xs flex-wrap">
 							<select
-								class="weapon-type-sel"
+								class="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
 								value={w.type}
 								onChange={(e) =>
 									updateWeapon(i, {
@@ -64,30 +67,29 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 							</select>
 							<input
 								type="text"
-								class="weapon-name"
+								class="flex-1 min-w-[100px] py-[2px] px-xs text-[0.85rem]"
 								placeholder="Weapon name"
 								value={w.name}
 								onInput={(e) => updateWeapon(i, { name: (e.target as HTMLInputElement).value })}
 							/>
 							<input
 								type="text"
-								class="weapon-damage"
+								class="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
 								placeholder="XkY"
 								value={w.damage}
 								onInput={(e) => updateWeapon(i, { damage: (e.target as HTMLInputElement).value })}
 							/>
 							<input
 								type="text"
-								class="weapon-dtype"
+								class="w-[55px] flex-none py-[2px] px-xs text-[0.85rem]"
 								placeholder="E/I/R/X"
 								value={w.damageType}
-								style={{ width: "55px" }}
 								onInput={(e) => updateWeapon(i, { damageType: (e.target as HTMLInputElement).value })}
 							/>
-							<span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Pen</span>
+							<span class="text-[0.8rem] text-text-muted">Pen</span>
 							<input
 								type="number"
-								class="weapon-pen"
+								class="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
 								min={0}
 								value={w.pen}
 								onInput={(e) =>
@@ -96,17 +98,22 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									})
 								}
 							/>
-							<button type="button" class="entry-remove" title="Remove" onClick={() => removeWeapon(i)}>
+							<button
+								type="button"
+								class="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
+								title="Remove"
+								onClick={() => removeWeapon(i)}
+							>
 								×
 							</button>
 						</div>
 
 						{/* Row 2: ranged-only fields */}
 						{w.type === "ranged" && (
-							<div class="weapon-row weapon-ranged-fields">
+							<div class="flex items-center gap-xs flex-wrap">
 								<input
 									type="number"
-									class="weapon-range"
+									class="w-[55px] flex-none py-[2px] px-xs text-[0.85rem]"
 									placeholder="Range"
 									value={w.range ?? ""}
 									onInput={(e) =>
@@ -118,7 +125,7 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								/>
 								<input
 									type="text"
-									class="weapon-rof"
+									class="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
 									placeholder="ROF"
 									value={w.rof ?? ""}
 									onInput={(e) =>
@@ -127,7 +134,7 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								/>
 								<input
 									type="text"
-									class="weapon-clip"
+									class="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
 									placeholder="Clip"
 									value={w.clip ?? ""}
 									onInput={(e) =>
@@ -136,7 +143,7 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								/>
 								<input
 									type="text"
-									class="weapon-reload"
+									class="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
 									placeholder="Reload"
 									value={w.reload ?? ""}
 									onInput={(e) =>
@@ -147,10 +154,10 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 						)}
 
 						{/* Row 3: special */}
-						<div class="weapon-row">
+						<div class="flex items-center gap-xs flex-wrap">
 							<input
 								type="text"
-								class="weapon-special"
+								class="flex-1 min-w-[80px] py-[2px] px-xs text-[0.85rem]"
 								placeholder="Special properties"
 								value={w.special}
 								onInput={(e) => updateWeapon(i, { special: (e.target as HTMLInputElement).value })}

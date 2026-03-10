@@ -238,15 +238,16 @@ export function NPCGeneratorApp() {
 	return (
 		<>
 			{/* Top Bar */}
-			<header class="top-bar no-print">
-				<div class="top-bar-left">
-					<a href="/tools/" class="back-link">
+			<header class="flex items-center justify-between gap-md px-lg py-sm bg-surface border-b border-border sticky top-0 z-[100] max-[800px]:flex-wrap no-print">
+				<div class="flex items-center gap-sm">
+					<a href="/tools/" class="text-[0.85rem] whitespace-nowrap">
 						← Tools
 					</a>
-					<h1>NPC Stat Block Builder</h1>
+					<h1 class="text-[1.1rem] m-0 text-accent whitespace-nowrap">NPC Stat Block Builder</h1>
 				</div>
-				<div class="top-bar-right">
+				<div class="flex items-center gap-sm max-[800px]:flex-wrap">
 					<select
+						class="max-w-[180px] text-[0.85rem] px-sm py-xs"
 						title="Load template"
 						onChange={(e) => {
 							const val = (e.target as HTMLSelectElement).value;
@@ -273,6 +274,7 @@ export function NPCGeneratorApp() {
 					</select>
 
 					<select
+						class="max-w-[180px] text-[0.85rem] px-sm py-xs"
 						ref={savedSelectRef}
 						title="Load saved NPC"
 						onChange={(e) => {
@@ -326,9 +328,9 @@ export function NPCGeneratorApp() {
 			</header>
 
 			{/* Main Layout */}
-			<main class="builder-layout">
+			<main class="grid grid-cols-[minmax(320px,1fr)_minmax(360px,1.2fr)] min-h-[calc(100vh-50px)] max-[800px]:grid-cols-1">
 				{/* LEFT: Input Panel */}
-				<section class="input-panel no-print">
+				<section class="px-lg py-md overflow-y-auto max-h-[calc(100vh-50px)] border-r border-border max-[800px]:max-h-none max-[800px]:border-r-0 max-[800px]:border-b max-[800px]:border-border no-print">
 					<NPCForm
 						npc={npc}
 						onUpdate={handleNPCUpdate}
@@ -338,10 +340,10 @@ export function NPCGeneratorApp() {
 				</section>
 
 				{/* RIGHT: Preview Panel */}
-				<section class="preview-panel">
+				<section class="px-lg py-md overflow-y-auto max-h-[calc(100vh-50px)] flex flex-col gap-md max-[800px]:max-h-none">
 					<DerivedStatsBar stats={stats} />
 					<StatCard npc={npc} derivedStats={stats} traitsData={traitsData.value} />
-					<div class="preview-actions no-print">
+					<div class="flex gap-sm pt-sm no-print">
 						<button
 							type="button"
 							class="btn btn-primary"
@@ -366,7 +368,11 @@ export function NPCGeneratorApp() {
 			</main>
 
 			{/* Toast */}
-			{toastMessage.value && <output class="toast show">{toastMessage.value}</output>}
+			{toastMessage.value && (
+				<output class="fixed bottom-lg left-1/2 -translate-x-1/2 px-lg py-sm bg-surface-raised border border-accent rounded-md text-text-primary text-[0.9rem] z-[1000]">
+					{toastMessage.value}
+				</output>
+			)}
 		</>
 	);
 }
