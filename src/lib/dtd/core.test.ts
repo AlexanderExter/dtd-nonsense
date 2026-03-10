@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { character, debounce, derived, loadAllData, loadData } from "./core.ts";
+import { character, derived, loadAllData, loadData } from "./core.ts";
 
 // ---------------------------------------------------------------------------
 // derived stat calculators
@@ -623,73 +623,4 @@ describe("loadAllData", () => {
 	});
 });
 
-// ---------------------------------------------------------------------------
-// debounce
-// ---------------------------------------------------------------------------
-describe("debounce", () => {
-	beforeEach(() => {
-		vi.useFakeTimers();
-	});
 
-	afterEach(() => {
-		vi.useRealTimers();
-	});
-
-	it("delays function execution", () => {
-		const fn = vi.fn();
-		const debounced = debounce(fn, 200);
-
-		debounced();
-		expect(fn).not.toHaveBeenCalled();
-
-		vi.advanceTimersByTime(200);
-		expect(fn).toHaveBeenCalledOnce();
-	});
-
-	it("resets timer on repeated calls", () => {
-		const fn = vi.fn();
-		const debounced = debounce(fn, 200);
-
-		debounced();
-		vi.advanceTimersByTime(100);
-		debounced();
-		vi.advanceTimersByTime(100);
-		expect(fn).not.toHaveBeenCalled();
-
-		vi.advanceTimersByTime(100);
-		expect(fn).toHaveBeenCalledOnce();
-	});
-
-	it("passes arguments to the debounced function", () => {
-		const fn = vi.fn();
-		const debounced = debounce(fn, 100);
-
-		debounced("a", "b");
-		vi.advanceTimersByTime(100);
-		expect(fn).toHaveBeenCalledWith("a", "b");
-	});
-
-	it("uses default delay of 300ms", () => {
-		const fn = vi.fn();
-		const debounced = debounce(fn);
-
-		debounced();
-		vi.advanceTimersByTime(299);
-		expect(fn).not.toHaveBeenCalled();
-
-		vi.advanceTimersByTime(1);
-		expect(fn).toHaveBeenCalledOnce();
-	});
-
-	it("only calls the function once after rapid successive calls", () => {
-		const fn = vi.fn();
-		const debounced = debounce(fn, 100);
-
-		for (let i = 0; i < 10; i++) {
-			debounced();
-		}
-
-		vi.advanceTimersByTime(100);
-		expect(fn).toHaveBeenCalledOnce();
-	});
-});
