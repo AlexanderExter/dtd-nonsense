@@ -7,6 +7,7 @@
  *             character persistence, and XP cost tables.
  */
 
+import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants.ts";
 import { character, debounce, derived, escapeHtml, loadAllData } from "@/lib/dtd/core.ts";
 import type { CharacterData } from "@/lib/dtd/types.ts";
 
@@ -17,23 +18,8 @@ const Builder = {
 
 	TOTAL_XP: 600,
 
-	CHAR_GROUPS: {
-		physical: { label: "Physical", chars: ["strength", "dexterity", "constitution"] },
-		social: { label: "Social", chars: ["charisma", "fellowship", "composure"] },
-		mental: { label: "Mental", chars: ["intelligence", "wisdom", "willpower"] },
-	} as Record<string, { label: string; chars: string[] }>,
-
-	CHAR_NAMES: {
-		strength: "Strength",
-		dexterity: "Dexterity",
-		constitution: "Constitution",
-		charisma: "Charisma",
-		fellowship: "Fellowship",
-		composure: "Composure",
-		intelligence: "Intelligence",
-		wisdom: "Wisdom",
-		willpower: "Willpower",
-	} as Record<string, string>,
+	CHAR_GROUPS,
+	CHAR_NAMES,
 
 	BASE_CHAR_DOT: 1,
 	CHAR_PRIORITY_DOTS: { primary: 6, secondary: 4, tertiary: 2 } as Record<string, number>,
