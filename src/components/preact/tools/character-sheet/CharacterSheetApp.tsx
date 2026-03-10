@@ -131,14 +131,14 @@ export function exportCharacter(): void {
 
 export function CharacterSheetApp() {
 	const { data, loading, error } = useAllData([
-		"races",
-		"exaltations",
-		"alignments",
-		"classes",
-		"feats",
-		"skills",
-		"weapons",
-		"backgrounds",
+		"races.json",
+		"exaltations.json",
+		"alignments.json",
+		"classes.json",
+		"feats.json",
+		"skills.json",
+		"weapons.json",
+		"backgrounds.json",
 	]);
 
 	// Sync loaded data into module-level signal

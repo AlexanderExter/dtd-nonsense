@@ -49,15 +49,15 @@ export function updateMeta(fn: (m: BuilderMeta) => void): void {
 
 export function CharacterBuilderApp() {
 	const { data, loading, error } = useAllData([
-		"races",
-		"exaltations",
-		"skills",
-		"classes",
-		"feats",
-		"backgrounds",
-		"alignments",
-		"equipment",
-		"weapons",
+		"races.json",
+		"exaltations.json",
+		"skills.json",
+		"classes.json",
+		"feats.json",
+		"backgrounds.json",
+		"alignments.json",
+		"equipment.json",
+		"weapons.json",
 	]);
 
 	// Sync loaded data into module-level signal

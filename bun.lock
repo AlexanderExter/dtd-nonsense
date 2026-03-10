@@ -28,6 +28,7 @@
     },
   },
   "overrides": {
+    "path-to-regexp": "^8.0.0",
     "svgo": "^4.0.1",
   },
   "packages": {

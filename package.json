@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"engines": {
-		"node": ">=20"
+		"node": ">=20 <22"
 	},
 	"scripts": {
 		"dev": "astro dev",
@@ -50,12 +50,10 @@
 		"typescript": "^5.9.3"
 	},
 	"overrides": {
-		"@vercel/routing-utils": {
-			"path-to-regexp": "^8.0.0"
-		},
+		"path-to-regexp": "^8.0.0",
 		"svgo": "^4.0.1"
 	},
 	"_comments": {
-		"overrides": "path-to-regexp: fixes ReDoS in @vercel/routing-utils (via @astrojs/vercel). @vercel/routing-utils@5.3.3 ships path-to-regexp@6.1.0; remove when routing-utils ships ^8 natively. svgo: force 4.0.1+ to patch DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673, introduced by astro@5.18); remove when astro ships svgo@4.0.1+."
+		"overrides": "path-to-regexp: fixes ReDoS in @vercel/routing-utils (via @astrojs/vercel). Flattened (not nested) because Bun does not support nested overrides. Remove when @vercel/routing-utils ships path-to-regexp ^8 natively. svgo: force 4.0.1+ to patch DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673, introduced by astro@5.18); remove when astro ships svgo@4.0.1+."
 	}
 }

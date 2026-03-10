@@ -78,13 +78,9 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 
 Manual testing revealed two critical issues that affect all Preact tools:
 
-1. **All tools are unstyled ("naked")**: `ToolLayout.astro` does not import `tailwind.css`. The Starlight config (`customCss` in `astro.config.mjs`) only applies to doc pages, not tool pages. Without an explicit import, Tailwind utility classes are never generated for tool pages — components render with only the manual CSS variables from ToolLayout's `<style is:global>` block.
-   - **Fix:** Add `import "@/styles/tailwind.css"` to ToolLayout.astro's frontmatter, or add a `<link>` / `<style>` import.
+1. ~~**All tools are unstyled ("naked")**: `ToolLayout.astro` does not import `tailwind.css`.~~ **Resolved:** Added `import "@/styles/tailwind.css"` to ToolLayout.astro frontmatter (2026-03-10).
 
-2. **Character Sheet & Builder stuck on "Loading game data"**: `useAllData()` calls pass filenames without `.json` extension (e.g., `"races"` instead of `"races.json"`). The `loadData()` function in `data.ts` fetches `/data/{filename}` verbatim — requesting `/data/races` returns 404 because the actual files are `/data/races.json`.
-   - **Affected files:** `CharacterSheetApp.tsx` (8 filenames), `CharacterBuilderApp.tsx` (9 filenames)
-   - **Not affected:** NPCGeneratorApp.tsx and ShipBuilderApp.tsx use `loadData()` directly with correct `.json` extensions.
-   - **Fix:** Add `.json` to all filename strings in both `useAllData()` calls.
+2. ~~**Character Sheet & Builder stuck on "Loading game data"**: `useAllData()` calls pass filenames without `.json` extension.~~ **Resolved:** Added `.json` to all filename strings in `CharacterSheetApp.tsx` (8 filenames) and `CharacterBuilderApp.tsx` (9 filenames) (2026-03-10). NPCGeneratorApp and ShipBuilderApp were already correct.
 
 ---
 
@@ -145,7 +141,7 @@ The issues in section **CQ1–CQ5** above were found by manual code review. To c
 > **Code Quality Audit — Preact/Signals/TypeScript**
 >
 > Review all files in `src/` for:
-> 
+>
 > 1. **Signal hygiene** — are `signal()` calls inside hook/component bodies stabilized with `useSignal()`? Are orphaned signals or duplicate fetches possible?
 > 2. **Reactivity model mixing** — are `@preact/signals` values read inside `useEffect` dep arrays instead of using `effect()`? Are signal subscriptions and hook deps conflated?
 > 3. **Async cleanup** — do any `fetch` or async operations lack `AbortController` / cleanup on unmount?
