@@ -88,10 +88,10 @@ export function DiceRollerApp() {
 	}, []);
 
 	return (
-		<div class="roller-layout">
-			<section class="roller-main">
-				<div class="panel roller-panel">
-					<h2>Roll Dice</h2>
+		<div class="grid grid-cols-[1fr_320px] gap-lg max-w-[1200px] mx-auto p-lg max-[900px]:grid-cols-1">
+			<section>
+				<div class="panel p-xl">
+					<h2 class="text-center m-0 mb-lg text-accent">Roll Dice</h2>
 					<DiceInput
 						numDice={numDice}
 						keepDice={keepDice}
@@ -106,7 +106,7 @@ export function DiceRollerApp() {
 				</div>
 				<TNReference />
 			</section>
-			<aside class="history-sidebar">
+			<aside class="self-start sticky top-lg max-[900px]:order-first">
 				<RollHistory history={history} onReplay={replayRoll} onClear={clearHistory} />
 			</aside>
 		</div>

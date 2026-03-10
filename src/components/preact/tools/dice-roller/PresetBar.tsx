@@ -15,13 +15,13 @@ const PRESETS = [
 
 export function PresetBar({ onPreset }: PresetBarProps) {
 	return (
-		<div class="presets">
-			<h4>Quick Rolls</h4>
-			<div class="preset-grid">
+		<div class="mb-lg text-center">
+			<h4 class="text-text-dim m-0 mb-sm font-normal">Quick Rolls</h4>
+			<div class="flex flex-wrap gap-xs justify-center">
 				{PRESETS.map(([rolled, kept]) => (
 					<button
 						key={`${rolled}k${kept}`}
-						class="preset-btn"
+						class="bg-surface-alt text-text-primary border border-transparent rounded-sm px-md py-xs font-mono cursor-pointer transition-all duration-150 hover:bg-accent hover:text-bg active:scale-95"
 						type="button"
 						onClick={() => onPreset(rolled, kept)}
 					>

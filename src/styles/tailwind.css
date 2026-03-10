@@ -7,7 +7,7 @@
 /* Tool page design tokens — exposed as Tailwind theme utilities.
    ToolLayout.astro bridges these to short var(--name) aliases for existing CSS. */
 @theme {
-	/* Colors */
+	/* Colors — core palette */
 	--color-bg: #0d0d0f;
 	--color-surface: #16161a;
 	--color-surface-raised: #1e1e24;
@@ -31,6 +31,50 @@
 	--color-info: #60a5fa;
 	--color-info-bg: rgba(96, 165, 250, 0.15);
 
+	/* Colors — outcome overlays (dice roller, combat) */
+	--color-outcome-success: #00c864;
+	--color-outcome-success-bg: rgba(0, 200, 100, 0.2);
+	--color-outcome-failure: #dc3232;
+	--color-outcome-failure-bg: rgba(220, 50, 50, 0.2);
+	--color-outcome-raises-bg: rgba(255, 200, 0, 0.2);
+
+	/* Colors — wound levels (combat tracker) */
+	--color-wound-light: #8bcc50;
+	--color-wound-light-bg: rgba(139, 204, 80, 0.15);
+	--color-wound-down: #ff4444;
+	--color-wound-down-bg: rgba(74, 0, 0, 0.4);
+
+	/* Colors — overlays and shadows */
+	--color-overlay: rgba(0, 0, 0, 0.7);
+	--color-shadow: rgba(0, 0, 0, 0.4);
+	--color-shadow-heavy: rgba(0, 0, 0, 0.5);
+	--color-stripe: rgba(255, 255, 255, 0.02);
+	--color-mark: rgba(212, 168, 75, 0.35);
+
+	/* Colors — accent alpha variants */
+	--color-accent-bg-subtle: rgba(212, 168, 75, 0.08);
+	--color-accent-bg-faint: rgba(212, 168, 75, 0.06);
+	--color-accent-bg-medium: rgba(212, 168, 75, 0.12);
+	--color-accent-bg-strong: rgba(212, 168, 75, 0.1);
+	--color-error-bg-light: rgba(248, 113, 113, 0.1);
+	--color-success-bg-light: rgba(74, 222, 128, 0.1);
+	--color-error-border: rgba(248, 113, 113, 0.3);
+
+	/* Colors — action type badges (quick ref, combat tracker) */
+	--color-badge-half: rgba(96, 165, 250, 0.2);
+	--color-badge-half-text: #60a5fa;
+	--color-badge-full: rgba(251, 146, 60, 0.2);
+	--color-badge-full-text: #fb923c;
+	--color-badge-reaction: rgba(74, 222, 128, 0.2);
+	--color-badge-reaction-text: #4ade80;
+	--color-badge-free: rgba(148, 146, 157, 0.2);
+	--color-badge-free-text: #94929d;
+	--color-badge-variable: rgba(192, 132, 252, 0.2);
+	--color-badge-variable-text: #c084fc;
+
+	/* Colors — white highlight for cards */
+	--color-surface-highlight: rgba(255, 255, 255, 0.04);
+
 	/* Spacing */
 	--spacing-xs: 0.25rem;
 	--spacing-sm: 0.5rem;
@@ -42,4 +86,110 @@
 	--radius-sm: 4px;
 	--radius-md: 8px;
 	--radius-lg: 12px;
+
+	/* Fonts */
+	--font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-mono: "Fira Code", "Consolas", monospace;
+
+	/* Animations */
+	--animate-slide-in: slide-in 0.3s ease-out;
+	--animate-pulse-once: pulse-once 0.5s ease;
+}
+
+/* Shared keyframes for tool pages */
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse-once {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+/* Shared component classes — high-reuse patterns (50+ instances across tools).
+   These use @layer components so Tailwind utilities can still override them. */
+@layer components {
+	.panel {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: var(--spacing-lg);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-sm) var(--spacing-md);
+		font-size: 0.9rem;
+		font-weight: 500;
+		border: 1px solid transparent;
+		border-radius: var(--radius-sm);
+		cursor: pointer;
+		transition: all 0.15s ease;
+		text-decoration: none;
+		font-family: inherit;
+	}
+
+	.btn-primary,
+	.btn-accent {
+		background: var(--color-accent);
+		color: var(--color-bg);
+	}
+	.btn-primary:hover,
+	.btn-accent:hover {
+		background: var(--color-accent-hover);
+	}
+
+	.btn-secondary {
+		background: var(--color-surface-raised);
+		border-color: var(--color-border);
+		color: var(--color-text-primary);
+	}
+	.btn-secondary:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		border: 1px solid var(--color-border);
+		color: var(--color-text-muted);
+	}
+	.btn-ghost:hover {
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.btn-danger {
+		background: var(--color-error);
+		color: var(--color-bg);
+	}
+	.btn-danger:hover {
+		background: var(--color-error);
+		opacity: 0.85;
+	}
+
+	.btn-sm {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.8rem;
+	}
+
+	.btn-xs {
+		padding: 0.15rem 0.4rem;
+		font-size: 0.7rem;
+	}
 }

@@ -29,54 +29,58 @@ export function DiceInput({ numDice, keepDice, modifier, targetNumber, onRoll }:
 	};
 
 	return (
-		<div class="dice-controls">
-			<div class="dice-input-group">
-				<label htmlFor="dice-rolled">Roll</label>
-				<div class="dice-notation">
+		<div class="flex flex-wrap items-end gap-lg justify-center mb-lg">
+			<div class="flex flex-col gap-xs">
+				<label htmlFor="dice-rolled" class="text-text-dim text-sm uppercase tracking-wide">
+					Roll
+				</label>
+				<div class="flex items-center gap-xs bg-bg p-sm rounded-md border border-surface-alt">
 					<input
 						id="dice-rolled"
 						type="number"
 						min={1}
 						max={10}
 						value={numDice}
-						class="dice-input"
+						class="w-[60px] text-center text-2xl font-bold bg-surface border border-surface-alt rounded-sm text-text-primary p-sm focus:outline-none focus:border-accent"
 						onInput={handleNumChange}
 					/>
-					<span class="dice-k">k</span>
+					<span class="text-2xl font-bold text-accent">k</span>
 					<input
 						type="number"
 						min={1}
 						max={10}
 						value={keepDice}
-						class="dice-input"
+						class="w-[60px] text-center text-2xl font-bold bg-surface border border-surface-alt rounded-sm text-text-primary p-sm focus:outline-none focus:border-accent"
 						onInput={handleKeepChange}
 					/>
-					<span class="dice-k">+</span>
+					<span class="text-2xl font-bold text-accent">+</span>
 					<input
 						type="number"
 						min={-20}
 						max={20}
 						value={modifier}
-						class="dice-input mod-input"
+						class="w-[60px] text-center text-2xl font-bold bg-surface border border-surface-alt rounded-sm text-text-primary p-sm focus:outline-none focus:border-accent"
 						onInput={handleModChange}
 					/>
 				</div>
 			</div>
 
-			<div class="dice-input-group">
-				<label htmlFor="dice-tn">Target Number</label>
+			<div class="flex flex-col gap-xs">
+				<label htmlFor="dice-tn" class="text-text-dim text-sm uppercase tracking-wide">
+					Target Number
+				</label>
 				<input
 					id="dice-tn"
 					type="number"
 					min={5}
 					max={50}
 					value={targetNumber}
-					class="dice-input tn-input"
+					class="w-[80px] text-center text-2xl font-bold bg-surface border border-surface-alt rounded-sm text-text-primary p-sm focus:outline-none focus:border-accent"
 					onInput={handleTNChange}
 				/>
 			</div>
 
-			<button type="button" class="btn btn-accent btn-roll" onClick={onRoll}>
+			<button type="button" class="btn btn-accent p-md px-xl text-xl h-fit" onClick={onRoll}>
 				🎲 Roll!
 			</button>
 		</div>

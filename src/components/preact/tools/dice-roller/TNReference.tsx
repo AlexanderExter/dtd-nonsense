@@ -10,17 +10,17 @@ export function TNReference() {
 	];
 
 	return (
-		<div class="panel reference-panel">
-			<h3>Target Number Reference</h3>
-			<div class="tn-table">
+		<div class="panel mt-lg">
+			<h3 class="text-center m-0 mb-md text-text-dim">Target Number Reference</h3>
+			<div class="grid gap-xs">
 				{difficulties.map((d) => (
-					<div class="tn-row" key={d.name}>
-						<span class="tn-diff">{d.name}</span>
-						<span class="tn-value">{d.value}</span>
+					<div class="flex justify-between p-xs px-sm bg-bg rounded-sm" key={d.name}>
+						<span class="text-text-dim">{d.name}</span>
+						<span class="font-bold font-mono text-accent">{d.value}</span>
 					</div>
 				))}
 			</div>
-			<p class="tn-note">
+			<p class="mt-md text-text-dim text-sm leading-relaxed">
 				<strong>Raises:</strong> Every 5 above TN = 1 Raise
 				<br />
 				<strong>Checks:</strong> Every 5 below TN = 1 Check

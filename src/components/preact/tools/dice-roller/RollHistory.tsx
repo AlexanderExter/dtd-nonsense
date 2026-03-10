@@ -31,21 +31,20 @@ export function RollHistory({ history, onReplay, onClear }: RollHistoryProps) {
 	const entries = history.value;
 
 	return (
-		<div class="panel history-panel">
-			<div class="history-header">
-				<h3>Roll History</h3>
+		<div class="panel max-h-[calc(100vh-150px)] flex flex-col">
+			<div class="flex justify-between items-center mb-md">
+				<h3 class="m-0">Roll History</h3>
 				{entries.length > 0 && (
 					<button type="button" class="btn btn-sm btn-secondary" onClick={onClear}>
 						Clear
 					</button>
 				)}
 			</div>
-			<div class="roll-history">
+			<div class="flex-1 overflow-y-auto flex flex-col gap-sm">
 				{entries.length === 0 ? (
-					<p class="empty-state">No rolls yet. Press Enter or click Roll!</p>
+					<p class="text-center text-text-dim p-lg">No rolls yet. Press Enter or click Roll!</p>
 				) : (
 					entries.map((entry, i) => {
-						const outcomeClass = entry.success ? "success" : "failure";
 						const outcomeText = entry.success
 							? entry.raises > 0
 								? `+${entry.raises}R`
@@ -57,17 +56,27 @@ export function RollHistory({ history, onReplay, onClear }: RollHistoryProps) {
 							<button
 								key={entry.timestamp + i}
 								type="button"
-								class={`history-entry ${outcomeClass}`}
+								class={`bg-bg p-sm rounded-md border-l-[3px] cursor-pointer transition-[border-color] duration-150 hover:border-l-accent ${
+									entry.success ? "border-l-outcome-success" : "border-l-outcome-failure"
+								}`}
 								onClick={() => onReplay(i)}
 							>
-								<div class="history-roll">
+								<div class="font-mono text-accent font-bold">
 									{entry.notation} vs TN {entry.tn}
 								</div>
-								<div class="history-result">
-									<span class="history-total">{entry.total}</span>
-									<span class={`history-outcome ${outcomeClass}`}>{outcomeText}</span>
+								<div class="flex justify-between items-center mt-xs">
+									<span class="text-xl font-bold">{entry.total}</span>
+									<span
+										class={`text-xs px-2 py-[2px] rounded-sm ${
+											entry.success
+												? "bg-outcome-success-bg text-outcome-success"
+												: "bg-outcome-failure-bg text-outcome-failure"
+										}`}
+									>
+										{outcomeText}
+									</span>
 								</div>
-								<div class="history-time">{formatTime(entry.timestamp)}</div>
+								<div class="text-[0.7rem] text-text-dim mt-xs">{formatTime(entry.timestamp)}</div>
 							</button>
 						);
 					})
