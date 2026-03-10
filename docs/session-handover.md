@@ -6,36 +6,53 @@ Running context for the current work session. Updated as work progresses — not
 
 ## Current Branch
 
-`session-2026-03-09`
+`preact-tailwind`
 
 ## Session Objective
 
-Phase 2 TypeScript migration completion + technical stabilizer pass.
+Post-migration sanity check of the complete Preact + Tailwind CSS v4 migration (Phases 0–7). Validate that all changes are coherent, documentation is accurate, and no stale references remain.
 
 ## What Changed This Session
 
-### TypeScript Migration (Phase 2 — Complete)
+### Sanity Check (Post-Migration Audit)
 
-- **sheet-app.ts**: Resolved all 570 TS errors — state declarations typed, structural helpers typed, mechanical errors fixed, auto-formatted with Biome
-- **builder-app.ts**: Already clean from prior session (422 TS errors resolved)
-- **types.ts**: Added `SpellEntry`, `SpecialAttackEntry` interfaces; extended `MeleeWeapon`, `RangedWeapon`, `ArmorEntry`, `SavedPool` with optional properties
-- All tool `.ts` files now fully typed — zero TS errors, zero `@ts-nocheck` directives
+- Ran 8-step coherence audit per `sanity-check.prompt.md`
+- Verified all automated checks pass: 187 tests, 0 errors, 19 warnings, 881 info
+- Confirmed all 9 tool pages correctly import Preact islands with `client:load`
+- Identified orphaned vanilla files, stale doc references, and missing history entries
 
-### Technical Stabilizer Pass
+### Changes by Layer
 
-- Diagnosed 6 categories: build/runtime, dead code, dependencies, organization, consistency, documentation sync
-- Found 4 documentation drift items (all related to stale @ts-nocheck / TS error references)
-- Applied fixes to: `architecture.md`, `astro.instructions.md`, `tool-development.md`, `session-handover.md`
+- **Code**: No code changes — audit only
+- **Data**: No data changes
+- **Content**: No content changes
+- **Documentation**: Session handover updated; side-tracks appended; report presented for approval
+- **Config**: No config changes
 
-### Verification
+## Key Decisions
 
-- `npm run check` passes: 187 tests, 0 TS errors, 0 Biome errors (12 pre-existing warnings — false positives/intentional)
+- Migration executed Phases 0–7 of `preact-implementation-plan.md` across 12 commits
+- Chose `client:load` over `client:only="preact"` for all tools (SSR compatibility)
+- Tailwind `@theme` tokens in `tailwind.css` as single design token source of truth, bridged via `ToolLayout.astro` CSS variables
 
-## Still Open
+## Known Issues
 
-- Add `sync-check` to CI (tracked in side-tracks.md)
+1. **Orphaned files**: `src/lib/tools/sheet-app.ts`, `src/lib/tools/builder-app.ts`, `src/styles/sheet.css`, `src/styles/builder.css` — exist but are not imported anywhere. Safe to delete.
+2. **Stale doc references**: `tool-development.md` skill, `docs/tools/character-sheet.md`, `docs/tools/character-builder.md` reference old vanilla files as active.
+3. **README.md**: Claims "Vanilla TypeScript — no framework dependencies" — contradicts Preact reality.
+4. **Missing history**: `project-history.md` has no Phase 12 entry for the Preact migration.
+5. **No runtime testing**: All 105 Preact components were built without browser validation. Functional correctness is inferred from structure, not observed.
+
+## Areas of Concern
+
+- **CSS fidelity**: Tailwind utility classes replicate the old CSS intent, but visual parity was not verified in a browser. Spacing, colors, and responsive behavior may differ.
+- **Signal-based state**: Module-level signals work differently from component-level state. If two instances of the same tool are rendered, they share state. Not a problem today (single-tool pages) but fragile for future dashboard views.
+- **Web Worker integration**: `use-worker.ts` hook was migrated but workers themselves (`simulation-worker.ts`, `defense-worker.ts`) were not changed. Interface compatibility is assumed, not tested.
 
 ## Suggested Next
 
-1. Merge `session-2026-03-09` via `npm run session:end`
-2. Start Phase 3 work (module decomposition or next priority from side-tracks.md)
+1. **Apply sanity check fixes** — delete orphaned files, update stale doc references (see audit report)
+2. **Add Phase 12 to project-history.md** — document the migration execution
+3. **Update preact-implementation-plan.md** — add completion status section
+4. **Browser test all 9 tools** — run `npm run dev` and manually verify each tool loads and functions
+5. **Merge branch** — once fixes applied and verified, merge `preact-tailwind` to `main`

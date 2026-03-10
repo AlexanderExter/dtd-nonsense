@@ -82,7 +82,7 @@ src/
 - **Check**: `npm run lint` — reports errors/warnings
 - **Auto-fix**: `npm run lint:fix` — fixes all fixable violations in one pass. Use this for bulk formatting fixes instead of manual file edits.
 - CI runs `biome ci .` (no writes). Failures block build.
-- Pre-existing fixable violations in `sheet-app.ts` / `builder-app.ts`: run `npm run lint:fix` to resolve at scale before doing manual TS work
+- Run `npm run lint:fix` to auto-fix all fixable violations in one pass
 
 ### Build
 

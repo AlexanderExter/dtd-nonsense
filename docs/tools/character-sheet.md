@@ -3,8 +3,8 @@
 The primary character tool — a freeform editable sheet for both character creation and gameplay tracking. Replaces the old builder-only workflow with a single unified interface where all sections are accessible at once.
 
 **Phase:** 4 (ongoing polish)
-**Files:** `src/pages/tools/character-sheet.astro`, `src/lib/tools/sheet-app.ts`, `src/styles/sheet.css`
-**Pattern:** Inline `<script>` in Astro page + extracted TS module
+**Files:** `src/pages/tools/character-sheet.astro`, `src/components/preact/tools/character-sheet/` (16 components)
+**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
 
 ---
 
@@ -80,23 +80,18 @@ The primary character tool — a freeform editable sheet for both character crea
 
 ## Architecture
 
-| Component                      | Description                                                                       |
-| ------------------------------ | --------------------------------------------------------------------------------- |
-| `character-sheet.astro`        | Astro page shell — management bar, header trackers, sidebar, tab structure, datalists |
-| `src/styles/sheet.css`         | All styling — layout, responsive breakpoints, print stylesheet                    |
-| `src/lib/tools/sheet-app.ts`   | Extracted application logic (TS module)                                           |
+| Component                                        | Description                                                                     |
+| ------------------------------------------------ | ------------------------------------------------------------------------------- |
+| `character-sheet.astro`                          | Astro page shell — mounts `CharacterSheetApp` via `client:load`                |
+| `src/components/preact/tools/character-sheet/`   | 16 Preact components (root: `CharacterSheetApp.tsx`)                            |
 
-**Dependencies:** `import { character, derived, loadData } from '@/lib/dtd/core.ts'`, `src/styles/sheet.css`
+**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, `@preact/signals`
 
 **Data sources:** `races.json`, `exaltations.json`, `alignments.json`, `classes.json`, `feats.json`, `skills.json`, `weapons.json`, `backgrounds.json`
 
-**Rendering:** Full innerHTML-based rendering per tab panel. Sub-sections (armor list, spells list, etc.) can be re-rendered independently via `rerenderCombatSection` / `rerenderPowerSection` / `rerenderFeatureSection` helpers.
+**Rendering:** Preact component tree with signal-driven reactivity. Each tab is a separate component that re-renders via signal subscriptions.
 
-**Event handling:** Three-layer delegation:
-
-1. Direct binding — management bar, header, sidebar
-2. Delegated on `.tab-panels` — input/change/click dispatchers
-3. Data-attribute routing — `data-field`, `data-char`, `data-skill`, `data-melee`, `data-armor`, `data-list`, `data-action`, etc.
+**State management:** Module-level `@preact/signals` for character data, UI state (active tab, selections), and derived stats.
 
 ---
 
@@ -129,7 +124,7 @@ All panels shown simultaneously with `data-print-title` headers. Management bar,
 | Freeform over wizard               | No enforced creation order; budget displays are informational only                  |
 | Exaltation resource-only           | Auto-calc resource pool max; everything else is free-text. Avoids 10 unique sub-UIs |
 | No spell/feat database enforcement | Searchable dropdowns assist, but values are user-editable. Keeps scope manageable   |
-| Vanilla JS single object           | Matches project architecture. No framework introduction                             |
+| Preact Islands with signals        | Reactive UI with component composition; Tailwind for styling                        |
 | Multiple character slots           | Essential — players often have backups, SM tracks NPCs                              |
 | Conditions removed from sheet      | Better suited to Combat Tracker where temporary state lives during gameplay         |
 | Hero Points merged into Powers tab | Unified card reduces tab-switching; Resource + Hero Points are thematically related |

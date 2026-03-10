@@ -57,3 +57,26 @@ Items logged here during stabilization passes, code reviews, and work sessions. 
 ### Session Script Robustness
 
 `session-end.mjs` builds its squash commit message by shell-escaping double quotes in commit messages. If any commit message contains backticks, `$`, or other shell metacharacters, the `git commit -m "..."` invocation could break. Consider using `--file` with a temp file for the commit message instead of inline `-m`. Low priority — only matters for exceptional commit messages.
+
+---
+
+## 2026-03 — Post-Migration Sanity Check
+
+- ~~**debt**: Orphaned vanilla files (`sheet-app.ts`, `builder-app.ts`, `sheet.css`, `builder.css`)~~ — **Resolved:** Deleted in post-migration cleanup (2026-03-10).
+- **inconsistency**: `tool-development.md` skill documents vanilla JS patterns (`import '@/lib/tools/sheet-app.ts'`) as current practice. *Context*: Agents following this skill will write code that doesn't match the Preact island architecture. **Resolved:** Skill rewritten (2026-03-10).
+- **inconsistency**: `README.md` claims "Vanilla TypeScript — no framework dependencies" despite Preact + Tailwind migration. *Context*: Public-facing, likely first file new contributors read. **Resolved:** Updated (2026-03-10).
+- ~~**debt**: `project-history.md` missing Phase 12 entry for Preact migration.~~ **Resolved:** Phase 12 added (2026-03-10).
+- **investigation**: Module-level Preact signals mean shared state across hypothetical multiple tool instances. *Context*: Not a problem today (single-tool pages) but would break a dashboard that renders multiple tools.
+- **investigation**: No runtime/browser testing of any Preact components. *Context*: Build passes, tests pass, but no visual verification — CSS fidelity and interaction correctness are untested.
+
+### Browser Testing Findings (2026-03-10)
+
+Manual testing revealed two critical issues that affect all Preact tools:
+
+1. **All tools are unstyled ("naked")**: `ToolLayout.astro` does not import `tailwind.css`. The Starlight config (`customCss` in `astro.config.mjs`) only applies to doc pages, not tool pages. Without an explicit import, Tailwind utility classes are never generated for tool pages — components render with only the manual CSS variables from ToolLayout's `<style is:global>` block.
+   - **Fix:** Add `import "@/styles/tailwind.css"` to ToolLayout.astro's frontmatter, or add a `<link>` / `<style>` import.
+
+2. **Character Sheet & Builder stuck on "Loading game data"**: `useAllData()` calls pass filenames without `.json` extension (e.g., `"races"` instead of `"races.json"`). The `loadData()` function in `data.ts` fetches `/data/{filename}` verbatim — requesting `/data/races` returns 404 because the actual files are `/data/races.json`.
+   - **Affected files:** `CharacterSheetApp.tsx` (8 filenames), `CharacterBuilderApp.tsx` (9 filenames)
+   - **Not affected:** NPCGeneratorApp.tsx and ShipBuilderApp.tsx use `loadData()` directly with correct `.json` extensions.
+   - **Fix:** Add `.json` to all filename strings in both `useAllData()` calls.

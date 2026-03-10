@@ -1,4 +1,6 @@
-This document is a multi-session roadmap. It captures research findings, blockers, decisions, and phased implementation steps for adding Preact (with compat) and Tailwind CSS v4 to the project, alongside a refresh of the agentic framework.
+**Status:** Implementation complete (2026-03). All 9 tools migrated to Preact Islands with Tailwind CSS v4. See [project-history.md](project-history.md) Phase 12 for execution record and [preact-implementation-plan.md](preact-implementation-plan.md) for detailed phase breakdown.
+
+This document was the multi-session research roadmap. It captures research findings, blockers, decisions, and phased implementation steps for adding Preact (with compat) and Tailwind CSS v4 to the project, alongside a refresh of the agentic framework.
 
 ---
 

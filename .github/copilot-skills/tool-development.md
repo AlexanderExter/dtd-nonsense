@@ -8,7 +8,7 @@
 
 ## Ecosystem
 
-All tools are **Astro pages** (`src/pages/tools/`) using ES module imports and `ToolLayout.astro`. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Large tools (character-sheet, character-builder) extract logic to `src/lib/tools/` as standalone `.ts` app modules. All 9 tools are fully migrated.
+All tools are **Preact Islands** mounted by Astro pages (`src/pages/tools/`) via `client:load` into `ToolLayout.astro`. Each tool's components live in `src/components/preact/tools/{tool-name}/` with a root `*App.tsx` entry point. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Custom hooks in `src/hooks/` handle data loading, localStorage, Web Workers, and debouncing.
 
 ## Documentation Map
 
@@ -29,19 +29,24 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 ### File Layout
 
 ```
-src/pages/tools/[name].astro     ← Astro page (HTML + <style> + <script>)
-src/lib/dtd/core.ts              ← Shared: data loading, derived stats, character CRUD
-src/lib/dtd/dice.ts              ← Shared: roll(), calculateOutcome(), parseNotation()
-src/lib/dtd/dice-primitives.ts   ← Canonical dice algorithms (used by dice.ts and workers)
-src/lib/dtd/types.ts             ← Shared: CharacterData, CharacterListEntry, etc.
-src/lib/tools/sheet-app.ts       ← Large tool: Character Sheet logic (fully typed)
-src/lib/tools/builder-app.ts     ← Large tool: Character Builder logic (fully typed)
-src/workers/                     ← TypeScript ESM Web Workers (bundled by Vite)
-src/layouts/ToolLayout.astro     ← Wrapper layout for all tool pages
-src/styles/custom.css            ← WH40K theme tokens
-src/styles/sheet.css             ← Per-tool CSS for large tools
-src/styles/builder.css           ← Per-tool CSS for large tools
-data/                            ← Canonical JSON (validated by Zod schemas, copied to public/data/ at build)
+src/pages/tools/[name].astro               ← Astro page (mounts Preact island via client:load)
+src/components/preact/tools/[name]/         ← Preact components for each tool
+  [Name]App.tsx                             ← Root component (entry point)
+  *.tsx                                     ← Sub-components
+src/hooks/                                  ← Custom Preact hooks
+  use-data.ts                               ← useData() / useAllData() for JSON loading
+  use-local-storage.ts                      ← useLocalStorage() for persistence
+  use-worker.ts                             ← useWorker() for Web Worker communication
+  use-debounce.ts                           ← useDebouncedSignal() for input debouncing
+src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
+src/lib/dtd/dice.ts                         ← Shared: roll(), calculateOutcome(), parseNotation()
+src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts and workers)
+src/lib/dtd/types.ts                        ← Shared: CharacterData, CharacterListEntry, etc.
+src/workers/                                ← TypeScript ESM Web Workers (bundled by Vite)
+src/layouts/ToolLayout.astro                ← Wrapper layout (bridges Tailwind tokens → var(--name) aliases)
+src/styles/custom.css                       ← WH40K Starlight theme tokens
+src/styles/tailwind.css                     ← Tailwind v4 @theme tokens (design token source of truth)
+data/                                       ← Canonical JSON (validated by Zod schemas, copied to public/data/ at build)
 ```
 
 ### Standard Tool Pattern
@@ -51,74 +56,80 @@ Every tool page follows this structure:
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { DiceRollerApp } from "@/components/preact/tools/dice-roller/DiceRollerApp";
 ---
 
 <ToolLayout title="Tool Name" description="Short description">
-  <!-- HTML content -->
-
-  <style>
-    /* Self-contained tool styles using CSS custom properties */
-    .panel { background: var(--surface); border: 1px solid var(--border); }
-  </style>
-
-  <script>
-    import { loadData, derived, character, escapeHtml } from '@/lib/dtd/core.ts';
-    import { roll, calculateOutcome } from '@/lib/dtd/dice.ts';
-    import type { CharacterData } from '@/lib/dtd/types.ts';
-
-    // Tool logic here — runs as an ES module
-    // DOM queries, event listeners, state management
-  </script>
+  <DiceRollerApp client:load />
 </ToolLayout>
 ```
 
-### Import Patterns by Tool
+### Preact Component Pattern
 
-| Tool              | Imports from core.ts                                              | Imports from dice.ts           | Pattern           |
-| ----------------- | ----------------------------------------------------------------- | ------------------------------ | ----------------- |
-| Character Sheet   | `loadData`, `loadAllData`, `character`, `derived`                 | `roll`                         | Extracted `.ts`   |
-| Character Builder | `loadAllData`, `character`, `derived`                             | —                              | Extracted `.ts`   |
-| Dice Roller       | —                                                                 | `roll`, `calculateOutcome`     | Inline `<script>` |
-| Combat Tracker    | `derived`, `character`, `initAccordion`, `debounce`, `escapeHtml` | `roll`                         | Inline `<script>` |
-| Quick Reference   | `loadData`                                                        | —                              | Inline `<script>` |
-| NPC Generator     | `loadData`, `derived`                                             | —                              | Inline `<script>` |
-| Ship Builder      | `loadData`                                                        | `roll`                         | Inline `<script>` |
-| Success Curves    | —                                                                 | _(self-contained Monte Carlo)_ | Inline `<script>` |
-| Defense Graph     | `derived`                                                         | —                              | Inline `<script>` |
+```tsx
+import { signal } from "@preact/signals";
+import { useAllData } from "@/hooks/use-data";
 
-### Large Tool Pattern (Sheet & Builder)
+// Module-level signals for state management
+const someState = signal<string>("");
 
-When a tool exceeds ~1,500 LOC, logic is extracted to `src/lib/tools/[name]-app.ts`:
+export function ToolApp() {
+  const { data, loading, error } = useAllData(["races.json", "skills.json"]);
 
-```astro
-<!-- Thin .astro wrapper -->
-<script>
-  import '@/lib/tools/sheet-app.ts';
-</script>
-<style is:global>
-  @import '@/styles/sheet.css';
-</style>
+  if (loading.value) return <div class="loading">Loading...</div>;
+  if (error.value) return <div class="error">{error.value}</div>;
+
+  return <div class="tool-app">...</div>;
+}
 ```
 
-Both `builder-app.ts` and `sheet-app.ts` are fully typed with zero TS errors (Phase 2 complete). Both files contain all tool state, DOM manipulation, and event handling.
+Key conventions:
+- **Module-level signals** — state lives outside the component for persistence across renders
+- **`class` not `className`** — Preact with compat supports both, but we use `class`
+- **Named exports only** — no default exports
+- **All `<button>` need `type="button"`** — prevents form submission behavior
+- **Tailwind utilities** for styling — use utility classes, fall back to `var(--name)` CSS variables from ToolLayout
+
+### Import Patterns by Tool
+
+| Tool              | Components | Data Sources | Uses Workers? |
+| ----------------- | ---------- | ------------ | ------------- |
+| Dice Roller       | 6          | None         | No            |
+| Quick Reference   | 13         | Multiple     | No            |
+| Success Curves    | 9          | None         | Yes           |
+| Defense Graph     | 10         | None         | Yes           |
+| Combat Tracker    | 9          | Weapons      | No            |
+| NPC Generator     | 12         | Multiple     | No            |
+| Ship Builder      | 12         | Ships        | No            |
+| Character Builder | 18         | All          | No            |
+| Character Sheet   | 16         | All          | No            |
 
 ## Data Loading
 
+In Preact components, use the custom hooks from `src/hooks/use-data.ts`:
+
 ### Single File
 
-```typescript
-import { loadData } from "@/lib/dtd/core.ts";
+```tsx
+import { useData } from "@/hooks/use-data";
 
-const races = await loadData<RaceData>("races.json");
+function MyComponent() {
+  const { data, loading, error } = useData<RaceData>("races.json");
+  if (loading.value) return <div>Loading...</div>;
+  // data.value is the parsed JSON
+}
 ```
 
 ### Multiple Files
 
-```typescript
-import { loadAllData } from "@/lib/dtd/core.ts";
+```tsx
+import { useAllData } from "@/hooks/use-data";
 
-const data = await loadAllData(["races.json", "exaltations.json", "skills.json", "classes.json", "feats.json", "weapons.json"]);
-// Access: data.races, data.exaltations, etc.
+function MyComponent() {
+  const { data, loading, error } = useAllData(["races.json", "exaltations.json", "skills.json"]);
+  if (loading.value) return <div>Loading...</div>;
+  // data.value.races, data.value.exaltations, etc.
+}
 ```
 
 `loadData()` fetches from `/data/{filename}` — files are copied from `data/` to `public/data/` by `scripts/prebuild.mjs` during build.
@@ -142,7 +153,7 @@ Most JSON files nest data under a top-level key matching the filename. You must 
 
 These have each caused real bugs. Memorize them:
 
-1. **Tool files use `Record<string, any>` casts for dynamic access** — Both `builder-app.ts` and `sheet-app.ts` are fully typed, but use `as Record<string, any>` casts for dynamic property access on `CharacterData`, `Characteristics`, and equipment types. When adding new dynamic access patterns, follow the existing cast conventions.
+1. **Module-level signals share state globally** — All tool state is in module-level `signal()` declarations. Two instances of the same component would share state. This is fine on single-tool pages but would break in a multi-tool dashboard.
 
 2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
 
@@ -155,29 +166,30 @@ These have each caused real bugs. Memorize them:
 
 3. **Web Workers use ESM and live in `src/workers/`** — Workers are TypeScript files in `src/workers/` bundled by Vite via `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. They import from `src/lib/dtd/` using relative paths (not the `@/` alias — it doesn't resolve in worker bundles). Do **not** put workers in `public/workers/` — that directory no longer exists.
 
-4. **CSS `display` overrides `hidden`** — Never set `display: flex` (or similar) on elements using the HTML `hidden` attribute for toggle. Use class-based toggling instead (`.open { display: flex }`).
+4. **Use `class` not `className` in Preact JSX** — Preact with compat supports both, but this project uses `class` consistently. Mixing causes inconsistency.
 
-5. **Astro `<style>` scoping eats `@import`** — A bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports, or keep tool styles self-contained in each page's `<style>` block.
+5. **Astro `<style>` scoping eats `@import`** — A bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports.
 
 6. **localStorage keys use tool-specific prefixes** — Character Sheet uses `dtd_sheet_{id}` / `dtd_sheet_list`. Combat Tracker uses `dtd_encounter_{id}`. Never change existing key names (breaks user data). See [docs/architecture.md](../../docs/architecture.md#persistence-conventions) for the full key table.
 
-7. **Always grep all tool files when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, or `types.ts` can break any of the 9 tool pages plus `sheet-app.ts` and `builder-app.ts`. Search `src/pages/tools/` and `src/lib/tools/` for all callers before modifying exports.
+7. **Always grep all tool components when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, `types.ts`, or hooks can break any of the 9 tools. Search `src/components/preact/tools/` and `src/pages/tools/` for all callers before modifying exports.
 
-8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. A March 2026 audit found and corrected errors in 6 of 9 spec files. Specs are now more reliable, but always verify against the actual `.astro`/`.ts` source when editing a tool. The code is ground truth, not the spec doc.
+8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. Always verify against the actual `.tsx` source when editing a tool. The code is ground truth, not the spec doc.
 
 ## Adding a New Tool
 
-1. Create `src/pages/tools/[tool-name].astro` using the standard pattern above
-2. Import shared functions from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
-3. Use CSS custom properties from `ToolLayout.astro` (see CSS Conventions below)
-4. Add a card to `src/pages/tools/index.astro` (the tool dashboard)
-5. Create documentation in `docs/tools/[tool-name].md`
+1. Create `src/components/preact/tools/[tool-name]/[ToolName]App.tsx` — root Preact component with named export
+2. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:load`
+3. Import shared logic from `@/lib/dtd/core.ts`, hooks from `@/hooks/`
+4. Use Tailwind utilities for styling; fall back to `var(--name)` CSS variables from `ToolLayout.astro`
+5. Add a card to `src/pages/tools/index.astro` (the tool dashboard)
+6. Create documentation in `docs/tools/[tool-name].md`
 
 Full recipe with prerequisites, commands, and build verification: [docs/development-guide.md](../../docs/development-guide.md#adding-a-new-tool).
 
 ## CSS Conventions
 
-All tools inherit CSS custom properties from `ToolLayout.astro` and `src/styles/custom.css`:
+Tools use **Tailwind CSS v4** utility classes. Design tokens are defined in `src/styles/tailwind.css` `@theme` block and bridged to short `var(--name)` aliases in `ToolLayout.astro`:
 
 ```css
 var(--bg)                /* Page background */
@@ -192,7 +204,7 @@ var(--success)           /* Green status */
 var(--warning)           /* Orange status */
 ```
 
-Dark theme with gold accents. Cards use `var(--surface)` backgrounds with `var(--border)` borders and `var(--radius)` rounding.
+Prefer Tailwind utilities in JSX (e.g., `class="bg-surface border border-border rounded-md p-4"`). Use `var(--name)` for complex or dynamic styles that can't be expressed as utilities.
 
 ## Data Sync Rule
 
