@@ -26,8 +26,8 @@ src/
     preact/
       tools/         ← Preact island components for all 9 tools (~100 components)
       shared/        ← Shared Preact components across tools
-  hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker, use-debounce)
-  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
+  hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker)
+  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   workers/           ← TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   styles/            ← custom.css (Starlight theme), tailwind.css (Tailwind v4 @theme tokens)
   content.config.ts  ← Content Collection definitions

@@ -37,7 +37,6 @@ src/hooks/                                  ← Custom Preact hooks
   use-data.ts                               ← useData() / useAllData() for JSON loading
   use-local-storage.ts                      ← useLocalStorage() for persistence
   use-worker.ts                             ← useWorker() for Web Worker communication
-  use-debounce.ts                           ← useDebouncedSignal() for input debouncing
 src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
 src/lib/dtd/dice.ts                         ← Shared: roll(), calculateOutcome(), parseNotation()
 src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts and workers)

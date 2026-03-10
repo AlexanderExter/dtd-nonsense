@@ -68,7 +68,7 @@ data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         9 Astro tool pages (standalone, outside Starlight)
   components/preact/   Preact island components (~105 across 9 tools)
-  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker, use-debounce)
+  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)
   styles/              WH40K theme CSS + Tailwind v4 @theme tokens

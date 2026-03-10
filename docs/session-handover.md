@@ -6,11 +6,11 @@ Running context for the current work session. Updated as work progresses — not
 
 ## Current Branch
 
-`technical-stabilizer` (branched from `preact-tailwind`)
+`preact-tailwind` (with `technical-stabilizer` sub-branch for current stabilization pass)
 
 ## Session Objective
 
-Technical stabilization pass after the Preact Islands + Tailwind CSS v4 migration. Audit for dead code, documentation drift, and convention consistency — then remediate.
+Second technical stabilization pass. Cleaning up remaining documentation drift, dead code, and dependency hygiene after the Preact Islands + Tailwind CSS v4 migration.
 
 ## What Changed This Session
 
