@@ -23,29 +23,31 @@
         "session:start": "node scripts/session-start.mjs",
         "session:end": "node scripts/session-end.mjs",
         "session:status": "node scripts/session-status.mjs",
+        "upgrade:recon": "node scripts/upgrade-recon.mjs",
         "prepare": "git config core.hooksPath .githooks",
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/starlight": "^0.32.0",
+        "@astrojs/starlight": "^0.37.7",
         "@vercel/analytics": "^1.6.1",
-        "astro": "^5.3.0",
-        "chart.js": "^4.4.0",
+        "astro": "^5.18.0",
+        "chart.js": "^4.5.1",
         "gray-matter": "^4.0.3",
         "zod": "^3.25.76"
     },
     "devDependencies": {
-        "@astrojs/vercel": "^8.0.4",
-        "@biomejs/biome": "2.4.5",
+        "@astrojs/vercel": "^9.0.4",
+        "@biomejs/biome": "2.4.6",
         "typescript": "^5.9.3",
         "vitest": "4.0.18"
     },
     "overrides": {
         "@vercel/routing-utils": {
             "path-to-regexp": "^8.0.0"
-        }
+        },
+        "svgo": "^4.0.1"
     },
     "_comments": {
-        "overrides": "path-to-regexp override fixes ReDoS vulnerability in @vercel/routing-utils via @astrojs/vercel. Re-evaluate when @astrojs/vercel upgrades past 8.2.x."
+        "overrides": "path-to-regexp: fixes ReDoS in @vercel/routing-utils (via @astrojs/vercel). @vercel/routing-utils@5.3.3 ships path-to-regexp@6.1.0; remove when routing-utils ships ^8 natively. svgo: force 4.0.1+ to patch DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673, introduced by astro@5.18); remove when astro ships svgo@4.0.1+."
     }
 }

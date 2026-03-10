@@ -177,6 +177,7 @@ TypeScript pipeline scripts (run via npm):
 | `npm run session:start`  | Create/switch to session branch + baseline check                |
 | `npm run session:end`    | Squash-merge to main + cleanup                                  |
 | `npm run session:status` | Quick git state report                                          |
+| `npm run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 

@@ -26,9 +26,9 @@ export default defineConfig({
       defaultLocale: "root",
 
       // Social links
-      social: {
-        github: "https://github.com/AlexanderExter/dtd-nonsense",
-      },
+      social: [
+        { icon: "github", label: "GitHub", href: "https://github.com/AlexanderExter/dtd-nonsense" },
+      ],
 
       // Sidebar: rules reference + source books + tools
       sidebar: [

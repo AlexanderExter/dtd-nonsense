@@ -14,6 +14,26 @@ All commands run via npm scripts (backed by `bun`):
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 
+### `npm run upgrade:recon`
+
+Gather dependency ground truth for the upgrade prompt. Outputs a JSON manifest to stdout (machine-readable) and an ANSI-colored summary to stderr (human-readable).
+
+```bash
+npm run upgrade:recon
+```
+
+**Data gathered:**
+
+- Outdated packages (current/wanted/latest, bump type, pin status, tier classification)
+- Dependency tree health (`npm ls` problems, unmet peer deps)
+- Security audit (vulnerability severity counts and advisories)
+- Override staleness (whether each `package.json` override is still needed)
+- Framework compatibility (Starlight/Vercel adapter peer dep ranges, migration guide URLs)
+- Engine requirements (whether major bumps need a higher Node version)
+- Tool availability (ncu, Bun, Node/npm versions)
+
+Used by the `dependency-upgrade` prompt (`.github/prompts/dependency-upgrade.prompt.md`) as the ground-truth input for automated upgrade sessions.
+
 ### `npm run validate`
 
 Validate all 12 JSON data files in `data/` against their Zod schemas.

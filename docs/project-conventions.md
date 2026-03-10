@@ -20,6 +20,7 @@ Every work session uses a **date-based branch**: `session-YYYY-MM-DD`.
 | `npm run session:start my-feature` | Create/switch to named branch, run baseline check            |
 | `npm run session:end`              | Squash-merge current branch to main, delete branch           |
 | `npm run session:status`           | Quick git state report (branch, dirty/clean, recent commits) |
+| `npm run upgrade:recon`            | Dependency recon: outdated, audit, tree health, overrides    |
 
 **Pre-commit hook:** `.githooks/pre-commit` runs `npm run check` before every commit. Installed automatically via `npm run prepare` (which runs on `npm install`). Skip with `git commit --no-verify` when needed.
 
@@ -106,7 +107,32 @@ When dispatching subagents, always specify the exact branch name and explicitly 
 
 **`git rm` pitfall:** After `git rm <file>`, the deletion is already staged. Do not `git add` the same path again — it will fail with `fatal: pathspec did not match`. This commonly happens when batching a `git rm` with `git add` of other files in the same command.
 
-**Whitespace normalization:** Subagent-generated file rewrites often introduce LF line endings (vs the repo's CRLF) and trailing whitespace changes. Expect a cosmetic diff after subagent file rewrites. Either normalize in the same commit or accept a separate normalization commit.
+**Whitespace normalization:** Subagent-generated file rewrites may introduce CRLF line endings or trailing whitespace changes (the repo enforces LF via `.gitattributes`). Expect a minor diff after subagent file rewrites. Either normalize in the same commit or accept a separate normalization commit.
+
+### Dependency Upgrade Sessions
+
+Periodic upgrade sessions bring all dependencies to their best possible state. These are dedicated sessions — the upgrade agent owns the branch and has full authority.
+
+**Prompt:** `.github/prompts/dependency-upgrade.prompt.md` — orchestrates the full workflow.
+**Recon:** `npm run upgrade:recon` — gathers dependency state, tree health, audit results, and tool availability.
+**Output:** `docs/whats-new/YYYY-MM-DD.md` — per-session briefing documenting what upgraded and what opportunities it creates.
+
+**How it works:**
+
+1. Run the `dependency-upgrade` prompt to start a dedicated upgrade session
+2. The prompt bootstraps tools (ncu, bun detection), runs recon, and establishes a baseline
+3. Upgrades execute in tiered order: toolchain → framework → utility, validated between each tier
+4. Breaking changes are resolved (code modernization, deprecated pattern removal, config updates)
+5. A "What's New" briefing is generated for subsequent sessions
+6. The branch is merged via `npm run session:end` or deleted if the upgrade failed
+
+**Safety model:** The branch is the safety net. If the process botches, the branch is deleted. `npm run check` passing is the red line — if it passes, the upgrade stands.
+
+**When to run:** Periodically, or when `npm run upgrade:recon` shows significant drift. Not every session — this is a deliberate maintenance ritual.
+
+**`upgrade:recon` scope caveat:** `npm run upgrade:recon` only reports packages that are outside their _current_ declared version range — it will show "0 outdated" even when major upgrades are available. To see the full upgrade picture, also run `npx npm-check-updates --format group`. Always do this at the start of an upgrade session.
+
+**`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install *succeeds* despite the error exit — but the false failure is confusing. Use `npm install` instead of `bun install` when nested overrides are present.
 
 ---
 
@@ -325,9 +351,18 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 `docs/data-reference.md` per-file schemas are outdated for several files (written from initial samples, not comprehensive audits). When building models or validators against `data/*.json`, always inspect the **actual JSON files** — not the docs. The Zod schemas in `src/lib/dtd/schemas/` are the ground-truth schemas.
 
-### Biome Write on Windows (CRLF)
+### Biome and Line Endings on Windows
 
-`npx biome check --write .` normalizes line endings to LF, which on a CRLF repo produces large cosmetic diffs (45+ files). Always run `git diff -w` after Biome auto-fix to check whether any **real** code changes exist before committing. If the diff is whitespace-only, discard with `git checkout -- .`. The same applies to `biome ci .` — it reports CRLF as format errors on Windows but passes on Ubuntu CI.
+**This issue is now resolved** — `.gitattributes` (`* text=auto eol=lf`) is committed and enforces LF checkout on all platforms. The repo is LF-first.
+
+**Historical context (preserved for diagnosis if it recurs):** Before `.gitattributes`, `core.autocrlf=true` (Windows default) checked out all files with CRLF. Biome's formatter check then reported every tracked file as a format error, completely breaking `npm run check` and `session:start`. The symptom was 14 format errors, all showing CRLF→LF diffs with no code changes.
+
+**If the issue recurs** (e.g., after cloning on a machine without `.gitattributes` taking effect), run:
+```powershell
+git add --renormalize .
+npm run lint:fix
+```
+This re-normalizes all tracked files to LF and auto-fixes the format violations in one pass.
 
 ### Biome Safe vs Unsafe Fixes
 
@@ -419,6 +454,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 | `npm run session:start`  | Create/switch to session branch + baseline check                |
 | `npm run session:end`    | Squash-merge to main + cleanup                                  |
 | `npm run session:status` | Quick git state report                                          |
+| `npm run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
 
 **Build dependency chain:**
 
