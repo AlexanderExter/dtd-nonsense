@@ -1,301 +1,912 @@
 ---
+import { CharacterBuilderApp } from "@/components/preact/tools/character-builder/CharacterBuilderApp";
 import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Character Builder" description="Step-by-step wizard for building DTD 40k characters">
-    <main class="builder-layout">
-        <!-- Sidebar Summary -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-identity">
-                <div class="sidebar-name" id="sidebar-name">New Character</div>
-                <div class="sidebar-badges">
-                    <span class="badge" id="sidebar-race">—</span>
-                    <span class="badge" id="sidebar-exaltation">—</span>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Derived Stats</h3>
-                <div class="stat-row"><span>Static Defense</span><span id="sidebar-sd">—</span></div>
-                <div class="stat-row"><span>Hit Points</span><span id="sidebar-hp">—</span></div>
-                <div class="stat-row"><span>Mental Defense</span><span id="sidebar-md">—</span></div>
-                <div class="stat-row"><span>Resolve</span><span id="sidebar-resolve">—</span></div>
-                <div class="stat-row"><span>Speed</span><span id="sidebar-speed">—</span></div>
-                <div class="stat-row"><span>Resilience</span><span id="sidebar-resilience">—</span></div>
-                <div class="stat-row"><span>Initiative</span><span id="sidebar-initiative">—</span></div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>XP Budget</h3>
-                <div class="xp-label"><span id="xp-remaining">600</span> / 600 remaining</div>
-                <div class="xp-breakdown" id="xp-breakdown"></div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Steps</h3>
-                <ol class="step-checklist" id="step-checklist"></ol>
-            </div>
-
-            <div class="sidebar-actions">
-                <button class="btn btn-primary" id="btn-open-sheet">Open in Sheet</button>
-                <button class="btn btn-secondary" id="btn-export">Export JSON</button>
-                <button class="btn btn-ghost" id="btn-start-over">Start Over</button>
-            </div>
-        </aside>
-
-        <!-- Main Wizard Content -->
-        <section class="builder-content">
-            <div class="accordion" id="wizard">
-                <!-- Step 1: Identity -->
-                <div class="accordion-item" data-step="1">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">1</span>
-                        <span class="step-title">Identity</span>
-                        <span class="step-summary" id="step-summary-1"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">Name your character and jot down a concept. No mechanics here — just who they are.</p>
-                        <div class="form-group">
-                            <label for="field-name">Name <span class="required">*</span></label>
-                            <input type="text" id="field-name" placeholder="Character name…" />
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="field-player">Player</label>
-                                <input type="text" id="field-player" placeholder="Player name…" />
-                            </div>
-                            <div class="form-group">
-                                <label for="field-concept">Concept</label>
-                                <input type="text" id="field-concept" placeholder="e.g. Ork Bard, Eldarin Witch-hunter…" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Race -->
-                <div class="accordion-item" data-step="2">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">2</span>
-                        <span class="step-title">Race</span>
-                        <span class="step-summary" id="step-summary-2"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">Your race determines Size, characteristic bonuses, skill bonuses, and a racial power.</p>
-                        <div class="filter-bar">
-                            <label>Source:</label>
-                            <select id="filter-race-source">
-                                <option value="all">All</option>
-                                <option value="book1">Core Book</option>
-                                <option value="book2">Book 2</option>
-                            </select>
-                        </div>
-                        <div class="selection-grid" id="race-grid"></div>
-                        <div class="detail-panel" id="race-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Exaltation -->
-                <div class="accordion-item" data-step="3">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">3</span>
-                        <span class="step-title">Exaltation</span>
-                        <span class="step-summary" id="step-summary-3"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Your Exaltation grants supernatural powers, a Power Stat, and a Resource pool. Mortals gain bonus dots instead.
-                        </p>
-                        <div class="selection-grid" id="exaltation-grid"></div>
-                        <div class="detail-panel" id="exaltation-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Characteristics -->
-                <div class="accordion-item" data-step="4">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">4</span>
-                        <span class="step-title">Characteristics</span>
-                        <span class="step-summary" id="step-summary-4"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Assign priority groups (6 / 4 / 2 bonus dots) to Physical, Social, and Mental, then distribute within each
-                            group. All characteristics start at 1. No characteristic may exceed 4 in this step (racial bonuses can raise it
-                            further).
-                        </p>
-                        <div class="priority-selector" id="char-priorities"></div>
-                        <div class="allocation-grid" id="char-allocation"></div>
-                    </div>
-                </div>
-
-                <!-- Step 5: Skills -->
-                <div class="accordion-item" data-step="5">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">5</span>
-                        <span class="step-title">Skills</span>
-                        <span class="step-summary" id="step-summary-5"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Assign priority groups (8 / 6 / 4 dots) to Physical, Social, and Mental skill groups, then distribute dots. No
-                            skill may exceed 3 dots in this step.
-                        </p>
-                        <div class="priority-selector" id="skill-priorities"></div>
-                        <div class="allocation-grid" id="skill-allocation"></div>
-                    </div>
-                </div>
-
-                <!-- Step 6: Backgrounds -->
-                <div class="accordion-item" data-step="6">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">6</span>
-                        <span class="step-title">Backgrounds</span>
-                        <span class="step-summary" id="step-summary-6"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Distribute 7 free dots among backgrounds (max 3 per background). Dots 4 and 5 cost 100 XP each.
-                        </p>
-                        <div class="budget-display" id="bg-budget">
-                            <span>Budget:</span>
-                            <span><strong id="bg-remaining">7</strong> / 7 dots remaining</span>
-                        </div>
-                        <div class="backgrounds-grid" id="bg-grid"></div>
-                    </div>
-                </div>
-
-                <!-- Step 7: Alignment -->
-                <div class="accordion-item" data-step="7">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">7</span>
-                        <span class="step-title">Alignment</span>
-                        <span class="step-summary" id="step-summary-7"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Choose a deity or remain Unaligned. Your alignment determines moral code and grants certain powers.
-                        </p>
-                        <div class="filter-bar">
-                            <label>Pantheon:</label>
-                            <select id="filter-pantheon">
-                                <option value="all">All Pantheons</option>
-                                <option value="ruinousPowers">Ruinous Powers</option>
-                                <option value="blessedPantheon">Blessed Pantheon</option>
-                                <option value="grayCouncil">Gray Council</option>
-                                <option value="unaligned">Unaligned</option>
-                            </select>
-                        </div>
-                        <div class="selection-grid" id="alignment-grid"></div>
-                        <div class="detail-panel" id="alignment-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 8: Classes -->
-                <div class="accordion-item" data-step="8">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">8</span>
-                        <span class="step-title">Classes</span>
-                        <span class="step-summary" id="step-summary-8"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Choose your starting class (first is free, additional cost 100 XP each). Only Tier 1 classes are available at
-                            character creation.
-                        </p>
-                        <div class="filter-bar">
-                            <label>Track:</label>
-                            <select id="filter-class-track">
-                                <option value="all">All Tracks</option>
-                            </select>
-                        </div>
-                        <div class="purchased-classes" id="purchased-classes"></div>
-                        <div class="selection-grid" id="class-grid"></div>
-                        <div class="detail-panel" id="class-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 9: Feats -->
-                <div class="accordion-item" data-step="9">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">9</span>
-                        <span class="step-title">Feats, Assets &amp; Hindrances</span>
-                        <span class="step-summary" id="step-summary-9"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">Select feats (100 XP each). Class mandatory feats are auto-included.</p>
-                        <div class="filter-bar">
-                            <label>Category:</label>
-                            <select id="filter-feat-cat">
-                                <option value="all">All Feats</option>
-                                <option value="general">General</option>
-                                <option value="racial">Racial</option>
-                                <option value="supplementary">Supplementary</option>
-                                <option value="hindrance">Hindrances</option>
-                            </select>
-                            <label>Search:</label>
-                            <input type="text" id="filter-feat-search" placeholder="Search feats…" />
-                        </div>
-                        <div class="selected-feats" id="selected-feats"></div>
-                        <div class="selection-grid" id="feat-grid"></div>
-                        <div class="detail-panel" id="feat-detail"></div>
-
-                        <hr class="section-divider" />
-                        <h3 class="subsection-heading">Assets &amp; Hindrances</h3>
-                        <p class="step-desc">
-                            Assets cost 100 XP each. Hindrances grant bonus XP. These are commonly taken during character creation.
-                        </p>
-                        <div class="filter-bar">
-                            <label>Show:</label>
-                            <select id="filter-ah-cat">
-                                <option value="all">All Assets &amp; Hindrances</option>
-                                <option value="asset">Assets</option>
-                                <option value="exaltedAsset">Exalted Assets</option>
-                                <option value="hindrance">Hindrances</option>
-                            </select>
-                        </div>
-                        <div class="selected-ah" id="selected-ah"></div>
-                        <div class="selection-grid" id="ah-grid"></div>
-                        <div class="detail-panel" id="ah-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 10: Equipment -->
-                <div class="accordion-item" data-step="10">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">10</span>
-                        <span class="step-title">Equipment</span>
-                        <span class="step-summary" id="step-summary-10"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <p class="step-desc">
-                            Choose one of five starting equipment packages (Earth, Air, Fire, Water, Void), then resolve any choices within
-                            it.
-                        </p>
-                        <div class="selection-grid" id="equipment-grid"></div>
-                        <div class="detail-panel" id="equipment-detail"></div>
-                    </div>
-                </div>
-
-                <!-- Step 11: Review & Export -->
-                <div class="accordion-item" data-step="11">
-                    <button class="accordion-header" type="button">
-                        <span class="step-number">11</span>
-                        <span class="step-title">Review &amp; Export</span>
-                        <span class="step-summary" id="step-summary-11"></span>
-                    </button>
-                    <div class="accordion-body">
-                        <div id="review-panel"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        import '@/lib/tools/builder-app.ts';
-    </script>
-
-    <style is:global>
-        @import '@/styles/builder.css';
-    </style>
+    <CharacterBuilderApp client:load />
 </ToolLayout>
+
+<style>
+/* =========================================================================
+   Character Builder — Layout & Sidebar
+   ========================================================================= */
+
+.builder-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-lg);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--space-md);
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: var(--space-md);
+    max-height: calc(100vh - 2 * var(--space-md));
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.sidebar-identity {
+    text-align: center;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+    word-break: break-word;
+}
+
+.sidebar-badges {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.badge.active {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+}
+
+.sidebar-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    margin-bottom: var(--space-sm);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 0.85rem;
+}
+
+.stat-row span:first-child {
+    color: var(--text-muted);
+}
+
+.stat-row span:last-child {
+    color: var(--text);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* XP bar */
+.xp-bar {
+    height: 8px;
+    background: var(--surface-raised);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--space-xs);
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.xp-bar-fill.over {
+    background: var(--error);
+}
+
+.xp-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: var(--space-sm);
+}
+
+.xp-label span {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.xp-breakdown {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.xp-breakdown .xp-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1px 0;
+}
+
+/* Step checklist */
+.step-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.step-checklist li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 3px 0;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.step-checklist li:hover {
+    color: var(--text);
+}
+
+.step-checklist li.done {
+    color: var(--success);
+}
+
+.step-checklist li.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.step-check {
+    width: 14px;
+    text-align: center;
+}
+
+/* Sidebar actions */
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+}
+
+/* =========================================================================
+   Accordion Wizard
+   ========================================================================= */
+
+.builder-content {
+    min-width: 0;
+}
+
+.accordion {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--border);
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.accordion-header:hover {
+    background: var(--surface-raised);
+}
+
+.accordion-header .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--accent-dim);
+    color: var(--text);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.accordion-item.done .step-number {
+    background: var(--success);
+    color: var(--bg);
+}
+
+.accordion-item.open .step-number {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.step-summary {
+    margin-left: auto;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.accordion-body {
+    display: none;
+    padding: var(--space-lg);
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+}
+
+.accordion-item.open > .accordion-body {
+    display: block;
+}
+
+/* Step description */
+.step-desc {
+    background: var(--surface);
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-lg);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================================================================
+   Form Elements
+   ========================================================================= */
+
+.form-group {
+    margin-bottom: var(--space-md);
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.required {
+    color: var(--error);
+}
+
+/* Filter bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
+
+.filter-bar label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0;
+}
+
+.filter-bar select,
+.filter-bar input[type="text"] {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.85rem;
+    max-width: 200px;
+}
+
+/* =========================================================================
+   Selection Grid (Races, Exaltations, Classes, Feats, etc.)
+   ========================================================================= */
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.sel-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    cursor: pointer;
+    transition:
+        border-color 0.15s,
+        background 0.15s,
+        transform 0.1s;
+}
+
+.sel-card:hover {
+    border-color: var(--border-light);
+    background: var(--surface-raised);
+    transform: translateY(-1px);
+}
+
+.sel-card.selected {
+    border-color: var(--accent);
+    background: rgba(212, 168, 75, 0.08);
+}
+
+.sel-card h4 {
+    margin: 0 0 var(--space-xs);
+    font-size: 0.95rem;
+    color: var(--accent);
+}
+
+.sel-card .card-sub {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-xs);
+}
+
+.sel-card .card-preview {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Detail Panel */
+.detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.detail-panel:empty {
+    display: none;
+}
+
+.detail-panel h3 {
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+}
+
+.detail-section {
+    margin-bottom: var(--space-md);
+}
+
+.detail-section:last-child {
+    margin-bottom: 0;
+}
+
+.detail-section h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    margin-bottom: var(--space-xs);
+}
+
+.detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.detail-list li:last-child {
+    border-bottom: none;
+}
+
+.detail-actions {
+    margin-top: var(--space-md);
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* Choice selects (race bonus, equipment options) */
+.choice-select {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.choice-select:hover {
+    background: var(--accent-hover);
+}
+
+/* =========================================================================
+   Priority Selector (Characteristics & Skills)
+   ========================================================================= */
+
+.priority-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.priority-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.priority-card h4 {
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+}
+
+.priority-card p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-sm);
+}
+
+.priority-card select {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.85rem;
+}
+
+.priority-card.assigned-primary {
+    border-color: var(--accent);
+    background: rgba(212, 168, 75, 0.06);
+}
+
+.priority-card.assigned-secondary {
+    border-color: var(--text-dim);
+}
+
+/* Allocation grid (char/skill dots) */
+.allocation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.alloc-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.alloc-group h4 {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border);
+}
+
+.alloc-budget {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-md);
+}
+
+.alloc-budget strong {
+    color: var(--accent);
+}
+
+.alloc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.alloc-row:last-child {
+    border-bottom: none;
+}
+
+.alloc-label {
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.alloc-label .bonus-tag {
+    font-size: 0.7rem;
+    color: var(--success);
+    margin-left: var(--space-xs);
+}
+
+.alloc-label.advanced::after {
+    content: "★";
+    color: var(--accent);
+    margin-left: 4px;
+    font-size: 0.7rem;
+}
+
+/* Dot controls */
+.dot-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.dot-ctrl .d-btn {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0;
+    transition:
+        border-color 0.1s,
+        color 0.1s;
+}
+
+.dot-ctrl .d-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.dot-ctrl .d-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+.dot-display {
+    display: flex;
+    gap: 2px;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    background: transparent;
+}
+
+.dot.filled {
+    background: var(--accent);
+}
+
+.dot.filled.xp-dot {
+    background: var(--warning, #e6a817);
+    border-color: var(--warning, #e6a817);
+}
+
+.dot.racial {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+/* =========================================================================
+   Backgrounds Grid
+   ========================================================================= */
+
+.budget-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+    font-size: 0.9rem;
+}
+
+.backgrounds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-md);
+}
+
+.bg-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.bg-card h4 {
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+    font-size: 0.95rem;
+}
+
+.bg-card .bg-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+}
+
+.bg-card .dot-ctrl {
+    justify-content: center;
+}
+
+.bg-card .bg-effect {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+    min-height: 1.5em;
+}
+
+.bg-card .cost-warning {
+    font-size: 0.75rem;
+    color: var(--warning);
+    text-align: center;
+    margin-top: var(--space-xs);
+}
+
+/* =========================================================================
+   Purchased Classes / Selected Feats (tag lists)
+   ========================================================================= */
+
+.purchased-classes,
+.selected-feats,
+.selected-ah {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.purchased-classes:empty,
+.selected-feats:empty,
+.selected-ah:empty {
+    display: none;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    background: rgba(212, 168, 75, 0.12);
+    border: 1px solid var(--accent-dim);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+.tag-pill .remove-tag {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-left: 2px;
+}
+
+.tag-pill .remove-tag:hover {
+    color: var(--error);
+}
+
+.tag-pill.hindrance {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.tag-pill.asset {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+/* Section divider within a step */
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: var(--space-lg) 0 var(--space-md);
+}
+
+.subsection-heading {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    color: var(--accent);
+}
+
+/* =========================================================================
+   Sin chart (Alignment detail)
+   ========================================================================= */
+
+.sin-chart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.sin-row {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: baseline;
+    font-size: 0.9rem;
+}
+
+.sin-devotion {
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 24px;
+}
+
+.devotion-control {
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* =========================================================================
+   Review Panel (Step 11)
+   ========================================================================= */
+
+#review-panel,
+.review-panel {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.review-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+.review-section h3 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border);
+}
+
+.review-derived {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-sm);
+}
+
+.review-stat {
+    text-align: center;
+    padding: var(--space-sm);
+    background: var(--surface-raised);
+    border-radius: var(--radius-sm);
+}
+
+.review-stat .label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.review-stat .value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.review-chars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.review-chars .group-col h4 {
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+    font-size: 0.85rem;
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.review-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.review-list li:last-child {
+    border-bottom: none;
+}
+
+.review-warning {
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid var(--error);
+    border-radius: var(--radius-sm);
+    color: var(--error);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.review-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+
+@media (max-width: 900px) {
+    .builder-layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: static;
+        max-height: none;
+    }
+    .priority-selector {
+        grid-template-columns: 1fr;
+    }
+    .allocation-grid {
+        grid-template-columns: 1fr;
+    }
+    .review-chars {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

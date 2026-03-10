@@ -1,0 +1,169 @@
+import { signal } from "@preact/signals";
+import { charSignal, gameData, updateChar, updateMeta } from "../CharacterBuilderApp";
+import { capitalize } from "../constants";
+import { DetailPanel } from "../shared/DetailPanel";
+import { SelectionCard } from "../shared/SelectionCard";
+
+const trackFilter = signal<string>("all");
+const selectedPreview = signal<any>(null);
+
+export function ClassesStep() {
+	const data = gameData.value;
+	if (!data?.classes?.classes) return <p>Loading class data…</p>;
+
+	const allClasses = data.classes.classes as any[];
+	const char = charSignal.value;
+	const preview = selectedPreview.value;
+	const purchasedIds = new Set((char.classes || []).map((c) => c.classId));
+
+	// Unique tracks
+	const tracks = [...new Set(allClasses.map((c: any) => c.track).filter(Boolean))];
+
+	// Only show Tier 1 classes
+	const tier1 = allClasses.filter((c: any) => c.level === 1);
+	const filtered = trackFilter.value === "all" ? tier1 : tier1.filter((c: any) => c.track === trackFilter.value);
+
+	const toggleClass = (cls: any) => {
+		const id = cls.id || cls.name;
+		updateChar((c) => {
+			const idx = c.classes.findIndex((e) => e.classId === id);
+			if (idx >= 0) {
+				c.classes.splice(idx, 1);
+			} else {
+				c.classes.push({ classId: id, level: 1 });
+			}
+		});
+		updateMeta((m) => {
+			m.stepsCompleted[7] = charSignal.value.classes.length > 0;
+		});
+	};
+
+	return (
+		<div class="step-classes">
+			<div class="filter-bar">
+				<label>
+					Track:{" "}
+					<select
+						value={trackFilter.value}
+						onChange={(e) => {
+							trackFilter.value = (e.target as HTMLSelectElement).value;
+						}}
+					>
+						<option value="all">All Tracks</option>
+						{tracks.map((t) => (
+							<option key={t} value={t}>
+								{t}
+							</option>
+						))}
+					</select>
+				</label>
+			</div>
+
+			{/* Purchased classes */}
+			{char.classes.length > 0 && (
+				<div class="tag-list">
+					{char.classes.map((entry) => {
+						const cls = allClasses.find((c: any) => (c.id || c.name) === entry.classId);
+						return (
+							<span key={entry.classId} class="tag">
+								{cls?.name || entry.classId}
+								<button
+									type="button"
+									class="tag-remove"
+									onClick={() => toggleClass(cls || { id: entry.classId })}
+									aria-label={`Remove ${cls?.name || entry.classId}`}
+								>
+									×
+								</button>
+							</span>
+						);
+					})}
+				</div>
+			)}
+
+			<div class="selection-grid">
+				{filtered.map((cls: any) => {
+					const id = cls.id || cls.name;
+					return (
+						<SelectionCard
+							key={id}
+							title={cls.name}
+							subtitle={`Tier 1 · ${cls.track || "General"}`}
+							preview={cls.completionBonus?.slice(0, 60)}
+							selected={purchasedIds.has(id)}
+							onClick={() => {
+								selectedPreview.value = cls;
+							}}
+						/>
+					);
+				})}
+			</div>
+
+			{preview && (
+				<DetailPanel>
+					<h3>{preview.name}</h3>
+					{preview.track && (
+						<p>
+							<strong>Track:</strong> {preview.track}
+						</p>
+					)}
+					{preview.prerequisites && (
+						<p>
+							<strong>Prerequisites:</strong> {preview.prerequisites}
+						</p>
+					)}
+
+					{preview.characteristics?.length > 0 && (
+						<p>
+							<strong>Characteristics:</strong>{" "}
+							{preview.characteristics.map((c: string) => capitalize(c)).join(", ")}
+						</p>
+					)}
+
+					{preview.skills?.length > 0 && (
+						<p>
+							<strong>Skills:</strong> {preview.skills.map((s: string) => capitalize(s)).join(", ")}
+						</p>
+					)}
+
+					{preview.feats?.length > 0 && (
+						<p>
+							<strong>Feats:</strong> {preview.feats.join(", ")}
+						</p>
+					)}
+
+					{(preview.swordSchools?.length > 0 ||
+						preview.magicSchools?.length > 0 ||
+						preview.gunKata?.length > 0) && (
+						<p>
+							<strong>Schools:</strong>{" "}
+							{[
+								...(preview.swordSchools || []),
+								...(preview.magicSchools || []),
+								...(preview.gunKata || []),
+							].join(", ")}
+						</p>
+					)}
+
+					{preview.completionBonus && (
+						<p>
+							<strong>Completion Bonus:</strong> {preview.completionBonus}
+						</p>
+					)}
+
+					<div class="detail-actions">
+						{purchasedIds.has(preview.id || preview.name) ? (
+							<button type="button" class="btn btn-danger" onClick={() => toggleClass(preview)}>
+								Remove
+							</button>
+						) : (
+							<button type="button" class="btn btn-primary" onClick={() => toggleClass(preview)}>
+								Add {char.classes.length === 0 ? "(free)" : "(+100 XP)"}
+							</button>
+						)}
+					</div>
+				</DetailPanel>
+			)}
+		</div>
+	);
+}
