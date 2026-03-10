@@ -95,7 +95,7 @@ Saved NPCs can be re-loaded for editing or exported to Combat Tracker.
 
 ## UI Layout
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────┐
 │  [Quick Build] [Custom Build]                                 │
 │                                                               │

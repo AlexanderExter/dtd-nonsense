@@ -28,7 +28,7 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 
 ### File Layout
 
-```
+```text
 src/pages/tools/[name].astro               ← Astro page (mounts Preact island via client:load)
 src/components/preact/tools/[name]/         ← Preact components for each tool
   [Name]App.tsx                             ← Root component (entry point)
@@ -83,6 +83,7 @@ export function ToolApp() {
 ```
 
 Key conventions:
+
 - **Module-level signals** — state lives outside the component for persistence across renders
 - **`class` not `className`** — Preact with compat supports both, but we use `class`
 - **Named exports only** — no default exports
