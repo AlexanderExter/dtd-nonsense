@@ -1,6 +1,7 @@
 import { signal } from "@preact/signals";
 import { Chart, registerables } from "chart.js";
 import { useEffect, useRef } from "preact/hooks";
+import { Button, showToast, Toast } from "@/components/preact/ui";
 import { useWorker } from "@/hooks/use-worker";
 import { ControlsRow } from "./ControlsRow";
 import type { PoolConfig, SimulationResult } from "./constants";
@@ -20,7 +21,6 @@ const pools = signal<PoolConfig[]>([{ numDice: 5, keepDice: 3, modifier: 0 }]);
 const selectedTN = signal(15);
 const activeStunt = signal(0);
 const results = signal<Map<number, SimulationResult>>(new Map());
-const toastMessage = signal("");
 
 // =========================================================================
 // Simulation cache
@@ -61,7 +61,6 @@ export function SuccessCurvesApp() {
 	const workerUrl = new URL("../../../../workers/simulation-worker.ts", import.meta.url);
 	const worker = useWorker<SimulationResult>(workerUrl);
 	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	// ---------------------------------------------------------------
 	// Simulation
@@ -225,14 +224,6 @@ export function SuccessCurvesApp() {
 		}
 	}
 
-	function showToast(message: string) {
-		toastMessage.value = message;
-		if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-		toastTimerRef.current = setTimeout(() => {
-			toastMessage.value = "";
-		}, 2500);
-	}
-
 	// ---------------------------------------------------------------
 	// Effects
 	// ---------------------------------------------------------------
@@ -245,7 +236,6 @@ export function SuccessCurvesApp() {
 		return () => {
 			worker.cleanup();
 			if (debounceRef.current) clearTimeout(debounceRef.current);
-			if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
 		};
 	}, []);
 
@@ -269,17 +259,12 @@ export function SuccessCurvesApp() {
 				onHelperApply={handleHelperApply}
 			/>
 			<div class="flex gap-sm px-md max-w-[1100px] mx-auto">
-				<button
-					type="button"
-					class="btn btn-secondary"
-					onClick={addPool}
-					disabled={pools.value.length >= MAX_POOLS}
-				>
+				<Button onClick={addPool} disabled={pools.value.length >= MAX_POOLS}>
 					+ Add Pool
-				</button>
-				<button type="button" class="btn btn-ghost" onClick={clearAll}>
+				</Button>
+				<Button variant="ghost" onClick={clearAll}>
 					Clear All
-				</button>
+				</Button>
 				<ShareButton onShare={shareURL} />
 			</div>
 			<main class="grid grid-cols-2 gap-lg max-w-[1200px] mx-auto px-md py-lg pb-xl max-[860px]:grid-cols-1 print:grid-cols-2 print:gap-md print:p-0">
@@ -288,14 +273,7 @@ export function SuccessCurvesApp() {
 				<RaiseDistChart results={results} pools={pools} />
 				<StatsTable results={results} pools={pools} selectedTN={selectedTN} />
 			</main>
-			{toastMessage.value && (
-				<output
-					class="fixed bottom-lg left-1/2 -translate-x-1/2 bg-surface-raised border border-border rounded-md px-lg py-sm text-text-primary text-[0.85rem] z-[100]"
-					aria-live="polite"
-				>
-					{toastMessage.value}
-				</output>
-			)}
+			<Toast />
 		</div>
 	);
 }

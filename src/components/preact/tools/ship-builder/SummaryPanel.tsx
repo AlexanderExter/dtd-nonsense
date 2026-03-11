@@ -1,4 +1,5 @@
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { calculateBPSpent, getBPBudget, getShipStats, signedNum } from "./constants";
 import { mode, ship, shipData, updateShip } from "./ShipBuilderApp";
 
@@ -175,9 +176,9 @@ export function SummaryPanel() {
 			</div>
 
 			<div class="mt-lg no-print">
-				<button type="button" class="btn btn-primary w-full" onClick={handleSwitchToSheet}>
+				<Button variant="primary" class="w-full" onClick={handleSwitchToSheet}>
 					Switch to Sheet →
-				</button>
+				</Button>
 			</div>
 		</aside>
 	);

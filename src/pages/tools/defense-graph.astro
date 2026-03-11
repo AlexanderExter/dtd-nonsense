@@ -4,7 +4,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Defense Graph Simulator" description="Visualize how damage mitigation evolves across the defense pipeline">
-  <DefenseGraphApp client:load />
+  <DefenseGraphApp client:only="preact" />
 
   <style>
     @media print {

@@ -1,3 +1,4 @@
+import { AddButton } from "@/components/preact/ui";
 import type { SpecialAttackEntry, SpellEntry } from "@/lib/dtd/types";
 import { charSignal, derivedStats, gameData, updateChar } from "../CharacterSheetApp";
 import {
@@ -410,9 +411,7 @@ export function PowersTab() {
 						))}
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-sm" onClick={handleAddSpell}>
-					+ Add Spell
-				</button>
+				<AddButton label="Spell" onClick={handleAddSpell} />
 			</div>
 
 			{/* ---------- Sword Schools ---------- */}
@@ -500,9 +499,7 @@ export function PowersTab() {
 						))}
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-sm" onClick={handleAddSpecial}>
-					+ Add Special Attack
-				</button>
+				<AddButton label="Special Attack" onClick={handleAddSpecial} />
 			</div>
 
 			{/* ---------- Gun Kata ---------- */}
@@ -561,9 +558,7 @@ export function PowersTab() {
 						</li>
 					))}
 				</ul>
-				<button type="button" class="btn btn-sm" onClick={handleAddTrickShot}>
-					+ Add Trick Shot
-				</button>
+				<AddButton label="Trick Shot" onClick={handleAddTrickShot} />
 			</div>
 		</section>
 	);

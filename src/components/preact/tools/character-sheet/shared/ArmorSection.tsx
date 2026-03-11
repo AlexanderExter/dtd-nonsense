@@ -1,3 +1,4 @@
+import { AddButton, SectionHeading } from "@/components/preact/ui";
 import type { ArmorEntry } from "@/lib/dtd/types";
 import { charSignal, updateChar } from "../CharacterSheetApp";
 import { ARMOR_TYPES, LOCATIONS } from "../constants";
@@ -44,7 +45,7 @@ export function ArmorSection() {
 
 	return (
 		<div>
-			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">Armor</h4>
+			<SectionHeading>Armor</SectionHeading>
 			<table class="w-full border-collapse text-[0.85rem]">
 				<thead>
 					<tr>
@@ -145,9 +146,7 @@ export function ArmorSection() {
 					))}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-sm mt-sm" onClick={handleAdd}>
-				+ Add Armor
-			</button>
+			<AddButton label="Armor" class="mt-sm" onClick={handleAdd} />
 		</div>
 	);
 }

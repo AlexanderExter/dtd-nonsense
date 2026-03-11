@@ -1,5 +1,6 @@
 import { computed, signal } from "@preact/signals";
 import { useCallback, useEffect, useRef } from "preact/hooks";
+import { Button, showToast, Toast } from "@/components/preact/ui";
 import { loadData } from "@/lib/dtd/core.ts";
 import {
 	calculateDerived,
@@ -22,7 +23,6 @@ import { StatCard } from "./StatCard";
 // =========================================================================
 
 const npcState = signal<NPCData>(createDefaultNPC());
-const toastMessage = signal("");
 const savedList = signal<string[]>([]);
 const traitsData = signal<TraitDef[]>([]);
 const templatesList = signal<TemplateDef[]>([]);
@@ -36,8 +36,6 @@ const derivedStats = computed<DerivedStats>(() => calculateDerived(npcState.valu
 // =========================================================================
 
 export function NPCGeneratorApp() {
-	const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
 	// Load data on mount
 	useEffect(() => {
 		Promise.all([loadData("traits.json"), loadData("npc-templates.json"), loadData("skills.json")])
@@ -51,22 +49,6 @@ export function NPCGeneratorApp() {
 			.catch((err) => {
 				console.error("NPC Builder init failed:", err);
 			});
-
-		return () => {
-			if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-		};
-	}, []);
-
-	// =====================================================================
-	// Toast
-	// =====================================================================
-
-	const showToast = useCallback((msg: string) => {
-		toastMessage.value = msg;
-		if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-		toastTimerRef.current = setTimeout(() => {
-			toastMessage.value = "";
-		}, 2000);
 	}, []);
 
 	// =====================================================================
@@ -103,67 +85,58 @@ export function NPCGeneratorApp() {
 		}
 
 		showToast(`Saved: ${npc.name || id}`);
-	}, [showToast]);
+	}, []);
 
-	const loadSavedNPC = useCallback(
-		(id: string) => {
-			const raw = localStorage.getItem(STORAGE_PREFIX + id);
-			if (!raw) return;
-			try {
-				const data = JSON.parse(raw) as Partial<NPCData>;
-				npcState.value = { ...createDefaultNPC(), ...data };
-				showToast(`Loaded: ${npcState.value.name || id}`);
-			} catch {
-				showToast("Failed to load NPC");
-			}
-		},
-		[showToast],
-	);
+	const loadSavedNPC = useCallback((id: string) => {
+		const raw = localStorage.getItem(STORAGE_PREFIX + id);
+		if (!raw) return;
+		try {
+			const data = JSON.parse(raw) as Partial<NPCData>;
+			npcState.value = { ...createDefaultNPC(), ...data };
+			showToast(`Loaded: ${npcState.value.name || id}`);
+		} catch {
+			showToast("Failed to load NPC");
+		}
+	}, []);
 
-	const deleteSavedNPC = useCallback(
-		(id: string) => {
-			if (!id) {
-				showToast("Select a saved NPC to delete");
-				return;
-			}
-			localStorage.removeItem(STORAGE_PREFIX + id);
-			savedList.value = savedList.value.filter((i) => i !== id);
-			saveSavedList();
-			showToast("Deleted saved NPC");
-		},
-		[showToast],
-	);
+	const deleteSavedNPC = useCallback((id: string) => {
+		if (!id) {
+			showToast("Select a saved NPC to delete");
+			return;
+		}
+		localStorage.removeItem(STORAGE_PREFIX + id);
+		savedList.value = savedList.value.filter((i) => i !== id);
+		saveSavedList();
+		showToast("Deleted saved NPC");
+	}, []);
 
 	// =====================================================================
 	// Template loading
 	// =====================================================================
 
-	const loadTemplate = useCallback(
-		(templateId: string) => {
-			const tpl = templatesList.value.find((t) => t.id === templateId);
-			if (!tpl) return;
+	const loadTemplate = useCallback((templateId: string) => {
+		const tpl = templatesList.value.find((t) => t.id === templateId);
+		if (!tpl) return;
 
-			npcState.value = {
-				name: tpl.name,
-				level: tpl.level,
-				size: tpl.size,
-				speed: tpl.speed,
-				characteristics: { ...tpl.characteristics },
-				skills: tpl.skills.map((s) => ({ ...s })),
-				feats: [...tpl.feats],
-				traits: (tpl.traits || []).map((t) => ({ ...t })),
-				armor: (tpl.armor || []).map((a) => ({
-					...a,
-					locations: [...a.locations],
-				})),
-				weapons: (tpl.weapons || []).map((w) => ({ ...w })),
-				abilities: (tpl.abilities || []).map((a) => ({ ...a })),
-				gear: Array.isArray(tpl.gear) ? tpl.gear.join(", ") : tpl.gear || "",
-			};
-			showToast(`Loaded: ${tpl.name}`);
-		},
-		[showToast],
-	);
+		npcState.value = {
+			name: tpl.name,
+			level: tpl.level,
+			size: tpl.size,
+			speed: tpl.speed,
+			characteristics: { ...tpl.characteristics },
+			skills: tpl.skills.map((s) => ({ ...s })),
+			feats: [...tpl.feats],
+			traits: (tpl.traits || []).map((t) => ({ ...t })),
+			armor: (tpl.armor || []).map((a) => ({
+				...a,
+				locations: [...a.locations],
+			})),
+			weapons: (tpl.weapons || []).map((w) => ({ ...w })),
+			abilities: (tpl.abilities || []).map((a) => ({ ...a })),
+			gear: Array.isArray(tpl.gear) ? tpl.gear.join(", ") : tpl.gear || "",
+		};
+		showToast(`Loaded: ${tpl.name}`);
+	}, []);
 
 	// =====================================================================
 	// Actions
@@ -177,7 +150,7 @@ export function NPCGeneratorApp() {
 		const current = npcState.value;
 		npcState.value = { ...current, name: `${current.name || "NPC"} (Copy)` };
 		showToast("Duplicated \u2014 edit and save as new");
-	}, [showToast]);
+	}, []);
 
 	const handleCopyMarkdown = useCallback(async () => {
 		const md = generateMarkdown(npcState.value, derivedStats.value, traitsData.value);
@@ -194,7 +167,7 @@ export function NPCGeneratorApp() {
 			ta.remove();
 			showToast("Markdown copied to clipboard");
 		}
-	}, [showToast]);
+	}, []);
 
 	const handlePrint = useCallback(() => {
 		window.print();
@@ -311,12 +284,12 @@ export function NPCGeneratorApp() {
 						})}
 					</select>
 
-					<button type="button" class="btn btn-primary btn-sm" title="Save NPC" onClick={saveNPC}>
+					<Button variant="primary" size="sm" title="Save NPC" onClick={saveNPC}>
 						Save
-					</button>
-					<button
-						type="button"
-						class="btn btn-ghost btn-sm"
+					</Button>
+					<Button
+						variant="ghost"
+						size="sm"
 						title="Delete saved NPC"
 						onClick={() => {
 							const sel = savedSelectRef.current;
@@ -324,15 +297,10 @@ export function NPCGeneratorApp() {
 						}}
 					>
 						Delete
-					</button>
-					<button
-						type="button"
-						class="btn btn-secondary btn-sm"
-						title="Clear all fields"
-						onClick={handleClear}
-					>
+					</Button>
+					<Button size="sm" title="Clear all fields" onClick={handleClear}>
 						Clear
-					</button>
+					</Button>
 				</div>
 			</header>
 
@@ -353,35 +321,21 @@ export function NPCGeneratorApp() {
 					<DerivedStatsBar stats={stats} />
 					<StatCard npc={npc} derivedStats={stats} traitsData={traitsData.value} />
 					<div class="flex gap-sm pt-sm no-print">
-						<button
-							type="button"
-							class="btn btn-primary"
-							title="Copy stat block as Markdown"
-							onClick={handleCopyMarkdown}
-						>
+						<Button variant="primary" title="Copy stat block as Markdown" onClick={handleCopyMarkdown}>
 							Copy Markdown
-						</button>
-						<button type="button" class="btn btn-secondary" title="Print stat card" onClick={handlePrint}>
+						</Button>
+						<Button title="Print stat card" onClick={handlePrint}>
 							Print Card
-						</button>
-						<button
-							type="button"
-							class="btn btn-secondary"
-							title="Duplicate as new NPC"
-							onClick={handleDuplicate}
-						>
+						</Button>
+						<Button title="Duplicate as new NPC" onClick={handleDuplicate}>
 							Duplicate
-						</button>
+						</Button>
 					</div>
 				</section>
 			</main>
 
 			{/* Toast */}
-			{toastMessage.value && (
-				<output class="fixed bottom-lg left-1/2 -translate-x-1/2 px-lg py-sm bg-surface-raised border border-accent rounded-md text-text-primary text-[0.9rem] z-[1000]">
-					{toastMessage.value}
-				</output>
-			)}
+			<Toast />
 		</>
 	);
 }

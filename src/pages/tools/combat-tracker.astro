@@ -4,5 +4,5 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Combat Tracker" description="Initiative and condition tracking for encounters">
-  <CombatTrackerApp client:load />
+  <CombatTrackerApp client:only="preact" />
 </ToolLayout>

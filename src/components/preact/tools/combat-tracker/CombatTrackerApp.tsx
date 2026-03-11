@@ -1,6 +1,7 @@
 import { signal } from "@preact/signals";
 import type { ComponentChildren } from "preact";
 import { useCallback, useEffect, useRef } from "preact/hooks";
+import { Button, showToast, Toast } from "@/components/preact/ui";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import { roll } from "@/lib/dtd/dice";
@@ -29,7 +30,6 @@ import { ReferenceSidebar } from "./ReferenceSidebar";
 // =========================================================================
 
 const encounterState = signal<EncounterState>(defaultEncounterState());
-const toastMessage = signal("");
 const conditionPickerState = signal<{
 	combatantId: string;
 	rect: DOMRect;
@@ -45,13 +45,6 @@ const importCharList = signal<Array<{ id: string; name: string }>>([]);
 // =========================================================================
 // Helpers
 // =========================================================================
-
-function showToast(msg: string) {
-	toastMessage.value = msg;
-	setTimeout(() => {
-		toastMessage.value = "";
-	}, 3000);
-}
 
 function sortByInitiative(combatants: Combatant[]): Combatant[] {
 	return [...combatants].sort((a, b) => {
@@ -595,9 +588,9 @@ export function CombatTrackerApp() {
 						{state.round}
 					</span>
 				</div>
-				<button type="button" class="btn btn-primary" onClick={handleEndRound}>
+				<Button variant="primary" onClick={handleEndRound}>
 					End Round
-				</button>
+				</Button>
 			</header>
 
 			{roundAlerts.value.length > 0 && (
@@ -642,12 +635,10 @@ export function CombatTrackerApp() {
 						)}
 					</div>
 					<div class="flex justify-center gap-md py-md max-[768px]:flex-col max-[768px]:items-stretch">
-						<button type="button" class="btn btn-secondary" onClick={previousTurn}>
-							\u2190 Previous Turn
-						</button>
-						<button type="button" class="btn btn-primary" onClick={nextTurn}>
-							Next Turn \u2192
-						</button>
+						<Button onClick={previousTurn}>&#x2190; Previous Turn</Button>
+						<Button variant="primary" onClick={nextTurn}>
+							Next Turn &#x2192;
+						</Button>
 					</div>
 				</main>
 
@@ -663,15 +654,14 @@ export function CombatTrackerApp() {
 				/>
 			</div>
 
-			<button
-				type="button"
-				class="hidden max-[1099px]:flex fixed bottom-[60px] right-md z-[90] btn btn-secondary"
+			<Button
+				class="hidden max-[1099px]:flex fixed bottom-[60px] right-md z-[90]"
 				onClick={() => {
 					sidebarOpen.value = !sidebarOpen.value;
 				}}
 			>
-				\u2630 Reference
-			</button>
+				&#x2630; Reference
+			</Button>
 
 			<EncounterBar
 				encounters={encounterList.value}
@@ -704,15 +694,7 @@ export function CombatTrackerApp() {
 				/>
 			)}
 
-			<output
-				class={[
-					"fixed bottom-[70px] left-1/2 -translate-x-1/2 px-lg py-sm bg-surface-raised border border-border-light rounded-md text-text-primary text-[0.85rem] z-[250] transition-all duration-[250ms] pointer-events-none shadow-[0_4px_16px_rgba(0,0,0,0.4)]",
-					toastMessage.value ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2.5",
-				].join(" ")}
-				aria-live="polite"
-			>
-				{toastMessage.value}
-			</output>
+			<Toast />
 		</>
 	);
 }

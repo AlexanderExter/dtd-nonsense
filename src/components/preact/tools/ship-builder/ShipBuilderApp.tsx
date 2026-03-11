@@ -1,5 +1,6 @@
 import { signal } from "@preact/signals";
 import { useCallback, useEffect, useRef } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { loadData } from "@/lib/dtd/core.ts";
 import { BuilderPanel } from "./BuilderPanel";
 import {
@@ -233,12 +234,12 @@ export function ShipBuilderApp() {
 							</option>
 						))}
 					</select>
-					<button type="button" class="btn btn-primary btn-sm" onClick={handleNew} title="New ship">
+					<Button variant="primary" size="sm" onClick={handleNew} title="New ship">
 						+ New
-					</button>
-					<button type="button" class="btn btn-ghost btn-sm" onClick={handleDelete} title="Delete ship">
+					</Button>
+					<Button variant="ghost" size="sm" onClick={handleDelete} title="Delete ship">
 						Delete
-					</button>
+					</Button>
 				</div>
 				<div class="flex bg-bg border border-border rounded-md overflow-hidden">
 					<button
@@ -267,12 +268,12 @@ export function ShipBuilderApp() {
 					</button>
 				</div>
 				<div class="flex items-center gap-sm">
-					<button type="button" class="btn btn-secondary btn-sm" onClick={() => fileRef.current?.click()}>
+					<Button size="sm" onClick={() => fileRef.current?.click()}>
 						Import
-					</button>
-					<button type="button" class="btn btn-secondary btn-sm" onClick={handleExport}>
+					</Button>
+					<Button size="sm" onClick={handleExport}>
 						Export
-					</button>
+					</Button>
 					<input type="file" ref={fileRef} accept=".json" hidden onChange={handleImport} />
 				</div>
 			</div>

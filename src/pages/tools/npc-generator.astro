@@ -4,7 +4,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="NPC Stat Block Builder" description="Manual stat block builder with auto-calculated derived stats, trait system, template loading, and printable output.">
-  <NPCGeneratorApp client:load />
+  <NPCGeneratorApp client:only="preact" />
 
   <style>
     @media print {

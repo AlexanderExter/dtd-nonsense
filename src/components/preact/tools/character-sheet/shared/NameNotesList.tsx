@@ -1,3 +1,4 @@
+import { AddButton, SectionHeading } from "@/components/preact/ui";
 import type { FeatEntry } from "@/lib/dtd/types";
 import { charSignal, gameData, updateChar } from "../CharacterSheetApp";
 
@@ -66,7 +67,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 
 	return (
 		<div>
-			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">{label}</h4>
+			<SectionHeading>{label}</SectionHeading>
 			{datalistId && options.length > 0 && (
 				<datalist id={datalistId}>
 					{options.map((n) => (
@@ -120,9 +121,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					))}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-sm mt-sm" onClick={handleAdd}>
-				+ Add {label.replace(/s$/, "")}
-			</button>
+			<AddButton label={label.replace(/s$/, "")} class="mt-sm" onClick={handleAdd} />
 		</div>
 	);
 }

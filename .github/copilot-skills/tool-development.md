@@ -176,6 +176,8 @@ These have each caused real bugs. Memorize them:
 
 8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. Always verify against the actual `.tsx` source when editing a tool. The code is ground truth, not the spec doc.
 
+9. **Post-migration audit: grep for raw patterns** — After migrating components to shared UI primitives, grep the entire tool directory for the old pattern (e.g., `"btn`, `role="tablist"`, raw `<dialog>`) to catch duplicates and stragglers. Components with multiple render branches (e.g., mobile vs desktop, collapsed vs expanded) often have duplicate UI that the first pass misses.
+
 ## Adding a New Tool
 
 1. Create `src/components/preact/tools/[tool-name]/[ToolName]App.tsx` — root Preact component with named export

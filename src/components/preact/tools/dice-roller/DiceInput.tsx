@@ -1,4 +1,5 @@
 import type { Signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 
 interface DiceInputProps {
 	numDice: Signal<number>;
@@ -80,9 +81,9 @@ export function DiceInput({ numDice, keepDice, modifier, targetNumber, onRoll }:
 				/>
 			</div>
 
-			<button type="button" class="btn btn-accent p-md px-xl text-xl h-fit" onClick={onRoll}>
+			<Button variant="accent" class="p-md px-xl text-xl h-fit" onClick={onRoll}>
 				🎲 Roll!
-			</button>
+			</Button>
 		</div>
 	);
 }

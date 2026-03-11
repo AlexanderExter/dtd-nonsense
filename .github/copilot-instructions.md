@@ -151,6 +151,7 @@ src/                   Astro source files
   components/
     preact/
       tools/           Preact island components (9 tools, 97 components)
+      ui/              Shared UI primitives (18 components, Ariakit + Tailwind)
   hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)

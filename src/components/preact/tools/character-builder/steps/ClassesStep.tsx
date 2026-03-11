@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 import { charSignal, gameData, updateChar, updateMeta } from "../CharacterBuilderApp";
 import { capitalize } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
@@ -157,13 +158,13 @@ export function ClassesStep() {
 
 					<div class="mt-md flex gap-sm">
 						{purchasedIds.has(preview.id || preview.name) ? (
-							<button type="button" class="btn btn-danger" onClick={() => toggleClass(preview)}>
+							<Button variant="danger" onClick={() => toggleClass(preview)}>
 								Remove
-							</button>
+							</Button>
 						) : (
-							<button type="button" class="btn btn-primary" onClick={() => toggleClass(preview)}>
+							<Button variant="primary" onClick={() => toggleClass(preview)}>
 								Add {char.classes.length === 0 ? "(free)" : "(+100 XP)"}
-							</button>
+							</Button>
 						)}
 					</div>
 				</DetailPanel>

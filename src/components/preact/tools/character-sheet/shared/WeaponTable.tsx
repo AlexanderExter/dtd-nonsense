@@ -1,3 +1,4 @@
+import { AddButton, SectionHeading } from "@/components/preact/ui";
 import type { MeleeWeapon, RangedWeapon } from "@/lib/dtd/types";
 import { charSignal, gameData, updateChar } from "../CharacterSheetApp";
 import { DAMAGE_TYPES, PROFICIENCY_MELEE, PROFICIENCY_RANGED } from "../constants";
@@ -88,9 +89,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 
 	return (
 		<div>
-			<h4 class="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">
-				{isMelee ? "Melee Weapons" : "Ranged Weapons"}
-			</h4>
+			<SectionHeading>{isMelee ? "Melee Weapons" : "Ranged Weapons"}</SectionHeading>
 			<datalist id={datalistId}>
 				{weaponOptions.map((n) => (
 					<option key={n} value={n} />
@@ -259,9 +258,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 					))}
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-sm" onClick={handleAdd}>
-				+ Add {isMelee ? "Melee" : "Ranged"} Weapon
-			</button>
+			<AddButton label={isMelee ? "Melee Weapon" : "Ranged Weapon"} onClick={handleAdd} />
 		</div>
 	);
 }

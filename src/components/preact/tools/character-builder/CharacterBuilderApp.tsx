@@ -1,5 +1,6 @@
 import { effect, signal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { useAllData } from "@/hooks/use-data";
 import { character } from "@/lib/dtd/character";
 import type { CharacterData } from "@/lib/dtd/types";
@@ -90,9 +91,9 @@ export function CharacterBuilderApp() {
 			<main class="min-w-0">
 				<div class="flex items-center justify-between mb-md">
 					<h1>Character Builder</h1>
-					<button type="button" class="btn btn-danger btn-sm" onClick={handleStartOver}>
+					<Button variant="danger" size="sm" onClick={handleStartOver}>
 						Start Over
-					</button>
+					</Button>
 				</div>
 				<StepAccordion />
 			</main>

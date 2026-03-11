@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 import { charSignal, gameData, updateChar, updateMeta } from "../CharacterBuilderApp";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -98,13 +99,13 @@ export function ExaltationStep() {
 
 					<div class="mt-md flex gap-sm">
 						{currentExalt === (preview.id || preview.name) ? (
-							<button type="button" class="btn btn-danger" onClick={removeExaltation}>
+							<Button variant="danger" onClick={removeExaltation}>
 								Remove
-							</button>
+							</Button>
 						) : (
-							<button type="button" class="btn btn-primary" onClick={() => selectExaltation(preview)}>
+							<Button variant="primary" onClick={() => selectExaltation(preview)}>
 								Select
-							</button>
+							</Button>
 						)}
 					</div>
 				</DetailPanel>

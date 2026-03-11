@@ -1,3 +1,4 @@
+import { Badge } from "@/components/preact/ui";
 import { charSignal, gameData, updateChar } from "../CharacterSheetApp";
 
 export function SkillGrid() {
@@ -39,10 +40,9 @@ export function SkillGrid() {
 								<span class="flex-1 font-medium" title={sk.advanced ? "Advanced skill" : ""}>
 									{sk.name}
 									{sk.advanced && (
-										<span class="text-[0.6rem] text-warning uppercase font-bold py-[1px] px-[3px] bg-warning-bg rounded-[2px] ml-1">
-											{" "}
+										<Badge variant="warning" size="sm" class="ml-1">
 											★
-										</span>
+										</Badge>
 									)}
 								</span>
 								<input

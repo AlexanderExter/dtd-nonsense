@@ -1,3 +1,4 @@
+import { Button } from "@/components/preact/ui";
 import { character } from "@/lib/dtd/character";
 import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
 import { derived } from "@/lib/dtd/derived";
@@ -237,15 +238,13 @@ export function ReviewStep() {
 
 			{/* Actions */}
 			<div class="flex gap-sm mt-md">
-				<button type="button" class="btn btn-primary" onClick={handleOpenInSheet}>
+				<Button variant="primary" onClick={handleOpenInSheet}>
 					Open in Sheet
-				</button>
-				<button type="button" class="btn btn-secondary" onClick={handleExport}>
-					Export JSON
-				</button>
-				<button type="button" class="btn btn-danger" onClick={handleStartOver}>
+				</Button>
+				<Button onClick={handleExport}>Export JSON</Button>
+				<Button variant="danger" onClick={handleStartOver}>
 					Start Over
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

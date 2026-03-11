@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 import { gameData, metaSignal, updateChar, updateMeta } from "../CharacterBuilderApp";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -107,9 +108,9 @@ export function EquipmentStep() {
 					</ul>
 
 					<div class="mt-md flex gap-sm">
-						<button type="button" class="btn btn-primary" onClick={() => selectPackage(preview)}>
+						<Button variant="primary" onClick={() => selectPackage(preview)}>
 							{meta.equipmentPkg === (preview.id || preview.name) ? "Selected ✓" : "Select Package"}
-						</button>
+						</Button>
 					</div>
 				</DetailPanel>
 			)}

@@ -4,13 +4,24 @@ Prioritized backlog of tech debt, deferred work, and improvement opportunities. 
 
 Resolved items are removed on each review — git history preserves the full log.
 
-**Last reviewed:** 2026-03-12
+**Last reviewed:** 2026-03-11
 
 ---
 
 ## Active Backlog
 
 Items worth doing soon, priority-ordered.
+
+### UI Primitives: Tool-Local Patterns Not Yet Abstracted
+
+**Scope:** Patterns intentionally kept as tool-local implementations during the Ariakit migration:
+
+- **× remove buttons** — All tools' inline remove/delete buttons use custom transparent styling (no `.btn` class), visually different from `CloseButton`. ~20 instances across 6 tools.
+- **AccordionSection.tsx** (Quick Reference) — Controlled accordion for expand/collapse all. Uses `isOpen`/`onToggle` props. The `AccordionItem` primitive supports controlled mode but AccordionSection has additional custom styling.
+- **StepAccordion.tsx** (Character Builder) — Step wizard with numbered indicators, completion badges, active step highlighting. Domain-specific enough to stay local.
+- **Domain badges** — Dice outcome colors, ship console types, wound status, NPC threat levels. Use non-standard color tokens or inline style maps. ~12 instances.
+- **Mode toggles / filter groups** — Ship Builder hull filters, mode selector; Success Curves stunt checkboxes. Complex conditional active states with domain logic.
+**Next action:** No immediate action needed. If a pattern appears in 3+ tools, consider abstracting into a primitive. Track during future tool work.
 
 ### Tool CSS: Z-Index Stacking Conflicts
 

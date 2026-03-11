@@ -1,4 +1,5 @@
 import type { Signal } from "@preact/signals";
+import { Button, PresetGroup } from "@/components/preact/ui";
 
 interface ControlsRowProps {
 	activeStunt: Signal<number>;
@@ -33,41 +34,20 @@ export function ControlsRow({ activeStunt, onPresetClick, onStuntClick, onHelper
 
 	return (
 		<div class="flex flex-wrap gap-lg items-start max-[600px]:flex-col">
-			<div class="flex flex-col gap-xs">
-				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Presets</span>
-				<div class="flex flex-wrap gap-xs">
-					{PRESETS.map(([num, keep]) => (
-						<button
-							type="button"
-							key={`${num}k${keep}`}
-							class="btn btn-ghost font-mono text-[0.8rem] px-sm py-xs"
-							onClick={() => onPresetClick(num, keep)}
-						>
-							{num}k{keep}
-						</button>
-					))}
-				</div>
-			</div>
-			<div class="flex flex-col gap-xs">
-				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Stunt</span>
-				<div class="flex flex-wrap gap-xs">
-					{STUNT_LEVELS.map((level) => (
-						<button
-							type="button"
-							key={level}
-							class={[
-								"btn btn-ghost font-mono text-[0.8rem] px-sm py-xs",
-								activeStunt.value === level && "bg-accent text-bg",
-							]
-								.filter(Boolean)
-								.join(" ")}
-							onClick={() => onStuntClick(level)}
-						>
-							+{level}
-						</button>
-					))}
-				</div>
-			</div>
+			<PresetGroup
+				label="Presets"
+				presets={PRESETS.map(([num, keep]) => ({ label: `${num}k${keep}`, value: `${num}k${keep}` }))}
+				onSelect={(v) => {
+					const [num, keep] = String(v).split("k").map(Number);
+					onPresetClick(num, keep);
+				}}
+			/>
+			<PresetGroup
+				label="Stunt"
+				presets={STUNT_LEVELS.map((level) => ({ label: `+${level}`, value: level }))}
+				activeValue={activeStunt.value}
+				onSelect={(v) => onStuntClick(Number(v))}
+			/>
 			<div class="flex flex-col gap-xs">
 				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Skill Test Helper</span>
 				<div class="flex items-center gap-sm">
@@ -94,9 +74,7 @@ export function ControlsRow({ activeStunt, onPresetClick, onStuntClick, onHelper
 							value={1}
 						/>
 					</label>
-					<button type="button" class="btn btn-secondary" onClick={handleApply}>
-						Apply
-					</button>
+					<Button onClick={handleApply}>Apply</Button>
 				</div>
 			</div>
 		</div>

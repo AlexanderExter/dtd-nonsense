@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 
 interface QuickAddRowProps {
 	onQuickAdd: (name: string, initTotal: number) => void;
@@ -40,15 +41,15 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 				onInput={(e) => setInitTotal(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 				onKeyDown={handleKeyDown}
 			/>
-			<button type="button" class="btn btn-primary btn-sm" onClick={handleAdd}>
+			<Button variant="primary" size="sm" onClick={handleAdd}>
 				Quick Add
-			</button>
-			<button type="button" class="btn btn-secondary btn-sm" onClick={onImportSheet}>
+			</Button>
+			<Button size="sm" onClick={onImportSheet}>
 				Import from Sheet
-			</button>
-			<button type="button" class="btn btn-secondary btn-sm" onClick={onRollAll}>
+			</Button>
+			<Button size="sm" onClick={onRollAll}>
 				Roll All Initiative
-			</button>
+			</Button>
 		</div>
 	);
 }

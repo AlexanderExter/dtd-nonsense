@@ -4,5 +4,5 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Success Curve Analyzer" description="Visualize XkY probability distributions via Monte Carlo simulation against Target Numbers.">
-  <SuccessCurvesApp client:load />
+  <SuccessCurvesApp client:only="preact" />
 </ToolLayout>

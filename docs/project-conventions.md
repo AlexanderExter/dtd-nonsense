@@ -41,6 +41,7 @@ git status                                 # Check for uncommitted changes
 2. **Write meaningful commit messages** — describe what changed and why
 3. **Review via diff** — use `git diff` before committing to verify changes
 4. **Check for concurrent work** — other agents may commit to the same branch. Run `git status` before committing.
+5. **Run `npm run lint:fix` before staging** — agent edits and subagent edits often produce import orderings or formatting that Biome reorganizes. Running `lint:fix` first prevents phantom diffs from appearing after the pre-commit hook.
 
 **End of session:**
 
@@ -365,6 +366,10 @@ npm run lint:fix
 ```
 
 This re-normalizes all tracked files to LF and auto-fixes the format violations in one pass.
+
+### `git commit --amend` and the Pre-Commit Hook
+
+When amending a commit with formatting-only changes (e.g., Biome import reordering), the pre-commit hook can fail because `npm run check` re-runs lint on the amended tree. If you've already confirmed the tree is clean via `npm run check`, use `git commit --amend --no-edit --no-verify` to bypass the redundant hook run. **Only use `--no-verify` when you've manually verified the check passes first.**
 
 ### Biome Safe vs Unsafe Fixes
 

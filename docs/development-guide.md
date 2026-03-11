@@ -60,12 +60,11 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 ---
 
 <ToolLayout title="Tool Name" description="...">
-  <ToolNameApp client:load />
-  <style is:global>
-    /* Tool-specific CSS overrides */
-  </style>
+  <ToolNameApp client:only="preact" />
 </ToolLayout>
 ```
+
+> **SSR note:** Use `client:only="preact"` (not `client:load`) — required for Ariakit compatibility.
 
 ### 4. Key Conventions
 
@@ -181,6 +180,40 @@ import { myFunction } from "@/lib/dtd/module.ts";
 ## Refactoring Shared Modules
 
 See [project-conventions.md](project-conventions.md#refactoring-shared-modules) for the 3-step refactoring safety checklist.
+
+---
+
+## Using UI Primitives
+
+All tools share a set of **18 UI primitive components** in `src/components/preact/ui/`. Import from the barrel:
+
+```tsx
+import { Button, Badge, Modal, Toast, showToast } from "@/components/preact/ui";
+```
+
+**Never import `@ariakit/react` directly** — use the UI layer wrappers instead.
+
+### When to Use Primitives vs Raw HTML
+
+| Need | Use | Example |
+|------|-----|---------|
+| Any styled button | `<Button>` | `<Button variant="primary" onClick={save}>Save</Button>` |
+| Add-item action | `<AddButton>` | `<AddButton label="Weapon" onClick={add} />` |
+| Section title | `<SectionHeading>` | `<SectionHeading>Equipment</SectionHeading>` |
+| Status indicator | `<Badge>` | `<Badge variant="success">Active</Badge>` |
+| Popup / modal | `<Modal>` or `<Popover>` | `<Modal open={isOpen} onClose={close} title="Import">` |
+| Tab navigation | `<Tabs>` + `<TabPanel>` | See Tabs API in [ui/README.md](../src/components/preact/ui/README.md) |
+| Toast message | `showToast()` + `<Toast />` | `showToast("Saved!")` anywhere; mount `<Toast />` once in root |
+| Dropdown select | `<Select>` | `<Select value={v} onChange={set} options={opts} />` |
+
+### Patterns to Keep Tool-Local
+
+- Inline × remove buttons (transparent style, not `.btn`)
+- Domain-specific color badges (dice outcomes, ship consoles)
+- Complex toggle/filter groups with domain logic
+- Step wizards and controlled accordions with expand/collapse all
+
+See [src/components/preact/ui/README.md](../src/components/preact/ui/README.md) for the full API reference.
 
 ---
 

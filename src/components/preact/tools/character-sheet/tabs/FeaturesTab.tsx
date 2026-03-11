@@ -1,3 +1,4 @@
+import { AddButton } from "@/components/preact/ui";
 import type { Background, ClassEntry } from "@/lib/dtd/types";
 import { charSignal, gameData, updateChar } from "../CharacterSheetApp";
 import { BG_IDS } from "../constants";
@@ -146,9 +147,7 @@ export function FeaturesTab() {
 						</div>
 					);
 				})}
-				<button type="button" class="btn btn-sm" onClick={handleAddClass}>
-					+ Add Class
-				</button>
+				<AddButton label="Class" onClick={handleAddClass} />
 			</div>
 
 			{/* ---------- Feats ---------- */}

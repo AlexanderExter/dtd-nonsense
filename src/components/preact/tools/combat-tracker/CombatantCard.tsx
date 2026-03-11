@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { Badge, Button } from "@/components/preact/ui";
 import type { Combatant, CombatantCondition } from "./constants";
 import { CONDITIONS, getWoundStatus } from "./constants";
 
@@ -96,19 +97,19 @@ export function CombatantCard({
 						{c.name}
 					</span>
 					{c.surprised && roundNumber <= 1 && (
-						<span class="inline-block px-1.5 py-0.5 bg-warning-bg text-warning rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+						<Badge variant="warning" class="ml-sm">
 							Surprised
-						</span>
+						</Badge>
 					)}
 					{hasTie && (
-						<span class="inline-block px-1.5 py-0.5 bg-info-bg text-info rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+						<Badge variant="info" class="ml-sm">
 							TIE
-						</span>
+						</Badge>
 					)}
 					{c.isNpc && (
-						<span class="inline-block px-1.5 py-0.5 bg-surface-raised text-text-dim rounded-sm text-[0.7rem] font-semibold uppercase ml-sm">
+						<Badge variant="muted" class="ml-sm">
 							NPC
-						</span>
+						</Badge>
 					)}
 				</div>
 				<span
@@ -116,14 +117,9 @@ export function CombatantCard({
 				>
 					{woundStatus}
 				</span>
-				<button
-					type="button"
-					class="btn btn-danger btn-sm"
-					title="Remove combatant"
-					onClick={() => onRemove(c.id)}
-				>
+				<Button variant="danger" size="sm" title="Remove combatant" onClick={() => onRemove(c.id)}>
 					&times;
-				</button>
+				</Button>
 			</div>
 
 			{/* Stat row */}
@@ -154,21 +150,21 @@ export function CombatantCard({
 				<div class="flex justify-between items-center mb-1">
 					<span class="text-[0.8rem] font-semibold text-text-muted">HP</span>
 					<div class="flex items-center gap-0.5">
-						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, -5)}>
+						<Button size="sm" onClick={() => onModifyHP(c.id, -5)}>
 							-5
-						</button>
-						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, -1)}>
+						</Button>
+						<Button size="sm" onClick={() => onModifyHP(c.id, -1)}>
 							-1
-						</button>
+						</Button>
 						<span class="text-[0.8rem] font-bold text-text-primary">
 							{c.hpCurrent} / {c.hpMax}
 						</span>
-						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, 1)}>
+						<Button size="sm" onClick={() => onModifyHP(c.id, 1)}>
 							+1
-						</button>
-						<button type="button" class="btn btn-sm" onClick={() => onModifyHP(c.id, 5)}>
+						</Button>
+						<Button size="sm" onClick={() => onModifyHP(c.id, 5)}>
 							+5
-						</button>
+						</Button>
 					</div>
 				</div>
 				<div class="h-2.5 bg-bg rounded-[5px] overflow-hidden border border-border">
@@ -185,15 +181,15 @@ export function CombatantCard({
 					<div class="flex justify-between items-center mb-0.5">
 						<span class="text-xs font-semibold text-text-dim">{c.resourceLabel || "Resource"}</span>
 						<div class="flex items-center gap-0.5">
-							<button type="button" class="btn btn-sm" onClick={() => onModifyResource(c.id, -1)}>
+							<Button size="sm" onClick={() => onModifyResource(c.id, -1)}>
 								-
-							</button>
+							</Button>
 							<span class="text-xs font-bold text-info">
 								{c.resourceCurrent} / {c.resourceMax}
 							</span>
-							<button type="button" class="btn btn-sm" onClick={() => onModifyResource(c.id, 1)}>
+							<Button size="sm" onClick={() => onModifyResource(c.id, 1)}>
 								+
-							</button>
+							</Button>
 						</div>
 					</div>
 				</div>
@@ -283,9 +279,9 @@ export function CombatantCard({
 
 			{/* Expandable details */}
 			<div>
-				<button type="button" class="btn btn-sm btn-ghost" onClick={() => setDetailsOpen(!detailsOpen)}>
+				<Button variant="ghost" size="sm" onClick={() => setDetailsOpen(!detailsOpen)}>
 					{detailsOpen ? "\u25BC Notes" : "\u25B6 Notes"}
-				</button>
+				</Button>
 			</div>
 			{detailsOpen && (
 				<div class="mt-sm pt-sm border-t border-border">

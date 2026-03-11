@@ -1,4 +1,5 @@
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { QUICK_SKILLS } from "./constants";
 
 interface SkillListProps {
@@ -47,20 +48,20 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 		<div class="mb-lg pb-md border-b border-border last:border-b-0">
 			<div class="flex items-center justify-between mb-sm">
 				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Skills</h2>
-				<button type="button" class="btn btn-ghost btn-sm" onClick={() => addSkill()}>
+				<Button variant="ghost" size="sm" onClick={() => addSkill()}>
 					+ Add
-				</button>
+				</Button>
 			</div>
 			<div class="flex gap-xs mb-sm flex-wrap">
-				<button type="button" class="btn btn-ghost btn-xs" onClick={() => addQuickPack("combat")}>
+				<Button variant="ghost" size="xs" onClick={() => addQuickPack("combat")}>
 					+ Combat
-				</button>
-				<button type="button" class="btn btn-ghost btn-xs" onClick={() => addQuickPack("social")}>
+				</Button>
+				<Button variant="ghost" size="xs" onClick={() => addQuickPack("social")}>
 					+ Social
-				</button>
-				<button type="button" class="btn btn-ghost btn-xs" onClick={() => addQuickPack("stealth")}>
+				</Button>
+				<Button variant="ghost" size="xs" onClick={() => addQuickPack("stealth")}>
 					+ Stealth
-				</button>
+				</Button>
 			</div>
 			<div class="flex flex-col gap-xs">
 				{skills.map((skill, i) => (

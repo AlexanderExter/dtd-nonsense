@@ -1,3 +1,4 @@
+import { Button } from "@/components/preact/ui";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import { charSignal, currentStep, gameData, metaSignal } from "./CharacterBuilderApp";
@@ -172,15 +173,13 @@ export function Sidebar() {
 
 			{/* Actions */}
 			<div class="flex flex-col gap-xs pt-md border-t border-border mt-auto">
-				<button type="button" class="btn btn-primary" onClick={handleOpenInSheet}>
+				<Button variant="primary" onClick={handleOpenInSheet}>
 					Open in Sheet
-				</button>
-				<button type="button" class="btn btn-secondary" onClick={handleExport}>
-					Export JSON
-				</button>
-				<button type="button" class="btn btn-danger" onClick={handleStartOver}>
+				</Button>
+				<Button onClick={handleExport}>Export JSON</Button>
+				<Button variant="danger" onClick={handleStartOver}>
 					Start Over
-				</button>
+				</Button>
 			</div>
 		</aside>
 	);

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "preact/hooks";
+import { Popover } from "@/components/preact/ui";
 import type { CombatantCondition } from "./constants";
 import { CONDITIONS } from "./constants";
 
@@ -17,18 +17,6 @@ export function ConditionPicker({
 	onPick,
 	onClose,
 }: ConditionPickerProps) {
-	const panelRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const handleClickOutside = (e: MouseEvent) => {
-			if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
-				onClose();
-			}
-		};
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, [onClose]);
-
 	const getConditionState = (condId: string) => {
 		const existing = existingConditions.find((c) => c.conditionId === condId);
 		if (!existing) return "available";
@@ -37,26 +25,14 @@ export function ConditionPicker({
 		return "applied";
 	};
 
-	const top = anchorRect.bottom + 4;
-	const left = anchorRect.left;
-
 	return (
-		<div
-			ref={panelRef}
-			class="bg-surface-raised border border-border rounded-md p-sm max-h-[200px] overflow-y-auto shadow-[0_4px_16px_rgba(0,0,0,0.5)]"
-			style={{
-				position: "fixed",
-				top: `${top}px`,
-				left: `${left}px`,
-				zIndex: 1000,
-			}}
+		<Popover
+			open
+			onClose={onClose}
+			anchorRect={{ x: anchorRect.left, y: anchorRect.bottom, width: anchorRect.width, height: 0 }}
+			title="Add Condition"
+			class="max-h-[200px]"
 		>
-			<div class="flex justify-between items-center mb-sm">
-				<strong>Add Condition</strong>
-				<button type="button" class="btn btn-sm" onClick={onClose}>
-					&times;
-				</button>
-			</div>
 			<div class="flex flex-col gap-1">
 				{CONDITIONS.map((def) => {
 					const state = getConditionState(def.id);
@@ -81,6 +57,6 @@ export function ConditionPicker({
 					);
 				})}
 			</div>
-		</div>
+		</Popover>
 	);
 }

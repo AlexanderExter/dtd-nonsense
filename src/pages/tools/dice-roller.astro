@@ -4,5 +4,5 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Dice Roller" description="Roll XkY dice pools with exploding d10s, overflow compression, and automatic Raise/Check calculation.">
-  <DiceRollerApp client:load />
+  <DiceRollerApp client:only="preact" />
 </ToolLayout>

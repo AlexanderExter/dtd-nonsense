@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 import { CHAR_NAMES } from "@/lib/dtd/constants";
 import type { SavedPool } from "@/lib/dtd/types";
 import { charSignal, derivedStats, gameData, updateChar } from "../CharacterSheetApp";
@@ -212,9 +213,9 @@ export function StatsTab() {
 								poolLabel.value = (e.target as HTMLInputElement).value;
 							}}
 						/>
-						<button type="button" class="btn btn-sm" onClick={handleSavePool}>
+						<Button size="sm" onClick={handleSavePool}>
 							Save Pool
-						</button>
+						</Button>
 					</div>
 				</div>
 				{(char.savedPools || []).length > 0 && (

@@ -4,5 +4,5 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Character Builder" description="Step-by-step wizard for building DTD 40k characters">
-    <CharacterBuilderApp client:load />
+    <CharacterBuilderApp client:only="preact" />
 </ToolLayout>

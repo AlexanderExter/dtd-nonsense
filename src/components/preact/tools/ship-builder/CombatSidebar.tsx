@@ -1,5 +1,6 @@
 import { signal } from "@preact/signals";
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { roll } from "@/lib/dtd/dice.ts";
 import { type CritLogEntry, getShipStats, lookupCritical, signedNum } from "./constants";
 import { mode, ship, shipData, updateShip } from "./ShipBuilderApp";
@@ -277,9 +278,9 @@ export function CombatSidebar() {
 				<div class="flex items-center gap-sm mt-xs text-[0.8rem]">
 					<span class="text-text-muted">Regen/turn:</span>
 					<span>{shieldRegen}</span>
-					<button type="button" class="btn btn-ghost btn-sm" onClick={regenShields}>
+					<Button variant="ghost" size="sm" onClick={regenShields}>
 						Regenerate
-					</button>
+					</Button>
 				</div>
 				<div class="flex items-center gap-sm mt-xs text-[0.8rem]">
 					<span class="text-text-muted">Disruption:</span>
@@ -290,9 +291,9 @@ export function CombatSidebar() {
 						min={0}
 						onInput={handleDisruptionChange}
 					/>
-					<button type="button" class="btn btn-ghost btn-sm" onClick={resetDisruption}>
+					<Button variant="ghost" size="sm" onClick={resetDisruption}>
 						Reset
-					</button>
+					</Button>
 				</div>
 			</div>
 
@@ -392,9 +393,9 @@ export function CombatSidebar() {
 						Sensors({signedNum(stats.sensors)}) + Acc(
 						{signedNum(stats.acc)}) + 1d10
 					</span>
-					<button type="button" class="btn btn-primary btn-sm" onClick={rollInitiative}>
+					<Button variant="primary" size="sm" onClick={rollInitiative}>
 						Roll Initiative
-					</button>
+					</Button>
 				</div>
 				{initResult.value && (
 					<div class="text-center text-2xl font-bold p-sm">
@@ -422,9 +423,9 @@ export function CombatSidebar() {
 			<div class="mb-md pb-md border-b border-border">
 				<div class="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
 					<span>Department Actions</span>
-					<button type="button" class="btn btn-ghost btn-sm" onClick={resetDepartments}>
+					<Button variant="ghost" size="sm" onClick={resetDepartments}>
 						Reset
-					</button>
+					</Button>
 				</div>
 				<div class="flex flex-col gap-xs">
 					{(["maneuver", "tactical", "engineering", "command", "arcana"] as const).map((dept) => (
@@ -446,13 +447,13 @@ export function CombatSidebar() {
 					<span>Turn</span>
 				</div>
 				<div class="flex items-center justify-center gap-md">
-					<button type="button" class="btn btn-ghost btn-sm" onClick={prevTurn}>
+					<Button variant="ghost" size="sm" onClick={prevTurn}>
 						←
-					</button>
+					</Button>
 					<span class="text-2xl font-bold text-accent min-w-10 text-center">{combat.turn || 1}</span>
-					<button type="button" class="btn btn-primary btn-sm" onClick={nextTurn}>
+					<Button variant="primary" size="sm" onClick={nextTurn}>
 						Next Turn →
-					</button>
+					</Button>
 				</div>
 			</div>
 
@@ -476,9 +477,9 @@ export function CombatSidebar() {
 							}}
 						/>
 					</div>
-					<button type="button" class="btn btn-secondary btn-sm" onClick={rollCritical}>
+					<Button variant="secondary" size="sm" onClick={rollCritical}>
 						Roll Critical
-					</button>
+					</Button>
 				</div>
 				<div class="max-h-[200px] overflow-y-auto">
 					{combat.critLog.length === 0 ? (
@@ -502,9 +503,9 @@ export function CombatSidebar() {
 
 			{/* Back to Builder */}
 			<div class="mb-md pb-md last:border-b-0">
-				<button type="button" class="btn btn-secondary w-full" onClick={switchToBuilder}>
+				<Button variant="secondary" class="w-full" onClick={switchToBuilder}>
 					← Back to Builder
-				</button>
+				</Button>
 			</div>
 		</aside>
 	);

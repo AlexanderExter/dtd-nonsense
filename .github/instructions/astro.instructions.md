@@ -5,14 +5,14 @@ applyTo: "**/*.astro, **/*.ts, **/*.js"
 
 # Astro Development Standards — DTD Nonsense
 
-This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **Preact Islands** (`@astrojs/preact` with compat mode) hydrated via `client:load`.
+This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **Preact Islands** (`@astrojs/preact` with compat mode) hydrated via `client:only="preact"` (required for Ariakit SSR compatibility).
 
 ## Architecture
 
 - **Static output only** — no SSR, no API routes, no middleware
 - **Starlight** handles all rules/content pages via Content Collections
 - **Tool pages** (`src/pages/tools/*.astro`) use `ToolLayout.astro` — standalone HTML pages outside Starlight
-- **Preact Islands** — all tools use `client:load` directives for interactive components
+- **Preact Islands** — all tools use `client:only="preact"` directives for interactive components (not `client:load` — Ariakit requires client-only rendering)
 - **Tailwind CSS v4** — `@theme` tokens in `src/styles/tailwind.css` as design token source of truth
 - **No View Transitions / ClientRouter** — standard page navigation
 
@@ -25,6 +25,7 @@ src/
   components/
     preact/
       tools/         ← Preact island components for all 9 tools (97 components)
+      ui/            ← Shared UI primitives (18 components) — Ariakit + Tailwind wrappers
       shared/        ← Shared Preact components across tools
   hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker)
   lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
@@ -37,10 +38,11 @@ src/
 
 ### Tool Pages
 
-- Each tool’s `.astro` page mounts a root Preact component via `client:load`
+- Each tool's `.astro` page mounts a root Preact component via `client:only="preact"`
 - Preact components live in `src/components/preact/tools/{tool-name}/`
 - Root component is `*App.tsx` (e.g., `DiceRollerApp.tsx`)
 - Import shared logic from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
+- Import UI primitives from `@/components/preact/ui` (Button, Modal, Toast, etc.) — never import `@ariakit/react` directly
 - Load JSON data via `useData()` / `useAllData()` hooks from `@/hooks/use-data`
 - State management: `@preact/signals` with module-level signals pattern
 - Use **named exports only** — no default exports

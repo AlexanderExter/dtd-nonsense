@@ -4,7 +4,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Ship Builder" description="Design and equip spelljammer ships">
-  <ShipBuilderApp client:load />
+  <ShipBuilderApp client:only="preact" />
 
   <style is:global>
     @media print {

@@ -1,4 +1,5 @@
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 
 interface AbilityEntry {
 	name: string;
@@ -34,9 +35,9 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 		<div class="mb-lg pb-md border-b border-border last:border-b-0">
 			<div class="flex items-center justify-between mb-sm">
 				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Abilities</h2>
-				<button type="button" class="btn btn-ghost btn-sm" onClick={addAbility}>
+				<Button variant="ghost" size="sm" onClick={addAbility}>
 					+ Add
-				</button>
+				</Button>
 			</div>
 			<div class="flex flex-col gap-xs">
 				{abilities.map((a, i) => (

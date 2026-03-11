@@ -1,5 +1,6 @@
 import { computed, signal } from "@preact/signals";
 import { useEffect, useRef } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { AccordionSection } from "./AccordionSection";
 import { ActionsSection } from "./ActionsSection";
 import { CombatModifiersSection } from "./CombatModifiersSection";
@@ -201,12 +202,12 @@ export function QuickReferenceApp() {
 			</header>
 
 			<div class="flex gap-sm justify-end mb-sm no-print">
-				<button type="button" class="btn btn-ghost" onClick={expandAll}>
+				<Button variant="ghost" onClick={expandAll}>
 					Expand All
-				</button>
-				<button type="button" class="btn btn-ghost" onClick={collapseAll}>
+				</Button>
+				<Button variant="ghost" onClick={collapseAll}>
 					Collapse All
-				</button>
+				</Button>
 			</div>
 
 			<div class="grid grid-cols-[240px_1fr] gap-lg items-start max-[820px]:grid-cols-1">

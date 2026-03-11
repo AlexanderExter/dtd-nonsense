@@ -1,5 +1,6 @@
 import type { Signal } from "@preact/signals";
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { ATTACKER_PRESETS, type AttackerConfig } from "./constants";
 
 interface AttackerInputProps {
@@ -204,9 +205,9 @@ export function AttackerInput({ attacker, onPresetApply }: AttackerInputProps) {
 				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0">Presets:</span>
 				<div class="flex flex-wrap gap-xs">
 					{Object.keys(ATTACKER_PRESETS).map((key) => (
-						<button key={key} type="button" class="btn btn-ghost btn-sm" onClick={() => onPresetApply(key)}>
+						<Button key={key} variant="ghost" size="sm" onClick={() => onPresetApply(key)}>
 							{key.charAt(0).toUpperCase() + key.slice(1)}
-						</button>
+						</Button>
 					))}
 				</div>
 			</div>

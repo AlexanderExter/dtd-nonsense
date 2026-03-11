@@ -4,7 +4,7 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Quick Reference" description="Fast, searchable rules lookup for DTD 40k gameplay">
-  <QuickReferenceApp client:load />
+  <QuickReferenceApp client:only="preact" />
 
   <style>
     @media print {

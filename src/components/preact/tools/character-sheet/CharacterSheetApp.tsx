@@ -1,12 +1,19 @@
 import { computed, effect, signal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
+import { Tabs } from "@/components/preact/ui";
 import { useAllData } from "@/hooks/use-data";
 import { character as characterAPI } from "@/lib/dtd/character";
 import type { CharacterData } from "@/lib/dtd/types";
 import { CharacterManager } from "./CharacterManager";
-import { AUTOSAVE_DELAY, calculateAllDerived, type DerivedStats, ensureToolDefaults, type TabId } from "./constants";
+import {
+	AUTOSAVE_DELAY,
+	calculateAllDerived,
+	type DerivedStats,
+	ensureToolDefaults,
+	TAB_LABELS,
+	type TabId,
+} from "./constants";
 import { SheetHeader } from "./SheetHeader";
-import { TabNav } from "./TabNav";
 import { CombatTab } from "./tabs/CombatTab";
 import { FeaturesTab } from "./tabs/FeaturesTab";
 import { IdentityTab } from "./tabs/IdentityTab";
@@ -175,14 +182,19 @@ export function CharacterSheetApp() {
 		<div class="block p-md max-w-[1200px] mx-auto">
 			<CharacterManager />
 			<SheetHeader />
-			<TabNav />
-			<div>
+			<Tabs
+				tabs={TAB_LABELS}
+				activeId={tab}
+				onTabChange={(id) => {
+					activeTab.value = id as TabId;
+				}}
+			>
 				{tab === "identity" && <IdentityTab />}
 				{tab === "stats" && <StatsTab />}
 				{tab === "combat" && <CombatTab />}
 				{tab === "powers" && <PowersTab />}
 				{tab === "features" && <FeaturesTab />}
-			</div>
+			</Tabs>
 			<div
 				class={[
 					"save-status fixed bottom-md right-md px-md py-xs rounded-sm text-xs font-semibold uppercase tracking-[0.5px] z-[200] transition-all duration-300",

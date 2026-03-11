@@ -1,6 +1,7 @@
 import { effect, signal } from "@preact/signals";
 import { Chart, registerables } from "chart.js";
 import { useCallback, useEffect, useRef } from "preact/hooks";
+import { showToast, Toast } from "@/components/preact/ui";
 import { useWorker } from "@/hooks/use-worker";
 import { derived } from "@/lib/dtd/derived";
 import { ArmorTradeoffChart } from "./ArmorTradeoffChart";
@@ -50,7 +51,6 @@ const locationAP = signal<Record<string, number>>(
 
 const sdOverride = signal<number | null>(null);
 const simResult = signal<SimulationResult | null>(null);
-const toastMessage = signal("");
 
 // =========================================================================
 // Root component
@@ -60,7 +60,6 @@ export function DefenseGraphApp() {
 	const workerUrl = new URL("../../../../workers/defense-worker.ts", import.meta.url);
 	const worker = useWorker<SimulationResult>(workerUrl);
 	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	// Build full DefenderConfig from signals + derived stats
 	function buildDefenderConfig(): DefenderConfig {
@@ -95,14 +94,6 @@ export function DefenseGraphApp() {
 	function scheduleSimulation() {
 		if (debounceRef.current) clearTimeout(debounceRef.current);
 		debounceRef.current = setTimeout(() => runSimulation(), DEBOUNCE_MS);
-	}
-
-	function showToast(message: string) {
-		toastMessage.value = message;
-		if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-		toastTimerRef.current = setTimeout(() => {
-			toastMessage.value = "";
-		}, 2500);
 	}
 
 	// Preset handlers
@@ -154,7 +145,6 @@ export function DefenseGraphApp() {
 			dispose();
 			worker.cleanup();
 			if (debounceRef.current) clearTimeout(debounceRef.current);
-			if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
 		};
 	}, []);
 
@@ -217,14 +207,7 @@ export function DefenseGraphApp() {
 				</div>
 			</main>
 
-			{toastMessage.value && (
-				<output
-					class="fixed bottom-lg left-1/2 -translate-x-1/2 bg-surface-raised border border-border rounded-md px-lg py-sm text-text-primary text-[0.85rem] z-[100]"
-					aria-live="polite"
-				>
-					{toastMessage.value}
-				</output>
-			)}
+			<Toast />
 		</>
 	);
 }

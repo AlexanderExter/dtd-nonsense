@@ -1,4 +1,5 @@
 import type { Signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 
 export interface HistoryEntry {
 	notation: string;
@@ -35,9 +36,9 @@ export function RollHistory({ history, onReplay, onClear }: RollHistoryProps) {
 			<div class="flex justify-between items-center mb-md">
 				<h3 class="m-0">Roll History</h3>
 				{entries.length > 0 && (
-					<button type="button" class="btn btn-sm btn-secondary" onClick={onClear}>
+					<Button size="sm" onClick={onClear}>
 						Clear
-					</button>
+					</Button>
 				)}
 			</div>
 			<div class="flex-1 overflow-y-auto flex flex-col gap-sm">

@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 
 interface EncounterBarProps {
 	encounters: Array<{ id: string; name: string }>;
@@ -28,9 +29,9 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 
 	return (
 		<div class="sticky bottom-0 z-[90] flex items-center gap-sm px-lg py-sm bg-surface border-t border-border max-[768px]:flex-wrap max-[768px]:justify-center max-[768px]:p-sm">
-			<button type="button" class="btn btn-primary btn-sm" onClick={onSave}>
+			<Button variant="primary" size="sm" onClick={onSave}>
 				Save Encounter
-			</button>
+			</Button>
 			<select
 				class="flex-none min-w-[160px] px-sm py-xs text-[0.8rem] max-[768px]:min-w-[120px]"
 				value={selectedId}
@@ -43,19 +44,15 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 					</option>
 				))}
 			</select>
-			<button type="button" class="btn btn-secondary btn-sm" onClick={handleLoad} disabled={!selectedId}>
+			<Button size="sm" onClick={handleLoad} disabled={!selectedId}>
 				Load
-			</button>
-			<button type="button" class="btn btn-secondary btn-sm" onClick={onExport}>
+			</Button>
+			<Button size="sm" onClick={onExport}>
 				Export JSON
-			</button>
-			<button
-				type="button"
-				class={`btn btn-sm ${confirmClear ? "btn-danger" : "btn-secondary"}`}
-				onClick={handleClear}
-			>
+			</Button>
+			<Button variant={confirmClear ? "danger" : "secondary"} size="sm" onClick={handleClear}>
 				{confirmClear ? "Confirm Clear?" : "Clear"}
-			</button>
+			</Button>
 		</div>
 	);
 }

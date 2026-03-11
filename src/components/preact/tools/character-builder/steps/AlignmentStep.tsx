@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Button } from "@/components/preact/ui";
 import { charSignal, gameData, updateChar, updateMeta } from "../CharacterBuilderApp";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -124,9 +125,9 @@ export function AlignmentStep() {
 					</p>
 
 					<div class="mt-md flex gap-sm">
-						<button type="button" class="btn btn-primary" onClick={() => selectAlignment(preview)}>
+						<Button variant="primary" onClick={() => selectAlignment(preview)}>
 							{char.alignment === (preview.id || preview.name) ? "Selected ✓" : "Select"}
-						</button>
+						</Button>
 					</div>
 				</DetailPanel>
 			)}

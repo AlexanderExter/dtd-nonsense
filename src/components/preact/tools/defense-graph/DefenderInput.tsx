@@ -1,5 +1,6 @@
 import type { Signal } from "@preact/signals";
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { derived } from "@/lib/dtd/derived";
 import { ARMOR_WEIGHTS, DEFENDER_PRESETS, type DefenderPreset, HIT_LOCATIONS } from "./constants";
 
@@ -284,9 +285,9 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 							</label>
 						))}
 					</div>
-					<button type="button" class="btn btn-ghost btn-sm" onClick={handleSyncAll}>
+					<Button variant="ghost" size="sm" onClick={handleSyncAll}>
 						Sync All
-					</button>
+					</Button>
 				</details>
 			</div>
 
@@ -347,9 +348,9 @@ export function DefenderInput({ defender, locationAP, sdOverride, onPresetApply 
 				<span class="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim m-0">Presets:</span>
 				<div class="flex flex-wrap gap-xs">
 					{Object.keys(DEFENDER_PRESETS).map((key) => (
-						<button key={key} type="button" class="btn btn-ghost btn-sm" onClick={() => onPresetApply(key)}>
+						<Button key={key} variant="ghost" size="sm" onClick={() => onPresetApply(key)}>
 							{key.charAt(0).toUpperCase() + key.slice(1)}
-						</button>
+						</Button>
 					))}
 				</div>
 			</div>

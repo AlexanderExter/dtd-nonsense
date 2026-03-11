@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { AccordionItem, Button } from "@/components/preact/ui";
 import type { Combatant } from "./constants";
 
 interface AddCombatantFormProps {
@@ -6,7 +7,6 @@ interface AddCombatantFormProps {
 }
 
 export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
-	const [isOpen, setIsOpen] = useState(false);
 	const [name, setName] = useState("");
 	const [dexterity, setDexterity] = useState(2);
 	const [composure, setComposure] = useState(2);
@@ -42,27 +42,9 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 	};
 
 	return (
-		<div class="mb-lg bg-surface border border-border rounded-md overflow-hidden">
-			<button
-				type="button"
-				class={[
-					"flex items-center gap-sm w-full px-lg py-md bg-transparent border-none text-text-primary text-base font-semibold cursor-pointer transition-colors duration-150 hover:bg-surface-raised",
-				]
-					.filter(Boolean)
-					.join(" ")}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				<span
-					class={["text-accent transition-transform duration-200", isOpen && "rotate-90"]
-						.filter(Boolean)
-						.join(" ")}
-				>
-					&#x25B6;
-				</span>{" "}
-				Add Combatant
-			</button>
-			{isOpen && (
-				<form class="px-lg pb-lg border-t border-border" onSubmit={handleSubmit}>
+		<div class="mb-lg">
+			<AccordionItem title="Add Combatant">
+				<form class="px-sm" onSubmit={handleSubmit}>
 					<div class="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
 						<label class="flex-1 min-w-[140px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Name</span>
@@ -197,11 +179,11 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							NPC
 						</label>
 					</div>
-					<button type="submit" class="btn btn-primary mt-md">
+					<Button variant="primary" class="mt-md" type="submit">
 						Add Combatant
-					</button>
+					</Button>
 				</form>
-			)}
+			</AccordionItem>
 		</div>
 	);
 }

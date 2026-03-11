@@ -1,4 +1,5 @@
 import { useRef } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import {
 	charIdSignal,
 	charListSignal,
@@ -47,18 +48,18 @@ export function CharacterManager() {
 					</option>
 				))}
 			</select>
-			<button type="button" class="btn btn-sm" onClick={createNewCharacter}>
+			<Button size="sm" onClick={createNewCharacter}>
 				+ New
-			</button>
-			<button type="button" class="btn btn-sm btn-danger" onClick={handleDelete} disabled={list.length <= 1}>
+			</Button>
+			<Button size="sm" variant="danger" onClick={handleDelete} disabled={list.length <= 1}>
 				Delete
-			</button>
-			<button type="button" class="btn btn-sm" onClick={handleImportClick}>
+			</Button>
+			<Button size="sm" onClick={handleImportClick}>
 				Import
-			</button>
-			<button type="button" class="btn btn-sm" onClick={exportCharacter}>
+			</Button>
+			<Button size="sm" onClick={exportCharacter}>
 				Export
-			</button>
+			</Button>
 			<input ref={fileRef} type="file" accept=".json" class="hidden" onChange={handleFileChange} />
 		</div>
 	);

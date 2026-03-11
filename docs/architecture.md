@@ -33,6 +33,7 @@ Key files:
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
 | `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
 | `src/components/preact/` | Preact island components for all 9 tools (97 components)                                                                     |
+| `src/components/preact/ui/` | Shared UI primitives (18 components) — Ariakit + Tailwind wrappers                                                          |
 | `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`)                                                                        |
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
 | `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
@@ -76,6 +77,34 @@ Assessment of `src/lib/dtd/` modules. The shared library is cleanly separated fr
 | `constants.ts` | Game constants | None | ~15 lines — characteristic groups/names |
 
 All modules import cleanly into Preact components. Workers import from `dice-primitives.ts` using relative paths (the `@/` alias doesn't resolve in worker bundles).
+
+---
+
+## Shared UI Layer
+
+All 9 tools share a set of **18 UI primitive components** in `src/components/preact/ui/`, backed by [Ariakit](https://ariakit.org/) for accessibility and Tailwind CSS tokens for styling.
+
+### Import Convention
+
+```tsx
+import { Button, Modal, Toast, showToast } from "@/components/preact/ui";
+```
+
+**Never import `@ariakit/react` directly in tool code** — always use the UI layer wrappers.
+
+### Component Tiers
+
+| Tier | Components | Ariakit? | Purpose |
+|------|-----------|----------|---------|
+| **Tier 1** — Pure styling | Button, Panel, SectionHeading, Badge, CloseButton, AddButton, NumberInput, FormGroup, PresetGroup, Toast | No | Wrap `.btn`/`.panel` CSS, standardize patterns |
+| **Tier 2** — Core | Modal, AccordionItem, Tabs/TabPanel | Yes | Dialog, disclosure, tab navigation |
+| **Tier 3** — Complex | Select, Popover, Tooltip, Combobox, Menu | Yes | Positioned overlays, search, dropdowns |
+
+### SSR Constraint
+
+Ariakit's store system (`useSyncExternalStore`) crashes during `preact-render-to-string`. All tool `.astro` pages **must** use `client:only="preact"` instead of `client:load`.
+
+See [src/components/preact/ui/README.md](../src/components/preact/ui/README.md) for the full API reference.
 
 ---
 
@@ -145,7 +174,7 @@ Run `npm run validate` to see current record counts for all 12 files.
 
 ## Code Patterns
 
-All tools use **Preact Islands** — components hydrated via `client:load` on their Astro page. Each tool lives in `src/components/preact/tools/{tool-name}/` with:
+All tools use **Preact Islands** — components hydrated via `client:only="preact"` on their Astro page (required for Ariakit SSR compatibility). Each tool lives in `src/components/preact/tools/{tool-name}/` with:
 
 - A root `*App.tsx` component (module-level signals, data loading, top-level layout)
 - Tab/section components

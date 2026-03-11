@@ -1,3 +1,4 @@
+import { Button } from "@/components/preact/ui";
 import { charSignal, derivedStats, gameData, updateChar } from "../CharacterSheetApp";
 
 export function IdentityTab() {
@@ -181,9 +182,9 @@ export function IdentityTab() {
 								</button>
 							</span>
 						))}
-						<button type="button" class="btn btn-sm" onClick={handleAddLanguage}>
+						<Button size="sm" onClick={handleAddLanguage}>
 							+ Add
-						</button>
+						</Button>
 					</div>
 				</div>
 			</div>

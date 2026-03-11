@@ -1,4 +1,5 @@
 import { useCallback } from "preact/hooks";
+import { Button } from "@/components/preact/ui";
 import { ARMOR_LOCATIONS } from "./constants";
 
 interface ArmorEntry {
@@ -52,9 +53,9 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 		<div class="mb-lg pb-md border-b border-border last:border-b-0">
 			<div class="flex items-center justify-between mb-sm">
 				<h2 class="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Armor</h2>
-				<button type="button" class="btn btn-ghost btn-sm" onClick={addArmor}>
+				<Button variant="ghost" size="sm" onClick={addArmor}>
 					+ Add
-				</button>
+				</Button>
 			</div>
 			<div class="flex flex-col gap-xs">
 				{armor.map((a, i) => (
