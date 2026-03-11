@@ -6,38 +6,25 @@ Running context for the current work session. Updated as work progresses — not
 
 ## Current Branch
 
-`preact-tailwind` (with `technical-stabilizer` sub-branch for current stabilization pass)
+`preact-tailwind`
 
 ## Session Objective
 
-Second technical stabilization pass. Cleaning up remaining documentation drift, dead code, and dependency hygiene after the Preact Islands + Tailwind CSS v4 migration.
+Quality sweep — documentation cleanup, tech stack validation, side-tracks reorganization, and targeted code quality fixes.
 
 ## What Changed This Session
 
-### Technical Stabilizer (Post-Migration Cleanup)
-
-- Ran full diagnostic audit across 6 categories (build, dead code, dependencies, organization, consistency, documentation)
-- Removed dead code: `ui.ts`, `debounce()`/`escapeHtml()` from `util.ts`, `use-debounce.ts` hook
-- Updated 7 tool spec headers from "Inline `<script>`" to "Preact Island" pattern
-- Updated `docs/shared/core-js.md` to remove deleted function documentation
-- Fixed stale references in copilot-instructions, README, roadmap, implementation plan
-
-### Changes by Layer
-
-- **Code**: Deleted `src/lib/dtd/ui.ts`, `src/hooks/use-debounce.ts`; removed `debounce`/`escapeHtml` from `util.ts` and `core.ts` barrel; removed 5 debounce tests
-- **Data**: No data changes
-- **Content**: No content changes
-- **Documentation**: Updated 7 tool specs, core-js.md, copilot-instructions, README, roadmap, implementation plan, session-handover
-- **Config**: No config changes
+- Deleted 3 obsolete planning docs (preact-implementation-plan, preact-tailwind-roadmap, tailwind-v4-migration-plan); dispersed valuable fragments into architecture.md and development-guide.md
+- Deleted dead code: unused `setCharField` in CharacterSheetApp
+- Replaced `JSON.parse(JSON.stringify(...))` with `structuredClone()` in CharacterSheetApp and CharacterBuilderApp (CQ5)
+- Reorganized side-tracks.md into prioritized actionable backlog
+- Removed `engines` field from package.json (Vercel owns Node version)
+- Absorbed dependency upgrade intel from whats-new/2026-03-09.md, cleaned up date file
+- Reset session-handover to current state
 
 ## Known Issues
 
-1. **No runtime testing**: All Preact components were built without browser validation. Visual and functional correctness is inferred from build success, not observed.
-2. **CSS fidelity**: Tailwind utility classes replicate old CSS intent, but visual parity was not browser-verified.
-
-## Areas of Concern
-
-- **Signal-based state**: Module-level signals share state if two tool instances render on the same page. Not a problem today (single-tool pages) but fragile for future dashboard views.
+See `docs/side-tracks.md` for the full prioritized backlog.
 
 ## Suggested Next
 

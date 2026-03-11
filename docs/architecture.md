@@ -32,7 +32,7 @@ Key files:
 | `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
 | `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
-| `src/components/preact/` | Preact island components for all 9 tools (~100 components total)                                                                     |
+| `src/components/preact/` | Preact island components for all 9 tools (97 components)                                                                     |
 | `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`)                                                                        |
 | `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
 | `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
@@ -59,6 +59,23 @@ Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild c
 TypeScript scripts in `scripts/` provide data validation, content linting, and sync checking. Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data. See [docs/pipeline.md](pipeline.md) for details.
 
 Session lifecycle scripts (`session-start.mjs`, `session-end.mjs`, `session-status.mjs`) automate branch creation, squash-merge, and state reporting. A pre-commit hook (`.githooks/pre-commit`) runs `npm run check` before every commit. See [project-conventions.md](project-conventions.md#git-workflow) for the full workflow.
+
+## Shared Library Structure
+
+Assessment of `src/lib/dtd/` modules. The shared library is cleanly separated from DOM concerns — only one module (since deleted) had DOM dependencies.
+
+| Module | Purpose | DOM Dependencies | Notes |
+|--------|---------|-----------------|-------|
+| `core.ts` | Barrel re-export | None | 11 lines — re-exports character, data, derived |
+| `types.ts` | Canonical interfaces | None | ~180 lines — `CharacterData`, dice types |
+| `character.ts` | Character CRUD | localStorage | ~310 lines — create, save, load, migrate |
+| `data.ts` | JSON data fetching | fetch | ~20 lines — `loadData()`, `loadAllData()` |
+| `derived.ts` | Derived stat formulas | None | ~30 lines — SD, HP, Speed, etc. |
+| `dice.ts` | Dice engine | None | ~100 lines — roll, outcome, notation parsing |
+| `dice-primitives.ts` | Core dice algorithms | None | ~65 lines — used by dice.ts and workers |
+| `constants.ts` | Game constants | None | ~15 lines — characteristic groups/names |
+
+All modules import cleanly into Preact components. Workers import from `dice-primitives.ts` using relative paths (the `@/` alias doesn't resolve in worker bundles).
 
 ---
 
@@ -420,3 +437,36 @@ Every tool with persistent data includes a print stylesheet. Common pattern:
 - All tabs/panels shown simultaneously
 - Management bar, tab navigation, save status hidden
 - Adapted for paper output with `@media print { ... }`
+
+### Non-Tailwind CSS
+
+CSS that cannot be expressed as Tailwind utilities and remains as hand-written CSS:
+
+| File | Lines | Content |
+|------|-------|---------|
+| `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (`.panel`, `.btn` family) |
+| `src/layouts/ToolLayout.astro` | 5 | `box-sizing: border-box` reset only |
+| `quick-reference.astro` | 6 | Print-only `@media print` |
+| `defense-graph.astro` | 4 | Print-only `@media print` |
+| `npc-generator.astro` | 6 | Print-only `@media print` |
+| `ship-builder.astro` | 5 | Print-only `@media print` |
+| `character-sheet.astro` | 12 | Print-only `@media print` + `tab-panel::before` content |
+
+### Token Mapping Reference
+
+`@theme` tokens in `tailwind.css` generate utility classes automatically. Reference for extending the design system:
+
+| Token | Tailwind Utility | Example |
+|-------|------------------|---------|
+| `--color-bg` | `bg-bg` | `class="bg-bg"` |
+| `--color-surface` | `bg-surface` | `class="bg-surface"` |
+| `--color-surface-raised` | `bg-surface-raised` | `class="bg-surface-raised"` |
+| `--color-border` | `border-border` | `class="border-border"` |
+| `--color-text-primary` | `text-text-primary` | `class="text-text-primary"` |
+| `--color-text-muted` | `text-text-muted` | `class="text-text-muted"` |
+| `--color-accent` | `text-accent` / `bg-accent` | `class="text-accent"` |
+| `--color-success` | `text-success` / `bg-success` | `class="text-success"` |
+| `--color-warning` | `text-warning` / `bg-warning` | `class="text-warning"` |
+| `--color-error` | `text-error` / `bg-error` | `class="text-error"` |
+| `--spacing-xs` through `--spacing-xl` | `p-xs`, `m-sm`, `gap-md`, etc. | `class="p-sm gap-md"` |
+| `--radius-sm`, `--radius-md`, `--radius-lg` | `rounded-sm`, `rounded-md`, `rounded-lg` | `class="rounded-md"` |

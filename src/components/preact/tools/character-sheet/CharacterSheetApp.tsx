@@ -1,4 +1,4 @@
-import { computed, signal } from "@preact/signals";
+import { computed, effect, signal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { useAllData } from "@/hooks/use-data";
 import { character as characterAPI } from "@/lib/dtd/character";
@@ -39,17 +39,10 @@ let _saveTimer: ReturnType<typeof setTimeout> | null = null;
 
 /** Deep-clone the character, apply `fn`, and trigger reactivity + auto-save. */
 export function updateChar(fn: (c: CharacterData) => void): void {
-	const next = JSON.parse(JSON.stringify(charSignal.value)) as CharacterData;
+	const next = structuredClone(charSignal.value);
 	fn(next);
 	charSignal.value = next;
 	scheduleAutoSave();
-}
-
-/** Convenience: set a single top-level field. */
-export function setCharField(field: string, value: any): void {
-	updateChar((c) => {
-		(c as any)[field] = value;
-	});
 }
 
 function scheduleAutoSave(): void {
@@ -143,26 +136,30 @@ export function CharacterSheetApp() {
 
 	// Sync loaded data into module-level signal
 	useEffect(() => {
-		if (data.value && !gameData.value) {
-			gameData.value = data.value as Record<string, any>;
-		}
-	}, [data.value]);
+		return effect(() => {
+			if (data.value && !gameData.value) {
+				gameData.value = data.value as Record<string, any>;
+			}
+		});
+	}, []);
 
 	// Initialize character list from localStorage on mount
 	useEffect(() => {
-		if (!gameData.value) return;
-		const list = characterAPI.list();
-		if (list.length === 0) {
-			createNewCharacter();
-		} else {
-			charListSignal.value = list;
-			// Check for ?id= param
-			const params = new URLSearchParams(window.location.search);
-			const requestedId = params.get("id");
-			const target = requestedId && list.find((c) => c.id === requestedId) ? requestedId : list[0].id;
-			loadCharacter(target);
-		}
-	}, [gameData.value]);
+		return effect(() => {
+			if (!gameData.value) return;
+			const list = characterAPI.list();
+			if (list.length === 0) {
+				createNewCharacter();
+			} else {
+				charListSignal.value = list;
+				// Check for ?id= param
+				const params = new URLSearchParams(window.location.search);
+				const requestedId = params.get("id");
+				const target = requestedId && list.find((c) => c.id === requestedId) ? requestedId : list[0].id;
+				loadCharacter(target);
+			}
+		});
+	}, []);
 
 	if (loading.value) {
 		return <div class="text-center py-xl text-text-muted">Loading game data…</div>;

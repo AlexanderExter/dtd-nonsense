@@ -24,7 +24,7 @@ src/
   layouts/           ← ToolLayout.astro (standalone HTML shell; bridges Tailwind tokens → short var(--name) aliases)
   components/
     preact/
-      tools/         ← Preact island components for all 9 tools (~100 components)
+      tools/         ← Preact island components for all 9 tools (97 components)
       shared/        ← Shared Preact components across tools
   hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker)
   lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts

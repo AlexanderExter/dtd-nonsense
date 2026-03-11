@@ -61,12 +61,7 @@ const TERM_REPLACEMENTS: TermRule[] = [
 		reason: "Canonical skill name is 'Persuasion'",
 	},
 	{
-		pattern: /\bPerformance\b/g,
-		replacement: "Performer",
-		reason: "Canonical skill name is 'Performer'",
-	},
-	{
-		pattern: /\bBallistic\b(?!s)/g,
+		pattern: /\bBallistic\b(?!s| [A-Z]| weapon)/gi,
 		replacement: "Ballistics",
 		reason: "Canonical skill name is 'Ballistics'",
 	},
@@ -553,11 +548,14 @@ function main(): void {
 	}
 
 	// ── Detail listing ────────────────────────────────────────────────
+	const severityFilter = args.includes("--severity") ? args[args.indexOf("--severity") + 1] : undefined;
+	const filtered = severityFilter ? allIssues.filter((i) => i.severity === severityFilter) : allIssues;
 	const detailLimit = 20;
-	const showing = Math.min(allIssues.length, detailLimit);
-	console.log(`\n${BOLD}Details (showing first ${showing} of ${allIssues.length}):${RESET}`);
+	const showing = Math.min(filtered.length, detailLimit);
+	const label = severityFilter ? `${severityFilter}-only details` : `Details`;
+	console.log(`\n${BOLD}${label} (showing first ${showing} of ${filtered.length}):${RESET}`);
 
-	for (const issue of allIssues.slice(0, detailLimit)) {
+	for (const issue of filtered.slice(0, detailLimit)) {
 		const rel = relativePath(issue.file);
 		const color = SEVERITY_COLORS[issue.severity];
 		console.log(

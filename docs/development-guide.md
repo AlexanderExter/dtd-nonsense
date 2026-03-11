@@ -297,6 +297,46 @@ Per-tool verification before merge:
 
 ---
 
+## Tailwind CSS Conventions
+
+Decisions established during the Tailwind v4 migration. Follow these when writing or modifying tool components.
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Attribute name | `class` (not `className`) | Preact convention, shorter, matches HTML |
+| Dynamic classes | Template literals or array `.filter(Boolean).join(" ")` | Simple, no extra dependency |
+| Custom properties | Keep for truly dynamic values only | Chart colors, runtime percentages, animation targets |
+| `@apply` usage | **Never** | Defeats utility-first; creates hidden coupling |
+| Component styles | Tailwind utilities on every element | No `<style>` blocks in Preact components |
+| Animations | Tailwind `animate-*` + custom `@keyframes` in `tailwind.css` | `slideIn`, `pulse`, tool-specific animations |
+
+### Patterns That Must Stay as Inline Styles
+
+```tsx
+// Dynamic runtime percentages
+style={{ width: `${hpPercent}%` }}
+
+// Chart.js color swatches
+style={{ background: POOL_COLORS[index] }}
+```
+
+### Conditional Class Pattern
+
+```tsx
+// Simple boolean
+<div class={`flex ${isActive ? "border-accent" : "border-transparent"}`}>
+
+// Multiple conditions
+<div class={[
+  "flex items-center p-sm rounded-sm",
+  isKept && "bg-accent text-bg",
+  isDropped && "opacity-40 line-through",
+  isExploded && "border-gold animate-pulse-once",
+].filter(Boolean).join(" ")}>
+```
+
+---
+
 ## PowerShell Warning
 
 See [project-conventions.md](project-conventions.md#powershell-encoding) for the full warning on PowerShell encoding corruption.

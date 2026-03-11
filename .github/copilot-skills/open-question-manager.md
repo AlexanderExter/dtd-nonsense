@@ -8,13 +8,13 @@
 
 ## Purpose
 
-Manage the full lifecycle of rule ambiguities: documenting, resolving, applying to source files, and archiving completed entries. Maintains `books/open-questions.md` as a clean, organized tracking document.
+Manage the full lifecycle of rule ambiguities: documenting, resolving, applying to source files, and archiving completed entries. Maintains `docs/editorial/open-questions.md` as a clean, organized tracking document.
 
 ---
 
 ## File Structure
 
-`books/open-questions.md` should follow this structure:
+`docs/editorial/open-questions.md` should follow this structure:
 
 ```markdown
 # Open Questions
@@ -102,7 +102,7 @@ Each entry should follow this template:
 ```
 1. INVESTIGATE using source hierarchy:
    Tier 1: Check books/ for book text
-   Tier 2: Check existing resolutions in books/open-questions.md
+   Tier 2: Check existing resolutions in docs/editorial/open-questions.md
    Tier 3: Search forums for developer clarification
 
 2. CHOOSE resolution:
@@ -126,7 +126,7 @@ Each entry should follow this template:
 This is the key step that updates source files.
 
 ```
-1. READ the resolution from books/open-questions.md
+1. READ the resolution from docs/editorial/open-questions.md
 
 2. LOCATE target in source file(s)
    - Find the rule text that needs clarification

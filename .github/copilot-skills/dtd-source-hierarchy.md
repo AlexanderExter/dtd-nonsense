@@ -23,7 +23,7 @@ All D:TD content follows a strict authority chain. When sources conflict, higher
 - `book-1-dungeons-the-dragoning/` — Core Rulebook (23 per-chapter files)
 - `book-2-for-a-few-subtitles-more/` — Expansion (30 per-chapter files)
 
-**Authority:** Absolute for core mechanics. Even apparent errors are preserved until confirmed via open-questions.md.
+**Authority:** Absolute for core mechanics. Even apparent errors are preserved until confirmed via docs/editorial/open-questions.md.
 
 **Usage:**
 
@@ -33,7 +33,7 @@ All D:TD content follows a strict authority chain. When sources conflict, higher
 
 ### Tier 2: Open Questions with Resolutions
 
-**Location:** `books/open-questions.md`
+**Location:** `docs/editorial/open-questions.md`
 
 **Authority:** Enriches Tier 1 by documenting:
 
@@ -77,7 +77,7 @@ When encountering unclear rules:
    ↓ Found? → Use book text as authoritative
    ↓ Unclear? → Continue
 
-2. Check books/open-questions.md for existing entry
+2. Check docs/editorial/open-questions.md for existing entry
    ↓ Has resolution? → Apply resolution
    ↓ No entry? → Continue
 
@@ -89,7 +89,7 @@ When encountering unclear rules:
 4. Document as new open question
    → Do NOT invent a ruling
    → Preserve ambiguity in text
-   → Add entry to open-questions.md
+   → Add entry to docs/editorial/open-questions.md
 ```
 
 ---

@@ -252,10 +252,10 @@ Always verify calculated stats against formulas. Common errors:
 | Tier | Source                                      | Authority                                                 |
 | ---- | ------------------------------------------- | --------------------------------------------------------- |
 | 1    | `books/` (per-chapter rulebook split)       | Absolute for core mechanics                               |
-| 2    | `books/open-questions.md` (resolutions)     | Enriches Tier 1 with clarifications                       |
+| 2    | `docs/editorial/open-questions.md` (resolutions) | Enriches Tier 1 with clarifications                       |
 | 3    | Forums (whitewizardsworkshop.proboards.com) | Last resort, requires `<!-- SOURCE: forum -->` annotation |
 
-When sources conflict: higher tier wins. When unclear: document in `books/open-questions.md`, do NOT invent rulings.
+When sources conflict: higher tier wins. When unclear: document in `docs/editorial/open-questions.md`, do NOT invent rulings.
 
 For the full resolution protocol and annotation standards, see the `dtd-source-hierarchy` skill.
 
@@ -443,7 +443,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 
 | Command                  | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint |
+| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
 | `npm run dev`            | Start Astro dev server with hot reload                          |
 | `npm run build`          | Full build: `prebuild.mjs` + `astro build`                      |
 | `npm run preview`        | Preview production build locally                                |

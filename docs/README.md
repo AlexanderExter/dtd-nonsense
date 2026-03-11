@@ -48,7 +48,7 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 
 ## Project Structure
 
-```
+```text
 docs/                          ← You are here
 ├── README.md                  Table of contents (this file)
 ├── architecture.md            System architecture and data flow
@@ -60,6 +60,9 @@ docs/                          ← You are here
 ├── session-handover.md        Latest session context and next steps
 ├── product-vision.md          Product vision and strategic direction (scaffold)
 ├── side-tracks.md             Observed tech debt and deferred items
+├── editorial/                 Editorial department workspace
+│   ├── open-questions.md      Ambiguities, contradictions, resolutions
+│   └── backlog.md             Lint-detected editorial tasks
 ├── tools/                     Per-tool specifications
 │   ├── character-sheet.md
 │   ├── character-builder.md
@@ -78,5 +81,5 @@ docs/                          ← You are here
 See also:
 
 - [books/README.md](../books/README.md) — Rulebook source material structure
-- [books/open-questions.md](../books/open-questions.md) — Tracked ambiguities
+- [editorial/](editorial/) — Editorial department (open questions, backlog)
 - [.github/copilot-instructions.md](../.github/copilot-instructions.md) — Agent instructions (lean router to skills and docs)

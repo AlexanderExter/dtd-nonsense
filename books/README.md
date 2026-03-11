@@ -6,9 +6,9 @@ This is the **Tier 1 canonical source** for all rules content.
 
 ## Directory Structure
 
-```
+```text
 books/
-├── open-questions.md                Tracked ambiguities and contradictions
+
 ├── book-1-dungeons-the-dragoning/   (23 files, ~14,500 lines)
 │   ├── 00-title.md                  Title and credits
 │   ├── 01-introduction.md           Chapter I
@@ -61,7 +61,6 @@ These files are a direct mechanical split of the original extracted monoliths �
 All editorial comments (`<!-- EDITOR: -->`, `<!-- NOTE: -->`) are preserved.
 
 Content will diverge from sources as editorial process continues. Original sourcefiles remain only as emergency backup and its utility is debatable as a middle product. In the event of irrecoverable errors in this directory, the source PDFs are the ultimate backup, but the creation of a new extraction script would be preferred. As a technical note, the first extraction attempt produced very dirty single file docs, at the very least the single-file approach should be avoided as it is taxing to LLMs and error-prone for manual review.
-
 
 ## Known Irregularities
 

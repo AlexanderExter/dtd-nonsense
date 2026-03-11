@@ -119,7 +119,7 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 | ----------------------- | -------------------------------------------------------------------- |
 | `ttrpg-rules-editor`    | Editing rules content, formatting rulebook text, processing chapters |
 | `dtd-source-hierarchy`  | Source authority questions, rule verification, ambiguity resolution  |
-| `open-question-manager` | Adding, resolving, or applying entries in open-questions.md          |
+| `open-question-manager` | Adding, resolving, or applying entries in docs/editorial/          |
 | `tool-development`      | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
 | `product-owner`         | Decisions about what to build, prioritize, or cut; strategic context |
 
@@ -129,11 +129,11 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 
 ```
 books/                 Core reference material (per-chapter split, 2 books)
-  open-questions.md    Tracked ambiguities and contradictions
 cleaned-references/    Succinct combined reading references (merged by topic)
 data/                  Canonical JSON game data (12 files, validated by Zod schemas)
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
+  editorial/           Editorial department: open questions, backlog, style concerns
   tools/               Per-tool feature specs (9 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
@@ -150,7 +150,7 @@ src/                   Astro source files
   pages/tools/         Tool pages (Astro pages outside Starlight)
   components/
     preact/
-      tools/           Preact island components (9 tools, ~100 components total)
+      tools/           Preact island components (9 tools, 97 components)
   hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
@@ -174,7 +174,7 @@ TypeScript pipeline scripts (run via npm):
 
 | Script                   | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint |
+| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
 | `npm run test`           | Unit tests only (bun:test)                                      |
 | `npm run lint`           | Biome lint/format check only                                    |
 | `npm run validate`       | Validate all 12 JSON data files against Zod schemas             |
@@ -228,6 +228,7 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Conventions and pitfalls | [docs/project-conventions.md](../docs/project-conventions.md) |
 | Editorial technique      | `ttrpg-rules-editor` skill (auto-loads for editing tasks)     |
 | Source authority         | `dtd-source-hierarchy` skill                                  |
+| Editorial concerns       | [docs/editorial/](../docs/editorial/) (open questions, backlog)|
 | Tool architecture        | [docs/architecture.md](../docs/architecture.md)               |
 | How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)     |
 | JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)           |

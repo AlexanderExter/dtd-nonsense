@@ -1,155 +1,138 @@
 # Side Tracks
 
-Tracked tech debt, deferred work, and future improvements. Grouped by theme, roughly priority-ordered within each group.
+Prioritized backlog of tech debt, deferred work, and improvement opportunities. Each item has a concrete next action.
 
-Items logged here during stabilization passes, code reviews, and work sessions. Resolved items are removed — see git history for the full log.
+Resolved items are removed on each review — git history preserves the full log.
 
----
-
-## Human Additons
-
-/TODO: Repeat the .. "supervised configuration" process done with biome and rumdl for gitingnore, gitattributes, astroconfig and any other discrete candidates. As a human operator I am not a dev so I have made errors of ignorance on their setup. Additionally, the projects stack was not assembled with intent, do conflicting architectures persist. An implication of this is that the tech stack needs to be validated, sanitized and then cautiously assumed to be working by intense LLM work, and not deliberate setup.
-/TODO: The above is a pervasive issue, only noticed after the fact, its likely tsconfig is also misconfigured.
-
-## TypeScript Migration
-
-### Phase 3: Reactivity Layer — ✅ Complete
-
-> Phase 2 (typing both tool files) is complete — see `docs/project-history.md` § Phase 11.
-
-**Decision:** Preact with `@preact/signals` via `@astrojs/preact` (compat mode).
-
-**Implementation complete:** All 9 tools migrated to Preact Islands with Tailwind CSS v4. Each tool lives in `src/components/preact/tools/{tool-name}/` with module-level signals for state management. Tailwind `@theme` tokens in `src/styles/tailwind.css` serve as the single source of truth for design tokens, bridged to short `var(--name)` aliases in `ToolLayout.astro`.
-
-| Tool              | Components |
-| ----------------- | ---------- |
-| Dice Roller       | 6          |
-| Quick Reference   | 13         |
-| Success Curves    | 9          |
-| Defense Graph     | 10         |
-| Combat Tracker    | 9          |
-| NPC Generator     | 12         |
-| Ship Builder      | 12         |
-| Character Builder | 18         |
-| Character Sheet   | 16         |
+**Last reviewed:** 2026-03-12
 
 ---
 
-## Infrastructure & Tooling
+## Active Backlog
 
-### L1b: lint:data docs/ Coverage
+Items worth doing soon, priority-ordered.
 
-`scripts/lint.ts` supports target paths, but CI currently runs `npm run lint:data` with default scope (`books/` and `cleaned-references/`). The `docs/` prose is unscanned. Adding `docs/` as a target would catch terminology drift in technical documentation.
+### Tool CSS: Z-Index Stacking Conflicts
 
-### A5: CI Skips sync-check
+**Files:** Multiple components in `src/components/preact/tools/`
+**Issue:** Modals, toasts, sticky headers, and popups use uncoordinated z-index values (90–1000). ConditionPicker uses inline `zIndex: 1000`, ImportModal uses `z-[200]`, toasts use `z-[100]`–`z-[250]`, headers use `z-[100]`. Elements can appear above or behind each other unexpectedly.
+**Next action:** Define a semantic z-index layer system in `tailwind.css` `@theme` block (e.g., `--z-sticky: 100`, `--z-modal: 300`, `--z-toast: 400`, `--z-popup: 500`). Replace all ad-hoc values.
 
-`build.yml` now runs `npm run validate:xref` (xref added 2026-03-09) and `npm run lint:data`, but not `npm run sync-check`. Sync-check could be added to CI to catch markdown↔JSON drift on every push.
+### Tool CSS: ConditionPicker Viewport Overflow
+
+**File:** `src/components/preact/tools/combat-tracker/ConditionPicker.tsx`
+**Issue:** Popup positioned with `position: fixed` using only `anchorRect.bottom + 4` and `anchorRect.left`. No viewport boundary checks — can render off-screen on small viewports or near page edges. Uses inline styles instead of Tailwind utilities.
+**Next action:** Add viewport boundary checks (flip above anchor if too close to bottom, clamp left/right to viewport). Refactor inline styles to Tailwind utilities where possible.
+
+### Session Script: Commit Message Robustness
+
+**File:** `scripts/session-end.mjs`
+**Issue:** Shell-escapes double quotes in commit messages but backticks, `$`, and other metacharacters could break the `git commit -m "..."` invocation.
+**Next action:** Switch to `--file` with a temp file instead of inline `-m`.
+
+---
+
+## Investigation
+
+Items needing research or design decisions before action.
+
+### Module-Level Signal Isolation
+
+**Issue:** All tool state lives in module-level `signal()` declarations. Two instances of the same component on one page would share state. Not a problem today (single-tool pages) but blocks any future dashboard or multi-tool view.
+**Next action:** If a dashboard becomes a priority, evaluate injecting signals via context providers or scoping via component instances. No action needed until then.
+
+### No Runtime/Browser Testing
+
+**Issue:** Build and unit tests pass, but no visual or interaction verification exists. CSS fidelity from Tailwind migration is inferred, not observed. Audit (2026-03-12) found no Preact-migration JSX issues but identified CSS/layout problems: z-index stacking conflicts, ConditionPicker viewport overflow, sticky+overflow container interactions.
+**Next action:** Manual: run `npm run dev` and test each tool in a browser, focusing on Combat Tracker (modals/popups) and tools with sticky sidebars. Automated: evaluate Playwright or similar only if manual testing reveals critical issues.
+
+### Zod v4 Upgrade Blocked by Astro
+
+**Issue:** Zod v4 passes `npm run check` but fails `npm run build` — Astro 5.x internally creates Zod v3 schema objects that crash through the v4 parse engine (`undefined._zod`).
+**Blocker:** `zod-to-json-schema` ecosystem coordination. Resolved when Astro upgrades to Zod v4 natively (likely Astro 6.0).
+**Next action:** Monitor Astro changelog. When Astro 6.0 ships, bump `zod` — project schemas require zero code changes.
+
+### Starlight 0.37 Features
+
+**Source:** Upgrade briefing 2026-03-09
+**Opportunities:**
+
+- Expressive Code syntax highlighting themes — could customize in `astro.config.mjs`
+- Improved sidebar group collapsing — review sidebar config for UX improvements
+**Next action:** Evaluate during a future polish pass. Low priority.
+
+---
+
+## Dependency Override Lifecycle
+
+Active `package.json` overrides that should be removed when upstream fixes land.
+
+| Override | Why | Remove When |
+|----------|-----|-------------|
+| `"svgo": "^4.0.1"` | Patches DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673) introduced by `astro@5.18` | `npm ls svgo` shows `4.0.1+` without "overridden" marker |
+| `"path-to-regexp": "^8.0.0"` | Fixes ReDoS in `@vercel/routing-utils` (via `@astrojs/vercel`) | `@vercel/routing-utils` ships `path-to-regexp >= 8.0.0` natively |
+
+---
+
+## Test Coverage Gaps
+
+### Hooks — 0 Tests
+
+| Hook | Functions | Complexity | Priority |
+|------|-----------|-----------|----------|
+| `use-local-storage.ts` | `useLocalStorage<T>()` | Low — needs localStorage mock + signal tracking | **High** (most isolated) |
+| `use-data.ts` | `useData<T>()`, `useAllData()` | Medium — needs fetch mock + Preact signal behavior | **Medium** |
+| `use-worker.ts` | `useWorker<T>()` | High — Worker lifecycle, message routing, pending tasks | **Low** |
+
+### Browser APIs — Untestable Without jsdom
+
+`character.exportJSON()` and `character.importJSON()` use Blob/File APIs. Can't unit test with bun:test. Would need jsdom or browser test harness.
+
+### Component Layer — 97 Components, 0 Tests
+
+Would require `@preact/testing-library` dependency. Not justified until specific component bugs emerge.
 
 ---
 
 ## Data Quality
 
-### Lint Info Messages (884)
+### Lint Baseline
 
-`npm run lint:data` produces 884 "info" level messages — mostly directional quotes vs straight quotes, en/em dash suggestions, and minor formatting preferences. These are editorial suggestions, not errors. The 19 warnings are worth reviewing individually.
+`npm run lint:data` produces **0 errors, 12 warnings, 881 info** across 101 markdown files.
 
-> **Baseline note (2026-03-09):** Counts increased from 880→884 info and 8→19 warnings when lint scope expanded to include `books/` alongside `cleaned-references/`.
-
----
-
-## Future Work
-
-### Session Script Robustness
-
-`session-end.mjs` builds its squash commit message by shell-escaping double quotes in commit messages. If any commit message contains backticks, `$`, or other shell metacharacters, the `git commit -m "..."` invocation could break. Consider using `--file` with a temp file for the commit message instead of inline `-m`. Low priority — only matters for exceptional commit messages.
+- **Info messages** (881): Editorial suggestions — dice notation formatting (619), empty table cells (262). Not errors.
+- **Warnings** (12): 3 heading hierarchy skips (source structure), 9 terminology (7 in project-conventions.md "Not This" column + 2 meta-references in docs — all intentional).
+- **Baseline date:** 2026-03-12
 
 ---
 
-## 2026-03 — Post-Migration Sanity Check
+## Tech Stack Validation
 
-- ~~**debt**: Orphaned vanilla files (`sheet-app.ts`, `builder-app.ts`, `sheet.css`, `builder.css`)~~ — **Resolved:** Deleted in post-migration cleanup (2026-03-10).
-- **inconsistency**: `tool-development.md` skill documents vanilla JS patterns (`import '@/lib/tools/sheet-app.ts'`) as current practice. *Context*: Agents following this skill will write code that doesn't match the Preact island architecture. **Resolved:** Skill rewritten (2026-03-10).
-- **inconsistency**: `README.md` claims "Vanilla TypeScript — no framework dependencies" despite Preact + Tailwind migration. *Context*: Public-facing, likely first file new contributors read. **Resolved:** Updated (2026-03-10).
-- ~~**debt**: `project-history.md` missing Phase 12 entry for Preact migration.~~ **Resolved:** Phase 12 added (2026-03-10).
-- **investigation**: Module-level Preact signals mean shared state across hypothetical multiple tool instances. *Context*: Not a problem today (single-tool pages) but would break a dashboard that renders multiple tools.
-- **investigation**: No runtime/browser testing of any Preact components. *Context*: Build passes, tests pass, but no visual verification — CSS fidelity and interaction correctness are untested.
+**Context:** The tech stack was assembled incrementally by AI agents, not deliberately designed. Some configuration may be suboptimal or cargo-culted.
 
-### Browser Testing Findings (2026-03-10)
+### Items Audited (2026-03-11)
 
-Manual testing revealed two critical issues that affect all Preact tools:
+| Config | Status | Notes |
+|--------|--------|-------|
+| `biome.json` | ✅ Clean | Supervised review completed; tailwind directives, HTML support, per-directory overrides |
+| `.gitattributes` | ✅ Clean | LF enforcement added 2026-03-09 (resolves CRLF/Biome conflict) |
+| `.gitignore` | ✅ Clean | Covers generated content, lockfile, caches, source PDFs |
+| `tsconfig.json` | ✅ Reasonable | Extends `astro/tsconfigs/strict`, `jsx: react-jsx`, `jsxImportSource: preact`, `moduleDetection: force` |
+| `astro.config.mjs` | ✅ Clean | Static output, Vercel adapter, Preact compat, Tailwind vite plugin |
+| `bunfig.toml` | ✅ Minimal | Shell + test config only |
+| `package.json` `engines` | ⚠️ Removed | Was `>=20 <22` — Vercel controls Node version, not us. Constraint removed. |
 
-1. ~~**All tools are unstyled ("naked")**: `ToolLayout.astro` does not import `tailwind.css`.~~ **Resolved:** Added `import "@/styles/tailwind.css"` to ToolLayout.astro frontmatter (2026-03-10).
+### Remaining Concerns
 
-2. ~~**Character Sheet & Builder stuck on "Loading game data"**: `useAllData()` calls pass filenames without `.json` extension.~~ **Resolved:** Added `.json` to all filename strings in `CharacterSheetApp.tsx` (8 filenames) and `CharacterBuilderApp.tsx` (9 filenames) (2026-03-10). NPCGeneratorApp and ShipBuilderApp were already correct.
-
----
-
-## Code Quality — Preact/Signals Correctness
-
-Identified during code review (2026-03-10). These are not blocking bugs for single-tool pages, but are correctness gaps worth fixing.
-
-### CQ1: `useData` / `useAllData` — Signals Recreated on Every Call — ✅ Resolved
-
-**File:** `src/hooks/use-data.ts`
-
-~~`signal()` is called inside the hook body without a stabilizing wrapper.~~ **Resolved:** Replaced `signal()` with `useSignal()` and wrapped fetch calls in `useEffect` to fire once per filename set (2026-03-10).
-
-### CQ2: `useEffect([signal.value])` — Mixed Reactivity Systems
-
-**Files:** `CharacterBuilderApp.tsx`, `CharacterSheetApp.tsx`
-
-`data.value` read in a `useEffect` dependency array works *accidentally* — Preact rerenders the component when the signal changes, causing the effect to re-run with the new snapshot. But this conflates `@preact/signals` reactivity with React-style hook deps, which is fragile and non-idiomatic. Reactive side effects that read signals should use `effect()` from `@preact/signals` directly.
-
-### CQ3: No Fetch Cancellation (`AbortController`)
-
-**File:** `src/lib/dtd/data.ts`
-
-`loadData` and `loadAllData` fire `fetch` calls with no `AbortSignal`. If a component unmounts mid-load, the request continues and (if the signal still exists) writes stale data. Should accept an optional `AbortSignal` so callers can cancel on cleanup.
-
-### CQ4: `setCharField` Uses `as any` — Type Safety Gap
-
-**File:** `src/components/preact/tools/character-sheet/CharacterSheetApp.tsx`
-
-```ts
-export function setCharField(field: string, value: any): void {
-    updateChar((c) => { (c as any)[field] = value; });
-}
-```
-
-`field` is unconstrained — any string is accepted with no compile-time check. The type-safe version:
-
-```ts
-export function setCharField<K extends keyof CharacterData>(
-    field: K, value: CharacterData[K]
-): void
-```
-
-This propagates to `StatsTab`, `WeaponTable`, `ArmorSection`.
-
-### CQ5: `JSON.parse(JSON.stringify(...))` Deep Clone
-
-**Files:** Character mutation helpers in `CharacterBuilderApp.tsx` and `CharacterSheetApp.tsx`
-
-Works for plain data but silently drops `undefined`, `Date`, `Map`/`Set`, and functions. The modern drop-in replacement is `structuredClone()` (Node ≥ 17, all modern browsers), which is semantically correct and faster. Low risk for current data shape, but worth standardizing.
+- `tsconfig.json` has `noFallthroughCasesInSwitch: true` but no `noUncheckedIndexedAccess` — could catch undefined-access bugs in data handling code. Evaluate adding it.
+- No `.nvmrc` or `.node-version` file — CI uses `actions/setup-node` with `node-version: 20`, Vercel auto-detects. If Node version drift causes issues, add a pinning file.
 
 ---
 
-## Consideration: Automated Code Quality Audit Prompt
+## Someday / Maybe
 
-The issues in section **CQ1–CQ5** above were found by manual code review. To catch this class of problem systematically, the following agent prompt can be reused at any time:
+Low-priority items or ideas that don't justify current effort.
 
-> **Code Quality Audit — Preact/Signals/TypeScript**
->
-> Review all files in `src/` for:
->
-> 1. **Signal hygiene** — are `signal()` calls inside hook/component bodies stabilized with `useSignal()`? Are orphaned signals or duplicate fetches possible?
-> 2. **Reactivity model mixing** — are `@preact/signals` values read inside `useEffect` dep arrays instead of using `effect()`? Are signal subscriptions and hook deps conflated?
-> 3. **Async cleanup** — do any `fetch` or async operations lack `AbortController` / cleanup on unmount?
-> 4. **Type safety gaps** — are there `as any`, `as unknown`, or unconstrained `string` field accessors where narrower types (`keyof T`) would be safe?
-> 5. **Deep clone correctness** — is `JSON.parse(JSON.stringify(...))` used where `structuredClone()` would be more correct?
-> 6. **Module-level singleton state** — are signals declared at module scope rather than component scope? Is that intentional and documented?
-> 7. **Barrel/import hygiene** — are any files importing through the `core.ts` barrel instead of the specific module?
->
-> For each finding: state the file, the pattern, why it matters, and a concrete fix.
-
-Save this prompt in `.github/` as a reusable audit prompt if it becomes a regular workflow step.
+- **CI lean-ness audit**: CI runs Biome lint + tests + validation + content lint + full Astro build. Consider whether the full Astro build is necessary on every push, or only on PRs to main.
+- **Component count tracking**: True count is 97 .tsx files across 9 tools (as of 2026-03-11). The side-tracks previously said 115, architecture said ~100. Now aligned.
+- **`vitest` stale reference**: The dependency upgrade briefing (2026-03-09) mentions `vitest@4.0.18` in its pinning decisions, but the project uses `bun:test`. vitest is not in `package.json`. The reference is either from an earlier project state or an error in the briefing. No action needed — just noting the discrepancy.

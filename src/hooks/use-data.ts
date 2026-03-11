@@ -8,18 +8,21 @@ export function useData<T>(filename: string) {
 	const error = useSignal<string | null>(null);
 
 	useEffect(() => {
+		const controller = new AbortController();
 		loading.value = true;
 		error.value = null;
-		loadData<T>(filename)
+		loadData<T>(filename, controller.signal)
 			.then((result) => {
 				data.value = result;
 			})
 			.catch((err: unknown) => {
+				if (err instanceof DOMException && err.name === "AbortError") return;
 				error.value = err instanceof Error ? err.message : String(err);
 			})
 			.finally(() => {
 				loading.value = false;
 			});
+		return () => controller.abort();
 	}, [filename]);
 
 	return { data, loading, error };
@@ -34,18 +37,21 @@ export function useAllData(filenames: string[]) {
 	const key = filenames.join(",");
 
 	useEffect(() => {
+		const controller = new AbortController();
 		loading.value = true;
 		error.value = null;
-		loadAllData(filenames)
+		loadAllData(filenames, controller.signal)
 			.then((result) => {
 				data.value = result;
 			})
 			.catch((err: unknown) => {
+				if (err instanceof DOMException && err.name === "AbortError") return;
 				error.value = err instanceof Error ? err.message : String(err);
 			})
 			.finally(() => {
 				loading.value = false;
 			});
+		return () => controller.abort();
 	}, [key]);
 
 	return { data, loading, error };

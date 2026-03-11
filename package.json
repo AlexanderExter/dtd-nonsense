@@ -3,9 +3,6 @@
 	"type": "module",
 	"version": "0.1.0",
 	"private": true,
-	"engines": {
-		"node": ">=20 <22"
-	},
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -20,7 +17,7 @@
 		"lint:data": "bun run scripts/lint.ts",
 		"lint:md": "rumdl check .",
 		"sync-check": "bun run scripts/sync-check.ts",
-		"check": "bun test && biome check . && bun run scripts/validate.ts --xref && bun run scripts/lint.ts",
+		"check": "bun test && biome check . && bun run scripts/validate.ts --xref && bun run scripts/lint.ts && bun run scripts/sync-check.ts",
 		"session:start": "bun run scripts/session-start.mjs",
 		"session:end": "bun run scripts/session-end.mjs",
 		"session:status": "bun run scripts/session-status.mjs",

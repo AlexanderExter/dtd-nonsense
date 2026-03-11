@@ -41,7 +41,7 @@ Gather situational awareness:
 Look for evidence of what matters:
 - `git log --oneline -50` — what's been worked on? What gets attention?
 - Which tools have received the most development? Which are neglected?
-- What's in `books/open-questions.md` — what ambiguities persist?
+- What's in `docs/editorial/open-questions.md` — what ambiguities persist?
 
 ---
 

@@ -89,7 +89,7 @@ Minimal persistence — saves pool configuration for quick reload.
 
 ## UI Layout
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │  Pools: [5k3] [3k2] [7k4] [+Add]    Samples: [10000]       │
 │                                                              │

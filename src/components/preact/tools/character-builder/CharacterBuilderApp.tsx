@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals";
+import { effect, signal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { useAllData } from "@/hooks/use-data";
 import { character } from "@/lib/dtd/character";
@@ -29,7 +29,7 @@ export const currentStep = signal(1);
 // =========================================================================
 
 export function updateChar(fn: (c: CharacterData) => void): void {
-	const next = JSON.parse(JSON.stringify(charSignal.value)) as CharacterData;
+	const next = structuredClone(charSignal.value);
 	fn(next);
 	charSignal.value = next;
 }
@@ -62,10 +62,12 @@ export function CharacterBuilderApp() {
 
 	// Sync loaded data into module-level signal
 	useEffect(() => {
-		if (data.value && !gameData.value) {
-			gameData.value = data.value as Record<string, any>;
-		}
-	}, [data.value]);
+		return effect(() => {
+			if (data.value && !gameData.value) {
+				gameData.value = data.value as Record<string, any>;
+			}
+		});
+	}, []);
 
 	if (loading.value) {
 		return <div class="text-center text-text-muted p-xl">Loading game data…</div>;

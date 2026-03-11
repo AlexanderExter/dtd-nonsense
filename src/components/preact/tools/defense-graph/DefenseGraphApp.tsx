@@ -1,4 +1,4 @@
-import { signal } from "@preact/signals";
+import { effect, signal } from "@preact/signals";
 import { Chart, registerables } from "chart.js";
 import { useCallback, useEffect, useRef } from "preact/hooks";
 import { useWorker } from "@/hooks/use-worker";
@@ -140,17 +140,23 @@ export function DefenseGraphApp() {
 	useEffect(() => {
 		ensureChartSetup();
 		runSimulation();
+
+		// Re-run simulation when inputs change
+		const dispose = effect(() => {
+			void defender.value;
+			void attacker.value;
+			void locationAP.value;
+			void sdOverride.value;
+			scheduleSimulation();
+		});
+
 		return () => {
+			dispose();
 			worker.cleanup();
 			if (debounceRef.current) clearTimeout(debounceRef.current);
 			if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
 		};
 	}, []);
-
-	// Re-run simulation when inputs change
-	useEffect(() => {
-		scheduleSimulation();
-	}, [defender.value, attacker.value, locationAP.value, sdOverride.value]);
 
 	const def = buildDefenderConfig();
 	const atk = attacker.value;
