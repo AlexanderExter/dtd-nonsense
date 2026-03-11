@@ -1,515 +1,785 @@
 {
-    "pantheons": {
-        "ruinousPowers": {
-            "name": "The Ruinous Powers",
-            "description": "The forces of Chaos—anarchic, divisive, and powerful. Encourage followers to do what they want without worry for others."
-        },
-        "blessedPantheon": {
-            "name": "The Blessed Pantheon",
-            "description": "The force of Law and Order—stabilizing, promoting civilization and community. Tied to the physical realm and opposed to Warp intrusion."
-        },
-        "grayCouncil": {
-            "name": "The Gray Council",
-            "description": "Neutral gods that don't align with Chaos or Order. Most serve only their own goals and can be found in every corner without facing opposition."
-        },
-        "unaligned": {
-            "name": "Unaligned",
-            "description": "Those who refuse to pick sides—atheists, agnostics, or those abandoned by the gods."
-        }
-    },
-    "alignments": [
-        {
-            "id": "khorne",
-            "name": "Khorne",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Battle", "Honor", "Bloodshed", "Slaughter"],
-            "description": "The god of battle and blood. Loves every type of warfare. Worship is through bloodshed from enemies in victory or your own through earnest struggle.",
-            "commandments": [
-                "Spill blood in his name. It can be your blood or the blood of your enemies, but do not shy from violence.",
-                "Do not trust in sorcery, and do not seek to learn its secrets—magic is the way of the weak.",
-                "Fight in honorable combat, not against the weak or helpless."
-            ],
-            "restriction": "Khorne hates magic. If you have Khorne as alignment, some Exalt/racial powers may be unusable. Replace magic school ranks with sword school ranks.",
-            "sins": [
-                { "devotion": 10, "sin": "Giving mercy to a fellow warrior." },
-                { "devotion": 9, "sin": "Allowing another to kill an innocent." },
-                { "devotion": 8, "sin": "Travelling with a spellcaster." },
-                { "devotion": 7, "sin": "Showing disrespect for another warrior." },
-                { "devotion": 6, "sin": "Using stealth or trickery to avoid a fight." },
-                { "devotion": 5, "sin": "Breaking your word of honor." },
-                { "devotion": 4, "sin": "Killing an innocent." },
-                { "devotion": 3, "sin": "Allowing a spell to be cast on you." },
-                { "devotion": 2, "sin": "Refusing a challenge of combat." },
-                { "devotion": 1, "sin": "Casting a Spell." }
-            ]
-        },
-        {
-            "id": "slaanesh",
-            "name": "Slaanesh",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Excess", "Perfection", "Hedonism", "Art"],
-            "description": "The god of excess—sex, drugs and rock and roll. About doing what you enjoy without holding back. The drive to be perfect.",
-            "commandments": [
-                "Turn away from no new experience, unless it would kill you—try everything once.",
-                "Stand out from those around you. To blend in is to lose who you are.",
-                "Tempt others with what you enjoy—share drink, invite them to lavish meals, turn them to hedonism."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Refusing a new, but dangerous, experience." },
-                { "devotion": 9, "sin": "Accepting a flawed experience." },
-                { "devotion": 8, "sin": "Doing something you don't enjoy." },
-                { "devotion": 7, "sin": "Doing less than your best at any task." },
-                { "devotion": 6, "sin": "Refusing to do something you enjoy." },
-                { "devotion": 5, "sin": "Denying another a new experience." },
-                { "devotion": 4, "sin": "Showing humility." },
-                { "devotion": 3, "sin": "Not attempting to fix or overcome a flaw." },
-                { "devotion": 2, "sin": "Doing less than your best at an important task." },
-                { "devotion": 1, "sin": "Refusing a new, safe, experience." }
-            ]
-        },
-        {
-            "id": "tzeentch",
-            "name": "Tzeentch",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Change", "Hope", "Schemes", "Magic"],
-            "description": "The god of change and hope. Listens to hopes and plans of every mortal, altering history through complex plots.",
-            "commandments": [
-                "Be flexible with your plans. Always be open to change as needed.",
-                "Change what you don't like in yourself. Use sorcery! All the sorcery!",
-                "Follow your own goals. Take command of your destiny."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to spend at least two hours per day planning and plotting." },
-                { "devotion": 9, "sin": "Failing to kill for the sake of knowledge." },
-                { "devotion": 8, "sin": "Putting another's needs before your plans." },
-                { "devotion": 7, "sin": "Clinging to the old and refusing to change." },
-                { "devotion": 6, "sin": "Refusing to take advantage of a situation." },
-                { "devotion": 5, "sin": "Sharing knowledge with another except as part of a broader plan." },
-                { "devotion": 4, "sin": "Improvising when there's a chance to make a plan." },
-                { "devotion": 3, "sin": "Turning down a chance for increased power." },
-                { "devotion": 2, "sin": "Failing to respect those who possess greater wisdom." },
-                { "devotion": 1, "sin": "Failing to pursue arcane knowledge." }
-            ]
-        },
-        {
-            "id": "nurgle",
-            "name": "Nurgle",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Despair", "Life", "Rot", "Disease", "Death"],
-            "description": "The god of despair who cares about you and your diseases. A god of life and death—two sides of the same coin.",
-            "commandments": [
-                "Don't bother seeking help. Fail or succeed through your own perseverance.",
-                "You can only escape suffering through faith.",
-                "Be kind to those facing death. They cannot be saved, but make them comfortable."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Refusing to comfort the sick or the dying." },
-                { "devotion": 9, "sin": "Preserving anything—food, the environment, etc." },
-                { "devotion": 8, "sin": "Doing unnecessary work." },
-                { "devotion": 7, "sin": "Making great shows of emotion, positive or negative." },
-                { "devotion": 6, "sin": "Attempting to change your own fate." },
-                { "devotion": 5, "sin": "Being unkind to those in need." },
-                { "devotion": 4, "sin": "Curing someone of a disease." },
-                { "devotion": 3, "sin": "Preserving a corpse." },
-                { "devotion": 2, "sin": "Bringing another back from the dead." },
-                { "devotion": 1, "sin": "Attempting to change the fate of the Wheel." }
-            ]
-        },
-        {
-            "id": "malal",
-            "name": "Malal",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Destruction", "Self-destruction", "Betrayal", "Hate"],
-            "description": "A renegade god—the embodiment of Chaos' indiscriminate destructive urge, even of itself. Hated by other gods.",
-            "commandments": [
-                "Hate gives you strength. Learn to truly hate those that oppose you. No mercy.",
-                "Destruction is the fate of all that exists. Destroy all that is.",
-                "Betrayal can get you what you want. If people can't defend themselves, that's their problem."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Falling in love." },
-                { "devotion": 9, "sin": "Acting in the interests of another." },
-                { "devotion": 8, "sin": "Keeping your word when it would help another." },
-                { "devotion": 7, "sin": "Asking aid of another." },
-                { "devotion": 6, "sin": "Needlessly preventing a death." },
-                { "devotion": 5, "sin": "Exhibiting compassion for others." },
-                { "devotion": 4, "sin": "Aiding another." },
-                { "devotion": 3, "sin": "Accepting the superiority of another." },
-                { "devotion": 2, "sin": "Failing to take advantage of another's weakness." },
-                { "devotion": 1, "sin": "Repenting one's behavior." }
-            ]
-        },
-        {
-            "id": "chaosUndivided",
-            "name": "Chaos Undivided",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Chaos as a whole", "Leadership", "Spirituality"],
-            "description": "Worship Chaos as a whole instead of any single god. Natural leaders among Chaos forces with a more spiritual view.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to spend at least two hours meditating on the nature of Chaos per day." },
-                { "devotion": 9, "sin": "Refusing to aid another follower of Chaos." },
-                { "devotion": 8, "sin": "Refusing to offer a non-Chaos worshipper a chance to convert." },
-                { "devotion": 7, "sin": "Failing to observe the rituals of Chaos." },
-                { "devotion": 6, "sin": "Failing to undermine the existing order in favor of Chaos." },
-                { "devotion": 5, "sin": "Not making the effort to learn more about the nature of Chaos." },
-                { "devotion": 4, "sin": "Placing one Chaos God above any other." },
-                { "devotion": 3, "sin": "Showing cowardice." },
-                { "devotion": 2, "sin": "Showing overt disrespect for the forces of Chaos." },
-                { "devotion": 1, "sin": "Accepting someone less capable than yourself as your superior." }
-            ]
-        },
-        {
-            "id": "tiamat",
-            "name": "Tiamat",
-            "pantheon": "ruinousPowers",
-            "concepts": ["Power", "Wealth", "Opposition to Bahamut"],
-            "description": "The diametric opposite to Bahamut. Formed a great alliance to overthrow him. Rumors persist of attempts to revive her.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to pursue evidence of Tiamat, even at risk of death." },
-                { "devotion": 9, "sin": "Failing to use whatever means are necessary to achieve greater power." },
-                { "devotion": 8, "sin": "Accepting defeat." },
-                { "devotion": 7, "sin": "Helping others when it is not to your advantage." },
-                { "devotion": 6, "sin": "Failing to respect those who possess greater power." },
-                { "devotion": 5, "sin": "Failing to pursue evidence of Tiamat when there is little risk." },
-                { "devotion": 4, "sin": "Backing down when you know you are right." },
-                { "devotion": 3, "sin": "Turning down a chance for increased wealth or power." },
-                { "devotion": 2, "sin": "Losing face in front of a crowd." },
-                { "devotion": 1, "sin": "Accepting someone equal or less capable than yourself as your superior." }
-            ]
-        },
-        {
-            "id": "sigmar",
-            "name": "Sigmar",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Protection", "Civilization", "Unity", "Common Good"],
-            "description": "A wrathful and vengeful god, protector of followers. A warrior king and great unifier. Most commonly worshipped by humans.",
-            "commandments": [
-                "Work with others to achieve your goals. Community and order are stronger than lone individuals.",
-                "Tame the wilderness for habitation, defend civilization against encroaching darkness.",
-                "Seek out new ideas, inventions, lands. Build machines, cities, empires."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Allowing something to remain wild or untamed." },
-                { "devotion": 9, "sin": "Travelling with a known worshipper of Chaos." },
-                { "devotion": 8, "sin": "Refusing to advance a primitive society." },
-                { "devotion": 7, "sin": "Eating raw food." },
-                { "devotion": 6, "sin": "Unnecessarily destroying infrastructure or order." },
-                { "devotion": 5, "sin": "Unknowingly aiding the forces of Chaos." },
-                { "devotion": 4, "sin": "Showing mercy towards a Chaos-worshipper." },
-                { "devotion": 3, "sin": "Not spending at least an hour per day among others." },
-                { "devotion": 2, "sin": "Attempting to destroy a civilization." },
-                { "devotion": 1, "sin": "Aiding the forces of Chaos, knowingly." }
-            ]
-        },
-        {
-            "id": "bahamut",
-            "name": "Bahamut",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Nobility", "Justice", "Power used justly"],
-            "description": "God of nobility and the just use of power. The platinum dragon, worshipped by those in power. Popular among Dragonborn.",
-            "commandments": [
-                "Uphold the highest ideals of honor and justice.",
-                "Be constantly vigilant against evil and oppose it on all fronts.",
-                "Protect the weak, liberate the oppressed, defend just order."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Not treating your subordinates appropriately." },
-                { "devotion": 9, "sin": "Not treating your superior with respect." },
-                { "devotion": 8, "sin": "Refusing to depose an unfit or corrupt ruler." },
-                { "devotion": 7, "sin": "Assisting unknowingly with the resurrection of Tiamat." },
-                { "devotion": 6, "sin": "Taking orders from an inferior." },
-                { "devotion": 5, "sin": "Abusing power for personal gain." },
-                { "devotion": 4, "sin": "Refusing to take charge when offered the opportunity." },
-                { "devotion": 3, "sin": "Taking orders from an agent of Chaos." },
-                { "devotion": 2, "sin": "Breaking your word of honor." },
-                { "devotion": 1, "sin": "Assisting willingly in the resurrection of Tiamat." }
-            ]
-        },
-        {
-            "id": "pelor",
-            "name": "Pelor",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Mercy", "Kindness", "Sun", "Light"],
-            "description": "God of mercy and kindness. Associated with the sun and bringing light into dark places. Encourages acts of kindness.",
-            "commandments": [
-                "Alleviate suffering wherever you find it.",
-                "Bring Pelor's light into places of darkness, showing kindness, mercy, and compassion.",
-                "Be watchful against evil."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to treat an enemy with kindness and respect." },
-                { "devotion": 9, "sin": "Failing to spend at least an hour per day in sunlight when possible." },
-                { "devotion": 8, "sin": "Refusing to help someone who genuinely needs it, even if there's danger." },
-                { "devotion": 7, "sin": "Allowing an innocent to become corrupted." },
-                { "devotion": 6, "sin": "Failing to treat a stranger with kindness and respect." },
-                { "devotion": 5, "sin": "Failing to do at least one good deed per day." },
-                { "devotion": 4, "sin": "Refusing to help someone who genuinely needs it, when there's no danger." },
-                { "devotion": 3, "sin": "Failing to treat a friend with kindness and respect." },
-                { "devotion": 2, "sin": "Allowing the forces of darkness to harm innocents." },
-                { "devotion": 1, "sin": "Torture, of anyone, for any reason." }
-            ]
-        },
-        {
-            "id": "moradin",
-            "name": "Moradin",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Creation", "Loyalty", "Family", "Hard Work"],
-            "description": "Stoic, loyal, big on family and bigger on hard work. A creative god whose followers are encouraged to make lasting marks.",
-            "commandments": [
-                "Meet adversity with stoicism and tenacity.",
-                "Demonstrate loyalty to your family, your clan, your leaders, and your people.",
-                "Strive to make a lasting legacy. To make something that lasts is the highest good."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to spend at least an hour per day creating something." },
-                { "devotion": 9, "sin": "Showing great emotions." },
-                { "devotion": 8, "sin": "Shaving." },
-                { "devotion": 7, "sin": "Forgiving a slight against you without retribution." },
-                { "devotion": 6, "sin": "Not drinking at least one tankard of ale per day." },
-                { "devotion": 5, "sin": "Doing harm to any member of your family." },
-                { "devotion": 4, "sin": "Allowing feelings to affect your work." },
-                { "devotion": 3, "sin": "Telling a deliberate lie." },
-                { "devotion": 2, "sin": "Failing to show respect for your elders and ancestors." },
-                { "devotion": 1, "sin": "Desecrating the legacy of your ancestors." }
-            ]
-        },
-        {
-            "id": "cuthbert",
-            "name": "Cuthbert",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Oaths", "Trust", "Promises", "Law"],
-            "description": "God of eternal bonds and trust. Common superstition holds he will personally curse anyone who breaks a contract made in his name.",
-            "commandments": [
-                "Your word is your bond. Never break it for any reason.",
-                "Never allow your fear to gain mastery over you, but drive it into the hearts of your foes.",
-                "Repay betrayal with the sword. Trust others until they break that trust."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Breaking the law for any reason." },
-                { "devotion": 9, "sin": "Travelling with a criminal except to see him brought to justice." },
-                { "devotion": 8, "sin": "Refusing to punish someone guilty of a major crime." },
-                { "devotion": 7, "sin": "Not assisting an officer of the law when asked." },
-                { "devotion": 6, "sin": "Breaking the law to help another." },
-                { "devotion": 5, "sin": "Failing to pursue evidence of a major crime." },
-                { "devotion": 4, "sin": "Not showing respect for a legitimate officer of the law." },
-                { "devotion": 3, "sin": "Refusing to punish someone guilty of a major crime." },
-                { "devotion": 2, "sin": "Breaking the law for personal gain." },
-                { "devotion": 1, "sin": "Breaking your word of honor." }
-            ]
-        },
-        {
-            "id": "blessedOrder",
-            "name": "Blessed Order",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Patterns", "Meaning", "Spirituality", "Reason"],
-            "description": "General worship of the Blessed Pantheon. Core belief that everything happens for a reason and only the gods know all.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to meditate on the nature of Order for at least two hours per day." },
-                { "devotion": 9, "sin": "Failing to make an attempt to convert someone to Order." },
-                { "devotion": 8, "sin": "Allowing emotions to override logic." },
-                { "devotion": 7, "sin": "Refusing to mediate in conflicts." },
-                { "devotion": 6, "sin": "Breaking the law except to help someone in great need." },
-                { "devotion": 5, "sin": "Unknowingly aiding the forces of Chaos." },
-                { "devotion": 4, "sin": "Holding any god of Order above another." },
-                { "devotion": 3, "sin": "Harming another for personal gain." },
-                { "devotion": 2, "sin": "Breaking your word of Honor." },
-                { "devotion": 1, "sin": "Knowingly aiding the forces of Chaos." }
-            ]
-        },
-        {
-            "id": "omnissiah",
-            "name": "Omnissiah",
-            "pantheon": "blessedPantheon",
-            "concepts": ["Technology", "Machines", "Machine Spirits"],
-            "description": "God of technology and animistic machine spirits. Seen as a huge Wheel-spanning machine with every worshipper a cog.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Speaking in a language other than Binary." },
-                { "devotion": 9, "sin": "Destroying any technology." },
-                { "devotion": 8, "sin": "Showing any emotions." },
-                { "devotion": 7, "sin": "Failing to try to understand a new technology." },
-                { "devotion": 6, "sin": "Accidentally damaging ancient or advanced technology." },
-                { "devotion": 5, "sin": "Failing to show respect to a machine when using it." },
-                { "devotion": 4, "sin": "Allowing emotions to override logic." },
-                { "devotion": 3, "sin": "Having bionics replaced with flesh." },
-                { "devotion": 2, "sin": "Choosing the flesh over the perfection of the machine." },
-                { "devotion": 1, "sin": "Willfully destroying ancient or advanced technology." }
-            ]
-        },
-        {
-            "id": "acererak",
-            "name": "Acererak",
-            "pantheon": "grayCouncil",
-            "concepts": ["Magic", "Secrets", "Knowledge"],
-            "description": "God of Magic itself. Legend says he gave away his body piece by piece to learn all secrets, leaving only a skull.",
-            "commandments": [
-                "Seek the perfection of your mind by balancing reason, perception, and emotion.",
-                "Accumulate, preserve, and keep secret knowledge in all forms. Seek lost and ancient lore.",
-                "Never reveal all that you know."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Revealing your face to anyone." },
-                { "devotion": 9, "sin": "Failing to pursue new knowledge for at least one hour a day." },
-                { "devotion": 8, "sin": "Telling another a secret that would harm them." },
-                { "devotion": 7, "sin": "Telling anyone your true name." },
-                { "devotion": 6, "sin": "Telling anyone a secret that would not harm you." },
-                { "devotion": 5, "sin": "Refusing to gain new knowledge when it is offered." },
-                { "devotion": 4, "sin": "Revealing your alignment." },
-                { "devotion": 3, "sin": "Not trying to learn someone's secrets." },
-                { "devotion": 2, "sin": "Telling another a secret that could harm you." },
-                { "devotion": 1, "sin": "Destroying unique knowledge." }
-            ]
-        },
-        {
-            "id": "ravenQueen",
-            "name": "The Raven Queen",
-            "pantheon": "grayCouncil",
-            "concepts": ["Death", "Fate", "Souls"],
-            "description": "Handles things when they die. Pulls souls into the Warp and lets them out when time for rebirth—though she prefers not to let them out.",
-            "commandments": [
-                "Hold no pity for those who suffer and die, for death is the natural end of life.",
-                "Bring down the proud who try to cast off fate's chains. Punish hubris where you find it.",
-                "Keep to the shadows, avoiding zealous good and utter darkness."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Trying to avoid your own death when it is your time." },
-                { "devotion": 9, "sin": "Healing anyone's wounds." },
-                { "devotion": 8, "sin": "Not attempting to destroy an undead creature." },
-                { "devotion": 7, "sin": "Bringing someone back from the dead." },
-                { "devotion": 6, "sin": "Killing a carrion-eating animal." },
-                { "devotion": 5, "sin": "Unnecessary desecration of a corpse." },
-                { "devotion": 4, "sin": "Killing someone before their time." },
-                { "devotion": 3, "sin": "Saving someone when it is their time." },
-                { "devotion": 2, "sin": "Not treating the dead with respect." },
-                { "devotion": 1, "sin": "Creating an undead creature." }
-            ]
-        },
-        {
-            "id": "luna",
-            "name": "Luna",
-            "pantheon": "grayCouncil",
-            "concepts": ["Change", "Freedom", "Nature", "True Self"],
-            "description": "Fickle and everchanging. Commands people to follow their own paths and not let others rule them.",
-            "commandments": [
-                "Change is inevitable, but ensure it is for the better through faithful work.",
-                "Strike back against those who would rob you of freedom and urge others to fight for liberty.",
-                "Do not fear or condemn nature's savagery. Live in harmony with the wild."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Eating anything you didn't personally kill." },
-                { "devotion": 9, "sin": "Shaving." },
-                { "devotion": 8, "sin": "Destroying trees or wilderness for no reason." },
-                { "devotion": 7, "sin": "Killing a wild animal for no reason." },
-                { "devotion": 6, "sin": "Going a full month without attending a ceremony devoted to Luna." },
-                { "devotion": 5, "sin": "Refusing to change when it is needed." },
-                { "devotion": 4, "sin": "Killing a werewolf except in self defense or as part of a hunt." },
-                { "devotion": 3, "sin": "Trying to break a wild animal." },
-                { "devotion": 2, "sin": "Failing to respect nature." },
-                { "devotion": 1, "sin": "Spending a full month without going into the wild, except if restrained." }
-            ]
-        },
-        {
-            "id": "corellon",
-            "name": "Corellon",
-            "pantheon": "grayCouncil",
-            "concepts": ["Excellence", "Perfection", "Beauty"],
-            "description": "God of excellence and one of the very few living Eldarin gods. Cannot abide failure but reminds followers they haven't failed until they refuse to try again.",
-            "commandments": [
-                "Cultivate beauty in all you do, whether casting spells, composing sagas, or practicing war.",
-                "Seek out lost magic items, forgotten rituals, and ancient works of art.",
-                "Show neither pity nor mercy to those caught underfoot as you climb to power."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Not showing off with every action when people are watching." },
-                { "devotion": 9, "sin": "Not making a challenge to someone boasting of their skill." },
-                { "devotion": 8, "sin": "Eating meat from an animal you didn't personally kill." },
-                { "devotion": 7, "sin": "Refusing a challenge of any kind." },
-                { "devotion": 6, "sin": "Showing humility except to a superior." },
-                { "devotion": 5, "sin": "Destroying trees or wilderness for no reason." },
-                { "devotion": 4, "sin": "Not shaving." },
-                { "devotion": 3, "sin": "Refusing a challenge in something you're skilled at." },
-                { "devotion": 2, "sin": "Not respecting Elven culture." },
-                { "devotion": 1, "sin": "Failing at any task when you have put your reputation on the line." }
-            ]
-        },
-        {
-            "id": "vectron",
-            "name": "Vectron",
-            "pantheon": "grayCouncil",
-            "concepts": ["Everything", "Self-promotion", "Faith"],
-            "description": "Undoubtedly the greatest of all gods, with all of the powers. Accepts worship from anyone for any reason in any way.",
-            "commandments": [
-                "Do not question the validity of Vectron as a god. He's the biggest, best god.",
-                "There is no problem that cannot be solved by praising Vectron loudly enough.",
-                "Make sure to let people know Vectron helped you. Try to convert others."
-            ],
-            "sins": [
-                { "devotion": 10, "sin": "Failing to praise Vectron by name in every conversation." },
-                { "devotion": 9, "sin": "Not carrying a book of Vectron's teachings." },
-                { "devotion": 8, "sin": "Denying the credibility of any miracle attributed to Vectron." },
-                { "devotion": 7, "sin": "Attempting to discredit anyone acting as a prophet of Vectron." },
-                { "devotion": 6, "sin": "Failing to praise Vectron by name once an hour, except when sleeping." },
-                { "devotion": 5, "sin": "Failing to prominently display one of Vectron's holy symbols." },
-                { "devotion": 4, "sin": "Making war on other followers of Vectron." },
-                { "devotion": 3, "sin": "Failing to praise Vectron by name once a day." },
-                { "devotion": 2, "sin": "Not adding to the scriptures of Vectron with your deeds." },
-                { "devotion": 1, "sin": "Not accepting Vectron as your ultimate lord and savior." }
-            ]
-        },
-        {
-            "id": "lolth",
-            "name": "Lolth",
-            "pantheon": "grayCouncil",
-            "concepts": ["Dark Eldarin", "Spiders", "Female Supremacy"],
-            "description": "God of the Dark Eldarin. A daemon of extraordinary power who achieved godhood by protecting them. Stands alone, not aligned with Order or Chaos.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Refusing to cause harm to a friend when it would benefit you." },
-                { "devotion": 9, "sin": "Showing mercy to an enemy." },
-                { "devotion": 8, "sin": "Failing to make a sacrifice to Lolth at least once a month." },
-                { "devotion": 7, "sin": "Refusing to kill when it would benefit you." },
-                { "devotion": 6, "sin": "Showing respect to a male." },
-                { "devotion": 5, "sin": "Showing fear in front of an inferior." },
-                { "devotion": 4, "sin": "Refusing an opportunity to harm an enemy." },
-                { "devotion": 3, "sin": "Wearing concealing clothing except in extreme weather." },
-                { "devotion": 2, "sin": "Not showing respect to a female." },
-                { "devotion": 1, "sin": "Killing a spider of any kind." }
-            ]
-        },
-        {
-            "id": "unaligned",
-            "name": "Unaligned",
-            "pantheon": "unaligned",
-            "concepts": ["Atheism", "Agnosticism", "Independence"],
-            "description": "Those who refuse to pick sides—don't believe gods are worthy of worship, were abandoned, or think gods don't exist.",
-            "commandments": [],
-            "sins": [
-                { "devotion": 10, "sin": "Showing respect for the worship of any god." },
-                { "devotion": 9, "sin": "Failing to help someone who is in genuine need." },
-                { "devotion": 8, "sin": "Not making an attempt to convert someone to atheism." },
-                { "devotion": 7, "sin": "Taking orders from a religious authority." },
-                { "devotion": 6, "sin": "Hurting someone for no reason." },
-                { "devotion": 5, "sin": "Discriminating for or against someone based on their religion." },
-                { "devotion": 4, "sin": "Pretending to be a religious person." },
-                { "devotion": 3, "sin": "Killing for no reason." },
-                { "devotion": 2, "sin": "Participating in a religious ceremony." },
-                { "devotion": 1, "sin": "Prayer." }
-            ]
-        }
-    ],
-    "devotionMechanics": {
-        "startingDevotion": 6,
-        "alignmentCheck": "Roll 1d10. If you match or exceed your Devotion, pass. If you fail, permanently lose 1 Devotion.",
-        "degeneration": "When losing Devotion to 6 or less, make a second alignment test. Failure causes Degeneration (roll on Degeneration Chart).",
-        "zeroDevotionEffect": "Character is immediately removed from play—killed, driven insane, or mutated into a chimeric horror.",
-        "raising": "Can increase Devotion by spending XP, maximum one point at a time. Must demonstrate contrition.",
-        "changingAlignment": {
-            "samePantheon": "Lose 2 Devotion points (minimum 1).",
-            "differentPantheon": "Set to Devotion 4, roll on Degeneration Chart for affliction at Devotion 7.",
-            "limit": "Can only change alignment once."
-        }
-    }
+	"pantheons": {
+		"ruinousPowers": {
+			"name": "The Ruinous Powers",
+			"description": "The forces of Chaos—anarchic, divisive, and powerful. Encourage followers to do what they want without worry for others."
+		},
+		"blessedPantheon": {
+			"name": "The Blessed Pantheon",
+			"description": "The force of Law and Order—stabilizing, promoting civilization and community. Tied to the physical realm and opposed to Warp intrusion."
+		},
+		"grayCouncil": {
+			"name": "The Gray Council",
+			"description": "Neutral gods that don't align with Chaos or Order. Most serve only their own goals and can be found in every corner without facing opposition."
+		},
+		"unaligned": {
+			"name": "Unaligned",
+			"description": "Those who refuse to pick sides—atheists, agnostics, or those abandoned by the gods."
+		}
+	},
+	"alignments": [
+		{
+			"id": "khorne",
+			"name": "Khorne",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Battle", "Honor", "Bloodshed", "Slaughter"],
+			"description": "The god of battle and blood. Loves every type of warfare. Worship is through bloodshed from enemies in victory or your own through earnest struggle.",
+			"commandments": [
+				"Spill blood in his name. It can be your blood or the blood of your enemies, but do not shy from violence.",
+				"Do not trust in sorcery, and do not seek to learn its secrets—magic is the way of the weak.",
+				"Fight in honorable combat, not against the weak or helpless."
+			],
+			"restriction": "Khorne hates magic. If you have Khorne as alignment, some Exalt/racial powers may be unusable. Replace magic school ranks with sword school ranks.",
+			"sins": [
+				{ "devotion": 10, "sin": "Giving mercy to a fellow warrior." },
+				{ "devotion": 9, "sin": "Allowing another to kill an innocent." },
+				{ "devotion": 8, "sin": "Travelling with a spellcaster." },
+				{ "devotion": 7, "sin": "Showing disrespect for another warrior." },
+				{ "devotion": 6, "sin": "Using stealth or trickery to avoid a fight." },
+				{ "devotion": 5, "sin": "Breaking your word of honor." },
+				{ "devotion": 4, "sin": "Killing an innocent." },
+				{ "devotion": 3, "sin": "Allowing a spell to be cast on you." },
+				{ "devotion": 2, "sin": "Refusing a challenge of combat." },
+				{ "devotion": 1, "sin": "Casting a Spell." }
+			]
+		},
+		{
+			"id": "slaanesh",
+			"name": "Slaanesh",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Excess", "Perfection", "Hedonism", "Art"],
+			"description": "The god of excess—sex, drugs and rock and roll. About doing what you enjoy without holding back. The drive to be perfect.",
+			"commandments": [
+				"Turn away from no new experience, unless it would kill you—try everything once.",
+				"Stand out from those around you. To blend in is to lose who you are.",
+				"Tempt others with what you enjoy—share drink, invite them to lavish meals, turn them to hedonism."
+			],
+			"sins": [
+				{ "devotion": 10, "sin": "Refusing a new, but dangerous, experience." },
+				{ "devotion": 9, "sin": "Accepting a flawed experience." },
+				{ "devotion": 8, "sin": "Doing something you don't enjoy." },
+				{ "devotion": 7, "sin": "Doing less than your best at any task." },
+				{ "devotion": 6, "sin": "Refusing to do something you enjoy." },
+				{ "devotion": 5, "sin": "Denying another a new experience." },
+				{ "devotion": 4, "sin": "Showing humility." },
+				{ "devotion": 3, "sin": "Not attempting to fix or overcome a flaw." },
+				{
+					"devotion": 2,
+					"sin": "Doing less than your best at an important task."
+				},
+				{ "devotion": 1, "sin": "Refusing a new, safe, experience." }
+			]
+		},
+		{
+			"id": "tzeentch",
+			"name": "Tzeentch",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Change", "Hope", "Schemes", "Magic"],
+			"description": "The god of change and hope. Listens to hopes and plans of every mortal, altering history through complex plots.",
+			"commandments": [
+				"Be flexible with your plans. Always be open to change as needed.",
+				"Change what you don't like in yourself. Use sorcery! All the sorcery!",
+				"Follow your own goals. Take command of your destiny."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to spend at least two hours per day planning and plotting."
+				},
+				{ "devotion": 9, "sin": "Failing to kill for the sake of knowledge." },
+				{ "devotion": 8, "sin": "Putting another's needs before your plans." },
+				{ "devotion": 7, "sin": "Clinging to the old and refusing to change." },
+				{ "devotion": 6, "sin": "Refusing to take advantage of a situation." },
+				{
+					"devotion": 5,
+					"sin": "Sharing knowledge with another except as part of a broader plan."
+				},
+				{
+					"devotion": 4,
+					"sin": "Improvising when there's a chance to make a plan."
+				},
+				{ "devotion": 3, "sin": "Turning down a chance for increased power." },
+				{
+					"devotion": 2,
+					"sin": "Failing to respect those who possess greater wisdom."
+				},
+				{ "devotion": 1, "sin": "Failing to pursue arcane knowledge." }
+			]
+		},
+		{
+			"id": "nurgle",
+			"name": "Nurgle",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Despair", "Life", "Rot", "Disease", "Death"],
+			"description": "The god of despair who cares about you and your diseases. A god of life and death—two sides of the same coin.",
+			"commandments": [
+				"Don't bother seeking help. Fail or succeed through your own perseverance.",
+				"You can only escape suffering through faith.",
+				"Be kind to those facing death. They cannot be saved, but make them comfortable."
+			],
+			"sins": [
+				{ "devotion": 10, "sin": "Refusing to comfort the sick or the dying." },
+				{
+					"devotion": 9,
+					"sin": "Preserving anything—food, the environment, etc."
+				},
+				{ "devotion": 8, "sin": "Doing unnecessary work." },
+				{
+					"devotion": 7,
+					"sin": "Making great shows of emotion, positive or negative."
+				},
+				{ "devotion": 6, "sin": "Attempting to change your own fate." },
+				{ "devotion": 5, "sin": "Being unkind to those in need." },
+				{ "devotion": 4, "sin": "Curing someone of a disease." },
+				{ "devotion": 3, "sin": "Preserving a corpse." },
+				{ "devotion": 2, "sin": "Bringing another back from the dead." },
+				{ "devotion": 1, "sin": "Attempting to change the fate of the Wheel." }
+			]
+		},
+		{
+			"id": "malal",
+			"name": "Malal",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Destruction", "Self-destruction", "Betrayal", "Hate"],
+			"description": "A renegade god—the embodiment of Chaos' indiscriminate destructive urge, even of itself. Hated by other gods.",
+			"commandments": [
+				"Hate gives you strength. Learn to truly hate those that oppose you. No mercy.",
+				"Destruction is the fate of all that exists. Destroy all that is.",
+				"Betrayal can get you what you want. If people can't defend themselves, that's their problem."
+			],
+			"sins": [
+				{ "devotion": 10, "sin": "Falling in love." },
+				{ "devotion": 9, "sin": "Acting in the interests of another." },
+				{
+					"devotion": 8,
+					"sin": "Keeping your word when it would help another."
+				},
+				{ "devotion": 7, "sin": "Asking aid of another." },
+				{ "devotion": 6, "sin": "Needlessly preventing a death." },
+				{ "devotion": 5, "sin": "Exhibiting compassion for others." },
+				{ "devotion": 4, "sin": "Aiding another." },
+				{ "devotion": 3, "sin": "Accepting the superiority of another." },
+				{
+					"devotion": 2,
+					"sin": "Failing to take advantage of another's weakness."
+				},
+				{ "devotion": 1, "sin": "Repenting one's behavior." }
+			]
+		},
+		{
+			"id": "chaosUndivided",
+			"name": "Chaos Undivided",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Chaos as a whole", "Leadership", "Spirituality"],
+			"description": "Worship Chaos as a whole instead of any single god. Natural leaders among Chaos forces with a more spiritual view.",
+			"commandments": [],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to spend at least two hours meditating on the nature of Chaos per day."
+				},
+				{ "devotion": 9, "sin": "Refusing to aid another follower of Chaos." },
+				{
+					"devotion": 8,
+					"sin": "Refusing to offer a non-Chaos worshipper a chance to convert."
+				},
+				{ "devotion": 7, "sin": "Failing to observe the rituals of Chaos." },
+				{
+					"devotion": 6,
+					"sin": "Failing to undermine the existing order in favor of Chaos."
+				},
+				{
+					"devotion": 5,
+					"sin": "Not making the effort to learn more about the nature of Chaos."
+				},
+				{ "devotion": 4, "sin": "Placing one Chaos God above any other." },
+				{ "devotion": 3, "sin": "Showing cowardice." },
+				{
+					"devotion": 2,
+					"sin": "Showing overt disrespect for the forces of Chaos."
+				},
+				{
+					"devotion": 1,
+					"sin": "Accepting someone less capable than yourself as your superior."
+				}
+			]
+		},
+		{
+			"id": "tiamat",
+			"name": "Tiamat",
+			"pantheon": "ruinousPowers",
+			"concepts": ["Power", "Wealth", "Opposition to Bahamut"],
+			"description": "The diametric opposite to Bahamut. Formed a great alliance to overthrow him. Rumors persist of attempts to revive her.",
+			"commandments": [],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to pursue evidence of Tiamat, even at risk of death."
+				},
+				{
+					"devotion": 9,
+					"sin": "Failing to use whatever means are necessary to achieve greater power."
+				},
+				{ "devotion": 8, "sin": "Accepting defeat." },
+				{
+					"devotion": 7,
+					"sin": "Helping others when it is not to your advantage."
+				},
+				{
+					"devotion": 6,
+					"sin": "Failing to respect those who possess greater power."
+				},
+				{
+					"devotion": 5,
+					"sin": "Failing to pursue evidence of Tiamat when there is little risk."
+				},
+				{ "devotion": 4, "sin": "Backing down when you know you are right." },
+				{
+					"devotion": 3,
+					"sin": "Turning down a chance for increased wealth or power."
+				},
+				{ "devotion": 2, "sin": "Losing face in front of a crowd." },
+				{
+					"devotion": 1,
+					"sin": "Accepting someone equal or less capable than yourself as your superior."
+				}
+			]
+		},
+		{
+			"id": "sigmar",
+			"name": "Sigmar",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Protection", "Civilization", "Unity", "Common Good"],
+			"description": "A wrathful and vengeful god, protector of followers. A warrior king and great unifier. Most commonly worshipped by humans.",
+			"commandments": [
+				"Work with others to achieve your goals. Community and order are stronger than lone individuals.",
+				"Tame the wilderness for habitation, defend civilization against encroaching darkness.",
+				"Seek out new ideas, inventions, lands. Build machines, cities, empires."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Allowing something to remain wild or untamed."
+				},
+				{
+					"devotion": 9,
+					"sin": "Travelling with a known worshipper of Chaos."
+				},
+				{ "devotion": 8, "sin": "Refusing to advance a primitive society." },
+				{ "devotion": 7, "sin": "Eating raw food." },
+				{
+					"devotion": 6,
+					"sin": "Unnecessarily destroying infrastructure or order."
+				},
+				{ "devotion": 5, "sin": "Unknowingly aiding the forces of Chaos." },
+				{ "devotion": 4, "sin": "Showing mercy towards a Chaos-worshipper." },
+				{
+					"devotion": 3,
+					"sin": "Not spending at least an hour per day among others."
+				},
+				{ "devotion": 2, "sin": "Attempting to destroy a civilization." },
+				{ "devotion": 1, "sin": "Aiding the forces of Chaos, knowingly." }
+			]
+		},
+		{
+			"id": "bahamut",
+			"name": "Bahamut",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Nobility", "Justice", "Power used justly"],
+			"description": "God of nobility and the just use of power. The platinum dragon, worshipped by those in power. Popular among Dragonborn.",
+			"commandments": [
+				"Uphold the highest ideals of honor and justice.",
+				"Be constantly vigilant against evil and oppose it on all fronts.",
+				"Protect the weak, liberate the oppressed, defend just order."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Not treating your subordinates appropriately."
+				},
+				{ "devotion": 9, "sin": "Not treating your superior with respect." },
+				{
+					"devotion": 8,
+					"sin": "Refusing to depose an unfit or corrupt ruler."
+				},
+				{
+					"devotion": 7,
+					"sin": "Assisting unknowingly with the resurrection of Tiamat."
+				},
+				{ "devotion": 6, "sin": "Taking orders from an inferior." },
+				{ "devotion": 5, "sin": "Abusing power for personal gain." },
+				{
+					"devotion": 4,
+					"sin": "Refusing to take charge when offered the opportunity."
+				},
+				{ "devotion": 3, "sin": "Taking orders from an agent of Chaos." },
+				{ "devotion": 2, "sin": "Breaking your word of honor." },
+				{
+					"devotion": 1,
+					"sin": "Assisting willingly in the resurrection of Tiamat."
+				}
+			]
+		},
+		{
+			"id": "pelor",
+			"name": "Pelor",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Mercy", "Kindness", "Sun", "Light"],
+			"description": "God of mercy and kindness. Associated with the sun and bringing light into dark places. Encourages acts of kindness.",
+			"commandments": [
+				"Alleviate suffering wherever you find it.",
+				"Bring Pelor's light into places of darkness, showing kindness, mercy, and compassion.",
+				"Be watchful against evil."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to treat an enemy with kindness and respect."
+				},
+				{
+					"devotion": 9,
+					"sin": "Failing to spend at least an hour per day in sunlight when possible."
+				},
+				{
+					"devotion": 8,
+					"sin": "Refusing to help someone who genuinely needs it, even if there's danger."
+				},
+				{ "devotion": 7, "sin": "Allowing an innocent to become corrupted." },
+				{
+					"devotion": 6,
+					"sin": "Failing to treat a stranger with kindness and respect."
+				},
+				{
+					"devotion": 5,
+					"sin": "Failing to do at least one good deed per day."
+				},
+				{
+					"devotion": 4,
+					"sin": "Refusing to help someone who genuinely needs it, when there's no danger."
+				},
+				{
+					"devotion": 3,
+					"sin": "Failing to treat a friend with kindness and respect."
+				},
+				{
+					"devotion": 2,
+					"sin": "Allowing the forces of darkness to harm innocents."
+				},
+				{ "devotion": 1, "sin": "Torture, of anyone, for any reason." }
+			]
+		},
+		{
+			"id": "moradin",
+			"name": "Moradin",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Creation", "Loyalty", "Family", "Hard Work"],
+			"description": "Stoic, loyal, big on family and bigger on hard work. A creative god whose followers are encouraged to make lasting marks.",
+			"commandments": [
+				"Meet adversity with stoicism and tenacity.",
+				"Demonstrate loyalty to your family, your clan, your leaders, and your people.",
+				"Strive to make a lasting legacy. To make something that lasts is the highest good."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to spend at least an hour per day creating something."
+				},
+				{ "devotion": 9, "sin": "Showing great emotions." },
+				{ "devotion": 8, "sin": "Shaving." },
+				{
+					"devotion": 7,
+					"sin": "Forgiving a slight against you without retribution."
+				},
+				{
+					"devotion": 6,
+					"sin": "Not drinking at least one tankard of ale per day."
+				},
+				{ "devotion": 5, "sin": "Doing harm to any member of your family." },
+				{ "devotion": 4, "sin": "Allowing feelings to affect your work." },
+				{ "devotion": 3, "sin": "Telling a deliberate lie." },
+				{
+					"devotion": 2,
+					"sin": "Failing to show respect for your elders and ancestors."
+				},
+				{ "devotion": 1, "sin": "Desecrating the legacy of your ancestors." }
+			]
+		},
+		{
+			"id": "cuthbert",
+			"name": "Cuthbert",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Oaths", "Trust", "Promises", "Law"],
+			"description": "God of eternal bonds and trust. Common superstition holds he will personally curse anyone who breaks a contract made in his name.",
+			"commandments": [
+				"Your word is your bond. Never break it for any reason.",
+				"Never allow your fear to gain mastery over you, but drive it into the hearts of your foes.",
+				"Repay betrayal with the sword. Trust others until they break that trust."
+			],
+			"sins": [
+				{ "devotion": 10, "sin": "Breaking the law for any reason." },
+				{
+					"devotion": 9,
+					"sin": "Travelling with a criminal except to see him brought to justice."
+				},
+				{
+					"devotion": 8,
+					"sin": "Refusing to punish someone guilty of a major crime."
+				},
+				{
+					"devotion": 7,
+					"sin": "Not assisting an officer of the law when asked."
+				},
+				{ "devotion": 6, "sin": "Breaking the law to help another." },
+				{
+					"devotion": 5,
+					"sin": "Failing to pursue evidence of a major crime."
+				},
+				{
+					"devotion": 4,
+					"sin": "Not showing respect for a legitimate officer of the law."
+				},
+				{
+					"devotion": 3,
+					"sin": "Refusing to punish someone guilty of a major crime."
+				},
+				{ "devotion": 2, "sin": "Breaking the law for personal gain." },
+				{ "devotion": 1, "sin": "Breaking your word of honor." }
+			]
+		},
+		{
+			"id": "blessedOrder",
+			"name": "Blessed Order",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Patterns", "Meaning", "Spirituality", "Reason"],
+			"description": "General worship of the Blessed Pantheon. Core belief that everything happens for a reason and only the gods know all.",
+			"commandments": [],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to meditate on the nature of Order for at least two hours per day."
+				},
+				{
+					"devotion": 9,
+					"sin": "Failing to make an attempt to convert someone to Order."
+				},
+				{ "devotion": 8, "sin": "Allowing emotions to override logic." },
+				{ "devotion": 7, "sin": "Refusing to mediate in conflicts." },
+				{
+					"devotion": 6,
+					"sin": "Breaking the law except to help someone in great need."
+				},
+				{ "devotion": 5, "sin": "Unknowingly aiding the forces of Chaos." },
+				{ "devotion": 4, "sin": "Holding any god of Order above another." },
+				{ "devotion": 3, "sin": "Harming another for personal gain." },
+				{ "devotion": 2, "sin": "Breaking your word of Honor." },
+				{ "devotion": 1, "sin": "Knowingly aiding the forces of Chaos." }
+			]
+		},
+		{
+			"id": "omnissiah",
+			"name": "Omnissiah",
+			"pantheon": "blessedPantheon",
+			"concepts": ["Technology", "Machines", "Machine Spirits"],
+			"description": "God of technology and animistic machine spirits. Seen as a huge Wheel-spanning machine with every worshipper a cog.",
+			"commandments": [],
+			"sins": [
+				{ "devotion": 10, "sin": "Speaking in a language other than Binary." },
+				{ "devotion": 9, "sin": "Destroying any technology." },
+				{ "devotion": 8, "sin": "Showing any emotions." },
+				{
+					"devotion": 7,
+					"sin": "Failing to try to understand a new technology."
+				},
+				{
+					"devotion": 6,
+					"sin": "Accidentally damaging ancient or advanced technology."
+				},
+				{
+					"devotion": 5,
+					"sin": "Failing to show respect to a machine when using it."
+				},
+				{ "devotion": 4, "sin": "Allowing emotions to override logic." },
+				{ "devotion": 3, "sin": "Having bionics replaced with flesh." },
+				{
+					"devotion": 2,
+					"sin": "Choosing the flesh over the perfection of the machine."
+				},
+				{
+					"devotion": 1,
+					"sin": "Willfully destroying ancient or advanced technology."
+				}
+			]
+		},
+		{
+			"id": "acererak",
+			"name": "Acererak",
+			"pantheon": "grayCouncil",
+			"concepts": ["Magic", "Secrets", "Knowledge"],
+			"description": "God of Magic itself. Legend says he gave away his body piece by piece to learn all secrets, leaving only a skull.",
+			"commandments": [
+				"Seek the perfection of your mind by balancing reason, perception, and emotion.",
+				"Accumulate, preserve, and keep secret knowledge in all forms. Seek lost and ancient lore.",
+				"Never reveal all that you know."
+			],
+			"sins": [
+				{ "devotion": 10, "sin": "Revealing your face to anyone." },
+				{
+					"devotion": 9,
+					"sin": "Failing to pursue new knowledge for at least one hour a day."
+				},
+				{
+					"devotion": 8,
+					"sin": "Telling another a secret that would harm them."
+				},
+				{ "devotion": 7, "sin": "Telling anyone your true name." },
+				{
+					"devotion": 6,
+					"sin": "Telling anyone a secret that would not harm you."
+				},
+				{
+					"devotion": 5,
+					"sin": "Refusing to gain new knowledge when it is offered."
+				},
+				{ "devotion": 4, "sin": "Revealing your alignment." },
+				{ "devotion": 3, "sin": "Not trying to learn someone's secrets." },
+				{
+					"devotion": 2,
+					"sin": "Telling another a secret that could harm you."
+				},
+				{ "devotion": 1, "sin": "Destroying unique knowledge." }
+			]
+		},
+		{
+			"id": "ravenQueen",
+			"name": "The Raven Queen",
+			"pantheon": "grayCouncil",
+			"concepts": ["Death", "Fate", "Souls"],
+			"description": "Handles things when they die. Pulls souls into the Warp and lets them out when time for rebirth—though she prefers not to let them out.",
+			"commandments": [
+				"Hold no pity for those who suffer and die, for death is the natural end of life.",
+				"Bring down the proud who try to cast off fate's chains. Punish hubris where you find it.",
+				"Keep to the shadows, avoiding zealous good and utter darkness."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Trying to avoid your own death when it is your time."
+				},
+				{ "devotion": 9, "sin": "Healing anyone's wounds." },
+				{
+					"devotion": 8,
+					"sin": "Not attempting to destroy an undead creature."
+				},
+				{ "devotion": 7, "sin": "Bringing someone back from the dead." },
+				{ "devotion": 6, "sin": "Killing a carrion-eating animal." },
+				{ "devotion": 5, "sin": "Unnecessary desecration of a corpse." },
+				{ "devotion": 4, "sin": "Killing someone before their time." },
+				{ "devotion": 3, "sin": "Saving someone when it is their time." },
+				{ "devotion": 2, "sin": "Not treating the dead with respect." },
+				{ "devotion": 1, "sin": "Creating an undead creature." }
+			]
+		},
+		{
+			"id": "luna",
+			"name": "Luna",
+			"pantheon": "grayCouncil",
+			"concepts": ["Change", "Freedom", "Nature", "True Self"],
+			"description": "Fickle and everchanging. Commands people to follow their own paths and not let others rule them.",
+			"commandments": [
+				"Change is inevitable, but ensure it is for the better through faithful work.",
+				"Strike back against those who would rob you of freedom and urge others to fight for liberty.",
+				"Do not fear or condemn nature's savagery. Live in harmony with the wild."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Eating anything you didn't personally kill."
+				},
+				{ "devotion": 9, "sin": "Shaving." },
+				{
+					"devotion": 8,
+					"sin": "Destroying trees or wilderness for no reason."
+				},
+				{ "devotion": 7, "sin": "Killing a wild animal for no reason." },
+				{
+					"devotion": 6,
+					"sin": "Going a full month without attending a ceremony devoted to Luna."
+				},
+				{ "devotion": 5, "sin": "Refusing to change when it is needed." },
+				{
+					"devotion": 4,
+					"sin": "Killing a werewolf except in self defense or as part of a hunt."
+				},
+				{ "devotion": 3, "sin": "Trying to break a wild animal." },
+				{ "devotion": 2, "sin": "Failing to respect nature." },
+				{
+					"devotion": 1,
+					"sin": "Spending a full month without going into the wild, except if restrained."
+				}
+			]
+		},
+		{
+			"id": "corellon",
+			"name": "Corellon",
+			"pantheon": "grayCouncil",
+			"concepts": ["Excellence", "Perfection", "Beauty"],
+			"description": "God of excellence and one of the very few living Eldarin gods. Cannot abide failure but reminds followers they haven't failed until they refuse to try again.",
+			"commandments": [
+				"Cultivate beauty in all you do, whether casting spells, composing sagas, or practicing war.",
+				"Seek out lost magic items, forgotten rituals, and ancient works of art.",
+				"Show neither pity nor mercy to those caught underfoot as you climb to power."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Not showing off with every action when people are watching."
+				},
+				{
+					"devotion": 9,
+					"sin": "Not making a challenge to someone boasting of their skill."
+				},
+				{
+					"devotion": 8,
+					"sin": "Eating meat from an animal you didn't personally kill."
+				},
+				{ "devotion": 7, "sin": "Refusing a challenge of any kind." },
+				{ "devotion": 6, "sin": "Showing humility except to a superior." },
+				{
+					"devotion": 5,
+					"sin": "Destroying trees or wilderness for no reason."
+				},
+				{ "devotion": 4, "sin": "Not shaving." },
+				{
+					"devotion": 3,
+					"sin": "Refusing a challenge in something you're skilled at."
+				},
+				{ "devotion": 2, "sin": "Not respecting Elven culture." },
+				{
+					"devotion": 1,
+					"sin": "Failing at any task when you have put your reputation on the line."
+				}
+			]
+		},
+		{
+			"id": "vectron",
+			"name": "Vectron",
+			"pantheon": "grayCouncil",
+			"concepts": ["Everything", "Self-promotion", "Faith"],
+			"description": "Undoubtedly the greatest of all gods, with all of the powers. Accepts worship from anyone for any reason in any way.",
+			"commandments": [
+				"Do not question the validity of Vectron as a god. He's the biggest, best god.",
+				"There is no problem that cannot be solved by praising Vectron loudly enough.",
+				"Make sure to let people know Vectron helped you. Try to convert others."
+			],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Failing to praise Vectron by name in every conversation."
+				},
+				{ "devotion": 9, "sin": "Not carrying a book of Vectron's teachings." },
+				{
+					"devotion": 8,
+					"sin": "Denying the credibility of any miracle attributed to Vectron."
+				},
+				{
+					"devotion": 7,
+					"sin": "Attempting to discredit anyone acting as a prophet of Vectron."
+				},
+				{
+					"devotion": 6,
+					"sin": "Failing to praise Vectron by name once an hour, except when sleeping."
+				},
+				{
+					"devotion": 5,
+					"sin": "Failing to prominently display one of Vectron's holy symbols."
+				},
+				{ "devotion": 4, "sin": "Making war on other followers of Vectron." },
+				{
+					"devotion": 3,
+					"sin": "Failing to praise Vectron by name once a day."
+				},
+				{
+					"devotion": 2,
+					"sin": "Not adding to the scriptures of Vectron with your deeds."
+				},
+				{
+					"devotion": 1,
+					"sin": "Not accepting Vectron as your ultimate lord and savior."
+				}
+			]
+		},
+		{
+			"id": "lolth",
+			"name": "Lolth",
+			"pantheon": "grayCouncil",
+			"concepts": ["Dark Eldarin", "Spiders", "Female Supremacy"],
+			"description": "God of the Dark Eldarin. A daemon of extraordinary power who achieved godhood by protecting them. Stands alone, not aligned with Order or Chaos.",
+			"commandments": [],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Refusing to cause harm to a friend when it would benefit you."
+				},
+				{ "devotion": 9, "sin": "Showing mercy to an enemy." },
+				{
+					"devotion": 8,
+					"sin": "Failing to make a sacrifice to Lolth at least once a month."
+				},
+				{ "devotion": 7, "sin": "Refusing to kill when it would benefit you." },
+				{ "devotion": 6, "sin": "Showing respect to a male." },
+				{ "devotion": 5, "sin": "Showing fear in front of an inferior." },
+				{ "devotion": 4, "sin": "Refusing an opportunity to harm an enemy." },
+				{
+					"devotion": 3,
+					"sin": "Wearing concealing clothing except in extreme weather."
+				},
+				{ "devotion": 2, "sin": "Not showing respect to a female." },
+				{ "devotion": 1, "sin": "Killing a spider of any kind." }
+			]
+		},
+		{
+			"id": "unaligned",
+			"name": "Unaligned",
+			"pantheon": "unaligned",
+			"concepts": ["Atheism", "Agnosticism", "Independence"],
+			"description": "Those who refuse to pick sides—don't believe gods are worthy of worship, were abandoned, or think gods don't exist.",
+			"commandments": [],
+			"sins": [
+				{
+					"devotion": 10,
+					"sin": "Showing respect for the worship of any god."
+				},
+				{
+					"devotion": 9,
+					"sin": "Failing to help someone who is in genuine need."
+				},
+				{
+					"devotion": 8,
+					"sin": "Not making an attempt to convert someone to atheism."
+				},
+				{ "devotion": 7, "sin": "Taking orders from a religious authority." },
+				{ "devotion": 6, "sin": "Hurting someone for no reason." },
+				{
+					"devotion": 5,
+					"sin": "Discriminating for or against someone based on their religion."
+				},
+				{ "devotion": 4, "sin": "Pretending to be a religious person." },
+				{ "devotion": 3, "sin": "Killing for no reason." },
+				{ "devotion": 2, "sin": "Participating in a religious ceremony." },
+				{ "devotion": 1, "sin": "Prayer." }
+			]
+		}
+	],
+	"devotionMechanics": {
+		"startingDevotion": 6,
+		"alignmentCheck": "Roll 1d10. If you match or exceed your Devotion, pass. If you fail, permanently lose 1 Devotion.",
+		"degeneration": "When losing Devotion to 6 or less, make a second alignment test. Failure causes Degeneration (roll on Degeneration Chart).",
+		"zeroDevotionEffect": "Character is immediately removed from play—killed, driven insane, or mutated into a chimeric horror.",
+		"raising": "Can increase Devotion by spending XP, maximum one point at a time. Must demonstrate contrition.",
+		"changingAlignment": {
+			"samePantheon": "Lose 2 Devotion points (minimum 1).",
+			"differentPantheon": "Set to Devotion 4, roll on Degeneration Chart for affliction at Devotion 7.",
+			"limit": "Can only change alignment once."
+		}
+	}
 }

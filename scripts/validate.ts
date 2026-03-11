@@ -77,24 +77,44 @@ export function countRecords(data: unknown): number {
 export function validateFile(filename: string): ValidationResult {
 	const entry: SchemaEntry | undefined = FILE_SCHEMAS[filename];
 	if (!entry) {
-		return { file: filename, ok: false, recordCount: 0, errors: [`No schema registered for ${filename}`] };
+		return {
+			file: filename,
+			ok: false,
+			recordCount: 0,
+			errors: [`No schema registered for ${filename}`],
+		};
 	}
 
 	const filepath = path.join(DATA_DIR, filename);
 	if (!fs.existsSync(filepath)) {
-		return { file: filename, ok: false, recordCount: 0, errors: [`File not found: ${filepath}`] };
+		return {
+			file: filename,
+			ok: false,
+			recordCount: 0,
+			errors: [`File not found: ${filepath}`],
+		};
 	}
 
 	let raw: unknown;
 	try {
 		raw = JSON.parse(fs.readFileSync(filepath, "utf-8"));
 	} catch (e) {
-		return { file: filename, ok: false, recordCount: 0, errors: [`Invalid JSON: ${e}`] };
+		return {
+			file: filename,
+			ok: false,
+			recordCount: 0,
+			errors: [`Invalid JSON: ${e}`],
+		};
 	}
 
 	const result = entry.schema.safeParse(raw);
 	if (result.success) {
-		return { file: filename, ok: true, recordCount: countRecords(result.data), errors: [] };
+		return {
+			file: filename,
+			ok: true,
+			recordCount: countRecords(result.data),
+			errors: [],
+		};
 	}
 
 	const zodErr = result.error as ZodError;
@@ -134,7 +154,10 @@ export function crossReferenceCheck(): string[] {
 		}
 
 		const classesRaw = loadJson("classes.json") as Record<string, unknown>;
-		const classes = (classesRaw.classes ?? []) as Array<{ name: string; skills: string[] }>;
+		const classes = (classesRaw.classes ?? []) as Array<{
+			name: string;
+			skills: string[];
+		}>;
 		for (const cls of classes) {
 			for (const skillName of cls.skills ?? []) {
 				if (!skillNames.has(skillName)) {
@@ -188,7 +211,10 @@ export function crossReferenceCheck(): string[] {
 
 	// 3. npcs → traits
 	try {
-		const traitsRaw = loadJson("traits.json") as Array<{ id: string; name: string }>;
+		const traitsRaw = loadJson("traits.json") as Array<{
+			id: string;
+			name: string;
+		}>;
 		const traitNames = new Set(traitsRaw.map((t) => t.name));
 		const traitIds = new Set(traitsRaw.map((t) => t.id));
 

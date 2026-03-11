@@ -2,9 +2,9 @@
 
 Generates NPC stat blocks for Story Masters. Supports both quick-build (template-based) and custom-build (manual specification) workflows.
 
-**Phase:** 3
-**Files:** `src/pages/tools/npc-generator.astro` (JS/CSS inline)
-**Pattern:** Inline `<script>` in Astro page
+**Phase:** Complete
+**Files:** `src/pages/tools/npc-generator.astro`, `src/components/preact/tools/npc-generator/` (12 components)
+**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
 
 ---
 
@@ -41,7 +41,7 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
 
 ## Architecture
 
-**Dependencies:** `import { loadData, derived, escapeHtml } from '@/lib/dtd/core.ts'`
+**Dependencies:** `import { loadData, derived } from '@/lib/dtd/core.ts'`
 
 **Data sources:** `npc-templates.json`, `traits.json`, `skills.json`
 
@@ -95,7 +95,7 @@ Saved NPCs can be re-loaded for editing or exported to Combat Tracker.
 
 ## UI Layout
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────┐
 │  [Quick Build] [Custom Build]                                 │
 │                                                               │

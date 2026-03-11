@@ -234,19 +234,32 @@ export const character = {
 			for (const [id, dots] of Object.entries(oldBgs)) {
 				if (dots > 0) {
 					const name = id.charAt(0).toUpperCase() + id.slice(1);
-					(data.backgrounds as unknown[]).push({ name, dots, notes: oldNotes[id] || "" });
+					(data.backgrounds as unknown[]).push({
+						name,
+						dots,
+						notes: oldNotes[id] || "",
+					});
 				}
 			}
 			delete data.backgroundNotes;
 		}
 		if (Array.isArray(data.feats) && data.feats.length > 0 && typeof data.feats[0] === "string") {
-			data.feats = (data.feats as unknown[]).map((f) => ({ name: f as string, notes: "" }));
+			data.feats = (data.feats as unknown[]).map((f) => ({
+				name: f as string,
+				notes: "",
+			}));
 		}
 		if (Array.isArray(data.assets) && data.assets.length > 0 && typeof data.assets[0] === "string") {
-			data.assets = (data.assets as unknown[]).map((a) => ({ name: a as string, notes: "" }));
+			data.assets = (data.assets as unknown[]).map((a) => ({
+				name: a as string,
+				notes: "",
+			}));
 		}
 		if (Array.isArray(data.hindrances) && data.hindrances.length > 0 && typeof data.hindrances[0] === "string") {
-			data.hindrances = (data.hindrances as unknown[]).map((h) => ({ name: h as string, notes: "" }));
+			data.hindrances = (data.hindrances as unknown[]).map((h) => ({
+				name: h as string,
+				notes: "",
+			}));
 		}
 		if (data.weapons && Array.isArray(data.weapons) && !data.meleeWeapons && !data.rangedWeapons) {
 			data.meleeWeapons = [];

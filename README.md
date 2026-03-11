@@ -61,15 +61,17 @@ npm run sync-check # detect drift between markdown and JSON data
 
 ## Project Structure
 
-```
+```text
 books/                 Source rulebook chapters (2 books, per-chapter split)
 cleaned-references/    Condensed rules reference (merged by topic, 24 files)
 data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         9 Astro tool pages (standalone, outside Starlight)
+  components/preact/   Preact island components (~105 across 9 tools)
+  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
-  layouts/             ToolLayout.astro
-  styles/              WH40K theme CSS
+  layouts/             ToolLayout.astro (tool page shell)
+  styles/              WH40K theme CSS + Tailwind v4 @theme tokens
 scripts/               TypeScript pipeline scripts (validate, lint, sync-check, prebuild)
 docs/                  Technical documentation and conventions
 ```
@@ -79,7 +81,8 @@ docs/                  Technical documentation and conventions
 ## Tech Stack
 
 - **[Astro](https://astro.build) + [Starlight](https://starlight.astro.build)** — Static documentation site
-- **Vanilla TypeScript** — All tools are client-side, no framework dependencies
+- **[Preact](https://preactjs.com) Islands** — 9 interactive tools with `@preact/signals` state management
+- **[Tailwind CSS v4](https://tailwindcss.com)** — Utility-first styling with `@theme` design tokens
 - **Chart.js** — Probability curves and defense graphs
 - **[Pagefind](https://pagefind.app)** — Full-text search across all rules content
 - **TypeScript + Zod + tsx** — Data/content validation pipeline

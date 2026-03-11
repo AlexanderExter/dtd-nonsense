@@ -2,9 +2,9 @@
 
 Probability visualization tool for D:TD's XkY dice system. Generates success probability curves, distribution histograms, and comparative analysis for different dice pools.
 
-**Phase:** 4
-**Files:** `src/pages/tools/success-curves.astro` (JS/CSS inline), `src/workers/simulation-worker.ts`
-**Pattern:** Inline `<script>` in Astro page
+**Phase:** Complete
+**Files:** `src/pages/tools/success-curves.astro`, `src/components/preact/tools/success-curves/` (9 components), `src/workers/simulation-worker.ts`
+**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`, Web Worker for Monte Carlo simulation
 
 ---
 
@@ -89,7 +89,7 @@ Minimal persistence — saves pool configuration for quick reload.
 
 ## UI Layout
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │  Pools: [5k3] [3k2] [7k4] [+Add]    Samples: [10000]       │
 │                                                              │

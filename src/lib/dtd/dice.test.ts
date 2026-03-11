@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, jest, spyOn } from "bun:test";
 import { calculateOutcome, parseNotation, roll } from "./dice.ts";
 
 // ---------------------------------------------------------------------------
@@ -12,7 +12,7 @@ import { calculateOutcome, parseNotation, roll } from "./dice.ts";
 function mockDice(...values: number[]): void {
 	const returns = values.map((v) => (v - 1) / 10);
 	let i = 0;
-	vi.spyOn(Math, "random").mockImplementation(() => {
+	spyOn(Math, "random").mockImplementation(() => {
 		if (i >= returns.length) {
 			throw new Error(
 				`Math.random called more times than expected (call #${i + 1}, only ${returns.length} values)`,
@@ -41,12 +41,24 @@ describe("parseNotation", () => {
 		});
 
 		it("handles whitespace around modifier", () => {
-			expect(parseNotation("3k2 + 5")).toEqual({ num: 3, keep: 2, modifier: 5 });
-			expect(parseNotation("3k2 - 5")).toEqual({ num: 3, keep: 2, modifier: -5 });
+			expect(parseNotation("3k2 + 5")).toEqual({
+				num: 3,
+				keep: 2,
+				modifier: 5,
+			});
+			expect(parseNotation("3k2 - 5")).toEqual({
+				num: 3,
+				keep: 2,
+				modifier: -5,
+			});
 		});
 
 		it("handles leading/trailing whitespace", () => {
-			expect(parseNotation("  5k3+1  ")).toEqual({ num: 5, keep: 3, modifier: 1 });
+			expect(parseNotation("  5k3+1  ")).toEqual({
+				num: 5,
+				keep: 3,
+				modifier: 1,
+			});
 		});
 
 		it("is case-insensitive", () => {
@@ -55,7 +67,11 @@ describe("parseNotation", () => {
 		});
 
 		it("parses large numbers", () => {
-			expect(parseNotation("20k10+15")).toEqual({ num: 20, keep: 10, modifier: 15 });
+			expect(parseNotation("20k10+15")).toEqual({
+				num: 20,
+				keep: 10,
+				modifier: 15,
+			});
 		});
 
 		it("parses 1k1", () => {
@@ -193,11 +209,11 @@ describe("calculateOutcome", () => {
 
 describe("roll", () => {
 	beforeEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
 	});
 
 	afterEach(() => {
-		vi.restoreAllMocks();
+		jest.restoreAllMocks();
 	});
 
 	describe("basic rolling", () => {

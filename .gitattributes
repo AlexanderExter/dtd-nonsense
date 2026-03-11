@@ -1,0 +1,16 @@
+# Force LF line endings for all text files.
+# This overrides core.autocrlf=true on Windows, preventing CRLF from
+# being written to disk on checkout — which breaks Biome's formatter check.
+* text=auto eol=lf
+
+# Explicitly binary files — never touch line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary

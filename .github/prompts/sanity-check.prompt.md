@@ -19,7 +19,7 @@ Before checking anything, understand what changed:
     - **Code** (JS/TS tools, TypeScript pipeline)
     - **Content** (markdown rules, cleaned-references)
     - **Documentation** (docs/, instructions, skills)
-    - **Config** (.gitignore, biome.json, vitest.config.ts, prompts)
+    - **Config** (.gitignore, biome.json, bunfig.toml, prompts)
 
 This determines which downstream checks matter.
 
@@ -68,7 +68,7 @@ For each changed file, trace its consumers and producers:
 | `data/*.json`             | Tools that load this data still render correctly                     |
 | `src/lib/dtd/core.ts`     | All 9 tools + 2 large tool apps — shared ES module                   |
 | `cleaned-references/*.md` | `npm run lint:data`, `npm run sync-check`, prebuild                  |
-| `books/*.md`              | `npm run lint:data`, open-questions.md                               |
+| `books/*.md`              | `npm run lint:data`, `docs/editorial/open-questions.md`              |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
 | `.github/copilot-*`       | Relative links resolve correctly (files live in `.github/`)          |
 
@@ -101,7 +101,7 @@ The project follows "docs own, skills point" — conventions live in `docs/proje
 
 Things automated tools can't catch:
 
-- **Open questions**: Do changes affect any entries in `books/open-questions.md`? Mark resolved entries, flag new ambiguities.
+- **Open questions**: Do changes affect any entries in `docs/editorial/open-questions.md`? Mark resolved entries, flag new ambiguities.
 - **Project history**: If a tool or feature was added/removed/changed, does `docs/project-history.md` reflect it?
 - **Decision log**: Were architectural decisions made during this session? They belong in the decision log.
 - **Roadmap items**: Were planned items completed? Update status in `docs/pipeline.md` roadmap table.

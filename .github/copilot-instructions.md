@@ -1,6 +1,6 @@
 # Copilot Instructions
 
-This is a **tabletop RPG rulebook documentation project** with **web-based play tools** for Dungeons the Dragoning (D:TD) a game blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics. Work spans markdown editing (rules content), an Astro/Starlight documentation site, and vanilla JavaScript tools.
+This is a **tabletop RPG rulebook documentation project** with **web-based play tools** for Dungeons the Dragoning (D:TD) a game blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics. Work spans markdown editing (rules content), an Astro/Starlight documentation site, and Preact-based interactive tools.
 
 **Strategic context:** The project's mission, design principles, scope boundaries, and feature priorities are defined in **[docs/product-vision.md](../docs/product-vision.md)**. Read it before making scope or priority decisions. The project is currently in **beta** — stabilization and polish take priority over new features.
 
@@ -39,7 +39,9 @@ When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism.
 - **npm**: Standard `npm run build`, `npm run dev`. Node modules live in `node_modules/`.
 - **Bun**: TypeScript pipeline scripts run via `bun run`. npm scripts wrap common commands (`validate`, `lint:data`, `sync-check`).
 - **Biome**: Linter/formatter for JS/TS/CSS. Run `npm run lint` to check; **run `npm run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
-- **Vitest**: Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `npm run test` to run all tests. Config in `vitest.config.ts`.
+- **bun:test**: Built-in test runner (Jest-compatible). Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `npm run test` (or `bun test` directly) to run all tests. Config via `bunfig.toml`.
+- **Preact**: UI framework for tool pages. `@astrojs/preact` with compat mode, `@preact/signals` for fine-grained reactive state.
+- **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
 - **`npm run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint. Use this as the single baseline command.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
@@ -117,7 +119,7 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 | ----------------------- | -------------------------------------------------------------------- |
 | `ttrpg-rules-editor`    | Editing rules content, formatting rulebook text, processing chapters |
 | `dtd-source-hierarchy`  | Source authority questions, rule verification, ambiguity resolution  |
-| `open-question-manager` | Adding, resolving, or applying entries in open-questions.md          |
+| `open-question-manager` | Adding, resolving, or applying entries in docs/editorial/          |
 | `tool-development`      | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
 | `product-owner`         | Decisions about what to build, prioritize, or cut; strategic context |
 
@@ -127,11 +129,11 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 
 ```
 books/                 Core reference material (per-chapter split, 2 books)
-  open-questions.md    Tracked ambiguities and contradictions
 cleaned-references/    Succinct combined reading references (merged by topic)
 data/                  Canonical JSON game data (12 files, validated by Zod schemas)
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
+  editorial/           Editorial department: open questions, backlog, style concerns
   tools/               Per-tool feature specs (9 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
@@ -141,17 +143,22 @@ astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
 biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           npm dependencies (Astro, Starlight, Chart.js)
 tsconfig.json          TypeScript strict config with @/ path alias
-vitest.config.ts       Vitest unit test configuration
+bunfig.toml            Bun config (shell, test runner settings)
 scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight frontmatter
 src/                   Astro source files
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
-  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
+  components/
+    preact/
+      tools/           Preact island components (9 tools, 97 components)
+  hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts)
+  lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
-  lib/tools/           Tool-specific ES module scripts (sheet-app.ts, builder-app.ts)
   workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   layouts/             ToolLayout.astro
-  styles/              custom.css (WH40K theme), per-tool CSS (sheet.css, builder.css)
+  styles/
+    custom.css         WH40K theme (Starlight)
+    tailwind.css       Tailwind v4 @theme tokens (design token source of truth)
 public/data/           Generated JSON data copies (gitignored)
 ```
 
@@ -159,7 +166,7 @@ public/data/           Generated JSON data copies (gitignored)
 
 **Build:** `npm run build` runs `prebuild.mjs` (copies content/data, injects frontmatter) then `astro build` (Pagefind search). Dev server: `npm run dev`. Lint with `npm run lint`. Run tests with `npm run test`.
 
-**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → Vitest tests → JSON validation → content lint → Astro build on every push/PR.
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → bun test → JSON validation → content lint → Astro build on every push/PR.
 
 ### Pipeline Scripts
 
@@ -167,8 +174,8 @@ TypeScript pipeline scripts (run via npm):
 
 | Script                   | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint |
-| `npm run test`           | Unit tests only (Vitest)                                        |
+| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
+| `npm run test`           | Unit tests only (bun:test)                                      |
 | `npm run lint`           | Biome lint/format check only                                    |
 | `npm run validate`       | Validate all 12 JSON data files against Zod schemas             |
 | `npm run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
@@ -177,6 +184,7 @@ TypeScript pipeline scripts (run via npm):
 | `npm run session:start`  | Create/switch to session branch + baseline check                |
 | `npm run session:end`    | Squash-merge to main + cleanup                                  |
 | `npm run session:status` | Quick git state report                                          |
+| `npm run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 
@@ -220,11 +228,15 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Conventions and pitfalls | [docs/project-conventions.md](../docs/project-conventions.md) |
 | Editorial technique      | `ttrpg-rules-editor` skill (auto-loads for editing tasks)     |
 | Source authority         | `dtd-source-hierarchy` skill                                  |
+| Editorial concerns       | [docs/editorial/](../docs/editorial/) (open questions, backlog)|
 | Tool architecture        | [docs/architecture.md](../docs/architecture.md)               |
 | How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)     |
 | JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)           |
 | Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                       |
 | Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                       |
 | Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)      |
+| Preact components        | `src/components/preact/tools/`                                |
+| Preact hooks             | `src/hooks/`                                                  |
+| Design tokens            | `src/styles/tailwind.css` (`@theme` block)                    |
 | Project history          | [docs/project-history.md](../docs/project-history.md)         |
 | Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)           |

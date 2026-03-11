@@ -10,41 +10,88 @@ See [project-conventions.md](project-conventions.md#git-workflow) for the full g
 
 ---
 
-## Adding a New Tool
+## Creating a Preact Tool
 
-### Astro Pages (src/pages/tools/)
+All 9 tools use the **Preact Islands** pattern. To add a new tool:
 
-1. Create `src/pages/tools/[tool-name].astro`
-2. Import `ToolLayout` and wrap content:
+### 1. Create Component Directory
+
+```text
+src/components/preact/tools/{tool-name}/
+├── constants.ts          # Types, helpers, tool-specific constants
+├── {ToolName}App.tsx     # Root component (signals, data loading, layout)
+├── SomeTab.tsx           # Tab/section components
+├── AnotherTab.tsx
+└── shared/               # Shared sub-components (optional)
+    └── SomeWidget.tsx
+```
+
+### 2. Define State with Module-Level Signals
+
+In `{ToolName}App.tsx`:
+
+```typescript
+import { signal, computed } from "@preact/signals";
+import { useAllData } from "@/hooks/use-data";
+
+// Module-level signals — shared across all components
+export const items = signal<Item[]>([]);
+export const selectedId = signal<string | null>(null);
+export const selectedItem = computed(() =>
+  items.value.find(i => i.id === selectedId.value) ?? null
+);
+
+export function addItem(item: Item) {
+  items.value = [...items.value, item];
+}
+
+export function ToolNameApp() {
+  const { data, loading, error } = useAllData(["skills.json", "races.json"]);
+  // ...
+}
+```
+
+### 3. Create the Astro Page
 
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
+import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App";
 ---
 
 <ToolLayout title="Tool Name" description="...">
-  <!-- HTML content -->
-  <style> /* tool styles */ </style>
-  <script> /* tool logic with ES module imports */ </script>
+  <ToolNameApp client:load />
+  <style is:global>
+    /* Tool-specific CSS overrides */
+  </style>
 </ToolLayout>
 ```
 
-3. Convert `DTD.*` global calls → ES module imports:
+### 4. Key Conventions
 
-```typescript
-import { loadData, derived, escapeHtml } from "@/lib/dtd/core.ts";
-import { roll, parseNotation } from "@/lib/dtd/dice.ts";
-import type { CharacterData } from "@/lib/dtd/types.ts";
-```
+- Use `class` not `className` (Preact)
+- All `<button>` elements need `type="button"`
+- **Named exports only** — no default exports
+- Use `@/` path aliases for imports outside the component directory
+- Use `./` relative imports within the component directory
+- Module-level signals for state, `computed` for derived data
+- `useAllData` hook from `@/hooks/use-data` for loading JSON game data
+- `useLocalStorage` hook from `@/hooks/use-local-storage` for persistence
+- `useWorker` hook from `@/hooks/use-worker` for Web Worker communication
 
-4. For Chart.js:
-    ```typescript
-    const { Chart, registerables } = await import("chart.js");
-    Chart.register(...registerables);
-    ```
-5. For Web Workers: place `.ts` files in `src/workers/`, then instantiate with `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. Workers import from `src/lib/dtd/` using relative paths (not `@/` alias).
-6. Create documentation in `docs/tools/[tool-name].md`
-7. Add a card to `src/pages/tools/index.astro` with a `status` badge
+### 5. Available Hooks
+
+| Hook                 | Source                          | Purpose                                         |
+| -------------------- | ------------------------------- | ----------------------------------------------- |
+| `useData`            | `@/hooks/use-data`              | Load a single JSON data file                    |
+| `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
+| `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist signal state to localStorage            |
+| `useWorker`          | `@/hooks/use-worker`            | Communicate with Web Workers                    |
+
+### 6. Documentation
+
+- Create `docs/tools/[tool-name].md`
+- Add a card to `src/pages/tools/index.astro` with a `status` badge
 
 ---
 
@@ -63,8 +110,8 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 | `npm run preview`        | Preview production build locally                    |
 | `npm run lint`           | Check JS/TS/CSS with Biome                          |
 | `npm run lint:fix`       | Auto-fix Biome lint issues                          |
-| `npm run test`           | Run Vitest unit tests                               |
-| `npm run test:watch`     | Run Vitest in watch mode                            |
+| `npm run test`           | Run Bun unit tests (bun:test)                       |
+| `npm run test:watch`     | Run Bun tests in watch mode                         |
 | `npm run validate`       | Validate JSON data against Zod schemas              |
 | `npm run validate:xref`  | Validate + cross-reference checks                   |
 | `npm run lint:data`      | Lint markdown for terminology, formatting, encoding |
@@ -76,8 +123,8 @@ import type { CharacterData } from "@/lib/dtd/types.ts";
 
 ### Build Pipeline
 
-```
-node scripts/prebuild.mjs     ← Copies: cleaned-refs → rules, books → books, JSON → public/data, injects frontmatter
+```text
+bun run scripts/prebuild.mjs  ← Copies: cleaned-refs → rules, books → books, JSON → public/data, injects frontmatter
         ↓
 astro build                   ← Builds static pages + Pagefind search index
 ```
@@ -139,28 +186,40 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ## CSS Conventions
 
-### File Organization
+### Tailwind v4 Utility-First
 
-- **Large tools** (character-sheet, character-builder) use separate `.css` files in `src/styles/` imported via `<style is:global>@import`
-- **Small tools** use inline `<style>` blocks in the `.astro` file (scoped or `is:global` as needed)
-- **ToolLayout.astro** declares `:root` CSS custom properties for the standalone HTML shell
-- **Starlight theme** lives in `src/styles/custom.css`
+All tool pages use **Tailwind CSS v4** utility classes directly in JSX. No hand-written `<style>` blocks.
 
-### Custom Properties
+- **Design tokens**: `src/styles/tailwind.css` `@theme` block — colors, spacing, radii, fonts, animations
+- **Reusable patterns**: `src/styles/tailwind.css` `@layer components` — `.panel`, `.btn` family
+- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold for docs pages
+- **Print styles**: Minimal `@media print` blocks in individual `.astro` files where needed
 
-Use CSS custom properties defined in `ToolLayout.astro` and `src/styles/custom.css`:
+### Class Patterns
 
-```css
-var(--bg)                /* Page background */
-var(--surface)           /* Card / panel backgrounds */
-var(--text)              /* Primary text */
-var(--text-dim)          /* Secondary text */
-var(--text-muted)        /* Tertiary text */
-var(--accent)            /* Gold accent */
-var(--border)            /* Border color */
-var(--space-sm/md/lg/xl) /* Spacing scale */
-var(--radius)            /* Border radius */
+```tsx
+// Static classes
+<div class="bg-surface border border-border rounded-md p-lg">
+
+// Conditional classes
+<div class={[
+  "flex items-center p-sm rounded-sm",
+  isActive && "border-accent bg-accent-bg",
+  isDisabled && "opacity-50 cursor-not-allowed",
+].filter(Boolean).join(" ")}>
+
+// Dynamic runtime values (inline style — only for values computed at runtime)
+style={{ width: `${percent}%` }}
 ```
+
+### Rules
+
+- Use `class` (not `className`) — Preact convention
+- No `@apply` — defeats utility-first purpose
+- No `<style>` blocks in components — all styling via Tailwind utilities
+- `style={{}}` only for dynamic runtime values (percentages, Chart.js colors, canvas)
+- Color/badge mappings use typed `Record<string, string>` lookup constants
+- Responsive: `max-[Npx]:` for custom breakpoints, `max-md:` / `max-sm:` for standard
 
 **Hidden attribute caveat:** Never set an explicit `display` value (e.g., `display: flex`) on an element that uses the HTML `hidden` attribute for visibility toggling. CSS `display` overrides `hidden`'s implicit `display: none`, making the element permanently visible. Instead, use `display: none` as the default and toggle with a class (e.g., `.open { display: flex }`).
 
@@ -182,7 +241,7 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 ## Unit Tests
 
-Unit tests use **Vitest** (config in `vitest.config.ts`). Test files live alongside their source modules using the `*.test.ts` pattern:
+Unit tests use **bun:test** (Bun's built-in Jest-compatible runner; config in `bunfig.toml`). Test files live alongside their source modules using the `*.test.ts` pattern:
 
 | Test File                              | Covers                                                    |
 | -------------------------------------- | --------------------------------------------------------- |
@@ -204,11 +263,11 @@ npm run test:watch    # re-run on file changes
 
 GitHub Actions runs the following steps on every push/PR:
 
-```
-Biome lint  →  Vitest tests  →  Zod validate  →  Content lint  →  Astro build
+```text
+Biome lint  →  Bun tests  →  Zod validate  →  Content lint  →  Astro build
 ```
 
-Corresponds to separate CI steps: `npx biome ci .` → `npm run test` → `npm run validate` → `npm run lint:data` → `npm run build`.
+Corresponds to separate CI steps: `bunx biome ci .` → `bun test` → `bun run scripts/validate.ts --xref` → `bun run scripts/lint.ts` → `bun run build`.
 
 All steps must pass for a PR to be merge-ready.
 
@@ -235,6 +294,46 @@ Per-tool verification before merge:
 - Rank-0: always returns 0–9 (10 counts as 0, no explosion)
 - Modifier applied after keep-and-sum
 - 100K-roll simulation: mean of `5k3` ≈ 19.5
+
+---
+
+## Tailwind CSS Conventions
+
+Decisions established during the Tailwind v4 migration. Follow these when writing or modifying tool components.
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Attribute name | `class` (not `className`) | Preact convention, shorter, matches HTML |
+| Dynamic classes | Template literals or array `.filter(Boolean).join(" ")` | Simple, no extra dependency |
+| Custom properties | Keep for truly dynamic values only | Chart colors, runtime percentages, animation targets |
+| `@apply` usage | **Never** | Defeats utility-first; creates hidden coupling |
+| Component styles | Tailwind utilities on every element | No `<style>` blocks in Preact components |
+| Animations | Tailwind `animate-*` + custom `@keyframes` in `tailwind.css` | `slideIn`, `pulse`, tool-specific animations |
+
+### Patterns That Must Stay as Inline Styles
+
+```tsx
+// Dynamic runtime percentages
+style={{ width: `${hpPercent}%` }}
+
+// Chart.js color swatches
+style={{ background: POOL_COLORS[index] }}
+```
+
+### Conditional Class Pattern
+
+```tsx
+// Simple boolean
+<div class={`flex ${isActive ? "border-accent" : "border-transparent"}`}>
+
+// Multiple conditions
+<div class={[
+  "flex items-center p-sm rounded-sm",
+  isKept && "bg-accent text-bg",
+  isDropped && "opacity-40 line-through",
+  isExploded && "border-gold animate-pulse-once",
+].filter(Boolean).join(" ")}>
+```
 
 ---
 

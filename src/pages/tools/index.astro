@@ -3,146 +3,70 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Play Tools" description="Web-based play aids for Dungeons the Dragoning 40,000">
-  <header class="tools-header">
-    <h1>Dungeons the Dragoning</h1>
-    <p>40,000: 7th Edition — Player Tools</p>
+  <header class="text-center pt-12 px-md pb-md border-b border-border">
+    <h1 class="m-0 text-[2.5rem] text-accent">Dungeons the Dragoning</h1>
+    <p class="mt-sm mb-0 text-text-muted">40,000: 7th Edition — Player Tools</p>
   </header>
 
-  <main class="tools-grid">
-    <a href="/tools/character-sheet/" class="tool-card">
-      <h2>Character Sheet</h2>
-      <p>Freeform character sheet for creation and play. Edit all sections freely, auto-calculated derived stats, multiple character slots, and JSON import/export.</p>
-      <span class="status ready">Ready</span>
+  <main class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-lg p-xl max-w-[1200px] mx-auto">
+    <a href="/tools/character-sheet/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Character Sheet</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Freeform character sheet for creation and play. Edit all sections freely, auto-calculated derived stats, multiple character slots, and JSON import/export.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/character-builder/" class="tool-card">
-      <h2>Character Builder</h2>
-      <p>Guided 11-step character creation wizard with priority-based allocation, XP tracking, and JSON export.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/character-builder/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Character Builder</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Guided 11-step character creation wizard with priority-based allocation, XP tracking, and JSON export.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/dice-roller/" class="tool-card">
-      <h2>Dice Roller</h2>
-      <p>Roll XkY dice pools with exploding d10s, overflow compression, and automatic Raise/Check calculation. Supports modifiers and roll history.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/dice-roller/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Dice Roller</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Roll XkY dice pools with exploding d10s, overflow compression, and automatic Raise/Check calculation. Supports modifiers and roll history.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/quick-reference/" class="tool-card">
-      <h2>Quick Reference</h2>
-      <p>Searchable index of conditions, action types, combat modifiers, and common rules. Find what you need fast during play.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/quick-reference/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Quick Reference</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Searchable index of conditions, action types, combat modifiers, and common rules. Find what you need fast during play.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/npc-generator/" class="tool-card">
-      <h2>NPC Stat Block Builder</h2>
-      <p>Build NPC stat blocks with auto-calculated derived stats, trait modifiers, and 40+ templates from the core rules. Save, print, and copy as Markdown.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/npc-generator/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">NPC Stat Block Builder</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Build NPC stat blocks with auto-calculated derived stats, trait modifiers, and 40+ templates from the core rules. Save, print, and copy as Markdown.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/combat-tracker/" class="tool-card">
-      <h2>Combat Tracker</h2>
-      <p>Initiative order management, HP and resource tracking, condition toggles. Keep your battles organized.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/combat-tracker/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Combat Tracker</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Initiative order management, HP and resource tracking, condition toggles. Keep your battles organized.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/ship-builder/" class="tool-card">
-      <h2>Ship Builder</h2>
-      <p>Build and customize spelljammer ships with hull selection, consoles, weapons, shields, and crew. Includes a Sheet mode for tracking combat.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/ship-builder/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Ship Builder</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Build and customize spelljammer ships with hull selection, consoles, weapons, shields, and crew. Includes a Sheet mode for tracking combat.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/success-curves/" class="tool-card">
-      <h2>Success Curve Analyzer</h2>
-      <p>Visualize XkY probability distributions against Target Numbers. Compare up to 4 dice pools via Monte Carlo simulation.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/success-curves/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Success Curve Analyzer</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Visualize XkY probability distributions against Target Numbers. Compare up to 4 dice pools via Monte Carlo simulation.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
 
-    <a href="/tools/defense-graph/" class="tool-card">
-      <h2>Defense Graph Simulator</h2>
-      <p>Visualize how damage mitigation evolves across the defense pipeline. See how armor, penetration, aura, cover, and resilience interact.</p>
-      <span class="status ready">Ready</span>
+    <a href="/tools/defense-graph/" class="bg-surface border border-border rounded-md p-lg no-underline text-text-primary transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-shadow)] hover:border-accent hover:text-text-primary">
+      <h2 class="m-0 mb-sm text-accent text-[1.25rem]">Defense Graph Simulator</h2>
+      <p class="m-0 text-text-muted text-[0.9rem] leading-relaxed">Visualize how damage mitigation evolves across the defense pipeline. See how armor, penetration, aura, cover, and resilience interact.</p>
+      <span class="inline-block mt-md py-xs px-sm rounded-sm text-xs font-semibold uppercase bg-success-bg text-success">Ready</span>
     </a>
   </main>
 
-  <footer class="source-note">
+  <footer class="text-center p-md text-text-muted text-[0.85rem]">
     Data extracted from <em>Dungeons the Dragoning 40,000: 7th Edition</em> and <em>For a Few Subtitles More</em>.<br />
     This is a fan-made tool. All content belongs to its respective creators.
   </footer>
 
-  <style>
-    .tools-header {
-      text-align: center;
-      padding: 3rem 1rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .tools-header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: var(--accent);
-    }
-    .tools-header p {
-      margin: 0.5rem 0 0;
-      color: var(--text-muted);
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .tool-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    .tool-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      border-color: var(--accent);
-      color: var(--text);
-    }
-    .tool-card h2 {
-      margin: 0 0 0.5rem 0;
-      color: var(--accent);
-      font-size: 1.25rem;
-    }
-    .tool-card p {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    .tool-card .status {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    .tool-card .status.ready {
-      background: var(--success-bg);
-      color: var(--success);
-    }
-    .tool-card .status.planned {
-      background: var(--warning-bg);
-      color: var(--warning);
-    }
-
-    .source-note {
-      text-align: center;
-      padding: 1rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-  </style>
 </ToolLayout>

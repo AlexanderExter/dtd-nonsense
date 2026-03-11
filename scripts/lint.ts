@@ -50,10 +50,21 @@ interface TermRule {
 }
 
 const TERM_REPLACEMENTS: TermRule[] = [
-	{ pattern: /\bArmour\b/g, replacement: "Armor", reason: "Use American English spelling 'Armor'" },
-	{ pattern: /\bPersuade\b/g, replacement: "Persuasion", reason: "Canonical skill name is 'Persuasion'" },
-	{ pattern: /\bPerformance\b/g, replacement: "Performer", reason: "Canonical skill name is 'Performer'" },
-	{ pattern: /\bBallistic\b(?!s)/g, replacement: "Ballistics", reason: "Canonical skill name is 'Ballistics'" },
+	{
+		pattern: /\bArmour\b/g,
+		replacement: "Armor",
+		reason: "Use American English spelling 'Armor'",
+	},
+	{
+		pattern: /\bPersuade\b/g,
+		replacement: "Persuasion",
+		reason: "Canonical skill name is 'Persuasion'",
+	},
+	{
+		pattern: /\bBallistic\b(?!s| [A-Z]| weapon)/gi,
+		replacement: "Ballistics",
+		reason: "Canonical skill name is 'Ballistics'",
+	},
 	{
 		pattern: /\bFate Points?\b/g,
 		replacement: "Hero Points",
@@ -64,7 +75,11 @@ const TERM_REPLACEMENTS: TermRule[] = [
 		replacement: "Target Number",
 		reason: "D:TD uses 'Target Number' (TN), not 'Difficulty Class'",
 	},
-	{ pattern: /\b(?<!\w)DC\b(?!\w)/g, replacement: "TN", reason: "D:TD uses 'TN', not 'DC'" },
+	{
+		pattern: /\b(?<!\w)DC\b(?!\w)/g,
+		replacement: "TN",
+		reason: "D:TD uses 'TN', not 'DC'",
+	},
 ];
 
 // ---------------------------------------------------------------------------
@@ -299,8 +314,14 @@ const CORRUPTION_PATTERNS: CorruptionRule[] = [
 		pattern: /\u00c3\u2014/g,
 		message: "Likely corrupted '\u00d7' (multiplication sign) \u2014 possible encoding issue",
 	},
-	{ pattern: /\u00e2\u20ac\u201d/g, message: "Likely corrupted '\u2014' (em-dash)" },
-	{ pattern: /\u00e2\u20ac\u2122/g, message: "Likely corrupted '\u2019' (right single quote)" },
+	{
+		pattern: /\u00e2\u20ac\u201d/g,
+		message: "Likely corrupted '\u2014' (em-dash)",
+	},
+	{
+		pattern: /\u00e2\u20ac\u2122/g,
+		message: "Likely corrupted '\u2019' (right single quote)",
+	},
 	{ pattern: /\u00c2\u00bd/g, message: "Likely corrupted '\u00bd' (one-half)" },
 ];
 
@@ -527,11 +548,14 @@ function main(): void {
 	}
 
 	// ── Detail listing ────────────────────────────────────────────────
+	const severityFilter = args.includes("--severity") ? args[args.indexOf("--severity") + 1] : undefined;
+	const filtered = severityFilter ? allIssues.filter((i) => i.severity === severityFilter) : allIssues;
 	const detailLimit = 20;
-	const showing = Math.min(allIssues.length, detailLimit);
-	console.log(`\n${BOLD}Details (showing first ${showing} of ${allIssues.length}):${RESET}`);
+	const showing = Math.min(filtered.length, detailLimit);
+	const label = severityFilter ? `${severityFilter}-only details` : `Details`;
+	console.log(`\n${BOLD}${label} (showing first ${showing} of ${filtered.length}):${RESET}`);
 
-	for (const issue of allIssues.slice(0, detailLimit)) {
+	for (const issue of filtered.slice(0, detailLimit)) {
 		const rel = relativePath(issue.file);
 		const color = SEVERITY_COLORS[issue.severity];
 		console.log(

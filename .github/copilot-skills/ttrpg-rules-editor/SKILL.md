@@ -35,7 +35,7 @@ Follow the git workflow in [docs/project-conventions.md](../../docs/project-conv
 
 ## Directory Structure
 
-Key locations for editorial work: `books/` (core reference), `cleaned-references/` (condensed references), `books/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
+Key locations for editorial work: `books/` (core reference), `cleaned-references/` (condensed references), `docs/editorial/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
 
 ### Content Maturity
 
@@ -158,7 +158,7 @@ When a subagent performs integration, their report must include:
 
 ## Open Questions File
 
-Track ambiguities in `books/open-questions.md`. See [templates.md](references/templates.md) for entry format and the `open-question-manager` skill for the full lifecycle.
+Track ambiguities in `docs/editorial/open-questions.md`. See [templates.md](references/templates.md) for entry format and the `open-question-manager` skill for the full lifecycle.
 
 ---
 
@@ -190,13 +190,13 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 **Directory context:** This is in cleaned-references/ — compression and reformatting are appropriate.
 
-**Source hierarchy:** Books (`books/`) are canonical. `books/open-questions.md` has resolutions. Never invent rulings.
+**Source hierarchy:** Books (`books/`) are canonical. `docs/editorial/open-questions.md` has resolutions. Never invent rulings.
 
 **Voice:** Preserve the source material's tone exactly. Do not sanitize informal language, humor, or casual phrasing. Integration = transcription, not paraphrase.
 
 **Deliverables:**
 - Edit the file
-- Log any ambiguities to `books/open-questions.md`
+- Log any ambiguities to `docs/editorial/open-questions.md`
 - Report: files modified, sections processed, open questions logged, anything blocked
 - Confirm: source text preserved verbatim (or list specific phrasing changes and justification)
 ```
@@ -211,7 +211,7 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 1. **Create a branch** for the task
 2. **Read the entire file** before editing
-3. **Check books/open-questions.md** for applicable resolutions
+3. **Check docs/editorial/open-questions.md** for applicable resolutions
 4. **Clean artifacts first** (typos, garbage, duplicates)
 5. **Work section by section**, top to bottom
 6. **For each section:**
@@ -225,7 +225,7 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 ### Multi-File Projects
 
 1. **Plan thoroughly** — inventory files, assess scope, identify dependencies
-2. **Check books/open-questions.md** — apply relevant resolutions during processing
+2. **Check docs/editorial/open-questions.md** — apply relevant resolutions during processing
 3. **Process independent files in parallel** (2-3 subagents) or sequentially
 4. **Commit after each file** — don't let changes pile up uncommitted
 5. **Dependent files process after their dependencies** (e.g., classes before feats that reference them)
@@ -278,7 +278,7 @@ Create scannable references, not word walls. See [formatting.md](references/form
 
 ## Handling Ambiguities
 
-**Never invent rulings.** Preserve ambiguity in text, add a clarification note, and log in `books/open-questions.md`. See the `open-question-manager` skill for the full workflow.
+**Never invent rulings.** Preserve ambiguity in text, add a clarification note, and log in `docs/editorial/open-questions.md`. See the `open-question-manager` skill for the full workflow.
 
 ---
 
@@ -348,7 +348,7 @@ The `replace_string_in_file` tool requires exact string matching. Known issues:
 - [ ] Terminology consistent throughout (D:TD standards)
 - [ ] Game terms capitalized (Test, Static Defense, Hero Points, etc.)
 - [ ] Pronouns follow convention (she/her for Heroes, he/him for opponents, they/them for SM)
-- [ ] Ambiguities logged to books/open-questions.md
+- [ ] Ambiguities logged to docs/editorial/open-questions.md
 - [ ] No word walls; clear visual hierarchy
 - [ ] Cross-references accurate
 - [ ] Tool data consistency checked (if mechanics were edited)

@@ -2,6 +2,7 @@
 // ToolLayout — wraps tool pages within a Starlight-compatible shell.
 // Provides consistent header/nav while letting tools render client-side.
 import Analytics from "@vercel/analytics/astro";
+import "@/styles/tailwind.css";
 
 interface Props {
 	title: string;
@@ -21,17 +22,17 @@ const { title, description = "" } = Astro.props;
     <!-- Starlight theme vars (loaded from our custom CSS) -->
     <Analytics />
   </head>
-  <body>
-    <header class="tool-site-header">
-      <div class="tool-header-content">
-        <a href="/" class="tool-logo">DTD 40k</a>
-        <nav class="tool-nav">
-          <a href="/tools/">Tools</a>
-          <a href="/rules/01-core-rules/">Rules</a>
-          <a href="/tools/dice-roller/">Dice Roller</a>
-          <a href="/tools/character-builder/">Builder</a>
-          <a href="/tools/character-sheet/">Sheet</a>
-          <a href="/tools/combat-tracker/">Combat</a>
+  <body class="m-0 p-0 font-sans text-base leading-relaxed text-text-primary bg-bg min-h-screen">
+    <header class="bg-surface border-b border-border py-3 px-lg">
+      <div class="flex items-center gap-8 max-w-[1400px] mx-auto">
+        <a href="/" class="font-bold text-lg !text-accent whitespace-nowrap">DTD 40k</a>
+        <nav class="flex gap-5 flex-wrap">
+          <a href="/tools/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Tools</a>
+          <a href="/rules/01-core-rules/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Rules</a>
+          <a href="/tools/dice-roller/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Dice Roller</a>
+          <a href="/tools/character-builder/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Builder</a>
+          <a href="/tools/character-sheet/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Sheet</a>
+          <a href="/tools/combat-tracker/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Combat</a>
         </nav>
       </div>
     </header>
@@ -40,167 +41,18 @@ const { title, description = "" } = Astro.props;
       <slot />
     </main>
 
-    <footer class="tool-site-footer">
-      <p>
+    <footer class="text-center p-lg text-text-dim text-sm border-t border-border mt-xl">
+      <p class="m-0">
         Fan-made tools for <em>Dungeons the Dragoning 40,000: 7th Edition</em>.
         All content belongs to its respective creators.
       </p>
     </footer>
 
     <style is:global>
-      /* Tool page base styles — bridge Starlight theme tokens */
-      :root {
-        --bg: #0d0d0f;
-        --surface: #16161a;
-        --surface-raised: #1e1e24;
-        --surface-alt: #1e1e24;
-        --border: #2a2a32;
-        --border-light: #3a3a44;
-        --text: #e8e6e3;
-        --text-muted: #94929d;
-        --text-dim: #6c6a75;
-        --accent: #d4a84b;
-        --accent-hover: #e6bc5f;
-        --accent-dim: #8b7033;
-        --gold: #d4a84b;
-        --success: #4ade80;
-        --success-bg: rgba(74, 222, 128, 0.15);
-        --warning: #fbbf24;
-        --warning-bg: rgba(251, 191, 36, 0.15);
-        --error: #f87171;
-        --error-bg: rgba(248, 113, 113, 0.15);
-        --info: #60a5fa;
-        --info-bg: rgba(96, 165, 250, 0.15);
-        --space-xs: 0.25rem;
-        --space-sm: 0.5rem;
-        --space-md: 1rem;
-        --space-lg: 1.5rem;
-        --space-xl: 2rem;
-        --radius: 8px;
-        --radius-sm: 4px;
-        --radius-md: 8px;
-        --radius-lg: 12px;
-        --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        --font-mono: "Fira Code", "Consolas", monospace;
-      }
-
       *,
       *::before,
       *::after {
         box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: var(--font-sans);
-        font-size: 16px;
-        line-height: 1.6;
-        color: var(--text);
-        background: var(--bg);
-        min-height: 100vh;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      a:hover {
-        color: var(--accent-hover);
-      }
-
-      /* Panel (shared card style) */
-      .panel {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: var(--space-lg);
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-sm);
-        padding: var(--space-sm) var(--space-md);
-        font-size: 0.9rem;
-        font-weight: 500;
-        border: 1px solid transparent;
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        transition: all 0.15s ease;
-        text-decoration: none;
-        font-family: inherit;
-      }
-      .btn-primary,
-      .btn-accent {
-        background: var(--accent);
-        color: var(--bg);
-      }
-      .btn-primary:hover,
-      .btn-accent:hover {
-        background: var(--accent-hover);
-      }
-      .btn-secondary {
-        background: var(--surface-raised);
-        border-color: var(--border);
-        color: var(--text);
-      }
-      .btn-secondary:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .btn-sm {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.8rem;
-      }
-
-      /* Tool header */
-      .tool-site-header {
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        padding: 0.75rem 1.5rem;
-      }
-      .tool-header-content {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .tool-logo {
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: var(--accent) !important;
-        white-space: nowrap;
-      }
-      .tool-nav {
-        display: flex;
-        gap: 1.25rem;
-        flex-wrap: wrap;
-      }
-      .tool-nav a {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        transition: color 0.15s;
-      }
-      .tool-nav a:hover,
-      .tool-nav a.active {
-        color: var(--accent);
-      }
-
-      /* Tool footer */
-      .tool-site-footer {
-        text-align: center;
-        padding: 1.5rem;
-        color: var(--text-dim);
-        font-size: 0.8rem;
-        border-top: 1px solid var(--border);
-        margin-top: 2rem;
-      }
-      .tool-site-footer p {
-        margin: 0;
       }
     </style>
   </body>

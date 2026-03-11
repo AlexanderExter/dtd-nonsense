@@ -170,13 +170,43 @@ Completed items:
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 11.1 Biome Auto-fix              | Resolved all 44 Biome lint errors across 44 files via `biome check --write`.                                                                                          |
 | 11.2 Xref Warnings               | Fixed all 41 cross-reference warnings in `classes.json` (skill/feat name corrections).                                                                                |
-| 11.3 Character Defaults (W4)     | Aligned default character shapes between `character.ts` and `sheet-app.ts`.                                                                                           |
+| 11.3 Character Defaults (W4)     | Aligned default character shapes between `character.ts` and sheet app module (later migrated to Preact in Phase 12).                                                  |
 | 11.4 Documentation Cleanup       | Deleted stale `implementation-plan.md` and `External-audit.md`. Removed Playwright/E2E references. Added anti-drift pitfall to conventions. Removed hardcoded counts. |
 | 11.5 Verification Infrastructure | Added `npm run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
 | 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `npm run prepare` for hook installation. |
 | 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `npm run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
 
 **Status:** All checks pass (187 tests, 12/12 schemas, 0 xref warnings, 0 lint errors). Session automation replaces manual git ceremony.
+
+---
+
+## Phase 12 — Preact + Tailwind CSS v4 Migration (2026-03-10)
+
+**Goal:** Migrate all 9 interactive tools from vanilla TypeScript DOM manipulation to Preact Islands with `@preact/signals` state management and Tailwind CSS v4 utility styling.
+
+| Component                       | What Was Done                                                                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 12.0 Foundation                 | Added `@astrojs/preact` (compat mode), `@preact/signals`, `@tailwindcss/vite`, `@astrojs/starlight-tailwind`. Updated `astro.config.mjs`, `tsconfig.json`, `biome.json`.                       |
+| 12.1 Shared Infrastructure      | Created 4 custom hooks: `use-data.ts` (JSON loading), `use-local-storage.ts` (persistence), `use-worker.ts` (Web Workers), `use-debounce.ts` (input debouncing).                               |
+| 12.2 Dice Roller                | First Preact tool — 6 components. Proof-of-concept for the island pattern.                                                                                                                     |
+| 12.3 Data Display Tools         | Quick Reference (13 components), Success Curves (9), Defense Graph (10) — read-only or analysis tools.                                                                                         |
+| 12.4 Stateful Tools             | Combat Tracker (9 components), NPC Generator (12), Ship Builder (12) — tools with persistent state and complex UI.                                                                             |
+| 12.5 Complex Tools              | Character Builder (18 components), Character Sheet (16) — the two largest tools with multi-tab UIs and full character CRUD.                                                                    |
+| 12.6 CSS Token Bridge           | Tailwind `@theme` tokens in `src/styles/tailwind.css` as single source of truth. `ToolLayout.astro` bridges tokens → short `var(--name)` aliases.                                              |
+| 12.7 Documentation              | Updated `architecture.md`, `development-guide.md`, `astro.instructions.md`, `copilot-instructions.md`. Created `preact-implementation-plan.md`.                                                |
+
+**Totals:** 105 Preact components across 9 tools, 4 custom hooks, 12 commits on the `preact-tailwind` branch.
+
+**Decisions:**
+
+| Decision              | Choice                             | Rationale                                                                               |
+| --------------------- | ---------------------------------- | --------------------------------------------------------------------------------------- |
+| Hydration directive   | `client:load` for all tools        | Tools are interactive immediately — no benefit to deferred hydration                     |
+| State management      | Module-level `@preact/signals`     | Simpler than context providers; persistent across re-renders; works with Astro islands   |
+| CSS strategy          | Tailwind utilities + token bridge  | Single source of truth for design tokens; utilities reduce CSS volume                    |
+| Preact mode           | Compat (`preact/compat`)           | Enables React library compatibility if needed; no performance penalty                    |
+
+**Status:** All automated checks pass (0 errors, 19 warnings, 187 tests, 89 pages). Manual browser testing of all 9 tools still pending.
 
 ---
 
@@ -188,7 +218,7 @@ Key architectural and design decisions made during development:
 | -------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Canonical character format | Character Sheet's JSON shape                                                    | New unified format; adapter layer                                            | Sheet was the most mature tool; adapting others to it was less work than designing a third format                                         |
 | Play Session future        | Deprecate entirely                                                              | Rebuild; merge into Sheet as "play mode"                                     | Features split cleanly between Combat Tracker and Sheet                                                                                   |
-| Tech stack                 | Stay vanilla JS                                                                 | TypeScript; React/Vue                                                        | Zero build step; project value is in rules correctness, not engineering sophistication                                                    |
+| Tech stack                 | ~~Stay vanilla JS~~ → Preact Islands (Phase 12)                                | TypeScript; React/Vue                                                        | Originally vanilla JS for simplicity; migrated to Preact for reactive UI composition and maintainability as tools grew complex             |
 | Dice consolidation         | New `DTD.dice` module replacing all three                                       | Consolidate into `dice.js`; merge into `core.js`                             | Clean break with backward-compat aliases was least disruptive                                                                             |
 | Analysis tools             | Standalone pages in tools hub                                                   | Extend Dice Roller; combined analysis page                                   | Clean separation of concerns; each tool is self-contained                                                                                 |
 | Ship Sheet                 | Separate tool                                                                   | Section inside Character Sheet                                               | Ship mechanics are fundamentally different from character mechanics                                                                       |
@@ -200,7 +230,7 @@ Key architectural and design decisions made during development:
 | Pipeline scripts exception | Allowed in `pipeline/` when tested + review-gated                               | No scripts ever; full script freedom                                         | Version-controlled pipeline scripts are predictable; ad-hoc scripts remain banned                                                         |
 | Astro + Starlight          | Static site with Vercel deploy                                                  | GitHub Pages; Docusaurus; keep vanilla only                                  | Starlight gives search, theming, sidebar nav for free; Vercel has zero-config Astro support                                               |
 | ES module ports            | Manual port in `src/lib/dtd/`                                                   | Auto-generate; shared code as npm package                                    | Manual port is straightforward; only 2 files (core.js, dice.js) to keep in sync                                                           |
-| Large tool porting         | Copy+edit: JS in `src/lib/tools/`, CSS in `src/styles/`, small `.astro` wrapper | Generate entire `.astro` file from scratch; inline all JS/CSS in single file | Prior attempts to generate 4000+ LOC .astro files failed repeatedly. Copy+edit required only 4–24 mechanical find-replace edits per file. |
+| Large tool porting         | ~~Copy+edit~~ → Preact component decomposition (Phase 12)                      | Generate entire `.astro` file from scratch; inline all JS/CSS in single file | Original copy+edit pattern was replaced by Preact Islands — each tool decomposed into 6–18 focused components                            |
 | Sheet persistence          | Keep sheet's own localStorage CRUD                                              | Refactor to use `character.*` from core.js                                   | Sheet has its own migration logic and save format that differs from core.js. Unifying risks breaking save compatibility.                  |
 
 ---

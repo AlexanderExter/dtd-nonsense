@@ -44,7 +44,11 @@ export function extractSections(text: string, targetLevel: number = 2): ParsedSe
 
 	const matches: { index: number; end: number; heading: string }[] = [];
 	for (const m of text.matchAll(pattern)) {
-		matches.push({ index: m.index, end: m.index + m[0].length, heading: m[1].trim() });
+		matches.push({
+			index: m.index,
+			end: m.index + m[0].length,
+			heading: m[1].trim(),
+		});
 	}
 
 	for (let i = 0; i < matches.length; i++) {
@@ -282,7 +286,9 @@ export interface ParsedFeat {
 
 export function parseFeats(content: string): ParsedFeat[] {
 	const feats: ParsedFeat[] = [];
+	const seen = new Set<string>();
 	let currentCategory: string | null = null;
+	let currentH3: string | null = null;
 
 	const categoryMap: Record<string, string> = {
 		"General Feats": "general",
@@ -291,9 +297,28 @@ export function parseFeats(content: string): ParsedFeat[] {
 		Assets: "assets",
 		"Exalted Assets": "exaltedAssets",
 		Hindrances: "hindrances",
+		"Additional Feats": "supplementary",
 	};
 
-	const lines = content.split("\n");
+	/** Table separator row pattern: |---|---| */
+	const TABLE_SEP = /^\|[\s\-:|]+\|$/;
+
+	function addFeat(name: string, category: string | null, multiple: boolean, effect: string | null = null): void {
+		// Apply "Sin: " prefix for Daemonhost Sin Assets
+		const resolvedName = currentH3 === "Daemonhost Sin Assets" ? `Sin: ${name}` : name;
+		if (seen.has(resolvedName)) return;
+		seen.add(resolvedName);
+		feats.push({
+			name: resolvedName,
+			category,
+			effect,
+			multipleAllowed: multiple,
+			groups: null,
+			prerequisites: null,
+		});
+	}
+
+	const lines = content.split(/\r?\n/);
 
 	for (let lineNum = 0; lineNum < lines.length; lineNum++) {
 		const line = lines[lineNum];
@@ -305,6 +330,33 @@ export function parseFeats(content: string): ParsedFeat[] {
 			if (heading in categoryMap) {
 				currentCategory = categoryMap[heading];
 			}
+			currentH3 = null;
+			continue;
+		}
+
+		// Track H3 headings for sub-section context
+		const h3Match = line.match(/^###\s+(.+)$/);
+		if (h3Match) {
+			currentH3 = h3Match[1].trim();
+			continue;
+		}
+
+		// Match pipe table data rows: | Name | Effect |
+		if (line.trim().startsWith("|") && line.trim().endsWith("|") && !TABLE_SEP.test(line.trim())) {
+			const cells = line.split("|").slice(1, -1);
+			if (cells.length >= 2) {
+				const rawName = cells[0].trim().replace(/\\\*/g, "*");
+				// Skip header rows (they typically contain "Feat", "Asset", "Hindrance", etc.)
+				if (/^(Feat|Asset|Hindrance|Name)$/i.test(rawName)) continue;
+				if (rawName.length === 0) continue;
+				// Strip trailing * for "multiple allowed" marker
+				const multiple = rawName.endsWith("*");
+				const name = multiple ? rawName.slice(0, -1).trim() : rawName;
+				if (name.length > 0) {
+					const effectText = cells[1]?.trim() || null;
+					addFeat(name, currentCategory, multiple, effectText);
+				}
+			}
 			continue;
 		}
 
@@ -313,6 +365,11 @@ export function parseFeats(content: string): ParsedFeat[] {
 		if (!boldMatch) continue;
 
 		const name = boldMatch[1].trim();
+
+		// Skip section-style headers (e.g. "Wizard Traditions", "Archmage Traditions")
+		// whose singular counterparts already exist from table rows
+		if (name.endsWith("Traditions")) continue;
+
 		const multiple = boldMatch[2] !== undefined;
 
 		// Look ahead for description, groups, prerequisites
@@ -339,8 +396,13 @@ export function parseFeats(content: string): ParsedFeat[] {
 			}
 		}
 
+		// Apply Sin prefix and dedup
+		const resolvedName = currentH3 === "Daemonhost Sin Assets" ? `Sin: ${name}` : name;
+		if (seen.has(resolvedName)) continue;
+		seen.add(resolvedName);
+
 		feats.push({
-			name,
+			name: resolvedName,
 			category: currentCategory,
 			effect: descriptionParts.length > 0 ? descriptionParts.join(" ") : null,
 			multipleAllowed: multiple,

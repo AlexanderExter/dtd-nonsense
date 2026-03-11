@@ -26,5 +26,11 @@ Desktop.ini
 *.swo
 *~
 
+# npm lockfile (project uses Bun — bun.lock is canonical)
+package-lock.json
+
+# rumdl cache
+.rumdl_cache/
+
 # Source PDFs (copyrighted, not redistributable)
 source-pdfs/

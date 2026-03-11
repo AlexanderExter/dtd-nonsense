@@ -14,6 +14,26 @@ All commands run via npm scripts (backed by `bun`):
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 
+### `npm run upgrade:recon`
+
+Gather dependency ground truth for the upgrade prompt. Outputs a JSON manifest to stdout (machine-readable) and an ANSI-colored summary to stderr (human-readable).
+
+```bash
+npm run upgrade:recon
+```
+
+**Data gathered:**
+
+- Outdated packages (current/wanted/latest, bump type, pin status, tier classification)
+- Dependency tree health (`npm ls` problems, unmet peer deps)
+- Security audit (vulnerability severity counts and advisories)
+- Override staleness (whether each `package.json` override is still needed)
+- Framework compatibility (Starlight/Vercel adapter peer dep ranges, migration guide URLs)
+- Engine requirements (whether major bumps need a higher Node version)
+- Tool availability (ncu, Bun, Node/npm versions)
+
+Used by the `dependency-upgrade` prompt (`.github/prompts/dependency-upgrade.prompt.md`) as the ground-truth input for automated upgrade sessions.
+
 ### `npm run validate`
 
 Validate all 12 JSON data files in `data/` against their Zod schemas.
@@ -58,7 +78,7 @@ Compares: `04-Races.md` ↔ `races.json`, `06-Classes.md` ↔ `classes.json`, `0
 
 ## Script Structure
 
-```
+```text
 scripts/
 ├── validate.ts       JSON schema validation engine (Zod-based)
 ├── lint.ts           Markdown content linting (terminology, formatting, encoding)
@@ -103,11 +123,11 @@ All 12 JSON data files pass schema validation. Cross-reference checks produce wa
 The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on every push and PR:
 
 ```yaml
-- run: npm run lint # Biome JS/TS/CSS lint — must pass
-- run: npm run test # Vitest unit tests — must pass
-- run: npm run validate # Zod schema check — must pass
-- run: npm run lint:data # Terminology/formatting — must pass
-- run: npm run build # Astro build — must pass
+- run: bunx biome ci .                    # Biome JS/TS/CSS lint — must pass
+- run: bun test                           # bun:test unit tests — must pass
+- run: bun run scripts/validate.ts --xref # Zod schema + xref check — must pass
+- run: bun run scripts/lint.ts            # Terminology/formatting — must pass
+- run: bun run build                      # Astro build — must pass
 ```
 
 ## Conventions

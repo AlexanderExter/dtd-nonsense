@@ -5,27 +5,31 @@ applyTo: "**/*.astro, **/*.ts, **/*.js"
 
 # Astro Development Standards — DTD Nonsense
 
-This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. No React/Vue/Svelte — all interactivity is vanilla TypeScript in `<script>` blocks.
+This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **Preact Islands** (`@astrojs/preact` with compat mode) hydrated via `client:load`.
 
 ## Architecture
 
 - **Static output only** — no SSR, no API routes, no middleware
 - **Starlight** handles all rules/content pages via Content Collections
 - **Tool pages** (`src/pages/tools/*.astro`) use `ToolLayout.astro` — standalone HTML pages outside Starlight
-- **No client directives** (`client:load`, etc.) — tools use plain `<script>` tags, not Islands
+- **Preact Islands** — all tools use `client:load` directives for interactive components
+- **Tailwind CSS v4** — `@theme` tokens in `src/styles/tailwind.css` as design token source of truth
 - **No View Transitions / ClientRouter** — standard page navigation
 
 ## File Structure
 
 ```
 src/
-  pages/tools/       ← .astro tool pages (each is self-contained)
-  layouts/           ← ToolLayout.astro (standalone HTML shell for tools)
-  components/        ← Head.astro (Starlight override for analytics)
-  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, ui.ts, util.ts, dice.ts, dice-primitives.ts, types.ts
-  lib/tools/         ← Large tool scripts: sheet-app.ts, builder-app.ts
+  pages/tools/       ← .astro tool pages (each mounts a Preact island via client:load)
+  layouts/           ← ToolLayout.astro (standalone HTML shell; bridges Tailwind tokens → short var(--name) aliases)
+  components/
+    preact/
+      tools/         ← Preact island components for all 9 tools (97 components)
+      shared/        ← Shared Preact components across tools
+  hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker)
+  lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   workers/           ← TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
-  styles/            ← custom.css (Starlight theme), sheet.css, builder.css
+  styles/            ← custom.css (Starlight theme), tailwind.css (Tailwind v4 @theme tokens)
   content.config.ts  ← Content Collection definitions
 ```
 
@@ -33,18 +37,26 @@ src/
 
 ### Tool Pages
 
-- Each tool is a single `.astro` file with HTML template + `<script>` block
+- Each tool’s `.astro` page mounts a root Preact component via `client:load`
+- Preact components live in `src/components/preact/tools/{tool-name}/`
+- Root component is `*App.tsx` (e.g., `DiceRollerApp.tsx`)
 - Import shared logic from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
-- Load JSON data at runtime via `loadData()` / `loadAllData()` (fetches from `/data/`)
-- Small tools: inline script in the `.astro` file
-- Large tools (sheet, builder): separate `.ts` file in `src/lib/tools/`, imported by the page
+- Load JSON data via `useData()` / `useAllData()` hooks from `@/hooks/use-data`
+- State management: `@preact/signals` with module-level signals pattern
+- Use **named exports only** — no default exports
+- Use `class` attribute (not `className`) in Preact JSX
+- All `<button>` elements need `type="button"`
+- Use `@/` path aliases for imports outside the component directory
+- Use `./` relative imports within the component directory
 
 ### CSS
 
-- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold design tokens
-- **Large tool CSS**: separate files (`sheet.css`, `builder.css`) imported via `<style is:global>@import`
-- **Small tool CSS**: inline `<style>` blocks in the `.astro` file (scoped or global as needed)
-- **ToolLayout.astro**: declares `:root` CSS custom properties for the standalone HTML shell
+- **Tailwind v4**: `src/styles/tailwind.css` — `@theme` block is the single source of truth for design tokens; `@layer components` defines `.panel` and `.btn` family
+- **Starlight theme**: `src/styles/custom.css` — WH40K dark/gold design tokens for docs pages
+- **All tool styling**: Tailwind utility classes in JSX — no `<style>` blocks, no `@apply`
+- **Print styles**: Minimal `@media print` blocks in `.astro` pages where needed
+- **Conditional classes**: `.filter(Boolean).join(" ")` pattern for dynamic class lists
+- **Dynamic values**: `style={{}}` only for runtime-computed values (percentages, Chart.js colors)
 
 ### TypeScript
 
@@ -72,7 +84,7 @@ src/
 - **Check**: `npm run lint` — reports errors/warnings
 - **Auto-fix**: `npm run lint:fix` — fixes all fixable violations in one pass. Use this for bulk formatting fixes instead of manual file edits.
 - CI runs `biome ci .` (no writes). Failures block build.
-- Pre-existing fixable violations in `sheet-app.ts` / `builder-app.ts`: run `npm run lint:fix` to resolve at scale before doing manual TS work
+- Run `npm run lint:fix` to auto-fix all fixable violations in one pass
 
 ### Build
 

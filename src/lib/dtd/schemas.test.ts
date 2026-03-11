@@ -5,9 +5,9 @@
  * This is the primary correctness check for the Pydantic → Zod port.
  */
 
+import { describe, expect, it } from "bun:test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { describe, expect, it } from "vitest";
 import { ClassesFile } from "./schemas/classes.ts";
 import { EquipmentFile } from "./schemas/equipment.ts";
 import { FILE_SCHEMAS } from "./schemas/index.ts";
@@ -58,7 +58,12 @@ describe("Zod schema rejection — malformed data", () => {
 
 	it("rejects a class with invalid level", () => {
 		const badData = {
-			metadata: { description: "", version: "", levelsComplete: [], levelsPending: [] },
+			metadata: {
+				description: "",
+				version: "",
+				levelsComplete: [],
+				levelsPending: [],
+			},
 			tracks: {},
 			classes: [
 				{
@@ -84,7 +89,15 @@ describe("Zod schema rejection — malformed data", () => {
 
 	it("rejects unknown extra fields in strict schemas", () => {
 		const badData = {
-			packages: [{ id: "test", name: "Test", description: "test", items: [], UNKNOWN_FIELD: true }],
+			packages: [
+				{
+					id: "test",
+					name: "Test",
+					description: "test",
+					items: [],
+					UNKNOWN_FIELD: true,
+				},
+			],
 		};
 		const result = EquipmentFile.safeParse(badData);
 		expect(result.success).toBe(false);

@@ -33,7 +33,7 @@ Read and catalog every framework file:
 | Prompts            | `.github/prompts/*.prompt.md`                                      |
 | Skills             | `.github/copilot-skills/**`                                        |
 | Documentation      | `docs/*.md`, `docs/**/*.md`                                        |
-| Project config     | `biome.json`, `vitest.config.ts`, `astro.config.mjs`, `package.json`, `tsconfig.json` |
+| Project config     | `biome.json`, `bunfig.toml`, `astro.config.mjs`, `package.json`, `tsconfig.json` |
 | CI/CD              | `.github/workflows/*.yml`                                          |
 
 For each file, note:
@@ -48,7 +48,7 @@ Understand what the project looks like today:
 1. Run `git log --oneline -30` — what's been happening?
 2. Check `docs/session-handover.md` — what was the last session's context?
 3. Check `docs/side-tracks.md` — what's been deferred or observed?
-4. Check `books/open-questions.md` — what's unresolved?
+4. Check `docs/editorial/open-questions.md` — what's unresolved?
 5. If `docs/product-vision.md` exists, read it — this is the north star.
 
 ### 1c. Build a Mental Model

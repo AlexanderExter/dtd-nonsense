@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import {
 	checkDiceNotation,
 	checkEmptyTableCells,
@@ -169,7 +169,11 @@ describe("checkEncodingMarkers", () => {
 describe("updateTracker", () => {
 	it("newTracker returns initial state", () => {
 		const t = newTracker();
-		expect(t).toEqual({ inFrontmatter: false, frontmatterCount: 0, inCodeBlock: false });
+		expect(t).toEqual({
+			inFrontmatter: false,
+			frontmatterCount: 0,
+			inCodeBlock: false,
+		});
 	});
 
 	it("first '---' opens frontmatter", () => {
