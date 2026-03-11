@@ -21,6 +21,9 @@
  */
 
 import { execSync } from "node:child_process";
+import { unlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { BOLD, DIM, fail, GREEN, heading, ok, RED, RESET, run, YELLOW } from "./session-utils.mjs";
 
 console.log(`${BOLD}Session End${RESET}`);
@@ -89,8 +92,12 @@ const defaultMessage = `Session ${currentBranch}: squash merge\n\n${commitLines.
 
 // Commit with --no-verify: code was verified on the branch; the pre-commit
 // hook re-running biome check on squash-merged files hits CRLF/LF drift.
+// Use --file instead of -m to avoid shell metacharacter injection from
+// backticks, $, or other special characters in commit messages.
+const tmpMsgFile = join(tmpdir(), `dtd-commit-${Date.now()}.txt`);
 try {
-	execSync(`git commit --no-verify -m "${defaultMessage.replace(/"/g, '\\"')}"`, {
+	writeFileSync(tmpMsgFile, defaultMessage, "utf-8");
+	execSync(`git commit --no-verify --file "${tmpMsgFile}"`, {
 		encoding: "utf-8",
 		stdio: "inherit",
 	});
@@ -99,6 +106,12 @@ try {
 	fail("Commit failed.");
 	console.log("Resolve manually. Branch NOT deleted.");
 	process.exit(1);
+} finally {
+	try {
+		unlinkSync(tmpMsgFile);
+	} catch {
+		/* cleanup is best-effort */
+	}
 }
 
 // ─── 4. Cleanup ─────────────────────────────────────────────────────────────

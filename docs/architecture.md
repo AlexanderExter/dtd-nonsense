@@ -41,7 +41,7 @@ Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild c
 
 ### When to Reconsider
 
-- **Preact Islands:** All 9 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 18 components (Character Builder) without issues so far.
+- **Preact Islands:** All 9 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 17 components (Character Builder) without issues so far.
 
 ### Code Quality & Testing
 
@@ -163,15 +163,15 @@ export function updateState(fn) { myState.value = fn(myState.value); }
 
 | Tool              | Components | Directory                                     |
 | ----------------- | ---------- | --------------------------------------------- |
-| Dice Roller       | 6          | `src/components/preact/tools/dice-roller/`     |
-| Quick Reference   | 13         | `src/components/preact/tools/quick-reference/` |
-| Success Curves    | 9          | `src/components/preact/tools/success-curves/`  |
-| Defense Graph     | 10         | `src/components/preact/tools/defense-graph/`   |
-| Combat Tracker    | 9          | `src/components/preact/tools/combat-tracker/`  |
-| NPC Generator     | 12         | `src/components/preact/tools/npc-generator/`   |
-| Ship Builder      | 12         | `src/components/preact/tools/ship-builder/`    |
-| Character Builder | 18         | `src/components/preact/tools/char-builder/`    |
-| Character Sheet   | 16         | `src/components/preact/tools/char-sheet/`      |
+| Dice Roller       | 6          | `src/components/preact/tools/dice-roller/`         |
+| Quick Reference   | 12         | `src/components/preact/tools/quick-reference/`     |
+| Success Curves    | 8          | `src/components/preact/tools/success-curves/`      |
+| Defense Graph     | 9          | `src/components/preact/tools/defense-graph/`       |
+| Combat Tracker    | 8          | `src/components/preact/tools/combat-tracker/`      |
+| NPC Generator     | 11         | `src/components/preact/tools/npc-generator/`       |
+| Ship Builder      | 11         | `src/components/preact/tools/ship-builder/`        |
+| Character Builder | 17         | `src/components/preact/tools/character-builder/`   |
+| Character Sheet   | 15         | `src/components/preact/tools/character-sheet/`     |
 
 ### Chart.js
 
