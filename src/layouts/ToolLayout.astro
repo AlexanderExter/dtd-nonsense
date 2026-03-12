@@ -1,6 +1,6 @@
 ---
-// ToolLayout — wraps tool pages within a Starlight-compatible shell.
-// Provides consistent header/nav while letting tools render client-side.
+// ToolLayout — standalone layout for tool pages (no Starlight sidebar/header).
+// Tools open in new tabs from the sidebar; this gives them full-width space.
 import Analytics from "@vercel/analytics/astro";
 import "@/styles/tailwind.css";
 
@@ -18,8 +18,6 @@ const { title, description = "" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} — DTD 40k Tools</title>
     <meta name="description" content={description} />
-
-    <!-- Starlight theme vars (loaded from our custom CSS) -->
     <Analytics />
   </head>
   <body class="m-0 p-0 font-sans text-base leading-relaxed text-text-primary bg-bg min-h-screen">
@@ -27,7 +25,6 @@ const { title, description = "" } = Astro.props;
       <div class="flex items-center gap-8 max-w-[1400px] mx-auto">
         <a href="/" class="font-bold text-lg !text-accent whitespace-nowrap">DTD 40k</a>
         <nav class="flex gap-5 flex-wrap">
-          <a href="/tools/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Tools</a>
           <a href="/rules/01-core-rules/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Rules</a>
           <a href="/tools/dice-roller/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Dice Roller</a>
           <a href="/tools/character-builder/" class="text-text-muted text-sm transition-colors duration-150 hover:text-accent">Builder</a>
@@ -49,11 +46,7 @@ const { title, description = "" } = Astro.props;
     </footer>
 
     <style is:global>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
+      *, *::before, *::after { box-sizing: border-box; }
     </style>
   </body>
 </html>

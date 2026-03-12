@@ -9,7 +9,7 @@ export function IdentityTab() {
 	// ---------- Race data ----------
 	const races = data?.races?.races || [];
 	const selectedRace = races.find((r: any) => r.id === char.race);
-	const charBonusOptions: string[] = selectedRace?.charBonusOptions || [];
+	const charBonusOptions: string[] = selectedRace?.charBonus?.options || [];
 
 	// ---------- Exaltation data ----------
 	const exaltations = data?.exaltations?.exaltations || [];
@@ -225,14 +225,10 @@ export function IdentityTab() {
 						<p class="m-0">
 							<strong>Size:</strong> {selectedRace.size}
 						</p>
-						{selectedRace.statBonuses && (
+						{selectedRace.skillBonus && selectedRace.skillBonus.length > 0 && (
 							<p class="m-0">
-								<strong>Stat Bonuses:</strong> {JSON.stringify(selectedRace.statBonuses)}
-							</p>
-						)}
-						{selectedRace.skillBonuses && (
-							<p class="m-0">
-								<strong>Skill Bonuses:</strong> {JSON.stringify(selectedRace.skillBonuses)}
+								<strong>Skill Bonuses:</strong>{" "}
+								{selectedRace.skillBonus.map((sb: any) => `${sb.skill} +${sb.value}`).join(", ")}
 							</p>
 						)}
 						{selectedRace.power && (
@@ -362,13 +358,29 @@ export function IdentityTab() {
 						value={char.devotion ?? 6}
 						min={0}
 						max={10}
+						class="w-[60px]"
 						onInput={(e) =>
 							updateChar((c) => {
 								c.devotion = Number((e.target as HTMLInputElement).value);
 							})
 						}
 					/>
+					<span class="text-text-dim text-[0.78rem]">/ 10</span>
 				</label>
+				{/* Devotion progress bar */}
+				<div class="mt-sm">
+					<div class="w-full h-3 bg-bg border border-border rounded-sm overflow-hidden">
+						<div
+							class="h-full bg-accent transition-all duration-300"
+							style={{ width: `${((char.devotion ?? 6) / 10) * 100}%` }}
+						/>
+					</div>
+					<div class="flex justify-between text-[0.7rem] text-text-dim mt-0.5 px-0.5">
+						<span>0</span>
+						<span>5</span>
+						<span>10</span>
+					</div>
+				</div>
 			</div>
 
 			{/* ---------- Notes ---------- */}

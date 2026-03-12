@@ -4,13 +4,39 @@ Prioritized backlog of tech debt, deferred work, and improvement opportunities. 
 
 Resolved items are removed on each review — git history preserves the full log.
 
-**Last reviewed:** 2026-03-11
+**Last reviewed:** 2026-03-12
 
 ---
 
 ## Active Backlog
 
 Items worth doing soon, priority-ordered.
+
+### Success Curves / Defense Graph: Chart.js Update Pattern
+
+**Files:** `src/components/preact/tools/success-curves/SuccessRateChart.tsx`, `HistogramChart.tsx`, `RaiseDistChart.tsx`; `src/components/preact/tools/defense-graph/WaterfallChart.tsx`, `EffectiveHPChart.tsx`, `HitProbabilityChart.tsx`, `ArmorTradeoffChart.tsx`
+**Issue:** All chart-update `useEffect` hooks run without dependency arrays. This is functionally correct with Preact signals (effects run after signal-triggered re-renders) but is unidiomatic and runs needlessly on every render. The histogram and success rate charts also mutate module-level plugin objects (`tnLinePlugin.selectedTNValue`, `selectedTNPlugin.selectedTNValue`) to sync state — fragile if multiple chart instances ever coexist.
+**Impact:** Performance degradation with complex pools; potential stale plugin state.
+**Next action:** Add explicit dependency arrays to all chart-update effects. Refactor plugin state to use refs or chart option storage instead of module-level mutation.
+
+### Success Curves / Defense Graph: Missing Unmount Guards
+
+**Files:** `src/components/preact/tools/success-curves/SuccessCurvesApp.tsx` (lines ~105-116), `src/components/preact/tools/defense-graph/DefenseGraphApp.tsx` (line ~114), `HitProbabilityChart.tsx` (line ~48)
+**Issue:** Worker `Promise.all()` callbacks and debounced simulation triggers can fire after component unmount. SuccessCurvesApp has no `isMounted` guard; HitProbabilityChart has one but races between the guard check and ref access. DefenseGraphApp cleans up its debounce timer in the effect dispose but could still fire if dispose runs between schedule and timeout.
+**Impact:** Console errors or wasted computation when navigating away during simulation.
+**Next action:** Add `isMounted` ref guard to SuccessCurvesApp worker callbacks. Review DefenseGraphApp cleanup ordering.
+
+### Defense Graph: EffectiveHPChart `borderDash` Suppressed
+
+**File:** `src/components/preact/tools/defense-graph/EffectiveHPChart.tsx` (line ~53)
+**Issue:** Uses `@ts-expect-error` to apply `borderDash: [5, 5]` on a dataset. Chart.js v4 does support `borderDash` on line datasets, but the ts-expect-error suppresses type checking. Verify the dashed line actually renders.
+**Next action:** Test visually. If line renders correctly, replace `@ts-expect-error` with a proper type assertion. If not, move `borderDash` to `elements.line` in chart options.
+
+### Character Sheet: IdentityTab Race Preview Still Uses `statBonuses`
+
+**File:** `src/components/preact/tools/character-sheet/tabs/IdentityTab.tsx`
+**Issue:** The `charBonusOptions` was fixed (`charBonus?.options`), and `skillBonus` was fixed, but race data has no `statBonuses` property — the old conditional `{selectedRace.statBonuses && ...}` was removed during this session. Verify the race preview section shows all useful race data (languages, notes, power, size, skill bonuses).
+**Next action:** Manual visual check that race selection previews display correctly.
 
 ### UI Primitives: Tool-Local Patterns Not Yet Abstracted
 
@@ -56,6 +82,11 @@ Items needing research or design decisions before action.
 
 **Issue:** Build and unit tests pass, but no visual or interaction verification exists. CSS fidelity from Tailwind migration is inferred, not observed. Audit (2026-03-12) found no Preact-migration JSX issues but identified CSS/layout problems: z-index stacking conflicts, ConditionPicker viewport overflow, sticky+overflow container interactions.
 **Next action:** Manual: run `npm run dev` and test each tool in a browser, focusing on Combat Tracker (modals/popups) and tools with sticky sidebars. Automated: evaluate Playwright or similar only if manual testing reveals critical issues.
+
+### StarlightPage Migration: Tool Layout Regression Risk
+
+**Issue:** All 9 tool pages were migrated from a custom `ToolLayout.astro` to Starlight's `StarlightPage` component (2026-03-12). Starlight's content area applies its own CSS (max-width constraints, heading styles, table styles) that may conflict with tool components. Charts require unrestricted canvas sizing; modals need proper z-index stacking above Starlight chrome.
+**Next action:** Visually verify every tool page in a browser. Check: (1) Chart.js canvases render at full width, (2) modals/popups appear above the Starlight sidebar/header, (3) print styles still work for NPC/Ship/Defense tools, (4) sticky headers in CharacterManager don't conflict with Starlight's sticky header.
 
 ### Zod v4 Upgrade Blocked by Astro
 

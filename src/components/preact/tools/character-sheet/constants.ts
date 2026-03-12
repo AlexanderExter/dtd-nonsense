@@ -69,7 +69,7 @@ export const BG_IDS = [
 	"wealth",
 ];
 
-export type TabId = "identity" | "stats" | "combat" | "powers" | "features";
+export type TabId = "identity" | "stats" | "combat" | "powers" | "features" | "xp";
 
 export const TAB_LABELS: Array<{ id: TabId; label: string }> = [
 	{ id: "identity", label: "Identity" },
@@ -77,6 +77,7 @@ export const TAB_LABELS: Array<{ id: TabId; label: string }> = [
 	{ id: "combat", label: "Combat" },
 	{ id: "powers", label: "Powers" },
 	{ id: "features", label: "Features" },
+	{ id: "xp", label: "XP" },
 ];
 
 // ---------------------------------------------------------------------------

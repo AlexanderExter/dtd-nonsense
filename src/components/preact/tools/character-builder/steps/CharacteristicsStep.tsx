@@ -16,9 +16,7 @@ export function CharacteristicsStep() {
 	const racialBonuses = new Set<string>();
 
 	if (raceData) {
-		for (const b of raceData.statBonuses || []) {
-			racialBonuses.add(b.toLowerCase());
-		}
+		// charBonus.options lists the eligible characteristics; the chosen one is raceCharBonus
 		if (char.raceCharBonus) racialBonuses.add(char.raceCharBonus.toLowerCase());
 	}
 

@@ -7,7 +7,6 @@ export function SheetHeader() {
 	const data = gameData.value;
 
 	const effChars = getEffChars(char, data?.races);
-	const xpRemaining = (char.totalXP || 0) - (char.xpSpent || 0);
 
 	// Resource name from exaltation
 	let resourceName = "Resource";
@@ -17,20 +16,6 @@ export function SheetHeader() {
 	}
 
 	const wound = getWoundStatus(stats.hp, char.currentHP ?? 0, effChars.willpower || 1, effChars.constitution || 1);
-
-	const numInput = (label: string, value: number, onChange: (v: number) => void, min?: number, max?: number) => (
-		<label class="flex flex-col">
-			<span class="text-[0.78rem] text-text-muted uppercase tracking-[0.3px]">{label}</span>
-			<input
-				type="number"
-				class="w-[60px] py-0.5 px-1 text-center text-[0.85rem] font-bold text-accent bg-surface border border-border rounded-sm focus:border-accent focus:outline-none"
-				value={value}
-				min={min}
-				max={max}
-				onInput={(e) => onChange(Number((e.target as HTMLInputElement).value))}
-			/>
-		</label>
-	);
 
 	return (
 		<div class="flex items-center justify-between flex-wrap gap-md px-lg py-md bg-surface-raised border-b border-border max-[768px]:flex-col max-[768px]:items-stretch">
@@ -52,33 +37,13 @@ export function SheetHeader() {
 				<span class="text-[0.85rem] text-text-muted">
 					Level <strong class="text-accent">{stats.level}</strong>
 				</span>
-			</div>
-
-			<div class="flex gap-md whitespace-nowrap max-[768px]:flex-wrap">
-				{numInput(
-					"Total XP",
-					char.totalXP,
-					(v) =>
-						updateChar((c) => {
-							c.totalXP = v;
-						}),
-					0,
-				)}
-				{numInput(
-					"XP Spent",
-					char.xpSpent,
-					(v) =>
-						updateChar((c) => {
-							c.xpSpent = v;
-						}),
-					0,
-				)}
-				<label class="flex flex-col">
-					<span class="text-[0.78rem] text-text-muted uppercase tracking-[0.3px]">Remaining</span>
-					<output class={xpRemaining < 0 ? "font-bold text-error" : "font-bold text-accent"}>
-						{xpRemaining}
-					</output>
-				</label>
+				<span class="text-[0.85rem] text-text-muted">
+					XP{" "}
+					<strong class={(char.totalXP || 0) - (char.xpSpent || 0) < 0 ? "text-error" : "text-accent"}>
+						{(char.totalXP || 0) - (char.xpSpent || 0)}
+					</strong>
+					<span class="text-text-dim"> / {char.totalXP || 0}</span>
+				</span>
 			</div>
 
 			<div class="flex gap-sm items-center flex-wrap">

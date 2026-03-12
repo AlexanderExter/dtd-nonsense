@@ -104,7 +104,7 @@ export function DiceRollerApp() {
 						<DiceResultDisplay result={currentResult.value} targetNumber={targetNumber.value} />
 					)}
 				</div>
-				<TNReference />
+				<TNReference targetNumber={targetNumber} />
 			</section>
 			<aside class="self-start sticky top-lg max-[900px]:order-first">
 				<RollHistory history={history} onReplay={replayRoll} onClear={clearHistory} />

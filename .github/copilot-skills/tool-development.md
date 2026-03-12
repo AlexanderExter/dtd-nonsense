@@ -63,6 +63,8 @@ import { DiceRollerApp } from "@/components/preact/tools/dice-roller/DiceRollerA
 </ToolLayout>
 ```
 
+> **Never use `StarlightPage` for tool pages.** `StarlightPage` wraps content in the Starlight sidebar and header, turning a tool into a documentation page. All tool pages use `ToolLayout.astro` exclusively. See Critical Pitfall #11.
+
 ### Preact Component Pattern
 
 ```tsx
@@ -178,13 +180,28 @@ These have each caused real bugs. Memorize them:
 
 9. **Post-migration audit: grep for raw patterns** — After migrating components to shared UI primitives, grep the entire tool directory for the old pattern (e.g., `"btn`, `role="tablist"`, raw `<dialog>`) to catch duplicates and stragglers. Components with multiple render branches (e.g., mobile vs desktop, collapsed vs expanded) often have duplicate UI that the first pass misses.
 
+10. **Ariakit `TabPanel` silently fails through Preact compat** — Ariakit's `TabPanel` toggles a `hidden` attribute via internal React context. Through Preact's compat layer (`@astrojs/preact` with `compat: true`), this mechanism silently fails: all panels render visible simultaneously and stack vertically. The symptom looks like the sheet is "not responding" (broken state), but it's actually all tabs rendering at once. **Do not use `<TabPanel>` from `@/components/preact/ui` in any tool.** Use conditional rendering instead:
+
+    ```tsx
+    // CORRECT — conditional rendering
+    {activeTab === "identity" && <IdentityTab />}
+    {activeTab === "stats" && <StatsTab />}
+
+    // BROKEN — TabPanel does not hide inactive panels via Preact compat
+    // <TabPanel tabId="identity"><IdentityTab /></TabPanel>
+    ```
+
+    Keep `<Tabs>` for the accessible tab bar UI; only replace `<TabPanel>` wrappers with conditionals.
+
+11. **Tool pages must use `ToolLayout.astro` — never `StarlightPage`** — `StarlightPage` wraps content in Starlight's sidebar + header chrome. Tool pages are standalone full-viewport experiences and must use `ToolLayout.astro` only. Using `StarlightPage` for tools causes them to render inside the documentation sidebar with no escape — a regression that requires a full pass to undo. If you see a tool page importing from `@astrojs/starlight/components`, that is a bug.
+
 ## Adding a New Tool
 
 1. Create `src/components/preact/tools/[tool-name]/[ToolName]App.tsx` — root Preact component with named export
-2. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:load`
+2. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:load` using `ToolLayout.astro` (not `StarlightPage`)
 3. Import shared logic from `@/lib/dtd/core.ts`, hooks from `@/hooks/`
 4. Use Tailwind utilities for styling; fall back to `var(--name)` CSS variables from `ToolLayout.astro`
-5. Add a card to `src/pages/tools/index.astro` (the tool dashboard)
+5. Add a sidebar entry to `astro.config.mjs` under the `Play Tools` group with `attrs: { target: "_blank", rel: "noopener" }` — tools are standalone pages and must open in a new tab
 6. Create documentation in `docs/tools/[tool-name].md`
 
 Full recipe with prerequisites, commands, and build verification: [docs/development-guide.md](../../docs/development-guide.md#adding-a-new-tool).

@@ -122,6 +122,12 @@ export interface SavedPool {
 // Character Data
 // =============================================================================
 
+export interface XpLogEntry {
+	label: string;
+	amount: number;
+	timestamp: number;
+}
+
 /** Full canonical character object — matches character.DEFAULTS shape in core.ts. */
 export interface CharacterData {
 	id: string;
@@ -186,6 +192,8 @@ export interface CharacterData {
 	age: string;
 	currentHP: number;
 	currentResolve: number;
+	xpLog: XpLogEntry[];
+	xpSpendLog: XpLogEntry[];
 }
 
 /** Entry in the saved character list (localStorage index). */

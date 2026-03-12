@@ -40,26 +40,28 @@ export function CharacterManager() {
 	};
 
 	return (
-		<div class="flex items-center justify-between gap-sm px-md py-sm bg-surface border-b border-border sticky top-0 z-[100]">
-			<select class="min-w-[200px]" value={currentId || ""} onChange={handleSwitch}>
+		<div class="flex items-center gap-sm px-md py-sm bg-surface border-b border-border sticky top-0 z-[100]">
+			<select class="min-w-[200px] flex-1" value={currentId || ""} onChange={handleSwitch}>
 				{list.map((c) => (
 					<option key={c.id} value={c.id}>
 						{c.name || "Unnamed"}
 					</option>
 				))}
 			</select>
-			<Button size="sm" onClick={createNewCharacter}>
-				+ New
-			</Button>
-			<Button size="sm" variant="danger" onClick={handleDelete} disabled={list.length <= 1}>
-				Delete
-			</Button>
-			<Button size="sm" onClick={handleImportClick}>
-				Import
-			</Button>
-			<Button size="sm" onClick={exportCharacter}>
-				Export
-			</Button>
+			<div class="flex items-center gap-xs ml-auto">
+				<Button size="sm" onClick={createNewCharacter}>
+					+ New
+				</Button>
+				<Button size="sm" variant="danger" onClick={handleDelete} disabled={list.length <= 1}>
+					Delete
+				</Button>
+				<Button size="sm" onClick={handleImportClick}>
+					Import
+				</Button>
+				<Button size="sm" onClick={exportCharacter}>
+					Export
+				</Button>
+			</div>
 			<input ref={fileRef} type="file" accept=".json" class="hidden" onChange={handleFileChange} />
 		</div>
 	);

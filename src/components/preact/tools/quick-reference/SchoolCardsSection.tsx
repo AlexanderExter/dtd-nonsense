@@ -1,13 +1,14 @@
+import type { ComponentChildren } from "preact";
 import { Highlight } from "./Highlight";
 import type { QRefSchool } from "./qref-data";
 
 interface SchoolCardsSectionProps {
 	schools: readonly QRefSchool[];
 	searchWords: string[];
-	footerNote: string;
+	footer: ComponentChildren;
 }
 
-export function SchoolCardsSection({ schools, searchWords, footerNote }: SchoolCardsSectionProps) {
+export function SchoolCardsSection({ schools, searchWords, footer }: SchoolCardsSectionProps) {
 	const filtered = schools.filter((s) => {
 		if (searchWords.length === 0) return true;
 		const text = `${s.school} ${s.skill} ${s.weapon} ${s.action} ${s.blurb}`.toLowerCase();
@@ -49,7 +50,7 @@ export function SchoolCardsSection({ schools, searchWords, footerNote }: SchoolC
 					</div>
 				))}
 			</div>
-			<p class="mt-md text-text-muted text-[0.85rem]">{footerNote}</p>
+			<div class="mt-md text-text-muted text-[0.85rem]">{footer}</div>
 		</>
 	);
 }

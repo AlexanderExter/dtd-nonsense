@@ -331,7 +331,14 @@ export function QuickReferenceApp() {
 						<SchoolCardsSection
 							schools={QREF_DATA.swordSchools}
 							searchWords={words}
-							footerNote="Martial Adept Level = highest Sword School dots. Style Points per attack = Adept Level. Cost: 50 XP per Style Point."
+							footer={
+								<p class="m-0">
+									<strong>Martial Adept Level</strong> = highest Sword School dots purchased. The max
+									Style Points on a single attack = your Martial Adept Level. Each technique costs{" "}
+									<strong>50 XP per Style Point used</strong> (not the net sum). Example: a 3-SP
+									technique costs 150 XP.
+								</p>
+							}
 						/>
 					</AccordionSection>
 
@@ -346,7 +353,14 @@ export function QuickReferenceApp() {
 						<SchoolCardsSection
 							schools={QREF_DATA.gunKata}
 							searchWords={words}
-							footerNote="Gunslinger Level = highest Gun Kata dots. Trick Shot cost: 50 XP per Style Point."
+							footer={
+								<p class="m-0">
+									<strong>Gunslinger Level</strong> = highest Gun Kata dots purchased. The max Style
+									Points on a single Trick Shot = your Gunslinger Level. Each technique costs{" "}
+									<strong>50 XP per Style Point used</strong> (not the net sum). Example: a 2-SP trick
+									shot costs 100 XP.
+								</p>
+							}
 						/>
 					</AccordionSection>
 

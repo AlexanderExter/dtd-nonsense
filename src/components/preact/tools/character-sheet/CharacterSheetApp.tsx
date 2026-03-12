@@ -19,6 +19,7 @@ import { FeaturesTab } from "./tabs/FeaturesTab";
 import { IdentityTab } from "./tabs/IdentityTab";
 import { PowersTab } from "./tabs/PowersTab";
 import { StatsTab } from "./tabs/StatsTab";
+import { XpTab } from "./tabs/XpTab";
 
 // =========================================================================
 // Module-level signals
@@ -194,6 +195,7 @@ export function CharacterSheetApp() {
 				{tab === "combat" && <CombatTab />}
 				{tab === "powers" && <PowersTab />}
 				{tab === "features" && <FeaturesTab />}
+				{tab === "xp" && <XpTab />}
 			</Tabs>
 			<div
 				class={[

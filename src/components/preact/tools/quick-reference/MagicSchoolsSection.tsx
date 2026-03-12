@@ -1,8 +1,45 @@
 import { Highlight } from "./Highlight";
+import type { QRefWarpEntry } from "./qref-data";
 import { QREF_DATA } from "./qref-data";
 
 interface MagicSchoolsSectionProps {
 	searchWords: string[];
+}
+
+function WarpTable({ title, entries }: { title: string; entries: readonly QRefWarpEntry[] }) {
+	return (
+		<details class="mt-md border border-border rounded-md overflow-hidden">
+			<summary class="px-md py-sm bg-surface cursor-pointer text-accent font-semibold text-[0.9rem] hover:bg-surface-highlight select-none">
+				{title}
+			</summary>
+			<div class="overflow-x-auto max-h-[400px] overflow-y-auto">
+				<table class="w-full border-collapse text-[0.82rem]">
+					<thead class="sticky top-0">
+						<tr>
+							<th class="px-md py-xs text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] w-[70px]">
+								Roll
+							</th>
+							<th class="px-md py-xs text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] w-[160px]">
+								Effect
+							</th>
+							<th class="px-md py-xs text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px]">
+								Description
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{entries.map((e) => (
+							<tr key={e.roll} class="even:bg-stripe hover:bg-surface">
+								<td class="px-md py-xs border-b border-border font-mono text-[0.8rem]">{e.roll}</td>
+								<td class="px-md py-xs border-b border-border font-semibold text-accent">{e.name}</td>
+								<td class="px-md py-xs border-b border-border text-text-muted">{e.effect}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</details>
+	);
 }
 
 export function MagicSchoolsSection({ searchWords }: MagicSchoolsSectionProps) {
@@ -66,6 +103,8 @@ export function MagicSchoolsSection({ searchWords }: MagicSchoolsSectionProps) {
 					</p>
 				</div>
 			</div>
+			<WarpTable title="Psychic Phenomena (1d100)" entries={QREF_DATA.psychicPhenomena} />
+			<WarpTable title="Perils of the Warp (1d100)" entries={QREF_DATA.perilsOfTheWarp} />
 		</>
 	);
 }

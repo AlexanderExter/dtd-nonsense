@@ -61,6 +61,12 @@ export interface QRefHitLocation {
 	location: string;
 }
 
+export interface QRefWarpEntry {
+	roll: string;
+	name: string;
+	effect: string;
+}
+
 export const QREF_DATA = {
 	actions: [
 		{
@@ -649,4 +655,148 @@ export const QREF_DATA = {
 		{ roll: "9", location: "Right Arm" },
 		{ roll: "10", location: "Head" },
 	] satisfies QRefHitLocation[],
+	psychicPhenomena: [
+		{
+			roll: "01–03",
+			name: "Dark Foreboding",
+			effect: "A faint breeze; everyone feels something unfortunate just happened somewhere",
+		},
+		{ roll: "04–05", name: "Warp Echo", effect: "All noise causes echoes for a few seconds" },
+		{ roll: "06–08", name: "Unholy Stench", effect: "A bizarre and foul smell permeates the air" },
+		{ roll: "09–11", name: "Warp Mind", effect: "Sorcerer suffers 1 Insanity Point" },
+		{ roll: "12–14", name: "Hoarfrost", effect: "Temperature plummets; thin frost covers everything within 3d10m" },
+		{ roll: "15–17", name: "Aura of Taint", effect: "All animals within 1d100m become spooked and agitated" },
+		{ roll: "18–20", name: "Memory Worm", effect: "All people within line of sight forget something trivial" },
+		{ roll: "21–23", name: "Spoilage", effect: "Food and drink go bad in a 5d10m radius" },
+		{
+			roll: "24–26",
+			name: "Haunting Breeze",
+			effect: "Wind whips up, blowing light objects and guttering fires within 3d10m",
+		},
+		{
+			roll: "27–29",
+			name: "Veil of Darkness",
+			effect: "Area within 3d10m is plunged into darkness for remainder of round",
+		},
+		{
+			roll: "30–32",
+			name: "Distorted Reflections",
+			effect: "Mirrors and reflective surfaces within 5d10m distort or shatter",
+		},
+		{
+			roll: "33–35",
+			name: "Breath Leech",
+			effect: "Everyone becomes short of breath for one round; no Run or Charge actions",
+		},
+		{
+			roll: "36–38",
+			name: "Mask of Fear",
+			effect: "Sorcerer takes terrible appearance; gains Fear 1 for rest of round",
+		},
+		{ roll: "39–41", name: "Unnatural Decay", effect: "All plant-life within 3d10m withers and dies" },
+		{
+			roll: "42–44",
+			name: "Spectral Gale",
+			effect: "Howling winds; everyone within 4d10m must Test TN 10 Dex/Str or be knocked down",
+		},
+		{ roll: "45–47", name: "Bloody Tears", effect: "Blood weeps from stone and wood within 3d10m" },
+		{
+			roll: "48–50",
+			name: "The Earth Protests",
+			effect: "Ground shakes; everyone within 5d10m must Test TN 15 Dex or be knocked down",
+		},
+		{
+			roll: "51–53",
+			name: "Psy Discharge",
+			effect: "Static electricity within 5d10m; unprotected electronics short out",
+		},
+		{
+			roll: "54–56",
+			name: "Warp Ghosts",
+			effect: "Ghostly apparitions within 3d10m; everyone must Test against Fear 1",
+		},
+		{
+			roll: "57–59",
+			name: "Falling Upwards",
+			effect: "Everything within 2d10m rises 1d10m into the air, then falls",
+		},
+		{ roll: "60–62", name: "Banshee Howl", effect: "Everyone must Test Con TN 15 or be deafened for 1d10 rounds" },
+		{
+			roll: "63–65",
+			name: "The Furies",
+			effect: "Sorcerer slammed to ground, loses 1d5 HP, must Test against Fear 2",
+		},
+		{
+			roll: "66–68",
+			name: "Shadow of the Warp",
+			effect: "Everyone within 1d100m must Test WP TN 20 or gain 1d5 Insanity Points",
+		},
+		{ roll: "69–71", name: "Tech Scorn", effect: "Tech devices within 5d10m malfunction; ranged weapons jam" },
+		{
+			roll: "72–74",
+			name: "Warp Madness",
+			effect: "Creatures within 2d10m become Frenzied for a round unless TN 20 WP",
+		},
+		{ roll: "75+", name: "Perils of the Warp", effect: "Roll on Perils of the Warp table instead" },
+	] satisfies QRefWarpEntry[],
+	perilsOfTheWarp: [
+		{
+			roll: "01–05",
+			name: "The Gibbering",
+			effect: "Test TN 20 WP or suffer 1d5+1 Insanity Points and be stunned 1d5 rounds",
+		},
+		{ roll: "06–09", name: "Warp Burn", effect: "Lose 1d5 HP and be stunned for 1d5 rounds" },
+		{
+			roll: "10–13",
+			name: "Psychic Concussion",
+			effect: "Knocked unconscious 1d5 rounds; everyone within 3d10m TN 15 WP or stunned 1 round",
+		},
+		{ roll: "14–18", name: "Psy-Blast", effect: "Thrown 1d10m into the air, falling to the ground" },
+		{ roll: "19–24", name: "Soul Sear", effect: "Cannot use any spells for one hour" },
+		{
+			roll: "25–30",
+			name: "Locked In",
+			effect: "Fall catatonic. Each round, Full Action to Test WP TN 15 to break free",
+		},
+		{
+			roll: "31–38",
+			name: "Chronological Incontinence",
+			effect: "Wink out of existence, reappear in 1d10 rounds, suffer 1d5 Insanity",
+		},
+		{
+			roll: "39–46",
+			name: "Psychic Mirror",
+			effect: "Spell targets the sorcerer instead; if beneficial, lose 1d5 HP and effect cancelled",
+		},
+		{
+			roll: "47–55",
+			name: "Warp Whispers",
+			effect: "Everyone within 4d10m must Test WP TN 25 or suffer 1d10 Insanity Points",
+		},
+		{ roll: "56–58", name: "The Darkness", effect: "Everyone within 5d10m is blind and deaf for 1d10 rounds" },
+		{ roll: "59–67", name: "Teleport Storm", effect: "Everyone within 3d10m switches places randomly" },
+		{
+			roll: "68–72",
+			name: "Rending the Veil",
+			effect: "All creatures within 1d100m must Test against Fear 3 for 1d5 rounds",
+		},
+		{
+			roll: "73–78",
+			name: "Blood Rain",
+			effect: "TN 15 Str or be knocked down. Spells in area auto-trigger Perils for 1d5 rounds",
+		},
+		{
+			roll: "79–82",
+			name: "Cataclysmic Blast",
+			effect: "Everyone within 1d10m loses 1d5+2 HP. Cannot cast spells for 1d5 hours",
+		},
+		{ roll: "83–86", name: "Power Drain", effect: "Everyone within 3d10m loses all unspent Hero Points" },
+		{ roll: "87–90", name: "Reality Quake", effect: "Everything within 3d10m takes 3d10 Rending damage" },
+		{
+			roll: "91–99",
+			name: "Lost to the Warp",
+			effect: "Test TN 30 WP or be dragged into the Warp. Reappear 1d10 weeks later with 3d10 Insanity; future Perils at +10",
+		},
+		{ roll: "100", name: "Destruction", effect: "Sucked into the Warp, never to be seen again. Character is dead" },
+	] satisfies QRefWarpEntry[],
 } as const;

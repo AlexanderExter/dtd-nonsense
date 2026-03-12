@@ -75,34 +75,40 @@ export function RaceStep() {
 						<strong>Size:</strong> {preview.size}
 					</p>
 
-					{preview.statBonuses?.length > 0 && (
+					{preview.languages?.length > 0 && (
 						<p>
-							<strong>Stat Bonuses:</strong> {preview.statBonuses.join(", ")}
+							<strong>Languages:</strong> {preview.languages.join(", ")}
 						</p>
 					)}
 
-					{preview.skillBonuses?.length > 0 && (
+					{preview.charBonus && (
+						<p>
+							<strong>Characteristic Bonus:</strong> {preview.charBonus.description}
+						</p>
+					)}
+
+					{preview.skillBonus?.length > 0 && (
 						<p>
 							<strong>Skill Bonuses:</strong>{" "}
-							{preview.skillBonuses
-								.map((s: any) => (typeof s === "string" ? s : `${s.name} +${s.bonus ?? 1}`))
+							{preview.skillBonus
+								.map((s: any) => (typeof s === "string" ? s : `${s.skill} +${s.value ?? 1}`))
 								.join(", ")}
 						</p>
 					)}
 
 					{preview.power && (
 						<div>
-							<strong>{preview.power.name}:</strong> {preview.power.effect}
+							<strong>{preview.power.name}:</strong> {preview.power.description}
 						</div>
 					)}
 
-					{preview.description && <p>{preview.description}</p>}
+					{preview.notes && <p class="text-text-muted text-[0.85rem] italic">{preview.notes}</p>}
 
 					{/* Characteristic bonus dropdown */}
-					{preview.charBonusOptions?.length > 0 && (
+					{preview.charBonus?.options?.length > 0 && (
 						<div class="mb-md flex-1">
 							<label class="block text-[0.85rem] text-text-muted mb-xs">
-								Characteristic Bonus:{" "}
+								Choose +1 Characteristic:{" "}
 								<select
 									value={charSignal.value.raceCharBonus || ""}
 									onChange={(e) => {
@@ -113,7 +119,7 @@ export function RaceStep() {
 									}}
 								>
 									<option value="">— Choose —</option>
-									{preview.charBonusOptions.map((opt: string) => (
+									{preview.charBonus.options.map((opt: string) => (
 										<option key={opt} value={opt}>
 											{opt.charAt(0).toUpperCase() + opt.slice(1)}
 										</option>

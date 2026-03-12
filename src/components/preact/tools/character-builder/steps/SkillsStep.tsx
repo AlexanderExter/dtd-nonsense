@@ -21,10 +21,10 @@ export function SkillsStep() {
 
 	// Build racial skill bonus map
 	const racialSkillBonuses: Record<string, number> = {};
-	if (raceData?.skillBonuses) {
-		for (const sb of raceData.skillBonuses) {
-			const name = typeof sb === "string" ? sb : sb.name || sb.id;
-			const bonus = typeof sb === "string" ? 1 : (sb.bonus ?? 1);
+	if (raceData?.skillBonus) {
+		for (const sb of raceData.skillBonus) {
+			const name = typeof sb === "string" ? sb : sb.skill || sb.id;
+			const bonus = typeof sb === "string" ? 1 : (sb.value ?? 1);
 			if (name) racialSkillBonuses[name.toLowerCase()] = bonus;
 		}
 	}

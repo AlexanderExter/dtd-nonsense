@@ -27,7 +27,7 @@ Key files:
 | `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                                                                                       |
 | `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data                                                                           |
 | `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
-| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                                                                                             |
+| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight) — **must use `ToolLayout.astro`, never `StarlightPage`**                                    |
 | `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
 | `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
