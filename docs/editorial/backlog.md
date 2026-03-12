@@ -88,5 +88,4 @@ These warnings fire on intentional content. Do not "fix" them.
 | `docs/pipeline.md` | 1 warning | "Armour" appears in linter description showing what the rule catches |
 | `docs/editorial/open-questions.md` | 2 warnings | Entry 14 discusses the inconsistency itself, mentioning old terms |
 | `docs/shared/dice-js.md` | 1 info | Dice notation in API doc function names — intentional |
-| `docs/tools/success-curves.md` | 2 info | Dice notation in technical descriptions |
 | `docs/project-conventions.md` | 3 info | Dice notation in convention examples |

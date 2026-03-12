@@ -36,12 +36,10 @@ src/components/preact/tools/[name]/         ← Preact components for each tool
 src/hooks/                                  ← Custom Preact hooks
   use-data.ts                               ← useData() / useAllData() for JSON loading
   use-local-storage.ts                      ← useLocalStorage() for persistence
-  use-worker.ts                             ← useWorker() for Web Worker communication
 src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
 src/lib/dtd/dice.ts                         ← Shared: roll(), calculateOutcome(), parseNotation()
-src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts and workers)
+src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts)
 src/lib/dtd/types.ts                        ← Shared: CharacterData, CharacterListEntry, etc.
-src/workers/                                ← TypeScript ESM Web Workers (bundled by Vite)
 src/layouts/ToolLayout.astro                ← Wrapper layout (bridges Tailwind tokens → var(--name) aliases)
 src/styles/custom.css                       ← WH40K Starlight theme tokens
 src/styles/tailwind.css                     ← Tailwind v4 @theme tokens (design token source of truth)
@@ -55,11 +53,11 @@ Every tool page follows this structure:
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
-import { DiceRollerApp } from "@/components/preact/tools/dice-roller/DiceRollerApp";
+import { QuickReferenceApp } from "@/components/preact/tools/quick-reference/QuickReferenceApp";
 ---
 
 <ToolLayout title="Tool Name" description="Short description">
-  <DiceRollerApp client:load />
+  <QuickReferenceApp client:load />
 </ToolLayout>
 ```
 
@@ -96,15 +94,12 @@ Key conventions:
 
 | Tool              | Components | Data Sources | Uses Workers? |
 | ----------------- | ---------- | ------------ | ------------- |
-| Dice Roller       | 6          | None         | No            |
-| Quick Reference   | 13         | Multiple     | No            |
-| Success Curves    | 9          | None         | Yes           |
-| Defense Graph     | 10         | None         | Yes           |
-| Combat Tracker    | 9          | Weapons      | No            |
-| NPC Generator     | 12         | Multiple     | No            |
-| Ship Builder      | 12         | Ships        | No            |
-| Character Builder | 18         | All          | No            |
-| Character Sheet   | 16         | All          | No            |
+| Quick Reference   | 12         | Multiple     | No            |
+| Combat Tracker    | 8          | Weapons      | No            |
+| NPC Generator     | 11         | Multiple     | No            |
+| Ship Builder      | 11         | Ships        | No            |
+| Character Builder | 17         | All          | No            |
+| Character Sheet   | 15         | All          | No            |
 
 ## Data Loading
 
@@ -157,30 +152,19 @@ These have each caused real bugs. Memorize them:
 
 1. **Module-level signals share state globally** — All tool state is in module-level `signal()` declarations. Two instances of the same component would share state. This is fine on single-tool pages but would break in a multi-tool dashboard.
 
-2. **Chart.js must be dynamically imported** — Chart.js is too large for static bundling and causes SSR issues. Always use:
+2. **Use `class` not `className` in Preact JSX** — Preact with compat supports both, but this project uses `class` consistently. Mixing causes inconsistency.
 
-    ```typescript
-    const { Chart, registerables } = await import("chart.js");
-    Chart.register(...registerables);
-    ```
+3. **Astro `<style>` scoping eats `@import`** — A bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports.
 
-    Never use `import Chart from 'chart.js'` at the top level.
+4. **localStorage keys use tool-specific prefixes** — Character Sheet uses `dtd_sheet_{id}` / `dtd_sheet_list`. Combat Tracker uses `dtd_encounter_{id}`. Never change existing key names (breaks user data). See [docs/architecture.md](../../docs/architecture.md#persistence-conventions) for the full key table.
 
-3. **Web Workers use ESM and live in `src/workers/`** — Workers are TypeScript files in `src/workers/` bundled by Vite via `new Worker(new URL('../../workers/worker-name.ts', import.meta.url), { type: 'module' })`. They import from `src/lib/dtd/` using relative paths (not the `@/` alias — it doesn't resolve in worker bundles). Do **not** put workers in `public/workers/` — that directory no longer exists.
+5. **Always grep all tool components when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, `types.ts`, or hooks can break any of the 6 tools. Search `src/components/preact/tools/` and `src/pages/tools/` for all callers before modifying exports.
 
-4. **Use `class` not `className` in Preact JSX** — Preact with compat supports both, but this project uses `class` consistently. Mixing causes inconsistency.
+6. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. Always verify against the actual `.tsx` source when editing a tool. The code is ground truth, not the spec doc.
 
-5. **Astro `<style>` scoping eats `@import`** — A bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports.
+7. **Post-migration audit: grep for raw patterns** — After migrating components to shared UI primitives, grep the entire tool directory for the old pattern (e.g., `"btn`, `role="tablist"`, raw `<dialog>`) to catch duplicates and stragglers. Components with multiple render branches (e.g., mobile vs desktop, collapsed vs expanded) often have duplicate UI that the first pass misses.
 
-6. **localStorage keys use tool-specific prefixes** — Character Sheet uses `dtd_sheet_{id}` / `dtd_sheet_list`. Combat Tracker uses `dtd_encounter_{id}`. Never change existing key names (breaks user data). See [docs/architecture.md](../../docs/architecture.md#persistence-conventions) for the full key table.
-
-7. **Always grep all tool components when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, `types.ts`, or hooks can break any of the 9 tools. Search `src/components/preact/tools/` and `src/pages/tools/` for all callers before modifying exports.
-
-8. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. Always verify against the actual `.tsx` source when editing a tool. The code is ground truth, not the spec doc.
-
-9. **Post-migration audit: grep for raw patterns** — After migrating components to shared UI primitives, grep the entire tool directory for the old pattern (e.g., `"btn`, `role="tablist"`, raw `<dialog>`) to catch duplicates and stragglers. Components with multiple render branches (e.g., mobile vs desktop, collapsed vs expanded) often have duplicate UI that the first pass misses.
-
-10. **Ariakit `TabPanel` silently fails through Preact compat** — Ariakit's `TabPanel` toggles a `hidden` attribute via internal React context. Through Preact's compat layer (`@astrojs/preact` with `compat: true`), this mechanism silently fails: all panels render visible simultaneously and stack vertically. The symptom looks like the sheet is "not responding" (broken state), but it's actually all tabs rendering at once. **Do not use `<TabPanel>` from `@/components/preact/ui` in any tool.** Use conditional rendering instead:
+8. **Ariakit `TabPanel` silently fails through Preact compat** — Ariakit's `TabPanel` toggles a `hidden` attribute via internal React context. Through Preact's compat layer (`@astrojs/preact` with `compat: true`), this mechanism silently fails: all panels render visible simultaneously and stack vertically. The symptom looks like the sheet is "not responding" (broken state), but it's actually all tabs rendering at once. **Do not use `<TabPanel>` from `@/components/preact/ui` in any tool.** Use conditional rendering instead:
 
     ```tsx
     // CORRECT — conditional rendering

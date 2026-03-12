@@ -4,7 +4,7 @@ Shared utility module exporting data loading, derived stat calculations, and cha
 
 **File:** `src/lib/dtd/core.ts`
 **Types:** `src/lib/dtd/types.ts` — canonical interfaces (`CharacterData`, `Characteristics`, `CharacterModifiers`, etc.)
-**Consumers:** Character Sheet, Character Builder, Combat Tracker, NPC Generator, Defense Graph, and any future tool pages.
+**Consumers:** Character Sheet, Character Builder, Combat Tracker, NPC Generator, and any future tool pages.
 
 ```typescript
 import { loadData, loadAllData, derived, character } from "@/lib/dtd/core.ts";

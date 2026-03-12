@@ -100,16 +100,6 @@
 					}
 				}
 			}
-		},
-		{
-			"includes": ["src/workers/**"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noUnusedVariables": "off"
-					}
-				}
-			}
 		}
 	]
 }

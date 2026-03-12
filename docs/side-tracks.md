@@ -12,26 +12,6 @@ Resolved items are removed on each review — git history preserves the full log
 
 Items worth doing soon, priority-ordered.
 
-### Success Curves / Defense Graph: Chart.js Update Pattern
-
-**Files:** `src/components/preact/tools/success-curves/SuccessRateChart.tsx`, `HistogramChart.tsx`, `RaiseDistChart.tsx`; `src/components/preact/tools/defense-graph/WaterfallChart.tsx`, `EffectiveHPChart.tsx`, `HitProbabilityChart.tsx`, `ArmorTradeoffChart.tsx`
-**Issue:** All chart-update `useEffect` hooks run without dependency arrays. This is functionally correct with Preact signals (effects run after signal-triggered re-renders) but is unidiomatic and runs needlessly on every render. The histogram and success rate charts also mutate module-level plugin objects (`tnLinePlugin.selectedTNValue`, `selectedTNPlugin.selectedTNValue`) to sync state — fragile if multiple chart instances ever coexist.
-**Impact:** Performance degradation with complex pools; potential stale plugin state.
-**Next action:** Add explicit dependency arrays to all chart-update effects. Refactor plugin state to use refs or chart option storage instead of module-level mutation.
-
-### Success Curves / Defense Graph: Missing Unmount Guards
-
-**Files:** `src/components/preact/tools/success-curves/SuccessCurvesApp.tsx` (lines ~105-116), `src/components/preact/tools/defense-graph/DefenseGraphApp.tsx` (line ~114), `HitProbabilityChart.tsx` (line ~48)
-**Issue:** Worker `Promise.all()` callbacks and debounced simulation triggers can fire after component unmount. SuccessCurvesApp has no `isMounted` guard; HitProbabilityChart has one but races between the guard check and ref access. DefenseGraphApp cleans up its debounce timer in the effect dispose but could still fire if dispose runs between schedule and timeout.
-**Impact:** Console errors or wasted computation when navigating away during simulation.
-**Next action:** Add `isMounted` ref guard to SuccessCurvesApp worker callbacks. Review DefenseGraphApp cleanup ordering.
-
-### Defense Graph: EffectiveHPChart `borderDash` Suppressed
-
-**File:** `src/components/preact/tools/defense-graph/EffectiveHPChart.tsx` (line ~53)
-**Issue:** Uses `@ts-expect-error` to apply `borderDash: [5, 5]` on a dataset. Chart.js v4 does support `borderDash` on line datasets, but the ts-expect-error suppresses type checking. Verify the dashed line actually renders.
-**Next action:** Test visually. If line renders correctly, replace `@ts-expect-error` with a proper type assertion. If not, move `borderDash` to `elements.line` in chart options.
-
 ### Character Sheet: IdentityTab Race Preview Still Uses `statBonuses`
 
 **File:** `src/components/preact/tools/character-sheet/tabs/IdentityTab.tsx`
@@ -46,7 +26,7 @@ Items worth doing soon, priority-ordered.
 - **AccordionSection.tsx** (Quick Reference) — Controlled accordion for expand/collapse all. Uses `isOpen`/`onToggle` props. The `AccordionItem` primitive supports controlled mode but AccordionSection has additional custom styling.
 - **StepAccordion.tsx** (Character Builder) — Step wizard with numbered indicators, completion badges, active step highlighting. Domain-specific enough to stay local.
 - **Domain badges** — Dice outcome colors, ship console types, wound status, NPC threat levels. Use non-standard color tokens or inline style maps. ~12 instances.
-- **Mode toggles / filter groups** — Ship Builder hull filters, mode selector; Success Curves stunt checkboxes. Complex conditional active states with domain logic.
+- **Mode toggles / filter groups** — Ship Builder hull filters, mode selector. Complex conditional active states with domain logic.
 **Next action:** No immediate action needed. If a pattern appears in 3+ tools, consider abstracting into a primitive. Track during future tool work.
 
 ### Tool CSS: Z-Index Stacking Conflicts
@@ -124,13 +104,12 @@ Active `package.json` overrides that should be removed when upstream fixes land.
 |------|-----------|-----------|----------|
 | `use-local-storage.ts` | `useLocalStorage<T>()` | Low — needs localStorage mock + signal tracking | **High** (most isolated) |
 | `use-data.ts` | `useData<T>()`, `useAllData()` | Medium — needs fetch mock + Preact signal behavior | **Medium** |
-| `use-worker.ts` | `useWorker<T>()` | High — Worker lifecycle, message routing, pending tasks | **Low** |
 
 ### Browser APIs — Untestable Without jsdom
 
 `character.exportJSON()` and `character.importJSON()` use Blob/File APIs. Can't unit test with bun:test. Would need jsdom or browser test harness.
 
-### Component Layer — 97 Components, 0 Tests
+### Component Layer — 72 Components, 0 Tests
 
 Would require `@preact/testing-library` dependency. Not justified until specific component bugs emerge.
 

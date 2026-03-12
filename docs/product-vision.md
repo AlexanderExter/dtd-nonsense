@@ -49,8 +49,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 - Searchable, corrected rules reference (both books, 24 topic files)
 - Character lifecycle tools (Sheet, Builder, NPC Generator)
-- Gameplay utilities (Dice Roller, Combat Tracker, Quick Reference)
-- Analysis tools (Success Curves, Defense Graph)
+- Gameplay utilities (Combat Tracker, Quick Reference)
 - Ship subsystem tool (Ship Builder)
 - Mobile-responsive static site with WH40K-themed visual identity
 - Data validation pipeline ensuring correctness

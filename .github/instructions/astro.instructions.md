@@ -24,12 +24,11 @@ src/
   layouts/           ← ToolLayout.astro (standalone HTML shell; bridges Tailwind tokens → short var(--name) aliases)
   components/
     preact/
-      tools/         ← Preact island components for all 9 tools (97 components)
+      tools/         ← Preact island components for all 6 tools (72 components)
       ui/            ← Shared UI primitives (18 components) — Ariakit + Tailwind wrappers
       shared/        ← Shared Preact components across tools
-  hooks/             ← Custom Preact hooks (use-data, use-local-storage, use-worker)
+  hooks/             ← Custom Preact hooks (use-data, use-local-storage)
   lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
-  workers/           ← TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   styles/            ← custom.css (Starlight theme), tailwind.css (Tailwind v4 @theme tokens)
   content.config.ts  ← Content Collection definitions
 ```
@@ -40,7 +39,7 @@ src/
 
 - Each tool's `.astro` page mounts a root Preact component via `client:only="preact"`
 - Preact components live in `src/components/preact/tools/{tool-name}/`
-- Root component is `*App.tsx` (e.g., `DiceRollerApp.tsx`)
+- Root component is `*App.tsx` (e.g., `QuickReferenceApp.tsx`)
 - Import shared logic from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
 - Import UI primitives from `@/components/preact/ui` (Button, Modal, Toast, etc.) — never import `@ariakit/react` directly
 - Load JSON data via `useData()` / `useAllData()` hooks from `@/hooks/use-data`
@@ -58,7 +57,7 @@ src/
 - **All tool styling**: Tailwind utility classes in JSX — no `<style>` blocks, no `@apply`
 - **Print styles**: Minimal `@media print` blocks in `.astro` pages where needed
 - **Conditional classes**: `.filter(Boolean).join(" ")` pattern for dynamic class lists
-- **Dynamic values**: `style={{}}` only for runtime-computed values (percentages, Chart.js colors)
+- **Dynamic values**: `style={{}}` only for runtime-computed values (percentages)
 
 ### TypeScript
 
@@ -72,13 +71,6 @@ src/
 - `scripts/prebuild.mjs` copies `cleaned-references/` → `src/content/docs/rules/` and `data/` → `public/data/` at build time
 - Generated content dirs are gitignored — never edit files in `src/content/docs/rules/` or `public/data/`
 - Starlight frontmatter is injected during prebuild by `scripts/prebuild.mjs` (gray-matter)
-
-### Web Workers
-
-- Place worker scripts in `src/workers/` as `.ts` files
-- Instantiate with `new Worker(new URL("../../workers/name.ts", import.meta.url), { type: "module" })` — Vite bundles them as ESM
-- Workers use **relative imports only** (e.g., `../lib/dtd/dice-primitives.ts`) — the `@/` alias does not resolve inside worker bundles
-- Do **not** put workers in `public/workers/` — they cannot import TypeScript from there
 
 ### Biome (Linter/Formatter)
 

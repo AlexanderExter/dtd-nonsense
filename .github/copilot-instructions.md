@@ -134,14 +134,14 @@ data/                  Canonical JSON game data (12 files, validated by Zod sche
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
   editorial/           Editorial department: open questions, backlog, style concerns
-  tools/               Per-tool feature specs (9 tools)
+  tools/               Per-tool feature specs (6 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
 .github/               Agent instructions, skills, prompt files
   instructions/         Context-scoped rules (astro.instructions.md, markdown.instructions.md)
 astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
 biome.json             Biome linter/formatter config (JS/TS/CSS)
-package.json           npm dependencies (Astro, Starlight, Chart.js)
+package.json           npm dependencies (Astro, Starlight)
 tsconfig.json          TypeScript strict config with @/ path alias
 bunfig.toml            Bun config (shell, test runner settings)
 scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight frontmatter
@@ -150,12 +150,11 @@ src/                   Astro source files
   pages/tools/         Tool pages (Astro pages outside Starlight)
   components/
     preact/
-      tools/           Preact island components (9 tools, 97 components)
+      tools/           Preact island components (6 tools, 72 components)
       ui/              Shared UI primitives (18 components, Ariakit + Tailwind)
-  hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts, use-worker.ts)
+  hooks/               Custom Preact hooks (use-data.ts, use-local-storage.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
-  workers/             TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts)
   layouts/             ToolLayout.astro
   styles/
     custom.css         WH40K theme (Starlight)

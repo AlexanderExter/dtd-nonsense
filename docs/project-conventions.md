@@ -340,7 +340,7 @@ Features that depend on data from another tool (e.g., importing characters from 
 
 When moving, renaming, or removing functions in shared TS files (core.ts, dice.ts, types.ts):
 
-1. **Grep all tool files** for every affected export name before committing — callers in `src/pages/tools/*.astro`, `src/lib/tools/*.ts`, and `src/workers/*.ts` will break silently if not updated
+1. **Grep all tool files** for every affected export name before committing — callers in `src/pages/tools/*.astro` and `src/components/preact/tools/` will break silently if not updated
 2. **Check barrel re-exports** — `core.ts` re-exports from `character.ts`, `data.ts`, `derived.ts`. If you change a sub-module's exports, verify `core.ts` still re-exports correctly
 3. **Run `npm run test`** — the unit tests cover core and dice module APIs and will catch signature changes
 

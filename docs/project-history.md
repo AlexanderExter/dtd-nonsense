@@ -309,13 +309,12 @@ Notable game-rules lessons not captured elsewhere:
 | ----------------------- | ---------------- | ------------------------------------------------------------------ |
 | Character Sheet         | Active (Primary) | Freeform editable, multi-char CRUD, JSON import/export, print      |
 | Character Builder       | Active           | 11-step wizard, priority allocation, XP tracking, canonical export |
-| Dice Roller             | Active           | XkY with overflow, TN tracking, raises/checks, history             |
 | Combat Tracker          | Active           | Initiative, round tracking, HP/resource/conditions, reference bar  |
 | Quick Reference         | Active           | Searchable actions, conditions, modifiers, formulas, schools       |
 | NPC Stat Block Builder  | Active           | Auto-derived stats, trait system, 40+ templates, markdown copy     |
 | Ship Builder            | Active           | Builder + Sheet modes, hull/console/weapon config, combat tracking |
-| Success Curve Analyzer  | Active           | Monte Carlo probability visualization, 4-pool comparison           |
-| Defense Graph Simulator | Active           | Damage pipeline waterfall, HP curves, armor trade-offs, heat maps  |
+
+_Dice Roller, Success Curve Analyzer, and Defense Graph Simulator were removed in Phase 13 (tool pruning)._
 
 ### New Shared Infrastructure
 

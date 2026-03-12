@@ -76,7 +76,6 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 - Module-level signals for state, `computed` for derived data
 - `useAllData` hook from `@/hooks/use-data` for loading JSON game data
 - `useLocalStorage` hook from `@/hooks/use-local-storage` for persistence
-- `useWorker` hook from `@/hooks/use-worker` for Web Worker communication
 
 ### 5. Available Hooks
 
@@ -85,7 +84,6 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 | `useData`            | `@/hooks/use-data`              | Load a single JSON data file                    |
 | `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
 | `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist signal state to localStorage            |
-| `useWorker`          | `@/hooks/use-worker`            | Communicate with Web Workers                    |
 
 ### 6. Documentation
 
@@ -250,7 +248,7 @@ style={{ width: `${percent}%` }}
 - Use `class` (not `className`) — Preact convention
 - No `@apply` — defeats utility-first purpose
 - No `<style>` blocks in components — all styling via Tailwind utilities
-- `style={{}}` only for dynamic runtime values (percentages, Chart.js colors, canvas)
+- `style={{}}` only for dynamic runtime values (percentages, canvas)
 - Color/badge mappings use typed `Record<string, string>` lookup constants
 - Responsive: `max-[Npx]:` for custom breakpoints, `max-md:` / `max-sm:` for standard
 
@@ -349,8 +347,8 @@ Decisions established during the Tailwind v4 migration. Follow these when writin
 // Dynamic runtime percentages
 style={{ width: `${hpPercent}%` }}
 
-// Chart.js color swatches
-style={{ background: POOL_COLORS[index] }}
+// Color swatches
+style={{ background: STATUS_COLORS[status] }}
 ```
 
 ### Conditional Class Pattern

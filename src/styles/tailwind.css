@@ -31,7 +31,7 @@
 	--color-info: #60a5fa;
 	--color-info-bg: rgba(96, 165, 250, 0.15);
 
-	/* Colors — outcome overlays (dice roller, combat) */
+	/* Colors — outcome overlays (combat tracker) */
 	--color-outcome-success: #00c864;
 	--color-outcome-success-bg: rgba(0, 200, 100, 0.2);
 	--color-outcome-failure: #dc3232;

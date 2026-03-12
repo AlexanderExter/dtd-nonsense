@@ -22,27 +22,25 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 
 Key files:
 
-| File / Directory       | Purpose                                                                                                                                |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                                                                                       |
-| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data                                                                           |
-| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
-| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight) — **must use `ToolLayout.astro`, never `StarlightPage`**                                    |
-| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
-| `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
-| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
-| `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
-| `src/components/preact/` | Preact island components for all 9 tools (97 components)                                                                     |
-| `src/components/preact/ui/` | Shared UI primitives (18 components) — Ariakit + Tailwind wrappers                                                          |
-| `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`)                                                                        |
-| `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
-| `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
+| File / Directory            | Purpose                                                                                                                |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `astro.config.mjs`          | Starlight config, sidebar, theme, Vercel adapter                                                                       |
+| `scripts/prebuild.mjs`      | Copies cleaned-references → rules, books, JSON → public/data                                                           |
+| `src/content/docs/`         | Generated Starlight content (rules, books) — gitignored                                                                |
+| `src/pages/tools/`          | Tool pages (Astro pages outside Starlight) — **must use `ToolLayout.astro`, never `StarlightPage`**                    |
+| `src/lib/dtd/`              | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
+| `src/layouts/`              | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)               |
+| `src/styles/`               | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                |
+| `src/components/preact/`    | Preact island components for all 6 tools (72 components)                                                               |
+| `src/components/preact/ui/` | Shared UI primitives (18 components) — Ariakit + Tailwind wrappers                                                     |
+| `data/`                     | Canonical JSON game data (12 files) — source for prebuild                                                              |
+| `public/data/`              | Generated JSON data copies (from `data/`) — gitignored                                                                 |
 
 Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild copies source content into Astro structure, then Astro builds the static site. `npm run build` runs both steps.
 
 ### When to Reconsider
 
-- **Preact Islands:** All 9 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 17 components (Character Builder) without issues so far.
+- **Preact Islands:** All 6 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 17 components (Character Builder) without issues so far.
 
 ### Code Quality & Testing
 
@@ -76,13 +74,13 @@ Assessment of `src/lib/dtd/` modules. The shared library is cleanly separated fr
 | `dice-primitives.ts` | Core dice algorithms | None | ~65 lines — used by dice.ts and workers |
 | `constants.ts` | Game constants | None | ~15 lines — characteristic groups/names |
 
-All modules import cleanly into Preact components. Workers import from `dice-primitives.ts` using relative paths (the `@/` alias doesn't resolve in worker bundles).
+All modules import cleanly into Preact components.
 
 ---
 
 ## Shared UI Layer
 
-All 9 tools share a set of **18 UI primitive components** in `src/components/preact/ui/`, backed by [Ariakit](https://ariakit.org/) for accessibility and Tailwind CSS tokens for styling.
+All 6 tools share a set of **18 UI primitive components** in `src/components/preact/ui/`, backed by [Ariakit](https://ariakit.org/) for accessibility and Tailwind CSS tokens for styling.
 
 ### Import Convention
 
@@ -192,26 +190,12 @@ export function updateState(fn) { myState.value = fn(myState.value); }
 
 | Tool              | Components | Directory                                     |
 | ----------------- | ---------- | --------------------------------------------- |
-| Dice Roller       | 6          | `src/components/preact/tools/dice-roller/`         |
 | Quick Reference   | 12         | `src/components/preact/tools/quick-reference/`     |
-| Success Curves    | 8          | `src/components/preact/tools/success-curves/`      |
-| Defense Graph     | 9          | `src/components/preact/tools/defense-graph/`       |
 | Combat Tracker    | 8          | `src/components/preact/tools/combat-tracker/`      |
 | NPC Generator     | 11         | `src/components/preact/tools/npc-generator/`       |
 | Ship Builder      | 11         | `src/components/preact/tools/ship-builder/`        |
 | Character Builder | 17         | `src/components/preact/tools/character-builder/`   |
 | Character Sheet   | 15         | `src/components/preact/tools/character-sheet/`     |
-
-### Chart.js
-
-Two tools (success-curves, defense-graph) use Chart.js via dynamic import so the ~208 KB bundle (~71 KB gzip) is only loaded when those tools are visited:
-
-```typescript
-const { Chart, registerables } = await import("chart.js");
-Chart.register(...registerables);
-```
-
-Vite bundles Chart.js from the npm package — no CDN dependency.
 
 ---
 
@@ -269,8 +253,6 @@ The Builder also has a direct "Open in Sheet" button that calls `character.save(
 | Combat Tracker | Character Sheet characters                         | `character.list()` + `character.load()` |
 | NPC Generator  | `npc-templates.json`, `traits.json`, `skills.json` | `loadData()`                            |
 | Ship Builder   | `ships.json`                                       | `loadData()`                            |
-| Success Curves | _(no external data)_                               | Self-contained Monte Carlo              |
-| Defense Graph  | _(no external data)_                               | Self-contained simulation               |
 
 ### JSON Data Loading
 
@@ -417,7 +399,6 @@ All tools use localStorage with consistent key patterns:
 | Combat Tracker  | `dtd_encounter_{id}` | `dtd_encounter_list` |
 | NPC Generator   | `dtd_npc_{id}`       | `dtd_npc_list`       |
 | Ship Builder    | `dtd_ship_{id}`      | `dtd_ship_list`      |
-| Dice Roller     | `dtd-roll-history`   | _(single key)_       |
 
 Pattern: data stored as JSON string per-entity, with a separate JSON array index mapping `[{ id, name }]` entries.
 
@@ -476,7 +457,6 @@ CSS that cannot be expressed as Tailwind utilities and remains as hand-written C
 | `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (`.panel`, `.btn` family) |
 | `src/layouts/ToolLayout.astro` | 5 | `box-sizing: border-box` reset only |
 | `quick-reference.astro` | 6 | Print-only `@media print` |
-| `defense-graph.astro` | 4 | Print-only `@media print` |
 | `npc-generator.astro` | 6 | Print-only `@media print` |
 | `ship-builder.astro` | 5 | Print-only `@media print` |
 | `character-sheet.astro` | 12 | Print-only `@media print` + `tab-panel::before` content |
