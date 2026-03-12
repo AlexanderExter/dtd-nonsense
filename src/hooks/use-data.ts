@@ -1,31 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadAllData, loadData } from "@/lib/dtd/data";
-
-export function useData<T>(filename: string) {
-	const [data, setData] = useState<T | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
-
-	useEffect(() => {
-		const controller = new AbortController();
-		setLoading(true);
-		setError(null);
-		loadData<T>(filename, controller.signal)
-			.then((result) => {
-				setData(result);
-			})
-			.catch((err: unknown) => {
-				if (err instanceof DOMException && err.name === "AbortError") return;
-				setError(err instanceof Error ? err.message : String(err));
-			})
-			.finally(() => {
-				setLoading(false);
-			});
-		return () => controller.abort();
-	}, [filename]);
-
-	return { data, loading, error };
-}
+import { loadAllData } from "@/lib/dtd/data";
 
 export function useAllData(filenames: string[]) {
 	const [data, setData] = useState<Record<string, unknown> | null>(null);

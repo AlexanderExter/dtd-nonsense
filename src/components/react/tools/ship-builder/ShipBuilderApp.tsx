@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { loadData } from "@/lib/dtd/core.ts";
 import { BuilderPanel } from "./BuilderPanel";
 import {
@@ -48,8 +48,16 @@ function loadShipFromStorage(id: string): ShipState | null {
 
 export function ShipBuilderApp() {
 	const fileRef = useRef<HTMLInputElement>(null);
-	const { ship, shipList, mode, dataLoaded, setShip, setMode, setShipList, setDataLoaded, setShipData, updateShip } =
-		useShipStore();
+	const ship = useShipStore((s) => s.ship);
+	const shipList = useShipStore((s) => s.shipList);
+	const mode = useShipStore((s) => s.mode);
+	const dataLoaded = useShipStore((s) => s.dataLoaded);
+	const setShip = useShipStore((s) => s.setShip);
+	const setMode = useShipStore((s) => s.setMode);
+	const setShipList = useShipStore((s) => s.setShipList);
+	const setDataLoaded = useShipStore((s) => s.setDataLoaded);
+	const setShipData = useShipStore((s) => s.setShipData);
+	const updateShip = useShipStore((s) => s.updateShip);
 
 	// -----------------------------------------------------------------------
 	// Initialization

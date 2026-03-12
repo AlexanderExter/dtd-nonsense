@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { roll } from "@/lib/dtd/dice.ts";
 import { type CritLogEntry, getShipStats, lookupCritical, signedNum } from "./constants";
 import { useShipStore } from "./store";

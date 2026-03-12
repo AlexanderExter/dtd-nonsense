@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import type { NPCWeapon } from "./constants";
 
 interface WeaponListProps {

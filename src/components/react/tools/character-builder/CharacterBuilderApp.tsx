@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { useAllData } from "@/hooks/use-data";
 import { createDefaultMeta } from "./constants";
 import { Sidebar } from "./Sidebar";

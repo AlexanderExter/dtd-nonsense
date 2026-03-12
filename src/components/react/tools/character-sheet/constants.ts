@@ -53,7 +53,6 @@ export const ARMOR_TYPES = ["Light", "Medium", "Heavy", "Extreme", "Power"];
 export const DAMAGE_TYPES = ["E", "I", "R", "X"];
 export const PROFICIENCY_MELEE = ["Basic", "Melee 1", "Melee 2", "Melee 3"];
 export const PROFICIENCY_RANGED = ["Basic", "Ranged 1", "Ranged 2", "Throwing"];
-export const AVAILABILITY = ["Ubiquitous", "Very Common", "Common", "Uncommon", "Rare", "Very Rare", "Mythic Rare"];
 
 export const BG_IDS = [
 	"allies",
@@ -122,7 +121,7 @@ export function getEffChars(char: CharacterData, _raceData: any): Record<string,
 }
 
 /** Get race size from loaded race data. */
-export function getRaceSize(char: CharacterData, racesData: any): number {
+function getRaceSize(char: CharacterData, racesData: any): number {
 	if (!char.race || !racesData) return 4;
 	const race = (racesData.races || []).find((r: any) => r.id === char.race);
 	return race?.size ?? 4;
@@ -135,7 +134,7 @@ export function getLevel(char: CharacterData): number {
 }
 
 /** Get resource max from exaltation formula. */
-export function getResourceMax(char: CharacterData, effChars: Record<string, number>, exaltData: any): number {
+function getResourceMax(char: CharacterData, effChars: Record<string, number>, exaltData: any): number {
 	if (!char.exaltation || !exaltData) return 0;
 	const exalt = (exaltData.exaltations || []).find((e: any) => e.id === char.exaltation);
 	if (!exalt?.resourceStat) return 0;

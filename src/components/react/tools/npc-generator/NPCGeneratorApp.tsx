@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
-import { Button, showToast, Toast } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
+import { showToast, Toast } from "@/components/react/ui/Toast";
 import { loadData } from "@/lib/dtd/core.ts";
 import {
 	calculateDerived,

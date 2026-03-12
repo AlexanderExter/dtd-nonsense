@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { AccordionSection } from "./AccordionSection";
 import { ActionsSection } from "./ActionsSection";
 import { CombatModifiersSection } from "./CombatModifiersSection";

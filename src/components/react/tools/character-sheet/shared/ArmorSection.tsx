@@ -1,4 +1,5 @@
-import { AddButton, SectionHeading } from "@/components/react/ui";
+import { AddButton } from "@/components/react/ui/AddButton";
+import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { ArmorEntry } from "@/lib/dtd/types";
 import { ARMOR_TYPES, LOCATIONS } from "../constants";
 import { useCharSheetStore } from "../store";

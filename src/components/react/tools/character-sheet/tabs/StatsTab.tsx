@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { CHAR_NAMES } from "@/lib/dtd/constants";
 import type { SavedPool } from "@/lib/dtd/types";
 import type { DerivedStats } from "../constants";

@@ -1,4 +1,5 @@
-import { Button, Modal } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
+import { Modal } from "@/components/react/ui/Modal";
 
 interface ImportModalProps {
 	isOpen: boolean;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import type { XpLogEntry } from "@/lib/dtd/types";
 import { useCharSheetStore } from "../store";
 

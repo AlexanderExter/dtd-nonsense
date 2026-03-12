@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { AccordionItem, Badge, Button, CloseButton } from "@/components/react/ui";
+import { AccordionItem } from "@/components/react/ui/Accordion";
+import { Badge } from "@/components/react/ui/Badge";
+import { Button } from "@/components/react/ui/Button";
+import { CloseButton } from "@/components/react/ui/CloseButton";
 import type { ActionDef } from "./constants";
 import { ACTIONS, CONDITIONS, HIT_LOCATIONS, SITUATIONAL_MODIFIERS } from "./constants";
 

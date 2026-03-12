@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import {
 	createNewCharacter,
 	deleteCharacter,

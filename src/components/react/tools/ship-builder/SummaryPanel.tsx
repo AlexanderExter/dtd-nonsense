@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { calculateBPSpent, getBPBudget, getShipStats, signedNum } from "./constants";
 import { useShipStore } from "./store";
 

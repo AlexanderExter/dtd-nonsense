@@ -1,4 +1,4 @@
-import { AddButton } from "@/components/react/ui";
+import { AddButton } from "@/components/react/ui/AddButton";
 import type { SpecialAttackEntry, SpellEntry } from "@/lib/dtd/types";
 import {
 	CHAR_ABBREV,

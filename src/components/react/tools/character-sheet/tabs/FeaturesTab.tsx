@@ -1,4 +1,4 @@
-import { AddButton } from "@/components/react/ui";
+import { AddButton } from "@/components/react/ui/AddButton";
 import type { Background, ClassEntry } from "@/lib/dtd/types";
 import { BG_IDS } from "../constants";
 import { NameNotesList } from "../shared/NameNotesList";

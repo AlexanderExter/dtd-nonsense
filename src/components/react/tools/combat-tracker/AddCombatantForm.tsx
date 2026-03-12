@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { AccordionItem, Button } from "@/components/react/ui";
+import { AccordionItem } from "@/components/react/ui/Accordion";
+import { Button } from "@/components/react/ui/Button";
 import type { Combatant } from "./constants";
 
 interface AddCombatantFormProps {

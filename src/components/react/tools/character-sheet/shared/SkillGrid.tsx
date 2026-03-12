@@ -1,4 +1,4 @@
-import { Badge } from "@/components/react/ui";
+import { Badge } from "@/components/react/ui/Badge";
 import { useCharSheetStore } from "../store";
 
 export function SkillGrid() {

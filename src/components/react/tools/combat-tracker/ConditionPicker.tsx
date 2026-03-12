@@ -1,4 +1,4 @@
-import { Popover } from "@/components/react/ui";
+import { Popover } from "@/components/react/ui/Popover";
 import type { CombatantCondition } from "./constants";
 import { CONDITIONS } from "./constants";
 

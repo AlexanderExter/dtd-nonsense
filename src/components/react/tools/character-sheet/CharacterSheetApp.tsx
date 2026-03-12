@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { Tabs } from "@/components/react/ui";
+import { Tabs } from "@/components/react/ui/Tabs";
 import { useAllData } from "@/hooks/use-data";
 import { character as characterAPI } from "@/lib/dtd/character";
 import { CharacterManager } from "./CharacterManager";

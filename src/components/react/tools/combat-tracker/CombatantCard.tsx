@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Badge, Button } from "@/components/react/ui";
+import { Badge } from "@/components/react/ui/Badge";
+import { Button } from "@/components/react/ui/Button";
 import type { Combatant, CombatantCondition } from "./constants";
 import { CONDITIONS, getWoundStatus } from "./constants";
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect } from "react";
-import { Button, showToast, Toast } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
+import { showToast, Toast } from "@/components/react/ui/Toast";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import { roll } from "@/lib/dtd/dice";
@@ -68,28 +69,26 @@ function loadEncounterList(): Array<{ id: string; name: string }> {
 // =========================================================================
 
 export function CombatTrackerApp() {
-	const {
-		encounterState: state,
-		conditionPickerState,
-		importModalOpen,
-		sidebarOpen,
-		hitLocationResult,
-		damageCalcResult,
-		roundAlerts,
-		encounterList,
-		importCharList,
-		updateState,
-		updateCombatant,
-		setEncounterState,
-		setConditionPickerState,
-		setImportModalOpen,
-		setSidebarOpen,
-		setHitLocationResult,
-		setDamageCalcResult,
-		setRoundAlerts,
-		setEncounterList,
-		setImportCharList,
-	} = useCombatStore();
+	const state = useCombatStore((s) => s.encounterState);
+	const conditionPickerState = useCombatStore((s) => s.conditionPickerState);
+	const importModalOpen = useCombatStore((s) => s.importModalOpen);
+	const sidebarOpen = useCombatStore((s) => s.sidebarOpen);
+	const hitLocationResult = useCombatStore((s) => s.hitLocationResult);
+	const damageCalcResult = useCombatStore((s) => s.damageCalcResult);
+	const roundAlerts = useCombatStore((s) => s.roundAlerts);
+	const encounterList = useCombatStore((s) => s.encounterList);
+	const importCharList = useCombatStore((s) => s.importCharList);
+	const updateState = useCombatStore((s) => s.updateState);
+	const updateCombatant = useCombatStore((s) => s.updateCombatant);
+	const setEncounterState = useCombatStore((s) => s.setEncounterState);
+	const setConditionPickerState = useCombatStore((s) => s.setConditionPickerState);
+	const setImportModalOpen = useCombatStore((s) => s.setImportModalOpen);
+	const setSidebarOpen = useCombatStore((s) => s.setSidebarOpen);
+	const setHitLocationResult = useCombatStore((s) => s.setHitLocationResult);
+	const setDamageCalcResult = useCombatStore((s) => s.setDamageCalcResult);
+	const setRoundAlerts = useCombatStore((s) => s.setRoundAlerts);
+	const setEncounterList = useCombatStore((s) => s.setEncounterList);
+	const setImportCharList = useCombatStore((s) => s.setImportCharList);
 
 	// Load encounter list on mount
 	useEffect(() => {

@@ -1,4 +1,5 @@
-import { AddButton, SectionHeading } from "@/components/react/ui";
+import { AddButton } from "@/components/react/ui/AddButton";
+import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { MeleeWeapon, RangedWeapon } from "@/lib/dtd/types";
 import { DAMAGE_TYPES, PROFICIENCY_MELEE, PROFICIENCY_RANGED } from "../constants";
 import { useCharSheetStore } from "../store";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 
 interface QuickAddRowProps {
 	onQuickAdd: (name: string, initTotal: number) => void;

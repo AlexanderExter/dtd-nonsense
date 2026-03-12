@@ -1,4 +1,4 @@
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import {

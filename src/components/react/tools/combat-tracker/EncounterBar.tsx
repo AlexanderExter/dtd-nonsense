@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 
 interface EncounterBarProps {
 	encounters: Array<{ id: string; name: string }>;

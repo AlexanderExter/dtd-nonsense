@@ -225,7 +225,7 @@ export function getInstalledConsoleIds(ship: ShipState): string[] {
 	return Object.values(ship.consoles).filter(Boolean);
 }
 
-export function hasConsole(ship: ShipState, consoleId: string): boolean {
+function hasConsole(ship: ShipState, consoleId: string): boolean {
 	return getInstalledConsoleIds(ship).includes(consoleId);
 }
 
@@ -233,27 +233,27 @@ export function hasConsole(ship: ShipState, consoleId: string): boolean {
 // Console bonus helpers
 // -------------------------------------------------------------------------
 
-export function getManBonus(ship: ShipState): number {
+function getManBonus(ship: ShipState): number {
 	return hasConsole(ship, "thrust-vectoring") ? 5 : 0;
 }
 
-export function getSensorBonus(ship: ShipState): number {
+function getSensorBonus(ship: ShipState): number {
 	return hasConsole(ship, "enhanced-sensors") ? 5 : 0;
 }
 
-export function getAccBonus(ship: ShipState): number {
+function getAccBonus(ship: ShipState): number {
 	return hasConsole(ship, "large-engine") ? 5 : 0;
 }
 
-export function getSpeedBonus(ship: ShipState): number {
+function getSpeedBonus(ship: ShipState): number {
 	return hasConsole(ship, "large-engine") ? 2 : 0;
 }
 
-export function getCrewBonus(ship: ShipState): number {
+function getCrewBonus(ship: ShipState): number {
 	return getInstalledConsoleIds(ship).filter((id) => id === "rating-quarters").length * 2;
 }
 
-export function getEffectiveHullStrength(ship: ShipState, hull: Hull): number {
+function getEffectiveHullStrength(ship: ShipState, hull: Hull): number {
 	const base = hull.hullStrength;
 	const hardenedCount = getInstalledConsoleIds(ship).filter((id) => id === "hardened-armor").length;
 	return Math.floor(base * (1 + hardenedCount * 0.1));

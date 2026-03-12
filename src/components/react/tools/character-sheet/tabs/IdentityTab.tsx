@@ -1,4 +1,4 @@
-import { Button } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
 import type { DerivedStats } from "../constants";
 import { useCharSheetStore } from "../store";
 
