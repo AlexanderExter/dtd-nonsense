@@ -3,8 +3,8 @@
 The primary character tool — a freeform editable sheet for both character creation and gameplay tracking. Replaces the old builder-only workflow with a single unified interface where all sections are accessible at once.
 
 **Phase:** 4 (ongoing polish)
-**Files:** `src/pages/tools/character-sheet.astro`, `src/components/preact/tools/character-sheet/` (16 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/character-sheet.astro`, `src/components/react/tools/character-sheet/` (16 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 
@@ -82,16 +82,16 @@ The primary character tool — a freeform editable sheet for both character crea
 
 | Component                                        | Description                                                                     |
 | ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `character-sheet.astro`                          | Astro page shell — mounts `CharacterSheetApp` via `client:load`                |
-| `src/components/preact/tools/character-sheet/`   | 16 Preact components (root: `CharacterSheetApp.tsx`)                            |
+| `character-sheet.astro`                          | Astro page shell — mounts `CharacterSheetApp` via `client:only="react"`                |
+| `src/components/react/tools/character-sheet/`   | 16 React components (root: `CharacterSheetApp.tsx`)                            |
 
-**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, `@preact/signals`
+**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, Zustand
 
 **Data sources:** `races.json`, `exaltations.json`, `alignments.json`, `classes.json`, `feats.json`, `skills.json`, `weapons.json`, `backgrounds.json`
 
-**Rendering:** Preact component tree with signal-driven reactivity. Each tab is a separate component that re-renders via signal subscriptions.
+**Rendering:** React component tree with Zustand-driven reactivity. Each tab is a separate component that re-renders via signal subscriptions.
 
-**State management:** Module-level `@preact/signals` for character data, UI state (active tab, selections), and derived stats.
+**State management:** Module-level Zustand for character data, UI state (active tab, selections), and derived stats.
 
 ---
 
@@ -124,7 +124,7 @@ All panels shown simultaneously with `data-print-title` headers. Management bar,
 | Freeform over wizard               | No enforced creation order; budget displays are informational only                  |
 | Exaltation resource-only           | Auto-calc resource pool max; everything else is free-text. Avoids 10 unique sub-UIs |
 | No spell/feat database enforcement | Searchable dropdowns assist, but values are user-editable. Keeps scope manageable   |
-| Preact Islands with signals        | Reactive UI with component composition; Tailwind for styling                        |
+| React Islands with signals        | Reactive UI with component composition; Tailwind for styling                        |
 | Multiple character slots           | Essential — players often have backups, SM tracks NPCs                              |
 | Conditions removed from sheet      | Better suited to Combat Tracker where temporary state lives during gameplay         |
 | Hero Points merged into Powers tab | Unified card reduces tab-switching; Resource + Hero Points are thematically related |

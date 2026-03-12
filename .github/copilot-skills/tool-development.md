@@ -8,7 +8,7 @@
 
 ## Ecosystem
 
-All tools are **Preact Islands** mounted by Astro pages (`src/pages/tools/`) via `client:load` into `ToolLayout.astro`. Each tool's components live in `src/components/preact/tools/{tool-name}/` with a root `*App.tsx` entry point. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Custom hooks in `src/hooks/` handle data loading, localStorage, Web Workers, and debouncing.
+All tools are **React Islands** mounted by Astro pages (`src/pages/tools/`) via `client:only="react"` into `ToolLayout.astro`. Each tool's components live in `src/components/react/tools/{tool-name}/` with a root `*App.tsx` entry point. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Custom hooks in `src/hooks/` handle data loading, localStorage, Web Workers, and debouncing.
 
 ## Documentation Map
 
@@ -29,11 +29,11 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 ### File Layout
 
 ```text
-src/pages/tools/[name].astro               ← Astro page (mounts Preact island via client:load)
-src/components/preact/tools/[name]/         ← Preact components for each tool
+src/pages/tools/[name].astro               ← Astro page (mounts React island via client:only="react")
+src/components/react/tools/[name]/         ← React components for each tool
   [Name]App.tsx                             ← Root component (entry point)
   *.tsx                                     ← Sub-components
-src/hooks/                                  ← Custom Preact hooks
+src/hooks/                                  ← Custom React hooks
   use-data.ts                               ← useData() / useAllData() for JSON loading
   use-local-storage.ts                      ← useLocalStorage() for persistence
 src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
@@ -53,39 +53,42 @@ Every tool page follows this structure:
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
-import { QuickReferenceApp } from "@/components/preact/tools/quick-reference/QuickReferenceApp";
+import { QuickReferenceApp } from "@/components/react/tools/quick-reference/QuickReferenceApp";
 ---
 
 <ToolLayout title="Tool Name" description="Short description">
-  <QuickReferenceApp client:load />
+  <QuickReferenceApp client:only="react" />
 </ToolLayout>
 ```
 
 > **Never use `StarlightPage` for tool pages.** `StarlightPage` wraps content in the Starlight sidebar and header, turning a tool into a documentation page. All tool pages use `ToolLayout.astro` exclusively. See Critical Pitfall #11.
 
-### Preact Component Pattern
+### React Component Pattern
 
 ```tsx
-import { signal } from "@preact/signals";
+import { create } from "zustand";
 import { useAllData } from "@/hooks/use-data";
 
-// Module-level signals for state management
-const someState = signal<string>("");
+// Zustand store for tool state (co-located as store.ts)
+const useToolStore = create<{ someState: string; setSomeState: (v: string) => void }>((set) => ({
+  someState: "",
+  setSomeState: (v) => set({ someState: v }),
+}));
 
 export function ToolApp() {
   const { data, loading, error } = useAllData(["races.json", "skills.json"]);
 
-  if (loading.value) return <div class="loading">Loading...</div>;
-  if (error.value) return <div class="error">{error.value}</div>;
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
 
-  return <div class="tool-app">...</div>;
+  return <div className="tool-app">...</div>;
 }
 ```
 
 Key conventions:
 
-- **Module-level signals** — state lives outside the component for persistence across renders
-- **`class` not `className`** — Preact with compat supports both, but we use `class`
+- **Zustand stores** — one store per tool, co-located as `store.ts`; components use `useXStore(s => s.field)` selectors
+- **`className`** — React requires `className`
 - **Named exports only** — no default exports
 - **All `<button>` need `type="button"`** — prevents form submission behavior
 - **Tailwind utilities** for styling — use utility classes, fall back to `var(--name)` CSS variables from ToolLayout
@@ -103,7 +106,7 @@ Key conventions:
 
 ## Data Loading
 
-In Preact components, use the custom hooks from `src/hooks/use-data.ts`:
+In React components, use the custom hooks from `src/hooks/use-data.ts`:
 
 ### Single File
 
@@ -150,43 +153,41 @@ Most JSON files nest data under a top-level key matching the filename. You must 
 
 These have each caused real bugs. Memorize them:
 
-1. **Module-level signals share state globally** — All tool state is in module-level `signal()` declarations. Two instances of the same component would share state. This is fine on single-tool pages but would break in a multi-tool dashboard.
+1. **Zustand stores share state per-tool** — Each tool has its own Zustand store (`store.ts`). Components in the same tool share state via the store. This is fine on single-tool pages but would need scoping in a multi-tool dashboard.
 
-2. **Use `class` not `className` in Preact JSX** — Preact with compat supports both, but this project uses `class` consistently. Mixing causes inconsistency.
+2. **Use `className` not `class` in React JSX** — React requires `className` for CSS class attributes. Use `htmlFor` instead of `for` on labels.
 
 3. **Astro `<style>` scoping eats `@import`** — A bare `<style>@import "file.css";</style>` in a layout is scoped by default. Astro hashes every imported selector, so rules never match slotted child content. Use `<style is:global>` for shared imports.
 
 4. **localStorage keys use tool-specific prefixes** — Character Sheet uses `dtd_sheet_{id}` / `dtd_sheet_list`. Combat Tracker uses `dtd_encounter_{id}`. Never change existing key names (breaks user data). See [docs/architecture.md](../../docs/architecture.md#persistence-conventions) for the full key table.
 
-5. **Always grep all tool components when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, `types.ts`, or hooks can break any of the 6 tools. Search `src/components/preact/tools/` and `src/pages/tools/` for all callers before modifying exports.
+5. **Always grep all tool components when refactoring shared modules** — Changes to `core.ts`, `dice.ts`, `types.ts`, or hooks can break any of the 6 tools. Search `src/components/react/tools/` and `src/pages/tools/` for all callers before modifying exports.
 
 6. **Tool spec docs drift from implementations** — `docs/tools/*.md` files list dependencies, data sources, and features that may not match reality. Always verify against the actual `.tsx` source when editing a tool. The code is ground truth, not the spec doc.
 
 7. **Post-migration audit: grep for raw patterns** — After migrating components to shared UI primitives, grep the entire tool directory for the old pattern (e.g., `"btn`, `role="tablist"`, raw `<dialog>`) to catch duplicates and stragglers. Components with multiple render branches (e.g., mobile vs desktop, collapsed vs expanded) often have duplicate UI that the first pass misses.
 
-8. **Ariakit `TabPanel` silently fails through Preact compat** — Ariakit's `TabPanel` toggles a `hidden` attribute via internal React context. Through Preact's compat layer (`@astrojs/preact` with `compat: true`), this mechanism silently fails: all panels render visible simultaneously and stack vertically. The symptom looks like the sheet is "not responding" (broken state), but it's actually all tabs rendering at once. **Do not use `<TabPanel>` from `@/components/preact/ui` in any tool.** Use conditional rendering instead:
+8. **Use Radix UI `Tabs` with conditional rendering for tab panels** — Use `<Tabs>` from `@/components/react/ui` for the accessible tab bar. For tab panel content, use conditional rendering:
 
     ```tsx
     // CORRECT — conditional rendering
     {activeTab === "identity" && <IdentityTab />}
     {activeTab === "stats" && <StatsTab />}
-
-    // BROKEN — TabPanel does not hide inactive panels via Preact compat
-    // <TabPanel tabId="identity"><IdentityTab /></TabPanel>
     ```
 
-    Keep `<Tabs>` for the accessible tab bar UI; only replace `<TabPanel>` wrappers with conditionals.
+    This ensures only the active tab's content is rendered.
 
-11. **Tool pages must use `ToolLayout.astro` — never `StarlightPage`** — `StarlightPage` wraps content in Starlight's sidebar + header chrome. Tool pages are standalone full-viewport experiences and must use `ToolLayout.astro` only. Using `StarlightPage` for tools causes them to render inside the documentation sidebar with no escape — a regression that requires a full pass to undo. If you see a tool page importing from `@astrojs/starlight/components`, that is a bug.
+9. **Tool pages must use `ToolLayout.astro` — never `StarlightPage`** — `StarlightPage` wraps content in Starlight's sidebar + header chrome. Tool pages are standalone full-viewport experiences and must use `ToolLayout.astro` only. Using `StarlightPage` for tools causes them to render inside the documentation sidebar with no escape — a regression that requires a full pass to undo. If you see a tool page importing from `@astrojs/starlight/components`, that is a bug.
 
 ## Adding a New Tool
 
-1. Create `src/components/preact/tools/[tool-name]/[ToolName]App.tsx` — root Preact component with named export
-2. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:load` using `ToolLayout.astro` (not `StarlightPage`)
-3. Import shared logic from `@/lib/dtd/core.ts`, hooks from `@/hooks/`
-4. Use Tailwind utilities for styling; fall back to `var(--name)` CSS variables from `ToolLayout.astro`
-5. Add a sidebar entry to `astro.config.mjs` under the `Play Tools` group with `attrs: { target: "_blank", rel: "noopener" }` — tools are standalone pages and must open in a new tab
-6. Create documentation in `docs/tools/[tool-name].md`
+1. Create `src/components/react/tools/[tool-name]/[ToolName]App.tsx` — root React component with named export
+2. Create `src/components/react/tools/[tool-name]/store.ts` — Zustand store for tool state
+3. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:only="react"` using `ToolLayout.astro` (not `StarlightPage`)
+4. Import shared logic from `@/lib/dtd/core.ts`, hooks from `@/hooks/`
+5. Use Tailwind utilities for styling; fall back to `var(--name)` CSS variables from `ToolLayout.astro`
+6. Add a sidebar entry to `astro.config.mjs` under the `Play Tools` group with `attrs: { target: "_blank", rel: "noopener" }` — tools are standalone pages and must open in a new tab
+7. Create documentation in `docs/tools/[tool-name].md`
 
 Full recipe with prerequisites, commands, and build verification: [docs/development-guide.md](../../docs/development-guide.md#adding-a-new-tool).
 
@@ -217,7 +218,7 @@ JSON data in `data/` must stay in sync with `cleaned-references/`. Before editin
 2. Verify changes match the corresponding cleaned-reference content
 3. Update the data-reference doc if you change the schema
 
-Pipeline validation: `npm run validate` checks all 12 JSON files against Zod schemas in `src/lib/dtd/schemas/`.
+Pipeline validation: `bun run validate` checks all 12 JSON files against Zod schemas in `src/lib/dtd/schemas/`.
 
 ## When Editing Affects Rules
 

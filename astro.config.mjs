@@ -1,5 +1,5 @@
 // @ts-check
-import preact from "@astrojs/preact";
+import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
@@ -13,7 +13,7 @@ export default defineConfig({
 	vite: { plugins: [tailwindcss()] },
 
 	integrations: [
-		preact({ compat: true }),
+		react(),
 		starlight({
 			title: "Dungeons the Dragoning 40k",
 			description:

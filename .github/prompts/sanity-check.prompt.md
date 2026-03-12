@@ -42,9 +42,9 @@ This step exists because you are at peak context fatigue. Treat your own memory 
 Run the pipeline to catch machine-detectable issues:
 
 ```
-npm run validate       # Schema validation — must pass
-npm run lint:data      # Terminology + formatting
-npm run sync-check     # Markdown ↔ JSON sync comparison
+bun run validate       # Schema validation — must pass
+bun run lint:data      # Terminology + formatting
+bun run sync-check     # Markdown ↔ JSON sync comparison
 ```
 
 Compare results against known baselines:
@@ -63,12 +63,12 @@ For each changed file, trace its consumers and producers:
 
 | If you changed...         | Check these downstream consumers...                                  |
 | ------------------------- | -------------------------------------------------------------------- |
-| `src/lib/dtd/schemas/*.ts`| `npm run validate` still passes                                     |
-| `scripts/lint.ts`         | `npm run lint:data` — results match expectations                     |
+| `src/lib/dtd/schemas/*.ts`| `bun run validate` still passes                                     |
+| `scripts/lint.ts`         | `bun run lint:data` — results match expectations                     |
 | `data/*.json`             | Tools that load this data still render correctly                     |
 | `src/lib/dtd/core.ts`     | All 9 tools + 2 large tool apps — shared ES module                   |
-| `cleaned-references/*.md` | `npm run lint:data`, `npm run sync-check`, prebuild                  |
-| `books/*.md`              | `npm run lint:data`, `docs/editorial/open-questions.md`              |
+| `cleaned-references/*.md` | `bun run lint:data`, `bun run sync-check`, prebuild                  |
+| `books/*.md`              | `bun run lint:data`, `docs/editorial/open-questions.md`              |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
 | `.github/copilot-*`       | Relative links resolve correctly (files live in `.github/`)          |
 

@@ -3,8 +3,8 @@
 Generates NPC stat blocks for Story Masters. Supports both quick-build (template-based) and custom-build (manual specification) workflows.
 
 **Phase:** Complete
-**Files:** `src/pages/tools/npc-generator.astro`, `src/components/preact/tools/npc-generator/` (12 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/npc-generator.astro`, `src/components/react/tools/npc-generator/` (12 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 

@@ -172,9 +172,9 @@ Completed items:
 | 11.2 Xref Warnings               | Fixed all 41 cross-reference warnings in `classes.json` (skill/feat name corrections).                                                                                |
 | 11.3 Character Defaults (W4)     | Aligned default character shapes between `character.ts` and sheet app module (later migrated to Preact in Phase 12).                                                  |
 | 11.4 Documentation Cleanup       | Deleted stale `implementation-plan.md` and `External-audit.md`. Removed Playwright/E2E references. Added anti-drift pitfall to conventions. Removed hardcoded counts. |
-| 11.5 Verification Infrastructure | Added `npm run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
-| 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `npm run prepare` for hook installation. |
-| 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `npm run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
+| 11.5 Verification Infrastructure | Added `bun run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
+| 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `bun run prepare` for hook installation. |
+| 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `bun run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
 
 **Status:** All checks pass (187 tests, 12/12 schemas, 0 xref warnings, 0 lint errors). Session automation replaces manual git ceremony.
 

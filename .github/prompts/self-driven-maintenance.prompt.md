@@ -48,7 +48,7 @@ You must ask before:
 ### Quality Standards
 
 - **Green baseline required.** If the pipeline passes, protect it. If it doesn't, fix it first.
-- **Green baseline preserved.** Run `npm run check` after significant changes. Never leave the pipeline worse than you found it.
+- **Green baseline preserved.** Run `bun run check` after significant changes. Never leave the pipeline worse than you found it.
 - **No regressions.** Every fix is verified. If a fix introduces a new problem, revert it and log it in side-tracks.
 - **Incremental commits.** Each logical change is committed separately with a descriptive message. Commit after verification, never before.
 
@@ -71,7 +71,7 @@ Confirm: Is there a recognizable project structure? A package manager? Version c
 ### Layer 1: Can it install?
 
 ```
-npm install
+bun install
 ```
 
 Do dependencies resolve? Are there missing packages, version conflicts, or lockfile problems? If installation fails, this is your first P0. Fix it or report why you can't.
@@ -92,12 +92,12 @@ Check for the presence of:
 ### Layer 3: Does the pipeline exist?
 
 ```
-npm run check
+bun run check
 ```
 
 - **If `check` exists and passes:** Record your baseline (test count, lint warnings, validation status). Proceed to Phase 1.
 - **If `check` exists and fails:** This is your P0. Understand the failures. Can you fix them? If yes, fix and commit. If no, log what's broken, assess whether you can still do useful work in other areas, and proceed cautiously.
-- **If `check` doesn't exist:** Check for individual scripts: `npm test`, `npm run lint`, `npm run build`. Use whatever exists. Log the absence of a unified check script as a finding.
+- **If `check` doesn't exist:** Check for individual scripts: `bun test`, `bun run lint`, `bun run build`. Use whatever exists. Log the absence of a unified check script as a finding.
 - **If nothing exists:** You are in a wasteland. Your job shifts from maintenance to trailblazing. Focus on understanding the project, documenting what you find, and creating the minimal infrastructure (side-tracks, basic docs) so the next session starts from a better place. Do not attempt large fixes without a way to verify them.
 
 ### Adaptive Mode Selection
@@ -123,7 +123,7 @@ Understand the current state of the project without changing anything.
 If you haven't already (from Bootstrap):
 
 ```
-npm run check
+bun run check
 ```
 
 Record: test count, lint warnings, validation status, sync status. This is your baseline — any regression from here is a bug you introduced.
@@ -168,7 +168,7 @@ You now have findings. Sort them by ROI: (impact × confidence) ÷ effort.
 
 | Priority | Criteria | Examples |
 |----------|----------|---------|
-| **P0 — Fix now** | Broken pipeline, failing tests, blocking issues | Red `npm run check`, broken imports |
+| **P0 — Fix now** | Broken pipeline, failing tests, blocking issues | Red `bun run check`, broken imports |
 | **P1 — High value** | Low effort + high confidence + clear improvement | False positive lint rules, stale doc paths, dead code |
 | **P2 — Medium value** | Moderate effort or moderate impact | Data sync drift, convention inconsistencies |
 | **P3 — Log for later** | High effort, low confidence, needs design decision, or uncertain scope | Architectural changes, new tooling, risky refactors |
@@ -186,7 +186,7 @@ Work through the plan, highest priority first.
 ### For each item:
 
 1. **Do the work** — edit files, run commands, verify results
-2. **Verify** — confirm the fix doesn't break anything (`npm run check` or targeted tests)
+2. **Verify** — confirm the fix doesn't break anything (`bun run check` or targeted tests)
 3. **Commit** — descriptive message explaining what and why. Only after verification.
 4. **Move to next item**
 

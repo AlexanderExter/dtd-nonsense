@@ -1,4 +1,4 @@
-﻿# Session Handover
+# Session Handover
 
 Running context for the current work session. Updated as work progresses — not a logbook.
 
@@ -24,6 +24,6 @@ See `docs/side-tracks.md` for the full prioritized backlog.
 
 ## Suggested Next
 
-1. **Browser test all 9 tools** — run `npm run dev` and manually verify each tool loads and functions
+1. **Browser test all 9 tools** — run `bun run dev` and manually verify each tool loads and functions
 2. **Z-index stacking fix** — define semantic z-index layer system in `tailwind.css`, replace ad-hoc values across tool components
 3. **ConditionPicker viewport overflow** — add boundary checks, refactor inline styles to Tailwind

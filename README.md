@@ -36,22 +36,22 @@ The original source PDFs are hard to read and harder to reference at the table. 
 ### Build
 
 ```bash
-npm install
-npm run build     # runs prebuild + astro build
+bun install
+bun run build     # runs prebuild + astro build
 ```
 
 ### Development
 
 ```bash
-npm run dev       # starts Astro dev server at localhost:4321
+bun run dev       # starts Astro dev server at localhost:4321
 ```
 
 ### Data & Content Checks
 
 ```bash
-npm run validate   # validate JSON data against Zod schemas
-npm run lint:data  # lint markdown terminology/formatting conventions
-npm run sync-check # detect drift between markdown and JSON data
+bun run validate   # validate JSON data against Zod schemas
+bun run lint:data  # lint markdown terminology/formatting conventions
+bun run sync-check # detect drift between markdown and JSON data
 ```
 
 ---
@@ -64,8 +64,8 @@ cleaned-references/    Condensed rules reference (merged by topic, 24 files)
 data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         6 Astro tool pages (standalone, outside Starlight)
-  components/preact/   Preact island components (~72 across 6 tools)
-  hooks/               Custom Preact hooks (use-data, use-local-storage)
+  components/react/    React island components (~72 across 6 tools)
+  hooks/               Custom React hooks (use-data, use-local-storage)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)
   styles/              WH40K theme CSS + Tailwind v4 @theme tokens
@@ -78,7 +78,7 @@ docs/                  Technical documentation and conventions
 ## Tech Stack
 
 - **[Astro](https://astro.build) + [Starlight](https://starlight.astro.build)** — Static documentation site
-- **[Preact](https://preactjs.com) Islands** — 6 interactive tools with `@preact/signals` state management
+- **[React](https://react.dev) Islands** — 6 interactive tools with Zustand state management
 - **[Tailwind CSS v4](https://tailwindcss.com)** — Utility-first styling with `@theme` design tokens
 - **[Pagefind](https://pagefind.app)** — Full-text search across all rules content
 - **TypeScript + Zod + tsx** — Data/content validation pipeline

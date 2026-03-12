@@ -10,45 +10,49 @@ See [project-conventions.md](project-conventions.md#git-workflow) for the full g
 
 ---
 
-## Creating a Preact Tool
+## Creating a React Tool
 
-All 9 tools use the **Preact Islands** pattern. To add a new tool:
+All 6 tools use the **React Islands** pattern. To add a new tool:
 
 ### 1. Create Component Directory
 
 ```text
-src/components/preact/tools/{tool-name}/
+src/components/react/tools/{tool-name}/
 ├── constants.ts          # Types, helpers, tool-specific constants
-├── {ToolName}App.tsx     # Root component (signals, data loading, layout)
+├── store.ts              # Zustand store for tool state
+├── {ToolName}App.tsx     # Root component (data loading, layout)
 ├── SomeTab.tsx           # Tab/section components
 ├── AnotherTab.tsx
 └── shared/               # Shared sub-components (optional)
     └── SomeWidget.tsx
 ```
 
-### 2. Define State with Module-Level Signals
+### 2. Define State with a Zustand Store
 
-In `{ToolName}App.tsx`:
+In `store.ts`:
 
 ```typescript
-import { signal, computed } from "@preact/signals";
-import { useAllData } from "@/hooks/use-data";
+import { create } from "zustand";
 
-// Module-level signals — shared across all components
-export const items = signal<Item[]>([]);
-export const selectedId = signal<string | null>(null);
-export const selectedItem = computed(() =>
-  items.value.find(i => i.id === selectedId.value) ?? null
-);
-
-export function addItem(item: Item) {
-  items.value = [...items.value, item];
+interface ToolState {
+  items: Item[];
+  selectedId: string | null;
+  setItems: (items: Item[]) => void;
+  setSelectedId: (id: string | null) => void;
 }
 
-export function ToolNameApp() {
-  const { data, loading, error } = useAllData(["skills.json", "races.json"]);
-  // ...
-}
+export const useToolStore = create<ToolState>((set) => ({
+  items: [],
+  selectedId: null,
+  setItems: (items) => set({ items }),
+  setSelectedId: (id) => set({ selectedId: id }),
+}));
+```
+
+In components:
+```typescript
+const items = useToolStore((s) => s.items);
+const setItems = useToolStore((s) => s.setItems);
 ```
 
 ### 3. Create the Astro Page
@@ -56,24 +60,22 @@ export function ToolNameApp() {
 ```astro
 ---
 import ToolLayout from "@/layouts/ToolLayout.astro";
-import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App";
+import { ToolNameApp } from "@/components/react/tools/{tool-name}/{ToolName}App";
 ---
 
 <ToolLayout title="Tool Name" description="...">
-  <ToolNameApp client:only="preact" />
+  <ToolNameApp client:only="react" />
 </ToolLayout>
 ```
 
-> **SSR note:** Use `client:only="preact"` (not `client:load`) — required for Ariakit compatibility.
-
 ### 4. Key Conventions
 
-- Use `class` not `className` (Preact)
+- Use `className` (React)
 - All `<button>` elements need `type="button"`
 - **Named exports only** — no default exports
 - Use `@/` path aliases for imports outside the component directory
 - Use `./` relative imports within the component directory
-- Module-level signals for state, `computed` for derived data
+- Zustand stores for state (one per tool, co-located as `store.ts`)
 - `useAllData` hook from `@/hooks/use-data` for loading JSON game data
 - `useLocalStorage` hook from `@/hooks/use-local-storage` for persistence
 
@@ -83,7 +85,7 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 | -------------------- | ------------------------------- | ----------------------------------------------- |
 | `useData`            | `@/hooks/use-data`              | Load a single JSON data file                    |
 | `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
-| `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist signal state to localStorage            |
+| `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist state to localStorage                   |
 
 ### 6. Documentation
 
@@ -102,21 +104,21 @@ import { ToolNameApp } from "@/components/preact/tools/{tool-name}/{ToolName}App
 
 | Command                  | Purpose                                             |
 | ------------------------ | --------------------------------------------------- |
-| `npm run dev`            | Start Astro dev server with hot reload              |
-| `npm run build`          | Full build: prebuild → astro build                  |
-| `npm run preview`        | Preview production build locally                    |
-| `npm run lint`           | Check JS/TS/CSS with Biome                          |
-| `npm run lint:fix`       | Auto-fix Biome lint issues                          |
-| `npm run test`           | Run Bun unit tests (bun:test)                       |
-| `npm run test:watch`     | Run Bun tests in watch mode                         |
-| `npm run validate`       | Validate JSON data against Zod schemas              |
-| `npm run validate:xref`  | Validate + cross-reference checks                   |
-| `npm run lint:data`      | Lint markdown for terminology, formatting, encoding |
-| `npm run sync-check`     | Detect drift between markdown and JSON data         |
-| `npm run check`          | Run everything: tests → lint → validate → lint:data |
-| `npm run session:start`  | Create/switch to session branch + baseline check    |
-| `npm run session:end`    | Squash-merge session branch to main + cleanup       |
-| `npm run session:status` | Quick git state report (branch, dirty/clean)        |
+| `bun run dev`            | Start Astro dev server with hot reload              |
+| `bun run build`          | Full build: prebuild → astro build                  |
+| `bun run preview`        | Preview production build locally                    |
+| `bun run lint`           | Check JS/TS/CSS with Biome                          |
+| `bun run lint:fix`       | Auto-fix Biome lint issues                          |
+| `bun run test`           | Run Bun unit tests (bun:test)                       |
+| `bun run test:watch`     | Run Bun tests in watch mode                         |
+| `bun run validate`       | Validate JSON data against Zod schemas              |
+| `bun run validate:xref`  | Validate + cross-reference checks                   |
+| `bun run lint:data`      | Lint markdown for terminology, formatting, encoding |
+| `bun run sync-check`     | Detect drift between markdown and JSON data         |
+| `bun run check`          | Run everything: tests → lint → validate → lint:data |
+| `bun run session:start`  | Create/switch to session branch + baseline check    |
+| `bun run session:end`    | Squash-merge session branch to main + cleanup       |
+| `bun run session:status` | Quick git state report (branch, dirty/clean)        |
 
 ### Build Pipeline
 
@@ -126,7 +128,7 @@ bun run scripts/prebuild.mjs  ← Copies: cleaned-refs → rules, books → book
 astro build                   ← Builds static pages + Pagefind search index
 ```
 
-`npm run build` runs both steps. Starlight frontmatter injection is handled automatically by `prebuild.mjs`.
+`bun run build` runs both steps. Starlight frontmatter injection is handled automatically by `prebuild.mjs`.
 
 ---
 
@@ -183,13 +185,13 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ## Using UI Primitives
 
-All tools share a set of **18 UI primitive components** in `src/components/preact/ui/`. Import from the barrel:
+All tools share a set of **18 UI primitive components** in `src/components/react/ui/`. Import from the barrel:
 
 ```tsx
-import { Button, Badge, Modal, Toast, showToast } from "@/components/preact/ui";
+import { Button, Badge, Modal, Toast, showToast } from "@/components/react/ui";
 ```
 
-**Never import `@ariakit/react` directly** — use the UI layer wrappers instead.
+**Never import `radix-ui` directly** — use the UI layer wrappers instead.
 
 ### When to Use Primitives vs Raw HTML
 
@@ -200,7 +202,7 @@ import { Button, Badge, Modal, Toast, showToast } from "@/components/preact/ui";
 | Section title | `<SectionHeading>` | `<SectionHeading>Equipment</SectionHeading>` |
 | Status indicator | `<Badge>` | `<Badge variant="success">Active</Badge>` |
 | Popup / modal | `<Modal>` or `<Popover>` | `<Modal open={isOpen} onClose={close} title="Import">` |
-| Tab navigation | `<Tabs>` + `<TabPanel>` | See Tabs API in [ui/README.md](../src/components/preact/ui/README.md) |
+| Tab navigation | `<Tabs>` + `<TabPanel>` | See Tabs API in [ui/README.md](../src/components/react/ui/README.md) |
 | Toast message | `showToast()` + `<Toast />` | `showToast("Saved!")` anywhere; mount `<Toast />` once in root |
 | Dropdown select | `<Select>` | `<Select value={v} onChange={set} options={opts} />` |
 
@@ -211,7 +213,7 @@ import { Button, Badge, Modal, Toast, showToast } from "@/components/preact/ui";
 - Complex toggle/filter groups with domain logic
 - Step wizards and controlled accordions with expand/collapse all
 
-See [src/components/preact/ui/README.md](../src/components/preact/ui/README.md) for the full API reference.
+See [src/components/react/ui/README.md](../src/components/react/ui/README.md) for the full API reference.
 
 ---
 
@@ -245,7 +247,7 @@ style={{ width: `${percent}%` }}
 
 ### Rules
 
-- Use `class` (not `className`) — Preact convention
+- Use `className` — React convention
 - No `@apply` — defeats utility-first purpose
 - No `<style>` blocks in components — all styling via Tailwind utilities
 - `style={{}}` only for dynamic runtime values (percentages, canvas)
@@ -286,8 +288,8 @@ Unit tests use **bun:test** (Bun's built-in Jest-compatible runner; config in `b
 Run with:
 
 ```bash
-npm run test          # single run
-npm run test:watch    # re-run on file changes
+bun run test          # single run
+bun run test:watch    # re-run on file changes
 ```
 
 ### CI Pipeline Order
@@ -315,8 +317,8 @@ Per-tool verification before merge:
 5. **Print output** — meaningful and readable
 6. **Persistence** — save, reload page, data persists
 7. **Cross-tool** — Sheet export → other tool import (via canonical format)
-8. **Astro build** — `npm run build` succeeds with 0 errors
-9. **Pipeline** — `npm run validate` passes (all files)
+8. **Astro build** — `bun run build` succeeds with 0 errors
+9. **Pipeline** — `bun run validate` passes (all files)
 
 ### Dice Module Verification
 
@@ -334,11 +336,11 @@ Decisions established during the Tailwind v4 migration. Follow these when writin
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| Attribute name | `class` (not `className`) | Preact convention, shorter, matches HTML |
+| Attribute name | `className` | React convention, shorter, matches HTML |
 | Dynamic classes | Template literals or array `.filter(Boolean).join(" ")` | Simple, no extra dependency |
 | Custom properties | Keep for truly dynamic values only | Chart colors, runtime percentages, animation targets |
 | `@apply` usage | **Never** | Defeats utility-first; creates hidden coupling |
-| Component styles | Tailwind utilities on every element | No `<style>` blocks in Preact components |
+| Component styles | Tailwind utilities on every element | No `<style>` blocks in React components |
 | Animations | Tailwind `animate-*` + custom `@keyframes` in `tailwind.css` | `slideIn`, `pulse`, tool-specific animations |
 
 ### Patterns That Must Stay as Inline Styles

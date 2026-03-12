@@ -1,11 +1,11 @@
 # Editorial Backlog
 
-Actionable editorial tasks detected by automated linting (`npm run lint:data`). Items are grouped by category and sorted by volume. The editing team picks these up at their own pace.
+Actionable editorial tasks detected by automated linting (`bun run lint:data`). Items are grouped by category and sorted by volume. The editing team picks these up at their own pace.
 
 **Generated:** 2026-03-12
 **Baseline:** 893 issues (0 errors, 12 warnings, 881 info) across 101 files
 
-Run `npm run lint:data --severity warning` to see warnings only, or `npm run lint:data` for the full report.
+Run `bun run lint:data --severity warning` to see warnings only, or `bun run lint:data` for the full report.
 
 ---
 

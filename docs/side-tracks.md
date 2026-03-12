@@ -14,13 +14,13 @@ Items worth doing soon, priority-ordered.
 
 ### Character Sheet: IdentityTab Race Preview Still Uses `statBonuses`
 
-**File:** `src/components/preact/tools/character-sheet/tabs/IdentityTab.tsx`
+**File:** `src/components/react/tools/character-sheet/tabs/IdentityTab.tsx`
 **Issue:** The `charBonusOptions` was fixed (`charBonus?.options`), and `skillBonus` was fixed, but race data has no `statBonuses` property — the old conditional `{selectedRace.statBonuses && ...}` was removed during this session. Verify the race preview section shows all useful race data (languages, notes, power, size, skill bonuses).
 **Next action:** Manual visual check that race selection previews display correctly.
 
 ### UI Primitives: Tool-Local Patterns Not Yet Abstracted
 
-**Scope:** Patterns intentionally kept as tool-local implementations during the Ariakit migration:
+**Scope:** Patterns intentionally kept as tool-local implementations during the Radix UI migration:
 
 - **× remove buttons** — All tools' inline remove/delete buttons use custom transparent styling (no `.btn` class), visually different from `CloseButton`. ~20 instances across 6 tools.
 - **AccordionSection.tsx** (Quick Reference) — Controlled accordion for expand/collapse all. Uses `isOpen`/`onToggle` props. The `AccordionItem` primitive supports controlled mode but AccordionSection has additional custom styling.
@@ -31,13 +31,13 @@ Items worth doing soon, priority-ordered.
 
 ### Tool CSS: Z-Index Stacking Conflicts
 
-**Files:** Multiple components in `src/components/preact/tools/`
+**Files:** Multiple components in `src/components/react/tools/`
 **Issue:** Modals, toasts, sticky headers, and popups use uncoordinated z-index values (90–1000). ConditionPicker uses inline `zIndex: 1000`, ImportModal uses `z-[200]`, toasts use `z-[100]`–`z-[250]`, headers use `z-[100]`. Elements can appear above or behind each other unexpectedly.
 **Next action:** Define a semantic z-index layer system in `tailwind.css` `@theme` block (e.g., `--z-sticky: 100`, `--z-modal: 300`, `--z-toast: 400`, `--z-popup: 500`). Replace all ad-hoc values.
 
 ### Tool CSS: ConditionPicker Viewport Overflow
 
-**File:** `src/components/preact/tools/combat-tracker/ConditionPicker.tsx`
+**File:** `src/components/react/tools/combat-tracker/ConditionPicker.tsx`
 **Issue:** Popup positioned with `position: fixed` using only `anchorRect.bottom + 4` and `anchorRect.left`. No viewport boundary checks — can render off-screen on small viewports or near page edges. Uses inline styles instead of Tailwind utilities.
 **Next action:** Add viewport boundary checks (flip above anchor if too close to bottom, clamp left/right to viewport). Refactor inline styles to Tailwind utilities where possible.
 
@@ -60,8 +60,8 @@ Items needing research or design decisions before action.
 
 ### No Runtime/Browser Testing
 
-**Issue:** Build and unit tests pass, but no visual or interaction verification exists. CSS fidelity from Tailwind migration is inferred, not observed. Audit (2026-03-12) found no Preact-migration JSX issues but identified CSS/layout problems: z-index stacking conflicts, ConditionPicker viewport overflow, sticky+overflow container interactions.
-**Next action:** Manual: run `npm run dev` and test each tool in a browser, focusing on Combat Tracker (modals/popups) and tools with sticky sidebars. Automated: evaluate Playwright or similar only if manual testing reveals critical issues.
+**Issue:** Build and unit tests pass, but no visual or interaction verification exists. CSS fidelity from Tailwind migration is inferred, not observed.
+**Next action:** Manual: run `bun run dev` and test each tool in a browser, focusing on Combat Tracker (modals/popups) and tools with sticky sidebars. Automated: evaluate Playwright or similar only if manual testing reveals critical issues.
 
 ### StarlightPage Migration: Tool Layout Regression Risk
 
@@ -70,7 +70,7 @@ Items needing research or design decisions before action.
 
 ### Zod v4 Upgrade Blocked by Astro
 
-**Issue:** Zod v4 passes `npm run check` but fails `npm run build` — Astro 5.x internally creates Zod v3 schema objects that crash through the v4 parse engine (`undefined._zod`).
+**Issue:** Zod v4 passes `bun run check` but fails `bun run build` — Astro 5.x internally creates Zod v3 schema objects that crash through the v4 parse engine (`undefined._zod`).
 **Blocker:** `zod-to-json-schema` ecosystem coordination. Resolved when Astro upgrades to Zod v4 natively (likely Astro 6.0).
 **Next action:** Monitor Astro changelog. When Astro 6.0 ships, bump `zod` — project schemas require zero code changes.
 
@@ -91,7 +91,7 @@ Active `package.json` overrides that should be removed when upstream fixes land.
 
 | Override | Why | Remove When |
 |----------|-----|-------------|
-| `"svgo": "^4.0.1"` | Patches DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673) introduced by `astro@5.18` | `npm ls svgo` shows `4.0.1+` without "overridden" marker |
+| `"svgo": "^4.0.1"` | Patches DoS via DOCTYPE entity expansion (GHSA-xpqw-6gx7-v673) introduced by `astro@5.18` | `bun pm ls svgo` shows `4.0.1+` without "overridden" marker |
 | `"path-to-regexp": "^8.0.0"` | Fixes ReDoS in `@vercel/routing-utils` (via `@astrojs/vercel`) | `@vercel/routing-utils` ships `path-to-regexp >= 8.0.0` natively |
 
 ---
@@ -103,7 +103,7 @@ Active `package.json` overrides that should be removed when upstream fixes land.
 | Hook | Functions | Complexity | Priority |
 |------|-----------|-----------|----------|
 | `use-local-storage.ts` | `useLocalStorage<T>()` | Low — needs localStorage mock + signal tracking | **High** (most isolated) |
-| `use-data.ts` | `useData<T>()`, `useAllData()` | Medium — needs fetch mock + Preact signal behavior | **Medium** |
+| `use-data.ts` | `useData<T>()`, `useAllData()` | Medium — needs fetch mock | **Medium** |
 
 ### Browser APIs — Untestable Without jsdom
 
@@ -111,7 +111,7 @@ Active `package.json` overrides that should be removed when upstream fixes land.
 
 ### Component Layer — 72 Components, 0 Tests
 
-Would require `@preact/testing-library` dependency. Not justified until specific component bugs emerge.
+Would require `@testing-library/react` dependency. Not justified until specific component bugs emerge.
 
 ---
 
@@ -119,7 +119,7 @@ Would require `@preact/testing-library` dependency. Not justified until specific
 
 ### Lint Baseline
 
-`npm run lint:data` produces **0 errors, 12 warnings, 881 info** across 101 markdown files.
+`bun run lint:data` produces **0 errors, 12 warnings, 881 info** across 101 markdown files.
 
 - **Info messages** (881): Editorial suggestions — dice notation formatting (619), empty table cells (262). Not errors.
 - **Warnings** (12): 3 heading hierarchy skips (source structure), 9 terminology (7 in project-conventions.md "Not This" column + 2 meta-references in docs — all intentional).
@@ -138,8 +138,8 @@ Would require `@preact/testing-library` dependency. Not justified until specific
 | `biome.json` | ✅ Clean | Supervised review completed; tailwind directives, HTML support, per-directory overrides |
 | `.gitattributes` | ✅ Clean | LF enforcement added 2026-03-09 (resolves CRLF/Biome conflict) |
 | `.gitignore` | ✅ Clean | Covers generated content, lockfile, caches, source PDFs |
-| `tsconfig.json` | ✅ Reasonable | Extends `astro/tsconfigs/strict`, `jsx: react-jsx`, `jsxImportSource: preact`, `moduleDetection: force` |
-| `astro.config.mjs` | ✅ Clean | Static output, Vercel adapter, Preact compat, Tailwind vite plugin |
+| `tsconfig.json` | ✅ Reasonable | Extends `astro/tsconfigs/strict`, `jsx: react-jsx`, `jsxImportSource: react`, `moduleDetection: force` |
+| `astro.config.mjs` | ✅ Clean | Static output, Vercel adapter, React, Tailwind vite plugin |
 | `bunfig.toml` | ✅ Minimal | Shell + test config only |
 | `package.json` `engines` | ⚠️ Removed | Was `>=20 <22` — Vercel controls Node version, not us. Constraint removed. |
 

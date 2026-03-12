@@ -16,13 +16,13 @@ Every work session uses a **date-based branch**: `session-YYYY-MM-DD`.
 
 | Command                            | Purpose                                                      |
 | ---------------------------------- | ------------------------------------------------------------ |
-| `npm run session:start`            | Create/switch to `session-YYYY-MM-DD`, run baseline check    |
-| `npm run session:start my-feature` | Create/switch to named branch, run baseline check            |
-| `npm run session:end`              | Squash-merge current branch to main, delete branch           |
-| `npm run session:status`           | Quick git state report (branch, dirty/clean, recent commits) |
-| `npm run upgrade:recon`            | Dependency recon: outdated, audit, tree health, overrides    |
+| `bun run session:start`            | Create/switch to `session-YYYY-MM-DD`, run baseline check    |
+| `bun run session:start my-feature` | Create/switch to named branch, run baseline check            |
+| `bun run session:end`              | Squash-merge current branch to main, delete branch           |
+| `bun run session:status`           | Quick git state report (branch, dirty/clean, recent commits) |
+| `bun run upgrade:recon`            | Dependency recon: outdated, audit, tree health, overrides    |
 
-**Pre-commit hook:** `.githooks/pre-commit` runs `npm run check` before every commit. Installed automatically via `npm run prepare` (which runs on `npm install`). Skip with `git commit --no-verify` when needed.
+**Pre-commit hook:** `.githooks/pre-commit` runs `bun run check` before every commit. Installed automatically via `bun run prepare` (which runs on `bun install`). Skip with `git commit --no-verify` when needed.
 
 **Start of session:**
 
@@ -41,11 +41,11 @@ git status                                 # Check for uncommitted changes
 2. **Write meaningful commit messages** — describe what changed and why
 3. **Review via diff** — use `git diff` before committing to verify changes
 4. **Check for concurrent work** — other agents may commit to the same branch. Run `git status` before committing.
-5. **Run `npm run lint:fix` before staging** — agent edits and subagent edits often produce import orderings or formatting that Biome reorganizes. Running `lint:fix` first prevents phantom diffs from appearing after the pre-commit hook.
+5. **Run `bun run lint:fix` before staging** — agent edits and subagent edits often produce import orderings or formatting that Biome reorganizes. Running `lint:fix` first prevents phantom diffs from appearing after the pre-commit hook.
 
 **End of session:**
 
-Run `npm run session:end` to squash-merge and clean up. The script:
+Run `bun run session:end` to squash-merge and clean up. The script:
 
 1. Verifies working tree is clean and branch is not main
 2. Shows the branch commit log
@@ -96,7 +96,7 @@ When applying multiple `multi_replace_string_in_file` operations to the same fil
 
 External formatters or editor extensions may silently revert agent edits between sessions. After resuming work on a branch, always re-read recently edited files and verify that prior changes are still present before building on them.
 
-After any external edits touch `scripts/`, run `npm run validate` to verify data integrity.
+After any external edits touch `scripts/`, run `bun run validate` to verify data integrity.
 
 ### Subagent Discipline
 
@@ -115,7 +115,7 @@ When dispatching subagents, always specify the exact branch name and explicitly 
 Periodic upgrade sessions bring all dependencies to their best possible state. These are dedicated sessions — the upgrade agent owns the branch and has full authority.
 
 **Prompt:** `.github/prompts/dependency-upgrade.prompt.md` — orchestrates the full workflow.
-**Recon:** `npm run upgrade:recon` — gathers dependency state, tree health, audit results, and tool availability.
+**Recon:** `bun run upgrade:recon` — gathers dependency state, tree health, audit results, and tool availability.
 **Output:** `docs/whats-new/YYYY-MM-DD.md` — per-session briefing documenting what upgraded and what opportunities it creates.
 
 **How it works:**
@@ -125,15 +125,15 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 3. Upgrades execute in tiered order: toolchain → framework → utility, validated between each tier
 4. Breaking changes are resolved (code modernization, deprecated pattern removal, config updates)
 5. A "What's New" briefing is generated for subsequent sessions
-6. The branch is merged via `npm run session:end` or deleted if the upgrade failed
+6. The branch is merged via `bun run session:end` or deleted if the upgrade failed
 
-**Safety model:** The branch is the safety net. If the process botches, the branch is deleted. `npm run check` passing is the red line — if it passes, the upgrade stands.
+**Safety model:** The branch is the safety net. If the process botches, the branch is deleted. `bun run check` passing is the red line — if it passes, the upgrade stands.
 
-**When to run:** Periodically, or when `npm run upgrade:recon` shows significant drift. Not every session — this is a deliberate maintenance ritual.
+**When to run:** Periodically, or when `bun run upgrade:recon` shows significant drift. Not every session — this is a deliberate maintenance ritual.
 
-**`upgrade:recon` scope caveat:** `npm run upgrade:recon` only reports packages that are outside their _current_ declared version range — it will show "0 outdated" even when major upgrades are available. To see the full upgrade picture, also run `npx npm-check-updates --format group`. Always do this at the start of an upgrade session.
+**`upgrade:recon` scope caveat:** `bun run upgrade:recon` only reports packages that are outside their _current_ declared version range — it will show "0 outdated" even when major upgrades are available. To see the full upgrade picture, also run `bunx npm-check-updates --format group`. Always do this at the start of an upgrade session.
 
-**`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install _succeeds_ despite the error exit — but the false failure is confusing. Use `npm install` instead of `bun install` when nested overrides are present.
+**`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install _succeeds_ despite the error exit — but the false failure is confusing. Use `bun install` instead of `bun install` when nested overrides are present.
 
 ---
 
@@ -340,9 +340,9 @@ Features that depend on data from another tool (e.g., importing characters from 
 
 When moving, renaming, or removing functions in shared TS files (core.ts, dice.ts, types.ts):
 
-1. **Grep all tool files** for every affected export name before committing — callers in `src/pages/tools/*.astro` and `src/components/preact/tools/` will break silently if not updated
+1. **Grep all tool files** for every affected export name before committing — callers in `src/pages/tools/*.astro` and `src/components/react/tools/` will break silently if not updated
 2. **Check barrel re-exports** — `core.ts` re-exports from `character.ts`, `data.ts`, `derived.ts`. If you change a sub-module's exports, verify `core.ts` still re-exports correctly
-3. **Run `npm run test`** — the unit tests cover core and dice module APIs and will catch signature changes
+3. **Run `bun run test`** — the unit tests cover core and dice module APIs and will catch signature changes
 
 ### Weapon Stat Block `X` vs `×`
 
@@ -356,28 +356,28 @@ When moving, renaming, or removing functions in shared TS files (core.ts, dice.t
 
 **This issue is now resolved** — `.gitattributes` (`* text=auto eol=lf`) is committed and enforces LF checkout on all platforms. The repo is LF-first.
 
-**Historical context (preserved for diagnosis if it recurs):** Before `.gitattributes`, `core.autocrlf=true` (Windows default) checked out all files with CRLF. Biome's formatter check then reported every tracked file as a format error, completely breaking `npm run check` and `session:start`. The symptom was 14 format errors, all showing CRLF→LF diffs with no code changes.
+**Historical context (preserved for diagnosis if it recurs):** Before `.gitattributes`, `core.autocrlf=true` (Windows default) checked out all files with CRLF. Biome's formatter check then reported every tracked file as a format error, completely breaking `bun run check` and `session:start`. The symptom was 14 format errors, all showing CRLF→LF diffs with no code changes.
 
 **If the issue recurs** (e.g., after cloning on a machine without `.gitattributes` taking effect), run:
 
 ```powershell
 git add --renormalize .
-npm run lint:fix
+bun run lint:fix
 ```
 
 This re-normalizes all tracked files to LF and auto-fixes the format violations in one pass.
 
 ### `git commit --amend` and the Pre-Commit Hook
 
-When amending a commit with formatting-only changes (e.g., Biome import reordering), the pre-commit hook can fail because `npm run check` re-runs lint on the amended tree. If you've already confirmed the tree is clean via `npm run check`, use `git commit --amend --no-edit --no-verify` to bypass the redundant hook run. **Only use `--no-verify` when you've manually verified the check passes first.**
+When amending a commit with formatting-only changes (e.g., Biome import reordering), the pre-commit hook can fail because `bun run check` re-runs lint on the amended tree. If you've already confirmed the tree is clean via `bun run check`, use `git commit --amend --no-edit --no-verify` to bypass the redundant hook run. **Only use `--no-verify` when you've manually verified the check passes first.**
 
 ### Biome Safe vs Unsafe Fixes
 
-`biome check --write` only applies **safe** fixes. Diagnostics showing `Unsafe fix:` in the output require `--write --unsafe` or manual editing. Common examples: renaming unused `catch (e)` to `catch`, converting string concatenation to template literals. If `npm run lint:fix` doesn't clear a warning, check whether it's flagged as unsafe.
+`biome check --write` only applies **safe** fixes. Diagnostics showing `Unsafe fix:` in the output require `--write --unsafe` or manual editing. Common examples: renaming unused `catch (e)` to `catch`, converting string concatenation to template literals. If `bun run lint:fix` doesn't clear a warning, check whether it's flagged as unsafe.
 
 ### `&&` in npm Scripts vs PowerShell
 
-`&&` is forbidden in PowerShell terminals (use `;` instead) but works correctly in `package.json` scripts because npm uses `cmd.exe` as its default shell on Windows. The `npm run check` composite command uses `&&` chaining — this is intentional and correct despite the general `&&` prohibition.
+`&&` is forbidden in PowerShell terminals (use `;` instead) but works correctly in `package.json` scripts because npm uses `cmd.exe` as its default shell on Windows. The `bun run check` composite command uses `&&` chaining — this is intentional and correct despite the general `&&` prohibition.
 
 ### Git Push stderr on PowerShell
 
@@ -422,7 +422,7 @@ Specific counts in documentation (e.g., "187 tests", "12 files", "103 records") 
 
 **Rules for counts in active documentation:**
 
-- **Don't embed exact counts** in prose that describes the current state. Use descriptive labels ("Unit tests cover core, dice, schemas, and pipeline scripts") or point to the command that produces the live count ("Run `npm run test` for current totals").
+- **Don't embed exact counts** in prose that describes the current state. Use descriptive labels ("Unit tests cover core, dice, schemas, and pipeline scripts") or point to the command that produces the live count ("Run `bun run test` for current totals").
 - **Dated snapshots are OK** — `session-handover.md` and `project-history.md` record what was true at a point in time. Those numbers are historical facts, not current claims.
 - **`side-tracks.md` baseline notes are OK** — explicitly dated baselines (e.g., "> Baseline note (2026-03-09): ...") are timestamped by design.
 - **Data structure descriptions** should name what a file _contains_, not how many (e.g., "Feats with prerequisites" not "329 feats with prerequisites").
@@ -448,20 +448,20 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 
 | Command                  | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `npm run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
-| `npm run dev`            | Start Astro dev server with hot reload                          |
-| `npm run build`          | Full build: `prebuild.mjs` + `astro build`                      |
-| `npm run preview`        | Preview production build locally                                |
-| `npm run test`           | Unit tests only (bun:test)                                      |
-| `npm run lint`           | Biome lint/format check only                                    |
-| `npm run validate`       | Validate JSON data against Zod schemas                          |
-| `npm run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
-| `npm run lint:data`      | Lint markdown for terminology, formatting, encoding             |
-| `npm run sync-check`     | Detect drift between markdown and JSON data                     |
-| `npm run session:start`  | Create/switch to session branch + baseline check                |
-| `npm run session:end`    | Squash-merge to main + cleanup                                  |
-| `npm run session:status` | Quick git state report                                          |
-| `npm run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
+| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
+| `bun run dev`            | Start Astro dev server with hot reload                          |
+| `bun run build`          | Full build: `prebuild.mjs` + `astro build`                      |
+| `bun run preview`        | Preview production build locally                                |
+| `bun run test`           | Unit tests only (bun:test)                                      |
+| `bun run lint`           | Biome lint/format check only                                    |
+| `bun run validate`       | Validate JSON data against Zod schemas                          |
+| `bun run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
+| `bun run lint:data`      | Lint markdown for terminology, formatting, encoding             |
+| `bun run sync-check`     | Detect drift between markdown and JSON data                     |
+| `bun run session:start`  | Create/switch to session branch + baseline check                |
+| `bun run session:end`    | Squash-merge to main + cleanup                                  |
+| `bun run session:status` | Quick git state report                                          |
+| `bun run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
 
 **Build dependency chain:**
 
@@ -475,10 +475,10 @@ The Astro/Starlight migration is complete — all tools ported, site live on Ver
 ### TypeScript Pipeline Scripts
 
 - **Schema authority:** Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data schemas. `docs/data-reference.md` is a readable summary but may lag behind.
-- **Validation:** `npm run validate` checks all 12 JSON files against Zod schemas. Use `npm run validate:xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass with 0 xref warnings — any new warning is a regression.
-- **Content linting:** `npm run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
+- **Validation:** `bun run validate` checks all 12 JSON files against Zod schemas. Use `bun run validate:xref` for cross-reference checks (class→skill, class→feat, NPC→trait). All files pass with 0 xref warnings — any new warning is a regression.
+- **Content linting:** `bun run lint:data` enforces terminology, formatting, and encoding consistency across markdown files.
 - **Baseline verification:** Always re-verify pipeline output baselines (error counts, warning counts) after scope changes. Don't carry forward numbers from previous sessions without validation — e.g., lint:data reported "2 warnings" when only scanning `cleaned-references/`, but "19 warnings" after scope expanded to include `books/`.
 - **Starlight prep:** Frontmatter injection is now handled automatically by `scripts/prebuild.mjs` during the build.
-- **Sync checking:** `npm run sync-check` detects drift between markdown and JSON data (races, classes, feats).
+- **Sync checking:** `bun run sync-check` detects drift between markdown and JSON data (races, classes, feats).
 - **Documentation:** See `docs/pipeline.md` for CLI commands, script structure, and conventions.
-- **When editing JSON data:** Always run `npm run validate` afterward to catch schema violations. If adding new fields, update both the Zod schema and `docs/data-reference.md`.
+- **When editing JSON data:** Always run `bun run validate` afterward to catch schema violations. If adding new fields, update both the Zod schema and `docs/data-reference.md`.

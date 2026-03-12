@@ -285,4 +285,4 @@ When editing `dice.ts`:
 3. **Verify overflow compression** — other tools depend on consistent results via `dice-primitives.ts`
 4. **Check type alignment** — types live in `types.ts`; keep signatures in sync
 5. **Grep consumers** — Combat Tracker, NPC Generator import from this module
-6. **Run tests** — `npm run test` covers dice logic
+6. **Run tests** — `bun run test` covers dice logic

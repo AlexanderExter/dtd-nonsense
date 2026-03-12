@@ -12,8 +12,8 @@ You are the **upgrade session owner**. You have full authority over this project
 
 - **Backwards compatibility is not a concern.** The operator explicitly accepts that this session may introduce breaking changes. Clean, current, idiomatic code is the goal.
 - **The branch is the safety net.** If the process fails irrecoverably, the branch is deleted. That's the rollback mechanism — not timidity.
-- **`npm run check` passing is the red line.** If the full check suite passes, the upgrade stands.
-- **You are an orchestrator.** Leverage `ncu`, `bun`, `npm run check`, `npm run lint:fix`, `npm audit`, and the existing project tooling. Your role is to arbitrate and sequence, not to manually replicate what programmatic tools already do.
+- **`bun run check` passing is the red line.** If the full check suite passes, the upgrade stands.
+- **You are an orchestrator.** Leverage `ncu`, `bun`, `bun run check`, `bun run lint:fix`, `npm audit`, and the existing project tooling. Your role is to arbitrate and sequence, not to manually replicate what programmatic tools already do.
 - **No preconceptions.** The current pinning strategy, version ranges, and overrides are all open for review. Decide what's best for the project right now.
 - **Resolution is the work.** This is not just version bumping — it's resolving the consequences: breaking changes, deprecated API removal, code modernization, dead pattern cleanup.
 
@@ -23,16 +23,16 @@ You are the **upgrade session owner**. You have full authority over this project
 
 ### A1. Bootstrap Tools
 
-1. Run `npm run upgrade:recon` and save the JSON manifest (stdout). Read the human summary (stderr) for orientation.
-2. **ncu (npm-check-updates):** If the recon report shows ncu is not available, install it: `npm install -D npm-check-updates`. This makes `npx npm-check-updates` (or `npx ncu`) available for the session. Always use the full name `npx npm-check-updates` to avoid collisions with other packages named `ncu`.
-3. **Bun:** If available, prefer `bun install` over `npm install` for speed after `package.json` changes. Lockfiles are informational during upgrades — correctness comes from the tree resolver and the test suite, not the lockfile.
+1. Run `bun run upgrade:recon` and save the JSON manifest (stdout). Read the human summary (stderr) for orientation.
+2. **ncu (npm-check-updates):** If the recon report shows ncu is not available, install it: `bun install -D npm-check-updates`. This makes `bunx npm-check-updates` (or `bunx ncu`) available for the session. Always use the full name `bunx npm-check-updates` to avoid collisions with other packages named `ncu`.
+3. **Bun:** If available, prefer `bun install` over `bun install` for speed after `package.json` changes. Lockfiles are informational during upgrades — correctness comes from the tree resolver and the test suite, not the lockfile.
 4. **Check engine:** Note the current `engines.node` from `package.json`. If any upgrade requires a higher Node version, that's a decision point to address in Phase B.
 
 ### A2. Establish Baseline
 
-1. Run `npm run check` and record the full output. This is the **"before"** snapshot. Every subsequent `npm run check` must be compared against this baseline.
+1. Run `bun run check` and record the full output. This is the **"before"** snapshot. Every subsequent `bun run check` must be compared against this baseline.
 2. Note pre-existing warnings (Biome reports ~12 known false positives/intentional CSS). New warnings are regressions; removing old warnings is an improvement.
-3. Run `npm ls --depth=1` to confirm current tree health.
+3. Run `bun pm ls --depth=1` to confirm current tree health.
 
 ### A3. Read Context
 
@@ -52,7 +52,7 @@ Produce a brief upgrade plan. This is for **transparency, not approval** — sta
 
 Execute in this order. The rationale: upgrade the tools that validate code before upgrading the code they validate.
 
-1. **Toolchain** (`@biomejs/biome`, `typescript`, `@types/bun`) — the validation and development tools themselves. Upgrading these first means all subsequent `npm run check` runs use the latest lint rules, type checker, and test runner types.
+1. **Toolchain** (`@biomejs/biome`, `typescript`, `@types/bun`) — the validation and development tools themselves. Upgrading these first means all subsequent `bun run check` runs use the latest lint rules, type checker, and test runner types.
 2. **Framework** (`astro`, `@astrojs/starlight`, `@astrojs/vercel`) — the largest blast radius. These are version-coupled via peer dependencies and require coordinated upgrades. Migration guides are essential reading.
 3. **Utility** (`chart.js`, `zod`, `gray-matter`, `@vercel/analytics`, and any others) — standalone dependencies with low coupling risk.
 
@@ -68,7 +68,7 @@ For each dependency, decide:
 
 State clearly in the plan output:
 
-> "This plan upgrades aggressively. The branch is the safety checkpoint. If the result doesn't pass `npm run check`, the branch can be discarded. The intent is to bring the project to the best possible dependency state — not to preserve the current one."
+> "This plan upgrades aggressively. The branch is the safety checkpoint. If the result doesn't pass `bun run check`, the branch can be discarded. The intent is to bring the project to the best possible dependency state — not to preserve the current one."
 
 Then proceed to execution.
 
@@ -79,7 +79,7 @@ Then proceed to execution.
 ### C0. Create Upgrade Branch
 
 ```
-npm run session:start upgrade-deps-YYYY-MM-DD
+bun run session:start upgrade-deps-YYYY-MM-DD
 ```
 
 If the session start script reports a dirty tree or failing baseline, resolve that first.
@@ -89,19 +89,19 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 Use ncu's doctor mode to safely upgrade toolchain deps with automatic rollback on failure:
 
 ```
-npx npm-check-updates --doctor --doctorTest "npm run check" --filter "@biomejs/biome,typescript,@types/bun"
+bunx npm-check-updates --doctor --doctorTest "bun run check" --filter "@biomejs/biome,typescript,@types/bun"
 ```
 
-**Doctor mode behavior:** For each package, ncu upgrades it, runs the doctor test (`npm run check`), and automatically rolls back any upgrade that breaks the test. This is the programmatic equivalent of manual upgrade-test-rollback cycles.
+**Doctor mode behavior:** For each package, ncu upgrades it, runs the doctor test (`bun run check`), and automatically rolls back any upgrade that breaks the test. This is the programmatic equivalent of manual upgrade-test-rollback cycles.
 
 After doctor mode completes:
 
 1. **Review results.** Which upgrades succeeded? Which were rolled back?
-2. **Resolve rollbacks.** For each rolled-back dep, investigate why `npm run check` failed:
-    - **New Biome rules:** Run `npm run lint:fix` first — many new rule violations have auto-fixes. For the rest, update code to comply or disable the specific rule with rationale.
+2. **Resolve rollbacks.** For each rolled-back dep, investigate why `bun run check` failed:
+    - **New Biome rules:** Run `bun run lint:fix` first — many new rule violations have auto-fixes. For the rest, update code to comply or disable the specific rule with rationale.
     - **TypeScript errors:** Resolve type errors introduced by stricter checking or changed type definitions. Modernize code, don't patch with `any`.
-    - After resolving, manually set the version in `package.json` and run `npm install` + `npm run check` to verify.
-3. **Tree health:** Run `npm ls --depth=1` — confirm no unmet peer deps.
+    - After resolving, manually set the version in `package.json` and run `bun install` + `bun run check` to verify.
+3. **Tree health:** Run `bun pm ls --depth=1` — confirm no unmet peer deps.
 4. **Commit:** `chore: upgrade toolchain (biome, typescript)`
 
 ### C1.5. Biome Configuration Audit (run when Biome version changed)
@@ -134,13 +134,13 @@ Fix any deprecated settings in `.vscode/settings.json`.
 
 #### C1.5.3 — Config Validity
 
-Run `npx biome check . --reporter=summary` and read the output carefully.
+Run `bunx biome check . --reporter=summary` and read the output carefully.
 
 **Parse errors in biome.json itself** → the config file has syntax problems (e.g. JS comments in a `.json` file — use `.jsonc` if comments are needed, or remove them).
 
 **"Unknown option" warnings** → a rule or config key was renamed or removed. Check the changelog and update.
 
-**New violations from upgraded rules** → run `npm run lint:fix` first for auto-fixable issues. For remaining violations, decide: fix the code, or disable the specific rule with a documented rationale.
+**New violations from upgraded rules** → run `bun run lint:fix` first for auto-fixable issues. For remaining violations, decide: fix the code, or disable the specific rule with a documented rationale.
 
 #### C1.5.4 — Domains Review
 
@@ -160,7 +160,7 @@ Check that `html.experimentalFullSupportEnabled` is set and that `html.formatter
 #### C1.5.6 — Run Final Check
 
 ```
-npx biome check . --reporter=summary
+bunx biome check . --reporter=summary
 ```
 
 Must report *zero* errors. Warnings are acceptable if they are pre-existing or intentionally suppressed with overrides.
@@ -176,12 +176,12 @@ Must report *zero* errors. Warnings are acceptable if they are pre-existing or i
 1. **Check compatibility.** The recon manifest includes `frameworkCompat` with peer dep ranges. Use `npm view @astrojs/starlight@latest peerDependencies --json` and `npm view @astrojs/vercel@latest peerDependencies --json` to find versions compatible with each other.
 2. **Choose a compatible version set.** All three packages must agree on the Astro version.
 3. **Update `package.json`** with the chosen versions.
-4. **Install:** `bun install` (or `npm install`).
+4. **Install:** `bun install` (or `bun install`).
     - If install fails due to peer dep conflicts: read the error, adjust versions to find a compatible set. **Never use `--legacy-peer-deps` or `--force`** — these hide problems.
-5. **Tree health:** `npm ls --depth=1` — must show no unmet peers.
+5. **Tree health:** `bun pm ls --depth=1` — must show no unmet peers.
 6. **Migration guide:** If a major Astro version bump occurred, follow the migration guide step by step. Apply config changes, remove deprecated APIs, adopt new patterns.
-7. **Build:** `npm run build` — Astro build catches template and config issues.
-8. **Full check:** `npm run check` — if failures occur, resolve them:
+7. **Build:** `bun run build` — Astro build catches template and config issues.
+8. **Full check:** `bun run check` — if failures occur, resolve them:
     - Remove deprecated configuration options
     - Update import paths that changed
     - Adopt new APIs replacing deprecated ones
@@ -193,7 +193,7 @@ Must report *zero* errors. Warnings are acceptable if they are pre-existing or i
 Use ncu doctor for everything not in toolchain or framework:
 
 ```
-npx npm-check-updates --doctor --doctorTest "npm run check" --reject "astro,@astrojs/*,@biomejs/*,typescript,@types/bun"
+bunx npm-check-updates --doctor --doctorTest "bun run check" --reject "astro,@astrojs/*,@biomejs/*,typescript,@types/bun"
 ```
 
 1. **Review results** — resolve any rollbacks as in C1.
@@ -204,9 +204,9 @@ npx npm-check-updates --doctor --doctorTest "npm run check" --reject "astro,@ast
 For each override in `package.json`:
 
 1. **Check if still needed.** Does the parent dependency now include the fix in its own transitive deps?
-    - Run `npm ls <overridden-package>` to see who depends on it and what version they'd pull without the override.
+    - Run `bun pm ls <overridden-package>` to see who depends on it and what version they'd pull without the override.
     - Check the parent's changelog or release notes for whether the vulnerability/bug the override addresses has been fixed upstream.
-2. **Remove stale overrides.** Update `package.json`, run `npm install`, then `npm ls` + `npm run check` to verify.
+2. **Remove stale overrides.** Update `package.json`, run `bun install`, then `bun pm ls` + `bun run check` to verify.
 3. **Keep necessary overrides.** If the override is still needed, update the comment explaining why.
 4. **Commit:** `chore: clean up stale dependency overrides` (or note that all overrides are still required)
 
@@ -222,7 +222,7 @@ Apply changes if any. Commit separately if pinning strategy changes.
 
 ### C6. Post-Install Validation
 
-1. **Tree health:** `npm ls` — must show no unmet peer deps, no invalid entries, no extraneous packages.
+1. **Tree health:** `bun pm ls` — must show no unmet peer deps, no invalid entries, no extraneous packages.
 2. **Engine check:** If any upgrade required raising `engines.node`, update it in `package.json`. Note that this affects CI (GitHub Actions Node version) and deployment.
 
 ---
@@ -231,10 +231,10 @@ Apply changes if any. Commit separately if pinning strategy changes.
 
 Final validation pass — this must be fully green before generating the briefing.
 
-1. **`npm run check`** — full suite. Must pass with zero new errors.
+1. **`bun run check`** — full suite. Must pass with zero new errors.
 2. **`npm audit`** — compare with the pre-upgrade audit from Phase A. Note improvements and any remaining advisories.
-3. **`npm run build`** — production build must succeed. This is the definitive "does the site work" check.
-4. **`npm run lint:fix`** — final cleanup pass. Commit any auto-fixed changes.
+3. **`bun run build`** — production build must succeed. This is the definitive "does the site work" check.
+4. **`bun run lint:fix`** — final cleanup pass. Commit any auto-fixed changes.
 5. **Compare with baseline:** Did the number of pre-existing Biome warnings change? Note improvements (fewer warnings thanks to upgraded rules) or regressions (new warnings introduced).
 
 If any check fails that passed in the baseline, something went wrong. Debug and resolve before proceeding. Owning the process means owning the errors.
@@ -313,15 +313,15 @@ Create `docs/whats-new/YYYY-MM-DD.md` (using today's date). This is the primary 
     - Breaking changes resolved
     - Security improvements
     - Any packages that could NOT be upgraded (and why)
-    - Suggestion: run `npm run session:end` to merge, or review the branch first, or delete it if unsatisfied
+    - Suggestion: run `bun run session:end` to merge, or review the branch first, or delete it if unsatisfied
 4. **Marker:** "Upgrade Session Complete"
 
 ---
 
 ## Failure Modes
 
-If the process reaches a state where `npm run check` cannot be made to pass despite reasonable effort:
+If the process reaches a state where `bun run check` cannot be made to pass despite reasonable effort:
 
 1. **Partial success:** Commit the successful tiers, revert the failing tier. The briefing documents what worked and what didn't.
 2. **Total failure:** Every tier broke something that can't be resolved. Document findings in the briefing anyway (so the next attempt has context), commit the briefing, and recommend the branch be deleted.
-3. **NEVER force-merge broken code.** The red line is `npm run check` passing. No exceptions.
+3. **NEVER force-merge broken code.** The red line is `bun run check` passing. No exceptions.

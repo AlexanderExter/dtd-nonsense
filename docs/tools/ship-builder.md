@@ -3,8 +3,8 @@
 Spelljammer ship construction and management tool. Handles hull selection, component installation, crew assignment, and derived ship stat calculations.
 
 **Phase:** Complete
-**Files:** `src/pages/tools/ship-builder.astro`, `src/components/preact/tools/ship-builder/` (12 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/ship-builder.astro`, `src/components/react/tools/ship-builder/` (12 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 

@@ -5,14 +5,14 @@ applyTo: "**/*.astro, **/*.ts, **/*.js"
 
 # Astro Development Standards — DTD Nonsense
 
-This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **Preact Islands** (`@astrojs/preact` with compat mode) hydrated via `client:only="preact"` (required for Ariakit SSR compatibility).
+This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **React Islands** (`@astrojs/react`) hydrated via `client:only="react"`.
 
 ## Architecture
 
 - **Static output only** — no SSR, no API routes, no middleware
 - **Starlight** handles all rules/content pages via Content Collections
 - **Tool pages** (`src/pages/tools/*.astro`) use `ToolLayout.astro` — standalone HTML pages outside Starlight
-- **Preact Islands** — all tools use `client:only="preact"` directives for interactive components (not `client:load` — Ariakit requires client-only rendering)
+- **React Islands** — all tools use `client:only="react"` directives for interactive components
 - **Tailwind CSS v4** — `@theme` tokens in `src/styles/tailwind.css` as design token source of truth
 - **No View Transitions / ClientRouter** — standard page navigation
 
@@ -20,14 +20,14 @@ This project uses **Astro 5.x + Starlight** for a static documentation site with
 
 ```
 src/
-  pages/tools/       ← .astro tool pages (each mounts a Preact island via client:load)
+  pages/tools/       ← .astro tool pages (each mounts a React island via client:only)
   layouts/           ← ToolLayout.astro (standalone HTML shell; bridges Tailwind tokens → short var(--name) aliases)
   components/
-    preact/
-      tools/         ← Preact island components for all 6 tools (72 components)
-      ui/            ← Shared UI primitives (18 components) — Ariakit + Tailwind wrappers
-      shared/        ← Shared Preact components across tools
-  hooks/             ← Custom Preact hooks (use-data, use-local-storage)
+    react/
+      tools/         ← React island components for all 6 tools (72 components)
+      ui/            ← Shared UI primitives (18 components) — Radix UI + Tailwind wrappers
+      shared/        ← Shared React components across tools
+  hooks/             ← Custom React hooks (use-data, use-local-storage)
   lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   styles/            ← custom.css (Starlight theme), tailwind.css (Tailwind v4 @theme tokens)
   content.config.ts  ← Content Collection definitions
@@ -37,15 +37,15 @@ src/
 
 ### Tool Pages
 
-- Each tool's `.astro` page mounts a root Preact component via `client:only="preact"`
-- Preact components live in `src/components/preact/tools/{tool-name}/`
+- Each tool's `.astro` page mounts a root React component via `client:only="react"`
+- React components live in `src/components/react/tools/{tool-name}/`
 - Root component is `*App.tsx` (e.g., `QuickReferenceApp.tsx`)
 - Import shared logic from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
-- Import UI primitives from `@/components/preact/ui` (Button, Modal, Toast, etc.) — never import `@ariakit/react` directly
+- Import UI primitives from `@/components/react/ui` (Button, Modal, Toast, etc.) — never import `radix-ui` directly
 - Load JSON data via `useData()` / `useAllData()` hooks from `@/hooks/use-data`
-- State management: `@preact/signals` with module-level signals pattern
+- State management: **Zustand** stores — one store per tool, co-located as `store.ts`
 - Use **named exports only** — no default exports
-- Use `class` attribute (not `className`) in Preact JSX
+- Use `className` attribute in React JSX
 - All `<button>` elements need `type="button"`
 - Use `@/` path aliases for imports outside the component directory
 - Use `./` relative imports within the component directory
@@ -75,13 +75,13 @@ src/
 ### Biome (Linter/Formatter)
 
 - Config: `biome.json`. Covers `src/**` and `scripts/**`
-- **Check**: `npm run lint` — reports errors/warnings
-- **Auto-fix**: `npm run lint:fix` — fixes all fixable violations in one pass. Use this for bulk formatting fixes instead of manual file edits.
+- **Check**: `bun run lint` — reports errors/warnings
+- **Auto-fix**: `bun run lint:fix` — fixes all fixable violations in one pass. Use this for bulk formatting fixes instead of manual file edits.
 - CI runs `biome ci .` (no writes). Failures block build.
-- Run `npm run lint:fix` to auto-fix all fixable violations in one pass
+- Run `bun run lint:fix` to auto-fix all fixable violations in one pass
 
 ### Build
 
-- `npm run build` triggers prebuild hook → Astro build → Vercel static output
-- `npm run dev` for local dev server
+- `bun run build` triggers prebuild hook → Astro build → Vercel static output
+- `bun run dev` for local dev server
 - CI runs in `.github/workflows/build.yml`
