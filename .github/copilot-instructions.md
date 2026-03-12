@@ -149,7 +149,7 @@ src/                   Astro source files
   pages/tools/         Tool pages (Astro pages outside Starlight)
   components/
     react/
-      tools/           React island components (6 tools, 72 components)
+      tools/           React island components (6 tools, 74 components)
       ui/              Shared UI primitives (18 components, Radix UI + Tailwind)
   hooks/               Custom React hooks (use-data.ts, use-local-storage.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts

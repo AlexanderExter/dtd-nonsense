@@ -87,7 +87,7 @@
 			}
 		},
 		{
-			"includes": ["src/lib/dtd/**", "src/components/preact/tools/**"],
+			"includes": ["src/lib/dtd/**", "src/components/react/tools/**"],
 			"linter": {
 				"rules": {
 					"complexity": {

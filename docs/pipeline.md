@@ -141,7 +141,7 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 
 | Priority | Item                              | Status  | Notes                                                                       |
 | -------- | --------------------------------- | ------- | --------------------------------------------------------------------------- |
-| Done     | Astro/Starlight migration         | —       | Complete — all 9 tools ported, site live on Vercel                          |
+| Done     | Astro/Starlight migration         | —       | Complete — all 6 tools ported, site live on Vercel                          |
 | Done     | Python → TypeScript consolidation | —       | Pipeline fully ported to TypeScript; Python pipeline deleted                |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Zod schema introspection — eliminate manual schema docs                |

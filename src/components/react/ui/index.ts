@@ -1,4 +1,4 @@
-// DTD UI Primitives — shared Preact components backed by Ariakit + Tailwind tokens.
+// DTD UI Primitives — shared React components backed by Radix UI + Tailwind tokens.
 // Import from "@/components/react/ui" — never import radix-ui directly in tools.
 
 export { AccordionItem } from "./Accordion";

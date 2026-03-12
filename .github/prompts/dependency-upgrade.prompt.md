@@ -54,7 +54,7 @@ Execute in this order. The rationale: upgrade the tools that validate code befor
 
 1. **Toolchain** (`@biomejs/biome`, `typescript`, `@types/bun`) — the validation and development tools themselves. Upgrading these first means all subsequent `bun run check` runs use the latest lint rules, type checker, and test runner types.
 2. **Framework** (`astro`, `@astrojs/starlight`, `@astrojs/vercel`) — the largest blast radius. These are version-coupled via peer dependencies and require coordinated upgrades. Migration guides are essential reading.
-3. **Utility** (`chart.js`, `zod`, `gray-matter`, `@vercel/analytics`, and any others) — standalone dependencies with low coupling risk.
+3. **Utility** (`zod`, `gray-matter`, `@vercel/analytics`, and any others) — standalone dependencies with low coupling risk.
 
 ### B2. Strategy Decisions
 

@@ -50,6 +50,7 @@ export const useToolStore = create<ToolState>((set) => ({
 ```
 
 In components:
+
 ```typescript
 const items = useToolStore((s) => s.items);
 const setItems = useToolStore((s) => s.setItems);
@@ -90,7 +91,6 @@ import { ToolNameApp } from "@/components/react/tools/{tool-name}/{ToolName}App"
 ### 6. Documentation
 
 - Create `docs/tools/[tool-name].md`
-- Add a card to `src/pages/tools/index.astro` with a `status` badge
 
 ---
 
@@ -98,7 +98,7 @@ import { ToolNameApp } from "@/components/react/tools/{tool-name}/{ToolName}App"
 
 ### Prerequisites
 
-- Node 20+ and npm
+- Bun 1.x+
 
 ### Commands
 

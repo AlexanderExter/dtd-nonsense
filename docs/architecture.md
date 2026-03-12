@@ -13,7 +13,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Choice              | Rationale                                                                                                                                                                                                                                                    |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                                                                                                                                                            |
-| npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
+| Bun                 | Manages Astro, Starlight, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
 | ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
 | React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management                                                                                                                                        |
@@ -31,7 +31,7 @@ Key files:
 | `src/lib/dtd/`              | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/layouts/`              | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)               |
 | `src/styles/`               | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                |
-| `src/components/react/`    | React island components for all 6 tools (72 components)                                                               |
+| `src/components/react/`    | React island components for all 6 tools (74 components)                                                               |
 | `src/components/react/ui/` | Shared UI primitives (18 components) — Radix UI + Tailwind wrappers                                                     |
 | `data/`                     | Canonical JSON game data (12 files) — source for prebuild                                                              |
 | `public/data/`              | Generated JSON data copies (from `data/`) — gitignored                                                                 |
@@ -44,7 +44,7 @@ Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild c
 
 ### Code Quality & Testing
 
-| Tool     | Purpose                        | Config         | npm Scripts          |
+| Tool     | Purpose                        | Config         | Bun Scripts          |
 | -------- | ------------------------------ | -------------- | -------------------- |
 | Biome    | Linter + formatter (JS/TS/CSS) | `biome.json`   | `lint`, `lint:fix`   |
 | bun:test | Unit testing (Jest-compatible)  | `bunfig.toml`  | `test`, `test:watch` |
@@ -431,7 +431,7 @@ All tool pages use **Tailwind CSS v4** utility classes. Design tokens are define
 - **Tailwind utilities on every element** — no hand-written CSS in `<style>` blocks
 - **`class` attribute** (not `className`) in React JSX
 - **Conditional classes**: `.filter(Boolean).join(" ")` pattern
-- **Dynamic values only** via `style={{}}` (runtime percentages, Chart.js colors, canvas)
+- **Dynamic values only** via `style={{}}` (runtime percentages, dynamic colors)
 - **No `@apply`** — utilities applied directly in JSX
 - **Color lookup maps**: Typed `Record<string, string>` for badge/status colors
 

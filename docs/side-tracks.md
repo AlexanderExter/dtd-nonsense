@@ -41,22 +41,16 @@ Items worth doing soon, priority-ordered.
 **Issue:** Popup positioned with `position: fixed` using only `anchorRect.bottom + 4` and `anchorRect.left`. No viewport boundary checks — can render off-screen on small viewports or near page edges. Uses inline styles instead of Tailwind utilities.
 **Next action:** Add viewport boundary checks (flip above anchor if too close to bottom, clamp left/right to viewport). Refactor inline styles to Tailwind utilities where possible.
 
-### Session Script: Commit Message Robustness
-
-**File:** `scripts/session-end.mjs`
-**Issue:** Shell-escapes double quotes in commit messages but backticks, `$`, and other metacharacters could break the `git commit -m "..."` invocation.
-**Next action:** Switch to `--file` with a temp file instead of inline `-m`.
-
 ---
 
 ## Investigation
 
 Items needing research or design decisions before action.
 
-### Module-Level Signal Isolation
+### Zustand Store Isolation
 
-**Issue:** All tool state lives in module-level `signal()` declarations. Two instances of the same component on one page would share state. Not a problem today (single-tool pages) but blocks any future dashboard or multi-tool view.
-**Next action:** If a dashboard becomes a priority, evaluate injecting signals via context providers or scoping via component instances. No action needed until then.
+**Issue:** All tool state lives in Zustand stores at module level. Two instances of the same tool component on one page would share state. Not a problem today (single-tool pages) but blocks any future dashboard or multi-tool view.
+**Next action:** If a dashboard becomes a priority, evaluate scoped store providers or component-instance stores. No action needed until then.
 
 ### No Runtime/Browser Testing
 
@@ -65,8 +59,8 @@ Items needing research or design decisions before action.
 
 ### StarlightPage Migration: Tool Layout Regression Risk
 
-**Issue:** All 9 tool pages were migrated from a custom `ToolLayout.astro` to Starlight's `StarlightPage` component (2026-03-12). Starlight's content area applies its own CSS (max-width constraints, heading styles, table styles) that may conflict with tool components. Charts require unrestricted canvas sizing; modals need proper z-index stacking above Starlight chrome.
-**Next action:** Visually verify every tool page in a browser. Check: (1) Chart.js canvases render at full width, (2) modals/popups appear above the Starlight sidebar/header, (3) print styles still work for NPC/Ship/Defense tools, (4) sticky headers in CharacterManager don't conflict with Starlight's sticky header.
+**Issue:** All 6 tool pages were migrated from a custom `ToolLayout.astro` to Starlight's `StarlightPage` component (2026-03-12). Starlight's content area applies its own CSS (max-width constraints, heading styles, table styles) that may conflict with tool components. Modals need proper z-index stacking above Starlight chrome.
+**Next action:** Visually verify every tool page in a browser. Check: (1) modals/popups appear above the Starlight sidebar/header, (2) print styles still work for NPC/Ship tools, (3) sticky headers in CharacterManager don't conflict with Starlight's sticky header.
 
 ### Zod v4 Upgrade Blocked by Astro
 
