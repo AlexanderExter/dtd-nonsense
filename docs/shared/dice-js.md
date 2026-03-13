@@ -5,7 +5,7 @@ Sole dice module for the project. Implements D:TD's `XkY+N` exploding d10 system
 **File:** `src/lib/dtd/dice.ts` (pure ES module with named exports)
 **Types:** `src/lib/dtd/types.ts` — provides `DiceResult`, `DieRoll`, `Outcome`, `ParsedNotation`, `OverflowInfo`
 **Pattern:** Named exports — `import { roll, calculateOutcome, parseNotation } from '@/lib/dtd/dice.ts'`
-**Consumers:** Dice Roller, Combat Tracker, Ship Builder, Success Curves
+**Consumers:** Combat Tracker, Ship Builder
 
 ---
 
@@ -228,7 +228,7 @@ interface ParsedNotation {
 
 Every die is a d10 (1–10). When a die rolls a natural 10, it "explodes": roll again and add the new result to the same die's total. Explosions chain — if the re-roll is also a 10, roll again. This continues until a non-10 result.
 
-```
+```text
 Example: roll 10 → roll 10 → roll 4 → die value = 24
 ```
 
@@ -282,7 +282,7 @@ When editing `dice.ts`:
 
 1. **Remember: primitives in another file** — Core explosion/overflow logic lives in `src/lib/dtd/dice-primitives.ts` (canonical source). If formula changes, **update both files**.
 2. **Test explosion behavior** — verify 10→10→10→… chains terminate correctly
-3. **Verify overflow compression** — Success Curves and Defense Graph tools depend on consistent results via `src/workers/simulation-worker.ts` and `src/workers/defense-worker.ts` (both import from `dice-primitives.ts` directly)
+3. **Verify overflow compression** — other tools depend on consistent results via `dice-primitives.ts`
 4. **Check type alignment** — types live in `types.ts`; keep signatures in sync
-5. **Grep consumers** — Dice Roller, Combat Tracker, NPC Generator, Success Curves all import from this module
-6. **Run Dice Roller manually** — fastest way to verify roll correctness
+5. **Grep consumers** — Combat Tracker, NPC Generator import from this module
+6. **Run tests** — `bun run test` covers dice logic

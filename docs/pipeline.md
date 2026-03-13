@@ -8,24 +8,24 @@ All commands run via npm scripts (backed by `bun`):
 
 | Script               | Command                         | Purpose                                             |
 | -------------------- | ------------------------------- | --------------------------------------------------- |
-| `npm run validate`   | `bun run scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
-| `npm run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
-| `npm run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
+| `bun run validate`   | `bun run scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
+| `bun run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
+| `bun run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 
-### `npm run upgrade:recon`
+### `bun run upgrade:recon`
 
 Gather dependency ground truth for the upgrade prompt. Outputs a JSON manifest to stdout (machine-readable) and an ANSI-colored summary to stderr (human-readable).
 
 ```bash
-npm run upgrade:recon
+bun run upgrade:recon
 ```
 
 **Data gathered:**
 
 - Outdated packages (current/wanted/latest, bump type, pin status, tier classification)
-- Dependency tree health (`npm ls` problems, unmet peer deps)
+- Dependency tree health (`bun pm ls` problems, unmet peer deps)
 - Security audit (vulnerability severity counts and advisories)
 - Override staleness (whether each `package.json` override is still needed)
 - Framework compatibility (Starlight/Vercel adapter peer dep ranges, migration guide URLs)
@@ -34,12 +34,12 @@ npm run upgrade:recon
 
 Used by the `dependency-upgrade` prompt (`.github/prompts/dependency-upgrade.prompt.md`) as the ground-truth input for automated upgrade sessions.
 
-### `npm run validate`
+### `bun run validate`
 
 Validate all 12 JSON data files in `data/` against their Zod schemas.
 
 ```bash
-npm run validate                              # Validate all files
+bun run validate                              # Validate all files
 bun run scripts/validate.ts --xref            # Also run cross-file reference checks
 ```
 
@@ -49,12 +49,12 @@ bun run scripts/validate.ts --xref            # Also run cross-file reference ch
 - Class feat names exist in `feats.json` (handles `" OR "` choice entries like `"Two Weapon Fighting OR Far Shot"`)
 - NPC trait references exist in `traits.json` (handles both string refs and dict refs `{ id, param }`)
 
-### `npm run lint:data`
+### `bun run lint:data`
 
 Lint markdown content for terminology, formatting, and encoding issues.
 
 ```bash
-npm run lint:data                             # Lint all content
+bun run lint:data                             # Lint all content
 ```
 
 **Rules enforced:**
@@ -66,12 +66,12 @@ npm run lint:data                             # Lint all content
 - **Table cells**: No empty cells (use `—` or `N/A`)
 - **Encoding**: Detect UTF-8 corruption artifacts
 
-### `npm run sync-check`
+### `bun run sync-check`
 
 Compare parsed markdown content against JSON data files to detect drift.
 
 ```bash
-npm run sync-check                            # Run all sync comparisons
+bun run sync-check                            # Run all sync comparisons
 ```
 
 Compares: `04-Races.md` ↔ `races.json`, `06-Classes.md` ↔ `classes.json`, `07-Feats.md` ↔ `feats.json`.
@@ -116,7 +116,7 @@ The Zod schemas in `src/lib/dtd/schemas/` are the **single source of truth** for
 
 All 12 JSON data files pass schema validation. Cross-reference checks produce warnings for genuine data quality issues (abbreviated feat names in `classes.json` like "Weapon Prof" instead of "Weapon Proficiency", and missing skills like "Craft", "Brawling", "Intimidate") — these are real data gaps, not checker bugs.
 
-> **Exit code behavior:** `bun run scripts/validate.ts --xref` exits with code 1 if any cross-ref warnings exist. For CI, use `npm run validate` (exits 0 when schemas pass) and run `--xref` as an informational step that's allowed to fail.
+> **Exit code behavior:** `bun run scripts/validate.ts --xref` exits with code 1 if any cross-ref warnings exist. For CI, use `bun run validate` (exits 0 when schemas pass) and run `--xref` as an informational step that's allowed to fail.
 
 ### CI Integration
 
@@ -141,7 +141,9 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 
 | Priority | Item                              | Status  | Notes                                                                       |
 | -------- | --------------------------------- | ------- | --------------------------------------------------------------------------- |
-| Done     | Astro/Starlight migration         | —       | Complete — all 9 tools ported, site live on Vercel                          |
+| Done     | Astro/Starlight migration         | —       | Complete — all 6 tools ported, site live on Vercel                          |
 | Done     | Python → TypeScript consolidation | —       | Pipeline fully ported to TypeScript; Python pipeline deleted                |
+| Done     | Preact → React migration          | —       | 74 components, 6 Zustand stores, 18 Radix UI primitives (Phase 13)         |
+| Done     | Stack health fixes                | —       | Barrel elimination, re-render fixes, dead code cleanup, RHF + Knip install  |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Zod schema introspection — eliminate manual schema docs                |

@@ -85,7 +85,7 @@ Apply lesson updates directly on the current session branch (`session-YYYY-MM-DD
 
 ### 3b. Merge Session Branch
 
-Run `npm run session:end` to squash-merge and clean up automatically. The script:
+Run `bun run session:end` to squash-merge and clean up automatically. The script:
 
 1. Verifies working tree is clean and branch is not main
 2. Shows the branch commit log
@@ -98,7 +98,7 @@ If multiple branches exist (from multi-agent confusion or multi-day features):
 1. List all branches: `git branch`
 2. **Ask the user** how to reconcile — don't guess merge order
 3. For each branch assess: same-session work (merge), multi-day WIP (leave), stale (flag for deletion)
-4. Use `npm run session:end` for the approved branch — it handles the squash-merge ceremony
+4. Use `bun run session:end` for the approved branch — it handles the squash-merge ceremony
 
 ### 3c. Clean Up
 

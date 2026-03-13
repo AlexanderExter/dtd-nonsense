@@ -3,10 +3,10 @@
 # Skippable with: git commit --no-verify
 #
 # Install: git config core.hooksPath .githooks
-# (automated via npm run prepare)
+# (automated via bun run prepare)
 
-echo "Pre-commit: running npm run check..."
-npm run check
+echo "Pre-commit: running bun run check..."
+bun run check
 
 if [ $? -ne 0 ]; then
     echo ""

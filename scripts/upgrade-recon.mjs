@@ -3,7 +3,7 @@
  *
  * Usage:
  *   node scripts/upgrade-recon.mjs
- *   npm run upgrade:recon
+ *   bun run upgrade:recon
  *
  * Output:
  *   - JSON manifest to stdout (machine-readable for the upgrade prompt)
@@ -96,7 +96,7 @@ const npmVersion = tryRun("npm --version");
 tools.npm = npmVersion || "unknown";
 
 // ncu (npm-check-updates) — use the full package name to avoid collisions
-const ncuVersion = tryRun("npx npm-check-updates --version");
+const ncuVersion = tryRun("bunx npm-check-updates --version");
 tools.ncu = ncuVersion || null;
 
 // Bun
@@ -179,8 +179,8 @@ heading("Tree Health");
 
 const treeHealth = { valid: true, problems: [] };
 
-// npm ls --json can be very large; we just check for problems
-const treeRaw = tryJson("npm ls --json --depth=1");
+// bun pm ls --json can be very large; we just check for problems
+const treeRaw = tryJson("bun pm ls --json --depth=1");
 if (treeRaw) {
 	if (treeRaw.problems && Array.isArray(treeRaw.problems)) {
 		treeHealth.valid = false;

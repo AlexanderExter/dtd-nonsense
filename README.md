@@ -11,22 +11,19 @@ The original source PDFs are hard to read and harder to reference at the table. 
 ## What's Here
 
 - **Full Rulebook** — Searchable, cross-referenced rules from both source books
-- **9 Play Tools** — Character builder, dice roller, combat tracker, NPC generator, and more
+- **6 Play Tools** — Character builder, character sheet, combat tracker, NPC generator, and more
 - **TypeScript Pipeline** — Validation, linting, and sync checks for data and content
 
 ### Tools
 
-| Tool              | Description                                                                       |
-| ----------------- | --------------------------------------------------------------------------------- |
-| Dice Roller       | XkY dice pools with exploding d10s, overflow compression, raise/check calculation |
-| Quick Reference   | Searchable index of conditions, actions, modifiers, and common rules              |
-| Character Builder | Guided 11-step wizard with priority allocation and XP tracking                    |
-| Character Sheet   | Freeform sheet with auto-calculated derived stats and JSON export                 |
-| Combat Tracker    | Initiative management, HP tracking, condition toggles, character import           |
-| NPC Generator     | Stat block builder with templates, traits, and Markdown export                    |
-| Ship Builder      | Spelljammer ship configuration with hull, consoles, weapons, and combat mode      |
-| Success Curves    | Monte Carlo probability analysis for XkY dice pools vs target numbers             |
-| Defense Graph     | Damage mitigation visualization across the full defense pipeline                  |
+| Tool              | Description                                                                  |
+| ----------------- | ---------------------------------------------------------------------------- |
+| Quick Reference   | Searchable index of conditions, actions, modifiers, and common rules         |
+| Character Builder | Guided 11-step wizard with priority allocation and XP tracking               |
+| Character Sheet   | Freeform sheet with auto-calculated derived stats and JSON export            |
+| Combat Tracker    | Initiative management, HP tracking, condition toggles, character import      |
+| NPC Generator     | Stat block builder with templates, traits, and Markdown export               |
+| Ship Builder      | Spelljammer ship configuration with hull, consoles, weapons, and combat mode |
 
 ---
 
@@ -39,22 +36,22 @@ The original source PDFs are hard to read and harder to reference at the table. 
 ### Build
 
 ```bash
-npm install
-npm run build     # runs prebuild + astro build
+bun install
+bun run build     # runs prebuild + astro build
 ```
 
 ### Development
 
 ```bash
-npm run dev       # starts Astro dev server at localhost:4321
+bun run dev       # starts Astro dev server at localhost:4321
 ```
 
 ### Data & Content Checks
 
 ```bash
-npm run validate   # validate JSON data against Zod schemas
-npm run lint:data  # lint markdown terminology/formatting conventions
-npm run sync-check # detect drift between markdown and JSON data
+bun run validate   # validate JSON data against Zod schemas
+bun run lint:data  # lint markdown terminology/formatting conventions
+bun run sync-check # detect drift between markdown and JSON data
 ```
 
 ---
@@ -66,9 +63,9 @@ books/                 Source rulebook chapters (2 books, per-chapter split)
 cleaned-references/    Condensed rules reference (merged by topic, 24 files)
 data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
-  pages/tools/         9 Astro tool pages (standalone, outside Starlight)
-  components/preact/   Preact island components (~105 across 9 tools)
-  hooks/               Custom Preact hooks (use-data, use-local-storage, use-worker)
+  pages/tools/         6 Astro tool pages (standalone, outside Starlight)
+  components/react/    React island components (~72 across 6 tools)
+  hooks/               Custom React hooks (use-data, use-local-storage)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)
   styles/              WH40K theme CSS + Tailwind v4 @theme tokens
@@ -81,9 +78,8 @@ docs/                  Technical documentation and conventions
 ## Tech Stack
 
 - **[Astro](https://astro.build) + [Starlight](https://starlight.astro.build)** — Static documentation site
-- **[Preact](https://preactjs.com) Islands** — 9 interactive tools with `@preact/signals` state management
+- **[React](https://react.dev) Islands** — 6 interactive tools with Zustand state management
 - **[Tailwind CSS v4](https://tailwindcss.com)** — Utility-first styling with `@theme` design tokens
-- **Chart.js** — Probability curves and defense graphs
 - **[Pagefind](https://pagefind.app)** — Full-text search across all rules content
 - **TypeScript + Zod + tsx** — Data/content validation pipeline
 - **Vercel** — Static hosting and deployment

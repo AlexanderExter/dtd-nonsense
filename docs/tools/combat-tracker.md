@@ -3,8 +3,8 @@
 Turn-based combat management tool for Story Masters. Handles initiative order, HP/resource tracking, condition management, and multi-encounter support.
 
 **Phase:** Complete
-**Files:** `src/pages/tools/combat-tracker.astro`, `src/components/preact/tools/combat-tracker/` (9 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/combat-tracker.astro`, `src/components/react/tools/combat-tracker/` (9 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 

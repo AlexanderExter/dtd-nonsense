@@ -90,5 +90,11 @@
         "Vitest",
         "Warhammer"
     ],
-	"vsicons.presets.nestjs": true
+    "vsicons.presets.nestjs": true,
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }

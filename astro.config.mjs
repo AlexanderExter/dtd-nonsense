@@ -1,5 +1,5 @@
 // @ts-check
-import preact from "@astrojs/preact";
+import react from "@astrojs/react";
 import starlight from "@astrojs/starlight";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
@@ -13,7 +13,7 @@ export default defineConfig({
 	vite: { plugins: [tailwindcss()] },
 
 	integrations: [
-		preact({ compat: true }),
+		react(),
 		starlight({
 			title: "Dungeons the Dragoning 40k",
 			description:
@@ -24,7 +24,7 @@ export default defineConfig({
 				Head: "./src/components/Head.astro",
 			},
 
-			// Custom dark theme (tool pages use ToolLayout.astro's own :root tokens)
+			// Custom dark theme
 			customCss: ["./src/styles/tailwind.css", "./src/styles/custom.css"],
 
 			// Default to dark mode (WH40K aesthetic)
@@ -130,16 +130,12 @@ export default defineConfig({
 				{
 					label: "Play Tools",
 					items: [
-						{ label: "Tools Dashboard", link: "/tools/" },
-						{ label: "Dice Roller", link: "/tools/dice-roller/" },
-						{ label: "Quick Reference", link: "/tools/quick-reference/" },
-						{ label: "Character Builder", link: "/tools/character-builder/" },
-						{ label: "Character Sheet", link: "/tools/character-sheet/" },
-						{ label: "Combat Tracker", link: "/tools/combat-tracker/" },
-						{ label: "NPC Generator", link: "/tools/npc-generator/" },
-						{ label: "Ship Builder", link: "/tools/ship-builder/" },
-						{ label: "Success Curves", link: "/tools/success-curves/" },
-						{ label: "Defense Graph", link: "/tools/defense-graph/" },
+						{ label: "Quick Reference", link: "/tools/quick-reference/", attrs: { target: "_blank", rel: "noopener" } },
+						{ label: "Character Builder", link: "/tools/character-builder/", attrs: { target: "_blank", rel: "noopener" } },
+						{ label: "Character Sheet", link: "/tools/character-sheet/", attrs: { target: "_blank", rel: "noopener" } },
+						{ label: "Combat Tracker", link: "/tools/combat-tracker/", attrs: { target: "_blank", rel: "noopener" } },
+						{ label: "NPC Generator", link: "/tools/npc-generator/", attrs: { target: "_blank", rel: "noopener" } },
+						{ label: "Ship Builder", link: "/tools/ship-builder/", attrs: { target: "_blank", rel: "noopener" } },
 					],
 				},
 			],

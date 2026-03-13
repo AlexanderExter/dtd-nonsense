@@ -29,13 +29,10 @@ Internal documentation for the **Dungeons the Dragoning 40,000: 7th Edition** we
 | ------------------------------------------------- | ----- | ------------------------------------------------------------ |
 | [Character Sheet](tools/character-sheet.md)       | 4     | Freeform editable sheet — primary character tool             |
 | [Character Builder](tools/character-builder.md)   | 1.2   | 11-step guided creation wizard with XP tracking              |
-| [Dice Roller](tools/dice-roller.md)               | 0.1   | XkY rolling with overflow, explosions, history               |
 | [Combat Tracker](tools/combat-tracker.md)         | 1.1   | Initiative, HP/resource/condition tracking                   |
 | [Quick Reference](tools/quick-reference.md)       | 1.3   | Searchable rules index for gameplay                          |
 | [NPC Stat Block Builder](tools/npc-generator.md)  | 2.1   | Manual stat blocks with auto-derived stats and 40+ templates |
 | [Ship Builder](tools/ship-builder.md)             | 2.2   | Ship construction + combat sheet with dual-mode UI           |
-| [Success Curve Analyzer](tools/success-curves.md) | 3.1   | Monte Carlo probability visualizer for XkY pools             |
-| [Defense Graph Simulator](tools/defense-graph.md) | 3.2   | Damage mitigation pipeline visualizer                        |
 
 ## Shared Module Documentation
 
@@ -66,13 +63,10 @@ docs/                          ← You are here
 ├── tools/                     Per-tool specifications
 │   ├── character-sheet.md
 │   ├── character-builder.md
-│   ├── dice-roller.md
 │   ├── combat-tracker.md
 │   ├── quick-reference.md
 │   ├── npc-generator.md
-│   ├── ship-builder.md
-│   ├── success-curves.md
-│   └── defense-graph.md
+│   └── ship-builder.md
 └── shared/                    Shared module API reference
     ├── core-js.md
     └── dice-js.md

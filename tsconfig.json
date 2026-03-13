@@ -1,13 +1,15 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"]
-		},
-		"jsx": "react-jsx",
-		"jsxImportSource": "preact",
-		"moduleDetection": "force",
-		"noFallthroughCasesInSwitch": true
-	}
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "moduleDetection": "force",
+        "noFallthroughCasesInSwitch": true
+    }
 }

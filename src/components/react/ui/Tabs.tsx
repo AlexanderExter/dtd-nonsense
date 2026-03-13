@@ -1,0 +1,76 @@
+import { Tabs as RadixTabs } from "radix-ui";
+import type { ReactNode } from "react";
+
+/**
+ * Accessible tab navigation backed by Radix Tabs. Pair with `<TabPanel>`.
+ *
+ * ```tsx
+ * <Tabs tabs={[{ id: "stats", label: "Stats" }]} activeId={tab} onTabChange={setTab}>
+ *   <TabPanel tabId="stats">...</TabPanel>
+ * </Tabs>
+ * ```
+ */
+
+interface TabItem {
+	id: string;
+	label: string;
+}
+
+interface TabsProps {
+	tabs: TabItem[];
+	activeId: string;
+	onTabChange: (id: string) => void;
+	children: ReactNode;
+	className?: string;
+}
+
+export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsProps) {
+	return (
+		<RadixTabs.Root value={activeId} onValueChange={onTabChange}>
+			<RadixTabs.List
+				className={[
+					"flex gap-0.5 border-b-2 border-border mb-md overflow-x-auto [scrollbar-width:thin]",
+					className,
+				]
+					.filter(Boolean)
+					.join(" ")}
+			>
+				{tabs.map((tab) => (
+					<RadixTabs.Trigger
+						key={tab.id}
+						value={tab.id}
+						className={[
+							"px-md py-sm bg-transparent border-0 border-b-2 -mb-[2px] text-[0.9rem] font-semibold cursor-pointer whitespace-nowrap transition-all duration-150 font-[inherit] hover:text-text-primary",
+							activeId === tab.id
+								? "text-accent border-b-accent"
+								: "text-text-muted border-b-transparent",
+						]
+							.filter(Boolean)
+							.join(" ")}
+					>
+						{tab.label}
+					</RadixTabs.Trigger>
+				))}
+			</RadixTabs.List>
+			{children}
+		</RadixTabs.Root>
+	);
+}
+
+/**
+ * Content panel for a single tab. Must be nested inside `<Tabs>`.
+ */
+
+interface TabPanelProps {
+	tabId: string;
+	children: ReactNode;
+	className?: string;
+}
+
+export function TabPanel({ tabId, children, className }: TabPanelProps) {
+	return (
+		<RadixTabs.Content value={tabId} className={className}>
+			{children}
+		</RadixTabs.Content>
+	);
+}

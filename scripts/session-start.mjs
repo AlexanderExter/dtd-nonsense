@@ -8,7 +8,7 @@
  * What it does:
  *   1. Reports current git state (branch, clean/dirty, recent commits)
  *   2. Creates or switches to the target branch
- *   3. Runs `npm run check` for green baseline
+ *   3. Runs `bun run check` for green baseline
  *
  * What it does NOT do:
  *   - Handle dirty working trees (reports and exits — agent/user decides)
@@ -74,11 +74,11 @@ if (currentBranch === targetBranch) {
 
 // ─── 3. Baseline verification ───────────────────────────────────────────────
 
-heading("3. Baseline Verification (npm run check)");
+heading("3. Baseline Verification (bun run check)");
 console.log("");
 
 try {
-	execSync("npm run check", { stdio: "inherit" });
+	execSync("bun run check", { stdio: "inherit" });
 	console.log(`\n${GREEN}${BOLD}✓ Baseline green — ready to work.${RESET}`);
 } catch {
 	console.log(`\n${RED}${BOLD}✗ Baseline check failed.${RESET}`);

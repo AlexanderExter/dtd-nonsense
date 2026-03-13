@@ -74,25 +74,3 @@ export function compressOverflow(numDice: number, keepDice: number, modifier: nu
 
 	return { numDice, keepDice, modifier, compressed };
 }
-
-/**
- * Roll a dice pool: roll numDice d10s (exploding), keep the highest
- * keepDice results, and add a flat modifier.
- *
- * @param {number} numDice - Number of dice to roll
- * @param {number} keepDice - Number of dice to keep (highest)
- * @param {number} modifier - Flat modifier added to the total
- * @returns {number} Final total
- */
-export function rollPool(numDice: number, keepDice: number, modifier: number): number {
-	const rolls = new Array(numDice);
-	for (let i = 0; i < numDice; i++) {
-		rolls[i] = rollOneDie();
-	}
-	rolls.sort((a, b) => b.value - a.value);
-	let sum = 0;
-	for (let i = 0; i < keepDice; i++) {
-		sum += rolls[i].value;
-	}
-	return sum + modifier;
-}

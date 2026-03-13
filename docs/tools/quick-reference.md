@@ -3,8 +3,8 @@
 Searchable, categorized rules reference for at-the-table lookup. Provides rapid access to commonly needed rules, tables, and formulas.
 
 **Phase:** Complete
-**Files:** `src/pages/tools/quick-reference.astro`, `src/components/preact/tools/quick-reference/` (13 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/quick-reference.astro`, `src/components/react/tools/quick-reference/` (13 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 

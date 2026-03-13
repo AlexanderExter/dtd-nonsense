@@ -172,9 +172,9 @@ Completed items:
 | 11.2 Xref Warnings               | Fixed all 41 cross-reference warnings in `classes.json` (skill/feat name corrections).                                                                                |
 | 11.3 Character Defaults (W4)     | Aligned default character shapes between `character.ts` and sheet app module (later migrated to Preact in Phase 12).                                                  |
 | 11.4 Documentation Cleanup       | Deleted stale `implementation-plan.md` and `External-audit.md`. Removed Playwright/E2E references. Added anti-drift pitfall to conventions. Removed hardcoded counts. |
-| 11.5 Verification Infrastructure | Added `npm run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
-| 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `npm run prepare` for hook installation. |
-| 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `npm run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
+| 11.5 Verification Infrastructure | Added `bun run check` (tests → lint → validate+xref → content lint). Updated CI to run `validate:xref`.                                                               |
+| 11.6 Session Lifecycle Scripts   | Created `session-start.mjs`, `session-end.mjs`, `session-status.mjs` — deterministic branch management + squash-merge. Added `bun run prepare` for hook installation. |
+| 11.7 Pre-commit Hook             | `.githooks/pre-commit` runs `bun run check` before every commit. Installed via `git config core.hooksPath .githooks`.                                                 |
 
 **Status:** All checks pass (187 tests, 12/12 schemas, 0 xref warnings, 0 lint errors). Session automation replaces manual git ceremony.
 
@@ -210,6 +210,36 @@ Completed items:
 
 ---
 
+## Phase 13 — Tool Pruning + React Migration (2026-03-12)
+
+**Goal:** Remove underused analysis tools, then migrate the remaining 6 tools from Preact/Signals/Ariakit to React/Zustand/Radix UI for better ecosystem support and component quality.
+
+| Component                       | What Was Done                                                                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 13.0 Tool Pruning               | Removed Dice Roller (6 components), Success Curve Analyzer (9), Defense Graph Simulator (10). Deleted Web Worker infrastructure (`src/workers/`, `use-worker.ts`, `use-debounce.ts`). Removed Chart.js dependency. Deleted tool hub page (`src/pages/tools/index.astro`) and tool docs. |
+| 13.1 Framework Swap             | Replaced `@astrojs/preact` → `@astrojs/react`, `@preact/signals` → `zustand`, `@ariakit/react` → `radix-ui`. Updated `astro.config.mjs`, `tsconfig.json`, `package.json`.                     |
+| 13.2 State Management           | Created 6 Zustand stores (one per tool) replacing module-level signals. Stores use Zustand with localStorage for persistence where needed.                                                      |
+| 13.3 UI Primitives              | Rewired 18 shared UI primitives from Ariakit to Radix UI (Accordion, Combobox, Dialog, Select, Tabs, Tooltip). Added `Toast.tsx` (ephemeral notifications via `useSyncExternalStore`).          |
+| 13.4 Component Migration        | Migrated 74 tool components across 6 tools from Preact JSX to React JSX. Signals → Zustand selectors, `class` → `class` (preserved for Astro), Ariakit props → Radix API.                     |
+| 13.5 Documentation              | Updated `architecture.md`, `development-guide.md`, `copilot-instructions.md`, `astro.instructions.md`. Removed `preact-implementation-plan.md`.                                                |
+| 13.6 Stack Health               | Eliminated UI barrel file (`ui/index.ts`), rewrote 37 consumer imports to direct paths. Fixed Zustand re-renders in ShipBuilderApp + CombatTrackerApp (full-store destructure → individual selectors). Removed dead code: `useData`, `rollPool`, `useLocalStorage` hook, `AVAILABILITY` constant. Un-exported 9 internal-only functions. Installed `react-hook-form` (not yet integrated) and `knip` (dead code analyzer) with config. |
+
+**Totals:** 216 files changed (5,824 insertions, 8,816 deletions). 74 React tool components + 18 UI primitives across 6 tools. 6 Zustand stores. 5 commits on `session-2026-03-12`.
+
+**Decisions:**
+
+| Decision                | Choice                             | Rationale                                                                                  |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| Preact → React          | React 19 + `@astrojs/react`       | Radix UI requires React; Preact compat mode was an unnecessary shim layer                  |
+| Signals → Zustand       | Zustand 5 stores (one per tool)    | Zustand is React-native, supports selectors, doesn't need Preact-specific signal bindings  |
+| Ariakit → Radix UI      | `radix-ui` (unified package)       | Broader community adoption, better docs, unstyled primitives work well with Tailwind        |
+| Tool pruning scope      | Remove Dice Roller, Success Curves, Defense Graph | Low gameplay utility; Chart.js + Web Worker dependencies added complexity for niche features |
+| Toast pattern           | `useSyncExternalStore` (not Zustand) | Global ephemeral channel — fits event-emitter pattern better than persistent store           |
+
+**Status:** All automated checks pass (0 errors, 13 warnings, 182 tests). Manual browser testing of all 6 tools still pending.
+
+---
+
 ## Decision Log
 
 Key architectural and design decisions made during development:
@@ -218,7 +248,7 @@ Key architectural and design decisions made during development:
 | -------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Canonical character format | Character Sheet's JSON shape                                                    | New unified format; adapter layer                                            | Sheet was the most mature tool; adapting others to it was less work than designing a third format                                         |
 | Play Session future        | Deprecate entirely                                                              | Rebuild; merge into Sheet as "play mode"                                     | Features split cleanly between Combat Tracker and Sheet                                                                                   |
-| Tech stack                 | ~~Stay vanilla JS~~ → Preact Islands (Phase 12)                                | TypeScript; React/Vue                                                        | Originally vanilla JS for simplicity; migrated to Preact for reactive UI composition and maintainability as tools grew complex             |
+| Tech stack                 | ~~Stay vanilla JS~~ → ~~Preact Islands (Phase 12)~~ → React + Zustand (Phase 13) | TypeScript; React/Vue; stay on Preact                                        | Vanilla JS → Preact for reactive UI → React for Radix UI ecosystem and broader library support                                           |
 | Dice consolidation         | New `DTD.dice` module replacing all three                                       | Consolidate into `dice.js`; merge into `core.js`                             | Clean break with backward-compat aliases was least disruptive                                                                             |
 | Analysis tools             | Standalone pages in tools hub                                                   | Extend Dice Roller; combined analysis page                                   | Clean separation of concerns; each tool is self-contained                                                                                 |
 | Ship Sheet                 | Separate tool                                                                   | Section inside Character Sheet                                               | Ship mechanics are fundamentally different from character mechanics                                                                       |
@@ -230,8 +260,12 @@ Key architectural and design decisions made during development:
 | Pipeline scripts exception | Allowed in `pipeline/` when tested + review-gated                               | No scripts ever; full script freedom                                         | Version-controlled pipeline scripts are predictable; ad-hoc scripts remain banned                                                         |
 | Astro + Starlight          | Static site with Vercel deploy                                                  | GitHub Pages; Docusaurus; keep vanilla only                                  | Starlight gives search, theming, sidebar nav for free; Vercel has zero-config Astro support                                               |
 | ES module ports            | Manual port in `src/lib/dtd/`                                                   | Auto-generate; shared code as npm package                                    | Manual port is straightforward; only 2 files (core.js, dice.js) to keep in sync                                                           |
-| Large tool porting         | ~~Copy+edit~~ → Preact component decomposition (Phase 12)                      | Generate entire `.astro` file from scratch; inline all JS/CSS in single file | Original copy+edit pattern was replaced by Preact Islands — each tool decomposed into 6–18 focused components                            |
+| Large tool porting         | ~~Copy+edit~~ → React component decomposition (Phase 12↓13)                     | Generate entire `.astro` file from scratch; inline all JS/CSS in single file | Original copy+edit → Preact Islands → React Islands; each tool decomposed into 6–18 focused components                                     |
 | Sheet persistence          | Keep sheet's own localStorage CRUD                                              | Refactor to use `character.*` from core.js                                   | Sheet has its own migration logic and save format that differs from core.js. Unifying risks breaking save compatibility.                  |
+| Preact → React (Phase 13)  | React 19 + `@astrojs/react`                                                    | Stay on Preact compat; wait for Preact X                                     | Radix UI requires React; compat shim was unnecessary overhead                                                                             |
+| State management (Phase 13)| Zustand stores (one per tool)                                                   | Keep signals; React Context + useReducer; Jotai                              | Zustand is React-native with minimal API; per-tool stores give clear ownership                                                            |
+| UI primitives (Phase 13)   | Radix UI (unstyled)                                                             | Headless UI; keep Ariakit; build from scratch                                | Broadest React ecosystem adoption; unstyled primitives compose naturally with Tailwind                                                     |
+| Tool pruning (Phase 13)    | Remove Dice Roller, Success Curves, Defense Graph                               | Keep all; deprecate in UI only                                               | Low gameplay utility; Chart.js + Web Worker deps added complexity for niche analysis features                                              |
 
 ---
 
@@ -309,13 +343,12 @@ Notable game-rules lessons not captured elsewhere:
 | ----------------------- | ---------------- | ------------------------------------------------------------------ |
 | Character Sheet         | Active (Primary) | Freeform editable, multi-char CRUD, JSON import/export, print      |
 | Character Builder       | Active           | 11-step wizard, priority allocation, XP tracking, canonical export |
-| Dice Roller             | Active           | XkY with overflow, TN tracking, raises/checks, history             |
 | Combat Tracker          | Active           | Initiative, round tracking, HP/resource/conditions, reference bar  |
 | Quick Reference         | Active           | Searchable actions, conditions, modifiers, formulas, schools       |
 | NPC Stat Block Builder  | Active           | Auto-derived stats, trait system, 40+ templates, markdown copy     |
 | Ship Builder            | Active           | Builder + Sheet modes, hull/console/weapon config, combat tracking |
-| Success Curve Analyzer  | Active           | Monte Carlo probability visualization, 4-pool comparison           |
-| Defense Graph Simulator | Active           | Damage pipeline waterfall, HP curves, armor trade-offs, heat maps  |
+
+_Dice Roller, Success Curve Analyzer, and Defense Graph Simulator were removed in Phase 13 (tool pruning + React migration)._
 
 ### New Shared Infrastructure
 

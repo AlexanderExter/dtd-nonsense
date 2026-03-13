@@ -3,8 +3,8 @@
 Guided 11-step character creation wizard that enforces creation rules and outputs Character Sheet-compatible JSON. Designed for new players who need structured guidance through the character creation process.
 
 **Phase:** 1.2
-**Files:** `src/pages/tools/character-builder.astro`, `src/components/preact/tools/character-builder/` (18 components)
-**Pattern:** Preact Island via `client:load` with module-level `@preact/signals`
+**Files:** `src/pages/tools/character-builder.astro`, `src/components/react/tools/character-builder/` (18 components)
+**Pattern:** React Island via `client:only="react"` with module-level Zustand
 
 ---
 
@@ -66,9 +66,9 @@ Groups for both characteristics and skills:
 
 ## Architecture
 
-Rewrite of the original Builder as a Preact Island, following Character Sheet patterns.
+Rewrite of the original Builder as a React Island, following Character Sheet patterns.
 
-**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, `@preact/signals`
+**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, Zustand
 
 **Data sources:** `races.json`, `exaltations.json`, `skills.json`, `classes.json`, `feats.json`, `backgrounds.json`, `alignments.json`, `equipment.json`, `weapons.json`
 

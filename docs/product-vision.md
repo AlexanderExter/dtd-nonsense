@@ -49,8 +49,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 - Searchable, corrected rules reference (both books, 24 topic files)
 - Character lifecycle tools (Sheet, Builder, NPC Generator)
-- Gameplay utilities (Dice Roller, Combat Tracker, Quick Reference)
-- Analysis tools (Success Curves, Defense Graph)
+- Gameplay utilities (Combat Tracker, Quick Reference)
 - Ship subsystem tool (Ship Builder)
 - Mobile-responsive static site with WH40K-themed visual identity
 - Data validation pipeline ensuring correctness
@@ -92,13 +91,13 @@ Visual polish and UX quality — move from beta to release-grade presentation. F
 
 - Cross-platform character persistence (e.g., import/export, shareable links)
 - Community-driven editorial direction decision (derivative vs. curated original)
-- ~~Preact reactivity layer~~ — **Done.** All 9 tools migrated to Preact Islands (2026-03)
+- ~~React migration~~ — **Done.** All 6 tools migrated to React Islands (2026-03)
 - Lighthouse / Core Web Vitals performance audit before public launch
 
 ### Deliberately Deferred
 
 - **CI cross-reference validation** — needs baseline suppression mechanism so new warnings fail CI without blocking on pre-existing data gaps
-- **Browser testing for Preact tools** — all 9 tools migrated to Preact Islands but not yet manually tested in-browser for visual/functional parity
+- **Browser testing for React tools** — React migration complete (Phase 13); manual in-browser testing for visual/functional parity deferred until before release
 
 ---
 

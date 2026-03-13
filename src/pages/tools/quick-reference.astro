@@ -1,10 +1,10 @@
 ---
-import { QuickReferenceApp } from "@/components/preact/tools/quick-reference/QuickReferenceApp";
+import { QuickReferenceApp } from "@/components/react/tools/quick-reference/QuickReferenceApp";
 import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
 
 <ToolLayout title="Quick Reference" description="Fast, searchable rules lookup for DTD 40k gameplay">
-  <QuickReferenceApp client:only="preact" />
+  <QuickReferenceApp client:only="react" />
 
   <style>
     @media print {

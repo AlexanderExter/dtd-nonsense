@@ -13,53 +13,51 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Choice              | Rationale                                                                                                                                                                                                                                                    |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Astro + Starlight   | Documentation-first static site with built-in search (Pagefind), sidebar, theming                                                                                                                                                                            |
-| npm                 | Manages Astro, Starlight, Chart.js, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
+| Bun                 | Manages Astro, Starlight, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
 | ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
-| Preact + Signals     | Lightweight reactive UI for tool pages; `@astrojs/preact` with compat mode; `@preact/signals` for fine-grained state                                                                                                                                        |
+| React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management                                                                                                                                        |
 | Tailwind CSS v4      | Utility framework; `@theme` tokens as single source of truth; `@tailwindcss/vite` plugin; `@astrojs/starlight-tailwind` bridge                                                                                                                              |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
 
 Key files:
 
-| File / Directory       | Purpose                                                                                                                                |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `astro.config.mjs`     | Starlight config, sidebar, theme, Vercel adapter                                                                                       |
-| `scripts/prebuild.mjs` | Copies cleaned-references → rules, books, JSON → public/data                                                                           |
-| `src/content/docs/`    | Generated Starlight content (rules, books) — gitignored                                                                                |
-| `src/pages/tools/`     | Tool pages (Astro pages outside Starlight)                                                                                             |
-| `src/lib/dtd/`         | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
-| `src/workers/`         | TypeScript ESM Web Workers (simulation-worker.ts, defense-worker.ts) — bundled by Vite, import from `dice-primitives.ts`               |
-| `src/layouts/`         | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)                               |
-| `src/styles/`          | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                               |
-| `src/components/preact/` | Preact island components for all 9 tools (97 components)                                                                     |
-| `src/components/preact/ui/` | Shared UI primitives (18 components) — Ariakit + Tailwind wrappers                                                          |
-| `src/hooks/`           | Custom Preact hooks (`useData`, `useLocalStorage`, `useWorker`)                                                                        |
-| `data/`                | Canonical JSON game data (12 files) — source for prebuild                                                                              |
-| `public/data/`         | Generated JSON data copies (from `data/`) — gitignored                                                                                 |
+| File / Directory            | Purpose                                                                                                                |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `astro.config.mjs`          | Starlight config, sidebar, theme, Vercel adapter                                                                       |
+| `scripts/prebuild.mjs`      | Copies cleaned-references → rules, books, JSON → public/data                                                           |
+| `src/content/docs/`         | Generated Starlight content (rules, books) — gitignored                                                                |
+| `src/pages/tools/`          | Tool pages (Astro pages outside Starlight) — **must use `ToolLayout.astro`, never `StarlightPage`**                    |
+| `src/lib/dtd/`              | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
+| `src/layouts/`              | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)               |
+| `src/styles/`               | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                |
+| `src/components/react/`    | React island components for all 6 tools (74 components)                                                               |
+| `src/components/react/ui/` | Shared UI primitives (18 components) — Radix UI + Tailwind wrappers                                                     |
+| `data/`                     | Canonical JSON game data (12 files) — source for prebuild                                                              |
+| `public/data/`              | Generated JSON data copies (from `data/`) — gitignored                                                                 |
 
-Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild copies source content into Astro structure, then Astro builds the static site. `npm run build` runs both steps.
+Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild copies source content into Astro structure, then Astro builds the static site. `bun run build` runs both steps.
 
 ### When to Reconsider
 
-- **Preact Islands:** All 9 tools are migrated. If a tool grows beyond what signals can manage cleanly, consider a state management library — but signals have scaled to 17 components (Character Builder) without issues so far.
+- **React Islands:** All 6 tools use Zustand for state management, with one store per tool co-located as `store.ts`. Components use `useXStore(s => s.field)` selectors for fine-grained reactivity.
 
 ### Code Quality & Testing
 
-| Tool     | Purpose                        | Config         | npm Scripts          |
+| Tool     | Purpose                        | Config         | Bun Scripts          |
 | -------- | ------------------------------ | -------------- | -------------------- |
 | Biome    | Linter + formatter (JS/TS/CSS) | `biome.json`   | `lint`, `lint:fix`   |
 | bun:test | Unit testing (Jest-compatible)  | `bunfig.toml`  | `test`, `test:watch` |
 
-**Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `npm run lint` locally to check, `npm run lint:fix` to auto-fix.
+**Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `bun run lint` locally to check, `bun run lint:fix` to auto-fix.
 
-**bun:test** is Bun's built-in Jest-compatible test runner. It auto-discovers `*.test.ts` files and picks up `@/` path aliases from `tsconfig.json` automatically. Test files use the co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `npm run test` for current counts.
+**bun:test** is Bun's built-in Jest-compatible test runner. It auto-discovers `*.test.ts` files and picks up `@/` path aliases from `tsconfig.json` automatically. Test files use the co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `bun run test` for current counts.
 
 ### TypeScript Pipeline Scripts
 
 TypeScript scripts in `scripts/` provide data validation, content linting, and sync checking. Zod schemas in `src/lib/dtd/schemas/` are the source of truth for JSON data. See [docs/pipeline.md](pipeline.md) for details.
 
-Session lifecycle scripts (`session-start.mjs`, `session-end.mjs`, `session-status.mjs`) automate branch creation, squash-merge, and state reporting. A pre-commit hook (`.githooks/pre-commit`) runs `npm run check` before every commit. See [project-conventions.md](project-conventions.md#git-workflow) for the full workflow.
+Session lifecycle scripts (`session-start.mjs`, `session-end.mjs`, `session-status.mjs`) automate branch creation, squash-merge, and state reporting. A pre-commit hook (`.githooks/pre-commit`) runs `bun run check` before every commit. See [project-conventions.md](project-conventions.md#git-workflow) for the full workflow.
 
 ## Shared Library Structure
 
@@ -76,25 +74,25 @@ Assessment of `src/lib/dtd/` modules. The shared library is cleanly separated fr
 | `dice-primitives.ts` | Core dice algorithms | None | ~65 lines — used by dice.ts and workers |
 | `constants.ts` | Game constants | None | ~15 lines — characteristic groups/names |
 
-All modules import cleanly into Preact components. Workers import from `dice-primitives.ts` using relative paths (the `@/` alias doesn't resolve in worker bundles).
+All modules import cleanly into React components.
 
 ---
 
 ## Shared UI Layer
 
-All 9 tools share a set of **18 UI primitive components** in `src/components/preact/ui/`, backed by [Ariakit](https://ariakit.org/) for accessibility and Tailwind CSS tokens for styling.
+All 6 tools share a set of **18 UI primitive components** in `src/components/react/ui/`, backed by [Radix UI](https://www.radix-ui.com/) for accessibility and Tailwind CSS tokens for styling.
 
 ### Import Convention
 
 ```tsx
-import { Button, Modal, Toast, showToast } from "@/components/preact/ui";
+import { Button, Modal, Toast, showToast } from "@/components/react/ui";
 ```
 
-**Never import `@ariakit/react` directly in tool code** — always use the UI layer wrappers.
+**Never import `radix-ui` directly in tool code** — always use the UI layer wrappers.
 
 ### Component Tiers
 
-| Tier | Components | Ariakit? | Purpose |
+| Tier | Components | Radix? | Purpose |
 |------|-----------|----------|---------|
 | **Tier 1** — Pure styling | Button, Panel, SectionHeading, Badge, CloseButton, AddButton, NumberInput, FormGroup, PresetGroup, Toast | No | Wrap `.btn`/`.panel` CSS, standardize patterns |
 | **Tier 2** — Core | Modal, AccordionItem, Tabs/TabPanel | Yes | Dialog, disclosure, tab navigation |
@@ -102,9 +100,9 @@ import { Button, Modal, Toast, showToast } from "@/components/preact/ui";
 
 ### SSR Constraint
 
-Ariakit's store system (`useSyncExternalStore`) crashes during `preact-render-to-string`. All tool `.astro` pages **must** use `client:only="preact"` instead of `client:load`.
+All tool `.astro` pages use `client:only="react"` to avoid SSR issues with client-side state management.
 
-See [src/components/preact/ui/README.md](../src/components/preact/ui/README.md) for the full API reference.
+See [src/components/react/ui/README.md](../src/components/react/ui/README.md) for the full API reference.
 
 ---
 
@@ -117,7 +115,7 @@ The site is deployed to **Vercel** as a static site via `@astrojs/vercel`.
 | Setting          | Value                                  |
 | ---------------- | -------------------------------------- |
 | Framework        | Astro (auto-detected)                  |
-| Build command    | `npm run build`                        |
+| Build command    | `bun run build`                        |
 | Output directory | `.vercel/output/static`                |
 | Production URL   | `https://dtd-nonsense.vercel.app`      |
 | Adapter          | `@astrojs/vercel` (static output mode) |
@@ -127,7 +125,7 @@ Vercel is connected to the GitHub repository (`AlexanderExter/dtd-nonsense`). It
 
 - **Deploys production** when commits land on `main`
 - **Creates preview deployments** for every pull request, with a unique URL posted as a PR comment
-- Runs its own build (`npm run build`) independently of GitHub Actions
+- Runs its own build (`bun run build`) independently of GitHub Actions
 
 ### GitHub Actions CI
 
@@ -166,7 +164,7 @@ data/
 └── weapons.json          Ranged and melee weapon stats
 ```
 
-Run `npm run validate` to see current record counts for all 12 files.
+Run `bun run validate` to see current record counts for all 12 files.
 
 `data/` is the canonical source for all game data. `scripts/prebuild.mjs` copies these files to `public/data/` during the build — `public/data/` is gitignored and never committed.
 
@@ -174,44 +172,37 @@ Run `npm run validate` to see current record counts for all 12 files.
 
 ## Code Patterns
 
-All tools use **Preact Islands** — components hydrated via `client:only="preact"` on their Astro page (required for Ariakit SSR compatibility). Each tool lives in `src/components/preact/tools/{tool-name}/` with:
+All tools use **React Islands** — components hydrated via `client:only="react"` on their Astro page (required for SSR compatibility). Each tool lives in `src/components/react/tools/{tool-name}/` with:
 
-- A root `*App.tsx` component (module-level signals, data loading, top-level layout)
+- A root `*App.tsx` component (Zustand stores, data loading, top-level layout)
 - Tab/section components
 - Shared sub-components in `shared/`
 - A `constants.ts` for tool-specific types and helpers
 
-State management uses `@preact/signals` with module-level signals exported from the root component:
+State management uses Zustand stores (one per tool, co-located as `store.ts`):
 
 ```typescript
-import { signal, computed } from "@preact/signals";
-export const myState = signal(initialValue);
-export const derivedValue = computed(() => myState.value * 2);
-export function updateState(fn) { myState.value = fn(myState.value); }
+import { create } from "zustand";
+
+interface ToolState {
+  myState: string;
+  setMyState: (v: string) => void;
+}
+
+export const useToolStore = create<ToolState>((set) => ({
+  myState: "",
+  setMyState: (v) => set({ myState: v }),
+}));
 ```
 
 | Tool              | Components | Directory                                     |
 | ----------------- | ---------- | --------------------------------------------- |
-| Dice Roller       | 6          | `src/components/preact/tools/dice-roller/`         |
-| Quick Reference   | 12         | `src/components/preact/tools/quick-reference/`     |
-| Success Curves    | 8          | `src/components/preact/tools/success-curves/`      |
-| Defense Graph     | 9          | `src/components/preact/tools/defense-graph/`       |
-| Combat Tracker    | 8          | `src/components/preact/tools/combat-tracker/`      |
-| NPC Generator     | 11         | `src/components/preact/tools/npc-generator/`       |
-| Ship Builder      | 11         | `src/components/preact/tools/ship-builder/`        |
-| Character Builder | 17         | `src/components/preact/tools/character-builder/`   |
-| Character Sheet   | 15         | `src/components/preact/tools/character-sheet/`     |
-
-### Chart.js
-
-Two tools (success-curves, defense-graph) use Chart.js via dynamic import so the ~208 KB bundle (~71 KB gzip) is only loaded when those tools are visited:
-
-```typescript
-const { Chart, registerables } = await import("chart.js");
-Chart.register(...registerables);
-```
-
-Vite bundles Chart.js from the npm package — no CDN dependency.
+| Quick Reference   | 12         | `src/components/react/tools/quick-reference/`     |
+| Combat Tracker    | 8          | `src/components/react/tools/combat-tracker/`      |
+| NPC Generator     | 11         | `src/components/react/tools/npc-generator/`       |
+| Ship Builder      | 11         | `src/components/react/tools/ship-builder/`        |
+| Character Builder | 17         | `src/components/react/tools/character-builder/`   |
+| Character Sheet   | 15         | `src/components/react/tools/character-sheet/`     |
 
 ---
 
@@ -269,8 +260,6 @@ The Builder also has a direct "Open in Sheet" button that calls `character.save(
 | Combat Tracker | Character Sheet characters                         | `character.list()` + `character.load()` |
 | NPC Generator  | `npc-templates.json`, `traits.json`, `skills.json` | `loadData()`                            |
 | Ship Builder   | `ships.json`                                       | `loadData()`                            |
-| Success Curves | _(no external data)_                               | Self-contained Monte Carlo              |
-| Defense Graph  | _(no external data)_                               | Self-contained simulation               |
 
 ### JSON Data Loading
 
@@ -417,7 +406,6 @@ All tools use localStorage with consistent key patterns:
 | Combat Tracker  | `dtd_encounter_{id}` | `dtd_encounter_list` |
 | NPC Generator   | `dtd_npc_{id}`       | `dtd_npc_list`       |
 | Ship Builder    | `dtd_ship_{id}`      | `dtd_ship_list`      |
-| Dice Roller     | `dtd-roll-history`   | _(single key)_       |
 
 Pattern: data stored as JSON string per-entity, with a separate JSON array index mapping `[{ id, name }]` entries.
 
@@ -441,9 +429,9 @@ All tool pages use **Tailwind CSS v4** utility classes. Design tokens are define
 ### Styling Conventions
 
 - **Tailwind utilities on every element** — no hand-written CSS in `<style>` blocks
-- **`class` attribute** (not `className`) in Preact JSX
+- **`class` attribute** (not `className`) in React JSX
 - **Conditional classes**: `.filter(Boolean).join(" ")` pattern
-- **Dynamic values only** via `style={{}}` (runtime percentages, Chart.js colors, canvas)
+- **Dynamic values only** via `style={{}}` (runtime percentages, dynamic colors)
 - **No `@apply`** — utilities applied directly in JSX
 - **Color lookup maps**: Typed `Record<string, string>` for badge/status colors
 
@@ -476,7 +464,6 @@ CSS that cannot be expressed as Tailwind utilities and remains as hand-written C
 | `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (`.panel`, `.btn` family) |
 | `src/layouts/ToolLayout.astro` | 5 | `box-sizing: border-box` reset only |
 | `quick-reference.astro` | 6 | Print-only `@media print` |
-| `defense-graph.astro` | 4 | Print-only `@media print` |
 | `npc-generator.astro` | 6 | Print-only `@media print` |
 | `ship-builder.astro` | 5 | Print-only `@media print` |
 | `character-sheet.astro` | 12 | Print-only `@media print` + `tab-panel::before` content |

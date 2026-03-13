@@ -1,0 +1,65 @@
+import { useCallback } from "react";
+import { useShipStore } from "./store";
+
+export function TorpedoSlots() {
+	const { shipData, ship, updateShip } = useShipStore();
+	const data = shipData;
+	const currentShip = ship;
+
+	if (!data) return null;
+
+	const handleToggleTube = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		const checked = (e.target as HTMLInputElement).checked;
+		updateShip((s) => ({ ...s, hasTorpedoTube: checked }));
+	}, []);
+
+	const handleTorpedoChange = useCallback((idx: number, torpedoId: string) => {
+		updateShip((s) => {
+			const torpedoes = [...s.torpedoes];
+			torpedoes[idx] = torpedoId;
+			return { ...s, torpedoes };
+		});
+	}, []);
+
+	return (
+		<section className="mb-xl">
+			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Torpedoes</h2>
+			<div>
+				<label className="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
+					<input type="checkbox" checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
+					<span>Torpedo Tube ({data.torpedoTubeCost} BP) — holds 5 torpedoes</span>
+				</label>
+				{currentShip.hasTorpedoTube && (
+					<div>
+						<h4>Torpedo Loadout (5 slots)</h4>
+						{Array.from({ length: 5 }, (_, i) => {
+							const current = currentShip.torpedoes[i] || "";
+							const selectedTorpedo = current ? data.torpedoes.find((t) => t.id === current) : null;
+
+							return (
+								<div key={i} className="flex items-center gap-sm py-xs">
+									<span>#{i + 1}</span>
+									<select
+										className="flex-1 py-1 px-2 text-[0.85rem]"
+										value={current}
+										onChange={(e) => handleTorpedoChange(i, (e.target as HTMLSelectElement).value)}
+									>
+										<option value="">— Empty —</option>
+										{data.torpedoes.map((t) => (
+											<option key={t.id} value={t.id}>
+												{t.name} ({t.cost} BP)
+											</option>
+										))}
+									</select>
+									<span className="text-[0.8rem] text-accent min-w-10 text-right">
+										{selectedTorpedo ? `${selectedTorpedo.cost} BP` : ""}
+									</span>
+								</div>
+							);
+						})}
+					</div>
+				)}
+			</div>
+		</section>
+	);
+}

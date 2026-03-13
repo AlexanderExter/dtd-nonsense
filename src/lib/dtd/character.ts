@@ -96,6 +96,8 @@ export const character = {
 		age: "",
 		currentHP: 0,
 		currentResolve: 0,
+		xpLog: [],
+		xpSpendLog: [],
 	},
 
 	createDefault(): CharacterData {

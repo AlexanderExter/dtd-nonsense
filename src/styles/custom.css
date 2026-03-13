@@ -125,3 +125,10 @@ starlight-content h2 {
 	border-bottom: 1px solid var(--sl-color-hairline-shade);
 	padding-bottom: 0.25rem;
 }
+
+/* External link icon for sidebar tool links (target="_blank") */
+nav.sidebar-content a[target="_blank"]::after {
+	content: " ↗";
+	font-size: 0.75em;
+	opacity: 0.6;
+}
