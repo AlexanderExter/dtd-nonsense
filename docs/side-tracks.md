@@ -58,6 +58,33 @@ Items needing research or design decisions before action.
 
 **Issue:** Knip is configured and working but only runs manually. Dead code accumulates silently between runs.
 **Context:** Discovered 8 unused UI files and 19 unused exports during first real knip run (2026-03-13). If knip had been in CI, these would have been caught when they became dead.
+
+### Extend check:deps and check:structure
+
+**Context:** Both tools were added 2026-03-13 and pass clean on the current codebase. First-run verification confirmed all architectural rules are correct and live (tested `no-cross-tool-imports` with an injected violation). These are clear, low-cost additions.
+
+**dependency-cruiser — add one more rule:**
+
+- **`no-hooks-to-lib-reverse`** — `src/lib/dtd/` must not import from `src/hooks/`. Hooks are React-tied; the lib must stay framework-free. Currently clean by convention, not by code. Add to `.dependency-cruiser.cjs` `forbidden` array alongside the other project-specific rules.
+
+**ts-morph check-structure — add one more check:**
+
+- **Check 4: `*App.tsx` export naming convention** — each tool's root component file (`src/components/react/tools/*/**App.tsx`) must export a named function/const whose name matches the filename (e.g., `CombatTrackerApp.tsx` → exports `CombatTrackerApp`). Agents and Astro pages import these by exact name — a rename-without-update silently breaks the page (Astro's `client:only="react"` does not catch this at build time for named imports).
+
+**ts-morph check-structure — document the intentional barrel scope:**
+
+- Add a code comment in `scripts/check-structure.ts` Check 2 explaining *why* the expected list is only `./character.ts`, `./data.ts`, `./derived.ts` and not `./types.ts`, `./dice.ts`, `./constants.ts` (those are imported directly for tree-shaking — `core.ts` is backward-compat only).
+
+**Next action:** Add the dep-cruiser rule and the ts-morph App naming check in the same commit. Update `docs/pipeline.md` Check 4 entry.
+
+---
+
+### Semgrep: Pattern-Based Convention Enforcement
+
+**Tool:** [Semgrep](https://semgrep.dev/) (open source, requires Python binary or Docker)
+**Value:** YAML rule DSL that matches structural code patterns via AST — express project conventions that Biome can't encode. Examples: "no Radix direct imports outside `ui/`", "Zustand actions must use `useCallback`", "migration completion: zero remaining `radix-ui` direct imports". Machine-readable output, exits 1 on violations — agent-compatible.
+**Blocker:** Python/binary dependency breaks the all-Bun toolchain. Windows install ergonomics need validation before committing.
+**Next action:** Validate Windows install path (binary download vs `pip install semgrep`). Identify first concrete rule to write (e.g., shadcn/ui migration completion check). Add once a rule exists that Biome + dependency-cruiser cannot express.
 **Next action:** Evaluate adding `bun run knip` to the `check` script or CI workflow. May need `--no-exit-code` flag or allow-list tuning to avoid false-positive failures.
 
 ### Zustand Store Isolation

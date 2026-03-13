@@ -180,6 +180,43 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 ---
 
+## Bulk Code Migrations (jscodeshift)
+
+**jscodeshift** is an AST-based code transformation tool for JavaScript/TypeScript. It rewrites source files structurally — not with text find-and-replace — preserving formatting for unmodified code (via `recast`).
+
+**Not installed as a devDependency — use via `bun x` on demand:**
+
+```powershell
+bun x jscodeshift -t scripts/codemods/my-transform.ts src/
+```
+
+### When to use
+
+- Renaming an API that appears in 10+ components (e.g., renaming a hook, changing a function signature)
+- Migrating import paths after a module refactor
+- Applying a structural pattern change across all tool components simultaneously
+- Any refactor where manual find-and-replace risks being incomplete or inconsistent
+
+### Workflow
+
+1. Create `scripts/codemods/my-transform.ts` — write the jscodeshift transform
+2. Run a dry-run first: `bun x jscodeshift --dry -t scripts/codemods/my-transform.ts src/`
+3. Apply: `bun x jscodeshift -t scripts/codemods/my-transform.ts src/`
+4. Verify: `bun run check` must pass green
+5. Commit the transform file alongside the code changes (for reviewability)
+6. Delete the transform after the PR merges (it's ephemeral)
+
+### Format preservation note
+
+jscodeshift uses `recast` internally, which reprints only the AST nodes you modified and copies everything else verbatim. This minimizes diff noise compared to formatters that reprint the entire file.
+
+### vs ts-morph
+
+- **Use jscodeshift** for bulk syntax rewrites (rename, restructure, migrate imports) where clean diffs matter.
+- **Use ts-morph** (installed) for type-aware analysis and pipeline scripts that need semantic information. See `scripts/check-structure.ts` as the reference implementation.
+
+---
+
 ## Using UI Primitives
 
 All tools share a set of **18 UI primitive components** in `src/components/react/ui/`. Import from the barrel:

@@ -14,16 +14,17 @@ All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. Th
 
 Common Unix commands **do not exist** in PowerShell. Always use the PowerShell equivalent:
 
-| Unix (BROKEN here)  | PowerShell equivalent        |
-| ------------------- | ---------------------------- |
-| `cmd1 && cmd2`      | `cmd1 ; cmd2`                |
-| `head -n 20`        | `Select-Object -First 20`    |
-| `tail -n 20`        | `Select-Object -Last 20`     |
-| `grep pattern file` | `Select-String -Pattern ...` |
-| `cat file`          | `Get-Content file`           |
-| `rm file`           | `Remove-Item file`           |
-| `which cmd`         | `Get-Command cmd`            |
-| `echo $?`           | `$LASTEXITCODE`              |
+| Unix (BROKEN here)        | PowerShell equivalent        |
+| ------------------------- | ---------------------------- |
+| `cmd1 && cmd2`            | `cmd1 ; cmd2`                |
+| `head -n 20`              | `Select-Object -First 20`    |
+| `tail -n 20`              | `Select-Object -Last 20`     |
+| `grep pattern file`       | `Select-String -Pattern ...` |
+| `cat file`                | `Get-Content file`           |
+| `rm file`                 | `Remove-Item file`           |
+| `which cmd`               | `Get-Command cmd`            |
+| `echo $?`                 | `$LASTEXITCODE`              |
+| `npx pkg` / `bunx pkg`    | `bun x pkg`                  |
 
 When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism. Translate before re-running.
 
@@ -41,7 +42,10 @@ When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism.
 - **bun:test**: Built-in test runner (Jest-compatible). Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `bun run test` (or `bun test` directly) to run all tests. Config via `bunfig.toml`.
 - **React**: UI framework for tool pages. `@astrojs/react` integration, **Zustand** for state management, **Radix UI** for accessible primitives.
 - **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
-- **`bun run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint → sync-check → knip. Use this as the single baseline command.
+- **dependency-cruiser** (installed): Enforces architectural import boundaries via `.dependency-cruiser.cjs`. Run `bun run check:deps`. Encodes the tool-island architecture as machine-checkable rules. See `docs/pipeline.md`.
+- **ts-morph** (installed): TypeScript Compiler API wrapper for type-aware structural analysis. Import in pipeline scripts: `import { Project } from "ts-morph"`. Reference: `scripts/check-structure.ts`. See `docs/pipeline.md`.
+- **jscodeshift** (via `bun x` — not installed): AST-based bulk code transformation. Use on-demand: `bun x jscodeshift -t scripts/codemods/<transform>.ts src/`. Write transforms to `scripts/codemods/`, verify with `bun run check`, delete post-merge. See `docs/development-guide.md`.
+- **`bun run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint → sync-check → knip → check:deps → check:structure. Use this as the single baseline command.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
 ---
@@ -173,18 +177,20 @@ TypeScript pipeline scripts (run via bun):
 
 | Script                   | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check → knip |
-| `bun run test`           | Unit tests only (bun:test)                                      |
-| `bun run lint`           | Biome lint/format check only                                    |
-| `bun run validate`       | Validate all 12 JSON data files against Zod schemas             |
-| `bun run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
-| `bun run lint:data`      | Lint content for terminology, formatting, encoding              |
-| `bun run sync-check`     | Detect drift between content and JSON data                      |
-| `bun run knip`           | Dead code detection: unused files, exports, types, dependencies |
-| `bun run session:start`  | Create/switch to session branch + baseline check                |
-| `bun run session:end`    | Squash-merge to main + cleanup                                  |
-| `bun run session:status` | Quick git state report                                          |
-| `bun run upgrade:recon`  | Dependency recon: outdated, audit, tree health, override check  |
+| `bun run check`            | **Run everything:** tests → lint → validate+xref → content lint → sync-check → knip → check:deps → check:structure |
+| `bun run test`             | Unit tests only (bun:test)                                                         |
+| `bun run lint`             | Biome lint/format check only                                                       |
+| `bun run validate`         | Validate all 12 JSON data files against Zod schemas                                |
+| `bun run validate:xref`    | Validate + cross-reference checks (class→skill, class→feat)                        |
+| `bun run lint:data`        | Lint content for terminology, formatting, encoding                                 |
+| `bun run sync-check`       | Detect drift between content and JSON data                                         |
+| `bun run knip`             | Dead code detection: unused files, exports, types, dependencies                    |
+| `bun run check:deps`       | Enforce architectural import boundaries (dependency-cruiser)                       |
+| `bun run check:structure`  | Verify TS structural conventions: stores, barrel exports, named-exports-only       |
+| `bun run session:start`    | Create/switch to session branch + baseline check                                   |
+| `bun run session:end`      | Squash-merge to main + cleanup                                                     |
+| `bun run session:status`   | Quick git state report                                                             |
+| `bun run upgrade:recon`    | Dependency recon: outdated, audit, tree health, override check                     |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 

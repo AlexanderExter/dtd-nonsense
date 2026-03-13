@@ -44,10 +44,12 @@ Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild c
 
 ### Code Quality & Testing
 
-| Tool     | Purpose                        | Config         | Bun Scripts          |
-| -------- | ------------------------------ | -------------- | -------------------- |
-| Biome    | Linter + formatter (JS/TS/CSS) | `biome.json`   | `lint`, `lint:fix`   |
-| bun:test | Unit testing (Jest-compatible)  | `bunfig.toml`  | `test`, `test:watch` |
+| Tool                 | Purpose                                              | Config                         | Bun Scripts                         |
+| -------------------- | ---------------------------------------------------- | ------------------------------ | ----------------------------------- |
+| Biome                | Linter + formatter (JS/TS/CSS)                       | `biome.json`                   | `lint`, `lint:fix`                  |
+| bun:test             | Unit testing (Jest-compatible)                       | `bunfig.toml`                  | `test`, `test:watch`                |
+| dependency-cruiser   | Import boundary enforcement (architectural rules)    | `.dependency-cruiser.cjs`      | `check:deps`                        |
+| ts-morph             | TypeScript-aware structural convention checks        | `scripts/check-structure.ts`   | `check:structure`                   |
 
 **Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `bun run lint` locally to check, `bun run lint:fix` to auto-fix.
 

@@ -228,6 +228,52 @@ If a tool change touches game mechanics (formulas, stat calculations, race/class
 - [docs/project-conventions.md](../../docs/project-conventions.md) formula table
 - `src/lib/dtd/core.ts` `derived` stat implementations
 
+## Code Transformation Tools
+
+Two tools are available for programmatic code analysis and transformation:
+
+### ts-morph (installed — `import { Project } from "ts-morph"`)
+
+**ts-morph** wraps the TypeScript Compiler API. It gives agents type-aware code intelligence: query types, find all usages, verify exports, and rewrite source files with full type resolution.
+
+**Reference implementation:** `scripts/check-structure.ts` — three structural checks using the `Project` API. Study this before writing new ts-morph scripts.
+
+Common agent tasks with ts-morph:
+
+- **Impact analysis before refactoring:** Find all callers of a function across the codebase before changing its signature
+- **Structural verification:** Check that conventions hold (e.g., every store exports `use*Store`, no default exports)
+- **Type-aware migrations:** Find all usages of a type and update them when the type changes
+- **API surface checks:** Verify that barrel exports in `core.ts` match documented API
+
+```typescript
+import { Project } from "ts-morph";
+import * as path from "node:path";
+
+const ROOT = process.cwd();
+const project = new Project({
+  tsConfigFilePath: path.join(ROOT, "tsconfig.json"),
+  skipAddingFilesFromTsConfig: true,
+});
+const files = project.addSourceFilesAtPaths("src/lib/dtd/**/*.ts");
+// ... analyze or transform files
+```
+
+Add new checks to `scripts/check-structure.ts` by writing a `checkXxx(project: Project): CheckResult` function and appending it to the `results` array.
+
+### jscodeshift (bunx on-demand — no install)
+
+**jscodeshift** is a syntax-based code transformation tool for bulk rewrites across many files. Best for renaming APIs, migrating import paths, and structural refactors where format preservation matters.
+
+```powershell
+bun x jscodeshift -t scripts/codemods/my-transform.ts src/
+```
+
+- Write transforms to `scripts/codemods/` — commit them alongside the changes, delete post-merge
+- Dry-run first: `bun x jscodeshift --dry -t scripts/codemods/my-transform.ts src/`
+- Always verify with `bun run check` after applying
+- **Does not need type information** — for type-aware operations, use ts-morph instead
+- Full guide: [docs/development-guide.md](../../docs/development-guide.md#bulk-code-migrations-jscodeshift)
+
 ## Convention References
 
 - **Git workflow, terminology, formulas:** [docs/project-conventions.md](../../docs/project-conventions.md)

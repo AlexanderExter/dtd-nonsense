@@ -6,12 +6,14 @@ TypeScript pipeline scripts for data validation, content linting, and sync check
 
 All commands run via npm scripts (backed by `bun`):
 
-| Script               | Command                         | Purpose                                             |
-| -------------------- | ------------------------------- | --------------------------------------------------- |
-| `bun run validate`   | `bun run scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
-| `bun run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
-| `bun run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
-| `bun run knip`       | `knip`                          | Dead code detection: unused files, exports, types   |
+| Script                  | Command                              | Purpose                                             |
+| ----------------------- | ------------------------------------ | --------------------------------------------------- |
+| `bun run validate`      | `bun run scripts/validate.ts`        | Validate all 12 JSON data files against Zod schemas |
+| `bun run lint:data`     | `bun run scripts/lint.ts`            | Lint markdown for terminology, formatting, encoding |
+| `bun run sync-check`    | `bun run scripts/sync-check.ts`      | Detect drift between markdown and JSON data         |
+| `bun run knip`          | `knip`                               | Dead code detection: unused files, exports, types   |
+| `bun run check:deps`    | `depcruise --validate ...`           | Enforce architectural import boundaries             |
+| `bun run check:structure` | `bun run scripts/check-structure.ts` | Verify TS structural conventions (stores, barrel, named exports) |
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 
@@ -92,16 +94,76 @@ bun run knip                                  # Run dead code detection
 - **Ignored modules:** `src/lib/dtd/schemas/**` (loaded dynamically via string keys)
 - **Ignored dependencies:** `@astrojs/check`, `@astrojs/starlight-tailwind`, `tailwindcss`, `react-hook-form` (consumed via CSS `@import`, Vite plugins, or framework integrations — not direct JS imports)
 
-Knip runs as the final step in `bun run check` and in CI. New unused exports or files will fail the check.
+Knip runs as the second-to-last step in `bun run check`. New unused exports or files will fail the check.
+
+### `bun run check:deps`
+
+Enforce architectural import boundaries using [dependency-cruiser](https://github.com/sverweij/dependency-cruiser).
+
+```bash
+bun run check:deps
+```
+
+**Configuration:** `.dependency-cruiser.cjs` at the project root. Rules are split into two groups:
+
+- **Default rules** (auto-generated): circular dependencies, orphan detection, deprecated modules, unresolvable imports, dev-dep mixing.
+- **Project-specific rules** — encoding the tool-island architecture:
+
+| Rule | Description |
+| ---- | ----------- |
+| `no-ui-to-tools` | `src/components/react/ui/` must not import from `src/components/react/tools/` |
+| `no-cross-tool-imports` | Tool A may not import from Tool B — each tool is an independent React island |
+| `scripts-no-components` | `scripts/` may not import from `src/components/` |
+| `no-lib-imports-react` | `src/lib/dtd/` must not import `react` or `react-dom` — stays DOM-free |
+
+**Scope:** Scans `src/components`, `src/lib`, `src/hooks`, and `scripts/` (skips `.astro` pages and generated files).
+
+**Agent use:** `depcruise --validate --output-type err ...` exits 0 on clean, 1 on violations. `--output-type json` gives machine-readable output.
+
+**Configuration notes — required for TypeScript + Bun + Astro projects:**
+
+The default generated config needs four adjustments before it runs cleanly on this stack. These are already applied in `.dependency-cruiser.cjs`:
+
+| Fix | Why |
+| --- | --- |
+| `tsPreCompilationDeps: true` | `import type` is invisible by default — type-only modules (e.g. `types.ts`) appear as orphans even when used across 30+ files |
+| Exclude `^astro:` and `^bun:` from `not-to-unresolvable` + `no-non-package-json` | Virtual module specifiers resolved at runtime — not on-disk packages, not in `package.json` |
+| Add `*App.tsx` to the `no-orphans` allowlist | Tool entry points are imported by `.astro` pages which dep-cruiser cannot parse |
+| Add `[.]test[.]` and `^scripts/` to the `no-orphans` allowlist | Entry points for `bun:test` runner and `bun run` direct invocation — no JS importer |
+
+If you add a new virtual module scheme (e.g. a Vite plugin that introduces `virtual:foo`) or a new script entry point, add it to the corresponding exclusion.
+
+### `bun run check:structure`
+
+Verify TypeScript structural conventions using [ts-morph](https://ts-morph.com/) (TypeScript Compiler API wrapper).
+
+```bash
+bun run check:structure
+bun run check:structure --json    # machine-readable JSON output
+```
+
+**Script:** `scripts/check-structure.ts` — three sequential checks:
+
+| Check | Rule | Files |
+| ----- | ---- | ----- |
+| **Store Conventions** | Every `store.ts` must export a `use*Store` function | `src/components/react/tools/*/store.ts` |
+| **Barrel Export Completeness** | `core.ts` must re-export `./character.ts`, `./data.ts`, `./derived.ts` | `src/lib/dtd/core.ts` |
+| **Named Exports Only** | No `export default` in components or lib | `src/components/react/**/*.tsx`, `src/lib/dtd/**/*.ts` |
+
+**Agent use:** Exits 0 on all pass, 1 on any failure. `--json` flag emits `{ passed: bool, checks: CheckResult[] }` for programmatic consumption.
+
+**Extending:** Add new check functions that receive the `ts-morph` `Project` instance and return a `CheckResult`. Append to the `results` array in the runner section.
 
 ## Script Structure
 
 ```text
 scripts/
-├── validate.ts       JSON schema validation engine (Zod-based)
-├── lint.ts           Markdown content linting (terminology, formatting, encoding)
-├── sync-check.ts     Markdown ↔ JSON drift checker (races, classes, feats parsers)
-└── prebuild.mjs      Copies content into Astro structure, injects Starlight frontmatter
+├── validate.ts          JSON schema validation engine (Zod-based)
+├── lint.ts              Markdown content linting (terminology, formatting, encoding)
+├── sync-check.ts        Markdown ↔ JSON drift checker (races, classes, feats parsers)
+├── check-structure.ts   ts-morph structural convention checks (store names, barrel, named exports)
+├── prebuild.mjs         Copies content into Astro structure, injects Starlight frontmatter
+└── codemods/            One-off jscodeshift transforms (committed for review, deleted post-merge)
 
 src/lib/dtd/schemas/  Zod schemas for all 12 JSON data files
 ├── common.ts         Shared types (CharacteristicGroup, CharacteristicId, etc.)
