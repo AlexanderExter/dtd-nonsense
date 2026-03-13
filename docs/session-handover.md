@@ -1,59 +1,60 @@
 # Session Handover
 
-Running context for the current work session. Updated as work progresses — not a logbook.
+Running context for the current work session. **Overwritten each session** — not a cumulative log.
 
 ---
 
 ## Current Branch
 
-`session-2026-03-12` (5 commits ahead of `main`)
+`session-2026-03-12` (10 commits ahead of `main`)
 
 ## Session Objective
 
-Two-phase session: (1) Tool pruning + Preact→React/Zustand/Radix UI migration, (2) Stack health evaluation and fixes per Vercel React best practices.
+Four-phase session: (1) Plan shadcn/ui migration, (2) Convert all content files to MDX and update editorial direction, (3) Run sanity-check audit + configure knip, (4) Integrate knip into automated pipeline + clean dead code + session wrapup.
 
-## What Changed This Session
+## What Changed
 
 ### Code Layer
 
 | Commit | Description |
 |--------|-------------|
-| `97a296e` | Character sheet phase 5 + ToolLayout restore + Ariakit TabPanel fix |
-| `12e0eb6` | Tool pruning — removed Dice Roller, Success Curves, Defense Graph (25 components), Web Workers, Chart.js |
-| `e57d96e` | Preact→React migration — 74 components, 6 Zustand stores, 18 Radix UI primitives |
-| `7a9a0d2` | Sanity-check fixes — biome.json path, 14 stale doc refs, Phase 13 history |
-| `7b0bfe5` | Stack health — barrel elimination (37 files), re-render fixes (2 App files), dead code cleanup (13 edits), RHF + Knip install |
+| `cb66685` | Convert 76 content files .md→.mdx, update pipeline scripts (prebuild, sync-check, lint) |
+| `1ad4c94` | Fix 31 stale .md refs across docs, update knip config, fix barrel import doc claims |
+| `4313a25` | Sanity-check completion: session-handover, side-tracks, pipeline roadmap |
+| `76bfdfa` | Integrate knip into check/CI, delete 8 unused UI components, un-export 17 types, add devserver to prompts |
 
-### Config Layer
+### Files Deleted
 
-- `package.json`: Added `react-hook-form`, `knip`, `"knip"` script
-- `knip.json`: New — entry points, project scope, false-positive suppression
-- `.github/copilot-skills/frontend-stack-advisor.md`: New skill file
+- 8 unused UI components: `Combobox`, `FormGroup`, `Menu`, `NumberInput`, `Panel`, `PresetGroup`, `Select`, `Tooltip`
+- `TabPanel` function from `Tabs.tsx`, `dismissToast` function from `Toast.tsx`
 
-### Deletions
+### Config Changes
 
-- `src/components/react/ui/index.ts` (barrel file)
-- `src/hooks/use-local-storage.ts` (unused hook)
-- `src/hooks/use-worker.ts`, `src/workers/` (Web Worker infrastructure)
-- 25 Preact tool components (3 removed tools)
-- `src/pages/tools/index.astro`, 3 tool astro pages, 3 tool doc specs
+- `package.json`: `bun run check` now includes `&& knip` at the end
+- `.github/workflows/build.yml`: Added `bun run knip` step before build
+- `knip.json`: Restructured — removed redundant entries, un-ignored UI components, added framework false-positive suppressions
+- `.github/prompts/sanity-check.prompt.md`: Added knip to automated verification (Section 3), added devserver verification (Section 8)
+- `.github/prompts/session-wrapup.prompt.md`: Added devserver startup (Section 3d) and devserver reporting (Phase 4 item 6)
 
-### Dead Code Cleaned
+### Documentation Updates
 
-- `useData` function removed from `use-data.ts` (only `useAllData` remains)
-- `rollPool` function removed from `dice-primitives.ts`
-- `AVAILABILITY` constant removed from character-sheet constants
-- 9 functions un-exported (internal use only) in ship-builder + character-sheet constants
+- `docs/pipeline.md`: Added `bun run knip` docs, updated CI listing, added MDX conversion + shadcn migration to roadmap
+- `docs/project-conventions.md`: Added knip to pipeline table, added "New Tool Integration" convention
+- `.github/copilot-instructions.md`: Updated bun run check description, added knip to pipeline table and CI description
+- `docs/product-vision.md`: Strategic pivot — "preserve the source" → "build on the source", lifecycle "Beta" → "Active Development"
+- `src/components/react/ui/README.md`: Removed deleted components from index
 
 ## Why It Changed
 
-**Tool pruning:** Dice Roller, Success Curves, Defense Graph had low gameplay utility. Chart.js + Web Workers added complexity for niche analysis features. Removing them simplified the migration scope.
+**MDX conversion**: Required for upcoming shadcn/ui migration. MDX enables JSX components inside content files.
 
-**React migration:** Radix UI requires React — the Preact compat shim was unnecessary overhead. Zustand replaced Preact signals for idiomatic React state management. One store per tool gives clear ownership.
+**Editorial direction pivot**: User dropped the "canonicity requirement" — new direction treats source material as inspiration, not scripture.
 
-**Stack health:** Barrel imports cause bundler deoptimization (Vercel best practices). Full-store destructures in ShipBuilderApp and CombatTrackerApp caused unnecessary re-renders on every state change. Dead code was identified via Knip audit.
+**Knip integration**: Tool was installed in prior session but never wired into check/CI. Dead code accumulated silently — 8 entire unused UI files. Now runs as the final step in `bun run check` and in CI.
 
-**Alternatives rejected:** Staying on Preact (compat shim overhead), React Context + useReducer (more boilerplate than Zustand), keeping barrel (tree-shaking penalty), shadcn/ui migration (deferred — current Radix UI layer works).
+**Dead code cleanup**: All knip findings resolved to achieve a clean baseline. 8 unused UI files deleted, 17 types un-exported (still used internally), 2 dead functions removed.
+
+**Devserver in prompts**: Sessions ended without visual verification. New convention ensures the dev server is running at session end.
 
 ## Verification
 
@@ -61,29 +62,27 @@ All automated checks pass:
 
 | Check | Result |
 |---|---|
-| `bun test` | 182 pass, 0 fail |
-| `bun run lint` | 154 files, clean |
-| `bun run validate:xref` | 12/12 schemas, 0 xref warnings |
+| `bun run check` | Pass (includes knip) |
+| `bun run validate` | 12/12 pass |
 | `bun run lint:data` | 0 errors, 13 warnings, 879 info |
-| `bun run sync-check` | races 16/16, classes 103/103, feats 329/329 |
+| `bun run sync-check` | 329 matched, 0 drift |
+| `bun run knip` | 0 issues |
+| `bun run build` | Not run this turn (pre-commit runs check, not build) |
 
 ## Known Issues
 
-1. **No browser testing done** — build passes, unit tests pass, but no visual/interaction verification. This is the highest-priority gap.
-2. **React Hook Form installed but not integrated** — `react-hook-form@7.71.2` is a dependency but no forms use it yet.
-3. **Documentation has stale references** — see sanity-check report for specific findings (development-guide.md hooks table, astro.instructions.md component count, copilot-instructions.md tool spec count).
-4. **Phase 13 history incomplete** — stack health work (commit 5) not yet documented in `project-history.md`.
+1. **No browser testing done** — build passes but no visual verification of .mdx rendering or tool pages.
+2. **lint:data baseline shift** — Was ~19 warnings / ~884 info, now 13/879. Improved by prior session's content edits.
+3. **project-history.md not updated** — Phase 14 (MDX conversion + editorial pivot + knip integration) not yet documented.
 
 ## Areas of Concern
 
-- **Zustand store isolation:** Module-level stores mean two instances of the same tool would share state. Not a problem on single-tool pages, but blocks any future dashboard/multi-tool view.
-- **StarlightPage layout:** Tool pages migrated to Starlight's `StarlightPage` component — its CSS constraints (max-width, heading styles) may conflict with tool components. Untested visually.
-- **Z-index stacking:** Modals, toasts, sticky headers use uncoordinated z-index values (90–1000). No semantic layer system.
+- **MDX rendering untested**: Files renamed but not visually checked. If content contained JSX-like syntax (angle brackets, curly braces), MDX parsing could break silently.
+- **markdown.instructions.md applyTo**: Updated glob to include `.mdx` but not verified VS Code applies instructions to .mdx files at runtime.
 
 ## Suggested Next
 
-1. **Fix stale documentation** — apply sanity-check findings (8 stale references across 4 files)
-2. **Browser test all 6 tools** — `bun run dev`, manually verify each tool loads and functions
-3. **Document stack health in project-history** — add Phase 13.6 section
-4. **Z-index layer system** — define semantic tokens in `tailwind.css`, replace ad-hoc values
-5. **Integrate React Hook Form** — start with Character Builder's multi-step form
+1. **Start dev server and visually verify** — `bun run dev`, spot-check content pages and all 6 tools.
+2. **shadcn/ui migration** — Primary next task. User decisions recorded: cohesive pre-made theme, sonner for toasts, lucide-react for icons, full Panel→Card swap, big bang migration. Initialize with `npx shadcn@latest init`.
+3. **Add Phase 14 to project-history.md** — Document MDX conversion, editorial direction change, knip integration.
+4. **Remove side-tracks item** — "Dead UI Components" entry in side-tracks.md can be marked resolved (deleted in this session).

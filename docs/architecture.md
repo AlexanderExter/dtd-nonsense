@@ -16,7 +16,7 @@ The rulebook and play tools are published as a static site via **Astro 5 + Starl
 | Bun                 | Manages Astro, Starlight, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
 | ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
-| React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management                                                                                                                                        |
+| React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management; adopting shadcn/ui component library                                                                                                    |
 | Tailwind CSS v4      | Utility framework; `@theme` tokens as single source of truth; `@tailwindcss/vite` plugin; `@astrojs/starlight-tailwind` bridge                                                                                                                              |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
 
@@ -80,17 +80,23 @@ All modules import cleanly into React components.
 
 ## Shared UI Layer
 
-All 6 tools share a set of **18 UI primitive components** in `src/components/react/ui/`, backed by [Radix UI](https://www.radix-ui.com/) for accessibility and Tailwind CSS tokens for styling.
+> **Migration in progress:** The UI layer is being migrated to [shadcn/ui](https://ui.shadcn.com/) (Radix-based component library), with **sonner** for toasts and **lucide-react** for icons. During the transition, some components below may be replaced by shadcn equivalents. See the component table for current state.
+
+All 6 tools share a set of UI primitive components in `src/components/react/ui/`, backed by [Radix UI](https://www.radix-ui.com/) for accessibility and Tailwind CSS tokens for styling.
 
 ### Import Convention
 
 ```tsx
-import { Button, Modal, Toast, showToast } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
+import { Modal } from "@/components/react/ui/Modal";
+import { showToast, Toast } from "@/components/react/ui/Toast";
 ```
 
 **Never import `radix-ui` directly in tool code** — always use the UI layer wrappers.
 
 ### Component Tiers
+
+> **Note:** This table reflects the pre-shadcn architecture and will be updated after migration.
 
 | Tier | Components | Radix? | Purpose |
 |------|-----------|----------|---------|

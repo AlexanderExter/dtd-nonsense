@@ -56,21 +56,3 @@ export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsP
 		</RadixTabs.Root>
 	);
 }
-
-/**
- * Content panel for a single tab. Must be nested inside `<Tabs>`.
- */
-
-interface TabPanelProps {
-	tabId: string;
-	children: ReactNode;
-	className?: string;
-}
-
-export function TabPanel({ tabId, children, className }: TabPanelProps) {
-	return (
-		<RadixTabs.Content value={tabId} className={className}>
-			{children}
-		</RadixTabs.Content>
-	);
-}

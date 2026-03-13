@@ -35,7 +35,7 @@ Follow the git workflow in [docs/project-conventions.md](../../docs/project-conv
 
 ## Directory Structure
 
-Key locations for editorial work: `books/` (core reference), `cleaned-references/` (condensed references), `docs/editorial/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
+Key locations for editorial work: `books/` (core reference, `.mdx`), `cleaned-references/` (condensed references, `.mdx`), `docs/editorial/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
 
 ### Content Maturity
 
@@ -184,7 +184,7 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 - `.github/copilot-skills/ttrpg-rules-editor/SKILL.md`
 - `.github/copilot-instructions.md`
 
-**File:** `cleaned-references/[FILENAME].md`
+**File:** `cleaned-references/[FILENAME].mdx`
 
 **Branch:** You MUST commit directly to branch `[branch-name]`. Do NOT create a new branch.
 

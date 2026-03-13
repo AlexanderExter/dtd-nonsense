@@ -1,38 +1,38 @@
-export interface QRefAction {
+interface QRefAction {
 	name: string;
 	type: string;
 	subtypes: string[];
 	desc: string;
 }
 
-export interface QRefCondition {
+interface QRefCondition {
 	name: string;
 	effect: string;
 	duration: string;
 }
 
-export interface QRefRangeBand {
+interface QRefRangeBand {
 	band: string;
 	range: string;
 	mod: string;
 }
 
-export interface QRefModifier {
+interface QRefModifier {
 	situation: string;
 	mod: string;
 }
 
-export interface QRefCover {
+interface QRefCover {
 	cover: string;
 	ap: number;
 }
 
-export interface QRefTN {
+interface QRefTN {
 	tn: number;
 	diff: string;
 }
 
-export interface QRefMagicSchool {
+interface QRefMagicSchool {
 	school: string;
 	char: string;
 	theme: string;
@@ -46,17 +46,17 @@ export interface QRefSchool {
 	blurb: string;
 }
 
-export interface QRefWeaponProperty {
+interface QRefWeaponProperty {
 	name: string;
 	desc: string;
 }
 
-export interface QRefFormula {
+interface QRefFormula {
 	metric: string;
 	formula: string;
 }
 
-export interface QRefHitLocation {
+interface QRefHitLocation {
 	roll: string;
 	location: string;
 }

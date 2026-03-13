@@ -11,6 +11,7 @@ All commands run via npm scripts (backed by `bun`):
 | `bun run validate`   | `bun run scripts/validate.ts`   | Validate all 12 JSON data files against Zod schemas |
 | `bun run lint:data`  | `bun run scripts/lint.ts`       | Lint markdown for terminology, formatting, encoding |
 | `bun run sync-check` | `bun run scripts/sync-check.ts` | Detect drift between markdown and JSON data         |
+| `bun run knip`       | `knip`                          | Dead code detection: unused files, exports, types   |
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 
@@ -74,7 +75,24 @@ Compare parsed markdown content against JSON data files to detect drift.
 bun run sync-check                            # Run all sync comparisons
 ```
 
-Compares: `04-Races.md` ↔ `races.json`, `06-Classes.md` ↔ `classes.json`, `07-Feats.md` ↔ `feats.json`.
+Compares: `04-Races.mdx` ↔ `races.json`, `06-Classes.mdx` ↔ `classes.json`, `07-Feats.mdx` ↔ `feats.json`.
+
+### `bun run knip`
+
+Detect unused files, exports, types, and dependencies across the project.
+
+```bash
+bun run knip                                  # Run dead code detection
+```
+
+**Configuration:** `knip.json` at project root defines entry points, project scope, and false-positive suppression:
+
+- **Entry points:** `src/pages/**/*.astro`, `scripts/*.{ts,mjs}`
+- **Project scope:** `src/**/*.{ts,tsx,astro}`, `scripts/**/*.{ts,mjs}`
+- **Ignored modules:** `src/lib/dtd/schemas/**` (loaded dynamically via string keys)
+- **Ignored dependencies:** `@astrojs/check`, `@astrojs/starlight-tailwind`, `tailwindcss`, `react-hook-form` (consumed via CSS `@import`, Vite plugins, or framework integrations — not direct JS imports)
+
+Knip runs as the final step in `bun run check` and in CI. New unused exports or files will fail the check.
 
 ## Script Structure
 
@@ -127,6 +145,7 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 - run: bun test                           # bun:test unit tests — must pass
 - run: bun run scripts/validate.ts --xref # Zod schema + xref check — must pass
 - run: bun run scripts/lint.ts            # Terminology/formatting — must pass
+- run: bun run knip                       # Dead code detection — must pass
 - run: bun run build                      # Astro build — must pass
 ```
 
@@ -145,5 +164,7 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 | Done     | Python → TypeScript consolidation | —       | Pipeline fully ported to TypeScript; Python pipeline deleted                |
 | Done     | Preact → React migration          | —       | 74 components, 6 Zustand stores, 18 Radix UI primitives (Phase 13)         |
 | Done     | Stack health fixes                | —       | Barrel elimination, re-render fixes, dead code cleanup, RHF + Knip install  |
+| Done     | MDX conversion                    | —       | 76 content files (.md→.mdx), pipeline scripts updated, docs updated         |
+| High     | shadcn/ui migration               | Planned | Big-bang swap of 18 Radix UI hand-rolled primitives → shadcn/ui components  |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Zod schema introspection — eliminate manual schema docs                |

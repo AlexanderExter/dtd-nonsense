@@ -135,6 +135,18 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 
 **`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install _succeeds_ despite the error exit — but the false failure is confusing. Use `bun install` instead of `bun install` when nested overrides are present.
 
+### New Tool Integration
+
+When installing a new dev tool (linter, dead-code detector, formatter, etc.), integrate it into the automated pipeline **in the same session**:
+
+1. Add the tool's script to `package.json` `"scripts"`
+2. Chain it into `bun run check`
+3. Add a step to `.github/workflows/build.yml`
+4. Document it in `docs/pipeline.md`, `docs/project-conventions.md`, and `.github/copilot-instructions.md`
+5. Verify it passes cleanly (`exit 0`) before committing
+
+A tool that exists in `devDependencies` but isn't wired into check/CI is invisible tech debt — dead code and violations accumulate silently between manual runs.
+
 ---
 
 ## D:TD Conventions
@@ -250,6 +262,8 @@ Always verify calculated stats against formulas. Common errors:
 
 **Books are canonical. Forums are supplementary. Never invent.**
 
+All content files in `books/` and `cleaned-references/` use `.mdx` format. This project is a curated creative derivative — the books are the authority for core mechanics, but the goal is a polished reference, not strict fidelity to the original PDFs.
+
 | Tier | Source                                      | Authority                                                 |
 | ---- | ------------------------------------------- | --------------------------------------------------------- |
 | 1    | `books/` (per-chapter rulebook split)       | Absolute for core mechanics                               |
@@ -260,7 +274,7 @@ When sources conflict: higher tier wins. When unclear: document in `docs/editori
 
 For the full resolution protocol and annotation standards, see the `dtd-source-hierarchy` skill.
 
-**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.md`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
+**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.mdx`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
 
 ---
 
@@ -433,10 +447,10 @@ Specific counts in documentation (e.g., "187 tests", "12 files", "103 records") 
 
 Files heavily reference each other. Key relationships to verify when editing:
 
-- Classes → require characteristics/skills from `03-Characteristics-Skills.md`
-- Feats → reference class features from `06-Classes.md`
+- Classes → require characteristics/skills from `03-Characteristics-Skills.mdx`
+- Feats → reference class features from `06-Classes.mdx`
 - Magic/Sword schools → gated by class level
-- `99-Appendix-Archive.md` → contains errata that supersedes earlier files
+- `99-Appendix-Archive.mdx` → contains errata that supersedes earlier files
 - `data/` → JSON data must match `cleaned-references/` (skill mappings, dot values, formulas)
 - `src/lib/dtd/core.ts` → ES module root — data loading, character CRUD, derived stats, XP, UI helpers
 - `src/lib/dtd/dice.ts` → dice module — XkY rolling, overflow compression, notation parsing
@@ -448,7 +462,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 
 | Command                  | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
+| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check → knip |
 | `bun run dev`            | Start Astro dev server with hot reload                          |
 | `bun run build`          | Full build: `prebuild.mjs` + `astro build`                      |
 | `bun run preview`        | Preview production build locally                                |
@@ -458,6 +472,7 @@ The project publishes a static site via Astro + Starlight, deployed to Vercel. K
 | `bun run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
 | `bun run lint:data`      | Lint markdown for terminology, formatting, encoding             |
 | `bun run sync-check`     | Detect drift between markdown and JSON data                     |
+| `bun run knip`           | Dead code detection: unused files, exports, types, dependencies |
 | `bun run session:start`  | Create/switch to session branch + baseline check                |
 | `bun run session:end`    | Squash-merge to main + cleanup                                  |
 | `bun run session:status` | Quick git state report                                          |

@@ -106,6 +106,16 @@ If multiple branches exist (from multi-agent confusion or multi-day features):
 2. Scan the working tree for orphaned backup files, temp files, or build artifacts — remove if found
 3. Verify main is clean: `git status` should report a clean working tree with nothing to commit
 
+### 3d. Start Dev Server
+
+Start the Astro dev server so the user can visually verify changes:
+
+```
+bun run dev
+```
+
+Leave it running. Report the local URL (typically `http://localhost:4321/`) in the Phase 4 summary.
+
 ---
 
 ## Phase 4 — Summary
@@ -116,4 +126,5 @@ Report to the user:
 2. **Branches merged** — which branches were merged and deleted
 3. **Branches remaining** — any WIP or flagged branches still open
 4. **Open items** — anything that needs user attention (stale branches, unresolved questions, etc.)
-5. **Closure** — Explicitly conclude the chat with "Session Completed" (visual marker confirming full execution of this procedure)
+5. **Dev server** — confirm the dev server is running and provide the local URL
+6. **Closure** — Explicitly conclude the chat with "Session Completed" (visual marker confirming full execution of this procedure)

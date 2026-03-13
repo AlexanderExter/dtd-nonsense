@@ -20,4 +20,5 @@ jobs:
             - run: bun test
             - run: bun run scripts/validate.ts --xref
             - run: bun run scripts/lint.ts
+            - run: bun run knip
             - run: bun run build

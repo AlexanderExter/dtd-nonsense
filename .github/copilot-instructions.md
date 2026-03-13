@@ -41,7 +41,7 @@ When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism.
 - **bun:test**: Built-in test runner (Jest-compatible). Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `bun run test` (or `bun test` directly) to run all tests. Config via `bunfig.toml`.
 - **React**: UI framework for tool pages. `@astrojs/react` integration, **Zustand** for state management, **Radix UI** for accessible primitives.
 - **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
-- **`bun run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint. Use this as the single baseline command.
+- **`bun run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint → sync-check → knip. Use this as the single baseline command.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
 ---
@@ -105,7 +105,7 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 - **After code/data changes:** Run `bun run check` to confirm nothing broke. Biome reports ~12 pre-existing warnings globally (false positives and intentional CSS) — watch for _new_ warnings only.
 - **After doc-only changes:** No check needed unless you edited `scripts/`, `src/lib/`, or `data/`.
 - **Before committing:** The pre-commit hook runs `bun run check` automatically. If you want to verify before staging, run `bun run check` manually.
-- **Quick targeted checks:** Use `bun run test` (unit tests only), `bun run lint` (Biome only), or `bun run validate` (JSON schemas only) when you know exactly what scope changed.
+- **Quick targeted checks:** Use `bun run test` (unit tests only), `bun run lint` (Biome only), `bun run validate` (JSON schemas only), or `bun run knip` (dead code only) when you know exactly what scope changed.
 - **End of session:** Run `bun run session:end` to squash-merge to main and clean up the branch.
 
 ---
@@ -127,8 +127,8 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions th
 ## Project Architecture
 
 ```
-books/                 Core reference material (per-chapter split, 2 books)
-cleaned-references/    Succinct combined reading references (merged by topic)
+books/                 Core reference material (per-chapter split, 2 books, .mdx)
+cleaned-references/    Succinct combined reading references (merged by topic, .mdx)
 data/                  Canonical JSON game data (12 files, validated by Zod schemas)
 docs/                  Technical documentation, conventions, project history
   project-conventions.md  Single source of truth for all cross-cutting rules
@@ -150,7 +150,7 @@ src/                   Astro source files
   components/
     react/
       tools/           React island components (6 tools, 74 components)
-      ui/              Shared UI primitives (18 components, Radix UI + Tailwind)
+      ui/              Shared UI primitives (migrating to shadcn/ui)
   hooks/               Custom React hooks (use-data.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
@@ -161,11 +161,11 @@ src/                   Astro source files
 public/data/           Generated JSON data copies (gitignored)
 ```
 
-**Workflow:** `books/` is canonical for rules — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `src/lib/dtd/schemas/` validates the data. `docs/` documents everything.
+**Workflow:** `books/` and `cleaned-references/` are `.mdx` files — `cleaned-references/` condenses them by topic — `data/` holds the canonical JSON game data, copied to `public/data/` for Astro — `src/lib/dtd/schemas/` validates the data. `docs/` documents everything.
 
 **Build:** `bun run build` runs `prebuild.mjs` (copies content/data, injects frontmatter) then `astro build` (Pagefind search). Dev server: `bun run dev`. Lint with `bun run lint`. Run tests with `bun run test`.
 
-**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → bun test → JSON validation → content lint → Astro build on every push/PR.
+**Deployment:** Vercel is connected to GitHub. Production deploys on `main` merge; preview deployments auto-created for every PR. GitHub Actions CI (`.github/workflows/build.yml`) runs Biome lint → bun test → JSON validation → content lint → knip → Astro build on every push/PR.
 
 ### Pipeline Scripts
 
@@ -173,13 +173,14 @@ TypeScript pipeline scripts (run via bun):
 
 | Script                   | Purpose                                                         |
 | ------------------------ | --------------------------------------------------------------- |
-| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check |
+| `bun run check`          | **Run everything:** tests → lint → validate+xref → content lint → sync-check → knip |
 | `bun run test`           | Unit tests only (bun:test)                                      |
 | `bun run lint`           | Biome lint/format check only                                    |
 | `bun run validate`       | Validate all 12 JSON data files against Zod schemas             |
 | `bun run validate:xref`  | Validate + cross-reference checks (class→skill, class→feat)     |
-| `bun run lint:data`      | Lint markdown for terminology, formatting, encoding             |
-| `bun run sync-check`     | Detect drift between markdown and JSON data                     |
+| `bun run lint:data`      | Lint content for terminology, formatting, encoding              |
+| `bun run sync-check`     | Detect drift between content and JSON data                      |
+| `bun run knip`           | Dead code detection: unused files, exports, types, dependencies |
 | `bun run session:start`  | Create/switch to session branch + baseline check                |
 | `bun run session:end`    | Squash-merge to main + cleanup                                  |
 | `bun run session:status` | Quick git state report                                          |
@@ -189,32 +190,32 @@ All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names
 
 ### Cleaned References Index
 
-| File                         | Content                                      |
-| ---------------------------- | -------------------------------------------- |
-| 01-Core-Rules.md             | Dice system, tests, raises/checks            |
-| 02-Char-Creation.md          | 9-step character creation                    |
-| 03-Characteristics-Skills.md | 9 characteristics, skill list                |
-| 04-Races.md                  | 16 playable races                            |
-| 05-Exaltations.md            | Supernatural types (Vampire, Werewolf, etc.) |
-| 06-Classes.md                | 50+ classes with progression tables          |
-| 07-Feats.md                  | Feats, assets, hindrances                    |
-| 08-Backgrounds.md            | Background dots (Allies, Wealth, etc.)       |
-| 09-Alignments.md             | Pantheons and devotion mechanics             |
-| 10-Equipment.md              | Weapons, armor, gear                         |
-| 11-Magic.md                  | Sorcery system and spell schools             |
-| 12-Sword-Schools.md          | 9 melee combat disciplines                   |
-| 13-Gun-Kata.md               | 6 ranged combat disciplines                  |
-| 14-Combat.md                 | Combat rules and action economy              |
-| 15-Social-Combat.md          | Social interaction mechanics                 |
-| 16-Conditions.md             | Status effects                               |
-| 17-Vehicles.md               | Vehicle rules                                |
-| 18-Ships.md                  | Spelljammer-style space vessels              |
-| 19-Antagonists.md            | NPC creation and 40+ stat blocks             |
-| 20-Artifacts.md              | Magical items                                |
-| 21-Advanced-Rules.md         | Optional rules                               |
-| 22-SM-Reference.md           | Story Master tools                           |
-| 23-Setting-Lore.md           | Setting & lore (Crystal Spheres, factions)   |
-| 99-Appendix-Archive.md       | Errata (supersedes earlier files)            |
+| File                          | Content                                      |
+| ----------------------------- | -------------------------------------------- |
+| 01-Core-Rules.mdx             | Dice system, tests, raises/checks            |
+| 02-Char-Creation.mdx          | 9-step character creation                    |
+| 03-Characteristics-Skills.mdx | 9 characteristics, skill list                |
+| 04-Races.mdx                  | 16 playable races                            |
+| 05-Exaltations.mdx            | Supernatural types (Vampire, Werewolf, etc.) |
+| 06-Classes.mdx                | 50+ classes with progression tables          |
+| 07-Feats.mdx                  | Feats, assets, hindrances                    |
+| 08-Backgrounds.mdx            | Background dots (Allies, Wealth, etc.)       |
+| 09-Alignments.mdx             | Pantheons and devotion mechanics             |
+| 10-Equipment.mdx              | Weapons, armor, gear                         |
+| 11-Magic.mdx                  | Sorcery system and spell schools             |
+| 12-Sword-Schools.mdx          | 9 melee combat disciplines                   |
+| 13-Gun-Kata.mdx               | 6 ranged combat disciplines                  |
+| 14-Combat.mdx                 | Combat rules and action economy              |
+| 15-Social-Combat.mdx          | Social interaction mechanics                 |
+| 16-Conditions.mdx             | Status effects                               |
+| 17-Vehicles.mdx               | Vehicle rules                                |
+| 18-Ships.mdx                  | Spelljammer-style space vessels              |
+| 19-Antagonists.mdx            | NPC creation and 40+ stat blocks             |
+| 20-Artifacts.mdx              | Magical items                                |
+| 21-Advanced-Rules.mdx         | Optional rules                               |
+| 22-SM-Reference.mdx           | Story Master tools                           |
+| 23-Setting-Lore.mdx           | Setting & lore (Crystal Spheres, factions)   |
+| 99-Appendix-Archive.mdx       | Errata (supersedes earlier files)            |
 
 ---
 

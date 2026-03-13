@@ -263,7 +263,7 @@ function getEffectiveHullStrength(ship: ShipState, hull: Hull): number {
 // Computed ship stats
 // -------------------------------------------------------------------------
 
-export interface ShipStats {
+interface ShipStats {
 	man: number;
 	sensors: number;
 	acc: number;
@@ -290,7 +290,7 @@ export function getShipStats(ship: ShipState, hull: Hull): ShipStats {
 // Budget calculation
 // -------------------------------------------------------------------------
 
-export interface BPBreakdown {
+interface BPBreakdown {
 	hull: number;
 	consoles: number;
 	weapons: number;

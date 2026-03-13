@@ -45,11 +45,13 @@ Run the pipeline to catch machine-detectable issues:
 bun run validate       # Schema validation — must pass
 bun run lint:data      # Terminology + formatting
 bun run sync-check     # Markdown ↔ JSON sync comparison
+bun run knip           # Dead code detection — unused files, exports, deps
 ```
 
 Compare results against known baselines:
 - Validate + xref: 12/12 pass, 0 xref warnings
-- Lint: 0 errors, ~19 warnings, ~884 info
+- Lint: 0 errors, ~13 warnings, ~879 info
+- Knip: 0 unused files, 0 unused exports (any finding is a regression)
 
 **Any delta from baseline is a finding.** New warnings may be legitimate, but they need explanation.
 
@@ -67,8 +69,8 @@ For each changed file, trace its consumers and producers:
 | `scripts/lint.ts`         | `bun run lint:data` — results match expectations                     |
 | `data/*.json`             | Tools that load this data still render correctly                     |
 | `src/lib/dtd/core.ts`     | All 9 tools + 2 large tool apps — shared ES module                   |
-| `cleaned-references/*.md` | `bun run lint:data`, `bun run sync-check`, prebuild                  |
-| `books/*.md`              | `bun run lint:data`, `docs/editorial/open-questions.md`              |
+| `cleaned-references/*.mdx`| `bun run lint:data`, `bun run sync-check`, prebuild                  |
+| `books/*.mdx`             | `bun run lint:data`, `docs/editorial/open-questions.md`              |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
 | `.github/copilot-*`       | Relative links resolve correctly (files live in `.github/`)          |
 
@@ -185,7 +187,24 @@ Out-of-scope observations captured during sessions. Review periodically for resi
 
 ---
 
-## 8 — Report
+## 8 — Dev Server Verification
+
+Start the Astro dev server and spot-check rendering:
+
+```
+bun run dev
+```
+
+Verify:
+1. **Content pages** — spot-check 2-3 cleaned-references and 1-2 book chapters. Confirm markdown renders correctly (no MDX parse errors, no broken formatting).
+2. **Tool pages** — load each of the 6 tools (`/tools/*`). Confirm the React island mounts (no blank page, no console errors).
+3. **Navigation** — sidebar links resolve, search returns results.
+
+If the dev server is already running from earlier in the session, use it. Otherwise start it now. **Leave the dev server running** at session end so the user can visually verify.
+
+---
+
+## 9 — Report
 
 Present findings organized as:
 

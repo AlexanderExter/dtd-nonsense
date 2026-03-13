@@ -43,7 +43,7 @@ Each combatant displays:
 
 ### Condition Management
 
-- **Add condition** — from predefined condition list matching `16-Conditions.md`
+- **Add condition** — from predefined condition list matching `16-Conditions.mdx`
 - **Duration tracking** — auto-decrement per round, notify on expiry
 - **Custom conditions** — free-text for homebrew effects
 - **Condition reference** — tooltip/popup with mechanical effects
@@ -93,7 +93,7 @@ Tracker.state = {
 
 ### Character Import Flow
 
-```
+```text
 Characters in localStorage → character.list() → user selects →
 character.load(id) → derived calculations → combatant card created
 ```
@@ -124,7 +124,7 @@ Auto-saves after every state change (damage, turn advance, condition update).
 
 ## UI Layout
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────┐
 │  Round: 3   Turn: Kael                    [Next] [Prev] [New] │
 │                                                                │

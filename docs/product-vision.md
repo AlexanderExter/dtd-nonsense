@@ -1,7 +1,7 @@
 # Product Vision
 
-> **Last updated:** 2026-03-09
-> **Last PO session:** 2026-03-09 — First PO session. Established mission, principles, scope, and priorities from scratch.
+> **Last updated:** 2026-03-13
+> **Last PO session:** 2026-03-13 — Strategic pivot: dropped canonicity requirement, MDX conversion complete, shadcn/ui migration underway.
 
 This document captures the project's strategic direction: what it is, who it's for, what it should become, and what it should never become. It is the output of Product Owner dialogue sessions and serves as the north star for all decision-making.
 
@@ -36,7 +36,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 1. **Reference First** — When something could be a reference lookup or an interactive tool, default to reference. Tools support the reference, not the other way around.
 2. **Table Companion, Not Table Center** — The site assists play but never demands attention. Fast lookups, low friction, zero onboarding required. As approachable as a hobby book on a shelf.
-3. **Preserve the Source** — Both the original text and the cleaned version have value. Never destroy fidelity to create convenience. The community decides the final editorial direction.
+3. **Build on the Source** — The original PDFs remain available for reference, but this project is a creative derivative — corrected, reorganized, and enhanced. Fidelity to the source is a starting point, not a constraint.
 4. **Honor the Culture** — D:TD's satirical WH40K identity isn't decoration. Design, tone, and aesthetics reflect the game's irreverent spirit.
 5. **Approachable Complexity** — D:TD is inherently complex. The site makes that complexity navigable without simplifying the game itself.
 6. **Ship a Book, Not a Platform** — This is a finite product with a done state, not an evolving service. Every feature moves toward completion, not scope expansion.
@@ -79,7 +79,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 ### Current Focus
 
-Visual polish and UX quality — move from beta to release-grade presentation. Fix known bugs and missing features in core tools (Character Sheet, Character Builder, NPC Generator).
+Major UI overhaul: big-bang migration from hand-rolled Radix UI components to shadcn/ui, adopting a cohesive pre-made theme with lucide-react icons and sonner toasts. All content files converted to MDX, enabling future interactive component embedding in rules pages. Fix known bugs and missing features in core tools (Character Sheet, Character Builder, NPC Generator).
 
 ### Next Up
 
@@ -90,7 +90,6 @@ Visual polish and UX quality — move from beta to release-grade presentation. F
 ### Someday/Maybe
 
 - Cross-platform character persistence (e.g., import/export, shareable links)
-- Community-driven editorial direction decision (derivative vs. curated original)
 - ~~React migration~~ — **Done.** All 6 tools migrated to React Islands (2026-03)
 - Lighthouse / Core Web Vitals performance audit before public launch
 
@@ -103,12 +102,12 @@ Visual polish and UX quality — move from beta to release-grade presentation. F
 
 ## Editorial Architecture
 
-The project maintains a deliberate dual-path editorial structure:
+The project uses a single editorial direction: creative derivative.
 
-- **`books/`** — Near-verbatim source text with `<!-- EDITOR: -->` annotations for contradictions and corrections. Preserves fidelity.
-- **`cleaned-references/`** — Refined, reorganized, corrected topic files for reading. These are what the site serves.
+- **`books/`** — Per-chapter source material in `.mdx`, annotated and corrected. Serves as the working copy for editorial enhancement.
+- **`cleaned-references/`** — Refined, reorganized topic files in `.mdx` that the site serves. These are the canonical reading experience.
 
-This architecture is intentional, not indecisive. The choice between "refined derivative" and "curated original" is deferred to community leadership. Until then, both paths are maintained so no editorial option is foreclosed.
+Both paths use MDX, enabling interactive React component embedding directly in rules content. The canonicity question is settled: this project builds something new from the original source, not a preservation effort. The original PDFs remain in `source-pdfs/` for anyone who wants the unmodified text.
 
 ---
 
@@ -116,7 +115,7 @@ This architecture is intentional, not indecisive. The choice between "refined de
 
 This project has a natural finish line:
 
-1. **Current: Beta** — Core tools and content functional, infrastructure solid, visual polish and feature gaps remain
+1. **Current: Active Development** — Core tools and content functional, major UI overhaul (shadcn/ui migration) and MDX conversion underway
 2. **Target: Release** — Editorial pass complete, tools polished, mobile experience solid, community-ready
 3. **Endgame: Maintenance** — Accept issues, review PRs, implement ideas. Eventually hand off via fork
 

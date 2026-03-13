@@ -367,7 +367,7 @@ export function collectMarkdownFiles(target: Target): string[] {
 	return files.sort();
 }
 
-/** Recursively collect *.md files from a directory. */
+/** Recursively collect *.md and *.mdx files from a directory. */
 function walkDir(dir: string): string[] {
 	const results: string[] = [];
 	if (!fs.existsSync(dir)) return results;
@@ -376,19 +376,19 @@ function walkDir(dir: string): string[] {
 		const full = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
 			results.push(...walkDir(full));
-		} else if (entry.isFile() && entry.name.endsWith(".md")) {
+		} else if (entry.isFile() && (entry.name.endsWith(".md") || entry.name.endsWith(".mdx"))) {
 			results.push(full);
 		}
 	}
 	return results;
 }
 
-/** Collect *.md files in a single directory (non-recursive). */
+/** Collect *.md and *.mdx files in a single directory (non-recursive). */
 function globDir(dir: string): string[] {
 	if (!fs.existsSync(dir)) return [];
 	return fs
 		.readdirSync(dir)
-		.filter((f) => f.endsWith(".md"))
+		.filter((f) => f.endsWith(".md") || f.endsWith(".mdx"))
 		.map((f) => path.join(dir, f));
 }
 

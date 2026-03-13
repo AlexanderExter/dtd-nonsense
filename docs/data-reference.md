@@ -12,18 +12,18 @@ Documentation for all JSON data files in `data/`. These files drive the game-dat
 
 | File                 | Source Markdown                | Consumers                                         | Added In  |
 | -------------------- | ------------------------------ | ------------------------------------------------- | --------- |
-| `races.json`         | `04-Races.md`                  | Character Sheet, Character Builder                | Phase 0   |
-| `exaltations.json`   | `05-Exaltations.md`            | Character Sheet, Character Builder                | Phase 0   |
-| `skills.json`        | `03-Characteristics-Skills.md` | Character Sheet, Character Builder, NPC Generator | Phase 0   |
-| `classes.json`       | `06-Classes.md`                | Character Sheet, Character Builder                | Phase 0   |
-| `feats.json`         | `07-Feats.md`                  | Character Sheet, Character Builder, NPC Generator | Phase 0   |
-| `backgrounds.json`   | `08-Backgrounds.md`            | Character Sheet, Character Builder                | Phase 0   |
-| `alignments.json`    | `09-Alignments.md`             | Character Sheet, Character Builder                | Phase 0   |
-| `equipment.json`     | `10-Equipment.md`              | Character Builder                                 | Phase 0   |
-| `weapons.json`       | `10-Equipment.md`              | Character Sheet, Character Builder, NPC Generator | Phase 0   |
-| `npc-templates.json` | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
-| `traits.json`        | `19-Antagonists.md`            | NPC Generator                                     | Phase 2.1 |
-| `ships.json`         | `18-Ships.md`                  | Ship Builder                                      | Phase 2.2 |
+| `races.json`         | `04-Races.mdx`                 | Character Sheet, Character Builder                | Phase 0   |
+| `exaltations.json`   | `05-Exaltations.mdx`           | Character Sheet, Character Builder                | Phase 0   |
+| `skills.json`        | `03-Characteristics-Skills.mdx` | Character Sheet, Character Builder, NPC Generator | Phase 0   |
+| `classes.json`       | `06-Classes.mdx`               | Character Sheet, Character Builder                | Phase 0   |
+| `feats.json`         | `07-Feats.mdx`                 | Character Sheet, Character Builder, NPC Generator | Phase 0   |
+| `backgrounds.json`   | `08-Backgrounds.mdx`           | Character Sheet, Character Builder                | Phase 0   |
+| `alignments.json`    | `09-Alignments.mdx`            | Character Sheet, Character Builder                | Phase 0   |
+| `equipment.json`     | `10-Equipment.mdx`             | Character Builder                                 | Phase 0   |
+| `weapons.json`       | `10-Equipment.mdx`             | Character Sheet, Character Builder, NPC Generator | Phase 0   |
+| `npc-templates.json` | `19-Antagonists.mdx`           | NPC Generator                                     | Phase 2.1 |
+| `traits.json`        | `19-Antagonists.mdx`           | NPC Generator                                     | Phase 2.1 |
+| `ships.json`         | `18-Ships.mdx`                 | Ship Builder                                      | Phase 2.2 |
 
 All source markdown files are in `cleaned-references/`.
 
@@ -33,14 +33,14 @@ All source markdown files are in `cleaned-references/`.
 
 **Semi-automated synchronization** — the TypeScript pipeline scripts provide `bun run validate` for schema validation (add `--xref` via `bun run scripts/validate.ts --xref` for cross-reference checking), plus `bun run sync-check` for markdown↔JSON drift detection (races, classes, feats). After editing rules in `books/` or `cleaned-references/`, run these checks and manually verify any remaining gaps.
 
-**Recommended practice:** Document changes in git commit messages (e.g., "Update classes.json to match 06-Classes.md additions").
+**Recommended practice:** Document changes in git commit messages (e.g., "Update classes.json to match 06-Classes.mdx additions").
 
 **Risk:** JSON and markdown can drift silently. Key relationships to watch:
 
 - `classes.json` references skill IDs from `skills.json`
 - `feats.json` prerequisites reference class names from `classes.json`
 - `equipment.json` weapon names should match entries in `weapons.json`
-- `exaltations.json` progression powers reference game mechanics that must match `cleaned-references/05-Exaltations.md`
+- `exaltations.json` progression powers reference game mechanics that must match `cleaned-references/05-Exaltations.mdx`
 
 ---
 
@@ -520,7 +520,7 @@ Fetches from `/data/[file].json` at runtime.
 
 ## Cross-File Dependencies
 
-```
+```text
 classes.json ──references──► skills.json (skill IDs)
 classes.json ──references──► feats.json (feat names)
 feats.json   ──references──► classes.json (prerequisite class levels)

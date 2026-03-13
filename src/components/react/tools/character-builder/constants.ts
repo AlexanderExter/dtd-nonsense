@@ -88,7 +88,7 @@ export function createDefaultMeta(): BuilderMeta {
 // XP Breakdown
 // =========================================================================
 
-export interface XPBreakdown {
+interface XPBreakdown {
 	classes: number;
 	feats: number;
 	assets: number;

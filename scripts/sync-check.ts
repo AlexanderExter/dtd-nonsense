@@ -419,9 +419,9 @@ export function parseFeats(content: string): ParsedFeat[] {
 // ---------------------------------------------------------------------------
 
 const SYNC_SOURCES: Record<string, { mdFile: string; jsonFile: string }> = {
-	races: { mdFile: "04-Races.md", jsonFile: "races.json" },
-	classes: { mdFile: "06-Classes.md", jsonFile: "classes.json" },
-	feats: { mdFile: "07-Feats.md", jsonFile: "feats.json" },
+	races: { mdFile: "04-Races.mdx", jsonFile: "races.json" },
+	classes: { mdFile: "06-Classes.mdx", jsonFile: "classes.json" },
+	feats: { mdFile: "07-Feats.mdx", jsonFile: "feats.json" },
 };
 
 export function extractNamesFromMarkdown(source: string, content: string): string[] {

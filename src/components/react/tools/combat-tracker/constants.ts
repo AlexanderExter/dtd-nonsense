@@ -48,7 +48,7 @@ export interface EncounterState {
 	encounterId: string | null;
 }
 
-export interface ConditionDef {
+interface ConditionDef {
 	id: string;
 	name: string;
 	effect: string;
@@ -62,12 +62,12 @@ export interface ActionDef {
 	note?: string;
 }
 
-export interface HitLocationDef {
+interface HitLocationDef {
 	roll: number;
 	location: string;
 }
 
-export interface SituationalModifier {
+interface SituationalModifier {
 	name: string;
 	effect: string;
 }

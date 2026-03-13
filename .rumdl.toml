@@ -31,7 +31,7 @@ indent = 2  # 2-space indentation for nested lists (project convention)
 [per-file-ignores]
 # books/ and cleaned-references/: game content has intentional structural patterns
 # that differ from generic docs — but all fixable whitespace/formatting IS enforced
-"{books,cleaned-references}/**/*.md" = [
+"{books,cleaned-references}/**/*.{md,mdx}" = [
   "MD024",  # duplicate headings: same feat/ability/class names intentionally repeat across sections
   "MD033",  # inline HTML: editorial comments <!-- ... --> are explicitly permitted
   "MD036",  # emphasis as heading: bold labels like **Special:**, **Prerequisites:** are game notation
@@ -39,7 +39,7 @@ indent = 2  # 2-space indentation for nested lists (project convention)
 ]
 
 # cleaned-references/: Starlight front matter is injected by prebuild, not authored manually
-"cleaned-references/**/*.md" = [
+"cleaned-references/**/*.{md,mdx}" = [
   "MD025",  # multiple H1: 06-Classes.md intentionally contains one H1 per class (logical grouping)
   "MD041",  # first line heading: prebuild injects front matter before H1
 ]

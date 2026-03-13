@@ -4,13 +4,20 @@ Prioritized backlog of tech debt, deferred work, and improvement opportunities. 
 
 Resolved items are removed on each review — git history preserves the full log.
 
-**Last reviewed:** 2026-03-12
+**Last reviewed:** 2026-03-13
 
 ---
 
 ## Active Backlog
 
 Items worth doing soon, priority-ordered.
+
+### Dead UI Components: 8 Files With Zero Imports
+
+**Files:** `src/components/react/ui/` — Combobox, FormGroup, Menu, NumberInput, Panel, PresetGroup, Select, Tooltip
+**Issue:** Knip identified 8 UI primitive files that have zero imports anywhere in the codebase. Also 2 unused exports (`TabPanel`, `dismissToast`) and 17 unused exported types across tool constants files. These represent ~30% of the UI primitive layer.
+**Context:** Discovered during knip configuration (2026-03-13). The shadcn/ui migration will replace all UI primitives anyway — deleting these pre-migration reduces scope and eliminates confusion about what's actively used.
+**Next action:** Delete the 8 unused files and 2 unused exports before starting shadcn migration. The 17 unused types are cosmetic — fix during or after migration.
 
 ### Character Sheet: IdentityTab Race Preview Still Uses `statBonuses`
 
@@ -46,6 +53,12 @@ Items worth doing soon, priority-ordered.
 ## Investigation
 
 Items needing research or design decisions before action.
+
+### Add Knip to CI / `bun run check`
+
+**Issue:** Knip is configured and working but only runs manually. Dead code accumulates silently between runs.
+**Context:** Discovered 8 unused UI files and 19 unused exports during first real knip run (2026-03-13). If knip had been in CI, these would have been caught when they became dead.
+**Next action:** Evaluate adding `bun run knip` to the `check` script or CI workflow. May need `--no-exit-code` flag or allow-list tuning to avoid false-positive failures.
 
 ### Zustand Store Isolation
 

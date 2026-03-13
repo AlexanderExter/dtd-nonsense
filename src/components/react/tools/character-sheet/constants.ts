@@ -239,7 +239,7 @@ export function calculateAllDerived(char: CharacterData, racesData: any, exaltDa
 // Wound status
 // ---------------------------------------------------------------------------
 
-export interface WoundStatus {
+interface WoundStatus {
 	status: string;
 	cssClass: string;
 	description: string;

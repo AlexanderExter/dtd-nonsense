@@ -1,11 +1,13 @@
 ---
 description: "Markdown content standards for DTD rulebook documentation"
-applyTo: "**/*.md"
+applyTo: "**/*.md,**/*.mdx"
 ---
 
 # Markdown Standards for D:TD
 
-Rules for editing markdown files in this tabletop RPG documentation project. These complement the conventions in `docs/project-conventions.md`.
+Rules for editing markdown and MDX files in this tabletop RPG documentation project. These complement the conventions in `docs/project-conventions.md`.
+
+All content files (`books/`, `cleaned-references/`) use `.mdx` format. Project documentation (`docs/`) remains `.md`.
 
 ## Front Matter
 

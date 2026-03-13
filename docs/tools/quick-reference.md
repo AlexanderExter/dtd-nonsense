@@ -46,11 +46,11 @@ Rules content is **hardcoded in HTML** — not loaded from JSON. This is intenti
 
 Content was extracted from `cleaned-references/` files:
 
-- `01-Core-Rules.md` → Core Rules tab
-- `14-Combat.md` → Combat tab
-- `11-Magic.md` → Magic tab
-- `16-Conditions.md` → Conditions tab
-- `10-Equipment.md` → Equipment tab
+- `01-Core-Rules.mdx` → Core Rules tab
+- `14-Combat.mdx` → Combat tab
+- `11-Magic.mdx` → Magic tab
+- `16-Conditions.mdx` → Conditions tab
+- `10-Equipment.mdx` → Equipment tab
 - Formula reference from `copilot-instructions.md` → Formulas tab
 
 ### Search Implementation
@@ -83,7 +83,7 @@ Minimal persistence — remembers which tab was open.
 
 ## UI Layout
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │  Search: [________________]                              │
 │                                                          │

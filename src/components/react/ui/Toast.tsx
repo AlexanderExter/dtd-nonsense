@@ -38,14 +38,6 @@ export function showToast(message: string, duration = 2500): void {
 	}, duration);
 }
 
-/** Dismiss the current toast immediately. */
-export function dismissToast(): void {
-	if (toastTimer) clearTimeout(toastTimer);
-	toastState = null;
-	toastTimer = null;
-	emitChange();
-}
-
 function subscribe(cb: () => void) {
 	listeners.add(cb);
 	return () => listeners.delete(cb);

@@ -1,12 +1,12 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": [
-		"src/pages/**/*.astro",
-		"src/content.config.ts",
-		"scripts/*.{ts,mjs}",
-		"astro.config.mjs"
-	],
+	"entry": ["src/pages/**/*.astro", "scripts/*.{ts,mjs}"],
 	"project": ["src/**/*.{ts,tsx,astro}", "scripts/**/*.{ts,mjs}"],
-	"ignore": ["src/lib/dtd/schemas/**", "src/components/react/ui/*.tsx"],
-	"ignoreDependencies": ["@astrojs/check", "react-hook-form"]
+	"ignore": ["src/lib/dtd/schemas/**"],
+	"ignoreDependencies": [
+		"@astrojs/check",
+		"@astrojs/starlight-tailwind",
+		"tailwindcss",
+		"react-hook-form"
+	]
 }

@@ -281,7 +281,7 @@ When a topic has edge cases, errata, or frequently misunderstood rules, add a cl
 ### When to Use
 
 - Rules frequently misinterpreted
-- Official errata (from 99-Appendix-Archive.md)
+- Official errata (from 99-Appendix-Archive.mdx)
 - Edge cases that come up in play
 - Timing or interaction clarifications
 

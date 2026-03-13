@@ -37,9 +37,9 @@ function ensureDir(dir) {
 	}
 }
 
-function copyMdFiles(src, dest, transform = null, lowercaseNames = false) {
+function copyContentFiles(src, dest, transform = null, lowercaseNames = false) {
 	ensureDir(dest);
-	const files = readdirSync(src).filter((f) => f.endsWith(".md"));
+	const files = readdirSync(src).filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 	let count = 0;
 
 	for (const file of files) {
@@ -65,7 +65,7 @@ function transformBookFrontmatter(content, filename) {
 		// No frontmatter — add minimal Starlight frontmatter
 		const title = filename
 			.replace(/^\d+-/, "")
-			.replace(/.md$/, "")
+			.replace(/\.mdx?$/, "")
 			.replace(/-/g, " ")
 			.replace(/\b\w/g, (c) => c.toUpperCase());
 		const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
@@ -85,7 +85,7 @@ function transformBookFrontmatter(content, filename) {
 	const orderMatch = fmBlock.match(/order:\s*(\d+)/);
 	const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
 
-	const title = titleMatch ? titleMatch[1].trim() : filename.replace(/.md$/, "");
+	const title = titleMatch ? titleMatch[1].trim() : filename.replace(/\.mdx?$/, "");
 	const order = orderMatch ? parseInt(orderMatch[1], 10) : chapterMatch ? parseInt(chapterMatch[1], 10) : 99;
 
 	// Build new Starlight-compatible frontmatter
@@ -105,122 +105,122 @@ sidebar:
 
 /** @type {Record<string, {title: string, description: string, group: string}>} */
 const CONTENT_METADATA = {
-	"01-Core-Rules.md": {
+	"01-Core-Rules.mdx": {
 		title: "Core Rules",
 		description: "Dice system, Tests, Raises, and Checks",
 		group: "Rules",
 	},
-	"02-Char-Creation.md": {
+	"02-Char-Creation.mdx": {
 		title: "Character Creation",
 		description: "9-step character creation process",
 		group: "Character",
 	},
-	"03-Characteristics-Skills.md": {
+	"03-Characteristics-Skills.mdx": {
 		title: "Characteristics & Skills",
 		description: "9 characteristics and full skill list",
 		group: "Character",
 	},
-	"04-Races.md": {
+	"04-Races.mdx": {
 		title: "Races",
 		description: "16 playable races with traits, bonuses, and racial powers",
 		group: "Character",
 	},
-	"05-Exaltations.md": {
+	"05-Exaltations.mdx": {
 		title: "Exaltations",
 		description: "Supernatural types — Vampire, Werewolf, and more",
 		group: "Character",
 	},
-	"06-Classes.md": {
+	"06-Classes.mdx": {
 		title: "Classes",
 		description: "50+ classes with progression tracks and feat tables",
 		group: "Character",
 	},
-	"07-Feats.md": {
+	"07-Feats.mdx": {
 		title: "Feats, Assets & Hindrances",
 		description: "Complete feat list with effects and prerequisites",
 		group: "Character",
 	},
-	"08-Backgrounds.md": {
+	"08-Backgrounds.mdx": {
 		title: "Backgrounds",
 		description: "Background dots — Allies, Wealth, Holdings, and more",
 		group: "Character",
 	},
-	"09-Alignments.md": {
+	"09-Alignments.mdx": {
 		title: "Alignments",
 		description: "Pantheons, devotion mechanics, and sin tables",
 		group: "Character",
 	},
-	"10-Equipment.md": {
+	"10-Equipment.mdx": {
 		title: "Equipment",
 		description: "Weapons, armor, gear, and starting packages",
 		group: "Equipment",
 	},
-	"11-Magic.md": {
+	"11-Magic.mdx": {
 		title: "Magic",
 		description: "Sorcery system and spell schools",
 		group: "Powers",
 	},
-	"12-Sword-Schools.md": {
+	"12-Sword-Schools.mdx": {
 		title: "Sword Schools",
 		description: "9 melee combat disciplines",
 		group: "Powers",
 	},
-	"13-Gun-Kata.md": {
+	"13-Gun-Kata.mdx": {
 		title: "Gun Kata",
 		description: "6 ranged combat disciplines",
 		group: "Powers",
 	},
-	"14-Combat.md": {
+	"14-Combat.mdx": {
 		title: "Combat",
 		description: "Combat rules, action economy, and initiative",
 		group: "Rules",
 	},
-	"15-Social-Combat.md": {
+	"15-Social-Combat.mdx": {
 		title: "Social Combat",
 		description: "Social interaction mechanics",
 		group: "Rules",
 	},
-	"16-Conditions.md": {
+	"16-Conditions.mdx": {
 		title: "Conditions",
 		description: "Status effects and their mechanical impact",
 		group: "Rules",
 	},
-	"17-Vehicles.md": {
+	"17-Vehicles.mdx": {
 		title: "Vehicles",
 		description: "Vehicle rules and combat",
 		group: "Advanced",
 	},
-	"18-Ships.md": {
+	"18-Ships.mdx": {
 		title: "Ships",
 		description: "Spelljammer-style space vessels",
 		group: "Advanced",
 	},
-	"19-Antagonists.md": {
+	"19-Antagonists.mdx": {
 		title: "Antagonists",
 		description: "NPC creation and 40+ stat blocks",
 		group: "Storytelling",
 	},
-	"20-Artifacts.md": {
+	"20-Artifacts.mdx": {
 		title: "Artifacts",
 		description: "Magical items and their properties",
 		group: "Equipment",
 	},
-	"21-Advanced-Rules.md": {
+	"21-Advanced-Rules.mdx": {
 		title: "Advanced Rules",
 		description: "Optional and supplemental rules",
 		group: "Advanced",
 	},
-	"22-SM-Reference.md": {
+	"22-SM-Reference.mdx": {
 		title: "Story Master Reference",
 		description: "Story Master tools and guidelines",
 		group: "Storytelling",
 	},
-	"23-Setting-Lore.md": {
+	"23-Setting-Lore.mdx": {
 		title: "Setting & Lore",
 		description: "The Great Wheel, crystal spheres, and factions",
 		group: "Storytelling",
 	},
-	"99-Appendix-Archive.md": {
+	"99-Appendix-Archive.mdx": {
 		title: "Appendix & Errata",
 		description: "Errata and archived content — supersedes earlier files",
 		group: "Reference",
@@ -248,7 +248,7 @@ function injectStarlightFrontmatter(content, filename) {
 	};
 
 	// Special badge for errata
-	if (filename === "99-Appendix-Archive.md") {
+	if (filename === "99-Appendix-Archive.mdx") {
 		targetFm.sidebar = {
 			order,
 			label: "Errata",
@@ -280,14 +280,14 @@ function copyDataFiles(src, dest) {
 console.log("🔧 DTD Prebuild — copying content to Astro structure\n");
 
 // 1. Cleaned references → rules (inject frontmatter + lowercase filenames)
-const rulesCount = copyMdFiles(CLEANED_REFS, RULES_DEST, injectStarlightFrontmatter, true);
+const rulesCount = copyContentFiles(CLEANED_REFS, RULES_DEST, injectStarlightFrontmatter, true);
 console.log(`  ✓ ${rulesCount} rules files → src/content/docs/rules/ (frontmatter injected)`);
 
 // 2. Books → books/book-1, books/book-2
-const book1Count = copyMdFiles(BOOK_1, BOOK_1_DEST, transformBookFrontmatter);
+const book1Count = copyContentFiles(BOOK_1, BOOK_1_DEST, transformBookFrontmatter);
 console.log(`  ✓ ${book1Count} Book 1 files → src/content/docs/books/book-1/`);
 
-const book2Count = copyMdFiles(BOOK_2, BOOK_2_DEST, transformBookFrontmatter);
+const book2Count = copyContentFiles(BOOK_2, BOOK_2_DEST, transformBookFrontmatter);
 console.log(`  ✓ ${book2Count} Book 2 files → src/content/docs/books/book-2/`);
 
 // 3. Data files → public/data/

@@ -1,9 +1,11 @@
 # UI Primitives
 
-Shared React components backed by [Radix UI](https://www.radix-ui.com/) + Tailwind CSS tokens. All tools import from the barrel:
+Shared React components backed by [Radix UI](https://www.radix-ui.com/) + Tailwind CSS tokens. Tools import components directly:
 
 ```tsx
-import { Button, Modal, Toast, showToast } from "@/components/react/ui";
+import { Button } from "@/components/react/ui/Button";
+import { Modal } from "@/components/react/ui/Modal";
+import { showToast, Toast } from "@/components/react/ui/Toast";
 ```
 
 **Never import `radix-ui` directly in tool code** — always use these wrappers.
@@ -23,14 +25,10 @@ All tool `.astro` pages use `client:only="react"` to avoid SSR issues with clien
 | Component | Purpose | Key Props |
 |-----------|---------|-----------|
 | `Button` | Styled button (`.btn` family) | `variant`: primary / secondary / ghost / danger / accent; `size`: xs / sm / md |
-| `Panel` | Card container (`.panel` class) | Standard div props |
 | `SectionHeading` | Uppercase accent heading | `as`: h2 / h3 / h4 (default h4) |
 | `Badge` | Inline status indicator | `variant`: success / warning / error / info / accent / muted; `size`: sm / md |
 | `CloseButton` | × dismiss button with aria-label | `size`: sm / md |
 | `AddButton` | "+ Add {label}" ghost button | `label`: string |
-| `NumberInput` | Styled number input | `width`: xs / sm / md; `label`: optional |
-| `FormGroup` | Label + input wrapper | `label`: string; `layout`: vertical / inline |
-| `PresetGroup` | Chip-style toggle buttons | `presets`: array; `activeValue`: current; `onSelect`: callback |
 | `Toast` / `showToast` | Toast notifications | `showToast(msg, duration?)` to trigger; `<Toast />` to render |
 
 ### Tier 2 — Radix Core
@@ -45,11 +43,7 @@ All tool `.astro` pages use `client:only="react"` to avoid SSR issues with clien
 
 | Component | Purpose | Key Props |
 |-----------|---------|-----------|
-| `Select` | Dropdown | `value`, `onChange`, `options`, `label?` |
 | `Popover` | Positioned popup | `open`, `onClose`, `anchorRect?`, `title?` |
-| `Tooltip` | Hover/focus tooltip | `content`: string; `placement?` |
-| `Combobox` | Searchable dropdown | `value`, `onChange`, `options`, `placeholder?` |
-| `Menu` | Action dropdown | `trigger`: children; `items`: array of `{ label, onClick, danger? }` |
 
 ---
 
