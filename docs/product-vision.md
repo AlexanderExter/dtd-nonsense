@@ -97,7 +97,7 @@ Visual polish and UX quality — move from beta to release-grade presentation. F
 ### Deliberately Deferred
 
 - **CI cross-reference validation** — needs baseline suppression mechanism so new warnings fail CI without blocking on pre-existing data gaps
-- **Browser testing for React tools** — all 6 tools migrated to React Islands but not yet manually tested in-browser for visual/functional parity
+- **Browser testing for React tools** — React migration complete (Phase 13); manual in-browser testing for visual/functional parity deferred until before release
 
 ---
 

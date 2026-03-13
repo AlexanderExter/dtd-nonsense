@@ -78,15 +78,12 @@ import { ToolNameApp } from "@/components/react/tools/{tool-name}/{ToolName}App"
 - Use `./` relative imports within the component directory
 - Zustand stores for state (one per tool, co-located as `store.ts`)
 - `useAllData` hook from `@/hooks/use-data` for loading JSON game data
-- `useLocalStorage` hook from `@/hooks/use-local-storage` for persistence
 
 ### 5. Available Hooks
 
 | Hook                 | Source                          | Purpose                                         |
 | -------------------- | ------------------------------- | ----------------------------------------------- |
-| `useData`            | `@/hooks/use-data`              | Load a single JSON data file                    |
 | `useAllData`         | `@/hooks/use-data`              | Load multiple JSON data files in parallel        |
-| `useLocalStorage`    | `@/hooks/use-local-storage`     | Persist state to localStorage                   |
 
 ### 6. Documentation
 

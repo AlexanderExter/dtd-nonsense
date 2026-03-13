@@ -143,5 +143,7 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 | -------- | --------------------------------- | ------- | --------------------------------------------------------------------------- |
 | Done     | Astro/Starlight migration         | —       | Complete — all 6 tools ported, site live on Vercel                          |
 | Done     | Python → TypeScript consolidation | —       | Pipeline fully ported to TypeScript; Python pipeline deleted                |
+| Done     | Preact → React migration          | —       | 74 components, 6 Zustand stores, 18 Radix UI primitives (Phase 13)         |
+| Done     | Stack health fixes                | —       | Barrel elimination, re-render fixes, dead code cleanup, RHF + Knip install  |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Zod schema introspection — eliminate manual schema docs                |

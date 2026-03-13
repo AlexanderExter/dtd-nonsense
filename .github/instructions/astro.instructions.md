@@ -24,10 +24,10 @@ src/
   layouts/           ← ToolLayout.astro (standalone HTML shell; bridges Tailwind tokens → short var(--name) aliases)
   components/
     react/
-      tools/         ← React island components for all 6 tools (72 components)
+      tools/         ← React island components for all 6 tools (74 components)
       ui/            ← Shared UI primitives (18 components) — Radix UI + Tailwind wrappers
       shared/        ← Shared React components across tools
-  hooks/             ← Custom React hooks (use-data, use-local-storage)
+  hooks/             ← Custom React hooks (use-data)
   lib/dtd/           ← Shared ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   styles/            ← custom.css (Starlight theme), tailwind.css (Tailwind v4 @theme tokens)
   content.config.ts  ← Content Collection definitions
@@ -41,8 +41,8 @@ src/
 - React components live in `src/components/react/tools/{tool-name}/`
 - Root component is `*App.tsx` (e.g., `QuickReferenceApp.tsx`)
 - Import shared logic from `@/lib/dtd/core.ts` and `@/lib/dtd/dice.ts`
-- Import UI primitives from `@/components/react/ui` (Button, Modal, Toast, etc.) — never import `radix-ui` directly
-- Load JSON data via `useData()` / `useAllData()` hooks from `@/hooks/use-data`
+- Import UI primitives from `@/components/react/ui/ComponentName` (e.g., `@/components/react/ui/Button`) — direct imports, no barrel; never import `radix-ui` directly
+- Load JSON data via `useAllData()` hook from `@/hooks/use-data`
 - State management: **Zustand** stores — one store per tool, co-located as `store.ts`
 - Use **named exports only** — no default exports
 - Use `className` attribute in React JSX

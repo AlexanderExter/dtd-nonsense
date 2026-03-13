@@ -151,7 +151,7 @@ src/                   Astro source files
     react/
       tools/           React island components (6 tools, 74 components)
       ui/              Shared UI primitives (18 components, Radix UI + Tailwind)
-  hooks/               Custom React hooks (use-data.ts, use-local-storage.ts)
+  hooks/               Custom React hooks (use-data.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   layouts/             ToolLayout.astro
@@ -232,7 +232,7 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)     |
 | JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)           |
 | Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                       |
-| Per-tool specs           | [docs/tools/](../docs/tools/) (9 files)                       |
+| Per-tool specs           | [docs/tools/](../docs/tools/) (6 files)                       |
 | Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)      |
 | React components         | `src/components/react/tools/`                                 |
 | React hooks              | `src/hooks/`                                                  |

@@ -218,12 +218,13 @@ Completed items:
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 13.0 Tool Pruning               | Removed Dice Roller (6 components), Success Curve Analyzer (9), Defense Graph Simulator (10). Deleted Web Worker infrastructure (`src/workers/`, `use-worker.ts`, `use-debounce.ts`). Removed Chart.js dependency. Deleted tool hub page (`src/pages/tools/index.astro`) and tool docs. |
 | 13.1 Framework Swap             | Replaced `@astrojs/preact` → `@astrojs/react`, `@preact/signals` → `zustand`, `@ariakit/react` → `radix-ui`. Updated `astro.config.mjs`, `tsconfig.json`, `package.json`.                     |
-| 13.2 State Management           | Created 6 Zustand stores (one per tool) replacing module-level signals. Stores use `useLocalStorage` hook for persistence where needed.                                                        |
+| 13.2 State Management           | Created 6 Zustand stores (one per tool) replacing module-level signals. Stores use Zustand with localStorage for persistence where needed.                                                      |
 | 13.3 UI Primitives              | Rewired 18 shared UI primitives from Ariakit to Radix UI (Accordion, Combobox, Dialog, Select, Tabs, Tooltip). Added `Toast.tsx` (ephemeral notifications via `useSyncExternalStore`).          |
 | 13.4 Component Migration        | Migrated 74 tool components across 6 tools from Preact JSX to React JSX. Signals → Zustand selectors, `class` → `class` (preserved for Astro), Ariakit props → Radix API.                     |
 | 13.5 Documentation              | Updated `architecture.md`, `development-guide.md`, `copilot-instructions.md`, `astro.instructions.md`. Removed `preact-implementation-plan.md`.                                                |
+| 13.6 Stack Health               | Eliminated UI barrel file (`ui/index.ts`), rewrote 37 consumer imports to direct paths. Fixed Zustand re-renders in ShipBuilderApp + CombatTrackerApp (full-store destructure → individual selectors). Removed dead code: `useData`, `rollPool`, `useLocalStorage` hook, `AVAILABILITY` constant. Un-exported 9 internal-only functions. Installed `react-hook-form` (not yet integrated) and `knip` (dead code analyzer) with config. |
 
-**Totals:** 213 files changed (5,473 insertions, 8,707 deletions). 74 React tool components + 18 UI primitives across 6 tools. 6 Zustand stores. 2 commits on `session-2026-03-12`.
+**Totals:** 216 files changed (5,824 insertions, 8,816 deletions). 74 React tool components + 18 UI primitives across 6 tools. 6 Zustand stores. 5 commits on `session-2026-03-12`.
 
 **Decisions:**
 

@@ -96,14 +96,13 @@ Active `package.json` overrides that should be removed when upstream fixes land.
 
 | Hook | Functions | Complexity | Priority |
 |------|-----------|-----------|----------|
-| `use-local-storage.ts` | `useLocalStorage<T>()` | Low — needs localStorage mock + signal tracking | **High** (most isolated) |
-| `use-data.ts` | `useData<T>()`, `useAllData()` | Medium — needs fetch mock | **Medium** |
+| `use-data.ts` | `useAllData()` | Medium — needs fetch mock | **Medium** |
 
 ### Browser APIs — Untestable Without jsdom
 
 `character.exportJSON()` and `character.importJSON()` use Blob/File APIs. Can't unit test with bun:test. Would need jsdom or browser test harness.
 
-### Component Layer — 72 Components, 0 Tests
+### Component Layer — 74 Components, 0 Tests
 
 Would require `@testing-library/react` dependency. Not justified until specific component bugs emerge.
 
@@ -113,10 +112,10 @@ Would require `@testing-library/react` dependency. Not justified until specific 
 
 ### Lint Baseline
 
-`bun run lint:data` produces **0 errors, 12 warnings, 881 info** across 101 markdown files.
+`bun run lint:data` produces **0 errors, 13 warnings, 879 info** across 100 markdown files.
 
-- **Info messages** (881): Editorial suggestions — dice notation formatting (619), empty table cells (262). Not errors.
-- **Warnings** (12): 3 heading hierarchy skips (source structure), 9 terminology (7 in project-conventions.md "Not This" column + 2 meta-references in docs — all intentional).
+- **Info messages** (879): Editorial suggestions — dice notation formatting, empty table cells. Not errors.
+- **Warnings** (13): Heading hierarchy skips (source structure), terminology (project-conventions.md "Not This" column + meta-references in docs — all intentional).
 - **Baseline date:** 2026-03-12
 
 ---
@@ -149,5 +148,14 @@ Would require `@testing-library/react` dependency. Not justified until specific 
 Low-priority items or ideas that don't justify current effort.
 
 - **CI lean-ness audit**: CI runs Biome lint + tests + validation + content lint + full Astro build. Consider whether the full Astro build is necessary on every push, or only on PRs to main.
-- **Component count tracking**: True count is 97 .tsx files across 9 tools (as of 2026-03-11). The side-tracks previously said 115, architecture said ~100. Now aligned.
+- **Component count tracking**: 92 total .tsx files (74 tool components + 18 UI primitives) across 6 tools (as of 2026-03-12).
 - **`vitest` stale reference**: The dependency upgrade briefing (2026-03-09) mentions `vitest@4.0.18` in its pinning decisions, but the project uses `bun:test`. vitest is not in `package.json`. The reference is either from an earlier project state or an error in the briefing. No action needed — just noting the discrepancy.
+
+---
+
+## 2026-03-12 — Stack Health Session Observations
+
+- **optimization**: CharacterBuilderApp and CharacterSheetApp already use individual Zustand selectors correctly — no fixes needed. Only ShipBuilderApp and CombatTrackerApp had full-store destructure anti-patterns. *Context*: Discovered during re-render audit. Future tools should follow the CharacterBuilder pattern.
+- **debt**: React Hook Form is installed (`react-hook-form@7.71.2`) but not integrated into any forms. Character Builder's multi-step form wizard and Combat Tracker's AddCombatantForm are the best candidates for integration. *Context*: Installed as part of stack health work per Vercel best practices evaluation.
+- **investigation**: Knip reports some false positives for Astro-specific patterns (content.config.ts, schema files auto-imported by Astro). Current `knip.json` suppresses these. Worth re-running Knip periodically to catch real dead code as the project evolves.
+- **debt**: `noUncheckedIndexedAccess` is not enabled in tsconfig.json. Would catch undefined-access bugs in data handling code (e.g., `data[key]` without null checks). Evaluate enabling it — may require fixing existing code.
