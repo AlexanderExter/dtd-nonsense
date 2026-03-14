@@ -14,6 +14,8 @@ All commands run via npm scripts (backed by `bun`):
 | `bun run knip`          | `knip`                               | Dead code detection: unused files, exports, types   |
 | `bun run check:deps`    | `depcruise --validate ...`           | Enforce architectural import boundaries             |
 | `bun run check:structure` | `bun run scripts/check-structure.ts` | Verify TS structural conventions (stores, barrel, named exports) |
+| `bun run test:coverage` | `bun test --coverage`                | Text coverage summary (local-only, no CI threshold) |
+| `bun run test:coverage:lcov` | `bun test --coverage --coverage-reporter=lcov` | lcov report for tooling integration |
 
 Session lifecycle scripts (`session:start`, `session:end`, `session:status`) and the pre-commit hook are documented in [project-conventions.md](project-conventions.md#git-workflow) — they manage git workflow, not data pipelines.
 

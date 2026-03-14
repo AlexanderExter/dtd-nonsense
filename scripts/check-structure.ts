@@ -32,7 +32,7 @@ const glob = (...parts: string[]) => path.join(ROOT, ...parts).replace(/\\/g, "/
 // Types
 // ---------------------------------------------------------------------------
 
-interface CheckResult {
+export interface CheckResult {
 	name: string;
 	passed: boolean;
 	detail: string;
@@ -46,7 +46,7 @@ interface CheckResult {
 // Tools: character-builder, character-sheet, combat-tracker, npc-generator,
 //         quick-reference, ship-builder (6 stores total).
 
-function checkStoreConventions(project: Project): CheckResult {
+export function checkStoreConventions(project: Project): CheckResult {
 	const STORE_NAME_RE = /^use[A-Z]\w+Store$/;
 
 	const files = project.addSourceFilesAtPaths(glob("src/components/react/tools/*/store.ts"));
@@ -78,7 +78,7 @@ function checkStoreConventions(project: Project): CheckResult {
 // Verified specifiers must match the exact string used in the source file
 // (including .ts extension, since that is what core.ts uses).
 
-function checkBarrelExports(project: Project): CheckResult {
+export function checkBarrelExports(project: Project): CheckResult {
 	const EXPECTED: string[] = ["./character.ts", "./data.ts", "./derived.ts"];
 
 	const coreFile = project.addSourceFileAtPath(glob("src/lib/dtd/core.ts"));
@@ -106,7 +106,7 @@ function checkBarrelExports(project: Project): CheckResult {
 // `export default`. All public API must be named for reliable tree-shaking
 // and auto-import resolution.
 
-function checkNamedExportsOnly(project: Project): CheckResult {
+export function checkNamedExportsOnly(project: Project): CheckResult {
 	const files = project.addSourceFilesAtPaths([glob("src/components/react/**/*.tsx"), glob("src/lib/dtd/**/*.ts")]);
 
 	const violations: string[] = [];
@@ -131,43 +131,45 @@ function checkNamedExportsOnly(project: Project): CheckResult {
 }
 
 // ---------------------------------------------------------------------------
-// Runner
+// Runner — only executes when run directly (not when imported by tests)
 // ---------------------------------------------------------------------------
 
-const IS_JSON = process.argv.includes("--json");
+if (import.meta.main) {
+	const IS_JSON = process.argv.includes("--json");
 
-const project = new Project({
-	tsConfigFilePath: glob("tsconfig.json"),
-	skipAddingFilesFromTsConfig: true,
-});
+	const project = new Project({
+		tsConfigFilePath: glob("tsconfig.json"),
+		skipAddingFilesFromTsConfig: true,
+	});
 
-const results: CheckResult[] = [
-	checkStoreConventions(project),
-	checkBarrelExports(project),
-	checkNamedExportsOnly(project),
-];
+	const results: CheckResult[] = [
+		checkStoreConventions(project),
+		checkBarrelExports(project),
+		checkNamedExportsOnly(project),
+	];
 
-const allPassed = results.every((r) => r.passed);
+	const allPassed = results.every((r) => r.passed);
 
-if (IS_JSON) {
-	console.log(JSON.stringify({ passed: allPassed, checks: results }, null, 2));
-} else {
-	console.log("\n── check-structure ──────────────────────────────────────────\n");
-	for (const result of results) {
-		const icon = result.passed ? "✔" : "✖";
-		const label = result.passed ? "PASS" : "FAIL";
-		console.log(`  ${icon} ${label} ${result.name}: ${result.detail}`);
-		for (const v of result.violations) {
-			console.log(`       ↳ ${v}`);
+	if (IS_JSON) {
+		console.log(JSON.stringify({ passed: allPassed, checks: results }, null, 2));
+	} else {
+		console.log("\n── check-structure ──────────────────────────────────────────\n");
+		for (const result of results) {
+			const icon = result.passed ? "✔" : "✖";
+			const label = result.passed ? "PASS" : "FAIL";
+			console.log(`  ${icon} ${label} ${result.name}: ${result.detail}`);
+			for (const v of result.violations) {
+				console.log(`       ↳ ${v}`);
+			}
+		}
+		console.log();
+		if (allPassed) {
+			console.log("  ✔ All structural checks passed.\n");
+		} else {
+			const failCount = results.filter((r) => !r.passed).length;
+			console.log(`  ✖ ${failCount} check(s) failed.\n`);
 		}
 	}
-	console.log();
-	if (allPassed) {
-		console.log("  ✔ All structural checks passed.\n");
-	} else {
-		const failCount = results.filter((r) => !r.passed).length;
-		console.log(`  ✖ ${failCount} check(s) failed.\n`);
-	}
-}
 
-process.exit(allPassed ? 0 : 1);
+	process.exit(allPassed ? 0 : 1);
+}

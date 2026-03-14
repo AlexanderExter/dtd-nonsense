@@ -152,6 +152,34 @@ bun run build
 
 All steps must pass for a PR to be merge-ready. Vercel preview builds run in parallel with CI — a PR can have a working preview even while CI is still running.
 
+### Test Architecture
+
+Tests are organized in three layers:
+
+```text
+┌─────────────────────────────────────────────┐
+│  Component Tests  (App + UI primitives)     │  @testing-library/react + jsdom
+│  ─ loading/error/render states              │
+│  ─ user interactions (click, type)          │
+├─────────────────────────────────────────────┤
+│  Store Tests  (6 Zustand stores)            │  Pure logic, no DOM
+│  ─ setters, updaters, factories             │
+│  ─ localStorage persistence                 │
+├─────────────────────────────────────────────┤
+│  Unit Tests  (core logic + pipeline)        │  Pure logic, no DOM
+│  ─ dice, derived stats, character CRUD      │
+│  ─ schemas, validators, sync-checker        │
+└─────────────────────────────────────────────┘
+```
+
+Test utilities:
+
+| Directory | Contents |
+| --- | --- |
+| `src/lib/dtd/__test-utils__/` | Mock localStorage, fetch, dice |
+| `src/components/react/__test-utils__/` | Mock game data fixtures, render wrapper |
+| `src/test-setup.ts` | jsdom globals + jest-dom matchers (preloaded) |
+
 ---
 
 ## File Structure — Game Data

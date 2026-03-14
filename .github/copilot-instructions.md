@@ -140,23 +140,28 @@ docs/                  Technical documentation, conventions, project history
   tools/               Per-tool feature specs (6 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
+  __tests__/           Pipeline script tests (validate, lint, sync-check, check-structure)
 .github/               Agent instructions, skills, prompt files
   instructions/         Context-scoped rules (astro.instructions.md, markdown.instructions.md)
 astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
 biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           Dependencies (Astro, Starlight)
 tsconfig.json          TypeScript strict config with @/ path alias
-bunfig.toml            Bun config (shell, test runner settings)
+bunfig.toml            Bun config (shell, test runner settings, preload)
 scripts/prebuild.mjs   Copies content into Astro structure, injects Starlight frontmatter
 src/                   Astro source files
+  test-setup.ts        jsdom globals + jest-dom matchers (preloaded by bunfig.toml)
   content/docs/        Generated Starlight content (gitignored)
   pages/tools/         Tool pages (Astro pages outside Starlight)
   components/
     react/
+      __test-utils__/  Mock game data, render wrapper
       tools/           React island components (6 tools, 74 components)
       ui/              Shared UI primitives (migrating to shadcn/ui)
+        __tests__/     UI primitive tests (Accordion, Modal, Tabs, Toast)
   hooks/               Custom React hooks (use-data.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
+  lib/dtd/__test-utils__/  Mock localStorage, fetch, dice
   lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
   layouts/             ToolLayout.astro
   styles/
@@ -187,6 +192,8 @@ TypeScript pipeline scripts (run via bun):
 | `bun run knip`             | Dead code detection: unused files, exports, types, dependencies                    |
 | `bun run check:deps`       | Enforce architectural import boundaries (dependency-cruiser)                       |
 | `bun run check:structure`  | Verify TS structural conventions: stores, barrel exports, named-exports-only       |
+| `bun run test:coverage`    | Text coverage summary (local-only, no CI threshold)                                |
+| `bun run test:coverage:lcov` | lcov report for tooling integration                                              |
 | `bun run session:start`    | Create/switch to session branch + baseline check                                   |
 | `bun run session:end`      | Squash-merge to main + cleanup                                                     |
 | `bun run session:status`   | Quick git state report                                                             |
@@ -243,6 +250,7 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Shared module APIs       | [docs/shared/](../docs/shared/) (core-js.md, dice-js.md)      |
 | React components         | `src/components/react/tools/`                                 |
 | React hooks              | `src/hooks/`                                                  |
+| Test infrastructure      | `src/test-setup.ts`, `src/**/__test-utils__/`                  |
 | Design tokens            | `src/styles/tailwind.css` (`@theme` block)                    |
 | Project history          | [docs/project-history.md](../docs/project-history.md)         |
 | Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)           |

@@ -149,6 +149,34 @@ A tool that exists in `devDependencies` but isn't wired into check/CI is invisib
 
 ---
 
+## Testing Conventions
+
+### Framework & Environment
+
+- **Test runner**: `bun:test` (Jest-compatible, built into Bun)
+- **DOM environment**: jsdom 28, configured in `src/test-setup.ts` (preloaded via `bunfig.toml`)
+- **React testing**: `@testing-library/react` + `@testing-library/user-event` + `@testing-library/jest-dom`
+- **Coverage**: `bun run test:coverage` (local-only, no CI threshold enforcement)
+
+### File Placement
+
+- **Store tests**: co-located as `store.test.ts` next to `store.ts`
+- **Component tests**: co-located as `ComponentName.test.tsx` next to the component
+- **UI primitive tests**: in `src/components/react/ui/__tests__/`
+- **Pipeline script tests**: in `scripts/__tests__/`
+- **Core logic tests**: co-located in `src/lib/dtd/`
+
+### Conventions
+
+- **Named exports only** in test files (consistent with codebase convention)
+- **No snapshot tests** — use explicit assertions only
+- **Zustand stores are singletons** — reset state in `afterEach` via `useStore.setState()`
+- **Mock data hooks** with `mock.module()` + dynamic `await import()` for App component tests
+- **Fake timers** for autosave/debounce tests — always flush in `afterEach` to prevent cross-file leaks
+- **Shared test utilities** live in `__test-utils__/` directories (excluded from knip and dependency-cruiser)
+
+---
+
 ## D:TD Conventions
 
 ### Standardized Terms

@@ -29,6 +29,9 @@ Desktop.ini
 # npm lockfile (project uses Bun — bun.lock is canonical)
 package-lock.json
 
+# Test coverage output
+coverage/
+
 # rumdl cache
 .rumdl_cache/
 

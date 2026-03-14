@@ -2,7 +2,7 @@
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/pages/**/*.astro", "scripts/*.{ts,mjs}"],
 	"project": ["src/**/*.{ts,tsx,astro}", "scripts/**/*.{ts,mjs}"],
-	"ignore": ["src/lib/dtd/schemas/**"],
+	"ignore": ["src/lib/dtd/schemas/**", "src/**/__test-utils__/**"],
 	"ignoreDependencies": [
 		"@astrojs/check",
 		"@astrojs/starlight-tailwind",

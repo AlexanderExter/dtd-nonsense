@@ -308,22 +308,82 @@ See [project-conventions.md](project-conventions.md#formula-quick-reference) for
 
 ## Unit Tests
 
-Unit tests use **bun:test** (Bun's built-in Jest-compatible runner; config in `bunfig.toml`). Test files live alongside their source modules using the `*.test.ts` pattern:
+Unit tests use **bun:test** (Bun's built-in Jest-compatible runner; config in `bunfig.toml`). The test infrastructure includes:
 
-| Test File                              | Covers                                                    |
-| -------------------------------------- | --------------------------------------------------------- |
-| `src/lib/dtd/core.test.ts`             | derived stats, character CRUD, migration, data loading    |
-| `src/lib/dtd/dice.test.ts`             | parseNotation, calculateOutcome, roll (exploding, rank-0) |
-| `src/lib/dtd/schemas.test.ts`          | Schema validation + rejection tests                       |
-| `scripts/__tests__/validate.test.ts`   | Validate script unit tests                                |
-| `scripts/__tests__/lint.test.ts`       | Lint script unit tests                                    |
-| `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests                              |
+- **DOM environment**: jsdom 28, configured in `src/test-setup.ts` (preloaded via `bunfig.toml`)
+- **React testing**: `@testing-library/react` + `@testing-library/user-event` + `@testing-library/jest-dom` matchers
+- **Coverage**: `bun test --coverage` (native text output), local-only (no CI enforcement)
 
-Run with:
+### Test File Locations
+
+Tests are co-located with their source using the `*.test.ts(x)` pattern:
+
+| Test Layer | Files | Covers |
+| --- | --- | --- |
+| **Core logic** | `src/lib/dtd/core.test.ts` | Derived stats, character CRUD, migration, data loading |
+| **Core logic** | `src/lib/dtd/dice.test.ts` | parseNotation, calculateOutcome, roll (exploding, rank-0) |
+| **Core logic** | `src/lib/dtd/schemas.test.ts` | Schema validation + rejection tests |
+| **Pipeline** | `scripts/__tests__/validate.test.ts` | Validate script unit tests |
+| **Pipeline** | `scripts/__tests__/lint.test.ts` | Lint script unit tests |
+| **Pipeline** | `scripts/__tests__/sync-check.test.ts` | Sync-check script unit tests |
+| **Pipeline** | `scripts/__tests__/check-structure.test.ts` | Structural convention checks (ts-morph) |
+| **Zustand stores** | `src/components/react/tools/*/store.test.ts` | All 6 tool stores (setters, updaters, factories) |
+| **UI primitives** | `src/components/react/ui/__tests__/*.test.tsx` | Accordion, Modal, Tabs, Toast |
+| **App components** | `src/components/react/tools/*/*.test.tsx` | Each tool's root App component (loading/error/render states) |
+
+### Commands
 
 ```bash
-bun run test          # single run
-bun run test:watch    # re-run on file changes
+bun run test               # single run (all tests)
+bun run test:watch         # re-run on file changes
+bun run test:coverage      # text coverage summary
+bun run test:coverage:lcov # lcov report for tooling
+```
+
+### Shared Test Utilities
+
+| Utility | Location | Purpose |
+| --- | --- | --- |
+| `installMockLocalStorage()` | `src/lib/dtd/__test-utils__/mock-local-storage.ts` | Replaces `globalThis.localStorage`, returns cleanup |
+| `installMockFetch(dataMap)` | `src/lib/dtd/__test-utils__/mock-fetch.ts` | URL-matching fetch mock, returns cleanup |
+| `mockDice(...values)` | `src/lib/dtd/__test-utils__/mock-dice.ts` | Deterministic d10 rolls via Math.random mock |
+| `MOCK_GAME_DATA` | `src/components/react/__test-utils__/mock-game-data.ts` | Minimal game data fixtures |
+| `renderWithCleanup(ui)` | `src/components/react/__test-utils__/render-with-store.ts` | React render wrapper with cleanup |
+
+### Writing a Store Test
+
+```ts
+import { afterEach, beforeEach, describe, expect, it } from "bun:test";
+import { createDefaultX, useXStore } from "./store";
+
+beforeEach(() => {
+  useXStore.setState({ /* initial state */ });
+});
+afterEach(() => { useXStore.setState({ /* reset */ }); });
+
+it("sets field", () => {
+  useXStore.getState().setField("value");
+  expect(useXStore.getState().field).toBe("value");
+});
+```
+
+### Writing a Component Test
+
+```tsx
+import { afterEach, describe, expect, it, mock } from "bun:test";
+import { cleanup, render, screen } from "@testing-library/react";
+
+// Mock data hooks to control loading/error/data states
+let mockHook = () => ({ data: null, loading: true, error: null });
+mock.module("@/hooks/use-data", () => ({ useAllData: () => mockHook() }));
+const { MyApp } = await import("./MyApp");
+
+afterEach(() => cleanup());
+
+it("shows loading", () => {
+  render(<MyApp />);
+  expect(screen.getByText(/Loading/)).toBeTruthy();
+});
 ```
 
 ### CI Pipeline Order
