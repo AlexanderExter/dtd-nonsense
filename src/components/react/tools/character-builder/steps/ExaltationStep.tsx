@@ -85,8 +85,8 @@ export function ExaltationStep() {
 						<div>
 							<strong>Static Powers:</strong>
 							<ul>
-								{preview.staticPowers.map((p: any, i: number) => (
-									<li key={i}>
+								{preview.staticPowers.map((p: any) => (
+									<li key={typeof p === "string" ? p : p.name}>
 										<strong>{p.name}:</strong> {p.description}
 									</li>
 								))}
@@ -107,7 +107,7 @@ export function ExaltationStep() {
 								</thead>
 								<tbody>
 									{preview.progression.map((row: any, i: number) => (
-										<tr key={i}>
+										<tr key={`${row.dots ?? i}-${row.name}`}>
 											<td>{row.dots ?? i + 1}</td>
 											<td>{row.name}</td>
 											<td>{row.description}</td>

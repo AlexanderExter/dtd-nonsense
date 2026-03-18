@@ -49,8 +49,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 			<div className="flex flex-col gap-xs">
 				{weapons.map((w, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`weapon-${i}`}
 						className="flex flex-col items-stretch gap-xs p-sm bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						{/* Row 1: core fields */}
 						<div className="flex items-center gap-xs flex-wrap">

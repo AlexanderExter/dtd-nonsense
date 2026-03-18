@@ -226,7 +226,8 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						<ul className="list-none p-0 m-0">
 							{(char.savedPools || []).map((p, idx) => (
 								<li
-									key={idx}
+									// biome-ignore lint/suspicious/noArrayIndexKey: editable pool list identified by position
+									key={`pool-${p.label}-${idx}`}
 									className="flex items-center gap-sm py-1 px-sm bg-bg border border-border rounded-sm text-[0.85rem] mb-1"
 								>
 									<strong className="flex-1 text-text-primary">{p.label}:</strong>{" "}

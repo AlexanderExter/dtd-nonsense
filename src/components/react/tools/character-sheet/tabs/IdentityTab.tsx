@@ -267,8 +267,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							<div>
 								<strong>Static Powers:</strong>
 								<ul className="my-xs pl-lg">
-									{selectedExalt.staticPowers.map((p: any, i: number) => (
-										<li key={i} className="mb-0.5">
+									{selectedExalt.staticPowers.map((p: any) => (
+										<li key={typeof p === "string" ? p : p.name} className="mb-0.5">
 											{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 										</li>
 									))}
@@ -314,8 +314,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							<div>
 								<strong>Commandments:</strong>
 								<ul className="my-xs pl-lg">
-									{selectedAlign.commandments.map((cmd: string, i: number) => (
-										<li key={i} className="mb-0.5">
+									{selectedAlign.commandments.map((cmd: string) => (
+										<li key={cmd} className="mb-0.5">
 											{cmd}
 										</li>
 									))}
@@ -338,7 +338,9 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									</thead>
 									<tbody>
 										{selectedAlign.sins.map((sin: any, i: number) => (
-											<tr key={i}>
+											<tr
+												key={`sin-${sin.level ?? i}-${typeof sin === "string" ? sin : sin.description || sin.name}`}
+											>
 												<td className="py-[3px] px-1.5 border border-border text-center">
 													{sin.level ?? i + 1}
 												</td>

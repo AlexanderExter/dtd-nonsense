@@ -85,7 +85,7 @@ export function ShipBuilderApp() {
 		return () => {
 			cancelled = true;
 		};
-	}, []);
+	}, [setDataLoaded, setMode, setShip, setShipData, setShipList]);
 
 	// -----------------------------------------------------------------------
 	// Ship management

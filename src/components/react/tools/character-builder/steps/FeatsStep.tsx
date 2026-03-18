@@ -15,13 +15,13 @@ export function FeatsStep() {
 	const char = useBuilderStore((s) => s.char);
 	const updateChar = useBuilderStore((s) => s.updateChar);
 	const updateMeta = useBuilderStore((s) => s.updateMeta);
+	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	if (!data?.feats?.feats) return <p>Loading feat data…</p>;
 
 	const allFeats = data.feats.feats as any[];
 	const raceName = char.race || null;
 	const exaltName = char.exaltation || null;
-	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	// Split feats vs assets/hindrances
 	const feats = allFeats.filter((f: any) => FEAT_CATS.includes(f.category));

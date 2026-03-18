@@ -7,32 +7,41 @@ export function CrewConfig() {
 	const data = shipData;
 	const currentShip = ship;
 
+	const handleQualityChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			const val = Number.parseInt((e.target as HTMLSelectElement).value, 10);
+			updateShip((s) => ({ ...s, crewQuality: val }));
+		},
+		[updateShip],
+	);
+
+	const handleOfficerName = useCallback(
+		(posId: string, name: string) => {
+			updateShip((s) => ({
+				...s,
+				officers: {
+					...s.officers,
+					[posId]: { ...s.officers[posId], name },
+				},
+			}));
+		},
+		[updateShip],
+	);
+
+	const handleOfficerSkill = useCallback(
+		(posId: string, skill: number) => {
+			updateShip((s) => ({
+				...s,
+				officers: {
+					...s.officers,
+					[posId]: { ...s.officers[posId], skill },
+				},
+			}));
+		},
+		[updateShip],
+	);
+
 	if (!data) return null;
-
-	const handleQualityChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-		const val = Number.parseInt((e.target as HTMLSelectElement).value, 10);
-		updateShip((s) => ({ ...s, crewQuality: val }));
-	}, []);
-
-	const handleOfficerName = useCallback((posId: string, name: string) => {
-		updateShip((s) => ({
-			...s,
-			officers: {
-				...s.officers,
-				[posId]: { ...s.officers[posId], name },
-			},
-		}));
-	}, []);
-
-	const handleOfficerSkill = useCallback((posId: string, skill: number) => {
-		updateShip((s) => ({
-			...s,
-			officers: {
-				...s.officers,
-				[posId]: { ...s.officers[posId], skill },
-			},
-		}));
-	}, []);
 
 	return (
 		<section className="mb-xl">

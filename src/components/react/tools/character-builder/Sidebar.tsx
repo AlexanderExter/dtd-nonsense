@@ -148,7 +148,7 @@ export function Sidebar() {
 						const isDone = meta.stepsCompleted[i];
 						const isActive = currentStep === i + 1;
 						return (
-							<li key={i}>
+							<li key={label}>
 								<button
 									type="button"
 									className={[

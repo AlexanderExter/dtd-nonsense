@@ -86,8 +86,8 @@ export function AlignmentStep() {
 						<div>
 							<strong>Commandments:</strong>
 							<ul>
-								{preview.commandments.map((cmd: string, i: number) => (
-									<li key={i}>{cmd}</li>
+								{preview.commandments.map((cmd: string) => (
+									<li key={cmd}>{cmd}</li>
 								))}
 							</ul>
 						</div>
@@ -110,8 +110,8 @@ export function AlignmentStep() {
 									</tr>
 								</thead>
 								<tbody>
-									{preview.sins.map((s: any, i: number) => (
-										<tr key={i}>
+									{preview.sins.map((s: any) => (
+										<tr key={`${s.devotion}-${s.sin}`}>
 											<td>{s.devotion}</td>
 											<td>{s.sin}</td>
 										</tr>

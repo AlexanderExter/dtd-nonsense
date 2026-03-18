@@ -77,7 +77,8 @@ export function ArmorSection() {
 				</thead>
 				<tbody>
 					{armor.map((a, idx) => (
-						<tr key={idx}>
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
+						<tr key={`armor-${idx}`}>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"

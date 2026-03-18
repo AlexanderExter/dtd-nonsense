@@ -10,13 +10,9 @@ export function HullSelector() {
 	const { shipData, ship, updateShip } = useShipStore();
 	const [filterClass, setFilterClass] = useState("all");
 
-	if (!shipData) return null;
-
-	const data = shipData;
-	const currentShip = ship;
-
 	const selectHull = useCallback(
 		(hullId: string) => {
+			if (!shipData) return;
 			updateShip((s) => {
 				const oldHullId = s.hullId;
 				s.hullId = hullId;
@@ -24,7 +20,7 @@ export function HullSelector() {
 				if (oldHullId !== hullId) {
 					s.consoles = {};
 					s.weaponPartials = {};
-					const hull = data?.hulls.find((h) => h.id === hullId);
+					const hull = shipData.hulls.find((h) => h.id === hullId);
 					if (hull) {
 						s.weapons = {
 							forward: new Array(hull.weapons.forward).fill(""),
@@ -37,8 +33,13 @@ export function HullSelector() {
 				return s;
 			});
 		},
-		[data],
+		[shipData, updateShip],
 	);
+
+	if (!shipData) return null;
+
+	const data = shipData;
+	const currentShip = ship;
 
 	const filteredHulls = data.hulls.filter((h) => filterClass === "all" || h.class === filterClass);
 

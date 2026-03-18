@@ -7,7 +7,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
 	site: "https://dtd-nonsense.vercel.app",
-	output: "static",
 	adapter: vercel(),
 
 	vite: { plugins: [tailwindcss()] },

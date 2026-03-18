@@ -8,6 +8,44 @@ export function SheetPanel() {
 	const data = shipData;
 	const currentShip = ship;
 
+	const toggleConsole = useCallback(
+		(consoleId: string) => {
+			updateShip((s) => {
+				const wasActive = s.combat.consoleStatus[consoleId] !== false;
+				return {
+					...s,
+					combat: {
+						...s.combat,
+						consoleStatus: {
+							...s.combat.consoleStatus,
+							[consoleId]: !wasActive,
+						},
+					},
+				};
+			});
+		},
+		[updateShip],
+	);
+
+	const toggleWeapon = useCallback(
+		(slotKey: string) => {
+			updateShip((s) => {
+				const wasActive = s.combat.weaponStatus[slotKey] !== false;
+				return {
+					...s,
+					combat: {
+						...s.combat,
+						weaponStatus: {
+							...s.combat.weaponStatus,
+							[slotKey]: !wasActive,
+						},
+					},
+				};
+			});
+		},
+		[updateShip],
+	);
+
 	if (!data) return null;
 
 	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
@@ -23,46 +61,6 @@ export function SheetPanel() {
 
 	const stats = getShipStats(currentShip, hull);
 	const installedConsoles = getInstalledConsoleIds(currentShip);
-
-	// -----------------------------------------------------------------------
-	// Console toggle
-	// -----------------------------------------------------------------------
-
-	const toggleConsole = useCallback((consoleId: string) => {
-		updateShip((s) => {
-			const wasActive = s.combat.consoleStatus[consoleId] !== false;
-			return {
-				...s,
-				combat: {
-					...s.combat,
-					consoleStatus: {
-						...s.combat.consoleStatus,
-						[consoleId]: !wasActive,
-					},
-				},
-			};
-		});
-	}, []);
-
-	// -----------------------------------------------------------------------
-	// Weapon toggle
-	// -----------------------------------------------------------------------
-
-	const toggleWeapon = useCallback((slotKey: string) => {
-		updateShip((s) => {
-			const wasActive = s.combat.weaponStatus[slotKey] !== false;
-			return {
-				...s,
-				combat: {
-					...s.combat,
-					weaponStatus: {
-						...s.combat.weaponStatus,
-						[slotKey]: !wasActive,
-					},
-				},
-			};
-		});
-	}, []);
 
 	// -----------------------------------------------------------------------
 	// Render

@@ -40,8 +40,9 @@ export function FeatList({ feats, onChange }: FeatListProps) {
 			<div className="flex flex-col gap-xs">
 				{feats.map((feat, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`feat-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						<input
 							type="text"

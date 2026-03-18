@@ -84,7 +84,11 @@ export function EquipmentStep() {
 
 					<ul className="list-none p-0 m-0">
 						{(preview.items || []).map((item: any, idx: number) => (
-							<li key={idx} className="py-xs border-b border-border text-[0.9rem] last:border-b-0">
+							<li
+								// biome-ignore lint/suspicious/noArrayIndexKey: items may share names, position is stable identity
+								key={`${item.name || "item"}-${idx}`}
+								className="py-xs border-b border-border text-[0.9rem] last:border-b-0"
+							>
 								{item.choice && item.options?.length > 0 ? (
 									<span>
 										<label>

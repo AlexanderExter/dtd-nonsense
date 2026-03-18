@@ -38,6 +38,24 @@ export function NPCGeneratorApp() {
 
 	const derivedStats = useMemo(() => calculateDerived(npcState, traitsData), [npcState, traitsData]);
 
+	// =====================================================================
+	// Persistence
+	// =====================================================================
+
+	const loadSavedList = useCallback(() => {
+		try {
+			const raw = localStorage.getItem(STORAGE_LIST_KEY);
+			setSavedList(raw ? JSON.parse(raw) : []);
+		} catch {
+			setSavedList([]);
+		}
+	}, [setSavedList]);
+
+	const saveSavedList = useCallback(() => {
+		const list = useNPCStore.getState().savedList;
+		localStorage.setItem(STORAGE_LIST_KEY, JSON.stringify(list));
+	}, []);
+
 	// Load data on mount
 	useEffect(() => {
 		Promise.all([loadData("traits.json"), loadData("npc-templates.json"), loadData("skills.json")])
@@ -51,25 +69,7 @@ export function NPCGeneratorApp() {
 			.catch((err) => {
 				console.error("NPC Builder init failed:", err);
 			});
-	}, []);
-
-	// =====================================================================
-	// Persistence
-	// =====================================================================
-
-	const loadSavedList = () => {
-		try {
-			const raw = localStorage.getItem(STORAGE_LIST_KEY);
-			setSavedList(raw ? JSON.parse(raw) : []);
-		} catch {
-			setSavedList([]);
-		}
-	};
-
-	const saveSavedList = () => {
-		const list = useNPCStore.getState().savedList;
-		localStorage.setItem(STORAGE_LIST_KEY, JSON.stringify(list));
-	};
+	}, [loadSavedList, setDataLoaded, setSkillNames, setTemplatesList, setTraitsData]);
 
 	const saveNPC = useCallback(() => {
 		const npc = useNPCStore.getState().npcState;
@@ -89,60 +89,69 @@ export function NPCGeneratorApp() {
 		}
 
 		showToast(`Saved: ${npc.name || id}`);
-	}, []);
+	}, [saveSavedList, setSavedList]);
 
-	const loadSavedNPC = useCallback((id: string) => {
-		const raw = localStorage.getItem(STORAGE_PREFIX + id);
-		if (!raw) return;
-		try {
-			const data = JSON.parse(raw) as Partial<NPCData>;
-			const loaded = { ...createDefaultNPC(), ...data };
-			setNpcState(loaded);
-			showToast(`Loaded: ${loaded.name || id}`);
-		} catch {
-			showToast("Failed to load NPC");
-		}
-	}, []);
+	const loadSavedNPC = useCallback(
+		(id: string) => {
+			const raw = localStorage.getItem(STORAGE_PREFIX + id);
+			if (!raw) return;
+			try {
+				const data = JSON.parse(raw) as Partial<NPCData>;
+				const loaded = { ...createDefaultNPC(), ...data };
+				setNpcState(loaded);
+				showToast(`Loaded: ${loaded.name || id}`);
+			} catch {
+				showToast("Failed to load NPC");
+			}
+		},
+		[setNpcState],
+	);
 
-	const deleteSavedNPC = useCallback((id: string) => {
-		if (!id) {
-			showToast("Select a saved NPC to delete");
-			return;
-		}
-		localStorage.removeItem(STORAGE_PREFIX + id);
-		const currentList = useNPCStore.getState().savedList;
-		setSavedList(currentList.filter((i) => i !== id));
-		saveSavedList();
-		showToast("Deleted saved NPC");
-	}, []);
+	const deleteSavedNPC = useCallback(
+		(id: string) => {
+			if (!id) {
+				showToast("Select a saved NPC to delete");
+				return;
+			}
+			localStorage.removeItem(STORAGE_PREFIX + id);
+			const currentList = useNPCStore.getState().savedList;
+			setSavedList(currentList.filter((i) => i !== id));
+			saveSavedList();
+			showToast("Deleted saved NPC");
+		},
+		[saveSavedList, setSavedList],
+	);
 
 	// =====================================================================
 	// Template loading
 	// =====================================================================
 
-	const loadTemplate = useCallback((templateId: string) => {
-		const tpl = useNPCStore.getState().templatesList.find((t) => t.id === templateId);
-		if (!tpl) return;
+	const loadTemplate = useCallback(
+		(templateId: string) => {
+			const tpl = useNPCStore.getState().templatesList.find((t) => t.id === templateId);
+			if (!tpl) return;
 
-		setNpcState({
-			name: tpl.name,
-			level: tpl.level,
-			size: tpl.size,
-			speed: tpl.speed,
-			characteristics: { ...tpl.characteristics },
-			skills: tpl.skills.map((s) => ({ ...s })),
-			feats: [...tpl.feats],
-			traits: (tpl.traits || []).map((t) => ({ ...t })),
-			armor: (tpl.armor || []).map((a) => ({
-				...a,
-				locations: [...a.locations],
-			})),
-			weapons: (tpl.weapons || []).map((w) => ({ ...w })),
-			abilities: (tpl.abilities || []).map((a) => ({ ...a })),
-			gear: Array.isArray(tpl.gear) ? tpl.gear.join(", ") : tpl.gear || "",
-		});
-		showToast(`Loaded: ${tpl.name}`);
-	}, []);
+			setNpcState({
+				name: tpl.name,
+				level: tpl.level,
+				size: tpl.size,
+				speed: tpl.speed,
+				characteristics: { ...tpl.characteristics },
+				skills: tpl.skills.map((s) => ({ ...s })),
+				feats: [...tpl.feats],
+				traits: (tpl.traits || []).map((t) => ({ ...t })),
+				armor: (tpl.armor || []).map((a) => ({
+					...a,
+					locations: [...a.locations],
+				})),
+				weapons: (tpl.weapons || []).map((w) => ({ ...w })),
+				abilities: (tpl.abilities || []).map((a) => ({ ...a })),
+				gear: Array.isArray(tpl.gear) ? tpl.gear.join(", ") : tpl.gear || "",
+			});
+			showToast(`Loaded: ${tpl.name}`);
+		},
+		[setNpcState],
+	);
 
 	// =====================================================================
 	// Actions
@@ -150,13 +159,13 @@ export function NPCGeneratorApp() {
 
 	const handleClear = useCallback(() => {
 		setNpcState(createDefaultNPC());
-	}, []);
+	}, [setNpcState]);
 
 	const handleDuplicate = useCallback(() => {
 		const current = useNPCStore.getState().npcState;
 		setNpcState({ ...current, name: `${current.name || "NPC"} (Copy)` });
 		showToast("Duplicated \u2014 edit and save as new");
-	}, []);
+	}, [setNpcState]);
 
 	const handleCopyMarkdown = useCallback(async () => {
 		const state = useNPCStore.getState();
@@ -181,9 +190,12 @@ export function NPCGeneratorApp() {
 		window.print();
 	}, []);
 
-	const handleNPCUpdate = useCallback((updated: NPCData) => {
-		setNpcState(updated);
-	}, []);
+	const handleNPCUpdate = useCallback(
+		(updated: NPCData) => {
+			setNpcState(updated);
+		},
+		[setNpcState],
+	);
 
 	// =====================================================================
 	// Template dropdown categories

@@ -42,8 +42,9 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 			<div className="flex flex-col gap-xs">
 				{abilities.map((a, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`ability-${i}`}
 						className="flex flex-col items-stretch gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						<div className="flex items-center gap-sm">
 							<input

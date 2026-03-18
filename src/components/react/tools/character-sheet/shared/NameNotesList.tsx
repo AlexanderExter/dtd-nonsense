@@ -91,7 +91,8 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 				</thead>
 				<tbody>
 					{items.map((item, idx) => (
-						<tr key={idx}>
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
+						<tr key={`${label}-${idx}`}>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
 								<input
 									type="text"

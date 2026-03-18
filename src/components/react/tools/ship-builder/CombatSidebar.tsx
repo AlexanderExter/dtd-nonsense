@@ -16,27 +16,11 @@ export function CombatSidebar() {
 	const data = shipData;
 	const currentShip = ship;
 
-	if (!data) return null;
-
-	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
-	if (!hull) return null;
-
-	const stats = getShipStats(currentShip, hull);
-	const shield = data.shields.find((s) => s.id === currentShip.shieldId);
-	const combat = currentShip.combat;
-
-	// Initialize combat state if needed (first time entering sheet)
-	if (combat.hullCurrent === 0 && combat.shieldCurrent === 0) {
-		updateShip((s) => ({
-			...s,
-			combat: {
-				...s.combat,
-				hullCurrent: stats.hullHP,
-				crewCurrent: stats.crew,
-				shieldCurrent: shield ? shield.capacity : 0,
-			},
-		}));
-	}
+	// Derived values — may be null/undefined before data loads.
+	// Computed here so hooks (which must precede early returns) can close over them.
+	const hull = data?.hulls.find((h) => h.id === currentShip.hullId);
+	const stats = hull ? getShipStats(currentShip, hull) : null;
+	const shield = data?.shields.find((s) => s.id === currentShip.shieldId);
 
 	// -----------------------------------------------------------------------
 	// HP handlers
@@ -52,18 +36,21 @@ export function CombatSidebar() {
 				};
 			});
 		},
-		[],
+		[updateShip],
 	);
 
-	const setHP = useCallback((field: "shieldCurrent" | "hullCurrent" | "crewCurrent", value: number) => {
-		updateShip((s) => ({
-			...s,
-			combat: {
-				...s.combat,
-				[field]: Math.max(0, value),
-			},
-		}));
-	}, []);
+	const setHP = useCallback(
+		(field: "shieldCurrent" | "hullCurrent" | "crewCurrent", value: number) => {
+			updateShip((s) => ({
+				...s,
+				combat: {
+					...s.combat,
+					[field]: Math.max(0, value),
+				},
+			}));
+		},
+		[updateShip],
+	);
 
 	// -----------------------------------------------------------------------
 	// Shield regen
@@ -80,28 +67,32 @@ export function CombatSidebar() {
 				combat: { ...s.combat, shieldCurrent: newShield },
 			};
 		});
-	}, [shield]);
+	}, [shield, updateShip]);
 
-	const handleDisruptionChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-		const val = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
-		updateShip((s) => ({
-			...s,
-			combat: { ...s.combat, disruption: val },
-		}));
-	}, []);
+	const handleDisruptionChange = useCallback(
+		(e: React.FormEvent<HTMLInputElement>) => {
+			const val = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
+			updateShip((s) => ({
+				...s,
+				combat: { ...s.combat, disruption: val },
+			}));
+		},
+		[updateShip],
+	);
 
 	const resetDisruption = useCallback(() => {
 		updateShip((s) => ({
 			...s,
 			combat: { ...s.combat, disruption: 0 },
 		}));
-	}, []);
+	}, [updateShip]);
 
 	// -----------------------------------------------------------------------
 	// Initiative
 	// -----------------------------------------------------------------------
 
 	const rollInitiative = useCallback(() => {
+		if (!stats) return;
 		const result = roll(1, 1, 0);
 		const d10 = result.total;
 		const total = stats.sensors + stats.acc + d10;
@@ -112,18 +103,21 @@ export function CombatSidebar() {
 	// Departments
 	// -----------------------------------------------------------------------
 
-	const toggleDept = useCallback((dept: string, checked: boolean) => {
-		updateShip((s) => ({
-			...s,
-			combat: {
-				...s.combat,
-				departments: {
-					...s.combat.departments,
-					[dept]: checked,
+	const toggleDept = useCallback(
+		(dept: string, checked: boolean) => {
+			updateShip((s) => ({
+				...s,
+				combat: {
+					...s.combat,
+					departments: {
+						...s.combat.departments,
+						[dept]: checked,
+					},
 				},
-			},
-		}));
-	}, []);
+			}));
+		},
+		[updateShip],
+	);
 
 	const resetDepartments = useCallback(() => {
 		updateShip((s) => ({
@@ -139,7 +133,7 @@ export function CombatSidebar() {
 				},
 			},
 		}));
-	}, []);
+	}, [updateShip]);
 
 	// -----------------------------------------------------------------------
 	// Turn counter
@@ -160,7 +154,7 @@ export function CombatSidebar() {
 				},
 			},
 		}));
-	}, []);
+	}, [updateShip]);
 
 	const prevTurn = useCallback(() => {
 		updateShip((s) => ({
@@ -170,7 +164,7 @@ export function CombatSidebar() {
 				turn: Math.max(1, (s.combat.turn || 1) - 1),
 			},
 		}));
-	}, []);
+	}, [updateShip]);
 
 	// -----------------------------------------------------------------------
 	// Critical damage
@@ -210,6 +204,27 @@ export function CombatSidebar() {
 		useShipStore.getState().setMode("builder");
 		updateShip((s) => ({ ...s, mode: "builder" }));
 	}, [updateShip]);
+
+	// -----------------------------------------------------------------------
+	// Early returns (after all hooks)
+	// -----------------------------------------------------------------------
+
+	if (!data || !hull || !stats) return null;
+
+	const combat = currentShip.combat;
+
+	// Initialize combat state if needed (first time entering sheet)
+	if (combat.hullCurrent === 0 && combat.shieldCurrent === 0) {
+		updateShip((s) => ({
+			...s,
+			combat: {
+				...s.combat,
+				hullCurrent: stats.hullHP,
+				crewCurrent: stats.crew,
+				shieldCurrent: shield ? shield.capacity : 0,
+			},
+		}));
+	}
 
 	// -----------------------------------------------------------------------
 	// Render
@@ -481,9 +496,9 @@ export function CombatSidebar() {
 					{combat.critLog.length === 0 ? (
 						<span className="text-text-muted text-[0.8rem]">No critical hits yet</span>
 					) : (
-						combat.critLog.map((entry, i) => (
+						combat.critLog.map((entry) => (
 							<div
-								key={i}
+								key={`${entry.turn}-${entry.roll}-${entry.total}-${entry.name}`}
 								className="px-sm py-xs mb-xs bg-surface-raised border-l-[3px] border-error rounded-r-sm text-[0.8rem]"
 							>
 								<div className="text-text-dim text-[0.7rem]">

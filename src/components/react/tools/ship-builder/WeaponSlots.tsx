@@ -10,7 +10,6 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 	const { shipData, ship, updateShip } = useShipStore();
 	const data = shipData;
 	const currentShip = ship;
-	if (!data || count === 0) return null;
 
 	const handleSizeChange = useCallback(
 		(idx: number, size: string) => {
@@ -31,7 +30,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 				return { ...s, weapons, weaponPartials: partials };
 			});
 		},
-		[position],
+		[position, updateShip],
 	);
 
 	const handleMaterialChange = useCallback(
@@ -60,8 +59,10 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 				return { ...s, weapons, weaponPartials: partials };
 			});
 		},
-		[position, data],
+		[position, data, updateShip],
 	);
+
+	if (!data || count === 0) return null;
 
 	return (
 		<div className="mb-md">

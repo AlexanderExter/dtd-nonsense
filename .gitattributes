@@ -9,8 +9,16 @@
 *.jpeg binary
 *.gif binary
 *.ico binary
+*.webp binary
 *.pdf binary
 *.woff binary
 *.woff2 binary
 *.ttf binary
 *.otf binary
+
+# Lockfile — treat as binary for merge purposes (always regenerate, never merge)
+bun.lock merge=binary
+
+# Linguist hints — improve GitHub language stats and rendering
+*.mdx linguist-language=Markdown
+*.astro linguist-language=TypeScript

@@ -14,6 +14,8 @@ All commands run via npm scripts (backed by `bun`):
 | `bun run knip`          | `knip`                               | Dead code detection: unused files, exports, types   |
 | `bun run check:deps`    | `depcruise --validate ...`           | Enforce architectural import boundaries             |
 | `bun run check:structure` | `bun run scripts/check-structure.ts` | Verify TS structural conventions (stores, barrel, named exports) |
+| `bun run upgrade:recon` | `bun run scripts/upgrade-recon.mjs`  | Gather dependency ground truth for upgrade sessions |
+| `bun run maintenance:recon` | `node scripts/maintenance-recon.mjs` | Comprehensive project discovery for maintenance sessions |
 | `bun run test:coverage` | `bun test --coverage`                | Text coverage summary (local-only, no CI threshold) |
 | `bun run test:coverage:lcov` | `bun test --coverage --coverage-reporter=lcov` | lcov report for tooling integration |
 
@@ -37,7 +39,30 @@ bun run upgrade:recon
 - Engine requirements (whether major bumps need a higher Node version)
 - Tool availability (ncu, Bun, Node/npm versions)
 
-Used by the `dependency-upgrade` prompt (`.github/prompts/dependency-upgrade.prompt.md`) as the ground-truth input for automated upgrade sessions.
+Used by the `project-maintenance` prompt (`.github/prompts/project-maintenance.prompt.md`) during the dependency upgrade phase for deep dependency intelligence.
+
+### `bun run maintenance:recon`
+
+Comprehensive project discovery for the maintenance prompt. Scans the project to identify environment, package manager, toolchain, framework, config files, CI setup, and maintenance scripts. Produces a normalized JSON manifest that the project-maintenance prompt consumes to self-assemble its execution plan.
+
+```bash
+bun run maintenance:recon
+```
+
+**Data gathered:**
+
+- Environment (OS, shell type — PowerShell vs cmd.exe vs bash, VS Code detection)
+- Package manager (bun/npm/yarn/pnpm, lockfile presence and git-tracked status)
+- Script inventory (all package.json scripts + boolean flags for key maintenance scripts)
+- Stack detection (framework, linter, formatter, test runner, CSS framework, UI library, state manager, deploy target)
+- Config file discovery (comprehensive scan of ~60 known config file patterns with parse validity)
+- CI/CD system (GitHub Actions workflows, action versions, Node/Bun versions)
+- Dependency health (engine requirements, outdated count, overrides, tree health)
+- Tool availability (Node, npm, Bun, ncu, TypeScript versions)
+
+Portable — works with any Node.js project regardless of toolchain. Colors are inlined (no external dependencies beyond Node built-ins).
+
+Used by the `project-maintenance` prompt (`.github/prompts/project-maintenance.prompt.md`) as Phase A1 project discovery.
 
 ### `bun run validate`
 
@@ -160,12 +185,14 @@ bun run check:structure --json    # machine-readable JSON output
 
 ```text
 scripts/
-├── validate.ts          JSON schema validation engine (Zod-based)
-├── lint.ts              Markdown content linting (terminology, formatting, encoding)
-├── sync-check.ts        Markdown ↔ JSON drift checker (races, classes, feats parsers)
-├── check-structure.ts   ts-morph structural convention checks (store names, barrel, named exports)
-├── prebuild.mjs         Copies content into Astro structure, injects Starlight frontmatter
-└── codemods/            One-off jscodeshift transforms (committed for review, deleted post-merge)
+├── validate.ts            JSON schema validation engine (Zod-based)
+├── lint.ts                Markdown content linting (terminology, formatting, encoding)
+├── sync-check.ts          Markdown ↔ JSON drift checker (races, classes, feats parsers)
+├── check-structure.ts     ts-morph structural convention checks (store names, barrel, named exports)
+├── prebuild.mjs           Copies content into Astro structure, injects Starlight frontmatter
+├── upgrade-recon.mjs      Dependency ground truth gathering for upgrade sessions
+├── maintenance-recon.mjs  Comprehensive project discovery for maintenance sessions
+└── codemods/              One-off jscodeshift transforms (committed for review, deleted post-merge)
 
 src/lib/dtd/schemas/  Zod schemas for all 12 JSON data files
 ├── common.ts         Shared types (CharacteristicGroup, CharacteristicId, etc.)

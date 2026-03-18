@@ -9,10 +9,8 @@ export function ShieldPicker() {
 	const data = shipData;
 	const currentShip = ship;
 
-	if (!data) return null;
-
 	// Derive current shield type/mark from ship state
-	const currentShield = data.shields.find((s) => s.id === currentShip.shieldId);
+	const currentShield = data?.shields.find((s) => s.id === currentShip.shieldId);
 	const currentType = currentShield?.type || selectedType;
 	const currentMark = currentShield?.mark || selectedMark;
 
@@ -48,6 +46,8 @@ export function ShieldPicker() {
 		},
 		[data, currentType, updateShip],
 	);
+
+	if (!data) return null;
 
 	const shield = currentShip.shieldId ? data.shields.find((s) => s.id === currentShip.shieldId) : null;
 

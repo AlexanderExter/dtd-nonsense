@@ -82,7 +82,7 @@ export function XpTab() {
 					</tr>
 				)}
 				{entries.map((entry, i) => (
-					<tr key={`${entry.timestamp}-${i}`}>
+					<tr key={`${entry.timestamp}-${entry.label}-${entry.amount}`}>
 						<td className="py-1 px-2 border border-border">{entry.label}</td>
 						<td className="py-1 px-2 border border-border text-right font-bold text-accent">
 							{entry.amount}

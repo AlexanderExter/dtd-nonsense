@@ -116,7 +116,8 @@ export function WeaponTable({ type }: WeaponTableProps) {
 				</thead>
 				<tbody>
 					{weapons.map((w, idx) => (
-						<tr key={idx}>
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
+						<tr key={`weapon-${idx}`}>
 							<td className={tdClass}>
 								<input
 									type="text"

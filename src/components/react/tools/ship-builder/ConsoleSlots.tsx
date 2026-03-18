@@ -7,6 +7,16 @@ export function ConsoleSlots() {
 	const data = shipData;
 	const currentShip = ship;
 
+	const handleConsoleChange = useCallback(
+		(slotKey: string, consoleId: string) => {
+			updateShip((s) => {
+				s.consoles = { ...s.consoles, [slotKey]: consoleId };
+				return s;
+			});
+		},
+		[updateShip],
+	);
+
 	if (!data) return null;
 
 	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
@@ -19,13 +29,6 @@ export function ConsoleSlots() {
 			</section>
 		);
 	}
-
-	const handleConsoleChange = useCallback((slotKey: string, consoleId: string) => {
-		updateShip((s) => {
-			s.consoles = { ...s.consoles, [slotKey]: consoleId };
-			return s;
-		});
-	}, []);
 
 	const badgeColors: Record<string, string> = {
 		arcana: "bg-[#9b59b6]",

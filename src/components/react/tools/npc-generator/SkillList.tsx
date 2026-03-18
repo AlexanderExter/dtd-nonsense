@@ -66,8 +66,9 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 			<div className="flex flex-col gap-xs">
 				{skills.map((skill, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`skill-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						<input
 							type="text"

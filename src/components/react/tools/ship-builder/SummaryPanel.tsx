@@ -8,6 +8,43 @@ export function SummaryPanel() {
 	const data = shipData;
 	const currentShip = ship;
 
+	const handleNameChange = useCallback(
+		(e: React.FormEvent<HTMLInputElement>) => {
+			const name = (e.target as HTMLInputElement).value;
+			updateShip((s) => ({ ...s, name }));
+		},
+		[updateShip],
+	);
+
+	const handleHoldingsChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			const holdings = Number.parseInt((e.target as HTMLSelectElement).value, 10);
+			updateShip((s) => ({ ...s, holdings }));
+		},
+		[updateShip],
+	);
+
+	const handleCustomBPToggle = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const customBP = (e.target as HTMLInputElement).checked;
+			updateShip((s) => ({ ...s, customBP }));
+		},
+		[updateShip],
+	);
+
+	const handleCustomBPValue = useCallback(
+		(e: React.FormEvent<HTMLInputElement>) => {
+			const customBPValue = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
+			updateShip((s) => ({ ...s, customBPValue }));
+		},
+		[updateShip],
+	);
+
+	const handleSwitchToSheet = useCallback(() => {
+		useShipStore.getState().setMode("sheet");
+		updateShip((s) => ({ ...s, mode: "sheet" }));
+	}, [updateShip]);
+
 	if (!data) return null;
 
 	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
@@ -17,31 +54,6 @@ export function SummaryPanel() {
 	const budget = getBPBudget(currentShip, data);
 	const pct = budget > 0 ? Math.min((totalSpent / budget) * 100, 100) : 0;
 	const overBudget = totalSpent > budget;
-
-	const handleNameChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-		const name = (e.target as HTMLInputElement).value;
-		updateShip((s) => ({ ...s, name }));
-	}, []);
-
-	const handleHoldingsChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-		const holdings = Number.parseInt((e.target as HTMLSelectElement).value, 10);
-		updateShip((s) => ({ ...s, holdings }));
-	}, []);
-
-	const handleCustomBPToggle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		const customBP = (e.target as HTMLInputElement).checked;
-		updateShip((s) => ({ ...s, customBP }));
-	}, []);
-
-	const handleCustomBPValue = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-		const customBPValue = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
-		updateShip((s) => ({ ...s, customBPValue }));
-	}, []);
-
-	const handleSwitchToSheet = useCallback(() => {
-		useShipStore.getState().setMode("sheet");
-		updateShip((s) => ({ ...s, mode: "sheet" }));
-	}, [updateShip]);
 
 	const breakdownLines: Array<{ label: string; val: number }> = [
 		{ label: "Hull", val: breakdown.hull },
@@ -129,7 +141,8 @@ export function SummaryPanel() {
 					</label>
 					<select id="holdings-input" value={currentShip.holdings} onChange={handleHoldingsChange}>
 						{data.holdingsBP.map((bp, i) => (
-							<option key={i} value={i}>
+							// biome-ignore lint/suspicious/noArrayIndexKey: fixed-position holdings levels 0-5 for select dropdown
+							<option key={`holdings-${i}-${bp}`} value={i}>
 								{i} — {bp} BP
 							</option>
 						))}

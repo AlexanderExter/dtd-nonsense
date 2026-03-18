@@ -94,8 +94,8 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 						<div className="mb-xs">
 							<span className="font-bold text-text-primary">Abilities:</span>
 						</div>
-						{npc.abilities.map((a, i) => (
-							<div className="ml-md mb-xs" key={i}>
+						{npc.abilities.map((a) => (
+							<div className="ml-md mb-xs" key={a.name}>
 								- <span className="font-semibold text-accent">{a.name}</span>
 								{a.description ? ` - ${a.description}` : ""}
 							</div>

@@ -60,8 +60,9 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 			<div className="flex flex-col gap-xs">
 				{armor.map((a, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`armor-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm flex-wrap"
-						key={i}
 					>
 						<input
 							type="text"

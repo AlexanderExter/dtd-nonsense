@@ -221,8 +221,8 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						<h4 className="m-0 mb-xs text-text-primary text-[0.9rem]">Exaltation Powers</h4>
 						{selectedExalt.staticPowers && selectedExalt.staticPowers.length > 0 && (
 							<ul className="my-xs pl-lg">
-								{selectedExalt.staticPowers.map((p: any, i: number) => (
-									<li key={i} className="mb-0.5">
+								{selectedExalt.staticPowers.map((p: any, _i: number) => (
+									<li key={typeof p === "string" ? p : p.name} className="mb-0.5">
 										{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 									</li>
 								))}
@@ -233,7 +233,10 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								<strong>Progression:</strong>
 								<ul className="my-xs pl-lg">
 									{selectedExalt.progression.map((p: any, i: number) => (
-										<li key={i} className="mb-0.5">
+										<li
+											key={typeof p === "string" ? p : `${p.level || i}-${p.name}`}
+											className="mb-0.5"
+										>
 											{typeof p === "string" ? p : `Level ${p.level}: ${p.description || p.name}`}
 										</li>
 									))}
@@ -352,6 +355,7 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</thead>
 					<tbody>
 						{spells.map((sp, idx) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: editable spell list identified by position
 							<tr key={idx}>
 								<td className="py-[3px] px-sm border-b border-border align-middle">
 									<select
@@ -467,6 +471,7 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</thead>
 					<tbody>
 						{specials.map((sa, idx) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 							<tr key={idx}>
 								<td className="py-[3px] px-sm border-b border-border align-middle">
 									<input
@@ -543,6 +548,7 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Trick Shots</h3>
 				<ul className="list-none p-0 m-0">
 					{trickShots.map((ts, idx) => (
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 						<li key={idx} className="flex items-center gap-sm mb-1">
 							<input
 								type="text"

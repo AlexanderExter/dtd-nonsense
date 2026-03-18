@@ -91,7 +91,7 @@ export function FeaturesTab() {
 				{charClasses.map((cls: ClassEntry, idx: number) => {
 					const info = getClassInfo(cls.classId);
 					return (
-						<div key={idx} className="mb-md">
+						<div key={cls.classId} className="mb-md">
 							<div className="flex items-center gap-sm flex-wrap">
 								<select
 									className="flex-1 min-w-[160px] text-[0.85rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
