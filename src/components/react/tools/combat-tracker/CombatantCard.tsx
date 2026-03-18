@@ -1,6 +1,8 @@
-import { useState } from "react";
 import { Badge } from "@/components/react/ui/Badge";
 import { Button } from "@/components/react/ui/Button";
+import { GameTextarea } from "@/components/react/ui/GameTextarea";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 import type { Combatant, CombatantCondition } from "./constants";
 import { CONDITIONS, getWoundStatus } from "./constants";
 
@@ -59,13 +61,11 @@ export function CombatantCard({
 	const woundStatus = getWoundStatus(c);
 	const hpPercent = c.hpMax > 0 ? Math.max(0, (c.hpCurrent / c.hpMax) * 100) : 0;
 
-	const cardClasses = [
+	const cardClasses = cn(
 		"bg-surface border-2 rounded-md px-lg py-md transition-all duration-200 relative",
 		isActive ? "border-accent shadow-[0_0_12px_rgba(212,168,75,0.25)]" : "border-border",
 		c.hpCurrent <= 0 && "opacity-45",
-	]
-		.filter(Boolean)
-		.join(" ");
+	);
 
 	const initClasses = [
 		"flex items-center justify-center w-10 h-10 rounded-full text-[1.1rem] font-bold text-accent shrink-0 border-2 cursor-pointer",
@@ -91,9 +91,10 @@ export function CombatantCard({
 				</button>
 				<div className="flex-1">
 					<span
-						className={["text-[1.1rem] font-semibold text-text-primary", c.hpCurrent <= 0 && "line-through"]
-							.filter(Boolean)
-							.join(" ")}
+						className={cn(
+							"text-[1.1rem] font-semibold text-text-primary",
+							c.hpCurrent <= 0 && "line-through",
+						)}
 					>
 						{c.name}
 					</span>
@@ -201,51 +202,43 @@ export function CombatantCard({
 			<div className="flex gap-sm items-center my-sm flex-wrap max-[768px]:gap-1">
 				<button
 					type="button"
-					className={[
+					className={cn(
 						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
 						c.actionBudget.half1 && "!bg-accent-dim !border-accent !text-text-primary",
 						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					onClick={() => onToggleAction(c.id, "half1")}
 				>
 					Half 1
 				</button>
 				<button
 					type="button"
-					className={[
+					className={cn(
 						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
 						c.actionBudget.half2 && "!bg-accent-dim !border-accent !text-text-primary",
 						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					onClick={() => onToggleAction(c.id, "half2")}
 				>
 					Half 2
 				</button>
 				<button
 					type="button"
-					className={[
+					className={cn(
 						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
 						c.actionBudget.fullAction && "!bg-accent-dim !border-accent !text-text-primary",
 						(c.actionBudget.half1 || c.actionBudget.half2) && "opacity-35 pointer-events-none",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					onClick={() => onToggleAction(c.id, "fullAction")}
 				>
 					Full
 				</button>
 				<button
 					type="button"
-					className={[
+					className={cn(
 						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
 						c.actionBudget.reaction && "!bg-accent-dim !border-accent !text-text-primary",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					onClick={() => onToggleAction(c.id, "reaction")}
 				>
 					Reaction
@@ -287,8 +280,7 @@ export function CombatantCard({
 			</div>
 			{detailsOpen && (
 				<div className="mt-sm pt-sm border-t border-border">
-					<textarea
-						className="w-full min-h-[60px] resize-y"
+					<GameTextarea
 						placeholder="Combatant notes..."
 						value={c.notes}
 						onInput={(e) => onNotesChange(c.id, (e.target as HTMLTextAreaElement).value)}

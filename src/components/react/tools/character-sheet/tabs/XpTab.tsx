@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
 import type { XpLogEntry } from "@/lib/dtd/types";
 import { useCharSheetStore } from "../store";
 
@@ -133,9 +134,8 @@ export function XpTab() {
 					<div className="flex gap-xs mt-md items-end">
 						<label className="flex flex-col flex-1 text-[0.75rem] uppercase tracking-[0.3px]">
 							Description
-							<input
+							<GameInput
 								type="text"
-								className="w-full"
 								value={incomeLabel}
 								onInput={(e) => setIncomeLabel((e.target as HTMLInputElement).value)}
 								placeholder="e.g. Session 3"
@@ -143,9 +143,8 @@ export function XpTab() {
 						</label>
 						<label className="flex flex-col w-[80px] text-[0.75rem] uppercase tracking-[0.3px]">
 							XP
-							<input
+							<GameInput
 								type="number"
-								className="w-full"
 								value={incomeAmount}
 								min={1}
 								onInput={(e) => setIncomeAmount((e.target as HTMLInputElement).value)}
@@ -165,9 +164,8 @@ export function XpTab() {
 					<div className="flex gap-xs mt-md items-end">
 						<label className="flex flex-col flex-1 text-[0.75rem] uppercase tracking-[0.3px]">
 							Description
-							<input
+							<GameInput
 								type="text"
-								className="w-full"
 								value={spendLabel}
 								onInput={(e) => setSpendLabel((e.target as HTMLInputElement).value)}
 								placeholder="e.g. +1 Dexterity"
@@ -175,9 +173,8 @@ export function XpTab() {
 						</label>
 						<label className="flex flex-col w-[80px] text-[0.75rem] uppercase tracking-[0.3px]">
 							XP
-							<input
+							<GameInput
 								type="number"
-								className="w-full"
 								value={spendAmount}
 								min={1}
 								onInput={(e) => setSpendAmount((e.target as HTMLInputElement).value)}

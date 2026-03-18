@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useCallback } from "react";
 import { CombatSidebar } from "./CombatSidebar";
 import { getInstalledConsoleIds, getShipStats, OFFICER_POSITIONS, signedNum } from "./constants";
@@ -143,12 +144,10 @@ export function SheetPanel() {
 								return (
 									<div
 										key={cid}
-										className={[
+										className={cn(
 											"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
 											!active && "opacity-40 border-error",
-										]
-											.filter(Boolean)
-											.join(" ")}
+										)}
 									>
 										<div className="flex-1">
 											<div className="font-semibold text-[0.9rem]">
@@ -169,12 +168,10 @@ export function SheetPanel() {
 										</div>
 										<button
 											type="button"
-											className={[
+											className={cn(
 												"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
 												!active && "text-error",
-											]
-												.filter(Boolean)
-												.join(" ")}
+											)}
 											onClick={() => toggleConsole(cid)}
 										>
 											{active ? "Active" : "Disabled"}
@@ -251,12 +248,10 @@ function renderWeapons(
 			items.push(
 				<div
 					key={slotKey}
-					className={[
+					className={cn(
 						"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
 						!active && "opacity-40 border-error",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 				>
 					<div className="flex-1">
 						<div className="font-semibold text-[0.9rem]">
@@ -269,12 +264,10 @@ function renderWeapons(
 					</div>
 					<button
 						type="button"
-						className={[
+						className={cn(
 							"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
 							!active && "text-error",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => toggleWeapon(slotKey)}
 					>
 						{active ? "Active" : "Offline"}

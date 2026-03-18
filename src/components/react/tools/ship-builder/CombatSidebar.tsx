@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { roll } from "@/lib/dtd/dice.ts";
 import { type CritLogEntry, getShipStats, lookupCritical, signedNum } from "./constants";
 import { useShipStore } from "./store";
@@ -259,9 +261,9 @@ export function CombatSidebar() {
 						−1
 					</button>
 					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
-						<input
+						<GameInput
 							type="number"
-							className="w-[50px] text-center text-base font-semibold p-0.5 bg-surface-raised border border-border text-text-primary"
+							className="w-[50px]"
 							value={combat.shieldCurrent}
 							min={0}
 							onInput={(e) =>
@@ -295,9 +297,9 @@ export function CombatSidebar() {
 				</div>
 				<div className="flex items-center gap-sm mt-xs text-[0.8rem]">
 					<span className="text-text-muted">Disruption:</span>
-					<input
+					<GameInput
 						type="number"
-						className="w-[60px] py-1 px-1.5 text-center text-[0.85rem]"
+						className="w-[60px]"
 						value={combat.disruption}
 						min={0}
 						onInput={handleDisruptionChange}
@@ -329,9 +331,9 @@ export function CombatSidebar() {
 						−1
 					</button>
 					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
-						<input
+						<GameInput
 							type="number"
-							className="w-[50px] text-center text-base font-semibold p-0.5 bg-surface-raised border border-border text-text-primary"
+							className="w-[50px]"
 							value={combat.hullCurrent}
 							min={0}
 							onInput={(e) =>
@@ -372,9 +374,9 @@ export function CombatSidebar() {
 						−1
 					</button>
 					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
-						<input
+						<GameInput
 							type="number"
-							className="w-[50px] text-center text-base font-semibold p-0.5 bg-surface-raised border border-border text-text-primary"
+							className="w-[50px]"
 							value={combat.crewCurrent}
 							min={0}
 							onInput={(e) =>
@@ -441,8 +443,7 @@ export function CombatSidebar() {
 				<div className="flex flex-col gap-xs">
 					{(["maneuver", "tactical", "engineering", "command", "arcana"] as const).map((dept) => (
 						<label key={dept} className="flex items-center gap-sm text-[0.85rem] cursor-pointer">
-							<input
-								type="checkbox"
+							<GameCheckbox
 								checked={combat.departments[dept] || false}
 								onChange={(e) => toggleDept(dept, (e.target as HTMLInputElement).checked)}
 							/>{" "}
@@ -478,10 +479,10 @@ export function CombatSidebar() {
 						<label htmlFor="crit-modifier" className="text-[0.8rem]">
 							Weapon Crit Rating
 						</label>
-						<input
+						<GameInput
 							type="number"
 							id="crit-modifier"
-							className="w-[60px] py-1 px-1.5 text-center text-[0.85rem]"
+							className="w-[60px]"
 							value={critModifier}
 							onInput={(e) => {
 								setCritModifier(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0);

@@ -1,5 +1,9 @@
-import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { cn } from "@/lib/utils";
+import { useCallback } from "react";
 import { calculateBPSpent, getBPBudget, getShipStats, signedNum } from "./constants";
 import { useShipStore } from "./store";
 
@@ -67,9 +71,9 @@ export function SummaryPanel() {
 	return (
 		<aside className="sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto p-lg bg-surface border-l border-border max-[900px]:static max-[900px]:h-auto max-[900px]:border-l-0 max-[900px]:border-t max-[900px]:border-border">
 			<div>
-				<input
+				<GameInput
 					type="text"
-					className="w-full text-[1.3rem] font-semibold p-sm bg-transparent border border-transparent border-b-2 border-b-accent text-accent mb-md focus:border-accent focus:bg-surface-raised"
+					className="text-[1.3rem]"
 					placeholder="Ship Name"
 					value={currentShip.name}
 					onInput={handleNameChange}
@@ -139,21 +143,21 @@ export function SummaryPanel() {
 					<label htmlFor="holdings-input" className="text-[0.8rem]">
 						Holdings
 					</label>
-					<select id="holdings-input" value={currentShip.holdings} onChange={handleHoldingsChange}>
+					<GameSelect id="holdings-input" value={currentShip.holdings} onChange={handleHoldingsChange}>
 						{data.holdingsBP.map((bp, i) => (
 							// biome-ignore lint/suspicious/noArrayIndexKey: fixed-position holdings levels 0-5 for select dropdown
 							<option key={`holdings-${i}-${bp}`} value={i}>
 								{i} — {bp} BP
 							</option>
 						))}
-					</select>
+					</GameSelect>
 				</div>
 				<label className="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
-					<input type="checkbox" checked={currentShip.customBP} onChange={handleCustomBPToggle} />
+					<GameCheckbox checked={currentShip.customBP} onChange={handleCustomBPToggle} />
 					<span>Custom BP budget</span>
 				</label>
 				{currentShip.customBP && (
-					<input type="number" min={0} value={currentShip.customBPValue} onInput={handleCustomBPValue} />
+					<GameInput type="number" min={0} value={currentShip.customBPValue} onInput={handleCustomBPValue} />
 				)}
 				<div className="mt-sm">
 					<div className="flex justify-between text-[0.85rem] mb-xs">
@@ -164,24 +168,17 @@ export function SummaryPanel() {
 					</div>
 					<div className="h-2 bg-surface-raised rounded-[4px] overflow-hidden">
 						<div
-							className={[
+							className={cn(
 								"h-full bg-accent rounded-[4px] transition-all duration-300",
 								overBudget && "bg-error",
-							]
-								.filter(Boolean)
-								.join(" ")}
+							)}
 							style={{ width: `${pct}%` }}
 						/>
 					</div>
 				</div>
 				<div className="text-[0.8rem] text-text-muted">
 					{breakdownLines.map((l) => (
-						<div
-							key={l.label}
-							className={["flex justify-between py-0.5", overBudget && "text-error"]
-								.filter(Boolean)
-								.join(" ")}
-						>
+						<div key={l.label} className={cn("flex justify-between py-0.5", overBudget && "text-error")}>
 							<span>{l.label}</span>
 							<span>{l.val} BP</span>
 						</div>

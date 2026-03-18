@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { QUICK_SKILLS } from "./constants";
 
 interface SkillListProps {
@@ -70,17 +71,16 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 						key={`skill-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
 					>
-						<input
-							type="text"
-							className="flex-1 min-w-0 py-[2px] px-xs text-[0.85rem]"
+						<GameInput
+							className="flex-1 min-w-0"
 							value={skill.name}
 							placeholder="Skill name"
 							list="skill-datalist"
 							onInput={(e) => updateSkill(i, "name", (e.target as HTMLInputElement).value)}
 						/>
-						<input
+						<GameInput
 							type="number"
-							className="w-[50px] text-center py-[2px] px-xs text-[0.85rem]"
+							className="w-[50px]"
 							min={1}
 							max={6}
 							value={skill.dots}

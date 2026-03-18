@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -93,7 +94,7 @@ export function EquipmentStep() {
 									<span>
 										<label>
 											{item.name || "Choose"}:{" "}
-											<select
+											<GameSelect
 												value={meta.equipmentChoices[idx] || item.options[0]}
 												onChange={(e) =>
 													handleChoice(idx, (e.target as HTMLSelectElement).value)
@@ -104,7 +105,7 @@ export function EquipmentStep() {
 														{opt}
 													</option>
 												))}
-											</select>
+											</GameSelect>
 										</label>
 									</span>
 								) : (

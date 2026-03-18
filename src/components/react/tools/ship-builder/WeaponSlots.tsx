@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { type ShipWeapon, signedNum, WEAPON_MATERIALS, WEAPON_SIZES } from "./constants";
 import { useShipStore } from "./store";
 
@@ -80,8 +81,8 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 				return (
 					<div key={slotKey} className="bg-surface-raised border border-border rounded-sm p-sm mb-sm">
 						<div className="flex gap-sm flex-wrap">
-							<select
-								className="flex-1 min-w-[120px] py-1 px-2 text-[0.85rem]"
+							<GameSelect
+								className="flex-1 min-w-[120px]"
 								value={currentSize}
 								onChange={(e) => handleSizeChange(i, (e.target as HTMLSelectElement).value)}
 							>
@@ -91,9 +92,9 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 										{s}
 									</option>
 								))}
-							</select>
-							<select
-								className="flex-1 min-w-[120px] py-1 px-2 text-[0.85rem]"
+							</GameSelect>
+							<GameSelect
+								className="flex-1 min-w-[120px]"
 								value={currentMaterial}
 								disabled={!currentSize}
 								onChange={(e) => handleMaterialChange(i, (e.target as HTMLSelectElement).value)}
@@ -104,7 +105,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 										{m}
 									</option>
 								))}
-							</select>
+							</GameSelect>
 						</div>
 						{weapon && <WeaponPreview weapon={weapon} />}
 					</div>

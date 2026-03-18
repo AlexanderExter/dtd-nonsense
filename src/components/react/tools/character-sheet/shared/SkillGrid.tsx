@@ -1,4 +1,5 @@
 import { Badge } from "@/components/react/ui/Badge";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { useCharSheetStore } from "../store";
 
 export function SkillGrid() {
@@ -46,9 +47,9 @@ export function SkillGrid() {
 										</Badge>
 									)}
 								</span>
-								<input
+								<GameInput
 									type="number"
-									className="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem]"
+									className="w-11 text-center font-semibold text-[0.9rem]"
 									value={dots}
 									min={0}
 									max={6}
@@ -57,9 +58,9 @@ export function SkillGrid() {
 									}
 								/>
 								{showSpec && (
-									<input
+									<GameInput
 										type="text"
-										className="w-full text-[0.78rem] px-sm py-0.5 mt-0.5 text-text-muted bg-surface-raised border border-border rounded-[3px] placeholder:text-text-dim"
+										className="w-full text-[0.78rem] text-text-muted bg-surface-raised placeholder:text-text-dim"
 										placeholder="Specialty"
 										value={specs[sk.id] || ""}
 										onInput={(e) => handleSpecChange(sk.id, (e.target as HTMLInputElement).value)}

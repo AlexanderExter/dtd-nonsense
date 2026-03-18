@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
 import { HULL_CLASSES, type Hull, signedNum } from "./constants";
 import { useShipStore } from "./store";
@@ -49,12 +50,10 @@ export function HullSelector() {
 			<div className="flex gap-sm mb-md flex-wrap">
 				<button
 					type="button"
-					className={[
+					className={cn(
 						"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
 						filterClass === "all" && "bg-accent-dim border-accent text-text-primary",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					onClick={() => {
 						setFilterClass("all");
 					}}
@@ -65,12 +64,10 @@ export function HullSelector() {
 					<button
 						type="button"
 						key={cls}
-						className={[
+						className={cn(
 							"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
 							filterClass === cls && "bg-accent-dim border-accent text-text-primary",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => {
 							setFilterClass(cls);
 						}}
@@ -104,12 +101,10 @@ function HullCard({ hull, selected, onSelect }: { hull: Hull; selected: boolean;
 	return (
 		<button
 			type="button"
-			className={[
+			className={cn(
 				"bg-surface border-2 border-border rounded-md p-md cursor-pointer transition-all duration-150 hover:border-border-light hover:bg-surface-raised text-left",
 				selected && "border-accent bg-[rgba(212,168,75,0.1)]",
-			]
-				.filter(Boolean)
-				.join(" ")}
+			)}
 			onClick={() => onSelect(hull.id)}
 		>
 			<div className="font-semibold mb-0.5">{hull.name}</div>

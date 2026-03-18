@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { Toast } from "@/components/react/ui/Toast";
 import { useAllData } from "@/hooks/use-data";
 import { createDefaultMeta } from "./constants";
 import { Sidebar } from "./Sidebar";
@@ -63,6 +64,7 @@ export function CharacterBuilderApp() {
 				</div>
 				<StepAccordion />
 			</main>
+			<Toast />
 		</div>
 	);
 }

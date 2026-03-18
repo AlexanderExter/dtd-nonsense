@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { AH_CATS, FEAT_CATS, filterByRestrictions } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -109,8 +111,7 @@ export function FeatsStep() {
 			<section className="mb-lg">
 				<h3>Feats</h3>
 				<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
-					<select
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
+					<GameSelect
 						value={featCatFilter}
 						onChange={(e) => {
 							setFeatCatFilter((e.target as HTMLSelectElement).value);
@@ -120,10 +121,9 @@ export function FeatsStep() {
 						<option value="general">General</option>
 						<option value="racial">Racial</option>
 						<option value="supplementary">Supplementary</option>
-					</select>
-					<input
+					</GameSelect>
+					<GameInput
 						type="text"
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
 						placeholder="Search feats…"
 						onInput={(e) => handleSearch((e.target as HTMLInputElement).value)}
 					/>
@@ -201,8 +201,7 @@ export function FeatsStep() {
 			<section>
 				<h3>Assets &amp; Hindrances</h3>
 				<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
-					<select
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
+					<GameSelect
 						value={ahCatFilter}
 						onChange={(e) => {
 							setAhCatFilter((e.target as HTMLSelectElement).value);
@@ -212,7 +211,7 @@ export function FeatsStep() {
 						<option value="asset">Assets</option>
 						<option value="exaltedAsset">Exalted Assets</option>
 						<option value="hindrance">Hindrances</option>
-					</select>
+					</GameSelect>
 				</div>
 
 				{/* Selected assets/hindrances */}

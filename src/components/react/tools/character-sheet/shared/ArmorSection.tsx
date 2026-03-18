@@ -1,4 +1,7 @@
 import { AddButton } from "@/components/react/ui/AddButton";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { ArmorEntry } from "@/lib/dtd/types";
 import { ARMOR_TYPES, LOCATIONS } from "../constants";
@@ -80,9 +83,7 @@ export function ArmorSection() {
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
 						<tr key={`armor-${idx}`}>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<input
-									type="text"
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
+								<GameInput
 									value={a.name}
 									onInput={(e) =>
 										handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
@@ -90,8 +91,7 @@ export function ArmorSection() {
 								/>
 							</td>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<select
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
+								<GameSelect
 									value={a.type}
 									onChange={(e) =>
 										handleFieldChange(idx, "type", (e.target as HTMLSelectElement).value)
@@ -103,12 +103,11 @@ export function ArmorSection() {
 											{t}
 										</option>
 									))}
-								</select>
+								</GameSelect>
 							</td>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<input
+								<GameInput
 									type="number"
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={a.ap}
 									min={0}
 									onInput={(e) =>
@@ -121,17 +120,14 @@ export function ArmorSection() {
 									key={loc}
 									className="py-[3px] px-sm border-b border-border align-middle text-center"
 								>
-									<input
-										type="checkbox"
+									<GameCheckbox
 										checked={(a.locations || []).includes(loc)}
 										onChange={() => handleLocationToggle(idx, loc)}
 									/>
 								</td>
 							))}
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<input
-									type="text"
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
+								<GameInput
 									value={a.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "qualities", (e.target as HTMLInputElement).value)

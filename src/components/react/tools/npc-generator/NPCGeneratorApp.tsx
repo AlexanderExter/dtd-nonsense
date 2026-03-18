@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { showToast, Toast } from "@/components/react/ui/Toast";
 import { loadData } from "@/lib/dtd/core.ts";
 import {
@@ -248,8 +249,8 @@ export function NPCGeneratorApp() {
 					<h1 className="text-[1.1rem] m-0 text-accent whitespace-nowrap">NPC Stat Block Builder</h1>
 				</div>
 				<div className="flex items-center gap-sm max-[800px]:flex-wrap">
-					<select
-						className="max-w-[180px] text-[0.85rem] px-sm py-xs"
+					<GameSelect
+						className="max-w-[180px]"
 						title="Load template"
 						onChange={(e) => {
 							const val = (e.target as HTMLSelectElement).value;
@@ -273,10 +274,10 @@ export function NPCGeneratorApp() {
 								</optgroup>
 							);
 						})}
-					</select>
+					</GameSelect>
 
-					<select
-						className="max-w-[180px] text-[0.85rem] px-sm py-xs"
+					<GameSelect
+						className="max-w-[180px]"
 						ref={savedSelectRef}
 						title="Load saved NPC"
 						onChange={(e) => {
@@ -302,7 +303,7 @@ export function NPCGeneratorApp() {
 								</option>
 							);
 						})}
-					</select>
+					</GameSelect>
 
 					<Button variant="primary" size="sm" title="Save NPC" onClick={saveNPC}>
 						Save

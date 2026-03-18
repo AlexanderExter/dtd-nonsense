@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { SHIELD_TYPES } from "./constants";
 import { useShipStore } from "./store";
 
@@ -59,25 +60,30 @@ export function ShieldPicker() {
 					<label htmlFor="shield-type" className="text-[0.8rem]">
 						Type
 					</label>
-					<select id="shield-type" value={currentType} onChange={handleTypeChange}>
+					<GameSelect id="shield-type" value={currentType} onChange={handleTypeChange}>
 						<option value="">— None —</option>
 						{SHIELD_TYPES.map((t) => (
 							<option key={t} value={t}>
 								{t}
 							</option>
 						))}
-					</select>
+					</GameSelect>
 				</div>
 				<div className="mb-sm min-w-[140px]">
 					<label htmlFor="shield-mark" className="text-[0.8rem]">
 						Mark
 					</label>
-					<select id="shield-mark" value={currentMark} disabled={!currentType} onChange={handleMarkChange}>
+					<GameSelect
+						id="shield-mark"
+						value={currentMark}
+						disabled={!currentType}
+						onChange={handleMarkChange}
+					>
 						<option value="1">Mk I</option>
 						<option value="2">Mk II</option>
 						<option value="3">Mk III</option>
 						<option value="4">Mk IV</option>
-					</select>
+					</GameSelect>
 				</div>
 				<div className="flex-1 min-w-[200px] p-sm bg-surface-raised border border-border rounded-sm text-[0.85rem]">
 					{shield ? (

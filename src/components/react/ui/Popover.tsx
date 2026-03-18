@@ -1,16 +1,7 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-
-/**
- * Positioned popover using virtual anchor positioning.
- *
- * ```tsx
- * <Popover open={isOpen} onClose={close} anchorRect={rect} title="Pick">
- *   <ul>...</ul>
- * </Popover>
- * ```
- */
+import { cn } from "@/lib/utils";
 
 interface PopoverProps {
 	open: boolean;
@@ -55,12 +46,10 @@ export function Popover({ open, onClose, anchorRect, title, children, className 
 			ref={ref}
 			role="dialog"
 			style={style}
-			className={[
+			className={cn(
 				"z-[1000] bg-surface-raised border border-border rounded-md p-sm max-h-[240px] overflow-y-auto shadow-[0_4px_16px_rgba(0,0,0,0.5)]",
 				className,
-			]
-				.filter(Boolean)
-				.join(" ")}
+			)}
 		>
 			{title && (
 				<div className="flex justify-between items-center mb-sm">

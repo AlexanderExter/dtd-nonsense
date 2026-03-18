@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import {
 	createNewCharacter,
 	deleteCharacter,
@@ -40,13 +41,13 @@ export function CharacterManager() {
 
 	return (
 		<div className="flex items-center gap-sm px-md py-sm bg-surface border-b border-border sticky top-0 z-[100]">
-			<select className="min-w-[200px] flex-1" value={currentId || ""} onChange={handleSwitch}>
+			<GameSelect className="min-w-[200px] flex-1" value={currentId || ""} onChange={handleSwitch}>
 				{list.map((c) => (
 					<option key={c.id} value={c.id}>
 						{c.name || "Unnamed"}
 					</option>
 				))}
-			</select>
+			</GameSelect>
 			<div className="flex items-center gap-xs ml-auto">
 				<Button size="sm" onClick={createNewCharacter}>
 					+ New

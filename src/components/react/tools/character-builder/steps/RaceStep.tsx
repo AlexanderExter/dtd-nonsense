@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -41,8 +42,7 @@ export function RaceStep() {
 			<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
 				<label className="text-[0.85rem] text-text-dim m-0">
 					Source:{" "}
-					<select
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
+					<GameSelect
 						value={sourceFilter}
 						onChange={(e) => {
 							setSourceFilter((e.target as HTMLSelectElement).value as any);
@@ -51,7 +51,7 @@ export function RaceStep() {
 						<option value="all">All</option>
 						<option value="book1">Core Book</option>
 						<option value="book2">Book 2</option>
-					</select>
+					</GameSelect>
 				</label>
 			</div>
 
@@ -113,7 +113,7 @@ export function RaceStep() {
 						<div className="mb-md flex-1">
 							<label className="block text-[0.85rem] text-text-muted mb-xs">
 								Choose +1 Characteristic:{" "}
-								<select
+								<GameSelect
 									value={char.raceCharBonus || ""}
 									onChange={(e) => {
 										const val = (e.target as HTMLSelectElement).value;
@@ -128,7 +128,7 @@ export function RaceStep() {
 											{opt.charAt(0).toUpperCase() + opt.slice(1)}
 										</option>
 									))}
-								</select>
+								</GameSelect>
 							</label>
 						</div>
 					)}

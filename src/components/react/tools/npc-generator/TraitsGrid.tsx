@@ -1,4 +1,6 @@
 import { useCallback } from "react";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
 import type { TraitDef } from "./constants";
 
 interface TraitsGridProps {
@@ -58,9 +60,8 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 							].join(" ")}
 							key={trait.id}
 						>
-							<input
-								type="checkbox"
-								className="w-auto m-0 accent-accent"
+							<GameCheckbox
+								className="w-auto m-0"
 								id={`trait-${trait.id}`}
 								checked={active}
 								onChange={(e) => toggleTrait(trait.id, (e.target as HTMLInputElement).checked)}
@@ -69,10 +70,10 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 								{trait.name}
 							</label>
 							{trait.parameterized && (
-								<input
+								<GameInput
 									type="text"
 									className={[
-										"py-[2px] px-xs text-[0.85rem] text-center",
+										"text-center",
 										trait.paramType === "caster" || trait.paramType === "resource"
 											? "w-[150px]"
 											: "w-[70px]",

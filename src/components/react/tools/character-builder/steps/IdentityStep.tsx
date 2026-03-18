@@ -1,3 +1,4 @@
+import { GameInput } from "@/components/react/ui/GameInput";
 import { useBuilderStore } from "../store";
 
 export function IdentityStep() {
@@ -22,7 +23,7 @@ export function IdentityStep() {
 				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-name">
 					Name *
 				</label>
-				<input
+				<GameInput
 					type="text"
 					id="char-name"
 					value={char.name}
@@ -34,7 +35,7 @@ export function IdentityStep() {
 				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-player">
 					Player
 				</label>
-				<input
+				<GameInput
 					type="text"
 					id="char-player"
 					value={char.player}
@@ -46,7 +47,7 @@ export function IdentityStep() {
 				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-concept">
 					Concept
 				</label>
-				<input
+				<GameInput
 					type="text"
 					id="char-concept"
 					value={char.concept}

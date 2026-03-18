@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CHAR_NAMES } from "@/lib/dtd/constants";
 import type { SavedPool } from "@/lib/dtd/types";
 import type { DerivedStats } from "../constants";
@@ -162,8 +165,8 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Pool Calculator</h3>
 				<div>
 					<div className="flex items-center gap-xs flex-wrap">
-						<select
-							className="flex-1 min-w-[120px] text-[0.85rem]"
+						<GameSelect
+							className="flex-1 min-w-[120px]"
 							value={poolChar}
 							onChange={(e) => {
 								setPoolChar((e.target as HTMLSelectElement).value);
@@ -175,10 +178,10 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									{CHAR_NAMES[id] || id} ({abbrev}) [{effChars[id] || 0}]
 								</option>
 							))}
-						</select>
+						</GameSelect>
 						<span className="text-text-muted font-semibold text-[0.9rem]">+</span>
-						<select
-							className="flex-1 min-w-[120px] text-[0.85rem]"
+						<GameSelect
+							className="flex-1 min-w-[120px]"
 							value={poolSkill}
 							onChange={(e) => {
 								setPoolSkill((e.target as HTMLSelectElement).value);
@@ -190,13 +193,12 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									{sk.name} [{char.skills[sk.id] || 0}]
 								</option>
 							))}
-						</select>
+						</GameSelect>
 					</div>
 					<div className="text-[1.1rem] font-bold text-accent mt-xs px-sm py-xs bg-bg rounded-sm text-center">
 						<strong>Pool: {poolNotation}</strong>
 						<label className="flex items-center gap-1 text-[0.78rem] whitespace-nowrap cursor-pointer mt-xs justify-center">
-							<input
-								type="checkbox"
+							<GameCheckbox
 								checked={poolSpec}
 								onChange={(e) => {
 									setPoolSpec((e.target as HTMLInputElement).checked);
@@ -206,9 +208,9 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						</label>
 					</div>
 					<div className="flex gap-xs items-center mt-sm">
-						<input
+						<GameInput
 							type="text"
-							className="w-[120px] text-[0.82rem] px-sm py-0.5"
+							className="w-[120px]"
 							placeholder="Pool label"
 							value={poolLabel}
 							onInput={(e) => {

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { Toast } from "@/components/react/ui/Toast";
 import { AccordionSection } from "./AccordionSection";
 import { ActionsSection } from "./ActionsSection";
 import { CombatModifiersSection } from "./CombatModifiersSection";
@@ -373,6 +374,7 @@ export function QuickReferenceApp() {
 			<footer className="text-center p-lg text-text-dim text-[0.8rem]">
 				Data from <em>Dungeons the Dragoning 40,000: 7th Edition</em> and <em>For a Few Subtitles More</em>.
 			</footer>
+			<Toast />
 		</div>
 	);
 }

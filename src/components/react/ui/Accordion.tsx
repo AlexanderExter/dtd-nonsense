@@ -1,18 +1,7 @@
 import { Collapsible } from "radix-ui";
 import type { ReactNode } from "react";
 import { useState } from "react";
-
-/**
- * Collapsible section backed by Radix Collapsible.
- *
- * Supports both uncontrolled (default) and controlled mode (pass `open` + `onToggle`).
- *
- * ```tsx
- * <AccordionItem title="Details" defaultOpen>
- *   <p>Content here</p>
- * </AccordionItem>
- * ```
- */
+import { cn } from "@/lib/utils";
 
 interface AccordionItemProps {
 	title: string;
@@ -48,23 +37,17 @@ export function AccordionItem({
 				}
 			}}
 		>
-			<div
-				className={["border border-border rounded-md mb-md overflow-hidden", className]
-					.filter(Boolean)
-					.join(" ")}
-			>
+			<div className={cn("border border-border rounded-md mb-md overflow-hidden", className)}>
 				<Collapsible.Trigger asChild>
 					<button
 						type="button"
 						className="flex items-center gap-md w-full px-lg py-md bg-surface border-none text-text-primary text-base font-semibold text-left cursor-pointer transition-colors duration-150 font-[inherit] hover:bg-surface-raised max-[600px]:px-md max-[600px]:py-sm max-[600px]:text-[0.9rem]"
 					>
 						<span
-							className={[
+							className={cn(
 								"text-accent shrink-0 inline-block transition-transform duration-200",
-								isOpen ? "rotate-90" : "",
-							]
-								.filter(Boolean)
-								.join(" ")}
+								isOpen && "rotate-90",
+							)}
 						>
 							▸
 						</span>

@@ -64,6 +64,14 @@
 				"useExhaustiveDependencies": "error",
 				"useHookAtTopLevel": "error"
 			},
+			"a11y": {
+				"noLabelWithoutControl": {
+					"level": "error",
+					"options": {
+						"inputComponents": ["GameInput", "GameSelect", "GameTextarea", "GameCheckbox"]
+					}
+				}
+			},
 			"style": {
 				"noNonNullAssertion": "off",
 				"useConst": "warn",

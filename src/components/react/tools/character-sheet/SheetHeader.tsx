@@ -1,3 +1,5 @@
+import { GameInput } from "@/components/react/ui/GameInput";
+import { cn } from "@/lib/utils";
 import type { DerivedStats } from "./constants";
 import { getEffChars, getWoundStatus } from "./constants";
 import { useCharSheetStore } from "./store";
@@ -24,9 +26,9 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 			<div className="flex items-center gap-md flex-1 min-w-[280px] max-[768px]:flex-col">
 				<label className="flex flex-col flex-1 min-w-[180px]">
 					<span className="text-[0.78rem] text-text-muted uppercase tracking-[0.3px]">Name</span>
-					<input
+					<GameInput
 						type="text"
-						className="text-2xl font-bold text-accent bg-transparent border border-transparent rounded-sm px-sm py-xs flex-1 min-w-[180px] focus:border-accent focus:bg-surface"
+						className="text-2xl font-bold text-accent bg-transparent border-transparent px-sm py-xs flex-1 min-w-[180px] focus:bg-surface"
 						value={char.name}
 						onInput={(e) =>
 							updateChar((c) => {
@@ -53,9 +55,9 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
 						HP
 					</span>
-					<input
+					<GameInput
 						type="number"
-						className="w-[38px] py-0.5 px-1 text-center font-bold text-[0.95rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+						className="w-[38px] text-center font-bold text-[0.95rem]"
 						value={char.currentHP ?? 0}
 						onInput={(e) =>
 							updateChar((c) => {
@@ -71,9 +73,9 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
 						{resourceName}
 					</span>
-					<input
+					<GameInput
 						type="number"
-						className="w-[38px] py-0.5 px-1 text-center font-bold text-[0.95rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+						className="w-[38px] text-center font-bold text-[0.95rem]"
 						value={char.resourceCurrent ?? 0}
 						min={0}
 						max={stats.resourceMax}
@@ -91,9 +93,9 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
 						Resolve
 					</span>
-					<input
+					<GameInput
 						type="number"
-						className="w-[38px] py-0.5 px-1 text-center font-bold text-[0.95rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+						className="w-[38px] text-center font-bold text-[0.95rem]"
 						value={char.currentResolve ?? 0}
 						min={0}
 						max={stats.resolve}
@@ -111,9 +113,9 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
 						Hero Points
 					</span>
-					<input
+					<GameInput
 						type="number"
-						className="w-[38px] py-0.5 px-1 text-center font-bold text-[0.95rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+						className="w-[38px] text-center font-bold text-[0.95rem]"
 						value={char.heroPointsCurrent ?? 0}
 						min={0}
 						max={(char.heroPointsMax || 2) - (char.heroPointsBurnt || 0)}
@@ -131,15 +133,13 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			<div
-				className={[
+				className={cn(
 					"mt-md p-sm rounded-sm text-center font-semibold text-[0.82rem]",
 					wound.cssClass === "wound-ok" && "bg-success-bg text-success",
 					wound.cssClass === "wound-light" && "bg-warning-bg text-warning",
 					wound.cssClass === "wound-heavy" && "bg-error-bg text-error",
 					wound.cssClass === "wound-critical" && "bg-error text-white",
-				]
-					.filter(Boolean)
-					.join(" ")}
+				)}
 			>
 				<strong>{wound.status}</strong> <span>{wound.description}</span>
 			</div>

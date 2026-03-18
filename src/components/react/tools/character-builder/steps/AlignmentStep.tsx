@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -40,8 +41,7 @@ export function AlignmentStep() {
 			<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
 				<label className="text-[0.85rem] text-text-dim m-0">
 					Pantheon:{" "}
-					<select
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
+					<GameSelect
 						value={pantheonFilter}
 						onChange={(e) => {
 							setPantheonFilter((e.target as HTMLSelectElement).value);
@@ -53,7 +53,7 @@ export function AlignmentStep() {
 								{p}
 							</option>
 						))}
-					</select>
+					</GameSelect>
 				</label>
 			</div>
 

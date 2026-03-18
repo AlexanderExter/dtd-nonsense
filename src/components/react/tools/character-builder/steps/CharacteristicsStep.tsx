@@ -1,3 +1,4 @@
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
 import { BASE_CHAR_DOT, CHAR_PRIORITY_DOTS, CREATION_CHAR_CAP, capitalize, findRaceData } from "../constants";
 import { DotControl } from "../shared/DotControl";
@@ -99,8 +100,7 @@ export function CharacteristicsStep() {
 					return (
 						<div key={groupKey} className="bg-surface border-2 border-border rounded-md p-md text-center">
 							<h4 className="text-accent mb-xs">{group.label}</h4>
-							<select
-								className="w-full px-sm py-xs text-[0.85rem]"
+							<GameSelect
 								value={currentPriority || ""}
 								onChange={(e) => {
 									const val = (e.target as HTMLSelectElement).value;
@@ -113,7 +113,7 @@ export function CharacteristicsStep() {
 										{opt.label}
 									</option>
 								))}
-							</select>
+							</GameSelect>
 						</div>
 					);
 				})}

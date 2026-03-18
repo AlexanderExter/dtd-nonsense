@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 
 interface EncounterBarProps {
 	encounters: Array<{ id: string; name: string }>;
@@ -32,8 +33,8 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 			<Button variant="primary" size="sm" onClick={onSave}>
 				Save Encounter
 			</Button>
-			<select
-				className="flex-none min-w-[160px] px-sm py-xs text-[0.8rem] max-[768px]:min-w-[120px]"
+			<GameSelect
+				className="flex-none min-w-[160px] max-[768px]:min-w-[120px]"
 				value={selectedId}
 				onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
 			>
@@ -43,7 +44,7 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 						{enc.name}
 					</option>
 				))}
-			</select>
+			</GameSelect>
 			<Button size="sm" onClick={handleLoad} disabled={!selectedId}>
 				Load
 			</Button>

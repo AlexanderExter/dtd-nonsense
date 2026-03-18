@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AccordionItem } from "@/components/react/ui/Accordion";
 import { Button } from "@/components/react/ui/Button";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
 import type { Combatant } from "./constants";
 
 interface AddCombatantFormProps {
@@ -49,7 +51,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
 						<label className="flex-1 min-w-[140px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Name</span>
-							<input
+							<GameInput
 								type="text"
 								placeholder="Combatant name"
 								value={name}
@@ -58,8 +60,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Dexterity</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								max={10}
@@ -69,8 +70,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Composure</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								max={10}
@@ -80,8 +80,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Modifier</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								value={modifier}
 								onInput={(e) => setModifier(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
@@ -91,8 +90,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>HP Max</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								value={hpMax}
@@ -101,8 +99,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Willpower</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								max={10}
@@ -112,8 +109,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Static Defense</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={0}
 								value={sd}
@@ -122,8 +118,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resilience</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								value={resilience}
@@ -134,8 +129,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Max</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={0}
 								value={resourceMax}
@@ -144,8 +138,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Label</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="text"
 								placeholder="Mana"
 								value={resourceLabel}
@@ -153,27 +146,21 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							/>
 						</label>
 						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
-							<input
-								type="checkbox"
-								className="accent-accent"
+							<GameCheckbox
 								checked={heroPoint}
 								onChange={(e) => setHeroPoint((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Hero Point (count as 10)
 						</label>
 						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
-							<input
-								type="checkbox"
-								className="accent-accent"
+							<GameCheckbox
 								checked={surprised}
 								onChange={(e) => setSurprised((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Surprised
 						</label>
 						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
-							<input
-								type="checkbox"
-								className="accent-accent"
+							<GameCheckbox
 								checked={isNpc}
 								onChange={(e) => setIsNpc((e.target as HTMLInputElement).checked)}
 							/>{" "}

@@ -1,4 +1,6 @@
 import { useCallback } from "react";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { OFFICER_POSITIONS } from "./constants";
 import { useShipStore } from "./store";
 
@@ -51,13 +53,13 @@ export function CrewConfig() {
 					<label htmlFor="crew-quality" className="text-[0.8rem]">
 						Crew Quality
 					</label>
-					<select id="crew-quality" value={currentShip.crewQuality} onChange={handleQualityChange}>
+					<GameSelect id="crew-quality" value={currentShip.crewQuality} onChange={handleQualityChange}>
 						<option value="1">1 (−5 BP)</option>
 						<option value="2">2 (Base)</option>
 						<option value="3">3 (+10 BP)</option>
 						<option value="4">4 (+20 BP)</option>
 						<option value="5">5 (+30 BP)</option>
-					</select>
+					</GameSelect>
 				</div>
 				<h4>Bridge Officers</h4>
 				<div className="flex flex-col gap-sm">
@@ -72,17 +74,16 @@ export function CrewConfig() {
 								className="grid grid-cols-[150px_1fr_80px_60px] gap-sm items-center px-sm py-xs bg-surface-raised rounded-sm max-[900px]:grid-cols-2"
 							>
 								<span className="font-semibold text-[0.85rem]">{pos.title}</span>
-								<input
+								<GameInput
 									type="text"
-									className="py-1 px-2 text-[0.85rem]"
 									placeholder="Name"
 									value={officer.name}
 									onInput={(e) => handleOfficerName(pos.id, (e.target as HTMLInputElement).value)}
 								/>
 								<span className="text-[0.8rem] text-text-muted text-right">{pos.skill}</span>
-								<input
+								<GameInput
 									type="number"
-									className="w-[50px] p-1 text-[0.85rem] text-center"
+									className="w-[50px]"
 									min={0}
 									max={10}
 									value={officer.skill}

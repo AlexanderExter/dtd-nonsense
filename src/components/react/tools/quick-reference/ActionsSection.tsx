@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useMemo } from "react";
 import { Highlight } from "./Highlight";
 import { QREF_DATA } from "./qref-data";
@@ -72,12 +73,10 @@ export function ActionsSection({
 					<button
 						type="button"
 						key={t}
-						className={[
+						className={cn(
 							"px-[10px] py-[3px] bg-surface border border-border rounded-sm text-text-muted text-[0.78rem] cursor-pointer transition-all duration-150 font-[inherit] hover:border-accent hover:text-text-primary",
 							typeFilters.has(t) ? "bg-accent-bg border-accent text-accent" : "",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => toggleType(t)}
 					>
 						{t}
@@ -91,12 +90,10 @@ export function ActionsSection({
 					<button
 						type="button"
 						key={s}
-						className={[
+						className={cn(
 							"px-[10px] py-[3px] bg-surface border border-border rounded-sm text-text-muted text-[0.78rem] cursor-pointer transition-all duration-150 font-[inherit] hover:border-accent hover:text-text-primary",
 							subtypeFilters.has(s) ? "bg-accent-bg border-accent text-accent" : "",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => toggleSubtype(s)}
 					>
 						{s}

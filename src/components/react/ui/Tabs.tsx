@@ -1,15 +1,6 @@
 import { Tabs as RadixTabs } from "radix-ui";
 import type { ReactNode } from "react";
-
-/**
- * Accessible tab navigation backed by Radix Tabs. Pair with `<TabPanel>`.
- *
- * ```tsx
- * <Tabs tabs={[{ id: "stats", label: "Stats" }]} activeId={tab} onTabChange={setTab}>
- *   <TabPanel tabId="stats">...</TabPanel>
- * </Tabs>
- * ```
- */
+import { cn } from "@/lib/utils";
 
 interface TabItem {
 	id: string;
@@ -28,25 +19,21 @@ export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsP
 	return (
 		<RadixTabs.Root value={activeId} onValueChange={onTabChange}>
 			<RadixTabs.List
-				className={[
+				className={cn(
 					"flex gap-0.5 border-b-2 border-border mb-md overflow-x-auto [scrollbar-width:thin]",
 					className,
-				]
-					.filter(Boolean)
-					.join(" ")}
+				)}
 			>
 				{tabs.map((tab) => (
 					<RadixTabs.Trigger
 						key={tab.id}
 						value={tab.id}
-						className={[
+						className={cn(
 							"px-md py-sm bg-transparent border-0 border-b-2 -mb-[2px] text-[0.9rem] font-semibold cursor-pointer whitespace-nowrap transition-all duration-150 font-[inherit] hover:text-text-primary",
 							activeId === tab.id
 								? "text-accent border-b-accent"
 								: "text-text-muted border-b-transparent",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 					>
 						{tab.label}
 					</RadixTabs.Trigger>

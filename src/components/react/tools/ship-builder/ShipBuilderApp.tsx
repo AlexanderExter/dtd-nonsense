@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { Toast } from "@/components/react/ui/Toast";
 import { loadData } from "@/lib/dtd/core.ts";
+import { cn } from "@/lib/utils";
+import { useCallback, useEffect, useRef } from "react";
 import { BuilderPanel } from "./BuilderPanel";
 import {
-	createDefaultShip,
-	generateId,
-	type ShipData,
-	type ShipState,
-	STORAGE_LIST_KEY,
-	STORAGE_PREFIX,
+    createDefaultShip,
+    generateId,
+    type ShipData,
+    type ShipState,
+    STORAGE_LIST_KEY,
+    STORAGE_PREFIX,
 } from "./constants";
 import { SheetPanel } from "./SheetPanel";
 import { saveShipNow, useShipStore } from "./store";
@@ -197,13 +200,18 @@ export function ShipBuilderApp() {
 		<div>
 			<div className="flex items-center justify-between gap-md px-lg py-sm bg-surface border-b border-border sticky top-0 z-[100] max-[900px]:flex-wrap max-[900px]:gap-xs no-print">
 				<div className="flex items-center gap-sm">
-					<select value={ship.id} onChange={handleShipSwitch} title="Switch ship" className="min-w-[180px]">
+					<GameSelect
+						value={ship.id}
+						onChange={handleShipSwitch}
+						title="Switch ship"
+						className="min-w-[180px]"
+					>
 						{shipList.map((s) => (
 							<option key={s.id} value={s.id}>
 								{s.name || "Unnamed Ship"}
 							</option>
 						))}
-					</select>
+					</GameSelect>
 					<Button variant="primary" size="sm" onClick={handleNew} title="New ship">
 						+ New
 					</Button>
@@ -214,24 +222,20 @@ export function ShipBuilderApp() {
 				<div className="flex bg-bg border border-border rounded-md overflow-hidden">
 					<button
 						type="button"
-						className={[
+						className={cn(
 							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
 							mode === "builder" && "bg-accent text-bg",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => handleSetMode("builder")}
 					>
 						Builder
 					</button>
 					<button
 						type="button"
-						className={[
+						className={cn(
 							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
 							mode === "sheet" && "bg-accent text-bg",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => handleSetMode("sheet")}
 					>
 						Sheet
@@ -249,6 +253,7 @@ export function ShipBuilderApp() {
 			</div>
 
 			{mode === "builder" ? <BuilderPanel /> : <SheetPanel />}
+			<Toast />
 		</div>
 	);
 }

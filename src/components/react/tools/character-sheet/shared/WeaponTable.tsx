@@ -1,4 +1,6 @@
 import { AddButton } from "@/components/react/ui/AddButton";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { MeleeWeapon, RangedWeapon } from "@/lib/dtd/types";
 import { DAMAGE_TYPES, PROFICIENCY_MELEE, PROFICIENCY_RANGED } from "../constants";
@@ -84,11 +86,6 @@ export function WeaponTable({ type }: WeaponTableProps) {
 	const thClass =
 		"text-[0.72rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap";
 	const tdClass = "py-[3px] px-sm border-b border-border align-middle";
-	const inputClass =
-		"w-full py-0.5 px-1 text-[0.8rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none";
-	const selectClass =
-		"w-full text-[0.78rem] py-[1px] px-0.5 max-w-[100px] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none";
-
 	return (
 		<div>
 			<SectionHeading>{isMelee ? "Melee Weapons" : "Ranged Weapons"}</SectionHeading>
@@ -119,9 +116,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
 						<tr key={`weapon-${idx}`}>
 							<td className={tdClass}>
-								<input
-									type="text"
-									className={inputClass}
+								<GameInput
 									list={datalistId}
 									value={w.name}
 									onInput={(e) =>
@@ -130,8 +125,8 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								/>
 							</td>
 							<td className={tdClass}>
-								<select
-									className={selectClass}
+								<GameSelect
+									className="max-w-[100px] text-[0.78rem] py-[1px] px-0.5"
 									value={w.proficiency}
 									onChange={(e) =>
 										handleFieldChange(idx, "proficiency", (e.target as HTMLSelectElement).value)
@@ -143,13 +138,11 @@ export function WeaponTable({ type }: WeaponTableProps) {
 											{p}
 										</option>
 									))}
-								</select>
+								</GameSelect>
 							</td>
 							{!isMelee && (
 								<td className={tdClass}>
-									<input
-										type="text"
-										className={inputClass}
+									<GameInput
 										value={(w as RangedWeapon).range || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "range", (e.target as HTMLInputElement).value)
@@ -158,9 +151,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</td>
 							)}
 							<td className={tdClass}>
-								<input
-									type="text"
-									className={inputClass}
+								<GameInput
 									value={w.damage}
 									onInput={(e) =>
 										handleFieldChange(idx, "damage", (e.target as HTMLInputElement).value)
@@ -168,16 +159,14 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								/>
 							</td>
 							<td className={tdClass}>
-								<input
-									type="text"
-									className={inputClass}
+								<GameInput
 									value={w.pen || ""}
 									onInput={(e) => handleFieldChange(idx, "pen", (e.target as HTMLInputElement).value)}
 								/>
 							</td>
 							<td className={tdClass}>
-								<select
-									className={selectClass}
+								<GameSelect
+									className="max-w-[100px] text-[0.78rem] py-[1px] px-0.5"
 									value={w.damageType}
 									onChange={(e) =>
 										handleFieldChange(idx, "damageType", (e.target as HTMLSelectElement).value)
@@ -189,13 +178,11 @@ export function WeaponTable({ type }: WeaponTableProps) {
 											{t}
 										</option>
 									))}
-								</select>
+								</GameSelect>
 							</td>
 							{!isMelee && (
 								<td className={tdClass}>
-									<input
-										type="text"
-										className={inputClass}
+									<GameInput
 										value={(w as RangedWeapon).rof || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "rof", (e.target as HTMLInputElement).value)
@@ -205,9 +192,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 							)}
 							{!isMelee && (
 								<td className={tdClass}>
-									<input
-										type="text"
-										className={inputClass}
+									<GameInput
 										value={(w as RangedWeapon).clip || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "clip", (e.target as HTMLInputElement).value)
@@ -217,9 +202,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 							)}
 							{!isMelee && (
 								<td className={tdClass}>
-									<input
-										type="text"
-										className={inputClass}
+									<GameInput
 										value={(w as RangedWeapon).reload || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "reload", (e.target as HTMLInputElement).value)
@@ -228,9 +211,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								</td>
 							)}
 							<td className={tdClass}>
-								<input
-									type="text"
-									className={inputClass}
+								<GameInput
 									value={w.special || w.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "special", (e.target as HTMLInputElement).value)
@@ -238,9 +219,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								/>
 							</td>
 							<td className={tdClass}>
-								<input
-									type="text"
-									className={inputClass}
+								<GameInput
 									value={w.notes}
 									onInput={(e) =>
 										handleFieldChange(idx, "notes", (e.target as HTMLInputElement).value)
