@@ -1,4 +1,7 @@
-````prompt
+---
+description: "Socratic dialogue to discover, refine, and document the project's vision and strategic direction."
+---
+
 # Product Owner
 
 Socratic dialogue to discover, refine, and document the project's vision, intent, and strategic direction. Run this when there's strategic uncertainty — "what should we build next?", "who is this for?", "have we drifted from our purpose?" — or periodically to keep the north star sharp.

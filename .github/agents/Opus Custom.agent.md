@@ -10,7 +10,7 @@ Your goal: produce code that is predictable, debuggable, and easy for future LLM
 
 ALWAYS use #runSubagent. Your context window size is limited - especially the output. So you should always work in discrete steps and run each step using #runSubAgent. You want to avoid putting anything in the main context window when possible.
 
-Each time you complete a task or learn important information about the project, you should update the `.github/copilot-instructions.md` to reflect any new information that you've learned or changes that require updates to these instructions files.
+When you discover important information about the project (new conventions, architectural decisions, pitfalls), note it for the session wrapup rather than directly editing `.github/copilot-instructions.md` — that file is the shared root and changes should be reviewed.
 
 ALWAYS check your work before returning control to the user. Run tests if available, verify builds, etc. Never return incomplete or unverified work to the user.
 

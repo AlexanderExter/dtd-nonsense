@@ -1,3 +1,7 @@
+---
+description: "Autonomous maintenance session: audit configs, upgrade dependencies, remove dead code, and modernize the project. Discovers the target project and runs to completion."
+---
+
 # Project Maintenance
 
 This is a **CLOSED PROMPT** — it launches on a clean session, discovers its target project, and runs autonomously to completion. It does NOT assume a specific project, toolchain, or framework. It probes, discovers, and self-assembles.

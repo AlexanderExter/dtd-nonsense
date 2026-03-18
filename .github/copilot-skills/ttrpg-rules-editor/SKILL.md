@@ -1,10 +1,9 @@
-# TTRPG Rules Editor
-
-**Skill type:** Technique (formatting workflow) + Discipline (content preservation)
-
-**Triggers:** "edit rules", "format rulebook", "process RPG text", "create rule reference", "clean raw material", processing raw rulebook text, reformatting rules for reference, organizing RPG content, cleaning OCR/PDF extraction artifacts
-
 ---
+name: ttrpg-rules-editor
+description: "Use when editing rules content, formatting rulebook text, processing chapters, or working with D:TD source material."
+---
+
+# TTRPG Rules Editor
 
 Edit tabletop RPG rulebooks into clear, scannable markdown references. Adapted for D:TD's XkY dice system and hybrid mechanics.
 
@@ -83,7 +82,7 @@ Raw material often contains artifacts from extraction. Fix these without alterin
 
 ### Encoding Hazard
 
-See [project-conventions.md — PowerShell Encoding](../../docs/project-conventions.md#powershell-encoding). Never use `Set-Content` for non-ASCII files.
+See [project-conventions.md — PowerShell Encoding](../../docs/project-conventions.md#powershell-encoding-historical). Never use PowerShell `Set-Content` for non-ASCII files; use agent edit tools instead.
 
 ### OCR Merged Words
 

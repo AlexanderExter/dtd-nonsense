@@ -1,14 +1,13 @@
-# Tool Development
-
-**Skill type:** Guide (web tool architecture and development)
-
-**Triggers:** Building, modifying, or debugging web tools, shared modules, JSON data files, CSS styling, tool features, TypeScript code in the DTD toolset
-
 ---
+name: tool-development
+description: "Use when building, modifying, or debugging web tools, shared modules, JSON data files, CSS styling, tool features, or TypeScript code in the DTD toolset."
+---
+
+# Tool Development
 
 ## Ecosystem
 
-All tools are **React Islands** mounted by Astro pages (`src/pages/tools/`) via `client:only="react"` into `ToolLayout.astro`. Each tool's components live in `src/components/react/tools/{tool-name}/` with a root `*App.tsx` entry point. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Custom hooks in `src/hooks/` handle data loading, localStorage, Web Workers, and debouncing.
+All tools are **React Islands** mounted by Astro pages (`src/pages/tools/`) via `client:only="react"` into `ToolLayout.astro`. Each tool's components live in `src/components/react/tools/{tool-name}/` with a root `*App.tsx` entry point. Shared code lives in `src/lib/dtd/` as typed TypeScript modules: `core.ts`, `dice.ts`, `types.ts`. Custom hooks in `src/hooks/` handle data loading and localStorage persistence.
 
 ## Documentation Map
 
@@ -21,88 +20,22 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 | JSON data schemas   | [docs/data-reference.md](../../docs/data-reference.md)           |
 | core.ts API         | [docs/shared/core-js.md](../../docs/shared/core-js.md)           |
 | dice.ts API         | [docs/shared/dice-js.md](../../docs/shared/dice-js.md)           |
-| Per-tool specs      | [docs/tools/](../../docs/tools/) (9 spec files)                  |
+| Per-tool specs      | [docs/tools/](../../docs/tools/) (6 spec files)                  |
 | Project conventions | [docs/project-conventions.md](../../docs/project-conventions.md) |
 
 ## Tool Architecture
 
 ### File Layout
 
-```text
-src/pages/tools/[name].astro               ← Astro page (mounts React island via client:only="react")
-src/components/react/tools/[name]/         ← React components for each tool
-  [Name]App.tsx                             ← Root component (entry point)
-  *.tsx                                     ← Sub-components
-src/hooks/                                  ← Custom React hooks
-  use-data.ts                               ← useData() / useAllData() for JSON loading
-  use-local-storage.ts                      ← useLocalStorage() for persistence
-src/lib/dtd/core.ts                         ← Shared: data loading, derived stats, character CRUD
-src/lib/dtd/dice.ts                         ← Shared: roll(), calculateOutcome(), parseNotation()
-src/lib/dtd/dice-primitives.ts              ← Canonical dice algorithms (used by dice.ts)
-src/lib/dtd/types.ts                        ← Shared: CharacterData, CharacterListEntry, etc.
-src/layouts/ToolLayout.astro                ← Wrapper layout (bridges Tailwind tokens → var(--name) aliases)
-src/styles/custom.css                       ← WH40K Starlight theme tokens
-src/styles/tailwind.css                     ← Tailwind v4 @theme tokens (design token source of truth)
-data/                                       ← Canonical JSON (validated by Zod schemas, copied to public/data/ at build)
-```
+For detailed file structure, see [astro.instructions.md](../../.github/instructions/astro.instructions.md#file-structure) and [docs/architecture.md](../../docs/architecture.md).
 
 ### Standard Tool Pattern
 
-Every tool page follows this structure:
+See [docs/development-guide.md — Creating a React Tool](../../docs/development-guide.md#creating-a-react-tool) for the step-by-step recipe including the Astro page template, Zustand store setup, and key conventions.
 
-```astro
----
-import ToolLayout from "@/layouts/ToolLayout.astro";
-import { QuickReferenceApp } from "@/components/react/tools/quick-reference/QuickReferenceApp";
----
+See [astro.instructions.md — Tool Pages](../../.github/instructions/astro.instructions.md#tool-pages) for conventions that apply to all tool code (named exports, `className`, `type="button"`, import patterns, CSS approach).
 
-<ToolLayout title="Tool Name" description="Short description">
-  <QuickReferenceApp client:only="react" />
-</ToolLayout>
-```
-
-> **Never use `StarlightPage` for tool pages.** `StarlightPage` wraps content in the Starlight sidebar and header, turning a tool into a documentation page. All tool pages use `ToolLayout.astro` exclusively. See Critical Pitfall #11.
-
-### React Component Pattern
-
-```tsx
-import { create } from "zustand";
-import { useAllData } from "@/hooks/use-data";
-
-// Zustand store for tool state (co-located as store.ts)
-const useToolStore = create<{ someState: string; setSomeState: (v: string) => void }>((set) => ({
-  someState: "",
-  setSomeState: (v) => set({ someState: v }),
-}));
-
-export function ToolApp() {
-  const { data, loading, error } = useAllData(["races.json", "skills.json"]);
-
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
-
-  return <div className="tool-app">...</div>;
-}
-```
-
-Key conventions:
-
-- **Zustand stores** — one store per tool, co-located as `store.ts`; components use `useXStore(s => s.field)` selectors
-- **`className`** — React requires `className`
-- **Named exports only** — no default exports
-- **All `<button>` need `type="button"`** — prevents form submission behavior
-- **Tailwind utilities** for styling — use utility classes, fall back to `var(--name)` CSS variables from ToolLayout
-
-### Import Patterns by Tool
-
-| Tool              | Components | Data Sources | Uses Workers? |
-| ----------------- | ---------- | ------------ | ------------- |
-| Quick Reference   | 12         | Multiple     | No            |
-| Combat Tracker    | 8          | Weapons      | No            |
-| NPC Generator     | 11         | Multiple     | No            |
-| Ship Builder      | 11         | Ships        | No            |
-| Character Builder | 17         | All          | No            |
-| Character Sheet   | 15         | All          | No            |
+> **Never use `StarlightPage` for tool pages.** `StarlightPage` wraps content in the Starlight sidebar and header, turning a tool into a documentation page. All tool pages use `ToolLayout.astro` exclusively. See Critical Pitfall #9.
 
 ## Data Loading
 
@@ -181,19 +114,13 @@ These have each caused real bugs. Memorize them:
 
 ## Adding a New Tool
 
-1. Create `src/components/react/tools/[tool-name]/[ToolName]App.tsx` — root React component with named export
-2. Create `src/components/react/tools/[tool-name]/store.ts` — Zustand store for tool state
-3. Create `src/pages/tools/[tool-name].astro` — imports and mounts the component via `client:only="react"` using `ToolLayout.astro` (not `StarlightPage`)
-4. Import shared logic from `@/lib/dtd/core.ts`, hooks from `@/hooks/`
-5. Use Tailwind utilities for styling; fall back to `var(--name)` CSS variables from `ToolLayout.astro`
-6. Add a sidebar entry to `astro.config.mjs` under the `Play Tools` group with `attrs: { target: "_blank", rel: "noopener" }` — tools are standalone pages and must open in a new tab
-7. Create documentation in `docs/tools/[tool-name].md`
-
-Full recipe with prerequisites, commands, and build verification: [docs/development-guide.md](../../docs/development-guide.md#adding-a-new-tool).
+See [docs/development-guide.md — Creating a React Tool](../../docs/development-guide.md#creating-a-react-tool) for the full recipe with prerequisites, commands, and build verification.
 
 ## CSS Conventions
 
-Tools use **Tailwind CSS v4** utility classes. Design tokens are defined in `src/styles/tailwind.css` `@theme` block and bridged to short `var(--name)` aliases in `ToolLayout.astro`:
+See [astro.instructions.md — CSS](../../.github/instructions/astro.instructions.md#css) for the full CSS approach (Tailwind v4, design tokens, conditional classes, dynamic values).
+
+Key aliases bridged by `ToolLayout.astro`:
 
 ```css
 var(--bg)                /* Page background */

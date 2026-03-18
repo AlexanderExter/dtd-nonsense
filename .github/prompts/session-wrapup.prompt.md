@@ -1,8 +1,12 @@
+---
+description: "Close out a session by harvesting lessons into instructions/skills and performing git housekeeping."
+---
+
 # Session Wrapup
 
 Close out the current editing session by harvesting lessons learned into project instructions and skills, then performing git housekeeping.
 
-**Environment reminder:** You are running in VS Code on Windows with PowerShell terminals. Multiple agents may have been active this session — verify git state before any merge operations.
+**Environment reminder:** This project runs in VS Code on Windows with **Git Bash** terminals. Use standard Unix commands (`cat`, `grep`, `head`, `&&`). If a terminal opens as PowerShell or cmd, that's a misconfiguration. Multiple agents may have been active this session — verify git state before any merge operations.
 
 ---
 
@@ -40,9 +44,9 @@ After user approval, update the relevant files. Common targets:
 | --------------------------------------------- | -------------------------------------------------------------------- |
 | Cross-cutting conventions, pitfalls, workflow | `docs/project-conventions.md`                                        |
 | Editing technique, formatting, content rules  | `.github/copilot-skills/ttrpg-rules-editor/SKILL.md`                 |
-| Source authority, verification rules          | `.github/copilot-skills/dtd-source-hierarchy.md`                     |
-| Open question lifecycle changes               | `.github/copilot-skills/open-question-manager.md`                    |
-| Tool development patterns, JS/CSS issues      | `.github/copilot-skills/tool-development.md`                         |
+| Source authority, verification rules          | `.github/copilot-skills/dtd-source-hierarchy/SKILL.md`            |
+| Open question lifecycle changes               | `.github/copilot-skills/open-question-manager/SKILL.md`           |
+| Tool development patterns, JS/CSS issues      | `.github/copilot-skills/tool-development/SKILL.md`                |
 | Formatting reference updates                  | `.github/copilot-skills/ttrpg-rules-editor/references/formatting.md` |
 | Template changes                              | `.github/copilot-skills/ttrpg-rules-editor/references/templates.md`  |
 | Agent routing, skills table                   | `.github/copilot-instructions.md`                                    |
@@ -106,15 +110,9 @@ If multiple branches exist (from multi-agent confusion or multi-day features):
 2. Scan the working tree for orphaned backup files, temp files, or build artifacts — remove if found
 3. Verify main is clean: `git status` should report a clean working tree with nothing to commit
 
-### 3d. Start Dev Server
+### 3d. Optionally Verify
 
-Start the Astro dev server so the user can visually verify changes:
-
-```
-bun run dev
-```
-
-Leave it running. Report the local URL (typically `http://localhost:4321/`) in the Phase 4 summary.
+Optionally start the dev server (`bun run dev`) for visual verification. Leave it running if started. Report the local URL (typically `http://localhost:4321/`) in the Phase 4 summary.
 
 ---
 

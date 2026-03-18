@@ -186,7 +186,7 @@ See [project-conventions.md](project-conventions.md#refactoring-shared-modules) 
 
 **Not installed as a devDependency — use via `bun x` on demand:**
 
-```powershell
+```bash
 bun x jscodeshift -t scripts/codemods/my-transform.ts src/
 ```
 
@@ -464,6 +464,6 @@ style={{ background: STATUS_COLORS[status] }}
 
 ---
 
-## PowerShell Warning
+## Shell Note
 
-See [project-conventions.md](project-conventions.md#powershell-encoding) for the full warning on PowerShell encoding corruption.
+The project uses **Git Bash** as the standard terminal shell. See [project-conventions.md](project-conventions.md#powershell-encoding-historical) for the historical warning on PowerShell encoding corruption.

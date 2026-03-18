@@ -1,10 +1,9 @@
-# Open Question Manager Skill
-
-**Skill type:** Workflow (ambiguity lifecycle management)
-
-**Triggers:** "manage open questions", "resolve ambiguity", "apply resolution", "cleanup open-questions", "archive resolved"
-
 ---
+name: open-question-manager
+description: "Use when managing open questions, resolving ambiguity, applying resolutions, cleaning up open-questions, or archiving resolved entries."
+---
+
+# Open Question Manager Skill
 
 ## Purpose
 

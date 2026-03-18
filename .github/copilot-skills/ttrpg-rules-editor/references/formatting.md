@@ -4,7 +4,7 @@ Detailed markdown conventions for D:TD rule references.
 
 ## Contents
 
-- [Markdown Features](#markdown-features)
+- [Markdown Basics](#markdown-basics)
 - [Named Callouts and Sidebars](#named-callouts-and-sidebars)
 - [Tiered Entries](#tiered-entries)
 - [Code for Dice Mechanics](#code-for-dice-mechanics)
@@ -15,19 +15,9 @@ Detailed markdown conventions for D:TD rule references.
 
 ---
 
-## Markdown Features
+## Markdown Basics
 
-| Feature              | Use For                      | Example                        |
-| -------------------- | ---------------------------- | ------------------------------ |
-| **Headings**         | Hierarchy (H2 major, H3 sub) | `## Combat` / `### Initiative` |
-| **Horizontal rules** | Separate major sections      | `---`                          |
-| **Bullet lists**     | Mechanics, options           | `- First option`               |
-| **Numbered lists**   | Sequences, steps             | `1. Roll initiative`           |
-| **Tables**           | Comparative data, stats      | See below                      |
-| **Blockquotes**      | Notes, exceptions, warnings  | `> **Note:** ...`              |
-| **Collapsibles**     | Optional rules, examples     | `<details>` tags               |
-| **Bold**             | Key terms, rule names        | `**Static Defense**`           |
-| **Inline code**      | Dice pools, values           | `` `5k3` ``                    |
+For general markdown standards (headings, lists, tables, formatting), see [markdown.instructions.md](../../../.github/instructions/markdown.instructions.md). This file covers D:TD editorial-specific formatting patterns only.
 
 ### Tables vs Lists
 
@@ -171,33 +161,7 @@ For creature/character stats, use tables or formatted lists:
 
 ## List Formatting
 
-### Unordered Lists
-
-- Use dashes (`-`) for all unordered lists
-- One space after the marker
-- Indent nested items by 2 spaces
-
-```markdown
-- First item
-- Second item
-    - Nested item (2 spaces before dash)
-```
-
-### Ordered Lists
-
-- Use `1.` for all items (renderers auto-number)
-- One space after the period
-- Indent nested by 3 spaces
-
-```markdown
-1. First step
-2. Second step
-    1. Sub-step (3 spaces)
-```
-
-### Tight vs Loose Lists
-
-**Tight** (no blank lines)—for short items. **Loose** (blank lines between)—for multi-line items with additional paragraphs.
+For basic list conventions (dashes, numbering, indentation), see [markdown.instructions.md](../../../.github/instructions/markdown.instructions.md). Use **tight** lists (no blank lines) for short items and **loose** lists (blank lines between) for multi-line items.
 
 ---
 

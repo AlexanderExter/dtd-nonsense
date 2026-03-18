@@ -8,7 +8,7 @@ System-wide architecture for the DTD 40k project: Astro/Starlight documentation 
 
 ### Astro / Starlight Layer (Documentation Site)
 
-The rulebook and play tools are published as a static site via **Astro 5 + Starlight**, deployed to Vercel.
+The rulebook and play tools are published as a static site via **Astro 6 + Starlight**, deployed to Vercel.
 
 | Choice              | Rationale                                                                                                                                                                                                                                                    |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
