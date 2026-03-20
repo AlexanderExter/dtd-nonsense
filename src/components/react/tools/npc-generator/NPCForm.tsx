@@ -1,3 +1,6 @@
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { GameTextarea } from "@/components/react/ui/GameTextarea";
 import { AbilityList } from "./AbilityList";
 import { ArmorList } from "./ArmorList";
 import { CharacteristicsGrid } from "./CharacteristicsGrid";
@@ -36,9 +39,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 						<label className="block text-[0.8rem] mb-[2px]" htmlFor="npc-name">
 							Name
 						</label>
-						<input
-							className="w-full px-sm py-xs text-[0.9rem]"
-							type="text"
+						<GameInput
 							id="npc-name"
 							placeholder="NPC Name"
 							value={npc.name}
@@ -49,8 +50,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 						<label className="block text-[0.8rem] mb-[2px]" htmlFor="npc-level">
 							Level
 						</label>
-						<select
-							className="w-full px-sm py-xs text-[0.9rem]"
+						<GameSelect
 							id="npc-level"
 							value={npc.level}
 							onChange={(e) =>
@@ -62,14 +62,13 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 							<option value="3">3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
-						</select>
+						</GameSelect>
 					</div>
 					<div>
 						<label className="block text-[0.8rem] mb-[2px]" htmlFor="npc-size">
 							Size
 						</label>
-						<input
-							className="w-full px-sm py-xs text-[0.9rem]"
+						<GameInput
 							type="number"
 							id="npc-size"
 							min={1}
@@ -84,8 +83,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 						<label className="block text-[0.8rem] mb-[2px]" htmlFor="npc-speed">
 							Speed
 						</label>
-						<input
-							className="w-full px-sm py-xs text-[0.9rem]"
+						<GameInput
 							type="number"
 							id="npc-speed"
 							min={0}
@@ -131,8 +129,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 			{/* Gear */}
 			<div className="mb-lg pb-md border-b border-border last:border-b-0">
 				<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Gear</h2>
-				<textarea
-					className="w-full text-[0.85rem] p-sm resize-y"
+				<GameTextarea
 					id="gear-text"
 					rows={3}
 					placeholder="Comma-separated gear list"

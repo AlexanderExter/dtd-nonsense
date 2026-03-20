@@ -29,9 +29,9 @@ export function DerivedStatEntry({
 					{baseValue}
 				</span>
 				<span className="text-xs text-text-dim">+</span>
-				<input
+				<GameInput
 					type="number"
-					className="w-[38px] py-[1px] px-[3px] text-center text-[0.8rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+					className="w-[38px] py-[1px] px-[3px] text-center text-[0.8rem] font-semibold"
 					title="Modifier"
 					value={modValue}
 					onInput={(e) => onModChange(Number((e.target as HTMLInputElement).value))}

@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useCallback } from "react";
 import { CombatSidebar } from "./CombatSidebar";
 import { getInstalledConsoleIds, getShipStats, OFFICER_POSITIONS, signedNum } from "./constants";
@@ -7,6 +8,44 @@ export function SheetPanel() {
 	const { shipData, ship, updateShip } = useShipStore();
 	const data = shipData;
 	const currentShip = ship;
+
+	const toggleConsole = useCallback(
+		(consoleId: string) => {
+			updateShip((s) => {
+				const wasActive = s.combat.consoleStatus[consoleId] !== false;
+				return {
+					...s,
+					combat: {
+						...s.combat,
+						consoleStatus: {
+							...s.combat.consoleStatus,
+							[consoleId]: !wasActive,
+						},
+					},
+				};
+			});
+		},
+		[updateShip],
+	);
+
+	const toggleWeapon = useCallback(
+		(slotKey: string) => {
+			updateShip((s) => {
+				const wasActive = s.combat.weaponStatus[slotKey] !== false;
+				return {
+					...s,
+					combat: {
+						...s.combat,
+						weaponStatus: {
+							...s.combat.weaponStatus,
+							[slotKey]: !wasActive,
+						},
+					},
+				};
+			});
+		},
+		[updateShip],
+	);
 
 	if (!data) return null;
 
@@ -23,46 +62,6 @@ export function SheetPanel() {
 
 	const stats = getShipStats(currentShip, hull);
 	const installedConsoles = getInstalledConsoleIds(currentShip);
-
-	// -----------------------------------------------------------------------
-	// Console toggle
-	// -----------------------------------------------------------------------
-
-	const toggleConsole = useCallback((consoleId: string) => {
-		updateShip((s) => {
-			const wasActive = s.combat.consoleStatus[consoleId] !== false;
-			return {
-				...s,
-				combat: {
-					...s.combat,
-					consoleStatus: {
-						...s.combat.consoleStatus,
-						[consoleId]: !wasActive,
-					},
-				},
-			};
-		});
-	}, []);
-
-	// -----------------------------------------------------------------------
-	// Weapon toggle
-	// -----------------------------------------------------------------------
-
-	const toggleWeapon = useCallback((slotKey: string) => {
-		updateShip((s) => {
-			const wasActive = s.combat.weaponStatus[slotKey] !== false;
-			return {
-				...s,
-				combat: {
-					...s.combat,
-					weaponStatus: {
-						...s.combat.weaponStatus,
-						[slotKey]: !wasActive,
-					},
-				},
-			};
-		});
-	}, []);
 
 	// -----------------------------------------------------------------------
 	// Render
@@ -145,12 +144,10 @@ export function SheetPanel() {
 								return (
 									<div
 										key={cid}
-										className={[
+										className={cn(
 											"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
 											!active && "opacity-40 border-error",
-										]
-											.filter(Boolean)
-											.join(" ")}
+										)}
 									>
 										<div className="flex-1">
 											<div className="font-semibold text-[0.9rem]">
@@ -171,12 +168,10 @@ export function SheetPanel() {
 										</div>
 										<button
 											type="button"
-											className={[
+											className={cn(
 												"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
 												!active && "text-error",
-											]
-												.filter(Boolean)
-												.join(" ")}
+											)}
 											onClick={() => toggleConsole(cid)}
 										>
 											{active ? "Active" : "Disabled"}
@@ -253,12 +248,10 @@ function renderWeapons(
 			items.push(
 				<div
 					key={slotKey}
-					className={[
+					className={cn(
 						"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
 						!active && "opacity-40 border-error",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 				>
 					<div className="flex-1">
 						<div className="font-semibold text-[0.9rem]">
@@ -271,12 +264,10 @@ function renderWeapons(
 					</div>
 					<button
 						type="button"
-						className={[
+						className={cn(
 							"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
 							!active && "text-error",
-						]
-							.filter(Boolean)
-							.join(" ")}
+						)}
 						onClick={() => toggleWeapon(slotKey)}
 					>
 						{active ? "Active" : "Offline"}

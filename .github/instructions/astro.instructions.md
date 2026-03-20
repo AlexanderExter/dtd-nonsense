@@ -5,7 +5,7 @@ applyTo: "**/*.astro, **/*.ts, **/*.js"
 
 # Astro Development Standards — DTD Nonsense
 
-This project uses **Astro 5.x + Starlight** for a static documentation site with interactive tool pages. All tools use **React Islands** (`@astrojs/react`) hydrated via `client:only="react"`.
+This project uses **Astro 6 + Starlight** for a static documentation site with interactive tool pages. All tools use **React Islands** (`@astrojs/react`) hydrated via `client:only="react"`.
 
 ## Architecture
 

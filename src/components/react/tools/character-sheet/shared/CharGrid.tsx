@@ -1,4 +1,6 @@
+import { GameInput } from "@/components/react/ui/GameInput";
 import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
+import { cn } from "@/lib/utils";
 import { CHAR_ABBREV, getEffChars } from "../constants";
 import { useCharSheetStore } from "../store";
 
@@ -40,29 +42,27 @@ export function CharGrid() {
 								<span className="flex-1 font-medium text-[0.9rem]" title={CHAR_NAMES[id] || id}>
 									{abbrev}
 								</span>
-								<input
+								<GameInput
 									type="number"
-									className="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem]"
+									className="w-11 text-center font-semibold text-[0.9rem]"
 									value={base}
 									min={1}
 									max={6}
 									onInput={(e) => handleCharChange(id, Number((e.target as HTMLInputElement).value))}
 								/>
 								<span
-									className={[
+									className={cn(
 										"font-bold text-accent min-w-5 text-center text-base",
 										isBonus && "text-info",
-									]
-										.filter(Boolean)
-										.join(" ")}
+									)}
 									title={isBonus ? "+1 racial bonus" : ""}
 								>
 									{eff}
 								</span>
 								{showSpec && (
-									<input
+									<GameInput
 										type="text"
-										className="w-full text-[0.78rem] px-sm py-0.5 mt-0.5 text-text-muted bg-surface-raised border border-border rounded-[3px] placeholder:text-text-dim"
+										className="w-full text-[0.78rem] text-text-muted bg-surface-raised placeholder:text-text-dim"
 										placeholder="Specialty"
 										value={specs[id] || ""}
 										onInput={(e) => handleSpecChange(id, (e.target as HTMLInputElement).value)}

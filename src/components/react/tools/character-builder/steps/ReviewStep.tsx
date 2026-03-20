@@ -67,8 +67,8 @@ export function ReviewStep() {
 				<div className="px-md py-sm bg-[rgba(248,113,113,0.1)] border border-error rounded-sm text-error text-[0.9rem] font-semibold">
 					<strong>⚠ Issues:</strong>
 					<ul>
-						{warnings.map((w, i) => (
-							<li key={i}>{w}</li>
+						{warnings.map((w) => (
+							<li key={w}>{w}</li>
 						))}
 					</ul>
 				</div>

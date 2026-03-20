@@ -26,7 +26,7 @@ Every work session uses a **date-based branch**: `session-YYYY-MM-DD`.
 
 **Start of session:**
 
-```powershell
+```bash
 git branch --list                          # Check existing branches
 git status                                 # Check for uncommitted changes
 ```
@@ -346,16 +346,13 @@ Cross-references to appendices use letter codes. The definitive mapping:
 
 Lessons from project history — each one caused real damage at least once.
 
-### PowerShell Encoding
+### PowerShell Encoding (Historical)
 
-**NEVER use PowerShell `Set-Content` to write files containing non-ASCII characters.** PowerShell 5.1 silently converts UTF-8 to CP1252, corrupting characters like `×`, `½`, `°`, smart quotes, and bullets.
+**Never use PowerShell `Set-Content` or `Out-File` to write files containing non-ASCII characters.** PowerShell 5.1 silently converts UTF-8 to CP1252, corrupting characters like `×`, `½`, `°`, smart quotes, and bullets. The project now uses Git Bash as the standard shell, but this pitfall remains relevant if PowerShell is used accidentally.
 
-```powershell
-# WRONG — silently corrupts non-ASCII:
-$content | Set-Content file.md
-
-# If you must use PowerShell, force encoding:
-Set-Content file.md -Encoding utf8
+```bash
+# Use agent edit tools (replace_string_in_file, create_file) for file edits.
+# If you must use a terminal for file writes, use Git Bash — not PowerShell.
 ```
 
 ### CSS `display` Overrides `hidden`
@@ -417,13 +414,13 @@ When amending a commit with formatting-only changes (e.g., Biome import reorderi
 
 `biome check --write` only applies **safe** fixes. Diagnostics showing `Unsafe fix:` in the output require `--write --unsafe` or manual editing. Common examples: renaming unused `catch (e)` to `catch`, converting string concatenation to template literals. If `bun run lint:fix` doesn't clear a warning, check whether it's flagged as unsafe.
 
-### `&&` in npm Scripts vs PowerShell
+### `&&` in npm Scripts vs Shell
 
-`&&` is forbidden in PowerShell terminals (use `;` instead) but works correctly in `package.json` scripts because npm uses `cmd.exe` as its default shell on Windows. The `bun run check` composite command uses `&&` chaining — this is intentional and correct despite the general `&&` prohibition.
+`&&` works naturally in Git Bash terminals. It also works correctly in `package.json` scripts (npm/bun use their own shell). The `bun run check` composite command uses `&&` chaining — this is intentional and correct.
 
-### Git Push stderr on PowerShell
+### Git Push stderr (Historical)
 
-`git push` outputs informational messages (like the "Create a pull request" URL) to stderr. PowerShell interprets any stderr output as a non-terminating error, setting `$LASTEXITCODE = 1` even when the push succeeds. Check the actual output message — if the branch was created/updated on the remote, it worked. Don't treat exit code 1 from `git push` as a failure without reading the output.
+In PowerShell, `git push` outputs informational messages to stderr, which PowerShell interprets as errors. **This is not a problem in Git Bash** — stderr output from `git push` is displayed normally. This pitfall is retained for reference in case PowerShell is used accidentally.
 
 ### Plan vs Execution Drift
 

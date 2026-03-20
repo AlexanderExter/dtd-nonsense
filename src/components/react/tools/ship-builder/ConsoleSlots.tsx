@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CONSOLE_LABELS, CONSOLE_TYPES, getConsoleOptions } from "./constants";
 import { useShipStore } from "./store";
 
@@ -6,6 +7,16 @@ export function ConsoleSlots() {
 	const { shipData, ship, updateShip } = useShipStore();
 	const data = shipData;
 	const currentShip = ship;
+
+	const handleConsoleChange = useCallback(
+		(slotKey: string, consoleId: string) => {
+			updateShip((s) => {
+				s.consoles = { ...s.consoles, [slotKey]: consoleId };
+				return s;
+			});
+		},
+		[updateShip],
+	);
 
 	if (!data) return null;
 
@@ -19,13 +30,6 @@ export function ConsoleSlots() {
 			</section>
 		);
 	}
-
-	const handleConsoleChange = useCallback((slotKey: string, consoleId: string) => {
-		updateShip((s) => {
-			s.consoles = { ...s.consoles, [slotKey]: consoleId };
-			return s;
-		});
-	}, []);
 
 	const badgeColors: Record<string, string> = {
 		arcana: "bg-[#9b59b6]",
@@ -62,8 +66,8 @@ export function ConsoleSlots() {
 									className="flex items-center gap-sm p-sm mb-xs bg-surface-raised border border-border rounded-sm"
 								>
 									<span className={badgeClass}>{type.charAt(0).toUpperCase()}</span>
-									<select
-										className="flex-1 py-1 px-2 text-[0.85rem]"
+									<GameSelect
+										className="flex-1"
 										value={currentId}
 										onChange={(e) =>
 											handleConsoleChange(slotKey, (e.target as HTMLSelectElement).value)
@@ -75,7 +79,7 @@ export function ConsoleSlots() {
 												{c.name} ({c.cost} BP)
 											</option>
 										))}
-									</select>
+									</GameSelect>
 									<span className="text-[0.8rem] text-accent min-w-10 text-right">
 										{selectedConsole ? `${selectedConsole.cost} BP` : ""}
 									</span>

@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { Highlight } from "./Highlight";
 import { QREF_DATA } from "./qref-data";
 
@@ -106,11 +108,11 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 				<div className="flex gap-md flex-wrap mb-sm max-[600px]:flex-col">
 					<label className="flex flex-col gap-[4px] text-[0.85rem] text-text-muted">
 						Weapon Range (m){" "}
-						<input
+						<GameInput
 							type="number"
 							min={1}
 							value={weaponRange}
-							className="w-[110px] px-[8px] py-[6px] bg-bg border border-border rounded-md text-text-primary text-[0.9rem] font-[inherit] focus:border-accent focus:outline-none"
+							className="w-[110px]"
 							onInput={(e) => {
 								setWeaponRange(Number.parseFloat((e.target as HTMLInputElement).value) || 0);
 							}}
@@ -118,11 +120,11 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 					</label>
 					<label className="flex flex-col gap-[4px] text-[0.85rem] text-text-muted">
 						Distance to Target (m){" "}
-						<input
+						<GameInput
 							type="number"
 							min={0}
 							value={distance}
-							className="w-[110px] px-[8px] py-[6px] bg-bg border border-border rounded-md text-text-primary text-[0.9rem] font-[inherit] focus:border-accent focus:outline-none"
+							className="w-[110px]"
 							onInput={(e) => {
 								setDistance(Number.parseFloat((e.target as HTMLInputElement).value) || 0);
 							}}
@@ -149,9 +151,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 				<h3 className="text-accent text-[0.95rem] m-0 mb-sm">Modifier Accumulator</h3>
 				<div className="flex flex-wrap gap-x-md gap-y-[6px]">
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={combatAdvantage}
 							onChange={(e) => {
 								setCombatAdvantage((e.target as HTMLInputElement).checked);
@@ -197,9 +197,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						3:1+
 					</label>
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={higherGround}
 							onChange={(e) => {
 								setHigherGround((e.target as HTMLInputElement).checked);
@@ -208,9 +206,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						Higher Ground
 					</label>
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={offHand}
 							onChange={(e) => {
 								setOffHand((e.target as HTMLInputElement).checked);
@@ -219,9 +215,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						Off Hand
 					</label>
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={twoWeapons}
 							onChange={(e) => {
 								setTwoWeapons((e.target as HTMLInputElement).checked);
@@ -230,9 +224,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						Two Weapons (-3k0 each)
 					</label>
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={shootingIntoMelee}
 							onChange={(e) => {
 								setShootingIntoMelee((e.target as HTMLInputElement).checked);
@@ -241,9 +233,7 @@ export function CombatModifiersSection({ searchWords }: CombatModifiersSectionPr
 						Shooting into Melee
 					</label>
 					<label className="flex items-center gap-[6px] text-[0.85rem] text-text-primary cursor-pointer select-none">
-						<input
-							type="checkbox"
-							className="accent-accent w-4 h-4 cursor-pointer"
+						<GameCheckbox
 							checked={difficultTerrain}
 							onChange={(e) => {
 								setDifficultTerrain((e.target as HTMLInputElement).checked);

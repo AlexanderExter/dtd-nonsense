@@ -1,4 +1,6 @@
 import { useCallback } from "react";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { useShipStore } from "./store";
 
 export function TorpedoSlots() {
@@ -6,27 +8,33 @@ export function TorpedoSlots() {
 	const data = shipData;
 	const currentShip = ship;
 
+	const handleToggleTube = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const checked = (e.target as HTMLInputElement).checked;
+			updateShip((s) => ({ ...s, hasTorpedoTube: checked }));
+		},
+		[updateShip],
+	);
+
+	const handleTorpedoChange = useCallback(
+		(idx: number, torpedoId: string) => {
+			updateShip((s) => {
+				const torpedoes = [...s.torpedoes];
+				torpedoes[idx] = torpedoId;
+				return { ...s, torpedoes };
+			});
+		},
+		[updateShip],
+	);
+
 	if (!data) return null;
-
-	const handleToggleTube = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		const checked = (e.target as HTMLInputElement).checked;
-		updateShip((s) => ({ ...s, hasTorpedoTube: checked }));
-	}, []);
-
-	const handleTorpedoChange = useCallback((idx: number, torpedoId: string) => {
-		updateShip((s) => {
-			const torpedoes = [...s.torpedoes];
-			torpedoes[idx] = torpedoId;
-			return { ...s, torpedoes };
-		});
-	}, []);
 
 	return (
 		<section className="mb-xl">
 			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Torpedoes</h2>
 			<div>
 				<label className="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
-					<input type="checkbox" checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
+					<GameCheckbox checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
 					<span>Torpedo Tube ({data.torpedoTubeCost} BP) — holds 5 torpedoes</span>
 				</label>
 				{currentShip.hasTorpedoTube && (
@@ -37,10 +45,11 @@ export function TorpedoSlots() {
 							const selectedTorpedo = current ? data.torpedoes.find((t) => t.id === current) : null;
 
 							return (
+								// biome-ignore lint/suspicious/noArrayIndexKey: fixed-position torpedo slots identified by index
 								<div key={i} className="flex items-center gap-sm py-xs">
 									<span>#{i + 1}</span>
-									<select
-										className="flex-1 py-1 px-2 text-[0.85rem]"
+									<GameSelect
+										className="flex-1"
 										value={current}
 										onChange={(e) => handleTorpedoChange(i, (e.target as HTMLSelectElement).value)}
 									>
@@ -50,7 +59,7 @@ export function TorpedoSlots() {
 												{t.name} ({t.cost} BP)
 											</option>
 										))}
-									</select>
+									</GameSelect>
 									<span className="text-[0.8rem] text-accent min-w-10 text-right">
 										{selectedTorpedo ? `${selectedTorpedo.cost} BP` : ""}
 									</span>

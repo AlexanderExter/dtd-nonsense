@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -84,12 +85,16 @@ export function EquipmentStep() {
 
 					<ul className="list-none p-0 m-0">
 						{(preview.items || []).map((item: any, idx: number) => (
-							<li key={idx} className="py-xs border-b border-border text-[0.9rem] last:border-b-0">
+							<li
+								// biome-ignore lint/suspicious/noArrayIndexKey: items may share names, position is stable identity
+								key={`${item.name || "item"}-${idx}`}
+								className="py-xs border-b border-border text-[0.9rem] last:border-b-0"
+							>
 								{item.choice && item.options?.length > 0 ? (
 									<span>
 										<label>
 											{item.name || "Choose"}:{" "}
-											<select
+											<GameSelect
 												value={meta.equipmentChoices[idx] || item.options[0]}
 												onChange={(e) =>
 													handleChoice(idx, (e.target as HTMLSelectElement).value)
@@ -100,7 +105,7 @@ export function EquipmentStep() {
 														{opt}
 													</option>
 												))}
-											</select>
+											</GameSelect>
 										</label>
 									</span>
 								) : (

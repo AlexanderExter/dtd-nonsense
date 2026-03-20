@@ -1,3 +1,4 @@
+import { GameInput } from "@/components/react/ui/GameInput";
 import { LOCATIONS } from "../constants";
 import { ArmorSection } from "../shared/ArmorSection";
 import { WeaponTable } from "../shared/WeaponTable";
@@ -46,9 +47,8 @@ export function CombatTab() {
 				<div className="flex gap-md mb-md flex-wrap">
 					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Natural Armor
-						<input
+						<GameInput
 							type="number"
-							className="w-full"
 							value={char.naturalArmor || 0}
 							min={0}
 							onInput={(e) =>
@@ -60,9 +60,8 @@ export function CombatTab() {
 					</label>
 					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura
-						<input
+						<GameInput
 							type="number"
-							className="w-full"
 							value={char.aura || 0}
 							min={0}
 							onInput={(e) =>
@@ -74,9 +73,8 @@ export function CombatTab() {
 					</label>
 					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura Source
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.auraSource || ""}
 							onInput={(e) =>
 								updateChar((c) => {

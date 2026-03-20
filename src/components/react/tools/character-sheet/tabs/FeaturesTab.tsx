@@ -1,4 +1,7 @@
 import { AddButton } from "@/components/react/ui/AddButton";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { GameTextarea } from "@/components/react/ui/GameTextarea";
 import type { Background, ClassEntry } from "@/lib/dtd/types";
 import { BG_IDS } from "../constants";
 import { NameNotesList } from "../shared/NameNotesList";
@@ -91,10 +94,10 @@ export function FeaturesTab() {
 				{charClasses.map((cls: ClassEntry, idx: number) => {
 					const info = getClassInfo(cls.classId);
 					return (
-						<div key={idx} className="mb-md">
+						<div key={cls.classId} className="mb-md">
 							<div className="flex items-center gap-sm flex-wrap">
-								<select
-									className="flex-1 min-w-[160px] text-[0.85rem] py-0.5 px-1 bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent"
+								<GameSelect
+									className="flex-1 min-w-[160px]"
 									value={cls.classId}
 									onChange={(e) => handleClassChange(idx, (e.target as HTMLSelectElement).value)}
 								>
@@ -104,12 +107,12 @@ export function FeaturesTab() {
 											{c.name}
 										</option>
 									))}
-								</select>
+								</GameSelect>
 								<label className="flex items-center gap-1 text-[0.78rem] uppercase tracking-[0.3px]">
 									Level
-									<input
+									<GameInput
 										type="number"
-										className="w-14 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] focus:border-accent"
+										className="w-14 text-center font-semibold text-[0.9rem]"
 										value={cls.level || 1}
 										min={1}
 										onInput={(e) =>
@@ -180,9 +183,9 @@ export function FeaturesTab() {
 								<span className="font-medium text-[0.85rem] min-w-[70px]">
 									{bgNames[id] || bg.name}
 								</span>
-								<input
+								<GameInput
 									type="number"
-									className="w-11 py-0.5 px-1 text-center font-semibold text-[0.9rem] bg-bg border border-border rounded-[3px] focus:border-accent"
+									className="w-11 text-center font-semibold text-[0.9rem]"
 									value={bg.dots}
 									min={0}
 									max={5}
@@ -190,9 +193,9 @@ export function FeaturesTab() {
 										handleBgDotsChange(id, Number((e.target as HTMLInputElement).value))
 									}
 								/>
-								<input
+								<GameInput
 									type="text"
-									className="flex-1 py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary placeholder:text-text-dim focus:border-accent focus:outline-none"
+									className="flex-1 placeholder:text-text-dim"
 									placeholder="Notes"
 									value={bg.notes || ""}
 									onInput={(e) => handleBgNotesChange(id, (e.target as HTMLInputElement).value)}
@@ -206,8 +209,8 @@ export function FeaturesTab() {
 			{/* ---------- Equipment ---------- */}
 			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Equipment</h3>
-				<textarea
-					className="w-full min-h-[120px] resize-y py-sm px-md text-[0.85rem] bg-bg border border-border rounded-sm text-text-primary placeholder:text-text-dim focus:border-accent focus:outline-none"
+				<GameTextarea
+					className="min-h-[120px] placeholder:text-text-dim"
 					value={char.equipment || ""}
 					onInput={(e) =>
 						updateChar((c) => {

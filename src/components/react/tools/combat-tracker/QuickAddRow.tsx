@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
 
 interface QuickAddRowProps {
 	onQuickAdd: (name: string, initTotal: number) => void;
@@ -25,7 +26,7 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 
 	return (
 		<div className="flex flex-wrap gap-sm items-center mb-lg p-sm bg-surface border border-border rounded-md max-[768px]:flex-col max-[768px]:items-stretch">
-			<input
+			<GameInput
 				type="text"
 				className="flex-1 min-w-[100px] max-[768px]:flex-none max-[768px]:w-full"
 				placeholder="Quick add name"
@@ -33,7 +34,7 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 				onInput={(e) => setName((e.target as HTMLInputElement).value)}
 				onKeyDown={handleKeyDown}
 			/>
-			<input
+			<GameInput
 				type="number"
 				className="flex-none w-[100px] max-[768px]:w-full"
 				placeholder="Init"

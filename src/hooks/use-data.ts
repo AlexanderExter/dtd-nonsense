@@ -9,6 +9,7 @@ export function useAllData(filenames: string[]) {
 	// Stable key from filenames array to avoid re-fetching on every render
 	const key = filenames.join(",");
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: key is a stable string derived from filenames — using filenames directly would re-trigger on every render since arrays are new references
 	useEffect(() => {
 		const controller = new AbortController();
 		setLoading(true);

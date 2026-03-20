@@ -1,4 +1,7 @@
-````prompt
+---
+description: "Post-change coherence audit. Run after sweeping changes, large refactors, or multi-file sessions."
+---
+
 # Sanity Check
 
 Post-change coherence audit. Run after sweeping changes, large refactors, or multi-file sessions to catch the class of problems that individual file edits miss.
@@ -49,8 +52,8 @@ bun run knip           # Dead code detection — unused files, exports, deps
 ```
 
 Compare results against known baselines:
-- Validate + xref: 12/12 pass, 0 xref warnings
-- Lint: 0 errors, ~13 warnings, ~879 info
+- Validate + xref: 12/12 pass
+- Lint: 0 errors (warnings baseline may shift after toolchain upgrades — compare to last known good state)
 - Knip: 0 unused files, 0 unused exports (any finding is a regression)
 
 **Any delta from baseline is a finding.** New warnings may be legitimate, but they need explanation.
@@ -163,7 +166,7 @@ Write the handover to `docs/session-handover.md`, overwriting any previous versi
 
 During the session, you may have noticed work that is valuable but out of scope — patterns worth refactoring, features worth adding, inconsistencies worth investigating. These are residual gains: the agent spots them in context but they'll be invisible to a cold session.
 
-Capture them in `side-tracks.md` at project root.
+Capture them in `docs/side-tracks.md`.
 
 **Format — append, do not overwrite:**
 
@@ -217,7 +220,3 @@ Present findings organized as:
 For each finding, state the file, the problem, and the proposed fix. Wait for user approval before applying fixes.
 
 Deliver the session handover (Section 7b) and side tracks (Section 7c) alongside the report.
-
-```
-
-```

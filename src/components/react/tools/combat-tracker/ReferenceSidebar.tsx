@@ -1,8 +1,10 @@
-import { useState } from "react";
 import { AccordionItem } from "@/components/react/ui/Accordion";
 import { Badge } from "@/components/react/ui/Badge";
 import { Button } from "@/components/react/ui/Button";
 import { CloseButton } from "@/components/react/ui/CloseButton";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 import type { ActionDef } from "./constants";
 import { ACTIONS, CONDITIONS, HIT_LOCATIONS, SITUATIONAL_MODIFIERS } from "./constants";
 
@@ -56,14 +58,12 @@ export function ReferenceSidebar({
 		onCalcDamage(dmgRaw, dmgAp, dmgPen, dmgRes);
 	};
 
-	const sidebarClasses = [
+	const sidebarClasses = cn(
 		"w-[340px] shrink-0 bg-surface border-l border-border p-md overflow-y-auto max-h-[calc(100vh-60px-48px)] sticky top-[60px]",
 		"max-[1099px]:fixed max-[1099px]:top-0 max-[1099px]:right-0 max-[1099px]:bottom-0 max-[1099px]:z-[150] max-[1099px]:translate-x-full max-[1099px]:transition-transform max-[1099px]:duration-[250ms] max-[1099px]:max-h-screen",
 		"max-[768px]:w-full",
 		isOpen && "max-[1099px]:translate-x-0",
-	]
-		.filter(Boolean)
-		.join(" ");
+	);
 
 	return (
 		<aside className={sidebarClasses}>
@@ -75,9 +75,9 @@ export function ReferenceSidebar({
 			<div>
 				{/* Actions */}
 				<AccordionItem title="Actions" defaultOpen>
-					<input
+					<GameInput
 						type="text"
-						className="w-full mb-sm px-sm py-xs text-[0.85rem]"
+						className="mb-sm"
 						placeholder="Filter actions..."
 						value={actionFilter}
 						onInput={(e) => setActionFilter((e.target as HTMLInputElement).value)}
@@ -181,8 +181,7 @@ export function ReferenceSidebar({
 					<div className="flex flex-wrap gap-md items-end mt-sm">
 						<label className="flex-none min-w-[90px] max-w-[120px]">
 							<span>Raw Damage</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={0}
 								value={dmgRaw}
@@ -191,8 +190,7 @@ export function ReferenceSidebar({
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px]">
 							<span>Armor Points</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={0}
 								value={dmgAp}
@@ -201,8 +199,7 @@ export function ReferenceSidebar({
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px]">
 							<span>Penetration</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={0}
 								value={dmgPen}
@@ -211,8 +208,7 @@ export function ReferenceSidebar({
 						</label>
 						<label className="flex-none min-w-[90px] max-w-[120px]">
 							<span>Resilience</span>
-							<input
-								className="w-full"
+							<GameInput
 								type="number"
 								min={1}
 								value={dmgRes}

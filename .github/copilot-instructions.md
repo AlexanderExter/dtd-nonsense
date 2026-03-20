@@ -8,32 +8,28 @@ This is a **tabletop RPG rulebook documentation project** with **web-based play 
 
 ## Environment
 
-All sessions run in **VS Code** on **Windows** with **PowerShell** terminals. This is not a Linux/Mac environment — POSIX shell assumptions will fail silently or with cryptic errors.
+All sessions run in **VS Code** on **Windows** with **Git Bash** terminals. The workspace configures Git Bash as the default shell for both user terminals and agent/tool terminals (`.vscode/settings.json`). If a terminal opens as PowerShell or cmd, that's a misconfiguration — report it and switch.
 
-### PowerShell Command Equivalents
+### Shell Standard: Git Bash
 
-Common Unix commands **do not exist** in PowerShell. Always use the PowerShell equivalent:
+Standard Unix commands work: `cat`, `grep`, `head`, `tail`, `ls`, `rm`, `which`, `&&`, pipes, redirects. Use them naturally.
 
-| Unix (BROKEN here)        | PowerShell equivalent        |
-| ------------------------- | ---------------------------- |
-| `cmd1 && cmd2`            | `cmd1 ; cmd2`                |
-| `head -n 20`              | `Select-Object -First 20`    |
-| `tail -n 20`              | `Select-Object -Last 20`     |
-| `grep pattern file`       | `Select-String -Pattern ...` |
-| `cat file`                | `Get-Content file`           |
-| `rm file`                 | `Remove-Item file`           |
-| `which cmd`               | `Get-Command cmd`            |
-| `echo $?`                 | `$LASTEXITCODE`              |
-| `npx pkg` / `bunx pkg`    | `bun x pkg`                  |
+**Key differences from a full Linux shell:**
 
-When a command fails with "is not recognized as a cmdlet" — that's a Unix-ism. Translate before re-running.
+| Concern                    | Git Bash behavior                                     |
+| -------------------------- | ----------------------------------------------------- |
+| Path separators            | Both `/` and `\` work; prefer `/` in scripts         |
+| Paths with spaces          | Always quote: `"C:/Coding Proyects/DTD Nonsense"`    |
+| `npx` / `bunx`             | Use `bun x pkg`                                       |
+| Windows-native tools       | `cmd.exe`, `powershell.exe` are available if needed    |
+| Environment variables      | `export VAR=value`, not `$env:VAR` (that's PowerShell) |
+| PATH refresh               | `export PATH=$(cygpath -p "$USERPROFILE/.bun/bin"):$PATH` |
 
 ### Other Windows Constraints
 
-- **Paths**: Use backslashes or forward slashes — both work in PowerShell, but always quote paths with spaces.
-- **Encoding**: Windows defaults to cp1252. **Never use `Set-Content` or `Out-File` for non-ASCII files** — they silently corrupt UTF-8. Use agent edit tools (`replace_string_in_file`, `create_file`) instead of terminal commands for file edits.
+- **Paths**: Both `/` and `\` work in Git Bash. Prefer `/`. Always quote paths with spaces.
+- **Encoding**: Git Bash uses UTF-8 by default. For agent edit tools (`replace_string_in_file`, `create_file`), encoding is handled automatically. Avoid PowerShell's `Set-Content` / `Out-File` — they corrupt UTF-8 on Windows.
 - **Line endings**: Git handles CRLF conversion. The `LF will be replaced by CRLF` warning is expected and harmless.
-- **PATH**: Newly installed tools (e.g., Bun) need `$env:Path = [System.Environment]::GetEnvironmentVariable("Path","User") + ";" + [System.Environment]::GetEnvironmentVariable("Path","Machine")` to take effect in current terminal.
 
 ### Toolchain
 
@@ -99,14 +95,14 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 
 **Three critical rules (always apply):**
 
-- **PowerShell only** — no `bash`, no `&&`, no `head`/`tail`/`grep`. See the command equivalents table above.
-- **PowerShell encoding** — never use `Set-Content` for non-ASCII files; it silently corrupts UTF-8
-- **Check git state first** — other agents may have committed. Run `bun run session:status` or `git status` and `git log --oneline -5` before starting work
+- **Git Bash only** — if a terminal opens as PowerShell or cmd, report it as a misconfiguration. All commands should use Unix syntax.
+- **No PowerShell for file editing** — never use `Set-Content` or `Out-File`; they corrupt UTF-8. Use agent edit tools.
+- **Check git state first** — other agents may have committed. Run `bun run session:status` or `git status && git log --oneline -5` before starting work
 
 **Verification protocol:**
 
 - **Start of session:** Run `bun run session:start` to create the branch and establish a green baseline. If anything fails, fix it before doing other work.
-- **After code/data changes:** Run `bun run check` to confirm nothing broke. Biome reports ~12 pre-existing warnings globally (false positives and intentional CSS) — watch for _new_ warnings only.
+- **After code/data changes:** Run `bun run check` to confirm nothing broke. Watch for _new_ warnings only — some pre-existing Biome warnings (false positives and intentional CSS) are expected.
 - **After doc-only changes:** No check needed unless you edited `scripts/`, `src/lib/`, or `data/`.
 - **Before committing:** The pre-commit hook runs `bun run check` automatically. If you want to verify before staging, run `bun run check` manually.
 - **Quick targeted checks:** Use `bun run test` (unit tests only), `bun run lint` (Biome only), `bun run validate` (JSON schemas only), or `bun run knip` (dead code only) when you know exactly what scope changed.
@@ -116,15 +112,16 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 
 ## Skills
 
-On-demand knowledge loaded when relevant. Each skill has trigger descriptions the system activates them automatically.
+On-demand knowledge loaded when relevant. Each skill has trigger descriptions — the system activates them automatically based on the `description` field in their YAML frontmatter. **All skills and prompts must have YAML frontmatter with a `description` field** — this is how agents discover and load them. Missing descriptions = invisible files.
 
-| Skill                   | When to Use                                                          |
-| ----------------------- | -------------------------------------------------------------------- |
-| `ttrpg-rules-editor`    | Editing rules content, formatting rulebook text, processing chapters |
-| `dtd-source-hierarchy`  | Source authority questions, rule verification, ambiguity resolution  |
-| `open-question-manager` | Adding, resolving, or applying entries in docs/editorial/          |
-| `tool-development`      | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
-| `product-owner`         | Decisions about what to build, prioritize, or cut; strategic context |
+| Skill                    | When to Use                                                          |
+| ------------------------ | -------------------------------------------------------------------- |
+| `ttrpg-rules-editor`     | Editing rules content, formatting rulebook text, processing chapters |
+| `dtd-source-hierarchy`   | Source authority questions, rule verification, ambiguity resolution  |
+| `open-question-manager`  | Adding, resolving, or applying entries in docs/editorial/          |
+| `tool-development`       | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
+| `product-owner`          | Decisions about what to build, prioritize, or cut; strategic context |
+| `frontend-stack-advisor` | Frontend technology choices, framework evaluation, stack decisions   |
 
 ---
 

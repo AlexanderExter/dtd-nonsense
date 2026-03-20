@@ -1,16 +1,7 @@
 import { Dialog } from "radix-ui";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-/**
- * Full-screen modal dialog backed by Radix Dialog.
- * Includes backdrop overlay, optional title with close button.
- *
- * ```tsx
- * <Modal open={isOpen} onClose={() => setOpen(false)} title="Import">
- *   <p>Modal content</p>
- * </Modal>
- * ```
- */
 interface ModalProps {
 	open: boolean;
 	onClose: () => void;
@@ -31,12 +22,10 @@ export function Modal({ open, onClose, title, maxWidth = "500px", children, clas
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed inset-0 z-[200] bg-overlay" />
 				<Dialog.Content
-					className={[
+					className={cn(
 						"fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[201] bg-surface border border-border rounded-lg p-xl w-full max-h-[80vh] overflow-y-auto",
 						className,
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 					style={{ maxWidth }}
 					onEscapeKeyDown={() => onClose()}
 				>

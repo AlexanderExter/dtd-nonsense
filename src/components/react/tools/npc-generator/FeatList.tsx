@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
 
 interface FeatListProps {
 	feats: string[];
@@ -40,12 +41,12 @@ export function FeatList({ feats, onChange }: FeatListProps) {
 			<div className="flex flex-col gap-xs">
 				{feats.map((feat, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`feat-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
-						key={i}
 					>
-						<input
-							type="text"
-							className="flex-1 min-w-0 py-[2px] px-xs text-[0.85rem]"
+						<GameInput
+							className="flex-1 min-w-0"
 							value={feat}
 							placeholder="Feat name"
 							onInput={(e) => updateFeat(i, (e.target as HTMLInputElement).value)}

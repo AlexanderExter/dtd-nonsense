@@ -1,15 +1,16 @@
 import { Button } from "@/components/react/ui/Button";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
+import { cn } from "@/lib/utils";
 import {
-	calcXP,
-	createDefaultMeta,
-	findRaceData,
-	getLevel,
-	getSize,
-	getTotalChars,
-	STEP_LABELS,
-	TOTAL_XP,
+    calcXP,
+    createDefaultMeta,
+    findRaceData,
+    getLevel,
+    getSize,
+    getTotalChars,
+    STEP_LABELS,
+    TOTAL_XP,
 } from "./constants";
 import { createDefaultChar, useBuilderStore } from "./store";
 
@@ -99,9 +100,7 @@ export function Sidebar() {
 			<div>
 				<h3 className="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">XP Budget</h3>
 				<div
-					className={["text-[0.8rem] text-text-muted text-center mb-sm", xp.remaining < 0 && "text-error"]
-						.filter(Boolean)
-						.join(" ")}
+					className={cn("text-[0.8rem] text-text-muted text-center mb-sm", xp.remaining < 0 && "text-error")}
 				>
 					<strong className={xp.remaining < 0 ? "text-error" : "text-accent"}>{xp.remaining}</strong> /{" "}
 					{TOTAL_XP} remaining
@@ -148,7 +147,7 @@ export function Sidebar() {
 						const isDone = meta.stepsCompleted[i];
 						const isActive = currentStep === i + 1;
 						return (
-							<li key={i}>
+							<li key={label}>
 								<button
 									type="button"
 									className={[

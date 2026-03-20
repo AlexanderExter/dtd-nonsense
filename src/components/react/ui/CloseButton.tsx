@@ -1,10 +1,5 @@
-/**
- * Close/dismiss button rendering × with `aria-label="Close"`.
- *
- * ```tsx
- * <CloseButton onClick={onDismiss} />
- * ```
- */
+import { cn } from "@/lib/utils";
+
 interface CloseButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
 	size?: "sm" | "md";
 }
@@ -14,11 +9,9 @@ const SIZE_CLS = {
 	md: "",
 };
 
-export function CloseButton({ size = "sm", className: cls, ...rest }: CloseButtonProps) {
-	const classes = ["btn", SIZE_CLS[size], cls].filter(Boolean).join(" ");
-
+export function CloseButton({ size = "sm", className, ...rest }: CloseButtonProps) {
 	return (
-		<button type="button" className={classes} aria-label="Close" {...rest}>
+		<button type="button" className={cn("btn", SIZE_CLS[size], className)} aria-label="Close" {...rest}>
 			&times;
 		</button>
 	);

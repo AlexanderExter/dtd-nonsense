@@ -12,13 +12,20 @@ jobs:
                   bun-version: latest
             - run: bun install
 
-            # --- Node / Astro build ---
+            # --- Node (needed for Astro build) ---
             - uses: actions/setup-node@v4
               with:
-                  node-version: 20
-            - run: bunx biome ci .
+                  node-version: 22
+
+            # --- Checks (mirrors local `bun run check` for pipeline parity) ---
             - run: bun test
+            - run: bunx biome ci .
             - run: bun run scripts/validate.ts --xref
             - run: bun run scripts/lint.ts
+            - run: bun run scripts/sync-check.ts
             - run: bun run knip
+            - run: bun run check:deps
+            - run: bun run check:structure
+
+            # --- Build ---
             - run: bun run build

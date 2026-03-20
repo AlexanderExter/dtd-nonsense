@@ -1,7 +1,9 @@
 import { useEffect, useMemo } from "react";
 import { Tabs } from "@/components/react/ui/Tabs";
+import { Toast } from "@/components/react/ui/Toast";
 import { useAllData } from "@/hooks/use-data";
 import { character as characterAPI } from "@/lib/dtd/character";
+import { cn } from "@/lib/utils";
 import { CharacterManager } from "./CharacterManager";
 import { calculateAllDerived, type DerivedStats, TAB_LABELS, type TabId } from "./constants";
 import { SheetHeader } from "./SheetHeader";
@@ -94,19 +96,18 @@ export function CharacterSheetApp() {
 				{tab === "xp" && <XpTab />}
 			</Tabs>
 			<div
-				className={[
+				className={cn(
 					"save-status fixed bottom-md right-md px-md py-xs rounded-sm text-xs font-semibold uppercase tracking-[0.5px] z-[200] transition-all duration-300",
 					saveStatus === "saving"
 						? "bg-accent/20 border border-accent text-accent"
 						: saveStatus === "error"
 							? "bg-error/20 border border-error text-error"
 							: "bg-surface border border-border text-text-muted",
-				]
-					.filter(Boolean)
-					.join(" ")}
+				)}
 			>
 				{saveStatus === "saving" ? "Saving…" : saveStatus === "error" ? "Save error" : "Saved"}
 			</div>
+			<Toast />
 		</div>
 	);
 }

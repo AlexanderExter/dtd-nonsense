@@ -1,5 +1,7 @@
 import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameTextarea } from "@/components/react/ui/GameTextarea";
 
 interface AbilityEntry {
 	name: string;
@@ -42,13 +44,13 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 			<div className="flex flex-col gap-xs">
 				{abilities.map((a, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`ability-${i}`}
 						className="flex flex-col items-stretch gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						<div className="flex items-center gap-sm">
-							<input
-								type="text"
-								className="flex-1 py-[2px] px-xs text-[0.85rem]"
+							<GameInput
+								className="flex-1"
 								placeholder="Ability name"
 								value={a.name}
 								onInput={(e) => updateAbility(i, "name", (e.target as HTMLInputElement).value)}
@@ -62,8 +64,7 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 								×
 							</button>
 						</div>
-						<textarea
-							className="text-[0.85rem] py-xs resize-y min-h-[40px]"
+						<GameTextarea
 							placeholder="Description"
 							rows={2}
 							value={a.description}

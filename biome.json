@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -52,6 +52,7 @@
 	"linter": {
 		"enabled": true,
 		"domains": {
+			"react": "recommended",
 			"test": "recommended"
 		},
 		"rules": {
@@ -59,7 +60,17 @@
 			"correctness": {
 				"noUnusedVariables": "warn",
 				"noUnusedImports": "warn",
-				"useParseIntRadix": "warn"
+				"useParseIntRadix": "warn",
+				"useExhaustiveDependencies": "error",
+				"useHookAtTopLevel": "error"
+			},
+			"a11y": {
+				"noLabelWithoutControl": {
+					"level": "error",
+					"options": {
+						"inputComponents": ["GameInput", "GameSelect", "GameTextarea", "GameCheckbox"]
+					}
+				}
 			},
 			"style": {
 				"noNonNullAssertion": "off",
@@ -67,7 +78,8 @@
 				"useTemplate": "warn"
 			},
 			"suspicious": {
-				"noExplicitAny": "off"
+				"noExplicitAny": "off",
+				"noArrayIndexKey": "error"
 			}
 		}
 	},

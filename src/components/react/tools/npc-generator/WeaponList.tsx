@@ -1,5 +1,7 @@
 import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import type { NPCWeapon } from "./constants";
 
 interface WeaponListProps {
@@ -49,13 +51,14 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 			<div className="flex flex-col gap-xs">
 				{weapons.map((w, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`weapon-${i}`}
 						className="flex flex-col items-stretch gap-xs p-sm bg-surface border border-border rounded-sm"
-						key={i}
 					>
 						{/* Row 1: core fields */}
 						<div className="flex items-center gap-xs flex-wrap">
-							<select
-								className="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
+							<GameSelect
+								className="w-[50px] flex-none"
 								value={w.type}
 								onChange={(e) =>
 									updateWeapon(i, {
@@ -65,10 +68,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 							>
 								<option value="melee">Melee</option>
 								<option value="ranged">Ranged</option>
-							</select>
-							<input
-								type="text"
-								className="flex-1 min-w-[100px] py-[2px] px-xs text-[0.85rem]"
+							</GameSelect>
+							<GameInput
+								className="flex-1 min-w-[100px]"
 								placeholder="Weapon name"
 								value={w.name}
 								onInput={(e) =>
@@ -77,9 +79,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									})
 								}
 							/>
-							<input
-								type="text"
-								className="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
+							<GameInput
+								className="w-[60px] flex-none"
 								placeholder="XkY"
 								value={w.damage}
 								onInput={(e) =>
@@ -88,9 +89,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 									})
 								}
 							/>
-							<input
-								type="text"
-								className="w-[55px] flex-none py-[2px] px-xs text-[0.85rem]"
+							<GameInput
+								className="w-[55px] flex-none"
 								placeholder="E/I/R/X"
 								value={w.damageType}
 								onInput={(e) =>
@@ -100,9 +100,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								}
 							/>
 							<span className="text-[0.8rem] text-text-muted">Pen</span>
-							<input
+							<GameInput
 								type="number"
-								className="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
+								className="w-[50px] flex-none"
 								min={0}
 								value={w.pen}
 								onInput={(e) =>
@@ -124,9 +124,9 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 						{/* Row 2: ranged-only fields */}
 						{w.type === "ranged" && (
 							<div className="flex items-center gap-xs flex-wrap">
-								<input
+								<GameInput
 									type="number"
-									className="w-[55px] flex-none py-[2px] px-xs text-[0.85rem]"
+									className="w-[55px] flex-none"
 									placeholder="Range"
 									value={w.range ?? ""}
 									onInput={(e) =>
@@ -136,9 +136,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 										})
 									}
 								/>
-								<input
-									type="text"
-									className="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
+								<GameInput
+									className="w-[60px] flex-none"
 									placeholder="ROF"
 									value={w.rof ?? ""}
 									onInput={(e) =>
@@ -147,9 +146,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 										})
 									}
 								/>
-								<input
-									type="text"
-									className="w-[50px] flex-none py-[2px] px-xs text-[0.85rem]"
+								<GameInput
+									className="w-[50px] flex-none"
 									placeholder="Clip"
 									value={w.clip ?? ""}
 									onInput={(e) =>
@@ -158,9 +156,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 										})
 									}
 								/>
-								<input
-									type="text"
-									className="w-[60px] flex-none py-[2px] px-xs text-[0.85rem]"
+								<GameInput
+									className="w-[60px] flex-none"
 									placeholder="Reload"
 									value={w.reload ?? ""}
 									onInput={(e) =>
@@ -174,9 +171,8 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 
 						{/* Row 3: special */}
 						<div className="flex items-center gap-xs flex-wrap">
-							<input
-								type="text"
-								className="flex-1 min-w-[80px] py-[2px] px-xs text-[0.85rem]"
+							<GameInput
+								className="flex-1 min-w-[80px]"
 								placeholder="Special properties"
 								value={w.special}
 								onInput={(e) =>

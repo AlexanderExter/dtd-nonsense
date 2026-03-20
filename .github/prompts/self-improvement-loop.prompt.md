@@ -1,4 +1,7 @@
-```prompt
+---
+description: "Systematic review and evolution of the agentic framework — prompts, skills, instructions, and documentation."
+---
+
 # Self-Improvement Loop
 
 Systematic review and evolution of the project's agentic framework — prompts, skills, instructions, documentation, and project structure. The ideal state is a journey, not a destination. The framework should evolve with the project.
@@ -31,7 +34,7 @@ Read and catalog every framework file:
 | ------------------ | ------------------------------------------------------------------ |
 | Instructions       | `.github/copilot-instructions.md`                                  |
 | Prompts            | `.github/prompts/*.prompt.md`                                      |
-| Skills             | `.github/copilot-skills/**`                                        |
+| Skills             | `.github/copilot-skills/*/SKILL.md`                                |
 | Documentation      | `docs/*.md`, `docs/**/*.md`                                        |
 | Project config     | `biome.json`, `bunfig.toml`, `astro.config.mjs`, `package.json`, `tsconfig.json` |
 | CI/CD              | `.github/workflows/*.yml`                                          |
@@ -43,20 +46,17 @@ For each file, note:
 
 ### 1b. Project State
 
-Understand what the project looks like today:
+Gather situational awareness:
 
-1. Run `git log --oneline -30` — what's been happening?
-2. Check `docs/session-handover.md` — what was the last session's context?
-3. Check `docs/side-tracks.md` — what's been deferred or observed?
-4. Check `docs/editorial/open-questions.md` — what's unresolved?
-5. If `docs/product-vision.md` exists, read it — this is the north star.
+1. `git log --oneline -30` — what's been happening?
+2. `docs/session-handover.md` — last session's context
+3. `docs/side-tracks.md` — deferred and observed items
+4. `docs/editorial/open-questions.md` — unresolved content questions
+5. `docs/product-vision.md` — the north star (if it exists)
 
 ### 1c. Build a Mental Model
 
-Before diagnosing, articulate your understanding:
-- What is this project trying to be?
-- What does the framework think it is? (based on instructions, skills, prompts)
-- Are those the same thing?
+Before diagnosing, verify alignment: does the framework (instructions, skills, prompts) accurately describe what the project is today? Note any drift.
 
 ---
 
@@ -92,6 +92,7 @@ Each skill file provides domain-specific knowledge loaded on demand.
 For each skill:
 - **Still accurate?** Do references, file paths, formatting rules, and techniques match the current project?
 - **Still scoped correctly?** Has the skill grown beyond its original domain, or has the domain shifted?
+- **Skill format**: Skills now live in subdirectories (`*/SKILL.md`) with YAML frontmatter containing `name` and `description` fields. Verify each skill conforms.
 - **Loading triggers**: Does the description in `copilot-instructions.md` accurately describe when to load?
 - **Redundancy**: Does any skill content duplicate `docs/project-conventions.md` or other authoritative sources?
 - **Gaps**: Are there project domains with no skill coverage that would benefit from one?
@@ -230,4 +231,3 @@ Report:
 This prompt is part of the framework it audits. If during this loop you identified improvements to the Self-Improvement Loop itself — apply them now. The loop must evolve too.
 
 **Closure** — Explicitly conclude with "Framework Evolution Complete" (visual marker confirming full execution of this procedure)
-```

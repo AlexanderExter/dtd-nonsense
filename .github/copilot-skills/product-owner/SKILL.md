@@ -1,8 +1,9 @@
-# Product Owner Context
-
-**Trigger:** Load when making decisions about what to build, prioritize, or cut. Use when strategic context would improve a tactical choice — e.g., "should this tool exist?", "is this feature in scope?", "what matters more: X or Y?".
-
 ---
+name: product-owner
+description: "Use when making decisions about what to build, prioritize, or cut. Use when strategic context would improve a tactical choice — e.g., 'should this tool exist?', 'is this feature in scope?', 'what matters more: X or Y?'."
+---
+
+# Product Owner Context
 
 ## Purpose
 

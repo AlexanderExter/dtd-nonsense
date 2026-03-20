@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { GameInput } from "@/components/react/ui/GameInput";
 
 interface SearchBarProps {
 	query: string;
@@ -22,9 +23,9 @@ export function SearchBar({ query, setQuery, inputRef }: SearchBarProps) {
 	return (
 		<>
 			<div className="flex gap-sm items-center">
-				<input
+				<GameInput
 					type="search"
-					className="flex-1 px-md py-sm text-base bg-surface border border-border rounded-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-accent"
+					className="flex-1"
 					placeholder="Search actions, conditions, modifiers, schools…"
 					autoComplete="off"
 					value={query}

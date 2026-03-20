@@ -1,4 +1,5 @@
 import { AddButton } from "@/components/react/ui/AddButton";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { FeatEntry } from "@/lib/dtd/types";
 import { useCharSheetStore } from "../store";
@@ -91,20 +92,19 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 				</thead>
 				<tbody>
 					{items.map((item, idx) => (
-						<tr key={idx}>
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
+						<tr key={`${label}-${idx}`}>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<input
+								<GameInput
 									type="text"
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									list={datalistId}
 									value={item.name}
 									onInput={(e) => handleNameChange(idx, (e.target as HTMLInputElement).value)}
 								/>
 							</td>
 							<td className="py-[3px] px-sm border-b border-border align-middle">
-								<input
+								<GameInput
 									type="text"
-									className="w-full py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary focus:border-accent focus:outline-none"
 									value={item.notes}
 									onInput={(e) => handleNotesChange(idx, (e.target as HTMLInputElement).value)}
 								/>

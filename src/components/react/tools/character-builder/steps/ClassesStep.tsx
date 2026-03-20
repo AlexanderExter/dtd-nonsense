@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameSelect } from "@/components/react/ui/GameSelect";
 import { capitalize } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -47,8 +48,7 @@ export function ClassesStep() {
 			<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
 				<label className="text-[0.85rem] text-text-dim m-0">
 					Track:{" "}
-					<select
-						className="px-sm py-xs text-[0.85rem] max-w-[200px]"
+					<GameSelect
 						value={trackFilter}
 						onChange={(e) => {
 							setTrackFilter((e.target as HTMLSelectElement).value);
@@ -60,7 +60,7 @@ export function ClassesStep() {
 								{t}
 							</option>
 						))}
-					</select>
+					</GameSelect>
 				</label>
 			</div>
 

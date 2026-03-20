@@ -1,5 +1,7 @@
 import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
+import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
+import { GameInput } from "@/components/react/ui/GameInput";
 import { ARMOR_LOCATIONS } from "./constants";
 
 interface ArmorEntry {
@@ -60,20 +62,20 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 			<div className="flex flex-col gap-xs">
 				{armor.map((a, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
+						key={`armor-${i}`}
 						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm flex-wrap"
-						key={i}
 					>
-						<input
-							type="text"
-							className="flex-1 min-w-[100px] py-[2px] px-xs text-[0.85rem]"
+						<GameInput
+							className="flex-1 min-w-[100px]"
 							placeholder="Armor name"
 							value={a.name}
 							onInput={(e) => updateField(i, "name", (e.target as HTMLInputElement).value)}
 						/>
 						<span className="text-[0.8rem] text-text-muted">AP</span>
-						<input
+						<GameInput
 							type="number"
-							className="w-[50px] text-center py-[2px] px-xs text-[0.85rem]"
+							className="w-[50px]"
 							min={0}
 							max={30}
 							value={a.ap}
@@ -87,9 +89,7 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 									className="flex items-center gap-[2px] text-[0.75rem] m-0 cursor-pointer text-text-muted"
 									key={loc}
 								>
-									<input
-										type="checkbox"
-										className="w-auto p-0 m-0"
+									<GameCheckbox
 										value={loc}
 										checked={a.locations.includes(loc)}
 										onChange={(e) => toggleLocation(i, loc, (e.target as HTMLInputElement).checked)}

@@ -9,7 +9,8 @@ export function Highlight({ text, words }: { text: string; words: string[] }) {
 				// Reset lastIndex not needed since we use a fresh non-global regex for test
 				const testRegex = new RegExp(`^(${escaped.join("|")})$`, "i");
 				return testRegex.test(part) ? (
-					<mark key={i} className="bg-mark text-inherit rounded-[2px] px-[1px]">
+					// biome-ignore lint/suspicious/noArrayIndexKey: text fragments from split may repeat, position is identity
+					<mark key={`${part}-${i}`} className="bg-mark text-inherit rounded-[2px] px-[1px]">
 						{part}
 					</mark>
 				) : (

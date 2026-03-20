@@ -1,19 +1,12 @@
-/**
- * Ghost button that renders "+ Add {label}". Use for list/table add actions.
- *
- * ```tsx
- * <AddButton label="Weapon" onClick={addWeapon} />
- * ```
- */
+import { cn } from "@/lib/utils";
+
 interface AddButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	label: string;
 }
 
-export function AddButton({ label, className: cls, ...rest }: AddButtonProps) {
-	const classes = ["btn btn-ghost btn-sm", cls].filter(Boolean).join(" ");
-
+export function AddButton({ label, className, ...rest }: AddButtonProps) {
 	return (
-		<button type="button" className={classes} {...rest}>
+		<button type="button" className={cn("btn btn-ghost btn-sm", className)} {...rest}>
 			+ Add {label}
 		</button>
 	);

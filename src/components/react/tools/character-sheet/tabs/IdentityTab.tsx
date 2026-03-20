@@ -1,4 +1,7 @@
 import { Button } from "@/components/react/ui/Button";
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { GameTextarea } from "@/components/react/ui/GameTextarea";
 import type { DerivedStats } from "../constants";
 import { useCharSheetStore } from "../store";
 
@@ -72,9 +75,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-md mb-md">
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Name
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.name}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -85,9 +87,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Player
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.player}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -98,9 +99,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Concept
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.concept}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -115,9 +115,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Height
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.height || ""}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -128,9 +127,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Weight
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.weight || ""}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -141,9 +139,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Age
-						<input
+						<GameInput
 							type="text"
-							className="w-full"
 							value={char.age || ""}
 							onInput={(e) =>
 								updateChar((c) => {
@@ -155,8 +152,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				</div>
 				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
 					Description
-					<textarea
-						className="w-full min-h-[60px] resize-y"
+					<GameTextarea
 						value={char.description || ""}
 						onInput={(e) =>
 							updateChar((c) => {
@@ -194,18 +190,18 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			{/* ---------- Race ---------- */}
 			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Race</h3>
-				<select value={char.race} onChange={(e) => handleRaceChange((e.target as HTMLSelectElement).value)}>
+				<GameSelect value={char.race} onChange={(e) => handleRaceChange((e.target as HTMLSelectElement).value)}>
 					<option value="">— Select Race —</option>
 					{races.map((r: any) => (
 						<option key={r.id} value={r.id}>
 							{r.name}
 						</option>
 					))}
-				</select>
+				</GameSelect>
 				{charBonusOptions.length > 0 && (
 					<label className="flex items-center gap-sm mt-sm text-[0.85rem]">
 						Characteristic Bonus
-						<select
+						<GameSelect
 							value={char.raceCharBonus}
 							onChange={(e) =>
 								updateChar((c) => {
@@ -219,7 +215,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									{opt.charAt(0).toUpperCase() + opt.slice(1)}
 								</option>
 							))}
-						</select>
+						</GameSelect>
 					</label>
 				)}
 				{selectedRace && (
@@ -245,7 +241,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			{/* ---------- Exaltation ---------- */}
 			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Exaltation</h3>
-				<select
+				<GameSelect
 					value={char.exaltation}
 					onChange={(e) => handleExaltationChange((e.target as HTMLSelectElement).value)}
 				>
@@ -255,7 +251,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							{ex.name}
 						</option>
 					))}
-				</select>
+				</GameSelect>
 				{selectedExalt && (
 					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
 						{selectedExalt.theme && (
@@ -267,8 +263,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							<div>
 								<strong>Static Powers:</strong>
 								<ul className="my-xs pl-lg">
-									{selectedExalt.staticPowers.map((p: any, i: number) => (
-										<li key={i} className="mb-0.5">
+									{selectedExalt.staticPowers.map((p: any) => (
+										<li key={typeof p === "string" ? p : p.name} className="mb-0.5">
 											{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 										</li>
 									))}
@@ -292,7 +288,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			{/* ---------- Alignment ---------- */}
 			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Alignment</h3>
-				<select
+				<GameSelect
 					value={char.alignment}
 					onChange={(e) =>
 						updateChar((c) => {
@@ -306,7 +302,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							{a.name}
 						</option>
 					))}
-				</select>
+				</GameSelect>
 				{selectedAlign && (
 					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
 						{selectedAlign.description && <p className="m-0">{selectedAlign.description}</p>}
@@ -314,8 +310,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							<div>
 								<strong>Commandments:</strong>
 								<ul className="my-xs pl-lg">
-									{selectedAlign.commandments.map((cmd: string, i: number) => (
-										<li key={i} className="mb-0.5">
+									{selectedAlign.commandments.map((cmd: string) => (
+										<li key={cmd} className="mb-0.5">
 											{cmd}
 										</li>
 									))}
@@ -338,7 +334,9 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									</thead>
 									<tbody>
 										{selectedAlign.sins.map((sin: any, i: number) => (
-											<tr key={i}>
+											<tr
+												key={`sin-${sin.level ?? i}-${typeof sin === "string" ? sin : sin.description || sin.name}`}
+											>
 												<td className="py-[3px] px-1.5 border border-border text-center">
 													{sin.level ?? i + 1}
 												</td>
@@ -355,7 +353,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				)}
 				<label className="flex items-center gap-sm mt-sm text-[0.85rem]">
 					Devotion
-					<input
+					<GameInput
 						type="number"
 						value={char.devotion ?? 6}
 						min={0}
@@ -390,8 +388,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Notes</h3>
 				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
 					General Notes
-					<textarea
-						className="w-full min-h-[60px] resize-y"
+					<GameTextarea
 						value={char.notes || ""}
 						onInput={(e) =>
 							updateChar((c) => {
@@ -403,8 +400,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				</label>
 				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
 					Class Notes
-					<textarea
-						className="w-full min-h-[60px] resize-y"
+					<GameTextarea
 						value={char.classNotes || ""}
 						onInput={(e) =>
 							updateChar((c) => {
@@ -416,8 +412,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				</label>
 				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
 					Exaltation Notes
-					<textarea
-						className="w-full min-h-[60px] resize-y"
+					<GameTextarea
 						value={char.exaltationNotes || ""}
 						onInput={(e) =>
 							updateChar((c) => {

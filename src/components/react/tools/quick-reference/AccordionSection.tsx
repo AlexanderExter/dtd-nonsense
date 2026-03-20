@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 interface AccordionSectionProps {
@@ -21,23 +22,17 @@ export function AccordionSection({ id, title, count, isOpen, onToggle, isHidden,
 				onClick={onToggle}
 			>
 				<span
-					className={[
+					className={cn(
 						"text-accent shrink-0 inline-block transition-transform duration-200",
 						isOpen ? "rotate-90" : "",
-					]
-						.filter(Boolean)
-						.join(" ")}
+					)}
 				>
 					▸
 				</span>
 				{title}
 				{count && <span className="ml-auto font-normal text-[0.8rem] text-text-dim">{count}</span>}
 			</button>
-			<div
-				className={["bg-bg border-t border-border", isOpen ? "block p-lg max-[600px]:p-md" : "hidden"]
-					.filter(Boolean)
-					.join(" ")}
-			>
+			<div className={cn("bg-bg border-t border-border", isOpen ? "block p-lg max-[600px]:p-md" : "hidden")}>
 				{children}
 			</div>
 		</div>

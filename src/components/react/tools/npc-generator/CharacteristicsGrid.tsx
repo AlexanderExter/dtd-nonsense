@@ -1,3 +1,4 @@
+import { GameInput } from "@/components/react/ui/GameInput";
 import { CHAR_ABBREV, CHAR_KEYS } from "./constants";
 
 interface CharacteristicsGridProps {
@@ -18,10 +19,10 @@ export function CharacteristicsGrid({ characteristics, onChange }: Characteristi
 						>
 							{CHAR_ABBREV[key]}
 						</label>
-						<input
+						<GameInput
 							type="number"
 							id={`char-${CHAR_ABBREV[key].toLowerCase()}`}
-							className="w-[60px] text-center py-xs text-base font-semibold"
+							className="w-[60px] text-center"
 							min={0}
 							max={10}
 							value={characteristics[key]}
