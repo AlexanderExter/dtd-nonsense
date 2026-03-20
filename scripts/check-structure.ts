@@ -33,9 +33,9 @@ const glob = (...parts: string[]) => path.join(ROOT, ...parts).replace(/\\/g, "/
 // ---------------------------------------------------------------------------
 
 export interface CheckResult {
+	detail: string;
 	name: string;
 	passed: boolean;
-	detail: string;
 	violations: string[];
 }
 
@@ -125,7 +125,7 @@ export function checkNamedExportsOnly(project: Project): CheckResult {
 	return {
 		name: "Named Exports Only",
 		passed: violations.length === 0,
-		detail: violations.length === 0 ? `0 default exports found` : `${violations.length} default export(s) found`,
+		detail: violations.length === 0 ? "0 default exports found" : `${violations.length} default export(s) found`,
 		violations,
 	};
 }

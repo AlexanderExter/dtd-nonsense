@@ -5,9 +5,9 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "accent";
 type ButtonSize = "xs" | "sm" | "md";
 
 interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
-	variant?: ButtonVariant;
-	size?: ButtonSize;
 	children: ReactNode;
+	size?: ButtonSize;
+	variant?: ButtonVariant;
 }
 
 const SIZE_CLS: Record<ButtonSize, string> = {
@@ -26,7 +26,7 @@ const VARIANT_CLS: Record<ButtonVariant, string> = {
 
 export function Button({ variant = "secondary", size = "md", className, children, ...rest }: ButtonProps) {
 	return (
-		<button type="button" className={cn("btn", VARIANT_CLS[variant], SIZE_CLS[size], className)} {...rest}>
+		<button className={cn("btn", VARIANT_CLS[variant], SIZE_CLS[size], className)} type="button" {...rest}>
 			{children}
 		</button>
 	);

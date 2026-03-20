@@ -25,7 +25,7 @@ export function ConsoleSlots() {
 	if (!hull) {
 		return (
 			<section className="mb-xl">
-				<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Console Slots</h2>
+				<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Console Slots</h2>
 				<p className="text-text-dim italic">Select a hull first</p>
 			</section>
 		);
@@ -41,7 +41,7 @@ export function ConsoleSlots() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Console Slots</h2>
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Console Slots</h2>
 			{CONSOLE_TYPES.map((type) => {
 				const count = hull.consoles[type];
 				if (!count || count === 0) return null;
@@ -50,8 +50,8 @@ export function ConsoleSlots() {
 				const badgeClass = `inline-block w-5 h-5 rounded-[4px] text-center leading-5 text-[0.7rem] font-bold text-bg ${badgeColors[type] || ""}`;
 
 				return (
-					<div key={type} className="mb-md">
-						<h4 className="text-[0.9rem] mb-sm flex items-center gap-sm">
+					<div className="mb-md" key={type}>
+						<h4 className="mb-sm flex items-center gap-sm text-[0.9rem]">
 							<span className={badgeClass}>{type.charAt(0).toUpperCase()}</span> {CONSOLE_LABELS[type]} (
 							{count})
 						</h4>
@@ -62,16 +62,16 @@ export function ConsoleSlots() {
 
 							return (
 								<div
+									className="mb-xs flex items-center gap-sm rounded-sm border border-border bg-surface-raised p-sm"
 									key={slotKey}
-									className="flex items-center gap-sm p-sm mb-xs bg-surface-raised border border-border rounded-sm"
 								>
 									<span className={badgeClass}>{type.charAt(0).toUpperCase()}</span>
 									<GameSelect
 										className="flex-1"
-										value={currentId}
 										onChange={(e) =>
 											handleConsoleChange(slotKey, (e.target as HTMLSelectElement).value)
 										}
+										value={currentId}
 									>
 										<option value="">— Empty —</option>
 										{options.map((c) => (
@@ -80,11 +80,11 @@ export function ConsoleSlots() {
 											</option>
 										))}
 									</GameSelect>
-									<span className="text-[0.8rem] text-accent min-w-10 text-right">
+									<span className="min-w-10 text-right text-[0.8rem] text-accent">
 										{selectedConsole ? `${selectedConsole.cost} BP` : ""}
 									</span>
 									{selectedConsole && (
-										<div className="text-xs text-text-dim px-sm py-0.5 mb-xs">
+										<div className="mb-xs px-sm py-0.5 text-text-dim text-xs">
 											{selectedConsole.effect}
 										</div>
 									)}

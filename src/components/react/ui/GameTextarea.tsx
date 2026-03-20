@@ -8,9 +8,9 @@ export function GameTextarea({ className, ...props }: React.TextareaHTMLAttribut
 	return (
 		<textarea
 			className={cn(
-				"w-full min-h-[60px] resize-y py-0.5 px-1 text-[0.82rem] bg-bg border border-border rounded-[3px] text-text-primary",
+				"min-h-[60px] w-full resize-y rounded-[3px] border border-border bg-bg px-1 py-0.5 text-[0.82rem] text-text-primary",
 				"focus:border-accent focus:outline-none",
-				"disabled:opacity-50 disabled:cursor-not-allowed",
+				"disabled:cursor-not-allowed disabled:opacity-50",
 				className,
 			)}
 			{...props}

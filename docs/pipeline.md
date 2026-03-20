@@ -232,11 +232,14 @@ All 12 JSON data files pass schema validation. Cross-reference checks produce wa
 The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on every push and PR:
 
 ```yaml
-- run: bunx biome ci .                    # Biome JS/TS/CSS lint — must pass
 - run: bun test                           # bun:test unit tests — must pass
+- run: bunx biome ci .                    # Biome JS/TS/CSS lint — must pass
 - run: bun run scripts/validate.ts --xref # Zod schema + xref check — must pass
 - run: bun run scripts/lint.ts            # Terminology/formatting — must pass
+- run: bun run scripts/sync-check.ts      # Markdown↔JSON drift — must pass
 - run: bun run knip                       # Dead code detection — must pass
+- run: bun run check:deps                 # Import boundary enforcement — must pass
+- run: bun run check:structure            # TS structural conventions — must pass
 - run: bun run build                      # Astro build — must pass
 ```
 
@@ -256,6 +259,8 @@ The CI workflow (`.github/workflows/build.yml`) runs the TypeScript pipeline on 
 | Done     | Preact → React migration          | —       | 74 components, 6 Zustand stores, 18 Radix UI primitives (Phase 13)         |
 | Done     | Stack health fixes                | —       | Barrel elimination, re-render fixes, dead code cleanup, RHF + Knip install  |
 | Done     | MDX conversion                    | —       | 76 content files (.md→.mdx), pipeline scripts updated, docs updated         |
-| High     | shadcn/ui migration               | Planned | Big-bang swap of 18 Radix UI hand-rolled primitives → shadcn/ui components  |
+| Done     | shadcn/ui foundation              | —       | shadcn init, Game* prefixed component wrappers, initial component migration |
+| Done     | ultracite Biome presets           | —       | ~200+ curated rules via extends, Tailwind class sorting, sorted attrs/props |
+| Medium   | shadcn/ui full migration          | Planned | Complete swap of remaining Radix UI hand-rolled primitives → shadcn/ui      |
 | Medium   | Expand sync checker               | Planned | Add weapons, exaltations, skills parsers (currently: races, classes, feats) |
 | Lower    | Auto-generate `data-reference.md` | Planned | From Zod schema introspection — eliminate manual schema docs                |

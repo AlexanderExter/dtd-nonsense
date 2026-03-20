@@ -4,13 +4,13 @@ import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
 interface PopoverProps {
-	open: boolean;
-	onClose: () => void;
 	/** Virtual anchor rect for positioning (e.g., from getBoundingClientRect) */
 	anchorRect?: { x: number; y: number; width: number; height: number };
-	title?: string;
 	children: ReactNode;
 	className?: string;
+	onClose: () => void;
+	open: boolean;
+	title?: string;
 }
 
 export function Popover({ open, onClose, anchorRect, title, children, className }: PopoverProps) {
@@ -43,18 +43,18 @@ export function Popover({ open, onClose, anchorRect, title, children, className 
 
 	return createPortal(
 		<div
+			className={cn(
+				"z-[1000] max-h-[240px] overflow-y-auto rounded-md border border-border bg-surface-raised p-sm shadow-[0_4px_16px_rgba(0,0,0,0.5)]",
+				className,
+			)}
 			ref={ref}
 			role="dialog"
 			style={style}
-			className={cn(
-				"z-[1000] bg-surface-raised border border-border rounded-md p-sm max-h-[240px] overflow-y-auto shadow-[0_4px_16px_rgba(0,0,0,0.5)]",
-				className,
-			)}
 		>
 			{title && (
-				<div className="flex justify-between items-center mb-sm">
+				<div className="mb-sm flex items-center justify-between">
 					<strong>{title}</strong>
-					<button type="button" className="btn btn-sm" aria-label="Close" onClick={onClose}>
+					<button aria-label="Close" className="btn btn-sm" onClick={onClose} type="button">
 						&times;
 					</button>
 				</div>

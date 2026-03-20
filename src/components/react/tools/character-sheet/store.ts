@@ -8,17 +8,17 @@ import { AUTOSAVE_DELAY, ensureToolDefaults, type TabId } from "./constants";
 // =========================================================================
 
 interface CharSheetStore {
+	activeTab: TabId;
 	char: CharacterData;
 	charId: string | null;
 	charList: Array<{ id: string; name: string }>;
-	activeTab: TabId;
 	gameData: Record<string, any> | null;
 	saveStatus: "saved" | "saving" | "error";
+	setActiveTab: (tab: TabId) => void;
 
 	setChar: (char: CharacterData) => void;
 	setCharId: (id: string | null) => void;
 	setCharList: (list: Array<{ id: string; name: string }>) => void;
-	setActiveTab: (tab: TabId) => void;
 	setGameData: (data: Record<string, any>) => void;
 	setSaveStatus: (status: "saved" | "saving" | "error") => void;
 	updateChar: (fn: (c: CharacterData) => void) => void;

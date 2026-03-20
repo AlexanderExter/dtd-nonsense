@@ -211,7 +211,7 @@ export function CombatSidebar() {
 	// Early returns (after all hooks)
 	// -----------------------------------------------------------------------
 
-	if (!data || !hull || !stats) return null;
+	if (!(data && hull && stats)) return null;
 
 	const combat = currentShip.combat;
 
@@ -236,124 +236,124 @@ export function CombatSidebar() {
 	const shieldRegen = shield ? shield.regeneration : 0;
 
 	return (
-		<aside className="no-print sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto p-lg bg-surface border-l border-border max-[900px]:static max-[900px]:h-auto max-[900px]:border-l-0 max-[900px]:border-t max-[900px]:border-border">
-			<h3 className="text-accent mb-md">Combat Tracker</h3>
+		<aside className="no-print sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto border-border border-l bg-surface p-lg max-[900px]:static max-[900px]:h-auto max-[900px]:border-border max-[900px]:border-t max-[900px]:border-l-0">
+			<h3 className="mb-md text-accent">Combat Tracker</h3>
 
 			{/* Shield HP */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Shields</span>
 					<span className="text-text-muted">{shield ? `${shield.type} Mk ${shield.mark}` : "None"}</span>
 				</div>
-				<div className="flex items-center gap-xs justify-center">
+				<div className="flex items-center justify-center gap-xs">
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("shieldCurrent", -5, shieldMax)}
+						type="button"
 					>
 						−5
 					</button>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("shieldCurrent", -1, shieldMax)}
+						type="button"
 					>
 						−1
 					</button>
-					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
+					<div className="flex items-center gap-0.5 font-semibold text-[1.1rem]">
 						<GameInput
-							type="number"
 							className="w-[50px]"
-							value={combat.shieldCurrent}
 							min={0}
 							onInput={(e) =>
 								setHP("shieldCurrent", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
 							}
+							type="number"
+							value={combat.shieldCurrent}
 						/>
 						<span className="text-text-dim">/</span>
 						<span>{shieldMax}</span>
 					</div>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("shieldCurrent", 1, shieldMax)}
+						type="button"
 					>
 						+1
 					</button>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("shieldCurrent", 5, shieldMax)}
+						type="button"
 					>
 						+5
 					</button>
 				</div>
-				<div className="flex items-center gap-sm mt-xs text-[0.8rem]">
+				<div className="mt-xs flex items-center gap-sm text-[0.8rem]">
 					<span className="text-text-muted">Regen/turn:</span>
 					<span>{shieldRegen}</span>
-					<Button variant="ghost" size="sm" onClick={regenShields}>
+					<Button onClick={regenShields} size="sm" variant="ghost">
 						Regenerate
 					</Button>
 				</div>
-				<div className="flex items-center gap-sm mt-xs text-[0.8rem]">
+				<div className="mt-xs flex items-center gap-sm text-[0.8rem]">
 					<span className="text-text-muted">Disruption:</span>
 					<GameInput
-						type="number"
 						className="w-[60px]"
-						value={combat.disruption}
 						min={0}
 						onInput={handleDisruptionChange}
+						type="number"
+						value={combat.disruption}
 					/>
-					<Button variant="ghost" size="sm" onClick={resetDisruption}>
+					<Button onClick={resetDisruption} size="sm" variant="ghost">
 						Reset
 					</Button>
 				</div>
 			</div>
 
 			{/* Hull HP */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Hull Strength</span>
 				</div>
-				<div className="flex items-center gap-xs justify-center">
+				<div className="flex items-center justify-center gap-xs">
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("hullCurrent", -5, stats.hullHP)}
+						type="button"
 					>
 						−5
 					</button>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("hullCurrent", -1, stats.hullHP)}
+						type="button"
 					>
 						−1
 					</button>
-					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
+					<div className="flex items-center gap-0.5 font-semibold text-[1.1rem]">
 						<GameInput
-							type="number"
 							className="w-[50px]"
-							value={combat.hullCurrent}
 							min={0}
 							onInput={(e) =>
 								setHP("hullCurrent", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
 							}
+							type="number"
+							value={combat.hullCurrent}
 						/>
 						<span className="text-text-dim">/</span>
 						<span>{stats.hullHP}</span>
 					</div>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("hullCurrent", 1, stats.hullHP)}
+						type="button"
 					>
 						+1
 					</button>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("hullCurrent", 5, stats.hullHP)}
+						type="button"
 					>
 						+5
 					</button>
@@ -361,35 +361,35 @@ export function CombatSidebar() {
 			</div>
 
 			{/* Crew HP */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Crew</span>
 				</div>
-				<div className="flex items-center gap-xs justify-center">
+				<div className="flex items-center justify-center gap-xs">
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("crewCurrent", -1, stats.crew)}
+						type="button"
 					>
 						−1
 					</button>
-					<div className="flex items-center gap-0.5 text-[1.1rem] font-semibold">
+					<div className="flex items-center gap-0.5 font-semibold text-[1.1rem]">
 						<GameInput
-							type="number"
 							className="w-[50px]"
-							value={combat.crewCurrent}
 							min={0}
 							onInput={(e) =>
 								setHP("crewCurrent", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
 							}
+							type="number"
+							value={combat.crewCurrent}
 						/>
 						<span className="text-text-dim">/</span>
 						<span>{stats.crew}</span>
 					</div>
 					<button
-						type="button"
-						className="py-1 px-2 bg-surface-raised border border-border rounded-sm text-text-primary cursor-pointer text-[0.8rem] transition-all duration-150 hover:border-accent hover:text-accent"
+						className="cursor-pointer rounded-sm border border-border bg-surface-raised px-2 py-1 text-[0.8rem] text-text-primary transition-all duration-150 hover:border-accent hover:text-accent"
 						onClick={() => adjustHP("crewCurrent", 1, stats.crew)}
+						type="button"
 					>
 						+1
 					</button>
@@ -397,8 +397,8 @@ export function CombatSidebar() {
 			</div>
 
 			{/* Initiative */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Initiative</span>
 				</div>
 				<div className="flex items-center justify-between gap-sm">
@@ -406,12 +406,12 @@ export function CombatSidebar() {
 						Sensors({signedNum(stats.sensors)}) + Acc(
 						{signedNum(stats.acc)}) + 1d10
 					</span>
-					<Button variant="primary" size="sm" onClick={rollInitiative}>
+					<Button onClick={rollInitiative} size="sm" variant="primary">
 						Roll Initiative
 					</Button>
 				</div>
 				{initResult && (
-					<div className="text-center text-2xl font-bold p-sm">
+					<div className="p-sm text-center font-bold text-2xl">
 						<span className="text-accent">
 							{initResult.total} (d10: {initResult.d10})
 						</span>
@@ -420,12 +420,12 @@ export function CombatSidebar() {
 			</div>
 
 			{/* TN to Hit */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>TN to Hit</span>
 				</div>
 				<div className="flex items-center gap-md">
-					<span className="text-2xl font-bold text-accent">{stats.tn}</span>
+					<span className="font-bold text-2xl text-accent">{stats.tn}</span>
 					<span className="text-text-muted">
 						3 × {stats.cq} + {signedNum(stats.man)}
 					</span>
@@ -433,18 +433,18 @@ export function CombatSidebar() {
 			</div>
 
 			{/* Department Actions */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Department Actions</span>
-					<Button variant="ghost" size="sm" onClick={resetDepartments}>
+					<Button onClick={resetDepartments} size="sm" variant="ghost">
 						Reset
 					</Button>
 				</div>
 				<div className="flex flex-col gap-xs">
 					{(["maneuver", "tactical", "engineering", "command", "arcana"] as const).map((dept) => (
-						<label key={dept} className="flex items-center gap-sm text-[0.85rem] cursor-pointer">
+						<label className="flex cursor-pointer items-center gap-sm text-[0.85rem]" key={dept}>
 							<GameCheckbox
-								checked={combat.departments[dept] || false}
+								checked={combat.departments[dept]}
 								onChange={(e) => toggleDept(dept, (e.target as HTMLInputElement).checked)}
 							/>{" "}
 							{dept.charAt(0).toUpperCase() + dept.slice(1)}
@@ -454,55 +454,55 @@ export function CombatSidebar() {
 			</div>
 
 			{/* Turn Counter */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Turn</span>
 				</div>
 				<div className="flex items-center justify-center gap-md">
-					<Button variant="ghost" size="sm" onClick={prevTurn}>
+					<Button onClick={prevTurn} size="sm" variant="ghost">
 						←
 					</Button>
-					<span className="text-2xl font-bold text-accent min-w-10 text-center">{combat.turn || 1}</span>
-					<Button variant="primary" size="sm" onClick={nextTurn}>
+					<span className="min-w-10 text-center font-bold text-2xl text-accent">{combat.turn || 1}</span>
+					<Button onClick={nextTurn} size="sm" variant="primary">
 						Next Turn →
 					</Button>
 				</div>
 			</div>
 
 			{/* Critical Damage */}
-			<div className="mb-md pb-md border-b border-border">
-				<div className="flex justify-between items-center mb-sm font-semibold text-[0.9rem]">
+			<div className="mb-md border-border border-b pb-md">
+				<div className="mb-sm flex items-center justify-between font-semibold text-[0.9rem]">
 					<span>Critical Damage</span>
 				</div>
-				<div className="flex flex-wrap gap-sm items-end mb-sm">
+				<div className="mb-sm flex flex-wrap items-end gap-sm">
 					<div className="mb-sm">
-						<label htmlFor="crit-modifier" className="text-[0.8rem]">
+						<label className="text-[0.8rem]" htmlFor="crit-modifier">
 							Weapon Crit Rating
 						</label>
 						<GameInput
-							type="number"
-							id="crit-modifier"
 							className="w-[60px]"
-							value={critModifier}
+							id="crit-modifier"
 							onInput={(e) => {
 								setCritModifier(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0);
 							}}
+							type="number"
+							value={critModifier}
 						/>
 					</div>
-					<Button variant="secondary" size="sm" onClick={rollCritical}>
+					<Button onClick={rollCritical} size="sm" variant="secondary">
 						Roll Critical
 					</Button>
 				</div>
 				<div className="max-h-[200px] overflow-y-auto">
 					{combat.critLog.length === 0 ? (
-						<span className="text-text-muted text-[0.8rem]">No critical hits yet</span>
+						<span className="text-[0.8rem] text-text-muted">No critical hits yet</span>
 					) : (
 						combat.critLog.map((entry) => (
 							<div
+								className="mb-xs rounded-r-sm border-error border-l-[3px] bg-surface-raised px-sm py-xs text-[0.8rem]"
 								key={`${entry.turn}-${entry.roll}-${entry.total}-${entry.name}`}
-								className="px-sm py-xs mb-xs bg-surface-raised border-l-[3px] border-error rounded-r-sm text-[0.8rem]"
 							>
-								<div className="text-text-dim text-[0.7rem]">
+								<div className="text-[0.7rem] text-text-dim">
 									Turn {entry.turn} — Roll: {entry.roll} + {entry.modifier} = {entry.total}
 								</div>
 								<div className="font-semibold text-error">{entry.name}</div>
@@ -515,7 +515,7 @@ export function CombatSidebar() {
 
 			{/* Back to Builder */}
 			<div className="mb-md pb-md last:border-b-0">
-				<Button variant="secondary" className="w-full" onClick={switchToBuilder}>
+				<Button className="w-full" onClick={switchToBuilder} variant="secondary">
 					← Back to Builder
 				</Button>
 			</div>

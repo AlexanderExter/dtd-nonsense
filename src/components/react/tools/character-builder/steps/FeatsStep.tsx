@@ -110,12 +110,12 @@ export function FeatsStep() {
 			{/* ===== Feats Section ===== */}
 			<section className="mb-lg">
 				<h3>Feats</h3>
-				<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
+				<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
 					<GameSelect
-						value={featCatFilter}
 						onChange={(e) => {
 							setFeatCatFilter((e.target as HTMLSelectElement).value);
 						}}
+						value={featCatFilter}
 					>
 						<option value="all">All Categories</option>
 						<option value="general">General</option>
@@ -123,26 +123,26 @@ export function FeatsStep() {
 						<option value="supplementary">Supplementary</option>
 					</GameSelect>
 					<GameInput
-						type="text"
-						placeholder="Search feats…"
 						onInput={(e) => handleSearch((e.target as HTMLInputElement).value)}
+						placeholder="Search feats…"
+						type="text"
 					/>
 				</div>
 
 				{/* Selected feats */}
 				{char.feats.length > 0 && (
-					<div className="flex flex-wrap gap-xs mb-md">
+					<div className="mb-md flex flex-wrap gap-xs">
 						{char.feats.map((f) => (
 							<span
+								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-[rgba(212,168,75,0.12)] px-2.5 py-[3px] text-[0.8rem] text-accent"
 								key={f.name}
-								className="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(212,168,75,0.12)] border border-accent-dim rounded-full text-[0.8rem] text-accent"
 							>
 								{f.name}
 								<button
-									type="button"
-									className="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
-									onClick={() => toggleFeat({ id: f.name })}
 									aria-label={`Remove ${f.name}`}
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									onClick={() => toggleFeat({ id: f.name })}
+									type="button"
 								>
 									×
 								</button>
@@ -151,19 +151,19 @@ export function FeatsStep() {
 					</div>
 				)}
 
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+				<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 					{filteredFeats.map((f: any) => {
 						const id = f.id || f.name;
 						return (
 							<SelectionCard
 								key={id}
-								title={f.name}
-								subtitle={f.category}
-								preview={f.effect?.slice(0, 60)}
-								selected={selectedFeatIds.has(id)}
 								onClick={() => {
 									selectedFeatPreview.value = f;
 								}}
+								preview={f.effect?.slice(0, 60)}
+								selected={selectedFeatIds.has(id)}
+								subtitle={f.category}
+								title={f.name}
 							/>
 						);
 					})}
@@ -186,9 +186,9 @@ export function FeatsStep() {
 						<p className="text-[0.8rem] text-text-muted">Cost: 100 XP</p>
 						<div className="mt-md flex gap-sm">
 							<button
-								type="button"
 								className={`btn ${selectedFeatIds.has(featPreview.id || featPreview.name) ? "btn-danger" : "btn-primary"}`}
 								onClick={() => toggleFeat(featPreview)}
+								type="button"
 							>
 								{selectedFeatIds.has(featPreview.id || featPreview.name) ? "Remove" : "Add"}
 							</button>
@@ -200,12 +200,12 @@ export function FeatsStep() {
 			{/* ===== Assets & Hindrances Section ===== */}
 			<section>
 				<h3>Assets &amp; Hindrances</h3>
-				<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
+				<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
 					<GameSelect
-						value={ahCatFilter}
 						onChange={(e) => {
 							setAhCatFilter((e.target as HTMLSelectElement).value);
 						}}
+						value={ahCatFilter}
 					>
 						<option value="all">All</option>
 						<option value="asset">Assets</option>
@@ -216,18 +216,18 @@ export function FeatsStep() {
 
 				{/* Selected assets/hindrances */}
 				{(char.assets.length > 0 || char.hindrances.length > 0) && (
-					<div className="flex flex-wrap gap-xs mb-md">
+					<div className="mb-md flex flex-wrap gap-xs">
 						{char.assets.map((a) => (
 							<span
+								className="inline-flex items-center gap-1 rounded-full border border-success bg-[rgba(74,222,128,0.1)] px-2.5 py-[3px] text-[0.8rem] text-success"
 								key={a.name}
-								className="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(74,222,128,0.1)] border border-success rounded-full text-[0.8rem] text-success"
 							>
 								{a.name}
 								<button
-									type="button"
-									className="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
-									onClick={() => toggleAH({ id: a.name, category: "asset" })}
 									aria-label={`Remove ${a.name}`}
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									onClick={() => toggleAH({ id: a.name, category: "asset" })}
+									type="button"
 								>
 									×
 								</button>
@@ -235,15 +235,15 @@ export function FeatsStep() {
 						))}
 						{char.hindrances.map((h) => (
 							<span
+								className="inline-flex items-center gap-1 rounded-full border border-error bg-[rgba(248,113,113,0.1)] px-2.5 py-[3px] text-[0.8rem] text-error"
 								key={h.name}
-								className="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(248,113,113,0.1)] border border-error rounded-full text-[0.8rem] text-error"
 							>
 								{h.name}
 								<button
-									type="button"
-									className="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
-									onClick={() => toggleAH({ id: h.name, category: "hindrance" })}
 									aria-label={`Remove ${h.name}`}
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									onClick={() => toggleAH({ id: h.name, category: "hindrance" })}
+									type="button"
 								>
 									×
 								</button>
@@ -252,7 +252,7 @@ export function FeatsStep() {
 					</div>
 				)}
 
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+				<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 					{filteredAH.map((item: any) => {
 						const id = item.id || item.name;
 						const isHindrance = item.category === "hindrance";
@@ -261,7 +261,11 @@ export function FeatsStep() {
 						return (
 							<SelectionCard
 								key={id}
-								title={item.name}
+								onClick={() => {
+									setSelectedAHPreview(item);
+								}}
+								preview={item.effect?.slice(0, 60)}
+								selected={selected}
 								subtitle={
 									isHindrance
 										? "Hindrance (+100 XP)"
@@ -269,11 +273,7 @@ export function FeatsStep() {
 											? "Exalted Asset (100 XP)"
 											: "Asset (100 XP)"
 								}
-								preview={item.effect?.slice(0, 60)}
-								selected={selected}
-								onClick={() => {
-									setSelectedAHPreview(item);
-								}}
+								title={item.name}
 							/>
 						);
 					})}
@@ -284,7 +284,7 @@ export function FeatsStep() {
 						<h4>{ahPreview.name}</h4>
 						<p>
 							<strong>Type:</strong>{" "}
-							{ahPreview.category === "hindrance" ? "Hindrance (+100 XP bonus)" : `Asset (100 XP)`}
+							{ahPreview.category === "hindrance" ? "Hindrance (+100 XP bonus)" : "Asset (100 XP)"}
 						</p>
 						{ahPreview.prerequisites?.length > 0 && (
 							<p>
@@ -301,9 +301,9 @@ export function FeatsStep() {
 									: selectedAssetIds.has(id);
 								return (
 									<button
-										type="button"
 										className={`btn ${isSelected ? "btn-danger" : "btn-primary"}`}
 										onClick={() => toggleAH(ahPreview)}
+										type="button"
 									>
 										{isSelected ? "Remove" : "Add"}
 									</button>

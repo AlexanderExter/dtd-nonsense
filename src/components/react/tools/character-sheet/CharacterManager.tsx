@@ -40,29 +40,29 @@ export function CharacterManager() {
 	};
 
 	return (
-		<div className="flex items-center gap-sm px-md py-sm bg-surface border-b border-border sticky top-0 z-[100]">
-			<GameSelect className="min-w-[200px] flex-1" value={currentId || ""} onChange={handleSwitch}>
+		<div className="sticky top-0 z-[100] flex items-center gap-sm border-border border-b bg-surface px-md py-sm">
+			<GameSelect className="min-w-[200px] flex-1" onChange={handleSwitch} value={currentId || ""}>
 				{list.map((c) => (
 					<option key={c.id} value={c.id}>
 						{c.name || "Unnamed"}
 					</option>
 				))}
 			</GameSelect>
-			<div className="flex items-center gap-xs ml-auto">
-				<Button size="sm" onClick={createNewCharacter}>
+			<div className="ml-auto flex items-center gap-xs">
+				<Button onClick={createNewCharacter} size="sm">
 					+ New
 				</Button>
-				<Button size="sm" variant="danger" onClick={handleDelete} disabled={list.length <= 1}>
+				<Button disabled={list.length <= 1} onClick={handleDelete} size="sm" variant="danger">
 					Delete
 				</Button>
-				<Button size="sm" onClick={handleImportClick}>
+				<Button onClick={handleImportClick} size="sm">
 					Import
 				</Button>
-				<Button size="sm" onClick={exportCharacter}>
+				<Button onClick={exportCharacter} size="sm">
 					Export
 				</Button>
 			</div>
-			<input ref={fileRef} type="file" accept=".json" className="hidden" onChange={handleFileChange} />
+			<input accept=".json" className="hidden" onChange={handleFileChange} ref={fileRef} type="file" />
 		</div>
 	);
 }

@@ -18,7 +18,7 @@ export function XpTab() {
 
 	const addIncome = () => {
 		const amt = Number(incomeAmount);
-		if (!incomeLabel.trim() || !amt || amt <= 0) return;
+		if (!(incomeLabel.trim() && amt) || amt <= 0) return;
 		updateChar((c) => {
 			if (!c.xpLog) c.xpLog = [];
 			c.xpLog.push({ label: incomeLabel.trim(), amount: amt, timestamp: Date.now() });
@@ -31,7 +31,7 @@ export function XpTab() {
 
 	const addSpend = () => {
 		const amt = Number(spendAmount);
-		if (!spendLabel.trim() || !amt || amt <= 0) return;
+		if (!(spendLabel.trim() && amt) || amt <= 0) return;
 		updateChar((c) => {
 			if (!c.xpSpendLog) c.xpSpendLog = [];
 			c.xpSpendLog.push({ label: spendLabel.trim(), amount: amt, timestamp: Date.now() });
@@ -62,21 +62,21 @@ export function XpTab() {
 		<table className="w-full border-collapse text-[0.85rem]">
 			<thead>
 				<tr>
-					<th className="py-1 px-2 border border-border text-left bg-surface font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+					<th className="border border-border bg-surface px-2 py-1 text-left font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
 						Description
 					</th>
-					<th className="py-1 px-2 border border-border text-right bg-surface font-semibold text-[0.78rem] uppercase tracking-[0.04em] w-[80px]">
+					<th className="w-[80px] border border-border bg-surface px-2 py-1 text-right font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
 						XP
 					</th>
-					<th className="py-1 px-2 border border-border text-center bg-surface font-semibold text-[0.78rem] uppercase tracking-[0.04em] w-[40px]" />
+					<th className="w-[40px] border border-border bg-surface px-2 py-1 text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]" />
 				</tr>
 			</thead>
 			<tbody>
 				{entries.length === 0 && (
 					<tr>
 						<td
+							className="border border-border px-2 py-2 text-center text-[0.82rem] text-text-dim"
 							colSpan={3}
-							className="py-2 px-2 border border-border text-center text-text-dim text-[0.82rem]"
 						>
 							No entries yet
 						</td>
@@ -84,16 +84,16 @@ export function XpTab() {
 				)}
 				{entries.map((entry, i) => (
 					<tr key={`${entry.timestamp}-${entry.label}-${entry.amount}`}>
-						<td className="py-1 px-2 border border-border">{entry.label}</td>
-						<td className="py-1 px-2 border border-border text-right font-bold text-accent">
+						<td className="border border-border px-2 py-1">{entry.label}</td>
+						<td className="border border-border px-2 py-1 text-right font-bold text-accent">
 							{entry.amount}
 						</td>
-						<td className="py-1 px-2 border border-border text-center">
+						<td className="border border-border px-2 py-1 text-center">
 							<button
-								type="button"
-								className="bg-transparent border-none text-error cursor-pointer text-sm leading-none"
+								className="cursor-pointer border-none bg-transparent text-error text-sm leading-none"
 								onClick={() => onRemove(i)}
 								title="Remove entry"
+								type="button"
 							>
 								×
 							</button>
@@ -107,81 +107,81 @@ export function XpTab() {
 	return (
 		<section className="tab-panel">
 			{/* ---------- XP Summary Bar ---------- */}
-			<div className="flex items-center gap-lg px-lg py-md bg-surface-raised border border-border rounded-md mb-md flex-wrap">
+			<div className="mb-md flex flex-wrap items-center gap-lg rounded-md border border-border bg-surface-raised px-lg py-md">
 				<div className="flex flex-col items-center">
 					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Earned</span>
-					<span className="text-xl font-bold text-accent">{totalEarned}</span>
+					<span className="font-bold text-accent text-xl">{totalEarned}</span>
 				</div>
 				<span className="text-text-dim text-xl">−</span>
 				<div className="flex flex-col items-center">
 					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Spent</span>
-					<span className="text-xl font-bold text-text-primary">{totalSpent}</span>
+					<span className="font-bold text-text-primary text-xl">{totalSpent}</span>
 				</div>
 				<span className="text-text-dim text-xl">=</span>
 				<div className="flex flex-col items-center">
 					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Remaining</span>
-					<span className={`text-xl font-bold ${remaining < 0 ? "text-error" : "text-accent"}`}>
+					<span className={`font-bold text-xl ${remaining < 0 ? "text-error" : "text-accent"}`}>
 						{remaining}
 					</span>
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+			<div className="grid grid-cols-1 gap-md md:grid-cols-2">
 				{/* ---------- XP Income ---------- */}
-				<div className="section-card bg-surface border border-border rounded-md p-lg">
-					<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">XP Income</h3>
+				<div className="section-card rounded-md border border-border bg-surface p-lg">
+					<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">XP Income</h3>
 					{renderLogTable(char.xpLog || [], removeIncome)}
-					<div className="flex gap-xs mt-md items-end">
-						<label className="flex flex-col flex-1 text-[0.75rem] uppercase tracking-[0.3px]">
+					<div className="mt-md flex items-end gap-xs">
+						<label className="flex flex-1 flex-col text-[0.75rem] uppercase tracking-[0.3px]">
 							Description
 							<GameInput
-								type="text"
-								value={incomeLabel}
 								onInput={(e) => setIncomeLabel((e.target as HTMLInputElement).value)}
 								placeholder="e.g. Session 3"
+								type="text"
+								value={incomeLabel}
 							/>
 						</label>
-						<label className="flex flex-col w-[80px] text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex w-[80px] flex-col text-[0.75rem] uppercase tracking-[0.3px]">
 							XP
 							<GameInput
-								type="number"
-								value={incomeAmount}
 								min={1}
 								onInput={(e) => setIncomeAmount((e.target as HTMLInputElement).value)}
 								placeholder="100"
+								type="number"
+								value={incomeAmount}
 							/>
 						</label>
-						<Button size="sm" onClick={addIncome}>
+						<Button onClick={addIncome} size="sm">
 							+ Add
 						</Button>
 					</div>
 				</div>
 
 				{/* ---------- XP Spending ---------- */}
-				<div className="section-card bg-surface border border-border rounded-md p-lg">
-					<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">XP Spending</h3>
+				<div className="section-card rounded-md border border-border bg-surface p-lg">
+					<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">XP Spending</h3>
 					{renderLogTable(char.xpSpendLog || [], removeSpend)}
-					<div className="flex gap-xs mt-md items-end">
-						<label className="flex flex-col flex-1 text-[0.75rem] uppercase tracking-[0.3px]">
+					<div className="mt-md flex items-end gap-xs">
+						<label className="flex flex-1 flex-col text-[0.75rem] uppercase tracking-[0.3px]">
 							Description
 							<GameInput
-								type="text"
-								value={spendLabel}
 								onInput={(e) => setSpendLabel((e.target as HTMLInputElement).value)}
 								placeholder="e.g. +1 Dexterity"
+								type="text"
+								value={spendLabel}
 							/>
 						</label>
-						<label className="flex flex-col w-[80px] text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex w-[80px] flex-col text-[0.75rem] uppercase tracking-[0.3px]">
 							XP
 							<GameInput
-								type="number"
-								value={spendAmount}
 								min={1}
 								onInput={(e) => setSpendAmount((e.target as HTMLInputElement).value)}
 								placeholder="100"
+								type="number"
+								value={spendAmount}
 							/>
 						</label>
-						<Button size="sm" onClick={addSpend}>
+						<Button onClick={addSpend} size="sm">
 							+ Add
 						</Button>
 					</div>

@@ -1,27 +1,27 @@
 {
-	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/pages/**/*.astro", "scripts/*.{ts,mjs}"],
-	"project": ["src/**/*.{ts,tsx,astro}", "scripts/**/*.{ts,mjs}"],
-	"ignore": [
-		"src/lib/dtd/schemas/**",
-		"src/**/__test-utils__/**",
-		"src/components/react/ui/card.tsx",
-		"src/components/react/ui/checkbox.tsx",
-		"src/components/react/ui/dialog.tsx",
-		"src/components/react/ui/input.tsx",
-		"src/components/react/ui/label.tsx",
-		"src/components/react/ui/select.tsx",
-		"src/components/react/ui/separator.tsx",
-		"src/components/react/ui/table.tsx",
-		"src/components/react/ui/textarea.tsx",
-		"src/components/react/ui/tooltip.tsx"
-	],
-	"ignoreDependencies": [
-		"@astrojs/check",
-		"@astrojs/starlight-tailwind",
-		"tailwindcss",
-		"react-hook-form",
-		"class-variance-authority",
-		"lucide-react"
-	]
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/pages/**/*.astro", "scripts/*.{ts,mjs}"],
+  "project": ["src/**/*.{ts,tsx,astro}", "scripts/**/*.{ts,mjs}"],
+  "ignore": [
+    "src/lib/dtd/schemas/**",
+    "src/**/__test-utils__/**",
+    "src/components/react/ui/card.tsx",
+    "src/components/react/ui/checkbox.tsx",
+    "src/components/react/ui/dialog.tsx",
+    "src/components/react/ui/input.tsx",
+    "src/components/react/ui/label.tsx",
+    "src/components/react/ui/select.tsx",
+    "src/components/react/ui/separator.tsx",
+    "src/components/react/ui/table.tsx",
+    "src/components/react/ui/textarea.tsx",
+    "src/components/react/ui/tooltip.tsx"
+  ],
+  "ignoreDependencies": [
+    "@astrojs/check",
+    "@astrojs/starlight-tailwind",
+    "tailwindcss",
+    "react-hook-form",
+    "class-variance-authority",
+    "lucide-react"
+  ]
 }

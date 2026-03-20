@@ -1,43 +1,48 @@
-import { Dialog } from "radix-ui";
+import { Dialog, VisuallyHidden } from "radix-ui";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface ModalProps {
-	open: boolean;
-	onClose: () => void;
-	title?: string;
-	maxWidth?: string;
 	children: ReactNode;
 	className?: string;
+	maxWidth?: string;
+	onClose: () => void;
+	open: boolean;
+	title?: string;
 }
 
 export function Modal({ open, onClose, title, maxWidth = "500px", children, className }: ModalProps) {
 	return (
 		<Dialog.Root
-			open={open}
 			onOpenChange={(v) => {
 				if (!v) onClose();
 			}}
+			open={open}
 		>
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed inset-0 z-[200] bg-overlay" />
 				<Dialog.Content
+					aria-describedby={undefined}
 					className={cn(
-						"fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[201] bg-surface border border-border rounded-lg p-xl w-full max-h-[80vh] overflow-y-auto",
+						"fixed top-1/2 left-1/2 z-[201] max-h-[80vh] w-full -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg border border-border bg-surface p-xl",
 						className,
 					)}
-					style={{ maxWidth }}
 					onEscapeKeyDown={() => onClose()}
+					style={{ maxWidth }}
 				>
-					{title && (
-						<div className="flex justify-between items-center mb-md">
+					{title ? (
+						<div className="mb-md flex items-center justify-between">
 							<Dialog.Title className="m-0 text-accent">{title}</Dialog.Title>
 							<Dialog.Close asChild>
-								<button type="button" className="btn btn-sm" aria-label="Close">
+								<button aria-label="Close" className="btn btn-sm" type="button">
 									&times;
 								</button>
 							</Dialog.Close>
 						</div>
+					) : (
+						<VisuallyHidden.Root>
+							<Dialog.Title>Dialog</Dialog.Title>
+						</VisuallyHidden.Root>
 					)}
 					{children}
 				</Dialog.Content>

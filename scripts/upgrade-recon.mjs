@@ -67,7 +67,7 @@ function classifyDep(name) {
 
 /** Determine bump type from two semver strings. */
 function bumpType(current, latest) {
-	if (!current || !latest) return "unknown";
+	if (!(current && latest)) return "unknown";
 	const [cMaj, cMin] = current.split(".").map(Number);
 	const [lMaj, lMin] = latest.split(".").map(Number);
 	if (lMaj > cMaj) return "major";
@@ -181,11 +181,9 @@ const treeHealth = { valid: true, problems: [] };
 
 // bun pm ls --json can be very large; we just check for problems
 const treeRaw = tryJson("bun pm ls --json --depth=1");
-if (treeRaw) {
-	if (treeRaw.problems && Array.isArray(treeRaw.problems)) {
-		treeHealth.valid = false;
-		treeHealth.problems = treeRaw.problems;
-	}
+if (treeRaw?.problems && Array.isArray(treeRaw.problems)) {
+	treeHealth.valid = false;
+	treeHealth.problems = treeRaw.problems;
 }
 
 if (treeHealth.valid) {
@@ -229,7 +227,7 @@ if (auditRaw) {
 				name,
 				severity: vuln.severity,
 				title: vuln.via?.[0]?.title || vuln.via?.[0] || "unknown",
-				fixAvailable: vuln.fixAvailable || false,
+				fixAvailable: vuln.fixAvailable,
 			});
 		}
 	}

@@ -31,9 +31,9 @@ export function TorpedoSlots() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Torpedoes</h2>
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Torpedoes</h2>
 			<div>
-				<label className="flex items-center gap-sm cursor-pointer text-[0.85rem] mb-sm">
+				<label className="mb-sm flex cursor-pointer items-center gap-sm text-[0.85rem]">
 					<GameCheckbox checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
 					<span>Torpedo Tube ({data.torpedoTubeCost} BP) — holds 5 torpedoes</span>
 				</label>
@@ -46,12 +46,12 @@ export function TorpedoSlots() {
 
 							return (
 								// biome-ignore lint/suspicious/noArrayIndexKey: fixed-position torpedo slots identified by index
-								<div key={i} className="flex items-center gap-sm py-xs">
+								<div className="flex items-center gap-sm py-xs" key={i}>
 									<span>#{i + 1}</span>
 									<GameSelect
 										className="flex-1"
-										value={current}
 										onChange={(e) => handleTorpedoChange(i, (e.target as HTMLSelectElement).value)}
+										value={current}
 									>
 										<option value="">— Empty —</option>
 										{data.torpedoes.map((t) => (
@@ -60,7 +60,7 @@ export function TorpedoSlots() {
 											</option>
 										))}
 									</GameSelect>
-									<span className="text-[0.8rem] text-accent min-w-10 text-right">
+									<span className="min-w-10 text-right text-[0.8rem] text-accent">
 										{selectedTorpedo ? `${selectedTorpedo.cost} BP` : ""}
 									</span>
 								</div>

@@ -1,1389 +1,1389 @@
 {
-	"holdingsBP": [0, 2, 3, 4, 5, 5],
-	"crewQualityCost": {
-		"1": -5,
-		"2": 0,
-		"3": 10,
-		"4": 20,
-		"5": 30
-	},
-	"hulls": [
-		{
-			"id": "steamboat",
-			"name": "Steamboat-Class Multipurpose Ship",
-			"class": "Escort",
-			"cost": 10,
-			"crew": 12,
-			"hullStrength": 40,
-			"maneuverability": 0,
-			"acceleration": 0,
-			"speed": 6,
-			"sensors": 0,
-			"consoles": {
-				"arcana": 0,
-				"command": 0,
-				"engineering": 0,
-				"tactical": 0,
-				"universal": 2
-			},
-			"weapons": { "forward": 1, "rear": 1 }
-		},
-		{
-			"id": "sultana",
-			"name": "Sultana-Class Light Frigate",
-			"class": "Escort",
-			"cost": 20,
-			"crew": 14,
-			"hullStrength": 45,
-			"maneuverability": 5,
-			"acceleration": 10,
-			"speed": 12,
-			"sensors": 0,
-			"consoles": {
-				"arcana": 0,
-				"command": 0,
-				"engineering": 0,
-				"tactical": 1,
-				"universal": 1
-			},
-			"weapons": { "forward": 2, "rear": 1 }
-		},
-		{
-			"id": "wanderer",
-			"name": "Wanderer-Class Runeship",
-			"class": "Escort",
-			"cost": 20,
-			"crew": 14,
-			"hullStrength": 40,
-			"maneuverability": 0,
-			"acceleration": 5,
-			"speed": 8,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 2,
-				"command": 0,
-				"engineering": 0,
-				"tactical": 0,
-				"universal": 1
-			},
-			"weapons": { "forward": 1, "rear": 1 }
-		},
-		{
-			"id": "endurance",
-			"name": "Endurance-Class Support Ship",
-			"class": "Escort",
-			"cost": 20,
-			"crew": 14,
-			"hullStrength": 60,
-			"maneuverability": 0,
-			"acceleration": 5,
-			"speed": 7,
-			"sensors": 0,
-			"consoles": {
-				"arcana": 0,
-				"command": 0,
-				"engineering": 2,
-				"tactical": 0,
-				"universal": 1
-			},
-			"weapons": { "forward": 1, "rear": 1 }
-		},
-		{
-			"id": "thresher",
-			"name": "Thresher-Class Frigate",
-			"class": "Destroyer",
-			"cost": 30,
-			"crew": 16,
-			"hullStrength": 60,
-			"maneuverability": 5,
-			"acceleration": 10,
-			"speed": 10,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 1,
-				"command": 1,
-				"engineering": 1,
-				"tactical": 2,
-				"universal": 1
-			},
-			"weapons": { "forward": 3, "rear": 2 }
-		},
-		{
-			"id": "monitor",
-			"name": "Monitor-Class Exploration Ship",
-			"class": "Destroyer",
-			"cost": 25,
-			"crew": 16,
-			"hullStrength": 60,
-			"maneuverability": 0,
-			"acceleration": 5,
-			"speed": 8,
-			"sensors": 10,
-			"consoles": {
-				"arcana": 2,
-				"command": 1,
-				"engineering": 1,
-				"tactical": 1,
-				"universal": 1
-			},
-			"weapons": { "forward": 2, "rear": 2 }
-		},
-		{
-			"id": "majestic",
-			"name": "Majestic-Class Command Ship",
-			"class": "Destroyer",
-			"cost": 30,
-			"crew": 16,
-			"hullStrength": 70,
-			"maneuverability": 0,
-			"acceleration": 5,
-			"speed": 8,
-			"sensors": 0,
-			"consoles": {
-				"arcana": 1,
-				"command": 2,
-				"engineering": 1,
-				"tactical": 1,
-				"universal": 1
-			},
-			"weapons": { "forward": 1, "rear": 3 }
-		},
-		{
-			"id": "cole",
-			"name": "Cole-Class Advanced Destroyer",
-			"class": "Destroyer",
-			"cost": 40,
-			"crew": 18,
-			"hullStrength": 55,
-			"maneuverability": 5,
-			"acceleration": 5,
-			"speed": 9,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 2,
-				"command": 1,
-				"engineering": 0,
-				"tactical": 3,
-				"universal": 1
-			},
-			"weapons": { "forward": 2, "rear": 2 }
-		},
-		{
-			"id": "graff-spree",
-			"name": "Graff Spree-Class Pocket Battleship",
-			"class": "Destroyer",
-			"cost": 45,
-			"crew": 18,
-			"hullStrength": 65,
-			"maneuverability": 0,
-			"acceleration": 0,
-			"speed": 8,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 1,
-				"command": 1,
-				"engineering": 2,
-				"tactical": 2,
-				"universal": 1
-			},
-			"weapons": { "forward": 4, "rear": 1 }
-		},
-		{
-			"id": "essex",
-			"name": "Essex-Class Cruiser",
-			"class": "Cruiser",
-			"cost": 50,
-			"crew": 20,
-			"hullStrength": 75,
-			"maneuverability": -5,
-			"acceleration": 0,
-			"speed": 6,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 2,
-				"command": 1,
-				"engineering": 1,
-				"tactical": 2,
-				"universal": 2
-			},
-			"weapons": { "forward": 3, "rear": 3 }
-		},
-		{
-			"id": "bismark",
-			"name": "Bismark-Class Fleet Command Ship",
-			"class": "Cruiser",
-			"cost": 60,
-			"crew": 22,
-			"hullStrength": 100,
-			"maneuverability": 0,
-			"acceleration": 0,
-			"speed": 8,
-			"sensors": 10,
-			"consoles": {
-				"arcana": 2,
-				"command": 3,
-				"engineering": 1,
-				"tactical": 1,
-				"universal": 1
-			},
-			"weapons": { "forward": 2, "rear": 2 }
-		},
-		{
-			"id": "borealis",
-			"name": "Borealis-Class Multipurpose Ship",
-			"class": "Cruiser",
-			"cost": 50,
-			"crew": 20,
-			"hullStrength": 75,
-			"maneuverability": 0,
-			"acceleration": 5,
-			"speed": 9,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 2,
-				"command": 2,
-				"engineering": 2,
-				"tactical": 2,
-				"universal": 0
-			},
-			"weapons": { "forward": 2, "rear": 2 }
-		},
-		{
-			"id": "belle",
-			"name": "Belle-Class Battleship",
-			"class": "Battleship",
-			"cost": 75,
-			"crew": 24,
-			"hullStrength": 90,
-			"maneuverability": -5,
-			"acceleration": -5,
-			"speed": 4,
-			"sensors": 0,
-			"consoles": {
-				"arcana": 1,
-				"command": 2,
-				"engineering": 1,
-				"tactical": 3,
-				"universal": 1
-			},
-			"weapons": { "forward": 4, "rear": 3 }
-		},
-		{
-			"id": "bounty",
-			"name": "Bounty-Class Fleet Support Ship",
-			"class": "Battleship",
-			"cost": 75,
-			"crew": 24,
-			"hullStrength": 100,
-			"maneuverability": -5,
-			"acceleration": -5,
-			"speed": 4,
-			"sensors": 5,
-			"consoles": {
-				"arcana": 2,
-				"command": 1,
-				"engineering": 3,
-				"tactical": 1,
-				"universal": 1
-			},
-			"weapons": { "forward": 3, "rear": 3 }
-		}
-	],
-	"consoles": [
-		{
-			"id": "ancient-helm",
-			"name": "Ancient Spelljamming Helm",
-			"type": "arcana",
-			"cost": 10,
-			"effect": "Warp travel time halved, but Warp Encounters rolls at +2"
-		},
-		{
-			"id": "bioneural-gel",
-			"name": "Bioneural Gel Packs",
-			"type": "arcana",
-			"cost": 5,
-			"effect": "One reroll on any Arcana Test per combat"
-		},
-		{
-			"id": "cloaking-device",
-			"name": "Cloaking Device",
-			"type": "arcana",
-			"cost": 15,
-			"effect": "+20 on Silent Running tests"
-		},
-		{
-			"id": "enhanced-sensors",
-			"name": "Enhanced Sensors",
-			"type": "arcana",
-			"cost": 5,
-			"effect": "Ship's Sensors at +5"
-		},
-		{
-			"id": "improved-shields",
-			"name": "Improved Shields",
-			"type": "arcana",
-			"cost": 10,
-			"effect": "Shield capacity +10% (applies to each Multiphasic layer)"
-		},
-		{
-			"id": "teleportarium",
-			"name": "Teleportarium",
-			"type": "arcana",
-			"cost": 20,
-			"effect": "May make Boarding Actions at 5 VU range if target shields are down. Captain and Bridge Officers may use Hero Points to reroll any ship/crew tests"
-		},
-		{
-			"id": "warpsbane-hull",
-			"name": "Warpsbane Hull",
-			"type": "arcana",
-			"cost": 10,
-			"effect": "Roll at -2 on Warp Encounters chart"
-		},
-		{
-			"id": "advanced-bridge",
-			"name": "Advanced Bridge Design",
-			"type": "command",
-			"cost": 10,
-			"effect": "Command Action tests at +1k1"
-		},
-		{
-			"id": "destiny-knot",
-			"name": "Destiny Knot",
-			"type": "command",
-			"cost": 15,
-			"effect": "Captain and Bridge Officers may use their own Hero Points to reroll any ship/crew tests"
-		},
-		{
-			"id": "diplomatic-quarters",
-			"name": "Diplomatic Quarters",
-			"type": "command",
-			"cost": 5,
-			"effect": "+1k0 to social rolls with visitors to the ship"
-		},
-		{
-			"id": "library-computer",
-			"name": "Library Computer",
-			"type": "command",
-			"cost": 5,
-			"effect": "May roll Lore tests untrained; +1k1 to all Lore tests when consulting"
-		},
-		{
-			"id": "self-destruct",
-			"name": "Self Destruct",
-			"type": "command",
-			"cost": 5,
-			"effect": "Set delay (immediate to 24 hours). Explosion deals 4k4 damage within 5 VU, half damage 6\u201310 VU"
-		},
-		{
-			"id": "tenebro-maze",
-			"name": "Tenebro-Maze",
-			"type": "command",
-			"cost": 5,
-			"effect": "When attacker chooses a console to disable on crit, you choose instead"
-		},
-		{
-			"id": "ablative-armor",
-			"name": "Ablative Armor",
-			"type": "engineering",
-			"cost": 10,
-			"effect": "Ignore first hit to hull each combat (no damage, no crit roll)"
-		},
-		{
-			"id": "damage-control",
-			"name": "Damage Control Station",
-			"type": "engineering",
-			"cost": 10,
-			"effect": "+2k0 to all Emergency Repairs tests"
-		},
-		{
-			"id": "eps-conduits",
-			"name": "EPS Conduits",
-			"type": "engineering",
-			"cost": 10,
-			"effect": "All successful Divert Power tests get 2 additional raises"
-		},
-		{
-			"id": "hardened-armor",
-			"name": "Hardened Armor",
-			"type": "engineering",
-			"cost": 5,
-			"effect": "+10% Hull Points. May be taken multiple times"
-		},
-		{
-			"id": "large-engine",
-			"name": "Large Engine Core",
-			"type": "engineering",
-			"cost": 15,
-			"effect": "Speed +2, Acceleration +5"
-		},
-		{
-			"id": "reinforced-bulkheads",
-			"name": "Reinforced Bulkheads",
-			"type": "engineering",
-			"cost": 10,
-			"effect": "Critical hits rolled at -2"
-		},
-		{
-			"id": "thrust-vectoring",
-			"name": "Thrust Vectoring",
-			"type": "engineering",
-			"cost": 10,
-			"effect": "Maneuverability +5"
-		},
-		{
-			"id": "arsenal",
-			"name": "Arsenal",
-			"type": "tactical",
-			"cost": 5,
-			"effect": "Space for 10 additional torpedoes (can fire from any tube)"
-		},
-		{
-			"id": "assault-shuttles",
-			"name": "Assault Shuttles",
-			"type": "tactical",
-			"cost": 5,
-			"effect": "Boarding actions at 3 VU (instead of 1 VU). Shuttles have light ground combat weapon"
-		},
-		{
-			"id": "fighter-bays",
-			"name": "Fighter Bays",
-			"type": "tactical",
-			"cost": 10,
-			"effect": "Launch/retrieve one 5-crew fighter squad per turn. 20 BP version supports atmospheric operation and ground attacks"
-		},
-		{
-			"id": "murder-servitors",
-			"name": "Murder Servitors",
-			"type": "tactical",
-			"cost": 5,
-			"effect": "+2k1 to rolls against boarding actions"
-		},
-		{
-			"id": "ramming-prow",
-			"name": "Ramming Prow",
-			"type": "tactical",
-			"cost": 10,
-			"effect": "+1k1 ramming damage, no critical chart roll for self, enemies roll at +2"
-		},
-		{
-			"id": "targeting-computer",
-			"name": "Targeting Computer",
-			"type": "tactical",
-			"cost": 15,
-			"effect": "All Shoot Guns tests at +5"
-		},
-		{
-			"id": "weapon-capacitor",
-			"name": "Weapon Capacitor",
-			"type": "tactical",
-			"cost": 10,
-			"effect": "Energy weapons deal +1k0 damage"
-		},
-		{
-			"id": "advanced-sickbay",
-			"name": "Advanced Sickbay",
-			"type": "universal",
-			"cost": 15,
-			"effect": "Triage recovers any amount of lost crew (not just half). +1k1 to Medicae Tests outside combat"
-		},
-		{
-			"id": "cargo-bays",
-			"name": "Cargo Bays",
-			"type": "universal",
-			"cost": 5,
-			"effect": "Large cargo vault for trade/shipping"
-		},
-		{
-			"id": "expanded-shuttle-bay",
-			"name": "Expanded Shuttle Bay",
-			"type": "universal",
-			"cost": 5,
-			"effect": "Room for one additional shuttle. May be taken multiple times"
-		},
-		{
-			"id": "extended-supply-vaults",
-			"name": "Extended Supply Vaults",
-			"type": "universal",
-			"cost": 10,
-			"effect": "Twice as long between resupply; two Extended Repairs tests between ports"
-		},
-		{
-			"id": "hidden-cargo-bays",
-			"name": "Hidden Cargo Bays",
-			"type": "universal",
-			"cost": 10,
-			"effect": "Smaller bays, contents cannot be scanned or detected"
-		},
-		{
-			"id": "partial-wing",
-			"name": "Partial Wing",
-			"type": "universal",
-			"cost": 10,
-			"effect": "May maneuver in atmosphere and land"
-		},
-		{
-			"id": "rating-quarters",
-			"name": "Rating Quarters",
-			"type": "universal",
-			"cost": 10,
-			"effect": "+2 Crew"
-		}
-	],
-	"weapons": [
-		{
-			"id": "las-light-cannon",
-			"name": "Las Light Cannon",
-			"size": "Light Cannon",
-			"material": "Las",
-			"damage": "4k3",
-			"disruption": 4,
-			"accuracy": -5,
-			"crit": 1,
-			"range": 10,
-			"cost": 15,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "melta-light-cannon",
-			"name": "Melta Light Cannon",
-			"size": "Light Cannon",
-			"material": "Melta",
-			"damage": "5k4",
-			"disruption": 5,
-			"accuracy": -10,
-			"crit": 3,
-			"range": 4,
-			"cost": 20,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "plasma-light-cannon",
-			"name": "Plasma Light Cannon",
-			"size": "Light Cannon",
-			"material": "Plasma",
-			"damage": "5k3",
-			"disruption": 2,
-			"accuracy": -10,
-			"crit": 4,
-			"range": 10,
-			"cost": 20,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "orgone-light-cannon",
-			"name": "Orgone Light Cannon",
-			"size": "Light Cannon",
-			"material": "Orgone",
-			"damage": "3k3",
-			"disruption": 7,
-			"accuracy": 0,
-			"crit": 0,
-			"range": 10,
-			"cost": 10,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "mass-driver-light-cannon",
-			"name": "Mass Driver Light Cannon",
-			"size": "Light Cannon",
-			"material": "Mass Driver",
-			"damage": "4k3",
-			"disruption": 3,
-			"accuracy": 0,
-			"crit": 2,
-			"range": 8,
-			"cost": 10,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "positron-light-cannon",
-			"name": "Positron Light Cannon",
-			"size": "Light Cannon",
-			"material": "Positron",
-			"damage": "4k3",
-			"disruption": 6,
-			"accuracy": -10,
-			"crit": 3,
-			"range": 16,
-			"cost": 20,
-			"arc": "Normal",
-			"type": "Lance"
-		},
-		{
-			"id": "anti-meson-light-cannon",
-			"name": "Anti-Meson Light Cannon",
-			"size": "Light Cannon",
-			"material": "Anti-Meson",
-			"damage": "3k3",
-			"disruption": 3,
-			"accuracy": -5,
-			"crit": 2,
-			"range": 20,
-			"cost": 10,
-			"arc": "Normal",
-			"type": "Lance"
-		},
+  "holdingsBP": [0, 2, 3, 4, 5, 5],
+  "crewQualityCost": {
+    "1": -5,
+    "2": 0,
+    "3": 10,
+    "4": 20,
+    "5": 30
+  },
+  "hulls": [
+    {
+      "id": "steamboat",
+      "name": "Steamboat-Class Multipurpose Ship",
+      "class": "Escort",
+      "cost": 10,
+      "crew": 12,
+      "hullStrength": 40,
+      "maneuverability": 0,
+      "acceleration": 0,
+      "speed": 6,
+      "sensors": 0,
+      "consoles": {
+        "arcana": 0,
+        "command": 0,
+        "engineering": 0,
+        "tactical": 0,
+        "universal": 2
+      },
+      "weapons": { "forward": 1, "rear": 1 }
+    },
+    {
+      "id": "sultana",
+      "name": "Sultana-Class Light Frigate",
+      "class": "Escort",
+      "cost": 20,
+      "crew": 14,
+      "hullStrength": 45,
+      "maneuverability": 5,
+      "acceleration": 10,
+      "speed": 12,
+      "sensors": 0,
+      "consoles": {
+        "arcana": 0,
+        "command": 0,
+        "engineering": 0,
+        "tactical": 1,
+        "universal": 1
+      },
+      "weapons": { "forward": 2, "rear": 1 }
+    },
+    {
+      "id": "wanderer",
+      "name": "Wanderer-Class Runeship",
+      "class": "Escort",
+      "cost": 20,
+      "crew": 14,
+      "hullStrength": 40,
+      "maneuverability": 0,
+      "acceleration": 5,
+      "speed": 8,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 2,
+        "command": 0,
+        "engineering": 0,
+        "tactical": 0,
+        "universal": 1
+      },
+      "weapons": { "forward": 1, "rear": 1 }
+    },
+    {
+      "id": "endurance",
+      "name": "Endurance-Class Support Ship",
+      "class": "Escort",
+      "cost": 20,
+      "crew": 14,
+      "hullStrength": 60,
+      "maneuverability": 0,
+      "acceleration": 5,
+      "speed": 7,
+      "sensors": 0,
+      "consoles": {
+        "arcana": 0,
+        "command": 0,
+        "engineering": 2,
+        "tactical": 0,
+        "universal": 1
+      },
+      "weapons": { "forward": 1, "rear": 1 }
+    },
+    {
+      "id": "thresher",
+      "name": "Thresher-Class Frigate",
+      "class": "Destroyer",
+      "cost": 30,
+      "crew": 16,
+      "hullStrength": 60,
+      "maneuverability": 5,
+      "acceleration": 10,
+      "speed": 10,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 1,
+        "command": 1,
+        "engineering": 1,
+        "tactical": 2,
+        "universal": 1
+      },
+      "weapons": { "forward": 3, "rear": 2 }
+    },
+    {
+      "id": "monitor",
+      "name": "Monitor-Class Exploration Ship",
+      "class": "Destroyer",
+      "cost": 25,
+      "crew": 16,
+      "hullStrength": 60,
+      "maneuverability": 0,
+      "acceleration": 5,
+      "speed": 8,
+      "sensors": 10,
+      "consoles": {
+        "arcana": 2,
+        "command": 1,
+        "engineering": 1,
+        "tactical": 1,
+        "universal": 1
+      },
+      "weapons": { "forward": 2, "rear": 2 }
+    },
+    {
+      "id": "majestic",
+      "name": "Majestic-Class Command Ship",
+      "class": "Destroyer",
+      "cost": 30,
+      "crew": 16,
+      "hullStrength": 70,
+      "maneuverability": 0,
+      "acceleration": 5,
+      "speed": 8,
+      "sensors": 0,
+      "consoles": {
+        "arcana": 1,
+        "command": 2,
+        "engineering": 1,
+        "tactical": 1,
+        "universal": 1
+      },
+      "weapons": { "forward": 1, "rear": 3 }
+    },
+    {
+      "id": "cole",
+      "name": "Cole-Class Advanced Destroyer",
+      "class": "Destroyer",
+      "cost": 40,
+      "crew": 18,
+      "hullStrength": 55,
+      "maneuverability": 5,
+      "acceleration": 5,
+      "speed": 9,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 2,
+        "command": 1,
+        "engineering": 0,
+        "tactical": 3,
+        "universal": 1
+      },
+      "weapons": { "forward": 2, "rear": 2 }
+    },
+    {
+      "id": "graff-spree",
+      "name": "Graff Spree-Class Pocket Battleship",
+      "class": "Destroyer",
+      "cost": 45,
+      "crew": 18,
+      "hullStrength": 65,
+      "maneuverability": 0,
+      "acceleration": 0,
+      "speed": 8,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 1,
+        "command": 1,
+        "engineering": 2,
+        "tactical": 2,
+        "universal": 1
+      },
+      "weapons": { "forward": 4, "rear": 1 }
+    },
+    {
+      "id": "essex",
+      "name": "Essex-Class Cruiser",
+      "class": "Cruiser",
+      "cost": 50,
+      "crew": 20,
+      "hullStrength": 75,
+      "maneuverability": -5,
+      "acceleration": 0,
+      "speed": 6,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 2,
+        "command": 1,
+        "engineering": 1,
+        "tactical": 2,
+        "universal": 2
+      },
+      "weapons": { "forward": 3, "rear": 3 }
+    },
+    {
+      "id": "bismark",
+      "name": "Bismark-Class Fleet Command Ship",
+      "class": "Cruiser",
+      "cost": 60,
+      "crew": 22,
+      "hullStrength": 100,
+      "maneuverability": 0,
+      "acceleration": 0,
+      "speed": 8,
+      "sensors": 10,
+      "consoles": {
+        "arcana": 2,
+        "command": 3,
+        "engineering": 1,
+        "tactical": 1,
+        "universal": 1
+      },
+      "weapons": { "forward": 2, "rear": 2 }
+    },
+    {
+      "id": "borealis",
+      "name": "Borealis-Class Multipurpose Ship",
+      "class": "Cruiser",
+      "cost": 50,
+      "crew": 20,
+      "hullStrength": 75,
+      "maneuverability": 0,
+      "acceleration": 5,
+      "speed": 9,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 2,
+        "command": 2,
+        "engineering": 2,
+        "tactical": 2,
+        "universal": 0
+      },
+      "weapons": { "forward": 2, "rear": 2 }
+    },
+    {
+      "id": "belle",
+      "name": "Belle-Class Battleship",
+      "class": "Battleship",
+      "cost": 75,
+      "crew": 24,
+      "hullStrength": 90,
+      "maneuverability": -5,
+      "acceleration": -5,
+      "speed": 4,
+      "sensors": 0,
+      "consoles": {
+        "arcana": 1,
+        "command": 2,
+        "engineering": 1,
+        "tactical": 3,
+        "universal": 1
+      },
+      "weapons": { "forward": 4, "rear": 3 }
+    },
+    {
+      "id": "bounty",
+      "name": "Bounty-Class Fleet Support Ship",
+      "class": "Battleship",
+      "cost": 75,
+      "crew": 24,
+      "hullStrength": 100,
+      "maneuverability": -5,
+      "acceleration": -5,
+      "speed": 4,
+      "sensors": 5,
+      "consoles": {
+        "arcana": 2,
+        "command": 1,
+        "engineering": 3,
+        "tactical": 1,
+        "universal": 1
+      },
+      "weapons": { "forward": 3, "rear": 3 }
+    }
+  ],
+  "consoles": [
+    {
+      "id": "ancient-helm",
+      "name": "Ancient Spelljamming Helm",
+      "type": "arcana",
+      "cost": 10,
+      "effect": "Warp travel time halved, but Warp Encounters rolls at +2"
+    },
+    {
+      "id": "bioneural-gel",
+      "name": "Bioneural Gel Packs",
+      "type": "arcana",
+      "cost": 5,
+      "effect": "One reroll on any Arcana Test per combat"
+    },
+    {
+      "id": "cloaking-device",
+      "name": "Cloaking Device",
+      "type": "arcana",
+      "cost": 15,
+      "effect": "+20 on Silent Running tests"
+    },
+    {
+      "id": "enhanced-sensors",
+      "name": "Enhanced Sensors",
+      "type": "arcana",
+      "cost": 5,
+      "effect": "Ship's Sensors at +5"
+    },
+    {
+      "id": "improved-shields",
+      "name": "Improved Shields",
+      "type": "arcana",
+      "cost": 10,
+      "effect": "Shield capacity +10% (applies to each Multiphasic layer)"
+    },
+    {
+      "id": "teleportarium",
+      "name": "Teleportarium",
+      "type": "arcana",
+      "cost": 20,
+      "effect": "May make Boarding Actions at 5 VU range if target shields are down. Captain and Bridge Officers may use Hero Points to reroll any ship/crew tests"
+    },
+    {
+      "id": "warpsbane-hull",
+      "name": "Warpsbane Hull",
+      "type": "arcana",
+      "cost": 10,
+      "effect": "Roll at -2 on Warp Encounters chart"
+    },
+    {
+      "id": "advanced-bridge",
+      "name": "Advanced Bridge Design",
+      "type": "command",
+      "cost": 10,
+      "effect": "Command Action tests at +1k1"
+    },
+    {
+      "id": "destiny-knot",
+      "name": "Destiny Knot",
+      "type": "command",
+      "cost": 15,
+      "effect": "Captain and Bridge Officers may use their own Hero Points to reroll any ship/crew tests"
+    },
+    {
+      "id": "diplomatic-quarters",
+      "name": "Diplomatic Quarters",
+      "type": "command",
+      "cost": 5,
+      "effect": "+1k0 to social rolls with visitors to the ship"
+    },
+    {
+      "id": "library-computer",
+      "name": "Library Computer",
+      "type": "command",
+      "cost": 5,
+      "effect": "May roll Lore tests untrained; +1k1 to all Lore tests when consulting"
+    },
+    {
+      "id": "self-destruct",
+      "name": "Self Destruct",
+      "type": "command",
+      "cost": 5,
+      "effect": "Set delay (immediate to 24 hours). Explosion deals 4k4 damage within 5 VU, half damage 6\u201310 VU"
+    },
+    {
+      "id": "tenebro-maze",
+      "name": "Tenebro-Maze",
+      "type": "command",
+      "cost": 5,
+      "effect": "When attacker chooses a console to disable on crit, you choose instead"
+    },
+    {
+      "id": "ablative-armor",
+      "name": "Ablative Armor",
+      "type": "engineering",
+      "cost": 10,
+      "effect": "Ignore first hit to hull each combat (no damage, no crit roll)"
+    },
+    {
+      "id": "damage-control",
+      "name": "Damage Control Station",
+      "type": "engineering",
+      "cost": 10,
+      "effect": "+2k0 to all Emergency Repairs tests"
+    },
+    {
+      "id": "eps-conduits",
+      "name": "EPS Conduits",
+      "type": "engineering",
+      "cost": 10,
+      "effect": "All successful Divert Power tests get 2 additional raises"
+    },
+    {
+      "id": "hardened-armor",
+      "name": "Hardened Armor",
+      "type": "engineering",
+      "cost": 5,
+      "effect": "+10% Hull Points. May be taken multiple times"
+    },
+    {
+      "id": "large-engine",
+      "name": "Large Engine Core",
+      "type": "engineering",
+      "cost": 15,
+      "effect": "Speed +2, Acceleration +5"
+    },
+    {
+      "id": "reinforced-bulkheads",
+      "name": "Reinforced Bulkheads",
+      "type": "engineering",
+      "cost": 10,
+      "effect": "Critical hits rolled at -2"
+    },
+    {
+      "id": "thrust-vectoring",
+      "name": "Thrust Vectoring",
+      "type": "engineering",
+      "cost": 10,
+      "effect": "Maneuverability +5"
+    },
+    {
+      "id": "arsenal",
+      "name": "Arsenal",
+      "type": "tactical",
+      "cost": 5,
+      "effect": "Space for 10 additional torpedoes (can fire from any tube)"
+    },
+    {
+      "id": "assault-shuttles",
+      "name": "Assault Shuttles",
+      "type": "tactical",
+      "cost": 5,
+      "effect": "Boarding actions at 3 VU (instead of 1 VU). Shuttles have light ground combat weapon"
+    },
+    {
+      "id": "fighter-bays",
+      "name": "Fighter Bays",
+      "type": "tactical",
+      "cost": 10,
+      "effect": "Launch/retrieve one 5-crew fighter squad per turn. 20 BP version supports atmospheric operation and ground attacks"
+    },
+    {
+      "id": "murder-servitors",
+      "name": "Murder Servitors",
+      "type": "tactical",
+      "cost": 5,
+      "effect": "+2k1 to rolls against boarding actions"
+    },
+    {
+      "id": "ramming-prow",
+      "name": "Ramming Prow",
+      "type": "tactical",
+      "cost": 10,
+      "effect": "+1k1 ramming damage, no critical chart roll for self, enemies roll at +2"
+    },
+    {
+      "id": "targeting-computer",
+      "name": "Targeting Computer",
+      "type": "tactical",
+      "cost": 15,
+      "effect": "All Shoot Guns tests at +5"
+    },
+    {
+      "id": "weapon-capacitor",
+      "name": "Weapon Capacitor",
+      "type": "tactical",
+      "cost": 10,
+      "effect": "Energy weapons deal +1k0 damage"
+    },
+    {
+      "id": "advanced-sickbay",
+      "name": "Advanced Sickbay",
+      "type": "universal",
+      "cost": 15,
+      "effect": "Triage recovers any amount of lost crew (not just half). +1k1 to Medicae Tests outside combat"
+    },
+    {
+      "id": "cargo-bays",
+      "name": "Cargo Bays",
+      "type": "universal",
+      "cost": 5,
+      "effect": "Large cargo vault for trade/shipping"
+    },
+    {
+      "id": "expanded-shuttle-bay",
+      "name": "Expanded Shuttle Bay",
+      "type": "universal",
+      "cost": 5,
+      "effect": "Room for one additional shuttle. May be taken multiple times"
+    },
+    {
+      "id": "extended-supply-vaults",
+      "name": "Extended Supply Vaults",
+      "type": "universal",
+      "cost": 10,
+      "effect": "Twice as long between resupply; two Extended Repairs tests between ports"
+    },
+    {
+      "id": "hidden-cargo-bays",
+      "name": "Hidden Cargo Bays",
+      "type": "universal",
+      "cost": 10,
+      "effect": "Smaller bays, contents cannot be scanned or detected"
+    },
+    {
+      "id": "partial-wing",
+      "name": "Partial Wing",
+      "type": "universal",
+      "cost": 10,
+      "effect": "May maneuver in atmosphere and land"
+    },
+    {
+      "id": "rating-quarters",
+      "name": "Rating Quarters",
+      "type": "universal",
+      "cost": 10,
+      "effect": "+2 Crew"
+    }
+  ],
+  "weapons": [
+    {
+      "id": "las-light-cannon",
+      "name": "Las Light Cannon",
+      "size": "Light Cannon",
+      "material": "Las",
+      "damage": "4k3",
+      "disruption": 4,
+      "accuracy": -5,
+      "crit": 1,
+      "range": 10,
+      "cost": 15,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "melta-light-cannon",
+      "name": "Melta Light Cannon",
+      "size": "Light Cannon",
+      "material": "Melta",
+      "damage": "5k4",
+      "disruption": 5,
+      "accuracy": -10,
+      "crit": 3,
+      "range": 4,
+      "cost": 20,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "plasma-light-cannon",
+      "name": "Plasma Light Cannon",
+      "size": "Light Cannon",
+      "material": "Plasma",
+      "damage": "5k3",
+      "disruption": 2,
+      "accuracy": -10,
+      "crit": 4,
+      "range": 10,
+      "cost": 20,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "orgone-light-cannon",
+      "name": "Orgone Light Cannon",
+      "size": "Light Cannon",
+      "material": "Orgone",
+      "damage": "3k3",
+      "disruption": 7,
+      "accuracy": 0,
+      "crit": 0,
+      "range": 10,
+      "cost": 10,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "mass-driver-light-cannon",
+      "name": "Mass Driver Light Cannon",
+      "size": "Light Cannon",
+      "material": "Mass Driver",
+      "damage": "4k3",
+      "disruption": 3,
+      "accuracy": 0,
+      "crit": 2,
+      "range": 8,
+      "cost": 10,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "positron-light-cannon",
+      "name": "Positron Light Cannon",
+      "size": "Light Cannon",
+      "material": "Positron",
+      "damage": "4k3",
+      "disruption": 6,
+      "accuracy": -10,
+      "crit": 3,
+      "range": 16,
+      "cost": 20,
+      "arc": "Normal",
+      "type": "Lance"
+    },
+    {
+      "id": "anti-meson-light-cannon",
+      "name": "Anti-Meson Light Cannon",
+      "size": "Light Cannon",
+      "material": "Anti-Meson",
+      "damage": "3k3",
+      "disruption": 3,
+      "accuracy": -5,
+      "crit": 2,
+      "range": 20,
+      "cost": 10,
+      "arc": "Normal",
+      "type": "Lance"
+    },
 
-		{
-			"id": "las-heavy-cannon",
-			"name": "Las Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Las",
-			"damage": "6k4",
-			"disruption": 5,
-			"accuracy": -10,
-			"crit": 2,
-			"range": 20,
-			"cost": 20,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "melta-heavy-cannon",
-			"name": "Melta Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Melta",
-			"damage": "7k5",
-			"disruption": 6,
-			"accuracy": -15,
-			"crit": 4,
-			"range": 8,
-			"cost": 25,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "plasma-heavy-cannon",
-			"name": "Plasma Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Plasma",
-			"damage": "7k4",
-			"disruption": 3,
-			"accuracy": -15,
-			"crit": 5,
-			"range": 20,
-			"cost": 25,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "orgone-heavy-cannon",
-			"name": "Orgone Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Orgone",
-			"damage": "5k4",
-			"disruption": 8,
-			"accuracy": -5,
-			"crit": 1,
-			"range": 20,
-			"cost": 15,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "mass-driver-heavy-cannon",
-			"name": "Mass Driver Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Mass Driver",
-			"damage": "6k4",
-			"disruption": 4,
-			"accuracy": -5,
-			"crit": 3,
-			"range": 16,
-			"cost": 15,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "positron-heavy-cannon",
-			"name": "Positron Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Positron",
-			"damage": "6k4",
-			"disruption": 7,
-			"accuracy": -15,
-			"crit": 4,
-			"range": 32,
-			"cost": 25,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
-		{
-			"id": "anti-meson-heavy-cannon",
-			"name": "Anti-Meson Heavy Cannon",
-			"size": "Heavy Cannon",
-			"material": "Anti-Meson",
-			"damage": "5k4",
-			"disruption": 4,
-			"accuracy": -10,
-			"crit": 3,
-			"range": 40,
-			"cost": 15,
-			"arc": "Narrow",
-			"type": "Lance"
-		},
+    {
+      "id": "las-heavy-cannon",
+      "name": "Las Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Las",
+      "damage": "6k4",
+      "disruption": 5,
+      "accuracy": -10,
+      "crit": 2,
+      "range": 20,
+      "cost": 20,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "melta-heavy-cannon",
+      "name": "Melta Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Melta",
+      "damage": "7k5",
+      "disruption": 6,
+      "accuracy": -15,
+      "crit": 4,
+      "range": 8,
+      "cost": 25,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "plasma-heavy-cannon",
+      "name": "Plasma Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Plasma",
+      "damage": "7k4",
+      "disruption": 3,
+      "accuracy": -15,
+      "crit": 5,
+      "range": 20,
+      "cost": 25,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "orgone-heavy-cannon",
+      "name": "Orgone Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Orgone",
+      "damage": "5k4",
+      "disruption": 8,
+      "accuracy": -5,
+      "crit": 1,
+      "range": 20,
+      "cost": 15,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "mass-driver-heavy-cannon",
+      "name": "Mass Driver Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Mass Driver",
+      "damage": "6k4",
+      "disruption": 4,
+      "accuracy": -5,
+      "crit": 3,
+      "range": 16,
+      "cost": 15,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "positron-heavy-cannon",
+      "name": "Positron Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Positron",
+      "damage": "6k4",
+      "disruption": 7,
+      "accuracy": -15,
+      "crit": 4,
+      "range": 32,
+      "cost": 25,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
+    {
+      "id": "anti-meson-heavy-cannon",
+      "name": "Anti-Meson Heavy Cannon",
+      "size": "Heavy Cannon",
+      "material": "Anti-Meson",
+      "damage": "5k4",
+      "disruption": 4,
+      "accuracy": -10,
+      "crit": 3,
+      "range": 40,
+      "cost": 15,
+      "arc": "Narrow",
+      "type": "Lance"
+    },
 
-		{
-			"id": "las-light-beam",
-			"name": "Las Light Beam",
-			"size": "Light Beam",
-			"material": "Las",
-			"damage": "3k2",
-			"disruption": 2,
-			"accuracy": 5,
-			"crit": -1,
-			"range": 10,
-			"cost": 10,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "melta-light-beam",
-			"name": "Melta Light Beam",
-			"size": "Light Beam",
-			"material": "Melta",
-			"damage": "4k3",
-			"disruption": 3,
-			"accuracy": 0,
-			"crit": 0,
-			"range": 4,
-			"cost": 15,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "plasma-light-beam",
-			"name": "Plasma Light Beam",
-			"size": "Light Beam",
-			"material": "Plasma",
-			"damage": "4k2",
-			"disruption": 0,
-			"accuracy": 0,
-			"crit": 1,
-			"range": 10,
-			"cost": 15,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "orgone-light-beam",
-			"name": "Orgone Light Beam",
-			"size": "Light Beam",
-			"material": "Orgone",
-			"damage": "2k2",
-			"disruption": 5,
-			"accuracy": 10,
-			"crit": -1,
-			"range": 10,
-			"cost": 5,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "mass-driver-light-beam",
-			"name": "Mass Driver Light Beam",
-			"size": "Light Beam",
-			"material": "Mass Driver",
-			"damage": "3k2",
-			"disruption": 0,
-			"accuracy": 10,
-			"crit": -1,
-			"range": 8,
-			"cost": 5,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "positron-light-beam",
-			"name": "Positron Light Beam",
-			"size": "Light Beam",
-			"material": "Positron",
-			"damage": "3k2",
-			"disruption": 4,
-			"accuracy": 0,
-			"crit": 0,
-			"range": 16,
-			"cost": 15,
-			"arc": "Normal",
-			"type": "Array"
-		},
-		{
-			"id": "anti-meson-light-beam",
-			"name": "Anti-Meson Light Beam",
-			"size": "Light Beam",
-			"material": "Anti-Meson",
-			"damage": "2k2",
-			"disruption": 0,
-			"accuracy": 5,
-			"crit": -1,
-			"range": 20,
-			"cost": 5,
-			"arc": "Normal",
-			"type": "Array"
-		},
+    {
+      "id": "las-light-beam",
+      "name": "Las Light Beam",
+      "size": "Light Beam",
+      "material": "Las",
+      "damage": "3k2",
+      "disruption": 2,
+      "accuracy": 5,
+      "crit": -1,
+      "range": 10,
+      "cost": 10,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "melta-light-beam",
+      "name": "Melta Light Beam",
+      "size": "Light Beam",
+      "material": "Melta",
+      "damage": "4k3",
+      "disruption": 3,
+      "accuracy": 0,
+      "crit": 0,
+      "range": 4,
+      "cost": 15,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "plasma-light-beam",
+      "name": "Plasma Light Beam",
+      "size": "Light Beam",
+      "material": "Plasma",
+      "damage": "4k2",
+      "disruption": 0,
+      "accuracy": 0,
+      "crit": 1,
+      "range": 10,
+      "cost": 15,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "orgone-light-beam",
+      "name": "Orgone Light Beam",
+      "size": "Light Beam",
+      "material": "Orgone",
+      "damage": "2k2",
+      "disruption": 5,
+      "accuracy": 10,
+      "crit": -1,
+      "range": 10,
+      "cost": 5,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "mass-driver-light-beam",
+      "name": "Mass Driver Light Beam",
+      "size": "Light Beam",
+      "material": "Mass Driver",
+      "damage": "3k2",
+      "disruption": 0,
+      "accuracy": 10,
+      "crit": -1,
+      "range": 8,
+      "cost": 5,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "positron-light-beam",
+      "name": "Positron Light Beam",
+      "size": "Light Beam",
+      "material": "Positron",
+      "damage": "3k2",
+      "disruption": 4,
+      "accuracy": 0,
+      "crit": 0,
+      "range": 16,
+      "cost": 15,
+      "arc": "Normal",
+      "type": "Array"
+    },
+    {
+      "id": "anti-meson-light-beam",
+      "name": "Anti-Meson Light Beam",
+      "size": "Light Beam",
+      "material": "Anti-Meson",
+      "damage": "2k2",
+      "disruption": 0,
+      "accuracy": 5,
+      "crit": -1,
+      "range": 20,
+      "cost": 5,
+      "arc": "Normal",
+      "type": "Array"
+    },
 
-		{
-			"id": "las-heavy-beam",
-			"name": "Las Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Las",
-			"damage": "4k2",
-			"disruption": 2,
-			"accuracy": 0,
-			"crit": 1,
-			"range": 15,
-			"cost": 15,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "melta-heavy-beam",
-			"name": "Melta Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Melta",
-			"damage": "5k3",
-			"disruption": 3,
-			"accuracy": -5,
-			"crit": 2,
-			"range": 6,
-			"cost": 20,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "plasma-heavy-beam",
-			"name": "Plasma Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Plasma",
-			"damage": "5k2",
-			"disruption": 0,
-			"accuracy": -5,
-			"crit": 3,
-			"range": 15,
-			"cost": 20,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "orgone-heavy-beam",
-			"name": "Orgone Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Orgone",
-			"damage": "3k2",
-			"disruption": 5,
-			"accuracy": 5,
-			"crit": 1,
-			"range": 15,
-			"cost": 10,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "mass-driver-heavy-beam",
-			"name": "Mass Driver Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Mass Driver",
-			"damage": "4k2",
-			"disruption": 0,
-			"accuracy": 5,
-			"crit": 1,
-			"range": 12,
-			"cost": 10,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "positron-heavy-beam",
-			"name": "Positron Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Positron",
-			"damage": "4k2",
-			"disruption": 4,
-			"accuracy": -5,
-			"crit": 2,
-			"range": 24,
-			"cost": 20,
-			"arc": "Narrow",
-			"type": "Array"
-		},
-		{
-			"id": "anti-meson-heavy-beam",
-			"name": "Anti-Meson Heavy Beam",
-			"size": "Heavy Beam",
-			"material": "Anti-Meson",
-			"damage": "3k2",
-			"disruption": 1,
-			"accuracy": 0,
-			"crit": 1,
-			"range": 30,
-			"cost": 10,
-			"arc": "Narrow",
-			"type": "Array"
-		},
+    {
+      "id": "las-heavy-beam",
+      "name": "Las Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Las",
+      "damage": "4k2",
+      "disruption": 2,
+      "accuracy": 0,
+      "crit": 1,
+      "range": 15,
+      "cost": 15,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "melta-heavy-beam",
+      "name": "Melta Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Melta",
+      "damage": "5k3",
+      "disruption": 3,
+      "accuracy": -5,
+      "crit": 2,
+      "range": 6,
+      "cost": 20,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "plasma-heavy-beam",
+      "name": "Plasma Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Plasma",
+      "damage": "5k2",
+      "disruption": 0,
+      "accuracy": -5,
+      "crit": 3,
+      "range": 15,
+      "cost": 20,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "orgone-heavy-beam",
+      "name": "Orgone Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Orgone",
+      "damage": "3k2",
+      "disruption": 5,
+      "accuracy": 5,
+      "crit": 1,
+      "range": 15,
+      "cost": 10,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "mass-driver-heavy-beam",
+      "name": "Mass Driver Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Mass Driver",
+      "damage": "4k2",
+      "disruption": 0,
+      "accuracy": 5,
+      "crit": 1,
+      "range": 12,
+      "cost": 10,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "positron-heavy-beam",
+      "name": "Positron Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Positron",
+      "damage": "4k2",
+      "disruption": 4,
+      "accuracy": -5,
+      "crit": 2,
+      "range": 24,
+      "cost": 20,
+      "arc": "Narrow",
+      "type": "Array"
+    },
+    {
+      "id": "anti-meson-heavy-beam",
+      "name": "Anti-Meson Heavy Beam",
+      "size": "Heavy Beam",
+      "material": "Anti-Meson",
+      "damage": "3k2",
+      "disruption": 1,
+      "accuracy": 0,
+      "crit": 1,
+      "range": 30,
+      "cost": 10,
+      "arc": "Narrow",
+      "type": "Array"
+    },
 
-		{
-			"id": "las-turret",
-			"name": "Las Turret",
-			"size": "Turret",
-			"material": "Las",
-			"damage": "3k2",
-			"disruption": 3,
-			"accuracy": 0,
-			"crit": 0,
-			"range": 5,
-			"cost": 10,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "melta-turret",
-			"name": "Melta Turret",
-			"size": "Turret",
-			"material": "Melta",
-			"damage": "4k3",
-			"disruption": 4,
-			"accuracy": -5,
-			"crit": 1,
-			"range": 3,
-			"cost": 15,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "plasma-turret",
-			"name": "Plasma Turret",
-			"size": "Turret",
-			"material": "Plasma",
-			"damage": "4k2",
-			"disruption": 1,
-			"accuracy": -5,
-			"crit": 2,
-			"range": 5,
-			"cost": 15,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "orgone-turret",
-			"name": "Orgone Turret",
-			"size": "Turret",
-			"material": "Orgone",
-			"damage": "2k2",
-			"disruption": 6,
-			"accuracy": 5,
-			"crit": -2,
-			"range": 5,
-			"cost": 5,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "mass-driver-turret",
-			"name": "Mass Driver Turret",
-			"size": "Turret",
-			"material": "Mass Driver",
-			"damage": "3k2",
-			"disruption": 2,
-			"accuracy": 5,
-			"crit": 0,
-			"range": 4,
-			"cost": 5,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "positron-turret",
-			"name": "Positron Turret",
-			"size": "Turret",
-			"material": "Positron",
-			"damage": "3k2",
-			"disruption": 5,
-			"accuracy": -5,
-			"crit": 1,
-			"range": 8,
-			"cost": 15,
-			"arc": "Wide",
-			"type": "Lance"
-		},
-		{
-			"id": "anti-meson-turret",
-			"name": "Anti-Meson Turret",
-			"size": "Turret",
-			"material": "Anti-Meson",
-			"damage": "2k2",
-			"disruption": 2,
-			"accuracy": 0,
-			"crit": 0,
-			"range": 10,
-			"cost": 5,
-			"arc": "Wide",
-			"type": "Lance"
-		}
-	],
-	"torpedoTubeCost": 5,
-	"torpedoes": [
-		{
-			"id": "micro",
-			"name": "Micro Torpedo",
-			"damage": "4k4",
-			"disruption": 2,
-			"accuracy": 2,
-			"crit": 5,
-			"arc": "Normal",
-			"range": 5,
-			"cost": 1,
-			"effect": "Cheap option, most captains maintain a stock"
-		},
-		{
-			"id": "photon",
-			"name": "Photon Torpedo",
-			"damage": "6k6",
-			"disruption": 3,
-			"accuracy": 3,
-			"crit": 0,
-			"arc": "Narrow",
-			"range": 8,
-			"cost": 2,
-			"effect": "Standard military torpedo"
-		},
-		{
-			"id": "monopole",
-			"name": "Monopole Torpedo",
-			"damage": "6k4",
-			"disruption": 10,
-			"accuracy": 0,
-			"crit": 0,
-			"arc": "Narrow",
-			"range": 2,
-			"cost": 2,
-			"effect": "Target suffers -10 Maneuverability and Acceleration for 1d10 rounds (doesn\u2019t stack)"
-		},
-		{
-			"id": "quath",
-			"name": "Quath Torpedo",
-			"damage": "4k4",
-			"disruption": 0,
-			"accuracy": 0,
-			"crit": 8,
-			"arc": "Narrow",
-			"range": 2,
-			"cost": 2,
-			"effect": "Pierces shields automatically; if piercing, Crit reduced to 0"
-		},
-		{
-			"id": "cruise",
-			"name": "Cruise Torpedo",
-			"damage": "6k6",
-			"disruption": 3,
-			"accuracy": 3,
-			"crit": 0,
-			"arc": "Narrow",
-			"range": 30,
-			"cost": 3,
-			"effect": "Exceptional range; no piloting Test needed for orbital bombardment"
-		},
-		{
-			"id": "high-act",
-			"name": "High-Act Torpedo",
-			"damage": "6k6",
-			"disruption": 3,
-			"accuracy": 3,
-			"crit": 5,
-			"arc": "Wide",
-			"range": 20,
-			"cost": 5,
-			"effect": "High accuracy, can fire in any direction; on missed bombardment, roll scatter twice and choose"
-		},
-		{
-			"id": "rift",
-			"name": "Rift Torpedo",
-			"damage": "8k8",
-			"disruption": 4,
-			"accuracy": 4,
-			"crit": 0,
-			"arc": "Narrow",
-			"range": 5,
-			"cost": 5,
-			"effect": "If deals hull damage, ship loses 1d10 crew automatically"
-		}
-	],
-	"shields": [
-		{
-			"id": "standard-mk1",
-			"name": "Standard Mk I",
-			"type": "Standard",
-			"mark": 1,
-			"capacity": 80,
-			"regeneration": 15,
-			"special": "",
-			"cost": 5
-		},
-		{
-			"id": "standard-mk2",
-			"name": "Standard Mk II",
-			"type": "Standard",
-			"mark": 2,
-			"capacity": 105,
-			"regeneration": 15,
-			"special": "",
-			"cost": 10
-		},
-		{
-			"id": "standard-mk3",
-			"name": "Standard Mk III",
-			"type": "Standard",
-			"mark": 3,
-			"capacity": 125,
-			"regeneration": 20,
-			"special": "",
-			"cost": 15
-		},
-		{
-			"id": "standard-mk4",
-			"name": "Standard Mk IV",
-			"type": "Standard",
-			"mark": 4,
-			"capacity": 150,
-			"regeneration": 20,
-			"special": "",
-			"cost": 20
-		},
-		{
-			"id": "covariant-mk1",
-			"name": "Covariant Mk I",
-			"type": "Covariant",
-			"mark": 1,
-			"capacity": 100,
-			"regeneration": 5,
-			"special": "High capacity, low regen",
-			"cost": 5
-		},
-		{
-			"id": "covariant-mk2",
-			"name": "Covariant Mk II",
-			"type": "Covariant",
-			"mark": 2,
-			"capacity": 135,
-			"regeneration": 5,
-			"special": "High capacity, low regen",
-			"cost": 10
-		},
-		{
-			"id": "covariant-mk3",
-			"name": "Covariant Mk III",
-			"type": "Covariant",
-			"mark": 3,
-			"capacity": 165,
-			"regeneration": 10,
-			"special": "High capacity, low regen",
-			"cost": 15
-		},
-		{
-			"id": "covariant-mk4",
-			"name": "Covariant Mk IV",
-			"type": "Covariant",
-			"mark": 4,
-			"capacity": 200,
-			"regeneration": 10,
-			"special": "High capacity, low regen",
-			"cost": 20
-		},
-		{
-			"id": "regenerative-mk1",
-			"name": "Regenerative Mk I",
-			"type": "Regenerative",
-			"mark": 1,
-			"capacity": 60,
-			"regeneration": 25,
-			"special": "Fast recovery",
-			"cost": 5
-		},
-		{
-			"id": "regenerative-mk2",
-			"name": "Regenerative Mk II",
-			"type": "Regenerative",
-			"mark": 2,
-			"capacity": 75,
-			"regeneration": 30,
-			"special": "Fast recovery",
-			"cost": 10
-		},
-		{
-			"id": "regenerative-mk3",
-			"name": "Regenerative Mk III",
-			"type": "Regenerative",
-			"mark": 3,
-			"capacity": 85,
-			"regeneration": 35,
-			"special": "Fast recovery",
-			"cost": 15
-		},
-		{
-			"id": "regenerative-mk4",
-			"name": "Regenerative Mk IV",
-			"type": "Regenerative",
-			"mark": 4,
-			"capacity": 100,
-			"regeneration": 40,
-			"special": "Fast recovery",
-			"cost": 20
-		},
-		{
-			"id": "resilient-mk1",
-			"name": "Resilient Mk I",
-			"type": "Resilient",
-			"mark": 1,
-			"capacity": 80,
-			"regeneration": 7,
-			"special": "Cannot be disrupted",
-			"cost": 5
-		},
-		{
-			"id": "resilient-mk2",
-			"name": "Resilient Mk II",
-			"type": "Resilient",
-			"mark": 2,
-			"capacity": 115,
-			"regeneration": 9,
-			"special": "Cannot be disrupted",
-			"cost": 10
-		},
-		{
-			"id": "resilient-mk3",
-			"name": "Resilient Mk III",
-			"type": "Resilient",
-			"mark": 3,
-			"capacity": 140,
-			"regeneration": 11,
-			"special": "Cannot be disrupted",
-			"cost": 15
-		},
-		{
-			"id": "resilient-mk4",
-			"name": "Resilient Mk IV",
-			"type": "Resilient",
-			"mark": 4,
-			"capacity": 170,
-			"regeneration": 13,
-			"special": "Cannot be disrupted",
-			"cost": 20
-		},
-		{
-			"id": "multiphasic-mk1",
-			"name": "Multiphasic Mk I",
-			"type": "Multiphasic",
-			"mark": 1,
-			"capacity": 20,
-			"regeneration": 10,
-			"special": "3 overlapping layers",
-			"cost": 5,
-			"layers": 3
-		},
-		{
-			"id": "multiphasic-mk2",
-			"name": "Multiphasic Mk II",
-			"type": "Multiphasic",
-			"mark": 2,
-			"capacity": 20,
-			"regeneration": 10,
-			"special": "4 overlapping layers",
-			"cost": 10,
-			"layers": 4
-		},
-		{
-			"id": "multiphasic-mk3",
-			"name": "Multiphasic Mk III",
-			"type": "Multiphasic",
-			"mark": 3,
-			"capacity": 20,
-			"regeneration": 10,
-			"special": "5 overlapping layers",
-			"cost": 15,
-			"layers": 5
-		},
-		{
-			"id": "multiphasic-mk4",
-			"name": "Multiphasic Mk IV",
-			"type": "Multiphasic",
-			"mark": 4,
-			"capacity": 20,
-			"regeneration": 10,
-			"special": "6 overlapping layers",
-			"cost": 20,
-			"layers": 6
-		}
-	],
-	"criticalDamage": [
-		{
-			"roll": "<1",
-			"name": "Armor Scuffing",
-			"effect": "No effect beyond cosmetic damage"
-		},
-		{
-			"roll": "1",
-			"name": "Minor Damage",
-			"effect": "Attacker chooses one console; disabled until Emergency Repairs TN 15"
-		},
-		{ "roll": "2", "name": "Power Surge", "effect": "Lose 1 Crew" },
-		{
-			"roll": "3",
-			"name": "Sensors Damaged",
-			"effect": "Sensors at -20 until Emergency Repairs TN 15"
-		},
-		{
-			"roll": "4",
-			"name": "Venting Plasma",
-			"effect": "No Divert Power tests; 1 hull damage each turn until Emergency Repairs TN 15"
-		},
-		{
-			"roll": "5",
-			"name": "Bridge Rattled",
-			"effect": "No Command Actions until Emergency Repairs TN 15; lose 1 Crew"
-		},
-		{
-			"roll": "6",
-			"name": "Thrusters Damaged",
-			"effect": "Cannot Adjust Heading or Evasive Maneuvers until Emergency Repairs TN 20"
-		},
-		{
-			"roll": "7",
-			"name": "Hull Cracked",
-			"effect": "Lose additional 1d10 Hull; lose 2 Crew"
-		},
-		{
-			"roll": "8",
-			"name": "Radiation Leak",
-			"effect": "Lose 1 Crew each round until Emergency Repairs TN 20"
-		},
-		{
-			"roll": "9",
-			"name": "Weapons Offline",
-			"effect": "Cannot fire weapons until Emergency Repairs TN 20"
-		},
-		{
-			"roll": "10",
-			"name": "System Failure",
-			"effect": "Attacker chooses one console; disabled until Emergency Repairs TN 25; lose 2 Crew"
-		},
-		{
-			"roll": "11",
-			"name": "Hull Breached",
-			"effect": "Lose 1d10 Crew; crits at +2 until repaired (two TN 15 tests)"
-		},
-		{
-			"roll": "12",
-			"name": "Engines Crippled",
-			"effect": "No Maneuver Actions (drift forward at half speed); repair requires two TN 20 tests"
-		},
-		{
-			"roll": "13+",
-			"name": "Secondary Explosion",
-			"effect": "Lose 1d10 Hull and 1d10 Crew; roll again on Crit Table (weapon\u2019s Crit applies)"
-		}
-	]
+    {
+      "id": "las-turret",
+      "name": "Las Turret",
+      "size": "Turret",
+      "material": "Las",
+      "damage": "3k2",
+      "disruption": 3,
+      "accuracy": 0,
+      "crit": 0,
+      "range": 5,
+      "cost": 10,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "melta-turret",
+      "name": "Melta Turret",
+      "size": "Turret",
+      "material": "Melta",
+      "damage": "4k3",
+      "disruption": 4,
+      "accuracy": -5,
+      "crit": 1,
+      "range": 3,
+      "cost": 15,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "plasma-turret",
+      "name": "Plasma Turret",
+      "size": "Turret",
+      "material": "Plasma",
+      "damage": "4k2",
+      "disruption": 1,
+      "accuracy": -5,
+      "crit": 2,
+      "range": 5,
+      "cost": 15,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "orgone-turret",
+      "name": "Orgone Turret",
+      "size": "Turret",
+      "material": "Orgone",
+      "damage": "2k2",
+      "disruption": 6,
+      "accuracy": 5,
+      "crit": -2,
+      "range": 5,
+      "cost": 5,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "mass-driver-turret",
+      "name": "Mass Driver Turret",
+      "size": "Turret",
+      "material": "Mass Driver",
+      "damage": "3k2",
+      "disruption": 2,
+      "accuracy": 5,
+      "crit": 0,
+      "range": 4,
+      "cost": 5,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "positron-turret",
+      "name": "Positron Turret",
+      "size": "Turret",
+      "material": "Positron",
+      "damage": "3k2",
+      "disruption": 5,
+      "accuracy": -5,
+      "crit": 1,
+      "range": 8,
+      "cost": 15,
+      "arc": "Wide",
+      "type": "Lance"
+    },
+    {
+      "id": "anti-meson-turret",
+      "name": "Anti-Meson Turret",
+      "size": "Turret",
+      "material": "Anti-Meson",
+      "damage": "2k2",
+      "disruption": 2,
+      "accuracy": 0,
+      "crit": 0,
+      "range": 10,
+      "cost": 5,
+      "arc": "Wide",
+      "type": "Lance"
+    }
+  ],
+  "torpedoTubeCost": 5,
+  "torpedoes": [
+    {
+      "id": "micro",
+      "name": "Micro Torpedo",
+      "damage": "4k4",
+      "disruption": 2,
+      "accuracy": 2,
+      "crit": 5,
+      "arc": "Normal",
+      "range": 5,
+      "cost": 1,
+      "effect": "Cheap option, most captains maintain a stock"
+    },
+    {
+      "id": "photon",
+      "name": "Photon Torpedo",
+      "damage": "6k6",
+      "disruption": 3,
+      "accuracy": 3,
+      "crit": 0,
+      "arc": "Narrow",
+      "range": 8,
+      "cost": 2,
+      "effect": "Standard military torpedo"
+    },
+    {
+      "id": "monopole",
+      "name": "Monopole Torpedo",
+      "damage": "6k4",
+      "disruption": 10,
+      "accuracy": 0,
+      "crit": 0,
+      "arc": "Narrow",
+      "range": 2,
+      "cost": 2,
+      "effect": "Target suffers -10 Maneuverability and Acceleration for 1d10 rounds (doesn\u2019t stack)"
+    },
+    {
+      "id": "quath",
+      "name": "Quath Torpedo",
+      "damage": "4k4",
+      "disruption": 0,
+      "accuracy": 0,
+      "crit": 8,
+      "arc": "Narrow",
+      "range": 2,
+      "cost": 2,
+      "effect": "Pierces shields automatically; if piercing, Crit reduced to 0"
+    },
+    {
+      "id": "cruise",
+      "name": "Cruise Torpedo",
+      "damage": "6k6",
+      "disruption": 3,
+      "accuracy": 3,
+      "crit": 0,
+      "arc": "Narrow",
+      "range": 30,
+      "cost": 3,
+      "effect": "Exceptional range; no piloting Test needed for orbital bombardment"
+    },
+    {
+      "id": "high-act",
+      "name": "High-Act Torpedo",
+      "damage": "6k6",
+      "disruption": 3,
+      "accuracy": 3,
+      "crit": 5,
+      "arc": "Wide",
+      "range": 20,
+      "cost": 5,
+      "effect": "High accuracy, can fire in any direction; on missed bombardment, roll scatter twice and choose"
+    },
+    {
+      "id": "rift",
+      "name": "Rift Torpedo",
+      "damage": "8k8",
+      "disruption": 4,
+      "accuracy": 4,
+      "crit": 0,
+      "arc": "Narrow",
+      "range": 5,
+      "cost": 5,
+      "effect": "If deals hull damage, ship loses 1d10 crew automatically"
+    }
+  ],
+  "shields": [
+    {
+      "id": "standard-mk1",
+      "name": "Standard Mk I",
+      "type": "Standard",
+      "mark": 1,
+      "capacity": 80,
+      "regeneration": 15,
+      "special": "",
+      "cost": 5
+    },
+    {
+      "id": "standard-mk2",
+      "name": "Standard Mk II",
+      "type": "Standard",
+      "mark": 2,
+      "capacity": 105,
+      "regeneration": 15,
+      "special": "",
+      "cost": 10
+    },
+    {
+      "id": "standard-mk3",
+      "name": "Standard Mk III",
+      "type": "Standard",
+      "mark": 3,
+      "capacity": 125,
+      "regeneration": 20,
+      "special": "",
+      "cost": 15
+    },
+    {
+      "id": "standard-mk4",
+      "name": "Standard Mk IV",
+      "type": "Standard",
+      "mark": 4,
+      "capacity": 150,
+      "regeneration": 20,
+      "special": "",
+      "cost": 20
+    },
+    {
+      "id": "covariant-mk1",
+      "name": "Covariant Mk I",
+      "type": "Covariant",
+      "mark": 1,
+      "capacity": 100,
+      "regeneration": 5,
+      "special": "High capacity, low regen",
+      "cost": 5
+    },
+    {
+      "id": "covariant-mk2",
+      "name": "Covariant Mk II",
+      "type": "Covariant",
+      "mark": 2,
+      "capacity": 135,
+      "regeneration": 5,
+      "special": "High capacity, low regen",
+      "cost": 10
+    },
+    {
+      "id": "covariant-mk3",
+      "name": "Covariant Mk III",
+      "type": "Covariant",
+      "mark": 3,
+      "capacity": 165,
+      "regeneration": 10,
+      "special": "High capacity, low regen",
+      "cost": 15
+    },
+    {
+      "id": "covariant-mk4",
+      "name": "Covariant Mk IV",
+      "type": "Covariant",
+      "mark": 4,
+      "capacity": 200,
+      "regeneration": 10,
+      "special": "High capacity, low regen",
+      "cost": 20
+    },
+    {
+      "id": "regenerative-mk1",
+      "name": "Regenerative Mk I",
+      "type": "Regenerative",
+      "mark": 1,
+      "capacity": 60,
+      "regeneration": 25,
+      "special": "Fast recovery",
+      "cost": 5
+    },
+    {
+      "id": "regenerative-mk2",
+      "name": "Regenerative Mk II",
+      "type": "Regenerative",
+      "mark": 2,
+      "capacity": 75,
+      "regeneration": 30,
+      "special": "Fast recovery",
+      "cost": 10
+    },
+    {
+      "id": "regenerative-mk3",
+      "name": "Regenerative Mk III",
+      "type": "Regenerative",
+      "mark": 3,
+      "capacity": 85,
+      "regeneration": 35,
+      "special": "Fast recovery",
+      "cost": 15
+    },
+    {
+      "id": "regenerative-mk4",
+      "name": "Regenerative Mk IV",
+      "type": "Regenerative",
+      "mark": 4,
+      "capacity": 100,
+      "regeneration": 40,
+      "special": "Fast recovery",
+      "cost": 20
+    },
+    {
+      "id": "resilient-mk1",
+      "name": "Resilient Mk I",
+      "type": "Resilient",
+      "mark": 1,
+      "capacity": 80,
+      "regeneration": 7,
+      "special": "Cannot be disrupted",
+      "cost": 5
+    },
+    {
+      "id": "resilient-mk2",
+      "name": "Resilient Mk II",
+      "type": "Resilient",
+      "mark": 2,
+      "capacity": 115,
+      "regeneration": 9,
+      "special": "Cannot be disrupted",
+      "cost": 10
+    },
+    {
+      "id": "resilient-mk3",
+      "name": "Resilient Mk III",
+      "type": "Resilient",
+      "mark": 3,
+      "capacity": 140,
+      "regeneration": 11,
+      "special": "Cannot be disrupted",
+      "cost": 15
+    },
+    {
+      "id": "resilient-mk4",
+      "name": "Resilient Mk IV",
+      "type": "Resilient",
+      "mark": 4,
+      "capacity": 170,
+      "regeneration": 13,
+      "special": "Cannot be disrupted",
+      "cost": 20
+    },
+    {
+      "id": "multiphasic-mk1",
+      "name": "Multiphasic Mk I",
+      "type": "Multiphasic",
+      "mark": 1,
+      "capacity": 20,
+      "regeneration": 10,
+      "special": "3 overlapping layers",
+      "cost": 5,
+      "layers": 3
+    },
+    {
+      "id": "multiphasic-mk2",
+      "name": "Multiphasic Mk II",
+      "type": "Multiphasic",
+      "mark": 2,
+      "capacity": 20,
+      "regeneration": 10,
+      "special": "4 overlapping layers",
+      "cost": 10,
+      "layers": 4
+    },
+    {
+      "id": "multiphasic-mk3",
+      "name": "Multiphasic Mk III",
+      "type": "Multiphasic",
+      "mark": 3,
+      "capacity": 20,
+      "regeneration": 10,
+      "special": "5 overlapping layers",
+      "cost": 15,
+      "layers": 5
+    },
+    {
+      "id": "multiphasic-mk4",
+      "name": "Multiphasic Mk IV",
+      "type": "Multiphasic",
+      "mark": 4,
+      "capacity": 20,
+      "regeneration": 10,
+      "special": "6 overlapping layers",
+      "cost": 20,
+      "layers": 6
+    }
+  ],
+  "criticalDamage": [
+    {
+      "roll": "<1",
+      "name": "Armor Scuffing",
+      "effect": "No effect beyond cosmetic damage"
+    },
+    {
+      "roll": "1",
+      "name": "Minor Damage",
+      "effect": "Attacker chooses one console; disabled until Emergency Repairs TN 15"
+    },
+    { "roll": "2", "name": "Power Surge", "effect": "Lose 1 Crew" },
+    {
+      "roll": "3",
+      "name": "Sensors Damaged",
+      "effect": "Sensors at -20 until Emergency Repairs TN 15"
+    },
+    {
+      "roll": "4",
+      "name": "Venting Plasma",
+      "effect": "No Divert Power tests; 1 hull damage each turn until Emergency Repairs TN 15"
+    },
+    {
+      "roll": "5",
+      "name": "Bridge Rattled",
+      "effect": "No Command Actions until Emergency Repairs TN 15; lose 1 Crew"
+    },
+    {
+      "roll": "6",
+      "name": "Thrusters Damaged",
+      "effect": "Cannot Adjust Heading or Evasive Maneuvers until Emergency Repairs TN 20"
+    },
+    {
+      "roll": "7",
+      "name": "Hull Cracked",
+      "effect": "Lose additional 1d10 Hull; lose 2 Crew"
+    },
+    {
+      "roll": "8",
+      "name": "Radiation Leak",
+      "effect": "Lose 1 Crew each round until Emergency Repairs TN 20"
+    },
+    {
+      "roll": "9",
+      "name": "Weapons Offline",
+      "effect": "Cannot fire weapons until Emergency Repairs TN 20"
+    },
+    {
+      "roll": "10",
+      "name": "System Failure",
+      "effect": "Attacker chooses one console; disabled until Emergency Repairs TN 25; lose 2 Crew"
+    },
+    {
+      "roll": "11",
+      "name": "Hull Breached",
+      "effect": "Lose 1d10 Crew; crits at +2 until repaired (two TN 15 tests)"
+    },
+    {
+      "roll": "12",
+      "name": "Engines Crippled",
+      "effect": "No Maneuver Actions (drift forward at half speed); repair requires two TN 20 tests"
+    },
+    {
+      "roll": "13+",
+      "name": "Secondary Explosion",
+      "effect": "Lose 1d10 Hull and 1d10 Crew; roll again on Crit Table (weapon\u2019s Crit applies)"
+    }
+  ]
 }

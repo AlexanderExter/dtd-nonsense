@@ -34,7 +34,7 @@ Standard Unix commands work: `cat`, `grep`, `head`, `tail`, `ls`, `rm`, `which`,
 ### Toolchain
 
 - **Bun**: Package manager, test runner, script runner, and TypeScript pipeline executor. Standard `bun run build`, `bun run dev`. Node modules live in `node_modules/`.
-- **Biome**: Linter/formatter for JS/TS/CSS. Run `bun run lint` to check; **run `bun run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
+- **Biome**: Linter/formatter for JS/TS/CSS, configured via **ultracite** presets (`ultracite/biome/{core,react,astro}`) with project-specific overrides. Run `bun run lint` to check; **run `bun run lint:fix` to auto-fix all fixable violations at once** — use this instead of manually patching files one by one. Config in `biome.json`. CI runs `biome ci .` before build.
 - **bun:test**: Built-in test runner (Jest-compatible). Unit tests across multiple test files (core, dice, schemas, pipeline scripts). Run `bun run test` (or `bun test` directly) to run all tests. Config via `bunfig.toml`.
 - **React**: UI framework for tool pages. `@astrojs/react` integration, **Zustand** for state management, **Radix UI** for accessible primitives.
 - **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
@@ -195,6 +195,7 @@ TypeScript pipeline scripts (run via bun):
 | `bun run session:end`      | Squash-merge to main + cleanup                                                     |
 | `bun run session:status`   | Quick git state report                                                             |
 | `bun run upgrade:recon`    | Dependency recon: outdated, audit, tree health, override check                     |
+| `bun run maintenance:recon` | Comprehensive project discovery for maintenance sessions                           |
 
 All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 

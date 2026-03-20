@@ -55,7 +55,7 @@ export function EquipmentStep() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 				{packages.map((pkg: any) => {
 					const id = pkg.id || pkg.name;
 					const previewItems = (pkg.items || [])
@@ -66,13 +66,13 @@ export function EquipmentStep() {
 					return (
 						<SelectionCard
 							key={id}
-							title={pkg.name}
-							subtitle={pkg.description?.slice(0, 40)}
-							preview={previewItems}
-							selected={meta.equipmentPkg === id}
 							onClick={() => {
 								setSelectedPkg(pkg);
 							}}
+							preview={previewItems}
+							selected={meta.equipmentPkg === id}
+							subtitle={pkg.description?.slice(0, 40)}
+							title={pkg.name}
 						/>
 					);
 				})}
@@ -83,22 +83,22 @@ export function EquipmentStep() {
 					<h3>{preview.name}</h3>
 					{preview.description && <p>{preview.description}</p>}
 
-					<ul className="list-none p-0 m-0">
+					<ul className="m-0 list-none p-0">
 						{(preview.items || []).map((item: any, idx: number) => (
 							<li
+								className="border-border border-b py-xs text-[0.9rem] last:border-b-0"
 								// biome-ignore lint/suspicious/noArrayIndexKey: items may share names, position is stable identity
 								key={`${item.name || "item"}-${idx}`}
-								className="py-xs border-b border-border text-[0.9rem] last:border-b-0"
 							>
 								{item.choice && item.options?.length > 0 ? (
 									<span>
 										<label>
 											{item.name || "Choose"}:{" "}
 											<GameSelect
-												value={meta.equipmentChoices[idx] || item.options[0]}
 												onChange={(e) =>
 													handleChoice(idx, (e.target as HTMLSelectElement).value)
 												}
+												value={meta.equipmentChoices[idx] || item.options[0]}
 											>
 												{item.options.map((opt: string) => (
 													<option key={opt} value={opt}>
@@ -116,7 +116,7 @@ export function EquipmentStep() {
 					</ul>
 
 					<div className="mt-md flex gap-sm">
-						<Button variant="primary" onClick={() => selectPackage(preview)}>
+						<Button onClick={() => selectPackage(preview)} variant="primary">
 							{meta.equipmentPkg === (preview.id || preview.name) ? "Selected ✓" : "Select Package"}
 						</Button>
 					</div>

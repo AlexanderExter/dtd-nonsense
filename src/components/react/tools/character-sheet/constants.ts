@@ -122,7 +122,7 @@ export function getEffChars(char: CharacterData, _raceData: any): Record<string,
 
 /** Get race size from loaded race data. */
 function getRaceSize(char: CharacterData, racesData: any): number {
-	if (!char.race || !racesData) return 4;
+	if (!(char.race && racesData)) return 4;
 	const race = (racesData.races || []).find((r: any) => r.id === char.race);
 	return race?.size ?? 4;
 }
@@ -135,7 +135,7 @@ export function getLevel(char: CharacterData): number {
 
 /** Get resource max from exaltation formula. */
 function getResourceMax(char: CharacterData, effChars: Record<string, number>, exaltData: any): number {
-	if (!char.exaltation || !exaltData) return 0;
+	if (!(char.exaltation && exaltData)) return 0;
 	const exalt = (exaltData.exaltations || []).find((e: any) => e.id === char.exaltation);
 	if (!exalt?.resourceStat) return 0;
 
@@ -164,31 +164,31 @@ function getResourceMax(char: CharacterData, effChars: Record<string, number>, e
 // ---------------------------------------------------------------------------
 
 export interface DerivedStats {
-	sdBase: number;
-	sdMod: number;
-	sd: number;
+	hp: number;
 	hpBase: number;
 	hpMod: number;
-	hp: number;
-	mdBase: number;
-	mdMod: number;
-	md: number;
-	resolveBase: number;
-	resolveMod: number;
-	resolve: number;
-	speedBase: number;
-	speedMod: number;
-	speed: number;
-	runSpeed: number;
-	resilienceBase: number;
-	resilienceMod: number;
-	resilience: number;
+	init: number;
 	initBase: number;
 	initMod: number;
-	init: number;
-	size: number;
 	level: number;
+	md: number;
+	mdBase: number;
+	mdMod: number;
+	resilience: number;
+	resilienceBase: number;
+	resilienceMod: number;
+	resolve: number;
+	resolveBase: number;
+	resolveMod: number;
 	resourceMax: number;
+	runSpeed: number;
+	sd: number;
+	sdBase: number;
+	sdMod: number;
+	size: number;
+	speed: number;
+	speedBase: number;
+	speedMod: number;
 }
 
 export function calculateAllDerived(char: CharacterData, racesData: any, exaltData: any): DerivedStats {
@@ -240,9 +240,9 @@ export function calculateAllDerived(char: CharacterData, racesData: any, exaltDa
 // ---------------------------------------------------------------------------
 
 interface WoundStatus {
-	status: string;
 	cssClass: string;
 	description: string;
+	status: string;
 }
 
 export function getWoundStatus(maxHP: number, currentHP: number, willpower: number, con: number): WoundStatus {

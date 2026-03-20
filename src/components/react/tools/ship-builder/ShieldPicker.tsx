@@ -54,13 +54,13 @@ export function ShieldPicker() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Shields</h2>
-			<div className="flex flex-wrap gap-md items-start">
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Shields</h2>
+			<div className="flex flex-wrap items-start gap-md">
 				<div className="mb-sm min-w-[140px]">
-					<label htmlFor="shield-type" className="text-[0.8rem]">
+					<label className="text-[0.8rem]" htmlFor="shield-type">
 						Type
 					</label>
-					<GameSelect id="shield-type" value={currentType} onChange={handleTypeChange}>
+					<GameSelect id="shield-type" onChange={handleTypeChange} value={currentType}>
 						<option value="">— None —</option>
 						{SHIELD_TYPES.map((t) => (
 							<option key={t} value={t}>
@@ -70,14 +70,14 @@ export function ShieldPicker() {
 					</GameSelect>
 				</div>
 				<div className="mb-sm min-w-[140px]">
-					<label htmlFor="shield-mark" className="text-[0.8rem]">
+					<label className="text-[0.8rem]" htmlFor="shield-mark">
 						Mark
 					</label>
 					<GameSelect
-						id="shield-mark"
-						value={currentMark}
 						disabled={!currentType}
+						id="shield-mark"
 						onChange={handleMarkChange}
+						value={currentMark}
 					>
 						<option value="1">Mk I</option>
 						<option value="2">Mk II</option>
@@ -85,7 +85,7 @@ export function ShieldPicker() {
 						<option value="4">Mk IV</option>
 					</GameSelect>
 				</div>
-				<div className="flex-1 min-w-[200px] p-sm bg-surface-raised border border-border rounded-sm text-[0.85rem]">
+				<div className="min-w-[200px] flex-1 rounded-sm border border-border bg-surface-raised p-sm text-[0.85rem]">
 					{shield ? (
 						<>
 							<div className="flex justify-between py-0.5">

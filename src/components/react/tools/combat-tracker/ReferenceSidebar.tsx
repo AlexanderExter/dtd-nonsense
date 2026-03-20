@@ -1,20 +1,20 @@
+import { useState } from "react";
 import { AccordionItem } from "@/components/react/ui/Accordion";
 import { Badge } from "@/components/react/ui/Badge";
 import { Button } from "@/components/react/ui/Button";
 import { CloseButton } from "@/components/react/ui/CloseButton";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import type { ActionDef } from "./constants";
 import { ACTIONS, CONDITIONS, HIT_LOCATIONS, SITUATIONAL_MODIFIERS } from "./constants";
 
 interface ReferenceSidebarProps {
+	damageResult: string;
+	hitLocationResult: string;
 	isOpen: boolean;
+	onCalcDamage: (raw: number, ap: number, pen: number, resilience: number) => void;
 	onClose: () => void;
 	onRollLocation: () => void;
-	hitLocationResult: string;
-	damageResult: string;
-	onCalcDamage: (raw: number, ap: number, pen: number, resilience: number) => void;
 }
 
 const ACTION_TYPE_LABELS: Record<ActionDef["type"], string> = {
@@ -59,28 +59,28 @@ export function ReferenceSidebar({
 	};
 
 	const sidebarClasses = cn(
-		"w-[340px] shrink-0 bg-surface border-l border-border p-md overflow-y-auto max-h-[calc(100vh-60px-48px)] sticky top-[60px]",
-		"max-[1099px]:fixed max-[1099px]:top-0 max-[1099px]:right-0 max-[1099px]:bottom-0 max-[1099px]:z-[150] max-[1099px]:translate-x-full max-[1099px]:transition-transform max-[1099px]:duration-[250ms] max-[1099px]:max-h-screen",
+		"sticky top-[60px] max-h-[calc(100vh-60px-48px)] w-[340px] shrink-0 overflow-y-auto border-border border-l bg-surface p-md",
+		"max-[1099px]:fixed max-[1099px]:top-0 max-[1099px]:right-0 max-[1099px]:bottom-0 max-[1099px]:z-[150] max-[1099px]:max-h-screen max-[1099px]:translate-x-full max-[1099px]:transition-transform max-[1099px]:duration-[250ms]",
 		"max-[768px]:w-full",
 		isOpen && "max-[1099px]:translate-x-0",
 	);
 
 	return (
 		<aside className={sidebarClasses}>
-			<div className="flex justify-between items-center mb-sm">
+			<div className="mb-sm flex items-center justify-between">
 				<h2 className="m-0 text-accent">Reference</h2>
 				<CloseButton className="hidden max-[1099px]:block" onClick={onClose} />
 			</div>
 
 			<div>
 				{/* Actions */}
-				<AccordionItem title="Actions" defaultOpen>
+				<AccordionItem defaultOpen title="Actions">
 					<GameInput
-						type="text"
 						className="mb-sm"
-						placeholder="Filter actions..."
-						value={actionFilter}
 						onInput={(e) => setActionFilter((e.target as HTMLInputElement).value)}
+						placeholder="Filter actions..."
+						type="text"
+						value={actionFilter}
 					/>
 					<table className="w-full text-[0.8rem]">
 						<thead>
@@ -166,11 +166,11 @@ export function ReferenceSidebar({
 							))}
 						</tbody>
 					</table>
-					<Button size="sm" className="mt-sm" onClick={onRollLocation}>
+					<Button className="mt-sm" onClick={onRollLocation} size="sm">
 						Roll Hit Location
 					</Button>
 					{hitLocationResult && (
-						<div className="mt-sm px-md py-sm bg-bg border border-border rounded-sm text-[0.9rem] text-center min-h-8">
+						<div className="mt-sm min-h-8 rounded-sm border border-border bg-bg px-md py-sm text-center text-[0.9rem]">
 							{hitLocationResult}
 						</div>
 					)}
@@ -178,49 +178,57 @@ export function ReferenceSidebar({
 
 				{/* Damage Calculator */}
 				<AccordionItem title="Damage Calculator">
-					<div className="flex flex-wrap gap-md items-end mt-sm">
-						<label className="flex-none min-w-[90px] max-w-[120px]">
+					<div className="mt-sm flex flex-wrap items-end gap-md">
+						<label className="min-w-[90px] max-w-[120px] flex-none">
 							<span>Raw Damage</span>
 							<GameInput
-								type="number"
 								min={0}
+								onInput={(e) =>
+									setDmgRaw(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
+								}
+								type="number"
 								value={dmgRaw}
-								onInput={(e) => setDmgRaw(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px]">
+						<label className="min-w-[90px] max-w-[120px] flex-none">
 							<span>Armor Points</span>
 							<GameInput
-								type="number"
 								min={0}
+								onInput={(e) =>
+									setDmgAp(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
+								}
+								type="number"
 								value={dmgAp}
-								onInput={(e) => setDmgAp(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px]">
+						<label className="min-w-[90px] max-w-[120px] flex-none">
 							<span>Penetration</span>
 							<GameInput
-								type="number"
 								min={0}
+								onInput={(e) =>
+									setDmgPen(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
+								}
+								type="number"
 								value={dmgPen}
-								onInput={(e) => setDmgPen(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px]">
+						<label className="min-w-[90px] max-w-[120px] flex-none">
 							<span>Resilience</span>
 							<GameInput
-								type="number"
 								min={1}
+								onInput={(e) =>
+									setDmgRes(Number.parseInt((e.target as HTMLInputElement).value, 10) || 1)
+								}
+								type="number"
 								value={dmgRes}
-								onInput={(e) => setDmgRes(parseInt((e.target as HTMLInputElement).value, 10) || 1)}
 							/>
 						</label>
-						<Button variant="primary" size="sm" onClick={handleCalcDamage}>
+						<Button onClick={handleCalcDamage} size="sm" variant="primary">
 							Calculate
 						</Button>
 					</div>
 					{damageResult && (
-						<div className="mt-sm px-md py-sm bg-bg border border-border rounded-sm text-[0.9rem] text-center min-h-8">
+						<div className="mt-sm min-h-8 rounded-sm border border-border bg-bg px-md py-sm text-center text-[0.9rem]">
 							{damageResult}
 						</div>
 					)}

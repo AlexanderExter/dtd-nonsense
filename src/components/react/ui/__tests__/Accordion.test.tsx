@@ -13,7 +13,7 @@ describe("AccordionItem", () => {
 
 	it("renders the count badge when provided", () => {
 		render(
-			<AccordionItem title="Items" count="5">
+			<AccordionItem count="5" title="Items">
 				Content
 			</AccordionItem>,
 		);
@@ -36,7 +36,7 @@ describe("AccordionItem", () => {
 
 		it("is open when defaultOpen is true", () => {
 			render(
-				<AccordionItem title="Open" defaultOpen>
+				<AccordionItem defaultOpen title="Open">
 					Visible content
 				</AccordionItem>,
 			);
@@ -64,7 +64,7 @@ describe("AccordionItem", () => {
 		it("renders content when open is true", () => {
 			const onToggle = () => {};
 			render(
-				<AccordionItem title="Controlled" open={true} onToggle={onToggle}>
+				<AccordionItem onToggle={onToggle} open={true} title="Controlled">
 					Controlled content
 				</AccordionItem>,
 			);
@@ -74,7 +74,7 @@ describe("AccordionItem", () => {
 		it("hides content when open is false", () => {
 			const onToggle = () => {};
 			render(
-				<AccordionItem title="Controlled" open={false} onToggle={onToggle}>
+				<AccordionItem onToggle={onToggle} open={false} title="Controlled">
 					Hidden controlled
 				</AccordionItem>,
 			);
@@ -84,7 +84,7 @@ describe("AccordionItem", () => {
 
 	it("applies custom className", () => {
 		const { container } = render(
-			<AccordionItem title="Custom" className="my-custom-class">
+			<AccordionItem className="my-custom-class" title="Custom">
 				Content
 			</AccordionItem>,
 		);

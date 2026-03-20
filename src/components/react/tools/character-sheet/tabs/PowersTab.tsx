@@ -110,51 +110,51 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 	return (
 		<section className="tab-panel panel-powers">
 			{/* ---------- Hero Points ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Hero Points</h3>
-				<div className="flex gap-md mb-md flex-wrap">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Hero Points</h3>
+				<div className="mb-md flex flex-wrap gap-md">
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Max
 						<GameInput
-							type="number"
-							value={char.heroPointsMax || 2}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.heroPointsMax = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.heroPointsMax || 2}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Current
 						<GameInput
-							type="number"
-							value={char.heroPointsCurrent ?? 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.heroPointsCurrent = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.heroPointsCurrent ?? 0}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Burnt
 						<GameInput
-							type="number"
-							value={char.heroPointsBurnt || 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.heroPointsBurnt = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.heroPointsBurnt || 0}
 						/>
 					</label>
 					<GameCheckbox
+						checked={char.fettered}
 						label="Fettered"
-						checked={char.fettered || false}
 						onChange={(e) =>
 							updateChar((c) => {
 								c.fettered = (e.target as HTMLInputElement).checked;
@@ -164,64 +164,64 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Push Amount
 						<GameInput
-							type="number"
-							value={char.pushAmount || 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.pushAmount = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.pushAmount || 0}
 						/>
 					</label>
 				</div>
 			</div>
 
 			{/* ---------- Power Stat & Resource ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
 					Power Stat &amp; Resource
 				</h3>
-				<div className="flex gap-md mb-md flex-wrap">
+				<div className="mb-md flex flex-wrap gap-md">
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Power Stat
 						<GameInput
-							type="number"
-							value={char.powerStat || 1}
 							min={1}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.powerStat = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.powerStat || 1}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Resource Current
 						<GameInput
-							type="number"
-							value={char.resourceCurrent ?? 0}
-							min={0}
 							max={stats.resourceMax}
+							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.resourceCurrent = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.resourceCurrent ?? 0}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Resource Max
-						<output className="font-bold text-[1.2rem] text-accent py-xs">{stats.resourceMax}</output>
+						<output className="py-xs font-bold text-[1.2rem] text-accent">{stats.resourceMax}</output>
 					</label>
 				</div>
 				{selectedExalt && (
-					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
-						<h4 className="m-0 mb-xs text-text-primary text-[0.9rem]">Exaltation Powers</h4>
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
+						<h4 className="m-0 mb-xs text-[0.9rem] text-text-primary">Exaltation Powers</h4>
 						{selectedExalt.staticPowers && selectedExalt.staticPowers.length > 0 && (
 							<ul className="my-xs pl-lg">
 								{selectedExalt.staticPowers.map((p: any, _i: number) => (
-									<li key={typeof p === "string" ? p : p.name} className="mb-0.5">
+									<li className="mb-0.5" key={typeof p === "string" ? p : p.name}>
 										{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 									</li>
 								))}
@@ -233,8 +233,8 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								<ul className="my-xs pl-lg">
 									{selectedExalt.progression.map((p: any, i: number) => (
 										<li
-											key={typeof p === "string" ? p : `${p.level || i}-${p.name}`}
 											className="mb-0.5"
+											key={typeof p === "string" ? p : `${p.level || i}-${p.name}`}
 										>
 											{typeof p === "string" ? p : `Level ${p.level}: ${p.description || p.name}`}
 										</li>
@@ -247,12 +247,12 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Magic Schools ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Magic Schools</h3>
-				<div className="flex gap-md mb-md flex-wrap">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Magic Schools</h3>
+				<div className="mb-md flex flex-wrap gap-md">
 					<GameCheckbox
+						checked={char.sanctioned}
 						label="Sanctioned"
-						checked={char.sanctioned || false}
 						onChange={(e) =>
 							updateChar((c) => {
 								c.sanctioned = (e.target as HTMLInputElement).checked;
@@ -262,17 +262,17 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Extra School Levels
 						<GameInput
-							type="number"
-							value={char.extraSchoolLevels || 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.extraSchoolLevels = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.extraSchoolLevels || 0}
 						/>
 					</label>
-					<span className="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm">
+					<span className="inline-flex items-center rounded-sm bg-accent/10 px-sm py-xs font-semibold text-[0.85rem] text-accent">
 						Caster Level: {casterLevel}
 					</span>
 				</div>
@@ -284,32 +284,29 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						const charAbbrev = CHAR_ABBREV[school.char] || school.char;
 						return (
 							<div
+								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
 								key={school.id}
-								className="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
 							>
 								<span className="flex-1 font-medium text-[0.85rem]">
 									{school.name} <small>({charAbbrev})</small>
 								</span>
 								<GameInput
-									type="number"
 									className="w-11 text-center font-semibold text-[0.9rem]"
-									value={base}
-									min={0}
 									max={level}
-									title="Base dots"
+									min={0}
 									onInput={(e) =>
 										updateChar((c) => {
 											if (!c.magicSchools) c.magicSchools = {};
 											c.magicSchools[school.id] = Number((e.target as HTMLInputElement).value);
 										})
 									}
+									title="Base dots"
+									type="number"
+									value={base}
 								/>
 								<GameInput
-									type="number"
 									className="w-11 text-center font-semibold text-[0.9rem] text-info"
-									value={bonus}
 									min={0}
-									title="Bonus levels"
 									onInput={(e) =>
 										updateChar((c) => {
 											if (!c.bonusSchoolLevels) c.bonusSchoolLevels = {};
@@ -318,8 +315,11 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 											);
 										})
 									}
+									title="Bonus levels"
+									type="number"
+									value={bonus}
 								/>
-								<span className="font-bold text-accent min-w-5 text-center" title="Effective level">
+								<span className="min-w-5 text-center font-bold text-accent" title="Effective level">
 									= {eff}
 								</span>
 							</div>
@@ -329,21 +329,21 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Spells ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Spells</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Spells</h3>
 				<table className="w-full border-collapse text-[0.85rem]">
 					<thead>
 						<tr>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								School
 							</th>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								Name
 							</th>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								Level
 							</th>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								Notes
 							</th>
 							<th />
@@ -353,12 +353,12 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						{spells.map((sp, idx) => (
 							// biome-ignore lint/suspicious/noArrayIndexKey: editable spell list identified by position
 							<tr key={idx}>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameSelect
-										value={sp.school}
 										onChange={(e) =>
 											handleSpellField(idx, "school", (e.target as HTMLSelectElement).value)
 										}
+										value={sp.school}
 									>
 										<option value="">—</option>
 										{MAGIC_SCHOOLS.map((s) => (
@@ -368,39 +368,39 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 										))}
 									</GameSelect>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
-										type="text"
-										value={sp.name}
 										onInput={(e) =>
 											handleSpellField(idx, "name", (e.target as HTMLInputElement).value)
 										}
+										type="text"
+										value={sp.name}
 									/>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
-										type="number"
-										value={sp.level}
 										min={0}
 										onInput={(e) =>
 											handleSpellField(idx, "level", Number((e.target as HTMLInputElement).value))
 										}
+										type="number"
+										value={sp.level}
 									/>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
-										type="text"
-										value={sp.notes}
 										onInput={(e) =>
 											handleSpellField(idx, "notes", (e.target as HTMLInputElement).value)
 										}
+										type="text"
+										value={sp.notes}
 									/>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<button
-										type="button"
-										className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 										onClick={() => handleRemoveSpell(idx)}
+										type="button"
 									>
 										×
 									</button>
@@ -413,9 +413,9 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Sword Schools ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Sword Schools</h3>
-				<span className="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm mb-sm">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Sword Schools</h3>
+				<span className="mb-sm inline-flex items-center rounded-sm bg-accent/10 px-sm py-xs font-semibold text-[0.85rem] text-accent">
 					Martial Level: {martialLevel}
 				</span>
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
@@ -423,22 +423,22 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						const dots = char.swordSchools?.[school.id] || 0;
 						return (
 							<div
+								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
 								key={school.id}
-								className="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
 							>
 								<span className="flex-1 font-medium text-[0.85rem]">{school.name}</span>
 								<GameInput
-									type="number"
 									className="w-11 text-center font-semibold text-[0.9rem]"
-									value={dots}
-									min={0}
 									max={5}
+									min={0}
 									onInput={(e) =>
 										updateChar((c) => {
 											if (!c.swordSchools) c.swordSchools = {};
 											c.swordSchools[school.id] = Number((e.target as HTMLInputElement).value);
 										})
 									}
+									type="number"
+									value={dots}
 								/>
 							</div>
 						);
@@ -447,15 +447,15 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Special Attacks ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Special Attacks</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Special Attacks</h3>
 				<table className="w-full border-collapse text-[0.85rem]">
 					<thead>
 						<tr>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								Name
 							</th>
-							<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 								Description
 							</th>
 							<th />
@@ -465,29 +465,29 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						{specials.map((sa, idx) => (
 							// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 							<tr key={idx}>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
-										type="text"
-										value={sa.name}
 										onInput={(e) =>
 											handleSpecialField(idx, "name", (e.target as HTMLInputElement).value)
 										}
+										type="text"
+										value={sa.name}
 									/>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
-										type="text"
-										value={sa.description}
 										onInput={(e) =>
 											handleSpecialField(idx, "description", (e.target as HTMLInputElement).value)
 										}
+										type="text"
+										value={sa.description}
 									/>
 								</td>
-								<td className="py-[3px] px-sm border-b border-border align-middle">
+								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<button
-										type="button"
-										className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 										onClick={() => handleRemoveSpecial(idx)}
+										type="button"
 									>
 										×
 									</button>
@@ -500,9 +500,9 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Gun Kata ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Gun Kata</h3>
-				<span className="inline-flex items-center px-sm py-xs bg-accent/10 text-accent text-[0.85rem] font-semibold rounded-sm mb-sm">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Gun Kata</h3>
+				<span className="mb-sm inline-flex items-center rounded-sm bg-accent/10 px-sm py-xs font-semibold text-[0.85rem] text-accent">
 					Gunslinger Level: {gunslingerLevel}
 				</span>
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
@@ -510,22 +510,22 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						const dots = char.gunKata?.[kata.id] || 0;
 						return (
 							<div
+								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
 								key={kata.id}
-								className="flex items-center gap-sm px-sm py-xs bg-bg border border-border rounded-sm"
 							>
 								<span className="flex-1 font-medium text-[0.85rem]">{kata.name}</span>
 								<GameInput
-									type="number"
 									className="w-11 text-center font-semibold text-[0.9rem]"
-									value={dots}
-									min={0}
 									max={5}
+									min={0}
 									onInput={(e) =>
 										updateChar((c) => {
 											if (!c.gunKata) c.gunKata = {};
 											c.gunKata[kata.id] = Number((e.target as HTMLInputElement).value);
 										})
 									}
+									type="number"
+									value={dots}
 								/>
 							</div>
 						);
@@ -534,22 +534,22 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Trick Shots ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Trick Shots</h3>
-				<ul className="list-none p-0 m-0">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Trick Shots</h3>
+				<ul className="m-0 list-none p-0">
 					{trickShots.map((ts, idx) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
-						<li key={idx} className="flex items-center gap-sm mb-1">
+						<li className="mb-1 flex items-center gap-sm" key={idx}>
 							<GameInput
-								type="text"
 								className="flex-1"
-								value={ts}
 								onInput={(e) => handleTrickShotChange(idx, (e.target as HTMLInputElement).value)}
+								type="text"
+								value={ts}
 							/>
 							<button
-								type="button"
-								className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+								className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 								onClick={() => handleRemoveTrickShot(idx)}
+								type="button"
 							>
 								×
 							</button>

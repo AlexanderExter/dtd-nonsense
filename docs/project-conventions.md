@@ -62,7 +62,8 @@ Multiple agents (VS Code Copilot, Claude, etc.) may work on the same repo concur
 - **Same-day agents share a branch** — both commit to `session-YYYY-MM-DD`
 - **Always check git state** before committing (`git status`, `git log --oneline -5`)
 - **Expect unexpected commits** — another agent may have pushed changes since you last checked
-- **Ask the user** if you find uncommitted changes you didn't make, or commits you don't recognize
+- **User hand edits are normal** — the user may edit files directly between agent turns. These are part of the work in progress. Stage and commit them alongside agent changes — don't unstage, isolate, or treat them specially.
+- **Ask the user** if you find commits you don't recognize from an unknown source
 - **Reconciliation**: If branches diverge, ask the user how to merge rather than guessing. The session-wrapup prompt handles this.
 
 ### Other Branch Patterns

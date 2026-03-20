@@ -5,66 +5,66 @@ import { derived } from "@/lib/dtd/derived";
 // =========================================================================
 
 export interface NPCData {
-	name: string;
-	level: number;
-	size: number;
-	speed: number;
-	characteristics: Record<string, number>;
-	skills: Array<{ name: string; dots: number }>;
-	feats: string[];
-	traits: Array<{ id: string; param?: string | number }>;
-	armor: Array<{ name: string; ap: number; locations: string[] }>;
-	weapons: NPCWeapon[];
 	abilities: Array<{ name: string; description: string }>;
+	armor: Array<{ name: string; ap: number; locations: string[] }>;
+	characteristics: Record<string, number>;
+	feats: string[];
 	gear: string;
+	level: number;
+	name: string;
+	size: number;
+	skills: Array<{ name: string; dots: number }>;
+	speed: number;
+	traits: Array<{ id: string; param?: string | number }>;
+	weapons: NPCWeapon[];
 }
 
 export interface NPCWeapon {
-	name: string;
-	type: "melee" | "ranged";
+	clip?: string;
 	damage: string;
 	damageType: string;
+	name: string;
 	pen: number;
-	special: string;
 	range?: number;
-	rof?: string;
-	clip?: string;
 	reload?: string;
+	rof?: string;
+	special: string;
+	type: "melee" | "ranged";
 }
 
 export interface TraitDef {
+	derivedEffects?: Record<string, string>;
 	id: string;
 	name: string;
 	parameterized?: boolean;
 	paramLabel?: string;
 	paramType?: string;
-	derivedEffects?: Record<string, string>;
 }
 
 export interface TemplateDef {
-	id: string;
-	name: string;
-	category: string;
-	level: number;
-	size: number;
-	speed: number;
-	characteristics: Record<string, number>;
-	skills: Array<{ name: string; dots: number }>;
-	feats: string[];
-	traits: Array<{ id: string; param?: string | number }>;
-	armor: Array<{ name: string; ap: number; locations: string[] }>;
-	weapons: NPCWeapon[];
 	abilities: Array<{ name: string; description: string }>;
+	armor: Array<{ name: string; ap: number; locations: string[] }>;
+	category: string;
+	characteristics: Record<string, number>;
+	feats: string[];
 	gear: string | string[];
+	id: string;
+	level: number;
+	name: string;
+	size: number;
+	skills: Array<{ name: string; dots: number }>;
+	speed: number;
+	traits: Array<{ id: string; param?: string | number }>;
+	weapons: NPCWeapon[];
 }
 
 export interface DerivedStats {
-	sd: number;
-	hp: number;
-	resilience: number;
-	mentalDef: number;
-	aura: number;
 	armorBonus: number;
+	aura: number;
+	hp: number;
+	mentalDef: number;
+	resilience: number;
+	sd: number;
 }
 
 // =========================================================================

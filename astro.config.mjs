@@ -15,8 +15,7 @@ export default defineConfig({
 		react(),
 		starlight({
 			title: "Dungeons the Dragoning 40k",
-			description:
-				"Rulebook reference and play tools for Dungeons the Dragoning 40,000: 7th Edition",
+			description: "Rulebook reference and play tools for Dungeons the Dragoning 40,000: 7th Edition",
 
 			// Override Head component to include Vercel Analytics
 			components: {
@@ -129,12 +128,36 @@ export default defineConfig({
 				{
 					label: "Play Tools",
 					items: [
-						{ label: "Quick Reference", link: "/tools/quick-reference/", attrs: { target: "_blank", rel: "noopener" } },
-						{ label: "Character Builder", link: "/tools/character-builder/", attrs: { target: "_blank", rel: "noopener" } },
-						{ label: "Character Sheet", link: "/tools/character-sheet/", attrs: { target: "_blank", rel: "noopener" } },
-						{ label: "Combat Tracker", link: "/tools/combat-tracker/", attrs: { target: "_blank", rel: "noopener" } },
-						{ label: "NPC Generator", link: "/tools/npc-generator/", attrs: { target: "_blank", rel: "noopener" } },
-						{ label: "Ship Builder", link: "/tools/ship-builder/", attrs: { target: "_blank", rel: "noopener" } },
+						{
+							label: "Quick Reference",
+							link: "/tools/quick-reference/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
+						{
+							label: "Character Builder",
+							link: "/tools/character-builder/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
+						{
+							label: "Character Sheet",
+							link: "/tools/character-sheet/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
+						{
+							label: "Combat Tracker",
+							link: "/tools/combat-tracker/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
+						{
+							label: "NPC Generator",
+							link: "/tools/npc-generator/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
+						{
+							label: "Ship Builder",
+							link: "/tools/ship-builder/",
+							attrs: { target: "_blank", rel: "noopener" },
+						},
 					],
 				},
 			],

@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { GameInput } from "@/components/react/ui/GameInput";
 
 interface SearchBarProps {
+	inputRef: { current: HTMLInputElement | null };
 	query: string;
 	setQuery: (q: string) => void;
-	inputRef: { current: HTMLInputElement | null };
 }
 
 export function SearchBar({ query, setQuery, inputRef }: SearchBarProps) {
@@ -22,29 +22,29 @@ export function SearchBar({ query, setQuery, inputRef }: SearchBarProps) {
 
 	return (
 		<>
-			<div className="flex gap-sm items-center">
+			<div className="flex items-center gap-sm">
 				<GameInput
-					type="search"
-					className="flex-1"
-					placeholder="Search actions, conditions, modifiers, schools…"
 					autoComplete="off"
-					value={query}
+					className="flex-1"
 					onInput={onInput}
+					placeholder="Search actions, conditions, modifiers, schools…"
 					ref={(el) => {
 						if (el) inputRef.current = el;
 					}}
+					type="search"
+					value={query}
 				/>
 			</div>
-			<div className="text-text-dim text-[0.75rem] mt-xs">
-				<kbd className="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+			<div className="mt-xs text-[0.75rem] text-text-dim">
+				<kbd className="inline-block rounded-[3px] border border-border bg-surface-raised px-[5px] py-[1px] font-mono text-[0.7rem]">
 					/
 				</kbd>{" "}
 				or{" "}
-				<kbd className="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+				<kbd className="inline-block rounded-[3px] border border-border bg-surface-raised px-[5px] py-[1px] font-mono text-[0.7rem]">
 					Ctrl+K
 				</kbd>{" "}
 				to focus ·{" "}
-				<kbd className="inline-block px-[5px] py-[1px] bg-surface-raised border border-border rounded-[3px] font-mono text-[0.7rem]">
+				<kbd className="inline-block rounded-[3px] border border-border bg-surface-raised px-[5px] py-[1px] font-mono text-[0.7rem]">
 					Esc
 				</kbd>{" "}
 				to clear

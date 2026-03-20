@@ -54,25 +54,25 @@ export function ArmorSection() {
 			<table className="w-full border-collapse text-[0.85rem]">
 				<thead>
 					<tr>
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							Name
 						</th>
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							Type
 						</th>
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							AP
 						</th>
 						{LOCATIONS.map((loc) => (
 							<th
+								className="whitespace-nowrap border-border border-b px-sm py-xs text-center font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]"
 								key={loc}
-								className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-center font-semibold whitespace-nowrap"
 								title={loc}
 							>
 								{loc.replace("Left ", "L ").replace("Right ", "R ")}
 							</th>
 						))}
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							Notes
 						</th>
 						<th />
@@ -82,20 +82,20 @@ export function ArmorSection() {
 					{armor.map((a, idx) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
 						<tr key={`armor-${idx}`}>
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameInput
-									value={a.name}
 									onInput={(e) =>
 										handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
 									}
+									value={a.name}
 								/>
 							</td>
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameSelect
-									value={a.type}
 									onChange={(e) =>
 										handleFieldChange(idx, "type", (e.target as HTMLSelectElement).value)
 									}
+									value={a.type}
 								>
 									<option value="">—</option>
 									{ARMOR_TYPES.map((t) => (
@@ -105,20 +105,20 @@ export function ArmorSection() {
 									))}
 								</GameSelect>
 							</td>
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameInput
-									type="number"
-									value={a.ap}
 									min={0}
 									onInput={(e) =>
 										handleFieldChange(idx, "ap", Number((e.target as HTMLInputElement).value))
 									}
+									type="number"
+									value={a.ap}
 								/>
 							</td>
 							{LOCATIONS.map((loc) => (
 								<td
+									className="border-border border-b px-sm py-[3px] text-center align-middle"
 									key={loc}
-									className="py-[3px] px-sm border-b border-border align-middle text-center"
 								>
 									<GameCheckbox
 										checked={(a.locations || []).includes(loc)}
@@ -126,20 +126,20 @@ export function ArmorSection() {
 									/>
 								</td>
 							))}
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameInput
-									value={a.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "qualities", (e.target as HTMLInputElement).value)
 									}
+									value={a.qualities || ""}
 								/>
 							</td>
-							<td className="py-[3px] px-sm border-b border-border align-middle text-center">
+							<td className="border-border border-b px-sm py-[3px] text-center align-middle">
 								<button
-									type="button"
-									className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
+									type="button"
 								>
 									×
 								</button>
@@ -148,7 +148,7 @@ export function ArmorSection() {
 					))}
 				</tbody>
 			</table>
-			<AddButton label="Armor" className="mt-sm" onClick={handleAdd} />
+			<AddButton className="mt-sm" label="Armor" onClick={handleAdd} />
 		</div>
 	);
 }

@@ -4,13 +4,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface AccordionItemProps {
-	title: string;
-	count?: string;
-	defaultOpen?: boolean;
-	open?: boolean;
-	onToggle?: () => void;
 	children: ReactNode;
 	className?: string;
+	count?: string;
+	defaultOpen?: boolean;
+	onToggle?: () => void;
+	open?: boolean;
+	title: string;
 }
 
 export function AccordionItem({
@@ -28,7 +28,6 @@ export function AccordionItem({
 
 	return (
 		<Collapsible.Root
-			open={isOpen}
 			onOpenChange={(v) => {
 				if (isControlled) {
 					if (v !== open) onToggle();
@@ -36,16 +35,17 @@ export function AccordionItem({
 					setUncontrolledOpen(v);
 				}
 			}}
+			open={isOpen}
 		>
-			<div className={cn("border border-border rounded-md mb-md overflow-hidden", className)}>
+			<div className={cn("mb-md overflow-hidden rounded-md border border-border", className)}>
 				<Collapsible.Trigger asChild>
 					<button
+						className="flex w-full cursor-pointer items-center gap-md border-none bg-surface px-lg py-md text-left font-[inherit] font-semibold text-base text-text-primary transition-colors duration-150 hover:bg-surface-raised max-[600px]:px-md max-[600px]:py-sm max-[600px]:text-[0.9rem]"
 						type="button"
-						className="flex items-center gap-md w-full px-lg py-md bg-surface border-none text-text-primary text-base font-semibold text-left cursor-pointer transition-colors duration-150 font-[inherit] hover:bg-surface-raised max-[600px]:px-md max-[600px]:py-sm max-[600px]:text-[0.9rem]"
 					>
 						<span
 							className={cn(
-								"text-accent shrink-0 inline-block transition-transform duration-200",
+								"inline-block shrink-0 text-accent transition-transform duration-200",
 								isOpen && "rotate-90",
 							)}
 						>
@@ -55,7 +55,7 @@ export function AccordionItem({
 						{count && <span className="ml-auto font-normal text-[0.8rem] text-text-dim">{count}</span>}
 					</button>
 				</Collapsible.Trigger>
-				<Collapsible.Content className="bg-bg border-t border-border p-lg max-[600px]:p-md">
+				<Collapsible.Content className="border-border border-t bg-bg p-lg max-[600px]:p-md">
 					{children}
 				</Collapsible.Content>
 			</div>

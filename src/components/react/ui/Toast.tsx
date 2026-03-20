@@ -14,8 +14,8 @@ import { useSyncExternalStore } from "react";
  */
 
 interface ToastState {
-	message: string;
 	duration: number;
+	message: string;
 }
 
 let toastState: ToastState | null = null;
@@ -55,8 +55,8 @@ export function Toast() {
 
 	return (
 		<output
-			className="fixed bottom-lg left-1/2 -translate-x-1/2 bg-surface-raised border border-border rounded-md px-lg py-sm text-text-primary text-[0.85rem] z-[100] animate-slide-in"
 			aria-live="polite"
+			className="fixed bottom-lg left-1/2 z-[100] -translate-x-1/2 animate-slide-in rounded-md border border-border bg-surface-raised px-lg py-sm text-[0.85rem] text-text-primary"
 		>
 			{state.message}
 		</output>

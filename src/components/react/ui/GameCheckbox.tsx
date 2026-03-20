@@ -11,12 +11,12 @@ export function GameCheckbox({
 }: React.InputHTMLAttributes<HTMLInputElement> & { label?: string }) {
 	if (label) {
 		return (
-			<label className="flex items-center gap-sm text-[0.82rem] cursor-pointer">
-				<input type="checkbox" className={cn("size-4 accent-accent cursor-pointer", className)} {...props} />
+			<label className="flex cursor-pointer items-center gap-sm text-[0.82rem]">
+				<input className={cn("size-4 cursor-pointer accent-accent", className)} type="checkbox" {...props} />
 				<span className="text-text-primary">{label}</span>
 			</label>
 		);
 	}
 
-	return <input type="checkbox" className={cn("size-4 accent-accent cursor-pointer", className)} {...props} />;
+	return <input className={cn("size-4 cursor-pointer accent-accent", className)} type="checkbox" {...props} />;
 }

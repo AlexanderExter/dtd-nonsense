@@ -31,8 +31,8 @@ import { useCombatStore } from "./store";
 
 function sortByInitiative(combatants: Combatant[]): Combatant[] {
 	return [...combatants].sort((a, b) => {
-		const initA = a.initiativeTotal ?? -Infinity;
-		const initB = b.initiativeTotal ?? -Infinity;
+		const initA = a.initiativeTotal ?? Number.NEGATIVE_INFINITY;
+		const initB = b.initiativeTotal ?? Number.NEGATIVE_INFINITY;
 		if (initB !== initA) return initB - initA;
 		if (b.dexterity !== a.dexterity) return b.dexterity - a.dexterity;
 		return b.composure - a.composure;
@@ -460,7 +460,7 @@ export function CombatTrackerApp() {
 		const s = useCombatStore.getState().encounterState;
 		const id = s.encounterId || genId();
 		const name =
-			s.combatants.length > 0 ? `Encounter (${s.combatants.map((c) => c.name).join(", ")})` : `Empty Encounter`;
+			s.combatants.length > 0 ? `Encounter (${s.combatants.map((c) => c.name).join(", ")})` : "Empty Encounter";
 		const timestamp = new Date().toLocaleString();
 		const displayName = `${name} - ${timestamp}`;
 
@@ -555,82 +555,82 @@ export function CombatTrackerApp() {
 
 	return (
 		<>
-			<header className="sticky top-0 z-[100] flex items-center gap-md py-sm px-lg bg-surface border-b border-border max-[768px]:flex-wrap max-[768px]:p-sm">
-				<h1 className="m-0 text-xl text-accent whitespace-nowrap max-[768px]:text-base">Combat Tracker</h1>
-				<div className="flex items-center gap-sm ml-auto px-md py-xs bg-bg border border-border rounded-md max-[768px]:ml-0">
-					<span className="text-xs uppercase tracking-[0.5px] text-text-muted">Round</span>
-					<span className="text-[1.75rem] font-bold text-accent leading-none min-w-[2ch] text-center">
+			<header className="sticky top-0 z-[100] flex items-center gap-md border-border border-b bg-surface px-lg py-sm max-[768px]:flex-wrap max-[768px]:p-sm">
+				<h1 className="m-0 whitespace-nowrap text-accent text-xl max-[768px]:text-base">Combat Tracker</h1>
+				<div className="ml-auto flex items-center gap-sm rounded-md border border-border bg-bg px-md py-xs max-[768px]:ml-0">
+					<span className="text-text-muted text-xs uppercase tracking-[0.5px]">Round</span>
+					<span className="min-w-[2ch] text-center font-bold text-[1.75rem] text-accent leading-none">
 						{state.round}
 					</span>
 				</div>
-				<Button variant="primary" onClick={handleEndRound}>
+				<Button onClick={handleEndRound} variant="primary">
 					End Round
 				</Button>
 			</header>
 
 			{roundAlerts.length > 0 && (
-				<div className="px-lg py-sm bg-warning-bg border-b border-warning text-warning text-[0.85rem]">
+				<div className="border-warning border-b bg-warning-bg px-lg py-sm text-[0.85rem] text-warning">
 					<strong>End-of-Round Effects:</strong>
 					<ul className="m-0 pl-lg">{roundAlerts}</ul>
 				</div>
 			)}
 
-			<div className="flex gap-0 min-h-[calc(100vh-60px-48px)]">
-				<main className="flex-1 min-w-0 p-lg max-[768px]:p-md">
+			<div className="flex min-h-[calc(100vh-60px-48px)] gap-0">
+				<main className="min-w-0 flex-1 p-lg max-[768px]:p-md">
 					<AddCombatantForm onAdd={addCombatant} />
 					<QuickAddRow
-						onQuickAdd={handleQuickAdd}
 						onImportSheet={openImportModal}
+						onQuickAdd={handleQuickAdd}
 						onRollAll={rollAllInitiative}
 					/>
-					<div className="flex flex-col gap-md mb-lg">
+					<div className="mb-lg flex flex-col gap-md">
 						{state.combatants.length === 0 ? (
-							<div className="text-center px-lg py-xl text-text-dim">
-								<div className="text-[3rem] mb-md">\u2694\uFE0F</div>
+							<div className="px-lg py-xl text-center text-text-dim">
+								<div className="mb-md text-[3rem]">\u2694\uFE0F</div>
 								<p>No combatants yet. Add some above to begin.</p>
 							</div>
 						) : (
 							state.combatants.map((c, i) => (
 								<CombatantCard
-									key={c.id}
 									combatant={c}
-									isActive={state.encounterStarted && i === state.activeTurnIndex}
 									hasTie={tieSet.has(c.id)}
-									roundNumber={state.round}
+									isActive={state.encounterStarted && i === state.activeTurnIndex}
+									key={c.id}
+									onAddCondition={openConditionPicker}
 									onModifyHP={modifyHP}
 									onModifyResource={modifyResource}
+									onNotesChange={updateNotes}
 									onRemove={removeCombatant}
+									onRemoveCondition={removeCondition}
 									onRerollInit={rollSingleInitiative}
 									onToggleAction={toggleActionToken}
-									onAddCondition={openConditionPicker}
-									onRemoveCondition={removeCondition}
-									onNotesChange={updateNotes}
+									roundNumber={state.round}
 								/>
 							))
 						)}
 					</div>
 					<div className="flex justify-center gap-md py-md max-[768px]:flex-col max-[768px]:items-stretch">
 						<Button onClick={previousTurn}>&#x2190; Previous Turn</Button>
-						<Button variant="primary" onClick={nextTurn}>
+						<Button onClick={nextTurn} variant="primary">
 							Next Turn &#x2192;
 						</Button>
 					</div>
 				</main>
 
 				<ReferenceSidebar
+					damageResult={damageCalcResult}
+					hitLocationResult={hitLocationResult}
 					isOpen={sidebarOpen}
+					onCalcDamage={handleCalcDamage}
 					onClose={() => {
 						setSidebarOpen(false);
 					}}
 					onRollLocation={rollHitLocation}
-					hitLocationResult={hitLocationResult}
-					damageResult={damageCalcResult}
-					onCalcDamage={handleCalcDamage}
 				/>
 			</div>
 
 			<Button
-				className="hidden max-[1099px]:flex fixed bottom-[60px] right-md z-[90]"
+				className="fixed right-md bottom-[60px] z-[90] hidden max-[1099px]:flex"
 				onClick={() => {
 					setSidebarOpen(!sidebarOpen);
 				}}
@@ -640,32 +640,32 @@ export function CombatTrackerApp() {
 
 			<EncounterBar
 				encounters={encounterList}
-				onSave={saveEncounter}
-				onLoad={loadEncounter}
-				onExport={exportEncounter}
 				onClear={clearEncounter}
+				onExport={exportEncounter}
+				onLoad={loadEncounter}
+				onSave={saveEncounter}
 			/>
 
 			<ImportModal
-				isOpen={importModalOpen}
 				characters={importCharList}
-				onImport={handleImportChar}
+				isOpen={importModalOpen}
 				onClose={() => {
 					setImportModalOpen(false);
 				}}
+				onImport={handleImportChar}
 			/>
 
 			{conditionPickerState && (
 				<ConditionPicker
+					anchorRect={conditionPickerState.rect}
 					combatantId={conditionPickerState.combatantId}
 					existingConditions={
 						state.combatants.find((c) => c.id === conditionPickerState?.combatantId)?.conditions ?? []
 					}
-					anchorRect={conditionPickerState.rect}
-					onPick={addCondition}
 					onClose={() => {
 						setConditionPickerState(null);
 					}}
+					onPick={addCondition}
 				/>
 			)}
 

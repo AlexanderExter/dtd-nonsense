@@ -13,6 +13,8 @@ description: >
   encodes a specific, opinionated decision framework — not generic advice.
 ---
 
+/TODO: Exctract the libraries and tehc stack used and note them down as the problems they solve. When and why they should be used. Consider some libraries for preemtive installation or based of requirements docs.
+
 # Frontend Stack Advisor
 
 Guide technology decisions using a personal, stress-tested framework. This is not generic "best practices" advice — it's a specific decision philosophy built from real experience.
@@ -69,9 +71,12 @@ Don't build features. Protect the features you've built. Set up early in any pro
 | Tool | Role | Notes |
 |------|------|-------|
 | **TypeScript (strict)** | Compile-time type safety | If writing .tsx, already implicit. Make it explicit: strict mode, no lazy `any`. Pairs with Zod (compile-time + runtime = complete safety net). |
-| **Biome** | Linter + formatter | Replaces ESLint + Prettier. Written in Rust, fast, integrated. Same philosophy as Bun — one tool, sensible defaults. |
+| **Biome** | Linter + formatter | Replaces ESLint + Prettier. Written in Rust, fast, integrated. Same philosophy as Bun — one tool, sensible defaults. Configure via **ultracite** presets (see below) — don't hand-roll rule configs. |
+| **ultracite** | Biome rule presets | Production-grade zero-config preset for Biome. Extends `ultracite/biome/{core,react,astro}` for ~200+ curated rules including Tailwind class sorting, optional chaining, sorted attributes/properties. Solves the "cargo-culted biome.json" problem: instead of manually enabling rules one-by-one, get a stress-tested baseline and only override what doesn't fit. |
 | **rumdl** | Markdown/MDX linter + formatter | Written in Rust. 70+ rules, auto-detects flavors (.mdx gets MDX treatment). Catches broken headings, inconsistent formatting, structural issues. Biome handles code; rumdl handles content. |
-| **Knip** | Finds unused files, deps, exports | As the foundation has 10 pieces and projects grow, dead weight accumulates. Knip catches it. Run periodically. |
+| **Knip** | Finds unused files, deps, exports | As the foundation has 10 pieces and projects grow, dead weight accumulates. Knip catches it. Run as part of CI — don't let it be a periodic manual chore. |
+| **dependency-cruiser** | Import boundary enforcement | Machine-checkable architectural rules: "tool A can't import tool B", "UI can't import tools", "lib stays DOM-free". Catches coupling violations at lint time, not after a messy refactor. Worth it once you have 3+ distinct code domains. |
+| **ts-morph** | TypeScript structural analysis | TypeScript Compiler API wrapper for convention checks that linters can't express: store naming conventions, barrel export completeness, named-exports-only policies. Pairs with dependency-cruiser — one catches import boundaries, the other catches structural patterns. |
 | **Storybook** | Component dev environment | Develop/test components in isolation. Worth it when component count justifies it; overkill for simple projects. |
 
 ### Tier 4: Specialized — Clear Justification Required
@@ -139,3 +144,26 @@ Watch for these and intervene:
 - **Premature optimization:** Adding Redux, complex state management, or heavy architecture before the project needs it
 - **Stack tourism:** Trying a new framework/library because it's trending rather than because the current stack can't handle a real requirement
 - **Multiple tools for one job:** Using both a CSS-in-JS library and Tailwind, or both Zustand and Redux, or both SWR and TanStack Query
+- **Cargo-culted configs:** Using Biome (or any linter) with only `recommended: true` and no opinionated preset. The default rules are a minimum — a curated preset like ultracite adds ~200 additional rules (Tailwind class sorting, cognitive complexity, optional chaining, sorted properties) that catch real bugs. Install the preset, then override what doesn't fit.
+- **Manual boundary enforcement:** Relying on code review to catch cross-module imports or architectural violations. Machine-checkable tools (dependency-cruiser, ts-morph) catch these at lint time with zero ongoing human cost.
+
+---
+
+## Lessons from Production
+
+Hard-won insights from real projects that informed this framework:
+
+### Biome + ultracite > Biome alone
+A bare `biome.json` with `recommended: true` enables maybe 100 rules. Adding ultracite presets enables ~200+ curated rules — including Tailwind class sorting (`useSortedClasses`), `useOptionalChain`, `useAtIndex`, `useNumberNamespace`, sorted JSX attributes, sorted object properties, and comprehensive a11y rules. The integration pattern: extend `ultracite/biome/{core,react,astro}`, then add project-specific overrides for rules that don't fit (e.g., `noForEach: off` if you use forEach heavily, `noBarrelFile: off` if your architecture uses barrels). Expect ~50-100 auto-fixable violations on first run — `biome check --write --unsafe` handles the bulk.
+
+### Architecture enforcement pays off early
+dependency-cruiser and ts-morph combined give you machine-checkable architectural rules at near-zero ongoing cost. On a project with 6 independent tool islands and 74 components, rules like "no cross-tool imports" and "UI primitives can't import tools" caught violations that would have created invisible coupling. The setup cost is ~1 hour; the ongoing cost is zero (runs in CI).
+
+### Knip belongs in CI, not periodic manual runs
+First real knip run on a mature project found 8 unused files and 19 unused exports — dead weight that accumulated silently. Once knip runs in CI (as part of `bun run check`), dead code is caught at commit time. The carrying cost is ~2 seconds of CI time.
+
+### shadcn/ui migration strategy: Game* wrappers
+When migrating to shadcn/ui, don't directly use shadcn primitives in tool code. Create thin domain wrappers (`GameInput`, `GameSelect`, `GameCheckbox`) that wrap shadcn primitives with project-appropriate defaults (theming, sizing, labeling). This insulates 74+ tool components from the UI library — swap the underlying primitive in one place, not 74.
+
+### The Preact-to-React lesson (revisited)
+The original framework already noted "the Preact lesson." The follow-through matters: after switching from Preact to React, a full Radix UI → shadcn/ui migration became trivially possible (shadcn assumes React). The ecosystem compatibility that React provides is not just about library availability — it's about the upgrade path. Every tool built for React (shadcn, Radix, React Hook Form, Zustand devtools) composes cleanly. The Preact equivalent of each exists but with constant friction.

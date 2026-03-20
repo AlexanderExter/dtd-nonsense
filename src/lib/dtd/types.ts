@@ -13,25 +13,25 @@
 // =============================================================================
 
 export interface Characteristics {
-	strength: number;
-	dexterity: number;
-	constitution: number;
 	charisma: number;
-	fellowship: number;
 	composure: number;
+	constitution: number;
+	dexterity: number;
+	fellowship: number;
 	intelligence: number;
-	wisdom: number;
+	strength: number;
 	willpower: number;
+	wisdom: number;
 }
 
 export interface CharacterModifiers {
-	staticDefense: number;
 	hitPoints: number;
+	initiative: number;
 	mentalDefense: number;
+	resilience: number;
 	resolve: number;
 	speed: number;
-	resilience: number;
-	initiative: number;
+	staticDefense: number;
 }
 
 // =============================================================================
@@ -39,9 +39,9 @@ export interface CharacterModifiers {
 // =============================================================================
 
 export interface Background {
+	dots: number;
 	id?: string;
 	name: string;
-	dots: number;
 	notes: string;
 }
 
@@ -57,64 +57,64 @@ export interface FeatEntry {
 }
 
 export interface MeleeWeapon {
-	name: string;
+	availability?: string;
 	damage: string;
 	damageType: string;
+	name: string;
+	notes: string;
+	pen?: string;
 	proficiency: string;
 	qualities: string;
-	notes: string;
-	weaponType?: string;
-	availability?: string;
-	test?: string;
-	pen?: string;
 	special?: string;
+	test?: string;
+	weaponType?: string;
 }
 
 export interface RangedWeapon {
-	name: string;
+	availability?: string;
+	clip?: string;
 	damage: string;
 	damageType: string;
-	range: string;
+	name: string;
+	notes: string;
+	pen?: string;
 	proficiency: string;
 	qualities: string;
-	notes: string;
-	weaponType?: string;
-	availability?: string;
-	test?: string;
-	pen?: string;
-	rof?: string;
-	clip?: string;
+	range: string;
 	reload?: string;
+	rof?: string;
 	special?: string;
+	test?: string;
+	weaponType?: string;
 }
 
 export interface ArmorEntry {
-	name: string;
-	type: string;
-	locations: string[];
 	ap: number;
-	qualities: string;
-	maxDex?: number;
-	special?: string;
 	craftsmanship?: string;
+	locations: string[];
+	maxDex?: number;
+	name: string;
+	qualities: string;
+	special?: string;
+	type: string;
 }
 
 export interface SpellEntry {
-	school: string;
 	level: number;
 	name: string;
 	notes: string;
+	school: string;
 }
 
 export interface SpecialAttackEntry {
-	name: string;
 	description: string;
+	name: string;
 }
 
 export interface SavedPool {
+	formula?: string;
 	label: string;
 	notation?: string;
-	formula?: string;
 	pool?: string;
 }
 
@@ -123,77 +123,77 @@ export interface SavedPool {
 // =============================================================================
 
 export interface XpLogEntry {
-	label: string;
 	amount: number;
+	label: string;
 	timestamp: number;
 }
 
 /** Full canonical character object — matches character.DEFAULTS shape in core.ts. */
 export interface CharacterData {
-	id: string;
-	name: string;
-	player: string;
-	concept: string;
-	totalXP: number;
-	xpSpent: number;
-
-	race: string;
-	raceCharBonus: string;
-	exaltation: string;
+	age: string;
 	alignment: string;
-	devotion: number;
-
-	characteristics: Characteristics;
-	charSpecialties: Record<string, string>;
-	skills: Record<string, number>;
-	skillSpecialties: Record<string, string>;
-
-	backgrounds: Background[];
-	classes: ClassEntry[];
-	feats: FeatEntry[];
-	assets: FeatEntry[];
-	hindrances: FeatEntry[];
-
-	meleeWeapons: MeleeWeapon[];
-	rangedWeapons: RangedWeapon[];
 	armor: ArmorEntry[];
-	naturalArmor: number;
+	assets: FeatEntry[];
 	aura: number;
 	auraSource: string;
 
-	magicSchools: Record<string, number>;
-	swordSchools: Record<string, number>;
-	gunKata: Record<string, number>;
-	spells: Array<string | SpellEntry>;
-	specialAttacks: Array<string | SpecialAttackEntry>;
-	trickShots: string[];
-
-	powerStat: number;
-	heroPointsMax: number;
-	heroPointsCurrent: number;
-	heroPointsBurnt: number;
-	fettered: boolean;
-	pushAmount: number;
-	extraSchoolLevels: number;
+	backgrounds: Background[];
 	bonusSchoolLevels: Record<string, number>;
-	sanctioned: boolean;
-	resourceCurrent: number;
-	exaltationNotes: string;
 
-	modifiers: CharacterModifiers;
-	savedPools: SavedPool[];
-	languages: string[];
-	equipment: string;
-	notes: string;
+	characteristics: Characteristics;
+	charSpecialties: Record<string, string>;
+	classes: ClassEntry[];
 	classNotes: string;
-	description: string;
-	height: string;
-	weight: string;
-	age: string;
+	concept: string;
 	currentHP: number;
 	currentResolve: number;
+	description: string;
+	devotion: number;
+	equipment: string;
+	exaltation: string;
+	exaltationNotes: string;
+	extraSchoolLevels: number;
+	feats: FeatEntry[];
+	fettered: boolean;
+	gunKata: Record<string, number>;
+	height: string;
+	heroPointsBurnt: number;
+	heroPointsCurrent: number;
+	heroPointsMax: number;
+	hindrances: FeatEntry[];
+	id: string;
+	languages: string[];
+
+	magicSchools: Record<string, number>;
+
+	meleeWeapons: MeleeWeapon[];
+
+	modifiers: CharacterModifiers;
+	name: string;
+	naturalArmor: number;
+	notes: string;
+	player: string;
+
+	powerStat: number;
+	pushAmount: number;
+
+	race: string;
+	raceCharBonus: string;
+	rangedWeapons: RangedWeapon[];
+	resourceCurrent: number;
+	sanctioned: boolean;
+	savedPools: SavedPool[];
+	skillSpecialties: Record<string, string>;
+	skills: Record<string, number>;
+	specialAttacks: Array<string | SpecialAttackEntry>;
+	spells: Array<string | SpellEntry>;
+	swordSchools: Record<string, number>;
+	totalXP: number;
+	trickShots: string[];
+	weight: string;
 	xpLog: XpLogEntry[];
 	xpSpendLog: XpLogEntry[];
+	xpSpent: number;
 }
 
 /** Entry in the saved character list (localStorage index). */
@@ -207,36 +207,36 @@ export interface CharacterListEntry {
 // =============================================================================
 
 export interface DieRoll {
-	value: number;
 	base: number;
 	exploded: boolean;
+	value: number;
 }
 
 export interface OverflowInfo {
-	numDice: number;
+	compressed: boolean;
 	keepDice: number;
 	modifier: number;
-	compressed: boolean;
+	numDice: number;
 }
 
 export interface DiceResult {
 	allRolls: DieRoll[];
-	keptRolls: DieRoll[];
-	droppedRolls: DieRoll[];
 	diceTotal: number;
+	droppedRolls: DieRoll[];
+	keptRolls: DieRoll[];
 	modifier: number;
-	total: number;
 	overflow: OverflowInfo | null;
+	total: number;
 }
 
 export interface Outcome {
-	success: boolean;
-	raises: number;
 	checks: number;
+	raises: number;
+	success: boolean;
 }
 
 export interface ParsedNotation {
-	num: number;
 	keep: number;
 	modifier: number;
+	num: number;
 }

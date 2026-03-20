@@ -3,9 +3,9 @@ import { Highlight } from "./Highlight";
 import type { QRefSchool } from "./qref-data";
 
 interface SchoolCardsSectionProps {
+	footer: ReactNode;
 	schools: readonly QRefSchool[];
 	searchWords: string[];
-	footer: ReactNode;
 }
 
 export function SchoolCardsSection({ schools, searchWords, footer }: SchoolCardsSectionProps) {
@@ -20,10 +20,10 @@ export function SchoolCardsSection({ schools, searchWords, footer }: SchoolCards
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-md max-[600px]:grid-cols-1">
 				{filtered.map((s) => (
 					<div
-						className="bg-surface border border-border rounded-md overflow-hidden transition-colors duration-150 hover:border-accent"
+						className="overflow-hidden rounded-md border border-border bg-surface transition-colors duration-150 hover:border-accent"
 						key={s.school}
 					>
-						<div className="bg-surface-highlight px-md py-sm border-b border-border text-accent text-[0.95rem]">
+						<div className="border-border border-b bg-surface-highlight px-md py-sm text-[0.95rem] text-accent">
 							<strong>
 								<Highlight text={s.school} words={searchWords} />
 							</strong>
@@ -50,7 +50,7 @@ export function SchoolCardsSection({ schools, searchWords, footer }: SchoolCards
 					</div>
 				))}
 			</div>
-			<div className="mt-md text-text-muted text-[0.85rem]">{footer}</div>
+			<div className="mt-md text-[0.85rem] text-text-muted">{footer}</div>
 		</>
 	);
 }

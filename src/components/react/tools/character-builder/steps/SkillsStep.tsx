@@ -104,18 +104,18 @@ export function SkillsStep() {
 	return (
 		<div>
 			<h3>Assign Priorities</h3>
-			<div className="grid grid-cols-3 gap-md mb-lg max-[900px]:grid-cols-1">
+			<div className="mb-lg grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
 				{Object.keys(CHAR_GROUPS).map((groupKey) => {
 					const currentPriority = meta.skillPriority[groupKey];
 					return (
-						<div key={groupKey} className="bg-surface border-2 border-border rounded-md p-md text-center">
-							<h4 className="text-accent mb-xs">{CHAR_GROUPS[groupKey].label}</h4>
+						<div className="rounded-md border-2 border-border bg-surface p-md text-center" key={groupKey}>
+							<h4 className="mb-xs text-accent">{CHAR_GROUPS[groupKey].label}</h4>
 							<GameSelect
-								value={currentPriority || ""}
 								onChange={(e) => {
 									const val = (e.target as HTMLSelectElement).value;
 									if (val) handlePriorityChange(groupKey, val);
 								}}
+								value={currentPriority || ""}
 							>
 								<option value="">— Select —</option>
 								{PRIORITY_OPTIONS.map((opt) => (
@@ -137,11 +137,11 @@ export function SkillsStep() {
 					const skills = skillGroups[groupKey] || [];
 
 					return (
-						<div key={groupKey} className="bg-surface border border-border rounded-md p-md">
-							<h4 className="text-center text-accent mb-xs pb-xs border-b border-border">
+						<div className="rounded-md border border-border bg-surface p-md" key={groupKey}>
+							<h4 className="mb-xs border-border border-b pb-xs text-center text-accent">
 								{CHAR_GROUPS[groupKey].label}{" "}
 								{priority && (
-									<span className="text-[0.8rem] text-text-dim font-normal">
+									<span className="font-normal text-[0.8rem] text-text-dim">
 										{spent} / {pool} dots
 									</span>
 								)}
@@ -153,22 +153,22 @@ export function SkillsStep() {
 
 								return (
 									<div
+										className="flex items-center justify-between border-border border-b py-xs last:border-b-0"
 										key={key}
-										className="flex justify-between items-center py-xs border-b border-border last:border-b-0"
 									>
-										<span className="text-[0.9rem] flex-1">
+										<span className="flex-1 text-[0.9rem]">
 											{sk.name || capitalize(key)}
-											{sk.isAdvanced && <span className="text-accent ml-1 text-[0.7rem]">★</span>}
+											{sk.isAdvanced && <span className="ml-1 text-[0.7rem] text-accent">★</span>}
 										</span>
 										<DotControl
-											value={dots}
+											disabled={!priority}
 											max={CREATION_SKILL_CAP}
 											min={0}
-											disabled={!priority}
 											onChange={(v) => handleDotChange(groupKey, key, v)}
+											value={dots}
 										/>
 										{racialBonus > 0 && (
-											<span className="text-[0.7rem] text-success ml-xs">
+											<span className="ml-xs text-[0.7rem] text-success">
 												+{racialBonus} racial
 											</span>
 										)}

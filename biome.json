@@ -1,117 +1,166 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true,
-		"defaultBranch": "main"
-	},
-	"files": {
-		"includes": ["src/**", "scripts/**"],
-		"ignoreUnknown": true
-	},
-	"formatter": {
-		"indentStyle": "tab",
-		"indentWidth": 4,
-		"lineWidth": 120,
-		"lineEnding": "lf"
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "double",
-			"semicolons": "always",
-			"trailingCommas": "all",
-			"arrowParentheses": "always"
-		}
-	},
-	"json": {
-		"formatter": {
-			"trailingCommas": "none"
-		}
-	},
-	"css": {
-		"parser": {
-			"cssModules": false,
-			"tailwindDirectives": true
-		}
-	},
-	"html": {
-		"experimentalFullSupportEnabled": true,
-		"formatter": {
-			"enabled": false
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
-		}
-	},
-	"linter": {
-		"enabled": true,
-		"domains": {
-			"react": "recommended",
-			"test": "recommended"
-		},
-		"rules": {
-			"recommended": true,
-			"correctness": {
-				"noUnusedVariables": "warn",
-				"noUnusedImports": "warn",
-				"useParseIntRadix": "warn",
-				"useExhaustiveDependencies": "error",
-				"useHookAtTopLevel": "error"
-			},
-			"a11y": {
-				"noLabelWithoutControl": {
-					"level": "error",
-					"options": {
-						"inputComponents": ["GameInput", "GameSelect", "GameTextarea", "GameCheckbox"]
-					}
-				}
-			},
-			"style": {
-				"noNonNullAssertion": "off",
-				"useConst": "warn",
-				"useTemplate": "warn"
-			},
-			"suspicious": {
-				"noExplicitAny": "off",
-				"noArrayIndexKey": "error"
-			}
-		}
-	},
-	"overrides": [
-		{
-			"includes": ["**/*.astro"],
-			"linter": {
-				"rules": {
-					"complexity": {
-						"noImportantStyles": "off"
-					},
-					"correctness": {
-						"noUnusedImports": "off",
-						"noUnusedVariables": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["src/lib/dtd/**", "src/components/react/tools/**"],
-			"linter": {
-				"rules": {
-					"complexity": {
-						"noExcessiveCognitiveComplexity": "off"
-					},
-					"suspicious": {
-						"noPrototypeBuiltins": "warn",
-						"noAssignInExpressions": "warn",
-						"noImplicitAnyLet": "warn"
-					}
-				}
-			}
-		}
-	]
+  "$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/astro"
+  ],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "files": {
+    "includes": ["src/**", "scripts/**"],
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "indentStyle": "tab",
+    "indentWidth": 4,
+    "lineWidth": 120,
+    "lineEnding": "lf"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "all",
+      "arrowParentheses": "always"
+    }
+  },
+  "json": {
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": false,
+      "tailwindDirectives": true
+    }
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "react": "recommended",
+      "test": "recommended"
+    },
+    "rules": {
+      "a11y": {
+        "noLabelWithoutControl": {
+          "level": "error",
+          "options": {
+            "inputComponents": [
+              "GameInput",
+              "GameSelect",
+              "GameTextarea",
+              "GameCheckbox"
+            ]
+          }
+        }
+      },
+      "complexity": {
+        "noForEach": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "warn",
+        "noUnusedFunctionParameters": "off",
+        "noUndeclaredVariables": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noNamespaceImport": "off",
+        "noDelete": "off",
+        "useTopLevelRegex": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "useFilenamingConvention": "off",
+        "useBlockStatements": "off",
+        "useConsistentObjectDefinitions": "off",
+        "useConsistentMemberAccessibility": "off",
+        "noParameterProperties": "off",
+        "noParameterAssign": "off",
+        "useReadonlyClassProperties": "off",
+        "useConst": "warn",
+        "useTemplate": "warn",
+        "noEnum": "off",
+        "noNegationElse": "off",
+        "noNestedTernary": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "error",
+        "noEvolvingTypes": "off",
+        "useAwait": "off",
+        "noAlert": "off",
+        "useStrictMode": "off",
+        "noEmptyBlockStatements": "off"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          },
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/lib/dtd/**",
+        "src/components/react/tools/**",
+        "scripts/**"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off"
+          },
+          "suspicious": {
+            "noPrototypeBuiltins": "warn",
+            "noAssignInExpressions": "warn",
+            "noImplicitAnyLet": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.test.ts", "**/*.test.tsx", "**/__test-utils__/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noExportedImports": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    }
+  ]
 }

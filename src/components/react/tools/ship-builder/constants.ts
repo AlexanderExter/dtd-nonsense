@@ -7,124 +7,124 @@
 // -------------------------------------------------------------------------
 
 export interface Hull {
-	id: string;
-	name: string;
+	acceleration: number;
 	class: string;
+	consoles: Record<string, number>;
 	cost: number;
 	crew: number;
 	hullStrength: number;
+	id: string;
 	maneuverability: number;
-	acceleration: number;
-	speed: number;
+	name: string;
 	sensors: number;
-	consoles: Record<string, number>;
+	speed: number;
 	weapons: { forward: number; rear: number };
 }
 
 export interface ShipConsole {
+	cost: number;
+	effect: string;
 	id: string;
 	name: string;
 	type: string;
-	cost: number;
-	effect: string;
 }
 
 export interface ShipWeapon {
-	id: string;
-	name: string;
-	size: string;
-	material: string;
+	accuracy: number;
+	arc: string;
+	cost: number;
+	crit: number;
 	damage: string;
 	disruption: number;
-	accuracy: number;
-	crit: number;
+	id: string;
+	material: string;
+	name: string;
 	range: number;
-	cost: number;
-	arc: string;
+	size: string;
 	type: string;
 }
 
 export interface Torpedo {
-	id: string;
-	name: string;
+	accuracy: number;
+	arc: string;
+	cost: number;
+	crit: number;
 	damage: string;
 	disruption: number;
-	accuracy: number;
-	crit: number;
-	arc: string;
-	range: number;
-	cost: number;
 	effect: string;
+	id: string;
+	name: string;
+	range: number;
 }
 
 export interface Shield {
-	id: string;
-	name: string;
-	type: string;
-	mark: number;
 	capacity: number;
+	cost: number;
+	id: string;
+	layers?: number;
+	mark: number;
+	name: string;
 	regeneration: number;
 	special: string;
-	cost: number;
-	layers?: number;
+	type: string;
 }
 
 export interface CritEntry {
-	roll: string;
-	name: string;
 	effect: string;
+	name: string;
+	roll: string;
 }
 
 export interface ShipData {
-	holdingsBP: number[];
-	crewQualityCost: Record<string, number>;
-	hulls: Hull[];
 	consoles: ShipConsole[];
-	weapons: ShipWeapon[];
-	torpedoTubeCost: number;
-	torpedoes: Torpedo[];
-	shields: Shield[];
+	crewQualityCost: Record<string, number>;
 	criticalDamage: CritEntry[];
+	holdingsBP: number[];
+	hulls: Hull[];
+	shields: Shield[];
+	torpedoes: Torpedo[];
+	torpedoTubeCost: number;
+	weapons: ShipWeapon[];
 }
 
 export interface CombatState {
-	shieldCurrent: number;
-	hullCurrent: number;
+	consoleStatus: Record<string, boolean>;
 	crewCurrent: number;
-	disruption: number;
-	turn: number;
 	critLog: CritLogEntry[];
 	departments: Record<string, boolean>;
-	consoleStatus: Record<string, boolean>;
+	disruption: number;
+	hullCurrent: number;
+	shieldCurrent: number;
+	turn: number;
 	weaponStatus: Record<string, boolean>;
 }
 
 export interface CritLogEntry {
-	roll: number;
-	modifier: number;
-	total: number;
-	name: string;
 	effect: string;
+	modifier: number;
+	name: string;
+	roll: number;
+	total: number;
 	turn: number;
 }
 
 export interface ShipState {
-	id: string;
-	name: string;
-	hullId: string;
+	combat: CombatState;
 	consoles: Record<string, string>;
-	weapons: { forward: string[]; rear: string[] };
-	weaponPartials: Record<string, string>;
-	hasTorpedoTube: boolean;
-	torpedoes: string[];
-	shieldId: string;
 	crewQuality: number;
-	holdings: number;
 	customBP: boolean;
 	customBPValue: number;
-	officers: Record<string, { name: string; skill: number }>;
+	hasTorpedoTube: boolean;
+	holdings: number;
+	hullId: string;
+	id: string;
 	mode: "builder" | "sheet";
-	combat: CombatState;
+	name: string;
+	officers: Record<string, { name: string; skill: number }>;
+	shieldId: string;
+	torpedoes: string[];
+	weaponPartials: Record<string, string>;
+	weapons: { forward: string[]; rear: string[] };
 }
 
 // -------------------------------------------------------------------------
@@ -264,14 +264,14 @@ function getEffectiveHullStrength(ship: ShipState, hull: Hull): number {
 // -------------------------------------------------------------------------
 
 interface ShipStats {
+	acc: number;
+	cq: number;
+	crew: number;
+	hullHP: number;
 	man: number;
 	sensors: number;
-	acc: number;
 	speed: number;
-	hullHP: number;
-	crew: number;
 	tn: number;
-	cq: number;
 }
 
 export function getShipStats(ship: ShipState, hull: Hull): ShipStats {
@@ -291,12 +291,12 @@ export function getShipStats(ship: ShipState, hull: Hull): ShipStats {
 // -------------------------------------------------------------------------
 
 interface BPBreakdown {
-	hull: number;
 	consoles: number;
-	weapons: number;
-	torpedoes: number;
-	shields: number;
 	crew: number;
+	hull: number;
+	shields: number;
+	torpedoes: number;
+	weapons: number;
 }
 
 export function calculateBPSpent(ship: ShipState, data: ShipData): BPBreakdown {
@@ -360,7 +360,7 @@ export function getBPBudget(ship: ShipState, data: ShipData): number {
 export function lookupCritical(data: ShipData, total: number): CritEntry {
 	const table = data.criticalDamage;
 	if (total < 1) return table[0];
-	if (total >= 13) return table[table.length - 1];
+	if (total >= 13) return table.at(-1);
 	return table.find((e) => e.roll === String(total)) || table[0];
 }
 

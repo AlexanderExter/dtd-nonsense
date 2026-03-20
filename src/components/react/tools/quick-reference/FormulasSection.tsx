@@ -17,23 +17,23 @@ export function FormulasSection({ searchWords }: FormulasSectionProps) {
 			<table className="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 				<thead>
 					<tr>
-						<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+						<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 							Metric
 						</th>
-						<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+						<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 							Formula
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					{filtered.map((f) => (
-						<tr key={f.metric} className="even:bg-stripe hover:bg-surface">
-							<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+						<tr className="even:bg-stripe hover:bg-surface" key={f.metric}>
+							<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 								<strong>
 									<Highlight text={f.metric} words={searchWords} />
 								</strong>
 							</td>
-							<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+							<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 								<span className="font-mono text-[0.88rem] text-accent">
 									<Highlight text={f.formula} words={searchWords} />
 								</span>

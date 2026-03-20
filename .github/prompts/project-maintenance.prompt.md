@@ -53,6 +53,7 @@ Run the project discovery script to build a manifest of the project's toolchain,
         - Read `package.json` for: package manager (from lockfile presence), scripts, dependencies, devDependencies, engines, overrides.
         - Scan the filesystem for config files: `.gitignore`, `.gitattributes`, `.editorconfig`, `tsconfig.json`, linter configs (`biome.json`, `.eslintrc.*`, `eslint.config.*`), formatter configs (`.prettierrc*`), test configs (`vitest.config.*`, `jest.config.*`, `bunfig.toml`), CI configs (`.github/workflows/`, `.gitlab-ci.yml`), quality tools (`knip.json`, `.dependency-cruiser.*`), content linting (`.rumdl.toml`, `.markdownlint.*`).
         - Detect framework, linter, formatter, test runner, CSS framework, UI library from dependency names.
+        - Check for linter presets: if `biome.json` has an `"extends"` array, note the preset packages (e.g., `ultracite`) — these are toolchain-tier dependencies that must be upgraded alongside the linter.
         - Detect CI system from config directory presence.
     - Build a mental model equivalent to the maintenance-recon manifest.
 
@@ -186,11 +187,13 @@ Apply checks based on the **detected linter** from the project profile.
 **If Biome:**
 1. **Schema URL.** `$schema` in `biome.json` must match the installed `@biomejs/biome` version exactly: `https://biomejs.dev/schemas/<VERSION>/schema.json`.
 2. **Config validity.** Run the linter's check command with summary output and read for "unknown option" warnings or parse errors.
-3. **Domains review.** Biome v2+ uses linter domains (framework-aware rule sets). Check if domains relevant to the detected stack (`react`, `next`, `test`, etc.) are declared in `linter.domains`.
-4. **HTML/Astro support.** If the framework is Astro, check `html.experimentalFullSupportEnabled: true` and `html.formatter.enabled: false` (the Astro extension owns `.astro` formatting).
-5. **VS Code extension alignment.** Check the installed Biome VS Code extension version against the CLI version. Note mismatches in the briefing.
-6. **New rules.** Review the changelog for rules added since the current version. Worth-enabling rules should be noted in the briefing.
-7. **Newly-promoted rules.** Even patch versions can promote rules from `nursery` to `recommended`, which effectively introduces new errors/warnings across the codebase. After any Biome version change, run `biome check .` and compare the warning/error count to the Phase A baseline. If new violations appeared, **resolve them now** — see the resolution techniques below.
+3. **Extends / preset check.** If the config uses `"extends"` (e.g., `ultracite/biome/{core,react,astro}`), verify the preset package is installed and the extends paths resolve. If the config does NOT use a preset and relies only on `"recommended": true`, assess whether adopting **ultracite** would be beneficial — it provides ~200+ curated rules (Tailwind class sorting, optional chaining, sorted attributes/properties, cognitive complexity) as a stress-tested baseline. The integration pattern: `"extends": ["ultracite/biome/core", "ultracite/biome/react"]` (add `"ultracite/biome/astro"` for Astro projects), then add project-specific overrides for rules that don't fit. Expect ~50-100 auto-fixable violations on first adoption — `biome check --write --unsafe` handles the bulk.
+4. **Domains review.** Biome v2+ uses linter domains (framework-aware rule sets). Check if domains relevant to the detected stack (`react`, `next`, `test`, etc.) are declared in `linter.domains`.
+5. **HTML/Astro support.** If the framework is Astro, check `html.experimentalFullSupportEnabled: true` and `html.formatter.enabled: false` (the Astro extension owns `.astro` formatting).
+6. **VS Code extension alignment.** Check the installed Biome VS Code extension version against the CLI version. Note mismatches in the briefing.
+7. **New rules.** Review the changelog for rules added since the current version. Worth-enabling rules should be noted in the briefing. If using ultracite, also check `npm info ultracite` for preset updates that may enable new rules.
+8. **Newly-promoted rules.** Even patch versions can promote rules from `nursery` to `recommended`, which effectively introduces new errors/warnings across the codebase. After any Biome version change (or ultracite version change), run `biome check .` and compare the warning/error count to the Phase A baseline. If new violations appeared, **resolve them now** — see the resolution techniques below.
+9. **Override hygiene.** If the config has project-specific overrides (rules set to `off`), review whether they are still needed. Rules may have been disabled during initial ultracite adoption that the codebase has since grown to accommodate. Re-enable incrementally and test.
 
 **Biome violation resolution techniques** (apply during C5, D3, or whenever new violations surface):
 
@@ -321,7 +324,7 @@ Classify every outdated package into a tier. Do NOT hardcode tier assignments �
 
 | Tier | What belongs here | Why upgrade first |
 |------|-------------------|-------------------|
-| **Toolchain** | The detected linter, `typescript`, `@types/*` for the detected test runner/runtime | These tools validate code. Upgrade them first so subsequent checks use the latest rules. |
+| **Toolchain** | The detected linter, linter presets (e.g., `ultracite`), `typescript`, `@types/*` for the detected test runner/runtime | These tools validate code. Upgrade them first so subsequent checks use the latest rules. |
 | **Framework** | The detected framework and its ecosystem packages (adapters, integrations, plugins with peer dep coupling) | Largest blast radius. Must be upgraded as a coordinated set. |
 | **Utility** | Everything else — standalone libraries, analytics, validation libs, etc. | Low coupling risk. Can be upgraded independently. |
 
@@ -345,14 +348,15 @@ After doctor mode completes:
 3. **Tree health.** Verify no unmet peer deps.
 4. **Commit:** `chore: upgrade toolchain`
 
-### D3. Linter Config Audit (conditional — only if linter version changed)
+### D3. Linter Config Audit (conditional — only if linter or preset version changed)
 
-If the linter package was upgraded in D2, its config may need updating. Run the linter-specific audit steps from Phase C5 again:
+If the linter package was upgraded in D2, or if a config preset like ultracite was upgraded, the config may need updating. Run the linter-specific audit steps from Phase C5 again:
 - Update schema URL
 - Check for renamed/deprecated options
 - Review new rules and domains
+- If using ultracite: check if the new version enables additional rules that produce violations
 - Run config validity check
-- **Compare violation count to Phase A baseline.** Newly-promoted rules can introduce violations even in patch upgrades. If violations increased, resolve them using the techniques documented in C5 before proceeding.
+- **Compare violation count to Phase A baseline.** Newly-promoted rules (or newly-enabled rules from a preset update) can introduce violations even in patch upgrades. If violations increased, resolve them using the techniques documented in C5 before proceeding.
 
 **Commit:** `chore: sync linter config to new version`
 
@@ -493,6 +497,7 @@ Create a briefing document. If the project has a `docs/whats-new/` directory, cr
 
 <!-- Per-dep "what's now possible" — not just version numbers.
      Examples: "Biome 2.5 adds noUnusedTypes rule — consider enabling"
+               "ultracite 7.4 enables useConsistentCurlyBraces — review overrides"
                "Astro 5.4 supports view transitions natively" -->
 
 ## Dead Code Removed

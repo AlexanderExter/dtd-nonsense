@@ -12,18 +12,18 @@ const SECTION_IDS = [
 ] as const;
 
 interface QuickRefState {
-	searchQuery: string;
-	activeTypeFilters: Set<string>;
 	activeSubtypeFilters: Set<string>;
+	activeTypeFilters: Set<string>;
+	collapseAll: () => void;
+	expandAll: (allIds?: string[]) => void;
 	openSections: Set<string>;
+	searchQuery: string;
+	setOpenSections: (sections: Set<string>) => void;
 
 	setSearchQuery: (q: string) => void;
-	toggleTypeFilter: (type: string) => void;
-	toggleSubtypeFilter: (subtype: string) => void;
-	setOpenSections: (sections: Set<string>) => void;
 	toggleSection: (id: string) => void;
-	expandAll: (allIds?: string[]) => void;
-	collapseAll: () => void;
+	toggleSubtypeFilter: (subtype: string) => void;
+	toggleTypeFilter: (type: string) => void;
 }
 
 export const useQuickRefStore = create<QuickRefState>((set) => ({

@@ -68,119 +68,119 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 	return (
 		<section className="tab-panel">
 			{/* ---------- Identity & Core Info ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
 					Identity &amp; Core Info
 				</h3>
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-md mb-md">
+				<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-md">
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Name
 						<GameInput
-							type="text"
-							value={char.name}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.name = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.name}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Player
 						<GameInput
-							type="text"
-							value={char.player}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.player = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.player}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Concept
 						<GameInput
-							type="text"
-							value={char.concept}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.concept = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.concept}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Size
-						<output className="font-bold text-[1.2rem] text-accent py-xs">{stats.size}</output>
+						<output className="py-xs font-bold text-[1.2rem] text-accent">{stats.size}</output>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Height
 						<GameInput
-							type="text"
-							value={char.height || ""}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.height = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.height || ""}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Weight
 						<GameInput
-							type="text"
-							value={char.weight || ""}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.weight = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.weight || ""}
 						/>
 					</label>
 					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Age
 						<GameInput
-							type="text"
-							value={char.age || ""}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.age = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.age || ""}
 						/>
 					</label>
 				</div>
-				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 					Description
 					<GameTextarea
-						value={char.description || ""}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.description = (e.target as HTMLTextAreaElement).value;
 							})
 						}
 						rows={3}
+						value={char.description || ""}
 					/>
 				</label>
 				<div className="mt-md">
-					<h4 className="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">Languages</h4>
+					<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">Languages</h4>
 					<div className="flex flex-wrap gap-xs">
 						{(char.languages || []).map((lang) => (
 							<span
+								className="inline-flex items-center gap-1 rounded-sm border border-border bg-bg px-sm py-0.5 text-[0.82rem]"
 								key={lang}
-								className="inline-flex items-center gap-1 px-sm py-0.5 bg-bg border border-border rounded-sm text-[0.82rem]"
 							>
 								{lang}
 								<button
-									type="button"
-									className="bg-transparent border-none text-error cursor-pointer text-sm leading-none"
+									className="cursor-pointer border-none bg-transparent text-error text-sm leading-none"
 									onClick={() => handleRemoveLanguage(lang)}
+									type="button"
 								>
 									×
 								</button>
 							</span>
 						))}
-						<Button size="sm" onClick={handleAddLanguage}>
+						<Button onClick={handleAddLanguage} size="sm">
 							+ Add
 						</Button>
 					</div>
@@ -188,9 +188,9 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Race ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Race</h3>
-				<GameSelect value={char.race} onChange={(e) => handleRaceChange((e.target as HTMLSelectElement).value)}>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Race</h3>
+				<GameSelect onChange={(e) => handleRaceChange((e.target as HTMLSelectElement).value)} value={char.race}>
 					<option value="">— Select Race —</option>
 					{races.map((r: any) => (
 						<option key={r.id} value={r.id}>
@@ -199,15 +199,15 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					))}
 				</GameSelect>
 				{charBonusOptions.length > 0 && (
-					<label className="flex items-center gap-sm mt-sm text-[0.85rem]">
+					<label className="mt-sm flex items-center gap-sm text-[0.85rem]">
 						Characteristic Bonus
 						<GameSelect
-							value={char.raceCharBonus}
 							onChange={(e) =>
 								updateChar((c) => {
 									c.raceCharBonus = (e.target as HTMLSelectElement).value;
 								})
 							}
+							value={char.raceCharBonus}
 						>
 							<option value="">— Choose —</option>
 							{charBonusOptions.map((opt: string) => (
@@ -219,7 +219,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 				)}
 				{selectedRace && (
-					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
 						<p className="m-0">
 							<strong>Size:</strong> {selectedRace.size}
 						</p>
@@ -239,11 +239,11 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Exaltation ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Exaltation</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Exaltation</h3>
 				<GameSelect
-					value={char.exaltation}
 					onChange={(e) => handleExaltationChange((e.target as HTMLSelectElement).value)}
+					value={char.exaltation}
 				>
 					<option value="">— Select Exaltation —</option>
 					{exaltations.map((ex: any) => (
@@ -253,7 +253,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					))}
 				</GameSelect>
 				{selectedExalt && (
-					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
 						{selectedExalt.theme && (
 							<p className="m-0">
 								<strong>Theme:</strong> {selectedExalt.theme}
@@ -264,7 +264,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								<strong>Static Powers:</strong>
 								<ul className="my-xs pl-lg">
 									{selectedExalt.staticPowers.map((p: any) => (
-										<li key={typeof p === "string" ? p : p.name} className="mb-0.5">
+										<li className="mb-0.5" key={typeof p === "string" ? p : p.name}>
 											{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 										</li>
 									))}
@@ -286,15 +286,15 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Alignment ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Alignment</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Alignment</h3>
 				<GameSelect
-					value={char.alignment}
 					onChange={(e) =>
 						updateChar((c) => {
 							c.alignment = (e.target as HTMLSelectElement).value;
 						})
 					}
+					value={char.alignment}
 				>
 					<option value="">— Select Alignment —</option>
 					{alignments.map((a: any) => (
@@ -304,14 +304,14 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					))}
 				</GameSelect>
 				{selectedAlign && (
-					<div className="bg-bg border border-border rounded-sm p-md mt-sm text-[0.85rem] text-text-muted space-y-xs">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
 						{selectedAlign.description && <p className="m-0">{selectedAlign.description}</p>}
 						{selectedAlign.commandments && selectedAlign.commandments.length > 0 && (
 							<div>
 								<strong>Commandments:</strong>
 								<ul className="my-xs pl-lg">
 									{selectedAlign.commandments.map((cmd: string) => (
-										<li key={cmd} className="mb-0.5">
+										<li className="mb-0.5" key={cmd}>
 											{cmd}
 										</li>
 									))}
@@ -321,13 +321,13 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						{selectedAlign.sins && selectedAlign.sins.length > 0 && (
 							<div>
 								<strong>Sins:</strong>
-								<table className="w-full border-collapse text-[0.82rem] mt-xs">
+								<table className="mt-xs w-full border-collapse text-[0.82rem]">
 									<thead>
 										<tr>
-											<th className="py-[3px] px-1.5 border border-border text-center bg-surface font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+											<th className="border border-border bg-surface px-1.5 py-[3px] text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
 												Level
 											</th>
-											<th className="py-[3px] px-1.5 border border-border text-center bg-surface font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+											<th className="border border-border bg-surface px-1.5 py-[3px] text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
 												Sin
 											</th>
 										</tr>
@@ -337,10 +337,10 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 											<tr
 												key={`sin-${sin.level ?? i}-${typeof sin === "string" ? sin : sin.description || sin.name}`}
 											>
-												<td className="py-[3px] px-1.5 border border-border text-center">
+												<td className="border border-border px-1.5 py-[3px] text-center">
 													{sin.level ?? i + 1}
 												</td>
-												<td className="py-[3px] px-1.5 border border-border text-center">
+												<td className="border border-border px-1.5 py-[3px] text-center">
 													{typeof sin === "string" ? sin : sin.description || sin.name}
 												</td>
 											</tr>
@@ -351,31 +351,31 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						)}
 					</div>
 				)}
-				<label className="flex items-center gap-sm mt-sm text-[0.85rem]">
+				<label className="mt-sm flex items-center gap-sm text-[0.85rem]">
 					Devotion
 					<GameInput
-						type="number"
-						value={char.devotion ?? 6}
-						min={0}
-						max={10}
 						className="w-[60px]"
+						max={10}
+						min={0}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.devotion = Number((e.target as HTMLInputElement).value);
 							})
 						}
+						type="number"
+						value={char.devotion ?? 6}
 					/>
-					<span className="text-text-dim text-[0.78rem]">/ 10</span>
+					<span className="text-[0.78rem] text-text-dim">/ 10</span>
 				</label>
 				{/* Devotion progress bar */}
 				<div className="mt-sm">
-					<div className="w-full h-3 bg-bg border border-border rounded-sm overflow-hidden">
+					<div className="h-3 w-full overflow-hidden rounded-sm border border-border bg-bg">
 						<div
 							className="h-full bg-accent transition-all duration-300"
 							style={{ width: `${((char.devotion ?? 6) / 10) * 100}%` }}
 						/>
 					</div>
-					<div className="flex justify-between text-[0.7rem] text-text-dim mt-0.5 px-0.5">
+					<div className="mt-0.5 flex justify-between px-0.5 text-[0.7rem] text-text-dim">
 						<span>0</span>
 						<span>5</span>
 						<span>10</span>
@@ -384,42 +384,42 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			</div>
 
 			{/* ---------- Notes ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Notes</h3>
-				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Notes</h3>
+				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 					General Notes
 					<GameTextarea
-						value={char.notes || ""}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.notes = (e.target as HTMLTextAreaElement).value;
 							})
 						}
 						rows={4}
+						value={char.notes || ""}
 					/>
 				</label>
-				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 					Class Notes
 					<GameTextarea
-						value={char.classNotes || ""}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.classNotes = (e.target as HTMLTextAreaElement).value;
 							})
 						}
 						rows={3}
+						value={char.classNotes || ""}
 					/>
 				</label>
-				<label className="flex flex-col mb-md text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 					Exaltation Notes
 					<GameTextarea
-						value={char.exaltationNotes || ""}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.exaltationNotes = (e.target as HTMLTextAreaElement).value;
 							})
 						}
 						rows={3}
+						value={char.exaltationNotes || ""}
 					/>
 				</label>
 			</div>

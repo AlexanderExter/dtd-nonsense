@@ -3,11 +3,11 @@ import type { CombatantCondition } from "./constants";
 import { CONDITIONS } from "./constants";
 
 interface ConditionPickerProps {
+	anchorRect: DOMRect;
 	combatantId: string;
 	existingConditions: CombatantCondition[];
-	anchorRect: DOMRect;
-	onPick: (combatantId: string, conditionId: string) => void;
 	onClose: () => void;
+	onPick: (combatantId: string, conditionId: string) => void;
 }
 
 export function ConditionPicker({
@@ -27,11 +27,11 @@ export function ConditionPicker({
 
 	return (
 		<Popover
-			open
-			onClose={onClose}
 			anchorRect={{ x: anchorRect.left, y: anchorRect.bottom, width: anchorRect.width, height: 0 }}
-			title="Add Condition"
 			className="max-h-[200px]"
+			onClose={onClose}
+			open
+			title="Add Condition"
 		>
 			<div className="flex flex-col gap-1">
 				{CONDITIONS.map((def) => {
@@ -39,20 +39,20 @@ export function ConditionPicker({
 					const isAppliedNonLeveled = state === "applied";
 					return (
 						<button
-							type="button"
+							className="block w-full cursor-pointer rounded-sm border-none bg-transparent px-2 py-1 text-left text-[0.8rem] text-text-primary hover:bg-surface hover:text-accent disabled:pointer-events-none disabled:opacity-40"
+							disabled={isAppliedNonLeveled}
 							key={def.id}
-							className="block w-full py-1 px-2 bg-transparent border-none text-text-primary text-[0.8rem] text-left cursor-pointer rounded-sm hover:bg-surface hover:text-accent disabled:opacity-40 disabled:pointer-events-none"
 							onClick={() => {
 								onPick(combatantId, def.id);
 								onClose();
 							}}
-							disabled={isAppliedNonLeveled}
+							type="button"
 						>
 							<span className="font-semibold">
 								{def.name}
 								{state === "leveled" && " (+1 level)"}
 							</span>
-							<span className="text-text-muted text-[0.78rem]"> {def.effect}</span>
+							<span className="text-[0.78rem] text-text-muted"> {def.effect}</span>
 						</button>
 					);
 				})}

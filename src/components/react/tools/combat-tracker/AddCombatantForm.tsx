@@ -48,118 +48,132 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 		<div className="mb-lg">
 			<AccordionItem title="Add Combatant">
 				<form className="px-sm" onSubmit={handleSubmit}>
-					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
-						<label className="flex-1 min-w-[140px] max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
+						<label className="min-w-[140px] flex-1 max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Name</span>
 							<GameInput
-								type="text"
-								placeholder="Combatant name"
-								value={name}
 								onInput={(e) => setName((e.target as HTMLInputElement).value)}
+								placeholder="Combatant name"
+								type="text"
+								value={name}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Dexterity</span>
 							<GameInput
-								type="number"
-								min={1}
 								max={10}
+								min={1}
+								onInput={(e) =>
+									setDexterity(Number.parseInt((e.target as HTMLInputElement).value, 10) || 2)
+								}
+								type="number"
 								value={dexterity}
-								onInput={(e) => setDexterity(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Composure</span>
 							<GameInput
-								type="number"
-								min={1}
 								max={10}
+								min={1}
+								onInput={(e) =>
+									setComposure(Number.parseInt((e.target as HTMLInputElement).value, 10) || 2)
+								}
+								type="number"
 								value={composure}
-								onInput={(e) => setComposure(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Modifier</span>
 							<GameInput
+								onInput={(e) =>
+									setModifier(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
+								}
 								type="number"
 								value={modifier}
-								onInput={(e) => setModifier(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
 					</div>
-					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>HP Max</span>
 							<GameInput
-								type="number"
 								min={1}
+								onInput={(e) =>
+									setHpMax(Number.parseInt((e.target as HTMLInputElement).value, 10) || 8)
+								}
+								type="number"
 								value={hpMax}
-								onInput={(e) => setHpMax(parseInt((e.target as HTMLInputElement).value, 10) || 8)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Willpower</span>
 							<GameInput
-								type="number"
-								min={1}
 								max={10}
+								min={1}
+								onInput={(e) =>
+									setWillpower(Number.parseInt((e.target as HTMLInputElement).value, 10) || 2)
+								}
+								type="number"
 								value={willpower}
-								onInput={(e) => setWillpower(parseInt((e.target as HTMLInputElement).value, 10) || 2)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Static Defense</span>
 							<GameInput
-								type="number"
 								min={0}
+								onInput={(e) => setSd(Number.parseInt((e.target as HTMLInputElement).value, 10) || 20)}
+								type="number"
 								value={sd}
-								onInput={(e) => setSd(parseInt((e.target as HTMLInputElement).value, 10) || 20)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resilience</span>
 							<GameInput
-								type="number"
 								min={1}
+								onInput={(e) =>
+									setResilience(Number.parseInt((e.target as HTMLInputElement).value, 10) || 3)
+								}
+								type="number"
 								value={resilience}
-								onInput={(e) => setResilience(parseInt((e.target as HTMLInputElement).value, 10) || 3)}
 							/>
 						</label>
 					</div>
-					<div className="flex flex-wrap gap-md items-end mt-md max-[768px]:flex-col">
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Max</span>
 							<GameInput
-								type="number"
 								min={0}
+								onInput={(e) =>
+									setResourceMax(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
+								}
+								type="number"
 								value={resourceMax}
-								onInput={(e) => setResourceMax(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 							/>
 						</label>
-						<label className="flex-none min-w-[90px] max-w-[120px] max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
 							<span>Resource Label</span>
 							<GameInput
-								type="text"
-								placeholder="Mana"
-								value={resourceLabel}
 								onInput={(e) => setResourceLabel((e.target as HTMLInputElement).value)}
+								placeholder="Mana"
+								type="text"
+								value={resourceLabel}
 							/>
 						</label>
-						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
 							<GameCheckbox
 								checked={heroPoint}
 								onChange={(e) => setHeroPoint((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Hero Point (count as 10)
 						</label>
-						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
 							<GameCheckbox
 								checked={surprised}
 								onChange={(e) => setSurprised((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Surprised
 						</label>
-						<label className="inline-flex items-center gap-xs text-[0.85rem] text-text-muted cursor-pointer pb-sm">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
 							<GameCheckbox
 								checked={isNpc}
 								onChange={(e) => setIsNpc((e.target as HTMLInputElement).checked)}
@@ -167,7 +181,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							NPC
 						</label>
 					</div>
-					<Button variant="primary" className="mt-md" type="submit">
+					<Button className="mt-md" type="submit" variant="primary">
 						Add Combatant
 					</Button>
 				</form>

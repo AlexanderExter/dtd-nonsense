@@ -241,17 +241,16 @@ export function NPCGeneratorApp() {
 	return (
 		<>
 			{/* Top Bar */}
-			<header className="flex items-center justify-between gap-md px-lg py-sm bg-surface border-b border-border sticky top-0 z-[100] max-[800px]:flex-wrap no-print">
+			<header className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-[800px]:flex-wrap">
 				<div className="flex items-center gap-sm">
-					<a href="/tools/" className="text-[0.85rem] whitespace-nowrap">
+					<a className="whitespace-nowrap text-[0.85rem]" href="/tools/">
 						← Tools
 					</a>
-					<h1 className="text-[1.1rem] m-0 text-accent whitespace-nowrap">NPC Stat Block Builder</h1>
+					<h1 className="m-0 whitespace-nowrap text-[1.1rem] text-accent">NPC Stat Block Builder</h1>
 				</div>
 				<div className="flex items-center gap-sm max-[800px]:flex-wrap">
 					<GameSelect
 						className="max-w-[180px]"
-						title="Load template"
 						onChange={(e) => {
 							const val = (e.target as HTMLSelectElement).value;
 							if (val) {
@@ -259,6 +258,7 @@ export function NPCGeneratorApp() {
 								(e.target as HTMLSelectElement).value = "";
 							}
 						}}
+						title="Load template"
 					>
 						<option value="">— Templates —</option>
 						{catOrder.map((cat) => {
@@ -278,12 +278,12 @@ export function NPCGeneratorApp() {
 
 					<GameSelect
 						className="max-w-[180px]"
-						ref={savedSelectRef}
-						title="Load saved NPC"
 						onChange={(e) => {
 							const val = (e.target as HTMLSelectElement).value;
 							if (val) loadSavedNPC(val);
 						}}
+						ref={savedSelectRef}
+						title="Load saved NPC"
 					>
 						<option value="">— Saved —</option>
 						{savedList.map((id) => {
@@ -305,45 +305,45 @@ export function NPCGeneratorApp() {
 						})}
 					</GameSelect>
 
-					<Button variant="primary" size="sm" title="Save NPC" onClick={saveNPC}>
+					<Button onClick={saveNPC} size="sm" title="Save NPC" variant="primary">
 						Save
 					</Button>
 					<Button
-						variant="ghost"
-						size="sm"
-						title="Delete saved NPC"
 						onClick={() => {
 							const sel = savedSelectRef.current;
 							if (sel) deleteSavedNPC(sel.value);
 						}}
+						size="sm"
+						title="Delete saved NPC"
+						variant="ghost"
 					>
 						Delete
 					</Button>
-					<Button size="sm" title="Clear all fields" onClick={handleClear}>
+					<Button onClick={handleClear} size="sm" title="Clear all fields">
 						Clear
 					</Button>
 				</div>
 			</header>
 
 			{/* Main Layout */}
-			<main className="grid grid-cols-[minmax(320px,1fr)_minmax(360px,1.2fr)] min-h-[calc(100vh-50px)] max-[800px]:grid-cols-1">
+			<main className="grid min-h-[calc(100vh-50px)] grid-cols-[minmax(320px,1fr)_minmax(360px,1.2fr)] max-[800px]:grid-cols-1">
 				{/* LEFT: Input Panel */}
-				<section className="px-lg py-md overflow-y-auto max-h-[calc(100vh-50px)] border-r border-border max-[800px]:max-h-none max-[800px]:border-r-0 max-[800px]:border-b max-[800px]:border-border no-print">
-					<NPCForm npc={npc} onUpdate={handleNPCUpdate} traitsData={traitsData} skillNames={skillNames} />
+				<section className="no-print max-h-[calc(100vh-50px)] overflow-y-auto border-border border-r px-lg py-md max-[800px]:max-h-none max-[800px]:border-border max-[800px]:border-r-0 max-[800px]:border-b">
+					<NPCForm npc={npc} onUpdate={handleNPCUpdate} skillNames={skillNames} traitsData={traitsData} />
 				</section>
 
 				{/* RIGHT: Preview Panel */}
-				<section className="px-lg py-md overflow-y-auto max-h-[calc(100vh-50px)] flex flex-col gap-md max-[800px]:max-h-none">
+				<section className="flex max-h-[calc(100vh-50px)] flex-col gap-md overflow-y-auto px-lg py-md max-[800px]:max-h-none">
 					<DerivedStatsBar stats={stats} />
-					<StatCard npc={npc} derivedStats={stats} traitsData={traitsData} />
-					<div className="flex gap-sm pt-sm no-print">
-						<Button variant="primary" title="Copy stat block as Markdown" onClick={handleCopyMarkdown}>
+					<StatCard derivedStats={stats} npc={npc} traitsData={traitsData} />
+					<div className="no-print flex gap-sm pt-sm">
+						<Button onClick={handleCopyMarkdown} title="Copy stat block as Markdown" variant="primary">
 							Copy Markdown
 						</Button>
-						<Button title="Print stat card" onClick={handlePrint}>
+						<Button onClick={handlePrint} title="Print stat card">
 							Print Card
 						</Button>
-						<Button title="Duplicate as new NPC" onClick={handleDuplicate}>
+						<Button onClick={handleDuplicate} title="Duplicate as new NPC">
 							Duplicate
 						</Button>
 					</div>

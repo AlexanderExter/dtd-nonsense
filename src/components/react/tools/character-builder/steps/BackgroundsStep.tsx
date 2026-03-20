@@ -56,7 +56,7 @@ export function BackgroundsStep() {
 
 	return (
 		<div>
-			<div className="flex justify-between items-center px-md py-sm bg-surface rounded-sm mb-md text-[0.9rem]">
+			<div className="mb-md flex items-center justify-between rounded-sm bg-surface px-md py-sm text-[0.9rem]">
 				<strong>Free Dots:</strong> {freeRemaining} / {BG_BUDGET} remaining
 			</div>
 
@@ -66,25 +66,25 @@ export function BackgroundsStep() {
 					const xpDots = Math.max(0, dots - FREE_BG_CAP);
 
 					return (
-						<div key={bg.id || bg.name} className="bg-surface border border-border rounded-md p-md">
-							<h4 className="text-accent mb-xs text-[0.95rem]">{bg.name}</h4>
+						<div className="rounded-md border border-border bg-surface p-md" key={bg.id || bg.name}>
+							<h4 className="mb-xs text-[0.95rem] text-accent">{bg.name}</h4>
 							{bg.description && (
-								<p className="text-[0.8rem] text-text-dim mb-sm leading-[1.4]">{bg.description}</p>
+								<p className="mb-sm text-[0.8rem] text-text-dim leading-[1.4]">{bg.description}</p>
 							)}
 							<DotControl
-								value={dots}
 								max={5}
 								min={0}
-								xpDots={xpDots}
 								onChange={(v) => setDots(bg.id || bg.name, v)}
+								value={dots}
+								xpDots={xpDots}
 							/>
 							{xpDots > 0 && (
-								<span className="block text-xs text-warning text-center mt-xs">
+								<span className="mt-xs block text-center text-warning text-xs">
 									+{xpDots * BG_XP_PER_DOT} XP cost
 								</span>
 							)}
 							{dots > 0 && bg.dots?.[dots - 1] && (
-								<p className="text-[0.8rem] text-text-muted mt-sm pt-sm border-t border-border min-h-[1.5em]">
+								<p className="mt-sm min-h-[1.5em] border-border border-t pt-sm text-[0.8rem] text-text-muted">
 									{bg.dots[dots - 1]}
 								</p>
 							)}

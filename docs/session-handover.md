@@ -6,83 +6,87 @@ Running context for the current work session. **Overwritten each session** — n
 
 ## Current Branch
 
-`session-2026-03-12` (10 commits ahead of `main`)
+`session-2026-03-20` (from `main`)
 
 ## Session Objective
 
-Four-phase session: (1) Plan shadcn/ui migration, (2) Convert all content files to MDX and update editorial direction, (3) Run sanity-check audit + configure knip, (4) Integrate knip into automated pipeline + clean dead code + session wrapup.
+Two-phase session: (1) self-driven maintenance pass, (2) user-directed architecture docs update and ultracite integration.
 
 ## What Changed
 
-### Code Layer
+### Phase 1: Maintenance Pass
 
 | Commit | Description |
 |--------|-------------|
-| `cb66685` | Convert 76 content files .md→.mdx, update pipeline scripts (prebuild, sync-check, lint) |
-| `1ad4c94` | Fix 31 stale .md refs across docs, update knip config, fix barrel import doc claims |
-| `4313a25` | Sanity-check completion: session-handover, side-tracks, pipeline roadmap |
-| `76bfdfa` | Integrate knip into check/CI, delete 8 unused UI components, un-export 17 types, add devserver to prompts |
+| `4493737` | Auto-fix Biome import ordering and formatting (10 violations) |
+| `34c962e` | Modal accessibility — VisuallyHidden fallback title, suppress empty description warning |
+| `993b541` | Docs: rewrite stale session-handover, fix side-tracks, update pipeline.md CI steps |
+| `7e55219` | Docs: add Phase 14 (MDX + knip) and Phase 15 (shadcn foundation) to project-history.md |
 
-### Files Deleted
+### Phase 2: User-Directed Work
 
-- 8 unused UI components: `Combobox`, `FormGroup`, `Menu`, `NumberInput`, `Panel`, `PresetGroup`, `Select`, `Tooltip`
-- `TabPanel` function from `Tabs.tsx`, `dismissToast` function from `Toast.tsx`
+| Commit | Description |
+|--------|-------------|
+| `46be9ff` | Docs: comprehensive architecture.md update — fix stale migration section, accurate 25-component UI inventory |
+| `01ce563` | Feat: integrate ultracite as Biome config preset — ~200+ curated rules, Tailwind class sorting, auto-fix ~80 files |
+| (pending) | Docs: update architecture.md, copilot-instructions.md, side-tracks.md, and session-handover.md for ultracite |
 
-### Config Changes
+### Ultracite Integration Details
 
-- `package.json`: `bun run check` now includes `&& knip` at the end
-- `.github/workflows/build.yml`: Added `bun run knip` step before build
-- `knip.json`: Restructured — removed redundant entries, un-ignored UI components, added framework false-positive suppressions
-- `.github/prompts/sanity-check.prompt.md`: Added knip to automated verification (Section 3), added devserver verification (Section 8)
-- `.github/prompts/session-wrapup.prompt.md`: Added devserver startup (Section 3d) and devserver reporting (Phase 4 item 6)
+- **What:** Biome config now extends `ultracite/biome/{core,react,astro}` presets instead of standalone `recommended: true`
+- **New rules enabled:** `useSortedClasses` (Tailwind class sorting), `useOptionalChain`, `useAtIndex`, `useCollapsedIf`, `useNumberNamespace`, `useSortedAttributes`, `useSortedProperties`, `useSortedInterfaceMembers`, comprehensive a11y and CSS rules
+- **Rules suppressed:** ~25 rules overridden to `off` for codebase compatibility (e.g., `noForEach`, `noBarrelFile`, `noNamespaceImport`, `useFilenamingConvention`, `useBlockStatements`)
+- **Auto-fixes applied:** ~80 source files + 12 JSON data files (tabs → 2-space indent from Biome formatter)
+- **Manual fix:** Collapsed nested if in CharacteristicsStep.tsx (`useCollapsedIf`)
 
 ### Documentation Updates
 
-- `docs/pipeline.md`: Added `bun run knip` docs, updated CI listing, added MDX conversion + shadcn migration to roadmap
-- `docs/project-conventions.md`: Added knip to pipeline table, added "New Tool Integration" convention
-- `.github/copilot-instructions.md`: Updated bun run check description, added knip to pipeline table and CI description
-- `docs/product-vision.md`: Strategic pivot — "preserve the source" → "build on the source", lifecycle "Beta" → "Active Development"
-- `src/components/react/ui/README.md`: Removed deleted components from index
-
-## Why It Changed
-
-**MDX conversion**: Required for upcoming shadcn/ui migration. MDX enables JSX components inside content files.
-
-**Editorial direction pivot**: User dropped the "canonicity requirement" — new direction treats source material as inspiration, not scripture.
-
-**Knip integration**: Tool was installed in prior session but never wired into check/CI. Dead code accumulated silently — 8 entire unused UI files. Now runs as the final step in `bun run check` and in CI.
-
-**Dead code cleanup**: All knip findings resolved to achieve a clean baseline. 8 unused UI files deleted, 17 types un-exported (still used internally), 2 dead functions removed.
-
-**Devserver in prompts**: Sessions ended without visual verification. New convention ensures the dev server is running at session end.
+- `docs/architecture.md`: Biome description now mentions ultracite presets; Phase 15 component inventory (25 components in 3 tiers)
+- `.github/copilot-instructions.md`: Biome toolchain entry updated to mention ultracite
+- `docs/side-tracks.md`: Removed resolved "Add Knip to CI" entry (knip already in `bun run check` and CI), cleaned orphaned next-action
+- `docs/session-handover.md`: Full rewrite for this session
 
 ## Verification
 
-All automated checks pass:
-
 | Check | Result |
 |---|---|
-| `bun run check` | Pass (includes knip) |
+| `bun run check` | Pass (324 tests, 0 lint errors, 0 knip issues) |
 | `bun run validate` | 12/12 pass |
-| `bun run lint:data` | 0 errors, 13 warnings, 879 info |
 | `bun run sync-check` | 329 matched, 0 drift |
 | `bun run knip` | 0 issues |
-| `bun run build` | Not run this turn (pre-commit runs check, not build) |
+| `bun run check:deps` | 0 violations |
+| `bun run check:structure` | 3/3 checks pass |
+
+## Current Project State
+
+### Stack
+
+- **6 tools**: Character Builder, Character Sheet, Combat Tracker, NPC Generator, Quick Reference, Ship Builder
+- **324 unit tests** across 23 test files (0 failures)
+- **25 UI components** in `src/components/react/ui/` (10 shadcn primitives, 4 Game* wrappers, 11 custom)
+- **12 JSON data files**, all validated by Zod schemas
+- **76 MDX content files** across `books/` and `cleaned-references/`
+- **Biome + ultracite**: ~200+ curated lint rules via `ultracite/biome/{core,react,astro}` presets
+
+### Recent History
+
+| Session | Key Changes |
+|---------|-------------|
+| 2026-03-12 | Phase 14: MDX conversion (76 files), knip integration into check/CI |
+| 2026-03-13 | Two squash merges — content & tooling refinements |
+| 2026-03-18 | Phase 15: shadcn foundation — cn() utility, 10 shadcn primitives, Game* wrappers, CSS variable bridge |
+| 2026-03-20 | Maintenance pass, architecture.md rewrite, ultracite integration |
 
 ## Known Issues
 
-1. **No browser testing done** — build passes but no visual verification of .mdx rendering or tool pages.
-2. **lint:data baseline shift** — Was ~19 warnings / ~884 info, now 13/879. Improved by prior session's content edits.
-3. **project-history.md not updated** — Phase 14 (MDX conversion + editorial pivot + knip integration) not yet documented.
-
-## Areas of Concern
-
-- **MDX rendering untested**: Files renamed but not visually checked. If content contained JSX-like syntax (angle brackets, curly braces), MDX parsing could break silently.
-- **markdown.instructions.md applyTo**: Updated glob to include `.mdx` but not verified VS Code applies instructions to .mdx files at runtime.
+1. **No browser testing since MDX conversion** — visual verification still pending
+2. **shadcn/ui migration incomplete** — foundation done (Phase 15), remaining hand-rolled Radix primitives (Modal, Accordion, Tabs, Toast, CloseButton) not yet swapped
+3. **React Hook Form installed but unused** — `react-hook-form@7.71.2` in deps
+4. **Dependency overrides active** — `svgo` and `path-to-regexp` overrides for security patches (see side-tracks.md)
 
 ## Suggested Next
 
-1. **Start dev server and visually verify** — `bun run dev`, spot-check content pages and all 6 tools.
-2. **shadcn/ui migration** — Primary next task. User decisions recorded: cohesive pre-made theme, sonner for toasts, lucide-react for icons, full Panel→Card swap, big bang migration. Initialize with `npx shadcn@latest init`.
-3. **Add Phase 14 to project-history.md** — Document MDX conversion, editorial direction change, knip integration.
-4. **Remove side-tracks item** — "Dead UI Components" entry in side-tracks.md can be marked resolved (deleted in this session).
+1. **Visual browser testing** — run `bun run dev`, verify all 6 tools and content pages
+2. **Continue shadcn migration** — swap remaining hand-rolled Radix primitives to shadcn/ui
+3. **Extend check:deps and check:structure** — add `no-hooks-to-lib-reverse` rule and `*App.tsx` export naming check (see side-tracks.md)
+4. **Review ultracite rule overrides** — some disabled rules may be worth enabling incrementally

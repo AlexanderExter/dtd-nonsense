@@ -2,8 +2,8 @@ import type { DerivedStats, NPCData, TraitDef } from "./constants";
 import { CHAR_ABBREV, CHAR_KEYS, formatWeapon } from "./constants";
 
 interface StatCardProps {
-	npc: NPCData;
 	derivedStats: DerivedStats;
+	npc: NPCData;
 	traitsData: TraitDef[];
 }
 
@@ -11,8 +11,8 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 	const d = derivedStats;
 
 	return (
-		<div className="stat-card bg-surface border-2 border-border rounded-md p-lg flex-1">
-			<h2 className="text-accent text-[1.4rem] m-0 mb-md pb-sm border-b-2 border-b-accent-dim">
+		<div className="stat-card flex-1 rounded-md border-2 border-border bg-surface p-lg">
+			<h2 className="m-0 mb-md border-b-2 border-b-accent-dim pb-sm text-[1.4rem] text-accent">
 				{npc.name || "New NPC"}
 			</h2>
 
@@ -22,7 +22,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 					<tr>
 						{CHAR_KEYS.map((key) => (
 							<th
-								className="text-center px-sm py-xs min-w-[36px] text-[0.75rem] text-text-muted bg-transparent border-b border-border"
+								className="min-w-[36px] border-border border-b bg-transparent px-sm py-xs text-center text-[0.75rem] text-text-muted"
 								key={key}
 							>
 								{CHAR_ABBREV[key]}
@@ -36,7 +36,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 							const val = npc.characteristics[key];
 							return (
 								<td
-									className="text-center px-sm py-xs min-w-[36px] text-[0.9rem] font-bold border-b-0"
+									className="min-w-[36px] border-b-0 px-sm py-xs text-center font-bold text-[0.9rem]"
 									key={key}
 								>
 									{val === 0 ? "-" : val}
@@ -48,7 +48,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 			</table>
 
 			{/* Stats line */}
-			<div className="text-[0.9rem] mb-md text-text-primary leading-[1.8]">
+			<div className="mb-md text-[0.9rem] text-text-primary leading-[1.8]">
 				<strong className="text-accent">Speed:</strong> {npc.speed} |{" "}
 				<strong className="text-accent">Size/Resilience:</strong> {npc.size}/{d.resilience} |{" "}
 				<strong className="text-accent">SD:</strong> {d.sd} | <strong className="text-accent">HP:</strong>{" "}
@@ -95,7 +95,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 							<span className="font-bold text-text-primary">Abilities:</span>
 						</div>
 						{npc.abilities.map((a) => (
-							<div className="ml-md mb-xs" key={a.name}>
+							<div className="mb-xs ml-md" key={a.name}>
 								- <span className="font-semibold text-accent">{a.name}</span>
 								{a.description ? ` - ${a.description}` : ""}
 							</div>

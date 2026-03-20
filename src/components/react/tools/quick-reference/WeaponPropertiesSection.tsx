@@ -15,11 +15,11 @@ export function WeaponPropertiesSection({ searchWords }: WeaponPropertiesSection
 	return (
 		<div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-sm max-[600px]:grid-cols-1">
 			{filtered.map((p) => (
-				<div className="px-md py-sm border-l-[3px] border-l-accent-dim bg-surface rounded-r-sm" key={p.name}>
-					<strong className="text-accent text-[0.88rem]">
+				<div className="rounded-r-sm border-l-[3px] border-l-accent-dim bg-surface px-md py-sm" key={p.name}>
+					<strong className="text-[0.88rem] text-accent">
 						<Highlight text={p.name} words={searchWords} />
 					</strong>
-					<span className="block text-[0.82rem] text-text-muted mt-[2px]">
+					<span className="mt-[2px] block text-[0.82rem] text-text-muted">
 						<Highlight text={p.desc} words={searchWords} />
 					</span>
 				</div>

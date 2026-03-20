@@ -38,14 +38,14 @@ export function AlignmentStep() {
 
 	return (
 		<div>
-			<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
-				<label className="text-[0.85rem] text-text-dim m-0">
+			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
+				<label className="m-0 text-[0.85rem] text-text-dim">
 					Pantheon:{" "}
 					<GameSelect
-						value={pantheonFilter}
 						onChange={(e) => {
 							setPantheonFilter((e.target as HTMLSelectElement).value);
 						}}
+						value={pantheonFilter}
 					>
 						<option value="all">All</option>
 						{pantheons.map((p) => (
@@ -57,17 +57,17 @@ export function AlignmentStep() {
 				</label>
 			</div>
 
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 				{filtered.map((al: any) => (
 					<SelectionCard
 						key={al.id || al.name}
-						title={al.name}
-						subtitle={al.pantheon}
-						preview={al.description?.slice(0, 80)}
-						selected={char.alignment === (al.id || al.name)}
 						onClick={() => {
 							setSelectedPreview(al);
 						}}
+						preview={al.description?.slice(0, 80)}
+						selected={char.alignment === (al.id || al.name)}
+						subtitle={al.pantheon}
+						title={al.name}
 					/>
 				))}
 			</div>
@@ -126,7 +126,7 @@ export function AlignmentStep() {
 					</p>
 
 					<div className="mt-md flex gap-sm">
-						<Button variant="primary" onClick={() => selectAlignment(preview)}>
+						<Button onClick={() => selectAlignment(preview)} variant="primary">
 							{char.alignment === (preview.id || preview.name) ? "Selected ✓" : "Select"}
 						</Button>
 					</div>

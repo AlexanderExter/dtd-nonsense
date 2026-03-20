@@ -49,7 +49,7 @@ export function StepAccordion() {
 	const setCurrentStep = useBuilderStore((s) => s.setCurrentStep);
 
 	return (
-		<div className="border border-border rounded-md overflow-hidden">
+		<div className="overflow-hidden rounded-md border border-border">
 			{STEP_LABELS.map((label, i) => {
 				const stepNum = i + 1;
 				const isOpen = active === stepNum;
@@ -63,14 +63,14 @@ export function StepAccordion() {
 				].join(" ");
 
 				return (
-					<div key={stepNum} className="border-b border-border last:border-b-0">
+					<div className="border-border border-b last:border-b-0" key={stepNum}>
 						<button
-							type="button"
-							className="flex items-center gap-md w-full px-lg py-md bg-surface border-none text-text-primary text-base font-semibold text-left cursor-pointer transition-colors duration-150 hover:bg-surface-raised"
+							aria-expanded={isOpen}
+							className="flex w-full cursor-pointer items-center gap-md border-none bg-surface px-lg py-md text-left font-semibold text-base text-text-primary transition-colors duration-150 hover:bg-surface-raised"
 							onClick={() => {
 								setCurrentStep(isOpen ? 0 : stepNum);
 							}}
-							aria-expanded={isOpen}
+							type="button"
 						>
 							<span className={stepNumCls}>{stepNum}</span>
 							<span className="flex-1">{label}</span>
@@ -80,7 +80,7 @@ export function StepAccordion() {
 							<span>{isOpen ? "▾" : "▸"}</span>
 						</button>
 						{isOpen && (
-							<div className="p-lg bg-bg border-t border-border">
+							<div className="border-border border-t bg-bg p-lg">
 								<StepComponent />
 							</div>
 						)}

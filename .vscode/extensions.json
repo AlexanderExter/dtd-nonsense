@@ -1,20 +1,20 @@
 {
-	"recommendations": [
-		// Biome: linter, formatter, import sorting (required)
-		"biomejs.biome",
-		// Astro: language support, formatting, and IntelliSense for .astro files (required)
-		"astro-build.astro-vscode",
-		// Markdown: rumdl linter and formatter for rulebook .md files (replaces markdownlint)
-		"rvben.rumdl",
-		// TOML: schema validation and autocomplete for .rumdl.toml and other TOML files
-		"tamasfe.even-better-toml",
-		// Spell checker: cSpell word list is configured in settings.json
-		"streetsidesoftware.code-spell-checker",
-		// Bun: run scripts and manage Bun workspaces
-		"oven.bun-vscode"
-	],
-	"unwantedRecommendations": [
-		// Prettier conflicts with Biome — Biome owns all JS/TS/JSON formatting in this project
-		"esbenp.prettier-vscode"
-	]
+  "recommendations": [
+    // Biome: linter, formatter, import sorting (required)
+    "biomejs.biome",
+    // Astro: language support, formatting, and IntelliSense for .astro files (required)
+    "astro-build.astro-vscode",
+    // Markdown: rumdl linter and formatter for rulebook .md files (replaces markdownlint)
+    "rvben.rumdl",
+    // TOML: schema validation and autocomplete for .rumdl.toml and other TOML files
+    "tamasfe.even-better-toml",
+    // Spell checker: cSpell word list is configured in settings.json
+    "streetsidesoftware.code-spell-checker",
+    // Bun: run scripts and manage Bun workspaces
+    "oven.bun-vscode"
+  ],
+  "unwantedRecommendations": [
+    // Prettier conflicts with Biome — Biome owns all JS/TS/JSON formatting in this project
+    "esbenp.prettier-vscode"
+  ]
 }

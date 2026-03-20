@@ -61,14 +61,14 @@ export const AH_CATS = ["asset", "exaltedAsset", "hindrance"];
 // =========================================================================
 
 export interface BuilderMeta {
+	charDotsSpent: Record<string, number>;
+	charPriority: Record<string, string | null>;
+	equipmentChoices: Record<number, string>;
+	equipmentPkg: string | null;
+	skillDotsSpent: Record<string, number>;
+	skillPriority: Record<string, string | null>;
 	step: number;
 	stepsCompleted: boolean[];
-	charPriority: Record<string, string | null>;
-	skillPriority: Record<string, string | null>;
-	charDotsSpent: Record<string, number>;
-	skillDotsSpent: Record<string, number>;
-	equipmentPkg: string | null;
-	equipmentChoices: Record<number, string>;
 }
 
 export function createDefaultMeta(): BuilderMeta {
@@ -89,15 +89,15 @@ export function createDefaultMeta(): BuilderMeta {
 // =========================================================================
 
 interface XPBreakdown {
+	assets: number;
+	backgrounds: number;
+	breakdown: Record<string, number>;
 	classes: number;
 	feats: number;
-	assets: number;
 	hindrances: number;
-	backgrounds: number;
-	total: number;
 	remaining: number;
 	spent: number;
-	breakdown: Record<string, number>;
+	total: number;
 }
 
 export function calcXP(char: CharacterData): XPBreakdown {

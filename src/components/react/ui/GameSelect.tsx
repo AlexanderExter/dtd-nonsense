@@ -8,9 +8,9 @@ export function GameSelect({ className, ...props }: React.SelectHTMLAttributes<H
 	return (
 		<select
 			className={cn(
-				"w-full py-1 px-1.5 text-[0.85rem] bg-bg border border-border rounded-[3px] text-text-primary",
+				"w-full rounded-[3px] border border-border bg-bg px-1.5 py-1 text-[0.85rem] text-text-primary",
 				"focus:border-accent focus:outline-none",
-				"disabled:opacity-50 disabled:cursor-not-allowed",
+				"disabled:cursor-not-allowed disabled:opacity-50",
 				className,
 			)}
 			{...props}

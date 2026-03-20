@@ -118,19 +118,19 @@ export function WeaponTable({ type }: WeaponTableProps) {
 							<td className={tdClass}>
 								<GameInput
 									list={datalistId}
-									value={w.name}
 									onInput={(e) =>
 										handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
 									}
+									value={w.name}
 								/>
 							</td>
 							<td className={tdClass}>
 								<GameSelect
-									className="max-w-[100px] text-[0.78rem] py-[1px] px-0.5"
-									value={w.proficiency}
+									className="max-w-[100px] px-0.5 py-[1px] text-[0.78rem]"
 									onChange={(e) =>
 										handleFieldChange(idx, "proficiency", (e.target as HTMLSelectElement).value)
 									}
+									value={w.proficiency}
 								>
 									<option value="">—</option>
 									{profList.map((p) => (
@@ -143,34 +143,34 @@ export function WeaponTable({ type }: WeaponTableProps) {
 							{!isMelee && (
 								<td className={tdClass}>
 									<GameInput
-										value={(w as RangedWeapon).range || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "range", (e.target as HTMLInputElement).value)
 										}
+										value={(w as RangedWeapon).range || ""}
 									/>
 								</td>
 							)}
 							<td className={tdClass}>
 								<GameInput
-									value={w.damage}
 									onInput={(e) =>
 										handleFieldChange(idx, "damage", (e.target as HTMLInputElement).value)
 									}
+									value={w.damage}
 								/>
 							</td>
 							<td className={tdClass}>
 								<GameInput
-									value={w.pen || ""}
 									onInput={(e) => handleFieldChange(idx, "pen", (e.target as HTMLInputElement).value)}
+									value={w.pen || ""}
 								/>
 							</td>
 							<td className={tdClass}>
 								<GameSelect
-									className="max-w-[100px] text-[0.78rem] py-[1px] px-0.5"
-									value={w.damageType}
+									className="max-w-[100px] px-0.5 py-[1px] text-[0.78rem]"
 									onChange={(e) =>
 										handleFieldChange(idx, "damageType", (e.target as HTMLSelectElement).value)
 									}
+									value={w.damageType}
 								>
 									<option value="">—</option>
 									{DAMAGE_TYPES.map((t) => (
@@ -183,55 +183,55 @@ export function WeaponTable({ type }: WeaponTableProps) {
 							{!isMelee && (
 								<td className={tdClass}>
 									<GameInput
-										value={(w as RangedWeapon).rof || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "rof", (e.target as HTMLInputElement).value)
 										}
+										value={(w as RangedWeapon).rof || ""}
 									/>
 								</td>
 							)}
 							{!isMelee && (
 								<td className={tdClass}>
 									<GameInput
-										value={(w as RangedWeapon).clip || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "clip", (e.target as HTMLInputElement).value)
 										}
+										value={(w as RangedWeapon).clip || ""}
 									/>
 								</td>
 							)}
 							{!isMelee && (
 								<td className={tdClass}>
 									<GameInput
-										value={(w as RangedWeapon).reload || ""}
 										onInput={(e) =>
 											handleFieldChange(idx, "reload", (e.target as HTMLInputElement).value)
 										}
+										value={(w as RangedWeapon).reload || ""}
 									/>
 								</td>
 							)}
 							<td className={tdClass}>
 								<GameInput
-									value={w.special || w.qualities || ""}
 									onInput={(e) =>
 										handleFieldChange(idx, "special", (e.target as HTMLInputElement).value)
 									}
+									value={w.special || w.qualities || ""}
 								/>
 							</td>
 							<td className={tdClass}>
 								<GameInput
-									value={w.notes}
 									onInput={(e) =>
 										handleFieldChange(idx, "notes", (e.target as HTMLInputElement).value)
 									}
+									value={w.notes}
 								/>
 							</td>
-							<td className={`${tdClass} text-center w-9`}>
+							<td className={`${tdClass} w-9 text-center`}>
 								<button
-									type="button"
-									className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
+									type="button"
 								>
 									×
 								</button>

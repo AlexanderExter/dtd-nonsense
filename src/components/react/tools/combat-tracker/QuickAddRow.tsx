@@ -3,8 +3,8 @@ import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 
 interface QuickAddRowProps {
-	onQuickAdd: (name: string, initTotal: number) => void;
 	onImportSheet: () => void;
+	onQuickAdd: (name: string, initTotal: number) => void;
 	onRollAll: () => void;
 }
 
@@ -25,30 +25,30 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 	};
 
 	return (
-		<div className="flex flex-wrap gap-sm items-center mb-lg p-sm bg-surface border border-border rounded-md max-[768px]:flex-col max-[768px]:items-stretch">
+		<div className="mb-lg flex flex-wrap items-center gap-sm rounded-md border border-border bg-surface p-sm max-[768px]:flex-col max-[768px]:items-stretch">
 			<GameInput
-				type="text"
-				className="flex-1 min-w-[100px] max-[768px]:flex-none max-[768px]:w-full"
-				placeholder="Quick add name"
-				value={name}
+				className="min-w-[100px] flex-1 max-[768px]:w-full max-[768px]:flex-none"
 				onInput={(e) => setName((e.target as HTMLInputElement).value)}
 				onKeyDown={handleKeyDown}
+				placeholder="Quick add name"
+				type="text"
+				value={name}
 			/>
 			<GameInput
-				type="number"
-				className="flex-none w-[100px] max-[768px]:w-full"
-				placeholder="Init"
-				value={initTotal}
-				onInput={(e) => setInitTotal(parseInt((e.target as HTMLInputElement).value, 10) || 0)}
+				className="w-[100px] flex-none max-[768px]:w-full"
+				onInput={(e) => setInitTotal(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 				onKeyDown={handleKeyDown}
+				placeholder="Init"
+				type="number"
+				value={initTotal}
 			/>
-			<Button variant="primary" size="sm" onClick={handleAdd}>
+			<Button onClick={handleAdd} size="sm" variant="primary">
 				Quick Add
 			</Button>
-			<Button size="sm" onClick={onImportSheet}>
+			<Button onClick={onImportSheet} size="sm">
 				Import from Sheet
 			</Button>
-			<Button size="sm" onClick={onRollAll}>
+			<Button onClick={onRollAll} size="sm">
 				Roll All Initiative
 			</Button>
 		</div>

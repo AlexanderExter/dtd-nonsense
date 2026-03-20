@@ -67,7 +67,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 
 	return (
 		<div className="mb-md">
-			<h4 className="text-[0.9rem] mb-sm text-text-muted">
+			<h4 className="mb-sm text-[0.9rem] text-text-muted">
 				{label} Hardpoints ({count})
 			</h4>
 			{Array.from({ length: count }, (_, i) => {
@@ -79,12 +79,12 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 				const currentMaterial = weapon ? weapon.material : "";
 
 				return (
-					<div key={slotKey} className="bg-surface-raised border border-border rounded-sm p-sm mb-sm">
-						<div className="flex gap-sm flex-wrap">
+					<div className="mb-sm rounded-sm border border-border bg-surface-raised p-sm" key={slotKey}>
+						<div className="flex flex-wrap gap-sm">
 							<GameSelect
-								className="flex-1 min-w-[120px]"
-								value={currentSize}
+								className="min-w-[120px] flex-1"
 								onChange={(e) => handleSizeChange(i, (e.target as HTMLSelectElement).value)}
+								value={currentSize}
 							>
 								<option value="">— Empty —</option>
 								{WEAPON_SIZES.map((s) => (
@@ -94,10 +94,10 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 								))}
 							</GameSelect>
 							<GameSelect
-								className="flex-1 min-w-[120px]"
-								value={currentMaterial}
+								className="min-w-[120px] flex-1"
 								disabled={!currentSize}
 								onChange={(e) => handleMaterialChange(i, (e.target as HTMLSelectElement).value)}
+								value={currentMaterial}
 							>
 								<option value="">— Material —</option>
 								{WEAPON_MATERIALS.map((m) => (
@@ -121,7 +121,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 
 function WeaponPreview({ weapon }: { weapon: ShipWeapon }) {
 	return (
-		<div className="grid grid-cols-[repeat(auto-fill,minmax(90px,1fr))] gap-x-sm gap-y-0.5 text-xs text-text-dim mt-xs pt-xs border-t border-border">
+		<div className="mt-xs grid grid-cols-[repeat(auto-fill,minmax(90px,1fr))] gap-x-sm gap-y-0.5 border-border border-t pt-xs text-text-dim text-xs">
 			<span>
 				Dam: <strong className="text-text-primary">{weapon.damage}</strong>
 			</span>
@@ -166,7 +166,7 @@ export function WeaponSlots() {
 	if (!hull) {
 		return (
 			<section className="mb-xl">
-				<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Weapons</h2>
+				<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Weapons</h2>
 				<p className="text-text-dim italic">Select a hull first</p>
 			</section>
 		);
@@ -174,9 +174,9 @@ export function WeaponSlots() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Weapons</h2>
-			<WeaponGroup position="forward" label="Forward" count={hull.weapons.forward} />
-			<WeaponGroup position="rear" label="Rear" count={hull.weapons.rear} />
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Weapons</h2>
+			<WeaponGroup count={hull.weapons.forward} label="Forward" position="forward" />
+			<WeaponGroup count={hull.weapons.rear} label="Rear" position="rear" />
 		</section>
 	);
 }

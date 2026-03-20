@@ -1,70 +1,70 @@
 interface QRefAction {
-	name: string;
-	type: string;
-	subtypes: string[];
 	desc: string;
+	name: string;
+	subtypes: string[];
+	type: string;
 }
 
 interface QRefCondition {
-	name: string;
-	effect: string;
 	duration: string;
+	effect: string;
+	name: string;
 }
 
 interface QRefRangeBand {
 	band: string;
-	range: string;
 	mod: string;
+	range: string;
 }
 
 interface QRefModifier {
-	situation: string;
 	mod: string;
+	situation: string;
 }
 
 interface QRefCover {
-	cover: string;
 	ap: number;
+	cover: string;
 }
 
 interface QRefTN {
-	tn: number;
 	diff: string;
+	tn: number;
 }
 
 interface QRefMagicSchool {
-	school: string;
 	char: string;
+	school: string;
 	theme: string;
 }
 
 export interface QRefSchool {
+	action: string;
+	blurb: string;
 	school: string;
 	skill: string;
 	weapon: string;
-	action: string;
-	blurb: string;
 }
 
 interface QRefWeaponProperty {
-	name: string;
 	desc: string;
+	name: string;
 }
 
 interface QRefFormula {
-	metric: string;
 	formula: string;
+	metric: string;
 }
 
 interface QRefHitLocation {
-	roll: string;
 	location: string;
+	roll: string;
 }
 
 export interface QRefWarpEntry {
-	roll: string;
-	name: string;
 	effect: string;
+	name: string;
+	roll: string;
 }
 
 export const QREF_DATA = {

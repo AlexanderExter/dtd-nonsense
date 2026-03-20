@@ -240,6 +240,55 @@ Completed items:
 
 ---
 
+## Phase 14 — MDX Conversion + Knip Integration (2026-03-12–13)
+
+**Goal:** Convert all content files to MDX (prerequisite for shadcn component embedding), integrate knip into the automated pipeline, and clean up dead code.
+
+| Component                       | What Was Done                                                                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 14.1 MDX Conversion             | Renamed 76 content files from `.md` → `.mdx` across `books/` and `cleaned-references/`. Updated pipeline scripts (`prebuild.mjs`, `sync-check.ts`, `lint.ts`) to handle `.mdx` extension. Updated all doc references from `.md` to `.mdx`. |
+| 14.2 Editorial Direction Pivot  | Shifted project philosophy from "preserve the source" to "build on the source" (`docs/product-vision.md`). Source material is now treated as inspiration, not scripture. |
+| 14.3 Knip Integration           | Added `knip` to `bun run check` pipeline and CI workflow (`.github/workflows/build.yml`). Configured `knip.json` with framework false-positive suppressions (Astro content.config.ts, schema files). |
+| 14.4 Dead Code Cleanup          | Deleted 8 unused UI components (Combobox, FormGroup, Menu, NumberInput, Panel, PresetGroup, Select, Tooltip). Removed 2 dead exports (`TabPanel`, `dismissToast`). Un-exported 17 internal-only types. |
+| 14.5 Documentation              | Updated `pipeline.md` (knip docs, CI listing), `project-conventions.md` (knip in pipeline table), `copilot-instructions.md` (check description). Added devserver verification to prompt files. |
+
+**Totals:** 76 files renamed, 8 files deleted, knip integrated as pipeline gate. Test count: 182 → 182 (no test changes).
+
+**Decisions:**
+
+| Decision                | Choice                             | Rationale                                                                                  |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| MDX conversion scope    | All content files at once          | Consistent tooling; avoids mixed `.md`/`.mdx` in same directories                          |
+| Dead UI component fate  | Delete pre-migration               | shadcn/ui migration will replace all primitives; deleting now reduces scope and confusion    |
+| Knip pipeline position  | Last step in `bun run check`       | Least likely to block other checks; dead code is lowest-severity gate                       |
+
+---
+
+## Phase 15 — shadcn/ui Foundation + Game Component Migration (2026-03-18)
+
+**Goal:** Establish shadcn infrastructure and migrate all raw HTML form elements across all 6 tools to consistent, themed wrapper components.
+
+| Component                       | What Was Done                                                                                                                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 15.1 shadcn Foundation          | Installed `clsx`, `tailwind-merge`, `class-variance-authority`, `lucide-react`. Created `cn()` utility at `src/lib/utils.ts`. Added `components.json` for shadcn CLI (new-york style, no RSC). |
+| 15.2 CSS Variable Bridge        | Added CSS variable mapping layer connecting shadcn semantic variables (e.g., `--input`, `--ring`) to existing WH40K design tokens in `src/styles/tailwind.css`. |
+| 15.3 shadcn Primitives          | Installed 10 shadcn primitives: Input, Select, Checkbox, Separator, Table, Label, Card, Dialog, Tooltip, Textarea. |
+| 15.4 Game Wrapper Components    | Created domain-specific wrappers: `GameInput`, `GameSelect`, `GameCheckbox`, `GameTextarea` with compact styling (py-0.5, px-1, text-[0.82rem]) appropriate for dense tabletop data entry. |
+| 15.5 Tool Migration             | Migrated all 6 tools from raw `<input>`, `<select>`, `<textarea>`, `<input type="checkbox">` to Game* wrapper components. Consistent theming across all form elements. |
+| 15.6 Pipeline Updates           | Added `check:deps` (dependency-cruiser) and `check:structure` (ts-morph) to `bun run check` and CI. Both pass clean on the current codebase. |
+
+**Totals:** 10 shadcn primitives installed, 4 Game* wrapper components created, all 6 tools migrated to new form components. Pipeline expanded with 2 additional structural checks. Test count: 182 → 324 (new store and app tests).
+
+**Decisions:**
+
+| Decision                | Choice                             | Rationale                                                                                  |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| Wrapper vs. direct use  | Game* wrappers over raw shadcn     | Compact sizing and WH40K theming applied once; tools import wrappers, not raw primitives    |
+| Migration scope         | Form elements only                 | Lowest risk, highest visual impact. Modal/Accordion/Tabs/Toast migration deferred.          |
+| CSS variable strategy   | Bridge layer, not replacement      | Map shadcn vars to existing WH40K tokens rather than rewriting the design system             |
+
+---
+
 ## Decision Log
 
 Key architectural and design decisions made during development:
@@ -266,6 +315,10 @@ Key architectural and design decisions made during development:
 | State management (Phase 13)| Zustand stores (one per tool)                                                   | Keep signals; React Context + useReducer; Jotai                              | Zustand is React-native with minimal API; per-tool stores give clear ownership                                                            |
 | UI primitives (Phase 13)   | Radix UI (unstyled)                                                             | Headless UI; keep Ariakit; build from scratch                                | Broadest React ecosystem adoption; unstyled primitives compose naturally with Tailwind                                                     |
 | Tool pruning (Phase 13)    | Remove Dice Roller, Success Curves, Defense Graph                               | Keep all; deprecate in UI only                                               | Low gameplay utility; Chart.js + Web Worker deps added complexity for niche analysis features                                              |
+| Content format (Phase 14)  | MDX for all content files                                                       | Keep `.md`; selective `.mdx` conversion                                      | MDX enables JSX component embedding; consistent extension avoids mixed-format confusion                                                    |
+| Editorial approach (Phase 14) | "Build on the source" (inspiration, not scripture)                           | "Preserve the source" (canonicity requirement)                               | Freed editorial team to improve and adapt content rather than being bound to exact source wording                                          |
+| UI component wrappers (Phase 15) | Game* prefixed wrappers over shadcn primitives                             | Direct shadcn imports; styled Radix primitives                               | Compact sizing and WH40K theming applied once in wrappers; tools import Game* components instead of configuring each usage                 |
+| CSS variable strategy (Phase 15) | Bridge layer mapping shadcn vars to WH40K tokens                           | Replace design system; dual token sets                                       | Preserves existing WH40K theming while enabling shadcn component compatibility without a rewrite                                           |
 
 ---
 

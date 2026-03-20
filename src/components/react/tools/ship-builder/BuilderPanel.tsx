@@ -8,8 +8,8 @@ import { WeaponSlots } from "./WeaponSlots";
 
 export function BuilderPanel() {
 	return (
-		<div className="grid grid-cols-[1fr_340px] gap-0 min-h-[calc(100vh-50px)] max-[900px]:grid-cols-1">
-			<div className="p-lg overflow-y-auto">
+		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+			<div className="overflow-y-auto p-lg">
 				<HullSelector />
 				<ConsoleSlots />
 				<WeaponSlots />

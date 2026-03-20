@@ -3,29 +3,29 @@
 // =========================================================================
 
 export interface Combatant {
-	id: string;
-	name: string;
-	dexterity: number;
-	composure: number;
-	modifier: number;
-	heroPoint: boolean;
-	surprised: boolean;
-	initiativeRoll: number | null;
-	initiativeTotal: number | null;
-	hpMax: number;
-	hpCurrent: number;
-	willpower: number;
-	sd: number;
-	resilience: number;
-	resourceMax: number;
-	resourceCurrent: number;
-	resourceLabel: string;
-	conditions: CombatantCondition[];
 	actionBudget: ActionBudget;
-	notes: string;
+	composure: number;
+	conditions: CombatantCondition[];
+	dexterity: number;
+	heroPoint: boolean;
+	hpCurrent: number;
+	hpMax: number;
+	id: string;
 	imported: boolean;
 	importedData: unknown;
+	initiativeRoll: number | null;
+	initiativeTotal: number | null;
 	isNpc: boolean;
+	modifier: number;
+	name: string;
+	notes: string;
+	resilience: number;
+	resourceCurrent: number;
+	resourceLabel: string;
+	resourceMax: number;
+	sd: number;
+	surprised: boolean;
+	willpower: number;
 }
 
 export interface CombatantCondition {
@@ -34,42 +34,42 @@ export interface CombatantCondition {
 }
 
 export interface ActionBudget {
+	fullAction: boolean;
 	half1: boolean;
 	half2: boolean;
-	fullAction: boolean;
 	reaction: boolean;
 }
 
 export interface EncounterState {
-	combatants: Combatant[];
-	round: number;
 	activeTurnIndex: number;
-	encounterStarted: boolean;
+	combatants: Combatant[];
 	encounterId: string | null;
+	encounterStarted: boolean;
+	round: number;
 }
 
 interface ConditionDef {
-	id: string;
-	name: string;
 	effect: string;
+	id: string;
 	leveled: boolean;
+	name: string;
 }
 
 export interface ActionDef {
-	name: string;
-	type: "H" | "F" | "R" | "Fr";
 	desc: string;
+	name: string;
 	note?: string;
+	type: "H" | "F" | "R" | "Fr";
 }
 
 interface HitLocationDef {
-	roll: number;
 	location: string;
+	roll: number;
 }
 
 interface SituationalModifier {
-	name: string;
 	effect: string;
+	name: string;
 }
 
 // =========================================================================

@@ -64,7 +64,7 @@ cleaned-references/    Condensed rules reference (merged by topic, 24 files)
 data/                  12 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
   pages/tools/         6 Astro tool pages (standalone, outside Starlight)
-  components/react/    React island components (~72 across 6 tools)
+  components/react/    React island components (74 across 6 tools)
   hooks/               Custom React hooks (use-data, use-local-storage)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)

@@ -38,11 +38,11 @@ export function CharacterBuilderApp() {
 	}, [data, gameData, setGameData]);
 
 	if (loading) {
-		return <div className="text-center text-text-muted p-xl">Loading game data…</div>;
+		return <div className="p-xl text-center text-text-muted">Loading game data…</div>;
 	}
 
 	if (error) {
-		return <div className="text-center text-error p-xl">Failed to load data: {error}</div>;
+		return <div className="p-xl text-center text-error">Failed to load data: {error}</div>;
 	}
 
 	const handleStartOver = () => {
@@ -53,12 +53,12 @@ export function CharacterBuilderApp() {
 	};
 
 	return (
-		<div className="grid grid-cols-[280px_1fr] gap-lg max-w-[1440px] mx-auto p-md max-[900px]:grid-cols-1">
+		<div className="mx-auto grid max-w-[1440px] grid-cols-[280px_1fr] gap-lg p-md max-[900px]:grid-cols-1">
 			<Sidebar />
 			<main className="min-w-0">
-				<div className="flex items-center justify-between mb-md">
+				<div className="mb-md flex items-center justify-between">
 					<h1>Character Builder</h1>
-					<Button variant="danger" size="sm" onClick={handleStartOver}>
+					<Button onClick={handleStartOver} size="sm" variant="danger">
 						Start Over
 					</Button>
 				</div>

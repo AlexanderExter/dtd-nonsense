@@ -26,10 +26,10 @@ const DATA_DIR = path.resolve(SCRIPT_DIR, "..", "data");
 // ---------------------------------------------------------------------------
 
 export interface ValidationResult {
+	errors: string[];
 	file: string;
 	ok: boolean;
 	recordCount: number;
-	errors: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -200,7 +200,7 @@ export function crossReferenceCheck(): string[] {
 
 				// Strip parenthetical variants like "Skill Focus (Any Lore)"
 				const baseName = featName.includes(" (") ? featName.split(" (")[0] : featName;
-				if (!featNames.has(baseName) && !featNames.has(featName)) {
+				if (!(featNames.has(baseName) || featNames.has(featName))) {
 					issues.push(`classes.json: class '${cls.name}' references unknown feat '${featName}'`);
 				}
 			}

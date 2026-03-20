@@ -1,14 +1,14 @@
-import { cn } from "@/lib/utils";
 import { useMemo } from "react";
+import { cn } from "@/lib/utils";
 import { Highlight } from "./Highlight";
 import { QREF_DATA } from "./qref-data";
 
 interface ActionsSectionProps {
-	searchWords: string[];
-	typeFilters: Set<string>;
-	subtypeFilters: Set<string>;
-	onToggleType: (type: string) => void;
 	onToggleSubtype: (subtype: string) => void;
+	onToggleType: (type: string) => void;
+	searchWords: string[];
+	subtypeFilters: Set<string>;
+	typeFilters: Set<string>;
 }
 
 const TYPE_OPTIONS = ["H", "F", "R", "Fr", "V"];
@@ -50,9 +50,7 @@ export function ActionsSection({
 				if (!rowTypes.some((t) => types.has(t))) return false;
 			}
 			// Subtype filter (OR within category)
-			if (subtypes.size > 0) {
-				if (!a.subtypes.some((s) => subtypes.has(s))) return false;
-			}
+			if (subtypes.size > 0 && !a.subtypes.some((s) => subtypes.has(s))) return false;
 			return true;
 		});
 	}, [searchWords, typeFilters, subtypeFilters]);
@@ -67,34 +65,34 @@ export function ActionsSection({
 
 	return (
 		<>
-			<div className="flex flex-wrap gap-xs mb-md pb-md border-b border-border">
-				<span className="text-[0.75rem] text-text-dim uppercase tracking-[0.5px] self-center mr-xs">Type</span>
+			<div className="mb-md flex flex-wrap gap-xs border-border border-b pb-md">
+				<span className="mr-xs self-center text-[0.75rem] text-text-dim uppercase tracking-[0.5px]">Type</span>
 				{TYPE_OPTIONS.map((t) => (
 					<button
-						type="button"
-						key={t}
 						className={cn(
-							"px-[10px] py-[3px] bg-surface border border-border rounded-sm text-text-muted text-[0.78rem] cursor-pointer transition-all duration-150 font-[inherit] hover:border-accent hover:text-text-primary",
-							typeFilters.has(t) ? "bg-accent-bg border-accent text-accent" : "",
+							"cursor-pointer rounded-sm border border-border bg-surface px-[10px] py-[3px] font-[inherit] text-[0.78rem] text-text-muted transition-all duration-150 hover:border-accent hover:text-text-primary",
+							typeFilters.has(t) ? "border-accent bg-accent-bg text-accent" : "",
 						)}
+						key={t}
 						onClick={() => toggleType(t)}
+						type="button"
 					>
 						{t}
 					</button>
 				))}
-				<span className="w-px bg-border self-stretch mx-sm" />
-				<span className="text-[0.75rem] text-text-dim uppercase tracking-[0.5px] self-center mr-xs">
+				<span className="mx-sm w-px self-stretch bg-border" />
+				<span className="mr-xs self-center text-[0.75rem] text-text-dim uppercase tracking-[0.5px]">
 					Subtype
 				</span>
 				{SUBTYPE_OPTIONS.map((s) => (
 					<button
-						type="button"
-						key={s}
 						className={cn(
-							"px-[10px] py-[3px] bg-surface border border-border rounded-sm text-text-muted text-[0.78rem] cursor-pointer transition-all duration-150 font-[inherit] hover:border-accent hover:text-text-primary",
-							subtypeFilters.has(s) ? "bg-accent-bg border-accent text-accent" : "",
+							"cursor-pointer rounded-sm border border-border bg-surface px-[10px] py-[3px] font-[inherit] text-[0.78rem] text-text-muted transition-all duration-150 hover:border-accent hover:text-text-primary",
+							subtypeFilters.has(s) ? "border-accent bg-accent-bg text-accent" : "",
 						)}
+						key={s}
 						onClick={() => toggleSubtype(s)}
+						type="button"
 					>
 						{s}
 					</button>
@@ -104,46 +102,46 @@ export function ActionsSection({
 				<table className="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 					<thead>
 						<tr>
-							<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+							<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 								Name
 							</th>
-							<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+							<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 								Type
 							</th>
-							<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+							<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 								Subtypes
 							</th>
-							<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+							<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 								Description
 							</th>
 						</tr>
 					</thead>
 					<tbody>
 						{filteredActions.map((a) => (
-							<tr key={a.name} className="even:bg-stripe hover:bg-surface">
-								<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+							<tr className="even:bg-stripe hover:bg-surface" key={a.name}>
+								<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 									<strong>
 										<Highlight text={a.name} words={searchWords} />
 									</strong>
 								</td>
-								<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+								<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 									{a.type.split("/").map((t) => (
-										<span key={t} className={badgeClass(t)}>
+										<span className={badgeClass(t)} key={t}>
 											{t.trim()}
 										</span>
 									))}
 								</td>
-								<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+								<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 									{a.subtypes.map((s) => (
 										<span
+											className="m-[1px] inline-block rounded-[3px] bg-surface-raised px-[6px] py-[1px] text-[0.7rem] text-text-muted"
 											key={s}
-											className="inline-block px-[6px] py-[1px] bg-surface-raised rounded-[3px] text-[0.7rem] text-text-muted m-[1px]"
 										>
 											{s}
 										</span>
 									))}
 								</td>
-								<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+								<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 									<Highlight text={a.desc} words={searchWords} />
 								</td>
 							</tr>

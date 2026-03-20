@@ -47,13 +47,13 @@ export function CrewConfig() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Crew</h2>
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Crew</h2>
 			<div>
 				<div className="mb-sm">
-					<label htmlFor="crew-quality" className="text-[0.8rem]">
+					<label className="text-[0.8rem]" htmlFor="crew-quality">
 						Crew Quality
 					</label>
-					<GameSelect id="crew-quality" value={currentShip.crewQuality} onChange={handleQualityChange}>
+					<GameSelect id="crew-quality" onChange={handleQualityChange} value={currentShip.crewQuality}>
 						<option value="1">1 (−5 BP)</option>
 						<option value="2">2 (Base)</option>
 						<option value="3">3 (+10 BP)</option>
@@ -70,29 +70,29 @@ export function CrewConfig() {
 						};
 						return (
 							<div
+								className="grid grid-cols-[150px_1fr_80px_60px] items-center gap-sm rounded-sm bg-surface-raised px-sm py-xs max-[900px]:grid-cols-2"
 								key={pos.id}
-								className="grid grid-cols-[150px_1fr_80px_60px] gap-sm items-center px-sm py-xs bg-surface-raised rounded-sm max-[900px]:grid-cols-2"
 							>
 								<span className="font-semibold text-[0.85rem]">{pos.title}</span>
 								<GameInput
-									type="text"
-									placeholder="Name"
-									value={officer.name}
 									onInput={(e) => handleOfficerName(pos.id, (e.target as HTMLInputElement).value)}
+									placeholder="Name"
+									type="text"
+									value={officer.name}
 								/>
-								<span className="text-[0.8rem] text-text-muted text-right">{pos.skill}</span>
+								<span className="text-right text-[0.8rem] text-text-muted">{pos.skill}</span>
 								<GameInput
-									type="number"
 									className="w-[50px]"
-									min={0}
 									max={10}
-									value={officer.skill}
+									min={0}
 									onInput={(e) =>
 										handleOfficerSkill(
 											pos.id,
 											Number.parseInt((e.target as HTMLInputElement).value, 10) || 0,
 										)
 									}
+									type="number"
+									value={officer.skill}
 								/>
 							</div>
 						);

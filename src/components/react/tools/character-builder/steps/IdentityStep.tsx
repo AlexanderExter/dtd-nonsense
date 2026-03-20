@@ -20,39 +20,39 @@ export function IdentityStep() {
 	return (
 		<div>
 			<div className="mb-md flex-1">
-				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-name">
+				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-name">
 					Name *
 				</label>
 				<GameInput
-					type="text"
 					id="char-name"
-					value={char.name}
-					placeholder="Character name"
 					onInput={(e) => handleInput("name", (e.target as HTMLInputElement).value)}
+					placeholder="Character name"
+					type="text"
+					value={char.name}
 				/>
 			</div>
 			<div className="mb-md flex-1">
-				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-player">
+				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-player">
 					Player
 				</label>
 				<GameInput
-					type="text"
 					id="char-player"
-					value={char.player}
-					placeholder="Player name"
 					onInput={(e) => handleInput("player", (e.target as HTMLInputElement).value)}
+					placeholder="Player name"
+					type="text"
+					value={char.player}
 				/>
 			</div>
 			<div className="mb-md flex-1">
-				<label className="block text-[0.85rem] text-text-muted mb-xs" htmlFor="char-concept">
+				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-concept">
 					Concept
 				</label>
 				<GameInput
-					type="text"
 					id="char-concept"
-					value={char.concept}
-					placeholder="Character concept"
 					onInput={(e) => handleInput("concept", (e.target as HTMLInputElement).value)}
+					placeholder="Character concept"
+					type="text"
+					value={char.concept}
 				/>
 			</div>
 		</div>

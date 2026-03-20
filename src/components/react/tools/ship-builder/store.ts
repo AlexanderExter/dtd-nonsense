@@ -13,17 +13,17 @@ import {
 // =========================================================================
 
 interface ShipStore {
-	shipData: ShipData | null;
-	ship: ShipState;
-	shipList: Array<{ id: string; name: string }>;
-	mode: "builder" | "sheet";
 	dataLoaded: boolean;
+	mode: "builder" | "sheet";
+	setDataLoaded: (v: boolean) => void;
+	setMode: (mode: "builder" | "sheet") => void;
+	setShip: (ship: ShipState) => void;
 
 	setShipData: (data: ShipData) => void;
-	setShip: (ship: ShipState) => void;
 	setShipList: (list: Array<{ id: string; name: string }>) => void;
-	setMode: (mode: "builder" | "sheet") => void;
-	setDataLoaded: (v: boolean) => void;
+	ship: ShipState;
+	shipData: ShipData | null;
+	shipList: Array<{ id: string; name: string }>;
 	updateShip: (updater: (s: ShipState) => ShipState) => void;
 }
 

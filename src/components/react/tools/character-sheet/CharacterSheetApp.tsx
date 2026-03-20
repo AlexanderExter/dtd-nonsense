@@ -68,25 +68,25 @@ export function CharacterSheetApp() {
 	}, [gameData, setCharList]);
 
 	if (loading) {
-		return <div className="text-center py-xl text-text-muted">Loading game data…</div>;
+		return <div className="py-xl text-center text-text-muted">Loading game data…</div>;
 	}
 
 	if (error) {
-		return <div className="text-center py-xl text-error">Failed to load data: {error}</div>;
+		return <div className="py-xl text-center text-error">Failed to load data: {error}</div>;
 	}
 
 	const tab = activeTab;
 
 	return (
-		<div className="block p-md max-w-[1200px] mx-auto">
+		<div className="mx-auto block max-w-[1200px] p-md">
 			<CharacterManager />
 			<SheetHeader derivedStats={derivedStats} />
 			<Tabs
-				tabs={TAB_LABELS}
 				activeId={tab}
 				onTabChange={(id) => {
 					setActiveTab(id as TabId);
 				}}
+				tabs={TAB_LABELS}
 			>
 				{tab === "identity" && <IdentityTab derivedStats={derivedStats} />}
 				{tab === "stats" && <StatsTab derivedStats={derivedStats} />}
@@ -97,12 +97,12 @@ export function CharacterSheetApp() {
 			</Tabs>
 			<div
 				className={cn(
-					"save-status fixed bottom-md right-md px-md py-xs rounded-sm text-xs font-semibold uppercase tracking-[0.5px] z-[200] transition-all duration-300",
+					"save-status fixed right-md bottom-md z-[200] rounded-sm px-md py-xs font-semibold text-xs uppercase tracking-[0.5px] transition-all duration-300",
 					saveStatus === "saving"
-						? "bg-accent/20 border border-accent text-accent"
+						? "border border-accent bg-accent/20 text-accent"
 						: saveStatus === "error"
-							? "bg-error/20 border border-error text-error"
-							: "bg-surface border border-border text-text-muted",
+							? "border border-error bg-error/20 text-error"
+							: "border border-border bg-surface text-text-muted",
 				)}
 			>
 				{saveStatus === "saving" ? "Saving…" : saveStatus === "error" ? "Save error" : "Saved"}

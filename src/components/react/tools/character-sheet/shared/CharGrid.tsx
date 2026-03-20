@@ -29,8 +29,8 @@ export function CharGrid() {
 	return (
 		<div className="grid grid-cols-3 gap-md max-[768px]:grid-cols-1">
 			{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => (
-				<div key={groupKey} className="bg-bg border border-border rounded-sm p-md">
-					<h4 className="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">{group.label}</h4>
+				<div className="rounded-sm border border-border bg-bg p-md" key={groupKey}>
+					<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">{group.label}</h4>
 					{group.chars.map((id) => {
 						const base = chars[id] || 1;
 						const eff = effChars[id] || 1;
@@ -38,21 +38,21 @@ export function CharGrid() {
 						const abbrev = CHAR_ABBREV[id] || id;
 						const isBonus = char.raceCharBonus === id;
 						return (
-							<div key={id} className="flex items-center gap-sm py-1">
+							<div className="flex items-center gap-sm py-1" key={id}>
 								<span className="flex-1 font-medium text-[0.9rem]" title={CHAR_NAMES[id] || id}>
 									{abbrev}
 								</span>
 								<GameInput
-									type="number"
 									className="w-11 text-center font-semibold text-[0.9rem]"
-									value={base}
-									min={1}
 									max={6}
+									min={1}
 									onInput={(e) => handleCharChange(id, Number((e.target as HTMLInputElement).value))}
+									type="number"
+									value={base}
 								/>
 								<span
 									className={cn(
-										"font-bold text-accent min-w-5 text-center text-base",
+										"min-w-5 text-center font-bold text-accent text-base",
 										isBonus && "text-info",
 									)}
 									title={isBonus ? "+1 racial bonus" : ""}
@@ -61,11 +61,11 @@ export function CharGrid() {
 								</span>
 								{showSpec && (
 									<GameInput
-										type="text"
-										className="w-full text-[0.78rem] text-text-muted bg-surface-raised placeholder:text-text-dim"
-										placeholder="Specialty"
-										value={specs[id] || ""}
+										className="w-full bg-surface-raised text-[0.78rem] text-text-muted placeholder:text-text-dim"
 										onInput={(e) => handleSpecChange(id, (e.target as HTMLInputElement).value)}
+										placeholder="Specialty"
+										type="text"
+										value={specs[id] || ""}
 									/>
 								)}
 							</div>

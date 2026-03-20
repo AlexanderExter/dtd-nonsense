@@ -1,11 +1,11 @@
 interface DotControlProps {
-	value: number;
+	disabled?: boolean;
 	max: number;
 	min?: number;
-	racialDots?: number;
-	xpDots?: number;
-	disabled?: boolean;
 	onChange: (value: number) => void;
+	racialDots?: number;
+	value: number;
+	xpDots?: number;
 }
 
 export function DotControl({
@@ -21,7 +21,7 @@ export function DotControl({
 	for (let i = 1; i <= max; i++) {
 		const isRegular = i <= value - racialDots - xpDots;
 		const isRacial = !isRegular && i <= value - xpDots && racialDots > 0;
-		const isXp = !isRegular && !isRacial && i <= value && xpDots > 0;
+		const isXp = !(isRegular || isRacial) && i <= value && xpDots > 0;
 
 		const cls = [
 			"w-[11px] h-[11px] border-[1.5px] rounded-full",
@@ -34,7 +34,7 @@ export function DotControl({
 						: "border-accent bg-transparent",
 		].join(" ");
 
-		dots.push(<span key={i} className={cls} />);
+		dots.push(<span className={cls} key={i} />);
 	}
 
 	const btnCls =
@@ -43,21 +43,21 @@ export function DotControl({
 	return (
 		<span className="flex items-center gap-[3px]">
 			<button
-				type="button"
+				aria-label="Decrease"
 				className={btnCls}
 				disabled={disabled || value <= min}
 				onClick={() => onChange(value - 1)}
-				aria-label="Decrease"
+				type="button"
 			>
 				−
 			</button>
 			<span className="flex gap-0.5">{dots}</span>
 			<button
-				type="button"
+				aria-label="Increase"
 				className={btnCls}
 				disabled={disabled || value >= max}
 				onClick={() => onChange(value + 1)}
-				aria-label="Increase"
+				type="button"
 			>
 				+
 			</button>

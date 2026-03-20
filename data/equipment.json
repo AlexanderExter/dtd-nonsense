@@ -1,115 +1,115 @@
 {
-	"packages": [
-		{
-			"id": "earth",
-			"name": "Earth",
-			"description": "Combat-focused package with solid weapons and armor",
-			"items": [
-				{ "name": "Hand Weapon", "choice": false },
-				{
-					"name": "Autopistol OR Bow",
-					"choice": true,
-					"options": ["Autopistol", "Bow"]
-				},
-				{ "name": "Lasgun", "choice": false },
-				{ "name": "Knife", "choice": false },
-				{
-					"name": "Flak Jacket OR Chain Coat",
-					"choice": true,
-					"options": ["Flak Jacket", "Chain Coat"]
-				},
-				{
-					"name": "Uniform OR Street Clothes",
-					"choice": true,
-					"options": ["Uniform", "Street Clothes"]
-				},
-				{ "name": "Rations", "choice": false }
-			]
-		},
-		{
-			"id": "air",
-			"name": "Air",
-			"description": "Scholarly and social package with magical implements",
-			"items": [
-				{ "name": "Hand Weapon", "choice": false },
-				{ "name": "Laspistol", "choice": false },
-				{ "name": "Knife", "choice": false },
-				{ "name": "Quilted Vest", "choice": false },
-				{
-					"name": "Robes OR Bodyglove (Common quality)",
-					"choice": true,
-					"options": ["Robes", "Bodyglove"]
-				},
-				{
-					"name": "Implement OR Charm",
-					"choice": true,
-					"options": ["Implement", "Charm"]
-				},
-				{
-					"name": "Book of Poetry OR Deck of Cards OR Dice",
-					"choice": true,
-					"options": ["Book of Poetry", "Deck of Cards", "Dice"]
-				}
-			]
-		},
-		{
-			"id": "fire",
-			"name": "Fire",
-			"description": "Tech-focused package for mechanics and crafters",
-			"items": [
-				{ "name": "Heavy Wrench (club)", "choice": false },
-				{ "name": "Laspistol", "choice": false },
-				{ "name": "Knife", "choice": false },
-				{ "name": "Flak Vest", "choice": false },
-				{ "name": "Combi-Tool", "choice": false },
-				{ "name": "Data Slate", "choice": false },
-				{ "name": "Torch", "choice": false },
-				{ "name": "Bag of Random Fiddly Bits", "choice": false },
-				{
-					"name": "Robes or Overalls (Good quality)",
-					"choice": true,
-					"options": ["Robes", "Overalls"]
-				}
-			]
-		},
-		{
-			"id": "water",
-			"name": "Water",
-			"description": "Versatile rogue package with flexible armament",
-			"items": [
-				{
-					"name": "Shotgun OR Autopistol OR Laspistol",
-					"choice": true,
-					"options": ["Shotgun", "Autopistol", "Laspistol"]
-				},
-				{ "name": "Fencing Sword", "choice": false },
-				{ "name": "Mesh Vest", "choice": false },
-				{ "name": "Street Clothes (Common quality)", "choice": false },
-				{ "name": "Chrono", "choice": false },
-				{ "name": "Flask of Brandy", "choice": false }
-			]
-		},
-		{
-			"id": "void",
-			"name": "Void",
-			"description": "Space traveler package for shipboard and void operations",
-			"items": [
-				{ "name": "Knife", "choice": false },
-				{
-					"name": "Implement OR Magnoculars",
-					"choice": true,
-					"options": ["Implement", "Magnoculars"]
-				},
-				{ "name": "Voidsuit", "choice": false },
-				{
-					"name": "Autogun OR Pulse Rifle",
-					"choice": true,
-					"options": ["Autogun", "Pulse Rifle"]
-				},
-				{ "name": "Charm", "choice": false },
-				{ "name": "Sunglasses", "choice": false },
-				{ "name": "Classy Outfit (Good quality)", "choice": false }
-			]
-		}
-	]
+  "packages": [
+    {
+      "id": "earth",
+      "name": "Earth",
+      "description": "Combat-focused package with solid weapons and armor",
+      "items": [
+        { "name": "Hand Weapon", "choice": false },
+        {
+          "name": "Autopistol OR Bow",
+          "choice": true,
+          "options": ["Autopistol", "Bow"]
+        },
+        { "name": "Lasgun", "choice": false },
+        { "name": "Knife", "choice": false },
+        {
+          "name": "Flak Jacket OR Chain Coat",
+          "choice": true,
+          "options": ["Flak Jacket", "Chain Coat"]
+        },
+        {
+          "name": "Uniform OR Street Clothes",
+          "choice": true,
+          "options": ["Uniform", "Street Clothes"]
+        },
+        { "name": "Rations", "choice": false }
+      ]
+    },
+    {
+      "id": "air",
+      "name": "Air",
+      "description": "Scholarly and social package with magical implements",
+      "items": [
+        { "name": "Hand Weapon", "choice": false },
+        { "name": "Laspistol", "choice": false },
+        { "name": "Knife", "choice": false },
+        { "name": "Quilted Vest", "choice": false },
+        {
+          "name": "Robes OR Bodyglove (Common quality)",
+          "choice": true,
+          "options": ["Robes", "Bodyglove"]
+        },
+        {
+          "name": "Implement OR Charm",
+          "choice": true,
+          "options": ["Implement", "Charm"]
+        },
+        {
+          "name": "Book of Poetry OR Deck of Cards OR Dice",
+          "choice": true,
+          "options": ["Book of Poetry", "Deck of Cards", "Dice"]
+        }
+      ]
+    },
+    {
+      "id": "fire",
+      "name": "Fire",
+      "description": "Tech-focused package for mechanics and crafters",
+      "items": [
+        { "name": "Heavy Wrench (club)", "choice": false },
+        { "name": "Laspistol", "choice": false },
+        { "name": "Knife", "choice": false },
+        { "name": "Flak Vest", "choice": false },
+        { "name": "Combi-Tool", "choice": false },
+        { "name": "Data Slate", "choice": false },
+        { "name": "Torch", "choice": false },
+        { "name": "Bag of Random Fiddly Bits", "choice": false },
+        {
+          "name": "Robes or Overalls (Good quality)",
+          "choice": true,
+          "options": ["Robes", "Overalls"]
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "name": "Water",
+      "description": "Versatile rogue package with flexible armament",
+      "items": [
+        {
+          "name": "Shotgun OR Autopistol OR Laspistol",
+          "choice": true,
+          "options": ["Shotgun", "Autopistol", "Laspistol"]
+        },
+        { "name": "Fencing Sword", "choice": false },
+        { "name": "Mesh Vest", "choice": false },
+        { "name": "Street Clothes (Common quality)", "choice": false },
+        { "name": "Chrono", "choice": false },
+        { "name": "Flask of Brandy", "choice": false }
+      ]
+    },
+    {
+      "id": "void",
+      "name": "Void",
+      "description": "Space traveler package for shipboard and void operations",
+      "items": [
+        { "name": "Knife", "choice": false },
+        {
+          "name": "Implement OR Magnoculars",
+          "choice": true,
+          "options": ["Implement", "Magnoculars"]
+        },
+        { "name": "Voidsuit", "choice": false },
+        {
+          "name": "Autogun OR Pulse Rifle",
+          "choice": true,
+          "options": ["Autogun", "Pulse Rifle"]
+        },
+        { "name": "Charm", "choice": false },
+        { "name": "Sunglasses", "choice": false },
+        { "name": "Classy Outfit (Good quality)", "choice": false }
+      ]
+    }
+  ]
 }

@@ -1,24 +1,24 @@
+import { useState } from "react";
 import { Badge } from "@/components/react/ui/Badge";
 import { Button } from "@/components/react/ui/Button";
 import { GameTextarea } from "@/components/react/ui/GameTextarea";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import type { Combatant, CombatantCondition } from "./constants";
 import { CONDITIONS, getWoundStatus } from "./constants";
 
 interface CombatantCardProps {
 	combatant: Combatant;
-	isActive: boolean;
 	hasTie: boolean;
-	roundNumber: number;
+	isActive: boolean;
+	onAddCondition: (id: string, rect: DOMRect) => void;
 	onModifyHP: (id: string, delta: number) => void;
 	onModifyResource: (id: string, delta: number) => void;
+	onNotesChange: (id: string, notes: string) => void;
 	onRemove: (id: string) => void;
+	onRemoveCondition: (id: string, conditionId: string) => void;
 	onRerollInit: (id: string) => void;
 	onToggleAction: (id: string, tokenType: string) => void;
-	onAddCondition: (id: string, rect: DOMRect) => void;
-	onRemoveCondition: (id: string, conditionId: string) => void;
-	onNotesChange: (id: string, notes: string) => void;
+	roundNumber: number;
 }
 
 function conditionLabel(cond: CombatantCondition): string {
@@ -62,7 +62,7 @@ export function CombatantCard({
 	const hpPercent = c.hpMax > 0 ? Math.max(0, (c.hpCurrent / c.hpMax) * 100) : 0;
 
 	const cardClasses = cn(
-		"bg-surface border-2 rounded-md px-lg py-md transition-all duration-200 relative",
+		"relative rounded-md border-2 bg-surface px-lg py-md transition-all duration-200",
 		isActive ? "border-accent shadow-[0_0_12px_rgba(212,168,75,0.25)]" : "border-border",
 		c.hpCurrent <= 0 && "opacity-45",
 	);
@@ -80,97 +80,97 @@ export function CombatantCard({
 	return (
 		<div className={cardClasses} data-id={c.id}>
 			{/* Top bar: initiative + name + badges */}
-			<div className="flex items-center gap-md mb-sm max-[768px]:flex-wrap">
+			<div className="mb-sm flex items-center gap-md max-[768px]:flex-wrap">
 				<button
-					type="button"
 					className={initClasses}
-					title="Click to reroll initiative"
 					onClick={() => onRerollInit(c.id)}
+					title="Click to reroll initiative"
+					type="button"
 				>
 					{c.initiativeTotal !== null ? c.initiativeTotal : "\u2014"}
 				</button>
 				<div className="flex-1">
 					<span
 						className={cn(
-							"text-[1.1rem] font-semibold text-text-primary",
+							"font-semibold text-[1.1rem] text-text-primary",
 							c.hpCurrent <= 0 && "line-through",
 						)}
 					>
 						{c.name}
 					</span>
 					{c.surprised && roundNumber <= 1 && (
-						<Badge variant="warning" className="ml-sm">
+						<Badge className="ml-sm" variant="warning">
 							Surprised
 						</Badge>
 					)}
 					{hasTie && (
-						<Badge variant="info" className="ml-sm">
+						<Badge className="ml-sm" variant="info">
 							TIE
 						</Badge>
 					)}
 					{c.isNpc && (
-						<Badge variant="muted" className="ml-sm">
+						<Badge className="ml-sm" variant="muted">
 							NPC
 						</Badge>
 					)}
 				</div>
 				<span
-					className={`inline-block px-2 py-0.5 rounded-sm text-[0.7rem] font-semibold uppercase tracking-[0.5px] ${WOUND_BADGE_COLORS[woundStatus] || ""}`}
+					className={`inline-block rounded-sm px-2 py-0.5 font-semibold text-[0.7rem] uppercase tracking-[0.5px] ${WOUND_BADGE_COLORS[woundStatus] || ""}`}
 				>
 					{woundStatus}
 				</span>
-				<Button variant="danger" size="sm" title="Remove combatant" onClick={() => onRemove(c.id)}>
+				<Button onClick={() => onRemove(c.id)} size="sm" title="Remove combatant" variant="danger">
 					&times;
 				</Button>
 			</div>
 
 			{/* Stat row */}
-			<div className="flex flex-wrap gap-x-lg gap-y-sm items-center mb-sm text-[0.85rem] text-text-muted max-[768px]:gap-sm">
-				<span className="flex items-center gap-xs text-text-primary font-medium" title="Static Defense">
-					<abbr className="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">SD</abbr>{" "}
+			<div className="mb-sm flex flex-wrap items-center gap-x-lg gap-y-sm text-[0.85rem] text-text-muted max-[768px]:gap-sm">
+				<span className="flex items-center gap-xs font-medium text-text-primary" title="Static Defense">
+					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">SD</abbr>{" "}
 					{c.sd}
 				</span>
-				<span className="flex items-center gap-xs text-text-primary font-medium" title="Dexterity">
-					<abbr className="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Dex</abbr>{" "}
+				<span className="flex items-center gap-xs font-medium text-text-primary" title="Dexterity">
+					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Dex</abbr>{" "}
 					{c.dexterity}
 				</span>
-				<span className="flex items-center gap-xs text-text-primary font-medium" title="Composure">
-					<abbr className="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Com</abbr>{" "}
+				<span className="flex items-center gap-xs font-medium text-text-primary" title="Composure">
+					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Com</abbr>{" "}
 					{c.composure}
 				</span>
-				<span className="flex items-center gap-xs text-text-primary font-medium" title="Willpower">
-					<abbr className="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Wil</abbr>{" "}
+				<span className="flex items-center gap-xs font-medium text-text-primary" title="Willpower">
+					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Wil</abbr>{" "}
 					{c.willpower}
 				</span>
-				<span className="flex items-center gap-xs text-text-primary font-medium" title="Resilience">
-					<abbr className="font-semibold text-text-dim uppercase text-[0.7rem] tracking-[0.5px]">Res</abbr>{" "}
+				<span className="flex items-center gap-xs font-medium text-text-primary" title="Resilience">
+					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Res</abbr>{" "}
 					{c.resilience}
 				</span>
 			</div>
 
 			{/* HP bar */}
 			<div className="my-sm">
-				<div className="flex justify-between items-center mb-1">
-					<span className="text-[0.8rem] font-semibold text-text-muted">HP</span>
+				<div className="mb-1 flex items-center justify-between">
+					<span className="font-semibold text-[0.8rem] text-text-muted">HP</span>
 					<div className="flex items-center gap-0.5">
-						<Button size="sm" onClick={() => onModifyHP(c.id, -5)}>
+						<Button onClick={() => onModifyHP(c.id, -5)} size="sm">
 							-5
 						</Button>
-						<Button size="sm" onClick={() => onModifyHP(c.id, -1)}>
+						<Button onClick={() => onModifyHP(c.id, -1)} size="sm">
 							-1
 						</Button>
-						<span className="text-[0.8rem] font-bold text-text-primary">
+						<span className="font-bold text-[0.8rem] text-text-primary">
 							{c.hpCurrent} / {c.hpMax}
 						</span>
-						<Button size="sm" onClick={() => onModifyHP(c.id, 1)}>
+						<Button onClick={() => onModifyHP(c.id, 1)} size="sm">
 							+1
 						</Button>
-						<Button size="sm" onClick={() => onModifyHP(c.id, 5)}>
+						<Button onClick={() => onModifyHP(c.id, 5)} size="sm">
 							+5
 						</Button>
 					</div>
 				</div>
-				<div className="h-2.5 bg-bg rounded-[5px] overflow-hidden border border-border">
+				<div className="h-2.5 overflow-hidden rounded-[5px] border border-border bg-bg">
 					<div
 						className={`h-full rounded-[5px] transition-all duration-300 ${WOUND_FILL_COLORS[woundStatus] || ""}`}
 						style={{ width: `${hpPercent}%` }}
@@ -181,16 +181,16 @@ export function CombatantCard({
 			{/* Resource bar */}
 			{c.resourceMax > 0 && (
 				<div className="my-xs">
-					<div className="flex justify-between items-center mb-0.5">
-						<span className="text-xs font-semibold text-text-dim">{c.resourceLabel || "Resource"}</span>
+					<div className="mb-0.5 flex items-center justify-between">
+						<span className="font-semibold text-text-dim text-xs">{c.resourceLabel || "Resource"}</span>
 						<div className="flex items-center gap-0.5">
-							<Button size="sm" onClick={() => onModifyResource(c.id, -1)}>
+							<Button onClick={() => onModifyResource(c.id, -1)} size="sm">
 								-
 							</Button>
-							<span className="text-xs font-bold text-info">
+							<span className="font-bold text-info text-xs">
 								{c.resourceCurrent} / {c.resourceMax}
 							</span>
-							<Button size="sm" onClick={() => onModifyResource(c.id, 1)}>
+							<Button onClick={() => onModifyResource(c.id, 1)} size="sm">
 								+
 							</Button>
 						</div>
@@ -199,74 +199,74 @@ export function CombatantCard({
 			)}
 
 			{/* Action budget */}
-			<div className="flex gap-sm items-center my-sm flex-wrap max-[768px]:gap-1">
+			<div className="my-sm flex flex-wrap items-center gap-sm max-[768px]:gap-1">
 				<button
-					type="button"
 					className={cn(
-						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.half1 && "!bg-accent-dim !border-accent !text-text-primary",
-						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
+						c.actionBudget.fullAction && "pointer-events-none opacity-35",
 					)}
 					onClick={() => onToggleAction(c.id, "half1")}
+					type="button"
 				>
 					Half 1
 				</button>
 				<button
-					type="button"
 					className={cn(
-						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.half2 && "!bg-accent-dim !border-accent !text-text-primary",
-						c.actionBudget.fullAction && "opacity-35 pointer-events-none",
+						c.actionBudget.fullAction && "pointer-events-none opacity-35",
 					)}
 					onClick={() => onToggleAction(c.id, "half2")}
+					type="button"
 				>
 					Half 2
 				</button>
 				<button
-					type="button"
 					className={cn(
-						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.fullAction && "!bg-accent-dim !border-accent !text-text-primary",
-						(c.actionBudget.half1 || c.actionBudget.half2) && "opacity-35 pointer-events-none",
+						(c.actionBudget.half1 || c.actionBudget.half2) && "pointer-events-none opacity-35",
 					)}
 					onClick={() => onToggleAction(c.id, "fullAction")}
+					type="button"
 				>
 					Full
 				</button>
 				<button
-					type="button"
 					className={cn(
-						"inline-flex items-center gap-1 px-2 py-[3px] bg-bg border border-border rounded-sm text-xs text-text-muted cursor-pointer transition-all duration-150 select-none hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.reaction && "!bg-accent-dim !border-accent !text-text-primary",
 					)}
 					onClick={() => onToggleAction(c.id, "reaction")}
+					type="button"
 				>
 					Reaction
 				</button>
 			</div>
 
 			{/* Conditions */}
-			<div className="flex flex-wrap gap-1 my-sm items-center">
+			<div className="my-sm flex flex-wrap items-center gap-1">
 				{c.conditions.map((cond) => (
 					<span
-						className="inline-flex items-center gap-1 px-2 py-0.5 bg-error-bg border border-error-border rounded-xl text-[0.72rem] text-error whitespace-nowrap"
+						className="inline-flex items-center gap-1 whitespace-nowrap rounded-xl border border-error-border bg-error-bg px-2 py-0.5 text-[0.72rem] text-error"
 						key={cond.conditionId}
 					>
 						{conditionLabel(cond)}
 						<button
-							type="button"
-							className="bg-transparent border-none text-error cursor-pointer text-[0.8rem] p-0 leading-none opacity-60 hover:opacity-100"
-							title="Remove condition"
+							className="cursor-pointer border-none bg-transparent p-0 text-[0.8rem] text-error leading-none opacity-60 hover:opacity-100"
 							onClick={() => onRemoveCondition(c.id, cond.conditionId)}
+							title="Remove condition"
+							type="button"
 						>
 							&times;
 						</button>
 					</span>
 				))}
 				<button
-					type="button"
-					className="inline-flex items-center justify-center w-[22px] h-[22px] bg-surface-raised border border-dashed border-border rounded-full text-text-dim cursor-pointer text-[0.85rem] leading-none hover:border-accent hover:text-accent"
+					className="inline-flex h-[22px] w-[22px] cursor-pointer items-center justify-center rounded-full border border-border border-dashed bg-surface-raised text-[0.85rem] text-text-dim leading-none hover:border-accent hover:text-accent"
 					onClick={handleAddCondition}
+					type="button"
 				>
 					+
 				</button>
@@ -274,16 +274,16 @@ export function CombatantCard({
 
 			{/* Expandable details */}
 			<div>
-				<Button variant="ghost" size="sm" onClick={() => setDetailsOpen(!detailsOpen)}>
+				<Button onClick={() => setDetailsOpen(!detailsOpen)} size="sm" variant="ghost">
 					{detailsOpen ? "\u25BC Notes" : "\u25B6 Notes"}
 				</Button>
 			</div>
 			{detailsOpen && (
-				<div className="mt-sm pt-sm border-t border-border">
+				<div className="mt-sm border-border border-t pt-sm">
 					<GameTextarea
+						onInput={(e) => onNotesChange(c.id, (e.target as HTMLTextAreaElement).value)}
 						placeholder="Combatant notes..."
 						value={c.notes}
-						onInput={(e) => onNotesChange(c.id, (e.target as HTMLTextAreaElement).value)}
 					/>
 				</div>
 			)}

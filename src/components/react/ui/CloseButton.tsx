@@ -11,7 +11,7 @@ const SIZE_CLS = {
 
 export function CloseButton({ size = "sm", className, ...rest }: CloseButtonProps) {
 	return (
-		<button type="button" className={cn("btn", SIZE_CLS[size], className)} aria-label="Close" {...rest}>
+		<button aria-label="Close" className={cn("btn", SIZE_CLS[size], className)} type="button" {...rest}>
 			&times;
 		</button>
 	);

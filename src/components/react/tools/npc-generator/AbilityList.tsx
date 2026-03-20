@@ -4,8 +4,8 @@ import { GameInput } from "@/components/react/ui/GameInput";
 import { GameTextarea } from "@/components/react/ui/GameTextarea";
 
 interface AbilityEntry {
-	name: string;
 	description: string;
+	name: string;
 }
 
 interface AbilityListProps {
@@ -34,41 +34,41 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 	);
 
 	return (
-		<div className="mb-lg pb-md border-b border-border last:border-b-0">
-			<div className="flex items-center justify-between mb-sm">
-				<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Abilities</h2>
-				<Button variant="ghost" size="sm" onClick={addAbility}>
+		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			<div className="mb-sm flex items-center justify-between">
+				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Abilities</h2>
+				<Button onClick={addAbility} size="sm" variant="ghost">
 					+ Add
 				</Button>
 			</div>
 			<div className="flex flex-col gap-xs">
 				{abilities.map((a, i) => (
 					<div
+						className="flex flex-col items-stretch gap-sm rounded-sm border border-border bg-surface px-sm py-xs"
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 						key={`ability-${i}`}
-						className="flex flex-col items-stretch gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
 					>
 						<div className="flex items-center gap-sm">
 							<GameInput
 								className="flex-1"
+								onInput={(e) => updateAbility(i, "name", (e.target as HTMLInputElement).value)}
 								placeholder="Ability name"
 								value={a.name}
-								onInput={(e) => updateAbility(i, "name", (e.target as HTMLInputElement).value)}
 							/>
 							<button
-								type="button"
-								className="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
-								title="Remove"
+								className="cursor-pointer border-none bg-transparent px-[4px] py-[2px] text-base text-text-dim leading-none hover:text-error"
 								onClick={() => removeAbility(i)}
+								title="Remove"
+								type="button"
 							>
 								×
 							</button>
 						</div>
 						<GameTextarea
+							onInput={(e) => updateAbility(i, "description", (e.target as HTMLTextAreaElement).value)}
 							placeholder="Description"
 							rows={2}
 							value={a.description}
-							onInput={(e) => updateAbility(i, "description", (e.target as HTMLTextAreaElement).value)}
 						/>
 					</div>
 				))}

@@ -25,79 +25,79 @@ export function CombatTab() {
 	return (
 		<section className="tab-panel">
 			{/* ---------- Armor Location Display ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Armor by Location</h3>
-				<div className="grid grid-cols-6 gap-sm my-md max-[768px]:grid-cols-3">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Armor by Location</h3>
+				<div className="my-md grid grid-cols-6 gap-sm max-[768px]:grid-cols-3">
 					{LOCATIONS.map((loc) => (
-						<div key={loc} className="text-center p-sm bg-bg border border-border rounded-sm">
-							<span className="block text-[0.65rem] text-text-muted uppercase tracking-[0.3px] mb-0.5">
+						<div className="rounded-sm border border-border bg-bg p-sm text-center" key={loc}>
+							<span className="mb-0.5 block text-[0.65rem] text-text-muted uppercase tracking-[0.3px]">
 								{loc}
 							</span>
-							<span className="text-[1.2rem] font-bold text-accent">{locationAP[loc]}</span>
+							<span className="font-bold text-[1.2rem] text-accent">{locationAP[loc]}</span>
 						</div>
 					))}
 				</div>
 			</div>
 
 			{/* ---------- Natural Armor & Aura ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
 					Natural Armor &amp; Aura
 				</h3>
-				<div className="flex gap-md mb-md flex-wrap">
-					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
+				<div className="mb-md flex flex-wrap gap-md">
+					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Natural Armor
 						<GameInput
-							type="number"
-							value={char.naturalArmor || 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.naturalArmor = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.naturalArmor || 0}
 						/>
 					</label>
-					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura
 						<GameInput
-							type="number"
-							value={char.aura || 0}
 							min={0}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.aura = Number((e.target as HTMLInputElement).value);
 								})
 							}
+							type="number"
+							value={char.aura || 0}
 						/>
 					</label>
-					<label className="flex flex-col flex-1 min-w-[140px] text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
 						Aura Source
 						<GameInput
-							type="text"
-							value={char.auraSource || ""}
 							onInput={(e) =>
 								updateChar((c) => {
 									c.auraSource = (e.target as HTMLInputElement).value;
 								})
 							}
+							type="text"
+							value={char.auraSource || ""}
 						/>
 					</label>
 				</div>
 			</div>
 
 			{/* ---------- Armor List ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
 				<ArmorSection />
 			</div>
 
 			{/* ---------- Melee Weapons ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
 				<WeaponTable type="melee" />
 			</div>
 
 			{/* ---------- Ranged Weapons ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
 				<WeaponTable type="ranged" />
 			</div>
 		</section>

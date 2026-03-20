@@ -68,7 +68,7 @@ function transformBookFrontmatter(content, filename) {
 			.replace(/\.mdx?$/, "")
 			.replace(/-/g, " ")
 			.replace(/\b\w/g, (c) => c.toUpperCase());
-		const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
+		const order = Number.parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
 
 		return `---\ntitle: "${title}"\nsidebar:\n  order: ${order}\n---\n\n${content}`;
 	}
@@ -86,7 +86,11 @@ function transformBookFrontmatter(content, filename) {
 	const chapterMatch = fmBlock.match(/chapter:\s*(\d+)/);
 
 	const title = titleMatch ? titleMatch[1].trim() : filename.replace(/\.mdx?$/, "");
-	const order = orderMatch ? parseInt(orderMatch[1], 10) : chapterMatch ? parseInt(chapterMatch[1], 10) : 99;
+	const order = orderMatch
+		? Number.parseInt(orderMatch[1], 10)
+		: chapterMatch
+			? Number.parseInt(chapterMatch[1], 10)
+			: 99;
 
 	// Build new Starlight-compatible frontmatter
 	const newFm = `---
@@ -235,7 +239,7 @@ function injectStarlightFrontmatter(content, filename) {
 	const meta = CONTENT_METADATA[filename];
 	if (!meta) return content; // Unknown file — pass through unchanged
 
-	const order = parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
+	const order = Number.parseInt(filename.match(/^(\d+)/)?.[1] || "99", 10);
 	const parsed = matter(content);
 
 	const targetFm = {

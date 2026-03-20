@@ -3,14 +3,14 @@ import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import { cn } from "@/lib/utils";
 import {
-    calcXP,
-    createDefaultMeta,
-    findRaceData,
-    getLevel,
-    getSize,
-    getTotalChars,
-    STEP_LABELS,
-    TOTAL_XP,
+	calcXP,
+	createDefaultMeta,
+	findRaceData,
+	getLevel,
+	getSize,
+	getTotalChars,
+	STEP_LABELS,
+	TOTAL_XP,
 } from "./constants";
 import { createDefaultChar, useBuilderStore } from "./store";
 
@@ -55,20 +55,20 @@ export function Sidebar() {
 	};
 
 	return (
-		<aside className="sticky top-md max-h-[calc(100vh-2*var(--space-md))] overflow-y-auto bg-surface border border-border rounded-md p-md flex flex-col gap-md max-[900px]:static max-[900px]:max-h-none">
+		<aside className="sticky top-md flex max-h-[calc(100vh-2*var(--space-md))] flex-col gap-md overflow-y-auto rounded-md border border-border bg-surface p-md max-[900px]:static max-[900px]:max-h-none">
 			{/* Character identity */}
-			<div className="text-center pb-md border-b border-border">
-				<h2 className="text-[1.15rem] font-bold text-accent mb-xs break-words">
+			<div className="border-border border-b pb-md text-center">
+				<h2 className="mb-xs break-words font-bold text-[1.15rem] text-accent">
 					{char.name || "New Character"}
 				</h2>
-				<div className="flex gap-xs justify-center flex-wrap">
+				<div className="flex flex-wrap justify-center gap-xs">
 					{char.race && (
-						<span className="inline-block px-2 py-0.5 bg-surface-raised border border-accent-dim rounded-sm text-xs text-accent">
+						<span className="inline-block rounded-sm border border-accent-dim bg-surface-raised px-2 py-0.5 text-accent text-xs">
 							{char.race}
 						</span>
 					)}
 					{char.exaltation && (
-						<span className="inline-block px-2 py-0.5 bg-surface-raised border border-accent-dim rounded-sm text-xs text-accent">
+						<span className="inline-block rounded-sm border border-accent-dim bg-surface-raised px-2 py-0.5 text-accent text-xs">
 							{char.exaltation}
 						</span>
 					)}
@@ -77,35 +77,35 @@ export function Sidebar() {
 
 			{/* Derived Stats */}
 			<div>
-				<h3 className="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">Derived Stats</h3>
+				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">Derived Stats</h3>
 				<div className="grid grid-cols-2 gap-x-sm gap-y-0.5 text-[0.85rem]">
 					<span className="text-text-muted">SD</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{sd}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{sd}</span>
 					<span className="text-text-muted">HP</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{hp}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{hp}</span>
 					<span className="text-text-muted">MD</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{md}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{md}</span>
 					<span className="text-text-muted">Resolve</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{resolve}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{resolve}</span>
 					<span className="text-text-muted">Speed</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{speed}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{speed}</span>
 					<span className="text-text-muted">Resilience</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{resilience}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{resilience}</span>
 					<span className="text-text-muted">Initiative</span>
-					<span className="text-text-primary font-semibold tabular-nums text-right">{initiative}</span>
+					<span className="text-right font-semibold text-text-primary tabular-nums">{initiative}</span>
 				</div>
 			</div>
 
 			{/* XP Budget */}
 			<div>
-				<h3 className="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">XP Budget</h3>
+				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">XP Budget</h3>
 				<div
-					className={cn("text-[0.8rem] text-text-muted text-center mb-sm", xp.remaining < 0 && "text-error")}
+					className={cn("mb-sm text-center text-[0.8rem] text-text-muted", xp.remaining < 0 && "text-error")}
 				>
 					<strong className={xp.remaining < 0 ? "text-error" : "text-accent"}>{xp.remaining}</strong> /{" "}
 					{TOTAL_XP} remaining
 				</div>
-				<div className="text-xs text-text-dim">
+				<div className="text-text-dim text-xs">
 					{xp.breakdown.classes > 0 && (
 						<div className="flex justify-between py-[1px]">
 							<span>Classes</span>
@@ -141,19 +141,18 @@ export function Sidebar() {
 
 			{/* Step Checklist */}
 			<div>
-				<h3 className="text-xs uppercase tracking-[0.06em] text-text-dim mb-sm">Steps</h3>
-				<ol className="list-none p-0 m-0 text-[0.8rem]">
+				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">Steps</h3>
+				<ol className="m-0 list-none p-0 text-[0.8rem]">
 					{STEP_LABELS.map((label, i) => {
 						const isDone = meta.stepsCompleted[i];
 						const isActive = currentStep === i + 1;
 						return (
 							<li key={label}>
 								<button
-									type="button"
 									className={[
-										"flex items-center gap-xs py-[3px] cursor-pointer bg-transparent border-none p-0 text-left w-full text-[0.8rem] hover:text-text-primary",
+										"flex w-full cursor-pointer items-center gap-xs border-none bg-transparent p-0 py-[3px] text-left text-[0.8rem] hover:text-text-primary",
 										isActive
-											? "text-accent font-semibold"
+											? "font-semibold text-accent"
 											: isDone
 												? "text-success"
 												: "text-text-dim",
@@ -161,8 +160,9 @@ export function Sidebar() {
 									onClick={() => {
 										setCurrentStep(i + 1);
 									}}
+									type="button"
 								>
-									<span className="w-[14px] text-center shrink-0">{isDone ? "✓" : i + 1}</span>
+									<span className="w-[14px] shrink-0 text-center">{isDone ? "✓" : i + 1}</span>
 									{label}
 								</button>
 							</li>
@@ -172,12 +172,12 @@ export function Sidebar() {
 			</div>
 
 			{/* Actions */}
-			<div className="flex flex-col gap-xs pt-md border-t border-border mt-auto">
-				<Button variant="primary" onClick={handleOpenInSheet}>
+			<div className="mt-auto flex flex-col gap-xs border-border border-t pt-md">
+				<Button onClick={handleOpenInSheet} variant="primary">
 					Open in Sheet
 				</Button>
 				<Button onClick={handleExport}>Export JSON</Button>
-				<Button variant="danger" onClick={handleStartOver}>
+				<Button onClick={handleStartOver} variant="danger">
 					Start Over
 				</Button>
 			</div>

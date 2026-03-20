@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
+import { cn } from "@/lib/utils";
 import { HULL_CLASSES, type Hull, signedNum } from "./constants";
 import { useShipStore } from "./store";
 
@@ -46,31 +46,31 @@ export function HullSelector() {
 
 	return (
 		<section className="mb-xl">
-			<h2 className="text-accent text-xl mb-md pb-xs border-b border-border">Hull Selection</h2>
-			<div className="flex gap-sm mb-md flex-wrap">
+			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Hull Selection</h2>
+			<div className="mb-md flex flex-wrap gap-sm">
 				<button
-					type="button"
 					className={cn(
-						"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
-						filterClass === "all" && "bg-accent-dim border-accent text-text-primary",
+						"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-[0.85rem] text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+						filterClass === "all" && "border-accent bg-accent-dim text-text-primary",
 					)}
 					onClick={() => {
 						setFilterClass("all");
 					}}
+					type="button"
 				>
 					All
 				</button>
 				{HULL_CLASSES.map((cls) => (
 					<button
-						type="button"
-						key={cls}
 						className={cn(
-							"py-1 px-3 bg-surface border border-border rounded-sm text-text-muted cursor-pointer text-[0.85rem] transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
-							filterClass === cls && "bg-accent-dim border-accent text-text-primary",
+							"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-[0.85rem] text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+							filterClass === cls && "border-accent bg-accent-dim text-text-primary",
 						)}
+						key={cls}
 						onClick={() => {
 							setFilterClass(cls);
 						}}
+						type="button"
 					>
 						{cls}
 					</button>
@@ -79,10 +79,10 @@ export function HullSelector() {
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-md">
 				{filteredHulls.map((hull) => (
 					<HullCard
-						key={hull.id}
 						hull={hull}
-						selected={currentShip.hullId === hull.id}
+						key={hull.id}
 						onSelect={selectHull}
+						selected={currentShip.hullId === hull.id}
 					/>
 				))}
 			</div>
@@ -100,15 +100,15 @@ function HullCard({ hull, selected, onSelect }: { hull: Hull; selected: boolean;
 
 	return (
 		<button
-			type="button"
 			className={cn(
-				"bg-surface border-2 border-border rounded-md p-md cursor-pointer transition-all duration-150 hover:border-border-light hover:bg-surface-raised text-left",
+				"cursor-pointer rounded-md border-2 border-border bg-surface p-md text-left transition-all duration-150 hover:border-border-light hover:bg-surface-raised",
 				selected && "border-accent bg-[rgba(212,168,75,0.1)]",
 			)}
 			onClick={() => onSelect(hull.id)}
+			type="button"
 		>
-			<div className="font-semibold mb-0.5">{hull.name}</div>
-			<div className="text-[0.8rem] text-text-muted mb-sm">{hull.class}</div>
+			<div className="mb-0.5 font-semibold">{hull.name}</div>
+			<div className="mb-sm text-[0.8rem] text-text-muted">{hull.class}</div>
 			<div className="grid grid-cols-2 gap-x-md gap-y-0.5 text-[0.8rem] text-text-muted">
 				<span>
 					Hull: <strong className="text-text-primary">{hull.hullStrength}</strong>
@@ -135,7 +135,7 @@ function HullCard({ hull, selected, onSelect }: { hull: Hull; selected: boolean;
 					Weapons: <strong className="text-text-primary">{totalWeapons}</strong>
 				</span>
 			</div>
-			<span className="inline-block mt-sm px-2 py-0.5 bg-accent-dim rounded-sm text-xs font-semibold text-text-primary">
+			<span className="mt-sm inline-block rounded-sm bg-accent-dim px-2 py-0.5 font-semibold text-text-primary text-xs">
 				{hull.cost} BP
 			</span>
 		</button>

@@ -8,7 +8,7 @@ afterEach(() => cleanup());
 describe("Modal", () => {
 	it("renders nothing when open is false", () => {
 		render(
-			<Modal open={false} onClose={() => {}}>
+			<Modal onClose={() => {}} open={false}>
 				<p>Modal content</p>
 			</Modal>,
 		);
@@ -17,7 +17,7 @@ describe("Modal", () => {
 
 	it("renders children when open is true", () => {
 		render(
-			<Modal open={true} onClose={() => {}}>
+			<Modal onClose={() => {}} open={true}>
 				<p>Modal content</p>
 			</Modal>,
 		);
@@ -26,7 +26,7 @@ describe("Modal", () => {
 
 	it("renders the title when provided", () => {
 		render(
-			<Modal open={true} onClose={() => {}} title="Import Data">
+			<Modal onClose={() => {}} open={true} title="Import Data">
 				Content
 			</Modal>,
 		);
@@ -35,7 +35,7 @@ describe("Modal", () => {
 
 	it("renders a close button with accessible label when title is present", () => {
 		render(
-			<Modal open={true} onClose={() => {}} title="Settings">
+			<Modal onClose={() => {}} open={true} title="Settings">
 				Content
 			</Modal>,
 		);
@@ -44,7 +44,7 @@ describe("Modal", () => {
 
 	it("does not render close button or title header when title is omitted", () => {
 		render(
-			<Modal open={true} onClose={() => {}}>
+			<Modal onClose={() => {}} open={true}>
 				Content only
 			</Modal>,
 		);
@@ -55,7 +55,7 @@ describe("Modal", () => {
 		const onClose = mock(() => {});
 		const user = userEvent.setup();
 		render(
-			<Modal open={true} onClose={onClose} title="Test">
+			<Modal onClose={onClose} open={true} title="Test">
 				Content
 			</Modal>,
 		);
@@ -68,7 +68,7 @@ describe("Modal", () => {
 		const onClose = mock(() => {});
 		const user = userEvent.setup();
 		render(
-			<Modal open={true} onClose={onClose} title="Escape Test">
+			<Modal onClose={onClose} open={true} title="Escape Test">
 				Content
 			</Modal>,
 		);
@@ -79,7 +79,7 @@ describe("Modal", () => {
 
 	it("applies custom className", () => {
 		render(
-			<Modal open={true} onClose={() => {}} className="custom-modal">
+			<Modal className="custom-modal" onClose={() => {}} open={true}>
 				Content
 			</Modal>,
 		);

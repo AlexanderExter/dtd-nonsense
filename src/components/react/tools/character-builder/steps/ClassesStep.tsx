@@ -45,14 +45,14 @@ export function ClassesStep() {
 
 	return (
 		<div>
-			<div className="flex items-center gap-sm flex-wrap px-md py-sm bg-surface rounded-sm mb-md">
-				<label className="text-[0.85rem] text-text-dim m-0">
+			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
+				<label className="m-0 text-[0.85rem] text-text-dim">
 					Track:{" "}
 					<GameSelect
-						value={trackFilter}
 						onChange={(e) => {
 							setTrackFilter((e.target as HTMLSelectElement).value);
 						}}
+						value={trackFilter}
 					>
 						<option value="all">All Tracks</option>
 						{tracks.map((t) => (
@@ -66,20 +66,20 @@ export function ClassesStep() {
 
 			{/* Purchased classes */}
 			{char.classes.length > 0 && (
-				<div className="flex flex-wrap gap-xs mb-md">
+				<div className="mb-md flex flex-wrap gap-xs">
 					{char.classes.map((entry) => {
 						const cls = allClasses.find((c: any) => (c.id || c.name) === entry.classId);
 						return (
 							<span
+								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-[rgba(212,168,75,0.12)] px-2.5 py-[3px] text-[0.8rem] text-accent"
 								key={entry.classId}
-								className="inline-flex items-center gap-1 py-[3px] px-2.5 bg-[rgba(212,168,75,0.12)] border border-accent-dim rounded-full text-[0.8rem] text-accent"
 							>
 								{cls?.name || entry.classId}
 								<button
-									type="button"
-									className="cursor-pointer text-[0.9rem] text-text-dim ml-0.5 hover:text-error bg-transparent border-none p-0"
-									onClick={() => toggleClass(cls || { id: entry.classId })}
 									aria-label={`Remove ${cls?.name || entry.classId}`}
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									onClick={() => toggleClass(cls || { id: entry.classId })}
+									type="button"
 								>
 									×
 								</button>
@@ -89,19 +89,19 @@ export function ClassesStep() {
 				</div>
 			)}
 
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 				{filtered.map((cls: any) => {
 					const id = cls.id || cls.name;
 					return (
 						<SelectionCard
 							key={id}
-							title={cls.name}
-							subtitle={`Tier 1 · ${cls.track || "General"}`}
-							preview={cls.completionBonus?.slice(0, 60)}
-							selected={purchasedIds.has(id)}
 							onClick={() => {
 								setSelectedPreview(cls);
 							}}
+							preview={cls.completionBonus?.slice(0, 60)}
+							selected={purchasedIds.has(id)}
+							subtitle={`Tier 1 · ${cls.track || "General"}`}
+							title={cls.name}
 						/>
 					);
 				})}
@@ -161,11 +161,11 @@ export function ClassesStep() {
 
 					<div className="mt-md flex gap-sm">
 						{purchasedIds.has(preview.id || preview.name) ? (
-							<Button variant="danger" onClick={() => toggleClass(preview)}>
+							<Button onClick={() => toggleClass(preview)} variant="danger">
 								Remove
 							</Button>
 						) : (
-							<Button variant="primary" onClick={() => toggleClass(preview)}>
+							<Button onClick={() => toggleClass(preview)} variant="primary">
 								Add {char.classes.length === 0 ? "(free)" : "(+100 XP)"}
 							</Button>
 						)}

@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 
 interface SidebarPanelProps {
-	title: string;
 	children: ReactNode;
+	title: string;
 }
 
 export function SidebarPanel({ title, children }: SidebarPanelProps) {
 	return (
-		<div className="bg-surface border border-border rounded-md p-md mb-md">
-			<h3 className="text-accent text-[0.9rem] m-0 mb-sm uppercase tracking-[0.04em]">{title}</h3>
+		<div className="mb-md rounded-md border border-border bg-surface p-md">
+			<h3 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.04em]">{title}</h3>
 			{children}
 		</div>
 	);

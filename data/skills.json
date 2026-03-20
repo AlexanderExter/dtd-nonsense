@@ -1,651 +1,651 @@
 {
-	"characteristics": {
-		"physical": [
-			{
-				"id": "strength",
-				"name": "Strength",
-				"abbrev": "Str",
-				"description": "Physical prowess, including the capacity to lift objects and cause damage. Used for jumping, lifting, and raw physical might. Determines base damage for physical attacks.",
-				"specialties": [
-					"Iron Grip",
-					"Reserves of Strength",
-					"Fists Like Anvils",
-					"Hurting People"
-				],
-				"ratings": [
-					{ "dots": 1, "label": "Poor", "description": "You can lift 80 lbs." },
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "You can lift 120 lbs."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "You can lift 250 lbs."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "You can lift 400 lbs."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "You can lift 650 lbs. and crush skulls like grapes."
-					}
-				]
-			},
-			{
-				"id": "dexterity",
-				"name": "Dexterity",
-				"abbrev": "Dex",
-				"description": "Agility, hand-eye coordination and reflexes. Describes speed, aim precision, and physical control. Used for many skills requiring speed and flexibility.",
-				"specialties": [
-					"Fast Movement",
-					"Feline Grace",
-					"Lightning Reflexes",
-					"Perfect Aim"
-				],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "You are clumsy and awkward."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "You're no clod, but don't expect to win any awards."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "You show some potential. Above-average."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "You could be an acrobat if you wanted."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "Backflips everywhere, running on walls, being awesome."
-					}
-				]
-			},
-			{
-				"id": "constitution",
-				"name": "Constitution",
-				"abbrev": "Con",
-				"description": "Health, well-being, general toughness and resistance. Covers endurance before getting tired and starting hit points.",
-				"specialties": ["Tough as Nails", "Tireless", "Resolute", "Stoic"],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "You bruise in a stiff wind."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Moderately healthy, can withstand a punch or two."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "In good shape and rarely fall ill."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "You can run in marathons—and win!"
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "You almost never get sick and don't get tired."
-					}
-				]
-			}
-		],
-		"social": [
-			{
-				"id": "charisma",
-				"name": "Charisma",
-				"abbrev": "Cha",
-				"description": "How innately likeable someone is. Reflects confidence, social grace, force of personality, and ability to compel others.",
-				"specialties": [
-					"Eloquent Speaker",
-					"Catchphrases",
-					"Genteel",
-					"Cutting Wit"
-				],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "Stop picking your nose."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Generally likable with several friends."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "People trust you implicitly."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Significant personal magnetism."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "Entire cultures could follow your lead."
-					}
-				]
-			},
-			{
-				"id": "fellowship",
-				"name": "Fellowship",
-				"abbrev": "Fel",
-				"description": "Appearance and ability for self-expression. The capacity to coerce, manipulate, and influence others through words and appearance.",
-				"specialties": [
-					"Persuasive",
-					"Seductive",
-					"Well-Reasoned",
-					"Charming Rogue"
-				],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "Few words and plain face."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Normal looking, not bad at talking."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "You never pay full price."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Could be a politician or cult leader."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "People will live and die on your word."
-					}
-				]
-			},
-			{
-				"id": "composure",
-				"name": "Composure",
-				"abbrev": "Com",
-				"description": "Ability to remain calm in social and threatening situations. A measure of emotional fortitude, restraint, and calm.",
-				"specialties": ["Poise", "Dignity", "Unflappable", "Fearless"],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "You fold to peer pressure like origami paper."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Once in a while you stand up for yourself."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "Speak your mind when needed and control yourself."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Others see only calm."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "You've probably never been afraid."
-					}
-				]
-			}
-		],
-		"mental": [
-			{
-				"id": "intelligence",
-				"name": "Intelligence",
-				"abbrev": "Int",
-				"description": "Memory, understanding, reasoning and imagination. Ability to correlate information and make deductions. Also covers starting languages.",
-				"specialties": [
-					"Trivia",
-					"Puzzle Solver",
-					"Book Knowledge",
-					"Creativity"
-				],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "Not the sharpest knife in the drawer."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Smart enough to realize you're normal."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "More enlightened than the masses."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Not just bright, you're brilliant!"
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "Certified genius."
-					}
-				],
-				"notes": "At 3+ dots, gain one extra spoken language per dot above 2."
-			},
-			{
-				"id": "wisdom",
-				"name": "Wisdom",
-				"abbrev": "Wis",
-				"description": "Alertness and comprehension. Determines how well you notice the world and interpret what you observe.",
-				"specialties": ["Attentive", "Insightful", "Experienced", "Discerning"],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "Self-absorbed or an airhead. Details elude you."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Oblivious to the subtle, but not the big picture."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "Read the environment like a book."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Almost nothing evades your notice."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "Instantly observe things others overlook."
-					}
-				]
-			},
-			{
-				"id": "willpower",
-				"name": "Willpower",
-				"abbrev": "Wil",
-				"description": "How strongly you hold onto your ideas and resist mental commands. Used to resist supernatural effects.",
-				"specialties": [
-					"Getting the Jump on Others",
-					"Mental Resolve",
-					"Meditation",
-					"Ambushes"
-				],
-				"ratings": [
-					{
-						"dots": 1,
-						"label": "Poor",
-						"description": "A follower, not a leader."
-					},
-					{
-						"dots": 2,
-						"label": "Average",
-						"description": "Can hold out as long as the average person."
-					},
-					{
-						"dots": 3,
-						"label": "Good",
-						"description": "Seldom left surprised or speechless."
-					},
-					{
-						"dots": 4,
-						"label": "Exceptional",
-						"description": "Look death in the eye and make it blink."
-					},
-					{
-						"dots": 5,
-						"label": "Outstanding",
-						"description": "A bastion of mental power."
-					}
-				]
-			}
-		]
-	},
-	"skills": {
-		"mental": [
-			{
-				"id": "academicLore",
-				"name": "Academic Lore",
-				"characteristic": "intelligence",
-				"advanced": true,
-				"description": "Knowledge of scholarly subjects. Successful Tests enable you to recall pertinent facts and do research.",
-				"specialties": [
-					"Archaic",
-					"Astromancy",
-					"Beasts",
-					"Cryptology",
-					"Heraldry",
-					"History",
-					"Law",
-					"Occult",
-					"Philosophy",
-					"Psychology"
-				]
-			},
-			{
-				"id": "arcana",
-				"name": "Arcana",
-				"characteristic": "intelligence",
-				"advanced": false,
-				"description": "Knowledge and experience with legends and lore about the supernatural. Can generally tell fact from rumor.",
-				"specialties": [
-					"Cultural Beliefs",
-					"Ghosts",
-					"Magic",
-					"Monsters",
-					"Superstitions"
-				]
-			},
-			{
-				"id": "commonLore",
-				"name": "Common Lore",
-				"characteristic": "intelligence",
-				"advanced": true,
-				"description": "Recall habits, institutions, traditions, public figures, and superstitions of a particular world, culture, organization or race.",
-				"specialties": [
-					"Sigil",
-					"Underworld",
-					"War",
-					"Tech",
-					"Animals",
-					"Crystal Spheres",
-					"Races"
-				]
-			},
-			{
-				"id": "crafts",
-				"name": "Crafts",
-				"characteristic": "wisdom",
-				"advanced": false,
-				"description": "Training or expertise in creating works of art or construction with your hands, from paintings to car engines.",
-				"specialties": [
-					"Forging",
-					"Painting",
-					"Sculpting",
-					"Sewing",
-					"Ship Repair",
-					"Jury-Rigging"
-				]
-			},
-			{
-				"id": "forbiddenLore",
-				"name": "Forbidden Lore",
-				"characteristic": "intelligence",
-				"advanced": true,
-				"description": "Dangerous and often illegal knowledge. Simply possessing this skill is often enough to warrant death.",
-				"specialties": ["Cults", "Daemonology", "Warp", "Heresy"]
-			},
-			{
-				"id": "medicae",
-				"name": "Medicae",
-				"characteristic": "wisdom",
-				"advanced": true,
-				"description": "Used to treat injuries, closing wounds and restoring the body's balance. Vital for stabilizing allies.",
-				"specialties": ["First Aid", "Pathology", "Surgery", "Pharmaceuticals"]
-			},
-			{
-				"id": "perception",
-				"name": "Perception",
-				"characteristic": "wisdom",
-				"advanced": false,
-				"description": "Ability to perceive hidden dangers and notice small details about your physical surroundings.",
-				"specialties": ["Spot", "Listen", "Search", "Taste", "Touch"]
-			},
-			{
-				"id": "politics",
-				"name": "Politics",
-				"characteristic": "wisdom",
-				"advanced": true,
-				"description": "Familiar with the political process, bureaucracies, and who to call to get things done.",
-				"specialties": [
-					"Bribery",
-					"Elections",
-					"Crystal Sphere",
-					"Local",
-					"Scandals"
-				]
-			},
-			{
-				"id": "techUse",
-				"name": "Tech-Use",
-				"characteristic": "intelligence",
-				"advanced": true,
-				"description": "Allows use or repair of complex mechanical items or fathoming unknown technical artifacts.",
-				"specialties": [
-					"Computers",
-					"Repairing Machines",
-					"Reverse Engineering"
-				]
-			}
-		],
-		"physical": [
-			{
-				"id": "acrobatics",
-				"name": "Acrobatics",
-				"characteristic": "dexterity",
-				"advanced": true,
-				"description": "Movement techniques like somersaults, tumbling, flipping through the air, and daring leaps.",
-				"specialties": [
-					"Jumping",
-					"Backflips",
-					"Totally Cool Awesome Gymnastics"
-				]
-			},
-			{
-				"id": "athletics",
-				"name": "Athletics",
-				"characteristic": "constitution",
-				"advanced": false,
-				"description": "Basic physical ability covering running, jumping, throwing, swimming, and sports.",
-				"specialties": [
-					"Swimming",
-					"Climbing",
-					"Endurance Running",
-					"Specific Sports"
-				]
-			},
-			{
-				"id": "ballistics",
-				"name": "Ballistics",
-				"characteristic": "special",
-				"advanced": false,
-				"description": "Broad familiarity with guns and how to operate them. Requires weapon proficiency feat for practical use.",
-				"specialties": ["Fast Draw", "Pistols", "Sniping", "Shotguns"]
-			},
-			{
-				"id": "brawl",
-				"name": "Brawl",
-				"characteristic": "special",
-				"advanced": false,
-				"description": "Used with unarmed attacks. Covers all fighting styles—martial arts, grappling, etc.",
-				"specialties": ["Kung Fu", "Karate", "Jeet Kun Do", "Solar Hero Style"]
-			},
-			{
-				"id": "drive",
-				"name": "Drive",
-				"characteristic": "dexterity",
-				"advanced": false,
-				"description": "Control autos, trucks, landspeeders and other land-based or hover vehicles.",
-				"specialties": ["Ground Vehicle", "Hover Vehicle", "Walker"]
-			},
-			{
-				"id": "larceny",
-				"name": "Larceny",
-				"characteristic": "dexterity",
-				"advanced": false,
-				"description": "Palm objects, pick pockets, pick locks, conceal stolen goods, bypass security.",
-				"specialties": [
-					"Lockpicking",
-					"Pickpocketing",
-					"Prestidigitation",
-					"Security Systems",
-					"Safecracking"
-				]
-			},
-			{
-				"id": "pilot",
-				"name": "Pilot",
-				"characteristic": "dexterity",
-				"advanced": true,
-				"description": "Fly anything from small atmospheric craft to spelljamming ships.",
-				"specialties": ["Civilian Craft", "Military Craft", "Spelljamming Ship"]
-			},
-			{
-				"id": "stealth",
-				"name": "Stealth",
-				"characteristic": "dexterity",
-				"advanced": false,
-				"description": "Actively hide from someone or something. Requires appropriate terrain or concealment.",
-				"specialties": ["Concealment", "Silent Movement", "Shadowing", "Crowds"]
-			},
-			{
-				"id": "weaponry",
-				"name": "Weaponry",
-				"characteristic": "special",
-				"advanced": false,
-				"description": "Broad skill with melee weapons. Requires weapon proficiency feat for practical use.",
-				"specialties": [
-					"Knives",
-					"Swords",
-					"Improvised Clubs",
-					"Martial Arts",
-					"Axes"
-				]
-			}
-		],
-		"social": [
-			{
-				"id": "animalKen",
-				"name": "Animal Ken",
-				"characteristic": "composure",
-				"advanced": false,
-				"description": "Understand animal behavior patterns. Predict reactions, train, ride, or calm animals.",
-				"specialties": [
-					"Riding",
-					"Animal Training",
-					"Big Cats",
-					"Horses",
-					"Farm Animals"
-				]
-			},
-			{
-				"id": "charm",
-				"name": "Charm",
-				"characteristic": "fellowship",
-				"advanced": false,
-				"description": "Befriend others. Change minds of individuals or small groups, beg, or seduce.",
-				"specialties": ["Seduction", "First Impressions", "Begging"]
-			},
-			{
-				"id": "command",
-				"name": "Command",
-				"characteristic": "charisma",
-				"advanced": false,
-				"description": "Make subordinates follow orders. Only usable on those under your authority.",
-				"specialties": ["Oratory", "Compelling", "Open", "Noble", "Military"]
-			},
-			{
-				"id": "deceive",
-				"name": "Deceive",
-				"characteristic": "charisma",
-				"advanced": false,
-				"description": "Lie and con others. Convince others of things not necessarily true.",
-				"specialties": ["White Lies", "Con Jobs", "Lying", "Misdirection"]
-			},
-			{
-				"id": "disguise",
-				"name": "Disguise",
-				"characteristic": "fellowship",
-				"advanced": false,
-				"description": "Mask features and assume another's appearance.",
-				"specialties": [
-					"Mimicking Voices",
-					"Mannerisms",
-					"Mask of a Thousand Faces"
-				]
-			},
-			{
-				"id": "intimidation",
-				"name": "Intimidation",
-				"characteristic": "charisma",
-				"advanced": false,
-				"description": "Scare people. Can use almost any characteristic depending on circumstances.",
-				"specialties": ["Bluster", "Physical Threats", "Stare-Downs", "Torture"]
-			},
-			{
-				"id": "performer",
-				"name": "Performer",
-				"characteristic": "fellowship",
-				"advanced": false,
-				"description": "Entertain and enthrall crowds. Carry a tune, put on a show.",
-				"specialties": ["Dancer", "Musician", "Singer", "Storyteller"]
-			},
-			{
-				"id": "persuasion",
-				"name": "Persuasion",
-				"characteristic": "charisma",
-				"advanced": false,
-				"description": "Get your point across clearly. Phrase opinions in compelling manner, skilled acting.",
-				"specialties": [
-					"Acting",
-					"Poetry",
-					"Fiction",
-					"Impromptu",
-					"Conversation"
-				]
-			},
-			{
-				"id": "scrutiny",
-				"name": "Scrutiny",
-				"characteristic": "composure",
-				"advanced": false,
-				"description": "Make assessments about people, determine if lying, sense ulterior motives.",
-				"specialties": ["Spotting Lies", "Motives", "Personalities", "Emotion"]
-			}
-		]
-	},
-	"skillNotes": {
-		"basic": "Can be attempted at zero dots with -1 to your characteristic.",
-		"advanced": "Cannot be attempted without at least one dot (unless you have Jack of All Trades feat).",
-		"specialtyAt4": "Every Skill and Characteristic gains a Specialty at 4 dots. Reroll any 1s when the specialty applies."
-	}
+  "characteristics": {
+    "physical": [
+      {
+        "id": "strength",
+        "name": "Strength",
+        "abbrev": "Str",
+        "description": "Physical prowess, including the capacity to lift objects and cause damage. Used for jumping, lifting, and raw physical might. Determines base damage for physical attacks.",
+        "specialties": [
+          "Iron Grip",
+          "Reserves of Strength",
+          "Fists Like Anvils",
+          "Hurting People"
+        ],
+        "ratings": [
+          { "dots": 1, "label": "Poor", "description": "You can lift 80 lbs." },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "You can lift 120 lbs."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "You can lift 250 lbs."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "You can lift 400 lbs."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "You can lift 650 lbs. and crush skulls like grapes."
+          }
+        ]
+      },
+      {
+        "id": "dexterity",
+        "name": "Dexterity",
+        "abbrev": "Dex",
+        "description": "Agility, hand-eye coordination and reflexes. Describes speed, aim precision, and physical control. Used for many skills requiring speed and flexibility.",
+        "specialties": [
+          "Fast Movement",
+          "Feline Grace",
+          "Lightning Reflexes",
+          "Perfect Aim"
+        ],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "You are clumsy and awkward."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "You're no clod, but don't expect to win any awards."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "You show some potential. Above-average."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "You could be an acrobat if you wanted."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "Backflips everywhere, running on walls, being awesome."
+          }
+        ]
+      },
+      {
+        "id": "constitution",
+        "name": "Constitution",
+        "abbrev": "Con",
+        "description": "Health, well-being, general toughness and resistance. Covers endurance before getting tired and starting hit points.",
+        "specialties": ["Tough as Nails", "Tireless", "Resolute", "Stoic"],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "You bruise in a stiff wind."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Moderately healthy, can withstand a punch or two."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "In good shape and rarely fall ill."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "You can run in marathons—and win!"
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "You almost never get sick and don't get tired."
+          }
+        ]
+      }
+    ],
+    "social": [
+      {
+        "id": "charisma",
+        "name": "Charisma",
+        "abbrev": "Cha",
+        "description": "How innately likeable someone is. Reflects confidence, social grace, force of personality, and ability to compel others.",
+        "specialties": [
+          "Eloquent Speaker",
+          "Catchphrases",
+          "Genteel",
+          "Cutting Wit"
+        ],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "Stop picking your nose."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Generally likable with several friends."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "People trust you implicitly."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Significant personal magnetism."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "Entire cultures could follow your lead."
+          }
+        ]
+      },
+      {
+        "id": "fellowship",
+        "name": "Fellowship",
+        "abbrev": "Fel",
+        "description": "Appearance and ability for self-expression. The capacity to coerce, manipulate, and influence others through words and appearance.",
+        "specialties": [
+          "Persuasive",
+          "Seductive",
+          "Well-Reasoned",
+          "Charming Rogue"
+        ],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "Few words and plain face."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Normal looking, not bad at talking."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "You never pay full price."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Could be a politician or cult leader."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "People will live and die on your word."
+          }
+        ]
+      },
+      {
+        "id": "composure",
+        "name": "Composure",
+        "abbrev": "Com",
+        "description": "Ability to remain calm in social and threatening situations. A measure of emotional fortitude, restraint, and calm.",
+        "specialties": ["Poise", "Dignity", "Unflappable", "Fearless"],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "You fold to peer pressure like origami paper."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Once in a while you stand up for yourself."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "Speak your mind when needed and control yourself."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Others see only calm."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "You've probably never been afraid."
+          }
+        ]
+      }
+    ],
+    "mental": [
+      {
+        "id": "intelligence",
+        "name": "Intelligence",
+        "abbrev": "Int",
+        "description": "Memory, understanding, reasoning and imagination. Ability to correlate information and make deductions. Also covers starting languages.",
+        "specialties": [
+          "Trivia",
+          "Puzzle Solver",
+          "Book Knowledge",
+          "Creativity"
+        ],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "Not the sharpest knife in the drawer."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Smart enough to realize you're normal."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "More enlightened than the masses."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Not just bright, you're brilliant!"
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "Certified genius."
+          }
+        ],
+        "notes": "At 3+ dots, gain one extra spoken language per dot above 2."
+      },
+      {
+        "id": "wisdom",
+        "name": "Wisdom",
+        "abbrev": "Wis",
+        "description": "Alertness and comprehension. Determines how well you notice the world and interpret what you observe.",
+        "specialties": ["Attentive", "Insightful", "Experienced", "Discerning"],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "Self-absorbed or an airhead. Details elude you."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Oblivious to the subtle, but not the big picture."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "Read the environment like a book."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Almost nothing evades your notice."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "Instantly observe things others overlook."
+          }
+        ]
+      },
+      {
+        "id": "willpower",
+        "name": "Willpower",
+        "abbrev": "Wil",
+        "description": "How strongly you hold onto your ideas and resist mental commands. Used to resist supernatural effects.",
+        "specialties": [
+          "Getting the Jump on Others",
+          "Mental Resolve",
+          "Meditation",
+          "Ambushes"
+        ],
+        "ratings": [
+          {
+            "dots": 1,
+            "label": "Poor",
+            "description": "A follower, not a leader."
+          },
+          {
+            "dots": 2,
+            "label": "Average",
+            "description": "Can hold out as long as the average person."
+          },
+          {
+            "dots": 3,
+            "label": "Good",
+            "description": "Seldom left surprised or speechless."
+          },
+          {
+            "dots": 4,
+            "label": "Exceptional",
+            "description": "Look death in the eye and make it blink."
+          },
+          {
+            "dots": 5,
+            "label": "Outstanding",
+            "description": "A bastion of mental power."
+          }
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "mental": [
+      {
+        "id": "academicLore",
+        "name": "Academic Lore",
+        "characteristic": "intelligence",
+        "advanced": true,
+        "description": "Knowledge of scholarly subjects. Successful Tests enable you to recall pertinent facts and do research.",
+        "specialties": [
+          "Archaic",
+          "Astromancy",
+          "Beasts",
+          "Cryptology",
+          "Heraldry",
+          "History",
+          "Law",
+          "Occult",
+          "Philosophy",
+          "Psychology"
+        ]
+      },
+      {
+        "id": "arcana",
+        "name": "Arcana",
+        "characteristic": "intelligence",
+        "advanced": false,
+        "description": "Knowledge and experience with legends and lore about the supernatural. Can generally tell fact from rumor.",
+        "specialties": [
+          "Cultural Beliefs",
+          "Ghosts",
+          "Magic",
+          "Monsters",
+          "Superstitions"
+        ]
+      },
+      {
+        "id": "commonLore",
+        "name": "Common Lore",
+        "characteristic": "intelligence",
+        "advanced": true,
+        "description": "Recall habits, institutions, traditions, public figures, and superstitions of a particular world, culture, organization or race.",
+        "specialties": [
+          "Sigil",
+          "Underworld",
+          "War",
+          "Tech",
+          "Animals",
+          "Crystal Spheres",
+          "Races"
+        ]
+      },
+      {
+        "id": "crafts",
+        "name": "Crafts",
+        "characteristic": "wisdom",
+        "advanced": false,
+        "description": "Training or expertise in creating works of art or construction with your hands, from paintings to car engines.",
+        "specialties": [
+          "Forging",
+          "Painting",
+          "Sculpting",
+          "Sewing",
+          "Ship Repair",
+          "Jury-Rigging"
+        ]
+      },
+      {
+        "id": "forbiddenLore",
+        "name": "Forbidden Lore",
+        "characteristic": "intelligence",
+        "advanced": true,
+        "description": "Dangerous and often illegal knowledge. Simply possessing this skill is often enough to warrant death.",
+        "specialties": ["Cults", "Daemonology", "Warp", "Heresy"]
+      },
+      {
+        "id": "medicae",
+        "name": "Medicae",
+        "characteristic": "wisdom",
+        "advanced": true,
+        "description": "Used to treat injuries, closing wounds and restoring the body's balance. Vital for stabilizing allies.",
+        "specialties": ["First Aid", "Pathology", "Surgery", "Pharmaceuticals"]
+      },
+      {
+        "id": "perception",
+        "name": "Perception",
+        "characteristic": "wisdom",
+        "advanced": false,
+        "description": "Ability to perceive hidden dangers and notice small details about your physical surroundings.",
+        "specialties": ["Spot", "Listen", "Search", "Taste", "Touch"]
+      },
+      {
+        "id": "politics",
+        "name": "Politics",
+        "characteristic": "wisdom",
+        "advanced": true,
+        "description": "Familiar with the political process, bureaucracies, and who to call to get things done.",
+        "specialties": [
+          "Bribery",
+          "Elections",
+          "Crystal Sphere",
+          "Local",
+          "Scandals"
+        ]
+      },
+      {
+        "id": "techUse",
+        "name": "Tech-Use",
+        "characteristic": "intelligence",
+        "advanced": true,
+        "description": "Allows use or repair of complex mechanical items or fathoming unknown technical artifacts.",
+        "specialties": [
+          "Computers",
+          "Repairing Machines",
+          "Reverse Engineering"
+        ]
+      }
+    ],
+    "physical": [
+      {
+        "id": "acrobatics",
+        "name": "Acrobatics",
+        "characteristic": "dexterity",
+        "advanced": true,
+        "description": "Movement techniques like somersaults, tumbling, flipping through the air, and daring leaps.",
+        "specialties": [
+          "Jumping",
+          "Backflips",
+          "Totally Cool Awesome Gymnastics"
+        ]
+      },
+      {
+        "id": "athletics",
+        "name": "Athletics",
+        "characteristic": "constitution",
+        "advanced": false,
+        "description": "Basic physical ability covering running, jumping, throwing, swimming, and sports.",
+        "specialties": [
+          "Swimming",
+          "Climbing",
+          "Endurance Running",
+          "Specific Sports"
+        ]
+      },
+      {
+        "id": "ballistics",
+        "name": "Ballistics",
+        "characteristic": "special",
+        "advanced": false,
+        "description": "Broad familiarity with guns and how to operate them. Requires weapon proficiency feat for practical use.",
+        "specialties": ["Fast Draw", "Pistols", "Sniping", "Shotguns"]
+      },
+      {
+        "id": "brawl",
+        "name": "Brawl",
+        "characteristic": "special",
+        "advanced": false,
+        "description": "Used with unarmed attacks. Covers all fighting styles—martial arts, grappling, etc.",
+        "specialties": ["Kung Fu", "Karate", "Jeet Kun Do", "Solar Hero Style"]
+      },
+      {
+        "id": "drive",
+        "name": "Drive",
+        "characteristic": "dexterity",
+        "advanced": false,
+        "description": "Control autos, trucks, landspeeders and other land-based or hover vehicles.",
+        "specialties": ["Ground Vehicle", "Hover Vehicle", "Walker"]
+      },
+      {
+        "id": "larceny",
+        "name": "Larceny",
+        "characteristic": "dexterity",
+        "advanced": false,
+        "description": "Palm objects, pick pockets, pick locks, conceal stolen goods, bypass security.",
+        "specialties": [
+          "Lockpicking",
+          "Pickpocketing",
+          "Prestidigitation",
+          "Security Systems",
+          "Safecracking"
+        ]
+      },
+      {
+        "id": "pilot",
+        "name": "Pilot",
+        "characteristic": "dexterity",
+        "advanced": true,
+        "description": "Fly anything from small atmospheric craft to spelljamming ships.",
+        "specialties": ["Civilian Craft", "Military Craft", "Spelljamming Ship"]
+      },
+      {
+        "id": "stealth",
+        "name": "Stealth",
+        "characteristic": "dexterity",
+        "advanced": false,
+        "description": "Actively hide from someone or something. Requires appropriate terrain or concealment.",
+        "specialties": ["Concealment", "Silent Movement", "Shadowing", "Crowds"]
+      },
+      {
+        "id": "weaponry",
+        "name": "Weaponry",
+        "characteristic": "special",
+        "advanced": false,
+        "description": "Broad skill with melee weapons. Requires weapon proficiency feat for practical use.",
+        "specialties": [
+          "Knives",
+          "Swords",
+          "Improvised Clubs",
+          "Martial Arts",
+          "Axes"
+        ]
+      }
+    ],
+    "social": [
+      {
+        "id": "animalKen",
+        "name": "Animal Ken",
+        "characteristic": "composure",
+        "advanced": false,
+        "description": "Understand animal behavior patterns. Predict reactions, train, ride, or calm animals.",
+        "specialties": [
+          "Riding",
+          "Animal Training",
+          "Big Cats",
+          "Horses",
+          "Farm Animals"
+        ]
+      },
+      {
+        "id": "charm",
+        "name": "Charm",
+        "characteristic": "fellowship",
+        "advanced": false,
+        "description": "Befriend others. Change minds of individuals or small groups, beg, or seduce.",
+        "specialties": ["Seduction", "First Impressions", "Begging"]
+      },
+      {
+        "id": "command",
+        "name": "Command",
+        "characteristic": "charisma",
+        "advanced": false,
+        "description": "Make subordinates follow orders. Only usable on those under your authority.",
+        "specialties": ["Oratory", "Compelling", "Open", "Noble", "Military"]
+      },
+      {
+        "id": "deceive",
+        "name": "Deceive",
+        "characteristic": "charisma",
+        "advanced": false,
+        "description": "Lie and con others. Convince others of things not necessarily true.",
+        "specialties": ["White Lies", "Con Jobs", "Lying", "Misdirection"]
+      },
+      {
+        "id": "disguise",
+        "name": "Disguise",
+        "characteristic": "fellowship",
+        "advanced": false,
+        "description": "Mask features and assume another's appearance.",
+        "specialties": [
+          "Mimicking Voices",
+          "Mannerisms",
+          "Mask of a Thousand Faces"
+        ]
+      },
+      {
+        "id": "intimidation",
+        "name": "Intimidation",
+        "characteristic": "charisma",
+        "advanced": false,
+        "description": "Scare people. Can use almost any characteristic depending on circumstances.",
+        "specialties": ["Bluster", "Physical Threats", "Stare-Downs", "Torture"]
+      },
+      {
+        "id": "performer",
+        "name": "Performer",
+        "characteristic": "fellowship",
+        "advanced": false,
+        "description": "Entertain and enthrall crowds. Carry a tune, put on a show.",
+        "specialties": ["Dancer", "Musician", "Singer", "Storyteller"]
+      },
+      {
+        "id": "persuasion",
+        "name": "Persuasion",
+        "characteristic": "charisma",
+        "advanced": false,
+        "description": "Get your point across clearly. Phrase opinions in compelling manner, skilled acting.",
+        "specialties": [
+          "Acting",
+          "Poetry",
+          "Fiction",
+          "Impromptu",
+          "Conversation"
+        ]
+      },
+      {
+        "id": "scrutiny",
+        "name": "Scrutiny",
+        "characteristic": "composure",
+        "advanced": false,
+        "description": "Make assessments about people, determine if lying, sense ulterior motives.",
+        "specialties": ["Spotting Lies", "Motives", "Personalities", "Emotion"]
+      }
+    ]
+  },
+  "skillNotes": {
+    "basic": "Can be attempted at zero dots with -1 to your characteristic.",
+    "advanced": "Cannot be attempted without at least one dot (unless you have Jack of All Trades feat).",
+    "specialtyAt4": "Every Skill and Characteristic gains a Specialty at 4 dots. Reroll any 1s when the specialty applies."
+  }
 }

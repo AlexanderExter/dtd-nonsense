@@ -16,7 +16,7 @@ The rulebook and play tools are published as a static site via **Astro 6 + Starl
 | Bun                 | Manages Astro, Starlight, `@vercel/analytics`, `typescript`, Vercel adapter                                                                                                                                                                        |
 | TypeScript (strict) | Astro config/content collections; `@/` path alias for `src/*`                                                                                                                                                                                                |
 | ES modules          | `src/lib/dtd/core.ts` is a barrel re-exporting sub-modules (`character.ts`, `data.ts`, `derived.ts`); `dice.ts` provides dice logic (internally uses `dice-primitives.ts` for core algorithms); `types.ts` provides canonical interfaces |
-| React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management; adopting shadcn/ui component library                                                                                                    |
+| React + Zustand        | Reactive UI for tool pages; `@astrojs/react` integration; Zustand for state management; shadcn/ui component library (Phase 15)                                                                                                    |
 | Tailwind CSS v4      | Utility framework; `@theme` tokens as single source of truth; `@tailwindcss/vite` plugin; `@astrojs/starlight-tailwind` bridge                                                                                                                              |
 | Vercel (static)     | Zero-config deploy; `@astrojs/vercel` adapter with static output                                                                                                                                                                                             |
 
@@ -27,12 +27,12 @@ Key files:
 | `astro.config.mjs`          | Starlight config, sidebar, theme, Vercel adapter                                                                       |
 | `scripts/prebuild.mjs`      | Copies cleaned-references → rules, books, JSON → public/data                                                           |
 | `src/content/docs/`         | Generated Starlight content (rules, books) — gitignored                                                                |
-| `src/pages/tools/`          | Tool pages (Astro pages outside Starlight) — **must use `ToolLayout.astro`, never `StarlightPage`**                    |
+| `src/pages/tools/`          | Tool pages (Astro pages outside Starlight) — use `ToolLayout.astro` with `client:only="react"`                       |
 | `src/lib/dtd/`              | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/layouts/`              | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)               |
 | `src/styles/`               | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                |
 | `src/components/react/`    | React island components for all 6 tools (74 components)                                                               |
-| `src/components/react/ui/` | Shared UI primitives (18 components) — Radix UI + Tailwind wrappers                                                     |
+| `src/components/react/ui/` | Shared UI layer — 10 shadcn primitives, 4 Game* wrappers, 11 custom components (25 total)                              |
 | `data/`                     | Canonical JSON game data (12 files) — source for prebuild                                                              |
 | `public/data/`              | Generated JSON data copies (from `data/`) — gitignored                                                                 |
 
@@ -51,7 +51,7 @@ Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild c
 | dependency-cruiser   | Import boundary enforcement (architectural rules)    | `.dependency-cruiser.cjs`      | `check:deps`                        |
 | ts-morph             | TypeScript-aware structural convention checks        | `scripts/check-structure.ts`   | `check:structure`                   |
 
-**Biome** replaces separate ESLint/Prettier setups with a single tool. CI runs `biome ci .` to enforce formatting and lint rules. Run `bun run lint` locally to check, `bun run lint:fix` to auto-fix.
+**Biome** replaces separate ESLint/Prettier setups with a single tool, configured via **ultracite** presets (`ultracite/biome/{core,react,astro}`) that provide ~200+ curated rules including Tailwind class sorting, optional chaining enforcement, and sorted attributes/properties. Project-specific overrides in `biome.json` suppress rules incompatible with codebase patterns. CI runs `biome ci .` to enforce formatting and lint rules. Run `bun run lint` locally to check, `bun run lint:fix` to auto-fix.
 
 **bun:test** is Bun's built-in Jest-compatible test runner. It auto-discovers `*.test.ts` files and picks up `@/` path aliases from `tsconfig.json` automatically. Test files use the co-location pattern in `src/lib/dtd/` and `scripts/__tests__/`. Run `bun run test` for current counts.
 
@@ -82,13 +82,19 @@ All modules import cleanly into React components.
 
 ## Shared UI Layer
 
-> **Migration in progress:** The UI layer is being migrated to [shadcn/ui](https://ui.shadcn.com/) (Radix-based component library), with **sonner** for toasts and **lucide-react** for icons. During the transition, some components below may be replaced by shadcn equivalents. See the component table for current state.
-
-All 6 tools share a set of UI primitive components in `src/components/react/ui/`, backed by [Radix UI](https://www.radix-ui.com/) for accessibility and Tailwind CSS tokens for styling.
+All 6 tools share UI components in `src/components/react/ui/`. The layer has three tiers: **shadcn primitives** (installed via shadcn CLI), **Game* domain wrappers** (compact form elements themed for dense tabletop data entry), and **custom components** (hand-rolled for project-specific needs).
 
 ### Import Convention
 
 ```tsx
+// shadcn primitives — only used inside other UI components or for one-off layout needs
+import { Card, CardHeader, CardContent } from "@/components/react/ui/card";
+
+// Game* wrappers — primary form elements for tool code
+import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+
+// Custom components
 import { Button } from "@/components/react/ui/Button";
 import { Modal } from "@/components/react/ui/Modal";
 import { showToast, Toast } from "@/components/react/ui/Toast";
@@ -96,15 +102,46 @@ import { showToast, Toast } from "@/components/react/ui/Toast";
 
 **Never import `radix-ui` directly in tool code** — always use the UI layer wrappers.
 
-### Component Tiers
+### Component Inventory (25 files)
 
-> **Note:** This table reflects the pre-shadcn architecture and will be updated after migration.
+**shadcn Primitives (10)** — Installed via shadcn CLI, lowercase filenames:
 
-| Tier | Components | Radix? | Purpose |
-|------|-----------|----------|---------|
-| **Tier 1** — Pure styling | Button, Panel, SectionHeading, Badge, CloseButton, AddButton, NumberInput, FormGroup, PresetGroup, Toast | No | Wrap `.btn`/`.panel` CSS, standardize patterns |
-| **Tier 2** — Core | Modal, AccordionItem, Tabs/TabPanel | Yes | Dialog, disclosure, tab navigation |
-| **Tier 3** — Complex | Select, Popover, Tooltip, Combobox, Menu | Yes | Positioned overlays, search, dropdowns |
+| Component | Wraps | Used By |
+|-----------|-------|--------|
+| `card.tsx` | Semantic HTML | Layout structure |
+| `checkbox.tsx` | Radix Checkbox | GameCheckbox |
+| `dialog.tsx` | Radix Dialog | Available for compound dialog patterns |
+| `input.tsx` | Native `<input>` | GameInput |
+| `label.tsx` | Radix Label | Form labels |
+| `select.tsx` | Radix Select | Available for complex select needs |
+| `separator.tsx` | Radix Separator | Visual dividers |
+| `table.tsx` | Semantic HTML | Data tables |
+| `textarea.tsx` | Native `<textarea>` | GameTextarea |
+| `tooltip.tsx` | Radix Tooltip | Hover hints |
+
+**Game* Domain Wrappers (4)** — Compact form elements for tabletop tools:
+
+| Component | Wraps | Styling |
+|-----------|-------|--------|
+| `GameInput.tsx` | Native `<input>` | `text-[0.82rem] py-0.5 px-1` |
+| `GameSelect.tsx` | Native `<select>` | `text-[0.85rem] py-1 px-1.5` |
+| `GameCheckbox.tsx` | Native `<input type="checkbox">` | Optional label wrapper |
+| `GameTextarea.tsx` | Native `<textarea>` | `min-h-[60px] resize-y` |
+
+**Custom Components (11)** — Hand-rolled for project-specific needs:
+
+| Component | Source | Purpose |
+|-----------|--------|--------|
+| `Button.tsx` | Pure Tailwind | Variant system (primary/secondary/ghost/danger/accent) + sizes |
+| `Badge.tsx` | Pure Tailwind | Status/category labels with color variants |
+| `AddButton.tsx` | Wraps Button | "+ Add [label]" pattern for list management |
+| `CloseButton.tsx` | Wraps Button | "×" for modal/dialog close triggers |
+| `SectionHeading.tsx` | Semantic HTML | Polymorphic heading (h2/h3/h4) with accent styling |
+| `Accordion.tsx` | Radix Collapsible | Controlled/uncontrolled disclosure panels |
+| `Modal.tsx` | Radix Dialog | Centered overlay with VisuallyHidden a11y title fallback |
+| `Tabs.tsx` | Radix Tabs | Tab navigation with active state styling |
+| `Popover.tsx` | createPortal | Anchor-positioned popup (used by ConditionPicker) |
+| `Toast.tsx` | useSyncExternalStore | Global ephemeral notification system via `showToast()` |
 
 ### SSR Constraint
 
@@ -143,10 +180,14 @@ The `.github/workflows/build.yml` workflow runs on every push and pull request:
 Bun + Node / Astro
 ───────────────────
 bun install
-bunx biome ci .
 bun test
+bunx biome ci .
 bun run scripts/validate.ts --xref
 bun run scripts/lint.ts
+bun run scripts/sync-check.ts
+bun run knip
+bun run check:deps
+bun run check:structure
 bun run build
 ```
 

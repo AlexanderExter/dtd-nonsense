@@ -21,14 +21,14 @@ function createDefaultChar(): CharacterData {
 
 interface BuilderStore {
 	char: CharacterData;
-	meta: BuilderMeta;
-	gameData: Record<string, any> | null;
 	currentStep: number;
+	gameData: Record<string, any> | null;
+	meta: BuilderMeta;
 
 	setChar: (ch: CharacterData) => void;
-	setMeta: (m: BuilderMeta) => void;
-	setGameData: (d: Record<string, any>) => void;
 	setCurrentStep: (step: number) => void;
+	setGameData: (d: Record<string, any>) => void;
+	setMeta: (m: BuilderMeta) => void;
 	updateChar: (fn: (c: CharacterData) => void) => void;
 	updateMeta: (fn: (m: BuilderMeta) => void) => void;
 }

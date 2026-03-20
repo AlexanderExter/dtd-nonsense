@@ -13,14 +13,14 @@ import ToolLayout from "@/layouts/ToolLayout.astro";
       .tab-panel { display: block !important; page-break-before: always; }
       .tab-panel:first-child { page-break-before: avoid; }
       .tab-panel::before {
-          content: attr(data-print-title);
           display: block;
+          padding-bottom: var(--space-sm);
+          margin-bottom: var(--space-md);
           font-size: 1.2rem;
           font-weight: 700;
           color: var(--accent);
-          margin-bottom: var(--space-md);
+          content: attr(data-print-title);
           border-bottom: 2px solid var(--accent);
-          padding-bottom: var(--space-sm);
       }
       .section-card { break-inside: avoid; }
   }

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { useCallback } from "react";
+import { cn } from "@/lib/utils";
 import { CombatSidebar } from "./CombatSidebar";
 import { getInstalledConsoleIds, getShipStats, OFFICER_POSITIONS, signedNum } from "./constants";
 import { useShipStore } from "./store";
@@ -52,8 +52,8 @@ export function SheetPanel() {
 	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
 	if (!hull) {
 		return (
-			<div className="grid grid-cols-[1fr_340px] gap-0 min-h-[calc(100vh-50px)] max-[900px]:grid-cols-1">
-				<div className="p-lg overflow-y-auto">
+			<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+				<div className="overflow-y-auto p-lg">
 					<p className="text-text-muted">No hull selected. Go back to Builder.</p>
 				</div>
 			</div>
@@ -68,11 +68,11 @@ export function SheetPanel() {
 	// -----------------------------------------------------------------------
 
 	return (
-		<div className="grid grid-cols-[1fr_340px] gap-0 min-h-[calc(100vh-50px)] max-[900px]:grid-cols-1">
-			<div className="p-lg overflow-y-auto">
+		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+			<div className="overflow-y-auto p-lg">
 				{/* Header */}
 				<header className="mb-lg">
-					<h1 className="text-accent mb-xs">{currentShip.name || "Unnamed Ship"}</h1>
+					<h1 className="mb-xs text-accent">{currentShip.name || "Unnamed Ship"}</h1>
 					<span className="text-text-muted">
 						{hull.name} — {hull.class}
 					</span>
@@ -80,43 +80,43 @@ export function SheetPanel() {
 
 				{/* Stats */}
 				<section className="mb-xl">
-					<h3 className="text-accent pb-xs border-b border-border mb-md">Ship Statistics</h3>
+					<h3 className="mb-md border-border border-b pb-xs text-accent">Ship Statistics</h3>
 					<table className="w-full max-w-[500px]">
 						<tbody>
 							<tr>
-								<td className="text-text-muted w-[160px]">Hull Class</td>
+								<td className="w-[160px] text-text-muted">Hull Class</td>
 								<td className="font-semibold">{hull.class}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Hull Strength</td>
+								<td className="w-[160px] text-text-muted">Hull Strength</td>
 								<td className="font-semibold">{stats.hullHP}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Maneuverability</td>
+								<td className="w-[160px] text-text-muted">Maneuverability</td>
 								<td className="font-semibold">{signedNum(stats.man)}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Acceleration</td>
+								<td className="w-[160px] text-text-muted">Acceleration</td>
 								<td className="font-semibold">{signedNum(stats.acc)}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Speed</td>
+								<td className="w-[160px] text-text-muted">Speed</td>
 								<td className="font-semibold">{stats.speed} VU</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Sensors</td>
+								<td className="w-[160px] text-text-muted">Sensors</td>
 								<td className="font-semibold">{signedNum(stats.sensors)}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Crew Quality</td>
+								<td className="w-[160px] text-text-muted">Crew Quality</td>
 								<td className="font-semibold">{stats.cq}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">Crew Size</td>
+								<td className="w-[160px] text-text-muted">Crew Size</td>
 								<td className="font-semibold">{stats.crew}</td>
 							</tr>
 							<tr>
-								<td className="text-text-muted w-[160px]">TN to Hit</td>
+								<td className="w-[160px] text-text-muted">TN to Hit</td>
 								<td className="font-semibold">{stats.tn}</td>
 							</tr>
 						</tbody>
@@ -125,7 +125,7 @@ export function SheetPanel() {
 
 				{/* Consoles */}
 				<section className="mb-xl">
-					<h3 className="text-accent pb-xs border-b border-border mb-md">Consoles</h3>
+					<h3 className="mb-md border-border border-b pb-xs text-accent">Consoles</h3>
 					<div>
 						{installedConsoles.length === 0 ? (
 							<span className="text-text-muted">No consoles installed</span>
@@ -143,11 +143,11 @@ export function SheetPanel() {
 								};
 								return (
 									<div
-										key={cid}
 										className={cn(
-											"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
-											!active && "opacity-40 border-error",
+											"mb-xs flex items-center justify-between rounded-sm border border-border bg-surface px-md py-sm transition-opacity duration-150",
+											!active && "border-error opacity-40",
 										)}
+										key={cid}
 									>
 										<div className="flex-1">
 											<div className="font-semibold text-[0.9rem]">
@@ -164,15 +164,15 @@ export function SheetPanel() {
 													{c.type.charAt(0).toUpperCase()}
 												</span>
 											</div>
-											<div className="text-xs text-text-muted">{c.effect}</div>
+											<div className="text-text-muted text-xs">{c.effect}</div>
 										</div>
 										<button
-											type="button"
 											className={cn(
-												"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
+												"cursor-pointer rounded-sm border border-border bg-transparent px-2 py-1 font-semibold text-success text-xs",
 												!active && "text-error",
 											)}
 											onClick={() => toggleConsole(cid)}
+											type="button"
 										>
 											{active ? "Active" : "Disabled"}
 										</button>
@@ -185,21 +185,21 @@ export function SheetPanel() {
 
 				{/* Weapons */}
 				<section className="mb-xl">
-					<h3 className="text-accent pb-xs border-b border-border mb-md">Weapons</h3>
+					<h3 className="mb-md border-border border-b pb-xs text-accent">Weapons</h3>
 					<div>{renderWeapons(currentShip, data, toggleWeapon)}</div>
 				</section>
 
 				{/* Torpedoes */}
 				{currentShip.hasTorpedoTube && (
 					<section className="mb-xl">
-						<h3 className="text-accent pb-xs border-b border-border mb-md">Torpedoes</h3>
+						<h3 className="mb-md border-border border-b pb-xs text-accent">Torpedoes</h3>
 						<div>{renderTorpedoes(currentShip, data)}</div>
 					</section>
 				)}
 
 				{/* Officers */}
 				<section className="mb-xl">
-					<h3 className="text-accent pb-xs border-b border-border mb-md">Bridge Officers</h3>
+					<h3 className="mb-md border-border border-b pb-xs text-accent">Bridge Officers</h3>
 					<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 						{OFFICER_POSITIONS.map((pos) => {
 							const off = currentShip.officers[pos.id] || {
@@ -207,8 +207,8 @@ export function SheetPanel() {
 								skill: 0,
 							};
 							return (
-								<div key={pos.id} className="bg-surface border border-border rounded-sm px-md py-sm">
-									<div className="text-xs text-accent uppercase tracking-[0.5px]">{pos.title}</div>
+								<div className="rounded-sm border border-border bg-surface px-md py-sm" key={pos.id}>
+									<div className="text-accent text-xs uppercase tracking-[0.5px]">{pos.title}</div>
 									<div className="font-semibold">{off.name || "—"}</div>
 									<div className="text-[0.8rem] text-text-muted">
 										{pos.skill}: {off.skill || 0}
@@ -247,28 +247,28 @@ function renderWeapons(
 			const active = currentShip.combat.weaponStatus[slotKey] !== false;
 			items.push(
 				<div
-					key={slotKey}
 					className={cn(
-						"flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150",
-						!active && "opacity-40 border-error",
+						"mb-xs flex items-center justify-between rounded-sm border border-border bg-surface px-md py-sm transition-opacity duration-150",
+						!active && "border-error opacity-40",
 					)}
+					key={slotKey}
 				>
 					<div className="flex-1">
 						<div className="font-semibold text-[0.9rem]">
 							{w.name} <span className="text-text-muted">({pos})</span>
 						</div>
-						<div className="text-xs text-text-muted">
+						<div className="text-text-muted text-xs">
 							Dam: {w.damage} | Dis: {w.disruption} | Acc: {signedNum(w.accuracy)} | Crit:{" "}
 							{signedNum(w.crit)} | Range: {w.range} VU | Arc: {w.arc} | {w.type}
 						</div>
 					</div>
 					<button
-						type="button"
 						className={cn(
-							"cursor-pointer py-1 px-2 border border-border rounded-sm bg-transparent text-success text-xs font-semibold",
+							"cursor-pointer rounded-sm border border-border bg-transparent px-2 py-1 font-semibold text-success text-xs",
 							!active && "text-error",
 						)}
 						onClick={() => toggleWeapon(slotKey)}
+						type="button"
 					>
 						{active ? "Active" : "Offline"}
 					</button>
@@ -298,16 +298,16 @@ function renderTorpedoes(currentShip: import("./constants").ShipState, data: imp
 		if (!t) return null;
 		return (
 			<div
+				className="mb-xs flex items-center justify-between rounded-sm border border-border bg-surface px-md py-sm transition-opacity duration-150"
 				key={tid}
-				className="flex items-center justify-between px-md py-sm mb-xs bg-surface border border-border rounded-sm transition-opacity duration-150"
 			>
 				<div className="flex-1">
 					<div className="font-semibold text-[0.9rem]">{t.name}</div>
-					<div className="text-xs text-text-muted">
+					<div className="text-text-muted text-xs">
 						Dam: {t.damage} | Dis: {t.disruption} | Acc: +{t.accuracy} | Crit: +{t.crit} | Range: {t.range}{" "}
 						VU | Arc: {t.arc}
 					</div>
-					{t.effect && <div className="text-xs text-text-muted">{t.effect}</div>}
+					{t.effect && <div className="text-text-muted text-xs">{t.effect}</div>}
 				</div>
 			</div>
 		);

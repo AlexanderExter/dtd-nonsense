@@ -14,7 +14,7 @@ afterEach(() => cleanup());
 describe("Tabs", () => {
 	it("renders all tab labels", () => {
 		render(
-			<Tabs tabs={SAMPLE_TABS} activeId="stats" onTabChange={() => {}}>
+			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
 				<div>Tab content</div>
 			</Tabs>,
 		);
@@ -25,7 +25,7 @@ describe("Tabs", () => {
 
 	it("renders children", () => {
 		render(
-			<Tabs tabs={SAMPLE_TABS} activeId="stats" onTabChange={() => {}}>
+			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
 				<div>Panel content</div>
 			</Tabs>,
 		);
@@ -36,7 +36,7 @@ describe("Tabs", () => {
 		const onTabChange = mock(() => {});
 		const user = userEvent.setup();
 		render(
-			<Tabs tabs={SAMPLE_TABS} activeId="stats" onTabChange={onTabChange}>
+			<Tabs activeId="stats" onTabChange={onTabChange} tabs={SAMPLE_TABS}>
 				<div>Content</div>
 			</Tabs>,
 		);
@@ -47,7 +47,7 @@ describe("Tabs", () => {
 
 	it("renders the active tab with accent styling", () => {
 		render(
-			<Tabs tabs={SAMPLE_TABS} activeId="combat" onTabChange={() => {}}>
+			<Tabs activeId="combat" onTabChange={() => {}} tabs={SAMPLE_TABS}>
 				<div>Content</div>
 			</Tabs>,
 		);
@@ -57,7 +57,7 @@ describe("Tabs", () => {
 
 	it("renders inactive tabs with muted styling", () => {
 		render(
-			<Tabs tabs={SAMPLE_TABS} activeId="stats" onTabChange={() => {}}>
+			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
 				<div>Content</div>
 			</Tabs>,
 		);
@@ -67,7 +67,7 @@ describe("Tabs", () => {
 
 	it("applies custom className to the tab list", () => {
 		const { container } = render(
-			<Tabs tabs={SAMPLE_TABS} activeId="stats" onTabChange={() => {}} className="custom-tabs">
+			<Tabs activeId="stats" className="custom-tabs" onTabChange={() => {}} tabs={SAMPLE_TABS}>
 				<div>Content</div>
 			</Tabs>,
 		);

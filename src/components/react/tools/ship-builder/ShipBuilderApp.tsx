@@ -1,17 +1,17 @@
+import { useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { Toast } from "@/components/react/ui/Toast";
 import { loadData } from "@/lib/dtd/core.ts";
 import { cn } from "@/lib/utils";
-import { useCallback, useEffect, useRef } from "react";
 import { BuilderPanel } from "./BuilderPanel";
 import {
-    createDefaultShip,
-    generateId,
-    type ShipData,
-    type ShipState,
-    STORAGE_LIST_KEY,
-    STORAGE_PREFIX,
+	createDefaultShip,
+	generateId,
+	type ShipData,
+	type ShipState,
+	STORAGE_LIST_KEY,
+	STORAGE_PREFIX,
 } from "./constants";
 import { SheetPanel } from "./SheetPanel";
 import { saveShipNow, useShipStore } from "./store";
@@ -77,7 +77,7 @@ export function ShipBuilderApp() {
 			setShipList(list);
 
 			if (list.length > 0) {
-				const loaded = loadShipFromStorage(list[list.length - 1].id);
+				const loaded = loadShipFromStorage(list.at(-1).id);
 				if (loaded) {
 					setShip(loaded);
 					setMode(loaded.mode || "builder");
@@ -124,7 +124,7 @@ export function ShipBuilderApp() {
 		setShipList(list);
 
 		if (list.length > 0) {
-			const loaded = loadShipFromStorage(list[list.length - 1].id);
+			const loaded = loadShipFromStorage(list.at(-1).id);
 			if (loaded) {
 				setShip(loaded);
 				setMode(loaded.mode || "builder");
@@ -198,13 +198,13 @@ export function ShipBuilderApp() {
 
 	return (
 		<div>
-			<div className="flex items-center justify-between gap-md px-lg py-sm bg-surface border-b border-border sticky top-0 z-[100] max-[900px]:flex-wrap max-[900px]:gap-xs no-print">
+			<div className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-[900px]:flex-wrap max-[900px]:gap-xs">
 				<div className="flex items-center gap-sm">
 					<GameSelect
-						value={ship.id}
+						className="min-w-[180px]"
 						onChange={handleShipSwitch}
 						title="Switch ship"
-						className="min-w-[180px]"
+						value={ship.id}
 					>
 						{shipList.map((s) => (
 							<option key={s.id} value={s.id}>
@@ -212,43 +212,43 @@ export function ShipBuilderApp() {
 							</option>
 						))}
 					</GameSelect>
-					<Button variant="primary" size="sm" onClick={handleNew} title="New ship">
+					<Button onClick={handleNew} size="sm" title="New ship" variant="primary">
 						+ New
 					</Button>
-					<Button variant="ghost" size="sm" onClick={handleDelete} title="Delete ship">
+					<Button onClick={handleDelete} size="sm" title="Delete ship" variant="ghost">
 						Delete
 					</Button>
 				</div>
-				<div className="flex bg-bg border border-border rounded-md overflow-hidden">
+				<div className="flex overflow-hidden rounded-md border border-border bg-bg">
 					<button
-						type="button"
 						className={cn(
-							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
+							"cursor-pointer border-none bg-transparent px-lg py-sm font-semibold text-text-muted transition-all duration-150 hover:bg-surface-raised hover:text-text-primary",
 							mode === "builder" && "bg-accent text-bg",
 						)}
 						onClick={() => handleSetMode("builder")}
+						type="button"
 					>
 						Builder
 					</button>
 					<button
-						type="button"
 						className={cn(
-							"px-lg py-sm bg-transparent border-none text-text-muted font-semibold cursor-pointer transition-all duration-150 hover:text-text-primary hover:bg-surface-raised",
+							"cursor-pointer border-none bg-transparent px-lg py-sm font-semibold text-text-muted transition-all duration-150 hover:bg-surface-raised hover:text-text-primary",
 							mode === "sheet" && "bg-accent text-bg",
 						)}
 						onClick={() => handleSetMode("sheet")}
+						type="button"
 					>
 						Sheet
 					</button>
 				</div>
 				<div className="flex items-center gap-sm">
-					<Button size="sm" onClick={() => fileRef.current?.click()}>
+					<Button onClick={() => fileRef.current?.click()} size="sm">
 						Import
 					</Button>
-					<Button size="sm" onClick={handleExport}>
+					<Button onClick={handleExport} size="sm">
 						Export
 					</Button>
-					<input type="file" ref={fileRef} accept=".json" hidden onChange={handleImport} />
+					<input accept=".json" hidden onChange={handleImport} ref={fileRef} type="file" />
 				</div>
 			</div>
 

@@ -6,5 +6,5 @@ interface DetailPanelProps {
 
 export function DetailPanel({ children }: DetailPanelProps) {
 	if (!children) return null;
-	return <div className="bg-surface border border-border rounded-md p-lg mt-md empty:hidden">{children}</div>;
+	return <div className="mt-md rounded-md border border-border bg-surface p-lg empty:hidden">{children}</div>;
 }

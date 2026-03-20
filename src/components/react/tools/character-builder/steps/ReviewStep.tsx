@@ -64,7 +64,7 @@ export function ReviewStep() {
 		<div className="grid gap-md">
 			{/* Warnings */}
 			{warnings.length > 0 && (
-				<div className="px-md py-sm bg-[rgba(248,113,113,0.1)] border border-error rounded-sm text-error text-[0.9rem] font-semibold">
+				<div className="rounded-sm border border-error bg-[rgba(248,113,113,0.1)] px-md py-sm font-semibold text-[0.9rem] text-error">
 					<strong>⚠ Issues:</strong>
 					<ul>
 						{warnings.map((w) => (
@@ -75,8 +75,8 @@ export function ReviewStep() {
 			)}
 
 			{/* Identity */}
-			<section className="bg-surface border border-border rounded-md p-md">
-				<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Identity</h3>
+			<section className="rounded-md border border-border bg-surface p-md">
+				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Identity</h3>
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-sm text-[0.9rem]">
 					<span>
 						<strong>Name:</strong> {char.name || "—"}
@@ -101,8 +101,8 @@ export function ReviewStep() {
 			</section>
 
 			{/* Derived Stats */}
-			<section className="bg-surface border border-border rounded-md p-md">
-				<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Derived Stats</h3>
+			<section className="rounded-md border border-border bg-surface p-md">
+				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Derived Stats</h3>
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-sm">
 					{[
 						["SD", sd],
@@ -113,23 +113,23 @@ export function ReviewStep() {
 						["Resilience", resilience],
 						["Initiative", initiative],
 					].map(([label, value]) => (
-						<div key={label} className="text-center p-sm bg-surface-raised rounded-sm">
+						<div className="rounded-sm bg-surface-raised p-sm text-center" key={label}>
 							<span className="block text-[0.7rem] text-text-dim uppercase">{label}</span>
-							<span className="block text-[1.3rem] font-bold text-accent">{value}</span>
+							<span className="block font-bold text-[1.3rem] text-accent">{value}</span>
 						</div>
 					))}
 				</div>
 			</section>
 
 			{/* Characteristics */}
-			<section className="bg-surface border border-border rounded-md p-md">
-				<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Characteristics</h3>
+			<section className="rounded-md border border-border bg-surface p-md">
+				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Characteristics</h3>
 				<div className="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
 					{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => (
 						<div key={groupKey}>
-							<h4 className="text-accent mb-xs text-[0.85rem]">{group.label}</h4>
+							<h4 className="mb-xs text-[0.85rem] text-accent">{group.label}</h4>
 							{group.chars.map((ch) => (
-								<div key={ch} className="py-xs border-b border-border text-[0.9rem] last:border-b-0">
+								<div className="border-border border-b py-xs text-[0.9rem] last:border-b-0" key={ch}>
 									{CHAR_NAMES[ch] || capitalize(ch)}:{" "}
 									<strong>{totalChars[ch] || BASE_CHAR_DOT}</strong>
 								</div>
@@ -141,8 +141,8 @@ export function ReviewStep() {
 
 			{/* Skills */}
 			{activeSkills.length > 0 && (
-				<section className="bg-surface border border-border rounded-md p-md">
-					<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Skills</h3>
+				<section className="rounded-md border border-border bg-surface p-md">
+					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Skills</h3>
 					<div className="flex flex-wrap gap-sm text-[0.9rem]">
 						{activeSkills.map(([key, val]) => (
 							<span key={key}>
@@ -155,8 +155,8 @@ export function ReviewStep() {
 
 			{/* Backgrounds */}
 			{char.backgrounds.length > 0 && (
-				<section className="bg-surface border border-border rounded-md p-md">
-					<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Backgrounds</h3>
+				<section className="rounded-md border border-border bg-surface p-md">
+					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Backgrounds</h3>
 					<div className="flex flex-wrap gap-sm text-[0.9rem]">
 						{char.backgrounds.map((b) => (
 							<span key={b.name}>
@@ -169,8 +169,8 @@ export function ReviewStep() {
 
 			{/* Classes */}
 			{char.classes.length > 0 && (
-				<section className="bg-surface border border-border rounded-md p-md">
-					<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Classes</h3>
+				<section className="rounded-md border border-border bg-surface p-md">
+					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Classes</h3>
 					<div className="flex flex-wrap gap-sm text-[0.9rem]">
 						{char.classes.map((c) => (
 							<span key={c.classId}>{capitalize(c.classId)}</span>
@@ -181,17 +181,17 @@ export function ReviewStep() {
 
 			{/* Feats / Assets / Hindrances */}
 			{(char.feats.length > 0 || char.assets.length > 0 || char.hindrances.length > 0) && (
-				<section className="bg-surface border border-border rounded-md p-md">
-					<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">
+				<section className="rounded-md border border-border bg-surface p-md">
+					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">
 						Feats, Assets &amp; Hindrances
 					</h3>
 					{char.feats.length > 0 && (
-						<div className="text-[0.9rem] mb-xs">
+						<div className="mb-xs text-[0.9rem]">
 							<strong>Feats:</strong> {char.feats.map((f) => f.name).join(", ")}
 						</div>
 					)}
 					{char.assets.length > 0 && (
-						<div className="text-[0.9rem] mb-xs">
+						<div className="mb-xs text-[0.9rem]">
 							<strong>Assets:</strong> {char.assets.map((a) => a.name).join(", ")}
 						</div>
 					)}
@@ -205,15 +205,15 @@ export function ReviewStep() {
 
 			{/* Equipment */}
 			{char.equipment && (
-				<section className="bg-surface border border-border rounded-md p-md">
-					<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">Equipment</h3>
+				<section className="rounded-md border border-border bg-surface p-md">
+					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Equipment</h3>
 					<p>{char.equipment}</p>
 				</section>
 			)}
 
 			{/* XP Budget */}
-			<section className="bg-surface border border-border rounded-md p-md">
-				<h3 className="text-base text-accent mb-sm pb-xs border-b border-border">XP Budget</h3>
+			<section className="rounded-md border border-border bg-surface p-md">
+				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">XP Budget</h3>
 				<div className="flex flex-wrap gap-sm text-[0.9rem]">
 					<span>
 						<strong>Total:</strong> {TOTAL_XP}
@@ -223,19 +223,19 @@ export function ReviewStep() {
 					{xp.breakdown.assets > 0 && <span>Assets: {xp.breakdown.assets}</span>}
 					{xp.breakdown.hindrances < 0 && <span>Hindrances: {xp.breakdown.hindrances} (bonus)</span>}
 					{xp.breakdown.backgrounds > 0 && <span>Backgrounds: {xp.breakdown.backgrounds}</span>}
-					<span className={xp.remaining < 0 ? "text-error font-semibold" : ""}>
+					<span className={xp.remaining < 0 ? "font-semibold text-error" : ""}>
 						<strong>Remaining:</strong> {xp.remaining}
 					</span>
 				</div>
 			</section>
 
 			{/* Actions */}
-			<div className="flex gap-sm mt-md">
-				<Button variant="primary" onClick={handleOpenInSheet}>
+			<div className="mt-md flex gap-sm">
+				<Button onClick={handleOpenInSheet} variant="primary">
 					Open in Sheet
 				</Button>
 				<Button onClick={handleExport}>Export JSON</Button>
-				<Button variant="danger" onClick={handleStartOver}>
+				<Button onClick={handleStartOver} variant="danger">
 					Start Over
 				</Button>
 			</div>

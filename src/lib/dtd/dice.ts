@@ -115,13 +115,12 @@ export function calculateOutcome(total: number, tn: number): Outcome {
 			raises: Math.floor(diff / 5),
 			checks: 0,
 		};
-	} else {
-		return {
-			success: false,
-			raises: 0,
-			checks: Math.floor(Math.abs(diff) / 5),
-		};
 	}
+	return {
+		success: false,
+		raises: 0,
+		checks: Math.floor(Math.abs(diff) / 5),
+	};
 }
 
 /**
@@ -137,8 +136,8 @@ export function parseNotation(str: unknown): ParsedNotation | null {
 		.match(/^(\d+)k(\d+)\s*([+-]\s*\d+)?$/);
 	if (!match) return null;
 	return {
-		num: parseInt(match[1], 10),
-		keep: parseInt(match[2], 10),
-		modifier: match[3] ? parseInt(match[3].replace(/\s/g, ""), 10) : 0,
+		num: Number.parseInt(match[1], 10),
+		keep: Number.parseInt(match[2], 10),
+		modifier: match[3] ? Number.parseInt(match[3].replace(/\s/g, ""), 10) : 0,
 	};
 }

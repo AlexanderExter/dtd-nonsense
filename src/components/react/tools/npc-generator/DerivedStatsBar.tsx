@@ -6,26 +6,26 @@ interface DerivedStatsBarProps {
 
 export function DerivedStatsBar({ stats }: DerivedStatsBarProps) {
 	return (
-		<div className="flex gap-md px-md py-sm bg-surface-raised border border-border rounded-md flex-wrap no-print">
-			<div className="flex flex-col items-center min-w-[50px]">
-				<span className="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">SD</span>
-				<span className="text-[1.3rem] font-bold text-accent">{stats.sd}</span>
+		<div className="no-print flex flex-wrap gap-md rounded-md border border-border bg-surface-raised px-md py-sm">
+			<div className="flex min-w-[50px] flex-col items-center">
+				<span className="text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">SD</span>
+				<span className="font-bold text-[1.3rem] text-accent">{stats.sd}</span>
 			</div>
-			<div className="flex flex-col items-center min-w-[50px]">
-				<span className="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">HP</span>
-				<span className="text-[1.3rem] font-bold text-accent">{stats.hp}</span>
+			<div className="flex min-w-[50px] flex-col items-center">
+				<span className="text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">HP</span>
+				<span className="font-bold text-[1.3rem] text-accent">{stats.hp}</span>
 			</div>
-			<div className="flex flex-col items-center min-w-[50px]">
-				<span className="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Resilience</span>
-				<span className="text-[1.3rem] font-bold text-accent">{stats.resilience}</span>
+			<div className="flex min-w-[50px] flex-col items-center">
+				<span className="text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Resilience</span>
+				<span className="font-bold text-[1.3rem] text-accent">{stats.resilience}</span>
 			</div>
-			<div className="flex flex-col items-center min-w-[50px]">
-				<span className="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Mental Def</span>
-				<span className="text-[1.3rem] font-bold text-accent">{stats.mentalDef}</span>
+			<div className="flex min-w-[50px] flex-col items-center">
+				<span className="text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Mental Def</span>
+				<span className="font-bold text-[1.3rem] text-accent">{stats.mentalDef}</span>
 			</div>
-			<div className="flex flex-col items-center min-w-[50px]">
-				<span className="text-[0.7rem] uppercase tracking-[0.5px] text-text-dim">Aura</span>
-				<span className="text-[1.3rem] font-bold text-accent">{stats.aura}</span>
+			<div className="flex min-w-[50px] flex-col items-center">
+				<span className="text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Aura</span>
+				<span className="font-bold text-[1.3rem] text-accent">{stats.aura}</span>
 			</div>
 		</div>
 	);

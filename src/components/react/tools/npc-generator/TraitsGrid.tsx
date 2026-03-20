@@ -5,8 +5,8 @@ import type { TraitDef } from "./constants";
 
 interface TraitsGridProps {
 	activeTraits: Array<{ id: string; param?: string | number }>;
-	traitsData: TraitDef[];
 	onChange: (traits: Array<{ id: string; param?: string | number }>) => void;
+	traitsData: TraitDef[];
 }
 
 export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridProps) {
@@ -46,8 +46,8 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 	);
 
 	return (
-		<div className="mb-lg pb-md border-b border-border last:border-b-0">
-			<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Traits</h2>
+		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Traits</h2>
 			<div className="flex flex-col gap-xs">
 				{traitsData.map((trait) => {
 					const active = isActive(trait.id);
@@ -55,33 +55,33 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 					return (
 						<div
 							className={[
-								"flex items-center gap-sm px-sm py-xs bg-surface border rounded-sm cursor-pointer transition-all duration-150 hover:border-border-light",
+								"flex cursor-pointer items-center gap-sm rounded-sm border bg-surface px-sm py-xs transition-all duration-150 hover:border-border-light",
 								active ? "border-accent bg-accent-bg-subtle" : "border-border",
 							].join(" ")}
 							key={trait.id}
 						>
 							<GameCheckbox
-								className="w-auto m-0"
-								id={`trait-${trait.id}`}
 								checked={active}
+								className="m-0 w-auto"
+								id={`trait-${trait.id}`}
 								onChange={(e) => toggleTrait(trait.id, (e.target as HTMLInputElement).checked)}
 							/>
-							<label className="text-[0.85rem] font-medium flex-1" htmlFor={`trait-${trait.id}`}>
+							<label className="flex-1 font-medium text-[0.85rem]" htmlFor={`trait-${trait.id}`}>
 								{trait.name}
 							</label>
 							{trait.parameterized && (
 								<GameInput
-									type="text"
 									className={[
 										"text-center",
 										trait.paramType === "caster" || trait.paramType === "resource"
 											? "w-[150px]"
 											: "w-[70px]",
 									].join(" ")}
-									placeholder={trait.paramLabel || "X"}
 									disabled={!active}
-									value={paramValue != null ? String(paramValue) : ""}
 									onInput={(e) => updateParam(trait.id, (e.target as HTMLInputElement).value)}
+									placeholder={trait.paramLabel || "X"}
+									type="text"
+									value={paramValue != null ? String(paramValue) : ""}
 								/>
 							)}
 						</div>

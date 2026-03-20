@@ -42,8 +42,8 @@ export { WeaponsFile } from "./weapons.ts";
 // ---------------------------------------------------------------------------
 
 export interface SchemaEntry {
-	schema: z.ZodType<any>;
 	isBareArray: boolean;
+	schema: z.ZodType<any>;
 }
 
 /** Map from JSON filename → { schema, isBareArray }. */

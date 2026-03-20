@@ -4,10 +4,10 @@ import { GameSelect } from "@/components/react/ui/GameSelect";
 
 interface EncounterBarProps {
 	encounters: Array<{ id: string; name: string }>;
-	onSave: () => void;
-	onLoad: (id: string) => void;
-	onExport: () => void;
 	onClear: () => void;
+	onExport: () => void;
+	onLoad: (id: string) => void;
+	onSave: () => void;
 }
 
 export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: EncounterBarProps) {
@@ -29,14 +29,14 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 	};
 
 	return (
-		<div className="sticky bottom-0 z-[90] flex items-center gap-sm px-lg py-sm bg-surface border-t border-border max-[768px]:flex-wrap max-[768px]:justify-center max-[768px]:p-sm">
-			<Button variant="primary" size="sm" onClick={onSave}>
+		<div className="sticky bottom-0 z-[90] flex items-center gap-sm border-border border-t bg-surface px-lg py-sm max-[768px]:flex-wrap max-[768px]:justify-center max-[768px]:p-sm">
+			<Button onClick={onSave} size="sm" variant="primary">
 				Save Encounter
 			</Button>
 			<GameSelect
-				className="flex-none min-w-[160px] max-[768px]:min-w-[120px]"
-				value={selectedId}
+				className="min-w-[160px] flex-none max-[768px]:min-w-[120px]"
 				onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
+				value={selectedId}
 			>
 				<option value="">-- Select Encounter --</option>
 				{encounters.map((enc) => (
@@ -45,13 +45,13 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 					</option>
 				))}
 			</GameSelect>
-			<Button size="sm" onClick={handleLoad} disabled={!selectedId}>
+			<Button disabled={!selectedId} onClick={handleLoad} size="sm">
 				Load
 			</Button>
-			<Button size="sm" onClick={onExport}>
+			<Button onClick={onExport} size="sm">
 				Export JSON
 			</Button>
-			<Button variant={confirmClear ? "danger" : "secondary"} size="sm" onClick={handleClear}>
+			<Button onClick={handleClear} size="sm" variant={confirmClear ? "danger" : "secondary"}>
 				{confirmClear ? "Confirm Clear?" : "Clear"}
 			</Button>
 		</div>

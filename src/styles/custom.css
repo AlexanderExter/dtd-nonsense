@@ -40,7 +40,9 @@
 	--sl-color-gray-7: #16161a;
 
 	/* Typography */
-	--sl-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--sl-font:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		sans-serif;
 	--sl-font-system-mono: "Fira Code", "Consolas", monospace;
 
 	/* Black (for overlays) */
@@ -84,12 +86,12 @@
 
 /* Give tables more breathing room and gold header accents */
 starlight-content table th {
-	background: var(--sl-color-gray-6);
-	color: var(--sl-color-text-accent);
-	font-weight: 600;
 	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--sl-color-text-accent);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
+	background: var(--sl-color-gray-6);
 }
 
 starlight-content table td,
@@ -104,14 +106,14 @@ starlight-content table tr:hover {
 
 /* Emphasis on blockquotes — used for designer notes */
 starlight-content blockquote {
-	border-left-color: var(--sl-color-accent);
 	background: var(--sl-color-accent-low);
+	border-left-color: var(--sl-color-accent);
 }
 
 /* Inline code — dice notation styling */
 starlight-content code:not(pre code) {
-	color: var(--sl-color-accent);
 	font-weight: 500;
+	color: var(--sl-color-accent);
 }
 
 /* Hero section on landing page */
@@ -122,13 +124,13 @@ starlight-content code:not(pre code) {
 
 /* Stronger heading anchors */
 starlight-content h2 {
-	border-bottom: 1px solid var(--sl-color-hairline-shade);
 	padding-bottom: 0.25rem;
+	border-bottom: 1px solid var(--sl-color-hairline-shade);
 }
 
 /* External link icon for sidebar tool links (target="_blank") */
 nav.sidebar-content a[target="_blank"]::after {
-	content: " ↗";
 	font-size: 0.75em;
+	content: " ↗";
 	opacity: 0.6;
 }

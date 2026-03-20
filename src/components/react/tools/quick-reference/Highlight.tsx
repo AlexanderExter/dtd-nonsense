@@ -10,7 +10,7 @@ export function Highlight({ text, words }: { text: string; words: string[] }) {
 				const testRegex = new RegExp(`^(${escaped.join("|")})$`, "i");
 				return testRegex.test(part) ? (
 					// biome-ignore lint/suspicious/noArrayIndexKey: text fragments from split may repeat, position is identity
-					<mark key={`${part}-${i}`} className="bg-mark text-inherit rounded-[2px] px-[1px]">
+					<mark className="rounded-[2px] bg-mark px-[1px] text-inherit" key={`${part}-${i}`}>
 						{part}
 					</mark>
 				) : (

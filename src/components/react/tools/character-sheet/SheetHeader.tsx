@@ -22,20 +22,20 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 	const wound = getWoundStatus(stats.hp, char.currentHP ?? 0, effChars.willpower || 1, effChars.constitution || 1);
 
 	return (
-		<div className="flex items-center justify-between flex-wrap gap-md px-lg py-md bg-surface-raised border-b border-border max-[768px]:flex-col max-[768px]:items-stretch">
-			<div className="flex items-center gap-md flex-1 min-w-[280px] max-[768px]:flex-col">
-				<label className="flex flex-col flex-1 min-w-[180px]">
+		<div className="flex flex-wrap items-center justify-between gap-md border-border border-b bg-surface-raised px-lg py-md max-[768px]:flex-col max-[768px]:items-stretch">
+			<div className="flex min-w-[280px] flex-1 items-center gap-md max-[768px]:flex-col">
+				<label className="flex min-w-[180px] flex-1 flex-col">
 					<span className="text-[0.78rem] text-text-muted uppercase tracking-[0.3px]">Name</span>
 					<GameInput
-						type="text"
-						className="text-2xl font-bold text-accent bg-transparent border-transparent px-sm py-xs flex-1 min-w-[180px] focus:bg-surface"
-						value={char.name}
+						className="min-w-[180px] flex-1 border-transparent bg-transparent px-sm py-xs font-bold text-2xl text-accent focus:bg-surface"
 						onInput={(e) =>
 							updateChar((c) => {
 								c.name = (e.target as HTMLInputElement).value;
 							})
 						}
 						placeholder="Character Name"
+						type="text"
+						value={char.name}
 					/>
 				</label>
 				<span className="text-[0.85rem] text-text-muted">
@@ -50,83 +50,83 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 				</span>
 			</div>
 
-			<div className="flex gap-sm items-center flex-wrap">
-				<div className="flex items-center gap-1 px-sm py-xs bg-surface border border-border rounded-sm text-[0.85rem]">
-					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
+			<div className="flex flex-wrap items-center gap-sm">
+				<div className="flex items-center gap-1 rounded-sm border border-border bg-surface px-sm py-xs text-[0.85rem]">
+					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						HP
 					</span>
 					<GameInput
-						type="number"
 						className="w-[38px] text-center font-bold text-[0.95rem]"
-						value={char.currentHP ?? 0}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.currentHP = Number((e.target as HTMLInputElement).value);
 							})
 						}
+						type="number"
+						value={char.currentHP ?? 0}
 					/>
-					<span className="text-text-dim text-[0.85rem]">/</span>
-					<span className="font-bold text-text-primary min-w-4">{stats.hp}</span>
+					<span className="text-[0.85rem] text-text-dim">/</span>
+					<span className="min-w-4 font-bold text-text-primary">{stats.hp}</span>
 				</div>
 
-				<div className="flex items-center gap-1 px-sm py-xs bg-surface border border-border rounded-sm text-[0.85rem]">
-					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
+				<div className="flex items-center gap-1 rounded-sm border border-border bg-surface px-sm py-xs text-[0.85rem]">
+					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						{resourceName}
 					</span>
 					<GameInput
-						type="number"
 						className="w-[38px] text-center font-bold text-[0.95rem]"
-						value={char.resourceCurrent ?? 0}
-						min={0}
 						max={stats.resourceMax}
+						min={0}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.resourceCurrent = Number((e.target as HTMLInputElement).value);
 							})
 						}
+						type="number"
+						value={char.resourceCurrent ?? 0}
 					/>
-					<span className="text-text-dim text-[0.85rem]">/</span>
-					<span className="font-bold text-text-primary min-w-4">{stats.resourceMax}</span>
+					<span className="text-[0.85rem] text-text-dim">/</span>
+					<span className="min-w-4 font-bold text-text-primary">{stats.resourceMax}</span>
 				</div>
 
-				<div className="flex items-center gap-1 px-sm py-xs bg-surface border border-border rounded-sm text-[0.85rem]">
-					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
+				<div className="flex items-center gap-1 rounded-sm border border-border bg-surface px-sm py-xs text-[0.85rem]">
+					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						Resolve
 					</span>
 					<GameInput
-						type="number"
 						className="w-[38px] text-center font-bold text-[0.95rem]"
-						value={char.currentResolve ?? 0}
-						min={0}
 						max={stats.resolve}
+						min={0}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.currentResolve = Number((e.target as HTMLInputElement).value);
 							})
 						}
+						type="number"
+						value={char.currentResolve ?? 0}
 					/>
-					<span className="text-text-dim text-[0.85rem]">/</span>
-					<span className="font-bold text-text-primary min-w-4">{stats.resolve}</span>
+					<span className="text-[0.85rem] text-text-dim">/</span>
+					<span className="min-w-4 font-bold text-text-primary">{stats.resolve}</span>
 				</div>
 
-				<div className="flex items-center gap-1 px-sm py-xs bg-surface border border-border rounded-sm text-[0.85rem]">
-					<span className="text-text-muted font-semibold uppercase text-[0.65rem] tracking-[0.5px] mr-0.5">
+				<div className="flex items-center gap-1 rounded-sm border border-border bg-surface px-sm py-xs text-[0.85rem]">
+					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						Hero Points
 					</span>
 					<GameInput
-						type="number"
 						className="w-[38px] text-center font-bold text-[0.95rem]"
-						value={char.heroPointsCurrent ?? 0}
-						min={0}
 						max={(char.heroPointsMax || 2) - (char.heroPointsBurnt || 0)}
+						min={0}
 						onInput={(e) =>
 							updateChar((c) => {
 								c.heroPointsCurrent = Number((e.target as HTMLInputElement).value);
 							})
 						}
+						type="number"
+						value={char.heroPointsCurrent ?? 0}
 					/>
-					<span className="text-text-dim text-[0.85rem]">/</span>
-					<span className="font-bold text-text-primary min-w-4">
+					<span className="text-[0.85rem] text-text-dim">/</span>
+					<span className="min-w-4 font-bold text-text-primary">
 						{(char.heroPointsMax || 2) - (char.heroPointsBurnt || 0)}
 					</span>
 				</div>
@@ -134,7 +134,7 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			<div
 				className={cn(
-					"mt-md p-sm rounded-sm text-center font-semibold text-[0.82rem]",
+					"mt-md rounded-sm p-sm text-center font-semibold text-[0.82rem]",
 					wound.cssClass === "wound-ok" && "bg-success-bg text-success",
 					wound.cssClass === "wound-light" && "bg-warning-bg text-warning",
 					wound.cssClass === "wound-heavy" && "bg-error-bg text-error",

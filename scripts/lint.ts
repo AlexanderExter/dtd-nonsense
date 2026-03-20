@@ -28,12 +28,12 @@ const DOCS_DIR = path.join(PROJECT_ROOT, "docs");
 // ---------------------------------------------------------------------------
 
 export interface LintIssue {
+	column: number;
 	file: string;
 	line: number;
-	column: number;
-	severity: "error" | "warning" | "info";
-	rule: string;
 	message: string;
+	rule: string;
+	severity: "error" | "warning" | "info";
 	suggestion?: string;
 }
 
@@ -45,8 +45,8 @@ export type Target = "books" | "cleaned-references" | "docs" | "all";
 
 interface TermRule {
 	pattern: RegExp;
-	replacement: string;
 	reason: string;
+	replacement: string;
 }
 
 const TERM_REPLACEMENTS: TermRule[] = [
@@ -87,9 +87,9 @@ const TERM_REPLACEMENTS: TermRule[] = [
 // ---------------------------------------------------------------------------
 
 export interface BlockTracker {
-	inFrontmatter: boolean;
 	frontmatterCount: number;
 	inCodeBlock: boolean;
+	inFrontmatter: boolean;
 }
 
 export function newTracker(): BlockTracker {
@@ -305,8 +305,8 @@ export function checkEmptyTableCells(filepath: string, lines: string[]): LintIss
 // ---------------------------------------------------------------------------
 
 interface CorruptionRule {
-	pattern: RegExp;
 	message: string;
+	pattern: RegExp;
 }
 
 const CORRUPTION_PATTERNS: CorruptionRule[] = [
@@ -552,7 +552,7 @@ function main(): void {
 	const filtered = severityFilter ? allIssues.filter((i) => i.severity === severityFilter) : allIssues;
 	const detailLimit = 20;
 	const showing = Math.min(filtered.length, detailLimit);
-	const label = severityFilter ? `${severityFilter}-only details` : `Details`;
+	const label = severityFilter ? `${severityFilter}-only details` : "Details";
 	console.log(`\n${BOLD}${label} (showing first ${showing} of ${filtered.length}):${RESET}`);
 
 	for (const issue of filtered.slice(0, detailLimit)) {

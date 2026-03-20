@@ -17,29 +17,29 @@ export function ConditionsSection({ searchWords }: ConditionsSectionProps) {
 			<table className="w-full border-collapse text-[0.88rem] max-[600px]:text-[0.8rem]">
 				<thead>
 					<tr>
-						<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+						<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 							Condition
 						</th>
-						<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+						<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 							Effect
 						</th>
-						<th className="px-md py-sm text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0 max-[600px]:px-sm max-[600px]:py-xs">
+						<th className="sticky top-0 border-border border-b bg-surface px-md py-sm text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px] max-[600px]:px-sm max-[600px]:py-xs">
 							Duration
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					{filtered.map((c) => (
-						<tr key={c.name} className="even:bg-stripe hover:bg-surface">
-							<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+						<tr className="even:bg-stripe hover:bg-surface" key={c.name}>
+							<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 								<strong>
 									<Highlight text={c.name} words={searchWords} />
 								</strong>
 							</td>
-							<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+							<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 								<Highlight text={c.effect} words={searchWords} />
 							</td>
-							<td className="px-md py-sm text-left border-b border-border max-[600px]:px-sm max-[600px]:py-xs">
+							<td className="border-border border-b px-md py-sm text-left max-[600px]:px-sm max-[600px]:py-xs">
 								<Highlight text={c.duration} words={searchWords} />
 							</td>
 						</tr>

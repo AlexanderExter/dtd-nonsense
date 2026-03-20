@@ -4,9 +4,9 @@ import { GameInput } from "@/components/react/ui/GameInput";
 import { QUICK_SKILLS } from "./constants";
 
 interface SkillListProps {
-	skills: Array<{ name: string; dots: number }>;
-	skillNames: string[];
 	onChange: (skills: Array<{ name: string; dots: number }>) => void;
+	skillNames: string[];
+	skills: Array<{ name: string; dots: number }>;
 }
 
 export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
@@ -46,53 +46,53 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 	);
 
 	return (
-		<div className="mb-lg pb-md border-b border-border last:border-b-0">
-			<div className="flex items-center justify-between mb-sm">
-				<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Skills</h2>
-				<Button variant="ghost" size="sm" onClick={() => addSkill()}>
+		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			<div className="mb-sm flex items-center justify-between">
+				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Skills</h2>
+				<Button onClick={() => addSkill()} size="sm" variant="ghost">
 					+ Add
 				</Button>
 			</div>
-			<div className="flex gap-xs mb-sm flex-wrap">
-				<Button variant="ghost" size="xs" onClick={() => addQuickPack("combat")}>
+			<div className="mb-sm flex flex-wrap gap-xs">
+				<Button onClick={() => addQuickPack("combat")} size="xs" variant="ghost">
 					+ Combat
 				</Button>
-				<Button variant="ghost" size="xs" onClick={() => addQuickPack("social")}>
+				<Button onClick={() => addQuickPack("social")} size="xs" variant="ghost">
 					+ Social
 				</Button>
-				<Button variant="ghost" size="xs" onClick={() => addQuickPack("stealth")}>
+				<Button onClick={() => addQuickPack("stealth")} size="xs" variant="ghost">
 					+ Stealth
 				</Button>
 			</div>
 			<div className="flex flex-col gap-xs">
 				{skills.map((skill, i) => (
 					<div
+						className="flex items-center gap-sm rounded-sm border border-border bg-surface px-sm py-xs"
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 						key={`skill-${i}`}
-						className="flex items-center gap-sm px-sm py-xs bg-surface border border-border rounded-sm"
 					>
 						<GameInput
-							className="flex-1 min-w-0"
-							value={skill.name}
-							placeholder="Skill name"
+							className="min-w-0 flex-1"
 							list="skill-datalist"
 							onInput={(e) => updateSkill(i, "name", (e.target as HTMLInputElement).value)}
+							placeholder="Skill name"
+							value={skill.name}
 						/>
 						<GameInput
-							type="number"
 							className="w-[50px]"
-							min={1}
 							max={6}
-							value={skill.dots}
+							min={1}
 							onInput={(e) =>
 								updateSkill(i, "dots", Number.parseInt((e.target as HTMLInputElement).value, 10) || 1)
 							}
+							type="number"
+							value={skill.dots}
 						/>
 						<button
-							type="button"
-							className="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
-							title="Remove"
+							className="cursor-pointer border-none bg-transparent px-[4px] py-[2px] text-base text-text-dim leading-none hover:text-error"
 							onClick={() => removeSkill(i)}
+							title="Remove"
+							type="button"
 						>
 							×
 						</button>

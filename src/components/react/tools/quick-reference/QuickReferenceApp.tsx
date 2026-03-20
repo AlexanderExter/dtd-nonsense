@@ -26,10 +26,10 @@ const SECTION_IDS = [
 ] as const;
 
 interface SectionDef {
-	id: string;
-	title: string;
 	count: string;
+	id: string;
 	matchFn: (words: string[]) => boolean;
+	title: string;
 }
 
 function matchesAny(words: string[], items: readonly { [key: string]: unknown }[], fields: string[]): boolean {
@@ -174,43 +174,43 @@ export function QuickReferenceApp() {
 	const words = searchWords;
 
 	return (
-		<div className="max-w-[1200px] mx-auto p-md max-[600px]:p-sm">
-			<header className="sticky top-0 z-[100] bg-bg py-md border-b border-border mb-lg no-print">
-				<h1 className="text-center text-accent text-2xl mb-md">Quick Reference</h1>
-				<SearchBar query={searchQuery} setQuery={setSearchQuery} inputRef={searchInputRef} />
+		<div className="mx-auto max-w-[1200px] p-md max-[600px]:p-sm">
+			<header className="no-print sticky top-0 z-[100] mb-lg border-border border-b bg-bg py-md">
+				<h1 className="mb-md text-center text-2xl text-accent">Quick Reference</h1>
+				<SearchBar inputRef={searchInputRef} query={searchQuery} setQuery={setSearchQuery} />
 			</header>
 
-			<div className="flex gap-sm justify-end mb-sm no-print">
-				<Button variant="ghost" onClick={() => expandAll([...SECTION_IDS])}>
+			<div className="no-print mb-sm flex justify-end gap-sm">
+				<Button onClick={() => expandAll([...SECTION_IDS])} variant="ghost">
 					Expand All
 				</Button>
-				<Button variant="ghost" onClick={collapseAll}>
+				<Button onClick={collapseAll} variant="ghost">
 					Collapse All
 				</Button>
 			</div>
 
-			<div className="grid grid-cols-[240px_1fr] gap-lg items-start max-[820px]:grid-cols-1">
-				<aside className="sticky top-[110px] max-h-[calc(100vh-130px)] overflow-y-auto max-[820px]:static max-[820px]:max-h-none max-[820px]:grid max-[820px]:grid-cols-2 max-[820px]:gap-md max-[600px]:grid-cols-1">
+			<div className="grid grid-cols-[240px_1fr] items-start gap-lg max-[820px]:grid-cols-1">
+				<aside className="sticky top-[110px] max-h-[calc(100vh-130px)] overflow-y-auto max-[820px]:static max-[820px]:grid max-[820px]:max-h-none max-[600px]:grid-cols-1 max-[820px]:grid-cols-2 max-[820px]:gap-md">
 					<SidebarPanel title="Target Numbers">
 						<div className="overflow-x-auto">
 							<table className="w-full border-collapse text-[0.82rem]">
 								<thead>
 									<tr>
-										<th className="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+										<th className="sticky top-0 border-border border-b bg-surface px-[6px] py-[4px] text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px]">
 											TN
 										</th>
-										<th className="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+										<th className="sticky top-0 border-border border-b bg-surface px-[6px] py-[4px] text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px]">
 											Difficulty
 										</th>
 									</tr>
 								</thead>
 								<tbody>
 									{QREF_DATA.tnTable.map((t) => (
-										<tr key={t.tn} className="even:bg-stripe hover:bg-surface">
-											<td className="px-[6px] py-[4px] text-left border-b border-border">
+										<tr className="even:bg-stripe hover:bg-surface" key={t.tn}>
+											<td className="border-border border-b px-[6px] py-[4px] text-left">
 												<strong>{t.tn}</strong>
 											</td>
-											<td className="px-[6px] py-[4px] text-left border-b border-border">
+											<td className="border-border border-b px-[6px] py-[4px] text-left">
 												{t.diff}
 											</td>
 										</tr>
@@ -218,7 +218,7 @@ export function QuickReferenceApp() {
 								</tbody>
 							</table>
 						</div>
-						<p className="mt-md text-text-muted text-[0.85rem]">
+						<p className="mt-md text-[0.85rem] text-text-muted">
 							<strong>Raises:</strong> Every 5 above TN. <strong>Checks:</strong> Every 5 below TN.
 						</p>
 					</SidebarPanel>
@@ -227,21 +227,21 @@ export function QuickReferenceApp() {
 							<table className="w-full border-collapse text-[0.82rem]">
 								<thead>
 									<tr>
-										<th className="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+										<th className="sticky top-0 border-border border-b bg-surface px-[6px] py-[4px] text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px]">
 											d10 Roll
 										</th>
-										<th className="px-[6px] py-[4px] text-left border-b border-border bg-surface text-text-muted font-semibold text-[0.78rem] uppercase tracking-[0.5px] sticky top-0">
+										<th className="sticky top-0 border-border border-b bg-surface px-[6px] py-[4px] text-left font-semibold text-[0.78rem] text-text-muted uppercase tracking-[0.5px]">
 											Location
 										</th>
 									</tr>
 								</thead>
 								<tbody>
 									{QREF_DATA.hitLocations.map((h) => (
-										<tr key={h.roll} className="even:bg-stripe hover:bg-surface">
-											<td className="px-[6px] py-[4px] text-left border-b border-border">
+										<tr className="even:bg-stripe hover:bg-surface" key={h.roll}>
+											<td className="border-border border-b px-[6px] py-[4px] text-left">
 												<strong>{h.roll}</strong>
 											</td>
-											<td className="px-[6px] py-[4px] text-left border-b border-border">
+											<td className="border-border border-b px-[6px] py-[4px] text-left">
 												{h.location}
 											</td>
 										</tr>
@@ -254,66 +254,64 @@ export function QuickReferenceApp() {
 
 				<main>
 					<AccordionSection
-						id="actions"
-						title="Actions Reference"
 						count={`${QREF_DATA.actions.length} actions`}
+						id="actions"
+						isHidden={isSectionHidden("actions")}
 						isOpen={isSectionOpen("actions")}
 						onToggle={() => toggleSection("actions")}
-						isHidden={isSectionHidden("actions")}
+						title="Actions Reference"
 					>
 						<ActionsSection
-							searchWords={words}
-							typeFilters={activeTypeFilters}
-							subtypeFilters={activeSubtypeFilters}
-							onToggleType={useQuickRefStore.getState().toggleTypeFilter}
 							onToggleSubtype={useQuickRefStore.getState().toggleSubtypeFilter}
+							onToggleType={useQuickRefStore.getState().toggleTypeFilter}
+							searchWords={words}
+							subtypeFilters={activeSubtypeFilters}
+							typeFilters={activeTypeFilters}
 						/>
 					</AccordionSection>
 
 					<AccordionSection
-						id="conditions"
-						title="Conditions"
 						count={`${QREF_DATA.conditions.length} conditions`}
+						id="conditions"
+						isHidden={isSectionHidden("conditions")}
 						isOpen={isSectionOpen("conditions")}
 						onToggle={() => toggleSection("conditions")}
-						isHidden={isSectionHidden("conditions")}
+						title="Conditions"
 					>
 						<ConditionsSection searchWords={words} />
 					</AccordionSection>
 
 					<AccordionSection
-						id="modifiers"
-						title="Combat Modifiers"
 						count=""
+						id="modifiers"
+						isHidden={isSectionHidden("modifiers")}
 						isOpen={isSectionOpen("modifiers")}
 						onToggle={() => toggleSection("modifiers")}
-						isHidden={isSectionHidden("modifiers")}
+						title="Combat Modifiers"
 					>
 						<CombatModifiersSection searchWords={words} />
 					</AccordionSection>
 
 					<AccordionSection
-						id="magic"
-						title="Magic Schools"
 						count={`${QREF_DATA.magicSchools.length} schools`}
+						id="magic"
+						isHidden={isSectionHidden("magic")}
 						isOpen={isSectionOpen("magic")}
 						onToggle={() => toggleSection("magic")}
-						isHidden={isSectionHidden("magic")}
+						title="Magic Schools"
 					>
 						<MagicSchoolsSection searchWords={words} />
 					</AccordionSection>
 
 					<AccordionSection
-						id="swords"
-						title="Sword Schools"
 						count={`${QREF_DATA.swordSchools.length} schools`}
+						id="swords"
+						isHidden={isSectionHidden("swords")}
 						isOpen={isSectionOpen("swords")}
 						onToggle={() => toggleSection("swords")}
-						isHidden={isSectionHidden("swords")}
+						title="Sword Schools"
 					>
 						<SchoolCardsSection
-							schools={QREF_DATA.swordSchools}
-							searchWords={words}
 							footer={
 								<p className="m-0">
 									<strong>Martial Adept Level</strong> = highest Sword School dots purchased. The max
@@ -322,20 +320,20 @@ export function QuickReferenceApp() {
 									technique costs 150 XP.
 								</p>
 							}
+							schools={QREF_DATA.swordSchools}
+							searchWords={words}
 						/>
 					</AccordionSection>
 
 					<AccordionSection
-						id="gunkata"
-						title="Gun Kata"
 						count={`${QREF_DATA.gunKata.length} schools`}
+						id="gunkata"
+						isHidden={isSectionHidden("gunkata")}
 						isOpen={isSectionOpen("gunkata")}
 						onToggle={() => toggleSection("gunkata")}
-						isHidden={isSectionHidden("gunkata")}
+						title="Gun Kata"
 					>
 						<SchoolCardsSection
-							schools={QREF_DATA.gunKata}
-							searchWords={words}
 							footer={
 								<p className="m-0">
 									<strong>Gunslinger Level</strong> = highest Gun Kata dots purchased. The max Style
@@ -344,34 +342,36 @@ export function QuickReferenceApp() {
 									shot costs 100 XP.
 								</p>
 							}
+							schools={QREF_DATA.gunKata}
+							searchWords={words}
 						/>
 					</AccordionSection>
 
 					<AccordionSection
-						id="properties"
-						title="Weapon Properties"
 						count={`${QREF_DATA.weaponProperties.length} properties`}
+						id="properties"
+						isHidden={isSectionHidden("properties")}
 						isOpen={isSectionOpen("properties")}
 						onToggle={() => toggleSection("properties")}
-						isHidden={isSectionHidden("properties")}
+						title="Weapon Properties"
 					>
 						<WeaponPropertiesSection searchWords={words} />
 					</AccordionSection>
 
 					<AccordionSection
-						id="formulas"
-						title="Formula Quick Reference"
 						count=""
+						id="formulas"
+						isHidden={isSectionHidden("formulas")}
 						isOpen={isSectionOpen("formulas")}
 						onToggle={() => toggleSection("formulas")}
-						isHidden={isSectionHidden("formulas")}
+						title="Formula Quick Reference"
 					>
 						<FormulasSection searchWords={words} />
 					</AccordionSection>
 				</main>
 			</div>
 
-			<footer className="text-center p-lg text-text-dim text-[0.8rem]">
+			<footer className="p-lg text-center text-[0.8rem] text-text-dim">
 				Data from <em>Dungeons the Dragoning 40,000: 7th Edition</em> and <em>For a Few Subtitles More</em>.
 			</footer>
 			<Toast />

@@ -27,9 +27,9 @@ const DATA_DIR = path.join(PROJECT_ROOT, "data");
 // ---------------------------------------------------------------------------
 
 export interface ParsedSection {
+	content: string;
 	heading: string;
 	level: number;
-	content: string;
 	lineStart: number;
 }
 
@@ -37,7 +37,7 @@ export interface ParsedSection {
  * Split markdown into sections at the given heading level.
  * Each section spans from its heading to the next heading at the same level (or EOF).
  */
-export function extractSections(text: string, targetLevel: number = 2): ParsedSection[] {
+export function extractSections(text: string, targetLevel = 2): ParsedSection[] {
 	const hashes = "#".repeat(targetLevel);
 	const pattern = new RegExp(`^${hashes}\\s+(.+)$`, "gm");
 	const sections: ParsedSection[] = [];
@@ -132,13 +132,13 @@ export function extractPipeTable(content: string): Record<string, string>[] {
 // ---------------------------------------------------------------------------
 
 export interface ParsedRace {
-	name: string;
-	size: number | null;
-	languages: string[];
 	charBonus: string | null;
-	skillBonus: string | null;
-	powerName: string | null;
+	languages: string[];
+	name: string;
 	powerDescription: string | null;
+	powerName: string | null;
+	size: number | null;
+	skillBonus: string | null;
 }
 
 export function parseRaces(content: string): ParsedRace[] {
@@ -204,13 +204,13 @@ export function parseRaces(content: string): ParsedRace[] {
 // ---------------------------------------------------------------------------
 
 export interface ParsedClass {
-	name: string;
-	level: number | null;
-	prerequisites: string | null;
 	characteristics: string[];
-	skills: string[];
-	feats: Record<string, string>[];
 	completionBonus: string | null;
+	feats: Record<string, string>[];
+	level: number | null;
+	name: string;
+	prerequisites: string | null;
+	skills: string[];
 	suggestedExits: string[];
 }
 
@@ -276,11 +276,11 @@ export function parseClasses(content: string): ParsedClass[] {
 // ---------------------------------------------------------------------------
 
 export interface ParsedFeat {
-	name: string;
 	category: string | null;
 	effect: string | null;
-	multipleAllowed: boolean;
 	groups: string[] | null;
+	multipleAllowed: boolean;
+	name: string;
 	prerequisites: string | null;
 }
 
@@ -449,8 +449,8 @@ export function pad(str: string, width: number): string {
 
 export interface SyncResult {
 	matched: string[];
-	onlyMd: string[];
 	onlyJson: string[];
+	onlyMd: string[];
 }
 
 export function checkSync(source: string): SyncResult | null {

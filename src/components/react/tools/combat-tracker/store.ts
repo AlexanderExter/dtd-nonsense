@@ -4,28 +4,28 @@ import type { Combatant, EncounterState } from "./constants";
 import { AUTOSAVE_DELAY, defaultEncounterState, ENCOUNTER_PREFIX } from "./constants";
 
 interface CombatStore {
-	encounterState: EncounterState;
 	conditionPickerState: { combatantId: string; rect: DOMRect } | null;
-	importModalOpen: boolean;
-	sidebarOpen: boolean;
-	hitLocationResult: string;
 	damageCalcResult: string;
-	roundAlerts: ReactNode[];
 	encounterList: Array<{ id: string; name: string }>;
+	encounterState: EncounterState;
+	hitLocationResult: string;
 	importCharList: Array<{ id: string; name: string }>;
+	importModalOpen: boolean;
+	roundAlerts: ReactNode[];
+	setConditionPickerState: (state: { combatantId: string; rect: DOMRect } | null) => void;
+	setDamageCalcResult: (result: string) => void;
+	setEncounterList: (list: Array<{ id: string; name: string }>) => void;
 
 	setEncounterState: (state: EncounterState) => void;
-	setConditionPickerState: (state: { combatantId: string; rect: DOMRect } | null) => void;
-	setImportModalOpen: (open: boolean) => void;
-	setSidebarOpen: (open: boolean) => void;
 	setHitLocationResult: (result: string) => void;
-	setDamageCalcResult: (result: string) => void;
-	setRoundAlerts: (alerts: ReactNode[]) => void;
-	setEncounterList: (list: Array<{ id: string; name: string }>) => void;
 	setImportCharList: (list: Array<{ id: string; name: string }>) => void;
+	setImportModalOpen: (open: boolean) => void;
+	setRoundAlerts: (alerts: ReactNode[]) => void;
+	setSidebarOpen: (open: boolean) => void;
+	sidebarOpen: boolean;
+	updateCombatant: (id: string, updater: (c: Combatant) => Combatant) => void;
 
 	updateState: (patch: Partial<EncounterState>) => void;
-	updateCombatant: (id: string, updater: (c: Combatant) => Combatant) => void;
 }
 
 let autosaveTimer: ReturnType<typeof setTimeout> | null = null;

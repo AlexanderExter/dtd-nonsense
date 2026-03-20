@@ -6,19 +6,19 @@ import { createDefaultNPC, type NPCData, type TemplateDef, type TraitDef } from 
 // =========================================================================
 
 interface NPCStore {
+	dataLoaded: boolean;
 	npcState: NPCData;
 	savedList: string[];
-	traitsData: TraitDef[];
-	templatesList: TemplateDef[];
-	skillNames: string[];
-	dataLoaded: boolean;
+	setDataLoaded: (v: boolean) => void;
 
 	setNpcState: (npc: NPCData) => void;
 	setSavedList: (list: string[]) => void;
-	setTraitsData: (data: TraitDef[]) => void;
-	setTemplatesList: (list: TemplateDef[]) => void;
 	setSkillNames: (names: string[]) => void;
-	setDataLoaded: (v: boolean) => void;
+	setTemplatesList: (list: TemplateDef[]) => void;
+	setTraitsData: (data: TraitDef[]) => void;
+	skillNames: string[];
+	templatesList: TemplateDef[];
+	traitsData: TraitDef[];
 	updateNpc: (fn: (npc: NPCData) => NPCData) => void;
 }
 

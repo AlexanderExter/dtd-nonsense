@@ -41,16 +41,16 @@ export function ExaltationStep() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm mb-md">
+			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 				{exaltations.map((ex: any) => (
 					<SelectionCard
 						key={ex.id || ex.name}
-						title={ex.name}
-						preview={ex.theme || ex.description?.slice(0, 60)}
-						selected={currentExalt === (ex.id || ex.name)}
 						onClick={() => {
 							setSelectedPreview(ex);
 						}}
+						preview={ex.theme || ex.description?.slice(0, 60)}
+						selected={currentExalt === (ex.id || ex.name)}
+						title={ex.name}
 					/>
 				))}
 			</div>
@@ -61,7 +61,7 @@ export function ExaltationStep() {
 					{preview.description && <p>{preview.description}</p>}
 
 					{preview.tell && (
-						<p className="text-text-muted text-[0.85rem] italic">
+						<p className="text-[0.85rem] text-text-muted italic">
 							<strong>Tell:</strong> {preview.tell}
 						</p>
 					)}
@@ -120,11 +120,11 @@ export function ExaltationStep() {
 
 					<div className="mt-md flex gap-sm">
 						{currentExalt === (preview.id || preview.name) ? (
-							<Button variant="danger" onClick={removeExaltation}>
+							<Button onClick={removeExaltation} variant="danger">
 								Remove
 							</Button>
 						) : (
-							<Button variant="primary" onClick={() => selectExaltation(preview)}>
+							<Button onClick={() => selectExaltation(preview)} variant="primary">
 								Select
 							</Button>
 						)}

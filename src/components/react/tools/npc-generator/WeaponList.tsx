@@ -5,8 +5,8 @@ import { GameSelect } from "@/components/react/ui/GameSelect";
 import type { NPCWeapon } from "./constants";
 
 interface WeaponListProps {
-	weapons: NPCWeapon[];
 	onChange: (weapons: NPCWeapon[]) => void;
+	weapons: NPCWeapon[];
 }
 
 function createDefaultWeapon(): NPCWeapon {
@@ -41,81 +41,81 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 	);
 
 	return (
-		<div className="mb-lg pb-md border-b border-border last:border-b-0">
-			<div className="flex items-center justify-between mb-sm">
-				<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0">Weapons</h2>
-				<Button variant="ghost" size="sm" onClick={addWeapon}>
+		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			<div className="mb-sm flex items-center justify-between">
+				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Weapons</h2>
+				<Button onClick={addWeapon} size="sm" variant="ghost">
 					+ Add
 				</Button>
 			</div>
 			<div className="flex flex-col gap-xs">
 				{weapons.map((w, i) => (
 					<div
+						className="flex flex-col items-stretch gap-xs rounded-sm border border-border bg-surface p-sm"
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list identified by position
 						key={`weapon-${i}`}
-						className="flex flex-col items-stretch gap-xs p-sm bg-surface border border-border rounded-sm"
 					>
 						{/* Row 1: core fields */}
-						<div className="flex items-center gap-xs flex-wrap">
+						<div className="flex flex-wrap items-center gap-xs">
 							<GameSelect
 								className="w-[50px] flex-none"
-								value={w.type}
 								onChange={(e) =>
 									updateWeapon(i, {
 										type: (e.target as HTMLSelectElement).value as "melee" | "ranged",
 									})
 								}
+								value={w.type}
 							>
 								<option value="melee">Melee</option>
 								<option value="ranged">Ranged</option>
 							</GameSelect>
 							<GameInput
-								className="flex-1 min-w-[100px]"
-								placeholder="Weapon name"
-								value={w.name}
+								className="min-w-[100px] flex-1"
 								onInput={(e) =>
 									updateWeapon(i, {
 										name: (e.target as HTMLInputElement).value,
 									})
 								}
+								placeholder="Weapon name"
+								value={w.name}
 							/>
 							<GameInput
 								className="w-[60px] flex-none"
-								placeholder="XkY"
-								value={w.damage}
 								onInput={(e) =>
 									updateWeapon(i, {
 										damage: (e.target as HTMLInputElement).value,
 									})
 								}
+								placeholder="XkY"
+								value={w.damage}
 							/>
 							<GameInput
 								className="w-[55px] flex-none"
-								placeholder="E/I/R/X"
-								value={w.damageType}
 								onInput={(e) =>
 									updateWeapon(i, {
 										damageType: (e.target as HTMLInputElement).value,
 									})
 								}
+								placeholder="E/I/R/X"
+								value={w.damageType}
 							/>
 							<span className="text-[0.8rem] text-text-muted">Pen</span>
 							<GameInput
-								type="number"
 								className="w-[50px] flex-none"
 								min={0}
-								value={w.pen}
 								onInput={(e) =>
 									updateWeapon(i, {
 										pen: Number.parseInt((e.target as HTMLInputElement).value, 10) || 0,
 									})
 								}
+								type="number"
+								value={w.pen}
 							/>
 							<button
-								type="button"
-								className="bg-transparent border-none text-text-dim cursor-pointer px-[4px] py-[2px] text-base leading-none hover:text-error"
-								title="Remove"
+								className="cursor-pointer border-none bg-transparent px-[4px] py-[2px] text-base text-text-dim leading-none hover:text-error"
 								onClick={() => removeWeapon(i)}
+								title="Remove"
+								type="button"
 							>
 								×
 							</button>
@@ -123,63 +123,63 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 
 						{/* Row 2: ranged-only fields */}
 						{w.type === "ranged" && (
-							<div className="flex items-center gap-xs flex-wrap">
+							<div className="flex flex-wrap items-center gap-xs">
 								<GameInput
-									type="number"
 									className="w-[55px] flex-none"
-									placeholder="Range"
-									value={w.range ?? ""}
 									onInput={(e) =>
 										updateWeapon(i, {
 											range:
 												Number.parseInt((e.target as HTMLInputElement).value, 10) || undefined,
 										})
 									}
+									placeholder="Range"
+									type="number"
+									value={w.range ?? ""}
 								/>
 								<GameInput
 									className="w-[60px] flex-none"
-									placeholder="ROF"
-									value={w.rof ?? ""}
 									onInput={(e) =>
 										updateWeapon(i, {
 											rof: (e.target as HTMLInputElement).value || undefined,
 										})
 									}
+									placeholder="ROF"
+									value={w.rof ?? ""}
 								/>
 								<GameInput
 									className="w-[50px] flex-none"
-									placeholder="Clip"
-									value={w.clip ?? ""}
 									onInput={(e) =>
 										updateWeapon(i, {
 											clip: (e.target as HTMLInputElement).value || undefined,
 										})
 									}
+									placeholder="Clip"
+									value={w.clip ?? ""}
 								/>
 								<GameInput
 									className="w-[60px] flex-none"
-									placeholder="Reload"
-									value={w.reload ?? ""}
 									onInput={(e) =>
 										updateWeapon(i, {
 											reload: (e.target as HTMLInputElement).value || undefined,
 										})
 									}
+									placeholder="Reload"
+									value={w.reload ?? ""}
 								/>
 							</div>
 						)}
 
 						{/* Row 3: special */}
-						<div className="flex items-center gap-xs flex-wrap">
+						<div className="flex flex-wrap items-center gap-xs">
 							<GameInput
-								className="flex-1 min-w-[80px]"
-								placeholder="Special properties"
-								value={w.special}
+								className="min-w-[80px] flex-1"
 								onInput={(e) =>
 									updateWeapon(i, {
 										special: (e.target as HTMLInputElement).value,
 									})
 								}
+								placeholder="Special properties"
+								value={w.special}
 							/>
 						</div>
 					</div>

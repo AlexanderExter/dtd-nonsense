@@ -8,32 +8,32 @@ interface TabItem {
 }
 
 interface TabsProps {
-	tabs: TabItem[];
 	activeId: string;
-	onTabChange: (id: string) => void;
 	children: ReactNode;
 	className?: string;
+	onTabChange: (id: string) => void;
+	tabs: TabItem[];
 }
 
 export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsProps) {
 	return (
-		<RadixTabs.Root value={activeId} onValueChange={onTabChange}>
+		<RadixTabs.Root onValueChange={onTabChange} value={activeId}>
 			<RadixTabs.List
 				className={cn(
-					"flex gap-0.5 border-b-2 border-border mb-md overflow-x-auto [scrollbar-width:thin]",
+					"mb-md flex gap-0.5 overflow-x-auto border-border border-b-2 [scrollbar-width:thin]",
 					className,
 				)}
 			>
 				{tabs.map((tab) => (
 					<RadixTabs.Trigger
+						className={cn(
+							"-mb-[2px] cursor-pointer whitespace-nowrap border-0 border-b-2 bg-transparent px-md py-sm font-[inherit] font-semibold text-[0.9rem] transition-all duration-150 hover:text-text-primary",
+							activeId === tab.id
+								? "border-b-accent text-accent"
+								: "border-b-transparent text-text-muted",
+						)}
 						key={tab.id}
 						value={tab.id}
-						className={cn(
-							"px-md py-sm bg-transparent border-0 border-b-2 -mb-[2px] text-[0.9rem] font-semibold cursor-pointer whitespace-nowrap transition-all duration-150 font-[inherit] hover:text-text-primary",
-							activeId === tab.id
-								? "text-accent border-b-accent"
-								: "text-text-muted border-b-transparent",
-						)}
 					>
 						{tab.label}
 					</RadixTabs.Trigger>

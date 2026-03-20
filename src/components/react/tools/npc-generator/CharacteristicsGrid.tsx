@@ -8,28 +8,28 @@ interface CharacteristicsGridProps {
 
 export function CharacteristicsGrid({ characteristics, onChange }: CharacteristicsGridProps) {
 	return (
-		<div className="mb-lg pb-md border-b border-border last:border-b-0">
-			<h2 className="text-[0.9rem] uppercase tracking-[0.5px] text-accent m-0 mb-sm">Characteristics</h2>
+		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Characteristics</h2>
 			<div className="grid grid-cols-3 gap-sm">
 				{CHAR_KEYS.map((key) => (
 					<div className="flex flex-col items-center" key={key}>
 						<label
-							className="text-[0.75rem] font-bold uppercase text-text-muted mb-[2px]"
+							className="mb-[2px] font-bold text-[0.75rem] text-text-muted uppercase"
 							htmlFor={`char-${CHAR_ABBREV[key].toLowerCase()}`}
 						>
 							{CHAR_ABBREV[key]}
 						</label>
 						<GameInput
-							type="number"
-							id={`char-${CHAR_ABBREV[key].toLowerCase()}`}
 							className="w-[60px] text-center"
-							min={0}
+							id={`char-${CHAR_ABBREV[key].toLowerCase()}`}
 							max={10}
-							value={characteristics[key]}
+							min={0}
 							onInput={(e) => {
 								const val = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
 								onChange(key, val);
 							}}
+							type="number"
+							value={characteristics[key]}
 						/>
 					</div>
 				))}

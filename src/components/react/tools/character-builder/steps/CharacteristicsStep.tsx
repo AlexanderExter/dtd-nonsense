@@ -19,9 +19,9 @@ export function CharacteristicsStep() {
 	const raceData = findRaceData(data, char.race);
 	const racialBonuses = new Set<string>();
 
-	if (raceData) {
+	if (raceData && char.raceCharBonus) {
 		// charBonus.options lists the eligible characteristics; the chosen one is raceCharBonus
-		if (char.raceCharBonus) racialBonuses.add(char.raceCharBonus.toLowerCase());
+		racialBonuses.add(char.raceCharBonus.toLowerCase());
 	}
 
 	const allAssigned =
@@ -94,18 +94,18 @@ export function CharacteristicsStep() {
 	return (
 		<div>
 			<h3>Assign Priorities</h3>
-			<div className="grid grid-cols-3 gap-md mb-lg max-[900px]:grid-cols-1">
+			<div className="mb-lg grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
 				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
 					const currentPriority = meta.charPriority[groupKey];
 					return (
-						<div key={groupKey} className="bg-surface border-2 border-border rounded-md p-md text-center">
-							<h4 className="text-accent mb-xs">{group.label}</h4>
+						<div className="rounded-md border-2 border-border bg-surface p-md text-center" key={groupKey}>
+							<h4 className="mb-xs text-accent">{group.label}</h4>
 							<GameSelect
-								value={currentPriority || ""}
 								onChange={(e) => {
 									const val = (e.target as HTMLSelectElement).value;
 									if (val) handlePriorityChange(groupKey, val);
 								}}
+								value={currentPriority || ""}
 							>
 								<option value="">— Select —</option>
 								{PRIORITY_OPTIONS.map((opt) => (
@@ -127,11 +127,11 @@ export function CharacteristicsStep() {
 					const spent = meta.charDotsSpent[groupKey] || 0;
 
 					return (
-						<div key={groupKey} className="bg-surface border border-border rounded-md p-md">
-							<h4 className="text-center text-accent mb-xs pb-xs border-b border-border">
+						<div className="rounded-md border border-border bg-surface p-md" key={groupKey}>
+							<h4 className="mb-xs border-border border-b pb-xs text-center text-accent">
 								{group.label}{" "}
 								{priority && (
-									<span className="text-[0.8rem] text-text-dim font-normal">
+									<span className="font-normal text-[0.8rem] text-text-dim">
 										{spent} / {pool} dots
 									</span>
 								)}
@@ -143,22 +143,22 @@ export function CharacteristicsStep() {
 
 								return (
 									<div
+										className="flex items-center justify-between border-border border-b py-xs last:border-b-0"
 										key={charKey}
-										className="flex justify-between items-center py-xs border-b border-border last:border-b-0"
 									>
-										<span className="text-[0.9rem] flex-1">
+										<span className="flex-1 text-[0.9rem]">
 											{CHAR_NAMES[charKey] || capitalize(charKey)}
 										</span>
 										<DotControl
-											value={baseVal}
+											disabled={!priority}
 											max={CREATION_CHAR_CAP}
 											min={BASE_CHAR_DOT}
-											racialDots={hasRacial ? 1 : 0}
-											disabled={!priority}
 											onChange={(v) => handleDotChange(groupKey, charKey, v)}
+											racialDots={hasRacial ? 1 : 0}
+											value={baseVal}
 										/>
 										{hasRacial && (
-											<span className="text-[0.7rem] text-success ml-xs">+1 racial</span>
+											<span className="ml-xs text-[0.7rem] text-success">+1 racial</span>
 										)}
 									</div>
 								);

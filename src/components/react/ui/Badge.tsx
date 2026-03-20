@@ -5,9 +5,9 @@ type BadgeVariant = "success" | "warning" | "error" | "info" | "accent" | "muted
 type BadgeSize = "sm" | "md";
 
 interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, "size"> {
-	variant?: BadgeVariant;
-	size?: BadgeSize;
 	children: ReactNode;
+	size?: BadgeSize;
+	variant?: BadgeVariant;
 }
 
 const VARIANT_CLS: Record<BadgeVariant, string> = {

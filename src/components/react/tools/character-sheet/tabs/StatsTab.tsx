@@ -76,101 +76,101 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 	return (
 		<section className="tab-panel">
 			{/* ---------- Derived Stats ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Derived Stats</h3>
-				<div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-md mb-sm">
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Derived Stats</h3>
+				<div className="mb-sm grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-md">
 					<DerivedStatEntry
-						label="Static Defense"
-						formulaText={isHalfling ? "10 + Dex×6 − Size×2" : "10 + (Dex+Wis)×3 − Size×2"}
 						baseValue={stats.sdBase}
-						modValue={stats.sdMod}
 						effValue={stats.sd}
+						formulaText={isHalfling ? "10 + Dex×6 − Size×2" : "10 + (Dex+Wis)×3 − Size×2"}
+						label="Static Defense"
 						modField="staticDefense"
+						modValue={stats.sdMod}
 						onModChange={(v) => handleModChange("staticDefense", v)}
 					/>
 					<DerivedStatEntry
-						label="Hit Points"
-						formulaText="(Con + Wil) × 2"
 						baseValue={stats.hpBase}
-						modValue={stats.hpMod}
 						effValue={stats.hp}
+						formulaText="(Con + Wil) × 2"
+						label="Hit Points"
 						modField="hitPoints"
+						modValue={stats.hpMod}
 						onModChange={(v) => handleModChange("hitPoints", v)}
 					/>
 					<DerivedStatEntry
-						label="Mental Defense"
-						formulaText="5 + Composure × 5"
 						baseValue={stats.mdBase}
-						modValue={stats.mdMod}
 						effValue={stats.md}
+						formulaText="5 + Composure × 5"
+						label="Mental Defense"
 						modField="mentalDefense"
+						modValue={stats.mdMod}
 						onModChange={(v) => handleModChange("mentalDefense", v)}
 					/>
 					<DerivedStatEntry
-						label="Resolve"
-						formulaText="Willpower + Composure"
 						baseValue={stats.resolveBase}
-						modValue={stats.resolveMod}
 						effValue={stats.resolve}
+						formulaText="Willpower + Composure"
+						label="Resolve"
 						modField="resolve"
+						modValue={stats.resolveMod}
 						onModChange={(v) => handleModChange("resolve", v)}
 					/>
 					<DerivedStatEntry
-						label="Speed"
-						formulaText="Strength + Dexterity"
 						baseValue={stats.speedBase}
-						modValue={stats.speedMod}
 						effValue={stats.speed}
+						formulaText="Strength + Dexterity"
+						label="Speed"
 						modField="speed"
+						modValue={stats.speedMod}
 						onModChange={(v) => handleModChange("speed", v)}
 					/>
 					<DerivedStatEntry
-						label="Resilience"
-						formulaText="⌈(Size + Level) / 2⌉ + 1"
 						baseValue={stats.resilienceBase}
-						modValue={stats.resilienceMod}
 						effValue={stats.resilience}
+						formulaText="⌈(Size + Level) / 2⌉ + 1"
+						label="Resilience"
 						modField="resilience"
+						modValue={stats.resilienceMod}
 						onModChange={(v) => handleModChange("resilience", v)}
 					/>
 					<DerivedStatEntry
-						label="Initiative"
-						formulaText="Dexterity + Composure"
 						baseValue={stats.initBase}
-						modValue={stats.initMod}
 						effValue={stats.init}
+						formulaText="Dexterity + Composure"
+						label="Initiative"
 						modField="initiative"
+						modValue={stats.initMod}
 						onModChange={(v) => handleModChange("initiative", v)}
 					/>
 				</div>
-				<div className="text-[0.85rem] text-text-muted mt-sm">
+				<div className="mt-sm text-[0.85rem] text-text-muted">
 					<span>Run Speed: {stats.runSpeed}m</span>
 				</div>
 			</div>
 
 			{/* ---------- Characteristics ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Characteristics</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Characteristics</h3>
 				<CharGrid />
 			</div>
 
 			{/* ---------- Skills ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Skills</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Skills</h3>
 				<SkillGrid />
 			</div>
 
 			{/* ---------- Pool Calculator ---------- */}
-			<div className="section-card bg-surface border border-border rounded-md p-lg mb-md">
-				<h3 className="m-0 mb-md text-accent text-[1.05rem] pb-sm border-b border-border">Pool Calculator</h3>
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Pool Calculator</h3>
 				<div>
-					<div className="flex items-center gap-xs flex-wrap">
+					<div className="flex flex-wrap items-center gap-xs">
 						<GameSelect
-							className="flex-1 min-w-[120px]"
-							value={poolChar}
+							className="min-w-[120px] flex-1"
 							onChange={(e) => {
 								setPoolChar((e.target as HTMLSelectElement).value);
 							}}
+							value={poolChar}
 						>
 							<option value="">— Characteristic —</option>
 							{Object.entries(CHAR_ABBREV).map(([id, abbrev]) => (
@@ -179,13 +179,13 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								</option>
 							))}
 						</GameSelect>
-						<span className="text-text-muted font-semibold text-[0.9rem]">+</span>
+						<span className="font-semibold text-[0.9rem] text-text-muted">+</span>
 						<GameSelect
-							className="flex-1 min-w-[120px]"
-							value={poolSkill}
+							className="min-w-[120px] flex-1"
 							onChange={(e) => {
 								setPoolSkill((e.target as HTMLSelectElement).value);
 							}}
+							value={poolSkill}
 						>
 							<option value="">— Skill —</option>
 							{skillOptions.map((sk) => (
@@ -195,9 +195,9 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							))}
 						</GameSelect>
 					</div>
-					<div className="text-[1.1rem] font-bold text-accent mt-xs px-sm py-xs bg-bg rounded-sm text-center">
+					<div className="mt-xs rounded-sm bg-bg px-sm py-xs text-center font-bold text-[1.1rem] text-accent">
 						<strong>Pool: {poolNotation}</strong>
-						<label className="flex items-center gap-1 text-[0.78rem] whitespace-nowrap cursor-pointer mt-xs justify-center">
+						<label className="mt-xs flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap text-[0.78rem]">
 							<GameCheckbox
 								checked={poolSpec}
 								onChange={(e) => {
@@ -207,37 +207,37 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							Specialization (reroll 1s)
 						</label>
 					</div>
-					<div className="flex gap-xs items-center mt-sm">
+					<div className="mt-sm flex items-center gap-xs">
 						<GameInput
-							type="text"
 							className="w-[120px]"
-							placeholder="Pool label"
-							value={poolLabel}
 							onInput={(e) => {
 								setPoolLabel((e.target as HTMLInputElement).value);
 							}}
+							placeholder="Pool label"
+							type="text"
+							value={poolLabel}
 						/>
-						<Button size="sm" onClick={handleSavePool}>
+						<Button onClick={handleSavePool} size="sm">
 							Save Pool
 						</Button>
 					</div>
 				</div>
 				{(char.savedPools || []).length > 0 && (
 					<div className="mt-sm flex flex-col gap-1">
-						<h4 className="m-0 mb-sm text-accent text-[0.85rem] uppercase tracking-[0.5px]">Saved Pools</h4>
-						<ul className="list-none p-0 m-0">
+						<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">Saved Pools</h4>
+						<ul className="m-0 list-none p-0">
 							{(char.savedPools || []).map((p, idx) => (
 								<li
+									className="mb-1 flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-1 text-[0.85rem]"
 									// biome-ignore lint/suspicious/noArrayIndexKey: editable pool list identified by position
 									key={`pool-${p.label}-${idx}`}
-									className="flex items-center gap-sm py-1 px-sm bg-bg border border-border rounded-sm text-[0.85rem] mb-1"
 								>
 									<strong className="flex-1 text-text-primary">{p.label}:</strong>{" "}
 									<span className="font-bold text-accent">{p.notation || p.pool || p.formula}</span>
 									<button
-										type="button"
-										className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 										onClick={() => handleRemovePool(idx)}
+										type="button"
 									>
 										×
 									</button>

@@ -5,9 +5,9 @@ import type { FeatEntry } from "@/lib/dtd/types";
 import { useCharSheetStore } from "../store";
 
 interface NameNotesListProps {
-	listKey: "feats" | "assets" | "hindrances";
-	label: string;
 	datalistId?: string;
+	label: string;
+	listKey: "feats" | "assets" | "hindrances";
 }
 
 export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps) {
@@ -81,10 +81,10 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 			<table className="w-full border-collapse text-[0.85rem]">
 				<thead>
 					<tr>
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							Name
 						</th>
-						<th className="text-[0.7rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
 							Notes
 						</th>
 						<th />
@@ -94,27 +94,27 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					{items.map((item, idx) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
 						<tr key={`${label}-${idx}`}>
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameInput
-									type="text"
 									list={datalistId}
-									value={item.name}
 									onInput={(e) => handleNameChange(idx, (e.target as HTMLInputElement).value)}
+									type="text"
+									value={item.name}
 								/>
 							</td>
-							<td className="py-[3px] px-sm border-b border-border align-middle">
+							<td className="border-border border-b px-sm py-[3px] align-middle">
 								<GameInput
+									onInput={(e) => handleNotesChange(idx, (e.target as HTMLInputElement).value)}
 									type="text"
 									value={item.notes}
-									onInput={(e) => handleNotesChange(idx, (e.target as HTMLInputElement).value)}
 								/>
 							</td>
-							<td className="py-[3px] px-sm border-b border-border align-middle text-center w-9">
+							<td className="w-9 border-border border-b px-sm py-[3px] text-center align-middle">
 								<button
-									type="button"
-									className="bg-transparent border-none text-error cursor-pointer text-base p-0.5 leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}
 									title="Remove"
+									type="button"
 								>
 									×
 								</button>
@@ -123,7 +123,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					))}
 				</tbody>
 			</table>
-			<AddButton label={label.replace(/s$/, "")} className="mt-sm" onClick={handleAdd} />
+			<AddButton className="mt-sm" label={label.replace(/s$/, "")} onClick={handleAdd} />
 		</div>
 	);
 }
