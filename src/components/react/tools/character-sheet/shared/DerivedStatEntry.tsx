@@ -1,3 +1,5 @@
+import { GameInput } from "@/components/react/ui/GameInput";
+
 interface DerivedStatEntryProps {
 	baseValue: number;
 	effValue: number;

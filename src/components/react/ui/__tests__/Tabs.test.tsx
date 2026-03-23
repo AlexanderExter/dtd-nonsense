@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, mock } from "bun:test";
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Tabs } from "../Tabs";
+import { TabContent, Tabs } from "../Tabs";
 
 const SAMPLE_TABS = [
 	{ id: "stats", label: "Stats" },
@@ -15,7 +15,15 @@ describe("Tabs", () => {
 	it("renders all tab labels", () => {
 		render(
 			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
-				<div>Tab content</div>
+				<TabContent value="stats">
+					<div>Stats content</div>
+				</TabContent>
+				<TabContent value="combat">
+					<div>Combat content</div>
+				</TabContent>
+				<TabContent value="powers">
+					<div>Powers content</div>
+				</TabContent>
 			</Tabs>,
 		);
 		expect(screen.getByText("Stats")).toBeTruthy();
@@ -23,13 +31,19 @@ describe("Tabs", () => {
 		expect(screen.getByText("Powers")).toBeTruthy();
 	});
 
-	it("renders children", () => {
+	it("renders only the active tab content", () => {
 		render(
 			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
-				<div>Panel content</div>
+				<TabContent value="stats">
+					<div>Stats panel</div>
+				</TabContent>
+				<TabContent value="combat">
+					<div>Combat panel</div>
+				</TabContent>
 			</Tabs>,
 		);
-		expect(screen.getByText("Panel content")).toBeTruthy();
+		expect(screen.getByText("Stats panel")).toBeTruthy();
+		expect(screen.queryByText("Combat panel")).toBeNull();
 	});
 
 	it("calls onTabChange with the clicked tab id", async () => {
@@ -37,7 +51,9 @@ describe("Tabs", () => {
 		const user = userEvent.setup();
 		render(
 			<Tabs activeId="stats" onTabChange={onTabChange} tabs={SAMPLE_TABS}>
-				<div>Content</div>
+				<TabContent value="stats">
+					<div>Content</div>
+				</TabContent>
 			</Tabs>,
 		);
 
@@ -48,7 +64,9 @@ describe("Tabs", () => {
 	it("renders the active tab with accent styling", () => {
 		render(
 			<Tabs activeId="combat" onTabChange={() => {}} tabs={SAMPLE_TABS}>
-				<div>Content</div>
+				<TabContent value="combat">
+					<div>Content</div>
+				</TabContent>
 			</Tabs>,
 		);
 		const activeTab = screen.getByText("Combat");
@@ -58,7 +76,9 @@ describe("Tabs", () => {
 	it("renders inactive tabs with muted styling", () => {
 		render(
 			<Tabs activeId="stats" onTabChange={() => {}} tabs={SAMPLE_TABS}>
-				<div>Content</div>
+				<TabContent value="stats">
+					<div>Content</div>
+				</TabContent>
 			</Tabs>,
 		);
 		const inactiveTab = screen.getByText("Combat");
@@ -68,7 +88,9 @@ describe("Tabs", () => {
 	it("applies custom className to the tab list", () => {
 		const { container } = render(
 			<Tabs activeId="stats" className="custom-tabs" onTabChange={() => {}} tabs={SAMPLE_TABS}>
-				<div>Content</div>
+				<TabContent value="stats">
+					<div>Content</div>
+				</TabContent>
 			</Tabs>,
 		);
 		expect(container.querySelector(".custom-tabs")).toBeTruthy();

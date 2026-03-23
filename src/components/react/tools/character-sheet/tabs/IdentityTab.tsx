@@ -335,13 +335,13 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									<tbody>
 										{selectedAlign.sins.map((sin: any, i: number) => (
 											<tr
-												key={`sin-${sin.level ?? i}-${typeof sin === "string" ? sin : sin.description || sin.name}`}
+												key={`sin-${sin.devotion ?? i}-${typeof sin === "string" ? sin : sin.sin}`}
 											>
 												<td className="border border-border px-1.5 py-[3px] text-center">
-													{sin.level ?? i + 1}
+													{sin.devotion ?? i + 1}
 												</td>
 												<td className="border border-border px-1.5 py-[3px] text-center">
-													{typeof sin === "string" ? sin : sin.description || sin.name}
+													{typeof sin === "string" ? sin : sin.sin}
 												</td>
 											</tr>
 										))}
@@ -351,30 +351,25 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						)}
 					</div>
 				)}
-				<label className="mt-sm flex items-center gap-sm text-[0.85rem]">
-					Devotion
-					<GameInput
-						className="w-[60px]"
+				<div className="mt-sm">
+					<label className="mb-xs flex items-center justify-between text-[0.85rem]" htmlFor="devotion-slider">
+						<span>Devotion</span>
+						<span className="font-semibold text-accent">{char.devotion ?? 6} / 10</span>
+					</label>
+					<input
+						className="devotion-slider w-full cursor-pointer accent-accent"
+						id="devotion-slider"
 						max={10}
 						min={0}
-						onInput={(e) =>
+						onChange={(e) =>
 							updateChar((c) => {
-								c.devotion = Number((e.target as HTMLInputElement).value);
+								c.devotion = Number(e.target.value);
 							})
 						}
-						type="number"
+						step={1}
+						type="range"
 						value={char.devotion ?? 6}
 					/>
-					<span className="text-[0.78rem] text-text-dim">/ 10</span>
-				</label>
-				{/* Devotion progress bar */}
-				<div className="mt-sm">
-					<div className="h-3 w-full overflow-hidden rounded-sm border border-border bg-bg">
-						<div
-							className="h-full bg-accent transition-all duration-300"
-							style={{ width: `${((char.devotion ?? 6) / 10) * 100}%` }}
-						/>
-					</div>
 					<div className="mt-0.5 flex justify-between px-0.5 text-[0.7rem] text-text-dim">
 						<span>0</span>
 						<span>5</span>

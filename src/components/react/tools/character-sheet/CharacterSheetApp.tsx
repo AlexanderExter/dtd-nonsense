@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { Tabs } from "@/components/react/ui/Tabs";
+import { TabContent, Tabs } from "@/components/react/ui/Tabs";
 import { Toast } from "@/components/react/ui/Toast";
 import { useAllData } from "@/hooks/use-data";
 import { character as characterAPI } from "@/lib/dtd/character";
@@ -88,12 +88,24 @@ export function CharacterSheetApp() {
 				}}
 				tabs={TAB_LABELS}
 			>
-				{tab === "identity" && <IdentityTab derivedStats={derivedStats} />}
-				{tab === "stats" && <StatsTab derivedStats={derivedStats} />}
-				{tab === "combat" && <CombatTab />}
-				{tab === "powers" && <PowersTab derivedStats={derivedStats} />}
-				{tab === "features" && <FeaturesTab />}
-				{tab === "xp" && <XpTab />}
+				<TabContent value="identity">
+					<IdentityTab derivedStats={derivedStats} />
+				</TabContent>
+				<TabContent value="stats">
+					<StatsTab derivedStats={derivedStats} />
+				</TabContent>
+				<TabContent value="combat">
+					<CombatTab />
+				</TabContent>
+				<TabContent value="powers">
+					<PowersTab derivedStats={derivedStats} />
+				</TabContent>
+				<TabContent value="features">
+					<FeaturesTab />
+				</TabContent>
+				<TabContent value="xp">
+					<XpTab />
+				</TabContent>
 			</Tabs>
 			<div
 				className={cn(

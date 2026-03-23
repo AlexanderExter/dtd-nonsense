@@ -43,3 +43,17 @@ export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsP
 		</RadixTabs.Root>
 	);
 }
+
+interface TabContentProps {
+	children: ReactNode;
+	className?: string;
+	value: string;
+}
+
+export function TabContent({ value, children, className }: TabContentProps) {
+	return (
+		<RadixTabs.Content className={className} forceMount={false} value={value}>
+			{children}
+		</RadixTabs.Content>
+	);
+}
