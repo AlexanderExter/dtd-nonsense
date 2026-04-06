@@ -467,6 +467,10 @@ Specific counts in documentation (e.g., "187 tests", "12 files", "103 records") 
 - **`side-tracks.md` baseline notes are OK** — explicitly dated baselines (e.g., "> Baseline note (2026-03-09): ...") are timestamped by design.
 - **Data structure descriptions** should name what a file _contains_, not how many (e.g., "Feats with prerequisites" not "329 feats with prerequisites").
 
+### NumberInput biome-ignore Is Structural, Not a Workaround
+
+`NumberInput` wraps `<input>` inside a `<div>` with ± buttons. This means `<label>` cannot directly wrap the `<input>` element, triggering Biome's `lint/a11y/noLabelWithoutControl`. The `biome-ignore` comments on these labels are correct and intentional — don't "fix" them by removing the ignore or restructuring the label. The label-input association works via visual proximity. A future improvement would be to add `id` prop support so `<label htmlFor>` can be used, but the current pattern is acceptable.
+
 ---
 
 ## Cross-File Dependencies

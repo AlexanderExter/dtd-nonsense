@@ -1,4 +1,5 @@
 import { GameInput } from "@/components/react/ui/GameInput";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { cn } from "@/lib/utils";
 import type { DerivedStats } from "./constants";
 import { getEffChars, getWoundStatus } from "./constants";
@@ -41,13 +42,6 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 				<span className="text-[0.85rem] text-text-muted">
 					Level <strong className="text-accent">{stats.level}</strong>
 				</span>
-				<span className="text-[0.85rem] text-text-muted">
-					XP{" "}
-					<strong className={(char.totalXP || 0) - (char.xpSpent || 0) < 0 ? "text-error" : "text-accent"}>
-						{(char.totalXP || 0) - (char.xpSpent || 0)}
-					</strong>
-					<span className="text-text-dim"> / {char.totalXP || 0}</span>
-				</span>
 			</div>
 
 			<div className="flex flex-wrap items-center gap-sm">
@@ -55,14 +49,14 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						HP
 					</span>
-					<GameInput
-						className="w-[38px] text-center font-bold text-[0.95rem]"
-						onInput={(e) =>
+					<NumberInput
+						max={stats.hp}
+						min={0}
+						onChange={(v) =>
 							updateChar((c) => {
-								c.currentHP = Number((e.target as HTMLInputElement).value);
+								c.currentHP = v;
 							})
 						}
-						type="number"
 						value={char.currentHP ?? 0}
 					/>
 					<span className="text-[0.85rem] text-text-dim">/</span>
@@ -73,16 +67,14 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						{resourceName}
 					</span>
-					<GameInput
-						className="w-[38px] text-center font-bold text-[0.95rem]"
+					<NumberInput
 						max={stats.resourceMax}
 						min={0}
-						onInput={(e) =>
+						onChange={(v) =>
 							updateChar((c) => {
-								c.resourceCurrent = Number((e.target as HTMLInputElement).value);
+								c.resourceCurrent = v;
 							})
 						}
-						type="number"
 						value={char.resourceCurrent ?? 0}
 					/>
 					<span className="text-[0.85rem] text-text-dim">/</span>
@@ -93,16 +85,14 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						Resolve
 					</span>
-					<GameInput
-						className="w-[38px] text-center font-bold text-[0.95rem]"
+					<NumberInput
 						max={stats.resolve}
 						min={0}
-						onInput={(e) =>
+						onChange={(v) =>
 							updateChar((c) => {
-								c.currentResolve = Number((e.target as HTMLInputElement).value);
+								c.currentResolve = v;
 							})
 						}
-						type="number"
 						value={char.currentResolve ?? 0}
 					/>
 					<span className="text-[0.85rem] text-text-dim">/</span>
@@ -113,16 +103,14 @@ export function SheetHeader({ derivedStats }: { derivedStats: DerivedStats }) {
 					<span className="mr-0.5 font-semibold text-[0.65rem] text-text-muted uppercase tracking-[0.5px]">
 						Hero Points
 					</span>
-					<GameInput
-						className="w-[38px] text-center font-bold text-[0.95rem]"
+					<NumberInput
 						max={(char.heroPointsMax || 2) - (char.heroPointsBurnt || 0)}
 						min={0}
-						onInput={(e) =>
+						onChange={(v) =>
 							updateChar((c) => {
-								c.heroPointsCurrent = Number((e.target as HTMLInputElement).value);
+								c.heroPointsCurrent = v;
 							})
 						}
-						type="number"
 						value={char.heroPointsCurrent ?? 0}
 					/>
 					<span className="text-[0.85rem] text-text-dim">/</span>

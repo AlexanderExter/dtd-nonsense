@@ -1,7 +1,9 @@
-import { GameInput } from "@/components/react/ui/GameInput";
+import type { ReactNode } from "react";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 
 interface DerivedStatEntryProps {
 	baseValue: number;
+	children?: ReactNode;
 	effValue: number;
 	formulaId?: string;
 	formulaText: string;
@@ -19,6 +21,7 @@ export function DerivedStatEntry({
 	effValue,
 	onModChange,
 	formulaId,
+	children,
 }: DerivedStatEntryProps) {
 	return (
 		<div className="border-border border-b py-xs last:border-b-0">
@@ -31,13 +34,7 @@ export function DerivedStatEntry({
 					{baseValue}
 				</span>
 				<span className="text-text-dim text-xs">+</span>
-				<GameInput
-					className="w-[38px] px-[3px] py-[1px] text-center font-semibold text-[0.8rem]"
-					onInput={(e) => onModChange(Number((e.target as HTMLInputElement).value))}
-					title="Modifier"
-					type="number"
-					value={modValue}
-				/>
+				<NumberInput onChange={onModChange} title="Modifier" value={modValue} />
 				<span className="text-text-dim text-xs">=</span>
 				<span
 					className="ml-auto min-w-[26px] text-center font-bold text-[1.15rem] text-accent"
@@ -46,6 +43,7 @@ export function DerivedStatEntry({
 					{effValue}
 				</span>
 			</div>
+			{children}
 		</div>
 	);
 }

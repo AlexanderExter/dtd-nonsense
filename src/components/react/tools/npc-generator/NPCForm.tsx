@@ -1,6 +1,7 @@
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { GameTextarea } from "@/components/react/ui/GameTextarea";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { AbilityList } from "./AbilityList";
 import { ArmorList } from "./ArmorList";
 import { CharacteristicsGrid } from "./CharacteristicsGrid";
@@ -11,13 +12,14 @@ import { TraitsGrid } from "./TraitsGrid";
 import { WeaponList } from "./WeaponList";
 
 interface NPCFormProps {
+	featNames: string[];
 	npc: NPCData;
 	onUpdate: (npc: NPCData) => void;
 	skillNames: string[];
 	traitsData: TraitDef[];
 }
 
-export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps) {
+export function NPCForm({ npc, onUpdate, traitsData, skillNames, featNames }: NPCFormProps) {
 	const updateField = <K extends keyof NPCData>(field: K, value: NPCData[K]) => {
 		onUpdate({ ...npc, [field]: value });
 	};
@@ -68,31 +70,13 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-size">
 							Size
 						</label>
-						<GameInput
-							id="npc-size"
-							max={20}
-							min={1}
-							onInput={(e) =>
-								updateField("size", Number.parseInt((e.target as HTMLInputElement).value, 10) || 4)
-							}
-							type="number"
-							value={npc.size}
-						/>
+						<NumberInput max={20} min={1} onChange={(v) => updateField("size", v)} value={npc.size} />
 					</div>
 					<div>
 						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-speed">
 							Speed
 						</label>
-						<GameInput
-							id="npc-speed"
-							max={30}
-							min={0}
-							onInput={(e) =>
-								updateField("speed", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
-							}
-							type="number"
-							value={npc.speed}
-						/>
+						<NumberInput max={30} min={0} onChange={(v) => updateField("speed", v)} value={npc.speed} />
 					</div>
 				</div>
 			</div>
@@ -108,7 +92,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames }: NPCFormProps)
 			/>
 
 			{/* Feats */}
-			<FeatList feats={npc.feats} onChange={(feats) => updateField("feats", feats)} />
+			<FeatList featNames={featNames} feats={npc.feats} onChange={(feats) => updateField("feats", feats)} />
 
 			{/* Traits */}
 			<TraitsGrid

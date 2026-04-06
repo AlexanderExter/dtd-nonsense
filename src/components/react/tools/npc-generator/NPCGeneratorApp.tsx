@@ -28,12 +28,14 @@ export function NPCGeneratorApp() {
 		traitsData,
 		templatesList,
 		skillNames,
+		featNames,
 		dataLoaded,
 		setNpcState,
 		setSavedList,
 		setTraitsData,
 		setTemplatesList,
 		setSkillNames,
+		setFeatNames,
 		setDataLoaded,
 	} = useNPCStore();
 
@@ -59,18 +61,25 @@ export function NPCGeneratorApp() {
 
 	// Load data on mount
 	useEffect(() => {
-		Promise.all([loadData("traits.json"), loadData("npc-templates.json"), loadData("skills.json")])
-			.then(([traits, templates, skills]) => {
+		Promise.all([
+			loadData("traits.json"),
+			loadData("npc-templates.json"),
+			loadData("skills.json"),
+			loadData("feats.json"),
+		])
+			.then(([traits, templates, skills, feats]) => {
 				setTraitsData(traits as import("./constants").TraitDef[]);
 				setTemplatesList(templates as import("./constants").TemplateDef[]);
 				setSkillNames(extractSkillNames(skills as { skills?: Record<string, Array<{ name: string }>> }));
+				const featData = feats as { feats?: Array<{ name: string }> };
+				setFeatNames((featData.feats || []).map((f) => f.name));
 				loadSavedList();
 				setDataLoaded(true);
 			})
 			.catch((err) => {
 				console.error("NPC Builder init failed:", err);
 			});
-	}, [loadSavedList, setDataLoaded, setSkillNames, setTemplatesList, setTraitsData]);
+	}, [loadSavedList, setDataLoaded, setFeatNames, setSkillNames, setTemplatesList, setTraitsData]);
 
 	const saveNPC = useCallback(() => {
 		const npc = useNPCStore.getState().npcState;
@@ -329,7 +338,13 @@ export function NPCGeneratorApp() {
 			<main className="grid min-h-[calc(100vh-50px)] grid-cols-[minmax(320px,1fr)_minmax(360px,1.2fr)] max-[800px]:grid-cols-1">
 				{/* LEFT: Input Panel */}
 				<section className="no-print max-h-[calc(100vh-50px)] overflow-y-auto border-border border-r px-lg py-md max-[800px]:max-h-none max-[800px]:border-border max-[800px]:border-r-0 max-[800px]:border-b">
-					<NPCForm npc={npc} onUpdate={handleNPCUpdate} skillNames={skillNames} traitsData={traitsData} />
+					<NPCForm
+						featNames={featNames}
+						npc={npc}
+						onUpdate={handleNPCUpdate}
+						skillNames={skillNames}
+						traitsData={traitsData}
+					/>
 				</section>
 
 				{/* RIGHT: Preview Panel */}

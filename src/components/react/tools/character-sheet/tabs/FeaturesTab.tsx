@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { AddButton } from "@/components/react/ui/AddButton";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { GameTextarea } from "@/components/react/ui/GameTextarea";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import type { Background, ClassEntry } from "@/lib/dtd/types";
 import { BG_IDS } from "../constants";
 import { NameNotesList } from "../shared/NameNotesList";
@@ -14,7 +16,9 @@ export function FeaturesTab() {
 
 	// ---------- Class helpers ----------
 	const classes = data?.classes?.classes || [];
+	const tracks = data?.classes?.tracks || {};
 	const charClasses = char.classes || [];
+	const [openTracks, setOpenTracks] = useState<Record<string, boolean>>({});
 
 	const handleClassChange = (idx: number, classId: string) => {
 		updateChar((c) => {
@@ -37,6 +41,51 @@ export function FeaturesTab() {
 	const handleRemoveClass = (idx: number) => {
 		updateChar((c) => {
 			c.classes = c.classes.filter((_, i) => i !== idx);
+		});
+	};
+
+	const toggleTrack = (trackId: string) => {
+		setOpenTracks((prev) => ({ ...prev, [trackId]: !prev[trackId] }));
+	};
+
+	// Find class details from game data
+	const getClassInfo = (classId: string) => {
+		return classes.find((c: any) => c.id === classId);
+	};
+
+	// Add a feat from class to character's feats list
+	const handleAddFeatFromClass = (featName: string) => {
+		updateChar((c) => {
+			if (!c.feats) c.feats = [];
+			const baseName = featName.toLowerCase().split("(")[0].trim();
+			const exists = c.feats.some((f) => f.name.toLowerCase().split("(")[0].trim() === baseName);
+			if (exists) return;
+			// Try to find notes from game data
+			let autoNotes = "";
+			const featList = data?.feats?.feats || data?.feats || [];
+			if (Array.isArray(featList)) {
+				const match = featList.find((f: any) => f.name?.toLowerCase().split("(")[0].trim() === baseName);
+				if (match) autoNotes = match.effect || match.description || match.notes || "";
+			}
+			c.feats.push({ name: featName, notes: autoNotes });
+		});
+	};
+
+	// Check if character already has a feat (base-name prefix match)
+	const hasFeat = (featName: string): boolean => {
+		const baseName = featName.toLowerCase().split("(")[0].trim();
+		return (char.feats || []).some((f) => f.name.toLowerCase().split("(")[0].trim() === baseName);
+	};
+
+	// Set of selected class IDs for highlighting in tree
+	const selectedClassIds = new Set(charClasses.map((c) => c.classId).filter(Boolean));
+
+	// Add class from the tree browser
+	const handleAddClassFromTree = (classId: string) => {
+		const alreadySelected = charClasses.some((c) => c.classId === classId);
+		if (alreadySelected) return;
+		updateChar((c) => {
+			c.classes.push({ classId, level: 1 });
 		});
 	};
 
@@ -81,20 +130,15 @@ export function FeaturesTab() {
 		});
 	};
 
-	// Find class details for display
-	const getClassInfo = (classId: string) => {
-		return classes.find((c: any) => c.id === classId);
-	};
-
 	return (
 		<section className="tab-panel panel-features">
-			{/* ---------- Classes ---------- */}
+			{/* ---------- Classes: Character's Classes ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Classes</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">My Classes</h3>
 				{charClasses.map((cls: ClassEntry, idx: number) => {
 					const info = getClassInfo(cls.classId);
 					return (
-						<div className="mb-md" key={cls.classId}>
+						<div className="mb-md" key={cls.classId || idx}>
 							<div className="flex flex-wrap items-center gap-sm">
 								<GameSelect
 									className="min-w-[160px] flex-1"
@@ -108,15 +152,15 @@ export function FeaturesTab() {
 										</option>
 									))}
 								</GameSelect>
-								<label className="flex items-center gap-1 text-[0.78rem] uppercase tracking-[0.3px]">
+								<label
+									className="flex items-center gap-1 text-[0.78rem] uppercase tracking-[0.3px]"
+									htmlFor={`features-class-level-${idx}`}
+								>
 									Level
-									<GameInput
-										className="w-14 text-center font-semibold text-[0.9rem]"
+									<NumberInput
+										id={`features-class-level-${idx}`}
 										min={1}
-										onInput={(e) =>
-											handleClassLevelChange(idx, Number((e.target as HTMLInputElement).value))
-										}
-										type="number"
+										onChange={(v) => handleClassLevelChange(idx, v)}
 										value={cls.level || 1}
 									/>
 								</label>
@@ -133,25 +177,106 @@ export function FeaturesTab() {
 									<summary className="cursor-pointer text-[0.82rem] text-text-muted hover:text-text-primary">
 										Class Details
 									</summary>
-									<div className="mt-xs space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
-										{info.description && <p className="m-0">{info.description}</p>}
-										{info.skills && info.skills.length > 0 && (
-											<p className="m-0">
-												<strong>Skills:</strong> {info.skills.join(", ")}
-											</p>
-										)}
-										{info.feats && info.feats.length > 0 && (
-											<p className="m-0">
-												<strong>Feats:</strong> {info.feats.join(", ")}
-											</p>
-										)}
-									</div>
+									<ClassDetails hasFeat={hasFeat} info={info} onAddFeat={handleAddFeatFromClass} />
 								</details>
 							)}
 						</div>
 					);
 				})}
 				<AddButton label="Class" onClick={handleAddClass} />
+			</div>
+
+			{/* ---------- Classes: Track Browser ---------- */}
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Class Browser</h3>
+				<div className="space-y-xs">
+					{Object.entries(tracks).map(([trackId, track]: [string, any]) => {
+						const isOpen = openTracks[trackId];
+						const trackClassIds: string[] = track.classes || [];
+						return (
+							<div className="rounded-sm border border-border bg-bg" key={trackId}>
+								<button
+									className="flex w-full cursor-pointer items-center gap-sm border-none bg-transparent px-md py-sm text-left font-semibold text-[0.9rem] text-text-primary hover:bg-surface"
+									onClick={() => toggleTrack(trackId)}
+									type="button"
+								>
+									<span className="text-[0.75rem] text-text-muted">{isOpen ? "▾" : "▸"}</span>
+									{track.name}
+									<span className="ml-auto text-[0.72rem] text-text-dim">
+										{trackClassIds.length} classes
+									</span>
+								</button>
+								{isOpen && (
+									<div className="border-border border-t px-md py-sm">
+										<div className="flex flex-wrap gap-1">
+											{trackClassIds.map((classId: string, i: number) => {
+												const info = getClassInfo(classId);
+												if (!info) return null;
+												const isSelected = selectedClassIds.has(classId);
+												return (
+													<span
+														className="flex items-center text-[0.78rem] text-text-muted"
+														key={classId}
+													>
+														{i > 0 && <span className="mr-1 text-text-dim">→</span>}
+														<span className={isSelected ? "font-bold text-accent" : ""}>
+															{info.name}
+														</span>
+														<span className="ml-0.5 text-[0.65rem] text-text-dim">
+															L{info.level || i + 1}
+														</span>
+													</span>
+												);
+											})}
+										</div>
+										<div className="mt-sm space-y-sm">
+											{trackClassIds.map((classId: string) => {
+												const info = getClassInfo(classId);
+												if (!info) return null;
+												const isSelected = selectedClassIds.has(classId);
+												return (
+													<details
+														className="rounded-sm border border-border bg-surface"
+														key={classId}
+													>
+														<summary
+															className={`cursor-pointer px-sm py-xs text-[0.82rem] hover:bg-surface-raised ${isSelected ? "font-semibold text-accent" : "text-text-muted"}`}
+														>
+															{info.name}
+															{isSelected && (
+																<span className="ml-1 text-[0.65rem] text-info">
+																	✓ selected
+																</span>
+															)}
+															{!isSelected && (
+																<button
+																	className="ml-2 cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-[0.65rem] text-accent hover:bg-accent/10"
+																	onClick={(e) => {
+																		e.preventDefault();
+																		handleAddClassFromTree(classId);
+																	}}
+																	title="Add to my classes"
+																	type="button"
+																>
+																	+ Add
+																</button>
+															)}
+														</summary>
+														<ClassDetails
+															hasFeat={hasFeat}
+															info={info}
+															onAddFeat={handleAddFeatFromClass}
+														/>
+													</details>
+												);
+											})}
+										</div>
+									</div>
+								)}
+							</div>
+						);
+					})}
+				</div>
 			</div>
 
 			{/* ---------- Feats ---------- */}
@@ -161,12 +286,12 @@ export function FeaturesTab() {
 
 			{/* ---------- Assets ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<NameNotesList label="Assets" listKey="assets" />
+				<NameNotesList datalistId="dl-asset-names" label="Assets" listKey="assets" />
 			</div>
 
 			{/* ---------- Hindrances ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<NameNotesList label="Hindrances" listKey="hindrances" />
+				<NameNotesList datalistId="dl-hindrance-names" label="Hindrances" listKey="hindrances" />
 			</div>
 
 			{/* ---------- Backgrounds ---------- */}
@@ -183,14 +308,10 @@ export function FeaturesTab() {
 								<span className="min-w-[70px] font-medium text-[0.85rem]">
 									{bgNames[id] || bg.name}
 								</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
+								<NumberInput
 									max={5}
 									min={0}
-									onInput={(e) =>
-										handleBgDotsChange(id, Number((e.target as HTMLInputElement).value))
-									}
-									type="number"
+									onChange={(v) => handleBgDotsChange(id, v)}
 									value={bg.dots}
 								/>
 								<GameInput
@@ -222,5 +343,64 @@ export function FeaturesTab() {
 				/>
 			</div>
 		</section>
+	);
+}
+
+/** Reusable class details panel used in both "My Classes" and the Class Browser */
+function ClassDetails({
+	info,
+	hasFeat,
+	onAddFeat,
+}: {
+	info: any;
+	hasFeat: (name: string) => boolean;
+	onAddFeat: (name: string) => void;
+}) {
+	return (
+		<div className="space-y-xs p-md text-[0.85rem] text-text-muted">
+			{info.description && <p className="m-0">{info.description}</p>}
+			{info.skills && info.skills.length > 0 && (
+				<p className="m-0">
+					<strong>Skills:</strong> {info.skills.join(", ")}
+				</p>
+			)}
+			{info.feats && info.feats.length > 0 && (
+				<div>
+					<strong>Feats:</strong>
+					<ul className="my-xs list-none pl-0">
+						{info.feats.map((f: any) => {
+							const name = typeof f === "string" ? f : f.name;
+							const type = typeof f === "object" ? f.type : null;
+							const already = hasFeat(name);
+							return (
+								<li className="mb-0.5 flex items-center gap-sm" key={name}>
+									<span>
+										{name}
+										{type && <span className="ml-1 text-[0.65rem] text-text-dim">({type})</span>}
+									</span>
+									{already ? (
+										<span className="text-[0.65rem] text-info">✓</span>
+									) : (
+										<button
+											className="cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-[0.65rem] text-accent hover:bg-accent/10"
+											onClick={() => onAddFeat(name)}
+											title="Add to character feats"
+											type="button"
+										>
+											+
+										</button>
+									)}
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			)}
+			{info.completionBonus && (
+				<p className="m-0">
+					<strong>Completion Bonus:</strong> {info.completionBonus}
+				</p>
+			)}
+		</div>
 	);
 }

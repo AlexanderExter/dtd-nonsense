@@ -3,11 +3,12 @@ import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 
 interface FeatListProps {
+	featNames?: string[];
 	feats: string[];
 	onChange: (feats: string[]) => void;
 }
 
-export function FeatList({ feats, onChange }: FeatListProps) {
+export function FeatList({ feats, onChange, featNames }: FeatListProps) {
 	const addFeat = useCallback(
 		(value = "") => {
 			onChange([...feats, value]);
@@ -32,6 +33,13 @@ export function FeatList({ feats, onChange }: FeatListProps) {
 
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
+			{featNames && featNames.length > 0 && (
+				<datalist id="dl-feat-names">
+					{featNames.map((n) => (
+						<option key={n} value={n} />
+					))}
+				</datalist>
+			)}
 			<div className="mb-sm flex items-center justify-between">
 				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Feats</h2>
 				<Button onClick={() => addFeat()} size="sm" variant="ghost">
@@ -47,6 +55,7 @@ export function FeatList({ feats, onChange }: FeatListProps) {
 					>
 						<GameInput
 							className="min-w-0 flex-1"
+							list={featNames && featNames.length > 0 ? "dl-feat-names" : undefined}
 							onInput={(e) => updateFeat(i, (e.target as HTMLInputElement).value)}
 							placeholder="Feat name"
 							value={feat}

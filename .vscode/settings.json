@@ -12,7 +12,6 @@
   "[markdown]": {
     "editor.defaultFormatter": "rvben.rumdl"
   },
-  "biome.lsp.bin": "./node_modules/@biomejs/biome/bin/biome",
   "cSpell.words": [
     "Aasimar",
     "Acererak",

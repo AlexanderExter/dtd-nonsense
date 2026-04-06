@@ -1,5 +1,6 @@
 import { Badge } from "@/components/react/ui/Badge";
 import { GameInput } from "@/components/react/ui/GameInput";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { useCharSheetStore } from "../store";
 
 export function SkillGrid() {
@@ -36,7 +37,7 @@ export function SkillGrid() {
 					</h4>
 					{(skillList as Array<{ id: string; name: string; advanced?: boolean }>).map((sk) => {
 						const dots = skills[sk.id] || 0;
-						const showSpec = dots >= 1;
+						const showSpec = dots >= 4;
 						return (
 							<div className="flex items-center gap-sm py-[3px] text-[0.85rem]" key={sk.id}>
 								<span className="flex-1 font-medium" title={sk.advanced ? "Advanced skill" : ""}>
@@ -47,14 +48,10 @@ export function SkillGrid() {
 										</Badge>
 									)}
 								</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
+								<NumberInput
 									max={6}
 									min={0}
-									onInput={(e) =>
-										handleDotsChange(sk.id, Number((e.target as HTMLInputElement).value))
-									}
-									type="number"
+									onChange={(v) => handleDotsChange(sk.id, v)}
 									value={dots}
 								/>
 								{showSpec && (

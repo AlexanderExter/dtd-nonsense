@@ -3,6 +3,7 @@ import { Button } from "@/components/react/ui/Button";
 import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { CHAR_NAMES } from "@/lib/dtd/constants";
 import type { SavedPool } from "@/lib/dtd/types";
 import type { DerivedStats } from "../constants";
@@ -25,6 +26,9 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 	const [poolSkill, setPoolSkill] = useState("");
 	const [poolSpec, setPoolSpec] = useState(false);
 	const [poolLabel, setPoolLabel] = useState("");
+	const [extraRolled, setExtraRolled] = useState(0);
+	const [extraKept, setExtraKept] = useState(0);
+	const [extraFlat, setExtraFlat] = useState(0);
 
 	const handleModChange = (field: string, value: number) => {
 		updateChar((c) => {
@@ -36,18 +40,31 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 	// Pool calculator
 	const charVal = poolChar ? effChars[poolChar] || 0 : 0;
 	const skillVal = poolSkill ? char.skills[poolSkill] || 0 : 0;
-	const poolDice = charVal + skillVal;
-	const poolKeep = charVal;
-	const halfKeep = Math.max(1, Math.ceil(poolKeep / 2));
-	const poolNotation = poolDice > 0 ? `${poolDice}k${halfKeep}` : "—";
+	const poolDice = charVal + skillVal + extraRolled;
+	const poolKeep = Math.max(1, Math.ceil(charVal / 2)) + extraKept;
+	const poolFlat = extraFlat;
+	const poolNotation =
+		poolDice > 0
+			? `${poolDice}k${poolKeep}${poolFlat > 0 ? ` +${poolFlat}` : poolFlat < 0 ? ` ${poolFlat}` : ""}`
+			: "—";
 
 	const handleSavePool = () => {
 		const lbl = poolLabel.trim();
 		if (!lbl || poolNotation === "—") return;
+		const parts: string[] = [];
+		if (poolChar) parts.push(CHAR_NAMES[poolChar] || poolChar);
+		if (poolSkill) parts.push(poolSkill);
+		if (extraRolled) parts.push(`+${extraRolled}k0`);
+		if (extraKept) parts.push(`+0k${extraKept}`);
+		if (extraFlat) parts.push(extraFlat > 0 ? `+${extraFlat} flat` : `${extraFlat} flat`);
 		const pool: SavedPool = {
 			label: lbl,
 			notation: poolNotation,
-			formula: `${CHAR_NAMES[poolChar] || poolChar} + ${poolSkill}`,
+			formula: parts.join(" + "),
+			extraRolled: extraRolled || undefined,
+			extraKept: extraKept || undefined,
+			extraFlat: extraFlat || undefined,
+			specialization: poolSpec || undefined,
 		};
 		updateChar((c) => {
 			if (!c.savedPools) c.savedPools = [];
@@ -123,7 +140,9 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						modField="speed"
 						modValue={stats.speedMod}
 						onModChange={(v) => handleModChange("speed", v)}
-					/>
+					>
+						<span className="mt-0.5 text-[0.78rem] text-text-muted">Run: {stats.runSpeed}m</span>
+					</DerivedStatEntry>
 					<DerivedStatEntry
 						baseValue={stats.resilienceBase}
 						effValue={stats.resilience}
@@ -142,9 +161,6 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						modValue={stats.initMod}
 						onModChange={(v) => handleModChange("initiative", v)}
 					/>
-				</div>
-				<div className="mt-sm text-[0.85rem] text-text-muted">
-					<span>Run Speed: {stats.runSpeed}m</span>
 				</div>
 			</div>
 
@@ -194,6 +210,22 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								</option>
 							))}
 						</GameSelect>
+						<span className="font-semibold text-[0.9rem] text-text-muted">+</span>
+						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
+						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+							<NumberInput min={0} onChange={setExtraRolled} value={extraRolled} />
+							<span>+Xk0</span>
+						</label>
+						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
+						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+							<NumberInput min={0} onChange={setExtraKept} value={extraKept} />
+							<span>+0kX</span>
+						</label>
+						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
+						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+							<NumberInput onChange={setExtraFlat} value={extraFlat} />
+							<span>Flat</span>
+						</label>
 					</div>
 					<div className="mt-xs rounded-sm bg-bg px-sm py-xs text-center font-bold text-[1.1rem] text-accent">
 						<strong>Pool: {poolNotation}</strong>
@@ -234,6 +266,22 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								>
 									<strong className="flex-1 text-text-primary">{p.label}:</strong>{" "}
 									<span className="font-bold text-accent">{p.notation || p.pool || p.formula}</span>
+									{p.formula && (
+										<span
+											className="rounded-sm bg-bg px-1 py-0.5 text-[0.72rem] text-text-muted"
+											title={p.formula}
+										>
+											({p.formula})
+										</span>
+									)}
+									{p.specialization && (
+										<span
+											className="rounded-sm bg-info/15 px-1 py-0.5 text-[0.72rem] text-info"
+											title="Specialization: reroll 1s"
+										>
+											Spec
+										</span>
+									)}
 									<button
 										className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 										onClick={() => handleRemovePool(idx)}

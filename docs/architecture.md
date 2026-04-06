@@ -78,6 +78,8 @@ Assessment of `src/lib/dtd/` modules. The shared library is cleanly separated fr
 
 All modules import cleanly into React components.
 
+**Tool-specific data modules** (e.g., `attacks-data.ts`) are **not** re-exported through the `core.ts` barrel. They are imported directly by the tool that needs them. This keeps the barrel small and enables tree-shaking — only add modules to the barrel if they are shared across multiple tools.
+
 ---
 
 ## Shared UI Layer
@@ -102,7 +104,7 @@ import { showToast, Toast } from "@/components/react/ui/Toast";
 
 **Never import `radix-ui` directly in tool code** — always use the UI layer wrappers.
 
-### Component Inventory (25 files)
+### Component Inventory (26 files)
 
 **shadcn Primitives (10)** — Installed via shadcn CLI, lowercase filenames:
 
@@ -119,7 +121,7 @@ import { showToast, Toast } from "@/components/react/ui/Toast";
 | `textarea.tsx` | Native `<textarea>` | GameTextarea |
 | `tooltip.tsx` | Radix Tooltip | Hover hints |
 
-**Game* Domain Wrappers (4)** — Compact form elements for tabletop tools:
+**Game* Domain Wrappers + NumberInput (5)** — Compact form elements for tabletop tools:
 
 | Component | Wraps | Styling |
 |-----------|-------|--------|
@@ -127,6 +129,7 @@ import { showToast, Toast } from "@/components/react/ui/Toast";
 | `GameSelect.tsx` | Native `<select>` | `text-[0.85rem] py-1 px-1.5` |
 | `GameCheckbox.tsx` | Native `<input type="checkbox">` | Optional label wrapper |
 | `GameTextarea.tsx` | Native `<textarea>` | `min-h-[60px] resize-y` |
+| `NumberInput.tsx` | Native `<input type="number">` | `[−][input][+]` stepper with min/max clamping |
 
 **Custom Components (11)** — Hand-rolled for project-specific needs:
 

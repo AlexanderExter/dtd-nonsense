@@ -8,6 +8,7 @@ import { CharacterManager } from "./CharacterManager";
 import { calculateAllDerived, type DerivedStats, TAB_LABELS, type TabId } from "./constants";
 import { SheetHeader } from "./SheetHeader";
 import { createNewCharacter, loadCharacter, useCharSheetStore } from "./store";
+import { AttacksTab } from "./tabs/AttacksTab";
 import { CombatTab } from "./tabs/CombatTab";
 import { FeaturesTab } from "./tabs/FeaturesTab";
 import { IdentityTab } from "./tabs/IdentityTab";
@@ -96,6 +97,9 @@ export function CharacterSheetApp() {
 				</TabContent>
 				<TabContent value="combat">
 					<CombatTab />
+				</TabContent>
+				<TabContent value="attacks">
+					<AttacksTab />
 				</TabContent>
 				<TabContent value="powers">
 					<PowersTab derivedStats={derivedStats} />

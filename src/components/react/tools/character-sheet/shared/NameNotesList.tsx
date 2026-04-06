@@ -16,20 +16,26 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 	const updateChar = useCharSheetStore((s) => s.updateChar);
 	const items: FeatEntry[] = (char[listKey] || []) as FeatEntry[];
 
-	// Build feat datalist options if for feats
+	// Build datalist options from game data, filtered by category
 	let options: string[] = [];
-	if (datalistId && listKey === "feats" && data?.feats) {
+	if (datalistId && data?.feats) {
 		const featList = data.feats.feats || data.feats || [];
 		if (Array.isArray(featList)) {
-			options = featList.map((f: any) => f.name).filter(Boolean);
+			const categoryFilter = listKey === "assets" ? "asset" : listKey === "hindrances" ? "hindrance" : null;
+			const filtered = categoryFilter ? featList.filter((f: any) => f.category === categoryFilter) : featList;
+			options = filtered.map((f: any) => f.name).filter(Boolean);
 		}
 	}
 
-	const findFeatNotes = (name: string): string => {
-		if (listKey !== "feats" || !data?.feats) return "";
+	const findItemNotes = (name: string): string => {
+		if (!data?.feats) return "";
 		const featList = data.feats.feats || data.feats || [];
 		if (!Array.isArray(featList)) return "";
-		const match = featList.find((f: any) => f.name?.toLowerCase() === name.toLowerCase());
+		const baseName = name.toLowerCase().split("(")[0].trim();
+		const match = featList.find((f: any) => {
+			const dataBase = f.name?.toLowerCase().split("(")[0].trim();
+			return dataBase === baseName;
+		});
 		return match?.effect || match?.description || match?.notes || "";
 	};
 
@@ -38,12 +44,10 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 			const list = c[listKey] as FeatEntry[];
 			if (list[idx]) {
 				list[idx].name = name;
-				// Auto-populate notes from feat data on exact match
-				if (listKey === "feats") {
-					const autoNotes = findFeatNotes(name);
-					if (autoNotes && !list[idx].notes) {
-						list[idx].notes = autoNotes;
-					}
+				// Auto-populate notes from game data on exact match
+				const autoNotes = findItemNotes(name);
+				if (autoNotes && !list[idx].notes) {
+					list[idx].notes = autoNotes;
 				}
 			}
 		});
@@ -70,7 +74,9 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 
 	return (
 		<div>
-			<SectionHeading>{label}</SectionHeading>
+			<SectionHeading>
+				{label} ({items.length})
+			</SectionHeading>
 			{datalistId && options.length > 0 && (
 				<datalist id={datalistId}>
 					{options.map((n) => (

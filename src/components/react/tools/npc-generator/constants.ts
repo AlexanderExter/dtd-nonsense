@@ -6,7 +6,7 @@ import { derived } from "@/lib/dtd/derived";
 
 export interface NPCData {
 	abilities: Array<{ name: string; description: string }>;
-	armor: Array<{ name: string; ap: number; locations: string[] }>;
+	armor: Array<{ name: string; ap: number; locations: string[]; type?: string; qualities?: string }>;
 	characteristics: Record<string, number>;
 	feats: string[];
 	gear: string;
@@ -23,6 +23,8 @@ export interface NPCWeapon {
 	clip?: string;
 	damage: string;
 	damageType: string;
+	fixedAttackBonus?: number;
+	fixedDamageBonus?: number;
 	name: string;
 	pen: number;
 	range?: number;

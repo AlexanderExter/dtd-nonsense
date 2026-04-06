@@ -186,3 +186,13 @@ Low-priority items or ideas that don't justify current effort.
 - **debt**: React Hook Form is installed (`react-hook-form@7.71.2`) but not integrated into any forms. Character Builder's multi-step form wizard and Combat Tracker's AddCombatantForm are the best candidates for integration. *Context*: Installed as part of stack health work per Vercel best practices evaluation.
 - **investigation**: Knip reports some false positives for Astro-specific patterns (content.config.ts, schema files auto-imported by Astro). Current `knip.json` suppresses these. Worth re-running Knip periodically to catch real dead code as the project evolves.
 - **debt**: `noUncheckedIndexedAccess` is not enabled in tsconfig.json. Would catch undefined-access bugs in data handling code (e.g., `data[key]` without null checks). Evaluate enabling it — may require fixing existing code.
+
+---
+
+## 2026-03-23 — Character Sheet WeaponTable Redesign + NumberInput Migration
+
+- **refactor**: WeaponTable compute functions (`computeAttack`, `computeDamage`, `formatNotation`, `parseDkNotation`) are pure logic embedded in a 720-line component. Extract to `src/lib/dtd/weapons.ts` for testability and reuse. *Context*: Functions were rewritten 4 times during iterative design; unit tests would prevent regression during future changes.
+- **debt**: `attacks-data.ts` is ~890 lines of hardcoded school/technique data with no JSON source file or schema validation. If school data changes in cleaned-references, this file must be manually updated. Consider generating from structured JSON data like other game data. *Context*: Created to power AttacksTab; follows same pattern as constants.ts but much larger.
+- **debt**: `ALL_SCHOOLS` and `getAvailableTechniques` in attacks-data.ts are unused (2 Biome warnings). Either integrate into AttacksTab or remove. *Context*: Likely left over from iterative development of the technique selector UI.
+- **investigation**: NumberInput uses `biome-ignore lint/a11y/noLabelWithoutControl` in ~15 places because the `<input>` is wrapped in a `<div>` with ± buttons. Consider adding an `id` prop pattern so `<label htmlFor>` can be used, or restructure NumberInput to render the `<input>` as a direct child. *Context*: Noticed during WeaponTable redesign where each NumberInput needs a biome-ignore comment.
+- **inconsistency**: Character sheet tool spec (`docs/tools/character-sheet.md`) doesn't mention Attacks Tab or XP Tab. Architecture doc says 25 UI components but there are now 26. Component counts in docs drift after each session. *Context*: Caught during sanity check audit; these docs need updating.

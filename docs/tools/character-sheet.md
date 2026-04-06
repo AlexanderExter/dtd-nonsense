@@ -39,8 +39,9 @@ The primary character tool — a freeform editable sheet for both character crea
 ### Combat Tab
 
 - Armor & Defense: Aura, Natural Armor, location AP grid (6 tiles), armor table (Name, Type, AP, Max Dex, Location checkboxes, Special)
-- Melee weapons: Name (datalist from `weapons.json`), Type, Proficiency, Test (XkY), Damage, Dmg Type (E/I/R/X dropdown), Pen, Availability, Special, auto-calculated Total Dmg (+Str)
-- Ranged weapons: Name, Type, Proficiency, Test, Damage, Dmg Type, Pen, ROF, Range, Clip, Reload, Availability, Special
+- Melee weapons: collapsed summary row (Name, Attack XkY, Damage XkY, Pen, Type, Special, Notes) with expandable detail area containing Attack Roll (skill selector → baseline dice/keep + additional Dice/Keep/Fixed inputs), Damage Roll (Dice/Keep/Fixed), Weapon Info (Class, Pen, Type), and Modifiers (Proficient, Weapon Focus, Imp. WF, Specialization, Imp. WS, Crushing Blow)
+- Ranged weapons: same layout with additional Range/RoF/Clip/Reload fields and Mighty Shot instead of Crushing Blow
+- Weapon attack model: Skill provides baseline dice/keep (read-only), NumberInputs add extras on top. Modifiers (Proficient, Weapon Focus, etc.) stack automatically.
 
 ### Powers Tab
 
@@ -64,6 +65,20 @@ The primary character tool — a freeform editable sheet for both character crea
 - Backgrounds: 11-type grid with dot inputs (0-5), notes, budget display (X/7 with over-budget warning)
 - Equipment textarea, Notes textarea
 
+### Attacks Tab
+
+- Special Attacks builder: select Sword School, choose weapon, pick action, add techniques (advantages reduce Style Cost, restrictions increase it)
+- Trick Shots builder: same pattern for Gun Kata ranged schools
+- Technique selector with universal advantages/restrictions shared across all schools
+- Style Cost calculation with XP equivalent display (50 XP per Style Point)
+- Uses `attacks-data.ts` for school definitions, technique lists, and cost computation
+
+### XP Tab
+
+- XP log with timestamped entries (label + amount)
+- Running total display
+- Add/remove XP entries
+
 ### Multi-Character Management
 
 - Character list in management bar
@@ -83,9 +98,9 @@ The primary character tool — a freeform editable sheet for both character crea
 | Component                                        | Description                                                                     |
 | ------------------------------------------------ | ------------------------------------------------------------------------------- |
 | `character-sheet.astro`                          | Astro page shell — mounts `CharacterSheetApp` via `client:only="react"`                |
-| `src/components/react/tools/character-sheet/`   | 16 React components (root: `CharacterSheetApp.tsx`)                            |
+| `src/components/react/tools/character-sheet/`   | Root App + 7 tab components + shared sub-components (root: `CharacterSheetApp.tsx`) |
 
-**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, Zustand
+**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/lib/dtd/attacks-data.ts` (school definitions), `@/hooks/use-data`, Zustand
 
 **Data sources:** `races.json`, `exaltations.json`, `alignments.json`, `classes.json`, `feats.json`, `skills.json`, `weapons.json`, `backgrounds.json`
 

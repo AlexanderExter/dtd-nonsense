@@ -7,9 +7,11 @@ import { createDefaultNPC, type NPCData, type TemplateDef, type TraitDef } from 
 
 interface NPCStore {
 	dataLoaded: boolean;
+	featNames: string[];
 	npcState: NPCData;
 	savedList: string[];
 	setDataLoaded: (v: boolean) => void;
+	setFeatNames: (names: string[]) => void;
 
 	setNpcState: (npc: NPCData) => void;
 	setSavedList: (list: string[]) => void;
@@ -32,6 +34,7 @@ export const useNPCStore = create<NPCStore>((set, get) => ({
 	traitsData: [],
 	templatesList: [],
 	skillNames: [],
+	featNames: [],
 	dataLoaded: false,
 
 	setNpcState: (npc) => set({ npcState: npc }),
@@ -39,6 +42,7 @@ export const useNPCStore = create<NPCStore>((set, get) => ({
 	setTraitsData: (data) => set({ traitsData: data }),
 	setTemplatesList: (list) => set({ templatesList: list }),
 	setSkillNames: (names) => set({ skillNames: names }),
+	setFeatNames: (names) => set({ featNames: names }),
 	setDataLoaded: (v) => set({ dataLoaded: v }),
 
 	updateNpc: (fn) => {

@@ -1,4 +1,5 @@
 import { GameInput } from "@/components/react/ui/GameInput";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { LOCATIONS } from "../constants";
 import { ArmorSection } from "../shared/ArmorSection";
 import { WeaponTable } from "../shared/WeaponTable";
@@ -45,29 +46,35 @@ export function CombatTab() {
 					Natural Armor &amp; Aura
 				</h3>
 				<div className="mb-md flex flex-wrap gap-md">
-					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="combat-natural-armor"
+					>
 						Natural Armor
-						<GameInput
+						<NumberInput
+							id="combat-natural-armor"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.naturalArmor = Number((e.target as HTMLInputElement).value);
+									c.naturalArmor = v;
 								})
 							}
-							type="number"
 							value={char.naturalArmor || 0}
 						/>
 					</label>
-					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="combat-aura"
+					>
 						Aura
-						<GameInput
+						<NumberInput
+							id="combat-aura"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.aura = Number((e.target as HTMLInputElement).value);
+									c.aura = v;
 								})
 							}
-							type="number"
 							value={char.aura || 0}
 						/>
 					</label>

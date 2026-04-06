@@ -57,13 +57,27 @@ export interface FeatEntry {
 }
 
 export interface MeleeWeapon {
+	attackChar?: string;
+	attackDice?: number;
+	attackKeep?: number;
+	attackSkill?: string;
 	availability?: string;
 	damage: string;
+	damageDice?: number;
+	damageKeep?: number;
 	damageType: string;
+	fixedAttackBonus?: number;
+	fixedDamageBonus?: number;
+	hasCrushingBlow?: boolean;
+	hasImprovedWeaponFocus?: boolean;
+	hasImprovedWeaponSpec?: boolean;
+	hasSpecialization?: boolean;
+	hasWeaponFocus?: boolean;
 	name: string;
 	notes: string;
 	pen?: string;
 	proficiency: string;
+	proficient?: boolean;
 	qualities: string;
 	special?: string;
 	test?: string;
@@ -71,14 +85,28 @@ export interface MeleeWeapon {
 }
 
 export interface RangedWeapon {
+	attackChar?: string;
+	attackDice?: number;
+	attackKeep?: number;
+	attackSkill?: string;
 	availability?: string;
 	clip?: string;
 	damage: string;
+	damageDice?: number;
+	damageKeep?: number;
 	damageType: string;
+	fixedAttackBonus?: number;
+	fixedDamageBonus?: number;
+	hasImprovedWeaponFocus?: boolean;
+	hasImprovedWeaponSpec?: boolean;
+	hasMightyShot?: boolean;
+	hasSpecialization?: boolean;
+	hasWeaponFocus?: boolean;
 	name: string;
 	notes: string;
 	pen?: string;
 	proficiency: string;
+	proficient?: boolean;
 	qualities: string;
 	range: string;
 	reload?: string;
@@ -106,16 +134,35 @@ export interface SpellEntry {
 	school: string;
 }
 
-export interface SpecialAttackEntry {
-	description: string;
+export interface TechniqueEntry {
+	cost: number;
 	name: string;
+	school?: string;
+	type: "advantage" | "restriction";
+}
+
+export interface SpecialAttackEntry {
+	action: string;
+	attackType: "melee" | "ranged";
+	id: string;
+	name: string;
+	notes?: string;
+	school?: string;
+	styleCost: number;
+	techniques: TechniqueEntry[];
+	weapon: string;
 }
 
 export interface SavedPool {
+	bonus?: number;
+	extraFlat?: number;
+	extraKept?: number;
+	extraRolled?: number;
 	formula?: string;
 	label: string;
 	notation?: string;
 	pool?: string;
+	specialization?: boolean;
 }
 
 // =============================================================================

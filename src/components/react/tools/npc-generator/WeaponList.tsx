@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import type { NPCWeapon } from "./constants";
 
 interface WeaponListProps {
@@ -100,16 +101,18 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								value={w.damageType}
 							/>
 							<span className="text-[0.8rem] text-text-muted">Pen</span>
-							<GameInput
-								className="w-[50px] flex-none"
+							<NumberInput min={0} onChange={(v) => updateWeapon(i, { pen: v })} value={w.pen} />
+							<span className="text-[0.8rem] text-text-muted">+Atk</span>
+							<NumberInput
 								min={0}
-								onInput={(e) =>
-									updateWeapon(i, {
-										pen: Number.parseInt((e.target as HTMLInputElement).value, 10) || 0,
-									})
-								}
-								type="number"
-								value={w.pen}
+								onChange={(v) => updateWeapon(i, { fixedAttackBonus: v })}
+								value={w.fixedAttackBonus || 0}
+							/>
+							<span className="text-[0.8rem] text-text-muted">+Dmg</span>
+							<NumberInput
+								min={0}
+								onChange={(v) => updateWeapon(i, { fixedDamageBonus: v })}
+								value={w.fixedDamageBonus || 0}
 							/>
 							<button
 								className="cursor-pointer border-none bg-transparent px-[4px] py-[2px] text-base text-text-dim leading-none hover:text-error"

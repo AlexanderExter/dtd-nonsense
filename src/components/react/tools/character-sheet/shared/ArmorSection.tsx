@@ -2,6 +2,7 @@ import { AddButton } from "@/components/react/ui/AddButton";
 import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { ArmorEntry } from "@/lib/dtd/types";
 import { ARMOR_TYPES, LOCATIONS } from "../constants";
@@ -106,14 +107,7 @@ export function ArmorSection() {
 								</GameSelect>
 							</td>
 							<td className="border-border border-b px-sm py-[3px] align-middle">
-								<GameInput
-									min={0}
-									onInput={(e) =>
-										handleFieldChange(idx, "ap", Number((e.target as HTMLInputElement).value))
-									}
-									type="number"
-									value={a.ap}
-								/>
+								<NumberInput min={0} onChange={(v) => handleFieldChange(idx, "ap", v)} value={a.ap} />
 							</td>
 							{LOCATIONS.map((loc) => (
 								<td

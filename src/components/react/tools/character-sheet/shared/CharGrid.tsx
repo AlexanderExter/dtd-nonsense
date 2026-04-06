@@ -1,4 +1,5 @@
 import { GameInput } from "@/components/react/ui/GameInput";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
 import { cn } from "@/lib/utils";
 import { CHAR_ABBREV, getEffChars } from "../constants";
@@ -34,7 +35,7 @@ export function CharGrid() {
 					{group.chars.map((id) => {
 						const base = chars[id] || 1;
 						const eff = effChars[id] || 1;
-						const showSpec = base >= 3;
+						const showSpec = base >= 4;
 						const abbrev = CHAR_ABBREV[id] || id;
 						const isBonus = char.raceCharBonus === id;
 						return (
@@ -42,14 +43,7 @@ export function CharGrid() {
 								<span className="flex-1 font-medium text-[0.9rem]" title={CHAR_NAMES[id] || id}>
 									{abbrev}
 								</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
-									max={6}
-									min={1}
-									onInput={(e) => handleCharChange(id, Number((e.target as HTMLInputElement).value))}
-									type="number"
-									value={base}
-								/>
+								<NumberInput max={6} min={1} onChange={(v) => handleCharChange(id, v)} value={base} />
 								<span
 									className={cn(
 										"min-w-5 text-center font-bold text-accent text-base",

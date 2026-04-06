@@ -1,0 +1,62 @@
+import { cn } from "@/lib/utils";
+
+interface NumberInputProps {
+	className?: string;
+	disabled?: boolean;
+	id?: string;
+	max?: number;
+	min?: number;
+	onChange: (value: number) => void;
+	step?: number;
+	title?: string;
+	value: number;
+}
+
+export function NumberInput({ value, onChange, min, max, step = 1, className, disabled, id, title }: NumberInputProps) {
+	const clamp = (v: number) => {
+		let n = v;
+		if (min !== undefined) n = Math.max(min, n);
+		if (max !== undefined) n = Math.min(max, n);
+		return n;
+	};
+
+	return (
+		<div className={cn("inline-flex items-center gap-0", className)}>
+			<button
+				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-l-[3px] border border-border bg-surface text-[0.75rem] text-text-muted leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+				disabled={disabled || (min !== undefined && value <= min)}
+				onClick={() => onChange(clamp(value - step))}
+				tabIndex={-1}
+				title="Decrease"
+				type="button"
+			>
+				−
+			</button>
+			<input
+				className="h-[26px] w-[42px] border-border border-y bg-bg px-0.5 text-center text-[0.82rem] text-text-primary [appearance:textfield] focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+				disabled={disabled}
+				id={id}
+				max={max}
+				min={min}
+				onInput={(e) => {
+					const v = Number((e.target as HTMLInputElement).value);
+					if (!Number.isNaN(v)) onChange(clamp(v));
+				}}
+				step={step}
+				title={title}
+				type="number"
+				value={value}
+			/>
+			<button
+				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-r-[3px] border border-border bg-surface text-[0.75rem] text-text-muted leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+				disabled={disabled || (max !== undefined && value >= max)}
+				onClick={() => onChange(clamp(value + step))}
+				tabIndex={-1}
+				title="Increase"
+				type="button"
+			>
+				+
+			</button>
+		</div>
+	);
+}

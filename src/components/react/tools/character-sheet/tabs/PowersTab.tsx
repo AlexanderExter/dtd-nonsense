@@ -1,6 +1,8 @@
 import { AddButton } from "@/components/react/ui/AddButton";
 import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
 import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import type { SpecialAttackEntry, SpellEntry } from "@/lib/dtd/types";
 import {
 	CHAR_ABBREV,
@@ -58,6 +60,17 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 		});
 	};
 
+	// Build spell name autocomplete from game data (if available)
+	const spellOptions: string[] = [];
+	if (data && (data as any).spells) {
+		const spellList = (data as any).spells.spells || (data as any).spells || [];
+		if (Array.isArray(spellList)) {
+			for (const s of spellList) {
+				if (s.name) spellOptions.push(s.name);
+			}
+		}
+	}
+
 	// ---------- Special Attack helpers ----------
 	const specials = (char.specialAttacks || []).map((s) =>
 		typeof s === "string" ? { name: s, description: "" } : s,
@@ -113,65 +126,49 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
 				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Hero Points</h3>
 				<div className="mb-md flex flex-wrap gap-md">
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]" htmlFor="powers-hp-max">
 						Max
-						<GameInput
+						<NumberInput
+							id="powers-hp-max"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.heroPointsMax = Number((e.target as HTMLInputElement).value);
+									c.heroPointsMax = v;
 								})
 							}
-							type="number"
 							value={char.heroPointsMax || 2}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-hp-current"
+					>
 						Current
-						<GameInput
+						<NumberInput
+							id="powers-hp-current"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.heroPointsCurrent = Number((e.target as HTMLInputElement).value);
+									c.heroPointsCurrent = v;
 								})
 							}
-							type="number"
 							value={char.heroPointsCurrent ?? 0}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-hp-burnt"
+					>
 						Burnt
-						<GameInput
+						<NumberInput
+							id="powers-hp-burnt"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.heroPointsBurnt = Number((e.target as HTMLInputElement).value);
+									c.heroPointsBurnt = v;
 								})
 							}
-							type="number"
 							value={char.heroPointsBurnt || 0}
-						/>
-					</label>
-					<GameCheckbox
-						checked={char.fettered}
-						label="Fettered"
-						onChange={(e) =>
-							updateChar((c) => {
-								c.fettered = (e.target as HTMLInputElement).checked;
-							})
-						}
-					/>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
-						Push Amount
-						<GameInput
-							min={0}
-							onInput={(e) =>
-								updateChar((c) => {
-									c.pushAmount = Number((e.target as HTMLInputElement).value);
-								})
-							}
-							type="number"
-							value={char.pushAmount || 0}
 						/>
 					</label>
 				</div>
@@ -183,30 +180,36 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					Power Stat &amp; Resource
 				</h3>
 				<div className="mb-md flex flex-wrap gap-md">
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-power-stat"
+					>
 						Power Stat
-						<GameInput
+						<NumberInput
+							id="powers-power-stat"
 							min={1}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.powerStat = Number((e.target as HTMLInputElement).value);
+									c.powerStat = v;
 								})
 							}
-							type="number"
 							value={char.powerStat || 1}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-resource-current"
+					>
 						Resource Current
-						<GameInput
+						<NumberInput
+							id="powers-resource-current"
 							max={stats.resourceMax}
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.resourceCurrent = Number((e.target as HTMLInputElement).value);
+									c.resourceCurrent = v;
 								})
 							}
-							type="number"
 							value={char.resourceCurrent ?? 0}
 						/>
 					</label>
@@ -259,17 +262,45 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							})
 						}
 					/>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-extra-school-levels"
+					>
 						Extra School Levels
-						<GameInput
+						<NumberInput
+							id="powers-extra-school-levels"
 							min={0}
-							onInput={(e) =>
+							onChange={(v) =>
 								updateChar((c) => {
-									c.extraSchoolLevels = Number((e.target as HTMLInputElement).value);
+									c.extraSchoolLevels = v;
 								})
 							}
-							type="number"
 							value={char.extraSchoolLevels || 0}
+						/>
+					</label>
+					<GameCheckbox
+						checked={char.fettered}
+						label="Fettered"
+						onChange={(e) =>
+							updateChar((c) => {
+								c.fettered = (e.target as HTMLInputElement).checked;
+							})
+						}
+					/>
+					<label
+						className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						htmlFor="powers-push-amount"
+					>
+						Push Amount
+						<NumberInput
+							id="powers-push-amount"
+							min={0}
+							onChange={(v) =>
+								updateChar((c) => {
+									c.pushAmount = v;
+								})
+							}
+							value={char.pushAmount || 0}
 						/>
 					</label>
 					<span className="inline-flex items-center rounded-sm bg-accent/10 px-sm py-xs font-semibold text-[0.85rem] text-accent">
@@ -290,33 +321,27 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								<span className="flex-1 font-medium text-[0.85rem]">
 									{school.name} <small>({charAbbrev})</small>
 								</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
+								<NumberInput
 									max={level}
 									min={0}
-									onInput={(e) =>
+									onChange={(v) =>
 										updateChar((c) => {
 											if (!c.magicSchools) c.magicSchools = {};
-											c.magicSchools[school.id] = Number((e.target as HTMLInputElement).value);
+											c.magicSchools[school.id] = v;
 										})
 									}
 									title="Base dots"
-									type="number"
 									value={base}
 								/>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem] text-info"
+								<NumberInput
 									min={0}
-									onInput={(e) =>
+									onChange={(v) =>
 										updateChar((c) => {
 											if (!c.bonusSchoolLevels) c.bonusSchoolLevels = {};
-											c.bonusSchoolLevels[school.id] = Number(
-												(e.target as HTMLInputElement).value,
-											);
+											c.bonusSchoolLevels[school.id] = v;
 										})
 									}
 									title="Bonus levels"
-									type="number"
 									value={bonus}
 								/>
 								<span className="min-w-5 text-center font-bold text-accent" title="Effective level">
@@ -330,7 +355,14 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Spells ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Spells</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
+					Spells ({spells.length})
+				</h3>
+				<datalist id="dl-spell-names">
+					{spellOptions.map((n) => (
+						<option key={n} value={n} />
+					))}
+				</datalist>
 				<table className="w-full border-collapse text-[0.85rem]">
 					<thead>
 						<tr>
@@ -370,6 +402,7 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								</td>
 								<td className="border-border border-b px-sm py-[3px] align-middle">
 									<GameInput
+										list="dl-spell-names"
 										onInput={(e) =>
 											handleSpellField(idx, "name", (e.target as HTMLInputElement).value)
 										}
@@ -378,12 +411,9 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									/>
 								</td>
 								<td className="border-border border-b px-sm py-[3px] align-middle">
-									<GameInput
+									<NumberInput
 										min={0}
-										onInput={(e) =>
-											handleSpellField(idx, "level", Number((e.target as HTMLInputElement).value))
-										}
-										type="number"
+										onChange={(v) => handleSpellField(idx, "level", v)}
 										value={sp.level}
 									/>
 								</td>
@@ -427,17 +457,15 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								key={school.id}
 							>
 								<span className="flex-1 font-medium text-[0.85rem]">{school.name}</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
+								<NumberInput
 									max={5}
 									min={0}
-									onInput={(e) =>
+									onChange={(v) =>
 										updateChar((c) => {
 											if (!c.swordSchools) c.swordSchools = {};
-											c.swordSchools[school.id] = Number((e.target as HTMLInputElement).value);
+											c.swordSchools[school.id] = v;
 										})
 									}
-									type="number"
 									value={dots}
 								/>
 							</div>
@@ -514,17 +542,15 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								key={kata.id}
 							>
 								<span className="flex-1 font-medium text-[0.85rem]">{kata.name}</span>
-								<GameInput
-									className="w-11 text-center font-semibold text-[0.9rem]"
+								<NumberInput
 									max={5}
 									min={0}
-									onInput={(e) =>
+									onChange={(v) =>
 										updateChar((c) => {
 											if (!c.gunKata) c.gunKata = {};
-											c.gunKata[kata.id] = Number((e.target as HTMLInputElement).value);
+											c.gunKata[kata.id] = v;
 										})
 									}
-									type="number"
 									value={dots}
 								/>
 							</div>

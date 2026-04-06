@@ -89,6 +89,10 @@ export function importCharacter(file: File): void {
 	characterAPI.importJSON(file).then((ch) => {
 		const { gameData, charList } = useCharSheetStore.getState();
 		if (gameData?.skills) ensureToolDefaults(ch, gameData.skills);
+		// Avoid duplicate entries when re-importing the same file
+		if (charList.some((c) => c.id === ch.id)) {
+			ch.id = characterAPI._genId();
+		}
 		useCharSheetStore.getState().setChar(ch);
 		useCharSheetStore.getState().setCharId(ch.id);
 		const list = [...charList, { id: ch.id, name: ch.name || "Imported" }];

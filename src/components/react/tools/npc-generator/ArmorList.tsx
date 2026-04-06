@@ -2,12 +2,16 @@ import { useCallback } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
 import { GameInput } from "@/components/react/ui/GameInput";
+import { GameSelect } from "@/components/react/ui/GameSelect";
+import { NumberInput } from "@/components/react/ui/NumberInput";
 import { ARMOR_LOCATIONS } from "./constants";
 
 interface ArmorEntry {
 	ap: number;
 	locations: string[];
 	name: string;
+	qualities?: string;
+	type?: string;
 }
 
 interface ArmorListProps {
@@ -28,11 +32,11 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 	);
 
 	const updateField = useCallback(
-		(index: number, field: "name" | "ap", value: string | number) => {
+		(index: number, field: "name" | "ap" | "type" | "qualities", value: string | number) => {
 			const updated = armor.map((a, i) => {
 				if (i !== index) return a;
-				if (field === "name") return { ...a, name: value as string };
-				return { ...a, ap: value as number };
+				if (field === "ap") return { ...a, ap: value as number };
+				return { ...a, [field]: value as string };
 			});
 			onChange(updated);
 		},
@@ -72,16 +76,25 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 							placeholder="Armor name"
 							value={a.name}
 						/>
+						<GameSelect
+							className="w-[90px] flex-none text-[0.78rem]"
+							onChange={(e) => updateField(i, "type", (e.target as HTMLSelectElement).value)}
+							value={a.type || ""}
+						>
+							<option value="">— Type —</option>
+							<option value="Flak">Flak</option>
+							<option value="Mesh">Mesh</option>
+							<option value="Carapace">Carapace</option>
+							<option value="Power">Power</option>
+							<option value="Other">Other</option>
+						</GameSelect>
 						<span className="text-[0.8rem] text-text-muted">AP</span>
+						<NumberInput max={30} min={0} onChange={(v) => updateField(i, "ap", v)} value={a.ap} />
 						<GameInput
-							className="w-[50px]"
-							max={30}
-							min={0}
-							onInput={(e) =>
-								updateField(i, "ap", Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)
-							}
-							type="number"
-							value={a.ap}
+							className="min-w-[80px] flex-1"
+							onInput={(e) => updateField(i, "qualities", (e.target as HTMLInputElement).value)}
+							placeholder="Qualities"
+							value={a.qualities || ""}
 						/>
 						<div className="flex flex-wrap gap-xs">
 							{ARMOR_LOCATIONS.map((loc) => (
