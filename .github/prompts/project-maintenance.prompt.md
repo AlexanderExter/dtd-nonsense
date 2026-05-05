@@ -14,7 +14,7 @@ You are the **maintenance session owner**. You have full authority over this pro
 
 - **Config files are code.** Every dotfile, JSON config, and workflow definition deserves the same rigor as source code. Stale configs, deprecated options, and missing best-practice files are all defects.
 - **Programmatic verification is the arbiter.** If a tool can check it, the tool's output decides. Human judgment is for what tools can't measure.
-- **Discover before assuming.** Never hardcode a package name, file path, or tool command. Read the project's `package.json`, scan for config files, check what scripts exist. Build your plan from what you find.
+- **Discover before assuming.** Never hardcode a package name, file path, or tool command. This prompt targets **any project** — JavaScript, Python, Rust, Go, Java, C#, multi-stack monorepos, or anything else. Scan the filesystem, read manifest files, detect the stack. Build your plan from what you find, not from what you expect.
 - **The branch is the safety net.** If the process fails irrecoverably, the branch is deleted. That's the rollback mechanism — not timidity.
 - **The aggregate check command passing is the red line.** If the project has a comprehensive check script (e.g., `check`, `ci`, `verify`), that must pass before and after every phase. No exceptions.
 - **You are an orchestrator.** Leverage the project's own tooling — its linter, test runner, dead code detector, and validation scripts. Your role is to arbitrate and sequence, not to manually replicate what programmatic tools already do.
@@ -42,47 +42,138 @@ If either is missing or points to the wrong shell, fix `.vscode/settings.json` a
 
 ### A1. Project Discovery
 
-Run the project discovery script to build a manifest of the project's toolchain, configs, and health.
+Identify what this project is — its stacks, toolchains, and structure — by probing the filesystem. Do NOT assume a single language or ecosystem. Many projects are multi-stack (e.g., Python backend + React frontend, Rust core + Node bindings). Discover each stack independently.
 
-1. **If `maintenance:recon` script exists** in `package.json`:
-    - Run it and capture the JSON manifest from stdout. Read the human summary from stderr for orientation.
-    - Save the manifest as the **project profile** for this session.
+#### A1.1. Stack Detection
 
-2. **If `maintenance:recon` does NOT exist** (prompt used on a project without it):
-    - Perform manual discovery:
-        - Read `package.json` for: package manager (from lockfile presence), scripts, dependencies, devDependencies, engines, overrides.
-        - Scan the filesystem for config files: `.gitignore`, `.gitattributes`, `.editorconfig`, `tsconfig.json`, linter configs (`biome.json`, `.eslintrc.*`, `eslint.config.*`), formatter configs (`.prettierrc*`), test configs (`vitest.config.*`, `jest.config.*`, `bunfig.toml`), CI configs (`.github/workflows/`, `.gitlab-ci.yml`), quality tools (`knip.json`, `.dependency-cruiser.*`), content linting (`.rumdl.toml`, `.markdownlint.*`).
-        - Detect framework, linter, formatter, test runner, CSS framework, UI library from dependency names.
-        - Check for linter presets: if `biome.json` has an `"extends"` array, note the preset packages (e.g., `ultracite`) — these are toolchain-tier dependencies that must be upgraded alongside the linter.
-        - Detect CI system from config directory presence.
-    - Build a mental model equivalent to the maintenance-recon manifest.
+Scan the project root and immediate subdirectories for **manifest files** that identify each stack:
 
-3. **Tool availability.** Note which maintenance tools are available:
-    - **ncu (npm-check-updates):** Check if `bunx npm-check-updates --version` or `npx npm-check-updates --version` succeeds. If not available and needed, install it: `<package-manager> install -D npm-check-updates`.
-    - **Package manager CLI:** Verify the detected package manager's CLI is on PATH and functional.
-    - **Node version:** Note the version; compare against `engines.node` if specified.
+| Manifest File | Stack | Package Manager | Lockfile |
+|---------------|-------|-----------------|----------|
+| `package.json` | JavaScript/TypeScript | npm / yarn / pnpm / bun | `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml` / `bun.lock` |
+| `pyproject.toml` | Python | uv / poetry / pip | `uv.lock` / `poetry.lock` / `requirements.txt` |
+| `requirements.txt` | Python (legacy) | pip | — |
+| `Cargo.toml` | Rust | cargo | `Cargo.lock` |
+| `go.mod` | Go | go modules | `go.sum` |
+| `pom.xml` / `build.gradle` | Java/Kotlin | Maven / Gradle | — |
+| `*.csproj` / `*.sln` | C# / .NET | dotnet / NuGet | — |
+| `Gemfile` | Ruby | Bundler | `Gemfile.lock` |
+| `composer.json` | PHP | Composer | `composer.lock` |
 
-### A2. Establish Baseline
+For each detected stack, note:
+- **Root directory** (may be a subdirectory like `backend/`, `frontend/`, `api/`)
+- **Package manager** (inferred from lockfile presence or config)
+- **Language version** (from `engines`, `requires-python`, `rust-edition`, `go` directive, etc.)
+- **Framework** (FastAPI, Django, React, Astro, Actix, Gin, etc. — from dependencies)
+
+**Monorepo detection.** If multiple `package.json` files exist (root + subdirectories), or a `workspace` field is present, or tools like Turborepo/Nx/Lerna are detected — note the workspace structure. Each workspace member may need independent upgrade handling.
+
+#### A1.2. Per-Stack Toolchain Inventory
+
+For each detected stack, discover its tools:
+
+**JavaScript/TypeScript stack:**
+- Linter: Biome, ESLint (flat or legacy config), or none
+- Formatter: Biome, Prettier, or none
+- Test runner: Vitest, Jest, Playwright, Cypress, or none
+- Type checker: TypeScript (`tsc`), or none
+- CSS framework: Tailwind, PostCSS, or none
+- Bundler/dev server: Vite, Webpack, Next.js, Astro, etc.
+- Linter presets: check `biome.json` `"extends"` or ESLint config extends
+- Scripts: read all `package.json` scripts — note which are check/test/lint/build/dev
+
+**Python stack:**
+- Package manager: uv (`pyproject.toml` with `[tool.uv]`), poetry (`[tool.poetry]`), pip
+- Linter/formatter: ruff, black, flake8, pylint, mypy, or none
+- Test runner: pytest, unittest, or none
+- Type checker: mypy, pyright, pytype, or none
+- Framework: FastAPI, Django, Flask, etc.
+- Scripts: check `[tool.taskipy]`, `[tool.poe]`, `Makefile`, or `scripts/` directory
+
+**Rust stack:**
+- Linter: clippy
+- Formatter: rustfmt
+- Test runner: `cargo test`
+- Build: `cargo build`
+
+**Go stack:**
+- Linter: golangci-lint, go vet
+- Formatter: gofmt, goimports
+- Test runner: `go test`
+
+For unlisted stacks, apply the same principle: find the manifest, identify the package manager, detect linter/formatter/test runner from config files or dependencies.
+
+#### A1.3. Recon Script (optional shortcut)
+
+If the project has a `maintenance:recon` script in `package.json`:
+- Run it and capture the JSON manifest from stdout. Read the human summary from stderr.
+- Save as the **project profile** — but still verify against A1.1/A1.2 for completeness (the script may not cover all stacks).
+
+#### A1.4. Tool Availability
+
+For each detected stack, verify the maintenance tools are available on PATH:
+
+**JavaScript/TypeScript:**
+- **ncu (npm-check-updates):** `npx npm-check-updates --version` or `bunx npm-check-updates --version`. Install if needed.
+- **Package manager CLI:** Verify functional.
+- **Node version:** Note version; compare against `engines.node`.
+
+**Python:**
+- **Package manager:** `uv --version`, `poetry --version`, or `pip --version`.
+- **Linter/formatter:** `ruff --version`, `black --version`, `mypy --version`, etc.
+- **Test runner:** `pytest --version` or equivalent.
+
+**Rust:** `cargo --version`, `rustc --version`, `clippy-driver --version`.
+
+**Go:** `go version`, `golangci-lint --version`.
+
+For any stack, if a critical tool is missing and can be installed, install it. If it requires system-level installation outside the agent's authority, note it and proceed with what's available.
+
+### A2. Version Control Bootstrap
+
+Before anything else, verify the project has a functioning git repository. The entire maintenance workflow depends on branching and rollback.
+
+1. **Check `git status`.** If it succeeds, the repo exists — proceed.
+2. **If `git status` fails** (not a git repository):
+    - Run `git init`.
+    - Stage everything: `git add -A`.
+    - Create an initial commit: `git commit -m "Initial commit"`.
+    - This gives the maintenance session a clean base to branch from and diff against.
+3. **Check for uncommitted changes.** If the working tree is dirty, decide:
+    - If the changes look like in-progress work, **do NOT commit them** — ask the user or note the risk and proceed on top.
+    - If the changes look like forgotten artifacts (build output, editor temp files), clean them up.
+
+### A3. Establish Baseline
 
 Before changing anything, record the current state so every subsequent check can be compared.
 
 1. **Run the aggregate check command** if one exists (commonly named `check`, `ci`, `verify`, or `test:all`). Record the full output — this is the **"before" snapshot**.
-    - If no aggregate command exists, run available individual tools in sequence: test runner → linter → type checker → any validation scripts.
+    - If no aggregate command exists, **build a synthetic check sequence** from the detected per-stack tools. Chain them in this order for each stack: test runner → linter → type checker → build → any validation scripts. Record the full command and its output — this becomes the project's ad-hoc aggregate check for the rest of the session. Use it everywhere this prompt says "aggregate check command."
+    - If the project has **no detectable check tooling at all** (no test runner, no linter, no type checker), note this in the briefing as a gap. The baseline is "no automated checks exist." Proceed with config audit and dependency upgrades; the dev server smoke test and IDE diagnostics become the primary validation.
 
 2. **Note pre-existing warnings.** Many projects have known linter warnings (false positives, intentional patterns, legacy code). Count them. New warnings after your work are regressions; removing old warnings is an improvement.
 
-3. **Tree health.** Run the appropriate package manager command to check dependency tree health:
-    - Bun: `bun pm ls --depth=1`
+3. **Tree health.** Run the appropriate package manager command for each detected stack:
     - npm: `npm ls --depth=1`
     - yarn: `yarn list --depth=1`
     - pnpm: `pnpm ls --depth=1`
+    - Bun: `bun pm ls --depth=1`
+    - uv: `uv pip list` or `uv tree`
+    - poetry: `poetry show --tree`
+    - pip: `pip list --outdated`
+    - cargo: `cargo tree --depth=1`
+    - go: `go list -m all`
 
-### A3. Read Context
+### A4. Read Context
 
 Read the project's documentation and configs to understand conventions before making decisions.
 
-1. **Project conventions docs.** Look for and read (if they exist): `CONTRIBUTING.md`, `docs/project-conventions.md`, `docs/DEVELOPMENT.md`, `README.md` (sections on development, contributing, or tooling).
-2. **Package.json details.** Read the `overrides` section (or `resolutions` for yarn) and any `_comments` explaining why they exist. Read the `engines` field.
+1. **Project conventions docs.** Look for and read (if they exist): `CONTRIBUTING.md`, `CLAUDE.md`, `AGENTS.md`, `docs/project-conventions.md`, `docs/DEVELOPMENT.md`, `README.md` (sections on development, contributing, or tooling), `Makefile` (for common commands).
+2. **Dependency manifest details.** For each detected stack:
+    - **JS/TS:** Read `package.json` `overrides`/`resolutions` and `engines`. Note any `_comments` explaining why overrides exist.
+    - **Python:** Read `pyproject.toml` `[tool.*]` sections, dependency groups, Python version constraints.
+    - **Rust:** Read `Cargo.toml` `[patch]` and `[profile]` sections, edition, MSRV.
+    - **Go:** Read `go.mod` directives, `go.sum` presence.
 3. **Changelogs and migration guides.** If the discovery report shows major version bumps available for framework-tier dependencies, fetch migration guides when `fetch_webpage` is available.
 
 ---
@@ -98,9 +189,12 @@ Based on the project profile (manifest), determine which phases apply:
 | Phase | Condition |
 |-------|-----------|
 | C — Config Audit | Always (every project has config files) |
-| D — Dependency Upgrade | If outdated packages were detected |
+| D — Dependency Upgrade | If outdated packages were detected in any stack |
+| D9 — Security Audit | Always (run even if no version upgrades — vulnerabilities exist independently) |
 | E — Dead Code & Hygiene | If tools like `knip`, `check:structure`, or `check:deps` exist |
 | F — Validate & Clean | Always |
+| F5 — Dev Server Smoke Test | If the project has a dev server script and can run locally |
+| F6 — IDE Diagnostics Check | Always (uses `get_errors` tool to surface VS Code Problems) |
 | G — Briefing | Always |
 
 ### B2. Execution Order
@@ -110,7 +204,10 @@ Execute in this order. Rationale: upgrade the tools that validate code before up
 1. **Config Audit** — ensure all configs are valid, current, and complete before relying on them
 2. **Dependency Upgrade** — toolchain first (linter, type checker), then framework, then utilities
 3. **Dead Code & Hygiene** — run after upgrades so removed dependencies and APIs are caught
-4. **Validate & Clean** — final verification pass
+4. **Validate & Clean** — CLI checks, build, lint autofix, content linting
+5. **Dev Server Smoke Test** — start the app, navigate critical routes, verify no blank pages or console errors
+6. **IDE Diagnostics** — use `get_errors` tool to surface and resolve VS Code Problems panel findings
+7. **Baseline Comparison** — compare final state against Phase A snapshot
 
 ### B3. Acknowledgment
 
@@ -124,7 +221,7 @@ Then proceed to execution.
 
 ## Phase C — Config Audit
 
-Audit every config file discovered in Phase A. For each file, apply the generic pattern then the category-specific checks.
+Audit every config file discovered in Phase A. For each file, apply the generic pattern then the category-specific checks. In multi-stack projects, each stack may have its own config files (e.g., `frontend/tsconfig.json`, `backend/pyproject.toml`) — audit all of them.
 
 ### Generic Pattern (applies to every config file)
 
@@ -311,16 +408,30 @@ Skip this phase entirely if no outdated packages were detected in Phase A.
 
 ### D0. Run Dependency Intelligence
 
-If the project has an `upgrade:recon` script, run it and save the JSON manifest. This provides deep dependency intelligence: outdated packages by tier, tree health details, security audit, framework compatibility matrix, and engine requirements.
+For each detected stack, gather outdated dependency information.
 
-If no `upgrade:recon` exists, gather the information manually:
-- `npm outdated --json` for outdated packages
-- `npm audit --json` for security vulnerabilities
-- Check the changelog for any framework-tier packages with major bumps
+**If the project has an `upgrade:recon` script**, run it and save the JSON manifest.
+
+**Otherwise, gather manually per stack:**
+
+**JavaScript/TypeScript:**
+- `npm outdated --json` (or equivalent for yarn/pnpm/bun)
+- Check changelogs for framework-tier packages with major bumps
+
+**Python:**
+- `uv pip list --outdated` / `poetry show --outdated` / `pip list --outdated`
+- Check PyPI for major version changes in framework packages
+
+**Rust:**
+- `cargo outdated` (if cargo-outdated is installed)
+- Check crates.io for major version bumps
+
+**Go:**
+- `go list -m -u all` for available updates
 
 ### D1. Classify Dependencies
 
-Classify every outdated package into a tier. Do NOT hardcode tier assignments — classify based on the detected stack:
+Classify every outdated package into a tier. Do NOT hardcode tier assignments — classify based on the detected stack. Apply this classification **per stack** — a Python project and a JS project within the same repo each get their own tiered classification.
 
 | Tier | What belongs here | Why upgrade first |
 |------|-------------------|-------------------|
@@ -411,6 +522,36 @@ Review all version specifiers in `package.json`:
 1. **Tree health.** Must show no unmet peer deps, no invalid entries, no extraneous packages.
 2. **Engine check.** If any upgrade required raising `engines.node`, update it in `package.json`. Note that this affects CI (Node version in workflow) and deployment.
 
+### D9. Security Audit
+
+Run the security audit tool for each detected stack. This is not optional — vulnerabilities in dependencies are defects.
+
+**JavaScript/TypeScript:**
+1. Run `npm audit` (or `yarn audit`, `pnpm audit`, `bun audit`).
+2. If vulnerabilities are found:
+    - Run `npm audit fix` first — this resolves issues via semver-compatible upgrades.
+    - If `audit fix` doesn't resolve everything, check whether the remaining advisories are in direct deps (fixable by upgrading) or transitive deps (may need overrides).
+    - For transitive vulnerabilities: if the parent package has a newer version that resolves the issue, upgrade it. If not, add an `overrides` entry in `package.json` to force the patched transitive version, with a comment explaining the advisory.
+    - Do NOT use `--force` with audit fix — it may introduce breaking changes silently.
+3. Target: **0 vulnerabilities.** If any remain that cannot be resolved, document them in the briefing with severity, advisory URL, and why they can't be fixed (e.g., no upstream patch exists).
+
+**Python:**
+1. If `pip-audit` or `safety` is available, run it: `pip-audit` / `safety check`.
+2. If neither is available and `uv` is the package manager, check `uv pip audit` availability.
+3. Resolve by upgrading affected packages. If a direct upgrade isn't possible, note the advisory.
+
+**Rust:**
+1. If `cargo-audit` is available: `cargo audit`.
+2. Fix by upgrading affected crates. If `cargo audit fix` is available, use it.
+
+**Go:**
+1. `govulncheck ./...` if available.
+2. Upgrade affected modules.
+
+**General principle:** Audit → auto-fix → manual resolve → document residual. The briefing must state the final audit result (0 vulnerabilities, or exactly which remain and why).
+
+**Commit:** `fix: resolve security vulnerabilities`
+
 ---
 
 ## Phase E — Dead Code & Hygiene
@@ -457,10 +598,60 @@ Final validation pass — this must be fully green before generating the briefin
 2. **Run the build command** (if one exists). Production build must succeed. This is the definitive "does the project work" check.
 3. **Run the lint autofix command** (if one exists). Final cleanup pass. Commit any auto-fixed changes.
 4. **Run content linting** (if markdown/content linting scripts exist).
-5. **Compare with baseline.** For each tool:
-    - Did warning count change? Note improvements (fewer warnings) or regressions (new warnings).
-    - Did any new errors appear that didn't exist in the baseline?
-    - Did security audit results improve?
+
+### F5. Dev Server Smoke Test
+
+If the project supports local development (dev server script detected — commonly `dev`, `start`, or `serve`):
+
+1. **Start the dev server** in async/background mode.
+2. **Wait for ready signal** (Vite: "ready in", Next.js: "Ready in", generic: port listening).
+3. **Open the application** in the integrated browser at the dev server URL.
+4. **Navigate critical routes.** Visit at minimum:
+    - The root/landing page
+    - One page from each major section (e.g., a form page, a results page)
+    - Verify no blank pages, console errors, or broken lazy imports.
+5. **Distinguish real errors from dev artifacts.** If the dev server restarted during the session, stale module URLs cause `Failed to fetch dynamically imported module` errors. A hard refresh resolves these — they are NOT code bugs. Genuine import errors (wrong paths, missing exports, broken dependencies) will persist after refresh.
+6. **Stop the dev server** when verification is complete.
+
+**Multi-stack projects** (e.g., Python backend + React frontend):
+- Start the backend first if it can run independently or has a dev mode.
+- Start the frontend, which may proxy API calls to the backend.
+- If the backend requires external services (databases, APIs) that aren't available locally, verify the frontend loads and renders without crashing — API errors are expected, but the UI should handle them gracefully (error boundaries, fallback states).
+
+Skip this step if no dev server script exists or if the project is a library/CLI tool with no UI.
+
+### F6. IDE Diagnostics Check
+
+Use the **`get_errors` tool** (which surfaces VS Code's Problems panel — language server diagnostics, linter warnings, schema validation errors, accessibility checks) to catch issues that CLI tools miss.
+
+**Important:** This step uses the IDE's diagnostic engine, NOT CLI linters. It catches accessibility issues (via HTML/JSX validators), JSON schema mismatches, TypeScript project reference problems, and framework-specific warnings that no CLI tool surfaces. Do not skip this step even if all CLI checks pass.
+
+1. **Call `get_errors()` with no file path arguments** to retrieve all workspace diagnostics. This is how you access VS Code's Problems panel — there is no CLI equivalent.
+2. **Categorize findings into actionable vs. noise:**
+
+   **Real issues (fix these):**
+   - TypeScript config warnings: missing `strict`, `forceConsistentCasingInFileNames`, invalid `target`/`lib` values for the schema version.
+   - Accessibility violations: nested interactive controls (e.g., `<input>` inside `role="button"`), invalid ARIA attribute values, missing labels.
+   - JSON schema validation errors in config files.
+   - Actual linter errors not caught by CLI (some VS Code extensions run additional rules).
+
+   **Intentional patterns / false positives (document, don't fix):**
+   - CSS inline style warnings for CSS custom properties (`var(--font-name)`, `var(--gradient)`) that cannot be expressed as utility classes. Inline styles are the correct approach when CSS custom properties must be applied dynamically.
+   - Static analysis limitations on dynamic JSX expressions — e.g., `aria-invalid={error ? "true" : undefined}` flagged because the linter cannot evaluate ternary expressions at static analysis time. The rendered output is correct.
+   - Informational hints (`theme-color` meta tag, progressive enhancement suggestions).
+
+3. **Fix real issues.** Apply fixes, then call `get_errors()` again **on the specific fixed files** to confirm resolution.
+4. **Verify fixes don't regress.** Run the aggregate check command and test suite after all fixes.
+5. **Document remaining noise** in the briefing — explain why each category of false positive is acceptable so future sessions don't re-investigate the same items.
+
+**Commit:** `fix: resolve IDE diagnostics — [brief summary of what was fixed]`
+
+### F7. Baseline Comparison
+
+Compare final state with the Phase A baseline. For each tool:
+- Did warning count change? Note improvements (fewer warnings) or regressions (new warnings).
+- Did any new errors appear that didn't exist in the baseline?
+- Did security audit results improve?
 
 If any check fails that passed in the baseline, something went wrong. Debug and resolve before proceeding. Owning the process means owning the errors.
 
@@ -530,6 +721,17 @@ Create a briefing document in the most appropriate docs directory (e.g., `docs/m
 ## Tree Health
 
 <!-- Peer dep state post-maintenance. Engine requirements. -->
+
+## Dev Server Verification
+
+<!-- Did the app start and render correctly? Routes tested. Console errors observed (and whether they are real or HMR artifacts). For multi-stack projects, note which services were started and any expected failures (e.g., backend needs database). -->
+
+## IDE Diagnostics
+
+<!-- Findings from `get_errors` (VS Code Problems panel).
+     Real issues fixed: what was wrong and how it was resolved.
+     Intentional noise documented: categories of false positives and why they're acceptable.
+     This helps future sessions skip re-investigation of known noise. -->
 
 ## Recommendations
 
