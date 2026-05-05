@@ -32,7 +32,7 @@ This skill gives any agent access to the project's strategic context without req
 
 ## When the Vision Document Doesn't Exist
 
-If `docs/product-vision.md` has not been created yet, note this as a gap and suggest running the Product Owner prompt (`.github/prompts/product-owner.prompt.md`) to establish it. In the meantime, use `docs/project-history.md` and the project's existing patterns as proxy strategic context.
+If `docs/product-vision.md` has not been created yet, note this as a gap and suggest running the Product Owner prompt (`.github/prompts/product-owner.prompt.md`) to establish it. In the meantime, use the project's existing patterns and git history as proxy strategic context.
 
 ---
 
@@ -44,4 +44,4 @@ This skill does not update `docs/product-vision.md` directly. Vision updates hap
 - **Session wrapup** — if a session surfaces strategic insights, the session-wrapup prompt can note them as candidates for the next PO session
 - **Self-Improvement Loop** — checks framework alignment with the vision
 
-If during normal work you notice the vision document is stale or contradicted by recent decisions, log this in `docs/side-tracks.md` under `investigation: Product vision may need update — [specific observation]`.
+If during normal work you notice the vision document is stale or contradicted by recent decisions, flag it to the user as a candidate for the next Product Owner session.

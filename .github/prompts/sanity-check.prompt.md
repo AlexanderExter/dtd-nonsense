@@ -73,7 +73,7 @@ For each changed file, trace its consumers and producers:
 | `data/*.json`             | Tools that load this data still render correctly                     |
 | `src/lib/dtd/core.ts`     | All 9 tools + 2 large tool apps — shared ES module                   |
 | `cleaned-references/*.mdx`| `bun run lint:data`, `bun run sync-check`, prebuild                  |
-| `books/*.mdx`             | `bun run lint:data`, `docs/editorial/open-questions.md`              |
+| `books/*.mdx`             | `bun run lint:data`                                                  |
 | `docs/*.md`               | Cross-references from other docs, copilot-instructions.md links      |
 | `.github/copilot-*`       | Relative links resolve correctly (files live in `.github/`)          |
 
@@ -106,8 +106,6 @@ The project follows "docs own, skills point" — conventions live in `docs/proje
 
 Things automated tools can't catch:
 
-- **Open questions**: Do changes affect any entries in `docs/editorial/open-questions.md`? Mark resolved entries, flag new ambiguities.
-- **Project history**: If a tool or feature was added/removed/changed, does `docs/project-history.md` reflect it?
 - **Decision log**: Were architectural decisions made during this session? They belong in the decision log.
 - **Roadmap items**: Were planned items completed? Update status in `docs/pipeline.md` roadmap table.
 
@@ -147,7 +145,7 @@ Do not apply fixes yet — present them in the report for approval.
 
 ### 7b. Session Handover
 
-Produce a structured handover document to preserve session context for future work. This is not a full context transfer — it is a distillation of judgment that a git diff cannot express.
+Produce a structured handover summary to preserve session context for future work. This is not a full context transfer — it is a distillation of judgment that a git diff cannot express.
 
 The handover must include:
 
@@ -160,33 +158,7 @@ The handover must include:
 | **Areas of concern**  | Zones of fragility, coupling risks, or things that "work but shouldn't be trusted."             |
 | **Suggested next**    | What a fresh session should do first — verification steps, remaining work, recommended reading.  |
 
-Write the handover to `docs/session-handover.md`, overwriting any previous version.
-
-### 7c. Side Tracks
-
-During the session, you may have noticed work that is valuable but out of scope — patterns worth refactoring, features worth adding, inconsistencies worth investigating. These are residual gains: the agent spots them in context but they'll be invisible to a cold session.
-
-Capture them in `docs/side-tracks.md`.
-
-**Format — append, do not overwrite:**
-
-```markdown
-## [Date] — [Brief session description]
-
-- **[Category]**: [Description of the opportunity]. *Context*: [Why you noticed it, what makes it worth doing].
-````
-
-Categories: `refactor`, `feature`, `inconsistency`, `debt`, `investigation`, `optimization`.
-
-If the file does not exist, create it with a header:
-
-```markdown
-# Side Tracks
-
-Out-of-scope observations captured during sessions. Review periodically for residual value.
-
----
-```
+Include the handover in the sanity check report.
 
 ---
 

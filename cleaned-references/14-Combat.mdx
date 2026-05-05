@@ -6,80 +6,82 @@ sidebar:
 title: Combat
 ---
 
-# Combat
-
-## Narrative Time vs Structured Time
-
-The passage of time is flexible and subject to the SM's discretion based on the needs of the story and the choices the players make.
-
-**Narrative Time:** Most of the time, you don't need to worry about exact timing, and it just passes as needed for the story. It's usually enough to know if a certain action takes a few minutes, or about an hour, or several weeks, or anything in between. Narrative time is most often used outside of combat and other situations where the precise order of actions is unimportant.
-
-**Structured Time:** In contrast, structured time is important for resolving complex encounters, such as combat, where every second counts and the order in which things happen is crucial. Structured time is divided into Rounds, Turns, and Actions.
-
-- **A Round** consists of every character participating in the encounter taking one turn each. A round is approximately ten to twelve seconds long regardless of how many characters are involved.
-- **Each character** in an encounter gets one Turn each round. During a character's turn, she can perform one or more actions. Turns are resolved in a specific order known as Initiative order.
-- **Actions** are what a character does. A character can take one Reaction Action per round, any number of Free Actions, and one Full Action OR two Half Actions. A character may not take the same Half Action twice in one turn (a character couldn't use Standard Attack twice, for example, but could use a Standard Attack and a Bull Rush).
-
-> **Note on Action Priority:** Each game event is discrete and follows a priority order determined by the SM. There is no such thing as truly simultaneous actions in the game system. At best the SM may rule actions were narratively simultaneous, but mechanically they are always sequential.
+> **Key concepts:** Combat uses **structured time** divided into Rounds (~10 seconds each). Each character gets one Turn per Round. On your turn: one **Full Action** OR two different **Half Actions**, plus one **Reaction** per round and unlimited **Free Actions**. Attack TN = target's **Static Defense** (`10 + (Dex + Wis) × 3 − Size × 2`). Damage is reduced by **Armor** (physical) or **Aura** (magical), then compared against **Resilience** to determine Hit Points lost.
 
 ---
 
-## Combat Overview
+## Narrative Time vs Structured Time
 
-Combat is usually resolved using structured time divided into Rounds, Turns, and Actions. Each character, including NPCs, takes one Turn each Round. When a new combat begins, follow these steps:
+- **Narrative Time** — time passes as the story requires. No precise tracking needed.
+- **Structured Time** — used for combat and complex encounters. Divided into **Rounds**, **Turns**, and **Actions**.
 
-**Step 1: Surprise**
-At the beginning of a combat, the SM determines if any characters are Surprised. This can only happen once at the beginning of a combat. A surprised character loses her turn on the first round of combat because she has been caught unawares by her enemies.
+| Unit | Definition |
+| ---- | ---------- |
+| **Round** | Every character takes one Turn. ~10–12 seconds regardless of participant count. |
+| **Turn** | One character's opportunity to act, resolved in Initiative order. |
+| **Actions** | What a character does on their Turn (see Action Economy below). |
 
-**Step 2: Roll Initiative**
-At the start of the first Round, participants roll initiative to determine turn order. Roll 1d10 and add Dexterity and Composure. Highest result goes first. If two people are tied for result, the character with the higher die roll wins. If they're still tied, highest Dex wins. If still tied, roll again, winner goes first.
+---
 
-**Step 3: Determine Initiative Order**
-The SM ranks all the Initiative rolls, including those of the NPCs, from highest to lowest. This is the order in which the characters take their turns during each round of combat.
+## Action Economy Summary
 
-**Step 4: Combatants Take Turns**
-Starting with the character at the top of the initiative order, each character takes a turn. The character currently taking her turn is known as the active character. During her turn, the active character can perform one or more actions.
+| Action Type | Allowance per Turn | Notes |
+| ----------- | ------------------ | ----- |
+| **Full Action** | 1 (instead of Half Actions) | Consumes entire turn |
+| **Half Action** | Up to 2 different ones | Cannot take the same Half Action twice |
+| **Reaction** | 1 per Round | Used outside your turn (Dodge, Parry, Refute) |
+| **Free Action** | Unlimited | Trivial effort (speaking, dropping items) |
+| **Extended Action** | Multiple rounds | Progress lost if interrupted |
 
-**Step 5: Round Ends**
-The round ends when everyone has taken their turn, and any effects that last until the end of the round now end.
+> **Action Priority:** All game events are sequential, never truly simultaneous. The SM determines priority order.
 
-**Step 6: Repeat Steps 4-5 as needed.**
-Continue to play through combat rounds until the combat is resolved.
+---
+
+## Combat Round Procedure
+
+1. **Surprise** (first round only) — SM determines if anyone is caught unaware. Surprised characters lose their first Turn and grant combat advantage.
+2. **Roll Initiative** — each participant rolls `1d10` + Dexterity + Composure. Highest goes first. Ties: higher die roll wins → higher Dex wins → reroll.
+3. **Determine Initiative Order** — SM ranks all rolls highest to lowest.
+4. **Combatants Take Turns** — from top of initiative, each character takes a turn as the **active character**.
+5. **Round Ends** — end-of-round effects expire.
+6. **Repeat** steps 4–5 until combat resolves.
 
 ---
 
 ## Surprise
 
-Surprise only affects the beginning of a new combat. It is up to the SM to decide if any of the combatants are Surprised based on:
+Surprise only affects the first round of combat. The SM determines who is Surprised based on:
 
-- Is anyone hiding? Successful Stealth Tests may mean that some combatants are hidden.
-- Are there any unusual circumstances that would mask the approach of attackers? This can cover nearly anything, from pouring rain to whining engines to nearby explosions.
-- Are there any distractions? A cultist's attention may be so fixated on the sermon of his confessor that he doesn't notice his attackers approaching.
+- **Hidden attackers** — successful Stealth Tests conceal combatants
+- **Masking conditions** — rain, engine noise, explosions, etc.
+- **Distractions** — target's attention is elsewhere
 
-A surprised character loses her Turn in the first Round. She can do nothing except stand dumbfounded. Furthermore, she grants combat advantage to all non-Surprised attackers. After the Surprise round completely resolves, all surprised characters recover their wits and can act normally.
+**Effects of Surprise:**
 
-Some people cannot be surprised—Paragons and people with the Danger Sense feat are the most common. In these cases you should have people know that their danger sense was triggered, then determine what they know and what they will do before rolling initiative.
+- Lose your Turn in the first Round (cannot act)
+- Grant **combat advantage** to all non-Surprised attackers
+- Recovery is automatic after the Surprise round resolves
+
+**Immunity:** Paragons and characters with the **Danger Sense** Feat cannot be surprised. They should be informed their danger sense triggered, then determine what they know and will do before Initiative is rolled.
 
 ---
 
 ## Perception & Stealth
 
-_Source: Book 1 Appendix A_
+Rules for actively looking for things that can reasonably be missed. Spotting a camouflaged tank in the jungle is appropriate; spotting a drunk fan in an empty field is not. Don't penalize everyday Perception Tests for lacking skill dots — reserve the untrained penalty for special trials.
 
-These rules model characters actively looking for things that can reasonably be missed. Spotting a tank with camouflage netting in the jungle is a proper use; spotting a drunk fan in an empty football field isn't. Perception skill Tests under normal everyday circumstances shouldn't be penalized for not having dots in the skill — apply the no-dots penalty only for special trials.
+### Automatic Spotting
 
-### Simplified Spotting
-
-Characters automatically spot things at **Size × 10 meters**. Double this distance for each factor that applies:
+Characters automatically spot things at **Size × 10 meters**. Double this distance for each applicable factor:
 
 - Open, clear terrain
-- Nothing else out there
-- Only thing moving
+- Nothing else nearby
+- Only moving thing in view
 - Large vehicle (Size 11+)
 
-Beyond automatic range, the base spotting TN is **10 at 100m**, +5 per additional 100m. Subtract twice the target's Size from the TN. Add rolled dice for factors favoring the spotter; subtract rolled dice for factors favoring the target. Active Stealth Tests add to the spotting TN.
+### Spotting TNs by Range
 
-### Visual Spotting TNs by Range
+Beyond automatic range, base spotting TN is **10 at 100m**, +5 per additional 100m. Subtract **twice the target's Size** from the TN.
 
 | Range   | TN  |
 | ------- | --- |
@@ -96,8 +98,6 @@ Beyond automatic range, the base spotting TN is **10 at 100m**, +5 per additiona
 | 1km     | 55  |
 | 1–5km   | +5 per 200m (TN 95 at 5km) |
 | 5–50km  | +5 per km (TN 140 at 50km)  |
-
-Always subtract twice the target's Size from these TNs.
 
 ### Spotting Modifiers
 
@@ -155,20 +155,20 @@ Always subtract twice the target's Size from these TNs.
 
 ### Perception vs. Stealth Resolution
 
-Perception often uses Wisdom; Stealth often uses Dexterity. Alternate pairings include:
+Perception typically uses Wisdom; Stealth typically uses Dexterity. Alternate pairings:
 
-- **Stealth + Intelligence:** Deducing blind spots in security cameras
-- **Perception + Willpower:** Fighting boredom during long watches
-- **Stealth + Constitution:** Holding perfectly still for extended periods
-- **Perception + Fellowship:** Getting a good look without being rude
+- **Stealth + Intelligence** — deducing blind spots in security cameras
+- **Perception + Willpower** — fighting boredom during long watches
+- **Stealth + Constitution** — holding perfectly still for extended periods
+- **Perception + Fellowship** — getting a good look without being rude
 
-**Opposed Tests:** When range isn't a factor and the sneaker would be automatically spotted without active Stealth, use a straight opposed Test. When range modifiers also apply, choose one of three scaling options:
+**Opposed Tests:** When range isn't a factor and the sneaker would be automatically spotted without active Stealth, use a straight opposed Test. When range modifiers also apply, choose one scaling option:
 
-1. Take the **higher** of the general spotting TN or the Stealth Test result (lowest difficulty — recommended default)
-2. Add **half** the Stealth Test to the general spotting TN
-3. Add the **full** Stealth Test to the general spotting TN
+1. **Higher of** general spotting TN or Stealth result (easiest — recommended default)
+2. Add **half** the Stealth result to the general spotting TN
+3. Add the **full** Stealth result to the general spotting TN
 
-**Incidental perception:** If a character isn't actively looking (driving past a shop window, watching TV), halve her rolled dice after modifiers.
+**Incidental perception:** If a character isn't actively looking (driving past a shop, watching TV), halve rolled dice after modifiers.
 
 ### Line of Sight by Terrain
 
@@ -208,6 +208,25 @@ Chance of an unobstructed line of sight existing at a given altitude (Earth-norm
 **Identification range:** Identifying a specific sound (caliber, engine type, words spoken) is at roughly ¼ to ⅕ of detection range, or 1/10 if unprepared or facing away.
 
 **Silencers:** Reduce effective distance category by the silencer's quality level. A poor silencer moves pistol shots down to "light rioting" distances; best quality moves them to "crying baby" distances.
+
+---
+
+## Common Combat Actions Quick-Reference
+
+| Action | Type | Key Effect |
+| ------ | ---- | ---------- |
+| Standard Attack | H | Make one melee or ranged attack |
+| All-Out Attack | F | +`2k0` hit, +`1k0` melee damage, lose Reactions |
+| Charge | F | Move 4m+ then attack at +`1k0` |
+| Full Auto Burst | F | +`2k1` hit, +`1k0` damage per raise (up to RoF) |
+| Aim | H/F | +`1k0` (Half) or +`2k0` (Full) on next attack |
+| Full Defense | F | +10 Static Defense, gain extra Reaction |
+| Dodge | R | Dex + Acrobatics, half result adds to Static Defense |
+| Parry | R | Weaponry Test, half result adds to Static Defense |
+| Move | H/F | Speed (Half) or 2× Speed (Full) in meters |
+| Shift | H | Move Dex meters without provoking |
+
+See [Equipment](/cleaned-references/10-Equipment) for weapon stats, [Feats](/cleaned-references/07-Feats) for combat Feats, and [Conditions](/cleaned-references/16-Conditions) for status effects.
 
 ---
 
@@ -255,19 +274,15 @@ Chance of an unobstructed line of sight existing at a given altitude (Earth-norm
 
 ## Types of Actions
 
-**Full Actions:** A full action requires a character's complete attention to accomplish. A character can take one Full Action on her turn and cannot take any Half Actions.
-
-**Half Actions:** A half action is fairly simple; it requires some effort or concentration, but not so much that it consumes a character's entire turn. A character can take two different Half Actions on her turn instead of taking one full action. A character cannot take the same half action twice in the same turn.
-
-**Reactions:** A Reaction is a special Action made in response to some event, such as an attack. A character receives one Reaction each Round, which may only be used when it is not her turn.
-
-**Free Actions:** A free action takes only a moment and requires no real effort by the character. Free actions may be performed in addition to any other Actions on a character's turn.
-
-**Extended Actions:** Some actions take more than a single round to complete. Once a character commits to an Extended Action, she is considered to be working towards completing it for as long as necessary. If the character abandons the Extended action, or is interrupted, all progress is lost.
+- **Full Action** — consumes the entire turn. Cannot also take Half Actions.
+- **Half Action** — fairly simple. Take up to two different Half Actions per turn (never the same one twice).
+- **Reaction** — responds to an event outside your turn. One per Round.
+- **Free Action** — trivial effort (speaking, dropping items). Unlimited per turn.
+- **Extended Action** — spans multiple rounds. All progress is lost if interrupted or abandoned.
 
 ### Action Subtypes
 
-Every action is also categorized into one or more subtypes. Action subtypes are used to clarify what a character is and is not allowed to do in a variety of special circumstances. For example, a character that is Immobilized cannot perform any Actions with the movement subtype.
+Every action has one or more subtypes (Attack, Movement, Melee, Ranged, Concentration, Miscellaneous, Defense). Subtypes clarify restrictions — e.g., an Immobilized character cannot perform Movement-subtype actions.
 
 ---
 
@@ -275,368 +290,311 @@ Every action is also categorized into one or more subtypes. Action subtypes are 
 
 ### Aid Another
 
-**Half Action** | Subtype: Miscellaneous
+**Half Action** | Miscellaneous
 
-The character creates an opportunity for another character. By working together with them, the active character gives them +`1k0` to their next Test. If the Test is to be a skill, the character must have at least one dot in that skill or this Aid Another bonus does not apply. Supernatural template abilities and spells cannot get bonuses via this method. The active character must be adjacent to the character performing the Test. The Aid Another bonus cannot be used on Free Actions, and the bonus cannot be given on Tests made to resist disease, poison, Fear, or anything else the SM deems inappropriate, and no more than two characters may attempt to assist another on a single Test.
+Give an adjacent ally +`1k0` on their next Test. The ally must have at least one dot in the relevant skill (if it's a Skill Test). Cannot aid supernatural template abilities, Free Actions, or resistance Tests (disease, poison, Fear). Maximum two characters may assist on a single Test.
 
 ### Aim
 
-**Half or Full Action** | Subtype: Melee or Ranged
+**Half or Full Action** | Melee or Ranged
 
-The active character takes extra time to make a more precise attack. You may take a half action to get +`1k0` on your next attack or a full action to get +`2k0` on your next attack. The next action the aiming character performs must be an attack or the benefits of aiming are lost. Aiming benefits are also lost if the character performs a Reaction before making her attack. Aiming can be used with both melee and ranged attacks.
+Half Action: +`1k0` on next attack. Full Action: +`2k0` on next attack. Benefits lost if next action isn't an attack or if you use a Reaction first. Works for both melee and ranged.
 
 ### All-Out Attack
 
-**Full Action** | Subtypes: Attack, Melee
+**Full Action** | Attack, Melee
 
-The character attacks with everything they've got, making a melee attack with a +`2k0` bonus to hit and a +`1k0` bonus to damage. However, the active character loses the ability to use Reactions until their next turn.
+Melee attack at +`2k0` to hit and +`1k0` to damage. Lose all Reactions until your next turn.
 
 ### Brace
 
-**Half Action** | Subtype: Miscellaneous
+**Half Action** | Miscellaneous
 
-Heavy weapons must be braced before firing. Bracing a heavy weapon can involve using a stand, propping it up on a windowsill, or simply assuming a wide stance or kneeling. The firer cannot move after bracing without losing the benefits, and depending on how it's braced, may be unable to traverse the weapon very far. If a heavy weapon is fired without bracing, the firer takes -`3k0` to her attack roll.
+Brace a heavy weapon for firing (stand, windowsill, wide stance). Cannot move after bracing. Firing a heavy weapon without bracing: −`3k0` to attack.
 
 ### Bull Rush
 
-**Half Action** | Subtypes: Attack, Melee, Movement
+**Half Action** | Attack, Melee, Movement
 
-The character body slams into an opponent and attempts to move him. The character and a target in melee range make opposed Size + Strength Tests. If the active character succeeds, she moves the target 2m, plus 2m for every raise she gets on this opposed Test.
+Opposed Size + Strength Test against a melee-range target. On success, push target 2m + 2m per Raise.
 
 ### Called Shot
 
-**Full Action** | Subtypes: Attack, Melee or Ranged
+**Full Action** | Attack, Melee or Ranged
 
-The character attempts to attack a specific or vulnerable area on her target. The attacker declares a location on her target (Head, Body, Left Arm, Right Arm, Gizzards, Left Leg or Right Leg), then makes an attack at -`2k0`. Instead of rolling for a hit location, if the attack is successful it hits the named location.
+Declare a hit location, then attack at −`2k0`. On success, hit goes to the named location instead of rolling.
 
 ### Charge
 
-**Full Action** | Subtypes: Attack, Melee, Movement
+**Full Action** | Attack, Melee, Movement
 
-The character rushes at her target and makes a single melee attack. The target must be at least four meters away, and a character may charge up to twice their Speed in meters. The movement of the charge must be in a straight line so the attacker can build speed and line up with her target. The attacker gains a +`1k0` bonus on the attack made at the end of the charge. If the charging character is unarmed, she can attempt to grapple her opponent instead of inflicting damage. The attack at the end of the charge can also be replaced by a Bull Rush or Knock Down attempt.
+Target must be 4+ meters away. Move up to 2× Speed in a straight line, then attack at +`1k0`. May substitute a Grapple, Bull Rush, or Knock Down for the attack.
 
 ### Delay
 
-**Half Action** | Subtype: Miscellaneous
+**Half Action** | Miscellaneous
 
-Instead of acting immediately, the character saves an action for later. At any time before her next turn, she may take any half action. If the character uses this stored action in response to someone taking an action, this action occurs first.
+Save a Half Action for later. Use it any time before your next turn. If used in response to another's action, yours resolves first.
 
 ### Disarm
 
-**Half Action** | Subtype: Attack, Melee
+**Half Action** | Attack, Melee
 
-The character attempts to disarm an opponent. Both the attacking character and her target make opposed Level + Weaponry tests. If the attacking character gets two or more raises on this opposed Test, the opponent drops their weapon.
+Opposed Level + Weaponry Test. Disarm opponent if you win by two or more Raises.
 
 ### Dodge
 
-**Reaction Action** | Subtype: Movement
+**Reaction** | Movement
 
-Dodge is a Reaction that a character can perform when it is not her turn. After an attack is declared on the character, the character may spend a Reaction Action to make a Dodge Test (Dexterity + Acrobatics). A character must be aware of the attack in order to make the Test. Half of the result of this Test is added to the character's Static Defense against the attack that they are attempting to dodge.
+When attacked, Test Dexterity + Acrobatics. **Half** the result adds to your Static Defense against that attack. Must be aware of the attack.
 
-> **Note:** The feat "Combat Sense" allows Wisdom to replace Dexterity in Dodge tests (Wisdom + Acrobatics).
+> **Note:** The Feat "Combat Sense" allows Wisdom to replace Dexterity in Dodge Tests.
 
 ### Feint
 
-**Half Action** | Subtype: Attack, Melee
+**Half Action** | Attack, Melee
 
-The character attempts to use guile and combat training to trick her opponent into a mistake. The character and her target make an opposed Level + Weaponry Test. If the attacking character wins, her next melee attack against that same target cannot be dodged or parried. If the active character's next action is anything other than a melee attack, the advantage of feinting is lost.
+Opposed Level + Weaponry Test. If you win, your next melee attack against that target cannot be Dodged or Parried. Advantage lost if next action isn't a melee attack.
 
 ### Fight Defensively
 
-**Full Action** | Subtype: Attack, Melee or Ranged
+**Full Action** | Attack, Melee or Ranged
 
-The character performs a careful attack, making sure she remains well poised to defend herself. The character suffers a -`2k0` penalty to her Weaponry Test, but she gains a +`2k0` bonus to all dodge and parry Tests until the start of her next turn.
+Attack at −`2k0`, but gain +`2k0` to all Dodge and Parry Tests until your next turn.
 
 ### Focus Power
 
-**Variable Action** | Subtype: Varies by power, Provokes
+**Variable Action** | Varies by power, Provokes
 
-The character casts a spell. The spell will list the Target Number and the magic skill Tested. If the character succeeds, the spell works. If not, the spell fails.
+Cast a spell. The spell lists the TN and magic skill Tested.
 
 ### Full Auto Burst
 
-**Full Action** | Subtype: Attack, Ranged, Provokes
+**Full Action** | Attack, Ranged, Provokes
 
-The character hurls a roaring burst of fully automatic gunfire at her enemies. The attacker must be wielding a ranged weapon capable of fully automatic fire to take this action. If the character has a pistol in each hand, both capable of fully automatic fire, she may fire both with this action.
+Requires a fully-automatic weapon. Test Ballistics at +`2k1`. Each Raise means an additional hit, adding +`1k0` damage each (up to weapon's Rate of Fire).
 
-The attacker makes a Ballistics Test with a +`2k1` bonus. If she succeeds, the attack scored a hit normally. Furthermore, each raise on the Ballistics Test means another shot has hit the target. Each additional hit adds +`1k0` to the damage of the attack, up to a maximum of the weapon's Rate of Fire.
+> **Note:** Weapons with the **Storm** property replace +`1k0` per raise with +`2k0` per raise (non-stacking).
 
-> **Note:** Weapons with the **Storm** property replace the standard +`1k0` per raise with +`2k0` per raise (they do not stack).
-
-A character using this action with a pistol or basic class weapon may also move up to her Dexterity in meters. However, if she does so, she gains no bonus to her Ballistics Test and instead suffers a -`1k0` penalty.
+Moving up to Dexterity meters during this action replaces the +`2k1` bonus with a −`1k0` penalty. Pistol/basic class weapons only.
 
 ### Full Defense
 
-**Full Action** | Subtype: Melee
+**Full Action** | Melee
 
-The character makes no attacks and instead concentrates entirely on self-defense. Until the start of her next turn, the character can make one additional Reaction Action and gains a +10 bonus to her Static Defense.
+Make no attacks. Gain +10 Static Defense and one extra Reaction until your next turn.
 
 ### Grapple
 
-**Half or Full Action** | Subtype: Attack, Melee
+**Half or Full Action** | Attack, Melee
 
-If the character is not in a grapple, she may use the Half Action Grapple to enter a grapple with target opponent. Make a Brawl Test to hit the opponent. If it is successful, she begins grappling the target as the controller of the grapple.
+**Initiating:** Half Action Brawl Test to hit. On success, you become the **controller**.
 
-The controller of a grapple must spend a Full Action on every subsequent turn to maintain this grapple. If she doesn't, the grapple immediately ends. She may then make an Opposed Size + Strength Test. If she succeeds, she may take one of the following actions:
+**Maintaining:** Controller spends a Full Action each turn (or grapple ends), then makes an Opposed Size + Strength Test. On success, choose one:
 
-**Controller Options:**
+- **Attack** — damage with fists, claws, or one-handed melee weapon. No Reactions allowed from target.
+- **Throw Down** — target becomes Prone.
+- **Push** — Bull Rush (must move with target to maintain grapple, or let go).
+- **Ready/Use Item** — ready or use an item (SM may allow grabbing opponent's item).
+- **Stand** — regain feet (may drag target up).
 
-- **Attack with Weapon:** The controller can damage the opponent with her fists, teeth, claws, or a melee weapon. The opponent cannot make any Reactions to this attack. Roll damage normally. You cannot use weapons that normally require the use of both hands in a grapple.
-- **Throw Down Opponent:** The controller can wrestle the Grappled opponent to the ground. The grappled opponent becomes Prone.
-- **Push Opponent:** The controller makes a Bull Rush attempt. The pushed distance cannot exceed the active character's Speed. The active character must move with her grappled opponent to maintain the grapple or can choose to let go (ending the grapple but allowing the active character to keep her ground).
-- **Ready:** The controller can ready one of her own items. Or if the SM allows, she can use the Ready action to grab an item belonging to her grappled opponent.
-- **Stand:** If both grappling participants are on the ground, the controller can regain her feet. She can also drag her grappled opponent up with her.
-- **Use item:** The controller can use a readied item.
+**Escaping (as target):** Must declare Grapple as a Half Action first (the penalty for being grappled), then choose:
 
-**Grappled Target Options:**
-If the active character is the target of the grapple, the first thing she must do on her turn is declare Grapple as a Half Action—this is part of the penalty for being grappled. After that, she may choose one of the following options:
-
-- **Break Free:** Attempt to break free by making an Opposed Size + Strength Test against the controller. If the active character wins, she breaks free and may perform any regular Half Action.
-- **Slip Free:** Attempt to wriggle out by making an Athletics + Dexterity Test opposed by controller's Athletics + Strength. If she succeeds, she slips free and may perform any regular Half Action.
-- **Take Control:** Attempt to take control by making an opposed Athletics + Strength Test against the opponent's Athletics (or Size) + Strength. If the active character wins, she becomes the controller and her opponent becomes the grappled target. The active character then immediately performs one of the controller grapple options, but cannot take any other Half Actions.
+- **Break Free** — Opposed Size + Strength. On win, free + any Half Action.
+- **Slip Free** — Athletics + Dexterity vs. controller's Athletics + Strength. On win, free + any Half Action.
+- **Take Control** — Opposed Athletics + Strength. On win, become controller and immediately take one controller option.
 
 ### Healing Surge
 
-**Half Action** | Subtype: Miscellaneous
+**Half Action** | Miscellaneous
 
-While normally a character cannot spend Resource Points during combat to heal, they do have the option of using this action to heal their wounds. They take a half action and spend Resource Points up to their level, healing that many Hit Points. A character gains +5 to their Static Defense until their next turn when they use Healing Surge.
+Spend Resource Points up to your Level to heal that many Hit Points. Gain +5 Static Defense until your next turn.
 
 ### Knock Down
 
-**Half Action** | Subtype: Attack, Melee
+**Half Action** | Attack, Melee
 
-The attacker smashes her opponent in the hopes of knocking him off his feet. Make an Opposed Size + Strength Test. If the attacker wins, the target is knocked prone and must make a Stand action on his turn to regain his feet. If the target wins the opposed Test, he keeps his footing. If the target wins with three or more raises, the attacker is knocked prone instead.
+Opposed Size + Strength. Win: target knocked Prone. If target wins by 3+ Raises, **you** fall Prone instead.
 
 ### Move
 
-**Half or Full Action** | Subtype: Movement, Provokes
+**Half or Full Action** | Movement, Provokes
 
-The active character can spend a Half Action to move a number of meters equal to their Speed. As a Full Action, she may move twice that distance. If the active character ends her movement adjacent to an opponent, she may engage that opponent in melee. If the active character moves away from an opponent with whom she is engaged, she provokes Opportunity Attacks.
+Half: move Speed meters. Full: move 2× Speed meters. Ending adjacent to an opponent engages melee. Moving away from a melee-engaged opponent provokes Opportunity Attacks.
 
 ### Multiple Attacks
 
-**Full Action** | Subtype: Attack, Melee or Ranged
+**Full Action** | Attack, Melee or Ranged
 
-This action allows a character with an appropriate feat to make one or more attacks on her turn. The character must spend one Reaction Action for each attack beyond the first. A character must be wielding two weapons or have an appropriate feat such as Swift Attack or Lightning Attack in order to use this action.
+Attack more than once. Requires two weapons or an appropriate Feat (Swift Attack, Lightning Attack). Spend one Reaction per additional attack beyond the first.
 
 ### Opportunity Attack
 
-**Free Action** | Subtype: Attack, Melee
+**Free Action** | Attack, Melee
 
-Whenever a character uses an action with the provokes keyword while engaged in melee with an opponent, she provokes an Opportunity Attack. All opponents in melee range of the Provoking character may use this action in order to make a Standard Attack against the Provoking character. This is a special free action that you can use once per turn, during any character's turn.
+When an opponent uses an action with the **Provokes** keyword while engaged in melee with you, make a Standard Attack against them. Once per turn, usable during any character's turn.
 
 ### Overwatch
 
-**Full Action** | Subtype: Attack, Ranged, Provokes
+**Full Action** | Attack, Ranged, Provokes
 
-The active character guards a specific area or target, poised to shoot at an opportune moment. When Overwatch is declared, the active character establishes a kill zone, which is any general area, such as a corridor or tree line, which encompasses a 45 degree arch in the direction the active character is facing.
-
-The active character then specifies either Full Auto Burst or Suppressing Fire, along with the conditions under which she will perform the chosen attack. At any time the specified conditions are met before the start of the character's next turn, she can perform that attack. If a character on Overwatch performs any actions or reactions, such as Dodge, her Overwatch immediately ends. Note this does not include free actions such as speech.
+Establish a 45° kill zone and specify Full Auto Burst or Suppressing Fire with trigger conditions. Fire when conditions are met before your next turn. Performing any action or Reaction (except speech) cancels Overwatch.
 
 ### Parry
 
-**Reaction Action** | Subtype: Defense, Melee
+**Reaction** | Defense, Melee
 
-If the character is wielding a melee weapon capable of parrying, she can attempt to thwart an incoming melee attack by making a Weaponry Test. This Test is made just like a melee attack—roll and keep a number of dice equal to your Weaponry, and you get a +Xk0 bonus (X being your Level) if you're proficient with the weapon. Half of the result of this Test is added to the character's Static Defense against this attack. A character must be aware of the attack being made on them in order to parry it.
+When hit by a melee attack, Test Weaponry (kept dice = Weaponry dots, +Level`k0` if proficient). **Half** the result adds to Static Defense against that attack. Must be aware of the attack.
 
 ### Ready
 
-**Half Action** | Subtype: Miscellaneous, Provokes
+**Half Action** | Miscellaneous, Provokes
 
-The active character draws a weapon or retrieves an object stowed in a pouch or pocket. A weapon or item can also be properly stowed away with this action (but note that simply dropping an item is considered a free action). This action can also be used to do things such as apply a bandage, coat a blade with poison, and so forth.
+Draw, stow, or prepare a weapon or item. Also covers applying bandages, coating blades with poison, etc. Dropping an item is a Free Action.
 
 ### Reload
 
-**Variable Action** | Subtype: Miscellaneous, Provokes
+**Variable Action** | Miscellaneous, Provokes
 
-The active character can reload a ranged weapon. The amount of time the reload action takes depends on the weapon.
+Reload a ranged weapon. Time depends on the weapon.
 
 ### Run
 
-**Full Action** | Subtype: Movement, Provokes
+**Full Action** | Movement, Provokes
 
-The active character runs, covering a distance equal to six times their speed. This makes the character harder to hit with ranged weapons, but easier prey for melee attacks. Until the beginning of the character's next turn, ranged attacks made against her suffer a -`2k0` penalty, while melee attacks gain a +`2k0` bonus.
+Move 6× Speed meters. Until next turn: −`2k0` to ranged attacks against you, +`2k0` to melee attacks against you.
 
 ### Shift
 
-**Half Action** | Subtype: Movement
+**Half Action** | Movement
 
-The character moves a distance equal to her dexterity in meters.
+Move Dexterity meters. Does **not** provoke Opportunity Attacks.
 
 ### Stand
 
-**Half Action** | Subtype: Movement, Provokes
+**Half Action** | Movement, Provokes
 
-If the active character is on the ground, she can stand.
+Stand up from Prone.
 
 ### Standard Attack
 
-**Half Action** | Subtype: Attack, Melee or Ranged
+**Half Action** | Attack, Melee or Ranged
 
-The active character makes one melee or ranged attack.
+Make one melee or ranged attack.
 
 ### Suppressing Fire
 
-**Full Action** | Subtypes: Attack, Ranged, Provokes
+**Full Action** | Attack, Ranged, Provokes
 
-The active character unleashes a devastating hail of firepower to force her opponents to take cover. This action requires a weapon capable of full automatic fire. When Suppressing Fire is declared, the active character establishes a kill zone (or uses one previously established, such as through overwatch), which is any general area, such as a corridor or tree line, that encompasses a 45 degree arch in the direction the active character is facing. Then, the active character fires a Full Auto Burst and expends the appropriate ammo.
-
-Targets within the kill zone must make a Pinning Test or become Pinned. The active character makes a Ballistics Test against TN 20 to determine if her wild spray of gunfire hits anyone, friend or foe, within the kill zone. If the Test succeeds, the SM assigns one hit to a random target within the kill zone. For each raise on the Test, the SM has to assign another hit, up to the weapon's automatic rate of fire. The active character cannot choose to fail this Test.
+Requires fully-automatic weapon. Establish a 45° kill zone and fire a Full Auto Burst. Targets in the zone must pass a Pinning Test or become [Pinned](/cleaned-references/16-Conditions). The Ballistics Test (TN 20) determines random hits — each Raise assigns another hit (up to RoF). SM assigns targets; attacker cannot choose to fail.
 
 ### Tactical Advance
 
-**Full Action** | Subtype: Movement, Defense
+**Full Action** | Movement, Defense
 
-The active character moves from one position of cover to another position of cover. In so doing, she may cover a distance up to twice her Speed. For the duration of the move, she is considered to benefit from the cover she left, even though she is in the open for a brief time.
+Move from cover to cover (up to 2× Speed). Retain benefits of original cover for the duration of the move.
 
 ### Use a Skill
 
-**Variable Action** | Subtypes: Concentration, Miscellaneous
+**Variable Action** | Concentration, Miscellaneous
 
-The active character may use a skill. How long this takes and what kind of Test they need to make are covered in the descriptions of the individual skills.
+Use a skill. Duration and Test details per individual skill descriptions.
 
 ### Withdraw
 
-**Full Action** | Subtypes: Movement
+**Full Action** | Movement
 
-The active character breaks off from melee combat and may move up to their Speed.
+Break off from melee and move up to Speed without provoking Opportunity Attacks.
 
 ---
 
 ## The Attack
 
-The most common action in combat is the attack. Before an attack is made, the SM should verify that the attack is even possible by checking the basic requirements:
+Before attacking, verify prerequisites:
 
-- Melee attacks require the attacker to be engaged in melee combat with her target.
-- Ranged attacks cannot be made if the attacker is engaged in melee unless she is firing a pistol class weapon.
-- In either case, the attacker must be aware of her target.
+- **Melee** — must be engaged in melee with the target
+- **Ranged** — cannot be engaged in melee (exception: pistol-class weapons)
+- **Both** — must be aware of the target
 
 ### Attack Steps
 
-**Step One: Apply Modifiers to the Attack Test**
-Attacks require the character to make a test using one of the attack skills (Weaponry, Brawl, or Ballistics). There are many instances where circumstances and factors will make the attack easier or more difficult than normal. If a situation calls for two or more bonuses or penalties, simply combine all modifiers together and apply the total to the appropriate roll.
+**Step 1 — Apply Modifiers** to the attack Test (bonuses/penalties combine).
 
-**Step Two: Attacker Makes a Test**
-Attack Tests are made using the appropriate skill for the weapon used (Weaponry for melee, Ballistics for ranged attacks, and Brawl for unarmed). No characteristic is used for this Test; the number of kept dice is equal to the skill used. If the character is proficient with the weapon used, they get +Xk0 to this Test, where X is their level.
+**Step 2 — Make the Attack Test.** Roll the appropriate skill (Weaponry for melee, Ballistics for ranged, Brawl for unarmed). Kept dice = skill dots. Add +Level`k0` if proficient with the weapon. No Characteristic is added.
 
-The TN for this Test is the target's Static Defense. A target's normal Static Defense is equal to 10, plus 3 for every dot he has in Wisdom and Dexterity. Bigger characters are easier to hit, so they take twice your Size as a penalty to their Static Defense.
+The TN is the target's **Static Defense**:
 
 `Static Defense = 10 + (Dexterity + Wisdom) × 3 − (Size × 2)`
 
-**Dodge and Parry Reactions:** If a character is hit by an attack, they have an opportunity to make a Dodge or Parry reaction as an opposed roll against the attack. If successful, the attack is negated and no damage is dealt.
+**Dodge/Parry Reactions:** If hit, the target may use a Reaction to Dodge or Parry. Half the Reaction Test result adds to Static Defense for that attack.
 
-**Step Three: Determine Hit Location**
-On a successful hit, roll on the following chart to determine hit location:
+**Step 3 — Determine Hit Location** (roll `1d10`):
 
-| Roll (1d10) | Location  |
-| ----------- | --------- |
-| 1           | Left Leg  |
-| 2           | Right Leg |
-| 3-6         | Body      |
-| 7           | Gizzards  |
-| 8           | Left Arm  |
-| 9           | Right Arm |
-| 10          | Head      |
+| Roll | Location  |
+| ---- | --------- |
+| 1    | Left Leg  |
+| 2    | Right Leg |
+| 3–6  | Body      |
+| 7    | Gizzards  |
+| 8    | Left Arm  |
+| 9    | Right Arm |
+| 10   | Head      |
 
-**Step Four: Attacker Determines Damage**
-Each weapon has a damage listing, usually a given number of kept and rolled dice. Melee weapons add the user's strength as rolled dice on the damage roll. Roll the appropriate dice and apply any indicated modifiers. The result is the damage total.
+**Step 4 — Determine Damage.** Roll the weapon's damage dice. Melee weapons add Strength as rolled dice.
 
-**Step Five: Target Applies Damage**
-From the damage total, the target subtracts any Armor Points that protect the location hit by the attack. If the target is hit by a spell, Armor Points do not apply, but the target may instead subtract his Aura value from the spell's damage. If this reduces the damage to zero or less, the target shrugs off the attack.
+**Step 5 — Apply Damage.** Subtract **Armor Points** (physical attacks) or **Aura** (spells). If reduced to 0, attack is shrugged off. Remaining damage ÷ target's **Resilience** = Hit Points lost (round down, discard remainder).
 
 > **Note:** Armor blocks physical damage. Aura blocks magical damage. These are distinct values.
 
-Any remaining damage is compared against the target's resilience. For every multiple of the target's resilience he takes in damage, he loses one Hit Point. For example, if the target has a resilience of 4, and he takes 15 points of damage, he loses 3 Hit Points. (15 divided by 4 is 3, with 3 left over. The leftover damage is simply wasted.) If a target's resilience would be 0 or lower for some reason, it is considered to be 1 for determining Hit Points lost from damage.
-
-If the target has run out of Hit Points, he begins taking Critical Damage, one point of Critical Damage for every Hit Point he'd otherwise lose.
+If the target is at 0 Hit Points, additional HP loss becomes **Critical Damage** instead.
 
 ### Unarmed Combat
 
-Unarmed attacks are resolved in the same way as any other melee attack, with some differences. Unarmed attacks can be used for any Melee combat action, but wherever the normal combat action calls for the use of the Weaponry Skill, an Unarmed attack uses Brawl instead.
-
-Unarmed attacks cannot be used to parry attacks made with weapons except with a Stunt. Unarmed attacks typically deal `0k1` damage, adding the character's Strength as rolled dice as normal for melee attacks.
-
-If a target loses at least one Hit Point from an unarmed attack, the attack also inflicts one level of Fatigue.
+Resolved like melee attacks but uses **Brawl** instead of Weaponry. Base damage: `0k1` + Strength (rolled). Cannot Parry weapon attacks without a Stunt. If a target loses at least 1 HP from an unarmed attack, also inflict 1 level of [Fatigue](/cleaned-references/16-Conditions).
 
 ---
 
 ## Combat Situations
 
-| Situation           | Description                                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| Combat Advantage    | Attackers get a free raise to hit.                                    |
-| Cover               | Body parts behind cover have extra AP.                                |
-| Concealment         | Adds +5 or more to Static Defense.                                    |
-| Difficult Terrain   | -`1k0` or more to melee attacks and dodging.                            |
-| Engaged in Melee    | Shooting into melee applies a -`2k0` to hit.                            |
-| Extreme Range       | Shooting more than 3x the base range applies a -`3k0` to hit.           |
-| Falling             | Take damage for smashing into hard floors.                            |
-| Ganging Up          | Outnumbering your foes 2 to 1 or more gives a bonus to hit them.      |
-| Higher Ground       | Jump onto a table for +`1k0` to melee attacks.                          |
-| Long Range          | Shooting more than 2x the base range applies a -`1k0` to hit.           |
-| Off Hand            | Take -`2k0` unless you are Ambidextrous.                                |
-| Point Blank Range   | +`2k1` to hit at ranges under 3m when not engaged in melee.             |
-| Short Range         | +`1k0` to hit when shooting at less than half the weapon's base range.  |
-| Two Weapon Fighting | Use the Multiple Attack action. Takes penalties without a feat.       |
-| Weapon Jammed       | Rolling more 1s on an attack than your Ballistics skill causes a jam. |
+| Situation | Effect |
+| --------- | ------ |
+| **Combat Advantage** | Free raise to hit (target distracted, outnumbered, stunned) |
+| **Cover** | Hit locations behind cover use cover's AP instead |
+| **Concealment** | +5 or more to Static Defense |
+| **Difficult Terrain** | −`1k0` or more to melee attacks and Dodging |
+| **Engaged in Melee** | −`2k0` to Ballistics Tests (ignored if target grants combat advantage) |
+| **Extreme Range** (>3× range) | −`3k0` to hit |
+| **Long Range** (>2× range) | −`1k0` to hit |
+| **Short Range** (<½ range) | +`1k0` to hit |
+| **Point Blank** (≤2m, not engaged) | +`2k1` to hit |
+| **Ganging Up** (2:1) | +`1k0` melee to hit |
+| **Ganging Up** (3:1+) | +`2k0` melee to hit |
+| **Higher Ground** | +`1k0` melee to hit |
+| **Off Hand** | −`2k0` (negated by Ambidextrous Asset) |
+| **Two Weapon Fighting** | −`3k0` each (reduced by Ambidextrous/TWF Feat) |
+| **Weapon Jammed** | More 1s than Ballistics skill = jam. Full Action TN 15 to clear. |
 
-### Combat Advantage
+### Cover AP Values
 
-Combat advantage represents a situation in which the defender can't give full attention to defense. The defender is pressed by multiple enemies at the same time, stunned, distracted, or otherwise caught off guard. When you have combat advantage against a target, you get a free raise to hit them.
-
-### Cover
-
-Cover is a vital part of surviving a firefight and a good Adventurer knows that you go for cover first and draw your gun second. There are no penalties to Ballistics Test made to attack targets standing partly behind cover. However, there is a chance that the shot may hit the cover rather than the target. If the shot would hit a body location that is concealed behind cover, work out the damage against the Armor Points of the cover instead, with any excess being applied to the target as normal.
-
-| Cover Type                             | AP  |
-| -------------------------------------- | --- |
-| Armor-glass, Pipes, Thin Metal         | 4   |
-| Storage Crate, Sandbags, Ice           | 8   |
-| Computer bank, stasis pod              | 16  |
-| Rockcrete, hatchway, thick iron, stone | 24  |
-| Armaplas, bulkhead, plasteel           | 32  |
-
-### Engaged in Melee
-
-If the attacking character is adjacent to her target, both the character and her target are considered to be engaged in melee. Ballistics Tests made to hit a target engaged in melee combat take a -`2k0` penalty. If one or more characters engaged in the melee is granting combat advantage, this penalty is ignored.
-
-### Extreme Range
-
-Targets that are at a distance of more than three times the range of a character's weapon are at Extreme Range. Ballistics Tests made to hit targets at Extreme range take a penalty of -`3k0` to hit.
+| Cover Type | AP |
+| ---------- | -- |
+| Armor-glass, pipes, thin metal | 4 |
+| Storage crate, sandbags, ice | 8 |
+| Computer bank, stasis pod | 16 |
+| Rockcrete, hatchway, thick iron, stone | 24 |
+| Armaplas, bulkhead, plasteel | 32 |
 
 ### Falling
 
-A character takes `1k1` damage for every two meters they fall and adds their Size as rolled dice—even with a high Resilience, the bigger you are, the harder you fall. Armor only offers half its normal AP against this damage but a character may Test Acrobatics against TN 15 to reduce falling damage. On a success, they take -`1k0`, and every raise further reduces damage taken by another -`1k0`. If a character intentionally jumps down, they may fall 2m per dot of their Acrobatics rating before taking damage. Intentionally dropping down will reduce the fall by 1m per dot of Dexterity.
+Take `1k1` damage per 2m fallen, add Size as rolled dice. Armor provides half AP. Acrobatics Test (TN 15): success = −`1k0` damage, each Raise = additional −`1k0`. Intentional jumps: ignore first 2m per Acrobatics dot. Drop: ignore 1m per Dexterity dot.
 
-### Ganging Up
+### Two Weapon Fighting Details
 
-A character has an advantage when she and her allies engage the same foe in melee combat. If a group of characters outnumber their opponents by two to one, their melee attacks gain an +`1k0` to hit. If a group of characters outnumber their opponents by three to one or more, their melee attacks are at +`2k0` to hit instead.
+Attack with Multiple Attacks action. Each attack at −`3k0`. Modifiers:
 
-### Higher Ground
-
-Characters standing on higher ground, such as standing on a table, hill, or atop a mound of slain enemies, have an advantage. Melee attacks made by these characters are at +`1k0`.
-
-### Long Range
-
-Targets that are at a distance of more than double the range of a character's weapon are at Long Range. Tests made to hit those targets are at a -`1k0` penalty to hit.
-
-### Point Blank Range
-
-When a character makes a ranged attack against a target that is two meters away or closer, that target is at Point Blank Range. Tests made to hit a character at Point Blank range are made at +`2k1` to hit. This bonus does not apply when the attacker and the target are engaged in melee combat with each other.
-
-### Short Range
-
-Targets that are at a distance of less than half the range of a character's weapon are at short range. Tests made to attack targets at short range are made at +`1k0`.
-
-### Two Weapon Fighting
-
-A character fighting with two weapons may attack with either weapon when making attack actions. If she is able to make multiple attacks, she may split up her attacks between the two weapons if they are applicable (one can't use Lightning Attack with a pistol, for example).
-
-A character wielding two weapons may use the Multiple Attacks action to attack once with each weapon, but each attack is made at -`3k0`. If the character has the Ambidextrous asset, the penalties are reduced by `1k0` (to -`2k0`). If she has the Two Weapon Fighting feat, the penalties are reduced by `2k0` (to -`1k0`). If she has both, there is no penalty with her attacks.
-
-### Weapon Jams
-
-When a character rolls more 1s on a roll to hit with their weapon than their Ballistics skill (two 1s at Ballistics 1, three 1s at two dots, etc.) then the weapon has jammed. A jammed weapon cannot be fired until it is cleared, though if the Test to hit was successful on the jamming shot, the weapon jams on the recoil—the shot is good but the weapon is now fouled. Clearing a Jam is a full action that requires a TN 15 Tech-Use or Ballistics Test. On a success, the jam has been cleared, and the weapon needs to be reloaded, any ammunition in the weapon is lost. If the Test fails, the weapon is still jammed and the character may attempt to clear the jam next round.
+- **Ambidextrous** Asset: reduce by `1k0` (to −`2k0`)
+- **Two Weapon Fighting** Feat: reduce by `2k0` (to −`1k0`)
+- **Both**: no penalty
 
 ---
 
@@ -644,54 +602,45 @@ When a character rolls more 1s on a roll to hit with their weapon than their Bal
 
 ### Hit Points
 
-Hit Points measure how much punishment a character can take before suffering debilitating effects and, ultimately, death.
-
 `Maximum Hit Points = (Constitution + Willpower) × 2`
 
-Feats, racial abilities, or template effects may increase Maximum Hit Points. Whenever a character loses Hit Points, they are subtracted from Current Hit Points. Once Current Hit Points drop to zero or below, the character is in real trouble.
+Feats, racial abilities, or template effects may increase this. When current HP drops to 0 or below, the character begins taking Critical Damage.
 
-### Damage
+### Damage and Resilience
 
-Damage is physical trauma dealt to a character. When a character suffers Damage, compare the damage against her Resilience. For every multiple of her resilience, the character takes one wound.
+For every multiple of a character's **Resilience** taken in damage, she loses 1 Hit Point (remainder is wasted). If Resilience would be 0 or less, treat it as 1.
 
-Each time a character suffers damage, there may be an opportunity to reduce it. Armor Points reduce damage taken from most sources, but are ineffective against distinctly magical effects like spells. Aura, on the other hand, reduces damage from spells but is worthless against things like bullets.
+**Damage reduction:**
 
-Some effects, such as fire and falling, can directly wound a character regardless of their resilience.
+- **Armor Points** — reduce physical damage (ineffective against spells)
+- **Aura** — reduces spell damage (ineffective against physical)
 
 ### Damage Types
 
-All damage is divided up into four types:
+| Type | Examples |
+| ---- | -------- |
+| **Energy** | Lasers, fire, plasma |
+| **Explosive** | Grenades, bolt rounds |
+| **Impact** | Clubs, bullets, falling |
+| **Rending** | Swords, claws |
 
-- **Energy:** lasers, fire, plasma
-- **Explosive:** grenades, bolt rounds
-- **Impact:** clubs, bullets, falling
-- **Rending:** swords, claws
-
-If a source of Damage does not specify a type, treat it as impact. Damage type is usually only important for determining Critical Effects resulting from Critical Damage.
+Unspecified damage is treated as Impact. Type determines Critical Effects.
 
 ### Critical Damage
 
-Whenever a character runs out of Hit Points, she begins to take critical damage. Each time a character suffers Critical Damage, she also suffers one or more Critical Effects. These are determined by consulting the appropriate Critical Effects Table based on the affected body location (Arm, Body, Gizzards, Head, or Leg) and the type of damage (Energy, Explosive, Impact, or Rending).
-
-Critical Damage is cumulative and remains with the character until she either heals naturally over time or receives medical attention. Each critical effect also has its own duration (including permanent). If a Critically Damaged character loses more Hit Points, the amount is added to her existing critical damage and a new set of critical effects are applied based on her Critical Damage.
+When a character at 0 HP takes more damage, it becomes **Critical Damage** (cumulative). Each instance of Critical Damage triggers **Critical Effects** from the appropriate table (by body location + damage type). Critical Damage does not heal naturally — requires medical attention.
 
 ---
 
 ## Healing
 
-A character who has gotten injured will probably like to get healed at some point. As a character takes wounds, she progresses through three different states: Lightly Wounded, Heavily Wounded, and Critically Wounded.
+| Wound State | Threshold | Natural Healing | Bed Rest |
+| ----------- | --------- | --------------- | -------- |
+| **Lightly Wounded** | HP lost ≤ Willpower | 1 HP/day | Constitution HP/day |
+| **Heavily Wounded** | HP lost > Willpower | 1 HP/week | Constitution HP/week |
+| **Critically Wounded** | Critical Damage taken | Does not heal naturally | 1 Critical Damage/week with medical attention |
 
-### Lightly Wounded
-
-A character is considered Lightly Wounded if she has lost Hit Points equal to or less than her Willpower. A lightly wounded character recovers 1 Hit Point per day through natural healing. If a lightly wounded character devotes an entire day to bed rest, she recovers a number of Hit Points equal to her Constitution.
-
-### Heavily Wounded
-
-A character is Heavily Wounded whenever she has lost Hit Points greater than her Willpower. A Heavily Wounded character recovers 1 Hit Point per week through natural healing. If a heavily damaged character devotes an entire week to complete rest, she recovers an amount of Hit Points equal to her Constitution. Once a Heavily Wounded character's Hit Points are equal to or less than her Willpower, she becomes Lightly Wounded.
-
-### Critically Wounded
-
-A character is Critically Wounded whenever she has lost Hit Points in excess of her Hit Points. Critical Damage does not heal on its own—it requires medical attention. With rest and medical attention, a character removes 1 point of Critical Damage per week. After all Critical Damage has been removed, a character becomes Heavily Wounded instead.
+Once a Heavily Wounded character's lost HP drops to Willpower or below, she becomes Lightly Wounded. After all Critical Damage is removed, a character becomes Heavily Wounded.
 
 ---
 
@@ -901,34 +850,26 @@ A character is Critically Wounded whenever she has lost Hit Points in excess of 
 
 ## Movement
 
-In many game situations, it is unnecessary to worry about how fast a character can run or how long it takes her to walk from her private quarters to the ship's armory. On the other hand, there are many situations that come up during a game, such as combat, where knowing how far a character can move over a given period of time becomes very important.
+### Narrative Movement
 
-### Narrative Movement and Terrain
+In Narrative Time, exact distances don't matter. General rate: 20× Speed per minute, Speed km/hour, 10× that per day. Difficult terrain halves this.
 
-Terrain conditions affect how fast a character can cover ground during Narrative Time. If you're moving through difficult terrain, you can only cover half of the normal distance in a given amount of time.
-
-A character may hurry—either because they're running or because they're on a forced march—and cover more ground. Characters may double their movement during narrative time, but for every hour spent doing this they must make a TN 10 Constitution Test or take a level of fatigue, with the TN increasing by 5 for every hour after the first.
-
-In general, a character may move 20x their speed per minute, a number of kilometers equal to their Speed per hour, and ten times that per day.
+**Hurrying:** Double movement rate, but Test Constitution (TN 10, +5 per hour after the first) each hour or gain 1 Fatigue.
 
 ### Climbing
 
-Climbing an object requires Athletics rolls. Under most circumstances, as long as a character has both hands free, has a dot in Athletics, and isn't being distracted (by, say, being shot at), a character can automatically succeed at simple climbing tests like fences, trees, boulders, and the like.
-
-If she's trying to move quickly or is being distracted, she needs to make an Athletics Test to climb. On a successful Test, she can ascend up to half of her Speed. For every raise on the Test, she can move an additional meter. If she fails, she falls, and might take damage.
-
-The SM can adjust the difficulty of the Test based on the nature of the climb, and can rule that certain surfaces, like sheer surfaces like building faces and cliffs, require Tests and can't be attempted automatically. The default difficulty of most climbing Tests is TN 15.
+Requires Athletics. Simple climbs (fences, trees, boulders) are automatic if you have a free hand and 1+ Athletics dots and aren't under pressure. Under pressure or on difficult surfaces: Athletics Test (default TN 15). Success = ascend up to half Speed; each Raise = +1m. Failure = fall.
 
 ### Jumping
 
-If a character gets a running start of at least 4m before her jump, she makes an Acrobatics and Strength Test against TN 10. On a success, she leaps a number of meters horizontally equal to her Strength, plus another meter for every Raise. On a failure, she only leaps a number of meters equal to half her Strength (round up). She can achieve a height of one half of this distance travelled in meters (round down). If she's just making a vertical leap, make the Test as normal and simply ignore the horizontal distance travelled. A character can attempt to make the same jumps from a standing start, but the initial Test is made against TN 15 instead of TN 10.
+With a 4m+ running start, Test Acrobatics + Strength (TN 10). Success = leap Strength meters horizontally (+1m per Raise). Failure = half Strength meters. Vertical height = half horizontal distance. From standing start: TN 15 instead of 10.
 
 ### Swimming
 
-A character doesn't need to make a Swim Test (Athletics and Strength) under ideal circumstances, but hazardous conditions such as rough waters, hands being tied, or swimming while fighting all require Swim Tests to move. A successful swim Test allows the character to move at half speed through the water. Normally, swim Tests are made against TN 10, but difficult conditions might increase the TN. A failed Test means the character doesn't get to move that turn. Heavy equipment, especially armor, makes swimming extremely difficult. Swim Tests made while wearing Medium or heavier armor is made against TN 20. A character must, normally, hold their breath if they're completely submerged.
+Swim Test (Athletics + Strength, TN 10) required in hazardous conditions. Success = move at half Speed. Medium+ armor raises TN to 20. Must hold breath if fully submerged.
 
 ---
 
 ## Multiclassing and Duplicate Feats
 
-> **Note:** If you already have a mandatory feat from another class or source when you take a new class, you may choose a replacement feat instead of receiving the duplicate. This applies to any mandatory class feat you already possess.
+> **Note:** If you already have a mandatory Feat from another class or source when you take a new class, you may choose a replacement Feat instead of receiving the duplicate. This applies to any mandatory class Feat you already possess.

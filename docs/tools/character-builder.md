@@ -106,7 +106,7 @@ Each exaltation has a `progression` array. Powers at `dots: 1` are automatically
 
 Accordion wizard with non-linear navigation (jump back to any completed step). Sidebar summary always visible on desktop.
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────┐
 │ WIZARD STEPS (accordion)           │ SIDEBAR SUMMARY          │
 │                                    │                          │

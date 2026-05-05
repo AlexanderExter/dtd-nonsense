@@ -231,17 +231,7 @@ export function NPCGeneratorApp() {
 
 	// Loading state
 	if (!dataLoaded) {
-		return (
-			<div
-				style={{
-					padding: "2rem",
-					textAlign: "center",
-					color: "var(--text-muted)",
-				}}
-			>
-				Loading NPC Builder...
-			</div>
-		);
+		return <div className="p-8 text-center text-text-muted">Loading NPC Builder...</div>;
 	}
 
 	const npc = npcState;

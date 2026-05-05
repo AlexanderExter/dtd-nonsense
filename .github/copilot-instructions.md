@@ -40,7 +40,7 @@ Standard Unix commands work: `cat`, `grep`, `head`, `tail`, `ls`, `rm`, `which`,
 - **Tailwind CSS v4**: `@tailwindcss/vite` plugin, `@theme` tokens in `src/styles/tailwind.css`, `@astrojs/starlight-tailwind` bridge.
 - **dependency-cruiser** (installed): Enforces architectural import boundaries via `.dependency-cruiser.cjs`. Run `bun run check:deps`. Encodes the tool-island architecture as machine-checkable rules. See `docs/pipeline.md`.
 - **ts-morph** (installed): TypeScript Compiler API wrapper for type-aware structural analysis. Import in pipeline scripts: `import { Project } from "ts-morph"`. Reference: `scripts/check-structure.ts`. See `docs/pipeline.md`.
-- **jscodeshift** (via `bun x` — not installed): AST-based bulk code transformation. Use on-demand: `bun x jscodeshift -t scripts/codemods/<transform>.ts src/`. Write transforms to `scripts/codemods/`, verify with `bun run check`, delete post-merge. See `docs/development-guide.md`.
+- **jscodeshift** (via `bun x` — not installed): AST-based bulk code transformation. Use on-demand: `bun x jscodeshift -t scripts/codemods/<transform>.ts src/`. Write transforms to `scripts/codemods/`, verify with `bun run check`, delete post-merge.
 - **`bun run check`**: Runs **all** verification in one command: tests → Biome lint → JSON schema + xref validation → content lint → sync-check → knip → check:deps → check:structure. Use this as the single baseline command.
 - **Multiple agents**: Sessions may involve multiple parallel agents (VS Code Copilot agents, Claude sessions). Assume other agents may be working on the same repo concurrently — always check git state before committing.
 
@@ -74,7 +74,6 @@ Every task that changes mechanics, tool behavior, or project conventions must up
 | Workflow or conventions   | `docs/project-conventions.md`                                  |
 | Astro config / pages      | `docs/architecture.md`                                         |
 | Skills or instructions    | `.github/copilot-skills/`, `.github/copilot-instructions.md`   |
-| Context-scoped rules      | `.github/instructions/` (Astro, Markdown standards)            |
 
 ### Git Essentials
 
@@ -118,7 +117,6 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions �
 | ------------------------ | -------------------------------------------------------------------- |
 | `ttrpg-rules-editor`     | Editing rules content, formatting rulebook text, processing chapters |
 | `dtd-source-hierarchy`   | Source authority questions, rule verification, ambiguity resolution  |
-| `open-question-manager`  | Adding, resolving, or applying entries in docs/editorial/          |
 | `tool-development`       | Building, modifying, or debugging web tools, JS, CSS, JSON data      |
 | `product-owner`          | Decisions about what to build, prioritize, or cut; strategic context |
 | `frontend-stack-advisor` | Frontend technology choices, framework evaluation, stack decisions   |
@@ -131,15 +129,13 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions �
 books/                 Core reference material (per-chapter split, 2 books, .mdx)
 cleaned-references/    Succinct combined reading references (merged by topic, .mdx)
 data/                  Canonical JSON game data (12 files, validated by Zod schemas)
-docs/                  Technical documentation, conventions, project history
+docs/                  Technical documentation, conventions
   project-conventions.md  Single source of truth for all cross-cutting rules
-  editorial/           Editorial department: open questions, backlog, style concerns
   tools/               Per-tool feature specs (6 tools)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
   __tests__/           Pipeline script tests (validate, lint, sync-check, check-structure)
 .github/               Agent instructions, skills, prompt files
-  instructions/         Context-scoped rules (astro.instructions.md, markdown.instructions.md)
 astro.config.mjs       Starlight configuration, sidebar, Vercel adapter
 biome.json             Biome linter/formatter config (JS/TS/CSS)
 package.json           Dependencies (Astro, Starlight)
@@ -226,7 +222,6 @@ All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names
 | 21-Advanced-Rules.mdx         | Optional rules                               |
 | 22-SM-Reference.mdx           | Story Master tools                           |
 | 23-Setting-Lore.mdx           | Setting & lore (Crystal Spheres, factions)   |
-| 99-Appendix-Archive.mdx       | Errata (supersedes earlier files)            |
 
 ---
 
@@ -239,9 +234,7 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | Conventions and pitfalls | [docs/project-conventions.md](../docs/project-conventions.md) |
 | Editorial technique      | `ttrpg-rules-editor` skill (auto-loads for editing tasks)     |
 | Source authority         | `dtd-source-hierarchy` skill                                  |
-| Editorial concerns       | [docs/editorial/](../docs/editorial/) (open questions, backlog)|
 | Tool architecture        | [docs/architecture.md](../docs/architecture.md)               |
-| How-to recipes (tools)   | [docs/development-guide.md](../docs/development-guide.md)     |
 | JSON data schemas        | [docs/data-reference.md](../docs/data-reference.md)           |
 | Pipeline & validation    | [docs/pipeline.md](../docs/pipeline.md)                       |
 | Per-tool specs           | [docs/tools/](../docs/tools/) (6 files)                       |
@@ -250,5 +243,4 @@ All project conventions (git workflow, terminology, formulas, pitfalls, appendix
 | React hooks              | `src/hooks/`                                                  |
 | Test infrastructure      | `src/test-setup.ts`, `src/**/__test-utils__/`                  |
 | Design tokens            | `src/styles/tailwind.css` (`@theme` block)                    |
-| Project history          | [docs/project-history.md](../docs/project-history.md)         |
 | Product vision & goals   | [docs/product-vision.md](../docs/product-vision.md)           |

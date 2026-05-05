@@ -36,7 +36,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 1. **Reference First** — When something could be a reference lookup or an interactive tool, default to reference. Tools support the reference, not the other way around.
 2. **Table Companion, Not Table Center** — The site assists play but never demands attention. Fast lookups, low friction, zero onboarding required. As approachable as a hobby book on a shelf.
-3. **Build on the Source** — The original PDFs remain available for reference, but this project is a creative derivative — corrected, reorganized, and enhanced. Fidelity to the source is a starting point, not a constraint.
+3. **Build on the Source** — The original PDFs remain available for reference, but this project is a creative derivative — corrected, reorganized, and enhanced for the web. Fidelity to the source is a starting point, not a constraint. This means rewording for clarity, restructuring for scannability, condensing redundancy, and adding cross-references — while never inventing game mechanics or altering the original tone and voice.
 4. **Honor the Culture** — D:TD's satirical WH40K identity isn't decoration. Design, tone, and aesthetics reflect the game's irreverent spirit.
 5. **Approachable Complexity** — D:TD is inherently complex. The site makes that complexity navigable without simplifying the game itself.
 6. **Ship a Book, Not a Platform** — This is a finite product with a done state, not an evolving service. Every feature moves toward completion, not scope expansion.
@@ -104,10 +104,10 @@ Major UI overhaul: big-bang migration from hand-rolled Radix UI components to sh
 
 The project uses a single editorial direction: creative derivative.
 
-- **`books/`** — Per-chapter source material in `.mdx`, annotated and corrected. Serves as the working copy for editorial enhancement.
-- **`cleaned-references/`** — Refined, reorganized topic files in `.mdx` that the site serves. These are the canonical reading experience.
+- **`books/`** — Per-chapter source material in `.mdx`, annotated and corrected. Formatting fixes, structural improvements, and clarity edits are applied, but tone and voice are preserved. Serves as the authoritative source for game mechanics.
+- **`cleaned-references/`** — Web-native reference documentation organized by topic. These are the **canonical reading experience** — restructured for scannability, condensed to eliminate redundancy, and enriched with cross-references and summaries. Heavy editorial treatment is expected and encouraged.
 
-Both paths use MDX, enabling interactive React component embedding directly in rules content. The canonicity question is settled: this project builds something new from the original source, not a preservation effort. The original PDFs remain in `source-pdfs/` for anyone who wants the unmodified text.
+Both paths use MDX, enabling interactive React component embedding directly in rules content. The canonicity question is settled: this project builds something new from the original source, not a preservation effort. The [original PDFs are available online](https://static.wikitide.net/1d6chanwiki/f/fc/Dungeons_the_Dragoning.pdf) for anyone who wants the unmodified text.
 
 ---
 

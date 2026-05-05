@@ -245,7 +245,7 @@ When a topic has edge cases, errata, or frequently misunderstood rules, add a cl
 ### When to Use
 
 - Rules frequently misinterpreted
-- Official errata (from 99-Appendix-Archive.mdx)
+- Official errata (consolidated into relevant reference files)
 - Edge cases that come up in play
 - Timing or interaction clarifications
 

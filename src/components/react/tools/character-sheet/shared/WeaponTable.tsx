@@ -335,10 +335,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								{isOpen && (
 									<tr>
 										<td className="border-border border-b bg-bg px-md py-sm" colSpan={colCount + 1}>
-											<div
-												className="@container grid gap-md"
-												style={{ gridTemplateColumns: "1fr 1fr" }}
-											>
+											<div className="@container grid grid-cols-2 gap-md">
 												{/* ── Attack Roll ── */}
 												<div className="flex flex-col gap-xs rounded border border-border/50 bg-surface/50 p-sm">
 													<span className="font-semibold text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">

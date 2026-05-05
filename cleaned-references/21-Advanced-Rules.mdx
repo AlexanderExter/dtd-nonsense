@@ -6,309 +6,306 @@ sidebar:
 title: Advanced Rules
 ---
 
-# Advanced Rules
+> **Quick Reference:**
+> 
+> - This chapter contains **optional rules** for specialized situations — use what fits your game
+> - Topics: Daemonic Possession, Tracking, Astropaths/Navigators, Zero-G Combat, Explosives, Orbital Strikes, Animal Companions, the Umbra
+> - Each rule is self-contained — adopt any subset without affecting others
+> - Base rules referenced: [Combat](./14-Combat.mdx), [Magic](./11-Magic.mdx), [Core Rules](./01-Core-Rules.mdx)
 
-This chapter contains optional and advanced rules for specialized situations: daemonic possession, tracking, astropaths and navigators, zero-gravity combat, explosives, orbital strikes, animal companions, and the Umbra.
+---
+
+## Rules Overview
+
+| Rule | Purpose | Modifies |
+| --- | --- | --- |
+| [Daemonic Possession](#daemonic-possession) | Rules for daemon-possessed NPCs/PCs | Combat stats, Exaltation |
+| [Tracking](#tracking) | TN modifiers for following creatures | Survival/Perception Tests |
+| [Astropaths & Navigators](#astropaths--navigators) | SM guidance for communication/travel | Setting assumptions |
+| [Zero-G Combat](#zero-g-combat) | Combat in weightlessness | Movement, attacks, damage |
+| [Explosives](#explosives) | Blast placement and scatter rules | Ranged attacks with Blast |
+| [Orbital Strikes](#orbital-strikes) | Survival math for massive damage | HP/Resilience interactions |
+| [Animal Companions](#animal-companions) | Companion creature progression | Feat-based pet system |
+| [The Umbra](#the-umbra) | Spirit world rules and topography | Magic, movement, creatures |
 
 ---
 
 ## Daemonic Possession
 
+Modifies: [Exaltations](./05-Exaltations.mdx), [Combat](./14-Combat.mdx)
+
 ### Standard Daemon Possession
 
-If using standard Daemons, apply to the victim:
+Apply to the possessed victim:
 
-1. Increase Strength, Constitution, and Willpower by 1 each (Lesser Daemon) or 2 each (Greater Daemon). Can exceed 5.
-2. Add traits: Daemonic (+Con to AP & HP), DarkSight, Resource
-3. Increase victim's Level by 1 (max: daemon's level)
-4. Increase Resilience by 1
-5. Recalculate Hit Points, Speed, etc.
-6. Greater Daemons also get warp fire breath weapon
+1. **Increase** Strength, Constitution, and Willpower by +1 (Lesser) or +2 (Greater). May exceed 5.
+2. **Add traits:** Daemonic (+Con to AP & HP), Dark Sight, Resource Stat
+3. **Increase Level** by 1 (max: daemon's Level)
+4. **Increase Resilience** by 1
+5. **Recalculate** Hit Points, Speed, etc.
+6. Greater Daemons also gain warp fire breath weapon
 
 ### Modified/Random Daemon Possession
 
-1. Increase Strength, Constitution, and Resilience by 1. Level +1 if less than daemon's Level.
-2. Add DarkSight trait; make them a Daemonhost exalt with Power stat equal to daemon's Level (magic school, bonus armor, Resource Points)
-3. Add daemon's feats, special powers, magic schools, gun katas, or sword schools
-4. Use better of daemon's or victim's skills
-5. Recalculate Hit Points, Speed, etc.
-6. Greater Daemons also get warp fire breath weapon
+1. **Increase** Strength, Constitution, and Resilience by +1. Level +1 if less than daemon's.
+2. **Add** Dark Sight; make them a Daemonhost Exalt with Power stat = daemon's Level (magic school, bonus armor, Resource Points)
+3. **Add** daemon's feats, special powers, magic schools, Gun Katas, or Sword Schools
+4. **Use** better of daemon's or victim's skills
+5. **Recalculate** Hit Points, Speed, etc.
+6. Greater Daemons also gain warp fire breath weapon
 
-### Example Combination
+### Example: Possessed Soldier
 
-**Lesser Daemon Stats:** Str/Dex/Con: 3, Int: 2, Wis/Will: 3, Cha: 5, Fel: 1, Cmp: 2, Static Defense: 20, Armor(all): 10, Resilience: 4, HP: 9, Init: +7, Speed: 6, Level: 2, Size: 4, Social Defense: 15, Resource Points: 12. Skills: Weaponry 2, Ballistics 2, Brawl 3, others. Feats: Cleave, Iron Jaw, Devastating Critical, Furious Assault. Abilities: Fear Caster, Illusion spells.
+**Lesser Daemon:** Str/Dex/Con 3, Int 2, Wis/Wil 3, Cha 5, Fel 1, Cmp 2. Static Defense 20, Armor(all) 10, Resilience 4, HP 9, Init +7, Speed 6, Level 2, Size 4. Skills: Weaponry 2, Ballistics 2, Brawl 3. Feats: Cleave, Iron Jaw, Devastating Critical, Furious Assault. Abilities: Fear, Caster (Illusion).
 
-**Soldier Stats:** Physicals 3, else 2. Ballistics 2, Weaponry 2. Flak Armor (5 AP arms/body, 4 AP head). Lasgun, knife. Level 2.
+**Soldier:** Physicals 3, else 2. Ballistics 2, Weaponry 2. Flak Armor (5 AP arms/body, 4 AP head). Lasgun, knife. Level 2.
 
-**Combined Possessed Soldier:** Str 4, Dex 3, Con 4, Level 2, Resource 8. Speed 7, Size/Resilience 4/5, Static Defense 17, HP 8. AP: Flak + daemon +6(all, not vs magic/silver). Illusion `4k2`, spells. Fearless(Angry). Enhanced melee attacks.
+**Combined Result:** Str 4, Dex 3, Con 4, Level 2, Resource 8. Speed 7, Size/Resilience 4/5, Static Defense 17, HP 8. AP: Flak + daemon +6 (all, not vs magic/silver). Illusion `4k2`, spells. Fearless (Angry). Enhanced melee attacks.
 
 ---
 
 ## Tracking
 
+Modifies: [Core Rules — Tests](./01-Core-Rules.mdx)
+
 ### Following Tracks
 
-Default TN: 15. Apply the following modifiers as guidelines.
+**Default TN: 15.** Apply modifiers cumulatively:
 
 **Numbers:**
 
-- Subtract the number of creatures after the first from TN. Thirty elephants are easy to track.
-- Subtract twice the Size of the largest creature if they must squeeze through spaces.
+- Subtract number of creatures after the first from TN
+- Subtract 2× Size of largest creature if squeezing through spaces
 
 **Terrain:**
 
-| Modifier | Terrain Type                                             |
-| -------- | -------------------------------------------------------- |
-| -10      | Easily retains signs (sandy beach, light snow)           |
-| +10      | Doesn't retain signs (building interiors, running water) |
+| Mod | Condition |
+| :---: | --- |
+| −10 | Easily retains signs (sandy beach, light snow) |
+| +10 | Doesn't retain signs (building interiors, running water) |
 
 **Entity:**
 
-| Modifier | Entity Type                                                      |
-| -------- | ---------------------------------------------------------------- |
-| -20      | Obvious marks (giant slug slime trails)                          |
-| -10      | Bleeding/leaking things                                          |
-| +10      | Minimal marks (small snake in grass, person not touching things) |
-| +20      | Phasing creatures leaving minimal ectoplasm                      |
+| Mod | Condition |
+| :---: | --- |
+| −20 | Obvious marks (giant slug slime trails) |
+| −10 | Bleeding/leaking |
+| +10 | Minimal marks (small snake in grass) |
+| +20 | Phasing creatures leaving minimal ectoplasm |
 
 **Senses:**
 
-| Modifier | Sense Situation                                                                           |
-| -------- | ----------------------------------------------------------------------------------------- |
-| -10      | Tracking with a sense the creature doesn't know about (escapees unaware of tracking dogs) |
-| +10      | Creature knows the tracking sense and can counter it                                      |
-| +20      | Using wrong sense for the job (smell in perfume shop)                                     |
+| Mod | Condition |
+| :---: | --- |
+| −10 | Tracking with sense the creature doesn't know about |
+| +10 | Creature knows and can counter tracking sense |
+| +20 | Wrong sense for the job (smell in perfume shop) |
 
 **Time:**
 
-| Modifier | Time Factor                                               |
-| -------- | --------------------------------------------------------- |
-| -20      | Creature just moved out of sight/hearing with fresh spoor |
-| -10      | Nothing has obscured signs                                |
-| +10      | Something has covered/removed some signs                  |
-| +20      | Very few signs left (couple days old, beach after tide)   |
+| Mod | Condition |
+| :---: | --- |
+| −20 | Just moved out of sight/hearing, fresh spoor |
+| −10 | Nothing has obscured signs |
+| +10 | Something has covered/removed some signs |
+| +20 | Very few signs left (days old, beach after tide) |
 
 **Identification:**
 
-| Modifier | Identification Difficulty                            |
-| -------- | ---------------------------------------------------- |
-| -20      | Easily identifiable marks (rabbit vs. cougar tracks) |
-| -10      | Distinguishing features provide decent guess         |
-| +10      | Little information, maybe a clue or two              |
-| +20      | Difficult signs or no specific markings              |
+| Mod | Condition |
+| :---: | --- |
+| −20 | Easily identifiable (rabbit vs. cougar tracks) |
+| −10 | Distinguishing features provide decent guess |
+| +10 | Little information, maybe a clue or two |
+| +20 | Difficult signs or no specific markings |
 
 ---
 
 ## Astropaths & Navigators
 
-### The Setting
+Modifies: Setting assumptions (see [Setting Lore](./23-Setting-Lore.mdx))
 
-The setting is intentionally incomplete and contradictory, giving SMs freedom to adapt. Here are considerations for Astropaths and Navigators.
+The setting is intentionally incomplete and contradictory, giving SMs freedom. Below are considerations for communication and navigation.
 
 ### Astropaths
 
-Consider: speed and reliability, what they can communicate, how many exist, who controls them.
+Key design questions: speed/reliability, what they communicate, how many exist, who controls them.
 
-**If messages match spelljammer speed:** Astropaths reserved for off-route communications and secure faction networks. Messages sent multiple times to ensure accuracy.
+**Speed options:**
 
-**If faster than spelljammers:** Massive demand for services.
+- **Same as spelljammer:** Astropaths reserved for off-route and secure faction networks. Messages sent multiple times for accuracy.
+- **Faster than spelljammers:** Massive demand for services, faction control implications.
 
-**Broadcast vs. Connection Models:**
+**Communication models:**
 
-- **Broadcast:** General cries for help, messages without knowing if reception is possible, interception by other Astropaths
-- **Connection (Familiarity):** Like cellphones—Alice messages Bob directly
-- **Connection (Location):** Like landlines—call a location, whoever's there receives it
+- **Broadcast** — general cries for help, interception possible
+- **Connection (Familiarity)** — like cellphones; Alice messages Bob directly
+- **Connection (Location)** — like landlines; call a location
 
-**Communication Options:**
+**Recommended settings:**
 
-1. **No Astropaths:** Communication at spelljammer speed
-2. **Astropaths only talk:** Summaries spread quickly, details are slow (Star Wars model)
-3. **Astropaths send data:** May lead to telecom faction control (BattleTech model)
-
-**Recommended Settings:**
-
-1. No Astropaths—communication by spelljammer
+1. No Astropaths — communication by spelljammer only
 2. Relatively rare (specialist doctor level), need special equipment, contact by meeting in Warp "locations," can only talk (no data transfer)
 
 ### Navigators
 
-Every spelljammer requires a Navigator with Divination magic school dots. This implies either few spelljammers or many sorcerers with 1-2 Divination dots.
+Every spelljammer requires a Navigator with Divination magic school dots. This implies either few spelljammers or many sorcerers with 1–2 Divination dots.
 
-Possibilities: Navigators Guild controlling trade, national training camps, schools/unions. Remember: many people can cast Augury or Detect Thoughts.
+Possibilities: Navigators Guild controlling trade, national training camps, schools/unions. Many people can cast Augury or Detect Thoughts.
 
 ---
 
 ## Zero-G Combat
 
+Modifies: [Combat](./14-Combat.mdx) — movement, melee, ranged
+
 ### Key Concept: Braced
 
-Being **Braced** means secured against something stable: holding a strut, tied to equipment, hooked around a pipe, glued to wall, clipped to tie-down, or using magnetic boots on ship hulls. Taking a Half Action to Brace counts for heavy weapons.
+**Braced** (secured against something stable) means: holding a strut, tied to equipment, magnetic boots on hull, clipped to tie-down. Taking a Half Action to Brace counts for heavy weapons.
 
-**Out of Control condition:** Half normal rolled dice for everything. Stop by grabbing something and bracing.
+- **Not braced** does **not** automatically mean Out of Control
+- **Out of Control** condition: halve all rolled dice. Stop by grabbing something and bracing.
 
-**Recovery tests (TN 15, free raise with appropriate equipment):** Athletics, Acrobatics, Brawling, Tech-Use, Weaponry (whips), Ballistics (grappling hooks), Piloting (jetpacks).
-
-Braced prevents Out of Control; not being Braced doesn't cause it.
-
-### Weapon Ranges
-
-- Thrown/muscle-powered projectiles: ranges tripled
-- Other weapons: unaffected
-
-### Melee Damage
-
-- Effective Strength halved unless Braced
-- Unaffected: Grappling damage, parrying weapons (short stabs), Power Field weapons
-
-### Summary
-
-If not Braced: cumulative -`1k0` until you stop to brace. Movement usually TN 15, stopping TN 10. Explosions: test against damage or get knocked off/Out of Control.
+**Recovery Tests** (TN 15, free Raise with appropriate equipment): Athletics, Acrobatics, Brawling, Tech-Use, Weaponry (whips), Ballistics (grappling hooks), Piloting (jetpacks).
 
 ### Combat Penalties
 
-**Melee:** Cumulative -`1k0` per attack unless Braced. Carries over between turns.
+| Situation | Penalty |
+| --- | --- |
+| Melee (not Braced) | Cumulative −`1k0` per attack; carries between turns |
+| Ranged (not Braced) | Cumulative −`1k0` per shot fired |
+| Full Auto without Bracing | Lose +`2k1` bonus; penalty = half RoF |
+| Half Action to Brace | Resets all penalties to zero |
 
-**Ranged:** Same penalty per shot fired. Full Auto Burst without Bracing: lose +`2k1` bonus; apply penalty equal to half RoF. Half Action to Brace resets penalties to zero.
+### Melee Damage
+
+- Effective Strength **halved** unless Braced
+- **Unaffected:** Grappling damage, parrying weapons (short stabs), Power Field weapons
+
+### Weapon Ranges
+
+- Thrown/muscle-powered: ranges **tripled**
+- Other weapons: unaffected
 
 ### Movement
 
-Without flight: climb, jump (10× distance per round in straight line, free raise), or artificial propulsion (jetpacks, projectile recoil).
+Without flight: climb, jump (10× distance per round in straight line, free Raise), or artificial propulsion.
 
-**Useless for propulsion:** Directed energy weapons, needlers, rocket launchers
+- **Good propulsion:** Flamers (lower but steadier thrust)
+- **Useless:** Directed energy weapons, needlers, rocket launchers
 
-**Good for propulsion:** Flamers (lower but steadier thrust)
-
-**Direction changes:** Dexterity (+ Acrobatics), TN 15 modified by speed/precision. Near stop = TN 10.
+**Direction changes:** Dexterity + Acrobatics, TN 15 modified by speed/precision. Near stop = TN 10.
 
 ### Explosions
 
-**If Braced:** Athletics + Strength vs damage to stay put
-
-**If not Braced:** Acrobatics + Dexterity vs damage to avoid Out of Control (still pushed away)
+- **If Braced:** Athletics + Strength vs damage to stay put
+- **If not Braced:** Acrobatics + Dexterity vs damage to avoid Out of Control (still pushed)
 
 ### Zero-G Creatures
 
-Natural zero-G creatures: can fly or have bracing method, automatically get two free raises on rolls.
-
-Immaterial/Phasing creatures: don't roll, just move.
+Natural zero-G creatures can fly or have bracing method; automatically get two free Raises on rolls. Immaterial/Phasing creatures don't roll — just move.
 
 ---
 
 ## Explosives
 
-### The Blast vs. Bag of Rats Problem
+Modifies: [Combat — Ranged Attacks](./14-Combat.mdx)
 
-When you miss with a blast weapon, where does it go? What's the TN to land a grenade in the middle of a group?
+### The Problem
+
+When you miss with a blast weapon, where does it land? What's the TN to hit a group?
 
 ### Optional Blast Rules
 
-**Missing:** Miss by 1m per range increment (1m short, 2m normal, 3m long, 4m extreme) plus 1m per Check. Randomize scatter direction. Consider 3D perspective for arcing shots.
+**Scatter on miss:** Miss distance = 1m per range increment (1m short, 2m normal, 3m long, 4m extreme) + 1m per Check. Randomize direction.
 
-**Grouping:** Roll attack, add twice blast radius to hit things, subtract blast radius to miss things. Try to place blast matching hit/miss results.
+**Targeting groups:**
 
-**Can't target people further apart than blast diameter.**
-
-**Process:**
-
-1. Roll attack, add 2× blast to total
-2. Check against all Static Defenses
-3. Find placement getting everyone hit and excluding everyone missed
+1. Roll attack, **add 2× blast radius** to total
+2. Check against all Static Defenses in area
+3. Find placement hitting everyone hit and excluding everyone missed
 4. If impossible, maximize intended targets; shooter chooses among equal options
-5. On miss, minimum scatter distance = enough to miss whole group
+5. On miss, minimum scatter = enough to miss whole group
 
-**Dodging:** Not direct attack—can't be dodged without two-die stunt using environment for cover (still just cover AP).
+**Cannot target people further apart than blast diameter.**
 
-**Edge Cases:**
+**Dodging:** Not a direct attack — cannot be dodged without a two-die stunt using environment for cover (still only provides cover AP).
 
-- Someone in middle hit, no one else: place as miss on everyone; random shrapnel hit the target
-- Someone in middle missed: place blast catching everyone, something blocked them
+### Missing Allies (Friendly Fire)
 
-### Missing Allies
-
-When trying to hit enemies near allies:
-
-**Roll attack, calculate both:**
+When enemies are near allies, calculate both:
 
 - Attack + 2× blast (to hit enemies)
-- Attack - 2× blast (to miss ally—ally's Static Defense is TN)
+- Attack − 2× blast (to miss ally — ally's Static Defense is TN)
 
-**Results:**
-
-| Attack - 2× blast vs Ally | Attack + 2× blast vs Enemies | Result                                                              |
-| ------------------------- | ---------------------------- | ------------------------------------------------------------------- |
-| Under all                 | Under all                    | Miss All (scatter away)                                             |
-| Over Ally's defense       | Over Enemies' defenses       | Miss Ally & Hit Enemies (ideal placement)                           |
-| Under Ally's defense      | Over Enemies' defense        | Hit All (maximize hits; ally may be excluded if necessary to do so) |
+| Attack − 2× blast vs Ally | Attack + 2× blast vs Enemies | Result |
+| --- | --- | --- |
+| Under all | Under all | Miss All (scatter away) |
+| Over Ally's defense | Over Enemies' defenses | Hit All (ally may be excluded if geometry allows) |
+| Under Ally's defense | Over Enemies' defense | Miss Ally & Hit Enemies (ideal) |
 
 ---
 
 ## Orbital Strikes
 
-### How to Survive an Orbital Strike
+### How to Survive
 
 Don't provoke people with big space guns.
 
-### Survival Calculations
+### Survival Math
 
-**Assumptions:**
+Assumptions: 70% per level (70% level 1, 21% level 2, etc.), 70% per stat dot >1.
 
-- Level/Size breakdown with average Resilience matching Size 4 with no enhancements
-- 70% per level (70% level 1, 21% level 2, etc.)
-- 70% per stat dot > 1 (70% have Con+Will of 4, etc.)
+| HP × Resilience | Damage | % With These HP Surviving | % Total Pop. |
+| :---: | :---: | :---: | :---: |
+| 16 | 25 | 50% | 68% |
+| 16 | 30 | 10% | 42% |
+| 24 | 35 | 50% | 23% |
+| 24 | 40 | 10% | 13% |
+| 32 | 45 | 50% | 7% |
+| 32 | 50 | 10% | 4% |
+| 40 | 55 | 50% | 2% |
+| 40 | 60 | 10% | 1% |
+| 50 | 65 | 50% | 0.3% |
+| 50 | 70 | 10% | 0.13% |
+| 60 | 80 | 50% | 0.05% |
+| 60 | 85 | 10% | 0.02% |
+| 70 | 90 | 50% | 0.01% |
 
-**Survival Table:**
-
-| HP × Resilience | Incoming Damage | % With These HP Surviving | % Total Pop. Surviving |
-| --------------- | --------------- | ------------------------- | ---------------------- |
-| 16              | 25              | 50%                       | 68%                    |
-| 16              | 30              | 10%                       | 42%                    |
-| 24              | 35              | 50%                       | 23%                    |
-| 24              | 40              | 10%                       | 13%                    |
-| 32              | 45              | 50%                       | 7%                     |
-| 32              | 50              | 10%                       | 4%                     |
-| 40              | 55              | 50%                       | 2%                     |
-| 40              | 60              | 10%                       | 1%                     |
-| 50              | 65              | 50%                       | 0.3%                   |
-| 50              | 70              | 10%                       | 0.13%                  |
-| 60              | 80              | 50%                       | 0.05%                  |
-| 60              | 85              | 10%                       | 0.02%                  |
-| 70              | 90              | 50%                       | 0.01%                  |
-
-Numbers are for non-exalts and normal people without special traits, double HP, inherent armor, stats at 6+, etc. Cover isn't considered—wreckage kills as many as cover saves.
+Numbers are for non-exalts without special traits, double HP, inherent armor, or stats at 6+. Cover not considered — wreckage kills as many as cover saves.
 
 ---
 
 ## Animal Companions
 
-The feats Divine Bond, Obtain Familiar, and Animal Companion allow loyal companion creatures.
+Modifies: [Feats](./07-Feats.mdx) (Divine Bond, Obtain Familiar, Animal Companion)
 
-### Animal Companion Options
+### Base Companion
 
-**Minion Rules:** Begins as one creature with Threat and Damage ratings of 1.
+**Minion version:** One creature with Threat and Damage ratings of 1.
 
-**Animalistic Creature:** Befriended creatures don't take well to bionics or combat drugs. Mistreatment counts as Druid's Oath violation ("respecting nature" clause).
+**Animalistic creature:** Befriended creatures don't take to bionics or combat drugs. Mistreatment = Druid's Oath violation ("respecting nature" clause).
 
 ### Improved Animal Companion
 
-**Minion Version:** Number of minions = character Level (if not already higher). Each time gained: +1 to Threat or Damage rating (max 5 each).
+**Minion version:** Squad size = character Level (if not already higher). Each time gained: +1 Threat or +1 Damage (max 5 each).
 
-**Creature Version:** Level = higher of normal Level or (character Level - 1). Each time gained: choose one feat from Bonded Companion Feat List, increase one physical or mental attribute (except Intelligence) by 1. Can't increase same attribute twice in a row.
+**Creature version:** Level = higher of normal or (character Level − 1). Each time gained: choose one feat from list, increase one physical/mental attribute (except Intelligence) by 1. Can't increase same attribute twice in a row.
 
-**Bonded Companion Feat List:** Armor Proficiency (Light, Medium, or Heavy), Blind Fighting, Cat-Fall, Evasion, Defensive Mobility, Heightened Senses (Any), Light Sleeper, Danger Sense, Sound Constitution, Weapon Focus (Any), Combat Mastery
+**Bonded Companion Feat List:** Armor Proficiency (Light/Medium/Heavy), Blind Fighting, Cat-Fall, Evasion, Defensive Mobility, Heightened Senses (Any), Light Sleeper, Danger Sense, Sound Constitution, Weapon Focus (Any), Combat Mastery
 
 ### Beastmaster
 
-**Minion Version:** +1 Threat and +1 Damage (max 5 each), squad size = character Level + 1.
+**Minion version:** +1 Threat and +1 Damage (max 5 each), squad size = character Level + 1.
 
-**Creature Version:** +1 to one physical characteristic, +1 to one mental characteristic, +1 Size, +1 Level. Assign one feat and one attribute:
+**Creature version:** +1 physical characteristic, +1 mental characteristic, +1 Size, +1 Level. Plus one feat and one attribute:
 
-**Feats:** Devastating Critical, Fearless (Angry), Improved Weapon Focus, Iron Jaw, Swift Attack, True Grit
-
-**Attributes:** Armor(4), Aura(4), DarkSight, Regeneration(1), Unnatural Toughness
+- **Feats:** Devastating Critical, Fearless (Angry), Improved Weapon Focus, Iron Jaw, Swift Attack, True Grit
+- **Attributes:** Armor(4), Aura(4), Dark Sight, Regeneration(1), Unnatural Toughness
 
 ### Familiars
 
-Choose from: industrial servitor (no arc welder), animal/creature, zombie, spirit/ghost, or elemental. Reduce Size and Strength to 1-2, Level to character's Level (minimum 1).
+Choose from: industrial servitor (no arc welder), animal/creature, zombie, spirit/ghost, or elemental. Reduce Size and Strength to 1–2, Level to character's Level (minimum 1).
 
 Each character level increase: familiar gains 1 dot in any attribute or skill (can't increase same one twice in a row).
 
@@ -318,19 +315,24 @@ Replacement familiars don't have increased attributes/skills. Familiars can use 
 
 ## The Umbra
 
+Modifies: [Magic](./11-Magic.mdx), [Combat](./14-Combat.mdx), Setting
+
 ### Overview
 
 The Umbra is the space between the material world and the Warp. Entry methods: powerful werewolf mirror-stepping, wraith shifting, ghost/daemon sliding, sorcerer portals/rituals.
 
-The barrier ("Veil") thickness matches how close the Warp is to the material world and how easy magic is to use.
+The barrier ("**Veil**") thickness reflects how close the Warp is to the material world and how easy magic is to use.
 
 ### Perception
 
-Experiences vary: slightly out-of-focus photographic negative, washed out and gray, sepia-toned, thick fog obscuring material world while Umbra is clear, dim shadows with lurking horrors. People together may disagree on visuals but agree on what exists there.
+Experiences vary by individual — slightly out-of-focus, washed out, sepia-toned, thick fog, or dim shadows with lurking horrors. People together may disagree on visuals but agree on what exists.
 
 ### Topography
 
-Roughly parallels material world. Only permanent structures (ground, large plants, permanent buildings) are solid. Non-permanent things (people, doors, shrubs, water) are translucent or invisible.
+Roughly parallels material world:
+
+- **Solid:** Permanent structures (ground, large plants, permanent buildings)
+- **Translucent/invisible:** Non-permanent things (people, doors, shrubs, water)
 
 **Warning:** Don't exit Umbra at ocean bottom unprepared.
 
@@ -338,22 +340,20 @@ Places of natural forces (volcanoes, vortexes, waterfalls) feel nearly normal wi
 
 ### Magic in the Umbra
 
-Magic is visible as neon geometric forms, twisting ribbons, sparkles. It's tangible—wards function as doors and walls.
-
-**Breaking Wards:** Barrier rating = Focus Power test. Damage enough to reduce below minimum success threshold.
-
-**Constraints:** Ranged attacks pass through without effect. Must use bare hands, artifact melee weapons, or spells.
-
-**Destructive Failure:** When spell/ward breaks, it explodes. Radius = 1/5 original Focus Power in meters. Damage = remaining Focus Power result (magic damage, requires Aura).
+- Magic is **visible** as neon geometric forms, twisting ribbons, sparkles
+- Magic is **tangible** — wards function as doors and walls
+- **Breaking wards:** Barrier rating = Focus Power Test result. Damage enough to reduce below minimum
+- **Ranged attacks** pass through without effect — must use bare hands, artifact melee weapons, or spells
+- **Destructive failure:** Broken spells/wards explode. Radius = 1/5 original Focus Power in meters. Damage = remaining Focus Power result (magic damage, requires Aura)
 
 ### Deeper Umbra
 
-Additional dimension toward the Warp. Moving deeper requires 1d5+5 Level/Power stat tests (TN 10 + 2 per step from material).
+Moving deeper requires 1d5+5 Level/Power stat Tests (TN 10 + 2 per step from material):
 
 - Material world fades after third Test
-- Landscape shifts faster and more severely near Warp
+- Landscape shifts faster near the Warp
 - Two checks from Warp: Psychic Phenomena roll every few rounds
-- One check from Warp: Perils of the Warp Test every 1d5 rounds
+- One check from Warp: Perils of the Warp Test every `1d5` rounds
 - Next Test: actual Warp (bad for most people)
 
 Return requires same Tests in reverse.
@@ -362,35 +362,38 @@ Return requires same Tests in reverse.
 
 Accessible from Umbra: Webways, Commoragh, Sigil, Abyss realms (including Ruinous Powers), possibly Celestia.
 
-**Finding locations:** TN 20 Forbidden Lore for known places, TN 25-30 for Webways and similar. Raises reduce travel time/difficulty; failure adds +1d5 to TN; failure with checks means wrong destination, Warp storm, or hostile encounter. Connection to destination = free raise.
+- **Finding locations:** TN 20 Forbidden Lore for known places, TN 25–30 for Webways
+- **Raises** reduce travel time/difficulty
+- **Failure** adds +`1d5` to TN; failure with Checks = wrong destination, Warp storm, or hostile encounter
+- **Connection** to destination = free Raise
 
 ### Building Umbral Realms
 
-Requires reaching middle area and performing difficult rituals (TN 35+) over time. Participants get free raise finding that place.
+Requires reaching middle area and performing difficult rituals (TN 35+) over time. Participants get free Raise finding that place.
 
 Bringing building materials attracts wandering creatures.
 
-**Technology:** Electronics and simple chemical reactions work. Internal combustion, rockets, anti-grav, nuclear power don't work (except small/simple, Syrnth magitech, and Super Solenoid Engines).
+**Technology:** Electronics and simple chemical reactions work. Internal combustion, rockets, anti-grav, nuclear power don't work (except small/simple, Syrneth magitech, and Super Solenoid Engines).
 
 ### Umbral Creatures
 
 Spirits, elementals, ghosts, wraiths, daemons, powerful spellcasters and werewolves, occasional dragons or aboleths.
 
-**No Modrons:** Their existence is antithetical. Modron areas look monochrome, geometric, movement becomes impossible.
+**No Modrons:** Their existence is antithetical. Modron areas look monochrome, geometric; movement becomes impossible.
 
-**Native creature traits:** DarkSight plus: Constitution + Willpower armor/aura, toxic/tearing attacks, pseudo-spells (using Level + Wisdom), Amorphous, Stuff of Nightmares, Regeneration, Phasing. Immune to material world drugs/toxins except Null and Spook.
+**Native creature traits:** Dark Sight plus: Constitution + Willpower armor/aura, toxic/tearing attacks, pseudo-spells (Level + Wisdom), Amorphous, Stuff of Nightmares, Regeneration, Phasing. Immune to material world drugs/toxins except Null and Spook.
 
-**Umbral Critter Modifications (d10):**
+**Random Umbral Critter Modifications (`1d10`):**
 
-| Roll | Modification                          |
-| ---- | ------------------------------------- |
-| 1    | Amorphous                             |
-| 2    | Regeneration (Con)                    |
-| 3    | Bonus AP & Aura (Con+Will)            |
-| 4    | Attacks gain Toxic & Tearing          |
-| 5    | Uses abilities like spells            |
-| 6    | Stuff of Nightmares                   |
-| 7    | Phasing                               |
-| 8    | Roll 1d5 twice (reroll duplicates)    |
-| 9    | Roll 1d5 three times                  |
-| 10   | Roll twice (reroll duplicates and 8+) |
+| Roll | Modification |
+| :---: | --- |
+| 1 | Amorphous |
+| 2 | Regeneration (Con) |
+| 3 | Bonus AP & Aura (Con+Will) |
+| 4 | Attacks gain Toxic & Tearing |
+| 5 | Uses abilities like spells |
+| 6 | Stuff of Nightmares |
+| 7 | Phasing |
+| 8 | Roll `1d5` twice (reroll duplicates) |
+| 9 | Roll `1d5` three times |
+| 10 | Roll twice (reroll duplicates and 8+) |

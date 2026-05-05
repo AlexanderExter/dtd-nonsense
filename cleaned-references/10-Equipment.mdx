@@ -6,29 +6,33 @@ sidebar:
 title: Equipment
 ---
 
-# Equipment
+> **Quick Reference:**
+> 
+> - **Wealth Tests** determine if you can acquire items — roll Wealth dice vs item's TN (Target Number)
+> - Weapons require [Weapon Proficiency](07-Feats.mdx) feats to use without penalty
+> - Armor requires [Armor Proficiency](07-Feats.mdx) feats — without it, AP penalizes Static Defense
+> - **Craftsmanship** (Poor/Common/Good/Best) modifies stats and availability
+> - Weapon creation rules let you design custom weapons from templates + mods
+
+---
 
 ## Availability
 
-Each piece of equipment or service has an associated Availability, ranging from Very Common to Very Rare. If the present location does not offer an item or service, then a Hero must either arrange passage to a world whose markets do offer it or else go on a quest in search of it.
+Items have a rarity from Ubiquitous to Mythic Rare. Characters must make a **Wealth Test** to acquire items — roll dice equal to your Wealth dots against the item's TN (Target Number — the difficulty to beat). Zero Wealth means only bare necessities.
 
-Some things are not just hard to find on certain worlds, but impossible. The SM can decide to either make an item harder to find or even impossible to acquire because it uses technology not readily available at the present location.
-
-Characters searching for a particular item must make a Wealth Test. A Wealth Test is made by rolling dice equal to your wealth. If you have zero dots in wealth it means that you can't afford anything beyond the bare necessities. The TN of the Wealth Test is determined by the rarity of the item:
-
-| Rarity      | TN  | Examples                                                   |
-| ----------- | --- | ---------------------------------------------------------- |
-| Ubiquitous  | 2   | Food, common tools, rough clothing                         |
-| Very Common | 5   | A simple gun, a knife, a low-quality chrono                |
-| Common      | 10  | A laspistol, a basic sword, a comm bead                    |
-| Uncommon    | 15  | An autogun, a flak jacket, a multikey                      |
-| Rare        | 20  | A meltagun, plate armor, a good camera                     |
-| Very Rare   | 25  | A bolter, powered armor, a best-quality auspex             |
-| Mythic Rare | 30  | A good-quality plasma weapon, best-quality Daiklave, love. |
+| Rarity      | TN  | Examples                                          |
+| ----------- | --- | ------------------------------------------------- |
+| Ubiquitous  | 2   | Food, common tools, rough clothing                |
+| Very Common | 5   | Simple gun, knife, low-quality chrono              |
+| Common      | 10  | Laspistol, basic sword, comm bead                  |
+| Uncommon    | 15  | Autogun, flak jacket, multikey                     |
+| Rare        | 20  | Meltagun, plate armor, good camera                 |
+| Very Rare   | 25  | Bolter, powered armor, best-quality auspex         |
+| Mythic Rare | 30  | Good-quality plasma weapon, best-quality Daiklave  |
 
 ### Acquisitions by Population and Time
 
-The following table shows the time it takes to search a market, and the maximum TN of the items that that market supports, sorted by the population. The times listed on the table are under the assumption that the Hero is looking for an item at the market's maximum TN. If she's looking for something a bit easier to find, with a lower TN, use the time listed next to that TN.
+Market size determines maximum available TN and search time:
 
 | Size       | Population          | TN  | Time       |
 | ---------- | ------------------- | --- | ---------- |
@@ -39,77 +43,81 @@ The following table shows the time it takes to search a market, and the maximum 
 | City       | One to Ten Million  | 25  | 1d5 Weeks  |
 | Metropolis | > Ten Million       | 30  | 1d10 Weeks |
 
-It's possible to retry a failed Wealth Test. However, looking again can mean that you end up dealing with people who know you're desperate or are only willing to part with the item in question dearly. Regardless of the reason, every time you retry a Wealth Test the TN to find the item increases by 5.
-
-This table further assumes that the Hero is taking an active hand in searching for the item in question. If she employs servants, negotiators, or factors who are skilled in such matters rather than putting forth the effort herself, increase the time taken by one step from weeks to months and from days to weeks.
-
-Acquisitions of new services and equipment are probably best made in the downtime between game sessions. Note that once a service or purchase of equipment is agreed upon, signed, and sealed, it may still require further time to complete.
+- **Retrying** a failed Wealth Test increases TN by 5 each attempt
+- **Using servants/factors** instead of searching personally increases time by one step
+- Acquisitions are best handled in **downtime between sessions**
 
 ### Wealth Strain
 
-When you pass a Wealth Test, it might have a lasting effect on your wealth score, depending on how badly you strained your wealth. If the item's TN is more than your Wealth x 5, buying it strains your resources. Roll 1d10 and add 1 for every 5 it exceeds your (Wealth x 5) by.
+If an item's TN exceeds Wealth × 5, buying it strains your resources. Roll 1d10, +1 per 5 TN over (Wealth × 5):
 
-| Roll | Effect                                                               |
-| ---- | -------------------------------------------------------------------- |
-| 1-6  | Your next Acquisition test is made as though your Wealth was 1 less. |
-| 7-9  | Your next Acquisition test is made as though your Wealth was 2 less. |
-| 10   | You permanently lose 1 Wealth                                        |
-| 11+  | You permanently lose 2 Wealth                                        |
+| Roll | Effect                                           |
+| ---- | ------------------------------------------------ |
+| 1-6  | Next acquisition at Wealth - 1                   |
+| 7-9  | Next acquisition at Wealth - 2                   |
+| 10   | Permanently lose 1 Wealth                        |
+| 11+  | Permanently lose 2 Wealth                        |
 
-For every raise you get on the Wealth test, reduce the penalties by one level. These raises represent finding a great deal on the expensive item - which may well mean that you've found yourself with stolen goods.
+Each raise on the Wealth Test reduces penalties by one level (finding a great deal — possibly stolen goods).
 
 ## Craftsmanship
 
-Not all goods and services are of the same quality. The Craftsmanship of items can vary widely - everything from crude mass-produced materials of Poor craftsmanship to handcrafted masterpieces of Best craftsmanship can be found for sale. Unless specifically stated, the Craftsmanship of an object or retainer providing a service is considered Common.
+Items range from Poor to Best quality. Default is Common. Quality affects durability, performance, and availability TN:
 
-Items of Poor craftsmanship are generally more prone to failure and breakage, while items of Good and Best Craftsmanship are more durable. In the case of weaponry and armor, effects on an item's performance or weight are detailed later in this chapter.
-
-Craftsmanship also affects the difficulty of finding goods or services. The TN to find the item is adjusted according to the following table:
-
-| Quality | TN Modifier |
-| ------- | ----------- |
-| Poor    | -5          |
-| Common  | +0          |
-| Good    | +5          |
-| Best    | +10         |
+| Quality | TN Modifier | Effect |
+| ------- | ----------- | ------ |
+| Poor    | -5          | Ranged: Unreliable. Melee: -`1k0` attack/disarm/parry |
+| Common  | +0          | Standard performance |
+| Good    | +5          | Ranged: Reliable. Melee: +`1k0` attack. Silver weapons require Good+ |
+| Best    | +10         | Ranged: never jam/overheat. Melee: +`1k0` attack, +2 damage |
 
 ## Resupplying
 
-When you lose your gear, run out of special ammunition, use up your grenades, you don't need to go and make a bunch of acquisition tests to replace them. The initial Tests you make to get the gear also include connections and a supply of replacements. As long as you're in a base of operations (a large city, onboard their ship, in a military base, or anywhere else the SM deems appropriate), you can replenish your normal ammunition after a day or so, special ammunition after a week, and broken equipment like weapons and armor take a month or so to repair. For simple equipment, it might be faster just to make new acquisition tests and replace it.
+Lost or spent gear doesn't require new acquisition Tests if you're at a base of operations:
+
+- **Normal ammo:** ~1 day
+- **Special ammo:** ~1 week
+- **Broken equipment:** ~1 month to repair
+- Simple items may be faster to just re-acquire
 
 ## Weapons
 
-Weapons are divided into several groups covering a plethora of ranged weapons, dealing with everything from crossbows to plasma cannons, and melee weapons covering all manner of close combat weaponry. Unless they are of Poor craftsmanship, all weapons come with the appropriate holster or carrying strap as part of their cost.
+Weapons are divided into groups covering ranged weapons (crossbows to plasma cannons) and melee weapons (swords to power fists). Unless Poor craftsmanship, weapons include a holster or carrying strap. Each weapon category requires a [Weapon Proficiency](07-Feats.mdx) feat.
+
+### Weapon Quick Reference
+
+| Category | Example | Damage Range | Best For |
+| -------- | ------- | ------------ | -------- |
+| Ordinary (guns) | Autopistol, Shotgun | `2k2`–`3k2` I | Common, affordable, reliable |
+| Las | Laspistol, Lasgun | `2k2`–`3k2` E | Reliable energy weapons, large clips |
+| Plasma | Plasma Pistol/Gun | `3k3` E | High Pen (8), anti-armor |
+| Melta | Inferno Pistol, Meltagun | `4k3` E | Extreme Pen (12), short range |
+| Bolter | Bolt Pistol, Boltgun | `4k2` X | High damage, Tearing, prestige |
+| Syrneth | Null Ray, Lightning Gun | `4k2`–`6k3` E | Ancient tech, high Pen |
+| Melee (Ordinary) | Daiklave, Hand Weapon | `3k2`–`4k2` R/I | Versatile, common |
+| Melee (Fencing) | Fencing Sword, Phase Sword | `2k2`–`3k2` R | Balanced, defensive |
+| Melee (Two Handed) | Great Weapon, Grand Daiklave | `3k3`–`4k3` R/I | Maximum melee damage |
+| Melee (Chain) | Chainsword, Chain Axe | `2k3`–`3k2` R | Tearing quality |
 
 ### Weapon Statistics
 
-All weapons have a profile that is presented using the following statistics:
+All weapons have a profile with these statistics:
 
-**Name:** What the weapon is called.
-
-**Type:** Describes what type the weapon is, either Melee, Thrown, Pistol, Basic, or Heavy weapon.
-
-- **Melee** weapons can be used in close combat. When using a melee weapon you add your Strength as rolled dice to the weapon's damage.
-- **Thrown** weapons cover anything propelled by muscle power alone and covers throwing knives, spears, and the like. Unless they are also classed as melee, thrown weapons cannot be used in close combat (if they are, they count as improvised weapons). When using a thrown weapon you add your Strength as rolled dice to the damage you inflict (with the obvious exception of explosives such as grenades).
-- **Pistol** weapons are fired one-handed and can be used in close combat. However, when a pistol is used in close combat, the firer gains no bonuses or penalties to hit for range or targeting equipment.
-- **Basic** weapons normally require two hands, but can be used one-handed with -`2k0` to hit.
-- **Heavy** weapons always require two hands and must be braced in some way, usually either on a bipod or tripod but when needed a windowsill or sandbag will do (or the firer's shoulder in the case of missile launchers), to be fired without penalties. Firing a heavy weapon without bracing incurs a -`3k1` penalty to hit and prohibits Full Auto fire.
-
-**Damage:** The damage the weapon does and the type of damage it inflicts for the purpose of Criticals: E (Energy), X (Explosive), R (Rending), I (Impact).
-
-**Pen (Penetration):** Reflects how good the weapon is at cutting through armor. When a shot or blow from this weapon hits a target, reduce the target's Armor Points by the weapon's Penetration, with results of less than 0 counting as 0. Then work out Damage as normal.
-
-**ROF (Rate of Fire):** This tells you if the weapon can be fired on Full Auto and how many rounds it expends when doing so. A weapon's RoF has two entries to indicate the modes a weapon can be fired in. The first entry indicates whether the weapon can be fired singly (with an S). The second entry describes if the weapon can be fired on full automatic, and how many shots are fired when this happens. If the weapon cannot be fired in either mode, it will be indicated by a "-".
-
-**Range:** This number is used to determine how far the weapon can be accurately fired in meters. A weapon's short range is half this number, while its long range is double this number. Weapons cannot be fired at targets more than four times their range distance away.
-
-**Clip:** How many rounds the weapon holds when fully loaded.
-
-**Reload:** How many actions the weapon takes to reload. This is generally Half (for a Half Action) or Full (for a Full Action). Some weapons can take a number of Actions over several Rounds. The number of Rounds is given as a number, for example 2 Full means that reloading takes 2 Full Rounds.
-
-**Avail (Availability):** This identifies the weapon's availability.
-
-**Special:** This tells you if the weapon has any special qualities.
+- **Name:** What the weapon is called
+- **Type:** Melee, Thrown, Pistol, Basic, or Heavy
+  - **Melee:** Close combat. Add Strength as rolled dice to damage.
+  - **Thrown:** Muscle-propelled (knives, spears, grenades). Add Strength to damage.
+  - **Pistol:** One-handed, usable in close combat (no range bonuses in melee).
+  - **Basic:** Two-handed normally; one-handed at -`2k0`.
+  - **Heavy:** Two-handed, must be braced (bipod/tripod/surface). Unbraced: -`3k1` to hit, no Full Auto.
+- **Damage:** `XkY` (roll X dice, keep Y highest) plus damage type for criticals: **E** (Energy), **X** (Explosive), **R** (Rending), **I** (Impact)
+- **Pen (Penetration):** Reduces target's Armor Points before damage calculation
+- **ROF (Rate of Fire):** Two entries — single shot (**S** or **-**) and full auto (number or **-**)
+- **Range:** Effective range in meters. Short = half, Long = double, Extreme = 4×. Cannot fire beyond 4× range.
+- **Clip:** Rounds when fully loaded
+- **Reload:** Actions to reload (Half/Full/number of Full rounds)
+- **Avail (Availability):** Rarity level
+- **Special:** Special weapon qualities (see below)
 
 ### Weapon Quality
 
@@ -123,55 +131,30 @@ All of the weapons detailed here are of Common craftsmanship. For weapons of bet
 
 ## Weapon Special Qualities
 
-Some weapons possess special qualities to represent such things as special damage or unusual effects.
-
-**Accurate:** Gain an additional +`1k0` bonus to hit when using the Aim action, and if the weapon is firing on single shot, it deals +`1k1` damage for every two raises you get on the roll to hit with an Aimed attack.
-
-**Armored:** Armored weapons grant a +2 armor bonus to the arm wielding them and to the body. Bonuses from multiple shields do not stack.
-
-**Balanced:** Gain a +`1k0` bonus to Tests made to parry.
-
-**Blast (X):** When working out a hit from a Blast weapon anyone within the weapon's Blast radius in meters, which is indicated by the number in parenthesis, is also hit. Roll hit location and damage for everyone affected from a blast.
-
-**Brawling:** The damage from a Brawling weapon is added to the user's unarmed attacks (so a `0k1` punch augmented with Brass Knuckles becomes a `0k2` punch). Brawling weapons use the Brawl skill rather than Weaponry.
-
-**Defensive:** Gain +`2k0` when the weapon is used to parry, but take -`1k0` when it is used to attack. If you aren't proficient with the weapon, that -`1k0` applies to all of the attacks that you make, instead of just the ones made with this weapon.
-
-**Flame:** These weapons project a cone of flame out to the range of the weapon. They can't be fired out to long or extreme range. You don't need to roll to hit with a Flame weapon - you just fire the weapon. The path is a cone shaped area in a 30 degree arc. All characters in this area must make a Dexterity Test (TN is equal to 5x the shooter's Ballistics skill, -5 for Poor quality weapons, and +5 for Good or Best) or else be struck by the flames and take damage normally. When it is fired by someone that isn't proficient, reduce the difficulty of the Test made to avoid damage by 10. Flame weapons Jam if the shooter rolls one or more 9s on any damage dice. For ease of use you can assume that the arc has a diameter of about half of its length.
-
-**Flexible:** These weapons cannot be parried.
-
-**Inaccurate:** You get no bonus for using the Aim action with these weapons.
-
-**Overheats:** Whenever you roll one or more 9s on a damage roll the weapon overheats. The user takes E damage equal to the weapon's regular damage to one of her arms (the firing arm if the weapon is used one-handed, a random arm if fired two-handed). The wielder may choose to drop the weapon to avoid the damage. Dropping the weapon is a Free action. A weapon that has overheated must be reloaded as if it had Jammed.
-
-**Power Field:** When such a weapon is used to parry, or is parried by, a weapon that lacks this quality, you roll a d10. On a 4+, the un-Powered weapon is destroyed. Natural and Artifact weapons are immune to this effect.
-
-**Reach:** When using a reach weapon to engage someone in melee, you yourself are not considered engaged unless they move to engage you. Reach weapons are usually 3 to 5 meters long.
-
-**Recharge:** The weapon needs time between shots to recharge. The weapon must spend the Round after firing building up a charge and cannot be fired. In effect, you can only fire this weapon every other Round.
-
-**Reliable:** Reliable weapons seldom fail. If it would Jam, the shot just misses instead.
-
-**Scatter:** If fired at a foe within Short Range, every raise the character gets on the attack roll increases the damage dealt by +`1k0`. At long range, the spread reduces its effectiveness. Armor points are doubled against hits from scatter weapons at long or extreme ranges.
-
-**Shocking:** Anyone who takes a wound from a Shocking weapon must make a Constitution Test (TN 15, 10 for Poor quality, 20 for Good, 25 for Best) or be stunned for one round.
-
-**Smoke:** These weapons throw up dense clouds of smoke to create cover. When a hit is scored from a weapon with the Smoke quality, it creates a cloud 3d10 meters in diameter from the point of impact. This screen lasts for 3d10 Rounds, or less in adverse weather conditions.
-
-**Snare:** On a successful hit, the target must make a Dexterity Test (TN of the roll that hit him) or be Immobilized. He can attempt no actions on his turn other than trying to escape the bonds. He can attempt a Strength or Dexterity Test on his turn (TN 10 for a Poor quality weapon, 15 for Common, 20 for Good, and 25 for Best) as a Half Action to escape his bonds. If it fails, he loses his other Half Action.
-
-**Tearing:** Tearing weapons always deal at least one wound when they deal damage, regardless of the target's Resilience.
-
-**Toxic:** After taking damage from a Toxic weapon, the target must make a Constitution Test (TN 15, 10 for Poor quality, 20 for Good, and 25 for Best) or else suffer one additional wound to the Gizzards.
-
-**Two Hands:** This weapon requires both hands to use.
-
-**Unbalanced:** Take a -`1k0` penalty to all Tests made to parry.
-
-**Unreliable:** Whenever you attack with this weapon, treat your Ballistics skill as being halved (rounding down) for the purpose of checking for Jams.
-
-**Unwieldy:** This weapon cannot be used to parry.
+- **Accurate:** +`1k0` when Aiming (single shot). Aimed attacks: +`1k1` damage per 2 raises.
+- **Armored:** +2 armor to wielding arm and body. Multiple shields don't stack.
+- **Balanced:** +`1k0` to parry Tests.
+- **Blast (X):** Everyone within X meters of impact is hit. Roll location/damage for each.
+- **Brawling:** Damage adds to unarmed attacks. Uses Brawl skill, not Weaponry.
+- **Defensive:** +`2k0` to parry, -`1k0` to attack. Unproficient: -`1k0` to all attacks.
+- **Flame:** 30° cone to weapon range. No attack roll — targets Dex Test (TN = 5×Ballistics, ±5 quality). Unproficient: -10 TN. Jams on 9s on damage dice.
+- **Flexible:** Cannot be parried.
+- **Inaccurate:** No Aim bonus.
+- **Overheats:** On 9s on damage dice, user takes weapon's E damage to firing arm. Drop weapon (Free Action) to avoid. Jammed until reloaded.
+- **Power Field:** On parrying/being parried by non-Powered weapon, d10: 4+ destroys it. Natural/Artifact weapons immune.
+- **Reach:** Wielder not engaged unless enemy closes. Weapons typically 3–5m long.
+- **Recharge:** Cannot fire on consecutive rounds.
+- **Reliable:** Jams become misses instead.
+- **Scatter:** Short range: +`1k0` per raise. Long/extreme: double AP against hits.
+- **Shocking:** Wounded targets: Con TN 15 (±5 quality) or stunned 1 round.
+- **Smoke:** Creates 3d10m diameter cloud for 3d10 rounds.
+- **Snare:** Hit target: Dex Test (TN = attack roll) or Immobilized. Escape: Str/Dex TN 10–25 by quality.
+- **Tearing:** Always deal at least one wound when damaging, regardless of Resilience.
+- **Toxic:** After damage: Con TN 15 (±5 quality) or +1 wound to Gizzards.
+- **Two Hands:** Requires both hands.
+- **Unbalanced:** -`1k0` to parry Tests.
+- **Unreliable:** Treat Ballistics as halved for Jam checks.
+- **Unwieldy:** Cannot parry with this weapon.
 
 ## Guns
 
@@ -265,6 +248,16 @@ Flame weapons operate by firing gouts of an ignited fuel that can be hard to ext
 
 ### Guns Table
 
+> **Table Legend:**
+> 
+> - **Damage:** `XkY` = roll X dice, keep Y highest. Letter = damage type: **E** (Energy), **X** (Explosive), **R** (Rending), **I** (Impact)
+> - **Pen:** Penetration — reduces target's Armor Points before damage
+> - **ROF:** Rate of Fire — S = Single shot, number = Full Auto rounds per burst. `-` = mode unavailable
+> - **Range:** Effective range in meters (short = half, long = double, extreme = 4×)
+> - **Clip:** Ammunition capacity
+> - **Reload:** Time to reload (Half/Full = action type, number = rounds)
+> - **Avail:** Ubi=Ubiquitous, VCom=Very Common, Com=Common, UnCom=Uncommon, Rare, VRare=Very Rare, MRare=Mythic Rare
+
 | Name           | Type                                 | Damage | Pen | ROF  | Range | Clip | Reload | Avail | Special             |
 | -------------- | ------------------------------------ | ------ | --- | ---- | ----- | ---- | ------ | ----- | ------------------- |
 | **Ordinary**   | Proficiencies: 'Basic' or 'Ranged 1' | —      | —   | —    | —     | —    | —      | —     | —                   |
@@ -349,6 +342,8 @@ The forge worlds of the Wheel send out a steady stream of explosives, grenades a
 **Grav Bomb:** An extremely rare grenade type, the gravity bomb creates a burst of gravitons. All targets in the blast area of a Grav Bomb must Test Dex against a TN of 15. Those who fail are drawn to the center of the blast radius, taking damage as if they had fallen that distance.
 
 ### Other Ranged Weapons Table
+
+> **Table Legend:** See [Guns Table](#guns-table) for column definitions. **†** = varies with ammunition. **‡** = proficiency applies to thrown grenades only. **°** = uses archer's Strength as rolled damage dice.
 
 | Name                      | Type                                 | Damage | Pen | ROF | Range  | Clip | Reload | Avail | Special                |
 | ------------------------- | ------------------------------------ | ------ | --- | --- | ------ | ---- | ------ | ----- | ---------------------- |
@@ -480,6 +475,13 @@ Unarmed weapons are designed to enhance the user's own fighting abilities.
 
 ### Melee Weapons Table
 
+> **Table Legend:**
+> 
+> - **Damage:** `XkY` = roll X dice, keep Y. Add Strength as rolled dice for melee. Letter = type: **R** (Rending), **I** (Impact)
+> - **Pen:** Penetration — reduces target AP
+> - **Avail:** Ubi/VCom/Com/UnCom/Rare/VRare/MRare
+> - **Proficiencies:** Listed under category headers
+
 | Name              | Type                                | Damage | Pen | Avail | Special                            |
 | ----------------- | ----------------------------------- | ------ | --- | ----- | ---------------------------------- |
 | **Ordinary**      | Proficiencies: 'Basic' or 'Melee 1' | —      | —   | —     | —                                  |
@@ -526,67 +528,76 @@ Unarmed weapons are designed to enhance the user's own fighting abilities.
 
 ## Armor
 
-Given the numerous weapons available in the Great Wheel as well as their lethality, personal armor and protective energy fields are commonplace. The Military and Heroes are always equipped with some sort of protection, ranging from cheap layered padding to highly sophisticated armor built to resist almost any attack.
-
-Armor provides Armor Points to various locations on your body. In addition, some kinds of armor have special properties that are noted in their description.
+Personal armor ranges from cheap padding to power armor. Armor provides **AP** (Armor Points) to body locations. Without [Armor Proficiency](07-Feats.mdx), AP penalizes your **Static Defense** (passive defense score).
 
 ### Armor Statistics
 
-**Type:** The type of armor.
-
-**Location(s) Covered:** What locations the armor covers, a combination of arms, legs, body and head. Any armor that provides protection to the body also protects the gizzards. Some armor covers all these locations and is noted as covering "all".
-
-**AP (Armor Points):** How many Armor Points the armor provides for the locations covered. It takes training to wear armor without it getting in the way. Without the appropriate feat, you apply the armor's AP as a penalty to your Static Defense. With the right feats you take no penalty for light or medium armor and half of the penalty for heavier armors.
-
-**Max Dex:** The maximum Dexterity score the character may apply when making Dodge tests, for determining Speed, and any other Test that involves quick movement.
-
-**Availability:** How rare the armor is.
+- **Type:** Armor category (Light/Medium/Heavy/Extreme/Power)
+- **Location(s) Covered:** Arms, legs, body, head, or "all." Body protection includes gizzards.
+- **AP (Armor Points):** Damage reduction for covered locations. Without the right [Armor Proficiency](07-Feats.mdx) feat, AP becomes a Static Defense penalty. With proficiency: no penalty for light/medium, half penalty for heavier.
+- **Max Dex:** Maximum Dexterity for Dodge, Speed, and agility Tests (`-` = unlimited)
+- **Availability:** Rarity level
 
 ### Mixing Armor
 
-You can mix pieces of armor. However, their protective qualities do not stack. In cases where an area which is covered by multiple pieces of armor is struck, the highest Armor Points is used.
+Multiple armor pieces don't stack. When an area has overlapping coverage, use the **highest AP** value only.
 
 ### Armor Quality
 
-All the types of armor detailed here are of Common craftsmanship. For armor of better or worse manufacture use the following modifiers:
-
-**Poor:** Badly fitted, Poor quality armor is difficult to wear and imposes a -1 penalty to Dexterity.
-
-**Good:** Well made, the armor is easy to wear. The armor's Max Dex is increased by 1.
-
-**Best:** The very best there is, like donning a second skin. It gets a +2 bonus to AP, and the armor's Max Dex is increased by 1.
+- **Poor:** -1 Dexterity penalty
+- **Good:** Max Dex +1
+- **Best:** +2 AP, Max Dex +1
 
 ### Armor Types
 
-**Primitive Armor:** It might be leather or classically-fitted metal plates, but primitive armor is still quite protective. Most of what's still in use today is enchanted and practically dripping with magic enough to deflect bullets.
+**Light Armor:**
 
-- **Leathers and Heavy Leathers** are just what you expect. Most heavy or thick clothing can be considered roughly the same as leathers in a pinch.
-- **Quilted Vests** are thick padded clothing that wouldn't look out of place as normal clothing.
-- **Chain armor** is one of the most common types of armor on feral worlds, interlocking rings of metal that soften and deflect blows.
-- **Banded armor** is made of horizontal strips of steel allowing a lot of movement but not quite as full protection as Plate armor.
-- **Plate armor** is made of thick plates of metal articulated for movement.
+- **Leathers/Heavy Leathers:** Standard leather protection. Heavy clothing counts as leathers.
+- **Quilted Vest:** Thick padded clothing, passes as normal wear.
+- **Mesh:** Thermoplas cells linked together — lightweight, momentarily rigid on impact.
 
-**Mesh Armor:** An advanced design, mesh is formed from thousands of thermoplas cells and nanotubes linked together to create a fabric-like material. It is lightweight and can withstand most impacts or energy by becoming momentarily rigid, spreading and dissipating the attack.
+**Medium Armor:**
 
-**Flak Armor:** Comprised of layers of ablative and impact-absorbent material like ceramic plates and carbon fibers, flak armor is effective against small arms, shrapnel, and proximity blasts. Flak armor doubles its AP against weapons with the Blast quality, provided the wearer was not subjected to a direct hit by the weapon.
+- **Chain:** Interlocking metal rings. Common on feral worlds.
+- **Flak:** Ceramic plates and carbon fibers. Doubles AP vs Blast weapons (not direct hits).
+- **Plastic-Man:** Cheap full-body armor with integrated helmet. White, red, or black.
+- **Magic Breastplate:** Enchanted metal torso piece. Comfortable, concealable under clothing.
+- **Exhibition Armor:** Show-business partial suits. Bright, spiky, style over substance.
 
-**Plastic-Man:** A cheap full-body armor that contains no metal and comes complete with integrated face concealing helmets. Popular with those who need to outfit legions of terror or large numbers of expendable clones. It comes in white, red, or black.
+**Heavy Armor:**
 
-**Carapace Armor:** Carapace armor is made of densely layered plates of armaplas, ceramite or other kind of highly durable metallic materials. It is heavy to wear and cannot easily cover flexible areas such as joints, but it offers significantly better protection than lighter armors.
+- **Banded:** Horizontal steel strips allowing movement.
+- **Carapace:** Dense armaplas/ceramite plates. Heavy but very protective.
+- **Armored Sleeves:** Hazmat handling equipment with built-in radiation counter.
 
-**Storm Carapace:** Storm Carapace comes as a single sealed suit, and counts as a voidsuit as long as all of the parts are worn. The protection is slightly better than normal Carapace armor thanks to its sealed joints and tough under layer.
+**Extreme Armor:**
 
-**Magic Breastplate:** Ancient pieces of enchanted armor, almost artifacts in their own rights. These are pieces of shaped metal that fit over humanoid torsos and are imbued with so much magic that they often glow. Magic breastplates are very comfortable and can easily be worn under normal clothes or voidsuits without anyone noticing.
+- **Plate:** Full metal plates articulated for movement.
+- **Storm Carapace:** Sealed suit (counts as voidsuit). Better than standard carapace.
 
-**Exhibition Armor:** These partial suits are designed for show-business. They're often brightly colored, always have lots of spikes on them, and look better than they wear. A desperate berk could kit-bash two suits together but it would drop the quality of the armor to Poor.
+**Power Armor:** Self-powered, +1 Strength, +1 Resilience, but -2 Static Defense penalty.
 
-**Armored Sleeves:** These are not actually intended to be battle armor. They're for hazardous material handling. They come with a built-in radiation counter, for measuring the magic and nuclear contamination of the wearer.
+- **Exoskeleton:** Heavy construction gear repurposed as armor.
+- **EVA Exoskeleton:** Voidsuit variant, entry through back hatch, built-in micro-bead.
 
-**Power Armor:** The heaviest and most sophisticated kinds of armor use their own power source increasing the user's strength. Power Armor adds 1 to the wearer's Strength Characteristic and increases her Resilience by 1, however, due to the nature of such armor, the penalty to Static Defense is increased by 2.
+### Armor Quick Reference
 
-**Exoskeletons:** More equipment re-purposed as armor, these are less robust versions of Power Armor for heavy construction. The EVA version counts as a voidsuit and is a one-piece affair that the wearer gets into through a hatch in the back; it also has a built in micro-bead.
+| Category | AP Range | Max Dex | Best For | Required [Proficiency](07-Feats.mdx) |
+| -------- | -------- | ------- | -------- | ------------------------------------- |
+| Light    | 2–4      | 4–5     | Agile characters, starting gear | Armor Proficiency (Light) |
+| Medium   | 4–6      | 2–4     | Balanced protection | Armor Proficiency (Medium) |
+| Heavy    | 6–7      | 2–3     | Front-line combatants | Armor Proficiency (Heavy) |
+| Extreme  | 8        | 2–3     | Heavy assault | Armor Proficiency (Extreme) |
+| Power    | 8–12     | 1–3     | Elite combatants (+1 Str/Resilience) | Armor Proficiency (Power) |
 
 ### Armor Table
+
+> **Table Legend:**
+> 
+> - **AP:** Armor Points — damage reduction for covered locations
+> - **Max Dex:** Maximum Dexterity for Dodge, Speed, and agility Tests (`-` = no limit)
+> - **Avail:** Ubi/VCom/Com/UnCom/Rare/VRare
+> - Without [Armor Proficiency](07-Feats.mdx), AP applies as penalty to **Static Defense** (passive defense score)
 
 | Name              | AP  | Max Dex | Avail | Locations            |
 | ----------------- | --- | ------- | ----- | -------------------- |
@@ -704,38 +715,28 @@ Services indicate those things that are often essential to a Hero's life, such a
 
 ## Cybernetics
 
-Bionic implants and cybernetic augmentation are a fact of life in the Great Wheel. They enable damaged or diseased parts of the body to be replaced, improving on the abilities and power of the body and, in certain cases, extending life.
+Bionic implants and cybernetic augmentation enable damaged parts to be replaced and abilities enhanced. Each type grants different benefits (and sometimes penalties) depending on craftsmanship. The [Upgraded](07-Feats.mdx) feat grants cybernetic implants; the [Mechanicus Implants](07-Feats.mdx) feat grants a starter package.
 
-Each different kind of cybernetic grants the user different benefits (and sometimes penalties) depending on its craftsmanship. Some Best quality cybernetics provide no additional benefits beyond those of Good quality, but are more impressive in their construction and design.
+### Standard Cybernetics
 
-### Cybernetics Table
+### Standard Cybernetics
 
-| Name                      | Availability |
-| ------------------------- | ------------ |
-| Bionic Arm                | UnCommon     |
-| Bionic Heart              | Rare         |
-| Bionic Locomotion         | UnCommon     |
-| Bionic Respiratory System | Rare         |
-| Cybernetic Senses         | Rare         |
-| Mind Impulse Unit         | UnCommon     |
+| Name                      | Availability | Location |
+| ------------------------- | ------------ | -------- |
+| Bionic Arm                | Uncommon     | Arm      |
+| Bionic Heart              | Rare         | Body     |
+| Bionic Locomotion         | Uncommon     | Legs     |
+| Bionic Respiratory System | Rare         | Body     |
+| Cybernetic Senses         | Rare         | Head     |
+| Mind Impulse Unit         | Uncommon     | Head     |
 
-### Bionic Replacement Limbs and Body Parts
+### Bionic Rules
 
-Bionic replacement limbs are assumed to operate at the same level of strength and dexterity as the body they are attached to (rather than risk ripping themselves out of their host through over-pressure), though their robust construction does add +2 to the owner's AP against hits scored to that particular location.
-
-Damage taken to these locations counts towards damage to the character and Critical Damage dealt to these locations function as normal. However, any result that causes Bleeding or some other inappropriate result renders the bionic limb useless. Critical damage to a limb that results in death has the full effect as it can be assumed that the limb explodes into shrapnel, incinerates, or discharges stored energy through its owner with lethal effect.
-
-Note that bonuses and penalties relate only to Tests made using the bionic limb and characters that have two bionic limbs do not gain double the bonus, but rather they may apply the bonus regardless of which bionic limb they are using.
-
-### Attaching Bionics and Implants
-
-Implants and bionics are only available if the character has access to the resources and skilled labor to have them installed: commonly this is only available in substantial medical facilities and worlds with a high technological base.
-
-If a character can find a doctor willing to install a bionic or implant then the process takes 2d10 days, minus one day for each dot she has of Constitution (to a minimum of 1 day).
-
-### Bionics and Magic
-
-If a character changes shape due to magic, their robot parts change to match the new shape and size, though they remain obviously artificial.
+- **Replacement limbs** operate at host body's Str/Dex but add +2 AP to that location
+- **Critical damage** to bionics works normally, except Bleeding results render the limb useless
+- **Attaching** requires medical facilities + high-tech world. Installation: 2d10 - Constitution days (min 1)
+- **Magic shapeshift:** Bionics change to match new form but remain visibly artificial
+- Bonuses apply to Tests using that limb; two bionic limbs don't double the bonus
 
 ### Bionic Arm
 
@@ -1119,22 +1120,24 @@ To break an addiction, a character must stay off the drug for at least one week.
 - **Effect:** Anyone on the effects of Truth must make TN 15 Willpower tests to knowingly tell a falsehood. The effects last for one scene.
 - **Addictivity:** None
 
-## Advanced Bionics
+## Advanced Cybernetics
 
-### Bionics Table
+Advanced bionics require the [Mechadendrite Use](07-Feats.mdx) feat for mechadendrites. These are more specialized implants found in supplement material.
 
-| Type                      | Rarity    |
-| ------------------------- | --------- |
-| Cortex Implants           | Uncommon  |
-| Implanted Equipment       | Varies    |
-| Injector Rig              | Rare      |
-| Machinator Array          | Very Rare |
-| Voidskin                  | Very Rare |
-| Ballistics Mechadendrite  | Rare      |
-| Manipulator Mechadendrite | Rare      |
-| Medicae Mechadendrite     | Rare      |
-| Optical Mechadendrite     | Rare      |
-| Utility Mechadendrite     | Rare      |
+### Advanced Cybernetics Table
+
+| Type                      | Availability | Location |
+| ------------------------- | ------------ | -------- |
+| Cortex Implants           | Uncommon     | Head     |
+| Implanted Equipment       | Varies       | Varies   |
+| Injector Rig              | Rare         | Body     |
+| Machinator Array          | Very Rare    | Body     |
+| Voidskin                  | Very Rare    | All      |
+| Ballistics Mechadendrite  | Rare         | Back     |
+| Manipulator Mechadendrite | Rare         | Back     |
+| Medicae Mechadendrite     | Rare         | Back     |
+| Optical Mechadendrite     | Rare         | Back     |
+| Utility Mechadendrite     | Rare         | Back     |
 
 ### Cortex Implants
 

@@ -6,35 +6,50 @@ sidebar:
 title: Core Rules
 ---
 
-# Core Rules
-
-D:TD uses ten-sided dice. Whenever the Story Master tells the player to make a Test, the player rolls a number of dice, throws them, and counts up the results. You almost always want to roll high, so rolling more dice is good.
+> **Key concepts:** D:TD uses ten-sided dice (`d10`). Tests roll `XkY` — roll X dice, keep the highest Y, and sum them against a Target Number (TN). Dice that roll 10 **explode** (reroll and add). Every 5 points above the TN is a **Raise**; every 5 below is a **Check**. **Hero Points** let you reroll, reduce TNs, or cheat death.
 
 ---
 
-## Rolled and Kept Dice
+## How to Make a Test — Step by Step
 
-There are two kinds of dice you'll need to keep track of: Rolled and Kept. To make a Test, you roll a number of dice and then keep only some of them. For example, a Test might ask you to roll five dice and keep three. You'd roll a total of five dice and keep the highest three, adding them together. The two lowest dice would be discarded. The shorthand for this is **XkY**. For Roll five, Keep three, it would be **`5k3`**.
+1. **SM calls for a Test** — identifies the Characteristic + Skill (or just Characteristic) and sets the TN.
+2. **Determine your dice pool** — Rolled dice = Characteristic + Skill. Kept dice = Characteristic. Apply any bonuses or penalties.
+3. **Roll and keep** — Roll all dice, keep the highest Y, discard the rest.
+4. **Resolve explosions** — Any die showing 10 explodes: reroll and add. Repeat on consecutive 10s.
+5. **Sum kept dice** — Total the kept dice. Apply flat modifiers (e.g., free Raises at +5 each).
+6. **Compare to TN** — Meet or exceed the TN to succeed. Count Raises (each +5 over TN) or Checks (each −5 below TN).
+
+---
+
+## Dice Notation (`XkY`)
+
+Roll X dice, keep the highest Y, and add them together. The shorthand is **`XkY`** — for example, `5k3` means roll 5 dice, keep the best 3.
+
+- **Rolled dice** — the total number of dice you throw.
+- **Kept dice** — the number you actually count toward your total (always the highest).
 
 ---
 
 ## Exploding Dice
 
-Whenever you roll a 10 on a die, that die explodes. You reroll the die and add it to the result. For example, if you roll a 10, then reroll it and get a 6, that single die rolled a 16. If you roll consecutive 10s, continue rolling until you get a result other than 10, then add all the results together for the total. No matter how many times it explodes, it only counts as one die for the purposes of number of dice kept.
+When you roll a **10** on any die, it **explodes**: reroll that die and add the new result to the 10. If you roll another 10, keep going. No matter how many times a die explodes, it counts as one kept die.
 
-Some feats and abilities can change how explosions work; these apply to both initial and followup explosions.
+Some Feats and abilities change how explosions work — these apply to both initial and follow-up explosions.
 
 ---
 
 ## Rolling More Than Ten Dice
 
-Whenever you are rolling more than ten dice at once, rolled dice over 10 are changed into kept dice at a 2 to 1 ratio. Thus, if you were rolling `12k6`, you would drop the two extra rolled dice and Keep one extra die, for a roll of `10k7`. Should you reach `10k10` and still have extra dice left over, each additional die (whether it's Kept or rolled) becomes a bonus of 5 to the roll. Thus, `15k10` becomes `10k10`+25, and `11k11` becomes `10k10`+10.
+When your rolled dice exceed 10:
+
+- **Extra rolled dice** convert to kept dice at a **2-for-1** ratio. Example: `12k6` → drop 2 rolled, gain 1 kept → `10k7`.
+- **Once you reach `10k10`**, each additional die (rolled or kept) becomes a flat **+5** bonus. Example: `15k10` → `10k10` +25. `11k11` → `10k10` +10.
 
 ---
 
 ## Target Numbers
 
-All Tests are made against a Target Number. If the result is greater than that Target Number, then the Test is successful. If not, the action fails.
+All Tests are made against a Target Number (TN). Meet or exceed the TN to succeed.
 
 | TN  | Difficulty             |
 | --- | ---------------------- |
@@ -47,104 +62,107 @@ All Tests are made against a Target Number. If the result is greater than that T
 | 35  | Never Done Before      |
 | 40  | Never to be Done Again |
 
+The base TN for an ordinary Skill Test is **15**.
+
 ---
 
 ## Tests
 
-Tests are the basic way of determining success or failure. When a hero performs any task that could have dramatic consequences—affecting the story, a character's health, a leader's reputation, the safety of the ship—a Test must be performed.
+Tests determine success or failure when actions have dramatic consequences. See also: [Characteristics & Skills](/cleaned-references/03-Characteristics-Skills) for skill lists and governing Characteristics.
 
 ### Skill Tests
 
-The most common type of Test. Each of the three main branches of skills is governed by the appropriate stats. You simply roll a number of dice equal to the appropriate skill and characteristic and keep a number of dice equal to the characteristic. The SM will set a Target Number for this Test. The base TN for an ordinary skill Test is 15.
+The most common Test type. Roll Characteristic + Skill dice, keep Characteristic dice, and compare to the TN.
 
-Success is more likely to occur in a skill Test where the character has training in the skill. An explorer can attempt a Skill Test with an untrained Basic skill, but in such cases, it becomes a characteristic Test with a -1 penalty to the characteristic. If an untrained basic skill Test involves situational modifiers, they apply as normal after the penalty to the characteristic. A character cannot attempt a skill Test with an untrained advanced skill.
+- **Untrained Basic Skills** — roll as a Characteristic Test with **−1** to the Characteristic. Situational modifiers apply after the penalty.
+- **Untrained Advanced Skills** — cannot be attempted at all.
 
 ### Characteristic Tests
 
-If what you attempt isn't covered by a skill, the SM may ask you to make a characteristic Test. The SM determines the most appropriate characteristic for the Test, and the appropriate TN for the Test. Unlike a skill Test, you just roll dice equal to your characteristic and total them against the TN.
+When no skill applies, the SM may call for a Characteristic Test — roll and keep dice equal to the Characteristic alone.
 
 ### Rank 0 Characteristics
 
-It's possible, due to penalties or curses, to end up with zero dots in a Characteristic. This means that you're pretty much crippled in that aspect. A hero with a Rank 0 Dexterity may be literally crippled, while a hero with Rank 0 Strength might be sickly and weak.
+If a Characteristic is reduced to 0 (by penalties or curses), the character is severely impaired:
 
-A Hero who must make a roll based on a Characteristic in which she has a 0 always rolls one die for the characteristic, applying skills and specialties as normal, but if she rolls a 10 on any of her dice, they count as 0 and not as 10, and the die never explodes.
+- Always roll **one die** for the Characteristic, applying Skills and specialties normally.
+- If any die shows a 10, it counts as **0** instead — no explosions.
 
 ---
 
 ## Raises and Checks
 
-For most Tests, it's just enough to know if you succeeded, but sometimes it's good to know just how well you succeeded or failed. This is particularly important with social skills, such as Charm and Persuasion, as well as certain combat situations, such as firing a gun capable of automatic fire.
+After a roll, compare the total to the TN:
 
-Measuring raises is straightforward. After the roll is made, compare the total against the Target Number of the Test. For each 5 points by which the TN was exceeded, one raise is achieved. Conversely, for each 5 points by which the Test failed, you have a Check.
+- **Raise** — for every **5 points** above the TN, you earn one Raise. Raises represent exceptional success.
+- **Check** — for every **5 points** below the TN, you have one Check. Checks measure how badly you failed.
+- **Free Raises** — if a Feat or ability grants free Raises, add **+5** per free Raise to the roll result.
 
-If a feat or ability would give you a free raise to a Test, simply add +5 to the result of the roll for each free raise granted.
+Raises matter most for social skills (Charm, Persuasion), automatic fire, and any effect that scales with success. See [Combat](/cleaned-references/14-Combat) and [Social Combat](/cleaned-references/15-Social-Combat) for examples.
 
 ---
 
 ## Opposed Rolls
 
-Sometimes you'll need to Test your skill against another's. This is known as an Opposed Test. For example, if an explorer needed to hide from a guard, she could Test her Stealth skill against the guard's Perception skill.
+When two characters compete directly, both make Tests. The one with the higher total wins.
 
-In an opposed skill Test, both participants make Tests normally. Whoever succeeds at their Test wins. If both participants succeed, the participant with the highest total roll wins.
+- If both succeed, highest total wins.
+- If both fail, the SM may call it a stalemate or require a reroll.
+- On a tie, the character with the **higher governing Characteristic** wins. If still tied, reroll.
 
-Should both parties fail, one of two things occurs. Either there is a stalemate and nothing happens or both parties should reroll until there is a clear winner.
-
-For example, to dodge you'd need to roll Dexterity + Acrobatics against the opponent's Dexterity + Weaponry. The process is simple—each participant rolls, and the highest roll wins. If there's a tie, the character with the highest applying Characteristic wins.
+**Example:** Hiding from a guard — the explorer Tests Stealth vs. the guard's Perception. Both roll; highest total wins.
 
 ---
 
 ## Stunting
 
-The rules reward players with drama dice, additional rolled dice granted for good roleplaying, for describing their characters' actions in an evocative manner. Stunts represent the capacity of epic heroes to be truly spectacular when they take risks and act like heroes.
+Stunting rewards dramatic, evocative descriptions of actions with bonus **drama dice** (additional rolled dice). Stunts represent heroic characters being truly spectacular.
 
-**One-die stunts** require a good description of an action, adjudicated by the Story Master. In return, the player gains one drama die to use as a rolled die on that roll and the character may perform feats that border on impossible (such as running across the heads of people in a crowd, deflecting a blade barehanded, and so on).
+| Stunt Level | Bonus  | Requirements |
+| ----------- | ------ | ------------ |
+| **One die** | +`1k0` | Good description of the action. Enables borderline-impossible feats (running across heads in a crowd, deflecting a blade barehanded). |
+| **Two dice** | +`2k0` | Interact with the environment or leverage world knowledge (enemy phobias, lover's favorite flower). Allows limited **dramatic editing** — reveal minor details without contradicting the scene. SM may veto. |
+| **Three dice** | +`3k0` | Singular act of greatness — must leave the table slack-jawed. If there's any doubt, it's not a three-die stunt. Includes two-die dramatic editing. |
 
-**Two-die stunts** require that the character interact with the environment in some notable fashion, taking advantage of the scenery that the Story Master has provided. This can be physical environment or things the character knows about the world, like an enemy's phobias or a lover's favorite flower. The player gets two bonus dice and may perform limited dramatic editing. No detail of the scene may be contradicted, but minor details may be 'revealed' in the context of the character's actions. The Story Master may veto any editing that they feel strains belief or is otherwise inappropriate. Players cannot generally use a stunt to draw a "hidden" weapon from nowhere, though some assassins might well have knives or other small weapons hidden all over their person, leaving exact placement vague until a good stunt opportunity arises.
+**Guidelines:**
 
-**Three-die stunts** are singular acts of greatness, stunning bravado and visual poetry, defined by their capacity to leave the other players slack-jawed in astonishment. If any doubt exists as to whether a stunt merits three drama dice, it isn't a three-die stunt. In addition to providing three drama dice, these feats allow for the same measure of dramatic editing as two-die stunts.
-
-Short and flowing is always better than long and clunky. Merely stringing adjectives and adverbs together isn't good enough. The description must be interesting without interrupting the flow of play.
-
-Important Story Master characters may also use stunts to benefit their actions but they should only do so sparingly since the Story Master is the final authority on all stunts. Unimportant characters should never gain the advantage of stunts. In gritty games, Story Masters may limit the effect of stunts for all characters.
+- Short and flowing beats long and clunky. Stringing adjectives isn't enough — the description must be interesting without interrupting play.
+- Important SM characters may stunt sparingly. Unimportant characters never stunt.
+- In gritty games, the SM may limit stunt effects for all characters.
 
 ---
 
 ## Hero Points
 
-Heroes are unusual people, individuals with abilities, backgrounds, and experiences well beyond those of ordinary citizens of the Wheel. More than anything, it's the hero's tie to fate that separates him from the masses. All adventurers begin play with a number of Hero Points. For some, these Hero Points represent destiny, a sign that the gods have marked them for greatness. For others, they represent simple luck.
+Hero Points represent a character's tie to fate — destiny, divine favor, or sheer luck. They separate heroes from ordinary people.
 
 ### Using Hero Points
 
-Hero Points allow an adventurer to manipulate situations by mitigating bad results or turning a mishap into fortune. This allows players to take more risks, which makes the game faster and far more exciting. A hero has a limited pool of Hero Points, and when a Hero Point is spent, that pool is reduced by one. Spent Hero Points are restored at the beginning of the next gaming session, or possibly under special circumstances in the middle of a game session that the SM deems appropriate. A Hero Point can be used at any time, either on the character's own turn or in reaction to the action of another character. Spending a Hero Point is a Free Action.
+Spending a Hero Point is a **Free Action** usable on your turn or in reaction to another's action. Each spent point reduces your pool by one. Spent points restore at the start of the next gaming session (or mid-session at SM discretion).
 
-Spending a Hero Point allows for one of the following effects:
-
-- Reroll a failed Test once. The results of the reroll are final.
-- Reduce the TN of a roll by 5. This must be chosen before dice are rolled.
-- Add an extra raise to an already successful Test.
-- Count as having rolled a 10 for initiative.
-- Instantly recover from being stunned.
+| Effect | Cost |
+| ------ | ---- |
+| **Reroll** a failed Test (final result stands) | 1 Hero Point |
+| **Reduce TN** by 5 (declared before rolling) | 1 Hero Point |
+| **Add a Raise** to an already-successful Test | 1 Hero Point |
+| **Count as 10** for Initiative | 1 Hero Point |
+| **Instantly recover** from Stunned | 1 Hero Point |
 
 ### Burning Hero Points
 
-Burning Hero Points is much more severe. When you absolutely need to, you can burn a Hero Point, permanently reducing the pool by one. The result is that the character survives whatever would have killed him. Most of the time it's just that the attack wasn't fatal but leaves you out of the fight; more complicated situations (being trapped in a collapsing chamber) might require some working things out with the SM. The consequences of burning a Hero Point should largely be in the hands of the player—there might be no consequences, or the character might end up losing an arm or becoming heavily scarred. A Hero Point may be burnt even if it has already been used for that gaming session.
+Burning a Hero Point **permanently** reduces your pool by one. The result: **you survive whatever would have killed you.** How you survive is negotiated with the SM — the attack wasn't fatal, you were thrown clear, etc. Consequences (losing a limb, heavy scarring) are largely player-decided. A Hero Point can be burnt even if it was already spent this session.
 
 ### Gaining Additional Hero Points
 
-Characters are awarded additional Hero Points (or are allowed to replenish burnt Hero Points) at the SM's discretion. Such awards should be given out only for reaching milestones, accomplishing major goals, etc.
+Awarded at SM discretion for reaching milestones, accomplishing major goals, or exceptional roleplay. Burnt points can be replenished through these awards.
 
-> **Note:** Hero Points and Exaltation Resource Stats are distinct pools. Hero Points are narrative currency for all characters. Resource Stats (Mana, Rage, Essence, etc.) are exaltation-specific and refresh per the exaltation's rules.
+> **Note:** Hero Points and Exaltation Resource Stats are distinct pools. Hero Points are narrative currency for all characters. Resource Stats (Mana, Rage, Essence, etc.) are exaltation-specific and refresh per the [Exaltation's](/cleaned-references/05-Exaltations) rules.
 
 ---
 
 ## What You Need to Play
 
-When you're ready to start playing Dungeons the Dragoning, you'll need a few things:
-
-- This Rulebook
-- Three or more people to play the game
-- A quiet place to play
-- Three or four hours of gaming time
-- Some ten-sided dice
-- Paper
-- Pencils and an eraser
+- This rulebook
+- Three or more players
+- A quiet space and 3–4 hours
+- Ten-sided dice, paper, pencils, and an eraser

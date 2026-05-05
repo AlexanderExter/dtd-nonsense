@@ -110,7 +110,7 @@ Ships save as self-contained JSON including hull, all components, and crew.
 
 ## UI Layout
 
-```
+```text
 ┌───────────────────────────────────────────────────────────────┐
 │  ┌─────────────────┐  ┌───────────────────────────────────┐  │
 │  │ HULL SELECT      │  │ SHIP STATS                        │  │

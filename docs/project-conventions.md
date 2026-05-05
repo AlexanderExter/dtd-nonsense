@@ -117,7 +117,6 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 
 **Prompt:** `.github/prompts/dependency-upgrade.prompt.md` — orchestrates the full workflow.
 **Recon:** `bun run upgrade:recon` — gathers dependency state, tree health, audit results, and tool availability.
-**Output:** `docs/whats-new/YYYY-MM-DD.md` — per-session briefing documenting what upgraded and what opportunities it creates.
 
 **How it works:**
 
@@ -125,8 +124,7 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 2. The prompt bootstraps tools (ncu, bun detection), runs recon, and establishes a baseline
 3. Upgrades execute in tiered order: toolchain → framework → utility, validated between each tier
 4. Breaking changes are resolved (code modernization, deprecated pattern removal, config updates)
-5. A "What's New" briefing is generated for subsequent sessions
-6. The branch is merged via `bun run session:end` or deleted if the upgrade failed
+5. The branch is merged via `bun run session:end` or deleted if the upgrade failed
 
 **Safety model:** The branch is the safety net. If the process botches, the branch is deleted. `bun run check` passing is the red line — if it passes, the upgrade stands.
 
@@ -189,15 +187,15 @@ Use consistent terminology across all files:
 | Test               | check (for dice rolls)          | "Make a Perception Test", "Strength Test" |
 | Check              | _(keep as-is)_                  | Degrees of failure, every 5 below TN      |
 | Raise              | degree of success               | Every 5 above TN                          |
-| Target Number / TN | DC, Difficulty Class            | D:TD term, not D&D                        |
+| Target Number / TN | TN, Target Number            | D:TD term, not D&D                        |
 | Initiative Roll    | Initiative Check                | It's a roll, not a Test                   |
 | Alignment Check    | _(canonical compound — keep)_   | Not a Test — canonical name               |
-| Persuasion         | Persuade                        |                                           |
-| Performer          | Perform, Performance            |                                           |
-| Ballistics         | Ballistic                       |                                           |
-| Armor              | Armour                          | Physical damage reduction                 |
+| Persuasion         | Persuasion                        | Canonical skill name                      |
+| Performer          | Perform, Performance            | Canonical skill name                      |
+| Ballistics         | Ballistics                       | Canonical skill name                      |
+| Armor              | Armor                          | Physical damage reduction                 |
 | Aura               | Magical Armor                   | Magical damage reduction                  |
-| Hero Points        | Fate Points, Action Points      | Narrative resource (all characters)       |
+| Hero Points        | Hero Points, Action Points      | Narrative resource (all characters)       |
 | Resource Points    | _(always capitalized compound)_ | Exaltation-specific power pool            |
 | Resolve Points     | _(always capitalized compound)_ | Social defense resource                   |
 | Resource           | Power Pool, Essence             | Exaltation-specific power pool            |
@@ -289,21 +287,59 @@ Always verify calculated stats against formulas. Common errors:
 
 ## Source Hierarchy
 
-**Books are canonical. Forums are supplementary. Never invent.**
+**Books are canonical. Forums are supplementary. Never invent mechanics.**
 
-All content files in `books/` and `cleaned-references/` use `.mdx` format. This project is a curated creative derivative — the books are the authority for core mechanics, but the goal is a polished reference, not strict fidelity to the original PDFs.
+All content files in `books/` and `cleaned-references/` use `.mdx` format. This project is a curated creative derivative — the books are the authority for core mechanics, but the goal is a **web-native reference**, not strict fidelity to the original PDFs.
 
 | Tier | Source                                      | Authority                                                 |
 | ---- | ------------------------------------------- | --------------------------------------------------------- |
 | 1    | `books/` (per-chapter rulebook split)       | Absolute for core mechanics                               |
-| 2    | `docs/editorial/open-questions.md` (resolutions) | Enriches Tier 1 with clarifications                       |
-| 3    | Forums (whitewizardsworkshop.proboards.com) | Last resort, requires `<!-- SOURCE: forum -->` annotation |
+| 2    | Forums (whitewizardsworkshop.proboards.com) | Last resort, requires `<!-- SOURCE: forum -->` annotation |
 
-When sources conflict: higher tier wins. When unclear: document in `docs/editorial/open-questions.md`, do NOT invent rulings.
+When sources conflict: higher tier wins. When unclear: do NOT invent rulings.
 
 For the full resolution protocol and annotation standards, see the `dtd-source-hierarchy` skill.
 
-**Open-questions references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.mdx`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
+### Editorial Scope
+
+"Never invent" means **never fabricate game mechanics or rulings**. It does not mean "never change wording."
+
+#### Books (`books/`)
+
+The source books are editable for **reading experience improvements** — text, structure, and layout changes that make the content more readable on the web. The following editorial actions are permitted:
+
+- **Restructuring** headings, sections, and content order for better navigation
+- **Reformatting** layout (tables, lists, spacing) for web readability
+- **Improving** text clarity without altering meaning
+- **Fixing** OCR artifacts, encoding errors, and formatting inconsistencies
+- **Standardizing** notation conventions (dice, stats, cross-references)
+
+What is **not** permitted in books:
+
+- Altering **tone, voice, or personality** of the original writing
+- Changing **game material** (mechanics, values, rules, rulings)
+- Removing **content** without documenting rationale
+- Adding commentary or editorial opinion as if it were source material
+
+#### Cleaned References (`cleaned-references/`)
+
+The following editorial actions are explicitly permitted in `cleaned-references/`:
+
+- **Rewording** prose for clarity and scannability
+- **Restructuring** sections, headings, and content order
+- **Condensing** redundant or verbose passages
+- **Adding** quick-reference summaries, cross-reference links, and inline glossary notes
+- **Merging** scattered sections on the same topic into unified presentations
+- **Adding** table legends, abbreviation definitions, and introductory context
+
+#### Universally Prohibited
+
+- Inventing game mechanics, rulings, or house rules
+- Adding homebrew content presented as official
+- Changing mechanical values (damage, TN, costs) without source justification
+- Removing content without documenting the rationale
+
+**Source references:** Always cite `books/` paths (e.g., `book-1-dungeons-the-dragoning/02-character-creation.mdx`), never `archive/extracted/` paths. _(Historical note: `archive/extracted/` was a temporary extraction directory that no longer exists in the repository.)_
 
 ---
 
@@ -368,7 +404,7 @@ A bare `<style>@import "../styles/foo.css";</style>` in an Astro layout is **sco
 
 ### `var` vs `const`/`let` for DTD Namespace (Historical)
 
-> **Note:** This pattern was replaced by ES module named exports during the Astro port. The `DTD.*` global namespace no longer exists in `src/lib/dtd/`. This section is preserved for context when reading the vanilla `tools/` history or `project-history.md`.
+> **Note:** This pattern was replaced by ES module named exports during the Astro port. The `DTD.*` global namespace no longer exists in `src/lib/dtd/`. This section is preserved for historical context.
 
 The `DTD` global was declared with `var` (not `const`/`let`) in core.js so it existed as `window.DTD`. Other modules (dice.js) extended it via `window.DTD = window.DTD || {}`. Using `const` or `let` at global scope creates a separate lexical binding invisible to `window`, silently splitting the namespace.
 
@@ -425,7 +461,7 @@ In PowerShell, `git push` outputs informational messages to stderr, which PowerS
 
 ### Plan vs Execution Drift
 
-Decisions in planning documents (open questions, side tracks) can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
+Decisions in planning documents can be silently ignored by executing agents who default to more familiar tools. After a plan is executed, **verify that plan decisions were actually followed** — especially tool choices (e.g., Bun vs tsx), naming conventions, and architectural approaches. If a deviation was intentional, document why. If unintentional, flag it.
 
 ### Skill Files Drift After Broad Refactors
 
@@ -463,8 +499,7 @@ Specific counts in documentation (e.g., "187 tests", "12 files", "103 records") 
 **Rules for counts in active documentation:**
 
 - **Don't embed exact counts** in prose that describes the current state. Use descriptive labels ("Unit tests cover core, dice, schemas, and pipeline scripts") or point to the command that produces the live count ("Run `bun run test` for current totals").
-- **Dated snapshots are OK** — `session-handover.md` and `project-history.md` record what was true at a point in time. Those numbers are historical facts, not current claims.
-- **`side-tracks.md` baseline notes are OK** — explicitly dated baselines (e.g., "> Baseline note (2026-03-09): ...") are timestamped by design.
+- **Dated snapshots are OK** — numbers recorded at a point in time are historical facts, not current claims.
 - **Data structure descriptions** should name what a file _contains_, not how many (e.g., "Feats with prerequisites" not "329 feats with prerequisites").
 
 ### NumberInput biome-ignore Is Structural, Not a Workaround
@@ -480,7 +515,6 @@ Files heavily reference each other. Key relationships to verify when editing:
 - Classes → require characteristics/skills from `03-Characteristics-Skills.mdx`
 - Feats → reference class features from `06-Classes.mdx`
 - Magic/Sword schools → gated by class level
-- `99-Appendix-Archive.mdx` → contains errata that supersedes earlier files
 - `data/` → JSON data must match `cleaned-references/` (skill mappings, dot values, formulas)
 - `src/lib/dtd/core.ts` → ES module root — data loading, character CRUD, derived stats, XP, UI helpers
 - `src/lib/dtd/dice.ts` → dice module — XkY rolling, overflow compression, notation parsing

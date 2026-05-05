@@ -109,6 +109,11 @@ sidebar:
 
 /** @type {Record<string, {title: string, description: string, group: string}>} */
 const CONTENT_METADATA = {
+	"00-About.mdx": {
+		title: "About This Project",
+		description: "Project information, source material links, and community resources",
+		group: "About",
+	},
 	"01-Core-Rules.mdx": {
 		title: "Core Rules",
 		description: "Dice system, Tests, Raises, and Checks",
@@ -224,11 +229,6 @@ const CONTENT_METADATA = {
 		description: "The Great Wheel, crystal spheres, and factions",
 		group: "Storytelling",
 	},
-	"99-Appendix-Archive.mdx": {
-		title: "Appendix & Errata",
-		description: "Errata and archived content — supersedes earlier files",
-		group: "Reference",
-	},
 };
 
 /**
@@ -250,15 +250,6 @@ function injectStarlightFrontmatter(content, filename) {
 			label: meta.title,
 		},
 	};
-
-	// Special badge for errata
-	if (filename === "99-Appendix-Archive.mdx") {
-		targetFm.sidebar = {
-			order,
-			label: "Errata",
-			badge: { text: "Errata", variant: "caution" },
-		};
-	}
 
 	parsed.data = targetFm;
 	return matter.stringify(parsed.content, parsed.data);

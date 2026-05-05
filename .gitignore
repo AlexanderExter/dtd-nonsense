@@ -34,6 +34,3 @@ coverage/
 
 # rumdl cache
 .rumdl_cache/
-
-# Source PDFs (copyrighted, not redistributable)
-source-pdfs/

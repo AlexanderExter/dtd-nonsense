@@ -145,7 +145,12 @@ export function parseRaces(content: string): ParsedRace[] {
 	const sections = extractSections(content, 2);
 	const races: ParsedRace[] = [];
 
-	const skipHeadings = new Set(["Racial Traits Overview", "Summary Table", "Racial Traits Summary"]);
+	const skipHeadings = new Set([
+		"Racial Traits Overview",
+		"Summary Table",
+		"Racial Traits Summary",
+		"Race Comparison Table",
+	]);
 
 	for (const section of sections) {
 		if (skipHeadings.has(section.heading)) continue;
@@ -219,6 +224,7 @@ export function parseClasses(content: string): ParsedClass[] {
 	const classes: ParsedClass[] = [];
 
 	const skipPatterns = new Set([
+		"Class Finder",
 		"Class Rules",
 		"Free Study",
 		"Leveling Procedure",

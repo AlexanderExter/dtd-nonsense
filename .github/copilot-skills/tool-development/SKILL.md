@@ -16,7 +16,6 @@ All technical documentation lives in `docs/`. Read the relevant file before star
 | Concern             | Read This                                                        |
 | ------------------- | ---------------------------------------------------------------- |
 | System architecture | [docs/architecture.md](../../docs/architecture.md)               |
-| How-to recipes      | [docs/development-guide.md](../../docs/development-guide.md)     |
 | JSON data schemas   | [docs/data-reference.md](../../docs/data-reference.md)           |
 | core.ts API         | [docs/shared/core-js.md](../../docs/shared/core-js.md)           |
 | dice.ts API         | [docs/shared/dice-js.md](../../docs/shared/dice-js.md)           |
@@ -31,9 +30,7 @@ For detailed file structure, see [astro.instructions.md](../../.github/instructi
 
 ### Standard Tool Pattern
 
-See [docs/development-guide.md — Creating a React Tool](../../docs/development-guide.md#creating-a-react-tool) for the step-by-step recipe including the Astro page template, Zustand store setup, and key conventions.
-
-See [astro.instructions.md — Tool Pages](../../.github/instructions/astro.instructions.md#tool-pages) for conventions that apply to all tool code (named exports, `className`, `type="button"`, import patterns, CSS approach).
+See [astro.instructions.md — Tool Pages](../../.github/instructions/astro.instructions.md#tool-pages) for conventions that apply to all tool code (named exports, `className`, `type="button"`, import patterns, CSS approach). Follow existing tool implementations in `src/components/react/tools/` as reference patterns.
 
 > **Never use `StarlightPage` for tool pages.** `StarlightPage` wraps content in the Starlight sidebar and header, turning a tool into a documentation page. All tool pages use `ToolLayout.astro` exclusively. See Critical Pitfall #9.
 
@@ -114,7 +111,7 @@ These have each caused real bugs. Memorize them:
 
 ## Adding a New Tool
 
-See [docs/development-guide.md — Creating a React Tool](../../docs/development-guide.md#creating-a-react-tool) for the full recipe with prerequisites, commands, and build verification.
+Follow the existing tool implementations in `src/components/react/tools/` and `src/pages/tools/` as reference. Key steps: create an Astro page using `ToolLayout.astro`, create a root `*App.tsx` component, set up a Zustand store, and wire data loading via `useData`/`useAllData` hooks.
 
 ## CSS Conventions
 
@@ -199,10 +196,8 @@ bun x jscodeshift -t scripts/codemods/my-transform.ts src/
 - Dry-run first: `bun x jscodeshift --dry -t scripts/codemods/my-transform.ts src/`
 - Always verify with `bun run check` after applying
 - **Does not need type information** — for type-aware operations, use ts-morph instead
-- Full guide: [docs/development-guide.md](../../docs/development-guide.md#bulk-code-migrations-jscodeshift)
 
 ## Convention References
 
 - **Git workflow, terminology, formulas:** [docs/project-conventions.md](../../docs/project-conventions.md)
-- **Build commands, testing checklist:** [docs/development-guide.md](../../docs/development-guide.md)
 - **Full architecture and data flow:** [docs/architecture.md](../../docs/architecture.md)

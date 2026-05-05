@@ -271,7 +271,7 @@ function _compressOverflow(numDice: number, keepDice: number, modifier: number):
 | Die range               | 1–10 per roll, unbounded with explosions           |
 | Explosion chance        | 10% per die per roll                               |
 | Expected value (1d10)   | ~6.11 (accounting for explosions)                  |
-| Max pool (pre-compress) | Unlimited; compressed to ≤10k10+N                  |
+| Max pool (pre-compress) | Unlimited; compressed to ≤`10k10`+N                  |
 | Max chain               | Theoretically infinite, practically 3–4 explosions |
 
 ---

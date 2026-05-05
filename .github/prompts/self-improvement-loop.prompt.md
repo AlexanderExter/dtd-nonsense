@@ -49,10 +49,7 @@ For each file, note:
 Gather situational awareness:
 
 1. `git log --oneline -30` — what's been happening?
-2. `docs/session-handover.md` — last session's context
-3. `docs/side-tracks.md` — deferred and observed items
-4. `docs/editorial/open-questions.md` — unresolved content questions
-5. `docs/product-vision.md` — the north star (if it exists)
+2. `docs/product-vision.md` — the north star (if it exists)
 
 ### 1c. Build a Mental Model
 
@@ -114,7 +111,7 @@ The project layout is its first layer of documentation.
 - **Convention adherence**: Does the actual file tree match what `copilot-instructions.md` describes?
 - **New patterns**: Have new directories, file types, or organizational patterns emerged that aren't documented?
 - **Stale structure**: Are there directories, files, or config entries that no longer serve a purpose?
-- **Pain points**: Based on session history and side-tracks, are there structural issues that keep causing friction?
+- **Pain points**: Based on git history, are there structural issues that keep causing friction?
 
 ### 2f. Coherence Check
 

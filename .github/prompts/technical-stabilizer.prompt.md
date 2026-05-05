@@ -123,7 +123,7 @@ After user approval, address findings in order of severity (high → medium → 
     - Verify the change didn't break anything (build still passes, tests still pass, no new errors)
     - Commit with a descriptive message explaining what was fixed and why
 3. Do not batch unrelated fixes into a single commit — each fix or closely related group of fixes gets its own commit
-4. If a fix turns out to be more complex than expected or reveals a deeper issue, **do not pursue it**. Log it in `docs/side-tracks.md` (create this file if it does not exist) with a brief description of the problem, where it was found, and why it exceeds the scope of stabilization. Then move on.
+4. If a fix turns out to be more complex than expected or reveals a deeper issue, **do not pursue it**. Note it in the report with a brief description of the problem, where it was found, and why it exceeds the scope of stabilization. Then move on.
 
 ### Documentation Cascade
 
@@ -141,7 +141,7 @@ Stabilization changes often affect documentation and agent instructions. After c
 - **Do not refactor working code** unless it was explicitly flagged in the diagnostic and approved by the user
 - **Do not upgrade dependencies** unless the user approved it — version changes are a separate concern
 - **Do not change functionality** — this is a maintenance pass, not a feature session
-- **If a fix introduces a new failure**, revert it immediately and log it in `docs/side-tracks.md` rather than attempting cascading fixes
+- **If a fix introduces a new failure**, revert it immediately and note it in the report rather than attempting cascading fixes
 
 ---
 
@@ -158,7 +158,7 @@ Stabilization changes often affect documentation and agent instructions. After c
 1. **Findings summary** — total issues found per category, broken down by severity
 2. **Actions taken** — what was fixed, with commit references
 3. **Deferred items** — anything the user chose to skip or that was too complex to address in this session
-4. **Side-tracks logged** — items added to `docs/side-tracks.md` during this session, with brief rationale
+4. **Deferred items** — anything too complex to address in this session, with brief rationale
 5. **Scaffolding recommendations** — any tooling, configuration, or structural improvements suggested in the diagnostic that the user has not yet acted on
 6. **Documentation updates** — what docs, instructions, or skill files were updated as a result of stabilization changes
 7. **Health assessment** — a brief, honest statement of the project's current technical health relative to where it started

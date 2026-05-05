@@ -34,17 +34,14 @@ If it doesn't exist, that's fine — Phase 2 will create it from scratch.
 ### 1b. Project Context
 
 Gather situational awareness:
-- Read `docs/project-history.md` — where has the project been?
-- Read `docs/session-handover.md` — what's the current state?
-- Read `docs/side-tracks.md` — what's been deferred or observed?
 - Read `.github/copilot-instructions.md` — what does the framework think the project is?
+- `git log --oneline -50` — what's been worked on recently?
 
 ### 1c. Usage Signals
 
 Look for evidence of what matters:
 - `git log --oneline -50` — what's been worked on? What gets attention?
 - Which tools have received the most development? Which are neglected?
-- What's in `docs/editorial/open-questions.md` — what ambiguities persist?
 
 ---
 

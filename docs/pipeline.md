@@ -89,7 +89,7 @@ bun run lint:data                             # Lint all content
 
 **Rules enforced:**
 
-- **Terminology**: Canonical term usage (Test not check, Armor not Armour, etc.)
+- **Terminology**: Canonical term usage (Test not check, Armor not Armor, etc.)
 - **Dice notation**: `XkY` must be in backticks
 - **Formula symbols**: Use `×` and `−`, not `x` and `-`
 - **Heading hierarchy**: No skipped heading levels

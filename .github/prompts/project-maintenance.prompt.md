@@ -468,7 +468,7 @@ If any check fails that passed in the baseline, something went wrong. Debug and 
 
 ## Phase G — Briefing
 
-Create a briefing document. If the project has a `docs/whats-new/` directory, create `docs/whats-new/YYYY-MM-DD.md`. Otherwise, create it at the project root or in the most appropriate docs directory.
+Create a briefing document in the most appropriate docs directory (e.g., `docs/maintenance-YYYY-MM-DD.md`).
 
 ### Briefing Template
 
@@ -543,7 +543,7 @@ Create a briefing document. If the project has a `docs/whats-new/` directory, cr
 
 ## Phase H — Commit & Close
 
-1. **Stage the briefing:** `git add docs/whats-new/` (or wherever the briefing was placed).
+1. **Stage the briefing:** `git add docs/` (or wherever the briefing was placed).
 2. **Commit:** `docs: add maintenance briefing for YYYY-MM-DD`
 3. **Final status report** to the user:
     - Config files audited and modified

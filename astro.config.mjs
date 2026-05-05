@@ -39,6 +39,7 @@ export default defineConfig({
 
 			// Sidebar: rules reference + source books + tools
 			sidebar: [
+				{ label: "About", slug: "rules/00-about" },
 				{
 					label: "Rules",
 					items: [
@@ -101,16 +102,7 @@ export default defineConfig({
 						{ label: "Setting & Lore", slug: "rules/23-setting-lore" },
 					],
 				},
-				{
-					label: "Reference",
-					items: [
-						{
-							label: "Errata",
-							slug: "rules/99-appendix-archive",
-							badge: { text: "Errata", variant: "caution" },
-						},
-					],
-				},
+
 				{
 					label: "Source Books",
 					collapsed: true,

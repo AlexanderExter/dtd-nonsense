@@ -34,7 +34,7 @@ Follow the git workflow in [docs/project-conventions.md](../../docs/project-conv
 
 ## Directory Structure
 
-Key locations for editorial work: `books/` (core reference, `.mdx`), `cleaned-references/` (condensed references, `.mdx`), `docs/editorial/open-questions.md` (ambiguities), `data/` (JSON game data synced with cleaned-references).
+Key locations for editorial work: `books/` (core reference, `.mdx`), `cleaned-references/` (condensed references, `.mdx`), `data/` (JSON game data synced with cleaned-references).
 
 ### Content Maturity
 
@@ -121,10 +121,10 @@ A first pass catches ~30% of merged words. Systematic sweeps with expanding patt
 
 | Issue                 | Action                                                        |
 | --------------------- | ------------------------------------------------------------- |
-| **Inconsistencies**   | Same rule stated differently → log to open-questions          |
-| **Contradictions**    | Rules that conflict → log to open-questions                   |
-| **Truncated content** | Missing endings → log to open-questions                       |
-| **"Obvious errors"**  | What looks wrong may be intentional → log, don't fix silently |
+| **Inconsistencies**   | Same rule stated differently → add clarification note     |
+| **Contradictions**    | Rules that conflict → add clarification note              |
+| **Truncated content** | Missing endings → add clarification note                  |
+| **"Obvious errors"**  | What looks wrong may be intentional → note, don't fix silently |
 
 ---
 
@@ -154,10 +154,6 @@ When a subagent performs integration, their report must include:
 - Explicit confirmation: "Source text preserved verbatim" or list of deviations
 
 ---
-
-## Open Questions File
-
-Track ambiguities in `docs/editorial/open-questions.md`. See [templates.md](references/templates.md) for entry format and the `open-question-manager` skill for the full lifecycle.
 
 ---
 
@@ -189,14 +185,13 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 **Directory context:** This is in cleaned-references/ — compression and reformatting are appropriate.
 
-**Source hierarchy:** Books (`books/`) are canonical. `docs/editorial/open-questions.md` has resolutions. Never invent rulings.
+**Source hierarchy:** Books (`books/`) are canonical. Never invent rulings.
 
 **Voice:** Preserve the source material's tone exactly. Do not sanitize informal language, humor, or casual phrasing. Integration = transcription, not paraphrase.
 
 **Deliverables:**
 - Edit the file
-- Log any ambiguities to `docs/editorial/open-questions.md`
-- Report: files modified, sections processed, open questions logged, anything blocked
+- Report: files modified, sections processed, anything blocked
 - Confirm: source text preserved verbatim (or list specific phrasing changes and justification)
 ```
 
@@ -210,13 +205,12 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 1. **Create a branch** for the task
 2. **Read the entire file** before editing
-3. **Check docs/editorial/open-questions.md** for applicable resolutions
-4. **Clean artifacts first** (typos, garbage, duplicates)
-5. **Work section by section**, top to bottom
+3. **Clean artifacts first** (typos, garbage, duplicates)
+4. **Work section by section**, top to bottom
 6. **For each section:**
     - Identify mechanical content (must preserve exactly)
     - Identify verbose language (can compress in `cleaned-references/`)
-    - Identify ambiguities (log to open-questions)
+    - Identify ambiguities (add clarification note in source)
 7. **Apply formatting** for scannability
 8. **Commit** with descriptive message
 9. **Final pass:** verify no mechanics lost via `git diff`
@@ -224,13 +218,12 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 ### Multi-File Projects
 
 1. **Plan thoroughly** — inventory files, assess scope, identify dependencies
-2. **Check docs/editorial/open-questions.md** — apply relevant resolutions during processing
-3. **Process independent files in parallel** (2-3 subagents) or sequentially
+2. **Process independent files in parallel** (2-3 subagents) or sequentially
 4. **Commit after each file** — don't let changes pile up uncommitted
 5. **Dependent files process after their dependencies** (e.g., classes before feats that reference them)
 6. **Track cross-references** needed between files
 7. **Track superseded approaches** — if a new strategy replaces an old one (e.g., in-place cleaning vs. chapter replacement), note it in the plan and schedule the old branch for deletion
-8. **Review open-questions** after all files done
+8. **Review for ambiguities** after all files done
 
 ---
 
@@ -277,7 +270,7 @@ Create scannable references, not word walls. See [formatting.md](references/form
 
 ## Handling Ambiguities
 
-**Never invent rulings.** Preserve ambiguity in text, add a clarification note, and log in `docs/editorial/open-questions.md`. See the `open-question-manager` skill for the full workflow.
+**Never invent rulings.** Preserve ambiguity in text and add a clarification note directly in the source file. See the `dtd-source-hierarchy` skill for the resolution protocol.
 
 ---
 
@@ -289,7 +282,7 @@ If you notice yourself doing any of these, pause and verify your approach:
 - **Bolding every occurrence** of a term — Bold first definitional use only
 - **Adding excessive subsections** to short content — A 30-line rule doesn't need 5 subheadings
 - **Leaving British spelling** unchanged — Standardize to American English
-- **Silently fixing "obvious errors"** in source — Log to open-questions; the source may be intentional
+- **Silently fixing "obvious errors"** in source — Note the ambiguity; the source may be intentional
 - **Inventing rulings** to resolve ambiguity — Preserve ambiguity; note it for GM discretion
 - **Rewriting source prose into your own words** — Integration means transcription, not paraphrase. If you're composing new sentences to express the source's ideas, you're rewriting
 - **Editing without a branch** — Always branch before modifying files
@@ -347,7 +340,7 @@ The `replace_string_in_file` tool requires exact string matching. Known issues:
 - [ ] Terminology consistent throughout (D:TD standards)
 - [ ] Game terms capitalized (Test, Static Defense, Hero Points, etc.)
 - [ ] Pronouns follow convention (she/her for Heroes, he/him for opponents, they/them for SM)
-- [ ] Ambiguities logged to docs/editorial/open-questions.md
+- [ ] Ambiguities noted with clarification comments in source files
 - [ ] No word walls; clear visual hierarchy
 - [ ] Cross-references accurate
 - [ ] Tool data consistency checked (if mechanics were edited)

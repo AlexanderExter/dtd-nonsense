@@ -19,7 +19,7 @@ Ten-sided dice generate numbers from one to ten. Generally, the ten on a die is 
 
 ### Rolling More Than Ten Dice
 
-While most gamers like rolling lots of dice, ten is about as many as you can reasonably be expected to throw down at once and keep the game moving at any reasonable kind of speed. Therefore, whenever you are rolling more than ten dice at once, rolled dice over 10 are changed into kept dice at a 2 to 1 ratio. Thus, if you were rolling 12k6, you would drop the two extra rolled dice and Keep one extra die, for a roll of 10k7. Should you reach 10k10 and still have extra dice left over, each additional die (whether it's Kept or rolled) becomes a bonus of 5 to the roll. Thus, 15k10 becomes 10k10+25, and 11k11 becomes 10k10+10.
+While most gamers like rolling lots of dice, ten is about as many as you can reasonably be expected to throw down at once and keep the game moving at any reasonable kind of speed. Therefore, whenever you are rolling more than ten dice at once, rolled dice over 10 are changed into kept dice at a 2 to 1 ratio. Thus, if you were rolling `12k6`, you would drop the two extra rolled dice and Keep one extra die, for a roll of `10k7`. Should you reach `10k10` and still have extra dice left over, each additional die (whether it's Kept or rolled) becomes a bonus of 5 to the roll. Thus, `15k10` becomes `10k10`+25, and `11k11` becomes `10k10`+10.
 
 ### Skill Tests
 
@@ -180,20 +180,20 @@ Starting with the character at the top of the initiative order, each character t
 
 | Name               | Type | Description                                                                                     |
 | ------------------ | ---- | ----------------------------------------------------------------------------------------------- |
-| Aid Another        | H    | Give another character +1k0 on their next Test.                                                 |
-| Aim                | H/F  | +1k0 to hit on a Half Action aim or +2k0 to hit on a Full Action, applying to your next attack. |
-| All-Out Attack     | F    | +2k0 to hit, +1k0 melee damage, cannot Dodge or Parry.                                          |
+| Aid Another        | H    | Give another character +`1k0` on their next Test.                                                 |
+| Aim                | H/F  | +`1k0` to hit on a Half Action aim or +`2k0` to hit on a Full Action, applying to your next attack. |
+| All-Out Attack     | F    | +`2k0` to hit, +`1k0` melee damage, cannot Dodge or Parry.                                          |
 | Brace              | H    | Brace a heavy weapon to fire it normally.                                                       |
 | Bull Rush          | H    | Opposed Size + Strength, move target 2m, plus 2m per Raise.                                     |
-| Called Shot        | F    | Attack specific location on your target at -2k0 to hit.                                         |
-| Charge             | F    | Must move 4 meters before attack, +1k0 to attack.                                               |
+| Called Shot        | F    | Attack specific location on your target at -`2k0` to hit.                                         |
+| Charge             | F    | Must move 4 meters before attack, +`1k0` to attack.                                               |
 | Delay              | H    | Before your next turn take any Half Action.                                                     |
 | Disarm             | H    | Test opposed Level + Weaponry, disarm opponent on success.                                      |
 | Dodge              | R    | Test Acrobatics + Dexterity to try to negate a hit.                                             |
 | Feint              | H    | Opposed Level + Weaponry Test, if you win your next attack cannot be dodged or parried.         |
-| Fight Defensively  | F    | -2k0 to hit, +2k0 to parry and dodge.                                                           |
+| Fight Defensively  | F    | -`2k0` to hit, +`2k0` to parry and dodge.                                                           |
 | Focus Power        | V    | Cast a spell.                                                                                   |
-| Full Auto Burst    | F    | +2k1 to hit, add +1k0 damage for every Raise, up to the RoF.                                    |
+| Full Auto Burst    | F    | +`2k1` to hit, add +`1k0` damage for every Raise, up to the RoF.                                    |
 | Full Defense       | F    | Improve your Static Defense by +10, gain an additional Reaction.                                |
 | Grapple            | H/F  | Affect a grappled opponent or escape from a grapple.                                            |
 | Healing Surge      | H    | Spend a Resource point to heal during battle.                                                   |
@@ -205,7 +205,7 @@ Starting with the character at the top of the initiative order, each character t
 | Parry              | R    | Test Level + Weaponry to negate a hit.                                                          |
 | Ready              | H    | Ready, draw, or prepare a weapon or item.                                                       |
 | Reload             | V    | Reload a weapon.                                                                                |
-| Run                | F    | Move a long distance, enemies attack you at -2k0 on ranged attacks and +2k0 on melee attacks.   |
+| Run                | F    | Move a long distance, enemies attack you at -`2k0` on ranged attacks and +`2k0` on melee attacks.   |
 | Shift              | H    | Make a small movement that doesn't provoke attacks.                                             |
 | Stand              | H    | Stand up from being prone.                                                                      |
 | Standard Attack    | H    | Make one melee or ranged attack.                                                                |
@@ -243,234 +243,204 @@ In addition to its type, every action is also categorized into one or more subty
 During his turn, a character may perform one Full Action or two different half actions. A character could, for example, make a charge attack (Full action) or aim and shoot (two half actions). It's important to remember that a round is only a few seconds long, so the character's turn within that round is but a few moments.
 
 Any action can be combined with talking, banter, battle cries, and other short verbal expressions - these are considered free actions. It is left to the SM to decide what a player might be able to say in that amount of time. A wry aside to a companion or a terse insult to an enemy is always reasonable, but recounting the intimate details of one's seven duels-to-the-death between swings of a daiklave should probably count as something more than just a Free Action.
-Most actions are started and completed within the active character's same turn.
-For example, a character does not begin acharge one Turn and then finish it on a laterturn; he performs the entire Charge (which isa full action) at once on his turn. But, thereare two exceptions. Reactions are almost al
+Most actions are started and completed within the active character's same turn. For example, a character does not begin a charge one Turn and then finish it on a later turn; he performs the entire Charge (which is a full action) at once on his turn. But, there are two exceptions. Reactions are almost always performed when it is not the reacting character's turn, and Extended Actions take more than one Round to complete.
 
-ways performed when it is not the reacting character's turn, and Extended Actions take
-more than one Round to complete.
-AID ANOTHERHalf Action Subtype: Miscellaneous The character creates an opportunity for
-another character. By working together with them, the active character gives them +1k0
-to their next Test. If the Test is to be a skill, the character must have at least one dot in
-that skill or this Aid Another bonus does not apply. Supernatural template abilities and
-spells cannot get bonuses via this method.
-The active character must be adjacent to the character performing the Test. The Aid
-Another bonus cannot be used on Free
-Actions, and the bonus cannot be given on
-Tests made to resist disease, poison, Fear, or anything else the SM deems inappropriate, and no more than two characters may
-attempt to assist another on a single Test.
-AIMHalf or Full Action Subtype: Melee or Ranged The active character takes extra time to
-make a more precise attack. You may take a half action to get +1k0 on your next attack
-or a full action to get +2k0 on your next attack. The next action the aiming character
-performs must be an attack or the benefits of aiming are lost. Aiming benefits are also
-lost if the character performs a Reaction before making his attack. Aiming can be
-used with both melee and ranged attacks.
-ALL-OUT ATTACKFull Action Subtypes: Attack, Melee The character attacks with everything
-they've got, making a melee attack with a
-+2k0 bonus to hit and a +1k0 bonus to damage. However, the active character loses
-the ability to use Reactions until their next turn.
-BRACEHalf Action Subtype: Miscellaneous Heavy weapons must be braced before firing.
-Bracing a heavy weapon can involve using a stand, propping it up on a windowsill, or
-simply assuming a wide stance or kneeling.
-The firer cannot move after bracing without losing the benefits, and depending on how it's
-braced, may be unable to traverse the weapon very far. If a heavy weapon is fired without
-bracing, the firer takes -3k0 to his attack roll.
-BULL RUSHHalf Action Subtypes: Attack, Melee, Movement The character body slams into an opponent
-and attempts to move him. The character and a target in melee range make opposed
-Size + Strength Tests. If the active character succeeds, she moves the target 2m, plus 2m
-for every Raise she gets on this opposed Test.
-CALLED SHOTFull Action Subtypes: Attack, Melee or Ranged The character attempts to attack a specific
-or vulnerable area on his target. The attacker declares a location on his target
-(Head, Body, Left Arm, Right Arm,
-Gizzards, Left Leg or Right Leg), then makes an attack at -2k0. Instead of rolling
-for a hit location, if the attack is successful it hits the named location.
-CHARGEFull Action Subtypes: Attack, Melee, Movement The character rushes at his target and makes
-a single melee attack. The target must be at least four meters away, and a character maycharge up to twice their Speed in meters.
-The movement of the charge must be in a straight line so the attacker can build speed
-and line up with his target. The attacker gains a +1k0 bonus on the attack made at
-the end of the charge. If the charging character is unarmed, he can attempt to
-grapple his opponent instead of inflicting damage. The attack at the end of the charge
-can also be replaced by a Bull Rush or
-Knock Down attempt.
+AID ANOTHER
+Half Action — Subtype: Miscellaneous
 
-DELAYHalf Action Subtype: Miscellaneous Instead of acting immediately, the character
-saves an action for later. At any time before her next turn, she may take any half action.
-If the character uses this stored action in response to someone taking an action, this
-action occurs first.
-DISARMHalf Action Subtype: Attack, Melee The character attempts to disarm an
-opponent. Both the attacking character and her target make opposed Level + Weaponry
-Tests. If the attacking character gets two or more raises on this opposed Test, the
-opponent drops their weapon.
-DODGEReaction Action Subtype: Movement Dodge is a Reaction that a character can
-perform when it is not her turn. After an attack is declared on the character, the
-character may spend a Reaction Action to make a Dodge Test (Dexterity + Acrobatics).
-A character must be a\ware of the attack in order to make the Test. Half of the result of
-this test is added to the character's Static
-Defense against the attack that they are attempting to dodge.
-FEINTHalf Action Subtype: Attack, Melee The character attempts to use guile and
-combat training to trick her opponent into a mistake. The character and her target make
-an opposed Level + Weaponry Test. If the attacking character \wins, her next melee
-attack against that same target cannot be dodged or parried. If the active character's
-next action is anything other than a melee attack, the advantage of feinting is lost.
-FIGHT DEFENSIVELYFull Action Subtype: Attack, Melee or Ranged The character performs a careful attack,
-making sure she remains \well poised to defend herself. The character suffers a -2k0
-penalty to her \Weaponry Test, but she gains a +2k0 bonus to all dodge and parry Tests
-until the start of her next turn.
-FOCUS POWERVariable Action Subtype: Varies by po\wer, Provokes The character casts a spell. The spell will list
-the Target Number and the magic skill
-Tested. If the character succeeds, the spell
-\works. If not, the spell fails.
-FULL AUTO BURSTFull Action Subtype: Attack, Ranged, Provokes The character hurls a roaring burst of fully
-automatic gunfire at her enemies. The attacker must be wielding a ranged \weapon capable of
-fully automatic fire to take this action. If the
+The character creates an opportunity for another character. By working together with them, the active character gives them +`1k0` to their next Test. If the Test is to be a skill, the character must have at least one dot in that skill or this Aid Another bonus does not apply. Supernatural template abilities and spells cannot get bonuses via this method.
 
-character has a pistol in each hand, both capable of fully automatic fire, she may fire
-both with this action.
-The attacker makes a Ballistics Test with a +2k1 bonus. If she succeeds, the attack
-scored a hit normally. Furthermore, each raise on the Ballistics Test means another shot has
-hit the target. Each additional hit adds +1k0 to the damage of the attack, up to a maximum
-of the weapon's Rate of Fire.
-A character using this action with a pistol or basic class weapon may also move up
-to his Dexterity in meters. However, if he does so, he gains no bonus to his Ballistics Test and
-instead suffers a -1k0 penalty.
-FULL DEFENSEFull Action Subtype: Melee The character makes no attacks and instead
-concentrates entirely on self-defense. Until the start of her next turn, the character can make
-one additional Reaction Action and gains a
-+10 bonus to her Static Defense.
-GRAPPLEHalf or Full Action Subtype: Attack, Melee If the character is not in a grapple, she may
-use the Half Action Grapple to enter a grapple with target opponent. Make a Brawl Test to
-hit the opponent. If it is successful, she begins grappling the target as the controller of the
-grapple.
-The controller of a grapple must spend a Full Action on every subsequent turn
-to maintain this grapple. If she doesn't, the grapple immediately ends. She may then
-make an Opposed Size + Strength Test. If she succeeds, she may take one of the following
-actions:
-Attack with Weapon: The controller of the grapple can damage the opponent with
-her fists, teeth, claws, or a melee weapon. The opponent cannot make any Reactions to this
-attack. Roll damage normally. You cannot use weapons that normally require the use of both
-hands in a grapple.
-Throw Down Opponent: The controller of the grapple can wrestle the Grappled
-opponent to the ground. The grappled opponent becomes Prone.
-Push Opponent: The controller of the
+The active character must be adjacent to the character performing the Test. The Aid Another bonus cannot be used on Free Actions, and the bonus cannot be given on Tests made to resist disease, poison, Fear, or anything else the SM deems inappropriate, and no more than two characters may attempt to assist another on a single Test.
 
-grapple makes a Bull Rush attempt. The pushed distance cannot exceed the active character's
-Speed. The active character must move with her grappled opponent in order to maintain
-the grapple or she can choose to let go of her opponent, which ends the grapple, but allows
-the active character to keep her ground.
-Ready: The controller of the grapple can ready one of her own items. Or if the SM
-allows, she can use the Ready action to grab an item belonging to her grappled opponent.
-Stand: If both grappling participants are on the ground, the controller of the grapple
-can regain her feet with this action. She can also drag her grappled opponent up with her.
-If she so desires, both participants stand.
-Use item: The controller of the grapple can use a readied item.
-If the active character is the target of the grapple the first thing she must do on her
-turn is declare Grapple as a Half Action - this is part of the penalty for being grappled. After
-that, she may choose one of the following options:
-Break Free: The grappled target can attempt to break free of the grapple by making
-an Opposed Size + Strength Test against the controller of the grapple. If the active character
-wins, she breaks free and may perform any regular Half Action.
-Slip Free: The grappled target can attempt to wriggle out of the grapple by
-making an Athletics + Dexterity test opposed by controllers Athletics + Strength. If she
-succeeds, she slips free and may perform any regular Half Action.
-Take Control: The grappled target can attempt to take control of the Grapple by
-making an opposed Athletics + Strength test against the opponent's Athletics (or Size) +
-Strength. If the active character wins, she becomes the controller of the grapple and her
-opponent becomes the grappled target. The active character then immediately performs
-one of the controller grapple options, but cannot take any other Half Actions.
-HEALING SURGEHalf Action Subtype: Miscellaneous While normally a character cannot spend
-resource points during combat to heal, they do
+AIM
+Half or Full Action — Subtype: Melee or Ranged
 
-have the option of using this action to heal their wounds. They take a half action and
-spend Resource points up to their level, healing that many hit points. A character
-gains +5 to their Static Defense until their next turn when they use Healing Surge.
-KNOCK DOWNHalf Action Subtype: Attack, Melee The attacker smashes her opponent in the
-hopes of knocking him off his feet. Make an
-Opposed Size + Strength Test. If the attacker wins, the target is knocked prone and must
-make a Stand action on his turn to regain his feet. If the target wins the opposed Test,
-he keeps his footing. If the target wins with three or more raises, the attacker is knocked
-prone instead.
-MOVEHalf or Full Action Subtype: Movement, Provokes The active character can spend a Half Action
-to move a number of meters equal to their
-Speed. As a Full Action, she may move twice that distance. If the active character ends her
-movement adjacent to an opponent, she may engage that opponent in melee. If the activecharacter moves away from an opponent
-with whom she is engaged, he provokes
-Opportunity Attacks.
+The active character takes extra time to make a more precise attack. You may take a half action to get +`1k0` on your next attack or a full action to get +`2k0` on your next attack. The next action the aiming character performs must be an attack or the benefits of aiming are lost. Aiming benefits are also lost if the character performs a Reaction before making his attack. Aiming can be used with both melee and ranged attacks.
+
+ALL-OUT ATTACK
+Full Action — Subtypes: Attack, Melee
+
+The character attacks with everything they've got, making a melee attack with a +`2k0` bonus to hit and a +`1k0` bonus to damage. However, the active character loses the ability to use Reactions until their next turn.
+
+BRACE
+Half Action — Subtype: Miscellaneous
+
+Heavy weapons must be braced before firing. Bracing a heavy weapon can involve using a stand, propping it up on a windowsill, or simply assuming a wide stance or kneeling. The firer cannot move after bracing without losing the benefits, and depending on how it's braced, may be unable to traverse the weapon very far. If a heavy weapon is fired without bracing, the firer takes -`3k0` to his attack roll.
+
+BULL RUSH
+Half Action — Subtypes: Attack, Melee, Movement
+
+The character body slams into an opponent and attempts to move him. The character and a target in melee range make opposed Size + Strength Tests. If the active character succeeds, she moves the target 2m, plus 2m for every Raise she gets on this opposed Test.
+CALLED SHOT
+Full Action — Subtypes: Attack, Melee or Ranged
+
+The character attempts to attack a specific or vulnerable area on his target. The attacker declares a location on his target (Head, Body, Left Arm, Right Arm, Gizzards, Left Leg or Right Leg), then makes an attack at -`2k0`. Instead of rolling for a hit location, if the attack is successful it hits the named location.
+
+CHARGE
+Full Action — Subtypes: Attack, Melee, Movement
+
+The character rushes at his target and makes a single melee attack. The target must be at least four meters away, and a character may charge up to twice their Speed in meters. The movement of the charge must be in a straight line so the attacker can build speed and line up with his target. The attacker gains a +`1k0` bonus on the attack made at the end of the charge. If the charging character is unarmed, he can attempt to grapple his opponent instead of inflicting damage. The attack at the end of the charge can also be replaced by a Bull Rush or Knock Down attempt.
+
+DELAY
+Half Action — Subtype: Miscellaneous
+
+Instead of acting immediately, the character saves an action for later. At any time before her next turn, she may take any half action. If the character uses this stored action in response to someone taking an action, this action occurs first.
+
+DISARM
+Half Action — Subtype: Attack, Melee
+
+The character attempts to disarm an opponent. Both the attacking character and her target make opposed Level + Weaponry Tests. If the attacking character gets two or more raises on this opposed Test, the opponent drops their weapon.
+
+DODGE
+Reaction Action — Subtype: Movement
+
+Dodge is a Reaction that a character can perform when it is not her turn. After an attack is declared on the character, the character may spend a Reaction Action to make a Dodge Test (Dexterity + Acrobatics). A character must be aware of the attack in order to make the Test. Half of the result of this test is added to the character's Static Defense against the attack that they are attempting to dodge.
+FEINT
+Half Action — Subtype: Attack, Melee
+
+The character attempts to use guile and combat training to trick her opponent into a mistake. The character and her target make an opposed Level + Weaponry Test. If the attacking character wins, her next melee attack against that same target cannot be dodged or parried. If the active character's next action is anything other than a melee attack, the advantage of feinting is lost.
+
+FIGHT DEFENSIVELY
+Full Action — Subtype: Attack, Melee or Ranged
+
+The character performs a careful attack, making sure she remains well poised to defend herself. The character suffers a -`2k0` penalty to her Weaponry Test, but she gains a +`2k0` bonus to all dodge and parry Tests until the start of her next turn.
+
+FOCUS POWER
+Variable Action — Subtype: Varies by power, Provokes
+
+The character casts a spell. The spell will list the Target Number and the magic skill Tested. If the character succeeds, the spell works. If not, the spell fails.
+
+FULL AUTO BURST
+Full Action — Subtype: Attack, Ranged, Provokes
+
+The character hurls a roaring burst of fully automatic gunfire at her enemies. The attacker must be wielding a ranged weapon capable of fully automatic fire to take this action. If the character has a pistol in each hand, both capable of fully automatic fire, she may fire both with this action.
+
+The attacker makes a Ballistics Test with a +`2k1` bonus. If she succeeds, the attack scored a hit normally. Furthermore, each raise on the Ballistics Test means another shot has hit the target. Each additional hit adds +`1k0` to the damage of the attack, up to a maximum of the weapon's Rate of Fire.
+
+A character using this action with a pistol or basic class weapon may also move up to his Dexterity in meters. However, if he does so, he gains no bonus to his Ballistics Test and instead suffers a -`1k0` penalty.
+
+FULL DEFENSE
+Full Action — Subtype: Melee
+
+The character makes no attacks and instead concentrates entirely on self-defense. Until the start of her next turn, the character can make one additional Reaction Action and gains a +10 bonus to her Static Defense.
+GRAPPLE
+Half or Full Action — Subtype: Attack, Melee
+
+If the character is not in a grapple, she may use the Half Action Grapple to enter a grapple with target opponent. Make a Brawl Test to hit the opponent. If it is successful, she begins grappling the target as the controller of the grapple.
+
+The controller of a grapple must spend a Full Action on every subsequent turn to maintain this grapple. If she doesn't, the grapple immediately ends. She may then make an Opposed Size + Strength Test. If she succeeds, she may take one of the following actions:
+
+- **Attack with Weapon:** The controller of the grapple can damage the opponent with her fists, teeth, claws, or a melee weapon. The opponent cannot make any Reactions to this attack. Roll damage normally. You cannot use weapons that normally require the use of both hands in a grapple.
+- **Throw Down Opponent:** The controller of the grapple can wrestle the Grappled opponent to the ground. The grappled opponent becomes Prone.
+- **Push Opponent:** The controller of the grapple makes a Bull Rush attempt. The pushed distance cannot exceed the active character's Speed. The active character must move with her grappled opponent in order to maintain the grapple or she can choose to let go of her opponent, which ends the grapple, but allows the active character to keep her ground.
+- **Ready:** The controller of the grapple can ready one of her own items. Or if the SM allows, she can use the Ready action to grab an item belonging to her grappled opponent.
+- **Stand:** If both grappling participants are on the ground, the controller of the grapple can regain her feet with this action. She can also drag her grappled opponent up with her. If she so desires, both participants stand.
+- **Use Item:** The controller of the grapple can use a readied item.
+
+If the active character is the target of the grapple the first thing she must do on her turn is declare Grapple as a Half Action - this is part of the penalty for being grappled. After that, she may choose one of the following options:
+
+- **Break Free:** The grappled target can attempt to break free of the grapple by making an Opposed Size + Strength Test against the controller of the grapple. If the active character wins, she breaks free and may perform any regular Half Action.
+- **Slip Free:** The grappled target can attempt to wriggle out of the grapple by making an Athletics + Dexterity test opposed by controller's Athletics + Strength. If she succeeds, she slips free and may perform any regular Half Action.
+- **Take Control:** The grappled target can attempt to take control of the Grapple by making an opposed Athletics + Strength test against the opponent's Athletics (or Size) + Strength. If the active character wins, she becomes the controller of the grapple and her opponent becomes the grappled target. The active character then immediately performs one of the controller grapple options, but cannot take any other Half Actions.
+
+HEALING SURGE
+Half Action — Subtype: Miscellaneous
+
+While normally a character cannot spend resource points during combat to heal, they do have the option of using this action to heal their wounds. They take a half action and spend Resource points up to their level, healing that many hit points. A character gains +5 to their Static Defense until their next turn when they use Healing Surge.
+
+KNOCK DOWN
+Half Action — Subtype: Attack, Melee
+
+The attacker smashes her opponent in the hopes of knocking him off his feet. Make an Opposed Size + Strength Test. If the attacker wins, the target is knocked prone and must make a Stand action on his turn to regain his feet. If the target wins the opposed Test, he keeps his footing. If the target wins with three or more raises, the attacker is knocked prone instead.
+
+MOVE
+Half or Full Action — Subtype: Movement, Provokes
+
+The active character can spend a Half Action to move a number of meters equal to their Speed. As a Full Action, she may move twice that distance. If the active character ends her movement adjacent to an opponent, she may engage that opponent in melee. If the active character moves away from an opponent with whom she is engaged, he provokes Opportunity Attacks.
 
 MULTIPLE ATTACKS
-Full Action Subtype: Attack, Melee or Ranged This action allows a character with an appropriate feat to make one or more attacks on
-his turn. The character must spend one
-Reaction Action for each attack beyond the first. A character must be wielding two
-weapons or have an appropriate feat such as
-Swift Attack or Lightning Attack in order to use this action.
+Full Action — Subtype: Attack, Melee or Ranged
+
+This action allows a character with an appropriate feat to make one or more attacks on his turn. The character must spend one Reaction Action for each attack beyond the first. A character must be wielding two weapons or have an appropriate feat such as Swift Attack or Lightning Attack in order to use this action.
 
 OPPORTUNITY ATTACK
-Free Action Subtype: Attack, Melee Whenever an character uses an action with
-the provokes keyword while engaged in melee with an opponent, she provokes an
-Opportunity Attack. All opponents in melee range of the Provoking character may use
-this action in order to make a Standard
-Attack against the Provoking character. This is a special free action that you can use once
-per turn, during any character's turn.
+Free Action — Subtype: Attack, Melee
+
+Whenever a character uses an action with the provokes keyword while engaged in melee with an opponent, she provokes an Opportunity Attack. All opponents in melee range of the Provoking character may use this action in order to make a Standard Attack against the Provoking character. This is a special free action that you can use once per turn, during any character's turn.
 
 OVERWATCH
-Full Action Subtype: Attack, Ranged, Provokes The active character guards a specific area or target, poised to shoot at an opportune moment. When Overwatch is declared, the active character establishes a kill zone, which is any general area, such as a corridor or tree line, which encompasses a 45 degree arch in the direction the active character is facing.
+Full Action — Subtype: Attack, Ranged, Provokes
+
+The active character guards a specific area or target, poised to shoot at an opportune moment. When Overwatch is declared, the active character establishes a kill zone, which is any general area, such as a corridor or tree line, which encompasses a 45 degree arch in the direction the active character is facing.
+
 The active character then specifies either Full Auto Burst or Suppressing Fire, along with the conditions under which she will perform the chosen attack. At any time the specified conditions are met before the start of the character's next turn, she can perform that attack. If a character on Overwatch performs any actions or reactions, such as Dodge, her Overwatch immediately ends. Note this does not include free actions such as speech.
 
 PARRY
-Reaction Action Subtype: Defense, Melee If the character is wielding a melee weapon capable of parrying, she can attempt to thwart an incoming melee attack by making a Weaponry Test. This test is made just like a melee attack - roll and keep a number of dice equal to your Weaponry, and you get a +Xk0 bonus (X being your Level) if you're proficient with the weapon. Half of the result of this test is added to the character's Static Defense against this attack. A character must be aware of the attack being made on them in order to parry it.
+Reaction Action — Subtype: Defense, Melee
+
+If the character is wielding a melee weapon capable of parrying, she can attempt to thwart an incoming melee attack by making a Weaponry Test. This test is made just like a melee attack - roll and keep a number of dice equal to your Weaponry, and you get a +Xk0 bonus (X being your Level) if you're proficient with the weapon. Half of the result of this test is added to the character's Static Defense against this attack. A character must be aware of the attack being made on them in order to parry it.
+
 READY
-Half Action Subtype: Miscellaneous, Provokes The active character draws a weapon or retrieves an object stowed in a pouch or pocket. A weapon or item can also be properly stowed away with this action (but note that simply dropping an item is considered a free action). This action can also be used to do things such as apply a bandage, coat a blade with poison, and so forth.
+Half Action — Subtype: Miscellaneous, Provokes
+
+The active character draws a weapon or retrieves an object stowed in a pouch or pocket. A weapon or item can also be properly stowed away with this action (but note that simply dropping an item is considered a free action). This action can also be used to do things such as apply a bandage, coat a blade with poison, and so forth.
 
 RELOAD
-Varies Subtype: Miscellaneous, Provokes The active character can reload a ranged weapon. The amount of time the reload action takes depends on the weapon.
+Varies — Subtype: Miscellaneous, Provokes
+
+The active character can reload a ranged weapon. The amount of time the reload action takes depends on the weapon.
 
 RUN
-Full Action Subtype: Movement, Provokes The active character runs, covering a distance equal to six times their speed. This makes the character harder to hit with ranged weapons, but easier prey for melee attacks. Until the beginning of the character's next turn, ranged attacks made against her suffer a -2k0 penalty, while melee attacks gain a +2k0 bonus.
+Full Action — Subtype: Movement, Provokes
+
+The active character runs, covering a distance equal to six times their speed. This makes the character harder to hit with ranged weapons, but easier prey for melee attacks. Until the beginning of the character's next turn, ranged attacks made against her suffer a -`2k0` penalty, while melee attacks gain a +`2k0` bonus.
 
 SHIFT
-Half Action Subtype: Movement The character moves a distance equal to her dexterity in meters.
+Half Action — Subtype: Movement
+
+The character moves a distance equal to her dexterity in meters.
 
 STAND
-Half Action Subtype: Movement, Provokes If the active character is on the ground, she can stand.
+Half Action — Subtype: Movement, Provokes
+
+If the active character is on the ground, she can stand.
 
 STANDARD ATTACK
-Half Action Subtype: Attack, Melee or Ranged The active character makes one melee or ranged attack.
+Half Action — Subtype: Attack, Melee or Ranged
+
+The active character makes one melee or ranged attack.
+
 SUPPRESSING FIRE
-Full Action Subtypes: Attack, Ranged, Provokes The active character unleashes a devastating hail of firepower to force her opponents to take cover. This action requires a weapon capable of full automatic fire. When Suppressing Fire is declared, the active character establishes a kill zone (or uses one previously established, such as through overwatch), which is any general area, such as a corridor or tree line, that encompasses a 45 degree arch in the direction the active character is facing. Then, the active character fires a Full Auto Burst and expends the appropriate ammo.
-Targets within the kill zone must make a Pinning Test or become Pinned. The
-active character makes a Ballistics Test against TN 20 to determine if her wild spray
-of gunfire hits anyone, friend or foe, within the kill zone. If the Test succeeds, the SM
-assigns one hit to a random target within the kill zone. For each raise on the Test, the SM
-has to assign another hit, up to the weapon's automatic rate of fire. The active character
-cannot choose to fail this Test.
+Full Action — Subtypes: Attack, Ranged, Provokes
+
+The active character unleashes a devastating hail of firepower to force her opponents to take cover. This action requires a weapon capable of full automatic fire. When Suppressing Fire is declared, the active character establishes a kill zone (or uses one previously established, such as through overwatch), which is any general area, such as a corridor or tree line, that encompasses a 45 degree arch in the direction the active character is facing. Then, the active character fires a Full Auto Burst and expends the appropriate ammo.
+
+Targets within the kill zone must make a Pinning Test or become Pinned. The active character makes a Ballistics Test against TN 20 to determine if her wild spray of gunfire hits anyone, friend or foe, within the kill zone. If the Test succeeds, the SM assigns one hit to a random target within the kill zone. For each raise on the Test, the SM has to assign another hit, up to the weapon's automatic rate of fire. The active character cannot choose to fail this Test.
+
 TACTICAL ADVANCE
-Full Action Subtype: Movement, Defense The active character moves from one
-position of cover to another position of cover. In so doing, she may cover a distance
-up to twice her Speed. For the duration of the move, she is considered to benefit from
-the cover she left, even though she is in the open for a brief time.
+Full Action — Subtype: Movement, Defense
+
+The active character moves from one position of cover to another position of cover. In so doing, she may cover a distance up to twice her Speed. For the duration of the move, she is considered to benefit from the cover she left, even though she is in the open for a brief time.
 
 USE A SKILL
-Variable Action Subtypes: Concentration, Miscellaneous
-The active character may use a skill. How long this takes and what kind of Test they
-need to make are covered in the descriptions of the individual skills.
+Variable Action — Subtypes: Concentration, Miscellaneous
+
+The active character may use a skill. How long this takes and what kind of Test they need to make are covered in the descriptions of the individual skills.
 
 WITHDRAW
-Full Action Subtypes: Movement The active character breaks off from melee
-combat and may move up to their Speed.
+Full Action — Subtypes: Movement
 
-Other Actions
+The active character breaks off from melee combat and may move up to their Speed.
 
-If a player wants to take some action not covered in the rules, the SM should make a
-judgment about how long this will take and any relevant Tests. Generally most actions
-should be resolved with some sort of Test:
-Characteristic Test, skill Test, or opposed
-Test. Keep in mind that a round is only a few seconds long, which is a very limited
-amount of time to accomplish a task.
+### Other Actions
 
-The Attack
+If a player wants to take some action not covered in the rules, the SM should make a judgment about how long this will take and any relevant Tests. Generally most actions should be resolved with some sort of Test: Characteristic Test, skill Test, or opposed Test. Keep in mind that a round is only a few seconds long, which is a very limited amount of time to accomplish a task.
 
-The most common action in combat is the attack - the characters are fighting, after all.
-Whether armed with a melee or ranged weapon, the process is the same. Before an attack is made, the SM should verify that the attack is even possible by checking the basic requirements for the attack.
-Melee attacks require the attacker to be engaged in melee combat with his target.
-Ranged attacks cannot be made if the attacker is engaged in melee unless he is firing a pistol-class weapon. In either case, the attacker must be aware of his target.
+### The Attack
+
+The most common action in combat is the attack - the characters are fighting, after all. Whether armed with a melee or ranged weapon, the process is the same. Before an attack is made, the SM should verify that the attack is even possible by checking the basic requirements for the attack.
+
+Melee attacks require the attacker to be engaged in melee combat with his target. Ranged attacks cannot be made if the attacker is engaged in melee unless he is firing a pistol-class weapon. In either case, the attacker must be aware of his target.
 Assuming the attack is possible, follow these steps:
 
 Step One: Apply Modifiers to the Attack Test
@@ -481,7 +451,7 @@ Step Five: Apply Damage to Hit Points
 
 Step One: Apply Modifiers to the Attack Test
 
-Attacks require the character to make a test using one of the attack skills (Weaponry, Brawl, or Ballistics). There are many instances where circumstances and factors will make the attack easier or more difficult than normal. For example, using the All Out Attack option gives +2k0 to the roll.
+Attacks require the character to make a test using one of the attack skills (Weaponry, Brawl, or Ballistics). There are many instances where circumstances and factors will make the attack easier or more difficult than normal. For example, using the All Out Attack option gives +`2k0` to the roll.
 
 If a situation calls for two or more bonuses or penalties, simply combine all modifiers together and apply the total to the appropriate roll.
 
@@ -529,7 +499,7 @@ Not every fight in DUNGEONS THE DRAGONING requires bolters and daiklaves. Some c
 
 Unarmed attacks are resolved in the same way as any other melee attack, with some differences. Unarmed attacks can be used for any Melee combat action, but wherever the normal combat action calls for the use of the Weaponry Skill, an Unarmed attack uses Brawl instead.
 
-Unarmed attacks cannot be used to parry attacks made with weapons except with a Stunt. Unarmed attacks typically deal 0k1 damage, adding the character's Strength as rolled dice as normal for melee attacks.
+Unarmed attacks cannot be used to parry attacks made with weapons except with a Stunt. Unarmed attacks typically deal `0k1` damage, adding the character's Strength as rolled dice as normal for melee attacks.
 
 If a target loses at least one hit point from an unarmed attack, the attack also inflicts one level of Fatigue.
 
@@ -546,16 +516,16 @@ Combat circumstances can be used to reflect the effects of terrain, the weather,
 | Combat Advantage    | Attackers get a free Raise to hit.                                    |
 | Cover               | Body parts behind cover have extra AP.                                |
 | Concealment         | Adds +5 or more to Static Defense.                                    |
-| Difficult Terrain   | -1k0 or more to melee attacks and dodging.                            |
-| Engaged in Melee    | Shooting into melee applies a -2k1 to hit.                            |
-| Extreme Range       | Shooting more than 3x the base range applies a -3k0 to hit.           |
+| Difficult Terrain   | -`1k0` or more to melee attacks and dodging.                            |
+| Engaged in Melee    | Shooting into melee applies a -`2k1` to hit.                            |
+| Extreme Range       | Shooting more than 3x the base range applies a -`3k0` to hit.           |
 | Falling             | Take damage for smashing into hard floors.                            |
 | Ganging Up          | Outnumbering your foes 2 to 1 or more gives a bonus to hit them.      |
-| Higher Ground       | Jump onto a table for +1k0 to melee attacks.                          |
-| Long Range          | Shooting more than 2x the base range applies a -1k0 to hit.           |
-| Off Hand            | Take -2k0 unless you are Ambidextrous.                                |
-| Point Blank Range   | +2k1 to hit at ranges under 3m when not engaged in melee.             |
-| Short Range         | +1k0 to hit when shooting at less than half the weapon's base range.  |
+| Higher Ground       | Jump onto a table for +`1k0` to melee attacks.                          |
+| Long Range          | Shooting more than 2x the base range applies a -`1k0` to hit.           |
+| Off Hand            | Take -`2k0` unless you are Ambidextrous.                                |
+| Point Blank Range   | +`2k1` to hit at ranges under 3m when not engaged in melee.             |
+| Short Range         | +`1k0` to hit when shooting at less than half the weapon's base range.  |
 | Two Weapon Fighting | Use the Multiple Attack action. Takes penalties without a feat.       |
 | Weapon Jammed       | Rolling more 1s on an attack than your Ballistics skill causes a jam. |
 
@@ -649,7 +619,7 @@ Missing & Hitting Allies & Enemies with Blast Weapons:
 
 | Situation                   | Attack − 2×Blast vs. Ally SD                      | Attack + 2×Blast vs. Enemy SD     | Result                                                                                                                                                                           |
 | --------------------------- | ------------------------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Miss All**                | The results are under all of the Static Defenses. |                                   | Determine a scatter direction and distance, adding more distance as required to miss all of the potential targets.                                                               |
+| **Miss All**                | The results are under all of the Static Defenses. | — | Determine a scatter direction and distance, adding more distance as required to miss all of the potential targets.                                                               |
 | **Miss Ally & Hit Enemies** | Over the ally's TN                                | Over the enemies' Static Defenses | Determine a position that hits the enemies and excludes the ally. If none exists the attacker chooses to include or exclude the ally while maximizing the number of hit enemies. |
 | **Hit All**                 | Under the ally's TN                               | Over the enemy's Static Defense   | Get the maximum number of hits in the blast, if the ally has to be excluded to do that then they're really, really lucky.                                                        |
 
@@ -936,16 +906,16 @@ Conditions
 | Name                | Description                                                           |
 | ------------------- | --------------------------------------------------------------------- |
 | Amputation          | Causes Blood Loss, possible Disease, and other issues.                |
-| Blinded             | Fail at Ballistics, -2k1 most other tests, grant Combat Advantage.    |
+| Blinded             | Fail at Ballistics, -`2k1` most other tests, grant Combat Advantage.    |
 | Blood Loss/Bleeding | Roll 1d10, die on a 1. Medicae TN 20 to staunch the flow.             |
-| Dazzled             | Dazed and confused, -1k0 to all tests but -2k0 to vision tests.       |
+| Dazzled             | Dazed and confused, -`1k0` to all tests but -`2k0` to vision tests.       |
 | Deafened            | Fail all hearing tests.                                               |
 | Diseased            | Cannot recover Hit Points. May have additional effects.               |
 | Fire/On Fire        | Save Dex TN 15 or be On Fire, then lose HP and fatigue each round.    |
-| Fatigue             | Take -1k0 to all tests. Fall Unconscious when it is greater than Con. |
+| Fatigue             | Take -`1k0` to all tests. Fall Unconscious when it is greater than Con. |
 | Helpless            | Automatically gets hit. Roll damage twice and add.                    |
 | Immobilized         | Cannot take action with the Movement subtype.                         |
-| Lost Eye            | Halves effective weapon ranges and applies -1k1 to vision tests.      |
+| Lost Eye            | Halves effective weapon ranges and applies -`1k1` to vision tests.      |
 | Pinned              | Taking Suppressing Fire. Willpower TN 20 or must take cover.          |
 | Prone               | Grant Combat Advantage at close range and take penalties to actions.  |
 | Restrained          | Tied up. Grant Combat Advantage and may be Immobilized.               |
@@ -1090,7 +1060,7 @@ For the most part, Social Combat is handled like real combat. Initiative is roll
 
 > **Play Tip:** Suggested use for Danger Sense — don't tell the players that combat starts. State that the feat activates and ask them what they want to do. Then roll initiative (if you know all of the character's modifiers you can just ask them to roll 1d10 and add it up yourself). If the PCs go first, they do what they declared and opponents react to it, which could cause opponents to avoid combat or change their planned actions. If the PCs don't go first, proceed as normal but the PCs are not surprised — they do not grant combat advantage and may react normally.
 
-> **Clarification:** See Appendix A for more information on perception and stealth. Don't roll if there's a reason to believe something would be automatic. Do not roll to spot things when there aren't distractions, obscurement, and people trying not to be seen — you need at least two of those before considering a Perception Test. The simplified spotting method: TN 5 to spot a human at 100m, add +5 per additional 100m, halve the perceived distance for every doubling of size, double the perceived distance for every halving of size. Except for light levels, everything in the spotter's favor adds +1k0, everything detrimental inflicts -1k0. Each light level drop (good daylight → heavily overcast → twilight → full moon → half moonlight → starlight → total blackout) applies a -1k1 penalty. A moving target gets +1k0 to be spotted; a moving spotter takes -1k0.
+> **Clarification:** See Appendix A for more information on perception and stealth. Don't roll if there's a reason to believe something would be automatic. Do not roll to spot things when there aren't distractions, obscurement, and people trying not to be seen — you need at least two of those before considering a Perception Test. The simplified spotting method: TN 5 to spot a human at 100m, add +5 per additional 100m, halve the perceived distance for every doubling of size, double the perceived distance for every halving of size. Except for light levels, everything in the spotter's favor adds +`1k0`, everything detrimental inflicts -`1k0`. Each light level drop (good daylight → heavily overcast → twilight → full moon → half moonlight → starlight → total blackout) applies a -`1k1` penalty. A moving target gets +`1k0` to be spotted; a moving spotter takes -`1k0`.
 
 > **Clarification:** You can spend Resource points to get more Reactions, but remember that you can't spend more Resource points in a round than your Power stat.
 
@@ -1124,15 +1094,15 @@ For the most part, Social Combat is handled like real combat. Initiative is roll
 
 > **Optional Rule:** Cover damage — if damage penetrates cover, the cover is degraded by one point of AP (e.g. AP 4 → AP 3). If the damage penetrates by a multiple of the cover's AP, the cover loses that multiple in AP (e.g. 40 damage penetrates AP 8: 8×5=40, so the cover loses 5 AP and is now AP 3).
 
-> **Clarification:** Position within a melee doesn't matter much — it's all one big mess of limbs, blood, swords, and claws. Only characters granting combat advantage are easier to shoot. For the rest, the -2k0 penalty to hit people in melee still applies.
+> **Clarification:** Position within a melee doesn't matter much — it's all one big mess of limbs, blood, swords, and claws. Only characters granting combat advantage are easier to shoot. For the rest, the -`2k0` penalty to hit people in melee still applies.
 
-> **Clarification:** Falling damage example — a Size 5 ork falls 2m and rolls 6k1 damage. If he falls 20m it's 15k10 → `10k10+25` damage. If he scored 50 on an Acrobatics Test to reduce it, that's 15−8=7 → 7k7 damage.
+> **Clarification:** Falling damage example — a Size 5 ork falls 2m and rolls `6k1` damage. If he falls 20m it's `15k10` → `10k10+25` damage. If he scored 50 on an Acrobatics Test to reduce it, that's 15−8=7 → `7k7` damage.
 
 > **Optional Rule:** The gun jam rule as written means that as a character's level increases, their chance of jamming increases. The original rule (rolling more 1s than the character's Level would jam) also increased jams with skill. Suggested alternative: if you have to keep 1s equal to or greater than your Ballistics skill, then the gun jams.
 
 > **Optional Rule:** Alternative HP system — instead of dividing damage by Resilience and taking wounds: 1) The character has "Damage Points" (DP) calculated as Resilience × Hit Points. 2) All damage that gets through armor is subtracted from these Damage Points. 3) When a character is out of Damage Points, they take one level of Critical Damage for each hit, accumulating on each hit location until death. 4) Weapons with the "Tearing" property always do at least 5 damage. Any reference to taking "wounds" translates to 5 DP per wound.
 
-> **Optional Rule:** Alternative Critical Damage — instead of the critical damage charts: 1) Each time a character takes critical damage, they take 1 level of Fatigue instead. 2) Characters do not fall unconscious when Fatigue exceeds Constitution; each hit after that causes Bleeding. 3) When Fatigue exceeds Constitution, the character is Heavily Wounded and takes -2k1 to all rolls (instead of the normal -1k0 Fatigue penalty). 4) When Fatigue equals Constitution + Willpower, the character dies. On death, roll 1d10 — on a 10 they expire in a spray of ludicrous giblets and buckets of blood.
+> **Optional Rule:** Alternative Critical Damage — instead of the critical damage charts: 1) Each time a character takes critical damage, they take 1 level of Fatigue instead. 2) Characters do not fall unconscious when Fatigue exceeds Constitution; each hit after that causes Bleeding. 3) When Fatigue exceeds Constitution, the character is Heavily Wounded and takes -`2k1` to all rolls (instead of the normal -`1k0` Fatigue penalty). 4) When Fatigue equals Constitution + Willpower, the character dies. On death, roll 1d10 — on a 10 they expire in a spray of ludicrous giblets and buckets of blood.
 
 > **Play Tip:** Natural healing almost never matters in practice. Most parties pick up some form of healing — feats, healing magic, or easy Resource point replenishment. The basic class Initiate is short, has no prerequisites, and offers both Minor Magic and Divine Ministration. A good SM should note if the party can't or won't start every scene at full Hit Points. You don't have to make things easier for them, but be aware it could be an issue.
 
@@ -1311,13 +1281,13 @@ SHOCK TABLE
 | 4          | Frightened: You gain 1 Insanity Point and may not approach the source of the fear in any manner.                                                                                                                                                                                          |
 | 5          | Frightened: You gain 1 Insanity Point and must flee from the source of the fear if it is at all possible.                                                                                                                                                                                 |
 | 6          | Stunned: You gain 1d2 Insanity Points and are Stunned until you snap out of it.                                                                                                                                                                                                           |
-| 7          | Scared: You gain 1d2 Insanity Points and flee at top speed. If that is impossible you take -2k0 to everything and may only take Half Actions. You cannot try to snap out of it until the source of the fear is gone or you have escaped.                                                  |
+| 7          | Scared: You gain 1d2 Insanity Points and flee at top speed. If that is impossible you take -`2k0` to everything and may only take Half Actions. You cannot try to snap out of it until the source of the fear is gone or you have escaped.                                                  |
 | 8          | Panic: You gain 1d5 Insanity Points and must shoot or chop. Until you snap out of it you have the feats Fan The Hammer and Lightning Attack, you must use Multiple Attack or Full-Auto Burst actions. You cannot snap out of it until the source of the fear is gone or you have escaped. |
 | 9          | Fainting spell: You gain 1d5 Insanity Points and faint. You are unconscious for 1d5 rounds and then Dazzled until the end of the scene.                                                                                                                                                   |
 | 10         | Screaming: You gain 1d5 Insanity Points and succumb to panicked screaming and vomiting. You are Helpless for 1d5 rounds and can only take a single Half Action on your turns until you get a chance to rest and recover.                                                                  |
 | 11         | Triggered: You gain 1d10 Insanity Points and begin panic firing. For this scene you have access to the feat Fan The Hammer, you must use the Multiple Attack or Full-Auto Burst actions. Once out of ammo you may take a single Half Actions on your turn until the end of the scene.     |
-| 12         | Down: You gain 1d10 Insanity Points and fall down weeping and wailing. You are Prone and Stunned for 1d10 rounds. After that you take -2k0 to all actions until the end of the scene.                                                                                                     |
-| 13+        | Down and out: You take 1k1 Insanity Points and are completely catatonic for 1d10 hours. You are Helpless until it ends.                                                                                                                                                                   |
+| 12         | Down: You gain 1d10 Insanity Points and fall down weeping and wailing. You are Prone and Stunned for 1d10 rounds. After that you take -`2k0` to all actions until the end of the scene.                                                                                                     |
+| 13+        | Down and out: You take `1k1` Insanity Points and are completely catatonic for 1d10 hours. You are Helpless until it ends.                                                                                                                                                                   |
 
 Disorders can be selected by the SM, or the SM can allow the player to select one if he prefers. Some disorders would be phobia, obsessions and compulsions, hallucinations, and horrific nightmares. The exact effects of a disorder should be decided on by the SM. Rolls made to resist the effects of a disorder depend on their difficulty - Minor Disorders require a `TN 10` roll, Severe Disorders require `TN 15`, and Acute Disorders require `TN 20`. See the Appendix C (Insanity) for some optional therapy rules and derangement charts.
 

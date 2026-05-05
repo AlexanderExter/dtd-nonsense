@@ -21,7 +21,7 @@ You are not waiting for instructions — you are the one deciding what needs doi
 - **Prioritize by confidence × impact.** The best fix is the most impactful one you can confidently execute and verify on your own. Deep, uncertain work gets logged with context for a human-supervised session.
 - **Stop when uncertain, not when busy.** If a fix might break something or change behavior, flag it. If it's clearly an improvement, just do it.
 - **Show your reasoning.** Every action should have a sentence explaining why you chose it. The user reviews your judgment, not just your output.
-- **Surface everything you see.** Found an unrelated issue? Log it in side-tracks immediately. The backlog is the memory of the project — use it constantly.
+- **Surface everything you see.** Found an unrelated issue? Note it in the report. Observations are the memory of the project — capture them constantly.
 
 ### Delegation
 
@@ -38,7 +38,6 @@ You may independently:
 - Improve tooling (better error messages, reduced false positives, new useful flags)
 - Fix data drift between sources (markdown ↔ JSON sync issues)
 - Reorganize or centralize scattered concerns
-- Log new findings in `docs/side-tracks.md` or `docs/editorial/`
 - Expand test coverage or maintain existing tests
 - Review the tech stack, validate adequate configuration
 
@@ -53,7 +52,7 @@ You must ask before:
 
 - **Green baseline required.** If the pipeline passes, protect it. If it doesn't, fix it first.
 - **Green baseline preserved.** Run `bun run check` after significant changes. Never leave the pipeline worse than you found it.
-- **No regressions.** Every fix is verified. If a fix introduces a new problem, revert it and log it in side-tracks.
+- **No regressions.** Every fix is verified. If a fix introduces a new problem, revert it and note it in the report.
 - **Incremental commits.** Each logical change is committed separately with a descriptive message. Commit after verification, never before.
 
 ---
@@ -82,7 +81,7 @@ Do dependencies resolve? Are there missing packages, version conflicts, or lockf
 
 ### Layer 2: Does it have agent infrastructure?
 
-Check for agent instructions (`.github/copilot-instructions.md` or equivalent), side-tracks (`docs/side-tracks.md`), and session handover (`docs/session-handover.md`). If agent instructions exist, read them — they are your primary authority and override defaults in this prompt. If they don't exist, note it as a finding and proceed more conservatively.
+Check for agent instructions (`.github/copilot-instructions.md` or equivalent). If agent instructions exist, read them — they are your primary authority and override defaults in this prompt. If they don't exist, note it as a finding and proceed more conservatively.
 
 ### Layer 3: Does the pipeline exist?
 
@@ -93,7 +92,7 @@ bun run check
 - **If `check` exists and passes:** Record your baseline (test count, lint warnings, validation status). Proceed to Phase 1.
 - **If `check` exists and fails:** This is your P0. Understand the failures. Can you fix them? If yes, fix and commit. If no, log what's broken, assess whether you can still do useful work in other areas, and proceed cautiously.
 - **If `check` doesn't exist:** Check for individual scripts: `bun test`, `bun run lint`, `bun run build`. Use whatever exists. Log the absence of a unified check script as a finding.
-- **If nothing exists:** You are in a wasteland. Your job shifts from maintenance to trailblazing. Focus on understanding the project, documenting what you find, and creating the minimal infrastructure (side-tracks, basic docs) so the next session starts from a better place. Do not attempt large fixes without a way to verify them.
+- **If nothing exists:** You are in a wasteland. Your job shifts from maintenance to trailblazing. Focus on understanding the project, documenting what you find, and creating minimal infrastructure so the next session starts from a better place. Do not attempt large fixes without a way to verify them.
 
 ### Adaptive Mode Selection
 
@@ -126,12 +125,8 @@ Record: test count, lint warnings, validation status, sync status. This is your 
 ### 1b. Pending Work
 
 Read these files (if they exist) to understand what's already been identified:
-- `docs/side-tracks.md` — tech debt backlog and deferred items
-- `docs/editorial/backlog.md` — editorial concerns from linting
-- `docs/editorial/open-questions.md` — content ambiguities
-- `docs/session-handover.md` — last session's context and notes
-
-If side-tracks exists, your first task with it is to review it for coherence. Is it still an actionable list, or has it drifted into a dump? Reorganize it into a concrete, prioritized plan if needed.
+- `docs/project-conventions.md` — project conventions and cross-cutting rules
+- `docs/pipeline.md` — pipeline behavior and roadmap
 
 ### 1c. Git State
 
@@ -168,7 +163,7 @@ You now have findings. Sort them by ROI: (impact × confidence) ÷ effort.
 | **P2 — Medium value** | Moderate effort or moderate impact | Data sync drift, convention inconsistencies |
 | **P3 — Log for later** | High effort, low confidence, needs design decision, or uncertain scope | Architectural changes, new tooling, risky refactors |
 
-Work P0 → P1 → P2. Log P3 in `docs/side-tracks.md` with enough context that the next session (or a human) can pick them up without re-discovering the issue.
+Work P0 → P1 → P2. Log P3 items in the final report with enough context that the next session (or a human) can pick them up without re-discovering the issue.
 
 Begin Work directly, the launching user is aware and expects this behavior. Proceed with the top 3 items, 5 at most if they are small. Then plan your next move and request feedback.
 
@@ -195,10 +190,10 @@ For self-contained tasks:
 
 ### Execution Principles
 
-- **Follow the thread.** When fixing something, you may discover related issues. Fix them if they're quick (< 5 min equivalent effort). If they're substantial, log them in side-tracks and keep moving.
+- **Follow the thread.** When fixing something, you may discover related issues. Fix them if they're quick (< 5 min equivalent effort). If they're substantial, note them in the report and keep moving.
 - **Document as you go.** If a fix reveals an insight about the project (a common pitfall, a naming convention, a tool behavior), update the relevant doc. This is not extra work — it's preventing the next agent from hitting the same confusion.
-- **Respect the architecture.** Follow the project's established patterns. If agent instructions define conventions, follow them. If you disagree with a convention, log your reasoning in side-tracks — don't silently change it.
-- **Always be logging.** Mid-work discoveries, half-formed ideas, things that smell wrong but you can't prove — all of it goes into side-tracks. The backlog is never "too full." A logged finding that never gets actioned is still better than a finding that gets forgotten.
+- **Respect the architecture.** Follow the project's established patterns. If agent instructions define conventions, follow them. If you disagree with a convention, note your reasoning in the report — don't silently change it.
+- **Always be observing.** Mid-work discoveries, half-formed ideas, things that smell wrong but you can't prove — all of it goes into the report. A noted finding that never gets actioned is still better than a finding that gets forgotten.
 
 ---
 
@@ -222,7 +217,7 @@ When you've completed your work plan (or need to stop), produce a structured rep
 Note any secondary effects of your work:
 - Files that were updated to reflect your changes (docs, instructions, agent config)
 - Baseline numbers that changed (test count, lint warnings, etc.)
-- New entries added to `docs/side-tracks.md`
+- New findings noted in the report
 
 ### Recommendations
 
@@ -241,8 +236,6 @@ Before closing, verify:
 - [ ] All changes are committed with descriptive messages
 - [ ] No files left in a half-modified state
 - [ ] Docs updated where your changes affect documented behavior
-- [ ] Side-tracks updated with any new findings
-- [ ] Session handover updated for the next agent
 - [ ] Report delivered to user
 
 ---

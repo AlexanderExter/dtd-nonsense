@@ -438,8 +438,9 @@ export function applyFixes(filepath: string, issues: LintIssue[]): number {
 		const line = lines[lineIdx];
 		const col = issue.column - 1;
 
-		// Extract the problematic term from the message ('old' → 'new')
-		const msgMatch = issue.message.match(/^'([^']+)'/);
+		// Extract the problematic term from the message
+		// Terminology: "'Armour' should be …"  |  Dice notation: "Dice notation '1k0' should be …"
+		const msgMatch = issue.message.match(/'([^']+)'/);
 		if (!msgMatch) continue;
 		const oldTerm = msgMatch[1];
 

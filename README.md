@@ -2,9 +2,18 @@
 
 Rulebook reference and web-based play tools for _Dungeons the Dragoning 40,000: 7th Edition_ — a TTRPG blending Warhammer 40K aesthetics with D&D and World of Darkness mechanics.
 
-The original source PDFs are hard to read and harder to reference at the table. This project transforms them into a searchable, corrected documentation site with interactive tools — so players and Story Masters can spend less time hunting for rules and more time playing the game.
+The original source books are hard to read and harder to reference at the table. This project transforms them into a searchable, corrected documentation site with interactive tools — so players and Story Masters can spend less time hunting for rules and more time playing the game.
 
 **Live site:** [dtd-nonsense.vercel.app](https://dtd-nonsense.vercel.app)
+
+### Source Material
+
+- [Book 1 — Dungeons the Dragoning 40,000: 7th Edition (PDF)](https://static.wikitide.net/1d6chanwiki/f/fc/Dungeons_the_Dragoning.pdf)
+- [Book 2 — For a Few Subtitles More (PDF)](https://static.wikitide.net/1d6chanwiki/7/70/Dungeons_the_Dragoning_-_For_a_Few_Subtitles_More.pdf)
+
+### Community
+
+- [White Wizards Workshop (forum)](https://whitewizardsworkshop.proboards.com/)
 
 ---
 

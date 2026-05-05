@@ -6,31 +6,28 @@ sidebar:
 title: Conditions
 ---
 
-# Conditions
-
-Characters can suffer from a variety of conditions that affect their abilities. This section covers conditions, fear, insanity, and mental trauma.
+> **Key concepts:** Conditions are debilitating status effects applied during [Combat](/cleaned-references/14-Combat), Critical Effects, environmental hazards, or [Social Combat](/cleaned-references/15-Social-Combat) (Fear). Most conditions impose dice penalties or restrict actions. Multiple conditions can **compound** to worsen a character's wound state. Fear and Mental Trauma have their own track separate from physical injury.
 
 ---
 
-## Conditions Summary
+## Conditions Quick-Reference
 
-| Condition        | Effect                                                                         |
-| ---------------- | ------------------------------------------------------------------------------ |
-| Amputation       | Lose a body part. Treat as Heavily Wounded.                                    |
-| Blinded          | -`4k0` to most Tests. Take Athletics + Dexterity Test (TN 15) to move Half Rate. |
-| Blood Loss       | Roll Constitution at start of each Round. Failure = 1d10 damage to HP.         |
-| Burning          | 1d10 Energy damage per Round, ignoring Armor.                                  |
-| Combined Penalty | Multiple conditions compound wounds.                                           |
-| Crippled         | Limb is unusable. Arm prevents attacks; Leg forces crawling.                   |
-| Dazzled          | -`1k0` to all Tests; -`2k0` to sight-based Tests.                                  |
-| Deafened         | -`2k0` to all Tests. Automatic failure to hear.                                  |
-| Fatigue          | -`1k0` to all Tests. Fall Unconscious when levels exceed Constitution.           |
-| Frightened       | Must flee. If unable, -`2k0` to all Tests and no Attacks, Magic, or Stunts.      |
-| Helpless         | Automatically hit. Roll damage twice and add results.                          |
-| Pinned           | Cannot move or take any Actions but Full Defense.                              |
-| Prone            | -`2k0` to ranged attacks against you. Must use Move Action to stand.             |
-| Stunned          | No Reactions. Cannot take Actions except to move at half rate.                 |
-| Toxic            | Toxin Rating damage per Round. Toughness Test (TN 15 + Toxin) to negate.       |
+| Condition | Effect | Duration | Removal |
+| --------- | ------ | -------- | ------- |
+| **Amputation** | Lose limb; treated as Heavily Wounded | Permanent | Cybernetics, healing magic, regeneration |
+| **Blinded** | −`4k0` physical Tests; Athletics + Dex TN 15 to move | Until healed | Healing, spell, cybernetics |
+| **Blood Loss** | Con Test each Round; fail = `1d10` × Blood Loss damage | Until treated | First Aid, magical healing |
+| **Burning** | `1d10` Energy/Round, ignores Armor; no actions except extinguishing | Until extinguished | Intelligence Test TN 15; allies in melee give +`1k0` |
+| **Crippled** | Limb unusable (arm = no attacks; leg = crawl only) | Until healed | Medical attention, magic |
+| **Dazzled** | −`1k0` all Tests; −`2k0` sight-based Tests | Varies | Typically short-duration |
+| **Deafened** | −`2k0` all Tests; auto-fail hearing Tests | Until healed | Healing, cybernetics |
+| **Fatigue** | −`1k0` all Tests; unconscious if levels > Constitution | Until rested | 1 level/hour of rest |
+| **Frightened** | Must flee; if unable: −`2k0`, no attacks/magic/stunts | End of encounter | Escape source of fear |
+| **Helpless** | Auto-hit; damage rolled twice and added | While condition persists | Remove underlying cause |
+| **Pinned** | Cannot move or act (only Full Defense); can speak | Until unpinned | Full Defense, suppression ends |
+| **Prone** | −`2k0` ranged attacks vs. you; +`2k0` melee vs. you; −`2k0` to your attacks | Until you Stand | Stand action (Half Action) |
+| **Stunned** | No Reactions; only action is Move at half rate | Varies (rounds) | Hero Point, duration expires |
+| **Toxic** | Rating 1–2: that damage/Round. Rating 3+: that many `d10`/Round | Until treated | Toughness TN 15 + Toxic; antidote; magic |
 
 ---
 
@@ -38,127 +35,131 @@ Characters can suffer from a variety of conditions that affect their abilities. 
 
 ### Amputation
 
-When a character loses a body part the character is treated as having taken enough damage to become Heavily Wounded regardless of their current wound status. The character must use any healing that she receives on the missing limb damage only. When that damage track is recovered, the character is considered to be stabilized enough that she can go back to healing other wounds. Amputations can be replaced by cybernetics, healing magic, or regeneration, but left alone they will not grow back.
+Character loses a body part and is treated as **Heavily Wounded** regardless of current wound state. All healing received must be applied to the amputation first. Only after stabilization can other wounds heal. Replaceable with cybernetics, healing magic, or regeneration — otherwise permanent.
 
 ### Blinded
 
-A character who has been inflicted with blindness suffers from a total inability to see, usually (but not always) because they no longer have any eyes. Blinded characters suffer a -`4k0` penalty to physical Tests, but do not suffer this penalty for Tests with a social element (such as Intimidation and Persuasion). A blinded character will need to pass an Athletics + Dexterity Test (TN 15) to navigate terrain more quickly than their Half Rate movement without tripping.
+Total inability to see. −`4k0` to physical Tests (no penalty to social Tests like Intimidation or Persuasion). Athletics + Dexterity Test (TN 15) required to move faster than half rate without tripping.
 
 ### Blood Loss
 
-A character can start losing blood (or whatever they have instead of it) as a result of certain Critical Effects. Blood Loss effects are cumulative. Thus, if a character suffers a second effect that causes Blood Loss, they will be losing blood at 2 Blood Loss. At the start of every Round (starting in the Round after the character was injured), the character must roll their Constitution. If the result is less than 10 × Blood Loss, the character suffers an amount of damage equal to 1d10 per Blood Loss, regardless of Armor and Aura.
-
-This is best treated with the First Aid skill, or with magical healing. Either will stop the Blood Loss because of a single wound or reduce Blood Loss by 1 per success from that of multiple wounds.
-
-Lost limbs are considered to have a Blood Loss rating of 5.
+Cumulative condition (multiple sources stack). At the start of each Round after injury, Test Constitution. If result < 10 × Blood Loss, take `1d10` damage per Blood Loss level (ignores Armor and Aura). **Treatment:** First Aid or magical healing stops bleeding from one wound or reduces Blood Loss by 1. Lost limbs have Blood Loss 5.
 
 ### Burning
 
-The character is on fire. She suffers 1d10 Energy damage per Round, ignoring Armor, and cannot take any actions other than trying to put herself out. This requires a successful (TN 15) Intelligence Test. Each character in melee range of the burning character can choose to help the burning character, giving them +`1k0` (but stopping themselves from doing anything productive).
+`1d10` Energy damage per Round, ignoring Armor. Cannot take actions except trying to extinguish (Intelligence Test, TN 15). Each ally in melee range who helps gives +`1k0` to the Test (but costs them their action).
 
 ### Combined Penalty
 
-A character may suffer multiple conditions, and these conditions, even without other effects, can combine to push characters further into their wound tracks. Each wound track is a binary state, not numerical, but if a character ends up being afflicted by multiple conditions or Critical Effects that place them into Lightly Wounded, this rolls together into Heavily Wounded as they take more and more damage. Of course, this only counts for 'new' or 'current' conditions - a character with a crippled leg is already Lightly Wounded, and if she is crippled again would be Heavily Wounded, but other Conditions that place a character in Lightly Wounded will not combine with old injuries.
+Multiple conditions compound. If you're already Lightly Wounded from one condition and receive another condition that would also make you Lightly Wounded, you become **Heavily Wounded**. Only applies to new/current conditions — pre-existing injuries don't combine with fresh ones.
 
 ### Crippled
 
-Crippling is when a limb becomes damaged and unusable. This might be because the arm is broken or a leg has been severely damaged. If an arm is crippled the character can no longer use it to attack. If a leg is crippled, the character falls prone and can only crawl along the ground at 1 meter per half action. If a vital organ is crippled, the character faces more specific effects—generally inability to perform certain actions or possibly needing technological or magical aid to survive.
+A limb is damaged and unusable:
+
+- **Arm** — cannot attack with it
+- **Leg** — fall Prone, can only crawl (1m per Half Action)
+- **Vital organ** — specific effects (may require tech/magic to survive)
 
 ### Dazzled
 
-A Dazzled character has been dazed and confused. She takes `-1k0` to all Tests and an additional `-1k0` (that's a `-2k0` total) to all Tests based on sight.
+Dazed and confused. −`1k0` to all Tests, additional −`1k0` (total −`2k0`) to sight-based Tests.
 
 ### Deafened
 
-A character who has been inflicted with deafness suffers a total inability to hear, usually (but not always) because they no longer have any ears. Deafened characters suffer a -`2k0` penalty to all Tests. In addition, the character will automatically fail any Tests based on hearing (at the SM's discretion).
+Total inability to hear. −`2k0` to all Tests. Automatically fail any hearing-based Tests (SM discretion).
 
 ### Fatigue
 
-Exhaustion, combat trauma, or swapping licks with bare fists can all leave a character battered, but more or less intact. Fatigue measures the amount of non-lethal injury a character can take. Characters gain Fatigue from certain types of attacks, some critical effects, and some weapons and feats.
-
-Fatigue is measured in levels. A character can take a number of levels of Fatigue equal to her Constitution score and still function, albeit with some side-effects. Should a character take a number of levels of Fatigue in excess of her Constitution, she collapses, unconscious, for 10 − Constitution hours. After the character awakens, her levels of Fatigue revert to a number equal to her Constitution. Characters suffering any level of Fatigue suffer `-1k0` to all Tests. A character recovers one level of Fatigue per hour as long as they can rest and relax.
+Non-lethal exhaustion measured in levels. While at any Fatigue: −`1k0` to all Tests. If Fatigue levels exceed Constitution: collapse unconscious for 10 − Constitution hours, then Fatigue resets to Constitution. **Recovery:** 1 level per hour of rest.
 
 ### Frightened
 
-A frightened character is too shaken to fight. For the remainder of the encounter, the character must run from the source of the fear. If the character has no way to escape the encounter space, they are unable to make attacks, use magic, or stunts. In addition, the character takes -`2k0` to all Tests while they are still frightened.
+Must flee the source of fear. If escape is impossible: cannot attack, use magic, or stunt; −`2k0` to all Tests. Lasts for the remainder of the encounter.
 
 ### Helpless
 
-Anything that prevents a character from defending themselves will leave them Helpless. While Helpless, the character may not take any actions. Tests made to hit a Helpless target automatically succeed. When rolling damage against a Helpless target, roll twice and add the results.
+Cannot take any actions. Attacks against a Helpless target automatically hit. Damage is rolled **twice and added together**.
 
 ### Pinned
 
-A character who has been pinned is under threat and may not move from her current position or take any Actions (including reactions) other than the Full Defense action (which provides a bonus to avoid being pinned further). She can still speak, but may not take free actions other than speaking.
+Cannot move or take any Actions/Reactions except **Full Defense** (which helps avoid further pinning). May still speak. Free actions limited to speech.
 
 ### Prone
 
-A character who is knocked down is prone. Attacks against a prone character from relative melee range of the attack are made with +`2k0` bonus—far enough away and actually hitting the prone character becomes harder, and ranged attacks take -`2k0` to the attack roll. A prone character can only Move by crawling at Half Rate, and suffers -`2k0` to attack rolls. A prone character can stand up as a full round action.
+- Melee attacks against you: +`2k0`
+- Ranged attacks against you: −`2k0`
+- Your attack rolls: −`2k0`
+- Movement: crawl at half rate only
+- **Stand up:** Half Action (Provokes)
 
 ### Stunned
 
-A character that is stunned is unable to do anything except take a single move action (and go at half rate, at that). Stunned characters cannot take any Reactions.
+Cannot take Reactions. Only action permitted: Move at half rate. Duration varies by source.
 
 ### Toxic
 
-A character suffering from Toxic is poisoned, diseased, or dying. A Toxic rating of 3 or greater is lethal if not treated. If the character has a Toxic rating of 1 or 2, they suffer that much damage at the start of each Round. If their Toxic rating is 3 or higher, the character takes that many d10 damage at the start of each Round. A Toughness Test (TN 15 + Toxic) at the start of each Round keeps the character from taking their Toxic damage that Round (or halves it, rounding up, if she gets at least one raise). Medical treatment, antidotes, or magical healing can remove the Toxin Rating, while the Regeneration power will remove it at the rate of 1 per Round.
+Ongoing poison/disease damage:
+
+- **Rating 1–2:** take that much flat damage per Round
+- **Rating 3+:** take that many `d10` damage per Round (lethal if untreated)
+
+**Mitigation:** Toughness Test (TN 15 + Toxic Rating) at start of each Round negates that Round's damage (1+ Raises halves it, round up). Removed by medical treatment, antidotes, or magical healing. Regeneration removes 1 Toxic per Round.
 
 ---
 
 ## Fear and Insanity
 
-### Fear
+### Fear Resistance
 
-The Alignment Wheel has more dimensions than just two. Some characters have developed strong defense mechanisms against the Terrors of this world. Such characters have a Fear resistance of 1 or higher. For each point of Fear, a character subtracts 5 from any mental trauma damage they suffer and gains a +`2k0` bonus to any mental-related Tests to resist the terrors of the void.
+Characters with Fear resistance subtract **5 per point** from mental trauma damage and gain +`2k0` on mental-related Tests to resist horrors. Fear resistance comes from:
 
-Fear can be gained by increasing your Dark alignment, taking certain feats, or simply by being exposed to so many horrors that they no longer bother you. Fear can also be gained by becoming a horror yourself—some types of undead gain Fear resistance.
-
-The terrible events of the Wheel can cause damage to a character's mental state. When faced with moments of sheer terror, a character must make a Willpower + Composure Test or suffer an amount of mental trauma damage as listed on the Shock Table. This mental trauma damage is added to the character's Trauma track.
+- Increasing Dark alignment
+- Certain Feats
+- Exposure to horrors (desensitization)
+- Becoming a horror yourself (some undead)
 
 ### The Shock Table
 
-| d10 | Trauma | Situation                                         |
-| --- | ------ | ------------------------------------------------- |
-| 1   | 1d10   | Surprised, Unexpected encounter                   |
-| 2   | 1d10   | Startled by something terrifying                  |
-| 3   | 1d10+1 | Witchery!                                         |
-| 4   | 1d10+2 | Gore and viscera                                  |
-| 5   | 1d10+3 | Severe injury to self or ally                     |
-| 6   | 1d10+4 | A minor warp entity manifests                     |
-| 7   | 2d10   | A major warp entity manifests                     |
-| 8   | 2d10+2 | Witness a massacre or destroyed city              |
-| 9   | 2d10+4 | Witness soul-destroying horror                    |
-| 10+ | 3d10   | Unspeakable nightmare beyond mortal comprehension |
+When faced with terror, Test **Willpower + Composure** or suffer mental trauma:
+
+| d10 | Trauma | Situation |
+| --- | ------ | --------- |
+| 1 | `1d10` | Surprised, unexpected encounter |
+| 2 | `1d10` | Startled by something terrifying |
+| 3 | `1d10`+1 | Witchery! |
+| 4 | `1d10`+2 | Gore and viscera |
+| 5 | `1d10`+3 | Severe injury to self or ally |
+| 6 | `1d10`+4 | A minor warp entity manifests |
+| 7 | `2d10` | A major warp entity manifests |
+| 8 | `2d10`+2 | Witness a massacre or destroyed city |
+| 9 | `2d10`+4 | Witness soul-destroying horror |
+| 10+ | `3d10` | Unspeakable nightmare beyond mortal comprehension |
 
 ---
 
 ## Mental Trauma
 
-Mental trauma affects the character's mind. The trauma track begins at 0 and has no upper limit. Whenever a character passes certain thresholds, they suffer a Mental Disorder. These disorders are dangerous, as they can affect the character's ability to function.
+The Trauma track starts at 0 with no upper limit. Passing thresholds triggers Mental Disorders:
 
-### Mental Disorder Table
-
-| Threshold | Effect                                                  |
-| --------- | ------------------------------------------------------- |
-| 40        | The character gains 1 Minor Disorder.                   |
-| 60        | The character gains 1 Severe Disorder.                  |
-| 80        | The character gains 1 Acute Disorder.                   |
-| 100       | The character must retire. They have become too broken. |
+| Threshold | Effect |
+| --------- | ------ |
+| 40 | Gain 1 **Minor** Disorder |
+| 60 | Gain 1 **Severe** Disorder |
+| 80 | Gain 1 **Acute** Disorder |
+| 100 | Character must retire (too broken to function) |
 
 ### Disorder Severity
 
-**Minor Disorders** are relatively mild. They manifest primarily when the character is under stress. A Minor Disorder might cause a character to take -`1k0` to social Tests with certain kinds of people or become briefly catatonic in certain situations.
-
-**Severe Disorders** are serious conditions that significantly impact one's life. A Severe Disorder might cause a character to become obsessive, develop a phobia that leaves them unable to act, or develop violent personality shifts.
-
-**Acute Disorders** are debilitating. A character with an Acute Disorder has great difficulty functioning in society. They might become completely unhinged, develop dangerous compulsions, or lose touch with reality entirely.
+- **Minor** — manifests under stress. Example: −`1k0` to social Tests with certain people, brief catatonia in specific situations.
+- **Severe** — significant life impact. Example: obsessive behavior, debilitating phobia, violent personality shifts.
+- **Acute** — debilitating. Great difficulty functioning in society. Dangerous compulsions, complete loss of touch with reality.
 
 ---
 
 ## Detailed Disorders
 
-_Source: Book 1 Appendix C — optional detailed system_
-
-When a character crosses a Mental Trauma threshold, roll d100 on the Disorders Table or select an appropriate entry. Unless otherwise noted, episodes trigger 3-in-5 times (roll 1–6 on d10) on Tests or situations similar to the original cause. Default episode duration is 5d10 minutes.
+When crossing a Mental Trauma threshold, roll `d100` on the table below or select an appropriate entry. Unless noted, episodes trigger 3-in-5 (roll 1–6 on `d10`) on Tests/situations similar to the original cause. Default episode duration: `5d10` minutes.
 
 ### Disorders Table (d100)
 
@@ -185,7 +186,7 @@ When a character crosses a Mental Trauma threshold, roll d100 on the Disorders T
 | 81–87 | Phobia                       | Persistent fear of a specific object/situation. Treated as a failed Fear Test. If subject triggers a real Fear Test, roll at −`2k1` and auto-fail. | While exposed |
 | 88–91 | Hypochondriasis              | Believes self seriously ill. −`1k0` on all physical Tests.                                      | 2d10 days      |
 | 92–94 | Dissociative Fugue           | Flees, adopts new identity, suffers amnesia.                                                  | Until found    |
-| 95    | _(reroll)_                   |                                                                                              |                |
+| 95    | _(reroll)_                   | — | — |
 | 96–00 | Impulse Control Disorder     | Pathological gambling, lying, kleptomania, or pyromania. Pursues activity at every opportunity. | Permanent trigger |
 
 ### Phobias (d100)
@@ -224,28 +225,23 @@ If the Disorders Table yields a Phobia result, roll d100 or select an appropriat
 
 ## Therapy
 
-_Source: Book 1 Appendix C_
+A character reduces Mental Trauma through professional therapy:
 
-A character wishing to reduce their Mental Trauma score through therapy follows these steps:
+1. **Treatment Period** — attend sessions (2×/week minimum) for `2d10` − Willpower months (minimum 2). Institutional care with medication: reduce months to weeks.
+2. **Therapist Assessment** — Test Academic Lore + Intelligence (or Scrutiny + Wisdom) vs. TN 80 − patient's Trauma. On success, Test Persuasion + Fellowship vs. patient's Trauma as TN (+5 per Raise from first Test). Up to 2 assistants may aid.
+3. **Patient Breakthrough** — If Step 2 succeeds and patient hasn't gained >10 Trauma since last success: patient Tests Wisdom + Composure − Forbidden Lore dots vs. Trauma as TN. Add +1 per Devotion dot, +5 per Raise from Step 2. Only a Spirit Mentor may aid.
+4. **Recovery** — On success, reduce Trauma by `1d5` + 2 per Raise (capped at 1/10 of current Trauma).
 
-**Step 1 — Treatment Period:** The character undergoes therapy sessions (twice per week minimum) for 2d10 − Willpower months (minimum 2 months). Under constant institutional care with professional therapists and medication, reduce months to weeks.
-
-**Step 2 — Therapist Assessment:** The therapist Tests Academic Lore + Intelligence (or Scrutiny + Wisdom) against TN 80 minus the patient's current Trauma score. On success, the therapist then Tests Persuasion + Fellowship at the patient's Trauma score as TN, gaining +5 per Raise on the first Test. Up to two assistants may aid the therapist.
-
-**Step 3 — Patient Breakthrough:** If Step 2 succeeds and the patient has not gained more than 10 Trauma since the last successful attempt, the patient Tests Wisdom + Composure − Forbidden Lore dots against their Trauma score as TN. The patient adds +1 per Devotion dot and +5 per Raise from Step 2. Only a Spirit Mentor may aid this Test.
-
-**Step 4 — Recovery:** On success, reduce Trauma by 1d5 + 2 per Raise, capped at 1/10 of the patient's current Trauma score.
-
-> **Critical Failure:** If all dice on any of these Tests come up as 1s, the patient gains 1 point of Trauma.
+> **Critical Failure:** If all dice on any Test show 1s, the patient gains 1 Trauma.
 
 ---
 
 ## Healing Mental Trauma
 
-Mental trauma heals more slowly than physical wounds. Beyond professional therapy (above), a character can reduce their Trauma through:
+Beyond professional therapy, Trauma can be reduced through:
 
-- **Rest and Recuperation:** Extended downtime in safe environments.
-- **Magical Healing:** Some spells and abilities can heal mental wounds.
-- **Fulfilling Alignment:** Acting strongly in accordance with one's Alignment can restore mental stability.
+- **Rest and Recuperation** — extended downtime in safe environments
+- **Magical Healing** — certain spells and abilities heal mental wounds
+- **Fulfilling Alignment** — acting strongly in accordance with one's Alignment restores mental stability
 
 The SM should work with the player to determine appropriate recovery methods and timeframes for their character's specific traumas and disorders.

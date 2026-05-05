@@ -24,19 +24,15 @@ When encountering unclear rules:
    ↓ Found? → Use book text as authoritative
    ↓ Unclear? → Continue
 
-2. Check docs/editorial/open-questions.md for existing entry
-   ↓ Has resolution? → Apply resolution
-   ↓ No entry? → Continue
-
-3. Search forums for developer clarification
+2. Search forums for developer clarification
    ↓ Found developer post? → Apply with SOURCE annotation
    ↓ Found consensus? → Note as community interpretation
    ↓ Nothing useful? → Continue
 
-4. Document as new open question
+3. Preserve the ambiguity
    → Do NOT invent a ruling
    → Preserve ambiguity in text
-   → Add entry to docs/editorial/open-questions.md
+   → Add a clarification note in the source file
 ```
 
 ---
@@ -68,7 +64,7 @@ When book text resolves an ambiguity:
 When preserving unclear rules:
 
 ```markdown
-> **Note:** This rule's application in [situation] is unclear. See open-questions.md entry #XX.
+> **Note:** This rule's application in [situation] is unclear.
 ```
 
 ---
@@ -79,6 +75,5 @@ When preserving unclear rules:
 | -------------------------------------- | ----------------------------------------- |
 | Inventing rulings                      | Violates "never invent" doctrine          |
 | Treating forum posts as canonical      | Variable quality, not authoritative       |
-| Silently "fixing" book text            | May be intentional; log to open-questions |
-| Ignoring open-questions resolutions    | They exist for a reason                   |
+| Silently "fixing" book text            | May be intentional; preserve ambiguity    |
 | Using forum content without annotation | Must be traceable                         |
