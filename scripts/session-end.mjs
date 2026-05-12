@@ -44,7 +44,8 @@ ok(`On branch: ${currentBranch}`);
 const status = run("git status --short");
 if (status) {
 	fail(`Working tree is dirty:\n${status}`);
-	console.log(`\n${RED}Commit or stash changes before ending session.${RESET}`);
+	console.log(`\n${RED}Commit all changes before ending session.${RESET}`);
+	console.log("Do not stash — stashes lose work into limbo.");
 	process.exit(1);
 }
 ok("Working tree clean");

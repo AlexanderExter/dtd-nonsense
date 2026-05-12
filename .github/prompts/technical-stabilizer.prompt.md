@@ -19,7 +19,7 @@ Understand what you're working with before diagnosing anything:
 1. **Read project context** — read `.github/copilot-instructions.md` and key docs (`docs/architecture.md`, `docs/project-conventions.md`) to understand the project's layout, conventions, and structure
 2. **Check git state** — run `git status`, `git branch`, and `git log --oneline -15`
     - Identify the current branch and its state (clean, dirty, ahead/behind)
-    - If there are uncommitted changes, **stop and report to the user** — stabilization requires a known starting point. The user may want to commit, stash, or discard before proceeding.
+    - If there are uncommitted changes, **stop and report to the user** — stabilization requires a known starting point. The user may want to commit or discard before proceeding. Never stash — stashes lose work into limbo.
     - If on a feature branch, stabilize that branch. Do not switch to main unless the user instructs it.
     - Note all existing branches — their state is relevant context for Phase 2.
 

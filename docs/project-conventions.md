@@ -33,7 +33,7 @@ git status                                 # Check for uncommitted changes
 
 - If `session-YYYY-MM-DD` already exists (from another agent or earlier in the day) → `git checkout session-YYYY-MM-DD`
 - If no session branch exists → `git checkout -b session-YYYY-MM-DD` from `main`
-- If uncommitted changes exist on any branch → ask the user how to proceed before creating/switching
+- If uncommitted changes exist → `session:start` carries them into the new branch automatically as a WIP commit. **Never stash** — stashes lose work into limbo. If stashes are found, review and apply or drop them.
 
 **During session:**
 

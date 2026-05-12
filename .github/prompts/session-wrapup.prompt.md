@@ -84,7 +84,7 @@ Apply lesson updates directly on the current session branch (`session-YYYY-MM-DD
 2. If on a feature branch with uncommitted work:
     - Review changes with `git diff`
     - Commit with a descriptive message
-3. If uncommitted changes exist on main — this shouldn't happen. Stage and commit to a new session branch, or stash and flag for the user.
+3. If uncommitted changes exist on main — this shouldn't happen. Create a session branch and commit them there. Never stash — stashes lose work into limbo.
 
 ### 3b. Merge Session Branch
 

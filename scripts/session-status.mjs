@@ -60,4 +60,18 @@ for (const b of branches) {
 	}
 }
 
+// Stash check
+try {
+	const stashList = run("git stash list");
+	if (stashList) {
+		const stashCount = stashList.split("\n").length;
+		console.log(`\n  ${RED}⚠ ${stashCount} orphaned stash(es) — review and drop:${RESET}`);
+		for (const line of stashList.split("\n").slice(0, 5)) {
+			console.log(`${DIM}    ${line}${RESET}`);
+		}
+	}
+} catch {
+	/* no-op */
+}
+
 console.log("");

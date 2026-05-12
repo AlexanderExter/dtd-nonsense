@@ -1,8 +1,5 @@
 # Product Vision
 
-> **Last updated:** 2026-03-13
-> **Last PO session:** 2026-03-13 — Strategic pivot: dropped canonicity requirement, MDX conversion complete, shadcn/ui migration underway.
-
 This document captures the project's strategic direction: what it is, who it's for, what it should become, and what it should never become. It is the output of Product Owner dialogue sessions and serves as the north star for all decision-making.
 
 ---
@@ -60,7 +57,6 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 - User accounts, cloud storage, or backend services
 - Rules automation that replaces player/SM judgment
 - Original game content or homebrew
-- Native mobile apps
 - Anything that demands the user's attention or presence
 
 ---
@@ -79,24 +75,7 @@ Ordered by priority. When principles conflict, higher-numbered principles yield 
 
 ### Current Focus
 
-Major UI overhaul: big-bang migration from hand-rolled Radix UI components to shadcn/ui, adopting a cohesive pre-made theme with lucide-react icons and sonner toasts. All content files converted to MDX, enabling future interactive component embedding in rules pages. Fix known bugs and missing features in core tools (Character Sheet, Character Builder, NPC Generator).
-
-### Next Up
-
-- Mobile UX refinements across all pages and tools
-- Complete the editorial pass on remaining source material
-- Resolve the 41 cross-reference data quality warnings in JSON data
-
-### Someday/Maybe
-
-- Cross-platform character persistence (e.g., import/export, shareable links)
-- ~~React migration~~ — **Done.** All 6 tools migrated to React Islands (2026-03)
-- Lighthouse / Core Web Vitals performance audit before public launch
-
-### Deliberately Deferred
-
-- **CI cross-reference validation** — needs baseline suppression mechanism so new warnings fail CI without blocking on pre-existing data gaps
-- **Browser testing for React tools** — React migration complete (Phase 13); manual in-browser testing for visual/functional parity deferred until before release
+Road to Deployment: We are adding fine polish to all aspects of the app, but all the features and content are in place.
 
 ---
 
@@ -108,15 +87,3 @@ The project uses a single editorial direction: creative derivative.
 - **`cleaned-references/`** — Web-native reference documentation organized by topic. These are the **canonical reading experience** — restructured for scannability, condensed to eliminate redundancy, and enriched with cross-references and summaries. Heavy editorial treatment is expected and encouraged.
 
 Both paths use MDX, enabling interactive React component embedding directly in rules content. The canonicity question is settled: this project builds something new from the original source, not a preservation effort. The [original PDFs are available online](https://static.wikitide.net/1d6chanwiki/f/fc/Dungeons_the_Dragoning.pdf) for anyone who wants the unmodified text.
-
----
-
-## Project Lifecycle
-
-This project has a natural finish line:
-
-1. **Current: Active Development** — Core tools and content functional, major UI overhaul (shadcn/ui migration) and MDX conversion underway
-2. **Target: Release** — Editorial pass complete, tools polished, mobile experience solid, community-ready
-3. **Endgame: Maintenance** — Accept issues, review PRs, implement ideas. Eventually hand off via fork
-
-The learning goals that co-motivated this project (AI-assisted development, Astro framework, Copilot capabilities) have been achieved. Remaining work is product-focused.

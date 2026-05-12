@@ -97,6 +97,7 @@ Full workflow in [docs/project-conventions.md](../docs/project-conventions.md#gi
 - **Git Bash only** — if a terminal opens as PowerShell or cmd, report it as a misconfiguration. All commands should use Unix syntax.
 - **No PowerShell for file editing** — never use `Set-Content` or `Out-File`; they corrupt UTF-8. Use agent edit tools.
 - **Check git state first** — other agents may have committed. Run `bun run session:status` or `git status && git log --oneline -5` before starting work
+- **Never stash** — `git stash` loses work into limbo. Pre-existing uncommitted changes get carried into the session branch by `session:start`. If orphaned stashes are reported, apply or drop them.
 
 **Verification protocol:**
 
