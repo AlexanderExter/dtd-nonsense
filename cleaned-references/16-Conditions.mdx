@@ -6,7 +6,7 @@ sidebar:
 title: Conditions
 ---
 
-> **Key concepts:** Conditions are debilitating status effects applied during [Combat](/cleaned-references/14-Combat), Critical Effects, environmental hazards, or [Social Combat](/cleaned-references/15-Social-Combat) (Fear). Most conditions impose dice penalties or restrict actions. Multiple conditions can **compound** to worsen a character's wound state. Fear and Mental Trauma have their own track separate from physical injury.
+> **Key concepts:** Conditions are debilitating status effects applied during [Combat](./14-Combat.mdx), Critical Effects, environmental hazards, or [Social Combat](./15-Social-Combat.mdx) (Fear). Most conditions impose dice penalties or restrict actions. Multiple conditions can **compound** to worsen a character's wound state. Fear and Mental Trauma have their own track separate from physical injury.
 
 ---
 
@@ -16,8 +16,8 @@ title: Conditions
 | --------- | ------ | -------- | ------- |
 | **Amputation** | Lose limb; treated as Heavily Wounded | Permanent | Cybernetics, healing magic, regeneration |
 | **Blinded** | −`4k0` physical Tests; Athletics + Dex TN 15 to move | Until healed | Healing, spell, cybernetics |
-| **Blood Loss** | Con Test each Round; fail = `1d10` × Blood Loss damage | Until treated | First Aid, magical healing |
-| **Burning** | `1d10` Energy/Round, ignores Armor; no actions except extinguishing | Until extinguished | Intelligence Test TN 15; allies in melee give +`1k0` |
+| **Blood Loss** | Roll `1d10` each Round; on a 1, character dies | Until treated | Medicae TN 20 (TN 30 if active); magical healing |
+| **Burning** | 1 HP + 1 Fatigue/Round (Energy damage) | Until extinguished | Dex Test TN 15 (Full Action, drop Prone) |
 | **Crippled** | Limb unusable (arm = no attacks; leg = crawl only) | Until healed | Medical attention, magic |
 | **Dazzled** | −`1k0` all Tests; −`2k0` sight-based Tests | Varies | Typically short-duration |
 | **Deafened** | −`2k0` all Tests; auto-fail hearing Tests | Until healed | Healing, cybernetics |
@@ -27,7 +27,7 @@ title: Conditions
 | **Pinned** | Cannot move or act (only Full Defense); can speak | Until unpinned | Full Defense, suppression ends |
 | **Prone** | −`2k0` ranged attacks vs. you; +`2k0` melee vs. you; −`2k0` to your attacks | Until you Stand | Stand action (Half Action) |
 | **Stunned** | No Reactions; only action is Move at half rate | Varies (rounds) | Hero Point, duration expires |
-| **Toxic** | Rating 1–2: that damage/Round. Rating 3+: that many `d10`/Round | Until treated | Toughness TN 15 + Toxic; antidote; magic |
+| **Toxic** | Con Test (TN 15) or suffer 1 additional wound to Gizzards | After each hit | Antidote; immunity (Dryad, etc.) |
 
 ---
 
@@ -43,11 +43,13 @@ Total inability to see. −`4k0` to physical Tests (no penalty to social Tests l
 
 ### Blood Loss
 
-Cumulative condition (multiple sources stack). At the start of each Round after injury, Test Constitution. If result < 10 × Blood Loss, take `1d10` damage per Blood Loss level (ignores Armor and Aura). **Treatment:** First Aid or magical healing stops bleeding from one wound or reduces Blood Loss by 1. Lost limbs have Blood Loss 5.
+Result of Critical Damage. Each Round, roll `1d10`. On a roll of **1**, the character **dies**. A conscious character may attempt a **TN 20 Medicae Test** each Round to staunch the bleeding. If also engaging in strenuous activity (running, fighting), the TN increases to **30**. Another character may attempt the Test if the victim is unconscious or unable.
 
 ### Burning
 
-`1d10` Energy damage per Round, ignoring Armor. Cannot take actions except trying to extinguish (Intelligence Test, TN 15). Each ally in melee range who helps gives +`1k0` to the Test (but costs them their action).
+A character on fire loses **1 Hit Point** and gains **1 level of Fatigue** each round. All fire damage counts as Energy damage for Critical Effects — if hit location is unspecified, use Body.
+
+A burning character may try to extinguish the flames by dropping Prone and making a **TN 15 Dexterity Test** as a Full Action. The SM may adjust the TN based on environment and whether allies help.
 
 ### Combined Penalty
 
@@ -99,12 +101,7 @@ Cannot take Reactions. Only action permitted: Move at half rate. Duration varies
 
 ### Toxic
 
-Ongoing poison/disease damage:
-
-- **Rating 1–2:** take that much flat damage per Round
-- **Rating 3+:** take that many `d10` damage per Round (lethal if untreated)
-
-**Mitigation:** Toughness Test (TN 15 + Toxic Rating) at start of each Round negates that Round's damage (1+ Raises halves it, round up). Removed by medical treatment, antidotes, or magical healing. Regeneration removes 1 Toxic per Round.
+After taking damage from a Toxic weapon, the target must make a **Constitution Test** (TN 15 for Average quality; TN 10 for Poor, TN 20 for Good, TN 25 for Best) or suffer **one additional wound to the Gizzards**. Removed by antidotes or immunity (e.g., Dryad racial power).
 
 ---
 

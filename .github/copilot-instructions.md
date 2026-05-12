@@ -200,7 +200,7 @@ All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names
 | File                          | Content                                      |
 | ----------------------------- | -------------------------------------------- |
 | 01-Core-Rules.mdx             | Dice system, tests, raises/checks            |
-| 02-Char-Creation.mdx          | 9-step character creation                    |
+| 02-Char-Creation.mdx          | 10-step character creation (Steps 0–9)       |
 | 03-Characteristics-Skills.mdx | 9 characteristics, skill list                |
 | 04-Races.mdx                  | 16 playable races                            |
 | 05-Exaltations.mdx            | Supernatural types (Vampire, Werewolf, etc.) |

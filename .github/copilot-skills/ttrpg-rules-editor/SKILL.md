@@ -97,7 +97,17 @@ PDF extraction frequently merges words at column breaks. These are invisible to 
 ```
 
 A first pass catches ~30% of merged words. Systematic sweeps with expanding patterns find the rest. Expect 3-4 passes to reach near-zero remaining.
+### Common Source-Book Error Patterns
 
+These recur across both books — scan for them during editorial passes:
+
+| Pattern | Example | Fix |
+| ------- | ------- | --- |
+| **`it's` / `its` confusion** | "changes it's position" | Possessive `its` has no apostrophe |
+| **Copy-paste from similar items** | Bionic Locomotion says "this arm" (copied from Bionic Arm) | Verify item-specific nouns match the entry |
+| **Self-referential exits** | Priest suggests exit to "Priest" instead of "Preacher" | Check class exits point to a *different* class |
+| **Zero-indexed step counts** | Steps 0–9 = 10 steps, not 9 | Count inclusively when the sequence starts at zero |
+| **Stray escape characters** | `Priest\*` (escaped asterisk) | Fix unless the escape is needed for MDX rendering |
 ### Fix
 
 | Issue                     | Action                                                |
@@ -292,6 +302,8 @@ If you notice yourself doing any of these, pause and verify your approach:
 - **Reorganizing content that's merely imperfect** — Reorganize only when content is CLEARLY under the wrong heading or CLEARLY interrupts an unrelated passage. Dense-but-self-contained sections don't need restructuring
 - **Rewriting unclear-but-functional phrasing** — Only rewrite prose if a player could misapply the mechanic as written. Roundabout ≠ broken
 - **Converting `X` to `×` in weapon stat blocks** — `X` in weapon/attack damage columns is the Explosive damage type abbreviation, not a multiplication sign. Only convert `x` → `×` in formulas, drive multipliers, and similar mathematical contexts
+- **Applying subagent-reported fixes without verification** — Subagents fabricate findings when scanning large files. Always `grep_search` the exact text of every reported error before applying fixes. Two false positives were caught in this project ("Polymophine" misspelling and "it's first real fight" — neither existed in the actual files)
+- **Changing a count without searching the whole project** — When an editorial pass changes a count (skills, classes, steps), the old number appears in frontmatter descriptions, `scripts/prebuild.mjs` metadata, `.github/copilot-instructions.md` index table, and doc comparison tables. Search the project for the old value and update all occurrences together
 
 ---
 

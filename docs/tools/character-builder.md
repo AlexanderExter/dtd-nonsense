@@ -154,7 +154,7 @@ The Builder itself does not auto-save wizard state. Characters are persisted onl
 | Code pattern  | IIFE with loose functions | Object literal with delegated events       |
 | Persistence   | None (export only)        | `character.save()` for "Open in Sheet" |
 | XP tracking   | Not tracked               | Running XP budget with breakdown           |
-| Steps         | 9 steps                   | 11 steps (Identity + Review added)         |
+| Steps         | 10 steps (Steps 0–9)      | 11 steps (Identity + Review added)         |
 
 ---
 

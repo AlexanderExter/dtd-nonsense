@@ -121,7 +121,7 @@ const CONTENT_METADATA = {
 	},
 	"02-Char-Creation.mdx": {
 		title: "Character Creation",
-		description: "9-step character creation process",
+		description: "10-step character creation process",
 		group: "Character",
 	},
 	"03-Characteristics-Skills.mdx": {
