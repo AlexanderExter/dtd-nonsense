@@ -45,7 +45,6 @@ After user approval, update the relevant files. Common targets:
 | Cross-cutting conventions, pitfalls, workflow | `docs/project-conventions.md`                                        |
 | Editing technique, formatting, content rules  | `.github/copilot-skills/ttrpg-rules-editor/SKILL.md`                 |
 | Source authority, verification rules          | `.github/copilot-skills/dtd-source-hierarchy/SKILL.md`            |
-| Open question lifecycle changes               | `.github/copilot-skills/open-question-manager/SKILL.md`           |
 | Tool development patterns, JS/CSS issues      | `.github/copilot-skills/tool-development/SKILL.md`                |
 | Formatting reference updates                  | `.github/copilot-skills/ttrpg-rules-editor/references/formatting.md` |
 | Template changes                              | `.github/copilot-skills/ttrpg-rules-editor/references/templates.md`  |
