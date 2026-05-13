@@ -116,6 +116,7 @@ bun run knip                                  # Run dead code detection
 
 **Configuration:** `knip.json` at project root defines entry points, project scope, and false-positive suppression:
 
+- **Schema URL:** `"$schema": "https://unpkg.com/knip@6/schema.json"` — must match the installed major version (was `knip@5` before v6 upgrade)
 - **Entry points:** `src/pages/**/*.astro`, `scripts/*.{ts,mjs}`
 - **Project scope:** `src/**/*.{ts,tsx,astro}`, `scripts/**/*.{ts,mjs}`
 - **Ignored modules:** `src/lib/dtd/schemas/**` (loaded dynamically via string keys)

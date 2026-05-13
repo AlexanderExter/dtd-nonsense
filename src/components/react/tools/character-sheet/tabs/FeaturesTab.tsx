@@ -49,9 +49,7 @@ export function FeaturesTab() {
 	};
 
 	// Find class details from game data
-	const getClassInfo = (classId: string) => {
-		return classes.find((c: any) => c.id === classId);
-	};
+	const getClassInfo = (classId: string) => classes.find((c: any) => c.id === classId);
 
 	// Add a feat from class to character's feats list
 	const handleAddFeatFromClass = (featName: string) => {

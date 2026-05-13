@@ -109,11 +109,11 @@ export default defineConfig({
 					items: [
 						{
 							label: "Book 1: Dungeons the Dragoning",
-							autogenerate: { directory: "books/book-1" },
+							items: [{ autogenerate: { directory: "books/book-1" } }],
 						},
 						{
 							label: "Book 2: For a Few Subtitles More",
-							autogenerate: { directory: "books/book-2" },
+							items: [{ autogenerate: { directory: "books/book-2" } }],
 						},
 					],
 				},

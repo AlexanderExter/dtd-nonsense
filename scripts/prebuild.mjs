@@ -11,10 +11,10 @@
  * For books/ files, existing frontmatter is transformed to Starlight format.
  */
 
+import matter from "gray-matter";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import matter from "gray-matter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -77,8 +77,8 @@ function transformBookFrontmatter(content, filename) {
 	const fmEnd = content.indexOf("---", 3);
 	if (fmEnd === -1) return content;
 
-	const fmBlock = content.substring(3, fmEnd).trim();
-	const body = content.substring(fmEnd + 3);
+	const fmBlock = content.slice(3, fmEnd).trim();
+	const body = content.slice(fmEnd + 3);
 
 	// Extract fields from existing frontmatter
 	const titleMatch = fmBlock.match(/title:\s*"?([^"\n]+)"?/);

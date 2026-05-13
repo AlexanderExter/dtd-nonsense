@@ -44,7 +44,7 @@ export interface ShipWeapon {
 	type: string;
 }
 
-export interface Torpedo {
+interface Torpedo {
 	accuracy: number;
 	arc: string;
 	cost: number;
@@ -57,7 +57,7 @@ export interface Torpedo {
 	range: number;
 }
 
-export interface Shield {
+interface Shield {
 	capacity: number;
 	cost: number;
 	id: string;
@@ -87,7 +87,7 @@ export interface ShipData {
 	weapons: ShipWeapon[];
 }
 
-export interface CombatState {
+interface CombatState {
 	consoleStatus: Record<string, boolean>;
 	crewCurrent: number;
 	critLog: CritLogEntry[];
@@ -166,7 +166,7 @@ export const SHIELD_TYPES = ["Standard", "Covariant", "Regenerative", "Resilient
 // -------------------------------------------------------------------------
 
 export function generateId(): string {
-	return `ship_${Date.now().toString(36)}${Math.random().toString(36).substr(2, 4)}`;
+	return `ship_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
 }
 
 export function createDefaultShip(): ShipState {

@@ -90,10 +90,11 @@ export interface BlockTracker {
 	frontmatterCount: number;
 	inCodeBlock: boolean;
 	inFrontmatter: boolean;
+	seenContent: boolean;
 }
 
 export function newTracker(): BlockTracker {
-	return { inFrontmatter: false, frontmatterCount: 0, inCodeBlock: false };
+	return { inFrontmatter: false, frontmatterCount: 0, inCodeBlock: false, seenContent: false };
 }
 
 /**
@@ -102,15 +103,21 @@ export function newTracker(): BlockTracker {
  */
 export function updateTracker(tracker: BlockTracker, stripped: string): boolean {
 	if (stripped === "---") {
-		tracker.frontmatterCount++;
-		if (tracker.frontmatterCount === 1) {
-			tracker.inFrontmatter = true;
-		} else if (tracker.frontmatterCount === 2) {
-			tracker.inFrontmatter = false;
+		if (!tracker.seenContent && tracker.frontmatterCount < 2) {
+			tracker.frontmatterCount++;
+			if (tracker.frontmatterCount === 1) {
+				tracker.inFrontmatter = true;
+			} else if (tracker.frontmatterCount === 2) {
+				tracker.inFrontmatter = false;
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 	if (tracker.inFrontmatter) return true;
+	if (stripped.length > 0 && !tracker.inCodeBlock) {
+		tracker.seenContent = true;
+	}
 
 	if (stripped.startsWith("```")) {
 		tracker.inCodeBlock = !tracker.inCodeBlock;

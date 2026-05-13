@@ -173,6 +173,7 @@ describe("updateTracker", () => {
 			inFrontmatter: false,
 			frontmatterCount: 0,
 			inCodeBlock: false,
+			seenContent: false,
 		});
 	});
 
@@ -198,6 +199,16 @@ describe("updateTracker", () => {
 		updateTracker(t, "---");
 		const skip = updateTracker(t, "title: Hello");
 		expect(skip).toBe(true);
+	});
+
+	it("'---' after content is a horizontal rule, not frontmatter", () => {
+		const t = newTracker();
+		updateTracker(t, "# Heading");
+		expect(t.seenContent).toBe(true);
+		const skip = updateTracker(t, "---");
+		expect(skip).toBe(false);
+		expect(t.inFrontmatter).toBe(false);
+		expect(t.frontmatterCount).toBe(0);
 	});
 
 	it("``` toggles inCodeBlock", () => {

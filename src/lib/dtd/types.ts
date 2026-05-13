@@ -12,7 +12,7 @@
 // Characteristics & Stats
 // =============================================================================
 
-export interface Characteristics {
+interface Characteristics {
 	charisma: number;
 	composure: number;
 	constitution: number;
@@ -134,7 +134,7 @@ export interface SpellEntry {
 	school: string;
 }
 
-export interface TechniqueEntry {
+interface TechniqueEntry {
 	cost: number;
 	name: string;
 	school?: string;

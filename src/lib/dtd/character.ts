@@ -154,7 +154,7 @@ export const character = {
 		try {
 			const raw = localStorage.getItem(this.STORAGE_LIST_KEY);
 			return raw ? JSON.parse(raw) : [];
-		} catch (_e) {
+		} catch {
 			return [];
 		}
 	},

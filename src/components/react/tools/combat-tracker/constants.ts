@@ -33,7 +33,7 @@ export interface CombatantCondition {
 	level?: number;
 }
 
-export interface ActionBudget {
+interface ActionBudget {
 	fullAction: boolean;
 	half1: boolean;
 	half2: boolean;

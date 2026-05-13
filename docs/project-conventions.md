@@ -132,6 +132,8 @@ Periodic upgrade sessions bring all dependencies to their best possible state. T
 
 **`upgrade:recon` scope caveat:** `bun run upgrade:recon` only reports packages that are outside their _current_ declared version range — it will show "0 outdated" even when major upgrades are available. To see the full upgrade picture, also run `bunx npm-check-updates --format group`. Always do this at the start of an upgrade session.
 
+**`ncu` CLI pitfall:** `ncu` without `-u` only _prints_ available updates — it does not modify `package.json`. To actually apply updates, run `bunx npm-check-updates -u` (or with filters like `-u --target minor`). The `ncu doctor` mode also requires `-u`: `bunx npm-check-updates --doctor -u`.
+
 **`bun install` and nested overrides:** `bun install` prints a warning and exits with code 1 when `package.json` contains nested `overrides` (e.g., `overrides: { "pkg": { "dep": "^x" } }`). The install _succeeds_ despite the error exit — but the false failure is confusing. Use `bun install` instead of `bun install` when nested overrides are present.
 
 ### New Tool Integration
