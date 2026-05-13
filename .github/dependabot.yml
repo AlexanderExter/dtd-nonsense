@@ -1,0 +1,23 @@
+version: 2
+updates:
+    # npm/bun dependencies (package.json)
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+      # Group all non-breaking updates into a single PR to reduce noise
+      groups:
+          all-dependencies:
+              update-types:
+                  - "minor"
+                  - "patch"
+      # Keep major version bumps as individual PRs (they need manual review)
+      open-pull-requests-limit: 5
+
+    # GitHub Actions (workflow files)
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+          day: "monday"

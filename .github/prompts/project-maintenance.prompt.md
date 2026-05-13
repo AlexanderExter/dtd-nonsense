@@ -269,13 +269,14 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 
 ### C4. Editor Config — `.vscode/settings.json` and `.vscode/extensions.json`
 
-1. **Formatter associations.** Verify the default formatter for each language matches the detected linter/formatter.
-2. **Deprecated settings.** Check for settings deprecated by tool updates:
+1. **Run `get_errors` on `.vscode/` files.** Call `get_errors` with paths to `settings.json` and `extensions.json` (and any other files in `.vscode/`). This catches schema validation errors, incorrect types, and deprecated setting names that are invisible to CLI tools. Fix all reported issues before proceeding — config errors here propagate to every other tool's behavior.
+2. **Formatter associations.** Verify the default formatter for each language matches the detected linter/formatter.
+3. **Deprecated settings.** Check for settings deprecated by tool updates:
     - **Biome:** `biome.lspBin` → `biome.lsp.bin`; `biome.requireConfigFile` → `biome.requireConfiguration`; `quickfix.biome` → `source.fixAll.biome`
     - **ESLint:** `eslint.autoFixOnSave` → `editor.codeActionsOnSave` with `source.fixAll.eslint`
-3. **Format on save.** Verify `editor.formatOnSave` and `editor.codeActionsOnSave` are configured for the detected tools.
-4. **Spell check dictionary.** If present, check for stale terms from removed features or renamed concepts.
-5. **Recommended extensions.** In `.vscode/extensions.json`, verify the recommended extensions match the project's toolchain.
+4. **Format on save.** Verify `editor.formatOnSave` and `editor.codeActionsOnSave` are configured for the detected tools.
+5. **Spell check dictionary.** If present, check for stale terms from removed features or renamed concepts.
+6. **Recommended extensions.** In `.vscode/extensions.json`, verify the recommended extensions match the project's toolchain.
 
 ### C5. Linter & Formatter Config
 
