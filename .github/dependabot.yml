@@ -15,6 +15,13 @@ updates:
       # Keep major version bumps as individual PRs (they need manual review)
       open-pull-requests-limit: 5
 
+    # Bun runtime (.bun-version file)
+    - package-ecosystem: "bun"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+
     # GitHub Actions (workflow files)
     - package-ecosystem: "github-actions"
       directory: "/"
