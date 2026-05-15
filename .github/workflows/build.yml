@@ -7,9 +7,11 @@ jobs:
             - uses: actions/checkout@v6
 
             # --- Bun (package manager + test runner + pipeline scripts) ---
+            # Pinned to match the local development version (1.3.10).
+            # Bump this intentionally when upgrading Bun locally.
             - uses: oven-sh/setup-bun@v2
               with:
-                  bun-version: latest
+                  bun-version: "1.3.10"
             - run: bun install
 
             # --- Node (needed for Astro build) ---
