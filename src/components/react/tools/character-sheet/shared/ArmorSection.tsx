@@ -52,93 +52,102 @@ export function ArmorSection() {
 	return (
 		<div>
 			<SectionHeading>Armor</SectionHeading>
-			<table className="w-full border-collapse text-sm">
-				<thead>
-					<tr>
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
-							Name
-						</th>
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
-							Type
-						</th>
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
-							AP
-						</th>
-						{LOCATIONS.map((loc) => (
-							<th
-								className="whitespace-nowrap border-border border-b px-sm py-xs text-center font-semibold text-text-muted text-xs uppercase tracking-wide-px"
-								key={loc}
-								title={loc}
-							>
-								{loc.replace("Left ", "L ").replace("Right ", "R ")}
+			<div className="overflow-x-auto [scrollbar-width:thin]">
+				<table className="w-full border-collapse text-sm">
+					<thead>
+						<tr>
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
+								Name
 							</th>
-						))}
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
-							Notes
-						</th>
-						<th />
-					</tr>
-				</thead>
-				<tbody>
-					{armor.map((a, idx) => (
-						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
-						<tr key={`armor-${idx}`}>
-							<td className="border-border border-b px-sm py-2xs align-middle">
-								<GameInput
-									onInput={(e) =>
-										handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
-									}
-									value={a.name}
-								/>
-							</td>
-							<td className="border-border border-b px-sm py-2xs align-middle">
-								<GameSelect
-									onChange={(e) =>
-										handleFieldChange(idx, "type", (e.target as HTMLSelectElement).value)
-									}
-									value={a.type}
-								>
-									<option value="">—</option>
-									{ARMOR_TYPES.map((t) => (
-										<option key={t} value={t}>
-											{t}
-										</option>
-									))}
-								</GameSelect>
-							</td>
-							<td className="border-border border-b px-sm py-2xs align-middle">
-								<NumberInput min={0} onChange={(v) => handleFieldChange(idx, "ap", v)} value={a.ap} />
-							</td>
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
+								Type
+							</th>
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
+								AP
+							</th>
 							{LOCATIONS.map((loc) => (
-								<td className="border-border border-b px-sm py-2xs text-center align-middle" key={loc}>
-									<GameCheckbox
-										checked={(a.locations || []).includes(loc)}
-										onChange={() => handleLocationToggle(idx, loc)}
+								<th
+									className="whitespace-nowrap border-border border-b px-sm py-xs text-center font-semibold text-text-muted text-xs uppercase tracking-wide-px"
+									key={loc}
+									title={loc}
+								>
+									{loc.replace("Left ", "L ").replace("Right ", "R ")}
+								</th>
+							))}
+							<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
+								Notes
+							</th>
+							<th />
+						</tr>
+					</thead>
+					<tbody>
+						{armor.map((a, idx) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
+							<tr key={`armor-${idx}`}>
+								<td className="border-border border-b px-sm py-2xs align-middle">
+									<GameInput
+										onInput={(e) =>
+											handleFieldChange(idx, "name", (e.target as HTMLInputElement).value)
+										}
+										value={a.name}
 									/>
 								</td>
-							))}
-							<td className="border-border border-b px-sm py-2xs align-middle">
-								<GameInput
-									onInput={(e) =>
-										handleFieldChange(idx, "qualities", (e.target as HTMLInputElement).value)
-									}
-									value={a.qualities || ""}
-								/>
-							</td>
-							<td className="border-border border-b px-sm py-2xs text-center align-middle">
-								<button
-									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
-									onClick={() => handleRemove(idx)}
-									title="Remove"
-									type="button"
-								>
-									×
-								</button>
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+								<td className="border-border border-b px-sm py-2xs align-middle">
+									<GameSelect
+										onChange={(e) =>
+											handleFieldChange(idx, "type", (e.target as HTMLSelectElement).value)
+										}
+										value={a.type}
+									>
+										<option value="">—</option>
+										{ARMOR_TYPES.map((t) => (
+											<option key={t} value={t}>
+												{t}
+											</option>
+										))}
+									</GameSelect>
+								</td>
+								<td className="border-border border-b px-sm py-2xs align-middle">
+									<NumberInput
+										min={0}
+										onChange={(v) => handleFieldChange(idx, "ap", v)}
+										value={a.ap}
+									/>
+								</td>
+								{LOCATIONS.map((loc) => (
+									<td
+										className="border-border border-b px-sm py-2xs text-center align-middle"
+										key={loc}
+									>
+										<GameCheckbox
+											checked={(a.locations || []).includes(loc)}
+											onChange={() => handleLocationToggle(idx, loc)}
+										/>
+									</td>
+								))}
+								<td className="border-border border-b px-sm py-2xs align-middle">
+									<GameInput
+										onInput={(e) =>
+											handleFieldChange(idx, "qualities", (e.target as HTMLInputElement).value)
+										}
+										value={a.qualities || ""}
+									/>
+								</td>
+								<td className="border-border border-b px-sm py-2xs text-center align-middle">
+									<button
+										className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+										onClick={() => handleRemove(idx)}
+										title="Remove"
+										type="button"
+									>
+										×
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 			<AddButton className="mt-sm" label="Armor" onClick={handleAdd} />
 		</div>
 	);

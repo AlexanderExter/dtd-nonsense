@@ -11,10 +11,10 @@
  * For books/ files, existing frontmatter is transformed to Starlight format.
  */
 
+import matter from "gray-matter";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import matter from "gray-matter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -234,6 +234,7 @@ const CONTENT_METADATA = {
 /**
  * Inject Starlight-compatible frontmatter into a cleaned-references file.
  * Uses gray-matter to parse/serialize YAML frontmatter.
+ * Preserves extra keys from source frontmatter (e.g. tableOfContents).
  */
 function injectStarlightFrontmatter(content, filename) {
 	const meta = CONTENT_METADATA[filename];
@@ -250,6 +251,14 @@ function injectStarlightFrontmatter(content, filename) {
 			label: meta.title,
 		},
 	};
+
+	// Preserve extra Starlight keys from the source frontmatter
+	const PRESERVED_KEYS = ["tableOfContents", "head", "pagefind", "draft"];
+	for (const key of PRESERVED_KEYS) {
+		if (parsed.data[key] !== undefined) {
+			targetFm[key] = parsed.data[key];
+		}
+	}
 
 	parsed.data = targetFm;
 	return matter.stringify(parsed.content, parsed.data);
