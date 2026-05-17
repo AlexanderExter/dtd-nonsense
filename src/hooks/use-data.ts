@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { loadAllData } from "@/lib/dtd/data";
+import type { GameDataMap, GameDataResult } from "@/lib/dtd/schemas";
 
-export function useAllData(filenames: string[]) {
-	const [data, setData] = useState<Record<string, unknown> | null>(null);
+export function useAllData<T extends (keyof GameDataMap)[]>(filenames: [...T]) {
+	const [data, setData] = useState<GameDataResult<T> | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -16,7 +17,7 @@ export function useAllData(filenames: string[]) {
 		setError(null);
 		loadAllData(filenames, controller.signal)
 			.then((result) => {
-				setData(result);
+				setData(result as GameDataResult<T>);
 			})
 			.catch((err: unknown) => {
 				if (err instanceof DOMException && err.name === "AbortError") return;

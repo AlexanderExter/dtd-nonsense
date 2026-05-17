@@ -14,11 +14,11 @@ export function ExaltationStep() {
 
 	if (!data?.exaltations?.exaltations) return <p>Loading exaltation data…</p>;
 
-	const exaltations = data.exaltations.exaltations as any[];
+	const exaltations = data.exaltations.exaltations;
 	const currentExalt = char.exaltation;
 	const preview = selectedPreview;
 
-	const selectExaltation = (ex: any) => {
+	const selectExaltation = (ex) => {
 		updateChar((c) => {
 			c.exaltation = ex.id || ex.name;
 			c.powerStat = 1;
@@ -42,7 +42,7 @@ export function ExaltationStep() {
 	return (
 		<div>
 			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{exaltations.map((ex: any) => (
+				{exaltations.map((ex) => (
 					<SelectionCard
 						key={ex.id || ex.name}
 						onClick={() => {
@@ -61,7 +61,7 @@ export function ExaltationStep() {
 					{preview.description && <p>{preview.description}</p>}
 
 					{preview.tell && (
-						<p className="text-[0.85rem] text-text-muted italic">
+						<p className="text-sm text-text-muted italic">
 							<strong>Tell:</strong> {preview.tell}
 						</p>
 					)}
@@ -85,7 +85,7 @@ export function ExaltationStep() {
 						<div>
 							<strong>Static Powers:</strong>
 							<ul>
-								{preview.staticPowers.map((p: any) => (
+								{preview.staticPowers.map((p) => (
 									<li key={typeof p === "string" ? p : p.name}>
 										<strong>{p.name}:</strong> {p.description}
 									</li>
@@ -106,7 +106,7 @@ export function ExaltationStep() {
 									</tr>
 								</thead>
 								<tbody>
-									{preview.progression.map((row: any, i: number) => (
+									{preview.progression.map((row, i: number) => (
 										<tr key={`${row.dots ?? i}-${row.name}`}>
 											<td>{row.dots ?? i + 1}</td>
 											<td>{row.name}</td>

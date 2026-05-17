@@ -2,82 +2,82 @@
  * DTD Rulebook — Custom Starlight Theme
  * Dark theme with gold accents, inspired by Warhammer 40K aesthetic
  *
- * Maps the existing dtd-theme.css palette onto Starlight's --sl-* custom properties.
+ * References @theme tokens from tailwind.css — single source of truth for all colors.
+ * Starlight --sl-* vars are bridged to @theme vars so both surfaces stay in sync.
  */
 
 /* ========================================================================
    Color Tokens — Dark Mode (default and only mode)
+   Uses var() references to @theme tokens defined in tailwind.css.
    ======================================================================== */
 
 :root {
 	/* Background layers */
-	--sl-color-bg: #0d0d0f;
-	--sl-color-bg-nav: #16161a;
-	--sl-color-bg-sidebar: #16161a;
-	--sl-color-bg-inline-code: #1e1e24;
+	--sl-color-bg: var(--color-bg);
+	--sl-color-bg-nav: var(--color-surface);
+	--sl-color-bg-sidebar: var(--color-surface);
+	--sl-color-bg-inline-code: var(--color-surface-raised);
 
 	/* Hairline borders */
-	--sl-color-hairline-shade: #2a2a32;
-	--sl-color-hairline-light: #3a3a44;
-	--sl-color-hairline: #2a2a32;
+	--sl-color-hairline-shade: var(--color-border);
+	--sl-color-hairline-light: var(--color-border-light);
+	--sl-color-hairline: var(--color-border);
 
 	/* Text */
-	--sl-color-text: #e8e6e3;
-	--sl-color-text-accent: #d4a84b;
+	--sl-color-text: var(--color-text-primary);
+	--sl-color-text-accent: var(--color-accent);
 
-	/* Accent scale (gold) - from dark to light */
+	/* Accent scale (gold) — low is a dark tint for backgrounds */
 	--sl-color-accent-low: #2a2010;
-	--sl-color-accent: #d4a84b;
+	--sl-color-accent: var(--color-accent);
 	--sl-color-accent-high: #f5e6c8;
 
 	/* Gray scale (cool dark) */
-	--sl-color-gray-1: #e8e6e3;
+	--sl-color-gray-1: var(--color-text-primary);
 	--sl-color-gray-2: #c4c2bd;
-	--sl-color-gray-3: #94929d;
-	--sl-color-gray-4: #6c6a75;
-	--sl-color-gray-5: #3a3a44;
-	--sl-color-gray-6: #1e1e24;
-	--sl-color-gray-7: #16161a;
+	--sl-color-gray-3: var(--color-text-muted);
+	--sl-color-gray-4: var(--color-text-dim);
+	--sl-color-gray-5: var(--color-border-light);
+	--sl-color-gray-6: var(--color-surface-raised);
+	--sl-color-gray-7: var(--color-surface);
 
-	/* Typography */
-	--sl-font:
-		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		sans-serif;
-	--sl-font-system-mono: "Fira Code", "Consolas", monospace;
+	/* Typography — same stacks as @theme --font-sans / --font-mono */
+	--sl-font: var(--font-sans);
+	--sl-font-system-mono: var(--font-mono);
 
 	/* Black (for overlays) */
-	--sl-color-black: #0d0d0f;
-	--sl-color-white: #e8e6e3;
+	--sl-color-black: var(--color-bg);
+	--sl-color-white: var(--color-text-primary);
 }
 
 /* Force dark mode only — override any light mode Starlight attempts */
 [data-theme="light"] {
-	--sl-color-bg: #0d0d0f;
-	--sl-color-bg-nav: #16161a;
-	--sl-color-bg-sidebar: #16161a;
-	--sl-color-bg-inline-code: #1e1e24;
+	--sl-color-bg: var(--color-bg);
+	--sl-color-bg-nav: var(--color-surface);
+	--sl-color-bg-sidebar: var(--color-surface);
+	--sl-color-bg-inline-code: var(--color-surface-raised);
 
-	--sl-color-hairline-shade: #2a2a32;
-	--sl-color-hairline-light: #3a3a44;
-	--sl-color-hairline: #2a2a32;
+	--sl-color-hairline-shade: var(--color-border);
+	--sl-color-hairline-light: var(--color-border-light);
+	--sl-color-hairline: var(--color-border);
 
-	--sl-color-text: #e8e6e3;
-	--sl-color-text-accent: #d4a84b;
+	--sl-color-text: var(--color-text-primary);
+	--sl-color-text-accent: var(--color-accent);
 
 	--sl-color-accent-low: #2a2010;
-	--sl-color-accent: #d4a84b;
+	--sl-color-accent: var(--color-accent);
 	--sl-color-accent-high: #f5e6c8;
 
-	--sl-color-gray-1: #e8e6e3;
+	--sl-color-gray-1: var(--color-text-primary);
 	--sl-color-gray-2: #c4c2bd;
-	--sl-color-gray-3: #94929d;
-	--sl-color-gray-4: #6c6a75;
-	--sl-color-gray-5: #3a3a44;
-	--sl-color-gray-6: #1e1e24;
-	--sl-color-gray-7: #16161a;
+	--sl-color-gray-3: var(--color-text-muted);
+	--sl-color-gray-4: var(--color-text-dim);
+	--sl-color-gray-5: var(--color-border-light);
+	--sl-color-gray-6: var(--color-surface-raised);
+	--sl-color-gray-7: var(--color-surface);
 
-	--sl-color-black: #0d0d0f;
-	--sl-color-white: #e8e6e3;
+	--sl-color-black: var(--color-bg);
+	--sl-color-white: var(--color-text-primary);
 }
 
 /* ========================================================================

@@ -27,7 +27,7 @@ export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsP
 				{tabs.map((tab) => (
 					<RadixTabs.Trigger
 						className={cn(
-							"-mb-[2px] cursor-pointer whitespace-nowrap border-0 border-b-2 bg-transparent px-md py-sm font-[inherit] font-semibold text-[0.9rem] transition-all duration-150 hover:text-text-primary",
+							"-mb-[2px] cursor-pointer whitespace-nowrap border-0 border-b-2 bg-transparent px-md py-sm font-[inherit] font-semibold text-sm transition-all duration-150 hover:text-text-primary",
 							activeId === tab.id
 								? "border-b-accent text-accent"
 								: "border-b-transparent text-text-muted",

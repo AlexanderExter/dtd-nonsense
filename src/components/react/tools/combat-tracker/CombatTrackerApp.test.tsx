@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, mock } from "bun:test";
 import { cleanup, render, screen } from "@testing-library/react";
 import { installMockLocalStorage } from "@/lib/dtd/__test-utils__/mock-local-storage";
+import { ENEMY_COMBATANT, GOBLIN_COMBATANT, KOBOLD_COMBATANT } from "../../__test-utils__/mock-characters";
 import { createCombatant, defaultEncounterState } from "./constants";
 import { useCombatStore } from "./store";
 
@@ -24,6 +25,20 @@ mock.module("@/lib/dtd/dice", () => ({
 	roll: mock(() => ({ total: 5, dice: [5], kept: [5] })),
 }));
 
+// Mock data loading (conditions from JSON)
+mock.module("@/hooks/use-data", () => ({
+	useAllData: mock(() => ({
+		data: {
+			conditions: [
+				{ id: "stunned", name: "Stunned", effect: "No Reactions, half move only", leveled: false },
+				{ id: "prone", name: "Prone", effect: "+2k0 melee attacks against", leveled: false },
+			],
+		},
+		loading: false,
+		error: null,
+	})),
+}));
+
 const { CombatTrackerApp } = await import("./CombatTrackerApp");
 
 let restoreLocalStorage: () => void;
@@ -35,9 +50,6 @@ afterEach(() => {
 		encounterState: defaultEncounterState(),
 		conditionPickerState: null,
 		importModalOpen: false,
-		sidebarOpen: true,
-		hitLocationResult: null,
-		damageCalcResult: null,
 		roundAlerts: [],
 		encounterList: [],
 		importCharList: [],
@@ -95,5 +107,20 @@ describe("CombatTrackerApp", () => {
 		render(<CombatTrackerApp />);
 		expect(screen.getByText(/Import from Sheet/i)).toBeTruthy();
 		expect(screen.getByText(/Roll All/i)).toBeTruthy();
+	});
+
+	it("renders full party with named character fixtures", () => {
+		restoreLocalStorage = installMockLocalStorage();
+		useCombatStore.setState({
+			encounterState: {
+				...defaultEncounterState(),
+				combatants: [GOBLIN_COMBATANT, KOBOLD_COMBATANT, ENEMY_COMBATANT],
+				encounterStarted: true,
+			},
+		});
+		render(<CombatTrackerApp />);
+		expect(screen.getByText("Testing Goblin")).toBeTruthy();
+		expect(screen.getByText("Krix the Unbowed")).toBeTruthy();
+		expect(screen.getByText("Chaos Cultist")).toBeTruthy();
 	});
 });

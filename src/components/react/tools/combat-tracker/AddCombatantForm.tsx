@@ -48,8 +48,8 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 		<div className="mb-lg">
 			<AccordionItem title="Add Combatant">
 				<form className="px-sm" onSubmit={handleSubmit}>
-					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
-						<label className="min-w-[140px] flex-1 max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-tool-md:flex-col">
+						<label className="min-w-[140px] flex-1 max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Name</span>
 							<GameInput
 								onInput={(e) => setName((e.target as HTMLInputElement).value)}
@@ -58,7 +58,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={name}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Dexterity</span>
 							<GameInput
 								max={10}
@@ -70,7 +70,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={dexterity}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Composure</span>
 							<GameInput
 								max={10}
@@ -82,7 +82,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={composure}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Modifier</span>
 							<GameInput
 								onInput={(e) =>
@@ -93,8 +93,8 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							/>
 						</label>
 					</div>
-					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-tool-md:flex-col">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>HP Max</span>
 							<GameInput
 								min={1}
@@ -105,7 +105,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={hpMax}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Willpower</span>
 							<GameInput
 								max={10}
@@ -117,7 +117,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={willpower}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Static Defense</span>
 							<GameInput
 								min={0}
@@ -126,7 +126,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={sd}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Resilience</span>
 							<GameInput
 								min={1}
@@ -138,8 +138,8 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 							/>
 						</label>
 					</div>
-					<div className="mt-md flex flex-wrap items-end gap-md max-[768px]:flex-col">
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+					<div className="mt-md flex flex-wrap items-end gap-md max-tool-md:flex-col">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Resource Max</span>
 							<GameInput
 								min={0}
@@ -150,7 +150,7 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={resourceMax}
 							/>
 						</label>
-						<label className="min-w-[90px] max-w-[120px] flex-none max-[768px]:min-w-full max-[768px]:max-w-full">
+						<label className="min-w-[90px] max-w-[120px] flex-none max-tool-md:min-w-full max-tool-md:max-w-full">
 							<span>Resource Label</span>
 							<GameInput
 								onInput={(e) => setResourceLabel((e.target as HTMLInputElement).value)}
@@ -159,21 +159,21 @@ export function AddCombatantForm({ onAdd }: AddCombatantFormProps) {
 								value={resourceLabel}
 							/>
 						</label>
-						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-sm text-text-muted">
 							<GameCheckbox
 								checked={heroPoint}
 								onChange={(e) => setHeroPoint((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Hero Point (count as 10)
 						</label>
-						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-sm text-text-muted">
 							<GameCheckbox
 								checked={surprised}
 								onChange={(e) => setSurprised((e.target as HTMLInputElement).checked)}
 							/>{" "}
 							Surprised
 						</label>
-						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-[0.85rem] text-text-muted">
+						<label className="inline-flex cursor-pointer items-center gap-xs pb-sm text-sm text-text-muted">
 							<GameCheckbox
 								checked={isNpc}
 								onChange={(e) => setIsNpc((e.target as HTMLInputElement).checked)}

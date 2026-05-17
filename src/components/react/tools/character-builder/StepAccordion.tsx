@@ -58,7 +58,7 @@ export function StepAccordion() {
 				const summary = stepSummary(i);
 
 				const stepNumCls = [
-					"inline-flex items-center justify-center w-[1.6rem] h-[1.6rem] rounded-full text-[0.8rem] font-bold shrink-0",
+					"inline-flex items-center justify-center w-[1.6rem] h-[1.6rem] rounded-full text-xs font-bold shrink-0",
 					isOpen ? "bg-accent text-bg" : isDone ? "bg-success text-bg" : "bg-accent-dim text-text-primary",
 				].join(" ");
 
@@ -75,7 +75,7 @@ export function StepAccordion() {
 							<span className={stepNumCls}>{stepNum}</span>
 							<span className="flex-1">{label}</span>
 							{isDone && summary && (
-								<span className="font-normal text-[0.85rem] text-text-muted">{summary}</span>
+								<span className="font-normal text-sm text-text-muted">{summary}</span>
 							)}
 							<span>{isOpen ? "▾" : "▸"}</span>
 						</button>

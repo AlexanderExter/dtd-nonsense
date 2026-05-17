@@ -22,7 +22,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 					<tr>
 						{CHAR_KEYS.map((key) => (
 							<th
-								className="min-w-[36px] border-border border-b bg-transparent px-sm py-xs text-center text-[0.75rem] text-text-muted"
+								className="min-w-[36px] border-border border-b bg-transparent px-sm py-xs text-center text-text-muted text-xs"
 								key={key}
 							>
 								{CHAR_ABBREV[key]}
@@ -36,7 +36,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 							const val = npc.characteristics[key];
 							return (
 								<td
-									className="min-w-[36px] border-b-0 px-sm py-xs text-center font-bold text-[0.9rem]"
+									className="min-w-[36px] border-b-0 px-sm py-xs text-center font-bold text-sm"
 									key={key}
 								>
 									{val === 0 ? "-" : val}
@@ -48,7 +48,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 			</table>
 
 			{/* Stats line */}
-			<div className="mb-md text-[0.9rem] text-text-primary leading-[1.8]">
+			<div className="mb-md text-sm text-text-primary leading-[1.8]">
 				<strong className="text-accent">Speed:</strong> {npc.speed} |{" "}
 				<strong className="text-accent">Size/Resilience:</strong> {npc.size}/{d.resilience} |{" "}
 				<strong className="text-accent">SD:</strong> {d.sd} | <strong className="text-accent">HP:</strong>{" "}
@@ -56,7 +56,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 			</div>
 
 			{/* Body sections */}
-			<div className="text-[0.9rem] leading-[1.7]">
+			<div className="text-sm leading-[1.7]">
 				{npc.skills.length > 0 && (
 					<div className="mb-xs">
 						<span className="font-bold text-text-primary">Skills:</span>{" "}

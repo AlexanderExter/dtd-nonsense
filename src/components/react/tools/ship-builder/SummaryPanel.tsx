@@ -15,7 +15,9 @@ export function SummaryPanel() {
 	const handleNameChange = useCallback(
 		(e: React.FormEvent<HTMLInputElement>) => {
 			const name = (e.target as HTMLInputElement).value;
-			updateShip((s) => ({ ...s, name }));
+			updateShip((s) => {
+				s.name = name;
+			});
 		},
 		[updateShip],
 	);
@@ -23,7 +25,9 @@ export function SummaryPanel() {
 	const handleHoldingsChange = useCallback(
 		(e: React.ChangeEvent<HTMLSelectElement>) => {
 			const holdings = Number.parseInt((e.target as HTMLSelectElement).value, 10);
-			updateShip((s) => ({ ...s, holdings }));
+			updateShip((s) => {
+				s.holdings = holdings;
+			});
 		},
 		[updateShip],
 	);
@@ -31,7 +35,9 @@ export function SummaryPanel() {
 	const handleCustomBPToggle = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const customBP = (e.target as HTMLInputElement).checked;
-			updateShip((s) => ({ ...s, customBP }));
+			updateShip((s) => {
+				s.customBP = customBP;
+			});
 		},
 		[updateShip],
 	);
@@ -39,14 +45,18 @@ export function SummaryPanel() {
 	const handleCustomBPValue = useCallback(
 		(e: React.FormEvent<HTMLInputElement>) => {
 			const customBPValue = Number.parseInt((e.target as HTMLInputElement).value, 10) || 0;
-			updateShip((s) => ({ ...s, customBPValue }));
+			updateShip((s) => {
+				s.customBPValue = customBPValue;
+			});
 		},
 		[updateShip],
 	);
 
 	const handleSwitchToSheet = useCallback(() => {
 		useShipStore.getState().setMode("sheet");
-		updateShip((s) => ({ ...s, mode: "sheet" }));
+		updateShip((s) => {
+			s.mode = "sheet";
+		});
 	}, [updateShip]);
 
 	if (!data) return null;
@@ -69,10 +79,10 @@ export function SummaryPanel() {
 	].filter((l) => l.val !== 0);
 
 	return (
-		<aside className="sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto border-border border-l bg-surface p-lg max-[900px]:static max-[900px]:h-auto max-[900px]:border-border max-[900px]:border-t max-[900px]:border-l-0">
+		<aside className="sticky top-[50px] h-[calc(100vh-50px)] overflow-y-auto border-border border-l bg-surface p-lg max-tool-lg:static max-tool-lg:h-auto max-tool-lg:border-border max-tool-lg:border-t max-tool-lg:border-l-0">
 			<div>
 				<GameInput
-					className="text-[1.3rem]"
+					className="text-xl"
 					onInput={handleNameChange}
 					placeholder="Ship Name"
 					type="text"
@@ -80,7 +90,7 @@ export function SummaryPanel() {
 				/>
 			</div>
 
-			<div className="mb-md text-[0.9rem]">
+			<div className="mb-md text-sm">
 				{hull ? (
 					<>
 						<strong>{hull.name}</strong> <span className="text-text-muted">({hull.class})</span>
@@ -92,43 +102,43 @@ export function SummaryPanel() {
 
 			{stats && (
 				<div className="mb-md">
-					<table className="w-full text-[0.85rem]">
+					<table className="w-full text-sm">
 						<tbody>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Hull Strength</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{stats.hullHP}</td>
+								<td className="px-sm py-2xs text-text-muted">Hull Strength</td>
+								<td className="px-sm py-2xs text-right font-semibold">{stats.hullHP}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Maneuverability</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{signedNum(stats.man)}</td>
+								<td className="px-sm py-2xs text-text-muted">Maneuverability</td>
+								<td className="px-sm py-2xs text-right font-semibold">{signedNum(stats.man)}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Acceleration</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{signedNum(stats.acc)}</td>
+								<td className="px-sm py-2xs text-text-muted">Acceleration</td>
+								<td className="px-sm py-2xs text-right font-semibold">{signedNum(stats.acc)}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Speed</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{stats.speed}</td>
+								<td className="px-sm py-2xs text-text-muted">Speed</td>
+								<td className="px-sm py-2xs text-right font-semibold">{stats.speed}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Sensors</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{signedNum(stats.sensors)}</td>
+								<td className="px-sm py-2xs text-text-muted">Sensors</td>
+								<td className="px-sm py-2xs text-right font-semibold">{signedNum(stats.sensors)}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Crew Quality</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{stats.cq}</td>
+								<td className="px-sm py-2xs text-text-muted">Crew Quality</td>
+								<td className="px-sm py-2xs text-right font-semibold">{stats.cq}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Crew Size</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{stats.crew}</td>
+								<td className="px-sm py-2xs text-text-muted">Crew Size</td>
+								<td className="px-sm py-2xs text-right font-semibold">{stats.crew}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">TN to Hit</td>
-								<td className="px-sm py-[3px] text-right font-semibold">{stats.tn}</td>
+								<td className="px-sm py-2xs text-text-muted">TN to Hit</td>
+								<td className="px-sm py-2xs text-right font-semibold">{stats.tn}</td>
 							</tr>
 							<tr>
-								<td className="px-sm py-[3px] text-text-muted">Initiative</td>
-								<td className="px-sm py-[3px] text-right font-semibold">
+								<td className="px-sm py-2xs text-text-muted">Initiative</td>
+								<td className="px-sm py-2xs text-right font-semibold">
 									{signedNum(stats.sensors)} + {signedNum(stats.acc)} + 1d10
 								</td>
 							</tr>
@@ -140,7 +150,7 @@ export function SummaryPanel() {
 			<div className="mb-md">
 				<h4 className="mb-sm">Build Points</h4>
 				<div className="mb-sm">
-					<label className="text-[0.8rem]" htmlFor="holdings-input">
+					<label className="text-xs" htmlFor="holdings-input">
 						Holdings
 					</label>
 					<GameSelect id="holdings-input" onChange={handleHoldingsChange} value={currentShip.holdings}>
@@ -152,7 +162,7 @@ export function SummaryPanel() {
 						))}
 					</GameSelect>
 				</div>
-				<label className="mb-sm flex cursor-pointer items-center gap-sm text-[0.85rem]">
+				<label className="mb-sm flex cursor-pointer items-center gap-sm text-sm">
 					<GameCheckbox checked={currentShip.customBP} onChange={handleCustomBPToggle} />
 					<span>Custom BP budget</span>
 				</label>
@@ -160,7 +170,7 @@ export function SummaryPanel() {
 					<GameInput min={0} onInput={handleCustomBPValue} type="number" value={currentShip.customBPValue} />
 				)}
 				<div className="mt-sm">
-					<div className="mb-xs flex justify-between text-[0.85rem]">
+					<div className="mb-xs flex justify-between text-sm">
 						<span>BP Spent</span>
 						<span>
 							{totalSpent} / {budget} BP
@@ -176,7 +186,7 @@ export function SummaryPanel() {
 						/>
 					</div>
 				</div>
-				<div className="text-[0.8rem] text-text-muted">
+				<div className="text-text-muted text-xs">
 					{breakdownLines.map((l) => (
 						<div className={cn("flex justify-between py-0.5", overBudget && "text-error")} key={l.label}>
 							<span>{l.label}</span>

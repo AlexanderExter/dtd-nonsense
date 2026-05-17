@@ -25,9 +25,9 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 	};
 
 	return (
-		<div className="mb-lg flex flex-wrap items-center gap-sm rounded-md border border-border bg-surface p-sm max-[768px]:flex-col max-[768px]:items-stretch">
+		<div className="mb-lg flex flex-wrap items-center gap-sm rounded-md border border-border bg-surface p-sm max-tool-md:flex-col max-tool-md:items-stretch">
 			<GameInput
-				className="min-w-[100px] flex-1 max-[768px]:w-full max-[768px]:flex-none"
+				className="min-w-[100px] flex-1 max-tool-md:w-full max-tool-md:flex-none"
 				onInput={(e) => setName((e.target as HTMLInputElement).value)}
 				onKeyDown={handleKeyDown}
 				placeholder="Quick add name"
@@ -35,7 +35,7 @@ export function QuickAddRow({ onQuickAdd, onImportSheet, onRollAll }: QuickAddRo
 				value={name}
 			/>
 			<GameInput
-				className="w-[100px] flex-none max-[768px]:w-full"
+				className="w-[100px] flex-none max-tool-md:w-full"
 				onInput={(e) => setInitTotal(Number.parseInt((e.target as HTMLInputElement).value, 10) || 0)}
 				onKeyDown={handleKeyDown}
 				placeholder="Init"

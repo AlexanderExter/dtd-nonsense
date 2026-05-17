@@ -1,6 +1,32 @@
 /**
- * Shared game constants used by both the Builder and Sheet tools.
+ * Shared game constants used across all tools.
  */
+
+/** The 9 characteristic keys in canonical order. */
+export const CHAR_KEYS = [
+	"strength",
+	"dexterity",
+	"constitution",
+	"charisma",
+	"fellowship",
+	"composure",
+	"intelligence",
+	"wisdom",
+	"willpower",
+] as const;
+
+/** Short display abbreviations for characteristics. */
+export const CHAR_ABBREV: Record<string, string> = {
+	strength: "Str",
+	dexterity: "Dex",
+	constitution: "Con",
+	charisma: "Cha",
+	fellowship: "Fel",
+	composure: "Com",
+	intelligence: "Int",
+	wisdom: "Wis",
+	willpower: "Wil",
+};
 
 export const CHAR_GROUPS = {
 	physical: {

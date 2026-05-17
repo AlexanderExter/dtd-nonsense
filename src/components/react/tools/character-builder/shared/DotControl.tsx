@@ -38,10 +38,10 @@ export function DotControl({
 	}
 
 	const btnCls =
-		"w-[22px] h-[22px] border border-border rounded-sm bg-surface-raised text-text-primary cursor-pointer flex items-center justify-center text-[0.9rem] p-0 transition-all duration-100 hover:border-accent hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed";
+		"w-[22px] h-[22px] border border-border rounded-sm bg-surface-raised text-text-primary cursor-pointer flex items-center justify-center text-sm p-0 transition-all duration-100 hover:border-accent hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed";
 
 	return (
-		<span className="flex items-center gap-[3px]">
+		<span className="flex items-center gap-2xs">
 			<button
 				aria-label="Decrease"
 				className={btnCls}

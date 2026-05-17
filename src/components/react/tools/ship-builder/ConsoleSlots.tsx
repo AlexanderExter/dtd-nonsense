@@ -11,8 +11,7 @@ export function ConsoleSlots() {
 	const handleConsoleChange = useCallback(
 		(slotKey: string, consoleId: string) => {
 			updateShip((s) => {
-				s.consoles = { ...s.consoles, [slotKey]: consoleId };
-				return s;
+				s.consoles[slotKey] = consoleId;
 			});
 		},
 		[updateShip],
@@ -32,11 +31,11 @@ export function ConsoleSlots() {
 	}
 
 	const badgeColors: Record<string, string> = {
-		arcana: "bg-[#9b59b6]",
-		command: "bg-[#e74c3c]",
-		engineering: "bg-[#f39c12]",
-		tactical: "bg-[#3498db]",
-		universal: "bg-[#2ecc71]",
+		arcana: "bg-console-arcana",
+		command: "bg-console-command",
+		engineering: "bg-console-engineering",
+		tactical: "bg-console-tactical",
+		universal: "bg-console-universal",
 	};
 
 	return (
@@ -47,11 +46,11 @@ export function ConsoleSlots() {
 				if (!count || count === 0) return null;
 
 				const options = getConsoleOptions(data, type);
-				const badgeClass = `inline-block w-5 h-5 rounded-[4px] text-center leading-5 text-[0.7rem] font-bold text-bg ${badgeColors[type] || ""}`;
+				const badgeClass = `inline-block w-5 h-5 rounded-[4px] text-center leading-5 text-xs font-bold text-bg ${badgeColors[type] || ""}`;
 
 				return (
 					<div className="mb-md" key={type}>
-						<h4 className="mb-sm flex items-center gap-sm text-[0.9rem]">
+						<h4 className="mb-sm flex items-center gap-sm text-sm">
 							<span className={badgeClass}>{type.charAt(0).toUpperCase()}</span> {CONSOLE_LABELS[type]} (
 							{count})
 						</h4>
@@ -80,7 +79,7 @@ export function ConsoleSlots() {
 											</option>
 										))}
 									</GameSelect>
-									<span className="min-w-10 text-right text-[0.8rem] text-accent">
+									<span className="min-w-10 text-right text-accent text-xs">
 										{selectedConsole ? `${selectedConsole.cost} BP` : ""}
 									</span>
 									{selectedConsole && (

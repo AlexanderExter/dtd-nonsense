@@ -10,7 +10,7 @@ interface SectionHeadingProps extends Omit<React.HTMLAttributes<HTMLHeadingEleme
 
 export function SectionHeading({ as: Tag = "h4", className, children, ...rest }: SectionHeadingProps) {
 	return (
-		<Tag className={cn("m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]", className)} {...rest}>
+		<Tag className={cn("m-0 mb-sm text-accent text-sm uppercase tracking-wide-px", className)} {...rest}>
 			{children}
 		</Tag>
 	);

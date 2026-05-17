@@ -15,10 +15,10 @@ export function EquipmentStep() {
 
 	if (!data?.equipment?.packages) return <p>Loading equipment data…</p>;
 
-	const packages = data.equipment.packages as any[];
+	const packages = data.equipment.packages;
 	const preview = selectedPkg;
 
-	const selectPackage = (pkg: any) => {
+	const selectPackage = (pkg) => {
 		const pkgId = pkg.id || pkg.name;
 		updateMeta((m) => {
 			m.equipmentPkg = pkgId;
@@ -42,7 +42,7 @@ export function EquipmentStep() {
 	};
 
 	const resolveEquipment = (pkg: any, choices: Record<number, string>) => {
-		const items = (pkg.items || []).map((item: any, idx: number) => {
+		const items = (pkg.items || []).map((item, idx: number) => {
 			if (item.choice && item.options?.length > 0) {
 				return choices[idx] || item.options[0];
 			}
@@ -56,11 +56,11 @@ export function EquipmentStep() {
 	return (
 		<div>
 			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{packages.map((pkg: any) => {
+				{packages.map((pkg) => {
 					const id = pkg.id || pkg.name;
 					const previewItems = (pkg.items || [])
 						.slice(0, 3)
-						.map((i: any) => i.name || i)
+						.map((i) => i.name || i)
 						.join(", ");
 
 					return (
@@ -84,9 +84,9 @@ export function EquipmentStep() {
 					{preview.description && <p>{preview.description}</p>}
 
 					<ul className="m-0 list-none p-0">
-						{(preview.items || []).map((item: any, idx: number) => (
+						{(preview.items || []).map((item, idx: number) => (
 							<li
-								className="border-border border-b py-xs text-[0.9rem] last:border-b-0"
+								className="border-border border-b py-xs text-sm last:border-b-0"
 								// biome-ignore lint/suspicious/noArrayIndexKey: items may share names, position is stable identity
 								key={`${item.name || "item"}-${idx}`}
 							>

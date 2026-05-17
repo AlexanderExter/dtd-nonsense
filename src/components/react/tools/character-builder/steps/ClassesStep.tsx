@@ -17,18 +17,18 @@ export function ClassesStep() {
 
 	if (!data?.classes?.classes) return <p>Loading class data…</p>;
 
-	const allClasses = data.classes.classes as any[];
+	const allClasses = data.classes.classes;
 	const preview = selectedPreview;
 	const purchasedIds = new Set((char.classes || []).map((c) => c.classId));
 
 	// Unique tracks
-	const tracks = [...new Set(allClasses.map((c: any) => c.track).filter(Boolean))];
+	const tracks = [...new Set(allClasses.map((c) => c.track).filter(Boolean))];
 
 	// Only show Tier 1 classes
-	const tier1 = allClasses.filter((c: any) => c.level === 1);
-	const filtered = trackFilter === "all" ? tier1 : tier1.filter((c: any) => c.track === trackFilter);
+	const tier1 = allClasses.filter((c) => c.level === 1);
+	const filtered = trackFilter === "all" ? tier1 : tier1.filter((c) => c.track === trackFilter);
 
-	const toggleClass = (cls: any) => {
+	const toggleClass = (cls) => {
 		const id = cls.id || cls.name;
 		updateChar((c) => {
 			const idx = c.classes.findIndex((e) => e.classId === id);
@@ -46,7 +46,7 @@ export function ClassesStep() {
 	return (
 		<div>
 			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
-				<label className="m-0 text-[0.85rem] text-text-dim">
+				<label className="m-0 text-sm text-text-dim">
 					Track:{" "}
 					<GameSelect
 						onChange={(e) => {
@@ -68,16 +68,16 @@ export function ClassesStep() {
 			{char.classes.length > 0 && (
 				<div className="mb-md flex flex-wrap gap-xs">
 					{char.classes.map((entry) => {
-						const cls = allClasses.find((c: any) => (c.id || c.name) === entry.classId);
+						const cls = allClasses.find((c) => (c.id || c.name) === entry.classId);
 						return (
 							<span
-								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-[rgba(212,168,75,0.12)] px-2.5 py-[3px] text-[0.8rem] text-accent"
+								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-accent-bg-medium px-2.5 py-2xs text-accent text-xs"
 								key={entry.classId}
 							>
 								{cls?.name || entry.classId}
 								<button
 									aria-label={`Remove ${cls?.name || entry.classId}`}
-									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-sm text-text-dim hover:text-error"
 									onClick={() => toggleClass(cls || { id: entry.classId })}
 									type="button"
 								>
@@ -90,7 +90,7 @@ export function ClassesStep() {
 			)}
 
 			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{filtered.map((cls: any) => {
+				{filtered.map((cls) => {
 					const id = cls.id || cls.name;
 					return (
 						<SelectionCard

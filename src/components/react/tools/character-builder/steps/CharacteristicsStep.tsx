@@ -94,7 +94,7 @@ export function CharacteristicsStep() {
 	return (
 		<div>
 			<h3>Assign Priorities</h3>
-			<div className="mb-lg grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
+			<div className="mb-lg grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
 				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
 					const currentPriority = meta.charPriority[groupKey];
 					return (
@@ -120,7 +120,7 @@ export function CharacteristicsStep() {
 			</div>
 
 			{/* Dot allocation columns */}
-			<div className="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
+			<div className="grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
 				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
 					const priority = meta.charPriority[groupKey];
 					const pool = priority ? CHAR_PRIORITY_DOTS[priority] || 0 : 0;
@@ -131,7 +131,7 @@ export function CharacteristicsStep() {
 							<h4 className="mb-xs border-border border-b pb-xs text-center text-accent">
 								{group.label}{" "}
 								{priority && (
-									<span className="font-normal text-[0.8rem] text-text-dim">
+									<span className="font-normal text-text-dim text-xs">
 										{spent} / {pool} dots
 									</span>
 								)}
@@ -146,7 +146,7 @@ export function CharacteristicsStep() {
 										className="flex items-center justify-between border-border border-b py-xs last:border-b-0"
 										key={charKey}
 									>
-										<span className="flex-1 text-[0.9rem]">
+										<span className="flex-1 text-sm">
 											{CHAR_NAMES[charKey] || capitalize(charKey)}
 										</span>
 										<DotControl
@@ -157,9 +157,7 @@ export function CharacteristicsStep() {
 											racialDots={hasRacial ? 1 : 0}
 											value={baseVal}
 										/>
-										{hasRacial && (
-											<span className="ml-xs text-[0.7rem] text-success">+1 racial</span>
-										)}
+										{hasRacial && <span className="ml-xs text-success text-xs">+1 racial</span>}
 									</div>
 								);
 							})}

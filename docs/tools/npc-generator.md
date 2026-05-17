@@ -41,7 +41,7 @@ Generates NPC stat blocks for Story Masters. Supports both quick-build (template
 
 ## Architecture
 
-**Dependencies:** `import { loadData, derived } from '@/lib/dtd/core.ts'`
+**Dependencies:** `import { useAllData } from '@/hooks/use-data'`, `import { derived } from '@/lib/dtd/derived'`
 
 **Data sources:** `npc-templates.json`, `traits.json`, `skills.json`
 

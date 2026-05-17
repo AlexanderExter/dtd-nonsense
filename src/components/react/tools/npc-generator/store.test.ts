@@ -86,24 +86,22 @@ describe("npc-generator store", () => {
 	});
 
 	// -----------------------------------------------------------------------
-	// updateNpc (functional updater)
+	// updateNpc (immer-style mutation)
 	// -----------------------------------------------------------------------
 	describe("updateNpc", () => {
-		it("applies a functional update to the NPC", () => {
-			useNPCStore.getState().updateNpc((npc) => ({
-				...npc,
-				name: "Updated Goblin",
-				level: 5,
-			}));
+		it("applies a mutation update to the NPC", () => {
+			useNPCStore.getState().updateNpc((npc) => {
+				npc.name = "Updated Goblin";
+				npc.level = 5;
+			});
 			expect(useNPCStore.getState().npcState.name).toBe("Updated Goblin");
 			expect(useNPCStore.getState().npcState.level).toBe(5);
 		});
 
 		it("preserves other NPC fields not in the update", () => {
-			useNPCStore.getState().updateNpc((npc) => ({
-				...npc,
-				name: "Boss",
-			}));
+			useNPCStore.getState().updateNpc((npc) => {
+				npc.name = "Boss";
+			});
 			expect(useNPCStore.getState().npcState.characteristics.strength).toBe(2);
 		});
 	});

@@ -8,7 +8,7 @@ import { WeaponSlots } from "./WeaponSlots";
 
 export function BuilderPanel() {
 	return (
-		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-tool-lg:grid-cols-1">
 			<div className="overflow-y-auto p-lg">
 				<HullSelector />
 				<ConsoleSlots />

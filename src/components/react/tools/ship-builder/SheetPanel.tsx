@@ -13,16 +13,7 @@ export function SheetPanel() {
 		(consoleId: string) => {
 			updateShip((s) => {
 				const wasActive = s.combat.consoleStatus[consoleId] !== false;
-				return {
-					...s,
-					combat: {
-						...s.combat,
-						consoleStatus: {
-							...s.combat.consoleStatus,
-							[consoleId]: !wasActive,
-						},
-					},
-				};
+				s.combat.consoleStatus[consoleId] = !wasActive;
 			});
 		},
 		[updateShip],
@@ -32,16 +23,7 @@ export function SheetPanel() {
 		(slotKey: string) => {
 			updateShip((s) => {
 				const wasActive = s.combat.weaponStatus[slotKey] !== false;
-				return {
-					...s,
-					combat: {
-						...s.combat,
-						weaponStatus: {
-							...s.combat.weaponStatus,
-							[slotKey]: !wasActive,
-						},
-					},
-				};
+				s.combat.weaponStatus[slotKey] = !wasActive;
 			});
 		},
 		[updateShip],
@@ -52,7 +34,7 @@ export function SheetPanel() {
 	const hull = data.hulls.find((h) => h.id === currentShip.hullId);
 	if (!hull) {
 		return (
-			<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+			<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-tool-lg:grid-cols-1">
 				<div className="overflow-y-auto p-lg">
 					<p className="text-text-muted">No hull selected. Go back to Builder.</p>
 				</div>
@@ -68,7 +50,7 @@ export function SheetPanel() {
 	// -----------------------------------------------------------------------
 
 	return (
-		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-[900px]:grid-cols-1">
+		<div className="grid min-h-[calc(100vh-50px)] grid-cols-[1fr_340px] gap-0 max-tool-lg:grid-cols-1">
 			<div className="overflow-y-auto p-lg">
 				{/* Header */}
 				<header className="mb-lg">
@@ -135,11 +117,11 @@ export function SheetPanel() {
 								if (!c) return null;
 								const active = currentShip.combat.consoleStatus[cid] !== false;
 								const badgeColors: Record<string, string> = {
-									arcana: "bg-[#9b59b6]",
-									command: "bg-[#e74c3c]",
-									engineering: "bg-[#f39c12]",
-									tactical: "bg-[#3498db]",
-									universal: "bg-[#2ecc71]",
+									arcana: "bg-console-arcana",
+									command: "bg-console-command",
+									engineering: "bg-console-engineering",
+									tactical: "bg-console-tactical",
+									universal: "bg-console-universal",
 								};
 								return (
 									<div
@@ -150,7 +132,7 @@ export function SheetPanel() {
 										key={cid}
 									>
 										<div className="flex-1">
-											<div className="font-semibold text-[0.9rem]">
+											<div className="font-semibold text-sm">
 												{c.name}{" "}
 												<span
 													className={`inline-block rounded-[4px] text-center font-bold text-bg ${badgeColors[c.type] || ""}`}
@@ -208,9 +190,9 @@ export function SheetPanel() {
 							};
 							return (
 								<div className="rounded-sm border border-border bg-surface px-md py-sm" key={pos.id}>
-									<div className="text-accent text-xs uppercase tracking-[0.5px]">{pos.title}</div>
+									<div className="text-accent text-xs uppercase tracking-wide-px">{pos.title}</div>
 									<div className="font-semibold">{off.name || "—"}</div>
-									<div className="text-[0.8rem] text-text-muted">
+									<div className="text-text-muted text-xs">
 										{pos.skill}: {off.skill || 0}
 									</div>
 								</div>
@@ -254,7 +236,7 @@ function renderWeapons(
 					key={slotKey}
 				>
 					<div className="flex-1">
-						<div className="font-semibold text-[0.9rem]">
+						<div className="font-semibold text-sm">
 							{w.name} <span className="text-text-muted">({pos})</span>
 						</div>
 						<div className="text-text-muted text-xs">
@@ -302,7 +284,7 @@ function renderTorpedoes(currentShip: import("./constants").ShipState, data: imp
 				key={tid}
 			>
 				<div className="flex-1">
-					<div className="font-semibold text-[0.9rem]">{t.name}</div>
+					<div className="font-semibold text-sm">{t.name}</div>
 					<div className="text-text-muted text-xs">
 						Dam: {t.damage} | Dis: {t.disruption} | Acc: +{t.accuracy} | Crit: +{t.crit} | Range: {t.range}{" "}
 						VU | Arc: {t.arc}

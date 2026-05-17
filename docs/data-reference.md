@@ -4,7 +4,7 @@
 
 Documentation for all JSON data files in `data/`. These files drive the game-data dropdowns, autocomplete, and calculation engines across all tools.
 
-> **Astro note:** The prebuild script (`scripts/prebuild.mjs`) copies all 12 JSON files to `public/data/` for the Astro site. The `data/` directory is the single source of truth — `public/data/` is gitignored and regenerated on every build.
+> **Astro note:** The prebuild script (`scripts/prebuild.mjs`) copies all 15 JSON files to `public/data/` for the Astro site. The `data/` directory is the single source of truth — `public/data/` is gitignored and regenerated on every build.
 
 ---
 
@@ -24,6 +24,9 @@ Documentation for all JSON data files in `data/`. These files drive the game-dat
 | `npc-templates.json` | `19-Antagonists.mdx`           | NPC Generator                                     | Phase 2.1 |
 | `traits.json`        | `19-Antagonists.mdx`           | NPC Generator                                     | Phase 2.1 |
 | `ships.json`         | `18-Ships.mdx`                 | Ship Builder                                      | Phase 2.2 |
+| `conditions.json`    | `16-Conditions.mdx`            | Combat Tracker                                    | Phase 3   |
+| `schools.json`       | `11-Magic.mdx`, `12-Sword-Schools.mdx`, `13-Gun-Kata.mdx` | Character Sheet | Phase 3   |
+| `combat-techniques.json` | `12-Sword-Schools.mdx`, `13-Gun-Kata.mdx` | Character Sheet, Combat Tracker              | Phase 3   |
 
 All source markdown files are in `cleaned-references/`.
 
@@ -46,10 +49,15 @@ All source markdown files are in `cleaned-references/`.
 
 ## Loading Mechanism
 
-All data loads through `core.ts`:
+All data loads through the `useAllData` hook (typed via `GameDataMap`) or direct `loadData`:
 
 ```typescript
-import { loadData, loadAllData } from "@/lib/dtd/core";
+// React hook — preferred, returns typed data
+import { useAllData } from "@/hooks/use-data";
+const { data, loading, error } = useAllData(["races.json", "exaltations.json", "skills.json"]);
+
+// Direct loading for non-React contexts
+import { loadData, loadAllData } from "@/lib/dtd/data";
 
 // Single file
 const races = await loadData("races.json");

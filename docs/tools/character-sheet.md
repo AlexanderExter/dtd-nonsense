@@ -100,7 +100,7 @@ The primary character tool — a freeform editable sheet for both character crea
 | `character-sheet.astro`                          | Astro page shell — mounts `CharacterSheetApp` via `client:only="react"`                |
 | `src/components/react/tools/character-sheet/`   | Root App + 7 tab components + shared sub-components (root: `CharacterSheetApp.tsx`) |
 
-**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/lib/dtd/attacks-data.ts` (school definitions), `@/hooks/use-data`, Zustand
+**Dependencies:** `@/lib/dtd/character` (character CRUD), `@/lib/dtd/derived` (derived stats), `@/lib/dtd/attacks-data.ts` (school definitions), `@/hooks/use-data`, Zustand
 
 **Data sources:** `races.json`, `exaltations.json`, `alignments.json`, `classes.json`, `feats.json`, `skills.json`, `weapons.json`, `backgrounds.json`
 

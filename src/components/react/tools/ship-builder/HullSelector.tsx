@@ -31,7 +31,6 @@ export function HullSelector() {
 						s.weapons = { forward: [], rear: [] };
 					}
 				}
-				return s;
 			});
 		},
 		[shipData, updateShip],
@@ -50,7 +49,7 @@ export function HullSelector() {
 			<div className="mb-md flex flex-wrap gap-sm">
 				<button
 					className={cn(
-						"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-[0.85rem] text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+						"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-sm text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
 						filterClass === "all" && "border-accent bg-accent-dim text-text-primary",
 					)}
 					onClick={() => {
@@ -63,7 +62,7 @@ export function HullSelector() {
 				{HULL_CLASSES.map((cls) => (
 					<button
 						className={cn(
-							"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-[0.85rem] text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
+							"cursor-pointer rounded-sm border border-border bg-surface px-3 py-1 text-sm text-text-muted transition-all duration-150 hover:border-accent-dim hover:text-text-primary",
 							filterClass === cls && "border-accent bg-accent-dim text-text-primary",
 						)}
 						key={cls}
@@ -102,14 +101,14 @@ function HullCard({ hull, selected, onSelect }: { hull: Hull; selected: boolean;
 		<button
 			className={cn(
 				"cursor-pointer rounded-md border-2 border-border bg-surface p-md text-left transition-all duration-150 hover:border-border-light hover:bg-surface-raised",
-				selected && "border-accent bg-[rgba(212,168,75,0.1)]",
+				selected && "border-accent bg-accent-bg-strong",
 			)}
 			onClick={() => onSelect(hull.id)}
 			type="button"
 		>
 			<div className="mb-0.5 font-semibold">{hull.name}</div>
-			<div className="mb-sm text-[0.8rem] text-text-muted">{hull.class}</div>
-			<div className="grid grid-cols-2 gap-x-md gap-y-0.5 text-[0.8rem] text-text-muted">
+			<div className="mb-sm text-text-muted text-xs">{hull.class}</div>
+			<div className="grid grid-cols-2 gap-x-md gap-y-0.5 text-text-muted text-xs">
 				<span>
 					Hull: <strong className="text-text-primary">{hull.hullStrength}</strong>
 				</span>

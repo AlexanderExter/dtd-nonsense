@@ -27,7 +27,6 @@ All tool `.astro` pages use `client:only="react"` to avoid SSR issues with clien
 | `Button` | Styled button (`.btn` family) | `variant`: primary / secondary / ghost / danger / accent; `size`: xs / sm / md |
 | `SectionHeading` | Uppercase accent heading | `as`: h2 / h3 / h4 (default h4) |
 | `Badge` | Inline status indicator | `variant`: success / warning / error / info / accent / muted; `size`: sm / md |
-| `CloseButton` | × dismiss button with aria-label | `size`: sm / md |
 | `AddButton` | "+ Add {label}" ghost button | `label`: string |
 | `Toast` / `showToast` | Toast notifications | `showToast(msg, duration?)` to trigger; `<Toast />` to render |
 
@@ -96,9 +95,8 @@ export function MyToolApp() {
 
 These patterns remain as tool-local implementations (intentionally not abstracted):
 
-- **× remove buttons** — inline transparent style, different from `CloseButton`
+- **× remove buttons** — inline transparent style
 - **Mode toggles** — complex conditional active states (Ship Builder)
 - **Filter chip groups** — domain-specific filter logic (hull filters, stunt presets)
 - **Domain badges** — custom color tokens for dice outcomes, wound status, etc.
-- **AccordionSection** (Quick Reference) — controlled accordion with expand/collapse all
 - **StepAccordion** (Character Builder) — step wizard with status indicators

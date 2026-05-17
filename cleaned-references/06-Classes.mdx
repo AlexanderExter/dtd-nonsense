@@ -6,13 +6,16 @@ sidebar:
 title: Classes
 ---
 
-> **Quick Reference:**
->
-> - A character may only be in **one class at a time** — complete all mandatory feats before changing
-> - **Level** = highest class level completed (caps Power Stat, Schools, and many feat effects)
-> - Classes grant access to specific characteristics, skills, [feats](./07-Feats.mdx), and combat/magic schools
-> - After completing a class, **Free Study** lets you improve old class abilities or buy optional feats
-> - 18 class tracks (Levels 1→5) plus 5 standalone Level 1 classes
+import { TabItem, Tabs } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+
+- A character may only be in **one class at a time** — complete all mandatory feats before changing
+- **Level** = highest class level completed (caps Power Stat, Schools, and many feat effects)
+- Classes grant access to specific characteristics, skills, [feats](./07-Feats.mdx), and combat/magic schools
+- After completing a class, **Free Study** lets you improve old class abilities or buy optional feats
+- 18 class tracks (Levels 1→5) plus 5 standalone Level 1 classes
+:::
 
 ## Class Finder
 
@@ -58,7 +61,9 @@ A character's level = highest-level class completed. Example: Fighter 4, Bard 2 
 
 **Choice Feats:** Marked "Mandatory (Choice)" with OR. Choose one; cannot get the other from this class.
 
-> **Clarification:** If you already have a mandatory feat from another source, choose a replacement from the same class's optional feats or another mandatory feat you don't yet have.
+:::tip[Clarification]
+If you already have a mandatory feat from another source, choose a replacement from the same class's optional feats or another mandatory feat you don't yet have.
+:::
 
 ## Free Study
 
@@ -237,6 +242,9 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 - Initiate (Level 1)
 
 ---
+
+<Tabs>
+<TabItem label="Level 1">
 
 ## Level 1 Classes
 
@@ -857,7 +865,8 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 
 **Suggested Exits:** Krazy Ivan, Disciple, Guardsman, Marksman
 
----
+</TabItem>
+<TabItem label="Level 2">
 
 ## Level 2 Classes
 
@@ -1430,7 +1439,8 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 
 **Suggested Exits:** Heavy Weapons Guy, Sergeant, Sniper
 
----
+</TabItem>
+<TabItem label="Level 3">
 
 ## Level 3 Classes
 
@@ -2022,7 +2032,8 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 
 **Suggested Exits:** Walking Gunshow, Barbarian, Fighter, Grenadier
 
----
+</TabItem>
+<TabItem label="Level 4">
 
 ## Level 4 Classes
 
@@ -2542,7 +2553,8 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 
 **Suggested Exits:** Living Fortress
 
----
+</TabItem>
+<TabItem label="Level 5">
 
 ## Level 5 Classes
 
@@ -2992,3 +3004,6 @@ These classes don't appear on class tracks but are useful for meeting prerequisi
 **Gun Kata:** Crisis Zone, Point Blank
 
 **Bonus for Completion:** +1 HP
+
+</TabItem>
+</Tabs>

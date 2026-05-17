@@ -61,6 +61,7 @@ Scan the project root and immediate subdirectories for **manifest files** that i
 | `composer.json` | PHP | Composer | `composer.lock` |
 
 For each detected stack, note:
+
 - **Root directory** (may be a subdirectory like `backend/`, `frontend/`, `api/`)
 - **Package manager** (inferred from lockfile presence or config)
 - **Language version** (from `engines`, `requires-python`, `rust-edition`, `go` directive, etc.)
@@ -73,6 +74,7 @@ For each detected stack, note:
 For each detected stack, discover its tools:
 
 **JavaScript/TypeScript stack:**
+
 - Linter: Biome, ESLint (flat or legacy config), or none
 - Formatter: Biome, Prettier, or none
 - Test runner: Vitest, Jest, Playwright, Cypress, or none
@@ -83,6 +85,7 @@ For each detected stack, discover its tools:
 - Scripts: read all `package.json` scripts — note which are check/test/lint/build/dev
 
 **Python stack:**
+
 - Package manager: uv (`pyproject.toml` with `[tool.uv]`), poetry (`[tool.poetry]`), pip
 - Linter/formatter: ruff, black, flake8, pylint, mypy, or none
 - Test runner: pytest, unittest, or none
@@ -91,12 +94,14 @@ For each detected stack, discover its tools:
 - Scripts: check `[tool.taskipy]`, `[tool.poe]`, `Makefile`, or `scripts/` directory
 
 **Rust stack:**
+
 - Linter: clippy
 - Formatter: rustfmt
 - Test runner: `cargo test`
 - Build: `cargo build`
 
 **Go stack:**
+
 - Linter: golangci-lint, go vet
 - Formatter: gofmt, goimports
 - Test runner: `go test`
@@ -106,6 +111,7 @@ For unlisted stacks, apply the same principle: find the manifest, identify the p
 #### A1.3. Recon Script (optional shortcut)
 
 If the project has a `maintenance:recon` script in `package.json`:
+
 - Run it and capture the JSON manifest from stdout. Read the human summary from stderr.
 - Save as the **project profile** — but still verify against A1.1/A1.2 for completeness (the script may not cover all stacks).
 
@@ -114,11 +120,13 @@ If the project has a `maintenance:recon` script in `package.json`:
 For each detected stack, verify the maintenance tools are available on PATH:
 
 **JavaScript/TypeScript:**
+
 - **ncu (npm-check-updates):** `npx npm-check-updates --version` or `bunx npm-check-updates --version`. Install if needed.
 - **Package manager CLI:** Verify functional.
 - **Node version:** Note version; compare against `engines.node`.
 
 **Python:**
+
 - **Package manager:** `uv --version`, `poetry --version`, or `pip --version`.
 - **Linter/formatter:** `ruff --version`, `black --version`, `mypy --version`, etc.
 - **Test runner:** `pytest --version` or equivalent.
@@ -135,34 +143,34 @@ Before anything else, verify the project has a functioning git repository. The e
 
 1. **Check `git status`.** If it succeeds, the repo exists — proceed.
 2. **If `git status` fails** (not a git repository):
-    - Run `git init`.
-    - Stage everything: `git add -A`.
-    - Create an initial commit: `git commit -m "Initial commit"`.
-    - This gives the maintenance session a clean base to branch from and diff against.
+  - Run `git init`.
+  - Stage everything: `git add -A`.
+  - Create an initial commit: `git commit -m "Initial commit"`.
+  - This gives the maintenance session a clean base to branch from and diff against.
 3. **Check for uncommitted changes.** If the working tree is dirty, decide:
-    - If the changes look like in-progress work, **do NOT commit them** — ask the user or note the risk and proceed on top.
-    - If the changes look like forgotten artifacts (build output, editor temp files), clean them up.
+  - If the changes look like in-progress work, **do NOT commit them** — ask the user or note the risk and proceed on top.
+  - If the changes look like forgotten artifacts (build output, editor temp files), clean them up.
 
 ### A3. Establish Baseline
 
 Before changing anything, record the current state so every subsequent check can be compared.
 
 1. **Run the aggregate check command** if one exists (commonly named `check`, `ci`, `verify`, or `test:all`). Record the full output — this is the **"before" snapshot**.
-    - If no aggregate command exists, **build a synthetic check sequence** from the detected per-stack tools. Chain them in this order for each stack: test runner → linter → type checker → build → any validation scripts. Record the full command and its output — this becomes the project's ad-hoc aggregate check for the rest of the session. Use it everywhere this prompt says "aggregate check command."
-    - If the project has **no detectable check tooling at all** (no test runner, no linter, no type checker), note this in the briefing as a gap. The baseline is "no automated checks exist." Proceed with config audit and dependency upgrades; the dev server smoke test and IDE diagnostics become the primary validation.
+  - If no aggregate command exists, **build a synthetic check sequence** from the detected per-stack tools. Chain them in this order for each stack: test runner → linter → type checker → build → any validation scripts. Record the full command and its output — this becomes the project's ad-hoc aggregate check for the rest of the session. Use it everywhere this prompt says "aggregate check command."
+  - If the project has **no detectable check tooling at all** (no test runner, no linter, no type checker), note this in the briefing as a gap. The baseline is "no automated checks exist." Proceed with config audit and dependency upgrades; the dev server smoke test and IDE diagnostics become the primary validation.
 
 2. **Note pre-existing warnings.** Many projects have known linter warnings (false positives, intentional patterns, legacy code). Count them. New warnings after your work are regressions; removing old warnings is an improvement.
 
 3. **Tree health.** Run the appropriate package manager command for each detected stack:
-    - npm: `npm ls --depth=1`
-    - yarn: `yarn list --depth=1`
-    - pnpm: `pnpm ls --depth=1`
-    - Bun: `bun pm ls --depth=1`
-    - uv: `uv pip list` or `uv tree`
-    - poetry: `poetry show --tree`
-    - pip: `pip list --outdated`
-    - cargo: `cargo tree --depth=1`
-    - go: `go list -m all`
+  - npm: `npm ls --depth=1`
+  - yarn: `yarn list --depth=1`
+  - pnpm: `pnpm ls --depth=1`
+  - Bun: `bun pm ls --depth=1`
+  - uv: `uv pip list` or `uv tree`
+  - poetry: `poetry show --tree`
+  - pip: `pip list --outdated`
+  - cargo: `cargo tree --depth=1`
+  - go: `go list -m all`
 
 ### A4. Read Context
 
@@ -170,10 +178,10 @@ Read the project's documentation and configs to understand conventions before ma
 
 1. **Project conventions docs.** Look for and read (if they exist): `CONTRIBUTING.md`, `CLAUDE.md`, `AGENTS.md`, `docs/project-conventions.md`, `docs/DEVELOPMENT.md`, `README.md` (sections on development, contributing, or tooling), `Makefile` (for common commands).
 2. **Dependency manifest details.** For each detected stack:
-    - **JS/TS:** Read `package.json` `overrides`/`resolutions` and `engines`. Note any `_comments` explaining why overrides exist.
-    - **Python:** Read `pyproject.toml` `[tool.*]` sections, dependency groups, Python version constraints.
-    - **Rust:** Read `Cargo.toml` `[patch]` and `[profile]` sections, edition, MSRV.
-    - **Go:** Read `go.mod` directives, `go.sum` presence.
+  - **JS/TS:** Read `package.json` `overrides`/`resolutions` and `engines`. Note any `_comments` explaining why overrides exist.
+  - **Python:** Read `pyproject.toml` `[tool.*]` sections, dependency groups, Python version constraints.
+  - **Rust:** Read `Cargo.toml` `[patch]` and `[profile]` sections, edition, MSRV.
+  - **Go:** Read `go.mod` directives, `go.sum` presence.
 3. **Changelogs and migration guides.** If the discovery report shows major version bumps available for framework-tier dependencies, fetch migration guides when `fetch_webpage` is available.
 
 ---
@@ -233,7 +241,7 @@ Audit every config file discovered in Phase A. For each file, apply the generic 
 
 ### C0. Create Session Branch
 
-```
+```text
 # If the project has a session:start script, use it:
 <package-manager> run session:start maintenance-YYYY-MM-DD
 
@@ -262,9 +270,9 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 
 1. **If it exists:** Verify settings align with the project's formatter config (indent style, indent size, line endings, charset, trailing whitespace).
 2. **If it doesn't exist:** Assess whether to create one. EditorConfig is useful when:
-    - The project has contributors who may not use the primary linter/formatter
-    - Quick edits on GitHub.com or other web editors should get basic formatting right
-    - Non-linted file types (TOML, YAML, shell scripts) need consistent formatting
+  - The project has contributors who may not use the primary linter/formatter
+  - Quick edits on GitHub.com or other web editors should get basic formatting right
+  - Non-linted file types (TOML, YAML, shell scripts) need consistent formatting
 3. **If creating:** Derive settings from the detected linter/formatter config—don't introduce conflicts.
 
 ### C4. Editor Config — `.vscode/settings.json` and `.vscode/extensions.json`
@@ -272,8 +280,8 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 1. **Run `get_errors` on `.vscode/` files.** Call `get_errors` with paths to `settings.json` and `extensions.json` (and any other files in `.vscode/`). This catches schema validation errors, incorrect types, and deprecated setting names that are invisible to CLI tools. Fix all reported issues before proceeding — config errors here propagate to every other tool's behavior.
 2. **Formatter associations.** Verify the default formatter for each language matches the detected linter/formatter.
 3. **Deprecated settings.** Check for settings deprecated by tool updates:
-    - **Biome:** `biome.lspBin` → `biome.lsp.bin`; `biome.requireConfigFile` → `biome.requireConfiguration`; `quickfix.biome` → `source.fixAll.biome`
-    - **ESLint:** `eslint.autoFixOnSave` → `editor.codeActionsOnSave` with `source.fixAll.eslint`
+  - **Biome:** `biome.lspBin` → `biome.lsp.bin`; `biome.requireConfigFile` → `biome.requireConfiguration`; `quickfix.biome` → `source.fixAll.biome`
+  - **ESLint:** `eslint.autoFixOnSave` → `editor.codeActionsOnSave` with `source.fixAll.eslint`
 4. **Format on save.** Verify `editor.formatOnSave` and `editor.codeActionsOnSave` are configured for the detected tools.
 5. **Spell check dictionary.** If present, check for stale terms from removed features or renamed concepts.
 6. **Recommended extensions.** In `.vscode/extensions.json`, verify the recommended extensions match the project's toolchain.
@@ -283,6 +291,7 @@ If the session start script reports a dirty tree or failing baseline, resolve th
 Apply checks based on the **detected linter** from the project profile.
 
 **If Biome:**
+
 1. **Schema URL.** `$schema` in `biome.json` must match the installed `@biomejs/biome` version exactly: `https://biomejs.dev/schemas/<VERSION>/schema.json`.
 2. **Config validity.** Run the linter's check command with summary output and read for "unknown option" warnings or parse errors.
 3. **Extends / preset check.** If the config uses `"extends"` (e.g., `ultracite/biome/{core,react,astro}`), verify the preset package is installed and the extends paths resolve. If the config does NOT use a preset and relies only on `"recommended": true`, assess whether adopting **ultracite** would be beneficial — it provides ~200+ curated rules (Tailwind class sorting, optional chaining, sorted attributes/properties, cognitive complexity) as a stress-tested baseline. The integration pattern: `"extends": ["ultracite/biome/core", "ultracite/biome/react"]` (add `"ultracite/biome/astro"` for Astro projects), then add project-specific overrides for rules that don't fit. Expect ~50-100 auto-fixable violations on first adoption — `biome check --write --unsafe` handles the bulk.
@@ -299,6 +308,7 @@ Apply checks based on the **detected linter** from the project profile.
 - **`useHookAtTopLevel`:** Components that call hooks after an early return (`if (!data) return null`) must be restructured: move all hooks above the guard, use optional chaining for derived values, then place a single combined guard after all hooks.
 - **`noArrayIndexKey`:** For display-only lists with stable data, derive a key from the data (e.g., `item.name`, `item.id`). For editable form lists where items have no stable identity, suppress with `biome-ignore`.
 - **`biome-ignore` in JSX:** Place the comment **inside** the JSX tag as an attribute-level comment directly before the `key` prop — NOT before the opening tag. Biome's formatter splits multi-line JSX attributes to separate lines, which breaks suppression comments placed before the tag.
+
   ```jsx
   <div
     // biome-ignore lint/correctness/noArrayIndexKey: editable list, no stable key
@@ -307,12 +317,14 @@ Apply checks based on the **detected linter** from the project profile.
   ```
 
 **If ESLint:**
+
 1. **Config format.** ESLint 9+ uses flat config (`eslint.config.js`). If the project uses legacy format (`.eslintrc.*`), note migration opportunity.
 2. **Plugin freshness.** Check that all ESLint plugins are compatible with the installed ESLint version.
 3. **Deprecated rules.** Run `eslint --print-config .` and check for deprecated rule names.
 4. **TypeScript integration.** If TypeScript is used, verify `@typescript-eslint/parser` and plugin versions match.
 
 **If Prettier (standalone or alongside linter):**
+
 1. **Config conflicts.** If both a linter and Prettier are detected, verify they don't have conflicting rules (tab vs spaces, quote style, etc.).
 
 **Run the linter's autofix** after config changes: the detected `lint:fix` script or equivalent.
@@ -331,16 +343,19 @@ Apply checks based on the **detected linter** from the project profile.
 Apply checks based on the **detected framework**.
 
 **General:**
+
 1. Does the config file parse without errors?
 2. Are there deprecated configuration options for the installed framework version?
 3. Are there new configuration options worth enabling?
 
 **If Astro:**
+
 1. Verify `output` mode (static, server, hybrid) matches deployment target.
 2. Check integrations list against installed `@astrojs/*` packages.
 3. Verify `site` URL is set (required for sitemap, canonical URLs).
 
 **If Next.js:**
+
 1. Check for deprecated `next.config.js` options in the installed version.
 2. Verify `output` setting matches deployment target (standalone, export).
 
@@ -358,6 +373,7 @@ Apply checks based on the **detected framework**.
 ### C10. Code Quality Tools
 
 **If `knip.json` or `knip.ts` exists:**
+
 1. Verify entry points match actual application entry points (pages, scripts, etc.).
 2. Verify `project` scope covers all source directories.
 3. Review `ignore` patterns — are they still needed?
@@ -365,6 +381,7 @@ Apply checks based on the **detected framework**.
 5. Check for new knip plugins relevant to the detected stack (Astro, Next.js, React, etc.).
 
 **If `.dependency-cruiser.cjs` or `.dependency-cruiser.js` exists:**
+
 1. Verify boundary rules match current architecture.
 2. Verify exclusion patterns (e.g., `node_modules`, virtual module prefixes like `astro:` or `bun:`).
 3. Run the check command and review output for new violations.
@@ -378,11 +395,12 @@ Apply checks based on the **detected framework**.
 ### C12. CI/CD Config
 
 **If GitHub Actions:**
+
 1. **Action versions.** Check each `uses:` reference for the latest major version:
-    - `actions/checkout` → currently `v4`
-    - `actions/setup-node` → currently `v4`
-    - `oven-sh/setup-bun` → currently `v2`
-    - Other actions: check for major version updates.
+  - `actions/checkout` → currently `v4`
+  - `actions/setup-node` → currently `v4`
+  - `oven-sh/setup-bun` → currently `v2`
+  - Other actions: check for major version updates.
 2. **Node version.** Verify `node-version:` matches the `engines.node` requirement in `package.json`.
 3. **Pipeline parity.** Verify CI steps run the same checks as the local aggregate check command. If CI runs fewer checks than local, note the gap. If CI runs checks in a different order, assess whether order matters.
 4. **Caching.** Check if dependency caching is configured (speeds up CI by ~30-60%).
@@ -394,9 +412,9 @@ Apply checks based on the **detected framework**.
 1. **Does a lockfile exist?** (Identified in discovery)
 2. **Is it committed to git?** (Checked via `git ls-files`)
 3. **Assessment criteria:**
-    - **For applications (not libraries):** Lockfiles provide reproducible builds. Recommended to commit.
-    - **For libraries:** Lockfiles can be excluded (consumers bring their own resolution).
-    - **For Copilot/agent-maintained projects with single developer:** Lockfiles may cause unnecessary merge conflicts with no practical benefit. Assess whether CI or deployment actually uses the lockfile.
+  - **For applications (not libraries):** Lockfiles provide reproducible builds. Recommended to commit.
+  - **For libraries:** Lockfiles can be excluded (consumers bring their own resolution).
+  - **For Copilot/agent-maintained projects with single developer:** Lockfiles may cause unnecessary merge conflicts with no practical benefit. Assess whether CI or deployment actually uses the lockfile.
 4. **Document the decision** in the briefing, whichever way it goes. If the lockfile should be committed but isn't (or vice versa), fix it.
 
 **Commit config audit changes:** `chore: audit and modernize project config files`
@@ -416,18 +434,22 @@ For each detected stack, gather outdated dependency information.
 **Otherwise, gather manually per stack:**
 
 **JavaScript/TypeScript:**
+
 - `npm outdated --json` (or equivalent for yarn/pnpm/bun)
 - Check changelogs for framework-tier packages with major bumps
 
 **Python:**
+
 - `uv pip list --outdated` / `poetry show --outdated` / `pip list --outdated`
 - Check PyPI for major version changes in framework packages
 
 **Rust:**
+
 - `cargo outdated` (if cargo-outdated is installed)
 - Check crates.io for major version bumps
 
 **Go:**
+
 - `go list -m -u all` for available updates
 
 ### D1. Classify Dependencies
@@ -444,7 +466,7 @@ Classify every outdated package into a tier. Do NOT hardcode tier assignments �
 
 Use ncu's doctor mode to safely upgrade toolchain deps with automatic rollback on failure:
 
-```
+```text
 <npx-or-bunx> npm-check-updates --doctor --doctorTest "<aggregate-check-command>" --filter "<toolchain-package-list>"
 ```
 
@@ -454,15 +476,16 @@ After doctor mode completes:
 
 1. **Review results.** Which upgrades succeeded? Which were rolled back?
 2. **Resolve rollbacks.** For each rolled-back dep, investigate why the check failed:
-    - **New linter rules:** Run the lint autofix command first — many new rule violations have auto-fixes. For the rest, update code to comply or disable the specific rule with rationale.
-    - **TypeScript errors:** Resolve type errors introduced by stricter checking. Modernize code, don't patch with `any` or `@ts-ignore`.
-    - After resolving, manually set the version, install, and run the check command to verify.
+  - **New linter rules:** Run the lint autofix command first — many new rule violations have auto-fixes. For the rest, update code to comply or disable the specific rule with rationale.
+  - **TypeScript errors:** Resolve type errors introduced by stricter checking. Modernize code, don't patch with `any` or `@ts-ignore`.
+  - After resolving, manually set the version, install, and run the check command to verify.
 3. **Tree health.** Verify no unmet peer deps.
 4. **Commit:** `chore: upgrade toolchain`
 
 ### D3. Linter Config Audit (conditional — only if linter or preset version changed)
 
 If the linter package was upgraded in D2, or if a config preset like ultracite was upgraded, the config may need updating. Run the linter-specific audit steps from Phase C5 again:
+
 - Update schema URL
 - Check for renamed/deprecated options
 - Review new rules and domains
@@ -490,7 +513,7 @@ If the linter package was upgraded in D2, or if a config preset like ultracite w
 
 Use ncu doctor for everything not in toolchain or framework:
 
-```
+```text
 <npx-or-bunx> npm-check-updates --doctor --doctorTest "<aggregate-check-command>" --reject "<toolchain-and-framework-packages>"
 ```
 
@@ -502,8 +525,8 @@ Use ncu doctor for everything not in toolchain or framework:
 For each override in `package.json` (or `resolutions` in yarn):
 
 1. **Check if still needed.** Does the parent dependency now include the fix in its own transitive deps?
-    - Check the tree to see who depends on the overridden package and what version they'd pull without the override.
-    - Check the parent's changelog for whether the vulnerability/bug the override addresses has been fixed upstream.
+  - Check the tree to see who depends on the overridden package and what version they'd pull without the override.
+  - Check the parent's changelog for whether the vulnerability/bug the override addresses has been fixed upstream.
 2. **Remove stale overrides.** Update `package.json`, install, verify tree health + full check.
 3. **Keep necessary overrides.** If still needed, update the comment explaining why.
 4. **Commit:** `chore: clean up stale dependency overrides`
@@ -528,24 +551,28 @@ Review all version specifiers in `package.json`:
 Run the security audit tool for each detected stack. This is not optional — vulnerabilities in dependencies are defects.
 
 **JavaScript/TypeScript:**
+
 1. Run `npm audit` (or `yarn audit`, `pnpm audit`, `bun audit`).
 2. If vulnerabilities are found:
-    - Run `npm audit fix` first — this resolves issues via semver-compatible upgrades.
-    - If `audit fix` doesn't resolve everything, check whether the remaining advisories are in direct deps (fixable by upgrading) or transitive deps (may need overrides).
-    - For transitive vulnerabilities: if the parent package has a newer version that resolves the issue, upgrade it. If not, add an `overrides` entry in `package.json` to force the patched transitive version, with a comment explaining the advisory.
-    - Do NOT use `--force` with audit fix — it may introduce breaking changes silently.
+  - Run `npm audit fix` first — this resolves issues via semver-compatible upgrades.
+  - If `audit fix` doesn't resolve everything, check whether the remaining advisories are in direct deps (fixable by upgrading) or transitive deps (may need overrides).
+  - For transitive vulnerabilities: if the parent package has a newer version that resolves the issue, upgrade it. If not, add an `overrides` entry in `package.json` to force the patched transitive version, with a comment explaining the advisory.
+  - Do NOT use `--force` with audit fix — it may introduce breaking changes silently.
 3. Target: **0 vulnerabilities.** If any remain that cannot be resolved, document them in the briefing with severity, advisory URL, and why they can't be fixed (e.g., no upstream patch exists).
 
 **Python:**
+
 1. If `pip-audit` or `safety` is available, run it: `pip-audit` / `safety check`.
 2. If neither is available and `uv` is the package manager, check `uv pip audit` availability.
 3. Resolve by upgrading affected packages. If a direct upgrade isn't possible, note the advisory.
 
 **Rust:**
+
 1. If `cargo-audit` is available: `cargo audit`.
 2. Fix by upgrading affected crates. If `cargo audit fix` is available, use it.
 
 **Go:**
+
 1. `govulncheck ./...` if available.
 2. Upgrade affected modules.
 
@@ -566,9 +593,9 @@ Run all available code quality tools. Skip any tool that doesn't exist in the pr
 1. Run `knip` explicitly (don't rely on it being part of the aggregate check — run it standalone for detailed output).
 2. Review findings: unused files, unused exports, unused types, unused dependencies, unlisted dependencies.
 3. **Fix actionable items:**
-    - Remove dead exports and orphan files.
-    - Remove unused dependencies from `package.json`.
-    - Add missing dependencies if unlisted.
+  - Remove dead exports and orphan files.
+  - Remove unused dependencies from `package.json`.
+  - Add missing dependencies if unlisted.
 4. **Update `knip.json`** ignore lists if genuine false positives are found. Document why each ignore entry exists.
 5. **Commit:** `chore: remove dead code (knip)`
 
@@ -608,13 +635,14 @@ If the project supports local development (dev server script detected — common
 2. **Wait for ready signal** (Vite: "ready in", Next.js: "Ready in", generic: port listening).
 3. **Open the application** in the integrated browser at the dev server URL.
 4. **Navigate critical routes.** Visit at minimum:
-    - The root/landing page
-    - One page from each major section (e.g., a form page, a results page)
-    - Verify no blank pages, console errors, or broken lazy imports.
+  - The root/landing page
+  - One page from each major section (e.g., a form page, a results page)
+  - Verify no blank pages, console errors, or broken lazy imports.
 5. **Distinguish real errors from dev artifacts.** If the dev server restarted during the session, stale module URLs cause `Failed to fetch dynamically imported module` errors. A hard refresh resolves these — they are NOT code bugs. Genuine import errors (wrong paths, missing exports, broken dependencies) will persist after refresh.
 6. **Stop the dev server** when verification is complete.
 
 **Multi-stack projects** (e.g., Python backend + React frontend):
+
 - Start the backend first if it can run independently or has a dev mode.
 - Start the frontend, which may proxy API calls to the backend.
 - If the backend requires external services (databases, APIs) that aren't available locally, verify the frontend loads and renders without crashing — API errors are expected, but the UI should handle them gracefully (error boundaries, fallback states).
@@ -650,6 +678,7 @@ Use the **`get_errors` tool** (which surfaces VS Code's Problems panel — langu
 ### F7. Baseline Comparison
 
 Compare final state with the Phase A baseline. For each tool:
+
 - Did warning count change? Note improvements (fewer warnings) or regressions (new warnings).
 - Did any new errors appear that didn't exist in the baseline?
 - Did security audit results improve?
@@ -749,13 +778,13 @@ Create a briefing document in the most appropriate docs directory (e.g., `docs/m
 1. **Stage the briefing:** `git add docs/` (or wherever the briefing was placed).
 2. **Commit:** `docs: add maintenance briefing for YYYY-MM-DD`
 3. **Final status report** to the user:
-    - Config files audited and modified
-    - Total packages upgraded (by tier and bump type)
-    - Dead code removed (files, exports, dependencies)
-    - Breaking changes resolved
-    - Security improvements
-    - Any items that could NOT be resolved (and why)
-    - Suggestion: run the session end script to merge, or review the branch first, or delete it if unsatisfied
+  - Config files audited and modified
+  - Total packages upgraded (by tier and bump type)
+  - Dead code removed (files, exports, dependencies)
+  - Breaking changes resolved
+  - Security improvements
+  - Any items that could NOT be resolved (and why)
+  - Suggestion: run the session end script to merge, or review the branch first, or delete it if unsatisfied
 4. **Marker:** "Maintenance Session Complete"
 
 ---
@@ -769,6 +798,7 @@ If a config file edit breaks the tool it configures (e.g., Biome can't parse its
 ### Partial Dependency Success
 
 If some tiers upgrade cleanly but others break:
+
 1. Commit the successful tiers.
 2. Revert the failing tier.
 3. Document in the briefing what worked, what didn't, and why.
@@ -780,6 +810,7 @@ Subagents can corrupt files — especially when restructuring complex React comp
 ### Total Failure
 
 If every phase breaks something that can't be resolved:
+
 1. Document findings in the briefing anyway (so the next attempt has context).
 2. Commit the briefing.
 3. Recommend the branch be deleted.

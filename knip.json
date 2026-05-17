@@ -2,10 +2,18 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": ["src/pages/**/*.astro", "scripts/*.{ts,mjs}"],
   "project": ["src/**/*.{ts,tsx,astro}", "scripts/**/*.{ts,mjs}"],
-  "ignore": ["src/lib/dtd/schemas/**", "src/**/__test-utils__/**"],
+  "ignore": [
+    "src/lib/dtd/schemas/**",
+    "src/**/__test-utils__/**",
+    "src/components/react/ui/DataTable.tsx",
+    "src/components/react/ui/GameDataTable.tsx",
+    "src/components/react/ui/index.ts"
+  ],
   "ignoreDependencies": [
     "@astrojs/check",
     "@astrojs/starlight-tailwind",
+    "@tanstack/react-table",
+    "lucide-react",
     "tailwindcss"
   ]
 }

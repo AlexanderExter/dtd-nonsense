@@ -38,6 +38,7 @@ export function CharacterSheetApp() {
 		"skills.json",
 		"weapons.json",
 		"backgrounds.json",
+		"schools.json",
 	]);
 
 	// Derived stats — recomputed when char or gameData changes
@@ -49,7 +50,7 @@ export function CharacterSheetApp() {
 	// Sync loaded data into store
 	useEffect(() => {
 		if (data && !gameData) {
-			setGameData(data as Record<string, any>);
+			setGameData(data);
 		}
 	}, [data, gameData, setGameData]);
 
@@ -113,7 +114,7 @@ export function CharacterSheetApp() {
 			</Tabs>
 			<div
 				className={cn(
-					"save-status fixed right-md bottom-md z-[200] rounded-sm px-md py-xs font-semibold text-xs uppercase tracking-[0.5px] transition-all duration-300",
+					"save-status fixed right-md bottom-md z-[200] rounded-sm px-md py-xs font-semibold text-xs uppercase tracking-wide-px transition-all duration-300",
 					saveStatus === "saving"
 						? "border border-accent bg-accent/20 text-accent"
 						: saveStatus === "error"

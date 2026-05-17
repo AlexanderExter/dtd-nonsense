@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, mock } from "bun:test";
 import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
+import { KOBOLD_HERO, TESTING_GOBLIN } from "../../__test-utils__/mock-characters";
 import { MOCK_GAME_DATA } from "../../__test-utils__/mock-game-data";
 import { createDefaultMeta } from "./constants";
 import { createDefaultChar, useBuilderStore } from "./store";
@@ -80,9 +81,9 @@ describe("CharacterBuilderApp", () => {
 		globalThis.confirm = () => true;
 
 		render(<CharacterBuilderApp />);
-		// Target the app header's Start Over button (has btn-sm class)
+		// Target the app header's Start Over button (the danger variant one)
 		const btns = screen.getAllByText("Start Over");
-		const appBtn = btns.find((b) => b.classList.contains("btn-sm")) ?? btns[0];
+		const appBtn = btns.find((b) => b.closest("main > div")) ?? btns[0];
 		act(() => appBtn.click());
 
 		expect(useBuilderStore.getState().currentStep).toBe(1);
@@ -102,12 +103,34 @@ describe("CharacterBuilderApp", () => {
 
 		render(<CharacterBuilderApp />);
 		const btns = screen.getAllByText("Start Over");
-		const appBtn = btns.find((b) => b.classList.contains("btn-sm")) ?? btns[0];
+		const appBtn = btns.find((b) => b.closest("main > div")) ?? btns[0];
 		act(() => appBtn.click());
 
 		// Step should NOT reset since user cancelled
 		expect(useBuilderStore.getState().currentStep).toBe(5);
 
 		globalThis.confirm = originalConfirm;
+	});
+
+	it("renders with Testing Goblin character loaded into builder", () => {
+		mockUseAllData = () => ({ data: MOCK_GAME_DATA, loading: false, error: null });
+		useBuilderStore.setState({
+			gameData: MOCK_GAME_DATA,
+			char: TESTING_GOBLIN as any,
+			currentStep: 3,
+		});
+		render(<CharacterBuilderApp />);
+		expect(screen.getByRole("heading", { name: "Character Builder" })).toBeTruthy();
+	});
+
+	it("renders with Kobold Hero at step 5", () => {
+		mockUseAllData = () => ({ data: MOCK_GAME_DATA, loading: false, error: null });
+		useBuilderStore.setState({
+			gameData: MOCK_GAME_DATA,
+			char: KOBOLD_HERO as any,
+			currentStep: 5,
+		});
+		render(<CharacterBuilderApp />);
+		expect(screen.getByRole("heading", { name: "Character Builder" })).toBeTruthy();
 	});
 });

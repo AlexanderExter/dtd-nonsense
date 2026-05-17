@@ -24,6 +24,7 @@ Guide technology decisions using a personal, stress-tested framework. This is no
 **The cost of carrying unused capability is near zero. The cost of choosing wrong and refactoring is enormous.**
 
 Every decision flows from this. When evaluating whether to include a tool:
+
 - A generous foundation that covers problems you haven't encountered yet is cheaper than a minimal stack that punishes you when requirements change
 - Ecosystem depth, cross-compatibility, and wide adoption beat architectural purity
 - One tool that does many things well (Bun) beats multiple specialized tools that each do one thing slightly better (Node + npm + Jest + a bundler)
@@ -94,7 +95,9 @@ High complexity cost. Only add when the project genuinely has the problems these
 When starting a project, identify which use case it matches. The foundation is always present. What changes is the layers above it.
 
 ### Documentation Site
+
 **Stack:** Foundation + Astro + Starlight
+
 - Astro: static-first framework, ships zero JS by default, islands architecture
 - Starlight: Astro plugin providing sidebar, search (Pagefind), TOC, i18n, dark mode
 - React powers interactive islands (character sheets, dice rollers) within otherwise static pages
@@ -102,7 +105,9 @@ When starting a project, identify which use case it matches. The foundation is a
 - **Pitfall:** Don't `client:load` everything. If most components are hydrated, you're fighting the framework.
 
 ### Interactive Tool (character sheet, calculator, tracker)
+
 **Stack:** Foundation alone
+
 - No framework needed. Bun handles builds. React drives the UI.
 - This is where the foundation proves itself — nothing to add, nothing to decide
 - RHF handles inputs, Zustand manages interconnected state, Zod validates save/load data
@@ -110,14 +115,18 @@ When starting a project, identify which use case it matches. The foundation is a
 - **Pitfall:** Reaching for Next.js or Astro because you're "using React." A standalone tool is one page of rich interactivity. Frameworks solve problems you don't have.
 
 ### Dashboard / Internal App
+
 **Stack:** Foundation + React Router + TanStack Query
+
 - Two first-reach additions above foundation. Still no framework needed.
 - shadcn/ui is in its designed-for use case here (tables, forms, modals, command palettes)
 - Zustand manages cross-panel state; date-fns formats timestamps and ranges
 - **Pitfall:** Adding Redux when Zustand is already in the foundation. Zustand covers most dashboard state needs.
 
 ### Full SaaS Product
+
 **Stack:** Foundation + Next.js + TanStack Query + auth library
+
 - This is where Next.js genuinely earns its complexity
 - Marketing pages: statically generated (SEO). Dashboard: client-rendered (behind auth). API routes: same codebase.
 - Auth library: NextAuth/Clerk/Lucia for login and session handling
@@ -139,6 +148,7 @@ When evaluating any tool not already in this framework:
 ## Anti-Patterns to Flag
 
 Watch for these and intervene:
+
 - **Framework for a tool-tier problem:** Using Next.js or Astro for a standalone interactive app
 - **Lighter alternative trap:** Choosing Preact/Solid/etc. for bundle savings, losing ecosystem compatibility
 - **Premature optimization:** Adding Redux, complex state management, or heavy architecture before the project needs it
@@ -154,16 +164,21 @@ Watch for these and intervene:
 Hard-won insights from real projects that informed this framework:
 
 ### Biome + ultracite > Biome alone
+
 A bare `biome.json` with `recommended: true` enables maybe 100 rules. Adding ultracite presets enables ~200+ curated rules — including Tailwind class sorting (`useSortedClasses`), `useOptionalChain`, `useAtIndex`, `useNumberNamespace`, sorted JSX attributes, sorted object properties, and comprehensive a11y rules. The integration pattern: extend `ultracite/biome/{core,react,astro}`, then add project-specific overrides for rules that don't fit (e.g., `noForEach: off` if you use forEach heavily, `noBarrelFile: off` if your architecture uses barrels). Expect ~50-100 auto-fixable violations on first run — `biome check --write --unsafe` handles the bulk.
 
 ### Architecture enforcement pays off early
+
 dependency-cruiser and ts-morph combined give you machine-checkable architectural rules at near-zero ongoing cost. On a project with 6 independent tool islands and 74 components, rules like "no cross-tool imports" and "UI primitives can't import tools" caught violations that would have created invisible coupling. The setup cost is ~1 hour; the ongoing cost is zero (runs in CI).
 
 ### Knip belongs in CI, not periodic manual runs
+
 First real knip run on a mature project found 8 unused files and 19 unused exports — dead weight that accumulated silently. Once knip runs in CI (as part of `bun run check`), dead code is caught at commit time. The carrying cost is ~2 seconds of CI time.
 
 ### shadcn/ui migration strategy: Game* wrappers
+
 When migrating to shadcn/ui, don't directly use shadcn primitives in tool code. Create thin domain wrappers (`GameInput`, `GameSelect`, `GameCheckbox`) that wrap shadcn primitives with project-appropriate defaults (theming, sizing, labeling). This insulates 74+ tool components from the UI library — swap the underlying primitive in one place, not 74.
 
 ### The Preact-to-React lesson (revisited)
+
 The original framework already noted "the Preact lesson." The follow-through matters: after switching from Preact to React, a full Radix UI → shadcn/ui migration became trivially possible (shadcn assumes React). The ecosystem compatibility that React provides is not just about library availability — it's about the upgrade path. Every tool built for React (shadcn, Radix, React Hook Form, Zustand devtools) composes cleanly. The Preact equivalent of each exists but with constant friction.

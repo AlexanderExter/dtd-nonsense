@@ -6,29 +6,23 @@ sidebar:
 title: Sword Schools
 ---
 
-> **Key points:**
-> 
-> - Nine disciplines of the **Sublime Way**, each teaching unique Advantages and Restrictions for melee combat
-> - **Martial Adept Level** = highest Sword School dots (applies regardless of which school's technique you're using)
-> - Build custom **Special Attacks** by combining Advantages (costing Style Points) with Restrictions (granting Style Points)
-> - Cost: **50 XP per Style Point** to buy or improve a Special Attack
-> - Cross-ref: [Feats](./07-Feats.mdx) for martial Feats, [Equipment](./10-Equipment.mdx) for weapon types, [Combat](./14-Combat.mdx) for action economy
+import { SchoolOverviewTable, SchoolTechniquesTable, UniversalModifiersTable } from '@/components/react/ui/GameDataTable';
+import { Steps, TabItem, Tabs } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+
+- Nine disciplines of the **Sublime Way**, each teaching unique Advantages and Restrictions for melee combat
+- **Martial Adept Level** = highest Sword School dots (applies regardless of which school's technique you're using)
+- Build custom **Special Attacks** by combining Advantages (costing Style Points) with Restrictions (granting Style Points)
+- Cost: **50 XP per Style Point** to buy or improve a Special Attack
+- Cross-ref: [Feats](./07-Feats.mdx) for martial Feats, [Equipment](./10-Equipment.mdx) for weapon types, [Combat](./14-Combat.mdx) for action economy
+:::
 
 ---
 
 ## Sword School Comparison
 
-| School | Key Skill | Weapon Type | Playstyle | Key Technique |
-| --- | --- | --- | --- | --- |
-| **Desert Wind** | Athletics | Syrneth | Speed, mobility, fire damage | Holocaust Cloak (AoE fire) |
-| **Devoted Spirit** | Medicae | Flails | Healing, tanking, faith | Castigating Blow (Devotion damage + heal) |
-| **Diamond Mind** | Scrutiny | Fencing | Precision, speed of thought, parry | Strike of Perfect Clarity (unblockable) |
-| **Iron Heart** | Perception | Ordinary | Raw weapon mastery, accuracy | Strike of Perfect Clarity (cannot dodge/parry) |
-| **Setting Sun** | Deceive | Brawl (Unarmed) | Redirection, control, debuff | Tornado Strike (throw enemies) |
-| **Shadow Hand** | Stealth | Parrying | Deception, ambush, poison | Arterial Spray Strike (instant bleed/kill) |
-| **Stone Dragon** | Intimidate | Two Handed | Power, endurance, AoE | Earth Shattering Kaboom (area devastation) |
-| **Tiger Claw** | Acrobatics | Chain | Aggression, dual-wield, crit | Evisceration (bypass armor + resilience) |
-| **White Raven** | Command | Cavalry | Teamwork, leadership, buffs | Wolf Pack Technique (provoke group attacks) |
+<SchoolOverviewTable type="melee" client:visible />
 
 ---
 
@@ -44,12 +38,16 @@ Special Attacks are the core of the Sublime Way. Unlike spells, martial maneuver
 
 ### Step by Step
 
+<Steps>
+
 1. **Choose a base action** — restricted by which schools you know (Standard Attack is universal at Level 1)
 2. **Choose a weapon type** — restricted by your known schools
 3. **Add Advantages** — each costs Style Points. Mix Advantages from different schools
 4. **Add Restrictions** — each grants Style Points. Must cover any Advantage cost exceeding your Martial Adept Level
 5. **Pay XP** — 50 XP per Style Point of Advantages
 6. **Name it** — every Special Attack gets a name
+
+</Steps>
 
 **Style Point budget:** You have free Style Points equal to your Martial Adept Level. Beyond that, add Restrictions to fund more Advantages.
 
@@ -79,31 +77,16 @@ All nine schools follow this progression:
 
 ---
 
-## Universal Advantages
+## Universal Advantages & Restrictions
 
-Available to all Martial Adepts at Level 1+. Entries marked \* can be taken multiple times.
+Available to all Martial Adepts at Level 1+. Stackable modifiers can be taken multiple times.
 
-| Name | Cost | Effect |
-| --- | --- | --- |
-| First Damage Improvement | 1\* | +`1k0` to damage |
-| Second Damage Mastery | 3\* | +`0k1` to damage |
-| First Accuracy Improvement | 1\* | +`1k0` to the attack roll |
-| Second Accuracy Mastery | 2\* | +`0k1` to the attack roll |
-| Penetration Mastery | 1\* | +2 Penetration per Style Point spent |
-
-## Universal Restrictions
-
-| Name | Cost | Effect |
-| --- | --- | --- |
-| Difficult Strike | (-1) | Cannot use this attack if used it last round |
-| Last Resort | (-2) | Once per scene only |
-| Restrained Force | (-1)\* | -`1k0` damage |
-| Unbroken Skin | (-2)\* | -`0k1` damage |
-| Inaccurate | (-1)\* | -`1k0` to attack roll |
-| Overextended | (-2)\* | -`0k1` to attack roll |
-| Non-Penetrating | (-1) | Attack has 0 penetration |
+<UniversalModifiersTable client:visible />
 
 ---
+
+<Tabs>
+<TabItem label="Desert Wind">
 
 ## Desert Wind
 
@@ -125,7 +108,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Leaping Flame | 2\* | Teleport 5m before or after this attack (per time taken) |
 | 5 | Holocaust Cloak | 4 | Everyone within 2m takes `4k2` magic E damage. If you move, affects everyone within 2m of your path. Once per target per round. All damaged targets set **On Fire** |
 
----
+</TabItem>
+<TabItem label="Devoted Spirit">
 
 ## Devoted Spirit
 
@@ -147,7 +131,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Foe Hammer | 3 | For each die that exploded on damage roll, roll another `1k1` damage. Added dice that explode give additional dice |
 | 5 | Castigating Blow | 6 | Add your Devotion as rolled damage dice. Heal yourself or adjacent ally HP equal to Wounds inflicted |
 
----
+</TabItem>
+<TabItem label="Diamond Mind">
 
 ## Diamond Mind
 
@@ -169,7 +154,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Quicksilver Action | 3\* | Per time taken: one additional attack with your weapon as part of this Special Attack. No Reactions used for extra attacks |
 | 5 | Essence Draining Strike | 2\* | Per time taken: wounded target loses 2 Resource Points. If out of Resource Points, they take 1 Fatigue per 2 RP they should lose |
 
----
+</TabItem>
+<TabItem label="Iron Heart">
 
 ## Iron Heart
 
@@ -191,7 +177,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Exorcism of Steel | 3 | Attack gains the **Power Field** property |
 | 5 | Strike of Perfect Clarity | 5 | Attack **cannot be dodged or parried** |
 
----
+</TabItem>
+<TabItem label="Setting Sun">
 
 ## Setting Sun
 
@@ -213,7 +200,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Misdirected Blade | 2 | Use opponent's weapon damage, penetration, and effects in place of your own |
 | 5 | Tornado Strike | 5 | Make Athletics Test vs. TN 15 + victim's Size. Success: fling victim your Strength in meters (+1m per raise). Can make throwing attack with victim: `1k1` I damage + dice equal to their Size |
 
----
+</TabItem>
+<TabItem label="Shadow Hand">
 
 ## Shadow Hand
 
@@ -235,7 +223,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Hot Electric Death | 1 | Add Toxic and Shocking properties. May choose E type damage |
 | 5 | Arterial Spray Strike | 4 | If any damage gets past armor: target begins **Bleeding** and must make immediate bleeding Test or die. Victim may use Reaction + Resource Point for Medicae + Composure TN 20 to avoid the immediate Test |
 
----
+</TabItem>
+<TabItem label="Stone Dragon">
 
 ## Stone Dragon
 
@@ -257,7 +246,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Felling Giants Blow | 5 | Treat opponent's Resilience as 2 less for HP loss calculation (minimum 1) |
 | 5 | Earth Shattering Kaboom | 6 | Attack gains Reach, Flexible, Tearing, and Snare. Attack everything within reach with one roll. Targets Test Dexterity vs. attack or be **Immobilized**. Damaged targets Test Strength or be knocked down and **Stunned** for 2 turns |
 
----
+</TabItem>
+<TabItem label="Tiger Claw">
 
 ## Tiger Claw
 
@@ -279,7 +269,8 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Blood In The Water | 4 | Damage dice explode on 9s and 10s. If already exploding on 9s: explode on 8s, 9s, and 10s |
 | 5 | Evisceration | 5 | Attack strikes gizzards, **ignores armor**, ignores cover, treats victim as -1 Resilience for damage resistance |
 
----
+</TabItem>
+<TabItem label="White Raven">
 
 ## White Raven
 
@@ -301,6 +292,9 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 | 4 | Attention Drawing Strike | 3 | Hit opponents cannot take Reactions until start of your next turn |
 | 5 | Wolf Pack Technique | 5 | Target provokes opportunity attacks from everyone in melee range (including you) **even if the attack misses**. These attacks are at +`2k0` to hit |
 
+</TabItem>
+</Tabs>
+
 ---
 
 ## Example: Building a Special Attack
@@ -312,3 +306,11 @@ Available to all Martial Adepts at Level 1+. Entries marked \* can be taken mult
 > - **Restrictions (4 SP):** Opening the Path (2), Difficult Strike (1), Inaccurate (1)
 > - **Net cost:** 7 SP of Advantages × 50 XP = **350 XP**
 > - **Effect:** Every other turn, make an unarmed attack at -`1k0` to hit. Deals +`1k1` damage with Tearing. Damaged targets take -`1k1` to all rolls. Your Static Defense takes -10 until next turn.
+
+---
+
+## All Techniques Reference
+
+Search and sort all sword school techniques in one view:
+
+<SchoolTechniquesTable type="melee" client:visible />

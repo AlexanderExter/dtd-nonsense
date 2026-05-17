@@ -109,6 +109,14 @@ These have each caused real bugs. Memorize them:
 
 9. **Tool pages must use `ToolLayout.astro` — never `StarlightPage`** — `StarlightPage` wraps content in Starlight's sidebar + header chrome. Tool pages are standalone full-viewport experiences and must use `ToolLayout.astro` only. Using `StarlightPage` for tools causes them to render inside the documentation sidebar with no escape — a regression that requires a full pass to undo. If you see a tool page importing from `@astrojs/starlight/components`, that is a bug.
 
+10. **Unicode escapes in JSX text render as literal strings** — `\u2694\uFE0F` in JSX text content renders the backslash-u sequence literally, not the emoji. Use actual Unicode characters (⚔️) or expression syntax (`{"\u2694\uFE0F"}`).
+
+11. **Bulk `sed` replacements require `bun run lint:fix` after** — When using `sed` to batch-replace patterns across many files (e.g., migrating arbitrary values to Tailwind tokens), formatting will be inconsistent. Always follow with `bun run lint:fix` to let Biome reformat affected lines.
+
+12. **Type-only imports still create dependency-cruiser edges** — Even `import type { X } from "./other"` creates a graph edge that dependency-cruiser reports. To avoid circular-dependency warnings, co-locate shared types with the module that naturally defines them (e.g., `BuilderGameData` belongs in `constants.ts` where the data shape is used, not in `store.ts` where it was first needed).
+
+13. **Astro files can silently corrupt with blank line injection** — Unknown tooling can prepend millions of blank lines to `.astro` files. If an `.astro` file is >100KB or renders blank, check `wc -l` — a 50-line page should not have 500,000 lines. Rewrite the file from scratch if corrupted.
+
 ## Adding a New Tool
 
 Follow the existing tool implementations in `src/components/react/tools/` and `src/pages/tools/` as reference. Key steps: create an Astro page using `ToolLayout.astro`, create a root `*App.tsx` component, set up a Zustand store, and wire data loading via `useData`/`useAllData` hooks.
@@ -142,7 +150,7 @@ JSON data in `data/` must stay in sync with `cleaned-references/`. Before editin
 2. Verify changes match the corresponding cleaned-reference content
 3. Update the data-reference doc if you change the schema
 
-Pipeline validation: `bun run validate` checks all 12 JSON files against Zod schemas in `src/lib/dtd/schemas/`.
+Pipeline validation: `bun run validate` checks all 15 JSON files against Zod schemas in `src/lib/dtd/schemas/`.
 
 ## When Editing Affects Rules
 

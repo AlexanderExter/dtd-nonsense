@@ -29,17 +29,17 @@ export function SkillGrid() {
 	};
 
 	return (
-		<div className="grid grid-cols-3 gap-md max-[768px]:grid-cols-1">
+		<div className="grid grid-cols-3 gap-md max-tool-md:grid-cols-1">
 			{Object.entries(groups).map(([groupKey, skillList]) => (
 				<div className="rounded-sm border border-border bg-bg p-md" key={groupKey}>
-					<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">
+					<h4 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">
 						{groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}
 					</h4>
 					{(skillList as Array<{ id: string; name: string; advanced?: boolean }>).map((sk) => {
 						const dots = skills[sk.id] || 0;
 						const showSpec = dots >= 4;
 						return (
-							<div className="flex items-center gap-sm py-[3px] text-[0.85rem]" key={sk.id}>
+							<div className="flex items-center gap-sm py-2xs text-sm" key={sk.id}>
 								<span className="flex-1 font-medium" title={sk.advanced ? "Advanced skill" : ""}>
 									{sk.name}
 									{sk.advanced && (
@@ -56,7 +56,7 @@ export function SkillGrid() {
 								/>
 								{showSpec && (
 									<GameInput
-										className="w-full bg-surface-raised text-[0.78rem] text-text-muted placeholder:text-text-dim"
+										className="w-full bg-surface-raised text-text-muted text-xs placeholder:text-text-dim"
 										onInput={(e) => handleSpecChange(sk.id, (e.target as HTMLInputElement).value)}
 										placeholder="Specialty"
 										type="text"

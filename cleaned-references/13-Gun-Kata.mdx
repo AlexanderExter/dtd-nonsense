@@ -6,27 +6,24 @@ sidebar:
 title: Gun Kata
 ---
 
-> **Key points:**
-> 
-> - Six disciplines of ranged combat for warriors known as **Gunslingers**
-> - **Gunslinger Level** = highest Gun Kata dots (applies across all Kata, like Martial Adept Level)
-> - Build custom **Trick Shots** by combining Advantages (costing Style Points) with Restrictions (granting Style Points)
-> - Cost: **50 XP per Style Point** to buy or improve a Trick Shot
-> - Weapons with **Blast**, **Flame**, or explosives/grenades **cannot** be used with Trick Shots
-> - Cross-ref: [Feats](./07-Feats.mdx) for ranged Feats, [Equipment](./10-Equipment.mdx) for weapon types, [Combat](./14-Combat.mdx) for action economy
+import { SchoolOverviewTable, SchoolTechniquesTable, UniversalModifiersTable } from '@/components/react/ui/GameDataTable';
+import { TabItem, Tabs } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+
+- Six disciplines of ranged combat for warriors known as **Gunslingers**
+- **Gunslinger Level** = highest Gun Kata dots (applies across all Kata, like Martial Adept Level)
+- Build custom **Trick Shots** by combining Advantages (costing Style Points) with Restrictions (granting Style Points)
+- Cost: **50 XP per Style Point** to buy or improve a Trick Shot
+- Weapons with **Blast**, **Flame**, or explosives/grenades **cannot** be used with Trick Shots
+- Cross-ref: [Feats](./07-Feats.mdx) for ranged Feats, [Equipment](./10-Equipment.mdx) for weapon types, [Combat](./14-Combat.mdx) for action economy
+:::
 
 ---
 
 ## Gun Kata Comparison
 
-| Kata | Key Skill | Weapon Type | Special Action | Playstyle | Key Technique |
-| --- | --- | --- | --- | --- | --- |
-| **Clay Pigeon** | Performer | Ordinary | Called Shot | Trick shooting, reloading | Manhattan Transfer (ignore cover) |
-| **Crisis Zone** | Tech-Use | Heavy | Suppressing Fire/Overwatch | Suppression, area denial | Moar Dakka (full-auto anything) |
-| **Elemental Gearbolt** | Arcana | Primitive | Multiple Attacks | Magical ranged, wound-stacking | Curse of Red Rain (auto Blood Loss) |
-| **Point Blank** | Athletics | Basic | Full Auto Burst | Close quarters, crowd control | Stay On Target (enhanced full-auto) |
-| **Silent Scope** | Perception | Las | Aim | Sniping, stealth, precision | Boom. Head-shot! (double roll + AP) |
-| **Tin Star** | Scrutiny | Pistol | Ready | Quick draw, dueling, faith | Dead Man's Hand (Devotion damage) |
+<SchoolOverviewTable type="ranged" client:visible />
 
 ---
 
@@ -53,31 +50,16 @@ Trick Shots work identically to Special Attacks (see [Sword Schools](./12-Sword-
 
 ---
 
-## Universal Advantages
+## Universal Advantages & Restrictions
 
-Available to all Gunslingers. Entries marked \* can be taken multiple times.
+Available to all Gunslingers. Stackable modifiers can be taken multiple times.
 
-| Name | Cost | Effect |
-| --- | --- | --- |
-| First Damage Improvement | 1\* | +`1k0` to damage |
-| Second Damage Improvement | 3\* | +`0k1` to damage |
-| First Accuracy Improvement | 1\* | +`1k0` to the attack roll |
-| Second Accuracy Improvement | 2\* | +`0k1` to the attack roll |
-| Penetration Mastery | 1\* | +2 Penetration per Style Point spent |
-
-## Universal Restrictions
-
-| Name | Cost | Effect |
-| --- | --- | --- |
-| Difficult Shot | (-1) | Cannot use if used last round |
-| Last Resort | (-2) | Once per scene only |
-| Restrained Force | (-1)\* | -`1k0` damage |
-| Unbroken Skin | (-2)\* | -`0k1` damage |
-| Inaccurate | (-1)\* | -`1k0` to attack roll |
-| Bad Aim | (-2)\* | -`0k1` to attack roll |
-| Non-Penetrating | (-1) | Attack has 0 penetration |
+<UniversalModifiersTable client:visible />
 
 ---
+
+<Tabs>
+<TabItem label="Clay Pigeon">
 
 ## Clay Pigeon
 
@@ -99,7 +81,8 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Mastery: Rescue Shot | — | Use Ballistics + Level in place of Weaponry + Level to parry ranged attacks by shooting into them |
 | 5: Grandmaster | Manhattan Transfer | 2 | This attack **ignores cover and concealment** |
 
----
+</TabItem>
+<TabItem label="Crisis Zone">
 
 ## Crisis Zone
 
@@ -121,7 +104,8 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Razing Storm | 2 | Full-Auto Burst raise damage increases from +`1k0` to +`2k0` |
 | 5: Grandmaster | Moar Dakka | 4 | Attack counts as Full Auto Burst. Fire up to weapon's RoF with all full-auto bonuses/penalties. If weapon lacks Full-Auto, treat as RoF -/3 |
 
----
+</TabItem>
+<TabItem label="Elemental Gearbolt">
 
 ## Elemental Gearbolt
 
@@ -143,7 +127,8 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Mastery: Cloud Shooting | — | Shot curves/vanishes — roll attack next turn instead. Target unaware, grants combat advantage, may not dodge |
 | 5: Grandmaster | Curse of Red Rain | 4 | Hit targets automatically suffer **Blood Loss** and must roll for survival at start of their turn |
 
----
+</TabItem>
+<TabItem label="Point Blank">
 
 ## Point Blank
 
@@ -164,7 +149,8 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Hard Stock Swing | — | Take a free unarmed Brawl attack as part of this attack. You may use Basic weapons in melee without penalties or opportunity attacks |
 | 5: Grandmaster | Stay On Target | 3 | Full-Auto Burst raise damage increases from `1k0` to `1k1` |
 
----
+</TabItem>
+<TabItem label="Silent Scope">
 
 ## Silent Scope
 
@@ -186,7 +172,8 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Mastery: There Is No Wind | — | No penalties for shooting at long or extreme ranges |
 | 5: Grandmaster | Boom. Head-shot! | 2\* | Roll attack twice, use higher roll. Weapon penetration **doubled**. If both rolls beat Static Defense, choose hit location (as Called Shot). Per additional time taken: +1 free raise on successful attack |
 
----
+</TabItem>
+<TabItem label="Tin Star">
 
 ## Tin Star
 
@@ -207,3 +194,14 @@ Available to all Gunslingers. Entries marked \* can be taken multiple times.
 | 4: Master | Hair Trigger | — | +5 bonus on all Initiative rolls |
 | 4: Master | Mastery: Silver Bullet | — | Damage dice explode on 9s and 10s. Attack counts as silver and magic weapon |
 | 5: Grandmaster | Dead Man's Hand | 5 | Add Devotion score to rolled damage dice. Add Composure dots to weapon penetration |
+
+</TabItem>
+</Tabs>
+
+---
+
+## All Techniques Reference
+
+Search and sort all gun kata techniques in one view:
+
+<SchoolTechniquesTable type="ranged" client:visible />

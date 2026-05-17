@@ -13,12 +13,12 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 	// ---------- Race data ----------
 	const races = data?.races?.races || [];
-	const selectedRace = races.find((r: any) => r.id === char.race);
+	const selectedRace = races.find((r) => r.id === char.race);
 	const charBonusOptions: string[] = selectedRace?.charBonus?.options || [];
 
 	// ---------- Exaltation data ----------
 	const exaltations = data?.exaltations?.exaltations || [];
-	const selectedExalt = exaltations.find((e: any) => e.id === char.exaltation);
+	const selectedExalt = exaltations.find((e) => e.id === char.exaltation);
 
 	// ---------- Alignment data ----------
 	const alignments = data?.alignments?.alignments || [];
@@ -31,7 +31,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 			c.race = raceId;
 			c.raceCharBonus = "";
 			// Auto-seed languages from race data
-			const race = races.find((r: any) => r.id === raceId);
+			const race = races.find((r) => r.id === raceId);
 			if (race?.languages && Array.isArray(race.languages)) {
 				const base = ["Trade"];
 				for (const lang of race.languages) {
@@ -69,11 +69,11 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 		<section className="tab-panel">
 			{/* ---------- Identity & Core Info ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">
 					Identity &amp; Core Info
 				</h3>
 				<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-md">
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Name
 						<GameInput
 							onInput={(e) =>
@@ -85,7 +85,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							value={char.name}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Player
 						<GameInput
 							onInput={(e) =>
@@ -97,7 +97,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							value={char.player}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Concept
 						<GameInput
 							onInput={(e) =>
@@ -109,11 +109,11 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							value={char.concept}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Size
 						<output className="py-xs font-bold text-[1.2rem] text-accent">{stats.size}</output>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Height
 						<GameInput
 							onInput={(e) =>
@@ -125,7 +125,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							value={char.height || ""}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Weight
 						<GameInput
 							onInput={(e) =>
@@ -137,7 +137,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 							value={char.weight || ""}
 						/>
 					</label>
-					<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex flex-col text-xs uppercase tracking-tight-px">
 						Age
 						<GameInput
 							onInput={(e) =>
@@ -150,7 +150,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						/>
 					</label>
 				</div>
-				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-xs uppercase tracking-tight-px">
 					Description
 					<GameTextarea
 						onInput={(e) =>
@@ -163,11 +163,11 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					/>
 				</label>
 				<div className="mt-md">
-					<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">Languages</h4>
+					<h4 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Languages</h4>
 					<div className="flex flex-wrap gap-xs">
 						{(char.languages || []).map((lang) => (
 							<span
-								className="inline-flex items-center gap-1 rounded-sm border border-border bg-bg px-sm py-0.5 text-[0.82rem]"
+								className="inline-flex items-center gap-1 rounded-sm border border-border bg-bg px-sm py-0.5 text-xs"
 								key={lang}
 							>
 								{lang}
@@ -189,17 +189,17 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Race ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Race</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Race</h3>
 				<GameSelect onChange={(e) => handleRaceChange((e.target as HTMLSelectElement).value)} value={char.race}>
 					<option value="">— Select Race —</option>
-					{races.map((r: any) => (
+					{races.map((r) => (
 						<option key={r.id} value={r.id}>
 							{r.name}
 						</option>
 					))}
 				</GameSelect>
 				{charBonusOptions.length > 0 && (
-					<label className="mt-sm flex items-center gap-sm text-[0.85rem]">
+					<label className="mt-sm flex items-center gap-sm text-sm">
 						Characteristic Bonus
 						<GameSelect
 							onChange={(e) =>
@@ -219,7 +219,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</label>
 				)}
 				{selectedRace && (
-					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-sm text-text-muted">
 						<p className="m-0">
 							<strong>Size:</strong> {selectedRace.size}
 						</p>
@@ -240,7 +240,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Exaltation ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Exaltation</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Exaltation</h3>
 				<GameSelect
 					onChange={(e) => handleExaltationChange((e.target as HTMLSelectElement).value)}
 					value={char.exaltation}
@@ -253,7 +253,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					))}
 				</GameSelect>
 				{selectedExalt && (
-					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-sm text-text-muted">
 						{selectedExalt.theme && (
 							<p className="m-0">
 								<strong>Theme:</strong> {selectedExalt.theme}
@@ -287,7 +287,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Alignment ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Alignment</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Alignment</h3>
 				<GameSelect
 					onChange={(e) =>
 						updateChar((c) => {
@@ -304,7 +304,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					))}
 				</GameSelect>
 				{selectedAlign && (
-					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-[0.85rem] text-text-muted">
+					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-sm text-text-muted">
 						{selectedAlign.description && <p className="m-0">{selectedAlign.description}</p>}
 						{selectedAlign.commandments && selectedAlign.commandments.length > 0 && (
 							<div>
@@ -321,13 +321,13 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						{selectedAlign.sins && selectedAlign.sins.length > 0 && (
 							<div>
 								<strong>Sins:</strong>
-								<table className="mt-xs w-full border-collapse text-[0.82rem]">
+								<table className="mt-xs w-full border-collapse text-xs">
 									<thead>
 										<tr>
-											<th className="border border-border bg-surface px-1.5 py-[3px] text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+											<th className="border border-border bg-surface px-1.5 py-2xs text-center font-semibold text-xs uppercase tracking-[0.04em]">
 												Level
 											</th>
-											<th className="border border-border bg-surface px-1.5 py-[3px] text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+											<th className="border border-border bg-surface px-1.5 py-2xs text-center font-semibold text-xs uppercase tracking-[0.04em]">
 												Sin
 											</th>
 										</tr>
@@ -337,10 +337,10 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 											<tr
 												key={`sin-${sin.devotion ?? i}-${typeof sin === "string" ? sin : sin.sin}`}
 											>
-												<td className="border border-border px-1.5 py-[3px] text-center">
+												<td className="border border-border px-1.5 py-2xs text-center">
 													{sin.devotion ?? i + 1}
 												</td>
-												<td className="border border-border px-1.5 py-[3px] text-center">
+												<td className="border border-border px-1.5 py-2xs text-center">
 													{typeof sin === "string" ? sin : sin.sin}
 												</td>
 											</tr>
@@ -352,7 +352,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 					</div>
 				)}
 				<div className="mt-sm">
-					<label className="mb-xs flex items-center justify-between text-[0.85rem]" htmlFor="devotion-slider">
+					<label className="mb-xs flex items-center justify-between text-sm" htmlFor="devotion-slider">
 						<span>Devotion</span>
 						<span className="font-semibold text-accent">{char.devotion ?? 6} / 10</span>
 					</label>
@@ -370,7 +370,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						type="range"
 						value={char.devotion ?? 6}
 					/>
-					<div className="mt-0.5 flex justify-between px-0.5 text-[0.7rem] text-text-dim">
+					<div className="mt-0.5 flex justify-between px-0.5 text-text-dim text-xs">
 						<span>0</span>
 						<span>5</span>
 						<span>10</span>
@@ -380,8 +380,8 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Notes ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Notes</h3>
-				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Notes</h3>
+				<label className="mb-md flex flex-col text-xs uppercase tracking-tight-px">
 					General Notes
 					<GameTextarea
 						onInput={(e) =>
@@ -393,7 +393,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						value={char.notes || ""}
 					/>
 				</label>
-				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-xs uppercase tracking-tight-px">
 					Class Notes
 					<GameTextarea
 						onInput={(e) =>
@@ -405,7 +405,7 @@ export function IdentityTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						value={char.classNotes || ""}
 					/>
 				</label>
-				<label className="mb-md flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+				<label className="mb-md flex flex-col text-xs uppercase tracking-tight-px">
 					Exaltation Notes
 					<GameTextarea
 						onInput={(e) =>

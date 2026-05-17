@@ -62,7 +62,14 @@ export function CharacterManager() {
 					Export
 				</Button>
 			</div>
-			<input accept=".json" className="hidden" onChange={handleFileChange} ref={fileRef} type="file" />
+			<input
+				accept=".json"
+				aria-label="Import character file"
+				className="hidden"
+				onChange={handleFileChange}
+				ref={fileRef}
+				type="file"
+			/>
 		</div>
 	);
 }

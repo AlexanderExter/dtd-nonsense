@@ -40,6 +40,7 @@ export default defineConfig({
 			// Sidebar: rules reference + source books + tools
 			sidebar: [
 				{ label: "About", slug: "rules/00-about" },
+				{ label: "Quick Reference", slug: "rules/00-quick-reference" },
 				{
 					label: "Rules",
 					items: [
@@ -120,11 +121,6 @@ export default defineConfig({
 				{
 					label: "Play Tools",
 					items: [
-						{
-							label: "Quick Reference",
-							link: "/tools/quick-reference/",
-							attrs: { target: "_blank", rel: "noopener" },
-						},
 						{
 							label: "Character Builder",
 							link: "/tools/character-builder/",

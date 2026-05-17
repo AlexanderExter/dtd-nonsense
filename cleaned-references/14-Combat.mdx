@@ -6,7 +6,11 @@ sidebar:
 title: Combat
 ---
 
-> **Key concepts:** Combat uses **structured time** divided into Rounds (~10 seconds each). Each character gets one Turn per Round. On your turn: one **Full Action** OR two different **Half Actions**, plus one **Reaction** per round and unlimited **Free Actions**. Attack TN = target's **Static Defense** (`10 + (Dex + Wis) × 3 − Size × 2`). Damage is reduced by **Armor** (physical) or **Aura** (magical), then compared against **Resilience** to determine Hit Points lost.
+import { CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+Combat uses **structured time** divided into Rounds (~10 seconds each). Each character gets one Turn per Round. On your turn: one **Full Action** OR two different **Half Actions**, plus one **Reaction** per round and unlimited **Free Actions**. Attack TN = target's **Static Defense** (`10 + (Dex + Wis) × 3 − Size × 2`). Damage is reduced by **Armor** (physical) or **Aura** (magical), then compared against **Resilience** to determine Hit Points lost.
+:::
 
 ---
 
@@ -33,11 +37,15 @@ title: Combat
 | **Free Action** | Unlimited | Trivial effort (speaking, dropping items) |
 | **Extended Action** | Multiple rounds | Progress lost if interrupted |
 
-> **Action Priority:** All game events are sequential, never truly simultaneous. The SM determines priority order.
+:::note
+**Action Priority:** All game events are sequential, never truly simultaneous. The SM determines priority order.
+:::
 
 ---
 
 ## Combat Round Procedure
+
+<Steps>
 
 1. **Surprise** (first round only) — SM determines if anyone is caught unaware. Surprised characters lose their first Turn and grant combat advantage.
 2. **Roll Initiative** — each participant rolls `1d10` + Dexterity + Composure. Highest goes first. Ties: higher die roll wins → higher Dex wins → reroll.
@@ -45,6 +53,8 @@ title: Combat
 4. **Combatants Take Turns** — from top of initiative, each character takes a turn as the **active character**.
 5. **Round Ends** — end-of-round effects expire.
 6. **Repeat** steps 4–5 until combat resolves.
+
+</Steps>
 
 ---
 
@@ -226,7 +236,11 @@ Chance of an unobstructed line of sight existing at a given altitude (Earth-norm
 | Move | H/F | Speed (Half) or 2× Speed (Full) in meters |
 | Shift | H | Move Dex meters without provoking |
 
-See [Equipment](./10-Equipment.mdx) for weapon stats, [Feats](./07-Feats.mdx) for combat Feats, and [Conditions](./16-Conditions.mdx) for status effects.
+<CardGrid>
+  <LinkCard title="Equipment" href="/rules/10-equipment/" description="Weapon stats and properties" />
+  <LinkCard title="Feats" href="/rules/07-feats/" description="Combat feats" />
+  <LinkCard title="Conditions" href="/rules/16-conditions/" description="Status effects" />
+</CardGrid>
 
 ---
 
@@ -348,7 +362,9 @@ Opposed Level + Weaponry Test. Disarm opponent if you win by two or more Raises.
 
 When attacked, Test Dexterity + Acrobatics. **Half** the result adds to your Static Defense against that attack. Must be aware of the attack.
 
-> **Note:** The Feat "Combat Sense" allows Wisdom to replace Dexterity in Dodge Tests.
+:::note
+The Feat "Combat Sense" allows Wisdom to replace Dexterity in Dodge Tests.
+:::
 
 ### Feint
 
@@ -374,7 +390,9 @@ Cast a spell. The spell lists the TN and magic skill Tested.
 
 Requires a fully-automatic weapon. Test Ballistics at +`2k1`. Each Raise means an additional hit, adding +`1k0` damage each (up to weapon's Rate of Fire).
 
-> **Note:** Weapons with the **Storm** property replace +`1k0` per raise with +`2k0` per raise (non-stacking).
+:::note
+Weapons with the **Storm** property replace +`1k0` per raise with +`2k0` per raise (non-stacking).
+:::
 
 Moving up to Dexterity meters during this action replaces the +`2k1` bonus with a −`1k0` penalty. Pistol/basic class weapons only.
 
@@ -544,7 +562,9 @@ The TN is the target's **Static Defense**:
 
 **Step 5 — Apply Damage.** Subtract **Armor Points** (physical attacks) or **Aura** (spells). If reduced to 0, attack is shrugged off. Remaining damage ÷ target's **Resilience** = Hit Points lost (round down, discard remainder).
 
-> **Note:** Armor blocks physical damage. Aura blocks magical damage. These are distinct values.
+:::note
+Armor blocks physical damage. Aura blocks magical damage. These are distinct values.
+:::
 
 If the target is at 0 Hit Points, additional HP loss becomes **Critical Damage** instead.
 
@@ -872,4 +892,6 @@ Swim Test (Athletics + Strength, TN 10) required in hazardous conditions. Succes
 
 ## Multiclassing and Duplicate Feats
 
-> **Note:** If you already have a mandatory Feat from another class or source when you take a new class, you may choose a replacement Feat instead of receiving the duplicate. This applies to any mandatory class Feat you already possess.
+:::note
+If you already have a mandatory Feat from another class or source when you take a new class, you may choose a replacement Feat instead of receiving the duplicate. This applies to any mandatory class Feat you already possess.
+:::

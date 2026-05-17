@@ -44,7 +44,7 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
 			<div className="mb-sm flex items-center justify-between">
-				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Weapons</h2>
+				<h2 className="m-0 text-accent text-sm uppercase tracking-wide-px">Weapons</h2>
 				<Button onClick={addWeapon} size="sm" variant="ghost">
 					+ Add
 				</Button>
@@ -100,15 +100,15 @@ export function WeaponList({ weapons, onChange }: WeaponListProps) {
 								placeholder="E/I/R/X"
 								value={w.damageType}
 							/>
-							<span className="text-[0.8rem] text-text-muted">Pen</span>
+							<span className="text-text-muted text-xs">Pen</span>
 							<NumberInput min={0} onChange={(v) => updateWeapon(i, { pen: v })} value={w.pen} />
-							<span className="text-[0.8rem] text-text-muted">+Atk</span>
+							<span className="text-text-muted text-xs">+Atk</span>
 							<NumberInput
 								min={0}
 								onChange={(v) => updateWeapon(i, { fixedAttackBonus: v })}
 								value={w.fixedAttackBonus || 0}
 							/>
-							<span className="text-[0.8rem] text-text-muted">+Dmg</span>
+							<span className="text-text-muted text-xs">+Dmg</span>
 							<NumberInput
 								min={0}
 								onChange={(v) => updateWeapon(i, { fixedDamageBonus: v })}

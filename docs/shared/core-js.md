@@ -1,14 +1,22 @@
 # core.ts — ES Module API
 
-Shared utility module exporting data loading, derived stat calculations, and character persistence (localStorage CRUD). Pure ES module with named exports — no global namespace.
+Barrel re-export for backward compatibility. Prefer importing from specific sub-modules for tree-shaking:
 
 **File:** `src/lib/dtd/core.ts`
 **Types:** `src/lib/dtd/types.ts` — canonical interfaces (`CharacterData`, `Characteristics`, `CharacterModifiers`, etc.)
+**Schemas:** `src/lib/dtd/schemas/` — Zod schemas + `GameDataMap` type for all 15 JSON data files
 **Consumers:** Character Sheet, Character Builder, Combat Tracker, NPC Generator, and any future tool pages.
 
 ```typescript
-import { loadData, loadAllData, derived, character } from "@/lib/dtd/core.ts";
-import type { CharacterData } from "@/lib/dtd/types.ts";
+// Preferred: direct imports for tree-shaking
+import { loadData, loadAllData } from "@/lib/dtd/data";
+import { derived } from "@/lib/dtd/derived";
+import { character } from "@/lib/dtd/character";
+import type { CharacterData } from "@/lib/dtd/types";
+
+// React hook for typed data loading
+import { useAllData } from "@/hooks/use-data";
+const { data, loading, error } = useAllData(["races.json", "skills.json"]);
 ```
 
 ---

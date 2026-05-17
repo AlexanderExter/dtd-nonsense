@@ -27,11 +27,11 @@ export function CombatTab() {
 		<section className="tab-panel">
 			{/* ---------- Armor Location Display ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Armor by Location</h3>
-				<div className="my-md grid grid-cols-6 gap-sm max-[768px]:grid-cols-3">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Armor by Location</h3>
+				<div className="my-md grid grid-cols-6 gap-sm max-tool-md:grid-cols-3">
 					{LOCATIONS.map((loc) => (
 						<div className="rounded-sm border border-border bg-bg p-sm text-center" key={loc}>
-							<span className="mb-0.5 block text-[0.65rem] text-text-muted uppercase tracking-[0.3px]">
+							<span className="mb-0.5 block text-text-muted text-xs uppercase tracking-tight-px">
 								{loc}
 							</span>
 							<span className="font-bold text-[1.2rem] text-accent">{locationAP[loc]}</span>
@@ -42,12 +42,12 @@ export function CombatTab() {
 
 			{/* ---------- Natural Armor & Aura ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">
 					Natural Armor &amp; Aura
 				</h3>
 				<div className="mb-md flex flex-wrap gap-md">
 					<label
-						className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						className="flex min-w-[140px] flex-1 flex-col text-xs uppercase tracking-tight-px"
 						htmlFor="combat-natural-armor"
 					>
 						Natural Armor
@@ -63,7 +63,7 @@ export function CombatTab() {
 						/>
 					</label>
 					<label
-						className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]"
+						className="flex min-w-[140px] flex-1 flex-col text-xs uppercase tracking-tight-px"
 						htmlFor="combat-aura"
 					>
 						Aura
@@ -78,7 +78,7 @@ export function CombatTab() {
 							value={char.aura || 0}
 						/>
 					</label>
-					<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+					<label className="flex min-w-[140px] flex-1 flex-col text-xs uppercase tracking-tight-px">
 						Aura Source
 						<GameInput
 							onInput={(e) =>

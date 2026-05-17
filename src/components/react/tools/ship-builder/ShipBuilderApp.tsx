@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
-import { Toast } from "@/components/react/ui/Toast";
-import { loadData } from "@/lib/dtd/core.ts";
+import { showToast, Toast } from "@/components/react/ui/Toast";
+import { useAllData } from "@/hooks/use-data";
 import { cn } from "@/lib/utils";
 import { BuilderPanel } from "./BuilderPanel";
 import {
@@ -62,33 +62,29 @@ export function ShipBuilderApp() {
 	const setShipData = useShipStore((s) => s.setShipData);
 	const updateShip = useShipStore((s) => s.updateShip);
 
+	const { data: rawData, error } = useAllData(["ships.json"]);
+
 	// -----------------------------------------------------------------------
-	// Initialization
+	// Initialization — sync fetched data into store + hydrate from localStorage
 	// -----------------------------------------------------------------------
 
 	useEffect(() => {
-		let cancelled = false;
-		loadData("ships.json").then((raw: unknown) => {
-			if (cancelled) return;
-			const data = raw as ShipData;
-			setShipData(data);
+		if (!rawData) return;
+		const data = rawData.ships as ShipData;
+		setShipData(data);
 
-			const list = loadShipListFromStorage();
-			setShipList(list);
+		const list = loadShipListFromStorage();
+		setShipList(list);
 
-			if (list.length > 0) {
-				const loaded = loadShipFromStorage(list.at(-1).id);
-				if (loaded) {
-					setShip(loaded);
-					setMode(loaded.mode || "builder");
-				}
+		if (list.length > 0) {
+			const loaded = loadShipFromStorage(list.at(-1).id);
+			if (loaded) {
+				setShip(loaded);
+				setMode(loaded.mode || "builder");
 			}
-			setDataLoaded(true);
-		});
-		return () => {
-			cancelled = true;
-		};
-	}, [setDataLoaded, setMode, setShip, setShipData, setShipList]);
+		}
+		setDataLoaded(true);
+	}, [rawData, setDataLoaded, setMode, setShip, setShipData, setShipList]);
 
 	// -----------------------------------------------------------------------
 	// Ship management
@@ -166,7 +162,7 @@ export function ShipBuilderApp() {
 				useShipStore.getState().setMode(imported.mode || "builder");
 				saveShipNow();
 			} catch {
-				alert("Invalid JSON file");
+				showToast("Invalid JSON file");
 			}
 		};
 		reader.readAsText(file);
@@ -178,7 +174,6 @@ export function ShipBuilderApp() {
 			setMode(m);
 			updateShip((s) => {
 				s.mode = m;
-				return s;
 			});
 		},
 		[setMode, updateShip],
@@ -187,6 +182,14 @@ export function ShipBuilderApp() {
 	// -----------------------------------------------------------------------
 	// Render
 	// -----------------------------------------------------------------------
+
+	if (error) {
+		return (
+			<div className="loading-state">
+				<p>Failed to load ship data: {error}</p>
+			</div>
+		);
+	}
 
 	if (!dataLoaded) {
 		return (
@@ -198,7 +201,7 @@ export function ShipBuilderApp() {
 
 	return (
 		<div>
-			<div className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-[900px]:flex-wrap max-[900px]:gap-xs">
+			<div className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-tool-lg:flex-wrap max-tool-lg:gap-xs">
 				<div className="flex items-center gap-sm">
 					<GameSelect
 						className="min-w-[180px]"
@@ -248,7 +251,14 @@ export function ShipBuilderApp() {
 					<Button onClick={handleExport} size="sm">
 						Export
 					</Button>
-					<input accept=".json" hidden onChange={handleImport} ref={fileRef} type="file" />
+					<input
+						accept=".json"
+						aria-label="Import ship file"
+						hidden
+						onChange={handleImport}
+						ref={fileRef}
+						type="file"
+					/>
 				</div>
 			</div>
 

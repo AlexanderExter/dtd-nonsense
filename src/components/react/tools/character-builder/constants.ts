@@ -1,7 +1,26 @@
 /**
  * Character Builder — constants, types, and helper functions.
  */
+import type { GameDataResult } from "@/lib/dtd/schemas/index";
 import type { CharacterData } from "@/lib/dtd/types";
+
+// =========================================================================
+// Data type — matches the file list passed to useAllData in CharacterBuilderApp
+// =========================================================================
+
+export type BuilderGameData = GameDataResult<
+	[
+		"races.json",
+		"exaltations.json",
+		"skills.json",
+		"classes.json",
+		"feats.json",
+		"backgrounds.json",
+		"alignments.json",
+		"equipment.json",
+		"weapons.json",
+	]
+>;
 
 // =========================================================================
 // Creation limits
@@ -137,8 +156,6 @@ export function calcXP(char: CharacterData): XPBreakdown {
 // Helpers
 // =========================================================================
 
-/* eslint-disable @typescript-eslint/no-explicit-any -- game data shapes vary */
-
 export function getTotalChars(char: CharacterData, raceData: any): Record<string, number> {
 	const result: Record<string, number> = { ...char.characteristics };
 	if (raceData) {
@@ -177,7 +194,7 @@ export function filterByRestrictions(items: any[], raceName: string | null, exal
 	});
 }
 
-export function findRaceData(gameData: Record<string, any> | null, raceName: string): any {
+export function findRaceData(gameData: BuilderGameData | null, raceName: string) {
 	if (!gameData?.races?.races) return null;
-	return (gameData.races.races as any[]).find((r: any) => r.id === raceName || r.name === raceName) ?? null;
+	return gameData.races.races.find((r) => r.id === raceName || r.name === raceName) ?? null;
 }

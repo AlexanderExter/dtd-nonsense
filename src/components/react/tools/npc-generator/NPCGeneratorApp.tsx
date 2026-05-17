@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { showToast, Toast } from "@/components/react/ui/Toast";
-import { loadData } from "@/lib/dtd/core.ts";
+import { useAllData } from "@/hooks/use-data";
 import {
 	calculateDerived,
 	createDefaultNPC,
@@ -41,6 +41,8 @@ export function NPCGeneratorApp() {
 
 	const derivedStats = useMemo(() => calculateDerived(npcState, traitsData), [npcState, traitsData]);
 
+	const { data: rawData, error } = useAllData(["traits.json", "npc-templates.json", "skills.json", "feats.json"]);
+
 	// =====================================================================
 	// Persistence
 	// =====================================================================
@@ -59,27 +61,17 @@ export function NPCGeneratorApp() {
 		localStorage.setItem(STORAGE_LIST_KEY, JSON.stringify(list));
 	}, []);
 
-	// Load data on mount
+	// Sync fetched data into store
 	useEffect(() => {
-		Promise.all([
-			loadData("traits.json"),
-			loadData("npc-templates.json"),
-			loadData("skills.json"),
-			loadData("feats.json"),
-		])
-			.then(([traits, templates, skills, feats]) => {
-				setTraitsData(traits as import("./constants").TraitDef[]);
-				setTemplatesList(templates as import("./constants").TemplateDef[]);
-				setSkillNames(extractSkillNames(skills as { skills?: Record<string, Array<{ name: string }>> }));
-				const featData = feats as { feats?: Array<{ name: string }> };
-				setFeatNames((featData.feats || []).map((f) => f.name));
-				loadSavedList();
-				setDataLoaded(true);
-			})
-			.catch((err) => {
-				console.error("NPC Builder init failed:", err);
-			});
-	}, [loadSavedList, setDataLoaded, setFeatNames, setSkillNames, setTemplatesList, setTraitsData]);
+		if (!rawData) return;
+		setTraitsData(rawData.traits as import("./constants").TraitDef[]);
+		setTemplatesList(rawData["npc-templates"] as import("./constants").TemplateDef[]);
+		setSkillNames(extractSkillNames(rawData.skills as { skills?: Record<string, Array<{ name: string }>> }));
+		const featData = rawData.feats as { feats?: Array<{ name: string }> };
+		setFeatNames((featData.feats || []).map((f) => f.name));
+		loadSavedList();
+		setDataLoaded(true);
+	}, [rawData, loadSavedList, setDataLoaded, setFeatNames, setSkillNames, setTemplatesList, setTraitsData]);
 
 	const saveNPC = useCallback(() => {
 		const npc = useNPCStore.getState().npcState;
@@ -230,6 +222,9 @@ export function NPCGeneratorApp() {
 	const savedSelectRef = useRef<HTMLSelectElement>(null);
 
 	// Loading state
+	if (error) {
+		return <div className="p-8 text-center text-text-muted">Failed to load data: {error}</div>;
+	}
 	if (!dataLoaded) {
 		return <div className="p-8 text-center text-text-muted">Loading NPC Builder...</div>;
 	}
@@ -242,10 +237,10 @@ export function NPCGeneratorApp() {
 			{/* Top Bar */}
 			<header className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-[800px]:flex-wrap">
 				<div className="flex items-center gap-sm">
-					<a className="whitespace-nowrap text-[0.85rem]" href="/tools/">
+					<a className="whitespace-nowrap text-sm" href="/tools/">
 						← Tools
 					</a>
-					<h1 className="m-0 whitespace-nowrap text-[1.1rem] text-accent">NPC Stat Block Builder</h1>
+					<h1 className="m-0 whitespace-nowrap text-accent text-lg">NPC Stat Block Builder</h1>
 				</div>
 				<div className="flex items-center gap-sm max-[800px]:flex-wrap">
 					<GameSelect

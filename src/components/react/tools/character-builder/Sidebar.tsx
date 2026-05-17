@@ -55,7 +55,7 @@ export function Sidebar() {
 	};
 
 	return (
-		<aside className="sticky top-md flex max-h-[calc(100vh-2*var(--space-md))] flex-col gap-md overflow-y-auto rounded-md border border-border bg-surface p-md max-[900px]:static max-[900px]:max-h-none">
+		<aside className="sticky top-md flex max-h-[calc(100vh-2*var(--space-md))] flex-col gap-md overflow-y-auto rounded-md border border-border bg-surface p-md max-tool-lg:static max-tool-lg:max-h-none">
 			{/* Character identity */}
 			<div className="border-border border-b pb-md text-center">
 				<h2 className="mb-xs break-words font-bold text-[1.15rem] text-accent">
@@ -78,7 +78,7 @@ export function Sidebar() {
 			{/* Derived Stats */}
 			<div>
 				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">Derived Stats</h3>
-				<div className="grid grid-cols-2 gap-x-sm gap-y-0.5 text-[0.85rem]">
+				<div className="grid grid-cols-2 gap-x-sm gap-y-0.5 text-sm">
 					<span className="text-text-muted">SD</span>
 					<span className="text-right font-semibold text-text-primary tabular-nums">{sd}</span>
 					<span className="text-text-muted">HP</span>
@@ -99,9 +99,7 @@ export function Sidebar() {
 			{/* XP Budget */}
 			<div>
 				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">XP Budget</h3>
-				<div
-					className={cn("mb-sm text-center text-[0.8rem] text-text-muted", xp.remaining < 0 && "text-error")}
-				>
+				<div className={cn("mb-sm text-center text-text-muted text-xs", xp.remaining < 0 && "text-error")}>
 					<strong className={xp.remaining < 0 ? "text-error" : "text-accent"}>{xp.remaining}</strong> /{" "}
 					{TOTAL_XP} remaining
 				</div>
@@ -142,7 +140,7 @@ export function Sidebar() {
 			{/* Step Checklist */}
 			<div>
 				<h3 className="mb-sm text-text-dim text-xs uppercase tracking-[0.06em]">Steps</h3>
-				<ol className="m-0 list-none p-0 text-[0.8rem]">
+				<ol className="m-0 list-none p-0 text-xs">
 					{STEP_LABELS.map((label, i) => {
 						const isDone = meta.stepsCompleted[i];
 						const isActive = currentStep === i + 1;
@@ -150,7 +148,7 @@ export function Sidebar() {
 							<li key={label}>
 								<button
 									className={[
-										"flex w-full cursor-pointer items-center gap-xs border-none bg-transparent p-0 py-[3px] text-left text-[0.8rem] hover:text-text-primary",
+										"flex w-full cursor-pointer items-center gap-xs border-none bg-transparent p-0 py-2xs text-left text-xs hover:text-text-primary",
 										isActive
 											? "font-semibold text-accent"
 											: isDone

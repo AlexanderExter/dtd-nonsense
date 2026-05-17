@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Button } from "./Button";
 
 interface AddButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	label: string;
@@ -6,8 +7,8 @@ interface AddButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function AddButton({ label, className, ...rest }: AddButtonProps) {
 	return (
-		<button className={cn("btn btn-ghost btn-sm", className)} type="button" {...rest}>
+		<Button className={cn(className)} size="sm" variant="ghost" {...rest}>
 			+ Add {label}
-		</button>
+		</Button>
 	);
 }

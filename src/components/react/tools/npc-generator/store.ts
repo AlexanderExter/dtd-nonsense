@@ -1,3 +1,4 @@
+import { produce } from "immer";
 import { create } from "zustand";
 import { createDefaultNPC, type NPCData, type TemplateDef, type TraitDef } from "./constants";
 
@@ -21,14 +22,14 @@ interface NPCStore {
 	skillNames: string[];
 	templatesList: TemplateDef[];
 	traitsData: TraitDef[];
-	updateNpc: (fn: (npc: NPCData) => NPCData) => void;
+	updateNpc: (fn: (npc: NPCData) => void) => void;
 }
 
 // =========================================================================
 // Zustand store
 // =========================================================================
 
-export const useNPCStore = create<NPCStore>((set, get) => ({
+export const useNPCStore = create<NPCStore>((set) => ({
 	npcState: createDefaultNPC(),
 	savedList: [],
 	traitsData: [],
@@ -45,7 +46,10 @@ export const useNPCStore = create<NPCStore>((set, get) => ({
 	setFeatNames: (names) => set({ featNames: names }),
 	setDataLoaded: (v) => set({ dataLoaded: v }),
 
-	updateNpc: (fn) => {
-		set({ npcState: fn(get().npcState) });
-	},
+	updateNpc: (fn) =>
+		set(
+			produce((state) => {
+				fn(state.npcState);
+			}),
+		),
 }));

@@ -6,6 +6,8 @@ sidebar:
 title: Exaltations
 ---
 
+import { TabItem, Tabs } from '@astrojs/starlight/components';
+
 Every Hero is more than just a man with training. A real Hero is more than that, with abilities beyond even the greatest normal man. A Hero might have a great blessing, or a great curse.
 
 What a Hero finds, her source of power, is her Exaltation. It's more than just another tool or some training. It's an intrinsic part of who she is. Exaltations are rare, literally more rare than one in a million.
@@ -53,6 +55,9 @@ All Exalted have a **Tell** — a supernatural marker that appears when spending
 
 ---
 
+<Tabs>
+<TabItem label="Wraith">
+
 ## Wraith
 
 A Wraith is a ghost that can still affect the living world. They build bodies of ectoplasm that seem nearly alive, forms that almost look like they did while alive.
@@ -73,7 +78,9 @@ Wraiths are effectively immortal (since they're already dead) until someone goes
 
 *Alternate Ghost Dice:* When a Wraith spends Plasm for extra dice they roll on the Perils of the Warp table, once per extra die. Ignore any results over 74.
 
-> **Open Question:** The SM must decide which version of Ghost Dice to use. The base version (good/bad side effects) may feel too unpredictable for some groups.
+:::caution[Open Question]
+The SM must decide which version of Ghost Dice to use. The base version (good/bad side effects) may feel too unpredictable for some groups.
+:::
 
 ### Power Stat: Synergy
 
@@ -89,7 +96,8 @@ Synergy is a measure of how far the Wraith has come in acceptance of their own d
 | ••••    | **Shroud** — Gain Armor equal to your Resolve (maximum Resolve, not current). This doesn't stack with worn armor. If you become incorporeal, this provides Aura instead of Armor. In the Umbra this provides both Armor and Aura.                                                                                                                               |
 | •••••   | **Ectoplasmic Form** — Once per day, they may loose their ectoplasm's bonds, turning it back into liquid. They gain Amorphous but instead of doubling Hit Points, they gain temporary Hit Points equal to their maximum Plasm. They lose these temporary Hit Points first. At the end of the scene they lose Amorphous and any remaining temporary Hit Points. |
 
----
+</TabItem>
+<TabItem label="Dragon Blooded">
 
 ## Dragon Blooded
 
@@ -131,12 +139,15 @@ Aspect is how strongly the blood of Dragon-kind runs in your veins.
 | ••     | **Dragon Wings** — Gain appropriately-sized wings and fly with speed equal to normal ground speed. At Aspect 4, flight speed doubles    |
 | •••    | **Dragon Heart** — Gain a breath weapon. For one point of Breath use the template of a Hand Flamer, for two points use that of a Flamer |
 
-> **Open Question:** Check the Book 1 Flame weapon property for the breath weapon's TN. The SM must decide whether the TN is based on Ballistics or Dexterity.
+:::caution[Open Question]
+Check the Book 1 Flame weapon property for the breath weapon's TN. The SM must decide whether the TN is based on Ballistics or Dexterity.
+:::
 
 | ••••   | **Dragon Skin** — Gain Aura equal to Aspect and twice that much Armor. Doesn't stack with anything                                      |
 | •••••  | **Maximum Dragoning** — Once per day, turn into a dragon as though you had successfully cast the spell Dragon Form                      |
 
----
+</TabItem>
+<TabItem label="Atlantean">
 
 ## Atlantean
 
@@ -181,7 +192,8 @@ The Gnosis of an Atlantean is a combination of the awakening memories within the
 | ••••   | **Maximize Spell** — Before casting any spell, spend any number of motes. For each mote spent, one die in the Magic test is counted as a 10 (these dice do not explode) |
 | •••••  | **Quicken Spell** — By spending one mote, cast a spell as a free action once per turn                                                                                   |
 
----
+</TabItem>
+<TabItem label="Chosen">
 
 ## Chosen
 
@@ -213,7 +225,8 @@ The Faith that a Chosen has is different from that of the average person. They e
 | ••••  | **Trial of Faith** — Whenever you keep a 1 on a normal test made that can have dangerous consequences (most combat tests, climbing tests when the fall could really hurt, tense diplomatic negotiations, etc.), or when you roll for Perils of the Warp, recover 1 Favor. You may only regain 1 Favor per test this way                                                                                           |
 | ••••• | **Demigod** — Rather than adding +`1k0` to a roll when spending a Favor, simply add 10 to the result                                                                                                                                                                                                                                                                                                                |
 
----
+</TabItem>
+<TabItem label="Daemonhost">
 
 ## Daemonhost
 
@@ -245,7 +258,8 @@ As the Daemonhost increases in power, the Daemon draws more power out of the War
 | ••••    | **Not Of This World** — Do not suffer the effects of results from the Critical Damage charts unless they would cause death                                                                                                                                                                                                                                                                                      |
 | •••••   | **Black Miracle** — Killing a Daemonhost merely forces the Daemon back into the warp for a short time. Unless a ritual is performed to prevent it (and a Daemonhost can burn Hero Points to foil this ritual) the Daemonhost reforms later, spending one week in the warp for every point of Resonance before finding a new vessel. The new vessel's characteristics and abilities are identical to the old one |
 
----
+</TabItem>
+<TabItem label="Paragon">
 
 ## Paragon
 
@@ -281,7 +295,8 @@ At the beginning of each scene, gain a number of Pressure Points equal to 3 × E
 | ••••       | **Strength of a Raging Fire** — While stunting, dice explode on a roll of 9 or 10 instead of just 10                                                                                                                                                                       |
 | •••••      | **Mysterious as the Dark Side of the Moon** — Whenever you use a stunt on a test and succeed, all allies attempting the same test (using the same action) before your next turn gain a bonus on their result equal to the number of Pressure Points you spent on your test |
 
----
+</TabItem>
+<TabItem label="Promethean">
 
 ## Promethean
 
@@ -321,7 +336,8 @@ As a Promethean's Generation increases, they swap out older equipment with newer
 | ••••       | **Recharge** — Whenever you suffer damage from E-type damage, recover 1 spent Pyros for every Hit Point lost from that attack                                                                      |
 | •••••      | **Warstrider** — For one scene per day, double your size and gain +3 dots to all physical characteristics. Integrated weapons deal an additional +`1k1` damage due to increased size                 |
 
----
+</TabItem>
+<TabItem label="Vampire">
 
 ## Vampire
 
@@ -366,7 +382,8 @@ Vampire players may want to create more of their kind. Restrictions:
 - The sire permanently loses a point of Blood Potency to create a Childe. Vampires of Blood Potency 1 are too thin-blooded to transfer the curse
 - The Childe becomes a vampire at Blood Potency 1. The Sire gains them as an Ally (if unwilling, may have created an enemy instead)
 
----
+</TabItem>
+<TabItem label="Werewolf">
 
 ## Werewolf
 
@@ -408,11 +425,15 @@ Feral Heart is the measure of how close the character is to the ancient and wild
 | ••••        | **Sacred Hunt** — Perform a 6-hour ritual to hunt and kill a superlative animal. Once begun, cannot rest or pursue another goal until complete. After completing the hunt, taste the heart blood and make Feral Heart + Charisma Test against TN of 5 × the animal's Level. May then assume that animal's form by spending an additional Rage when Shifting |
 | •••••       | **Spirit Walk** — By making a Feral Heart + Composure Test (often TN 20), attempt to enter or exit the Umbra through a reflective surface. Anyone holding your hand may come along                                                                                                                                                                          |
 
----
+</TabItem>
+<TabItem label="Mortal">
 
 ## Mortal Heroes
 
 Some SMs and players may allow mortal characters — simply skip the Exaltation step. Mortals are fragile compared to Exalts, but their Hero Points mark them as something special.
+
+</TabItem>
+</Tabs>
 
 ---
 

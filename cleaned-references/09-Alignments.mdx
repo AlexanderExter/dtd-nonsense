@@ -6,13 +6,16 @@ sidebar:
 title: Alignments
 ---
 
-> **Quick Reference:**
->
-> - Alignment represents dedication to a cosmic force — choose from **The Ruinous Powers** (Chaos), **The Blessed Pantheon** (Law), or **The Gray Council** (Neutral)
-> - **Devotion** (1–10) measures your commitment; higher = stricter expectations
-> - Failing an **Alignment Test** (roll 1d10 >= Devotion) loses 1 Devotion and risks **Degeneration**
-> - Devotion 0 = character removed from play permanently
-> - Alignment is chosen during [Character Creation](./02-Char-Creation.mdx) (Step 7)
+import { TabItem, Tabs } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+
+- Alignment represents dedication to a cosmic force — choose from **The Ruinous Powers** (Chaos), **The Blessed Pantheon** (Law), or **The Gray Council** (Neutral)
+- **Devotion** (1–10) measures your commitment; higher = stricter expectations
+- Failing an **Alignment Test** (roll 1d10 >= Devotion) loses 1 Devotion and risks **Degeneration**
+- Devotion 0 = character removed from play permanently
+- Alignment is chosen during [Character Creation](./02-Char-Creation.mdx) (Step 7)
+:::
 
 ---
 
@@ -106,6 +109,9 @@ Roll `1d100` when suffering Degeneration:
 **Note:** Characteristic reductions from Degeneration cannot be improved with XP until the Degeneration is cured. Curing requires raising Devotion past that level.
 
 ---
+
+<Tabs syncKey="pantheon">
+<TabItem label="Ruinous Powers" icon="warning">
 
 ## The Ruinous Powers
 
@@ -262,7 +268,8 @@ Diametric opposite of Bahamut. Formed a great alliance to overthrow him. Rumors 
 | 2 | Losing face in front of a crowd |
 | 1 | Accepting an equal or lesser as your superior |
 
----
+</TabItem>
+<TabItem label="Blessed Pantheon" icon="star">
 
 ## The Blessed Pantheon
 
@@ -417,7 +424,8 @@ General worship of the Blessed Pantheon. Intensely spiritual people seeking patt
 | 2 | Choosing flesh over machine perfection |
 | 1 | Willfully destroying ancient/advanced technology |
 
----
+</TabItem>
+<TabItem label="Gray Council" icon="moon">
 
 ## The Gray Council
 
@@ -555,7 +563,8 @@ Gods who don't align with Chaos or Law. Mostly serve their own goals. Some of th
 | 2 | Not showing respect to a female |
 | 1 | Killing a spider of any kind |
 
----
+</TabItem>
+<TabItem label="Unaligned" icon="heart">
 
 ## Unaligned
 
@@ -574,11 +583,14 @@ People who refuse to pick sides — disbelievers, abandoned, or those who think 
 | 2 | Participating in a religious ceremony |
 | 1 | Prayer |
 
+</TabItem>
+</Tabs>
+
 ---
 
 ## Codes of Honor
 
-_Source: Book 1 Appendix B_
+## Source: Book 1 Appendix B
 
 Three behavioral codes providing roleplay guidance. Not mechanically enforced, but violating tenets carries narrative consequences at SM discretion.
 

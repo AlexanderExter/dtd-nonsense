@@ -15,22 +15,22 @@ Close out the current editing session by harvesting lessons learned into project
 Gather context on what happened this session:
 
 1. **Scan conversation history** for:
-    - Mistakes the agent made (and corrections the user provided)
-    - New conventions or rulings the user established
-    - Workflow friction (things that took multiple attempts or required user intervention)
-    - Patterns that should be codified (repeated instructions the user gave)
-    - Terminology decisions or formatting standards that aren't yet documented
-    - Tool/process discoveries (e.g., encoding issues, subagent pitfalls)
-    - Tool changes that need docs/ updates (new features, changed behavior, schema changes)
+  - Mistakes the agent made (and corrections the user provided)
+  - New conventions or rulings the user established
+  - Workflow friction (things that took multiple attempts or required user intervention)
+  - Patterns that should be codified (repeated instructions the user gave)
+  - Terminology decisions or formatting standards that aren't yet documented
+  - Tool/process discoveries (e.g., encoding issues, subagent pitfalls)
+  - Tool changes that need docs/ updates (new features, changed behavior, schema changes)
 
 2. **Check recent git history** — `git log --oneline -30` — to see what branches were worked, what was merged, and what's still open.
 
 3. **Check for uncommitted changes** — `git status` — across all tracked files.
 
 4. **Compile a candidate list** of lessons learned. For each, note:
-    - What happened (the mistake or discovery)
-    - Where it should be documented (which file: `copilot-instructions.md`, a skill file, a prompt, etc.)
-    - The specific addition or change to make
+  - What happened (the mistake or discovery)
+  - Where it should be documented (which file: `copilot-instructions.md`, a skill file, a prompt, etc.)
+  - The specific addition or change to make
 
 Present the candidate list to the user for review before making any edits. The user may accept all, reject some, or refine wording.
 
@@ -82,8 +82,8 @@ Apply lesson updates directly on the current session branch (`session-YYYY-MM-DD
 
 1. Run `git status` to check for uncommitted changes
 2. If on a feature branch with uncommitted work:
-    - Review changes with `git diff`
-    - Commit with a descriptive message
+  - Review changes with `git diff`
+  - Commit with a descriptive message
 3. If uncommitted changes exist on main — this shouldn't happen. Create a session branch and commit them there. Never stash — stashes lose work into limbo.
 
 ### 3b. Merge Session Branch

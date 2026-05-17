@@ -32,6 +32,7 @@ You are not waiting for instructions — you are the one deciding what needs doi
 ### Scope Boundaries
 
 You may independently:
+
 - Fix linter warnings, test failures, and validation errors
 - Remove dead code, unused imports, orphaned files
 - Update stale documentation references (file paths, baselines, feature lists)
@@ -42,6 +43,7 @@ You may independently:
 - Review the tech stack, validate adequate configuration
 
 You must ask before:
+
 - Changing game mechanics, rules content, or editorial interpretations
 - Upgrading dependencies or changing the build pipeline
 - Restructuring project architecture or file layout conventions
@@ -63,7 +65,7 @@ Before you do anything else, verify the ground under your feet. This phase is a 
 
 ### Layer 0: Is this a project?
 
-```
+```text
 ls package.json
 ls tsconfig.json  # or equivalent config
 ls .git
@@ -73,7 +75,7 @@ Confirm: Is there a recognizable project structure? A package manager? Version c
 
 ### Layer 1: Can it install?
 
-```
+```text
 bun install
 ```
 
@@ -85,7 +87,7 @@ Check for agent instructions (`.github/copilot-instructions.md` or equivalent). 
 
 ### Layer 3: Does the pipeline exist?
 
-```
+```text
 bun run check
 ```
 
@@ -116,7 +118,7 @@ Understand the current state of the project without changing anything.
 
 If you haven't already (from Bootstrap):
 
-```
+```text
 bun run check
 ```
 
@@ -125,12 +127,13 @@ Record: test count, lint warnings, validation status, sync status. This is your 
 ### 1b. Pending Work
 
 Read these files (if they exist) to understand what's already been identified:
+
 - `docs/project-conventions.md` — project conventions and cross-cutting rules
 - `docs/pipeline.md` — pipeline behavior and roadmap
 
 ### 1c. Git State
 
-```
+```text
 git log --oneline -15
 git status
 git branch
@@ -141,6 +144,7 @@ What branch are you on? What was the last meaningful work? Are there uncommitted
 ### 1d. Codebase Scan
 
 Look for problems the pipeline doesn't catch:
+
 - Stale references in docs and instructions (file paths that don't exist, tools that were renamed, features that were removed)
 - Documentation that describes a different state than the code implements
 - Patterns that are inconsistent across similar files
@@ -183,6 +187,7 @@ Work through the plan, highest priority first.
 ### Delegation Pattern
 
 For self-contained tasks:
+
 1. **Identify** — "This test file needs 4 new test cases added."
 2. **Scope** — Define inputs, expected outputs, constraints, and how to verify.
 3. **Delegate** — Hand to a subagent with a clear brief.
@@ -215,6 +220,7 @@ When you've completed your work plan (or need to stop), produce a structured rep
 ### Side Effects
 
 Note any secondary effects of your work:
+
 - Files that were updated to reflect your changes (docs, instructions, agent config)
 - Baseline numbers that changed (test count, lint warnings, etc.)
 - New findings noted in the report
@@ -222,6 +228,7 @@ Note any secondary effects of your work:
 ### Recommendations
 
 Based on what you found, suggest:
+
 - What the next maintenance pass should focus on
 - Whether the current tooling is catching the right things
 - Whether any conventions need revisiting

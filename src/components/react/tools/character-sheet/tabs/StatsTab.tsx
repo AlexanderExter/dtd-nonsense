@@ -94,7 +94,7 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 		<section className="tab-panel">
 			{/* ---------- Derived Stats ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Derived Stats</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Derived Stats</h3>
 				<div className="mb-sm grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-md">
 					<DerivedStatEntry
 						baseValue={stats.sdBase}
@@ -141,7 +141,7 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						modValue={stats.speedMod}
 						onModChange={(v) => handleModChange("speed", v)}
 					>
-						<span className="mt-0.5 text-[0.78rem] text-text-muted">Run: {stats.runSpeed}m</span>
+						<span className="mt-0.5 text-text-muted text-xs">Run: {stats.runSpeed}m</span>
 					</DerivedStatEntry>
 					<DerivedStatEntry
 						baseValue={stats.resilienceBase}
@@ -166,19 +166,19 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 
 			{/* ---------- Characteristics ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Characteristics</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Characteristics</h3>
 				<CharGrid />
 			</div>
 
 			{/* ---------- Skills ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Skills</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Skills</h3>
 				<SkillGrid />
 			</div>
 
 			{/* ---------- Pool Calculator ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Pool Calculator</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Pool Calculator</h3>
 				<div>
 					<div className="flex flex-wrap items-center gap-xs">
 						<GameSelect
@@ -195,7 +195,7 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								</option>
 							))}
 						</GameSelect>
-						<span className="font-semibold text-[0.9rem] text-text-muted">+</span>
+						<span className="font-semibold text-sm text-text-muted">+</span>
 						<GameSelect
 							className="min-w-[120px] flex-1"
 							onChange={(e) => {
@@ -210,26 +210,26 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 								</option>
 							))}
 						</GameSelect>
-						<span className="font-semibold text-[0.9rem] text-text-muted">+</span>
+						<span className="font-semibold text-sm text-text-muted">+</span>
 						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
-						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+						<label className="flex items-center gap-1 text-text-muted text-xs">
 							<NumberInput min={0} onChange={setExtraRolled} value={extraRolled} />
 							<span>+Xk0</span>
 						</label>
 						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
-						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+						<label className="flex items-center gap-1 text-text-muted text-xs">
 							<NumberInput min={0} onChange={setExtraKept} value={extraKept} />
 							<span>+0kX</span>
 						</label>
 						{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput renders <input> */}
-						<label className="flex items-center gap-1 text-[0.78rem] text-text-muted">
+						<label className="flex items-center gap-1 text-text-muted text-xs">
 							<NumberInput onChange={setExtraFlat} value={extraFlat} />
 							<span>Flat</span>
 						</label>
 					</div>
-					<div className="mt-xs rounded-sm bg-bg px-sm py-xs text-center font-bold text-[1.1rem] text-accent">
+					<div className="mt-xs rounded-sm bg-bg px-sm py-xs text-center font-bold text-accent text-lg">
 						<strong>Pool: {poolNotation}</strong>
-						<label className="mt-xs flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap text-[0.78rem]">
+						<label className="mt-xs flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap text-xs">
 							<GameCheckbox
 								checked={poolSpec}
 								onChange={(e) => {
@@ -256,11 +256,11 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				</div>
 				{(char.savedPools || []).length > 0 && (
 					<div className="mt-sm flex flex-col gap-1">
-						<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">Saved Pools</h4>
+						<h4 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Saved Pools</h4>
 						<ul className="m-0 list-none p-0">
 							{(char.savedPools || []).map((p, idx) => (
 								<li
-									className="mb-1 flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-1 text-[0.85rem]"
+									className="mb-1 flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-1 text-sm"
 									// biome-ignore lint/suspicious/noArrayIndexKey: editable pool list identified by position
 									key={`pool-${p.label}-${idx}`}
 								>
@@ -268,7 +268,7 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									<span className="font-bold text-accent">{p.notation || p.pool || p.formula}</span>
 									{p.formula && (
 										<span
-											className="rounded-sm bg-bg px-1 py-0.5 text-[0.72rem] text-text-muted"
+											className="rounded-sm bg-bg px-1 py-0.5 text-text-muted text-xs"
 											title={p.formula}
 										>
 											({p.formula})
@@ -276,7 +276,7 @@ export function StatsTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									)}
 									{p.specialization && (
 										<span
-											className="rounded-sm bg-info/15 px-1 py-0.5 text-[0.72rem] text-info"
+											className="rounded-sm bg-info/15 px-1 py-0.5 text-info text-xs"
 											title="Specialization: reroll 1s"
 										>
 											Spec

@@ -3,11 +3,12 @@ import { Badge } from "@/components/react/ui/Badge";
 import { Button } from "@/components/react/ui/Button";
 import { GameTextarea } from "@/components/react/ui/GameTextarea";
 import { cn } from "@/lib/utils";
-import type { Combatant, CombatantCondition } from "./constants";
-import { CONDITIONS, getWoundStatus } from "./constants";
+import type { Combatant, CombatantCondition, ConditionDef } from "./constants";
+import { getWoundStatus } from "./constants";
 
 interface CombatantCardProps {
 	combatant: Combatant;
+	conditions: ConditionDef[];
 	hasTie: boolean;
 	isActive: boolean;
 	onAddCondition: (id: string, rect: DOMRect) => void;
@@ -21,8 +22,8 @@ interface CombatantCardProps {
 	roundNumber: number;
 }
 
-function conditionLabel(cond: CombatantCondition): string {
-	const def = CONDITIONS.find((d) => d.id === cond.conditionId);
+function conditionLabel(cond: CombatantCondition, conditions: ConditionDef[]): string {
+	const def = conditions.find((d) => d.id === cond.conditionId);
 	if (!def) return cond.conditionId;
 	return def.leveled && cond.level ? `${def.name} ${cond.level}` : def.name;
 }
@@ -32,7 +33,7 @@ const WOUND_FILL_COLORS: Record<string, string> = {
 	light: "bg-wound-light",
 	heavy: "bg-warning",
 	critical: "bg-error",
-	down: "bg-[#4a0000]",
+	down: "bg-wound-down",
 };
 
 const WOUND_BADGE_COLORS: Record<string, string> = {
@@ -45,6 +46,7 @@ const WOUND_BADGE_COLORS: Record<string, string> = {
 
 export function CombatantCard({
 	combatant: c,
+	conditions,
 	isActive,
 	hasTie,
 	roundNumber,
@@ -68,7 +70,7 @@ export function CombatantCard({
 	);
 
 	const initClasses = [
-		"flex items-center justify-center w-10 h-10 rounded-full text-[1.1rem] font-bold text-accent shrink-0 border-2 cursor-pointer",
+		"flex items-center justify-center w-10 h-10 rounded-full text-lg font-bold text-accent shrink-0 border-2 cursor-pointer",
 		isActive ? "border-accent bg-accent-bg-strong" : "border-accent-dim bg-bg",
 	].join(" ");
 
@@ -80,7 +82,7 @@ export function CombatantCard({
 	return (
 		<div className={cardClasses} data-id={c.id}>
 			{/* Top bar: initiative + name + badges */}
-			<div className="mb-sm flex items-center gap-md max-[768px]:flex-wrap">
+			<div className="mb-sm flex items-center gap-md max-tool-md:flex-wrap">
 				<button
 					className={initClasses}
 					onClick={() => onRerollInit(c.id)}
@@ -90,12 +92,7 @@ export function CombatantCard({
 					{c.initiativeTotal !== null ? c.initiativeTotal : "\u2014"}
 				</button>
 				<div className="flex-1">
-					<span
-						className={cn(
-							"font-semibold text-[1.1rem] text-text-primary",
-							c.hpCurrent <= 0 && "line-through",
-						)}
-					>
+					<span className={cn("font-semibold text-lg text-text-primary", c.hpCurrent <= 0 && "line-through")}>
 						{c.name}
 					</span>
 					{c.surprised && roundNumber <= 1 && (
@@ -115,7 +112,7 @@ export function CombatantCard({
 					)}
 				</div>
 				<span
-					className={`inline-block rounded-sm px-2 py-0.5 font-semibold text-[0.7rem] uppercase tracking-[0.5px] ${WOUND_BADGE_COLORS[woundStatus] || ""}`}
+					className={`inline-block rounded-sm px-2 py-0.5 font-semibold text-xs uppercase tracking-wide-px ${WOUND_BADGE_COLORS[woundStatus] || ""}`}
 				>
 					{woundStatus}
 				</span>
@@ -125,25 +122,24 @@ export function CombatantCard({
 			</div>
 
 			{/* Stat row */}
-			<div className="mb-sm flex flex-wrap items-center gap-x-lg gap-y-sm text-[0.85rem] text-text-muted max-[768px]:gap-sm">
+			<div className="mb-sm flex flex-wrap items-center gap-x-lg gap-y-sm text-sm text-text-muted max-tool-md:gap-sm">
 				<span className="flex items-center gap-xs font-medium text-text-primary" title="Static Defense">
-					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">SD</abbr>{" "}
-					{c.sd}
+					<abbr className="font-semibold text-text-dim text-xs uppercase tracking-wide-px">SD</abbr> {c.sd}
 				</span>
 				<span className="flex items-center gap-xs font-medium text-text-primary" title="Dexterity">
-					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Dex</abbr>{" "}
+					<abbr className="font-semibold text-text-dim text-xs uppercase tracking-wide-px">Dex</abbr>{" "}
 					{c.dexterity}
 				</span>
 				<span className="flex items-center gap-xs font-medium text-text-primary" title="Composure">
-					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Com</abbr>{" "}
+					<abbr className="font-semibold text-text-dim text-xs uppercase tracking-wide-px">Com</abbr>{" "}
 					{c.composure}
 				</span>
 				<span className="flex items-center gap-xs font-medium text-text-primary" title="Willpower">
-					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Wil</abbr>{" "}
+					<abbr className="font-semibold text-text-dim text-xs uppercase tracking-wide-px">Wil</abbr>{" "}
 					{c.willpower}
 				</span>
 				<span className="flex items-center gap-xs font-medium text-text-primary" title="Resilience">
-					<abbr className="font-semibold text-[0.7rem] text-text-dim uppercase tracking-[0.5px]">Res</abbr>{" "}
+					<abbr className="font-semibold text-text-dim text-xs uppercase tracking-wide-px">Res</abbr>{" "}
 					{c.resilience}
 				</span>
 			</div>
@@ -151,7 +147,7 @@ export function CombatantCard({
 			{/* HP bar */}
 			<div className="my-sm">
 				<div className="mb-1 flex items-center justify-between">
-					<span className="font-semibold text-[0.8rem] text-text-muted">HP</span>
+					<span className="font-semibold text-text-muted text-xs">HP</span>
 					<div className="flex items-center gap-0.5">
 						<Button onClick={() => onModifyHP(c.id, -5)} size="sm">
 							-5
@@ -159,7 +155,7 @@ export function CombatantCard({
 						<Button onClick={() => onModifyHP(c.id, -1)} size="sm">
 							-1
 						</Button>
-						<span className="font-bold text-[0.8rem] text-text-primary">
+						<span className="font-bold text-text-primary text-xs">
 							{c.hpCurrent} / {c.hpMax}
 						</span>
 						<Button onClick={() => onModifyHP(c.id, 1)} size="sm">
@@ -199,10 +195,10 @@ export function CombatantCard({
 			)}
 
 			{/* Action budget */}
-			<div className="my-sm flex flex-wrap items-center gap-sm max-[768px]:gap-1">
+			<div className="my-sm flex flex-wrap items-center gap-sm max-tool-md:gap-1">
 				<button
 					className={cn(
-						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-2xs text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.half1 && "!bg-accent-dim !border-accent !text-text-primary",
 						c.actionBudget.fullAction && "pointer-events-none opacity-35",
 					)}
@@ -213,7 +209,7 @@ export function CombatantCard({
 				</button>
 				<button
 					className={cn(
-						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-2xs text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.half2 && "!bg-accent-dim !border-accent !text-text-primary",
 						c.actionBudget.fullAction && "pointer-events-none opacity-35",
 					)}
@@ -224,7 +220,7 @@ export function CombatantCard({
 				</button>
 				<button
 					className={cn(
-						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-2xs text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.fullAction && "!bg-accent-dim !border-accent !text-text-primary",
 						(c.actionBudget.half1 || c.actionBudget.half2) && "pointer-events-none opacity-35",
 					)}
@@ -235,7 +231,7 @@ export function CombatantCard({
 				</button>
 				<button
 					className={cn(
-						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-[3px] text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
+						"inline-flex cursor-pointer select-none items-center gap-1 rounded-sm border border-border bg-bg px-2 py-2xs text-text-muted text-xs transition-all duration-150 hover:border-accent-dim",
 						c.actionBudget.reaction && "!bg-accent-dim !border-accent !text-text-primary",
 					)}
 					onClick={() => onToggleAction(c.id, "reaction")}
@@ -249,14 +245,14 @@ export function CombatantCard({
 			<div className="my-sm flex flex-wrap items-center gap-1">
 				{c.conditions.map((cond) => (
 					<span
-						className="inline-flex items-center gap-1 whitespace-nowrap rounded-xl border border-error-border bg-error-bg px-2 py-0.5 text-[0.72rem] text-error"
+						className="inline-flex items-center gap-1 whitespace-nowrap rounded-xl border border-error-border bg-error-bg px-2 py-0.5 text-error text-xs"
 						key={cond.conditionId}
 					>
-						{conditionLabel(cond)}
+						{conditionLabel(cond, conditions)}
 						<button
-							className="cursor-pointer border-none bg-transparent p-0 text-[0.8rem] text-error leading-none opacity-60 hover:opacity-100"
+							aria-label="Remove condition"
+							className="cursor-pointer border-none bg-transparent p-0 text-error text-xs leading-none opacity-60 hover:opacity-100"
 							onClick={() => onRemoveCondition(c.id, cond.conditionId)}
-							title="Remove condition"
 							type="button"
 						>
 							&times;
@@ -264,7 +260,8 @@ export function CombatantCard({
 					</span>
 				))}
 				<button
-					className="inline-flex h-[22px] w-[22px] cursor-pointer items-center justify-center rounded-full border border-border border-dashed bg-surface-raised text-[0.85rem] text-text-dim leading-none hover:border-accent hover:text-accent"
+					aria-label="Add condition"
+					className="inline-flex h-[22px] w-[22px] cursor-pointer items-center justify-center rounded-full border border-border border-dashed bg-surface-raised text-sm text-text-dim leading-none hover:border-accent hover:text-accent"
 					onClick={handleAddCondition}
 					type="button"
 				>

@@ -13,16 +13,18 @@ Post-change coherence audit. Run after sweeping changes, large refactors, or mul
 Before checking anything, understand what changed:
 
 1. **List recent changes:**
-    ```
+
+    ```text
     git diff --stat HEAD~5   # or appropriate range
     git status
     ```
+
 2. **Categorize changes** by layer:
-    - **Data** (JSON files, Zod schemas)
-    - **Code** (JS/TS tools, TypeScript pipeline)
-    - **Content** (markdown rules, cleaned-references)
-    - **Documentation** (docs/, instructions, skills)
-    - **Config** (.gitignore, biome.json, bunfig.toml, prompts)
+  - **Data** (JSON files, Zod schemas)
+  - **Code** (JS/TS tools, TypeScript pipeline)
+  - **Content** (markdown rules, cleaned-references)
+  - **Documentation** (docs/, instructions, skills)
+  - **Config** (.gitignore, biome.json, bunfig.toml, prompts)
 
 This determines which downstream checks matter.
 
@@ -44,7 +46,7 @@ This step exists because you are at peak context fatigue. Treat your own memory 
 
 Run the pipeline to catch machine-detectable issues:
 
-```
+```text
 bun run validate       # Schema validation — must pass
 bun run lint:data      # Terminology + formatting
 bun run sync-check     # Markdown ↔ JSON sync comparison
@@ -52,6 +54,7 @@ bun run knip           # Dead code detection — unused files, exports, deps
 ```
 
 Compare results against known baselines:
+
 - Validate + xref: 12/12 pass
 - Lint: 0 errors (warnings baseline may shift after toolchain upgrades — compare to last known good state)
 - Knip: 0 unused files, 0 unused exports (any finding is a regression)
@@ -116,15 +119,15 @@ Things automated tools can't catch:
 Before reporting, surface your uncertainty. This is not a failure mode — it is valuable intelligence that dies if not captured.
 
 1. **Flag low-confidence areas.** List anything you are less than ~90% confident about. This includes:
-    - Changes where you chose between alternatives and aren't sure you chose right
-    - Files you edited but didn't fully re-verify after subsequent changes
-    - Interactions between components where you're unsure of the coupling
-    - Areas where you deferred investigation ("this is probably fine")
+  - Changes where you chose between alternatives and aren't sure you chose right
+  - Files you edited but didn't fully re-verify after subsequent changes
+  - Interactions between components where you're unsure of the coupling
+  - Areas where you deferred investigation ("this is probably fine")
 2. **Distinguish doubt types:**
-    - **"I didn't check"** — knowable but unverified. These are action items.
-    - **"I checked but I'm unsure"** — ambiguous results. These need a second opinion.
-    - **"This works but feels fragile"** — technical debt signals. These are observations.
-3. **Do not bury uncertainty in hedging language.** Instead of writing "this _should_ be fine," write "I did not verify this — flagging as unchecked." Be explicit.
+  - **"I didn't check"** — knowable but unverified. These are action items.
+  - **"I checked but I'm unsure"** — ambiguous results. These need a second opinion.
+  - **"This works but feels fragile"** — technical debt signals. These are observations.
+3. **Do not bury uncertainty in hedging language.** Instead of writing "this *should* be fine," write "I did not verify this — flagging as unchecked." Be explicit.
 
 ---
 
@@ -166,11 +169,12 @@ Include the handover in the sanity check report.
 
 Start the Astro dev server and spot-check rendering:
 
-```
+```text
 bun run dev
 ```
 
 Verify:
+
 1. **Content pages** — spot-check 2-3 cleaned-references and 1-2 book chapters. Confirm markdown renders correctly (no MDX parse errors, no broken formatting).
 2. **Tool pages** — load each of the 6 tools (`/tools/*`). Confirm the React island mounts (no blank page, no console errors).
 3. **Navigation** — sidebar links resolve, search returns results.

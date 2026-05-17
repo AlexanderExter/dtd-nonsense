@@ -8,7 +8,7 @@ All commands run via npm scripts (backed by `bun`):
 
 | Script                  | Command                              | Purpose                                             |
 | ----------------------- | ------------------------------------ | --------------------------------------------------- |
-| `bun run validate`      | `bun run scripts/validate.ts`        | Validate all 12 JSON data files against Zod schemas |
+| `bun run validate`      | `bun run scripts/validate.ts`        | Validate all 15 JSON data files against Zod schemas |
 | `bun run lint:data`     | `bun run scripts/lint.ts`            | Lint markdown for terminology, formatting, encoding |
 | `bun run sync-check`    | `bun run scripts/sync-check.ts`      | Detect drift between markdown and JSON data         |
 | `bun run knip`          | `knip`                               | Dead code detection: unused files, exports, types   |
@@ -66,7 +66,7 @@ Used by the `project-maintenance` prompt (`.github/prompts/project-maintenance.p
 
 ### `bun run validate`
 
-Validate all 12 JSON data files in `data/` against their Zod schemas.
+Validate all 15 JSON data files in `data/` against their Zod schemas.
 
 ```bash
 bun run validate                              # Validate all files
@@ -195,7 +195,7 @@ scripts/
 ├── maintenance-recon.mjs  Comprehensive project discovery for maintenance sessions
 └── codemods/              One-off jscodeshift transforms (committed for review, deleted post-merge)
 
-src/lib/dtd/schemas/  Zod schemas for all 12 JSON data files
+src/lib/dtd/schemas/  Zod schemas for all 15 JSON data files
 ├── common.ts         Shared types (CharacteristicGroup, CharacteristicId, etc.)
 ├── index.ts          Schema registry — maps filenames to validation schemas
 ├── races.ts          races.json schema
@@ -224,7 +224,7 @@ The Zod schemas in `src/lib/dtd/schemas/` are the **single source of truth** for
 
 ### Validation Status
 
-All 12 JSON data files pass schema validation. Cross-reference checks produce warnings for genuine data quality issues (abbreviated feat names in `classes.json` like "Weapon Prof" instead of "Weapon Proficiency", and missing skills like "Craft", "Brawling", "Intimidate") — these are real data gaps, not checker bugs.
+All 15 JSON data files pass schema validation. Cross-reference checks produce warnings for genuine data quality issues (abbreviated feat names in `classes.json` like "Weapon Prof" instead of "Weapon Proficiency", and missing skills like "Craft", "Brawling", "Intimidate") — these are real data gaps, not checker bugs.
 
 > **Exit code behavior:** `bun run scripts/validate.ts --xref` exits with code 1 if any cross-ref warnings exist. For CI, use `bun run validate` (exits 0 when schemas pass) and run `--xref` as an informational step that's allowed to fail.
 

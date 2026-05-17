@@ -1,6 +1,7 @@
 import { Dialog, VisuallyHidden } from "radix-ui";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "./Button";
 
 interface ModalProps {
 	children: ReactNode;
@@ -22,9 +23,8 @@ export function Modal({ open, onClose, title, maxWidth = "500px", children, clas
 			<Dialog.Portal>
 				<Dialog.Overlay className="fixed inset-0 z-[200] bg-overlay" />
 				<Dialog.Content
-					aria-describedby={undefined}
 					className={cn(
-						"fixed top-1/2 left-1/2 z-[201] max-h-[80vh] w-full -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg border border-border bg-surface p-xl",
+						"fixed top-1/2 left-1/2 z-[201] max-h-[80vh] w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg border border-border bg-surface p-xl sm:w-full",
 						className,
 					)}
 					onEscapeKeyDown={() => onClose()}
@@ -34,7 +34,7 @@ export function Modal({ open, onClose, title, maxWidth = "500px", children, clas
 						<div className="mb-md flex items-center justify-between">
 							<Dialog.Title className="m-0 text-accent">{title}</Dialog.Title>
 							<Dialog.Close asChild>
-								<button aria-label="Close" className="btn btn-sm" type="button">
+								<button aria-label="Close" className={buttonVariants({ size: "sm" })} type="button">
 									&times;
 								</button>
 							</Dialog.Close>
@@ -44,6 +44,9 @@ export function Modal({ open, onClose, title, maxWidth = "500px", children, clas
 							<Dialog.Title>Dialog</Dialog.Title>
 						</VisuallyHidden.Root>
 					)}
+					<VisuallyHidden.Root>
+						<Dialog.Description>Dialog content</Dialog.Description>
+					</VisuallyHidden.Root>
 					{children}
 				</Dialog.Content>
 			</Dialog.Portal>

@@ -51,7 +51,7 @@ Vehicle/Ship SD uses a different formula than character SD:
 
 ## Architecture
 
-**Dependencies:** `import { loadData } from '@/lib/dtd/core.ts'`, `import { roll } from '@/lib/dtd/dice.ts'`
+**Dependencies:** `import { useAllData } from '@/hooks/use-data'`, `import { roll } from '@/lib/dtd/dice.ts'`
 
 **Data sources:** `ships.json`
 

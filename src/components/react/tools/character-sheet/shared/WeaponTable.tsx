@@ -211,8 +211,8 @@ export function WeaponTable({ type }: WeaponTableProps) {
 
 	const colCount = isMelee ? 8 : 8;
 	const thClass =
-		"text-[0.72rem] uppercase tracking-[0.5px] px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap";
-	const tdClass = "py-[3px] px-sm border-b border-border align-middle";
+		"text-xs uppercase tracking-wide-px px-sm py-xs text-text-muted border-b border-border text-left font-semibold whitespace-nowrap";
+	const tdClass = "py-2xs px-sm border-b border-border align-middle";
 	return (
 		<div>
 			<SectionHeading>{isMelee ? "Melee Weapons" : "Ranged Weapons"}</SectionHeading>
@@ -221,7 +221,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 					<option key={n} value={n} />
 				))}
 			</datalist>
-			<table className="w-full border-collapse text-[0.8rem]">
+			<table className="w-full border-collapse text-xs">
 				<thead>
 					<tr>
 						<th className={thClass} />
@@ -282,7 +282,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 								<tr className={isOpen ? "bg-bg/50" : undefined}>
 									<td className={`${tdClass} w-7 text-center`}>
 										<button
-											className="cursor-pointer border-none bg-transparent p-0 text-[0.75rem] text-text-muted leading-none"
+											className="cursor-pointer border-none bg-transparent p-0 text-text-muted text-xs leading-none"
 											onClick={() => toggleExpanded(idx)}
 											title={isOpen ? "Collapse" : "Expand weapon details"}
 											type="button"
@@ -300,24 +300,24 @@ export function WeaponTable({ type }: WeaponTableProps) {
 										/>
 									</td>
 									<td className={`${tdClass} whitespace-nowrap`}>
-										<span className="font-bold text-[0.85rem] text-accent">{attackNotation}</span>
+										<span className="font-bold text-accent text-sm">{attackNotation}</span>
 									</td>
 									<td className={`${tdClass} whitespace-nowrap`}>
-										<span className="font-bold text-[0.85rem] text-accent">{damageNotation}</span>
+										<span className="font-bold text-accent text-sm">{damageNotation}</span>
 									</td>
 									<td className={`${tdClass} text-center`}>
-										<span className="text-[0.82rem]">{w.pen || "—"}</span>
+										<span className="text-xs">{w.pen || "—"}</span>
 									</td>
 									<td className={tdClass}>
-										<span className="text-[0.78rem]">{w.damageType || "—"}</span>
+										<span className="text-xs">{w.damageType || "—"}</span>
 									</td>
 									<td className={tdClass}>
-										<span className="text-[0.78rem] text-text-muted">
+										<span className="text-text-muted text-xs">
 											{w.special || w.qualities || "—"}
 										</span>
 									</td>
 									<td className={tdClass}>
-										<span className="text-[0.78rem] text-text-muted">{w.notes || "—"}</span>
+										<span className="text-text-muted text-xs">{w.notes || "—"}</span>
 									</td>
 									<td className={`${tdClass} w-9 text-center`}>
 										<button
@@ -338,12 +338,12 @@ export function WeaponTable({ type }: WeaponTableProps) {
 											<div className="@container grid grid-cols-2 gap-md">
 												{/* ── Attack Roll ── */}
 												<div className="flex flex-col gap-xs rounded border border-border/50 bg-surface/50 p-sm">
-													<span className="font-semibold text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">
+													<span className="font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 														Attack Roll
 													</span>
 													<div className="flex flex-wrap items-center gap-sm">
 														<GameSelect
-															className="min-w-[120px] text-[0.78rem]"
+															className="min-w-[120px] text-xs"
 															onChange={(e) =>
 																handleSkillChange((e.target as HTMLSelectElement).value)
 															}
@@ -357,12 +357,12 @@ export function WeaponTable({ type }: WeaponTableProps) {
 															))}
 														</GameSelect>
 														{atkSkillVal > 0 && (
-															<span className="text-[0.78rem] text-text-muted">
+															<span className="text-text-muted text-xs">
 																→ {skillDice}k{skillKeep}
 															</span>
 														)}
 													</div>
-													<div className="flex items-center gap-sm text-[0.78rem]">
+													<div className="flex items-center gap-sm text-xs">
 														{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput wraps input in div */}
 														<label className="flex items-center gap-1 text-text-muted">
 															+Dice
@@ -399,7 +399,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 														)}
 													</div>
 													{atk.parts.length > 1 && (
-														<span className="text-[0.65rem] text-text-dim">
+														<span className="text-text-dim text-xs">
 															{atk.parts.join(" → ")}
 														</span>
 													)}
@@ -407,10 +407,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 
 												{/* ── Damage Roll ── */}
 												<div className="flex flex-col gap-xs rounded border border-border/50 bg-surface/50 p-sm">
-													<span className="font-semibold text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">
+													<span className="font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 														Damage Roll
 													</span>
-													<div className="flex items-center gap-sm text-[0.78rem]">
+													<div className="flex items-center gap-sm text-xs">
 														{/* biome-ignore lint/a11y/noLabelWithoutControl: NumberInput wraps input in div */}
 														<label className="flex items-center gap-1 text-text-muted">
 															Dice
@@ -446,7 +446,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 														)}
 													</div>
 													{dmg.parts.length > 1 && (
-														<span className="text-[0.65rem] text-text-dim">
+														<span className="text-text-dim text-xs">
 															{dmg.parts.join(" → ")}
 														</span>
 													)}
@@ -454,14 +454,14 @@ export function WeaponTable({ type }: WeaponTableProps) {
 
 												{/* ── Weapon Info ── */}
 												<div className="flex flex-col gap-xs rounded border border-border/50 bg-surface/50 p-sm">
-													<span className="font-semibold text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">
+													<span className="font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 														Weapon Info
 													</span>
 													<div className="flex flex-wrap items-center gap-sm">
-														<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+														<label className="flex items-center gap-1 text-text-muted text-xs">
 															Class
 															<GameSelect
-																className="max-w-[110px] px-0.5 py-[1px] text-[0.78rem]"
+																className="max-w-[110px] px-0.5 py-[1px] text-xs"
 																onChange={(e) =>
 																	handleFieldChange(
 																		idx,
@@ -479,7 +479,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																))}
 															</GameSelect>
 														</label>
-														<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+														<label className="flex items-center gap-1 text-text-muted text-xs">
 															Pen
 															<GameInput
 																className="w-12"
@@ -493,10 +493,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																value={w.pen || ""}
 															/>
 														</label>
-														<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+														<label className="flex items-center gap-1 text-text-muted text-xs">
 															Type
 															<GameSelect
-																className="max-w-[100px] px-0.5 py-[1px] text-[0.78rem]"
+																className="max-w-[100px] px-0.5 py-[1px] text-xs"
 																onChange={(e) =>
 																	handleFieldChange(
 																		idx,
@@ -516,7 +516,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 														</label>
 														{!isMelee && (
 															<>
-																<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+																<label className="flex items-center gap-1 text-text-muted text-xs">
 																	Range
 																	<GameInput
 																		className="w-14"
@@ -530,7 +530,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																		value={(w as RangedWeapon).range || ""}
 																	/>
 																</label>
-																<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+																<label className="flex items-center gap-1 text-text-muted text-xs">
 																	RoF
 																	<GameInput
 																		className="w-10"
@@ -544,7 +544,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																		value={(w as RangedWeapon).rof || ""}
 																	/>
 																</label>
-																<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+																<label className="flex items-center gap-1 text-text-muted text-xs">
 																	Clip
 																	<GameInput
 																		className="w-10"
@@ -558,7 +558,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																		value={(w as RangedWeapon).clip || ""}
 																	/>
 																</label>
-																<label className="flex items-center gap-1 text-[0.72rem] text-text-muted">
+																<label className="flex items-center gap-1 text-text-muted text-xs">
 																	Reload
 																	<GameInput
 																		className="w-10"
@@ -576,7 +576,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 														)}
 													</div>
 													<div className="flex gap-sm">
-														<label className="flex flex-1 items-center gap-1 text-[0.72rem] text-text-muted">
+														<label className="flex flex-1 items-center gap-1 text-text-muted text-xs">
 															Special
 															<GameInput
 																className="flex-1"
@@ -590,7 +590,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 																value={w.special || w.qualities || ""}
 															/>
 														</label>
-														<label className="flex flex-1 items-center gap-1 text-[0.72rem] text-text-muted">
+														<label className="flex flex-1 items-center gap-1 text-text-muted text-xs">
 															Notes
 															<GameInput
 																className="flex-1"
@@ -609,10 +609,10 @@ export function WeaponTable({ type }: WeaponTableProps) {
 
 												{/* ── Modifiers ── */}
 												<div className="flex flex-col gap-xs rounded border border-border/50 bg-surface/50 p-sm">
-													<span className="font-semibold text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">
+													<span className="font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 														Modifiers
 													</span>
-													<div className="flex flex-wrap gap-sm text-[0.78rem]">
+													<div className="flex flex-wrap gap-sm text-xs">
 														<GameCheckbox
 															checked={w.proficient}
 															label={`Proficient (+${level} dice)`}
