@@ -1,10 +1,21 @@
 # Quick Reference
 
-Searchable, categorized rules reference for at-the-table lookup. Provides rapid access to commonly needed rules, tables, and formulas.
+Categorized rules reference for at-the-table lookup. Provides rapid access to commonly needed rules, tables, and formulas.
 
-**Phase:** Complete
-**Files:** `src/pages/tools/quick-reference.astro`, `src/components/react/tools/quick-reference/` (13 components)
-**Pattern:** React Island via `client:only="react"` with module-level Zustand
+**Phase:** Complete (migrated to Starlight MDX)
+**File:** `cleaned-references/00-Quick-Reference.mdx`
+**URL:** `/rules/00-quick-reference/`
+
+---
+
+## Migration History
+
+The Quick Reference was originally a React island tool (`src/pages/tools/quick-reference.astro` + 13 React components + Zustand store). It was migrated to a native Starlight MDX page to:
+
+- **Eliminate maintenance drift** — content was hardcoded in TypeScript and had to be manually synced with cleaned-references
+- **Leverage Pagefind** — Ctrl+K search across the entire site now includes QRef content
+- **Reduce bundle size** — zero client-side JavaScript instead of a React island
+- **Unify UX** — same sidebar, theme, TOC, and navigation as all other rules pages
 
 ---
 
@@ -12,115 +23,46 @@ Searchable, categorized rules reference for at-the-table lookup. Provides rapid 
 
 ### Category Tabs
 
-| Tab        | Content                                                     |
-| ---------- | ----------------------------------------------------------- |
-| Core Rules | Dice mechanics, Tests, Raises/Checks, TN ladder             |
-| Combat     | Action economy, attack resolution, damage, critical effects |
-| Magic      | Casting Tests, schools, spell list summaries                |
-| Conditions | Full condition list with mechanical effects                 |
-| Equipment  | Weapon/armor properties, quality keywords                   |
-| Formulas   | All derived stat formulas (SD, HP, MD, Initiative, etc.)    |
+Uses Starlight `<Tabs>` with `syncKey="qref-section"` for 8 categories:
 
-### Search
+| Tab | Content |
+| --- | --- |
+| Actions | 34 combat/utility actions with type, tags, and effect |
+| Conditions | 14 status effects with mechanical effects and duration |
+| Combat Mods | Range bands, melee modifiers, cover AP, hit locations |
+| Formulas | All derived stat formulas + TN difficulty ladder |
+| Magic | 9 magic schools with characteristic and theme |
+| Sword Schools | 9 melee combat disciplines with skill/weapon/action |
+| Gun Kata | 6 ranged combat disciplines |
+| Weapon Props | 31 weapon property keywords with mechanical effects |
+| Warp Perils | Psychic Phenomena + Perils of the Warp tables |
 
-- **Global search** — filters across all categories in real time
-- **Keyword highlighting** — matched terms highlighted in results
-- **Section anchors** — deep-link to specific rule sections via URL hash
+### Cross-References
 
-### Content Display
-
-- **Collapsible sections** — accordion-style within each tab
-- **Tables** — pipe-formatted tables for reference data (TN ladder, action costs, condition effects)
-- **Formula blocks** — derived stat formulas with variable breakdowns
-- **Cross-references** — links between related rules (e.g., "See Conditions" from Combat)
+Each tab includes a "See [full page]" link to the corresponding cleaned-reference for deeper reading.
 
 ---
 
-## Architecture
+## Content Source
 
-**Dependencies:** None (self-contained Astro page)
+Content is authored directly in MDX — **single source of truth**. No data duplication, no sync required.
 
-### Content Source
+Content corresponds to:
 
-Rules content is **hardcoded in HTML** — not loaded from JSON. This is intentional: the Quick Reference is a curated subset of rules optimized for at-table lookup, not a raw data dump.
-
-Content was extracted from `cleaned-references/` files:
-
-- `01-Core-Rules.mdx` → Core Rules tab
-- `14-Combat.mdx` → Combat tab
-- `11-Magic.mdx` → Magic tab
+- `14-Combat.mdx` → Actions tab, Combat Mods tab
 - `16-Conditions.mdx` → Conditions tab
-- `10-Equipment.mdx` → Equipment tab
-- Formula reference from `copilot-instructions.md` → Formulas tab
-
-### Search Implementation
-
-```javascript
-QRef.search = function (query) {
-    const sections = document.querySelectorAll(".qref-section");
-    sections.forEach((section) => {
-        const text = section.textContent.toLowerCase();
-        const match = text.includes(query.toLowerCase());
-        section.style.display = match ? "" : "none";
-        if (match) highlightMatches(section, query);
-    });
-};
-```
-
-Search is client-side text matching — no index, no fuzzy matching. Fast enough for the content volume.
-
----
-
-## Persistence
-
-| Key            | Content                   |
-| -------------- | ------------------------- |
-| `dtd-qref-tab` | Last active tab selection |
-
-Minimal persistence — remembers which tab was open.
-
----
-
-## UI Layout
-
-```text
-┌──────────────────────────────────────────────────────────┐
-│  Search: [________________]                              │
-│                                                          │
-│  [Core Rules] [Combat] [Magic] [Conditions] [Equip] [F] │
-│                                                          │
-│  ▾ Dice Mechanics                                        │
-│    Roll XkY: roll X d10s, keep Y highest                 │
-│    Dice explode on 10 (reroll and add)                   │
-│    Raise = every 5 above TN                              │
-│    Check = every 5 below TN                              │
-│                                                          │
-│  ▸ Target Number Ladder                                  │
-│  ▸ Test Types                                            │
-│  ▾ Action Economy                                        │
-│    Full Action: attack, cast, charge                     │
-│    Half Action: move, aim, ready                         │
-│    ...                                                   │
-└──────────────────────────────────────────────────────────┘
-```
-
----
-
-## Design Decisions
-
-| Decision        | Choice           | Rationale                             |
-| --------------- | ---------------- | ------------------------------------- |
-| Content source  | Hardcoded HTML   | Curated subset, not exhaustive dump   |
-| Search approach | Text matching    | Simple, fast, no build step           |
-| Tab persistence | localStorage     | Resume where you left off             |
-| Formula display | Formatted blocks | Visual clarity for at-table reference |
+- `03-Characteristics-Skills.mdx` → Formulas tab
+- `11-Magic.mdx` → Magic tab, Warp Perils tab
+- `12-Sword-Schools.mdx` → Sword Schools tab
+- `13-Gun-Kata.mdx` → Gun Kata tab
+- `10-Equipment.mdx` → Weapon Props tab
 
 ---
 
 ## Verification
 
-1. Search "grapple" → verify combat section appears with highlight
-2. Switch tabs → refresh → verify last tab restored
-3. All formula blocks → verify they match formula reference in development guide
-4. Condition list → verify completeness against `16-Conditions.md`
-5. Deep link via URL hash → verify correct section scrolls into view
+1. Navigate to `/rules/00-quick-reference/` → page loads with tabs
+2. Switch between all 8 tabs → content renders correctly
+3. Use Ctrl+K search → QRef content appears in global search results
+4. "See [page]" links in each tab → navigate to correct full reference page
+5. Print the page → tables render cleanly

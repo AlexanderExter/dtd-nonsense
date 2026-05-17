@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, mock } from "bun:test";
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { KOBOLD_HERO, TESTING_GOBLIN } from "../../__test-utils__/mock-characters";
 import { MOCK_GAME_DATA } from "../../__test-utils__/mock-game-data";
 import { useCharSheetStore } from "./store";
 
@@ -173,5 +174,30 @@ describe("CharacterSheetApp", () => {
 		await waitFor(() => {
 			expect(useCharSheetStore.getState().gameData).not.toBeNull();
 		});
+	});
+
+	it("renders Testing Goblin character correctly", () => {
+		mockUseAllData = () => ({ data: MOCK_GAME_DATA, loading: false, error: null });
+		useCharSheetStore.setState({
+			gameData: MOCK_GAME_DATA,
+			charId: TESTING_GOBLIN.id,
+			char: TESTING_GOBLIN as any,
+			charList: [{ id: TESTING_GOBLIN.id, name: TESTING_GOBLIN.name }],
+		});
+		render(<CharacterSheetApp />);
+		// Name appears in both the character switcher and the Identity tab input
+		expect(screen.getByText("Testing Goblin")).toBeTruthy();
+	});
+
+	it("renders Kobold Hero character with full state", () => {
+		mockUseAllData = () => ({ data: MOCK_GAME_DATA, loading: false, error: null });
+		useCharSheetStore.setState({
+			gameData: MOCK_GAME_DATA,
+			charId: KOBOLD_HERO.id,
+			char: KOBOLD_HERO as any,
+			charList: [{ id: KOBOLD_HERO.id, name: KOBOLD_HERO.name }],
+		});
+		render(<CharacterSheetApp />);
+		expect(screen.getByText("Krix the Unbowed")).toBeTruthy();
 	});
 });

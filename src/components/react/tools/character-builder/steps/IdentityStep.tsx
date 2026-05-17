@@ -20,7 +20,7 @@ export function IdentityStep() {
 	return (
 		<div>
 			<div className="mb-md flex-1">
-				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-name">
+				<label className="mb-xs block text-sm text-text-muted" htmlFor="char-name">
 					Name *
 				</label>
 				<GameInput
@@ -32,7 +32,7 @@ export function IdentityStep() {
 				/>
 			</div>
 			<div className="mb-md flex-1">
-				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-player">
+				<label className="mb-xs block text-sm text-text-muted" htmlFor="char-player">
 					Player
 				</label>
 				<GameInput
@@ -44,7 +44,7 @@ export function IdentityStep() {
 				/>
 			</div>
 			<div className="mb-md flex-1">
-				<label className="mb-xs block text-[0.85rem] text-text-muted" htmlFor="char-concept">
+				<label className="mb-xs block text-sm text-text-muted" htmlFor="char-concept">
 					Concept
 				</label>
 				<GameInput

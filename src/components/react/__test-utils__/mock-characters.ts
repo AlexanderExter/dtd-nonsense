@@ -1,0 +1,515 @@
+/**
+ * Named test character and ship fixtures for tool tests.
+ *
+ * These are complete, realistic game entities that exercise meaningful
+ * state in every tool. They're intentionally fun and flavorful — tests
+ * should be a joy to read.
+ *
+ * Fixtures:
+ * - TESTING_GOBLIN: A mischievous Level 3 goblin rogue (Setting Sun + Shadow Hand)
+ * - KOBOLD_HERO: A Kobold paladin/guardsman with faith powers (Devoted Spirit + White Raven)
+ * - TEST_COOL_SHIP: A decked-out Sultana-class frigate
+ *
+ * Usage:
+ *   import { TESTING_GOBLIN, KOBOLD_HERO, TEST_COOL_SHIP } from "@/components/react/__test-utils__/mock-characters";
+ */
+
+import type { Combatant } from "@/components/react/tools/combat-tracker/constants";
+import type { ShipState } from "@/components/react/tools/ship-builder/constants";
+import type { CharacterData, SpecialAttackEntry } from "@/lib/dtd/types";
+
+// =============================================================================
+// TESTING GOBLIN — Sneaky Level 3 Rogue (Setting Sun 2, Shadow Hand 1)
+// =============================================================================
+
+export const TESTING_GOBLIN: CharacterData = {
+	id: "test-goblin-001",
+	name: "Testing Goblin",
+	player: "QA Department",
+	race: "goblin",
+	raceCharBonus: "dexterity",
+	exaltation: "none",
+	exaltationNotes: "Too small for the gods to notice",
+	concept: "Professional mischief-maker and chaos agent",
+	description: "A three-foot-tall green menace in mismatched leather. Smells faintly of burnt code.",
+	age: "7",
+	height: "3'2\"",
+	weight: "38 lbs",
+	alignment: "Khorn",
+	devotion: 1,
+	powerStat: 1,
+	pushAmount: 0,
+	aura: 0,
+	auraSource: "",
+	fettered: false,
+	sanctioned: false,
+	heroPointsMax: 3,
+	heroPointsCurrent: 2,
+	heroPointsBurnt: 1,
+	totalXP: 1500,
+	xpSpent: 1350,
+	currentHP: 12,
+	currentResolve: 4,
+	resourceCurrent: 0,
+	naturalArmor: 0,
+	notes: "Will bite if cornered. Has strong opinions about test coverage.",
+	equipment: "Lockpicks, smoke bombs, a rubber duck for debugging",
+	languages: ["Trade", "Goblin", "Thieves' Cant"],
+	characteristics: {
+		strength: 1,
+		dexterity: 4,
+		constitution: 2,
+		intelligence: 3,
+		wisdom: 2,
+		willpower: 2,
+		charisma: 3,
+		fellowship: 2,
+		composure: 3,
+	},
+	skills: {
+		acrobatics: 2,
+		athletics: 1,
+		stealth: 3,
+		deceive: 3,
+		larceny: 3,
+		perception: 2,
+		scrutiny: 1,
+		brawl: 2,
+	},
+	skillSpecialties: {
+		stealth: "Urban",
+		deceive: "Fast Talk",
+	},
+	charSpecialties: {},
+	modifiers: {
+		hitPoints: 8,
+		staticDefense: 22,
+		mentalDefense: 20,
+		resilience: 2,
+		resolve: 4,
+		speed: 6,
+		initiative: 0,
+	},
+	classes: [
+		{ classId: "rogue", level: 2 },
+		{ classId: "assassin", level: 1 },
+	],
+	classNotes: "Took Rogue for the skills, Assassin for the aesthetic",
+	feats: [
+		{ name: "Catfall", notes: "Reduces fall damage" },
+		{ name: "Light Sleeper", notes: "Always awake for ambushes" },
+		{ name: "Swift Attack", notes: "Extra attack when dual-wielding" },
+	],
+	assets: [{ name: "Lucky", notes: "Reroll one die per session" }],
+	hindrances: [{ name: "Compulsion (Shiny Objects)", notes: "Must pocket anything that glitters" }],
+	backgrounds: [
+		{ name: "Allies", dots: 1, notes: "A network of sewer goblins" },
+		{ name: "Holdings", dots: 2, notes: "A suspiciously well-furnished storm drain" },
+	],
+	magicSchools: {},
+	swordSchools: { settingSun: 2, shadowHand: 1 },
+	gunKata: {},
+	bonusSchoolLevels: {},
+	extraSchoolLevels: 0,
+	meleeWeapons: [
+		{
+			name: "Poisoned Shiv",
+			damage: "2k1",
+			damageType: "R",
+			pen: "2",
+			qualities: "Toxic, Balanced",
+			proficiency: "Parrying",
+			notes: "Coated in something unpleasant",
+		},
+		{
+			name: "Goblin Fists",
+			damage: "1k1",
+			damageType: "I",
+			pen: "0",
+			qualities: "—",
+			proficiency: "Brawl",
+			notes: "Small but surprisingly pointy",
+		},
+	],
+	rangedWeapons: [
+		{
+			name: "Throwing Knives",
+			damage: "1k2",
+			damageType: "R",
+			pen: "1",
+			range: "10m",
+			rof: "1",
+			clip: "—",
+			reload: "—",
+			qualities: "Thrown",
+			proficiency: "Ordinary",
+			notes: "Hidden everywhere on person",
+		},
+	],
+	armor: [
+		{
+			name: "Patchwork Leathers",
+			type: "Light",
+			ap: 2,
+			locations: ["Body", "Arms", "Legs"],
+			qualities: "—",
+		},
+	],
+	spells: [],
+	specialAttacks: [
+		{
+			id: "goblin-sucker-punch",
+			name: "Goblin Sucker Punch",
+			attackType: "melee",
+			weapon: "Brawl",
+			action: "Fight Defensively",
+			styleCost: 3,
+			techniques: [
+				{ name: "Knockout Blow", cost: 1, type: "advantage" },
+				{ name: "Distraction Method", cost: 2, type: "advantage" },
+			],
+		} satisfies SpecialAttackEntry,
+	],
+	trickShots: [],
+	savedPools: [
+		{ label: "Stealth Check", pool: "5k3", notation: "5k3" },
+		{ label: "Sneak Attack", pool: "3k2", bonus: 2, notation: "3k2+2" },
+	],
+	xpLog: [
+		{ label: "Session 1 — Stole the MacGuffin", amount: 500, timestamp: 1_700_000_000_000 },
+		{ label: "Session 2 — Escaped the guards", amount: 500, timestamp: 1_700_100_000_000 },
+		{ label: "Session 3 — Framed the paladin", amount: 500, timestamp: 1_700_200_000_000 },
+	],
+	xpSpendLog: [
+		{ label: "Stealth 2 → 3", amount: 300, timestamp: 1_700_050_000_000 },
+		{ label: "Assassin 1", amount: 500, timestamp: 1_700_150_000_000 },
+		{ label: "Setting Sun 2", amount: 400, timestamp: 1_700_250_000_000 },
+		{ label: "Goblin Sucker Punch", amount: 150, timestamp: 1_700_250_000_000 },
+	],
+};
+
+// =============================================================================
+// KOBOLD HERO — Faithful Level 5 Paladin (Devoted Spirit 3, White Raven 2)
+// =============================================================================
+
+export const KOBOLD_HERO: CharacterData = {
+	id: "test-kobold-hero-002",
+	name: "Krix the Unbowed",
+	player: "Integration Tests",
+	race: "kobold",
+	raceCharBonus: "wisdom",
+	exaltation: "chosen",
+	exaltationNotes: "Chosen of the Sun — a beacon of hope for koboldkind",
+	concept: "Tiny paladin with enormous faith and a bigger shield",
+	description: "Two feet of righteous fury in polished brass plate. His halo is suspiciously candle-shaped.",
+	age: "12",
+	height: "2'6\"",
+	weight: "28 lbs",
+	alignment: "Sigmar",
+	devotion: 4,
+	powerStat: 3,
+	pushAmount: 1,
+	aura: 3,
+	auraSource: "chosen",
+	fettered: false,
+	sanctioned: true,
+	heroPointsMax: 5,
+	heroPointsCurrent: 5,
+	heroPointsBurnt: 0,
+	totalXP: 4000,
+	xpSpent: 3800,
+	currentHP: 22,
+	currentResolve: 8,
+	resourceCurrent: 6,
+	naturalArmor: 0,
+	notes: "Despite being smaller than most house cats, Krix has never lost a staring contest.",
+	equipment: "Holy symbol, prayer beads, tiny stepladder (for reaching things), ration tin labeled 'HERO FUEL'",
+	languages: ["Trade", "Draconic", "Celestial"],
+	characteristics: {
+		strength: 2,
+		dexterity: 2,
+		constitution: 3,
+		intelligence: 2,
+		wisdom: 4,
+		willpower: 4,
+		charisma: 3,
+		fellowship: 3,
+		composure: 4,
+	},
+	skills: {
+		athletics: 1,
+		command: 3,
+		medicae: 3,
+		intimidate: 2,
+		perception: 2,
+		scrutiny: 2,
+		charm: 2,
+		brawl: 1,
+		weaponSkill: 3,
+	},
+	skillSpecialties: {
+		command: "Battlefield Orders",
+		medicae: "Faith Healing",
+	},
+	charSpecialties: {},
+	modifiers: {
+		hitPoints: 14,
+		staticDefense: 16,
+		mentalDefense: 25,
+		resilience: 3,
+		resolve: 8,
+		speed: 4,
+		initiative: 0,
+	},
+	classes: [
+		{ classId: "guardsman", level: 2 },
+		{ classId: "paladin", level: 3 },
+	],
+	classNotes: "Guardsman for the armor proficiency, Paladin because destiny called",
+	feats: [
+		{ name: "Iron Jaw", notes: "Reduce critical damage by 1" },
+		{ name: "Weapon Focus (Flails)", notes: "+1k0 with flails" },
+		{ name: "Shield Training", notes: "Shield bonus applies to adjacent allies" },
+		{ name: "Battle Cry", notes: "Allies gain +1k0 on first attack after hearing it" },
+		{ name: "Hardy", notes: "+2 HP" },
+	],
+	assets: [{ name: "Fearless", notes: "Immune to Fear effects" }],
+	hindrances: [{ name: "Oath of Protection", notes: "Cannot leave an ally behind" }],
+	backgrounds: [
+		{ name: "Allies", dots: 3, notes: "The Kobold Liberation Front" },
+		{ name: "Mentor", dots: 2, notes: "An ancient gold dragon (retired)" },
+		{ name: "Wealth", dots: 1, notes: "A tiny chest of gold coins" },
+	],
+	magicSchools: {},
+	swordSchools: { devotedSpirit: 3, whiteRaven: 2 },
+	gunKata: {},
+	bonusSchoolLevels: {},
+	extraSchoolLevels: 0,
+	meleeWeapons: [
+		{
+			name: "Sunforged Morningstar",
+			damage: "3k2",
+			damageType: "I",
+			pen: "3",
+			qualities: "Flexible, Blessed",
+			proficiency: "Flails",
+			notes: "Glows warm in undead presence",
+		},
+		{
+			name: "Tower Shield (Kobold-Sized)",
+			damage: "1k1",
+			damageType: "I",
+			pen: "0",
+			qualities: "Defensive, Shield",
+			proficiency: "Ordinary",
+			notes: "Comically large relative to wielder",
+		},
+	],
+	rangedWeapons: [],
+	armor: [
+		{
+			name: "Custom Brass Plate",
+			type: "Heavy",
+			ap: 6,
+			locations: ["Body", "Arms", "Legs"],
+			qualities: "Blessed",
+			maxDex: 1,
+		},
+		{
+			name: "Brass Helm of Determination",
+			type: "Heavy",
+			ap: 5,
+			locations: ["Head"],
+			qualities: "—",
+		},
+	],
+	spells: [],
+	specialAttacks: [
+		{
+			id: "kobold-smite",
+			name: "Righteous Smite",
+			attackType: "melee",
+			weapon: "Flails",
+			action: "Aid Another",
+			styleCost: 5,
+			techniques: [
+				{ name: "Revitalizing Strike", cost: 1, type: "advantage" },
+				{ name: "Road-Clearing Technique", cost: 1, type: "advantage" },
+				{ name: "Damage Improvement (+1k0 dmg)", cost: 1, type: "advantage" },
+				{ name: "Damage Improvement (+1k0 dmg)", cost: 1, type: "advantage" },
+				{ name: "Damage Improvement (+1k0 dmg)", cost: 1, type: "advantage" },
+			],
+		} satisfies SpecialAttackEntry,
+		{
+			id: "kobold-shield-bash",
+			name: "Shield of the Faithful",
+			attackType: "melee",
+			weapon: "Flails",
+			action: "Charge",
+			styleCost: 3,
+			techniques: [
+				{ name: "Phalanx Formation", cost: 1, type: "advantage" },
+				{ name: "Phalanx Formation", cost: 1, type: "advantage" },
+				{ name: "Phalanx Formation", cost: 1, type: "advantage" },
+			],
+		} satisfies SpecialAttackEntry,
+	],
+	trickShots: [],
+	savedPools: [
+		{ label: "Morningstar Attack", pool: "6k3", notation: "6k3" },
+		{ label: "Command Check", pool: "7k4", notation: "7k4" },
+		{ label: "Healing (Medicae)", pool: "7k4", bonus: 3, notation: "7k4+3" },
+	],
+	xpLog: [
+		{ label: "Tutorial — Saved the village", amount: 500, timestamp: 1_699_000_000_000 },
+		{ label: "Session 1 — Held the bridge alone", amount: 600, timestamp: 1_699_100_000_000 },
+		{ label: "Session 2 — Recruited the militia", amount: 700, timestamp: 1_699_200_000_000 },
+		{ label: "Session 3 — Slew the lich", amount: 800, timestamp: 1_699_300_000_000 },
+		{ label: "Session 4 — United the kobold clans", amount: 900, timestamp: 1_699_400_000_000 },
+		{ label: "Bonus — Inspired the table to tears", amount: 500, timestamp: 1_699_500_000_000 },
+	],
+	xpSpendLog: [
+		{ label: "Paladin 1–3", amount: 1500, timestamp: 1_699_150_000_000 },
+		{ label: "Devoted Spirit 1–3", amount: 900, timestamp: 1_699_250_000_000 },
+		{ label: "White Raven 1–2", amount: 600, timestamp: 1_699_350_000_000 },
+		{ label: "Righteous Smite", amount: 250, timestamp: 1_699_350_000_000 },
+		{ label: "Shield of the Faithful", amount: 150, timestamp: 1_699_450_000_000 },
+		{ label: "Feats (Iron Jaw, Hardy)", amount: 400, timestamp: 1_699_450_000_000 },
+	],
+};
+
+// =============================================================================
+// TEST COOL SHIP — A decked-out Sultana-class frigate
+// =============================================================================
+
+export const TEST_COOL_SHIP: ShipState = {
+	id: "test-ship-001",
+	name: "The Regression Runner",
+	hullId: "sultana",
+	mode: "builder",
+	crewQuality: 3,
+	holdings: 2,
+	customBP: false,
+	customBPValue: 0,
+	shieldId: "standard-1",
+	hasTorpedoTube: true,
+	torpedoes: ["photon", "plasma", "", "", ""],
+	consoles: {
+		tactical_0: "targeting-array",
+		universal_0: "warp-drive",
+	},
+	weapons: {
+		forward: ["light-las-cannon", "heavy-plasma-beam"],
+		rear: ["light-mass-driver"],
+	},
+	weaponPartials: {},
+	officers: {
+		helmsman: { name: "Grik (Goblin Pilot)", skill: 3 },
+		tactical: { name: "Krix (yes, the kobold)", skill: 2 },
+		engineer: { name: "Spanner McBolt", skill: 4 },
+		captain: { name: "Testing Goblin", skill: 3 },
+		arcana: { name: "Nobody (position vacant)", skill: 0 },
+	},
+	combat: {
+		shieldCurrent: 15,
+		hullCurrent: 45,
+		crewCurrent: 14,
+		disruption: 0,
+		turn: 1,
+		critLog: [],
+		departments: {
+			maneuver: false,
+			tactical: false,
+			engineering: false,
+			command: false,
+			arcana: false,
+		},
+		consoleStatus: {},
+		weaponStatus: {},
+	},
+};
+
+// =============================================================================
+// Combatant fixtures (for Combat Tracker tests)
+// =============================================================================
+
+/** Testing Goblin as a combatant in initiative order */
+export const GOBLIN_COMBATANT: Combatant = {
+	id: "combatant-goblin-001",
+	name: "Testing Goblin",
+	dexterity: 4,
+	composure: 3,
+	modifier: 0,
+	hpMax: 12,
+	hpCurrent: 12,
+	sd: 22,
+	resilience: 2,
+	willpower: 2,
+	heroPoint: true,
+	isNpc: false,
+	imported: true,
+	importedData: null,
+	initiativeRoll: 7,
+	initiativeTotal: 14,
+	surprised: false,
+	notes: "The sneaky one",
+	resourceCurrent: 0,
+	resourceLabel: "—",
+	resourceMax: 0,
+	conditions: [],
+	actionBudget: { fullAction: true, half1: true, half2: true, reaction: true },
+};
+
+/** Krix the Kobold Hero as a combatant */
+export const KOBOLD_COMBATANT: Combatant = {
+	id: "combatant-kobold-002",
+	name: "Krix the Unbowed",
+	dexterity: 2,
+	composure: 4,
+	modifier: 0,
+	hpMax: 22,
+	hpCurrent: 22,
+	sd: 16,
+	resilience: 3,
+	willpower: 4,
+	heroPoint: true,
+	isNpc: false,
+	imported: true,
+	importedData: null,
+	initiativeRoll: 5,
+	initiativeTotal: 11,
+	surprised: false,
+	notes: "The tiny paladin",
+	resourceCurrent: 6,
+	resourceLabel: "Anima",
+	resourceMax: 6,
+	conditions: [],
+	actionBudget: { fullAction: true, half1: true, half2: true, reaction: true },
+};
+
+/** A generic enemy NPC combatant */
+export const ENEMY_COMBATANT: Combatant = {
+	id: "combatant-enemy-003",
+	name: "Chaos Cultist",
+	dexterity: 2,
+	composure: 2,
+	modifier: 0,
+	hpMax: 8,
+	hpCurrent: 8,
+	sd: 14,
+	resilience: 2,
+	willpower: 1,
+	heroPoint: false,
+	isNpc: true,
+	imported: false,
+	importedData: null,
+	initiativeRoll: 4,
+	initiativeTotal: 8,
+	surprised: false,
+	notes: "Expendable minion",
+	resourceCurrent: 0,
+	resourceLabel: "—",
+	resourceMax: 0,
+	conditions: [{ conditionId: "prone" }],
+	actionBudget: { fullAction: true, half1: true, half2: true, reaction: true },
+};

@@ -6,17 +6,27 @@ sidebar:
 title: Character Creation
 ---
 
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
 ﻿# Character Creation
 
-> **Quick Reference:**
->
-> - Character creation follows 10 steps (Steps 0–9)
-> - Starting scores: Characteristics 6/4/2 dots, Skills 8/6/4 dots, Backgrounds 7 dots
-> - Starting XP: 600 (purchases capped by class level)
-> - No Characteristic above 4, no Skill above 3, no Background above 3 without XP at creation
-> - Hero Points (narrative resource for rerolls and special actions): 2 at start
+:::note[Quick Reference]
 
-See [Characteristics & Skills](./03-Characteristics-Skills.mdx) for detailed stat descriptions, [Races](./04-Races.mdx) for racial options, [Exaltations](./05-Exaltations.mdx) for supernatural types, [Classes](./06-Classes.mdx) for class progression, [Feats](./07-Feats.mdx) for feat options, and [Backgrounds](./08-Backgrounds.mdx) for background details.
+- Character creation follows 10 steps (Steps 0–9)
+- Starting scores: Characteristics 6/4/2 dots, Skills 8/6/4 dots, Backgrounds 7 dots
+- Starting XP: 600 (purchases capped by class level)
+- No Characteristic above 4, no Skill above 3, no Background above 3 without XP at creation
+- Hero Points (narrative resource for rerolls and special actions): 2 at start
+:::
+
+<CardGrid>
+  <LinkCard title="Characteristics & Skills" href="/rules/03-characteristics-skills/" description="Detailed stat descriptions" />
+  <LinkCard title="Races" href="/rules/04-races/" description="Racial options and bonuses" />
+  <LinkCard title="Exaltations" href="/rules/05-exaltations/" description="Supernatural types" />
+  <LinkCard title="Classes" href="/rules/06-classes/" description="Class progression tracks" />
+  <LinkCard title="Feats" href="/rules/07-feats/" description="Feat options" />
+  <LinkCard title="Backgrounds" href="/rules/08-backgrounds/" description="Background details" />
+</CardGrid>
 
 ---
 
@@ -48,7 +58,9 @@ All start at 1 dot. Distribute additional dots by priority:
 | Secondary | 4    |
 | Tertiary  | 2    |
 
-> **Optional Rule:** Three alternative groupings exist — Power (Intelligence, Strength, Charisma), Finesse (Wisdom, Dexterity, Fellowship), and Resilience (Willpower, Constitution, Composure). These can be used instead of the Physical/Social/Mental split.
+:::tip[Optional Rule]
+Three alternative groupings exist — Power (Intelligence, Strength, Charisma), Finesse (Wisdom, Dexterity, Fellowship), and Resilience (Willpower, Constitution, Composure). These can be used instead of the Physical/Social/Mental split.
+:::
 
 **Restriction:** No Characteristic above 4 in this step (racial bonuses may raise it to 5 later).
 

@@ -19,7 +19,7 @@ This skill provides the editorial **workflow** for applying the hierarchy: how t
 
 When encountering unclear rules:
 
-```
+```text
 1. Search books/ for the original book text
    ↓ Found? → Use book text as authoritative
    ↓ Unclear? → Continue

@@ -6,13 +6,16 @@ sidebar:
 title: Magic
 ---
 
-> **Key points:**
->
-> - Sorcerers channel the Warp through nine **Magical Schools**, each tied to a Characteristic
-> - Three **Psychic Strength** levels control risk vs. power: Fettered (safe), Unfettered (moderate risk), Push (dangerous)
-> - Casting uses a **Focus Power Test** — roll School + Characteristic against the spell's TN (Target Number)
-> - Dice notation: `5k3` means roll 5 dice, keep the best 3. Exploding 10s (kept dice showing 10) trigger Psychic Phenomena unless Fettered
-> - Spell effects **do not stack** — only the highest applies. See [Combat](./14-Combat.mdx) for action economy
+import { Steps, TabItem, Tabs } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+
+- Sorcerers channel the Warp through nine **Magical Schools**, each tied to a Characteristic
+- Three **Psychic Strength** levels control risk vs. power: Fettered (safe), Unfettered (moderate risk), Push (dangerous)
+- Casting uses a **Focus Power Test** — roll School + Characteristic against the spell's TN (Target Number)
+- Dice notation: `5k3` means roll 5 dice, keep the best 3. Exploding 10s (kept dice showing 10) trigger Psychic Phenomena unless Fettered
+- Spell effects **do not stack** — only the highest applies. See [Combat](./14-Combat.mdx) for action economy
+:::
 
 ---
 
@@ -46,12 +49,16 @@ title: Magic
 
 ## Casting Spells — Step by Step
 
+<Steps>
+
 1. **Choose a spell** you know from your Magical Schools
 2. **Choose Psychic Strength** — Fettered, Unfettered, or Push (see table below)
 3. **Make a Focus Power Test** — roll your Magic School rating + the spell's Key Characteristic
 4. **Compare to the spell's TN** — meet or exceed to succeed. Each full 5 above TN is a **raise** (extra effect)
 5. **Check for Psychic Phenomena** — if Unfettered or Pushing and you kept any exploding dice (10s), roll on the Psychic Phenomena table
 6. **Apply effects** — even if Phenomena trigger, the spell succeeds if you beat the TN
+
+</Steps>
 
 ### Psychic Strength Table
 
@@ -202,6 +209,9 @@ Experienced sorcerers can combine two or more spells into a single action.
 
 ---
 
+<Tabs>
+<TabItem label="Abjuration">
+
 ## Abjuration
 
 *Protective spells — barriers, negation, wards, and counterspelling. Key Characteristic: **Willpower**.*
@@ -277,7 +287,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Abjuration 5** · **TN 35** · Reaction · Verbal · Instant
 - As Dispel with 500m range. On success, target cannot cast spells until end of your next turn (+1 turn per raise). Five or more raises: target cannot cast for rest of scene
 
----
+</TabItem>
+<TabItem label="Conjuration">
 
 ## Conjuration
 
@@ -354,7 +365,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Conjuration 5** · **TN 35** · Full Action · Verbal, Somatic · Instant
 - As Obscuring Fog but: 5 cubes per Conjuration dot, unaffected by wind/sunlight. Deals magical E damage `(Level + Conjuration)k(Conjuration)` on turn start/end and on entry. Sets everything On Fire (even fire-immune things). Lasts 1 minute + 1 per raise
 
----
+</TabItem>
+<TabItem label="Divination">
 
 ## Divination
 
@@ -430,7 +442,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Divination 5** · **TN 35** · Full Action · Somatic, Verbal, Focus (encyclopedia) · One round per Level + 1 per raise
 - All skill/attribute rolls gain additional rolled dice equal to Divination dots used. Non-skill rolls (Alignment Tests, Perils): roll twice, use better result. Count as having at least 1 dot in all attributes and skills
 
----
+</TabItem>
+<TabItem label="Enchantment">
 
 ## Enchantment
 
@@ -506,7 +519,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Enchantment 5** · **TN 35** · Full Action · Non-Combat, Verbal, Somatic, Touch, Language Dependent, Mind-Affecting · Instant
 - Erase and rewrite target's memories. Resist: Arcana + Intelligence. 2 checks on save: rewrite minor personality aspects. 4 checks: rewrite Alignment. Alternate use: add/subtract Insanity Points equal to raises on Focus Power
 
----
+</TabItem>
+<TabItem label="Evocation">
 
 ## Evocation
 
@@ -583,7 +597,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - Choose spot within 50m. Everyone within 30m rolls individually on Psychic Phenomena tables (+5 per raise). Caster also rolls on Perils of the Warp for the area
 - **Alternate use:** Create Warp Vortex `1d10`m diameter within 50m. Moves `2d10`m semi-randomly toward people. Deals `10k7` magic damage (Energy crit chart). Victims may Acrobatics + Dexterity vs. TN 35 to avoid. Lasts `1d10` + Evocation dots rounds
 
----
+</TabItem>
+<TabItem label="Healing">
 
 ## Healing
 
@@ -660,7 +675,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Healing 5** · **TN 35** · Half Action · Somatic, Verbal, Focus (holy symbol) · One Scene
 - +2 Strength, +2 Size, +4 Static Defense, +1 Resilience. Regenerate 1 HP/round. Aura = Healing dots used. Extra Reaction per turn. Gain Stuff of Nightmares trait. If focus damaged/destroyed: immediate Alignment Test. Factored: +2 Resilience, no SD change, +`2k0` Strength Tests and melee damage
 
----
+</TabItem>
+<TabItem label="Illusion">
 
 ## Illusion
 
@@ -736,7 +752,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Illusion 5** · **TN 35** · Full Action · Verbal, Attack, Saving Throw · Concentration (Reaction) + 5 rounds
 - 20m radius within 200m. Vision limited to 5m, Perception halved. Everyone saves Arcana + Composure. Success = Fear(3) Test. Failure = Shock table at +2 per check, plus blind and deaf in area. Fear/shock effects are Mind-Affecting
 
----
+</TabItem>
+<TabItem label="Necromancy">
 
 ## Necromancy
 
@@ -812,7 +829,8 @@ Experienced sorcerers can combine two or more spells into a single action.
 - **Necromancy 5** · **TN 35** · Three Full Actions · Non-Combat, Verbal, Somatic, Focus (brain-shaped black stone in empty cranium) · Instant
 - Touched corpse becomes improved undead. Loses: spellcasting, Resource/Hero Points, healing/regeneration, biological functions. Gains: Intelligence and Fellowship 0, Undead/Dark-Sight/Mindless traits. Otherwise fully functional at full HP, obeys verbal commands. Cannot affect: robots, un-life (Modrons), existing undead, Size 10+
 
----
+</TabItem>
+<TabItem label="Transmutation">
 
 ## Transmutation
 
@@ -887,6 +905,9 @@ Experienced sorcerers can combine two or more spells into a single action.
 
 - **Transmutation 5** · **TN 35** · Full Action/One Hour · Non-Combat, Verbal, Material · Permanent
 - Create loyal elemental servant. +1 to any attribute per raise. +1 Size per 3 raises. +1 Level and +1 all skills per 5 raises. Max loyal elementals = Fellowship + Composure. Speak spirit language; can be social-combated. 6+ elementals form a union for better working conditions
+
+</TabItem>
+</Tabs>
 
 ---
 

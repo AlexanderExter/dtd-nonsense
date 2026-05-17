@@ -16,7 +16,7 @@ export function RaceStep() {
 
 	if (!data?.races?.races) return <p>Loading race data…</p>;
 
-	const races = (data.races.races as any[]).filter((r: any) => {
+	const races = data.races.races.filter((r) => {
 		if (sourceFilter === "all") return true;
 		if (sourceFilter === "book1") return r.source === "book1" || !r.source;
 		return r.source === "book2";
@@ -40,7 +40,7 @@ export function RaceStep() {
 		<div>
 			{/* Filter bar */}
 			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
-				<label className="m-0 text-[0.85rem] text-text-dim">
+				<label className="m-0 text-sm text-text-dim">
 					Source:{" "}
 					<GameSelect
 						onChange={(e) => {
@@ -57,7 +57,7 @@ export function RaceStep() {
 
 			{/* Selection grid */}
 			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{races.map((r: any) => (
+				{races.map((r) => (
 					<SelectionCard
 						key={r.id || r.name}
 						onClick={() => {
@@ -95,7 +95,7 @@ export function RaceStep() {
 						<p>
 							<strong>Skill Bonuses:</strong>{" "}
 							{preview.skillBonus
-								.map((s: any) => (typeof s === "string" ? s : `${s.skill} +${s.value ?? 1}`))
+								.map((s) => (typeof s === "string" ? s : `${s.skill} +${s.value ?? 1}`))
 								.join(", ")}
 						</p>
 					)}
@@ -106,12 +106,12 @@ export function RaceStep() {
 						</div>
 					)}
 
-					{preview.notes && <p className="text-[0.85rem] text-text-muted italic">{preview.notes}</p>}
+					{preview.notes && <p className="text-sm text-text-muted italic">{preview.notes}</p>}
 
 					{/* Characteristic bonus dropdown */}
 					{preview.charBonus?.options?.length > 0 && (
 						<div className="mb-md flex-1">
-							<label className="mb-xs block text-[0.85rem] text-text-muted">
+							<label className="mb-xs block text-sm text-text-muted">
 								Choose +1 Characteristic:{" "}
 								<GameSelect
 									onChange={(e) => {

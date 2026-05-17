@@ -15,7 +15,7 @@ import { RacesFile } from "./schemas/races.ts";
 
 const DATA_DIR = resolve(import.meta.dirname, "../../../data");
 
-describe("Zod schema validation — all 12 JSON files", () => {
+describe("Zod schema validation — all 15 JSON files", () => {
 	for (const [filename, { schema }] of Object.entries(FILE_SCHEMAS)) {
 		it(`validates ${filename}`, () => {
 			const filePath = resolve(DATA_DIR, filename);

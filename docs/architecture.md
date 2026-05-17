@@ -31,16 +31,16 @@ Key files:
 | `src/lib/dtd/`              | Typed ES modules: core.ts (barrel re-export), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts |
 | `src/layouts/`              | `ToolLayout.astro` — wrapper for tool pages (also bridges Tailwind tokens → short `var(--name)` aliases)               |
 | `src/styles/`               | `custom.css` (WH40K theme), `tailwind.css` (Tailwind v4 `@theme` tokens — design token source of truth)                |
-| `src/components/react/`    | React island components for all 6 tools (74 components)                                                               |
+| `src/components/react/`    | React island components for all 5 tools (78 components)                                                               |
 | `src/components/react/ui/` | Shared UI layer — 10 shadcn primitives, 4 Game* wrappers, 11 custom components (25 total)                              |
-| `data/`                     | Canonical JSON game data (12 files) — source for prebuild                                                              |
+| `data/`                     | Canonical JSON game data (15 files) — source for prebuild                                                              |
 | `public/data/`              | Generated JSON data copies (from `data/`) — gitignored                                                                 |
 
 Build pipeline: `bun run scripts/prebuild.mjs` then `astro build` — prebuild copies source content into Astro structure, then Astro builds the static site. `bun run build` runs both steps.
 
 ### When to Reconsider
 
-- **React Islands:** All 6 tools use Zustand for state management, with one store per tool co-located as `store.ts`. Components use `useXStore(s => s.field)` selectors for fine-grained reactivity.
+- **React Islands:** All 5 tools use Zustand for state management, with one store per tool co-located as `store.ts`. Components use `useXStore(s => s.field)` selectors for fine-grained reactivity.
 
 ### Code Quality & Testing
 
@@ -84,7 +84,7 @@ All modules import cleanly into React components.
 
 ## Shared UI Layer
 
-All 6 tools share UI components in `src/components/react/ui/`. The layer has three tiers: **shadcn primitives** (installed via shadcn CLI), **Game* domain wrappers** (compact form elements themed for dense tabletop data entry), and **custom components** (hand-rolled for project-specific needs).
+All 5 tools share UI components in `src/components/react/ui/`. The layer has three tiers: **shadcn primitives** (installed via shadcn CLI), **Game* domain wrappers** (compact form elements themed for dense tabletop data entry), and **custom components** (hand-rolled for project-specific needs).
 
 ### Import Convention
 
@@ -131,14 +131,13 @@ import { showToast, Toast } from "@/components/react/ui/Toast";
 | `GameTextarea.tsx` | Native `<textarea>` | `min-h-[60px] resize-y` |
 | `NumberInput.tsx` | Native `<input type="number">` | `[−][input][+]` stepper with min/max clamping |
 
-**Custom Components (11)** — Hand-rolled for project-specific needs:
+**Custom Components (10)** — Hand-rolled for project-specific needs:
 
 | Component | Source | Purpose |
 |-----------|--------|--------|
 | `Button.tsx` | Pure Tailwind | Variant system (primary/secondary/ghost/danger/accent) + sizes |
 | `Badge.tsx` | Pure Tailwind | Status/category labels with color variants |
 | `AddButton.tsx` | Wraps Button | "+ Add [label]" pattern for list management |
-| `CloseButton.tsx` | Wraps Button | "×" for modal/dialog close triggers |
 | `SectionHeading.tsx` | Semantic HTML | Polymorphic heading (h2/h3/h4) with accent styling |
 | `Accordion.tsx` | Radix Collapsible | Controlled/uncontrolled disclosure panels |
 | `Modal.tsx` | Radix Dialog | Centered overlay with VisuallyHidden a11y title fallback |
@@ -244,7 +243,7 @@ data/
 └── weapons.json          Ranged and melee weapon stats
 ```
 
-Run `bun run validate` to see current record counts for all 12 files.
+Run `bun run validate` to see current record counts for all 15 files.
 
 `data/` is the canonical source for all game data. `scripts/prebuild.mjs` copies these files to `public/data/` during the build — `public/data/` is gitignored and never committed.
 
@@ -277,12 +276,13 @@ export const useToolStore = create<ToolState>((set) => ({
 
 | Tool              | Components | Directory                                     |
 | ----------------- | ---------- | --------------------------------------------- |
-| Quick Reference   | 12         | `src/components/react/tools/quick-reference/`     |
 | Combat Tracker    | 8          | `src/components/react/tools/combat-tracker/`      |
 | NPC Generator     | 11         | `src/components/react/tools/npc-generator/`       |
 | Ship Builder      | 11         | `src/components/react/tools/ship-builder/`        |
 | Character Builder | 17         | `src/components/react/tools/character-builder/`   |
 | Character Sheet   | 15         | `src/components/react/tools/character-sheet/`     |
+
+> **Note:** Quick Reference was migrated from a React tool to a native Starlight MDX page at `cleaned-references/00-Quick-Reference.mdx`. It now lives in the Rules section and benefits from Pagefind search, Starlight components, and zero-maintenance drift.
 
 ---
 
@@ -343,10 +343,16 @@ The Builder also has a direct "Open in Sheet" button that calls `character.save(
 
 ### JSON Data Loading
 
-All game data loads via `core.ts` (ES module):
+All game data loads via the `useAllData` hook (React) or `loadData` (direct):
 
 ```typescript
-import { loadData, loadAllData } from "@/lib/dtd/core";
+// React hook — preferred for components (typed via GameDataMap)
+import { useAllData } from "@/hooks/use-data";
+const { data, loading, error } = useAllData(["races.json", "skills.json"]);
+// data.races, data.skills are typed
+
+// Direct import for non-React contexts
+import { loadData, loadAllData } from "@/lib/dtd/data";
 
 // Single file
 const races = await loadData("races.json");
@@ -502,7 +508,7 @@ All tool pages use **Tailwind CSS v4** utility classes. Design tokens are define
 | Layer | File | Purpose |
 |-------|------|---------|
 | Design tokens | `src/styles/tailwind.css` `@theme` | Colors, spacing, radii, fonts, animations |
-| Reusable patterns | `src/styles/tailwind.css` `@layer components` | `.panel`, `.btn`, `.btn-primary`, `.btn-accent`, etc. |
+| Reusable patterns | `src/styles/tailwind.css` `@layer components` | `.btn`, `.btn-primary`, `.btn-accent`, etc. |
 | Starlight theme | `src/styles/custom.css` | WH40K dark/gold theme for docs pages |
 | Print styles | Individual `.astro` files | `@media print` blocks for paper output |
 
@@ -541,9 +547,8 @@ CSS that cannot be expressed as Tailwind utilities and remains as hand-written C
 
 | File | Lines | Content |
 |------|-------|---------|
-| `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (`.panel`, `.btn` family) |
+| `src/styles/tailwind.css` | ~150 | `@theme` tokens, `@keyframes`, `@layer components` (`.btn` family) |
 | `src/layouts/ToolLayout.astro` | 5 | `box-sizing: border-box` reset only |
-| `quick-reference.astro` | 6 | Print-only `@media print` |
 | `npc-generator.astro` | 6 | Print-only `@media print` |
 | `ship-builder.astro` | 5 | Print-only `@media print` |
 | `character-sheet.astro` | 12 | Print-only `@media print` + `tab-panel::before` content |

@@ -59,25 +59,22 @@ export function XpTab() {
 	};
 
 	const renderLogTable = (entries: XpLogEntry[], onRemove: (idx: number) => void) => (
-		<table className="w-full border-collapse text-[0.85rem]">
+		<table className="w-full border-collapse text-sm">
 			<thead>
 				<tr>
-					<th className="border border-border bg-surface px-2 py-1 text-left font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+					<th className="border border-border bg-surface px-2 py-1 text-left font-semibold text-xs uppercase tracking-[0.04em]">
 						Description
 					</th>
-					<th className="w-[80px] border border-border bg-surface px-2 py-1 text-right font-semibold text-[0.78rem] uppercase tracking-[0.04em]">
+					<th className="w-[80px] border border-border bg-surface px-2 py-1 text-right font-semibold text-xs uppercase tracking-[0.04em]">
 						XP
 					</th>
-					<th className="w-[40px] border border-border bg-surface px-2 py-1 text-center font-semibold text-[0.78rem] uppercase tracking-[0.04em]" />
+					<th className="w-[40px] border border-border bg-surface px-2 py-1 text-center font-semibold text-xs uppercase tracking-[0.04em]" />
 				</tr>
 			</thead>
 			<tbody>
 				{entries.length === 0 && (
 					<tr>
-						<td
-							className="border border-border px-2 py-2 text-center text-[0.82rem] text-text-dim"
-							colSpan={3}
-						>
+						<td className="border border-border px-2 py-2 text-center text-text-dim text-xs" colSpan={3}>
 							No entries yet
 						</td>
 					</tr>
@@ -109,17 +106,17 @@ export function XpTab() {
 			{/* ---------- XP Summary Bar ---------- */}
 			<div className="mb-md flex flex-wrap items-center gap-lg rounded-md border border-border bg-surface-raised px-lg py-md">
 				<div className="flex flex-col items-center">
-					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Earned</span>
+					<span className="text-text-muted text-xs uppercase tracking-wide-px">Earned</span>
 					<span className="font-bold text-accent text-xl">{totalEarned}</span>
 				</div>
 				<span className="text-text-dim text-xl">−</span>
 				<div className="flex flex-col items-center">
-					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Spent</span>
+					<span className="text-text-muted text-xs uppercase tracking-wide-px">Spent</span>
 					<span className="font-bold text-text-primary text-xl">{totalSpent}</span>
 				</div>
 				<span className="text-text-dim text-xl">=</span>
 				<div className="flex flex-col items-center">
-					<span className="text-[0.72rem] text-text-muted uppercase tracking-[0.5px]">Remaining</span>
+					<span className="text-text-muted text-xs uppercase tracking-wide-px">Remaining</span>
 					<span className={`font-bold text-xl ${remaining < 0 ? "text-error" : "text-accent"}`}>
 						{remaining}
 					</span>
@@ -129,10 +126,10 @@ export function XpTab() {
 			<div className="grid grid-cols-1 gap-md md:grid-cols-2">
 				{/* ---------- XP Income ---------- */}
 				<div className="section-card rounded-md border border-border bg-surface p-lg">
-					<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">XP Income</h3>
+					<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">XP Income</h3>
 					{renderLogTable(char.xpLog || [], removeIncome)}
 					<div className="mt-md flex items-end gap-xs">
-						<label className="flex flex-1 flex-col text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex flex-1 flex-col text-xs uppercase tracking-tight-px">
 							Description
 							<GameInput
 								onInput={(e) => setIncomeLabel((e.target as HTMLInputElement).value)}
@@ -141,7 +138,7 @@ export function XpTab() {
 								value={incomeLabel}
 							/>
 						</label>
-						<label className="flex w-[80px] flex-col text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex w-[80px] flex-col text-xs uppercase tracking-tight-px">
 							XP
 							<GameInput
 								min={1}
@@ -159,10 +156,10 @@ export function XpTab() {
 
 				{/* ---------- XP Spending ---------- */}
 				<div className="section-card rounded-md border border-border bg-surface p-lg">
-					<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">XP Spending</h3>
+					<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">XP Spending</h3>
 					{renderLogTable(char.xpSpendLog || [], removeSpend)}
 					<div className="mt-md flex items-end gap-xs">
-						<label className="flex flex-1 flex-col text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex flex-1 flex-col text-xs uppercase tracking-tight-px">
 							Description
 							<GameInput
 								onInput={(e) => setSpendLabel((e.target as HTMLInputElement).value)}
@@ -171,7 +168,7 @@ export function XpTab() {
 								value={spendLabel}
 							/>
 						</label>
-						<label className="flex w-[80px] flex-col text-[0.75rem] uppercase tracking-[0.3px]">
+						<label className="flex w-[80px] flex-col text-xs uppercase tracking-tight-px">
 							XP
 							<GameInput
 								min={1}

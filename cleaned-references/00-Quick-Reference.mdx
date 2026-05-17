@@ -1,0 +1,314 @@
+---
+description: At-the-table rules lookup — actions, conditions, modifiers, formulas, and more
+sidebar:
+  label: Quick Reference
+  order: 0
+title: Quick Reference
+---
+
+:::tip[How to use]
+This page collects the most-consulted rules into one place for fast mid-session lookup. Use **Ctrl+K** to search across the entire site, or use the "On this page" sidebar to jump between sections. Each section links to its full rules page for deeper reading.
+:::
+
+---
+
+## Combat Actions
+
+Action types: **H** = Half Action, **F** = Full Action, **R** = Reaction, **Fr** = Free Action, **V** = Variable. See [Combat](./14-Combat.mdx) for full rules.
+
+| Action | Type | Tags | Effect |
+| --- | :---: | --- | --- |
+| Aid Another | H | Misc | Give another character +`1k0` on their next Test. Must be adjacent; skill-gated. |
+| Aim | H/F | Melee, Ranged | Half: +`1k0` next attack. Full: +`2k0` next attack. Lost if you React before attacking. |
+| All-Out Attack | F | Attack, Melee | +`2k0` to hit, +`1k0` melee damage. Cannot Dodge or Parry until next turn. |
+| Brace | H | Misc | Brace a heavy weapon to fire normally. -`3k0` without bracing. |
+| Bull Rush | H | Attack, Melee, Movement | Opposed Size + Strength. Push target 2m + 2m per Raise. |
+| Called Shot | F | Attack, Melee, Ranged | Choose hit location. -`2k0` to hit. |
+| Charge | F | Attack, Melee, Movement | Move up to 2× Speed (min 4m), +`1k0` melee attack. Must be straight line. |
+| Delay | H | Misc | Save a Half Action for later this round. Interrupts before triggering action. |
+| Disarm | H | Attack, Melee | Opposed Level + Weaponry. Two Raises = opponent drops weapon. |
+| Dodge | R | Defense, Movement | Dexterity + Acrobatics Test. Half result added to SD vs this attack. |
+| Feint | H | Attack, Melee | Opposed Level + Weaponry. Win = next melee attack can't be dodged/parried. |
+| Fight Defensively | F | Attack, Melee, Ranged | -`2k0` to hit, +`2k0` to Parry and Dodge until next turn. |
+| Focus Power | V | Varies | Cast a spell. School + Characteristic Test vs spell TN. |
+| Full Auto Burst | F | Attack, Ranged | +`2k1` to hit. Each Raise = +`1k0` damage (up to RoF). Storm: +`2k0` per Raise. |
+| Full Defense | F | Defense, Melee | +10 SD, gain one extra Reaction until next turn. |
+| Grapple | H/F | Attack, Melee | H: Initiate grapple (Brawl to hit). F: Maintain, then opposed Size + Str for controller options. |
+| Healing Surge | H | Misc | Spend RP up to Level to heal that many HP. +5 SD until next turn. |
+| Knock Down | H | Attack, Melee | Opposed Size + Strength. Win = target prone. Lose by 3+ Raises = you're prone. |
+| Move | H/F | Movement | Half: move Speed meters. Full: move 2× Speed. Provokes when leaving melee. |
+| Multiple Attacks | F | Attack, Melee, Ranged | Extra attacks spending Reactions. Requires two weapons or feat (Swift/Lightning Attack). |
+| Opportunity Attack | Fr | Attack, Melee | Free melee attack when enemy uses a Provokes action while engaged. Once per turn. |
+| Overwatch | F | Attack, Ranged | Establish 45° kill zone. Fire Full Auto or Suppressing Fire when conditions met. Ends if you React. |
+| Parry | R | Defense, Melee | Weaponry Test (+ Level `k0` if proficient). Half result added to SD vs melee attack. |
+| Ready | H | Misc | Draw/stow weapon or item. Also: apply bandage, coat blade, etc. Provokes. |
+| Reload | V | Misc | Reload per weapon's listed reload time. Provokes. |
+| Run | F | Movement | Move 6× Speed. Ranged attacks at -`2k0` vs you; melee attacks at +`2k0` vs you. |
+| Shift | H | Movement | Move Dexterity in meters. Does not provoke. |
+| Stand | H | Movement | Stand up from prone. Provokes. |
+| Standard Attack | H | Attack, Melee, Ranged | Make one melee or ranged attack. |
+| Suppressing Fire | F | Attack, Ranged | Full auto into 45° kill zone. Targets must pass Pinning Test. Ballistics TN 20 for random hits. |
+| Tactical Advance | F | Movement, Defense | Move up to 2× Speed between cover. Retain old cover's benefits during move. |
+| Use a Skill | V | Misc | Use any skill. Time/Test varies by skill. |
+| Withdraw | F | Movement | Disengage from melee. Move up to Speed without provoking. |
+
+---
+
+## Conditions
+
+See [Conditions](./16-Conditions.mdx) for full rules.
+
+| Condition | Effect | Duration |
+| --- | --- | --- |
+| Amputation | Lose a body part. Treated as Heavily Wounded. Must heal limb damage before other healing. | Permanent (cybernetics/magic to restore) |
+| Blinded | -`4k0` to physical Tests. Athletics + Dexterity TN 15 to move at Half Rate. | Until cured |
+| Blood Loss | Constitution Test each Round (TN 10 × Blood Loss). Fail = 1d10 damage per Blood Loss, ignoring Armor/Aura. | Until treated (First Aid / magic) |
+| Burning | 1d10 Energy damage per Round, ignoring Armor. No actions except trying to extinguish (TN 15 Intelligence). | Until extinguished |
+| Crippled | Limb unusable. Arm: can't attack with it. Leg: fall prone, crawl 1m per Half Action. | Until healed |
+| Dazzled | -`1k0` to all Tests. -`2k0` total to sight-based Tests. | Varies |
+| Deafened | -`2k0` to all Tests. Auto-fail hearing-based Tests. | Until cured |
+| Fatigue | -`1k0` to all Tests per level (applied once). Levels > Constitution = unconscious for 10 − Con hours. | 1 level per hour rest |
+| Frightened | Must flee source. If unable: -`2k0` all Tests, no Attacks/Magic/Stunts. | End of encounter |
+| Helpless | No actions. Attacks auto-hit. Damage rolled twice, results added. | Until condition causing it ends |
+| Pinned | Cannot move or act (including Reactions) except Full Defense. Can still speak. | Until unpinned |
+| Prone | +`2k0` melee attacks against you. -`2k0` ranged attacks against you. -`2k0` to your attacks. Crawl at Half Rate. | Stand up (Half Action) |
+| Stunned | No Reactions. Only action: move at Half Rate. | Varies (usually 1 Round) |
+| Toxic | Rating 1–2: that much damage/Round. Rating 3+: that many d10 damage/Round. Toughness TN 15 + Rating negates. | Until treated or purged |
+
+---
+
+## Combat Modifiers
+
+See [Combat](./14-Combat.mdx) for full ranged/melee rules.
+
+### Range Bands
+
+| Band | Range | Modifier |
+| --- | --- | :---: |
+| Point Blank | < 2m (not engaged in melee) | +`2k1` |
+| Short Range | < ½ weapon range | +`1k0` |
+| Normal | Up to weapon range | — |
+| Long Range | > 2× weapon range | -`1k0` |
+| Extreme Range | > 3× weapon range | -`3k0` |
+
+### Melee & Situational Modifiers
+
+| Situation | Modifier |
+| --- | :---: |
+| Combat Advantage | Free Raise |
+| Ganging Up 2:1 | +`1k0` |
+| Ganging Up 3:1+ | +`2k0` |
+| Higher Ground | +`1k0` |
+| Off Hand | -`2k0` |
+| Two Weapons (no feats) | -`3k0` each |
+| Ambidextrous | Reduces penalty by `1k0` |
+| Two Weapon Fighting feat | Reduces penalty by `2k0` |
+| Shooting into Melee | -`2k0` |
+| Difficult Terrain | -`1k0`+ melee & Dodge |
+| Concealment | +5+ to target's SD |
+
+### Cover
+
+| Cover Type | AP |
+| --- | :---: |
+| Armor-glass, Pipes, Thin Metal | 4 |
+| Storage Crate, Sandbags, Ice | 8 |
+| Computer Bank, Stasis Pod | 16 |
+| Rockcrete, Hatchway, Thick Iron | 24 |
+| Armaplas, Bulkhead, Plasteel | 32 |
+
+### Hit Locations (1d10)
+
+| Roll | Location |
+| :---: | --- |
+| 1 | Left Leg |
+| 2 | Right Leg |
+| 3–6 | Body |
+| 7 | Gizzards |
+| 8 | Left Arm |
+| 9 | Right Arm |
+| 10 | Head |
+
+---
+
+## Derived Stat Formulas
+
+See [Characteristics & Skills](./03-Characteristics-Skills.mdx) and [Combat](./14-Combat.mdx) for full explanations.
+
+| Metric | Formula |
+| --- | --- |
+| Static Defense | 10 + (Dexterity + Wisdom) × 3 − (Size × 2) |
+| Hit Points | (Constitution + Willpower) × 2 |
+| Mental Defense | 5 + (Composure × 5) |
+| Resolve | Willpower + Composure |
+| Speed | Strength + Dexterity |
+| Resilience | Size (characters) |
+| Initiative | 1d10 + Dexterity + Composure |
+| Skill Test | (Skill + Characteristic)`k`(Characteristic) vs TN |
+| Attack Test | (Skill)`k`(Skill) + (Level)`k0` vs SD |
+| Vehicle SD | 10 + Maneuver − (2 × Size) + (Speed × Momentum Tier) |
+
+### Target Number Ladder
+
+| TN | Difficulty |
+| :---: | --- |
+| 5 | Mundane |
+| 10 | Easy |
+| 15 | Average |
+| 20 | Hard |
+| 25 | Very Hard |
+| 30 | Heroic |
+| 35 | Never Done Before |
+| 40 | Never to be Done Again |
+
+---
+
+## Magic Schools
+
+See [Magic](./11-Magic.mdx) for full school descriptions and spell lists.
+
+| School | Characteristic | Theme |
+| --- | --- | --- |
+| Abjuration | Willpower | Protection, barriers, wards |
+| Conjuration | Willpower | Teleportation, summoning |
+| Divination | Wisdom | Fate, prophecy, detection |
+| Enchantment | Charisma | Mind control, influence |
+| Evocation | Charisma | Energy damage, blasts |
+| Healing | Wisdom | Buffs, cures, enhancement |
+| Illusion | Intelligence | Deception, sensory tricks |
+| Necromancy | Intelligence | Death, undeath, life drain |
+| Transmutation | Wisdom | Physical transformation |
+
+---
+
+## Sword Schools
+
+See [Sword Schools](./12-Sword-Schools.mdx) for full maneuver lists and progression.
+
+| School | Skill | Weapon | Signature Action | Style |
+| --- | --- | --- | --- | --- |
+| Desert Wind | Athletics | Syrneth | Called Shot | Speed, mobility, fire |
+| Devoted Spirit | Medicae | Flails | Aid Another | Faith, piety, endurance |
+| Diamond Mind | Scrutiny | Fencing | Feint | Perception, mental speed |
+| Iron Heart | Perception | Ordinary | Aim | Absolute weapon mastery |
+| Setting Sun | Deceive | Brawl/Unarmed | Fight Defensively | Turn strength against foes |
+| Shadow Hand | Stealth | Parrying | Ready | Deception, misdirection |
+| Stone Dragon | Intimidate | Two Handed | Multi-Attack | Mountain-like force |
+| Tiger Claw | Acrobatics | Chain | All Out Attack | Primal instinct, pounces |
+| White Raven | Command | Cavalry | Charge | Teamwork, leadership |
+
+---
+
+## Gun Kata
+
+See [Gun Kata](./13-Gun-Kata.mdx) for full technique lists and progression.
+
+| School | Skill | Weapon | Signature Action | Style |
+| --- | --- | --- | --- | --- |
+| Clay Pigeon | Performer | Ordinary | Called Shot | Showmanship, trick shots |
+| Crisis Zone | Tech-Use | Heavy | Suppress/Overwatch | Heavy weapon mastery |
+| Elemental Gearbolt | Arcana | Primitive | Multiple Attacks | Warp-infused shots |
+| Point Blank | Athletics | Basic | Full Auto Burst | Close-quarters auto fire |
+| Silent Scope | Perception | Las | Aim | Long-range sniping |
+| Tin Star | Scrutiny | Pistol | Ready | Quick-draw discipline |
+
+---
+
+## Weapon Properties
+
+See [Equipment](./10-Equipment.mdx) for full weapon/armor tables.
+
+| Property | Effect |
+| --- | --- |
+| Accurate | +`1k0` extra when Aiming. Single shot: +`1k1` damage per 2 Raises on Aimed attack. |
+| Armored | +2 AP to wielding arm and body. Multiple shields don't stack. |
+| Balanced | +`1k0` to Parry Tests. |
+| Beam | Fire continuous beam. Reuse successful attack result on consecutive rounds. |
+| Blast (X) | Everyone within X meters of impact is also hit. Roll location & damage for each. |
+| Brawling | Damage added to unarmed attacks. Uses Brawl skill. |
+| Compact | +10 TN to find when hidden. Basic weapons: half penalty one-handed. |
+| Defensive | +`2k0` to Parry, -`1k0` to Attack. Unproficient: -`1k0` to all attacks. |
+| Flame | 30° cone, no attack roll. Targets Dex Test (TN 5 × Ballistics) or take damage. Jams on 9s. |
+| Flexible | Cannot be parried. |
+| Homing | Counts as Accurate + Full Aim. Ignores long range penalty. ECM/stealth defeats it. |
+| Inaccurate | No bonus from Aim action. |
+| Incendiary | Targets damaged are set On Fire. |
+| Indirect | Fires in an arc over obstacles. No aim/accuracy bonuses when arcing. |
+| Overheats | On 9s in damage roll: take weapon's damage to firing arm. Drop weapon (Free) to avoid. |
+| Power Field | When parrying non-Power Field weapon, d10: on 4+ the other weapon is destroyed. |
+| Proven (X) | Reroll damage dice showing X or less. |
+| Razor Sharp | 2+ Raises: double weapon's Penetration. |
+| Reach | Engaging a target doesn't make you engaged unless they close distance. |
+| Recharge | Must spend next Round charging. Fire every other Round only. |
+| Reliable | Jams become misses instead. |
+| Scatter | Short range: +`1k0` damage per Raise. Long/Extreme: AP doubled against it. |
+| Shocking | Wounded target: Constitution TN 15 or Stunned 1 Round. |
+| Smoke | Creates 3d10m smoke cloud lasting 3d10 Rounds. |
+| Snare | Hit target: Dex Test (TN = attack roll) or Immobilized. |
+| Storm | Full Auto: +`2k0` per Raise instead of +`1k0` (up to RoF). |
+| Tearing | Always deals at least 1 wound when dealing damage, ignoring Resilience. |
+| Toxic | After damage: Constitution TN 15 or +1 wound to Gizzards. |
+| Twin-Linked | Single shot: +`1k0` to hit. 2+ Raises: +`2k0` damage. |
+| Unbalanced | -`1k0` to all Parry Tests. |
+| Unreliable | Halve Ballistics (round down) for Jam checks. |
+| Unwieldy | Cannot be used to Parry. |
+
+---
+
+## Psychic Phenomena
+
+When casting spells, rolling doubles (or worse) on the casting dice triggers Psychic Phenomena. See [Magic](./11-Magic.mdx) for full casting rules.
+
+| Roll | Name | Effect |
+| :---: | --- | --- |
+| 01–03 | Dark Foreboding | A faint breeze; everyone feels something unfortunate just happened somewhere |
+| 04–05 | Warp Echo | All noise causes echoes for a few seconds |
+| 06–08 | Unholy Stench | A bizarre and foul smell permeates the air |
+| 09–11 | Warp Mind | Sorcerer suffers 1 Insanity Point |
+| 12–14 | Hoarfrost | Temperature plummets; thin frost covers everything within 3d10m |
+| 15–17 | Aura of Taint | All animals within 1d100m become spooked and agitated |
+| 18–20 | Memory Worm | All people within line of sight forget something trivial |
+| 21–23 | Spoilage | Food and drink go bad in a 5d10m radius |
+| 24–26 | Haunting Breeze | Wind whips up, blowing light objects and guttering fires within 3d10m |
+| 27–29 | Veil of Darkness | Area within 3d10m is plunged into darkness for remainder of round |
+| 30–32 | Distorted Reflections | Mirrors and reflective surfaces within 5d10m distort or shatter |
+| 33–35 | Breath Leech | Everyone becomes short of breath for one round; no Run or Charge actions |
+| 36–38 | Mask of Fear | Sorcerer takes terrible appearance; gains Fear 1 for rest of round |
+| 39–41 | Unnatural Decay | All plant-life within 3d10m withers and dies |
+| 42–44 | Spectral Gale | Howling winds; everyone within 4d10m must Test TN 10 Dex/Str or be knocked down |
+| 45–47 | Bloody Tears | Blood weeps from stone and wood within 3d10m |
+| 48–50 | The Earth Protests | Ground shakes; everyone within 5d10m must Test TN 15 Dex or be knocked down |
+| 51–53 | Psy Discharge | Static electricity within 5d10m; unprotected electronics short out |
+| 54–56 | Warp Ghosts | Ghostly apparitions within 3d10m; everyone must Test against Fear 1 |
+| 57–59 | Falling Upwards | Everything within 2d10m rises 1d10m into the air, then falls |
+| 60–62 | Banshee Howl | Everyone must Test Con TN 15 or be deafened for 1d10 rounds |
+| 63–65 | The Furies | Sorcerer slammed to ground, loses 1d5 HP, must Test against Fear 2 |
+| 66–68 | Shadow of the Warp | Everyone within 1d100m must Test WP TN 20 or gain 1d5 Insanity Points |
+| 69–71 | Tech Scorn | Tech devices within 5d10m malfunction; ranged weapons jam |
+| 72–74 | Warp Madness | Creatures within 2d10m become Frenzied for a round unless TN 20 WP |
+| 75+ | Perils of the Warp | Roll on Perils of the Warp table instead |
+
+---
+
+## Perils of the Warp
+
+| Roll | Name | Effect |
+| :---: | --- | --- |
+| 01–05 | The Gibbering | Test TN 20 WP or suffer 1d5+1 Insanity Points and be stunned 1d5 rounds |
+| 06–09 | Warp Burn | Lose 1d5 HP and be stunned for 1d5 rounds |
+| 10–13 | Psychic Concussion | Knocked unconscious 1d5 rounds; everyone within 3d10m TN 15 WP or stunned 1 round |
+| 14–18 | Psy-Blast | Thrown 1d10m into the air, falling to the ground |
+| 19–24 | Soul Sear | Cannot use any spells for one hour |
+| 25–30 | Locked In | Fall catatonic. Each round, Full Action to Test WP TN 15 to break free |
+| 31–38 | Chronological Incontinence | Wink out of existence, reappear in 1d10 rounds, suffer 1d5 Insanity |
+| 39–46 | Psychic Mirror | Spell targets the sorcerer instead; if beneficial, lose 1d5 HP and effect cancelled |
+| 47–55 | Warp Whispers | Everyone within 4d10m must Test WP TN 25 or suffer 1d10 Insanity Points |
+| 56–58 | The Darkness | Everyone within 5d10m is blind and deaf for 1d10 rounds |
+| 59–67 | Teleport Storm | Everyone within 3d10m switches places randomly |
+| 68–72 | Rending the Veil | All creatures within 1d100m must Test against Fear 3 for 1d5 rounds |
+| 73–78 | Blood Rain | TN 15 Str or be knocked down. Spells in area auto-trigger Perils for 1d5 rounds |
+| 79–82 | Cataclysmic Blast | Everyone within 1d10m loses 1d5+2 HP. Cannot cast spells for 1d5 hours |
+| 83–86 | Power Drain | Everyone within 3d10m loses all unspent Hero Points |
+| 87–90 | Reality Quake | Everything within 3d10m takes 3d10 Rending damage |
+| 91–99 | Lost to the Warp | Test TN 30 WP or be dragged into the Warp. Reappear 1d10 weeks later with 3d10 Insanity; future Perils at +10 |
+| 100 | Destruction | Sucked into the Warp, never to be seen again. Character is dead |

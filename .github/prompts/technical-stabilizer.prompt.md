@@ -18,10 +18,10 @@ Understand what you're working with before diagnosing anything:
 
 1. **Read project context** — read `.github/copilot-instructions.md` and key docs (`docs/architecture.md`, `docs/project-conventions.md`) to understand the project's layout, conventions, and structure
 2. **Check git state** — run `git status`, `git branch`, and `git log --oneline -15`
-    - Identify the current branch and its state (clean, dirty, ahead/behind)
-    - If there are uncommitted changes, **stop and report to the user** — stabilization requires a known starting point. The user may want to commit or discard before proceeding. Never stash — stashes lose work into limbo.
-    - If on a feature branch, stabilize that branch. Do not switch to main unless the user instructs it.
-    - Note all existing branches — their state is relevant context for Phase 2.
+  - Identify the current branch and its state (clean, dirty, ahead/behind)
+  - If there are uncommitted changes, **stop and report to the user** — stabilization requires a known starting point. The user may want to commit or discard before proceeding. Never stash — stashes lose work into limbo.
+  - If on a feature branch, stabilize that branch. Do not switch to main unless the user instructs it.
+  - Note all existing branches — their state is relevant context for Phase 2.
 
 Do not produce output to the user during this phase. This is internal orientation only.
 
@@ -39,9 +39,9 @@ Work through each diagnostic category below. Investigate the codebase and compil
 - Does it run without runtime errors or warnings?
 - If a test suite exists, do all tests pass?
 - Check whether a linter, formatter, or static analysis tool is configured:
-    - If configured, does the codebase pass cleanly?
-    - If misconfigured or broken, report that as a finding.
-    - **If absent entirely, report that as a finding.** Identify what standard tooling exists for this stack (linters, formatters, type checkers, test frameworks) and note what the project would benefit from. Frame these as recommendations, not requirements — e.g., "This Node.js project has no configured linter. ESLint is the standard tool for this stack and would catch common issues automatically."
+  - If configured, does the codebase pass cleanly?
+  - If misconfigured or broken, report that as a finding.
+  - **If absent entirely, report that as a finding.** Identify what standard tooling exists for this stack (linters, formatters, type checkers, test frameworks) and note what the project would benefit from. Frame these as recommendations, not requirements — e.g., "This Node.js project has no configured linter. ESLint is the standard tool for this stack and would catch common issues automatically."
 
 **Goal:** Confirm the project works right now. Identify missing scaffolding that a more experienced developer would have in place.
 
@@ -100,9 +100,9 @@ Present a structured diagnostic report to the user, organized by category. For e
 - **What** — the specific issue
 - **Where** — file(s) and location(s) affected
 - **Severity** — how much risk or confusion this creates if left unresolved
-    - **High** — actively causes errors, blocks functionality, or will mislead the agent into bad decisions
-    - **Medium** — creates confusion or inconsistency, likely to cause problems in future sessions
-    - **Low** — cosmetic, minor drift, or cleanup-level concern
+  - **High** — actively causes errors, blocks functionality, or will mislead the agent into bad decisions
+  - **Medium** — creates confusion or inconsistency, likely to cause problems in future sessions
+  - **Low** — cosmetic, minor drift, or cleanup-level concern
 - **Recommended action** — what the fix looks like (delete, rename, move, update, refactor, document, install)
 
 If a category has no findings, say so explicitly. Do not manufacture issues to fill the report.
@@ -119,9 +119,9 @@ After user approval, address findings in order of severity (high → medium → 
 
 1. Create a branch `technical-stabilizer` (or similar) from the current branch
 2. Work through approved findings systematically:
-    - Make the change
-    - Verify the change didn't break anything (build still passes, tests still pass, no new errors)
-    - Commit with a descriptive message explaining what was fixed and why
+  - Make the change
+  - Verify the change didn't break anything (build still passes, tests still pass, no new errors)
+  - Commit with a descriptive message explaining what was fixed and why
 3. Do not batch unrelated fixes into a single commit — each fix or closely related group of fixes gets its own commit
 4. If a fix turns out to be more complex than expected or reveals a deeper issue, **do not pursue it**. Note it in the report with a brief description of the problem, where it was found, and why it exceeds the scope of stabilization. Then move on.
 
@@ -130,9 +130,9 @@ After user approval, address findings in order of severity (high → medium → 
 Stabilization changes often affect documentation and agent instructions. After completing code-level fixes:
 
 1. Review whether any changes invalidate or require updates to:
-    - `docs/architecture.md` and tool specs
-    - Copilot instructions and skill files
-    - README files and inline documentation
+  - `docs/architecture.md` and tool specs
+  - Copilot instructions and skill files
+  - README files and inline documentation
 2. Apply documentation updates as part of this same branch, with their own commits
 3. Follow the "docs own, skills point" model — update the authoritative source, then update references
 
@@ -169,6 +169,7 @@ If the user is satisfied and wants to merge:
 
 - **For session branches** (e.g., `session-YYYY-MM-DD`): use `bun run session:end` — it handles squash-merge to main and branch cleanup automatically.
 - **For dedicated stabilizer branches** (e.g., `technical-stabilizer`): merge manually:
+
     ```bash
     git checkout main
     git merge technical-stabilizer --no-ff -m "Merge technical-stabilizer: [summary of stabilization work]"

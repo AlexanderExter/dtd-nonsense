@@ -1,0 +1,48 @@
+{
+  "magicSchools": [
+    { "id": "abjuration", "name": "Abjuration", "characteristic": "willpower" },
+    {
+      "id": "conjuration",
+      "name": "Conjuration",
+      "characteristic": "willpower"
+    },
+    { "id": "divination", "name": "Divination", "characteristic": "wisdom" },
+    {
+      "id": "enchantment",
+      "name": "Enchantment",
+      "characteristic": "charisma"
+    },
+    { "id": "evocation", "name": "Evocation", "characteristic": "charisma" },
+    { "id": "healing", "name": "Healing", "characteristic": "wisdom" },
+    { "id": "illusion", "name": "Illusion", "characteristic": "intelligence" },
+    {
+      "id": "necromancy",
+      "name": "Necromancy",
+      "characteristic": "intelligence"
+    },
+    {
+      "id": "transmutation",
+      "name": "Transmutation",
+      "characteristic": "wisdom"
+    }
+  ],
+  "swordSchools": [
+    { "id": "desertWind", "name": "Desert Wind" },
+    { "id": "devotedSpirit", "name": "Devoted Spirit" },
+    { "id": "diamondMind", "name": "Diamond Mind" },
+    { "id": "ironHeart", "name": "Iron Heart" },
+    { "id": "settingSun", "name": "Setting Sun" },
+    { "id": "shadowHand", "name": "Shadow Hand" },
+    { "id": "stoneDragon", "name": "Stone Dragon" },
+    { "id": "tigerClaw", "name": "Tiger Claw" },
+    { "id": "whiteRaven", "name": "White Raven" }
+  ],
+  "gunKata": [
+    { "id": "clayPigeon", "name": "Clay Pigeon" },
+    { "id": "crisisZone", "name": "Crisis Zone" },
+    { "id": "elementalGearbolt", "name": "Elemental Gearbolt" },
+    { "id": "pointBlank", "name": "Point Blank" },
+    { "id": "silentScope", "name": "Silent Scope" },
+    { "id": "tinStar", "name": "Tin Star" }
+  ]
+}

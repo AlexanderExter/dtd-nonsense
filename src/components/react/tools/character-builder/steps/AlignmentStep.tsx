@@ -16,16 +16,15 @@ export function AlignmentStep() {
 
 	if (!data?.alignments?.alignments) return <p>Loading alignment data…</p>;
 
-	const alignments = data.alignments.alignments as any[];
+	const alignments = data.alignments.alignments;
 	const preview = selectedPreview;
 
 	// Unique pantheons for filter
-	const pantheons = [...new Set(alignments.map((a: any) => a.pantheon).filter(Boolean))];
+	const pantheons = [...new Set(alignments.map((a) => a.pantheon).filter(Boolean))];
 
-	const filtered =
-		pantheonFilter === "all" ? alignments : alignments.filter((a: any) => a.pantheon === pantheonFilter);
+	const filtered = pantheonFilter === "all" ? alignments : alignments.filter((a) => a.pantheon === pantheonFilter);
 
-	const selectAlignment = (al: any) => {
+	const selectAlignment = (al) => {
 		updateChar((c) => {
 			c.alignment = al.id || al.name;
 			c.devotion = 6;
@@ -39,7 +38,7 @@ export function AlignmentStep() {
 	return (
 		<div>
 			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
-				<label className="m-0 text-[0.85rem] text-text-dim">
+				<label className="m-0 text-sm text-text-dim">
 					Pantheon:{" "}
 					<GameSelect
 						onChange={(e) => {
@@ -58,7 +57,7 @@ export function AlignmentStep() {
 			</div>
 
 			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{filtered.map((al: any) => (
+				{filtered.map((al) => (
 					<SelectionCard
 						key={al.id || al.name}
 						onClick={() => {
@@ -110,7 +109,7 @@ export function AlignmentStep() {
 									</tr>
 								</thead>
 								<tbody>
-									{preview.sins.map((s: any) => (
+									{preview.sins.map((s) => (
 										<tr key={`${s.devotion}-${s.sin}`}>
 											<td>{s.devotion}</td>
 											<td>{s.sin}</td>

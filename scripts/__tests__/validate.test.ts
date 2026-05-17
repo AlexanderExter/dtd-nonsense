@@ -40,9 +40,9 @@ describe("countRecords", () => {
 // ---------------------------------------------------------------------------
 
 describe("validateAll", () => {
-	it("returns 12 results", () => {
+	it("returns 15 results", () => {
 		const results = validateAll();
-		expect(results).toHaveLength(12);
+		expect(results).toHaveLength(15);
 	});
 
 	it("all results have ok: true", () => {

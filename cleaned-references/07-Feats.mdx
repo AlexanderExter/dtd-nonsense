@@ -6,15 +6,24 @@ sidebar:
 title: Feats, Assets & Hindrances
 ---
 
-> **Quick Reference:**
->
-> - **329 feats** across 6 categories: General, Racial, Supplementary, Assets, Exalted Assets, and Hindrances
-> - **Assets** are character-creation only (spend starting XP); **Hindrances** grant 100 bonus XP (max 4)
-> - Feats marked with **\*** may be taken multiple times with a different group each time
-> - Feat prerequisites are listed with each description; class feat lists appear in [Classes](./06-Classes.mdx)
-> - Racial feats require a specific race — see [Races](./04-Races.mdx) for racial abilities referenced by feats
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-**Related:** [Character Creation](./02-Char-Creation.mdx) (feat selection at Step 7) | [Classes](./06-Classes.mdx) (class feat lists) | [Races](./04-Races.mdx) | [Equipment](./10-Equipment.mdx) (weapon/armor types for proficiency feats) | [Magic](./11-Magic.mdx) (spell schools for magic feats)
+:::note[Quick Reference]
+
+- **329 feats** across 6 categories: General, Racial, Supplementary, Assets, Exalted Assets, and Hindrances
+- **Assets** are character-creation only (spend starting XP); **Hindrances** grant 100 bonus XP (max 4)
+- Feats marked with **\*** may be taken multiple times with a different group each time
+- Feat prerequisites are listed with each description; class feat lists appear in [Classes](./06-Classes.mdx)
+- Racial feats require a specific race — see [Races](./04-Races.mdx) for racial abilities referenced by feats
+:::
+
+<CardGrid>
+  <LinkCard title="Character Creation" href="/rules/02-char-creation/" description="Feat selection at Step 7" />
+  <LinkCard title="Classes" href="/rules/06-classes/" description="Class feat lists" />
+  <LinkCard title="Races" href="/rules/04-races/" description="Racial feat prerequisites" />
+  <LinkCard title="Equipment" href="/rules/10-equipment/" description="Weapon/armor proficiency types" />
+  <LinkCard title="Magic" href="/rules/11-magic/" description="Spell schools for magic feats" />
+</CardGrid>
 
 ---
 
@@ -24,7 +33,9 @@ Some feats have **groups** — a general ability applied to a specific category.
 
 Classes may pre-select the group for you (e.g., a Paladin gets Peer (Religious Order), not a free choice). Group listings are representative, not exhaustive.
 
-> **Note:** Feats marked with \* may be taken more than once. If the feat has groups, you must choose a different group each time.
+:::note
+Feats marked with \* may be taken more than once. If the feat has groups, you must choose a different group each time.
+:::
 
 ---
 
@@ -33,6 +44,9 @@ Classes may pre-select the group for you (e.g., a Paladin gets Peer (Religious O
 General feats are available to any character who meets prerequisites. Key terms: **Static Defense** (passive defense TN opponents must beat), **Hero Point** (limited resource spent for extraordinary effects), **Resource Points** (class-specific power pool), **`XkY`** notation (roll X dice, keep Y highest).
 
 ### Feat Summary Table
+
+<details>
+<summary>Full General Feats table (click to expand)</summary>
 
 | Feat                             | Effect                                                                         |
 | -------------------------------- | ------------------------------------------------------------------------------ |
@@ -132,6 +146,8 @@ General feats are available to any character who meets prerequisites. Key terms:
 | Weapon Proficiency\*             | Use weapon category with no penalties                                          |
 | Weapon Specialization\*          | +`2k0` to damage with specific weapon type                                       |
 | Wizard Tradition\*               | Choose special magic tradition effect                                          |
+
+</details>
 
 ---
 
@@ -1315,30 +1331,30 @@ Some feats form progression paths — taking an earlier feat unlocks or enhances
 
 ### Greater Spell Penetration
 
-_Prerequisites: Spell Penetration_
+## Prerequisites: Spell Penetration
 
 It's even harder to resist your spells, the energy blasting through defenses both mental and physical. Tests made to resist your spells need an additional raise to succeed. This stacks with Spell Penetration.
 
 ### Purge the Unclean
 
-_Prerequisites: Alignment with a deity_
+## Prerequisites: Alignment with a deity
 
 You may spend a Hero Point to repel the enemies of your God. Choose an opponent that represents a foe of your deity (Warp Entities, Daemonhosts, and Chosen almost always count—the SM will let you know if a target doesn't count) and spend a Hero Point. Make an opposed Willpower Test with the target. If it succeeds, the target is repelled a distance of meters away equal to twice your Willpower. It cannot approach closer than this distance for 1d10 rounds.
 
 ### Spell Mastery
 
-_Prerequisites: At least 3 dots in a Magic School_
+## Prerequisites: At least 3 dots in a Magic School
 
 By practicing the motions of a spell over and over again, you can make sure you'll be able to cast it even in the worst circumstances. Choose a single spell of the third rank or lower. You may reroll failed Tests to cast that spell.
 
 ### Spell Specialization
 
-_Prerequisites: At least 1 dot in a Magic School_
+## Prerequisites: At least 1 dot in a Magic School
 
 Most sorcerers are best with a certain type of spells—blowing things up, healing, seeing the future, whatever. Choose a school of magic. Once per scene you may reroll a failed magic test from that school.
 
 ### Touch Spell Specialization
 
-_Prerequisites: None_
+## Prerequisites: None
 
 Aiming a spell is almost exactly unlike aiming a gun. That doesn't mean you can't get better at it and you're living proof. You gain +`2k0` to hit with all spells that require you to make an Attack.

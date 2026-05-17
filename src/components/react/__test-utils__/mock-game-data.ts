@@ -94,5 +94,11 @@ export const MOCK_GAME_DATA: Record<string, unknown> = {
 	exaltations: { exaltations: [] },
 	ships: { hulls: [], weapons: [], consoles: [], shields: [], torpedoes: [] },
 	traits: [],
+	conditions: [],
+	schools: {
+		magicSchools: [{ id: "evocation", name: "Evocation", characteristic: "charisma" }],
+		swordSchools: [{ id: "ironHeart", name: "Iron Heart" }],
+		gunKata: [{ id: "pointBlank", name: "Point Blank" }],
+	},
 	"npc-templates": [],
 };

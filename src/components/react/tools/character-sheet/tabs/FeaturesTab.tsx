@@ -49,7 +49,7 @@ export function FeaturesTab() {
 	};
 
 	// Find class details from game data
-	const getClassInfo = (classId: string) => classes.find((c: any) => c.id === classId);
+	const getClassInfo = (classId: string) => classes.find((c) => c.id === classId);
 
 	// Add a feat from class to character's feats list
 	const handleAddFeatFromClass = (featName: string) => {
@@ -62,7 +62,7 @@ export function FeaturesTab() {
 			let autoNotes = "";
 			const featList = data?.feats?.feats || data?.feats || [];
 			if (Array.isArray(featList)) {
-				const match = featList.find((f: any) => f.name?.toLowerCase().split("(")[0].trim() === baseName);
+				const match = featList.find((f) => f.name?.toLowerCase().split("(")[0].trim() === baseName);
 				if (match) autoNotes = match.effect || match.description || match.notes || "";
 			}
 			c.feats.push({ name: featName, notes: autoNotes });
@@ -132,7 +132,7 @@ export function FeaturesTab() {
 		<section className="tab-panel panel-features">
 			{/* ---------- Classes: Character's Classes ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">My Classes</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">My Classes</h3>
 				{charClasses.map((cls: ClassEntry, idx: number) => {
 					const info = getClassInfo(cls.classId);
 					return (
@@ -144,14 +144,14 @@ export function FeaturesTab() {
 									value={cls.classId}
 								>
 									<option value="">— Select Class —</option>
-									{classes.map((c: any) => (
+									{classes.map((c) => (
 										<option key={c.id} value={c.id}>
 											{c.name}
 										</option>
 									))}
 								</GameSelect>
 								<label
-									className="flex items-center gap-1 text-[0.78rem] uppercase tracking-[0.3px]"
+									className="flex items-center gap-1 text-xs uppercase tracking-tight-px"
 									htmlFor={`features-class-level-${idx}`}
 								>
 									Level
@@ -172,7 +172,7 @@ export function FeaturesTab() {
 							</div>
 							{info && (
 								<details className="mt-sm">
-									<summary className="cursor-pointer text-[0.82rem] text-text-muted hover:text-text-primary">
+									<summary className="cursor-pointer text-text-muted text-xs hover:text-text-primary">
 										Class Details
 									</summary>
 									<ClassDetails hasFeat={hasFeat} info={info} onAddFeat={handleAddFeatFromClass} />
@@ -186,7 +186,7 @@ export function FeaturesTab() {
 
 			{/* ---------- Classes: Track Browser ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Class Browser</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Class Browser</h3>
 				<div className="space-y-xs">
 					{Object.entries(tracks).map(([trackId, track]: [string, any]) => {
 						const isOpen = openTracks[trackId];
@@ -194,13 +194,13 @@ export function FeaturesTab() {
 						return (
 							<div className="rounded-sm border border-border bg-bg" key={trackId}>
 								<button
-									className="flex w-full cursor-pointer items-center gap-sm border-none bg-transparent px-md py-sm text-left font-semibold text-[0.9rem] text-text-primary hover:bg-surface"
+									className="flex w-full cursor-pointer items-center gap-sm border-none bg-transparent px-md py-sm text-left font-semibold text-sm text-text-primary hover:bg-surface"
 									onClick={() => toggleTrack(trackId)}
 									type="button"
 								>
-									<span className="text-[0.75rem] text-text-muted">{isOpen ? "▾" : "▸"}</span>
+									<span className="text-text-muted text-xs">{isOpen ? "▾" : "▸"}</span>
 									{track.name}
-									<span className="ml-auto text-[0.72rem] text-text-dim">
+									<span className="ml-auto text-text-dim text-xs">
 										{trackClassIds.length} classes
 									</span>
 								</button>
@@ -213,14 +213,14 @@ export function FeaturesTab() {
 												const isSelected = selectedClassIds.has(classId);
 												return (
 													<span
-														className="flex items-center text-[0.78rem] text-text-muted"
+														className="flex items-center text-text-muted text-xs"
 														key={classId}
 													>
 														{i > 0 && <span className="mr-1 text-text-dim">→</span>}
 														<span className={isSelected ? "font-bold text-accent" : ""}>
 															{info.name}
 														</span>
-														<span className="ml-0.5 text-[0.65rem] text-text-dim">
+														<span className="ml-0.5 text-text-dim text-xs">
 															L{info.level || i + 1}
 														</span>
 													</span>
@@ -238,17 +238,17 @@ export function FeaturesTab() {
 														key={classId}
 													>
 														<summary
-															className={`cursor-pointer px-sm py-xs text-[0.82rem] hover:bg-surface-raised ${isSelected ? "font-semibold text-accent" : "text-text-muted"}`}
+															className={`cursor-pointer px-sm py-xs text-xs hover:bg-surface-raised ${isSelected ? "font-semibold text-accent" : "text-text-muted"}`}
 														>
 															{info.name}
 															{isSelected && (
-																<span className="ml-1 text-[0.65rem] text-info">
+																<span className="ml-1 text-info text-xs">
 																	✓ selected
 																</span>
 															)}
 															{!isSelected && (
 																<button
-																	className="ml-2 cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-[0.65rem] text-accent hover:bg-accent/10"
+																	className="ml-2 cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-accent text-xs hover:bg-accent/10"
 																	onClick={(e) => {
 																		e.preventDefault();
 																		handleAddClassFromTree(classId);
@@ -294,7 +294,7 @@ export function FeaturesTab() {
 
 			{/* ---------- Backgrounds ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Backgrounds</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Backgrounds</h3>
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 					{backgrounds.map((bg) => {
 						const id = bg.id || bg.name?.toLowerCase() || "";
@@ -303,9 +303,7 @@ export function FeaturesTab() {
 								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
 								key={id}
 							>
-								<span className="min-w-[70px] font-medium text-[0.85rem]">
-									{bgNames[id] || bg.name}
-								</span>
+								<span className="min-w-[70px] font-medium text-sm">{bgNames[id] || bg.name}</span>
 								<NumberInput
 									max={5}
 									min={0}
@@ -327,7 +325,7 @@ export function FeaturesTab() {
 
 			{/* ---------- Equipment ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">Equipment</h3>
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Equipment</h3>
 				<GameTextarea
 					className="min-h-[120px] placeholder:text-text-dim"
 					onInput={(e) =>
@@ -355,7 +353,7 @@ function ClassDetails({
 	onAddFeat: (name: string) => void;
 }) {
 	return (
-		<div className="space-y-xs p-md text-[0.85rem] text-text-muted">
+		<div className="space-y-xs p-md text-sm text-text-muted">
 			{info.description && <p className="m-0">{info.description}</p>}
 			{info.skills && info.skills.length > 0 && (
 				<p className="m-0">
@@ -366,7 +364,7 @@ function ClassDetails({
 				<div>
 					<strong>Feats:</strong>
 					<ul className="my-xs list-none pl-0">
-						{info.feats.map((f: any) => {
+						{info.feats.map((f) => {
 							const name = typeof f === "string" ? f : f.name;
 							const type = typeof f === "object" ? f.type : null;
 							const already = hasFeat(name);
@@ -374,13 +372,13 @@ function ClassDetails({
 								<li className="mb-0.5 flex items-center gap-sm" key={name}>
 									<span>
 										{name}
-										{type && <span className="ml-1 text-[0.65rem] text-text-dim">({type})</span>}
+										{type && <span className="ml-1 text-text-dim text-xs">({type})</span>}
 									</span>
 									{already ? (
-										<span className="text-[0.65rem] text-info">✓</span>
+										<span className="text-info text-xs">✓</span>
 									) : (
 										<button
-											className="cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-[0.65rem] text-accent hover:bg-accent/10"
+											className="cursor-pointer rounded-sm border border-border bg-transparent px-1 py-0 text-accent text-xs hover:bg-accent/10"
 											onClick={() => onAddFeat(name)}
 											title="Add to character feats"
 											type="button"

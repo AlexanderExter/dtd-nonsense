@@ -12,33 +12,29 @@ export function CrewConfig() {
 	const handleQualityChange = useCallback(
 		(e: React.ChangeEvent<HTMLSelectElement>) => {
 			const val = Number.parseInt((e.target as HTMLSelectElement).value, 10);
-			updateShip((s) => ({ ...s, crewQuality: val }));
+			updateShip((s) => {
+				s.crewQuality = val;
+			});
 		},
 		[updateShip],
 	);
 
 	const handleOfficerName = useCallback(
 		(posId: string, name: string) => {
-			updateShip((s) => ({
-				...s,
-				officers: {
-					...s.officers,
-					[posId]: { ...s.officers[posId], name },
-				},
-			}));
+			updateShip((s) => {
+				if (!s.officers[posId]) s.officers[posId] = { name: "", skill: 0 };
+				s.officers[posId].name = name;
+			});
 		},
 		[updateShip],
 	);
 
 	const handleOfficerSkill = useCallback(
 		(posId: string, skill: number) => {
-			updateShip((s) => ({
-				...s,
-				officers: {
-					...s.officers,
-					[posId]: { ...s.officers[posId], skill },
-				},
-			}));
+			updateShip((s) => {
+				if (!s.officers[posId]) s.officers[posId] = { name: "", skill: 0 };
+				s.officers[posId].skill = skill;
+			});
 		},
 		[updateShip],
 	);
@@ -50,7 +46,7 @@ export function CrewConfig() {
 			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Crew</h2>
 			<div>
 				<div className="mb-sm">
-					<label className="text-[0.8rem]" htmlFor="crew-quality">
+					<label className="text-xs" htmlFor="crew-quality">
 						Crew Quality
 					</label>
 					<GameSelect id="crew-quality" onChange={handleQualityChange} value={currentShip.crewQuality}>
@@ -70,17 +66,17 @@ export function CrewConfig() {
 						};
 						return (
 							<div
-								className="grid grid-cols-[150px_1fr_80px_60px] items-center gap-sm rounded-sm bg-surface-raised px-sm py-xs max-[900px]:grid-cols-2"
+								className="grid grid-cols-[150px_1fr_80px_60px] items-center gap-sm rounded-sm bg-surface-raised px-sm py-xs max-tool-lg:grid-cols-2"
 								key={pos.id}
 							>
-								<span className="font-semibold text-[0.85rem]">{pos.title}</span>
+								<span className="font-semibold text-sm">{pos.title}</span>
 								<GameInput
 									onInput={(e) => handleOfficerName(pos.id, (e.target as HTMLInputElement).value)}
 									placeholder="Name"
 									type="text"
 									value={officer.name}
 								/>
-								<span className="text-right text-[0.8rem] text-text-muted">{pos.skill}</span>
+								<span className="text-right text-text-muted text-xs">{pos.skill}</span>
 								<GameInput
 									className="w-[50px]"
 									max={10}

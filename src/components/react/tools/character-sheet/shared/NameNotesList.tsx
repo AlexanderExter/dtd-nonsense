@@ -22,8 +22,8 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 		const featList = data.feats.feats || data.feats || [];
 		if (Array.isArray(featList)) {
 			const categoryFilter = listKey === "assets" ? "asset" : listKey === "hindrances" ? "hindrance" : null;
-			const filtered = categoryFilter ? featList.filter((f: any) => f.category === categoryFilter) : featList;
-			options = filtered.map((f: any) => f.name).filter(Boolean);
+			const filtered = categoryFilter ? featList.filter((f) => f.category === categoryFilter) : featList;
+			options = filtered.map((f) => f.name).filter(Boolean);
 		}
 	}
 
@@ -32,7 +32,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 		const featList = data.feats.feats || data.feats || [];
 		if (!Array.isArray(featList)) return "";
 		const baseName = name.toLowerCase().split("(")[0].trim();
-		const match = featList.find((f: any) => {
+		const match = featList.find((f) => {
 			const dataBase = f.name?.toLowerCase().split("(")[0].trim();
 			return dataBase === baseName;
 		});
@@ -84,13 +84,13 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					))}
 				</datalist>
 			)}
-			<table className="w-full border-collapse text-[0.85rem]">
+			<table className="w-full border-collapse text-sm">
 				<thead>
 					<tr>
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 							Name
 						</th>
-						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-[0.7rem] text-text-muted uppercase tracking-[0.5px]">
+						<th className="whitespace-nowrap border-border border-b px-sm py-xs text-left font-semibold text-text-muted text-xs uppercase tracking-wide-px">
 							Notes
 						</th>
 						<th />
@@ -100,7 +100,7 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 					{items.map((item, idx) => (
 						// biome-ignore lint/suspicious/noArrayIndexKey: editable list items identified by position
 						<tr key={`${label}-${idx}`}>
-							<td className="border-border border-b px-sm py-[3px] align-middle">
+							<td className="border-border border-b px-sm py-2xs align-middle">
 								<GameInput
 									list={datalistId}
 									onInput={(e) => handleNameChange(idx, (e.target as HTMLInputElement).value)}
@@ -108,14 +108,14 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 									value={item.name}
 								/>
 							</td>
-							<td className="border-border border-b px-sm py-[3px] align-middle">
+							<td className="border-border border-b px-sm py-2xs align-middle">
 								<GameInput
 									onInput={(e) => handleNotesChange(idx, (e.target as HTMLInputElement).value)}
 									type="text"
 									value={item.notes}
 								/>
 							</td>
-							<td className="w-9 border-border border-b px-sm py-[3px] text-center align-middle">
+							<td className="w-9 border-border border-b px-sm py-2xs text-center align-middle">
 								<button
 									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
 									onClick={() => handleRemove(idx)}

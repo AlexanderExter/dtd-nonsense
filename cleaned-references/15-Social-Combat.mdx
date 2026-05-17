@@ -6,17 +6,25 @@ sidebar:
 title: Social Combat
 ---
 
-> **Key concepts:** Social combat uses the same structured time as physical [Combat](./14-Combat.mdx) — Initiative, Rounds, Turns, Actions — but attacks target **Resolve** instead of Hit Points. The TN for social attacks is the target's **Mental Defense** (`5 + Composure × 5`). Targets can spend Resolve to resist effects, but after 2 points of Resolve drain in a scene, further attempts auto-fail unless a new approach (Stunt) is tried.
+import { Steps } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+Social combat uses the same structured time as physical [Combat](./14-Combat.mdx) — Initiative, Rounds, Turns, Actions — but attacks target **Resolve** instead of Hit Points. The TN for social attacks is the target's **Mental Defense** (`5 + Composure × 5`). Targets can spend Resolve to resist effects, but after 2 points of Resolve drain in a scene, further attempts auto-fail unless a new approach (Stunt) is tried.
+:::
 
 ---
 
 ## Social Combat Procedure — Step by Step
+
+<Steps>
 
 1. **Determine Surprise** — a character can be socially ambushed (loses first Turn).
 2. **Roll Initiative** — `1d10` + **Wisdom** + Composure (not Dexterity).
 3. **Take Turns** — each character acts in Initiative order, using social combat actions.
 4. **Resolve Effects** — targets either spend Resolve to resist or consent to the attack's effect.
 5. **Repeat** until the situation resolves (agreement, withdrawal, or broken will).
+
+</Steps>
 
 Social combat rounds are longer than physical rounds — a minute or more, as needed for the dialogue.
 
@@ -145,4 +153,6 @@ A character's disposition determines base difficulty for social influence:
 | Helpful | +5 | Will take risks to help you |
 | Fanatical | +10 | Absolute devotion |
 
-> **Note:** Helpful and Fanatical targets are easier to influence toward actions they'd want to do, but the +5/+10 modifier represents their conviction — harder to push off their chosen course.
+:::note
+Helpful and Fanatical targets are easier to influence toward actions they'd want to do, but the +5/+10 modifier represents their conviction — harder to push off their chosen course.
+:::

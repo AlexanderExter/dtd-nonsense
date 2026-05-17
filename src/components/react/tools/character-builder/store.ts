@@ -1,7 +1,8 @@
+import { produce } from "immer";
 import { create } from "zustand";
 import { character } from "@/lib/dtd/character";
 import type { CharacterData } from "@/lib/dtd/types";
-import { BASE_CHAR_DOT, type BuilderMeta, createDefaultMeta } from "./constants";
+import { BASE_CHAR_DOT, type BuilderGameData, type BuilderMeta, createDefaultMeta } from "./constants";
 
 // =========================================================================
 // Default character factory
@@ -22,12 +23,12 @@ function createDefaultChar(): CharacterData {
 interface BuilderStore {
 	char: CharacterData;
 	currentStep: number;
-	gameData: Record<string, any> | null;
+	gameData: BuilderGameData | null;
 	meta: BuilderMeta;
 
 	setChar: (ch: CharacterData) => void;
 	setCurrentStep: (step: number) => void;
-	setGameData: (d: Record<string, any>) => void;
+	setGameData: (d: BuilderGameData) => void;
 	setMeta: (m: BuilderMeta) => void;
 	updateChar: (fn: (c: CharacterData) => void) => void;
 	updateMeta: (fn: (m: BuilderMeta) => void) => void;
@@ -49,21 +50,18 @@ export const useBuilderStore = create<BuilderStore>((set) => ({
 	setCurrentStep: (step) => set({ currentStep: step }),
 
 	updateChar: (fn) =>
-		set((state) => {
-			const next = structuredClone(state.char);
-			fn(next);
-			return { char: next };
-		}),
+		set(
+			produce((state) => {
+				fn(state.char);
+			}),
+		),
 
 	updateMeta: (fn) =>
-		set((state) => {
-			const next = {
-				...state.meta,
-				stepsCompleted: [...state.meta.stepsCompleted],
-			};
-			fn(next);
-			return { meta: next };
-		}),
+		set(
+			produce((state) => {
+				fn(state.meta);
+			}),
+		),
 }));
 
 // =========================================================================

@@ -64,7 +64,7 @@ export function ReviewStep() {
 		<div className="grid gap-md">
 			{/* Warnings */}
 			{warnings.length > 0 && (
-				<div className="rounded-sm border border-error bg-[rgba(248,113,113,0.1)] px-md py-sm font-semibold text-[0.9rem] text-error">
+				<div className="rounded-sm border border-error bg-error-bg-light px-md py-sm font-semibold text-error text-sm">
 					<strong>⚠ Issues:</strong>
 					<ul>
 						{warnings.map((w) => (
@@ -77,7 +77,7 @@ export function ReviewStep() {
 			{/* Identity */}
 			<section className="rounded-md border border-border bg-surface p-md">
 				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Identity</h3>
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-sm text-[0.9rem]">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-sm text-sm">
 					<span>
 						<strong>Name:</strong> {char.name || "—"}
 					</span>
@@ -114,8 +114,8 @@ export function ReviewStep() {
 						["Initiative", initiative],
 					].map(([label, value]) => (
 						<div className="rounded-sm bg-surface-raised p-sm text-center" key={label}>
-							<span className="block text-[0.7rem] text-text-dim uppercase">{label}</span>
-							<span className="block font-bold text-[1.3rem] text-accent">{value}</span>
+							<span className="block text-text-dim text-xs uppercase">{label}</span>
+							<span className="block font-bold text-accent text-xl">{value}</span>
 						</div>
 					))}
 				</div>
@@ -124,12 +124,12 @@ export function ReviewStep() {
 			{/* Characteristics */}
 			<section className="rounded-md border border-border bg-surface p-md">
 				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Characteristics</h3>
-				<div className="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
+				<div className="grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
 					{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => (
 						<div key={groupKey}>
-							<h4 className="mb-xs text-[0.85rem] text-accent">{group.label}</h4>
+							<h4 className="mb-xs text-accent text-sm">{group.label}</h4>
 							{group.chars.map((ch) => (
-								<div className="border-border border-b py-xs text-[0.9rem] last:border-b-0" key={ch}>
+								<div className="border-border border-b py-xs text-sm last:border-b-0" key={ch}>
 									{CHAR_NAMES[ch] || capitalize(ch)}:{" "}
 									<strong>{totalChars[ch] || BASE_CHAR_DOT}</strong>
 								</div>
@@ -143,7 +143,7 @@ export function ReviewStep() {
 			{activeSkills.length > 0 && (
 				<section className="rounded-md border border-border bg-surface p-md">
 					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Skills</h3>
-					<div className="flex flex-wrap gap-sm text-[0.9rem]">
+					<div className="flex flex-wrap gap-sm text-sm">
 						{activeSkills.map(([key, val]) => (
 							<span key={key}>
 								{capitalize(key)}: {val}
@@ -157,7 +157,7 @@ export function ReviewStep() {
 			{char.backgrounds.length > 0 && (
 				<section className="rounded-md border border-border bg-surface p-md">
 					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Backgrounds</h3>
-					<div className="flex flex-wrap gap-sm text-[0.9rem]">
+					<div className="flex flex-wrap gap-sm text-sm">
 						{char.backgrounds.map((b) => (
 							<span key={b.name}>
 								{capitalize(b.name)}: {b.dots}
@@ -171,7 +171,7 @@ export function ReviewStep() {
 			{char.classes.length > 0 && (
 				<section className="rounded-md border border-border bg-surface p-md">
 					<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">Classes</h3>
-					<div className="flex flex-wrap gap-sm text-[0.9rem]">
+					<div className="flex flex-wrap gap-sm text-sm">
 						{char.classes.map((c) => (
 							<span key={c.classId}>{capitalize(c.classId)}</span>
 						))}
@@ -186,17 +186,17 @@ export function ReviewStep() {
 						Feats, Assets &amp; Hindrances
 					</h3>
 					{char.feats.length > 0 && (
-						<div className="mb-xs text-[0.9rem]">
+						<div className="mb-xs text-sm">
 							<strong>Feats:</strong> {char.feats.map((f) => f.name).join(", ")}
 						</div>
 					)}
 					{char.assets.length > 0 && (
-						<div className="mb-xs text-[0.9rem]">
+						<div className="mb-xs text-sm">
 							<strong>Assets:</strong> {char.assets.map((a) => a.name).join(", ")}
 						</div>
 					)}
 					{char.hindrances.length > 0 && (
-						<div className="text-[0.9rem]">
+						<div className="text-sm">
 							<strong>Hindrances:</strong> {char.hindrances.map((h) => h.name).join(", ")}
 						</div>
 					)}
@@ -214,7 +214,7 @@ export function ReviewStep() {
 			{/* XP Budget */}
 			<section className="rounded-md border border-border bg-surface p-md">
 				<h3 className="mb-sm border-border border-b pb-xs text-accent text-base">XP Budget</h3>
-				<div className="flex flex-wrap gap-sm text-[0.9rem]">
+				<div className="flex flex-wrap gap-sm text-sm">
 					<span>
 						<strong>Total:</strong> {TOTAL_XP}
 					</span>

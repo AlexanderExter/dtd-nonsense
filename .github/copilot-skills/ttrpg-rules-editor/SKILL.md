@@ -88,7 +88,7 @@ See [project-conventions.md — PowerShell Encoding](../../docs/project-conventi
 
 PDF extraction frequently merges words at column breaks. These are invisible to casual reading but pervasive. Use iterative regex scanning:
 
-```
+```text
 # Common merged-word patterns — search with \b anchors
 \b(ofthe|inthe|tothe|onthe|forthe|andthe|isthe|bythe|atthe)\b
 \b(toa|ina|ona|asa|fora|witha|bya|hasa)\b
@@ -97,6 +97,7 @@ PDF extraction frequently merges words at column breaks. These are invisible to 
 ```
 
 A first pass catches ~30% of merged words. Systematic sweeps with expanding patterns find the rest. Expect 3-4 passes to reach near-zero remaining.
+
 ### Common Source-Book Error Patterns
 
 These recur across both books — scan for them during editorial passes:
@@ -108,6 +109,7 @@ These recur across both books — scan for them during editorial passes:
 | **Self-referential exits** | Priest suggests exit to "Priest" instead of "Preacher" | Check class exits point to a *different* class |
 | **Zero-indexed step counts** | Steps 0–9 = 10 steps, not 9 | Count inclusively when the sequence starts at zero |
 | **Stray escape characters** | `Priest\*` (escaped asterisk) | Fix unless the escape is needed for MDX rendering |
+
 ### Fix
 
 | Issue                     | Action                                                |
@@ -180,7 +182,7 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 ### Subagent Prompt Pattern
 
-```
+```text
 **Agent:** [Use appropriate agent type for the task: editor, formatter, integrator]
 
 **Task:** [One sentence: what to do and what file]
@@ -217,10 +219,10 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 2. **Read the entire file** before editing
 3. **Clean artifacts first** (typos, garbage, duplicates)
 4. **Work section by section**, top to bottom
-6. **For each section:**
-    - Identify mechanical content (must preserve exactly)
-    - Identify verbose language (can compress in `cleaned-references/`)
-    - Identify ambiguities (add clarification note in source)
+5. **For each section:**
+  - Identify mechanical content (must preserve exactly)
+  - Identify verbose language (can compress in `cleaned-references/`)
+  - Identify ambiguities (add clarification note in source)
 7. **Apply formatting** for scannability
 8. **Commit** with descriptive message
 9. **Final pass:** verify no mechanics lost via `git diff`
@@ -229,11 +231,11 @@ Subagents don't inherit context. The lead agent must provide everything they nee
 
 1. **Plan thoroughly** — inventory files, assess scope, identify dependencies
 2. **Process independent files in parallel** (2-3 subagents) or sequentially
-4. **Commit after each file** — don't let changes pile up uncommitted
-5. **Dependent files process after their dependencies** (e.g., classes before feats that reference them)
-6. **Track cross-references** needed between files
-7. **Track superseded approaches** — if a new strategy replaces an old one (e.g., in-place cleaning vs. chapter replacement), note it in the plan and schedule the old branch for deletion
-8. **Review for ambiguities** after all files done
+3. **Commit after each file** — don't let changes pile up uncommitted
+4. **Dependent files process after their dependencies** (e.g., classes before feats that reference them)
+5. **Track cross-references** needed between files
+6. **Track superseded approaches** — if a new strategy replaces an old one (e.g., in-place cleaning vs. chapter replacement), note it in the plan and schedule the old branch for deletion
+7. **Review for ambiguities** after all files done
 
 ---
 

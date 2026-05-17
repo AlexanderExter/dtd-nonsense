@@ -40,7 +40,7 @@ export function AccordionItem({
 			<div className={cn("mb-md overflow-hidden rounded-md border border-border", className)}>
 				<Collapsible.Trigger asChild>
 					<button
-						className="flex w-full cursor-pointer items-center gap-md border-none bg-surface px-lg py-md text-left font-[inherit] font-semibold text-base text-text-primary transition-colors duration-150 hover:bg-surface-raised max-[600px]:px-md max-[600px]:py-sm max-[600px]:text-[0.9rem]"
+						className="flex w-full cursor-pointer items-center gap-md border-none bg-surface px-lg py-md text-left font-[inherit] font-semibold text-base text-text-primary transition-colors duration-150 hover:bg-surface-raised max-tool-sm:px-md max-tool-sm:py-sm max-tool-sm:text-sm"
 						type="button"
 					>
 						<span
@@ -52,10 +52,10 @@ export function AccordionItem({
 							▸
 						</span>
 						{title}
-						{count && <span className="ml-auto font-normal text-[0.8rem] text-text-dim">{count}</span>}
+						{count && <span className="ml-auto font-normal text-text-dim text-xs">{count}</span>}
 					</button>
 				</Collapsible.Trigger>
-				<Collapsible.Content className="border-border border-t bg-bg p-lg max-[600px]:p-md">
+				<Collapsible.Content className="border-border border-t bg-bg p-lg max-tool-sm:p-md">
 					{children}
 				</Collapsible.Content>
 			</div>

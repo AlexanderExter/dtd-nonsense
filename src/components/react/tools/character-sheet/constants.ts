@@ -1,52 +1,11 @@
+export { CHAR_ABBREV } from "@/lib/dtd/constants";
+
+import { CHAR_KEYS } from "@/lib/dtd/constants";
+
 import { derived } from "@/lib/dtd/derived";
 import type { CharacterData, CharacterModifiers } from "@/lib/dtd/types";
 
 export const AUTOSAVE_DELAY = 400;
-
-export const CHAR_ABBREV: Record<string, string> = {
-	strength: "Str",
-	dexterity: "Dex",
-	constitution: "Con",
-	charisma: "Cha",
-	fellowship: "Fel",
-	composure: "Com",
-	intelligence: "Int",
-	wisdom: "Wis",
-	willpower: "Wil",
-};
-
-export const MAGIC_SCHOOLS = [
-	{ id: "abjuration", name: "Abjuration", char: "willpower" },
-	{ id: "conjuration", name: "Conjuration", char: "willpower" },
-	{ id: "divination", name: "Divination", char: "wisdom" },
-	{ id: "enchantment", name: "Enchantment", char: "charisma" },
-	{ id: "evocation", name: "Evocation", char: "charisma" },
-	{ id: "healing", name: "Healing", char: "wisdom" },
-	{ id: "illusion", name: "Illusion", char: "intelligence" },
-	{ id: "necromancy", name: "Necromancy", char: "intelligence" },
-	{ id: "transmutation", name: "Transmutation", char: "wisdom" },
-] as const;
-
-export const SWORD_SCHOOLS = [
-	{ id: "desertWind", name: "Desert Wind" },
-	{ id: "devotedSpirit", name: "Devoted Spirit" },
-	{ id: "diamondMind", name: "Diamond Mind" },
-	{ id: "ironHeart", name: "Iron Heart" },
-	{ id: "settingSun", name: "Setting Sun" },
-	{ id: "shadowHand", name: "Shadow Hand" },
-	{ id: "stoneDragon", name: "Stone Dragon" },
-	{ id: "tigerClaw", name: "Tiger Claw" },
-	{ id: "whiteRaven", name: "White Raven" },
-] as const;
-
-export const GUN_KATA = [
-	{ id: "clayPigeon", name: "Clay Pigeon" },
-	{ id: "crisisZone", name: "Crisis Zone" },
-	{ id: "elementalGearbolt", name: "Elemental Gearbolt" },
-	{ id: "pointBlank", name: "Point Blank" },
-	{ id: "silentScope", name: "Silent Scope" },
-	{ id: "tinStar", name: "Tin Star" },
-] as const;
 
 export const LOCATIONS = ["Head", "Body", "Left Arm", "Right Arm", "Left Leg", "Right Leg"];
 export const ARMOR_TYPES = ["Light", "Medium", "Heavy", "Extreme", "Power"];
@@ -85,17 +44,21 @@ export const TAB_LABELS: Array<{ id: TabId; label: string }> = [
 // ---------------------------------------------------------------------------
 
 /** Ensure all school/skill keys exist in character data. */
-export function ensureToolDefaults(ch: CharacterData, skillsData: any): void {
+export function ensureToolDefaults(ch: CharacterData, skillsData: any, schoolsData: any): void {
+	const magicSchools = schoolsData?.magicSchools ?? [];
+	const swordSchools = schoolsData?.swordSchools ?? [];
+	const gunKata = schoolsData?.gunKata ?? [];
+
 	if (!ch.magicSchools) ch.magicSchools = {};
-	for (const s of MAGIC_SCHOOLS) {
+	for (const s of magicSchools) {
 		if (!(s.id in ch.magicSchools)) ch.magicSchools[s.id] = 0;
 	}
 	if (!ch.swordSchools) ch.swordSchools = {};
-	for (const s of SWORD_SCHOOLS) {
+	for (const s of swordSchools) {
 		if (!(s.id in ch.swordSchools)) ch.swordSchools[s.id] = 0;
 	}
 	if (!ch.gunKata) ch.gunKata = {};
-	for (const s of GUN_KATA) {
+	for (const s of gunKata) {
 		if (!(s.id in ch.gunKata)) ch.gunKata[s.id] = 0;
 	}
 	if (skillsData) {
@@ -112,7 +75,7 @@ export function ensureToolDefaults(ch: CharacterData, skillsData: any): void {
 export function getEffChars(char: CharacterData, _raceData: any): Record<string, number> {
 	const base = (char.characteristics || {}) as unknown as Record<string, number>;
 	const result: Record<string, number> = {};
-	for (const id of Object.keys(CHAR_ABBREV)) {
+	for (const id of CHAR_KEYS) {
 		result[id] = base[id] || 1;
 	}
 	if (char.raceCharBonus && char.raceCharBonus in result) {

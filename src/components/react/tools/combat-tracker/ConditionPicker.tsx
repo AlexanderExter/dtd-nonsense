@@ -1,10 +1,10 @@
 import { Popover } from "@/components/react/ui/Popover";
-import type { CombatantCondition } from "./constants";
-import { CONDITIONS } from "./constants";
+import type { CombatantCondition, ConditionDef } from "./constants";
 
 interface ConditionPickerProps {
 	anchorRect: DOMRect;
 	combatantId: string;
+	conditions: ConditionDef[];
 	existingConditions: CombatantCondition[];
 	onClose: () => void;
 	onPick: (combatantId: string, conditionId: string) => void;
@@ -12,6 +12,7 @@ interface ConditionPickerProps {
 
 export function ConditionPicker({
 	combatantId,
+	conditions,
 	existingConditions,
 	anchorRect,
 	onPick,
@@ -20,7 +21,7 @@ export function ConditionPicker({
 	const getConditionState = (condId: string) => {
 		const existing = existingConditions.find((c) => c.conditionId === condId);
 		if (!existing) return "available";
-		const def = CONDITIONS.find((d) => d.id === condId);
+		const def = conditions.find((d) => d.id === condId);
 		if (def?.leveled) return "leveled";
 		return "applied";
 	};
@@ -34,12 +35,12 @@ export function ConditionPicker({
 			title="Add Condition"
 		>
 			<div className="flex flex-col gap-1">
-				{CONDITIONS.map((def) => {
+				{conditions.map((def) => {
 					const state = getConditionState(def.id);
 					const isAppliedNonLeveled = state === "applied";
 					return (
 						<button
-							className="block w-full cursor-pointer rounded-sm border-none bg-transparent px-2 py-1 text-left text-[0.8rem] text-text-primary hover:bg-surface hover:text-accent disabled:pointer-events-none disabled:opacity-40"
+							className="block w-full cursor-pointer rounded-sm border-none bg-transparent px-2 py-1 text-left text-text-primary text-xs hover:bg-surface hover:text-accent disabled:pointer-events-none disabled:opacity-40"
 							disabled={isAppliedNonLeveled}
 							key={def.id}
 							onClick={() => {
@@ -52,7 +53,7 @@ export function ConditionPicker({
 								{def.name}
 								{state === "leveled" && " (+1 level)"}
 							</span>
-							<span className="text-[0.78rem] text-text-muted"> {def.effect}</span>
+							<span className="text-text-muted text-xs"> {def.effect}</span>
 						</button>
 					);
 				})}

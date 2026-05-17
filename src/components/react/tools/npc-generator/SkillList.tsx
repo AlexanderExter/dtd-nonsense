@@ -48,7 +48,7 @@ export function SkillList({ skills, skillNames, onChange }: SkillListProps) {
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
 			<div className="mb-sm flex items-center justify-between">
-				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Skills</h2>
+				<h2 className="m-0 text-accent text-sm uppercase tracking-wide-px">Skills</h2>
 				<Button onClick={() => addSkill()} size="sm" variant="ghost">
 					+ Add
 				</Button>

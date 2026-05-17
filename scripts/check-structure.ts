@@ -44,7 +44,7 @@ export interface CheckResult {
 // ---------------------------------------------------------------------------
 // Every tool store.ts must export at least one function/const named use*Store.
 // Tools: character-builder, character-sheet, combat-tracker, npc-generator,
-//         quick-reference, ship-builder (6 stores total).
+//         ship-builder (5 stores total).
 
 export function checkStoreConventions(project: Project): CheckResult {
 	const STORE_NAME_RE = /^use[A-Z]\w+Store$/;

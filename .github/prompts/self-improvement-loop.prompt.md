@@ -40,6 +40,7 @@ Read and catalog every framework file:
 | CI/CD              | `.github/workflows/*.yml`                                          |
 
 For each file, note:
+
 - Its stated purpose
 - When it was last meaningfully updated (check git blame or modification date)
 - Its approximate size and complexity
@@ -76,6 +77,7 @@ Work through each diagnostic category. Compile findings but do not fix anything 
 Each `.github/prompts/*.prompt.md` is a reusable workflow.
 
 For each prompt:
+
 - **Still relevant?** Does the workflow it describes still match how the project works?
 - **Still accurate?** Do file paths, baseline numbers, tool names, and conventions match reality?
 - **Still effective?** Based on session history, does this prompt produce good outcomes? Are there recurring problems it doesn't catch?
@@ -87,6 +89,7 @@ For each prompt:
 Each skill file provides domain-specific knowledge loaded on demand.
 
 For each skill:
+
 - **Still accurate?** Do references, file paths, formatting rules, and techniques match the current project?
 - **Still scoped correctly?** Has the skill grown beyond its original domain, or has the domain shifted?
 - **Skill format**: Skills now live in subdirectories (`*/SKILL.md`) with YAML frontmatter containing `name` and `description` fields. Verify each skill conforms.
@@ -132,6 +135,7 @@ Present findings organized by layer, with severity:
 - **Low** — cosmetic, minor drift, or optimization opportunities.
 
 For each finding:
+
 - What's wrong
 - Where (file + specific content)
 - Proposed fix
@@ -188,6 +192,7 @@ Based on diagnosis, identify opportunities:
 ### 4b. Evaluate Each Candidate
 
 For each evolution candidate:
+
 - **Value**: How often would this be used? How much friction does it eliminate?
 - **Cost**: How much effort to create and maintain? Does it add complexity?
 - **Risk**: Could this create new contradictions or confusion?
@@ -198,6 +203,7 @@ Present candidates with evaluations. The user decides what to pursue — in this
 ### 4c. Implement Approved Evolutions
 
 For approved items, create drafts:
+
 - New prompts follow the existing phase-based pattern (orient → diagnose → act → verify)
 - New skills follow the trigger + knowledge + technique pattern
 - New docs follow the authoritative-source-with-cross-references pattern
@@ -209,6 +215,7 @@ For approved items, create drafts:
 ### 5a. Verify Framework Health
 
 After all changes:
+
 1. Re-read `copilot-instructions.md` — is it still lean and accurate?
 2. Grep for broken relative links across `.github/` and `docs/`
 3. Confirm the skills table matches actual skill files
@@ -217,6 +224,7 @@ After all changes:
 ### 5b. Summary
 
 Report:
+
 1. **Framework health before** — summary of what was found
 2. **Changes applied** — what was fixed, evolved, or retired
 3. **Framework health after** — current state assessment

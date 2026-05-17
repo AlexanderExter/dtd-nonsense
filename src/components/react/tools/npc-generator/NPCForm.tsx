@@ -35,10 +35,10 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames, featNames }: NP
 		<>
 			{/* Core Fields */}
 			<div className="mb-lg border-border border-b pb-md last:border-b-0">
-				<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Core</h2>
+				<h2 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Core</h2>
 				<div className="grid grid-cols-[1fr_80px_80px_80px] items-end gap-sm max-[800px]:grid-cols-2">
 					<div className="col-start-1 max-[800px]:col-span-full">
-						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-name">
+						<label className="mb-[2px] block text-xs" htmlFor="npc-name">
 							Name
 						</label>
 						<GameInput
@@ -49,7 +49,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames, featNames }: NP
 						/>
 					</div>
 					<div>
-						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-level">
+						<label className="mb-[2px] block text-xs" htmlFor="npc-level">
 							Level
 						</label>
 						<GameSelect
@@ -67,13 +67,13 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames, featNames }: NP
 						</GameSelect>
 					</div>
 					<div>
-						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-size">
+						<label className="mb-[2px] block text-xs" htmlFor="npc-size">
 							Size
 						</label>
 						<NumberInput max={20} min={1} onChange={(v) => updateField("size", v)} value={npc.size} />
 					</div>
 					<div>
-						<label className="mb-[2px] block text-[0.8rem]" htmlFor="npc-speed">
+						<label className="mb-[2px] block text-xs" htmlFor="npc-speed">
 							Speed
 						</label>
 						<NumberInput max={30} min={0} onChange={(v) => updateField("speed", v)} value={npc.speed} />
@@ -112,7 +112,7 @@ export function NPCForm({ npc, onUpdate, traitsData, skillNames, featNames }: NP
 
 			{/* Gear */}
 			<div className="mb-lg border-border border-b pb-md last:border-b-0">
-				<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Gear</h2>
+				<h2 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Gear</h2>
 				<GameTextarea
 					id="gear-text"
 					onInput={(e) => updateField("gear", (e.target as HTMLTextAreaElement).value)}

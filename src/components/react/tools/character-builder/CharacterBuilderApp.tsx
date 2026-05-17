@@ -33,7 +33,7 @@ export function CharacterBuilderApp() {
 	// Sync loaded data into store
 	useEffect(() => {
 		if (data && !gameData) {
-			setGameData(data as Record<string, any>);
+			setGameData(data);
 		}
 	}, [data, gameData, setGameData]);
 
@@ -53,7 +53,7 @@ export function CharacterBuilderApp() {
 	};
 
 	return (
-		<div className="mx-auto grid max-w-[1440px] grid-cols-[280px_1fr] gap-lg p-md max-[900px]:grid-cols-1">
+		<div className="mx-auto grid max-w-[1440px] grid-cols-[280px_1fr] gap-lg p-md max-tool-lg:grid-cols-1">
 			<Sidebar />
 			<main className="min-w-0">
 				<div className="mb-md flex items-center justify-between">

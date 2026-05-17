@@ -47,7 +47,7 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
-			<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Traits</h2>
+			<h2 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Traits</h2>
 			<div className="flex flex-col gap-xs">
 				{traitsData.map((trait) => {
 					const active = isActive(trait.id);
@@ -66,7 +66,7 @@ export function TraitsGrid({ activeTraits, traitsData, onChange }: TraitsGridPro
 								id={`trait-${trait.id}`}
 								onChange={(e) => toggleTrait(trait.id, (e.target as HTMLInputElement).checked)}
 							/>
-							<label className="flex-1 font-medium text-[0.85rem]" htmlFor={`trait-${trait.id}`}>
+							<label className="flex-1 font-medium text-sm" htmlFor={`trait-${trait.id}`}>
 								{trait.name}
 							</label>
 							{trait.parameterized && (

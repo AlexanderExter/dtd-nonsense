@@ -1,4 +1,6 @@
+import { produce } from "immer";
 import { create } from "zustand";
+import { createAutosave } from "@/lib/autosave";
 import {
 	AUTOSAVE_DELAY,
 	createDefaultShip,
@@ -24,14 +26,12 @@ interface ShipStore {
 	ship: ShipState;
 	shipData: ShipData | null;
 	shipList: Array<{ id: string; name: string }>;
-	updateShip: (updater: (s: ShipState) => ShipState) => void;
+	updateShip: (updater: (draft: ShipState) => void) => void;
 }
 
 // =========================================================================
 // Save helpers (module-level, use getState)
 // =========================================================================
-
-let _saveTimer: ReturnType<typeof setTimeout> | null = null;
 
 export function saveShipNow(): void {
 	const { ship: s, shipData: data, shipList } = useShipStore.getState();
@@ -51,10 +51,7 @@ export function saveShipNow(): void {
 	useShipStore.getState().setShipList(list);
 }
 
-function scheduleSave(): void {
-	if (_saveTimer) clearTimeout(_saveTimer);
-	_saveTimer = setTimeout(() => saveShipNow(), AUTOSAVE_DELAY);
-}
+const scheduleSave = createAutosave(() => saveShipNow(), AUTOSAVE_DELAY);
 
 // =========================================================================
 // Zustand store
@@ -74,8 +71,7 @@ export const useShipStore = create<ShipStore>((set, get) => ({
 	setDataLoaded: (v) => set({ dataLoaded: v }),
 
 	updateShip: (updater) => {
-		const newShip = updater({ ...get().ship });
-		set({ ship: newShip });
+		set({ ship: produce(get().ship, updater) });
 		scheduleSave();
 	},
 }));

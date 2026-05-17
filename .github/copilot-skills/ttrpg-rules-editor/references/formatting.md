@@ -103,11 +103,11 @@ Many D:TD elements have ranks or levels.
 ```markdown
 ### Fell Hand
 
-**Rank 1 — Basic Techniques**
+## Rank 1 — Basic Techniques
 
 - **Crushing Grip:** [Effect description]
 
-**Rank 2 — Intermediate Techniques**
+## Rank 2 — Intermediate Techniques
 
 - **Iron Grasp:** [Effect description]
 ```

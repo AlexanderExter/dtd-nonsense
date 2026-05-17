@@ -29,12 +29,12 @@ export function EncounterBar({ encounters, onSave, onLoad, onExport, onClear }: 
 	};
 
 	return (
-		<div className="sticky bottom-0 z-[90] flex items-center gap-sm border-border border-t bg-surface px-lg py-sm max-[768px]:flex-wrap max-[768px]:justify-center max-[768px]:p-sm">
+		<div className="sticky bottom-0 z-[90] flex items-center gap-sm border-border border-t bg-surface px-lg py-sm max-tool-md:flex-wrap max-tool-md:justify-center max-tool-md:p-sm">
 			<Button onClick={onSave} size="sm" variant="primary">
 				Save Encounter
 			</Button>
 			<GameSelect
-				className="min-w-[160px] flex-none max-[768px]:min-w-[120px]"
+				className="min-w-[160px] flex-none max-tool-md:min-w-[120px]"
 				onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
 				value={selectedId}
 			>

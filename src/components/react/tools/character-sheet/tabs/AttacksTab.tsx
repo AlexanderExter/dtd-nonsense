@@ -53,19 +53,19 @@ function TechniqueRow({
 }) {
 	const isRestriction = tech.type === "restriction";
 	return (
-		<div className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs text-[0.82rem]">
+		<div className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs text-xs">
 			<GameCheckbox checked={isSelected} onChange={(e) => onToggle((e.target as HTMLInputElement).checked)} />
 			<span className={`min-w-0 flex-1 ${isRestriction ? "text-error" : "text-text-primary"}`}>
 				{tech.name}
-				{schoolName && <span className="ml-1 text-[0.7rem] text-text-dim">[{schoolName}]</span>}
+				{schoolName && <span className="ml-1 text-text-dim text-xs">[{schoolName}]</span>}
 				<span className={`ml-1 ${isRestriction ? "text-error/60" : "text-text-muted"}`}>— {tech.effect}</span>
 			</span>
-			<span className={`font-mono text-[0.75rem] ${isRestriction ? "text-error" : "text-accent"}`}>
+			<span className={`font-mono text-xs ${isRestriction ? "text-error" : "text-accent"}`}>
 				{tech.cost > 0 ? `+${tech.cost}` : tech.cost} SP
 			</span>
 			{tech.stackable && isSelected && (
 				<button
-					className={`cursor-pointer rounded border px-1.5 py-0.5 text-[0.7rem] ${isRestriction ? "border-error/30 bg-error/10 text-error" : "border-accent/30 bg-accent/10 text-accent"}`}
+					className={`cursor-pointer rounded border px-1.5 py-0.5 text-xs ${isRestriction ? "border-error/30 bg-error/10 text-error" : "border-accent/30 bg-accent/10 text-accent"}`}
 					onClick={onStack}
 					title="Add another stack"
 					type="button"
@@ -172,11 +172,11 @@ function AttackBuilder({
 		<>
 			{/* Saved List */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">
 					{label} ({savedAttacks.length})
 				</h3>
 				{savedAttacks.length === 0 && (
-					<p className="text-[0.85rem] text-text-muted italic">
+					<p className="text-sm text-text-muted italic">
 						{hasSchools
 							? `No ${label.toLowerCase()} yet. Use the builder below.`
 							: `Learn ${attackType === "melee" ? "Sword Schools" : "Gun Kata"} in the Powers tab to unlock the builder.`}
@@ -190,11 +190,11 @@ function AttackBuilder({
 						>
 							<div className="min-w-0 flex-1">
 								<div className="flex flex-wrap items-center gap-sm">
-									<strong className="text-[0.9rem] text-text-primary">{attack.name}</strong>
-									<span className="rounded-sm bg-accent/10 px-xs py-0.5 text-[0.7rem] text-accent">
+									<strong className="text-sm text-text-primary">{attack.name}</strong>
+									<span className="rounded-sm bg-accent/10 px-xs py-0.5 text-accent text-xs">
 										{attack.weapon} — {attack.action}
 									</span>
-									<span className="text-[0.75rem] text-text-muted">
+									<span className="text-text-muted text-xs">
 										{attack.styleCost} SP · {attack.styleCost * XP_PER_STYLE_POINT} XP
 									</span>
 								</div>
@@ -202,7 +202,7 @@ function AttackBuilder({
 									<div className="mt-xs flex flex-wrap gap-1">
 										{attack.techniques.map((t, ti) => (
 											<span
-												className={`rounded px-1.5 py-0.5 text-[0.7rem] ${
+												className={`rounded px-1.5 py-0.5 text-xs ${
 													t.type === "restriction"
 														? "bg-error/10 text-error"
 														: "bg-success/10 text-success"
@@ -215,7 +215,7 @@ function AttackBuilder({
 										))}
 									</div>
 								)}
-								{attack.notes && <p className="mt-xs text-[0.8rem] text-text-muted">{attack.notes}</p>}
+								{attack.notes && <p className="mt-xs text-text-muted text-xs">{attack.notes}</p>}
 							</div>
 							<div className="flex gap-xs">
 								<Button onClick={() => startEdit(idx)} size="sm" variant="secondary">
@@ -233,13 +233,13 @@ function AttackBuilder({
 			{/* Builder */}
 			{hasSchools && (
 				<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-					<h3 className="m-0 mb-md border-border border-b pb-sm text-[1.05rem] text-accent">
+					<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">
 						{editIdx !== null ? `Edit ${label.replace(/s$/, "")}` : `${label.replace(/s$/, "")} Builder`}
 					</h3>
 
 					{/* Name + Weapon + Action + Notes */}
 					<div className="mb-md flex flex-wrap gap-md">
-						<label className="flex min-w-[140px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+						<label className="flex min-w-[140px] flex-1 flex-col text-xs uppercase tracking-tight-px">
 							Name
 							<GameInput
 								onInput={(e) => setDraft((d) => ({ ...d, name: (e.target as HTMLInputElement).value }))}
@@ -248,7 +248,7 @@ function AttackBuilder({
 								value={draft.name}
 							/>
 						</label>
-						<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+						<label className="flex flex-col text-xs uppercase tracking-tight-px">
 							Weapon
 							<GameSelect
 								onChange={(e) =>
@@ -264,7 +264,7 @@ function AttackBuilder({
 								))}
 							</GameSelect>
 						</label>
-						<label className="flex flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+						<label className="flex flex-col text-xs uppercase tracking-tight-px">
 							Action
 							<GameSelect
 								onChange={(e) =>
@@ -280,7 +280,7 @@ function AttackBuilder({
 								))}
 							</GameSelect>
 						</label>
-						<label className="flex min-w-[100px] flex-1 flex-col text-[0.78rem] uppercase tracking-[0.3px]">
+						<label className="flex min-w-[100px] flex-1 flex-col text-xs uppercase tracking-tight-px">
 							Notes
 							<GameInput
 								onInput={(e) =>
@@ -298,7 +298,7 @@ function AttackBuilder({
 						{/* School Techniques */}
 						{techniques.length > 0 && (
 							<div>
-								<h4 className="m-0 mb-sm text-[0.9rem] text-text-primary">
+								<h4 className="m-0 mb-sm text-sm text-text-primary">
 									{attackType === "melee" ? "Sword School" : "Gun Kata"} Techniques
 								</h4>
 								<div className="space-y-1">
@@ -325,7 +325,7 @@ function AttackBuilder({
 
 						{/* Universal Advantages */}
 						<div>
-							<h4 className="m-0 mb-sm text-[0.9rem] text-text-primary">Universal Advantages</h4>
+							<h4 className="m-0 mb-sm text-sm text-text-primary">Universal Advantages</h4>
 							<div className="space-y-1">
 								{UNIVERSAL_ADVANTAGES.map((tech) => {
 									const isSelected = draft.selectedTechniques.some((t) => t.name === tech.name);
@@ -346,7 +346,7 @@ function AttackBuilder({
 
 						{/* Universal Restrictions */}
 						<div>
-							<h4 className="m-0 mb-sm text-[0.9rem] text-error/80">Universal Restrictions</h4>
+							<h4 className="m-0 mb-sm text-error/80 text-sm">Universal Restrictions</h4>
 							<div className="space-y-1">
 								{UNIVERSAL_RESTRICTIONS.map((tech) => {
 									const isSelected = draft.selectedTechniques.some((t) => t.name === tech.name);
@@ -369,11 +369,11 @@ function AttackBuilder({
 					{/* Budget summary + Save */}
 					<div className="flex flex-wrap items-center gap-md border-border border-t pt-md">
 						<div className="space-y-0.5">
-							<span className="font-semibold text-[0.9rem]">
+							<span className="font-semibold text-sm">
 								Style Point Budget:{" "}
 								<span className={totalCost < 0 ? "text-error" : "text-accent"}>{totalCost} SP</span>
 							</span>
-							<div className="text-[0.78rem] text-text-muted">
+							<div className="text-text-muted text-xs">
 								XP Cost: <strong>{xpCost} XP</strong>{" "}
 								<span className="text-text-dim">
 									({XP_PER_STYLE_POINT} XP × {totalCost} SP)
@@ -381,7 +381,7 @@ function AttackBuilder({
 							</div>
 						</div>
 						{totalCost < 0 && (
-							<span className="text-[0.8rem] text-error">Net cost must be ≥ 0 (add more advantages)</span>
+							<span className="text-error text-xs">Net cost must be ≥ 0 (add more advantages)</span>
 						)}
 						<div className="ml-auto flex gap-sm">
 							{editIdx !== null && (

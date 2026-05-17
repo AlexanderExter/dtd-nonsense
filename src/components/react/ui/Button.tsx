@@ -1,32 +1,41 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "accent";
-type ButtonSize = "xs" | "sm" | "md";
+const buttonVariants = cva(
+	"inline-flex cursor-pointer items-center justify-center gap-sm rounded-sm border border-transparent font-medium text-[0.9rem] no-underline transition-all duration-150 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50",
+	{
+		variants: {
+			variant: {
+				primary: "bg-accent text-bg hover:bg-accent-hover",
+				accent: "bg-accent text-bg hover:bg-accent-hover",
+				secondary: "border-border bg-surface-raised text-text-primary hover:border-accent hover:text-accent",
+				ghost: "border-border bg-transparent text-text-muted hover:border-accent hover:text-accent",
+				danger: "bg-error text-bg hover:opacity-85",
+			},
+			size: {
+				xs: "px-[0.4rem] py-[0.15rem] text-[0.7rem]",
+				sm: "px-2 py-1 text-[0.8rem]",
+				md: "px-md py-sm",
+			},
+		},
+		defaultVariants: {
+			variant: "secondary",
+			size: "md",
+		},
+	},
+);
 
-interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size"> {
-	children: ReactNode;
-	size?: ButtonSize;
-	variant?: ButtonVariant;
-}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+	VariantProps<typeof buttonVariants> & {
+		children: ReactNode;
+	};
 
-const SIZE_CLS: Record<ButtonSize, string> = {
-	xs: "btn-xs",
-	sm: "btn-sm",
-	md: "",
-};
+export { buttonVariants };
 
-const VARIANT_CLS: Record<ButtonVariant, string> = {
-	primary: "btn-primary",
-	accent: "btn-accent",
-	secondary: "btn-secondary",
-	ghost: "btn-ghost",
-	danger: "btn-danger",
-};
-
-export function Button({ variant = "secondary", size = "md", className, children, ...rest }: ButtonProps) {
+export function Button({ variant, size, className, children, ...rest }: ButtonProps) {
 	return (
-		<button className={cn("btn", VARIANT_CLS[variant], SIZE_CLS[size], className)} type="button" {...rest}>
+		<button className={cn(buttonVariants({ variant, size }), className)} type="button" {...rest}>
 			{children}
 		</button>
 	);

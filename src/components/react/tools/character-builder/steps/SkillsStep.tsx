@@ -104,7 +104,7 @@ export function SkillsStep() {
 	return (
 		<div>
 			<h3>Assign Priorities</h3>
-			<div className="mb-lg grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
+			<div className="mb-lg grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
 				{Object.keys(CHAR_GROUPS).map((groupKey) => {
 					const currentPriority = meta.skillPriority[groupKey];
 					return (
@@ -129,7 +129,7 @@ export function SkillsStep() {
 				})}
 			</div>
 
-			<div className="grid grid-cols-3 gap-md max-[900px]:grid-cols-1">
+			<div className="grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
 				{Object.keys(CHAR_GROUPS).map((groupKey) => {
 					const priority = meta.skillPriority[groupKey];
 					const pool = priority ? SKILL_PRIORITY_DOTS[priority] || 0 : 0;
@@ -141,7 +141,7 @@ export function SkillsStep() {
 							<h4 className="mb-xs border-border border-b pb-xs text-center text-accent">
 								{CHAR_GROUPS[groupKey].label}{" "}
 								{priority && (
-									<span className="font-normal text-[0.8rem] text-text-dim">
+									<span className="font-normal text-text-dim text-xs">
 										{spent} / {pool} dots
 									</span>
 								)}
@@ -156,9 +156,9 @@ export function SkillsStep() {
 										className="flex items-center justify-between border-border border-b py-xs last:border-b-0"
 										key={key}
 									>
-										<span className="flex-1 text-[0.9rem]">
+										<span className="flex-1 text-sm">
 											{sk.name || capitalize(key)}
-											{sk.isAdvanced && <span className="ml-1 text-[0.7rem] text-accent">★</span>}
+											{sk.isAdvanced && <span className="ml-1 text-accent text-xs">★</span>}
 										</span>
 										<DotControl
 											disabled={!priority}
@@ -168,9 +168,7 @@ export function SkillsStep() {
 											value={dots}
 										/>
 										{racialBonus > 0 && (
-											<span className="ml-xs text-[0.7rem] text-success">
-												+{racialBonus} racial
-											</span>
+											<span className="ml-xs text-success text-xs">+{racialBonus} racial</span>
 										)}
 									</div>
 								);

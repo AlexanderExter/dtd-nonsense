@@ -23,17 +23,17 @@ export function NumberInput({ value, onChange, min, max, step = 1, className, di
 	return (
 		<div className={cn("inline-flex items-center gap-0", className)}>
 			<button
-				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-l-[3px] border border-border bg-surface text-[0.75rem] text-text-muted leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+				aria-label="Decrease value"
+				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-l-[3px] border border-border bg-surface text-text-muted text-xs leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
 				disabled={disabled || (min !== undefined && value <= min)}
 				onClick={() => onChange(clamp(value - step))}
 				tabIndex={-1}
-				title="Decrease"
 				type="button"
 			>
 				−
 			</button>
 			<input
-				className="h-[26px] w-[42px] border-border border-y bg-bg px-0.5 text-center text-[0.82rem] text-text-primary [appearance:textfield] focus:border-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+				className="h-[26px] w-[42px] border-border border-y bg-bg px-0.5 text-center text-text-primary text-xs [appearance:textfield] focus-visible:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
 				disabled={disabled}
 				id={id}
 				max={max}
@@ -48,11 +48,11 @@ export function NumberInput({ value, onChange, min, max, step = 1, className, di
 				value={value}
 			/>
 			<button
-				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-r-[3px] border border-border bg-surface text-[0.75rem] text-text-muted leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+				aria-label="Increase value"
+				className="flex h-[26px] w-[22px] cursor-pointer items-center justify-center rounded-r-[3px] border border-border bg-surface text-text-muted text-xs leading-none hover:bg-bg hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
 				disabled={disabled || (max !== undefined && value >= max)}
 				onClick={() => onChange(clamp(value + step))}
 				tabIndex={-1}
-				title="Increase"
 				type="button"
 			>
 				+

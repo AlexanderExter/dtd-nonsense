@@ -21,12 +21,13 @@ export function ShieldPicker() {
 			setSelectedType(type);
 			if (type) {
 				const shield = data?.shields.find((s) => s.type === type && s.mark === selectedMark);
-				updateShip((s) => ({
-					...s,
-					shieldId: shield ? shield.id : "",
-				}));
+				updateShip((s) => {
+					s.shieldId = shield ? shield.id : "";
+				});
 			} else {
-				updateShip((s) => ({ ...s, shieldId: "" }));
+				updateShip((s) => {
+					s.shieldId = "";
+				});
 			}
 		},
 		[data, selectedMark, updateShip],
@@ -39,10 +40,9 @@ export function ShieldPicker() {
 			const type = currentType;
 			if (type) {
 				const shield = data?.shields.find((s) => s.type === type && s.mark === mark);
-				updateShip((s) => ({
-					...s,
-					shieldId: shield ? shield.id : "",
-				}));
+				updateShip((s) => {
+					s.shieldId = shield ? shield.id : "";
+				});
 			}
 		},
 		[data, currentType, updateShip],
@@ -57,7 +57,7 @@ export function ShieldPicker() {
 			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Shields</h2>
 			<div className="flex flex-wrap items-start gap-md">
 				<div className="mb-sm min-w-[140px]">
-					<label className="text-[0.8rem]" htmlFor="shield-type">
+					<label className="text-xs" htmlFor="shield-type">
 						Type
 					</label>
 					<GameSelect id="shield-type" onChange={handleTypeChange} value={currentType}>
@@ -70,7 +70,7 @@ export function ShieldPicker() {
 					</GameSelect>
 				</div>
 				<div className="mb-sm min-w-[140px]">
-					<label className="text-[0.8rem]" htmlFor="shield-mark">
+					<label className="text-xs" htmlFor="shield-mark">
 						Mark
 					</label>
 					<GameSelect
@@ -85,7 +85,7 @@ export function ShieldPicker() {
 						<option value="4">Mk IV</option>
 					</GameSelect>
 				</div>
-				<div className="min-w-[200px] flex-1 rounded-sm border border-border bg-surface-raised p-sm text-[0.85rem]">
+				<div className="min-w-[200px] flex-1 rounded-sm border border-border bg-surface-raised p-sm text-sm">
 					{shield ? (
 						<>
 							<div className="flex justify-between py-0.5">

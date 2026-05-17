@@ -28,10 +28,10 @@ export function CharGrid() {
 	};
 
 	return (
-		<div className="grid grid-cols-3 gap-md max-[768px]:grid-cols-1">
+		<div className="grid grid-cols-3 gap-md max-tool-md:grid-cols-1">
 			{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => (
 				<div className="rounded-sm border border-border bg-bg p-md" key={groupKey}>
-					<h4 className="m-0 mb-sm text-[0.85rem] text-accent uppercase tracking-[0.5px]">{group.label}</h4>
+					<h4 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">{group.label}</h4>
 					{group.chars.map((id) => {
 						const base = chars[id] || 1;
 						const eff = effChars[id] || 1;
@@ -40,7 +40,7 @@ export function CharGrid() {
 						const isBonus = char.raceCharBonus === id;
 						return (
 							<div className="flex items-center gap-sm py-1" key={id}>
-								<span className="flex-1 font-medium text-[0.9rem]" title={CHAR_NAMES[id] || id}>
+								<span className="flex-1 font-medium text-sm" title={CHAR_NAMES[id] || id}>
 									{abbrev}
 								</span>
 								<NumberInput max={6} min={1} onChange={(v) => handleCharChange(id, v)} value={base} />
@@ -55,7 +55,7 @@ export function CharGrid() {
 								</span>
 								{showSpec && (
 									<GameInput
-										className="w-full bg-surface-raised text-[0.78rem] text-text-muted placeholder:text-text-dim"
+										className="w-full bg-surface-raised text-text-muted text-xs placeholder:text-text-dim"
 										onInput={(e) => handleSpecChange(id, (e.target as HTMLInputElement).value)}
 										placeholder="Specialty"
 										type="text"

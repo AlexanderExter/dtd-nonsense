@@ -10,7 +10,7 @@ export function BackgroundsStep() {
 
 	if (!data?.backgrounds?.backgrounds) return <p>Loading background data…</p>;
 
-	const backgrounds = data.backgrounds.backgrounds as any[];
+	const backgrounds = data.backgrounds.backgrounds;
 	const charBgs = char.backgrounds || [];
 
 	// Calculate free dots remaining
@@ -56,20 +56,20 @@ export function BackgroundsStep() {
 
 	return (
 		<div>
-			<div className="mb-md flex items-center justify-between rounded-sm bg-surface px-md py-sm text-[0.9rem]">
+			<div className="mb-md flex items-center justify-between rounded-sm bg-surface px-md py-sm text-sm">
 				<strong>Free Dots:</strong> {freeRemaining} / {BG_BUDGET} remaining
 			</div>
 
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-md">
-				{backgrounds.map((bg: any) => {
+				{backgrounds.map((bg) => {
 					const dots = getDots(bg.id || bg.name);
 					const xpDots = Math.max(0, dots - FREE_BG_CAP);
 
 					return (
 						<div className="rounded-md border border-border bg-surface p-md" key={bg.id || bg.name}>
-							<h4 className="mb-xs text-[0.95rem] text-accent">{bg.name}</h4>
+							<h4 className="mb-xs text-accent text-base">{bg.name}</h4>
 							{bg.description && (
-								<p className="mb-sm text-[0.8rem] text-text-dim leading-[1.4]">{bg.description}</p>
+								<p className="mb-sm text-text-dim text-xs leading-[1.4]">{bg.description}</p>
 							)}
 							<DotControl
 								max={5}
@@ -84,7 +84,7 @@ export function BackgroundsStep() {
 								</span>
 							)}
 							{dots > 0 && bg.dots?.[dots - 1] && (
-								<p className="mt-sm min-h-[1.5em] border-border border-t pt-sm text-[0.8rem] text-text-muted">
+								<p className="mt-sm min-h-[1.5em] border-border border-t pt-sm text-text-muted text-xs">
 									{bg.dots[dots - 1]}
 								</p>
 							)}

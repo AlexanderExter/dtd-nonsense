@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { useDebounce } from "@/hooks/use-debounce";
 import { AH_CATS, FEAT_CATS, filterByRestrictions } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -9,7 +11,8 @@ import { useBuilderStore } from "../store";
 export function FeatsStep() {
 	const [featCatFilter, setFeatCatFilter] = useState("all");
 	const [ahCatFilter, setAhCatFilter] = useState("all");
-	const [searchQuery, setSearchQuery] = useState("");
+	const [searchInput, setSearchInput] = useState("");
+	const searchQuery = useDebounce(searchInput, 200);
 	const [selectedFeatPreview] = useState<any>(null);
 	const [selectedAHPreview, setSelectedAHPreview] = useState<any>(null);
 
@@ -17,17 +20,16 @@ export function FeatsStep() {
 	const char = useBuilderStore((s) => s.char);
 	const updateChar = useBuilderStore((s) => s.updateChar);
 	const updateMeta = useBuilderStore((s) => s.updateMeta);
-	const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	if (!data?.feats?.feats) return <p>Loading feat data…</p>;
 
-	const allFeats = data.feats.feats as any[];
+	const allFeats = data.feats.feats;
 	const raceName = char.race || null;
 	const exaltName = char.exaltation || null;
 
 	// Split feats vs assets/hindrances
-	const feats = allFeats.filter((f: any) => FEAT_CATS.includes(f.category));
-	const ahItems = allFeats.filter((f: any) => AH_CATS.includes(f.category));
+	const feats = allFeats.filter((f) => FEAT_CATS.includes(f.category));
+	const ahItems = allFeats.filter((f) => AH_CATS.includes(f.category));
 
 	// Apply restrictions
 	const availableFeats = filterByRestrictions(feats, raceName, exaltName);
@@ -36,19 +38,19 @@ export function FeatsStep() {
 	// Apply feat filters
 	let filteredFeats = availableFeats;
 	if (featCatFilter !== "all") {
-		filteredFeats = filteredFeats.filter((f: any) => f.category === featCatFilter);
+		filteredFeats = filteredFeats.filter((f) => f.category === featCatFilter);
 	}
 	const q = searchQuery.toLowerCase();
 	if (q) {
 		filteredFeats = filteredFeats.filter(
-			(f: any) => f.name?.toLowerCase().includes(q) || f.effect?.toLowerCase().includes(q),
+			(f) => f.name?.toLowerCase().includes(q) || f.effect?.toLowerCase().includes(q),
 		);
 	}
 
 	// Apply AH filter
 	let filteredAH = availableAH;
 	if (ahCatFilter !== "all") {
-		filteredAH = filteredAH.filter((f: any) => f.category === ahCatFilter);
+		filteredAH = filteredAH.filter((f) => f.category === ahCatFilter);
 	}
 
 	const selectedFeatIds = new Set((char.feats || []).map((f) => f.name));
@@ -96,10 +98,7 @@ export function FeatsStep() {
 	};
 
 	const handleSearch = (value: string) => {
-		if (debounceRef.current) clearTimeout(debounceRef.current);
-		debounceRef.current = setTimeout(() => {
-			setSearchQuery(value);
-		}, 200);
+		setSearchInput(value);
 	};
 
 	const featPreview = selectedFeatPreview;
@@ -134,13 +133,13 @@ export function FeatsStep() {
 					<div className="mb-md flex flex-wrap gap-xs">
 						{char.feats.map((f) => (
 							<span
-								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-[rgba(212,168,75,0.12)] px-2.5 py-[3px] text-[0.8rem] text-accent"
+								className="inline-flex items-center gap-1 rounded-full border border-accent-dim bg-accent-bg-medium px-2.5 py-2xs text-accent text-xs"
 								key={f.name}
 							>
 								{f.name}
 								<button
 									aria-label={`Remove ${f.name}`}
-									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-sm text-text-dim hover:text-error"
 									onClick={() => toggleFeat({ id: f.name })}
 									type="button"
 								>
@@ -152,7 +151,7 @@ export function FeatsStep() {
 				)}
 
 				<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-					{filteredFeats.map((f: any) => {
+					{filteredFeats.map((f) => {
 						const id = f.id || f.name;
 						return (
 							<SelectionCard
@@ -183,15 +182,14 @@ export function FeatsStep() {
 							</p>
 						)}
 						{featPreview.effect && <p>{featPreview.effect}</p>}
-						<p className="text-[0.8rem] text-text-muted">Cost: 100 XP</p>
+						<p className="text-text-muted text-xs">Cost: 100 XP</p>
 						<div className="mt-md flex gap-sm">
-							<button
-								className={`btn ${selectedFeatIds.has(featPreview.id || featPreview.name) ? "btn-danger" : "btn-primary"}`}
+							<Button
 								onClick={() => toggleFeat(featPreview)}
-								type="button"
+								variant={selectedFeatIds.has(featPreview.id || featPreview.name) ? "danger" : "primary"}
 							>
 								{selectedFeatIds.has(featPreview.id || featPreview.name) ? "Remove" : "Add"}
-							</button>
+							</Button>
 						</div>
 					</DetailPanel>
 				)}
@@ -219,13 +217,13 @@ export function FeatsStep() {
 					<div className="mb-md flex flex-wrap gap-xs">
 						{char.assets.map((a) => (
 							<span
-								className="inline-flex items-center gap-1 rounded-full border border-success bg-[rgba(74,222,128,0.1)] px-2.5 py-[3px] text-[0.8rem] text-success"
+								className="inline-flex items-center gap-1 rounded-full border border-success bg-success-bg-light px-2.5 py-2xs text-success text-xs"
 								key={a.name}
 							>
 								{a.name}
 								<button
 									aria-label={`Remove ${a.name}`}
-									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-sm text-text-dim hover:text-error"
 									onClick={() => toggleAH({ id: a.name, category: "asset" })}
 									type="button"
 								>
@@ -235,13 +233,13 @@ export function FeatsStep() {
 						))}
 						{char.hindrances.map((h) => (
 							<span
-								className="inline-flex items-center gap-1 rounded-full border border-error bg-[rgba(248,113,113,0.1)] px-2.5 py-[3px] text-[0.8rem] text-error"
+								className="inline-flex items-center gap-1 rounded-full border border-error bg-error-bg-light px-2.5 py-2xs text-error text-xs"
 								key={h.name}
 							>
 								{h.name}
 								<button
 									aria-label={`Remove ${h.name}`}
-									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-[0.9rem] text-text-dim hover:text-error"
+									className="ml-0.5 cursor-pointer border-none bg-transparent p-0 text-sm text-text-dim hover:text-error"
 									onClick={() => toggleAH({ id: h.name, category: "hindrance" })}
 									type="button"
 								>
@@ -300,13 +298,12 @@ export function FeatsStep() {
 									? selectedHindranceIds.has(id)
 									: selectedAssetIds.has(id);
 								return (
-									<button
-										className={`btn ${isSelected ? "btn-danger" : "btn-primary"}`}
+									<Button
 										onClick={() => toggleAH(ahPreview)}
-										type="button"
+										variant={isSelected ? "danger" : "primary"}
 									>
 										{isSelected ? "Remove" : "Add"}
-									</button>
+									</Button>
 								);
 							})()}
 						</div>

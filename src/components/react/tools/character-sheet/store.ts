@@ -1,7 +1,28 @@
+import { produce } from "immer";
 import { create } from "zustand";
+import { createAutosave } from "@/lib/autosave";
 import { character as characterAPI } from "@/lib/dtd/character";
+import type { GameDataResult } from "@/lib/dtd/schemas/index";
 import type { CharacterData } from "@/lib/dtd/types";
 import { AUTOSAVE_DELAY, ensureToolDefaults, type TabId } from "./constants";
+
+// =========================================================================
+// Data type — matches the file list passed to useAllData in CharacterSheetApp
+// =========================================================================
+
+type SheetGameData = GameDataResult<
+	[
+		"races.json",
+		"exaltations.json",
+		"alignments.json",
+		"classes.json",
+		"feats.json",
+		"skills.json",
+		"weapons.json",
+		"backgrounds.json",
+		"schools.json",
+	]
+>;
 
 // =========================================================================
 // Store types
@@ -12,14 +33,14 @@ interface CharSheetStore {
 	char: CharacterData;
 	charId: string | null;
 	charList: Array<{ id: string; name: string }>;
-	gameData: Record<string, any> | null;
+	gameData: SheetGameData | null;
 	saveStatus: "saved" | "saving" | "error";
 	setActiveTab: (tab: TabId) => void;
 
 	setChar: (char: CharacterData) => void;
 	setCharId: (id: string | null) => void;
 	setCharList: (list: Array<{ id: string; name: string }>) => void;
-	setGameData: (data: Record<string, any>) => void;
+	setGameData: (data: SheetGameData) => void;
 	setSaveStatus: (status: "saved" | "saving" | "error") => void;
 	updateChar: (fn: (c: CharacterData) => void) => void;
 }
@@ -28,13 +49,9 @@ interface CharSheetStore {
 // Save helpers (module-level, use getState)
 // =========================================================================
 
-let _saveTimer: ReturnType<typeof setTimeout> | null = null;
-
-function scheduleAutoSave(): void {
-	useCharSheetStore.getState().setSaveStatus("saving");
-	if (_saveTimer) clearTimeout(_saveTimer);
-	_saveTimer = setTimeout(() => saveNow(), AUTOSAVE_DELAY);
-}
+const scheduleAutoSave = createAutosave(() => {
+	saveNow();
+}, AUTOSAVE_DELAY);
 
 function saveNow(): void {
 	const { char: ch, charId: id, charList } = useCharSheetStore.getState();
@@ -60,7 +77,7 @@ function saveNow(): void {
 export function loadCharacter(id: string): void {
 	const { gameData } = useCharSheetStore.getState();
 	const ch = characterAPI.load(id);
-	if (gameData?.skills) ensureToolDefaults(ch, gameData.skills);
+	if (gameData?.skills) ensureToolDefaults(ch, gameData.skills, gameData.schools);
 	useCharSheetStore.getState().setChar(ch);
 	useCharSheetStore.getState().setCharId(id);
 }
@@ -68,7 +85,7 @@ export function loadCharacter(id: string): void {
 export function createNewCharacter(): void {
 	const { gameData, charList } = useCharSheetStore.getState();
 	const ch = characterAPI.createDefault();
-	if (gameData?.skills) ensureToolDefaults(ch, gameData.skills);
+	if (gameData?.skills) ensureToolDefaults(ch, gameData.skills, gameData.schools);
 	useCharSheetStore.getState().setChar(ch);
 	useCharSheetStore.getState().setCharId(ch.id);
 	const list = [...charList, { id: ch.id, name: ch.name || "New Character" }];
@@ -88,7 +105,7 @@ export function deleteCharacter(id: string): void {
 export function importCharacter(file: File): void {
 	characterAPI.importJSON(file).then((ch) => {
 		const { gameData, charList } = useCharSheetStore.getState();
-		if (gameData?.skills) ensureToolDefaults(ch, gameData.skills);
+		if (gameData?.skills) ensureToolDefaults(ch, gameData.skills, gameData.schools);
 		// Avoid duplicate entries when re-importing the same file
 		if (charList.some((c) => c.id === ch.id)) {
 			ch.id = characterAPI._genId();
@@ -126,9 +143,11 @@ export const useCharSheetStore = create<CharSheetStore>((set, get) => ({
 	setSaveStatus: (saveStatus) => set({ saveStatus }),
 
 	updateChar: (fn) => {
-		const next = structuredClone(get().char);
-		fn(next);
-		set({ char: next });
+		set(
+			produce((state) => {
+				fn(state.char);
+			}),
+		);
 		scheduleAutoSave();
 	},
 }));

@@ -3,8 +3,9 @@
 Turn-based combat management tool for Story Masters. Handles initiative order, HP/resource tracking, condition management, and multi-encounter support.
 
 **Phase:** Complete
-**Files:** `src/pages/tools/combat-tracker.astro`, `src/components/react/tools/combat-tracker/` (9 components)
+**Files:** `src/pages/tools/combat-tracker.astro`, `src/components/react/tools/combat-tracker/` (8 components)
 **Pattern:** React Island via `client:only="react"` with module-level Zustand
+**Data:** Loads `conditions.json` at runtime from canonical JSON data
 
 ---
 
@@ -43,7 +44,7 @@ Each combatant displays:
 
 ### Condition Management
 
-- **Add condition** — from predefined condition list matching `16-Conditions.mdx`
+- **Add condition** — from canonical condition data (`data/conditions.json`, matching `16-Conditions.mdx`)
 - **Duration tracking** — auto-decrement per round, notify on expiry
 - **Custom conditions** — free-text for homebrew effects
 - **Condition reference** — tooltip/popup with mechanical effects
@@ -58,7 +59,13 @@ Each combatant displays:
 
 ## Architecture
 
-**Dependencies:** `import { character, derived } from '@/lib/dtd/core.ts'`, `import { roll } from '@/lib/dtd/dice.ts'`
+**Dependencies:** `import { character } from '@/lib/dtd/character'`, `import { derived } from '@/lib/dtd/derived'`, `import { roll } from '@/lib/dtd/dice.ts'`, `import { useAllData } from '@/hooks/use-data'`
+
+### Data Loading
+
+Conditions are loaded from `data/conditions.json` at runtime via the `useAllData` hook (same pattern as NPC Generator and Character Sheet). This eliminates hardcoded game data in component code — conditions are defined once in the canonical JSON file.
+
+Reference data (actions, modifiers, hit locations) has been migrated to the **Quick Reference** documentation page (`/rules/00-quick-reference/`), accessible via Pagefind search.
 
 ### State Structure
 
@@ -152,7 +159,8 @@ Auto-saves after every state change (damage, turn advance, condition update).
 | ------------------- | ----------------------- | --------------------------------------------- |
 | Derived stat source | Calculated live         | Character edits in Sheet propagate to Tracker |
 | Initiative engine   | Shared `dice.ts`        | Consistent explosion behavior across tools    |
-| Condition list      | Matches `16-Conditions` | Single source of truth with rulebook          |
+| Condition data      | `data/conditions.json`  | Single source of truth with rulebook          |
+| Reference data      | Quick Reference page    | Native Starlight search + TOC navigation      |
 | Auto-save           | Every state change      | SM should never lose encounter state          |
 | NPC quick-add       | Flat stat entry         | NPCs don't need full character objects        |
 

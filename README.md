@@ -6,7 +6,7 @@ The original source books are hard to read and harder to reference at the table.
 
 **Live site:** [dtd-nonsense.vercel.app](https://dtd-nonsense.vercel.app)
 
-### Source Material
+## Source Material
 
 - [Book 1 — Dungeons the Dragoning 40,000: 7th Edition (PDF)](https://static.wikitide.net/1d6chanwiki/f/fc/Dungeons_the_Dragoning.pdf)
 - [Book 2 — For a Few Subtitles More (PDF)](https://static.wikitide.net/1d6chanwiki/7/70/Dungeons_the_Dragoning_-_For_a_Few_Subtitles_More.pdf)
@@ -69,11 +69,11 @@ bun run sync-check # detect drift between markdown and JSON data
 
 ```text
 books/                 Source rulebook chapters (2 books, per-chapter split)
-cleaned-references/    Condensed rules reference (merged by topic, 24 files)
-data/                  12 canonical JSON data files (validated by Zod schemas)
+cleaned-references/    Condensed rules reference (merged by topic, 25 files)
+data/                  15 canonical JSON data files (validated by Zod schemas)
 src/                   Astro source
-  pages/tools/         6 Astro tool pages (standalone, outside Starlight)
-  components/react/    React island components (74 across 6 tools)
+  pages/tools/         5 Astro tool pages (standalone, outside Starlight)
+  components/react/    React island components (78 across 5 tools)
   hooks/               Custom React hooks (use-data, use-local-storage)
   lib/dtd/             Typed ES modules: core.ts, dice.ts, types.ts
   layouts/             ToolLayout.astro (tool page shell)

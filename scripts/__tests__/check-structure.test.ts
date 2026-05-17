@@ -26,11 +26,11 @@ const sharedProject = new Project({
 // checkStoreConventions
 // ---------------------------------------------------------------------------
 describe("checkStoreConventions", () => {
-	it("passes with current codebase (all 6 stores export use*Store)", () => {
+	it("passes with current codebase (all 5 stores export use*Store)", () => {
 		const result = checkStoreConventions(sharedProject);
 		expect(result.passed).toBe(true);
 		expect(result.violations).toHaveLength(0);
-		expect(result.detail).toContain("6/6");
+		expect(result.detail).toContain("5/5");
 	});
 
 	it("returns name 'Store Conventions'", () => {

@@ -68,7 +68,7 @@ Groups for both characteristics and skills:
 
 Rewrite of the original Builder as a React Island, following Character Sheet patterns.
 
-**Dependencies:** `@/lib/dtd/core.ts` (character, derived, loadAllData), `@/hooks/use-data`, `@/hooks/use-local-storage`, Zustand
+**Dependencies:** `@/lib/dtd/character` (character CRUD), `@/lib/dtd/derived` (derived stats), `@/hooks/use-data`, Zustand
 
 **Data sources:** `races.json`, `exaltations.json`, `skills.json`, `classes.json`, `feats.json`, `backgrounds.json`, `alignments.json`, `equipment.json`, `weapons.json`
 

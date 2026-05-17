@@ -1,40 +1,36 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type BadgeVariant = "success" | "warning" | "error" | "info" | "accent" | "muted";
-type BadgeSize = "sm" | "md";
+const badgeVariants = cva("inline-block rounded-sm font-semibold uppercase tracking-tight-px", {
+	variants: {
+		variant: {
+			success: "bg-success-bg text-success",
+			warning: "bg-warning-bg text-warning",
+			error: "bg-error-bg text-error",
+			info: "bg-info-bg text-info",
+			accent: "bg-accent-bg text-accent",
+			muted: "bg-badge-free text-text-muted",
+		},
+		size: {
+			sm: "px-[5px] py-[1px] text-xs",
+			md: "px-2 py-0.5 text-xs",
+		},
+	},
+	defaultVariants: {
+		variant: "accent",
+		size: "sm",
+	},
+});
 
-interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, "size"> {
-	children: ReactNode;
-	size?: BadgeSize;
-	variant?: BadgeVariant;
-}
+type BadgeProps = React.HTMLAttributes<HTMLSpanElement> &
+	VariantProps<typeof badgeVariants> & {
+		children: ReactNode;
+	};
 
-const VARIANT_CLS: Record<BadgeVariant, string> = {
-	success: "bg-success-bg text-success",
-	warning: "bg-warning-bg text-warning",
-	error: "bg-error-bg text-error",
-	info: "bg-info-bg text-info",
-	accent: "bg-accent-bg text-accent",
-	muted: "bg-[rgba(148,146,157,0.2)] text-text-muted",
-};
-
-const SIZE_CLS: Record<BadgeSize, string> = {
-	sm: "text-[0.7rem] px-[5px] py-[1px]",
-	md: "text-[0.75rem] px-[8px] py-[2px]",
-};
-
-export function Badge({ variant = "accent", size = "sm", className, children, ...rest }: BadgeProps) {
+export function Badge({ variant, size, className, children, ...rest }: BadgeProps) {
 	return (
-		<span
-			className={cn(
-				"inline-block rounded-sm font-semibold uppercase tracking-[0.3px]",
-				VARIANT_CLS[variant],
-				SIZE_CLS[size],
-				className,
-			)}
-			{...rest}
-		>
+		<span className={cn(badgeVariants({ variant, size }), className)} {...rest}>
 			{children}
 		</span>
 	);

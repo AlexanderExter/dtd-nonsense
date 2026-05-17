@@ -6,11 +6,17 @@ sidebar:
 title: Core Rules
 ---
 
-> **Key concepts:** D:TD uses ten-sided dice (`d10`). Tests roll `XkY` — roll X dice, keep the highest Y, and sum them against a Target Number (TN). Dice that roll 10 **explode** (reroll and add). Every 5 points above the TN is a **Raise**; every 5 below is a **Check**. **Hero Points** let you reroll, reduce TNs, or cheat death.
+import { Steps } from '@astrojs/starlight/components';
+
+:::note[Quick Reference]
+D:TD uses ten-sided dice (`d10`). Tests roll `XkY` — roll X dice, keep the highest Y, and sum them against a Target Number (TN). Dice that roll 10 **explode** (reroll and add). Every 5 points above the TN is a **Raise**; every 5 below is a **Check**. **Hero Points** let you reroll, reduce TNs, or cheat death.
+:::
 
 ---
 
 ## How to Make a Test — Step by Step
+
+<Steps>
 
 1. **SM calls for a Test** — identifies the Characteristic + Skill (or just Characteristic) and sets the TN.
 2. **Determine your dice pool** — Rolled dice = Characteristic + Skill. Kept dice = Characteristic. Apply any bonuses or penalties.
@@ -18,6 +24,8 @@ title: Core Rules
 4. **Resolve explosions** — Any die showing 10 explodes: reroll and add. Repeat on consecutive 10s.
 5. **Sum kept dice** — Total the kept dice. Apply flat modifiers (e.g., free Raises at +5 each).
 6. **Compare to TN** — Meet or exceed the TN to succeed. Count Raises (each +5 over TN) or Checks (each −5 below TN).
+
+</Steps>
 
 ---
 
@@ -156,7 +164,9 @@ Burning a Hero Point **permanently** reduces your pool by one. The result: **you
 
 Awarded at SM discretion for reaching milestones, accomplishing major goals, or exceptional roleplay. Burnt points can be replenished through these awards.
 
-> **Note:** Hero Points and Exaltation Resource Stats are distinct pools. Hero Points are narrative currency for all characters. Resource Stats (Mana, Rage, Essence, etc.) are exaltation-specific and refresh per the [Exaltation's](./05-Exaltations.mdx) rules.
+:::note
+Hero Points and Exaltation Resource Stats are distinct pools. Hero Points are narrative currency for all characters. Resource Stats (Mana, Rage, Essence, etc.) are exaltation-specific and refresh per the [Exaltation's](./05-Exaltations.mdx) rules.
+:::
 
 ---
 

@@ -25,6 +25,7 @@ Before asking anything, understand the current state.
 ### 1a. Read Existing Vision
 
 If `docs/product-vision.md` exists:
+
 - Read it fully
 - Note its last-updated date
 - Identify sections that feel stale, vague, or potentially outdated
@@ -34,12 +35,14 @@ If it doesn't exist, that's fine — Phase 2 will create it from scratch.
 ### 1b. Project Context
 
 Gather situational awareness:
+
 - Read `.github/copilot-instructions.md` — what does the framework think the project is?
 - `git log --oneline -50` — what's been worked on recently?
 
 ### 1c. Usage Signals
 
 Look for evidence of what matters:
+
 - `git log --oneline -50` — what's been worked on? What gets attention?
 - Which tools have received the most development? Which are neglected?
 
@@ -50,6 +53,7 @@ Look for evidence of what matters:
 This is the Socratic dialogue phase. Ask questions, listen, probe deeper. The goal is to surface the user's tacit knowledge about their project.
 
 **Dialogue guidelines:**
+
 - Ask one theme at a time (2-3 questions max per round)
 - Reflect back what you hear — "So it sounds like..."
 - Challenge gently — "You said X, but the project history shows Y. What changed?"
@@ -124,9 +128,11 @@ Structure `docs/product-vision.md` with these sections:
 ## Scope Boundaries
 
 ### We Build
+
 [Explicit list of what's in scope]
 
 ### We Don't Build
+
 [Explicit list of what's deliberately excluded and why]
 
 ## Success Criteria
@@ -136,15 +142,19 @@ Structure `docs/product-vision.md` with these sections:
 ## Feature Priorities
 
 ### Current Focus
+
 [What we're actively working on and why]
 
 ### Next Up
+
 [What's queued and why it's next]
 
 ### Someday/Maybe
+
 [Ideas with potential but no commitment]
 
 ### Deliberately Deferred
+
 [Things we've considered and explicitly said "not now" with reasoning]
 ````
 

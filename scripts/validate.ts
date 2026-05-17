@@ -1,7 +1,7 @@
 /**
  * TypeScript port of pipeline/validate.py + pipeline/cli.py (validate command).
  *
- * Validates all 12 JSON data files against Zod schemas and optionally
+ * Validates all 15 JSON data files against Zod schemas and optionally
  * runs cross-reference checks.
  *
  * Usage:
@@ -48,6 +48,9 @@ const LIST_FIELDS = [
 	"packages",
 	"hulls",
 	"weapons",
+	"magicSchools",
+	"swordSchools",
+	"gunKata",
 ] as const;
 
 export function countRecords(data: unknown): number {

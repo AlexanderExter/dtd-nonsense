@@ -58,7 +58,7 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
 			<div className="mb-sm flex items-center justify-between">
-				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Armor</h2>
+				<h2 className="m-0 text-accent text-sm uppercase tracking-wide-px">Armor</h2>
 				<Button onClick={addArmor} size="sm" variant="ghost">
 					+ Add
 				</Button>
@@ -77,7 +77,7 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 							value={a.name}
 						/>
 						<GameSelect
-							className="w-[90px] flex-none text-[0.78rem]"
+							className="w-[90px] flex-none text-xs"
 							onChange={(e) => updateField(i, "type", (e.target as HTMLSelectElement).value)}
 							value={a.type || ""}
 						>
@@ -88,7 +88,7 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 							<option value="Power">Power</option>
 							<option value="Other">Other</option>
 						</GameSelect>
-						<span className="text-[0.8rem] text-text-muted">AP</span>
+						<span className="text-text-muted text-xs">AP</span>
 						<NumberInput max={30} min={0} onChange={(v) => updateField(i, "ap", v)} value={a.ap} />
 						<GameInput
 							className="min-w-[80px] flex-1"
@@ -99,7 +99,7 @@ export function ArmorList({ armor, onChange }: ArmorListProps) {
 						<div className="flex flex-wrap gap-xs">
 							{ARMOR_LOCATIONS.map((loc) => (
 								<label
-									className="m-0 flex cursor-pointer items-center gap-[2px] text-[0.75rem] text-text-muted"
+									className="m-0 flex cursor-pointer items-center gap-[2px] text-text-muted text-xs"
 									key={loc}
 								>
 									<GameCheckbox

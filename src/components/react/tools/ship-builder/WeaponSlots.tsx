@@ -16,19 +16,13 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 		(idx: number, size: string) => {
 			const slotKey = `${position}-${idx}`;
 			updateShip((s) => {
-				const partials = { ...s.weaponPartials };
-				const weapons = {
-					forward: [...s.weapons.forward],
-					rear: [...s.weapons.rear],
-				};
 				if (!size) {
-					weapons[position][idx] = "";
-					delete partials[slotKey];
+					s.weapons[position][idx] = "";
+					delete s.weaponPartials[slotKey];
 				} else {
-					weapons[position][idx] = "";
-					partials[slotKey] = size;
+					s.weapons[position][idx] = "";
+					s.weaponPartials[slotKey] = size;
 				}
-				return { ...s, weapons, weaponPartials: partials };
 			});
 		},
 		[position, updateShip],
@@ -38,26 +32,19 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 		(idx: number, material: string) => {
 			const slotKey = `${position}-${idx}`;
 			updateShip((s) => {
-				const partials = { ...s.weaponPartials };
-				const weapons = {
-					forward: [...s.weapons.forward],
-					rear: [...s.weapons.rear],
-				};
-
-				let size = partials[slotKey] || "";
+				let size = s.weaponPartials[slotKey] || "";
 				if (!size) {
-					const currentWeapon = data?.weapons.find((w) => w.id === weapons[position][idx]);
+					const currentWeapon = data?.weapons.find((w) => w.id === s.weapons[position][idx]);
 					if (currentWeapon) size = currentWeapon.size;
 				}
 
 				if (size && material) {
 					const weapon = data?.weapons.find((w) => w.size === size && w.material === material);
-					weapons[position][idx] = weapon ? weapon.id : "";
-					if (weapon) delete partials[slotKey];
+					s.weapons[position][idx] = weapon ? weapon.id : "";
+					if (weapon) delete s.weaponPartials[slotKey];
 				} else {
-					weapons[position][idx] = "";
+					s.weapons[position][idx] = "";
 				}
-				return { ...s, weapons, weaponPartials: partials };
 			});
 		},
 		[position, data, updateShip],
@@ -67,7 +54,7 @@ function WeaponGroup({ position, label, count }: { position: "forward" | "rear";
 
 	return (
 		<div className="mb-md">
-			<h4 className="mb-sm text-[0.9rem] text-text-muted">
+			<h4 className="mb-sm text-sm text-text-muted">
 				{label} Hardpoints ({count})
 			</h4>
 			{Array.from({ length: count }, (_, i) => {

@@ -73,29 +73,7 @@ export interface DerivedStats {
 // Constants
 // =========================================================================
 
-export const CHAR_KEYS = [
-	"strength",
-	"dexterity",
-	"constitution",
-	"charisma",
-	"fellowship",
-	"composure",
-	"intelligence",
-	"wisdom",
-	"willpower",
-] as const;
-
-export const CHAR_ABBREV: Record<string, string> = {
-	strength: "Str",
-	dexterity: "Dex",
-	constitution: "Con",
-	charisma: "Cha",
-	fellowship: "Fel",
-	composure: "Cmp",
-	intelligence: "Int",
-	wisdom: "Wis",
-	willpower: "Wil",
-};
+export { CHAR_ABBREV, CHAR_KEYS } from "@/lib/dtd/constants";
 
 export const ARMOR_LOCATIONS = ["Head", "Body", "Arms", "Legs"];
 

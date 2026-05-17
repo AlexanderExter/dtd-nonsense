@@ -41,7 +41,7 @@ export function FeatList({ feats, onChange, featNames }: FeatListProps) {
 				</datalist>
 			)}
 			<div className="mb-sm flex items-center justify-between">
-				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Feats</h2>
+				<h2 className="m-0 text-accent text-sm uppercase tracking-wide-px">Feats</h2>
 				<Button onClick={() => addFeat()} size="sm" variant="ghost">
 					+ Add
 				</Button>

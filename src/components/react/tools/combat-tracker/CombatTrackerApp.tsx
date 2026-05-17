@@ -2,27 +2,18 @@ import type { ReactNode } from "react";
 import { useCallback, useEffect } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { showToast, Toast } from "@/components/react/ui/Toast";
+import { useAllData } from "@/hooks/use-data";
 import { character } from "@/lib/dtd/character";
 import { derived } from "@/lib/dtd/derived";
 import { roll } from "@/lib/dtd/dice";
 import { AddCombatantForm } from "./AddCombatantForm";
 import { CombatantCard } from "./CombatantCard";
 import { ConditionPicker } from "./ConditionPicker";
-import type { Combatant, EncounterState } from "./constants";
-import {
-	CONDITIONS,
-	calculateDamage,
-	createCombatant,
-	defaultEncounterState,
-	ENCOUNTER_LIST_KEY,
-	ENCOUNTER_PREFIX,
-	genId,
-	HIT_LOCATIONS,
-} from "./constants";
+import type { Combatant, ConditionDef, EncounterState } from "./constants";
+import { createCombatant, defaultEncounterState, ENCOUNTER_LIST_KEY, ENCOUNTER_PREFIX, genId } from "./constants";
 import { EncounterBar } from "./EncounterBar";
 import { ImportModal } from "./ImportModal";
 import { QuickAddRow } from "./QuickAddRow";
-import { ReferenceSidebar } from "./ReferenceSidebar";
 import { useCombatStore } from "./store";
 
 // =========================================================================
@@ -72,9 +63,6 @@ export function CombatTrackerApp() {
 	const state = useCombatStore((s) => s.encounterState);
 	const conditionPickerState = useCombatStore((s) => s.conditionPickerState);
 	const importModalOpen = useCombatStore((s) => s.importModalOpen);
-	const sidebarOpen = useCombatStore((s) => s.sidebarOpen);
-	const hitLocationResult = useCombatStore((s) => s.hitLocationResult);
-	const damageCalcResult = useCombatStore((s) => s.damageCalcResult);
 	const roundAlerts = useCombatStore((s) => s.roundAlerts);
 	const encounterList = useCombatStore((s) => s.encounterList);
 	const importCharList = useCombatStore((s) => s.importCharList);
@@ -83,12 +71,13 @@ export function CombatTrackerApp() {
 	const setEncounterState = useCombatStore((s) => s.setEncounterState);
 	const setConditionPickerState = useCombatStore((s) => s.setConditionPickerState);
 	const setImportModalOpen = useCombatStore((s) => s.setImportModalOpen);
-	const setSidebarOpen = useCombatStore((s) => s.setSidebarOpen);
-	const setHitLocationResult = useCombatStore((s) => s.setHitLocationResult);
-	const setDamageCalcResult = useCombatStore((s) => s.setDamageCalcResult);
 	const setRoundAlerts = useCombatStore((s) => s.setRoundAlerts);
 	const setEncounterList = useCombatStore((s) => s.setEncounterList);
 	const setImportCharList = useCombatStore((s) => s.setImportCharList);
+
+	// Load conditions from canonical JSON data
+	const { data: gameData } = useAllData(["conditions.json"]);
+	const conditions: ConditionDef[] = (gameData?.conditions as ConditionDef[]) ?? [];
 
 	// Load encounter list on mount
 	useEffect(() => {
@@ -235,7 +224,7 @@ export function CombatTrackerApp() {
 
 			// Process conditions
 			for (const cond of c.conditions) {
-				const def = CONDITIONS.find((d) => d.id === cond.conditionId);
+				const def = conditions.find((d) => d.id === cond.conditionId);
 				if (!def) continue;
 
 				if (def.id === "burning") {
@@ -293,7 +282,7 @@ export function CombatTrackerApp() {
 			activeTurnIndex: 0,
 		});
 		showToast(`Round ${s.round} ended`);
-	}, [updateState, setRoundAlerts]);
+	}, [updateState, setRoundAlerts, conditions]);
 
 	// -----------------------------------------------------------------------
 	// HP / Resource modification
@@ -334,7 +323,7 @@ export function CombatTrackerApp() {
 		(combatantId: string, conditionId: string) => {
 			updateCombatant(combatantId, (c) => {
 				const existing = c.conditions.find((x) => x.conditionId === conditionId);
-				const def = CONDITIONS.find((d) => d.id === conditionId);
+				const def = conditions.find((d) => d.id === conditionId);
 
 				if (existing) {
 					if (def?.leveled) {
@@ -354,7 +343,7 @@ export function CombatTrackerApp() {
 				};
 			});
 		},
-		[updateCombatant],
+		[updateCombatant, conditions],
 	);
 
 	const removeCondition = useCallback(
@@ -522,28 +511,6 @@ export function CombatTrackerApp() {
 	}, [setEncounterState, setRoundAlerts]);
 
 	// -----------------------------------------------------------------------
-	// Reference sidebar actions
-	// -----------------------------------------------------------------------
-
-	const rollHitLocation = useCallback(() => {
-		const result = roll(1, 1, 0);
-		const val = Math.min(10, Math.max(1, result.total));
-		const loc = HIT_LOCATIONS.find((h) => h.roll === val);
-		setHitLocationResult(loc ? `Rolled ${val}: ${loc.location}` : `Rolled ${val}`);
-	}, [setHitLocationResult]);
-
-	const handleCalcDamage = useCallback(
-		(raw: number, ap: number, pen: number, resilience: number) => {
-			const wounds = calculateDamage(raw, ap, pen, resilience);
-			setDamageCalcResult(
-				`Raw ${raw} - AP ${ap} (pen ${pen}) = ${Math.max(0, raw - Math.max(0, ap - pen))} ` +
-					`\u00f7 Res ${resilience} = ${wounds} wound${wounds !== 1 ? "s" : ""}`,
-			);
-		},
-		[setDamageCalcResult],
-	);
-
-	// -----------------------------------------------------------------------
 	// Computed values
 	// -----------------------------------------------------------------------
 
@@ -555,10 +522,10 @@ export function CombatTrackerApp() {
 
 	return (
 		<>
-			<header className="sticky top-0 z-[100] flex items-center gap-md border-border border-b bg-surface px-lg py-sm max-[768px]:flex-wrap max-[768px]:p-sm">
-				<h1 className="m-0 whitespace-nowrap text-accent text-xl max-[768px]:text-base">Combat Tracker</h1>
-				<div className="ml-auto flex items-center gap-sm rounded-md border border-border bg-bg px-md py-xs max-[768px]:ml-0">
-					<span className="text-text-muted text-xs uppercase tracking-[0.5px]">Round</span>
+			<header className="sticky top-0 z-[100] flex items-center gap-md border-border border-b bg-surface px-lg py-sm max-tool-md:flex-wrap max-tool-md:p-sm">
+				<h1 className="m-0 whitespace-nowrap text-accent text-xl max-tool-md:text-base">Combat Tracker</h1>
+				<div className="ml-auto flex items-center gap-sm rounded-md border border-border bg-bg px-md py-xs max-tool-md:ml-0">
+					<span className="text-text-muted text-xs uppercase tracking-wide-px">Round</span>
 					<span className="min-w-[2ch] text-center font-bold text-[1.75rem] text-accent leading-none">
 						{state.round}
 					</span>
@@ -569,14 +536,14 @@ export function CombatTrackerApp() {
 			</header>
 
 			{roundAlerts.length > 0 && (
-				<div className="border-warning border-b bg-warning-bg px-lg py-sm text-[0.85rem] text-warning">
+				<div className="border-warning border-b bg-warning-bg px-lg py-sm text-sm text-warning">
 					<strong>End-of-Round Effects:</strong>
 					<ul className="m-0 pl-lg">{roundAlerts}</ul>
 				</div>
 			)}
 
 			<div className="flex min-h-[calc(100vh-60px-48px)] gap-0">
-				<main className="min-w-0 flex-1 p-lg max-[768px]:p-md">
+				<main className="min-w-0 flex-1 p-lg max-tool-md:p-md">
 					<AddCombatantForm onAdd={addCombatant} />
 					<QuickAddRow
 						onImportSheet={openImportModal}
@@ -586,13 +553,14 @@ export function CombatTrackerApp() {
 					<div className="mb-lg flex flex-col gap-md">
 						{state.combatants.length === 0 ? (
 							<div className="px-lg py-xl text-center text-text-dim">
-								<div className="mb-md text-[3rem]">\u2694\uFE0F</div>
+								<div className="mb-md text-[3rem]">⚔️</div>
 								<p>No combatants yet. Add some above to begin.</p>
 							</div>
 						) : (
 							state.combatants.map((c, i) => (
 								<CombatantCard
 									combatant={c}
+									conditions={conditions}
 									hasTie={tieSet.has(c.id)}
 									isActive={state.encounterStarted && i === state.activeTurnIndex}
 									key={c.id}
@@ -609,34 +577,14 @@ export function CombatTrackerApp() {
 							))
 						)}
 					</div>
-					<div className="flex justify-center gap-md py-md max-[768px]:flex-col max-[768px]:items-stretch">
+					<div className="flex justify-center gap-md py-md max-tool-md:flex-col max-tool-md:items-stretch">
 						<Button onClick={previousTurn}>&#x2190; Previous Turn</Button>
 						<Button onClick={nextTurn} variant="primary">
 							Next Turn &#x2192;
 						</Button>
 					</div>
 				</main>
-
-				<ReferenceSidebar
-					damageResult={damageCalcResult}
-					hitLocationResult={hitLocationResult}
-					isOpen={sidebarOpen}
-					onCalcDamage={handleCalcDamage}
-					onClose={() => {
-						setSidebarOpen(false);
-					}}
-					onRollLocation={rollHitLocation}
-				/>
 			</div>
-
-			<Button
-				className="fixed right-md bottom-[60px] z-[90] hidden max-[1099px]:flex"
-				onClick={() => {
-					setSidebarOpen(!sidebarOpen);
-				}}
-			>
-				&#x2630; Reference
-			</Button>
 
 			<EncounterBar
 				encounters={encounterList}
@@ -659,6 +607,7 @@ export function CombatTrackerApp() {
 				<ConditionPicker
 					anchorRect={conditionPickerState.rect}
 					combatantId={conditionPickerState.combatantId}
+					conditions={conditions}
 					existingConditions={
 						state.combatants.find((c) => c.id === conditionPickerState?.combatantId)?.conditions ?? []
 					}

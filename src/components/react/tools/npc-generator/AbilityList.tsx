@@ -36,7 +36,7 @@ export function AbilityList({ abilities, onChange }: AbilityListProps) {
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
 			<div className="mb-sm flex items-center justify-between">
-				<h2 className="m-0 text-[0.9rem] text-accent uppercase tracking-[0.5px]">Abilities</h2>
+				<h2 className="m-0 text-accent text-sm uppercase tracking-wide-px">Abilities</h2>
 				<Button onClick={addAbility} size="sm" variant="ghost">
 					+ Add
 				</Button>

@@ -42,9 +42,6 @@ describe("combat-tracker store", () => {
 			encounterState: defaultEncounterState(),
 			conditionPickerState: null,
 			importModalOpen: false,
-			sidebarOpen: false,
-			hitLocationResult: "",
-			damageCalcResult: "",
 			roundAlerts: [],
 			encounterList: [],
 			importCharList: [],
@@ -63,21 +60,6 @@ describe("combat-tracker store", () => {
 		it("setImportModalOpen toggles modal state", () => {
 			useCombatStore.getState().setImportModalOpen(true);
 			expect(useCombatStore.getState().importModalOpen).toBe(true);
-		});
-
-		it("setSidebarOpen toggles sidebar state", () => {
-			useCombatStore.getState().setSidebarOpen(true);
-			expect(useCombatStore.getState().sidebarOpen).toBe(true);
-		});
-
-		it("setHitLocationResult sets result string", () => {
-			useCombatStore.getState().setHitLocationResult("Head");
-			expect(useCombatStore.getState().hitLocationResult).toBe("Head");
-		});
-
-		it("setDamageCalcResult sets result string", () => {
-			useCombatStore.getState().setDamageCalcResult("12 damage");
-			expect(useCombatStore.getState().damageCalcResult).toBe("12 damage");
 		});
 
 		it("setEncounterList replaces the list", () => {

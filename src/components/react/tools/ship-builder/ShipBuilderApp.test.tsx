@@ -1,14 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, jest, mock } from "bun:test";
 import { cleanup, render, screen } from "@testing-library/react";
 import { installMockLocalStorage } from "@/lib/dtd/__test-utils__/mock-local-storage";
+import { TEST_COOL_SHIP } from "../../__test-utils__/mock-characters";
 import { createDefaultShip } from "./constants";
 import { useShipStore } from "./store";
 
 // ---------------------------------------------------------------------------
-// Mock data loading - never resolves by default so child components don't crash
+// Mock data loading — intercept useAllData hook
 // ---------------------------------------------------------------------------
-mock.module("@/lib/dtd/core.ts", () => ({
-	loadData: mock(() => new Promise(() => {})),
+let mockUseAllData = () => ({ data: null, loading: true, error: null });
+
+mock.module("@/hooks/use-data", () => ({
+	useAllData: (..._args: unknown[]) => mockUseAllData(),
 }));
 
 const { ShipBuilderApp } = await import("./ShipBuilderApp");
@@ -32,6 +35,7 @@ afterEach(() => {
 		mode: "builder",
 		dataLoaded: false,
 	});
+	mockUseAllData = () => ({ data: null, loading: true, error: null });
 });
 
 describe("ShipBuilderApp", () => {
@@ -75,5 +79,16 @@ describe("ShipBuilderApp", () => {
 		render(<ShipBuilderApp />);
 		expect(screen.getByTitle("Switch ship")).toBeTruthy();
 		expect(screen.getByText("HMS Victory")).toBeTruthy();
+	});
+
+	it("renders The Regression Runner ship from fixture", () => {
+		restoreLocalStorage = installMockLocalStorage();
+		useShipStore.setState({
+			dataLoaded: true,
+			ship: TEST_COOL_SHIP,
+			shipList: [{ id: TEST_COOL_SHIP.id, name: TEST_COOL_SHIP.name }],
+		});
+		render(<ShipBuilderApp />);
+		expect(screen.getByDisplayValue("The Regression Runner")).toBeTruthy();
 	});
 });

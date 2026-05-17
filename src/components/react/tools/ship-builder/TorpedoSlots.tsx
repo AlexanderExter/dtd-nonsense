@@ -11,7 +11,9 @@ export function TorpedoSlots() {
 	const handleToggleTube = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const checked = (e.target as HTMLInputElement).checked;
-			updateShip((s) => ({ ...s, hasTorpedoTube: checked }));
+			updateShip((s) => {
+				s.hasTorpedoTube = checked;
+			});
 		},
 		[updateShip],
 	);
@@ -19,9 +21,7 @@ export function TorpedoSlots() {
 	const handleTorpedoChange = useCallback(
 		(idx: number, torpedoId: string) => {
 			updateShip((s) => {
-				const torpedoes = [...s.torpedoes];
-				torpedoes[idx] = torpedoId;
-				return { ...s, torpedoes };
+				s.torpedoes[idx] = torpedoId;
 			});
 		},
 		[updateShip],
@@ -33,7 +33,7 @@ export function TorpedoSlots() {
 		<section className="mb-xl">
 			<h2 className="mb-md border-border border-b pb-xs text-accent text-xl">Torpedoes</h2>
 			<div>
-				<label className="mb-sm flex cursor-pointer items-center gap-sm text-[0.85rem]">
+				<label className="mb-sm flex cursor-pointer items-center gap-sm text-sm">
 					<GameCheckbox checked={currentShip.hasTorpedoTube} onChange={handleToggleTube} />
 					<span>Torpedo Tube ({data.torpedoTubeCost} BP) — holds 5 torpedoes</span>
 				</label>
@@ -60,7 +60,7 @@ export function TorpedoSlots() {
 											</option>
 										))}
 									</GameSelect>
-									<span className="min-w-10 text-right text-[0.8rem] text-accent">
+									<span className="min-w-10 text-right text-accent text-xs">
 										{selectedTorpedo ? `${selectedTorpedo.cost} BP` : ""}
 									</span>
 								</div>

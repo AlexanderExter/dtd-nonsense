@@ -126,13 +126,13 @@ On-demand knowledge loaded when relevant. Each skill has trigger descriptions �
 
 ## Project Architecture
 
-```
+```text
 books/                 Core reference material (per-chapter split, 2 books, .mdx)
 cleaned-references/    Succinct combined reading references (merged by topic, .mdx)
-data/                  Canonical JSON game data (12 files, validated by Zod schemas)
+data/                  Canonical JSON game data (15 files, validated by Zod schemas)
 docs/                  Technical documentation, conventions
   project-conventions.md  Single source of truth for all cross-cutting rules
-  tools/               Per-tool feature specs (6 tools)
+  tools/               Per-tool feature specs (5 tools + QRef migration notes)
   shared/              Shared module API docs (core.ts, dice.ts)
 scripts/               TypeScript pipeline: validate, lint, sync-check, prebuild
   __tests__/           Pipeline script tests (validate, lint, sync-check, check-structure)
@@ -150,13 +150,13 @@ src/                   Astro source files
   components/
     react/
       __test-utils__/  Mock game data, render wrapper
-      tools/           React island components (6 tools, 74 components)
+      tools/           React island components (5 tools, 78 components)
       ui/              Shared UI primitives (migrating to shadcn/ui)
         __tests__/     UI primitive tests (Accordion, Modal, Tabs, Toast)
   hooks/               Custom React hooks (use-data.ts)
   lib/dtd/             ES modules: core.ts (barrel), character.ts, data.ts, derived.ts, dice.ts, dice-primitives.ts, types.ts
   lib/dtd/__test-utils__/  Mock localStorage, fetch, dice
-  lib/dtd/schemas/     Zod schemas (source of truth for all 12 JSON data files)
+  lib/dtd/schemas/     Zod schemas (source of truth for all 15 JSON data files)
   layouts/             ToolLayout.astro
   styles/
     custom.css         WH40K theme (Starlight)
@@ -179,7 +179,7 @@ TypeScript pipeline scripts (run via bun):
 | `bun run check`            | **Run everything:** tests → lint → validate+xref → content lint → sync-check → knip → check:deps → check:structure |
 | `bun run test`             | Unit tests only (bun:test)                                                         |
 | `bun run lint`             | Biome lint/format check only                                                       |
-| `bun run validate`         | Validate all 12 JSON data files against Zod schemas                                |
+| `bun run validate`         | Validate all 15 JSON data files against Zod schemas                                |
 | `bun run validate:xref`    | Validate + cross-reference checks (class→skill, class→feat)                        |
 | `bun run lint:data`        | Lint content for terminology, formatting, encoding                                 |
 | `bun run sync-check`       | Detect drift between content and JSON data                                         |
@@ -194,12 +194,14 @@ TypeScript pipeline scripts (run via bun):
 | `bun run upgrade:recon`    | Dependency recon: outdated, audit, tree health, override check                     |
 | `bun run maintenance:recon` | Comprehensive project discovery for maintenance sessions                           |
 
-All 12 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
+All 15 JSON files pass validation. Cross-ref warnings for abbreviated feat names and missing skills in `classes.json` are real data gaps, not bugs.
 
 ### Cleaned References Index
 
 | File                          | Content                                      |
 | ----------------------------- | -------------------------------------------- |
+| 00-About.mdx                  | Project overview and navigation guide        |
+| 00-Quick-Reference.mdx        | At-table lookup: actions, conditions, mods, formulas |
 | 01-Core-Rules.mdx             | Dice system, tests, raises/checks            |
 | 02-Char-Creation.mdx          | 10-step character creation (Steps 0–9)       |
 | 03-Characteristics-Skills.mdx | 9 characteristics, skill list                |

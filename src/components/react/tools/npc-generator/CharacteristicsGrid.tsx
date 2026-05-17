@@ -9,12 +9,12 @@ interface CharacteristicsGridProps {
 export function CharacteristicsGrid({ characteristics, onChange }: CharacteristicsGridProps) {
 	return (
 		<div className="mb-lg border-border border-b pb-md last:border-b-0">
-			<h2 className="m-0 mb-sm text-[0.9rem] text-accent uppercase tracking-[0.5px]">Characteristics</h2>
+			<h2 className="m-0 mb-sm text-accent text-sm uppercase tracking-wide-px">Characteristics</h2>
 			<div className="grid grid-cols-3 gap-sm">
 				{CHAR_KEYS.map((key) => (
 					<div className="flex flex-col items-center" key={key}>
 						<label
-							className="mb-[2px] font-bold text-[0.75rem] text-text-muted uppercase"
+							className="mb-[2px] font-bold text-text-muted text-xs uppercase"
 							htmlFor={`char-${CHAR_ABBREV[key].toLowerCase()}`}
 						>
 							{CHAR_ABBREV[key]}

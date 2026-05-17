@@ -1,0 +1,92 @@
+[
+  {
+    "id": "amputation",
+    "name": "Amputation",
+    "effect": "Lose a limb permanently",
+    "leveled": false
+  },
+  {
+    "id": "blinded",
+    "name": "Blinded",
+    "effect": "-4k0 to physical Tests requiring sight",
+    "leveled": false
+  },
+  {
+    "id": "bloodLoss",
+    "name": "Blood Loss",
+    "effect": "Con Test each round or take damage equal to level",
+    "leveled": true
+  },
+  {
+    "id": "burning",
+    "name": "Burning",
+    "effect": "1d10 Energy damage per round",
+    "leveled": false
+  },
+  {
+    "id": "crippledArm",
+    "name": "Crippled (Arm)",
+    "effect": "Cannot use that arm",
+    "leveled": false
+  },
+  {
+    "id": "crippledLeg",
+    "name": "Crippled (Leg)",
+    "effect": "Move at half speed, -2k0 to movement Tests",
+    "leveled": false
+  },
+  {
+    "id": "dazzled",
+    "name": "Dazzled",
+    "effect": "-1k0 sight Tests, -2k0 if directly looking at source",
+    "leveled": false
+  },
+  {
+    "id": "deafened",
+    "name": "Deafened",
+    "effect": "-2k0 to hearing-based Tests",
+    "leveled": false
+  },
+  {
+    "id": "fatigue",
+    "name": "Fatigue",
+    "effect": "-1k0 per level to all Tests",
+    "leveled": true
+  },
+  {
+    "id": "frightened",
+    "name": "Frightened",
+    "effect": "Must flee or suffer -2k0 to all Tests",
+    "leveled": false
+  },
+  {
+    "id": "helpless",
+    "name": "Helpless",
+    "effect": "Auto-hit in melee, double damage from melee",
+    "leveled": false
+  },
+  {
+    "id": "pinned",
+    "name": "Pinned",
+    "effect": "Cannot move or take actions except to break free",
+    "leveled": false
+  },
+  {
+    "id": "prone",
+    "name": "Prone",
+    "effect": "+2k0 melee attacks against, -2k0 ranged against, -2k0 own attacks",
+    "leveled": false
+  },
+  {
+    "id": "stunned",
+    "name": "Stunned",
+    "effect": "No Reactions, half move only",
+    "leveled": false
+  },
+  {
+    "id": "toxic",
+    "name": "Toxic",
+    "effect": "Take damage equal to level each round",
+    "leveled": true
+  }
+]
