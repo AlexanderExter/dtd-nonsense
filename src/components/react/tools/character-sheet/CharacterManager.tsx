@@ -40,15 +40,15 @@ export function CharacterManager() {
 	};
 
 	return (
-		<div className="sticky top-0 z-[100] flex items-center gap-sm border-border border-b bg-surface px-md py-sm">
-			<GameSelect className="min-w-[200px] flex-1" onChange={handleSwitch} value={currentId || ""}>
+		<div className="sticky top-0 z-[100] flex flex-wrap items-center gap-sm border-border border-b bg-surface px-md py-sm">
+			<GameSelect className="min-w-[140px] flex-1" onChange={handleSwitch} value={currentId || ""}>
 				{list.map((c) => (
 					<option key={c.id} value={c.id}>
 						{c.name || "Unnamed"}
 					</option>
 				))}
 			</GameSelect>
-			<div className="ml-auto flex items-center gap-xs">
+			<div className="flex flex-wrap items-center gap-xs">
 				<Button onClick={createNewCharacter} size="sm">
 					+ New
 				</Button>

@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
-import { GameSelect } from "@/components/react/ui/GameSelect";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
 
 export function AlignmentStep() {
-	const [pantheonFilter, setPantheonFilter] = useState("all");
 	const [selectedPreview, setSelectedPreview] = useState<any>(null);
 
 	const data = useBuilderStore((s) => s.gameData);
@@ -17,12 +15,19 @@ export function AlignmentStep() {
 	if (!data?.alignments?.alignments) return <p>Loading alignment data…</p>;
 
 	const alignments = data.alignments.alignments;
+	const pantheonMap = data.alignments.pantheons ?? {};
 	const preview = selectedPreview;
 
-	// Unique pantheons for filter
-	const pantheons = [...new Set(alignments.map((a) => a.pantheon).filter(Boolean))];
+	const getPantheonName = (key: string) => pantheonMap[key]?.name ?? key;
 
-	const filtered = pantheonFilter === "all" ? alignments : alignments.filter((a) => a.pantheon === pantheonFilter);
+	// Group alignments by pantheon
+	const pantheons = [...new Set(alignments.map((a) => a.pantheon).filter(Boolean))];
+	const grouped = pantheons.map((key) => ({
+		key,
+		name: getPantheonName(key),
+		description: pantheonMap[key]?.description ?? "",
+		alignments: alignments.filter((a) => a.pantheon === key),
+	}));
 
 	const selectAlignment = (al) => {
 		updateChar((c) => {
@@ -37,46 +42,32 @@ export function AlignmentStep() {
 
 	return (
 		<div>
-			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
-				<label className="m-0 text-sm text-text-dim">
-					Pantheon:{" "}
-					<GameSelect
-						onChange={(e) => {
-							setPantheonFilter((e.target as HTMLSelectElement).value);
-						}}
-						value={pantheonFilter}
-					>
-						<option value="all">All</option>
-						{pantheons.map((p) => (
-							<option key={p} value={p}>
-								{p}
-							</option>
+			{grouped.map((group) => (
+				<div className="mb-lg" key={group.key}>
+					<h3 className="mb-2xs text-accent">{group.name}</h3>
+					{group.description && <p className="mb-sm text-text-muted text-xs">{group.description}</p>}
+					<div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-sm">
+						{group.alignments.map((al) => (
+							<SelectionCard
+								key={al.id || al.name}
+								onClick={() => {
+									setSelectedPreview(al);
+								}}
+								preview={al.description?.slice(0, 80)}
+								selected={char.alignment === (al.id || al.name)}
+								title={al.name}
+							/>
 						))}
-					</GameSelect>
-				</label>
-			</div>
-
-			<div className="mb-md grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-				{filtered.map((al) => (
-					<SelectionCard
-						key={al.id || al.name}
-						onClick={() => {
-							setSelectedPreview(al);
-						}}
-						preview={al.description?.slice(0, 80)}
-						selected={char.alignment === (al.id || al.name)}
-						subtitle={al.pantheon}
-						title={al.name}
-					/>
-				))}
-			</div>
+					</div>
+				</div>
+			))}
 
 			{preview && (
 				<DetailPanel>
 					<h3>{preview.name}</h3>
 					{preview.pantheon && (
 						<p>
-							<strong>Pantheon:</strong> {preview.pantheon}
+							<strong>Pantheon:</strong> {getPantheonName(preview.pantheon)}
 						</p>
 					)}
 					{preview.description && <p>{preview.description}</p>}

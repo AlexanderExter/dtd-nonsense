@@ -8,15 +8,12 @@ hero:
         - text: Read the Rules
           link: /rules/01-core-rules/
           icon: right-arrow
-        - text: Book 1 PDF
+        - text: Quick Reference
+          link: /rules/00-quick-reference/
+          icon: information
+          variant: secondary
+        - text: Source PDFs
           link: https://static.wikitide.net/1d6chanwiki/f/fc/Dungeons_the_Dragoning.pdf
-          icon: external
-          variant: minimal
-          attrs:
-              target: _blank
-              rel: noopener
-        - text: Book 2 PDF
-          link: https://static.wikitide.net/1d6chanwiki/7/70/Dungeons_the_Dragoning_-_For_a_Few_Subtitles_More.pdf
           icon: external
           variant: minimal
           attrs:
@@ -31,19 +28,31 @@ hero:
               rel: noopener
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-<CardGrid stagger>
-    <Card title="Complete Rulebook" icon="open-book">
-        All rules from both source books — character creation, combat, magic, ships, and more — cleaned and cross-referenced for easy reading.
+## Play Tools
+
+<CardGrid>
+    <LinkCard title="Character Builder" href="/tools/character-builder/" description="Step-by-step wizard — races, exaltations, classes, feats, and equipment." />
+    <LinkCard title="Character Sheet" href="/tools/character-sheet/" description="Interactive digital sheet with auto-calculated derived stats." />
+    <LinkCard title="Combat Tracker" href="/tools/combat-tracker/" description="Initiative tracking, HP management, and condition monitoring." />
+    <LinkCard title="NPC Stat Block Builder" href="/tools/npc-generator/" description="Manual stat block builder with templates, traits, and printable output." />
+    <LinkCard title="Ship Builder" href="/tools/ship-builder/" description="Design and equip spelljammer ships with full component slots." />
+</CardGrid>
+
+## Rulebook
+
+<CardGrid>
+    <Card title="Complete Reference" icon="open-book">
+        Both source books — cleaned, merged by topic, and cross-referenced. Character creation, combat, magic, vehicles, ships, and more.
     </Card>
-    <Card title="Character Builder" icon="pencil">
-        Step-by-step wizard to create characters with races, exaltations, classes, feats, and equipment.
+    <Card title="50+ Classes" icon="star">
+        Full progression tables for every class from both books, with feat prerequisites and skill lists.
     </Card>
-    <Card title="Quick Reference" icon="information">
-        At-the-table rules lookup for combat actions, conditions, formulas, weapon properties, and more.
+    <Card title="16 Races & Exaltations" icon="random">
+        Humans, Eldar, Orks, Tieflings, and more — each with unique supernatural exaltation paths.
     </Card>
-    <Card title="Combat Tracker" icon="list-format">
-        Initiative tracking, HP management, and condition tracking for encounters.
+    <Card title="Spelljammer Ships" icon="rocket">
+        Ship construction, components, space combat, and boarding actions.
     </Card>
 </CardGrid>

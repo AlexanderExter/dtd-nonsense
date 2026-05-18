@@ -1,259 +1,5 @@
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ToolLayout — standalone layout for tool pages (no Starlight sidebar/header).
 // Tools open in new tabs from the sidebar; this gives them full-width space.
 import "@/styles/tailwind.css";
@@ -265,6 +11,18 @@ interface Props {
 }
 
 const { title, description = "" } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+	{ href: "/rules/01-core-rules/", label: "Rules" },
+	{ href: "/rules/00-quick-reference/", label: "Reference" },
+	{ href: "/tools/character-builder/", label: "Builder" },
+	{ href: "/tools/character-sheet/", label: "Sheet" },
+	{ href: "/tools/combat-tracker/", label: "Combat" },
+	{ href: "/tools/npc-generator/", label: "NPCs" },
+	{ href: "/tools/ship-builder/", label: "Ships" },
+];
 ---
 
 <html lang="en">
@@ -290,31 +48,25 @@ const { title, description = "" } = Astro.props;
 					>DTD 40k</a
 				>
 				<nav class="flex gap-5 flex-wrap">
-					<a
-						href="/rules/01-core-rules/"
-						class="text-text-muted text-sm transition-colors duration-150 hover:text-accent"
-						>Rules</a
-					>
-					<a
-						href="/rules/00-quick-reference/"
-						class="text-text-muted text-sm transition-colors duration-150 hover:text-accent"
-						>Reference</a
-					>
-					<a
-						href="/tools/character-builder/"
-						class="text-text-muted text-sm transition-colors duration-150 hover:text-accent"
-						>Builder</a
-					>
-					<a
-						href="/tools/character-sheet/"
-						class="text-text-muted text-sm transition-colors duration-150 hover:text-accent"
-						>Sheet</a
-					>
-					<a
-						href="/tools/combat-tracker/"
-						class="text-text-muted text-sm transition-colors duration-150 hover:text-accent"
-						>Combat</a
-					>
+					{
+						navLinks.map(({ href, label }) => (
+							<a
+								aria-current={
+									currentPath === href ? "page" : undefined
+								}
+								href={href}
+								key={href}
+								class:list={[
+									"text-sm transition-colors duration-150 hover:text-accent",
+									currentPath === href
+										? "text-accent font-semibold"
+										: "text-text-muted",
+								]}
+							>
+								{label}
+							</a>
+						))
+					}
 				</nav>
 			</div>
 		</header>

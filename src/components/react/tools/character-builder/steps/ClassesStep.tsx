@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { useState } from "react";
 import { capitalize } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
@@ -18,8 +18,11 @@ export function ClassesStep() {
 	if (!data?.classes?.classes) return <p>Loading class data…</p>;
 
 	const allClasses = data.classes.classes;
+	const trackMap = data.classes.tracks ?? {};
 	const preview = selectedPreview;
 	const purchasedIds = new Set((char.classes || []).map((c) => c.classId));
+
+	const getTrackName = (key: string | null) => (key && trackMap[key]?.name) || key || "General";
 
 	// Unique tracks
 	const tracks = [...new Set(allClasses.map((c) => c.track).filter(Boolean))];
@@ -57,7 +60,7 @@ export function ClassesStep() {
 						<option value="all">All Tracks</option>
 						{tracks.map((t) => (
 							<option key={t} value={t}>
-								{t}
+								{getTrackName(t)}
 							</option>
 						))}
 					</GameSelect>
@@ -100,7 +103,7 @@ export function ClassesStep() {
 							}}
 							preview={cls.completionBonus?.slice(0, 60)}
 							selected={purchasedIds.has(id)}
-							subtitle={`Tier 1 · ${cls.track || "General"}`}
+							subtitle={`Tier 1 · ${getTrackName(cls.track)}`}
 							title={cls.name}
 						/>
 					);
@@ -112,7 +115,7 @@ export function ClassesStep() {
 					<h3>{preview.name}</h3>
 					{preview.track && (
 						<p>
-							<strong>Track:</strong> {preview.track}
+							<strong>Track:</strong> {getTrackName(preview.track)}
 						</p>
 					)}
 					{preview.prerequisites && (
