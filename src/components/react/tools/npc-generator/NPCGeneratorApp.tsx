@@ -237,9 +237,6 @@ export function NPCGeneratorApp() {
 			{/* Top Bar */}
 			<header className="no-print sticky top-0 z-[100] flex items-center justify-between gap-md border-border border-b bg-surface px-lg py-sm max-[800px]:flex-wrap">
 				<div className="flex items-center gap-sm">
-					<a className="whitespace-nowrap text-sm" href="/tools/">
-						← Tools
-					</a>
 					<h1 className="m-0 whitespace-nowrap text-accent text-lg">NPC Stat Block Builder</h1>
 				</div>
 				<div className="flex items-center gap-sm max-[800px]:flex-wrap">

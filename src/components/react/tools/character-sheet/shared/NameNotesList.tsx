@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AddButton } from "@/components/react/ui/AddButton";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
@@ -18,23 +19,52 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 
 	// Build datalist options from game data, filtered by category
 	let options: string[] = [];
-	if (datalistId && data?.feats) {
-		const featList = data.feats.feats || data.feats || [];
-		if (Array.isArray(featList)) {
-			const categoryFilter = listKey === "assets" ? "asset" : listKey === "hindrances" ? "hindrance" : null;
-			const filtered = categoryFilter ? featList.filter((f) => f.category === categoryFilter) : featList;
-			options = filtered.map((f) => f.name).filter(Boolean);
-		}
+	const featList = data?.feats?.feats || data?.feats || [];
+	if (datalistId && data?.feats && Array.isArray(featList)) {
+		const categoryFilter = listKey === "assets" ? "asset" : listKey === "hindrances" ? "hindrance" : null;
+		const filtered = categoryFilter ? featList.filter((f) => f.category === categoryFilter) : featList;
+		options = filtered.map((f) => f.name).filter(Boolean);
 	}
 
+	// Resolve an ID or name to a display name (handles camelCase IDs from builder)
+	const resolveDisplayName = (name: string): string => {
+		if (!(name && Array.isArray(featList))) return name;
+		// If it already matches a known display name, return as-is
+		const exactMatch = featList.find((f) => f.name === name);
+		if (exactMatch) return name;
+		// Check if it matches an id
+		const idMatch = featList.find((f) => f.id === name);
+		if (idMatch) return idMatch.name;
+		return name;
+	};
+
+	// Normalize stored camelCase IDs to proper display names on load
+	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional one-shot normalization when data loads
+	useEffect(() => {
+		if (!Array.isArray(featList) || featList.length === 0) return;
+		const needsUpdate = items.some((item) => {
+			if (!item.name) return false;
+			const idMatch = featList.find((f) => f.id === item.name);
+			return !!idMatch;
+		});
+		if (needsUpdate) {
+			updateChar((c) => {
+				const list = c[listKey] as FeatEntry[];
+				for (const item of list) {
+					if (!item.name) continue;
+					const idMatch = featList.find((f) => f.id === item.name);
+					if (idMatch) item.name = idMatch.name;
+				}
+			});
+		}
+	}, [featList.length]);
+
 	const findItemNotes = (name: string): string => {
-		if (!data?.feats) return "";
-		const featList = data.feats.feats || data.feats || [];
-		if (!Array.isArray(featList)) return "";
+		if (!(data?.feats && Array.isArray(featList))) return "";
 		const baseName = name.toLowerCase().split("(")[0].trim();
 		const match = featList.find((f) => {
 			const dataBase = f.name?.toLowerCase().split("(")[0].trim();
-			return dataBase === baseName;
+			return dataBase === baseName || f.id?.toLowerCase() === baseName;
 		});
 		return match?.effect || match?.description || match?.notes || "";
 	};
@@ -43,9 +73,11 @@ export function NameNotesList({ listKey, label, datalistId }: NameNotesListProps
 		updateChar((c) => {
 			const list = c[listKey] as FeatEntry[];
 			if (list[idx]) {
-				list[idx].name = name;
+				// Resolve camelCase IDs to proper names on input
+				const resolved = resolveDisplayName(name);
+				list[idx].name = resolved;
 				// Auto-populate notes from game data on exact match
-				const autoNotes = findItemNotes(name);
+				const autoNotes = findItemNotes(resolved);
 				if (autoNotes && !list[idx].notes) {
 					list[idx].notes = autoNotes;
 				}

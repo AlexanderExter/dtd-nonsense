@@ -1,14 +1,9 @@
-import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
+import { useEffect } from "react";
 import { BASE_CHAR_DOT, CHAR_PRIORITY_DOTS, CREATION_CHAR_CAP, capitalize, findRaceData } from "../constants";
 import { DotControl } from "../shared/DotControl";
+import { SortablePriority } from "../shared/SortablePriority";
 import { useBuilderStore } from "../store";
-
-const PRIORITY_OPTIONS = [
-	{ value: "primary", label: "Primary (6 dots)" },
-	{ value: "secondary", label: "Secondary (4 dots)" },
-	{ value: "tertiary", label: "Tertiary (2 dots)" },
-];
 
 export function CharacteristicsStep() {
 	const meta = useBuilderStore((s) => s.meta);
@@ -27,29 +22,33 @@ export function CharacteristicsStep() {
 	const allAssigned =
 		meta.charPriority.physical !== null && meta.charPriority.social !== null && meta.charPriority.mental !== null;
 
+	// Auto-assign default priorities if none are set (so dot controls work immediately)
+	useEffect(() => {
+		if (
+			meta.charPriority.physical === null &&
+			meta.charPriority.social === null &&
+			meta.charPriority.mental === null
+		) {
+			updateMeta((m) => {
+				m.charPriority.physical = "primary";
+				m.charPriority.social = "secondary";
+				m.charPriority.mental = "tertiary";
+				m.stepsCompleted[3] = true;
+			});
+		}
+	}, [meta.charPriority.physical, meta.charPriority.social, meta.charPriority.mental, updateMeta]);
+
 	// Mark step complete when all priorities assigned
-	if (allAssigned !== meta.stepsCompleted[3]) {
-		updateMeta((m) => {
-			m.stepsCompleted[3] = allAssigned;
-		});
-	}
+	useEffect(() => {
+		if (allAssigned !== meta.stepsCompleted[3]) {
+			updateMeta((m) => {
+				m.stepsCompleted[3] = allAssigned;
+			});
+		}
+	}, [allAssigned, meta.stepsCompleted, updateMeta]);
 
 	const handlePriorityChange = (group: string, value: string) => {
 		updateMeta((m) => {
-			// Clear any other group that had this priority
-			for (const g of Object.keys(m.charPriority)) {
-				if (g !== group && m.charPriority[g] === value) {
-					m.charPriority[g] = null;
-					m.charDotsSpent[g] = 0;
-					// Reset chars in that group to base
-					const groupChars = CHAR_GROUPS[g]?.chars || [];
-					for (const ch of groupChars) {
-						updateChar((c) => {
-							c.characteristics[ch as keyof typeof c.characteristics] = BASE_CHAR_DOT;
-						});
-					}
-				}
-			}
 			m.charPriority[group] = value;
 			// Reset this group's allocation
 			m.charDotsSpent[group] = 0;
@@ -61,6 +60,36 @@ export function CharacteristicsStep() {
 			}
 		});
 	};
+
+	// Priority order state: derive from current assignments or default
+	const priorityOrder = (() => {
+		const groups = Object.keys(CHAR_GROUPS);
+		const priorities = ["primary", "secondary", "tertiary"];
+		// Build order from current assignments
+		const ordered: string[] = [];
+		for (const p of priorities) {
+			const g = groups.find((g) => meta.charPriority[g] === p);
+			if (g) ordered.push(g);
+		}
+		// Add any unassigned groups at the end
+		for (const g of groups) {
+			if (!ordered.includes(g)) ordered.push(g);
+		}
+		return ordered;
+	})();
+
+	const handleReorder = (newOrder: string[]) => {
+		const priorities = ["primary", "secondary", "tertiary"];
+		for (let i = 0; i < newOrder.length; i++) {
+			handlePriorityChange(newOrder[i], priorities[i]);
+		}
+	};
+
+	const sortableItems = priorityOrder.map((groupKey, idx) => ({
+		id: groupKey,
+		label: CHAR_GROUPS[groupKey].label,
+		dotLabel: `${CHAR_PRIORITY_DOTS[["primary", "secondary", "tertiary"][idx]]} dots`,
+	}));
 
 	const handleDotChange = (group: string, charKey: string, newTotal: number) => {
 		const priority = meta.charPriority[group];
@@ -94,29 +123,9 @@ export function CharacteristicsStep() {
 	return (
 		<div>
 			<h3>Assign Priorities</h3>
-			<div className="mb-lg grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
-				{Object.entries(CHAR_GROUPS).map(([groupKey, group]) => {
-					const currentPriority = meta.charPriority[groupKey];
-					return (
-						<div className="rounded-md border-2 border-border bg-surface p-md text-center" key={groupKey}>
-							<h4 className="mb-xs text-accent">{group.label}</h4>
-							<GameSelect
-								onChange={(e) => {
-									const val = (e.target as HTMLSelectElement).value;
-									if (val) handlePriorityChange(groupKey, val);
-								}}
-								value={currentPriority || ""}
-							>
-								<option value="">— Select —</option>
-								{PRIORITY_OPTIONS.map((opt) => (
-									<option key={opt.value} value={opt.value}>
-										{opt.label}
-									</option>
-								))}
-							</GameSelect>
-						</div>
-					);
-				})}
+			<p className="mb-sm text-text-muted text-xs">Drag to reorder — top gets most dots.</p>
+			<div className="mx-auto mb-lg max-w-[320px]">
+				<SortablePriority items={sortableItems} onReorder={handleReorder} />
 			</div>
 
 			{/* Dot allocation columns */}

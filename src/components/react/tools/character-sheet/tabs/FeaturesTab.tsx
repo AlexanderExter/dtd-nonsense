@@ -19,6 +19,7 @@ export function FeaturesTab() {
 	const tracks = data?.classes?.tracks || {};
 	const charClasses = char.classes || [];
 	const [openTracks, setOpenTracks] = useState<Record<string, boolean>>({});
+	const [hideZeroBgs, setHideZeroBgs] = useState(false);
 
 	const handleClassChange = (idx: number, classId: string) => {
 		updateChar((c) => {
@@ -55,7 +56,9 @@ export function FeaturesTab() {
 	const handleAddFeatFromClass = (featName: string) => {
 		updateChar((c) => {
 			if (!c.feats) c.feats = [];
-			const baseName = featName.toLowerCase().split("(")[0].trim();
+			// For OR choices, use the first option as the added name
+			const nameToAdd = featName.includes(" OR ") ? featName.split(" OR ")[0].trim() : featName;
+			const baseName = nameToAdd.toLowerCase().split("(")[0].trim();
 			const exists = c.feats.some((f) => f.name.toLowerCase().split("(")[0].trim() === baseName);
 			if (exists) return;
 			// Try to find notes from game data
@@ -65,14 +68,19 @@ export function FeaturesTab() {
 				const match = featList.find((f) => f.name?.toLowerCase().split("(")[0].trim() === baseName);
 				if (match) autoNotes = match.effect || match.description || match.notes || "";
 			}
-			c.feats.push({ name: featName, notes: autoNotes });
+			c.feats.push({ name: nameToAdd, notes: autoNotes });
 		});
 	};
 
-	// Check if character already has a feat (base-name prefix match)
+	// Check if character already has a feat (handles OR alternatives and parentheticals)
 	const hasFeat = (featName: string): boolean => {
-		const baseName = featName.toLowerCase().split("(")[0].trim();
-		return (char.feats || []).some((f) => f.name.toLowerCase().split("(")[0].trim() === baseName);
+		const charFeats = char.feats || [];
+		// Split OR alternatives and check each one
+		const alternatives = featName.split(" OR ").map((s) => s.trim().toLowerCase().split("(")[0].trim());
+		return charFeats.some((f) => {
+			const charBase = f.name.toLowerCase().split("(")[0].trim();
+			return alternatives.some((alt) => alt === charBase);
+		});
 	};
 
 	// Set of selected class IDs for highlighting in tree
@@ -130,64 +138,12 @@ export function FeaturesTab() {
 
 	return (
 		<section className="tab-panel panel-features">
-			{/* ---------- Classes: Character's Classes ---------- */}
-			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">My Classes</h3>
-				{charClasses.map((cls: ClassEntry, idx: number) => {
-					const info = getClassInfo(cls.classId);
-					return (
-						<div className="mb-md" key={cls.classId || idx}>
-							<div className="flex flex-wrap items-center gap-sm">
-								<GameSelect
-									className="min-w-[160px] flex-1"
-									onChange={(e) => handleClassChange(idx, (e.target as HTMLSelectElement).value)}
-									value={cls.classId}
-								>
-									<option value="">— Select Class —</option>
-									{classes.map((c) => (
-										<option key={c.id} value={c.id}>
-											{c.name}
-										</option>
-									))}
-								</GameSelect>
-								<label
-									className="flex items-center gap-1 text-xs uppercase tracking-tight-px"
-									htmlFor={`features-class-level-${idx}`}
-								>
-									Level
-									<NumberInput
-										id={`features-class-level-${idx}`}
-										min={1}
-										onChange={(v) => handleClassLevelChange(idx, v)}
-										value={cls.level || 1}
-									/>
-								</label>
-								<button
-									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
-									onClick={() => handleRemoveClass(idx)}
-									type="button"
-								>
-									×
-								</button>
-							</div>
-							{info && (
-								<details className="mt-sm">
-									<summary className="cursor-pointer text-text-muted text-xs hover:text-text-primary">
-										Class Details
-									</summary>
-									<ClassDetails hasFeat={hasFeat} info={info} onAddFeat={handleAddFeatFromClass} />
-								</details>
-							)}
-						</div>
-					);
-				})}
-				<AddButton label="Class" onClick={handleAddClass} />
-			</div>
-
-			{/* ---------- Classes: Track Browser ---------- */}
-			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Class Browser</h3>
-				<div className="space-y-xs">
+			{/* ---------- Classes: Track Browser (collapsible) ---------- */}
+			<details className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<summary className="m-0 cursor-pointer border-border pb-sm font-bold text-accent text-tool-base">
+					Class Browser
+				</summary>
+				<div className="mt-md space-y-xs">
 					{Object.entries(tracks).map(([trackId, track]: [string, any]) => {
 						const isOpen = openTracks[trackId];
 						const trackClassIds: string[] = track.classes || [];
@@ -275,6 +231,60 @@ export function FeaturesTab() {
 						);
 					})}
 				</div>
+			</details>
+
+			{/* ---------- Classes: Character's Classes ---------- */}
+			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
+				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">My Classes</h3>
+				{charClasses.map((cls: ClassEntry, idx: number) => {
+					const info = getClassInfo(cls.classId);
+					return (
+						<div className="mb-md" key={cls.classId || idx}>
+							<div className="flex flex-wrap items-center gap-sm">
+								<GameSelect
+									className="min-w-[160px] flex-1"
+									onChange={(e) => handleClassChange(idx, (e.target as HTMLSelectElement).value)}
+									value={cls.classId}
+								>
+									<option value="">— Select Class —</option>
+									{classes.map((c) => (
+										<option key={c.id} value={c.id}>
+											{c.name}
+										</option>
+									))}
+								</GameSelect>
+								<label
+									className="flex items-center gap-1 text-xs uppercase tracking-tight-px"
+									htmlFor={`features-class-level-${idx}`}
+								>
+									Level
+									<NumberInput
+										id={`features-class-level-${idx}`}
+										min={1}
+										onChange={(v) => handleClassLevelChange(idx, v)}
+										value={cls.level || 1}
+									/>
+								</label>
+								<button
+									className="cursor-pointer border-none bg-transparent p-0.5 text-base text-error leading-none opacity-60 transition-opacity duration-150 hover:opacity-100"
+									onClick={() => handleRemoveClass(idx)}
+									type="button"
+								>
+									×
+								</button>
+							</div>
+							{info && (
+								<details className="mt-sm">
+									<summary className="cursor-pointer text-text-muted text-xs hover:text-text-primary">
+										Class Details
+									</summary>
+									<ClassDetails hasFeat={hasFeat} info={info} onAddFeat={handleAddFeatFromClass} />
+								</details>
+							)}
+						</div>
+					);
+				})}
+				<AddButton label="Class" onClick={handleAddClass} />
 			</div>
 
 			{/* ---------- Feats ---------- */}
@@ -294,32 +304,47 @@ export function FeaturesTab() {
 
 			{/* ---------- Backgrounds ---------- */}
 			<div className="section-card mb-md rounded-md border border-border bg-surface p-lg">
-				<h3 className="m-0 mb-md border-border border-b pb-sm text-accent text-tool-base">Backgrounds</h3>
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
-					{backgrounds.map((bg) => {
-						const id = bg.id || bg.name?.toLowerCase() || "";
-						return (
-							<div
-								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
-								key={id}
-							>
-								<span className="min-w-[70px] font-medium text-sm">{bgNames[id] || bg.name}</span>
-								<NumberInput
-									max={5}
-									min={0}
-									onChange={(v) => handleBgDotsChange(id, v)}
-									value={bg.dots}
-								/>
-								<GameInput
-									className="flex-1 placeholder:text-text-dim"
-									onInput={(e) => handleBgNotesChange(id, (e.target as HTMLInputElement).value)}
-									placeholder="Notes"
-									type="text"
-									value={bg.notes || ""}
-								/>
-							</div>
-						);
-					})}
+				<div className="mb-md flex items-center gap-md border-border border-b pb-sm">
+					<h3 className="m-0 text-accent text-tool-base">Backgrounds</h3>
+					<label className="ml-auto flex cursor-pointer items-center gap-1 text-text-muted text-xs">
+						<input
+							checked={hideZeroBgs}
+							className="accent-accent"
+							onChange={(e) => setHideZeroBgs(e.target.checked)}
+							type="checkbox"
+						/>
+						Hide empty
+					</label>
+				</div>
+				<div className="space-y-sm">
+					{backgrounds
+						.filter((bg) => !hideZeroBgs || bg.dots > 0)
+						.map((bg) => {
+							const id = bg.id || bg.name?.toLowerCase() || "";
+							return (
+								<div
+									className="flex items-start gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
+									key={id}
+								>
+									<span className="min-w-[80px] pt-1 font-medium text-sm">
+										{bgNames[id] || bg.name}
+									</span>
+									<NumberInput
+										max={5}
+										min={0}
+										onChange={(v) => handleBgDotsChange(id, v)}
+										value={bg.dots}
+									/>
+									<GameInput
+										className="min-w-0 flex-1 placeholder:text-text-dim"
+										onInput={(e) => handleBgNotesChange(id, (e.target as HTMLInputElement).value)}
+										placeholder="Notes…"
+										type="text"
+										value={bg.notes || ""}
+									/>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 

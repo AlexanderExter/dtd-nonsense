@@ -162,6 +162,42 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						/>
 					</label>
 				</div>
+				<details className="text-sm text-text-muted">
+					<summary className="cursor-pointer font-semibold text-text-primary">Hero Point Uses</summary>
+					<table className="mt-xs w-full text-left text-xs">
+						<thead>
+							<tr>
+								<th className="pb-2xs">Effect</th>
+								<th className="pb-2xs">Cost</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Reroll a failed Test (final result stands)</td>
+								<td>1 HP</td>
+							</tr>
+							<tr>
+								<td>Reduce TN by 5 (before rolling)</td>
+								<td>1 HP</td>
+							</tr>
+							<tr>
+								<td>Add a Raise to a successful Test</td>
+								<td>1 HP</td>
+							</tr>
+							<tr>
+								<td>Count as 10 for Initiative</td>
+								<td>1 HP</td>
+							</tr>
+							<tr>
+								<td>Instantly recover from Stunned</td>
+								<td>1 HP</td>
+							</tr>
+						</tbody>
+					</table>
+					<p className="mt-xs italic">
+						<strong>Burn:</strong> Permanently lose 1 HP to survive what would have killed you.
+					</p>
+				</details>
 			</div>
 
 			{/* ---------- Power Stat & Resource ---------- */}
@@ -205,6 +241,10 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						<output className="py-xs font-bold text-[1.2rem] text-accent">{stats.resourceMax}</output>
 					</label>
 				</div>
+				<p className="mt-sm text-text-muted text-xs italic">
+					<strong>Healing Surge</strong> (Half Action): Spend Resource Points up to your Level to heal that
+					many HP. Gain +5 Static Defense until next turn.
+				</p>
 				{selectedExalt && (
 					<div className="mt-sm space-y-xs rounded-sm border border-border bg-bg p-md text-sm text-text-muted">
 						<h4 className="m-0 mb-xs text-sm text-text-primary">Exaltation Powers</h4>
@@ -224,9 +264,9 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 									{selectedExalt.progression.map((p: any, i: number) => (
 										<li
 											className="mb-0.5"
-											key={typeof p === "string" ? p : `${p.level || i}-${p.name}`}
+											key={typeof p === "string" ? p : `${p.dots ?? i}-${p.name}`}
 										>
-											{typeof p === "string" ? p : `Level ${p.level}: ${p.description || p.name}`}
+											{typeof p === "string" ? p : `${p.name}: ${p.description}`}
 										</li>
 									))}
 								</ul>
@@ -291,46 +331,45 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 						Caster Level: {casterLevel}
 					</span>
 				</div>
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-sm">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-sm">
 					{magicSchools.map((school: any) => {
 						const base = char.magicSchools?.[school.id] || 0;
 						const bonus = char.bonusSchoolLevels?.[school.id] || 0;
 						const eff = base + bonus;
 						const charAbbrev = CHAR_ABBREV[school.characteristic] || school.characteristic;
 						return (
-							<div
-								className="flex items-center gap-sm rounded-sm border border-border bg-bg px-sm py-xs"
-								key={school.id}
-							>
-								<span className="flex-1 font-medium text-sm">
-									{school.name} <small>({charAbbrev})</small>
+							<div className="rounded-sm border border-border bg-bg px-sm py-xs" key={school.id}>
+								<span className="mb-2xs block font-medium text-sm">
+									{school.name} <small className="text-text-muted">({charAbbrev})</small>
 								</span>
-								<NumberInput
-									max={level}
-									min={0}
-									onChange={(v) =>
-										updateChar((c) => {
-											if (!c.magicSchools) c.magicSchools = {};
-											c.magicSchools[school.id] = v;
-										})
-									}
-									title="Base dots"
-									value={base}
-								/>
-								<NumberInput
-									min={0}
-									onChange={(v) =>
-										updateChar((c) => {
-											if (!c.bonusSchoolLevels) c.bonusSchoolLevels = {};
-											c.bonusSchoolLevels[school.id] = v;
-										})
-									}
-									title="Bonus levels"
-									value={bonus}
-								/>
-								<span className="min-w-5 text-center font-bold text-accent" title="Effective level">
-									= {eff}
-								</span>
+								<div className="flex items-center gap-xs">
+									<NumberInput
+										max={level}
+										min={0}
+										onChange={(v) =>
+											updateChar((c) => {
+												if (!c.magicSchools) c.magicSchools = {};
+												c.magicSchools[school.id] = v;
+											})
+										}
+										title="Base dots"
+										value={base}
+									/>
+									<NumberInput
+										min={0}
+										onChange={(v) =>
+											updateChar((c) => {
+												if (!c.bonusSchoolLevels) c.bonusSchoolLevels = {};
+												c.bonusSchoolLevels[school.id] = v;
+											})
+										}
+										title="Bonus levels"
+										value={bonus}
+									/>
+									<span className="min-w-5 text-center font-bold text-accent" title="Effective level">
+										= {eff}
+									</span>
+								</div>
 							</div>
 						);
 					})}

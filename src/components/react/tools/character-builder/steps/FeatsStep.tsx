@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { useDebounce } from "@/hooks/use-debounce";
-import { AH_CATS, FEAT_CATS, filterByRestrictions } from "../constants";
+import { useState } from "react";
+import { AH_CATS, capitalize, FEAT_CATS, filterByRestrictions } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -13,7 +13,7 @@ export function FeatsStep() {
 	const [ahCatFilter, setAhCatFilter] = useState("all");
 	const [searchInput, setSearchInput] = useState("");
 	const searchQuery = useDebounce(searchInput, 200);
-	const [selectedFeatPreview] = useState<any>(null);
+	const [selectedFeatPreview, setSelectedFeatPreview] = useState<any>(null);
 	const [selectedAHPreview, setSelectedAHPreview] = useState<any>(null);
 
 	const data = useBuilderStore((s) => s.gameData);
@@ -157,11 +157,11 @@ export function FeatsStep() {
 							<SelectionCard
 								key={id}
 								onClick={() => {
-									selectedFeatPreview.value = f;
+									setSelectedFeatPreview(f);
 								}}
 								preview={f.effect?.slice(0, 60)}
 								selected={selectedFeatIds.has(id)}
-								subtitle={f.category}
+								subtitle={capitalize(f.category)}
 								title={f.name}
 							/>
 						);
@@ -173,7 +173,7 @@ export function FeatsStep() {
 						<h4>{featPreview.name}</h4>
 						{featPreview.category && (
 							<p>
-								<strong>Category:</strong> {featPreview.category}
+								<strong>Category:</strong> {capitalize(featPreview.category)}
 							</p>
 						)}
 						{featPreview.prerequisites?.length > 0 && (

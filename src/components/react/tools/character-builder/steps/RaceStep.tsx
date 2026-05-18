@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
+import { CHAR_NAMES } from "@/lib/dtd/constants";
+import { useState } from "react";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
@@ -123,9 +124,12 @@ export function RaceStep() {
 									value={char.raceCharBonus || ""}
 								>
 									<option value="">— Choose —</option>
-									{preview.charBonus.options.map((opt: string) => (
+									{(preview.charBonus.options.includes("any")
+										? Object.keys(CHAR_NAMES)
+										: preview.charBonus.options
+									).map((opt: string) => (
 										<option key={opt} value={opt}>
-											{opt.charAt(0).toUpperCase() + opt.slice(1)}
+											{CHAR_NAMES[opt] || opt.charAt(0).toUpperCase() + opt.slice(1)}
 										</option>
 									))}
 								</GameSelect>

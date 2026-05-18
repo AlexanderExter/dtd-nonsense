@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AddButton } from "@/components/react/ui/AddButton";
 import { GameCheckbox } from "@/components/react/ui/GameCheckbox";
 import { GameInput } from "@/components/react/ui/GameInput";
@@ -5,7 +6,6 @@ import { GameSelect } from "@/components/react/ui/GameSelect";
 import { NumberInput } from "@/components/react/ui/NumberInput";
 import { SectionHeading } from "@/components/react/ui/SectionHeading";
 import type { MeleeWeapon, RangedWeapon } from "@/lib/dtd/types";
-import { useState } from "react";
 import { DAMAGE_TYPES, getEffChars, getLevel, PROFICIENCY_MELEE, PROFICIENCY_RANGED } from "../constants";
 import { useCharSheetStore } from "../store";
 

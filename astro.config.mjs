@@ -137,7 +137,7 @@ export default defineConfig({
 							attrs: { target: "_blank", rel: "noopener" },
 						},
 						{
-							label: "NPC Generator",
+							label: "NPC Stat Block Builder",
 							link: "/tools/npc-generator/",
 							attrs: { target: "_blank", rel: "noopener" },
 						},

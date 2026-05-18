@@ -1,14 +1,9 @@
-import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CHAR_GROUPS } from "@/lib/dtd/constants";
-import { CREATION_SKILL_CAP, capitalize, findRaceData, SKILL_PRIORITY_DOTS } from "../constants";
+import { useEffect } from "react";
+import { capitalize, CREATION_SKILL_CAP, findRaceData, SKILL_PRIORITY_DOTS } from "../constants";
 import { DotControl } from "../shared/DotControl";
+import { SortablePriority } from "../shared/SortablePriority";
 import { useBuilderStore } from "../store";
-
-const PRIORITY_OPTIONS = [
-	{ value: "primary", label: "Primary (8 dots)" },
-	{ value: "secondary", label: "Secondary (6 dots)" },
-	{ value: "tertiary", label: "Tertiary (4 dots)" },
-];
 
 export function SkillsStep() {
 	const meta = useBuilderStore((s) => s.meta);
@@ -17,48 +12,57 @@ export function SkillsStep() {
 	const updateChar = useBuilderStore((s) => s.updateChar);
 	const updateMeta = useBuilderStore((s) => s.updateMeta);
 
-	if (!data?.skills?.skills) return <p>Loading skill data…</p>;
-
-	const skillGroups = data.skills.skills as Record<string, any[]>;
-	const raceData = findRaceData(data, char.race);
-
-	// Build racial skill bonus map
-	const racialSkillBonuses: Record<string, number> = {};
-	if (raceData?.skillBonus) {
-		for (const sb of raceData.skillBonus) {
-			const name = typeof sb === "string" ? sb : sb.skill || sb.id;
-			const bonus = typeof sb === "string" ? 1 : (sb.value ?? 1);
-			if (name) racialSkillBonuses[name.toLowerCase()] = bonus;
-		}
-	}
-
 	const allAssigned =
 		meta.skillPriority.physical !== null &&
 		meta.skillPriority.social !== null &&
 		meta.skillPriority.mental !== null;
 
-	if (allAssigned !== meta.stepsCompleted[4]) {
-		updateMeta((m) => {
-			m.stepsCompleted[4] = allAssigned;
-		});
+	// Auto-assign default priorities if none are set (so dot controls work immediately)
+	useEffect(() => {
+		if (
+			meta.skillPriority.physical === null &&
+			meta.skillPriority.social === null &&
+			meta.skillPriority.mental === null
+		) {
+			updateMeta((m) => {
+				m.skillPriority.physical = "primary";
+				m.skillPriority.social = "secondary";
+				m.skillPriority.mental = "tertiary";
+				m.stepsCompleted[4] = true;
+			});
+		}
+	}, [meta.skillPriority.physical, meta.skillPriority.social, meta.skillPriority.mental, updateMeta]);
+
+	useEffect(() => {
+		if (allAssigned !== meta.stepsCompleted[4]) {
+			updateMeta((m) => {
+				m.stepsCompleted[4] = allAssigned;
+			});
+		}
+	}, [allAssigned, meta.stepsCompleted, updateMeta]);
+
+	if (!data?.skills?.skills) return <p>Loading skill data…</p>;
+
+	const skillGroups = data.skills.skills as Record<string, any[]>;
+	const raceData = findRaceData(data, char.race);
+
+	// Build racial skill bonus map (skip "any" entries - those are free choices)
+	const racialSkillBonuses: Record<string, number> = {};
+	let freeSkillBonusCount = 0;
+	if (raceData?.skillBonus) {
+		for (const sb of raceData.skillBonus) {
+			const name = typeof sb === "string" ? sb : sb.skill || sb.id;
+			const bonus = typeof sb === "string" ? 1 : (sb.value ?? 1);
+			if (name === "any") {
+				freeSkillBonusCount += typeof sb === "object" ? (sb.count ?? 1) : 1;
+			} else if (name) {
+				racialSkillBonuses[name.toLowerCase()] = bonus;
+			}
+		}
 	}
 
 	const handlePriorityChange = (group: string, value: string) => {
 		updateMeta((m) => {
-			for (const g of Object.keys(m.skillPriority)) {
-				if (g !== group && m.skillPriority[g] === value) {
-					m.skillPriority[g] = null;
-					m.skillDotsSpent[g] = 0;
-					// Reset skills in that group
-					const groupSkills = skillGroups[g] || [];
-					for (const sk of groupSkills) {
-						const key = sk.id || sk.name;
-						updateChar((c) => {
-							delete c.skills[key];
-						});
-					}
-				}
-			}
 			m.skillPriority[group] = value;
 			m.skillDotsSpent[group] = 0;
 			const groupSkills = skillGroups[group] || [];
@@ -70,6 +74,34 @@ export function SkillsStep() {
 			}
 		});
 	};
+
+	// Priority order state: derive from current assignments or default
+	const priorityOrder = (() => {
+		const groups = Object.keys(CHAR_GROUPS);
+		const priorities = ["primary", "secondary", "tertiary"];
+		const ordered: string[] = [];
+		for (const p of priorities) {
+			const g = groups.find((g) => meta.skillPriority[g] === p);
+			if (g) ordered.push(g);
+		}
+		for (const g of groups) {
+			if (!ordered.includes(g)) ordered.push(g);
+		}
+		return ordered;
+	})();
+
+	const handleReorder = (newOrder: string[]) => {
+		const priorities = ["primary", "secondary", "tertiary"];
+		for (let i = 0; i < newOrder.length; i++) {
+			handlePriorityChange(newOrder[i], priorities[i]);
+		}
+	};
+
+	const sortableItems = priorityOrder.map((groupKey, idx) => ({
+		id: groupKey,
+		label: CHAR_GROUPS[groupKey].label,
+		dotLabel: `${SKILL_PRIORITY_DOTS[["primary", "secondary", "tertiary"][idx]]} dots`,
+	}));
 
 	const handleDotChange = (group: string, skillKey: string, newVal: number) => {
 		const priority = meta.skillPriority[group];
@@ -103,30 +135,19 @@ export function SkillsStep() {
 
 	return (
 		<div>
+			{freeSkillBonusCount > 0 && (
+				<p className="mb-md rounded-sm bg-accent/10 px-md py-sm text-accent text-sm">
+					Your race grants{" "}
+					<strong>
+						+1 to any {freeSkillBonusCount} skill{freeSkillBonusCount > 1 ? "s" : ""}
+					</strong>{" "}
+					of your choice (applied on the character sheet).
+				</p>
+			)}
 			<h3>Assign Priorities</h3>
-			<div className="mb-lg grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">
-				{Object.keys(CHAR_GROUPS).map((groupKey) => {
-					const currentPriority = meta.skillPriority[groupKey];
-					return (
-						<div className="rounded-md border-2 border-border bg-surface p-md text-center" key={groupKey}>
-							<h4 className="mb-xs text-accent">{CHAR_GROUPS[groupKey].label}</h4>
-							<GameSelect
-								onChange={(e) => {
-									const val = (e.target as HTMLSelectElement).value;
-									if (val) handlePriorityChange(groupKey, val);
-								}}
-								value={currentPriority || ""}
-							>
-								<option value="">— Select —</option>
-								{PRIORITY_OPTIONS.map((opt) => (
-									<option key={opt.value} value={opt.value}>
-										{opt.label}
-									</option>
-								))}
-							</GameSelect>
-						</div>
-					);
-				})}
+			<p className="mb-sm text-text-muted text-xs">Drag to reorder — top gets most dots.</p>
+			<div className="mx-auto mb-lg max-w-[320px]">
+				<SortablePriority items={sortableItems} onReorder={handleReorder} />
 			</div>
 
 			<div className="grid grid-cols-3 gap-md max-tool-lg:grid-cols-1">

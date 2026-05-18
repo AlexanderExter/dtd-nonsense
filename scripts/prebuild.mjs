@@ -11,10 +11,10 @@
  * For books/ files, existing frontmatter is transformed to Starlight format.
  */
 
-import matter from "gray-matter";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import matter from "gray-matter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
