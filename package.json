@@ -73,7 +73,7 @@
     "@types/react-dom": "^19.2.3",
     "dependency-cruiser": "^17.4.0",
     "jsdom": "^29.1.1",
-    "knip": "^6.13.1",
+    "knip": "^6.14.1",
     "rumdl": "^0.1.93",
     "ts-morph": "^28.0.0",
     "typescript": "^6.0.3",
