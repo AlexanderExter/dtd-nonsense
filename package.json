@@ -71,7 +71,7 @@
     "@types/jsdom": "^28.0.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "dependency-cruiser": "^17.4.0",
+    "dependency-cruiser": "^17.4.2",
     "jsdom": "^29.1.1",
     "knip": "^6.13.1",
     "rumdl": "^0.1.93",
