@@ -164,36 +164,13 @@ export function PowersTab({ derivedStats }: { derivedStats: DerivedStats }) {
 				</div>
 				<details className="text-sm text-text-muted">
 					<summary className="cursor-pointer font-semibold text-text-primary">Hero Point Uses</summary>
-					<table className="mt-xs w-full text-left text-xs">
-						<thead>
-							<tr>
-								<th className="pb-2xs">Effect</th>
-								<th className="pb-2xs">Cost</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Reroll a failed Test (final result stands)</td>
-								<td>1 HP</td>
-							</tr>
-							<tr>
-								<td>Reduce TN by 5 (before rolling)</td>
-								<td>1 HP</td>
-							</tr>
-							<tr>
-								<td>Add a Raise to a successful Test</td>
-								<td>1 HP</td>
-							</tr>
-							<tr>
-								<td>Count as 10 for Initiative</td>
-								<td>1 HP</td>
-							</tr>
-							<tr>
-								<td>Instantly recover from Stunned</td>
-								<td>1 HP</td>
-							</tr>
-						</tbody>
-					</table>
+					<ul className="mt-xs list-disc pl-md text-xs">
+						<li>Reroll a failed Test (final result stands)</li>
+						<li>Reduce TN by 5 (before rolling)</li>
+						<li>Add a Raise to a successful Test</li>
+						<li>Count as 10 for Initiative</li>
+						<li>Instantly recover from Stunned</li>
+					</ul>
 					<p className="mt-xs italic">
 						<strong>Burn:</strong> Permanently lose 1 HP to survive what would have killed you.
 					</p>
