@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameInput } from "@/components/react/ui/GameInput";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { useDebounce } from "@/hooks/use-debounce";
-import { useState } from "react";
 import { AH_CATS, capitalize, FEAT_CATS, filterByRestrictions } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";

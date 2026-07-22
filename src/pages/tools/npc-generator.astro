@@ -2,10 +2,14 @@
 
 
 
+
+
+
+
 import { NPCGeneratorApp } from "@/components/react/tools/npc-generator/NPCGeneratorApp";
 import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
-<ToolLayout title="NPC Stat Block Builder" description="Manual stat block builder with auto-calculated derived stats, trait system, template loading, and printable output.">
+<ToolLayout description="Manual stat block builder with auto-calculated derived stats, trait system, template loading, and printable output." title="NPC Stat Block Builder" >
   <NPCGeneratorApp client:only="react" />
   <style>
     @media print {

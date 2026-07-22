@@ -20,7 +20,7 @@ export function Tabs({ tabs, activeId, onTabChange, children, className }: TabsP
 		<RadixTabs.Root onValueChange={onTabChange} value={activeId}>
 			<RadixTabs.List
 				className={cn(
-					"mb-md flex gap-0.5 overflow-x-auto border-border border-b-2 [scrollbar-width:thin]",
+					"mb-md flex gap-0.5 overflow-x-auto border-border border-b-2 [scrollbar-width:none]",
 					className,
 				)}
 			>

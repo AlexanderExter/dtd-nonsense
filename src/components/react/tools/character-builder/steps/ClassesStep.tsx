@@ -1,13 +1,11 @@
-import { Button } from "@/components/react/ui/Button";
-import { GameSelect } from "@/components/react/ui/GameSelect";
 import { useState } from "react";
+import { Button } from "@/components/react/ui/Button";
 import { capitalize } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";
 
 export function ClassesStep() {
-	const [trackFilter, setTrackFilter] = useState("all");
 	const [selectedPreview, setSelectedPreview] = useState<any>(null);
 
 	const data = useBuilderStore((s) => s.gameData);
@@ -24,12 +22,8 @@ export function ClassesStep() {
 
 	const getTrackName = (key: string | null) => (key && trackMap[key]?.name) || key || "General";
 
-	// Unique tracks
-	const tracks = [...new Set(allClasses.map((c) => c.track).filter(Boolean))];
-
 	// Only show Tier 1 classes
-	const tier1 = allClasses.filter((c) => c.level === 1);
-	const filtered = trackFilter === "all" ? tier1 : tier1.filter((c) => c.track === trackFilter);
+	const filtered = allClasses.filter((c) => c.level === 1);
 
 	const toggleClass = (cls) => {
 		const id = cls.id || cls.name;
@@ -48,25 +42,6 @@ export function ClassesStep() {
 
 	return (
 		<div>
-			<div className="mb-md flex flex-wrap items-center gap-sm rounded-sm bg-surface px-md py-sm">
-				<label className="m-0 text-sm text-text-dim">
-					Track:{" "}
-					<GameSelect
-						onChange={(e) => {
-							setTrackFilter((e.target as HTMLSelectElement).value);
-						}}
-						value={trackFilter}
-					>
-						<option value="all">All Tracks</option>
-						{tracks.map((t) => (
-							<option key={t} value={t}>
-								{getTrackName(t)}
-							</option>
-						))}
-					</GameSelect>
-				</label>
-			</div>
-
 			{/* Purchased classes */}
 			{char.classes.length > 0 && (
 				<div className="mb-md flex flex-wrap gap-xs">

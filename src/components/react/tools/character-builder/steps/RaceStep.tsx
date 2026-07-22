@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/react/ui/Button";
 import { GameSelect } from "@/components/react/ui/GameSelect";
 import { CHAR_NAMES } from "@/lib/dtd/constants";
-import { useState } from "react";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
 import { useBuilderStore } from "../store";

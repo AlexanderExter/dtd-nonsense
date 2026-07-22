@@ -1,6 +1,6 @@
-import { CHAR_GROUPS } from "@/lib/dtd/constants";
 import { useEffect } from "react";
-import { capitalize, CREATION_SKILL_CAP, findRaceData, SKILL_PRIORITY_DOTS } from "../constants";
+import { CHAR_GROUPS } from "@/lib/dtd/constants";
+import { CREATION_SKILL_CAP, capitalize, findRaceData, SKILL_PRIORITY_DOTS } from "../constants";
 import { DotControl } from "../shared/DotControl";
 import { SortablePriority } from "../shared/SortablePriority";
 import { useBuilderStore } from "../store";

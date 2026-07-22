@@ -2,10 +2,14 @@
 
 
 
+
+
+
+
 import { ShipBuilderApp } from "@/components/react/tools/ship-builder/ShipBuilderApp";
 import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
-<ToolLayout title="Ship Builder" description="Design and equip spelljammer ships">
+<ToolLayout description="Design and equip spelljammer ships" title="Ship Builder" >
   <ShipBuilderApp client:only="react" />
   <style is:global>
     @media print {
