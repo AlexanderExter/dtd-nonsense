@@ -1,5 +1,5 @@
-import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
 import { useEffect } from "react";
+import { CHAR_GROUPS, CHAR_NAMES } from "@/lib/dtd/constants";
 import { BASE_CHAR_DOT, CHAR_PRIORITY_DOTS, CREATION_CHAR_CAP, capitalize, findRaceData } from "../constants";
 import { DotControl } from "../shared/DotControl";
 import { SortablePriority } from "../shared/SortablePriority";

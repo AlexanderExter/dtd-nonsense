@@ -1,5 +1,5 @@
-import { Button } from "@/components/react/ui/Button";
 import { useState } from "react";
+import { Button } from "@/components/react/ui/Button";
 import { capitalize } from "../constants";
 import { DetailPanel } from "../shared/DetailPanel";
 import { SelectionCard } from "../shared/SelectionCard";
