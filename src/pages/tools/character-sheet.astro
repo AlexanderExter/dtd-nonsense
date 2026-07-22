@@ -9,7 +9,7 @@
 import { CharacterSheetApp } from "@/components/react/tools/character-sheet/CharacterSheetApp";
 import ToolLayout from "@/layouts/ToolLayout.astro";
 ---
-<ToolLayout title="Character Sheet" description="Interactive digital character sheet with auto-calculations">
+<ToolLayout description="Interactive digital character sheet with auto-calculations" title="Character Sheet" >
   <CharacterSheetApp client:only="react" />
   <style is:global>
   @media print {
