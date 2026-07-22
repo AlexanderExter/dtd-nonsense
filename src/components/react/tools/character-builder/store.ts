@@ -1,19 +1,96 @@
 import { produce } from "immer";
 import { create } from "zustand";
-import { character } from "@/lib/dtd/character";
 import type { CharacterData } from "@/lib/dtd/types";
-import { BASE_CHAR_DOT, type BuilderGameData, type BuilderMeta, createDefaultMeta } from "./constants";
+import { type BuilderGameData, type BuilderMeta, createDefaultMeta } from "./constants";
 
 // =========================================================================
 // Default character factory
+// Uses a local inline default to avoid depending on the character module
+// at module-evaluation time. On Linux/CI, bun may evaluate the store
+// module before the character module is fully initialized (ESM TDZ).
 // =========================================================================
 
-function createDefaultChar(): CharacterData {
-	const ch = character.createDefault();
-	for (const key of Object.keys(ch.characteristics) as Array<keyof typeof ch.characteristics>) {
-		ch.characteristics[key] = BASE_CHAR_DOT;
-	}
-	return ch;
+const EMPTY_CHAR: CharacterData = {
+	id: "",
+	name: "",
+	player: "",
+	concept: "",
+	totalXP: 600,
+	xpSpent: 0,
+	race: "",
+	raceCharBonus: "",
+	exaltation: "",
+	alignment: "",
+	devotion: 6,
+	characteristics: {
+		strength: 1,
+		dexterity: 1,
+		constitution: 1,
+		charisma: 1,
+		fellowship: 1,
+		composure: 1,
+		intelligence: 1,
+		wisdom: 1,
+		willpower: 1,
+	},
+	charSpecialties: {},
+	skills: {},
+	skillSpecialties: {},
+	backgrounds: [],
+	backgroundNotes: {},
+	classes: [],
+	feats: [],
+	assets: [],
+	hindrances: [],
+	meleeWeapons: [],
+	rangedWeapons: [],
+	armor: [],
+	naturalArmor: 0,
+	aura: 0,
+	auraSource: "",
+	magicSchools: {},
+	swordSchools: {},
+	gunKata: {},
+	spells: [],
+	specialAttacks: [],
+	trickShots: [],
+	powerStat: 1,
+	heroPointsMax: 2,
+	heroPointsCurrent: 2,
+	heroPointsBurnt: 0,
+	fettered: false,
+	pushAmount: 0,
+	extraSchoolLevels: 0,
+	bonusSchoolLevels: {},
+	sanctioned: false,
+	resourceCurrent: 0,
+	exaltationNotes: "",
+	modifiers: {
+		staticDefense: 0,
+		hitPoints: 0,
+		mentalDefense: 0,
+		resolve: 0,
+		speed: 0,
+		resilience: 0,
+		initiative: 0,
+	},
+	savedPools: [],
+	languages: ["Trade"],
+	equipment: "",
+	notes: "",
+	classNotes: "",
+	description: "",
+	height: "",
+	weight: "",
+	age: "",
+	currentHP: 0,
+	currentResolve: 0,
+	xpLog: [],
+	xpSpendLog: [],
+};
+
+export function createDefaultChar(): CharacterData {
+	return structuredClone(EMPTY_CHAR);
 }
 
 // =========================================================================
@@ -39,7 +116,7 @@ interface BuilderStore {
 // =========================================================================
 
 export const useBuilderStore = create<BuilderStore>((set) => ({
-	char: createDefaultChar(),
+	char: structuredClone(EMPTY_CHAR),
 	meta: createDefaultMeta(),
 	gameData: null,
 	currentStep: 1,
@@ -65,7 +142,3 @@ export const useBuilderStore = create<BuilderStore>((set) => ({
 }));
 
 // =========================================================================
-// Re-export factory for "Start Over" buttons
-// =========================================================================
-
-export { createDefaultChar };
