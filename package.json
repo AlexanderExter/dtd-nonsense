@@ -32,11 +32,11 @@
     "validate:xref": "bun run scripts/validate.ts --xref"
   },
   "overrides": {
-    "path-to-regexp": "^8.0.0"
+    "path-to-regexp": "^6.3.0"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.7",
-    "@astrojs/starlight": "^0.40.0",
+    "@astrojs/react": "^7.0.0",
+    "@astrojs/starlight": "^0.42.5",
     "@astrojs/starlight-tailwind": "^5.0.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
@@ -44,7 +44,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-table": "^8.21.3",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^6.4.8",
+    "astro": "^7.3.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/vercel": "^10.0.8",
+    "@astrojs/vercel": "^11.0.11",
     "@biomejs/biome": "2.5.15",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.10.0",
@@ -83,6 +83,6 @@
     "node": "^22.12.0"
   },
   "_comments": {
-    "overrides": "path-to-regexp: fixes ReDoS in @vercel/routing-utils@5.3.3 (via @astrojs/vercel@10). Remove when @vercel/routing-utils ships path-to-regexp ^8 natively."
+    "overrides": "path-to-regexp: pins the ReDoS-patched 6.3.0 (CVE-2024-45296) for @vercel/routing-utils, which declares 6.1.0. Must stay on v6: v8 rejects the (.*) route patterns the Vercel adapter generates. Remove once routing-utils depends on >=6.3.0."
   }
 }
