@@ -56,14 +56,14 @@ const navLinks = [
 								aria-current={
 									currentPath === href ? "page" : undefined
 								}
-								href={href}
-								key={href}
 								class:list={[
 									"text-sm transition-colors duration-150 hover:text-accent",
 									currentPath === href
 										? "text-accent font-semibold"
 										: "text-text-muted",
 								]}
+								href={href}
+								key={href}
 							>
 								{label}
 							</a>

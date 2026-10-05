@@ -68,7 +68,7 @@ export function CharacteristicsStep() {
 		// Build order from current assignments
 		const ordered: string[] = [];
 		for (const p of priorities) {
-			const g = groups.find((g) => meta.charPriority[g] === p);
+			const g = groups.find((key) => meta.charPriority[key] === p);
 			if (g) ordered.push(g);
 		}
 		// Add any unassigned groups at the end

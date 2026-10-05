@@ -108,7 +108,7 @@ export function StatCard({ npc, derivedStats, traitsData }: StatCardProps) {
 						<span className="font-bold text-text-primary">Traits:</span>{" "}
 						{npc.traits
 							.map((t) => {
-								const def = traitsData.find((d) => d.id === t.id);
+								const def = traitsData.find((trait) => trait.id === t.id);
 								const name = def ? def.name : t.id;
 								return t.param != null ? `${name} (${t.param})` : name;
 							})
