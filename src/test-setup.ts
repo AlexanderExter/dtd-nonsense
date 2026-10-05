@@ -68,5 +68,6 @@ if (typeof globalThis.document === "undefined") {
 // Imported dynamically, after the jsdom globals exist: jest-dom pulls in
 // @testing-library/dom, whose `screen` binds to `document.body` at load time.
 // A static import would be hoisted above the setup and leave `screen` unbound.
-const matchers = await import("@testing-library/jest-dom/matchers");
+// (`default` is a CJS-interop key in the types only; it is not a matcher.)
+const { default: _interop, ...matchers } = await import("@testing-library/jest-dom/matchers");
 expect.extend(matchers);

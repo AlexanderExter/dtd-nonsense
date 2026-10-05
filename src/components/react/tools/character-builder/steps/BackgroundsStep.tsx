@@ -64,6 +64,7 @@ export function BackgroundsStep() {
 				{backgrounds.map((bg) => {
 					const dots = getDots(bg.id || bg.name);
 					const xpDots = Math.max(0, dots - FREE_BG_CAP);
+					const ratingEffect = dots > 0 ? bg.ratings.find((r) => r.dots === dots)?.effect : undefined;
 
 					return (
 						<div className="rounded-md border border-border bg-surface p-md" key={bg.id || bg.name}>
@@ -83,9 +84,9 @@ export function BackgroundsStep() {
 									+{xpDots * BG_XP_PER_DOT} XP cost
 								</span>
 							)}
-							{dots > 0 && bg.dots?.[dots - 1] && (
+							{ratingEffect && (
 								<p className="mt-sm min-h-[1.5em] border-border border-t pt-sm text-text-muted text-xs">
-									{bg.dots[dots - 1]}
+									{ratingEffect}
 								</p>
 							)}
 						</div>
