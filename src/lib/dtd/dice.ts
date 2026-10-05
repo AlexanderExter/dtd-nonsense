@@ -20,10 +20,10 @@ function rollOneDie(): DieRoll {
 
 /** Roll a single d10 for rank-0 mode (no explosion, 10 → 0). */
 function rollRankZero(): DieRoll {
-	const roll = Math.floor(Math.random() * 10) + 1;
+	const face = Math.floor(Math.random() * 10) + 1;
 	return {
-		value: roll === 10 ? 0 : roll,
-		base: roll,
+		value: face === 10 ? 0 : face,
+		base: face,
 		exploded: false,
 	};
 }

@@ -10,7 +10,6 @@
  */
 
 import { expect } from "bun:test";
-import * as matchers from "@testing-library/jest-dom/matchers";
 import { JSDOM } from "jsdom";
 
 // ---------------------------------------------------------------------------
@@ -66,4 +65,9 @@ if (typeof globalThis.document === "undefined") {
 // ---------------------------------------------------------------------------
 // @testing-library/jest-dom custom matchers
 // ---------------------------------------------------------------------------
+// Imported dynamically, after the jsdom globals exist: jest-dom pulls in
+// @testing-library/dom, whose `screen` binds to `document.body` at load time.
+// A static import would be hoisted above the setup and leave `screen` unbound.
+// (`default` is a CJS-interop key in the types only; it is not a matcher.)
+const { default: _interop, ...matchers } = await import("@testing-library/jest-dom/matchers");
 expect.extend(matchers);

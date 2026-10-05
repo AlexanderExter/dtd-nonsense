@@ -157,7 +157,7 @@ export function WeaponTable({ type }: WeaponTableProps) {
 	// Build datalist options from weapon data
 	const weaponOptions: string[] = [];
 	if (data?.weapons) {
-		const wList = isMelee ? data.weapons.melee || [] : data.weapons.ranged || [];
+		const wList = isMelee ? data.weapons.weapons.melee : data.weapons.weapons.ranged;
 		for (const w of wList) {
 			if (w.name) weaponOptions.push(w.name);
 		}

@@ -81,7 +81,7 @@ export function SkillsStep() {
 		const priorities = ["primary", "secondary", "tertiary"];
 		const ordered: string[] = [];
 		for (const p of priorities) {
-			const g = groups.find((g) => meta.skillPriority[g] === p);
+			const g = groups.find((key) => meta.skillPriority[key] === p);
 			if (g) ordered.push(g);
 		}
 		for (const g of groups) {

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "extends": [
     "ultracite/biome/core",
     "ultracite/biome/react",
@@ -50,7 +50,8 @@
     "enabled": true,
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": "on",
+        "useSortedKeys": "off"
       }
     }
   },
@@ -87,7 +88,8 @@
         "noBarrelFile": "off",
         "noNamespaceImport": "off",
         "noDelete": "off",
-        "useTopLevelRegex": "off"
+        "useTopLevelRegex": "off",
+        "noJsxPropsBind": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -102,7 +104,9 @@
         "useTemplate": "warn",
         "noEnum": "off",
         "noNegationElse": "off",
-        "noNestedTernary": "off"
+        "noNestedTernary": "off",
+        "noIncrementDecrement": "off",
+        "useDestructuring": "off"
       },
       "suspicious": {
         "noExplicitAny": "off",
@@ -111,7 +115,10 @@
         "useAwait": "off",
         "noAlert": "off",
         "useStrictMode": "off",
-        "noEmptyBlockStatements": "off"
+        "noEmptyBlockStatements": "off",
+        "noEqualsToNull": "off",
+        "noLeakedRender": "off",
+        "noUnnecessaryConditions": "off"
       }
     }
   },
@@ -126,6 +133,9 @@
           "correctness": {
             "noUnusedImports": "off",
             "noUnusedVariables": "off"
+          },
+          "suspicious": {
+            "noUnknownAttribute": "off"
           }
         }
       }
