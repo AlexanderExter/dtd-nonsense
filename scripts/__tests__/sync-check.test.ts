@@ -106,7 +106,11 @@ describe("parseRaces", () => {
 describe("parseClasses", () => {
 	it("parses a synthetic class entry from markdown", () => {
 		const md = [
-			"## Fighter",
+			"## Standalone Classes",
+			"",
+			"#### Level 1 Classes",
+			"",
+			"#### Fighter",
 			"",
 			"**Level:** 1",
 			"",

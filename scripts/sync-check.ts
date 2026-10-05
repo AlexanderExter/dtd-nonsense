@@ -220,26 +220,13 @@ export interface ParsedClass {
 }
 
 export function parseClasses(content: string): ParsedClass[] {
-	const sections = extractSections(content, 2);
+	// Classes are H4 entries under "## Standalone Classes", grouped by
+	// "#### Level N Classes" divider headings at the same level.
+	const sections = extractSections(content, 4);
 	const classes: ParsedClass[] = [];
 
-	const skipPatterns = new Set([
-		"Class Finder",
-		"Class Rules",
-		"Free Study",
-		"Leveling Procedure",
-		"Class Tracks",
-		"Level 1 Classes",
-		"Level 2 Classes",
-		"Level 3 Classes",
-		"Level 4 Classes",
-		"Level 5 Classes",
-		"Standalone Classes",
-	]);
-
 	for (const section of sections) {
-		if (skipPatterns.has(section.heading)) continue;
-		if (section.heading.endsWith("Track")) continue;
+		if (/^Level \d+ Classes$/.test(section.heading)) continue;
 
 		const levelStr = extractBoldFieldFullLine(section.content, "Level");
 		const level = levelStr && /^\d+$/.test(levelStr) ? Number.parseInt(levelStr, 10) : null;
